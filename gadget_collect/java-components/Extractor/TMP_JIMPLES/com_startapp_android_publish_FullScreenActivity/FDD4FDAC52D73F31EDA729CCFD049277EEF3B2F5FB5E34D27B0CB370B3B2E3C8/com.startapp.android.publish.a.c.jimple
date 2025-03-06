@@ -1,0 +1,1026 @@
+public abstract class com.startapp.android.publish.a.c extends com.startapp.android.publish.Ad
+{
+    protected static java.lang.String launcherName;
+    private static final long serialVersionUID;
+    private java.lang.String adId;
+    private java.util.List apps;
+    private java.lang.String[] closingUrl;
+    private java.lang.Long delayImpressionInSeconds;
+    private int height;
+    private java.lang.String htmlUuid;
+    public boolean inAppBrowserEnabled;
+    private int orientation;
+    private java.lang.String[] packageNames;
+    public boolean[] smartRedirect;
+    private java.lang.String[] trackingClickUrls;
+    public java.lang.String[] trackingUrls;
+    private com.startapp.android.publish.video.VideoAdDetails videoAdDetails;
+    private int width;
+
+    static void <clinit>()
+    {
+        <com.startapp.android.publish.a.c: long serialVersionUID> = 1L;
+
+        <com.startapp.android.publish.a.c: java.lang.String launcherName> = null;
+
+        return;
+    }
+
+    public void <init>(android.content.Context, com.startapp.android.publish.model.AdPreferences$Placement)
+    {
+        com.startapp.android.publish.a.c r0;
+        android.content.Context $r1;
+        com.startapp.android.publish.model.AdPreferences$Placement $r2;
+        java.lang.String[] $r3;
+        boolean[] $r4;
+        java.lang.String $r5;
+
+        r0 := @this: com.startapp.android.publish.a.c;
+
+        $r1 := @parameter0: android.content.Context;
+
+        $r2 := @parameter1: com.startapp.android.publish.model.AdPreferences$Placement;
+
+        specialinvoke r0.<com.startapp.android.publish.Ad: void <init>(android.content.Context,com.startapp.android.publish.model.AdPreferences$Placement)>($r1, $r2);
+
+        $r3 = newarray (java.lang.String)[1];
+
+        $r3[0] = "";
+
+        r0.<com.startapp.android.publish.a.c: java.lang.String[] packageNames> = $r3;
+
+        r0.<com.startapp.android.publish.a.c: com.startapp.android.publish.video.VideoAdDetails videoAdDetails> = null;
+
+        r0.<com.startapp.android.publish.a.c: java.lang.String htmlUuid> = "";
+
+        r0.<com.startapp.android.publish.a.c: java.lang.String adId> = null;
+
+        r0.<com.startapp.android.publish.a.c: int orientation> = 0;
+
+        $r3 = newarray (java.lang.String)[1];
+
+        $r3[0] = "";
+
+        r0.<com.startapp.android.publish.a.c: java.lang.String[] trackingClickUrls> = $r3;
+
+        $r3 = newarray (java.lang.String)[1];
+
+        $r3[0] = "";
+
+        r0.<com.startapp.android.publish.a.c: java.lang.String[] closingUrl> = $r3;
+
+        $r4 = newarray (boolean)[1];
+
+        $r4[0] = 0;
+
+        r0.<com.startapp.android.publish.a.c: boolean[] smartRedirect> = $r4;
+
+        $r3 = newarray (java.lang.String)[1];
+
+        $r3[0] = "";
+
+        r0.<com.startapp.android.publish.a.c: java.lang.String[] trackingUrls> = $r3;
+
+        r0.<com.startapp.android.publish.a.c: boolean inAppBrowserEnabled> = 1;
+
+        $r5 = <com.startapp.android.publish.a.c: java.lang.String launcherName>;
+
+        if $r5 != null goto label1;
+
+        specialinvoke r0.<com.startapp.android.publish.a.c: void initDefaultLauncherName()>();
+
+     label1:
+        return;
+    }
+
+    private java.lang.String extractMetadata(java.lang.String, java.lang.String)
+    {
+        com.startapp.android.publish.a.c r0;
+        java.lang.String $r1, $r2;
+
+        r0 := @this: com.startapp.android.publish.a.c;
+
+        $r1 := @parameter0: java.lang.String;
+
+        $r2 := @parameter1: java.lang.String;
+
+        $r1 = staticinvoke <com.startapp.android.publish.i.x: java.lang.String a(java.lang.String,java.lang.String,java.lang.String)>($r1, $r2, $r2);
+
+        return $r1;
+    }
+
+    private void initDefaultLauncherName()
+    {
+        com.startapp.android.publish.a.c r0;
+        android.content.Context $r1;
+        java.lang.String $r2;
+
+        r0 := @this: com.startapp.android.publish.a.c;
+
+        $r1 = virtualinvoke r0.<com.startapp.android.publish.a.c: android.content.Context getContext()>();
+
+        $r2 = staticinvoke <com.startapp.android.publish.i.x: java.lang.String f(android.content.Context)>($r1);
+
+        <com.startapp.android.publish.a.c: java.lang.String launcherName> = $r2;
+
+        return;
+    }
+
+    private void setAdCacheTtl(java.lang.String)
+    {
+        com.startapp.android.publish.a.c r0;
+        java.lang.String $r1;
+        int $i0, $i1;
+        java.lang.String[] $r2;
+        java.lang.Long $r3, $r4;
+        boolean $z0;
+        long $l2, $l4;
+        byte $b3;
+        java.util.concurrent.TimeUnit $r5;
+        java.lang.Throwable $r6;
+
+        r0 := @this: com.startapp.android.publish.a.c;
+
+        $r1 := @parameter0: java.lang.String;
+
+        $r2 = virtualinvoke $r1.<java.lang.String: java.lang.String[] split(java.lang.String)>(",");
+
+        $i0 = lengthof $r2;
+
+        $r3 = null;
+
+        $i1 = 0;
+
+     label01:
+        if $i1 >= $i0 goto label09;
+
+        $r1 = $r2[$i1];
+
+        $z0 = virtualinvoke $r1.<java.lang.String: boolean equals(java.lang.Object)>("");
+
+        if $z0 != 0 goto label08;
+
+     label02:
+        $l2 = staticinvoke <java.lang.Long: long parseLong(java.lang.String)>($r1);
+
+     label03:
+        $b3 = $l2 cmp 0L;
+
+        if $b3 <= 0 goto label08;
+
+        if $r3 == null goto label06;
+
+     label04:
+        $l4 = virtualinvoke $r3.<java.lang.Long: long longValue()>();
+
+     label05:
+        $b3 = $l2 cmp $l4;
+
+        if $b3 >= 0 goto label08;
+
+     label06:
+        $r4 = staticinvoke <java.lang.Long: java.lang.Long valueOf(long)>($l2);
+
+     label07:
+        $r3 = $r4;
+
+     label08:
+        $i1 = $i1 + 1;
+
+        goto label01;
+
+     label09:
+        if $r3 == null goto label11;
+
+        $r5 = <java.util.concurrent.TimeUnit: java.util.concurrent.TimeUnit SECONDS>;
+
+        $l2 = virtualinvoke $r3.<java.lang.Long: long longValue()>();
+
+        $l2 = virtualinvoke $r5.<java.util.concurrent.TimeUnit: long toMillis(long)>($l2);
+
+        $r3 = staticinvoke <java.lang.Long: java.lang.Long valueOf(long)>($l2);
+
+        r0.<com.startapp.android.publish.a.c: java.lang.Long adCacheTtl> = $r3;
+
+        return;
+
+     label10:
+        $r6 := @caughtexception;
+
+        goto label08;
+
+     label11:
+        return;
+
+        catch java.lang.NumberFormatException from label02 to label03 with label10;
+        catch java.lang.NumberFormatException from label04 to label05 with label10;
+        catch java.lang.NumberFormatException from label06 to label07 with label10;
+    }
+
+    private void setAdInfoEnableOverride(java.lang.String)
+    {
+        com.startapp.android.publish.a.c r0;
+        java.lang.String $r1;
+        boolean $z0;
+        com.startapp.android.publish.adinformation.b $r2;
+
+        r0 := @this: com.startapp.android.publish.a.c;
+
+        $r1 := @parameter0: java.lang.String;
+
+        $z0 = staticinvoke <java.lang.Boolean: boolean parseBoolean(java.lang.String)>($r1);
+
+        $r2 = virtualinvoke r0.<com.startapp.android.publish.a.c: com.startapp.android.publish.adinformation.b getAdInfoOverride()>();
+
+        virtualinvoke $r2.<com.startapp.android.publish.adinformation.b: void a(boolean)>($z0);
+
+        return;
+    }
+
+    private void setAdInfoPositionOverride(java.lang.String)
+    {
+        com.startapp.android.publish.a.c r0;
+        java.lang.String $r1;
+        com.startapp.android.publish.adinformation.b $r2;
+        com.startapp.android.publish.adinformation.AdInformationPositions$Position $r3;
+
+        r0 := @this: com.startapp.android.publish.a.c;
+
+        $r1 := @parameter0: java.lang.String;
+
+        $r2 = virtualinvoke r0.<com.startapp.android.publish.a.c: com.startapp.android.publish.adinformation.b getAdInfoOverride()>();
+
+        $r3 = staticinvoke <com.startapp.android.publish.adinformation.AdInformationPositions$Position: com.startapp.android.publish.adinformation.AdInformationPositions$Position getByName(java.lang.String)>($r1);
+
+        virtualinvoke $r2.<com.startapp.android.publish.adinformation.b: void a(com.startapp.android.publish.adinformation.AdInformationPositions$Position)>($r3);
+
+        return;
+    }
+
+    private void setDelayImpressionInSeconds(java.lang.String)
+    {
+        com.startapp.android.publish.a.c r0;
+        java.lang.String $r1;
+        boolean $z0;
+        long $l0;
+        java.lang.Long $r2;
+        java.lang.Throwable $r3;
+
+        r0 := @this: com.startapp.android.publish.a.c;
+
+        $r1 := @parameter0: java.lang.String;
+
+        if $r1 == null goto label4;
+
+        $z0 = virtualinvoke $r1.<java.lang.String: boolean equals(java.lang.Object)>("");
+
+        if $z0 != 0 goto label4;
+
+     label1:
+        $l0 = staticinvoke <java.lang.Long: long parseLong(java.lang.String)>($r1);
+
+        $r2 = staticinvoke <java.lang.Long: java.lang.Long valueOf(long)>($l0);
+
+     label2:
+        r0.<com.startapp.android.publish.a.c: java.lang.Long delayImpressionInSeconds> = $r2;
+
+        return;
+
+     label3:
+        $r3 := @caughtexception;
+
+     label4:
+        return;
+
+        catch java.lang.NumberFormatException from label1 to label2 with label3;
+    }
+
+    private void setInAppBrowserFlag(java.lang.String)
+    {
+        com.startapp.android.publish.a.c r0;
+        java.lang.String $r1;
+        int $i0;
+
+        r0 := @this: com.startapp.android.publish.a.c;
+
+        $r1 := @parameter0: java.lang.String;
+
+        $i0 = virtualinvoke $r1.<java.lang.String: int compareTo(java.lang.String)>("true");
+
+        if $i0 != 0 goto label1;
+
+        r0.<com.startapp.android.publish.a.c: boolean inAppBrowserEnabled> = 1;
+
+        return;
+
+     label1:
+        $i0 = virtualinvoke $r1.<java.lang.String: int compareTo(java.lang.String)>("false");
+
+        if $i0 != 0 goto label2;
+
+        r0.<com.startapp.android.publish.a.c: boolean inAppBrowserEnabled> = 0;
+
+     label2:
+        return;
+    }
+
+    private void setOrientation(com.startapp.android.publish.splash.SplashConfig$Orientation)
+    {
+        com.startapp.android.publish.a.c r0;
+        com.startapp.android.publish.splash.SplashConfig$Orientation $r1, $r2;
+        boolean $z0;
+
+        r0 := @this: com.startapp.android.publish.a.c;
+
+        $r1 := @parameter0: com.startapp.android.publish.splash.SplashConfig$Orientation;
+
+        r0.<com.startapp.android.publish.a.c: int orientation> = 0;
+
+        if $r1 == null goto label2;
+
+        $r2 = <com.startapp.android.publish.splash.SplashConfig$Orientation: com.startapp.android.publish.splash.SplashConfig$Orientation PORTRAIT>;
+
+        $z0 = virtualinvoke $r1.<com.startapp.android.publish.splash.SplashConfig$Orientation: boolean equals(java.lang.Object)>($r2);
+
+        if $z0 == 0 goto label1;
+
+        r0.<com.startapp.android.publish.a.c: int orientation> = 1;
+
+        return;
+
+     label1:
+        $r2 = <com.startapp.android.publish.splash.SplashConfig$Orientation: com.startapp.android.publish.splash.SplashConfig$Orientation LANDSCAPE>;
+
+        $z0 = virtualinvoke $r1.<com.startapp.android.publish.splash.SplashConfig$Orientation: boolean equals(java.lang.Object)>($r2);
+
+        if $z0 == 0 goto label2;
+
+        r0.<com.startapp.android.publish.a.c: int orientation> = 2;
+
+     label2:
+        return;
+    }
+
+    private void setPackageNames(java.lang.String)
+    {
+        com.startapp.android.publish.a.c r0;
+        java.lang.String $r1;
+        java.lang.String[] $r2;
+
+        r0 := @this: com.startapp.android.publish.a.c;
+
+        $r1 := @parameter0: java.lang.String;
+
+        $r2 = virtualinvoke $r1.<java.lang.String: java.lang.String[] split(java.lang.String)>(",");
+
+        r0.<com.startapp.android.publish.a.c: java.lang.String[] packageNames> = $r2;
+
+        return;
+    }
+
+    private void setSmartRedirect(java.lang.String)
+    {
+        com.startapp.android.publish.a.c r0;
+        java.lang.String $r1;
+        java.lang.String[] $r2;
+        int $i0, $i1;
+        boolean[] $r3;
+
+        r0 := @this: com.startapp.android.publish.a.c;
+
+        $r1 := @parameter0: java.lang.String;
+
+        $r2 = virtualinvoke $r1.<java.lang.String: java.lang.String[] split(java.lang.String)>(",");
+
+        $i0 = lengthof $r2;
+
+        $r3 = newarray (boolean)[$i0];
+
+        r0.<com.startapp.android.publish.a.c: boolean[] smartRedirect> = $r3;
+
+        $i0 = 0;
+
+     label1:
+        $i1 = lengthof $r2;
+
+        if $i0 >= $i1 goto label4;
+
+        $r1 = $r2[$i0];
+
+        $i1 = virtualinvoke $r1.<java.lang.String: int compareTo(java.lang.String)>("true");
+
+        if $i1 != 0 goto label3;
+
+        $r3 = r0.<com.startapp.android.publish.a.c: boolean[] smartRedirect>;
+
+        $r3[$i0] = 1;
+
+     label2:
+        $i0 = $i0 + 1;
+
+        goto label1;
+
+     label3:
+        $r3 = r0.<com.startapp.android.publish.a.c: boolean[] smartRedirect>;
+
+        $r3[$i0] = 0;
+
+        goto label2;
+
+     label4:
+        return;
+    }
+
+    private void setTrackingClickUrl(java.lang.String)
+    {
+        com.startapp.android.publish.a.c r0;
+        java.lang.String $r1;
+        java.lang.String[] $r2;
+
+        r0 := @this: com.startapp.android.publish.a.c;
+
+        $r1 := @parameter0: java.lang.String;
+
+        $r2 = virtualinvoke $r1.<java.lang.String: java.lang.String[] split(java.lang.String)>(",");
+
+        r0.<com.startapp.android.publish.a.c: java.lang.String[] trackingClickUrls> = $r2;
+
+        return;
+    }
+
+    private void setTrackingUrls(java.lang.String)
+    {
+        com.startapp.android.publish.a.c r0;
+        java.lang.String $r1;
+        java.lang.String[] $r2;
+
+        r0 := @this: com.startapp.android.publish.a.c;
+
+        $r1 := @parameter0: java.lang.String;
+
+        $r2 = virtualinvoke $r1.<java.lang.String: java.lang.String[] split(java.lang.String)>(",");
+
+        r0.<com.startapp.android.publish.a.c: java.lang.String[] trackingUrls> = $r2;
+
+        return;
+    }
+
+    public java.util.List getApps()
+    {
+        com.startapp.android.publish.a.c r0;
+        java.util.List r1;
+
+        r0 := @this: com.startapp.android.publish.a.c;
+
+        r1 = r0.<com.startapp.android.publish.a.c: java.util.List apps>;
+
+        return r1;
+    }
+
+    public java.lang.String[] getClosingUrl()
+    {
+        com.startapp.android.publish.a.c r0;
+        java.lang.String[] r1;
+
+        r0 := @this: com.startapp.android.publish.a.c;
+
+        r1 = r0.<com.startapp.android.publish.a.c: java.lang.String[] closingUrl>;
+
+        return r1;
+    }
+
+    public java.lang.Long getDelayImpressionInSeconds()
+    {
+        com.startapp.android.publish.a.c r0;
+        java.lang.Long r1;
+
+        r0 := @this: com.startapp.android.publish.a.c;
+
+        r1 = r0.<com.startapp.android.publish.a.c: java.lang.Long delayImpressionInSeconds>;
+
+        return r1;
+    }
+
+    public int getHeight()
+    {
+        com.startapp.android.publish.a.c r0;
+        int i0;
+
+        r0 := @this: com.startapp.android.publish.a.c;
+
+        i0 = r0.<com.startapp.android.publish.a.c: int height>;
+
+        return i0;
+    }
+
+    public java.lang.String getHtml()
+    {
+        com.startapp.android.publish.a.c r0;
+        java.lang.String $r1;
+        com.startapp.android.publish.b.a $r2;
+
+        r0 := @this: com.startapp.android.publish.a.c;
+
+        $r2 = staticinvoke <com.startapp.android.publish.b.a: com.startapp.android.publish.b.a a()>();
+
+        $r1 = r0.<com.startapp.android.publish.a.c: java.lang.String htmlUuid>;
+
+        $r1 = virtualinvoke $r2.<com.startapp.android.publish.b.a: java.lang.String c(java.lang.String)>($r1);
+
+        return $r1;
+    }
+
+    public java.lang.String getHtmlUuid()
+    {
+        com.startapp.android.publish.a.c r0;
+        java.lang.String r1;
+
+        r0 := @this: com.startapp.android.publish.a.c;
+
+        r1 = r0.<com.startapp.android.publish.a.c: java.lang.String htmlUuid>;
+
+        return r1;
+    }
+
+    protected java.lang.String getLauncherName()
+    {
+        com.startapp.android.publish.a.c r0;
+        java.lang.String r1;
+
+        r0 := @this: com.startapp.android.publish.a.c;
+
+        r1 = <com.startapp.android.publish.a.c: java.lang.String launcherName>;
+
+        return r1;
+    }
+
+    public int getOrientation()
+    {
+        com.startapp.android.publish.a.c r0;
+        int i0;
+
+        r0 := @this: com.startapp.android.publish.a.c;
+
+        i0 = r0.<com.startapp.android.publish.a.c: int orientation>;
+
+        return i0;
+    }
+
+    public java.lang.String[] getPackageNames()
+    {
+        com.startapp.android.publish.a.c r0;
+        java.lang.String[] r1;
+
+        r0 := @this: com.startapp.android.publish.a.c;
+
+        r1 = r0.<com.startapp.android.publish.a.c: java.lang.String[] packageNames>;
+
+        return r1;
+    }
+
+    public boolean getSmartRedirect(int)
+    {
+        com.startapp.android.publish.a.c r0;
+        int $i0, $i1;
+        boolean[] $r1;
+        boolean $z0;
+
+        r0 := @this: com.startapp.android.publish.a.c;
+
+        $i0 := @parameter0: int;
+
+        if $i0 < 0 goto label1;
+
+        $r1 = r0.<com.startapp.android.publish.a.c: boolean[] smartRedirect>;
+
+        $i1 = lengthof $r1;
+
+        if $i0 < $i1 goto label2;
+
+     label1:
+        return 0;
+
+     label2:
+        $r1 = r0.<com.startapp.android.publish.a.c: boolean[] smartRedirect>;
+
+        $z0 = $r1[$i0];
+
+        return $z0;
+    }
+
+    public boolean[] getSmartRedirect()
+    {
+        com.startapp.android.publish.a.c r0;
+        boolean[] r1;
+
+        r0 := @this: com.startapp.android.publish.a.c;
+
+        r1 = r0.<com.startapp.android.publish.a.c: boolean[] smartRedirect>;
+
+        return r1;
+    }
+
+    public java.lang.String[] getTrackingClickUrls()
+    {
+        com.startapp.android.publish.a.c r0;
+        java.lang.String[] r1;
+
+        r0 := @this: com.startapp.android.publish.a.c;
+
+        r1 = r0.<com.startapp.android.publish.a.c: java.lang.String[] trackingClickUrls>;
+
+        return r1;
+    }
+
+    public java.lang.String getTrackingUrls(int)
+    {
+        com.startapp.android.publish.a.c r0;
+        int $i0, $i1;
+        java.lang.String[] $r1;
+        java.lang.String $r2;
+
+        r0 := @this: com.startapp.android.publish.a.c;
+
+        $i0 := @parameter0: int;
+
+        if $i0 < 0 goto label1;
+
+        $r1 = r0.<com.startapp.android.publish.a.c: java.lang.String[] trackingUrls>;
+
+        $i1 = lengthof $r1;
+
+        if $i0 < $i1 goto label2;
+
+     label1:
+        return null;
+
+     label2:
+        $r1 = r0.<com.startapp.android.publish.a.c: java.lang.String[] trackingUrls>;
+
+        $r2 = $r1[$i0];
+
+        return $r2;
+    }
+
+    public java.lang.String[] getTrackingUrls()
+    {
+        com.startapp.android.publish.a.c r0;
+        java.lang.String[] r1;
+
+        r0 := @this: com.startapp.android.publish.a.c;
+
+        r1 = r0.<com.startapp.android.publish.a.c: java.lang.String[] trackingUrls>;
+
+        return r1;
+    }
+
+    public com.startapp.android.publish.video.VideoAdDetails getVideoAdDetails()
+    {
+        com.startapp.android.publish.a.c r0;
+        com.startapp.android.publish.video.VideoAdDetails r1;
+
+        r0 := @this: com.startapp.android.publish.a.c;
+
+        r1 = r0.<com.startapp.android.publish.a.c: com.startapp.android.publish.video.VideoAdDetails videoAdDetails>;
+
+        return r1;
+    }
+
+    public int getWidth()
+    {
+        com.startapp.android.publish.a.c r0;
+        int i0;
+
+        r0 := @this: com.startapp.android.publish.a.c;
+
+        i0 = r0.<com.startapp.android.publish.a.c: int width>;
+
+        return i0;
+    }
+
+    public java.lang.String gtAdId()
+    {
+        com.startapp.android.publish.a.c r0;
+        java.lang.String $r1;
+
+        r0 := @this: com.startapp.android.publish.a.c;
+
+        $r1 = r0.<com.startapp.android.publish.a.c: java.lang.String adId>;
+
+        if $r1 != null goto label1;
+
+        $r1 = virtualinvoke r0.<com.startapp.android.publish.a.c: java.lang.String getHtml()>();
+
+        $r1 = staticinvoke <com.startapp.android.publish.i.x: java.lang.String a(java.lang.String,java.lang.String,java.lang.String)>($r1, "@adId@", "@adId@");
+
+        r0.<com.startapp.android.publish.a.c: java.lang.String adId> = $r1;
+
+     label1:
+        $r1 = r0.<com.startapp.android.publish.a.c: java.lang.String adId>;
+
+        return $r1;
+    }
+
+    public boolean isInAppBrowserEnabled()
+    {
+        com.startapp.android.publish.a.c r0;
+        boolean z0;
+
+        r0 := @this: com.startapp.android.publish.a.c;
+
+        z0 = r0.<com.startapp.android.publish.a.c: boolean inAppBrowserEnabled>;
+
+        return z0;
+    }
+
+    public void setApps(java.util.List)
+    {
+        com.startapp.android.publish.a.c r0;
+        java.util.List r1;
+
+        r0 := @this: com.startapp.android.publish.a.c;
+
+        r1 := @parameter0: java.util.List;
+
+        r0.<com.startapp.android.publish.a.c: java.util.List apps> = r1;
+
+        return;
+    }
+
+    public void setClosingUrl(java.lang.String)
+    {
+        com.startapp.android.publish.a.c r0;
+        java.lang.String $r1;
+        java.lang.String[] $r2;
+
+        r0 := @this: com.startapp.android.publish.a.c;
+
+        $r1 := @parameter0: java.lang.String;
+
+        $r2 = virtualinvoke $r1.<java.lang.String: java.lang.String[] split(java.lang.String)>(",");
+
+        r0.<com.startapp.android.publish.a.c: java.lang.String[] closingUrl> = $r2;
+
+        return;
+    }
+
+    public void setHeight(int)
+    {
+        com.startapp.android.publish.a.c r0;
+        int $i0;
+
+        r0 := @this: com.startapp.android.publish.a.c;
+
+        $i0 := @parameter0: int;
+
+        r0.<com.startapp.android.publish.a.c: int height> = $i0;
+
+        return;
+    }
+
+    public void setHtml(java.lang.String)
+    {
+        com.startapp.android.publish.a.c r0;
+        java.lang.String $r1, $r3;
+        com.startapp.android.publish.b.a $r2;
+        com.startapp.android.publish.splash.SplashConfig$Orientation $r4;
+        com.startapp.android.publish.e.a $r5;
+        java.lang.Object $r6;
+        com.startapp.android.publish.video.VideoAdDetails $r7;
+        boolean[] $r8, $r10;
+        int $i0, $i1;
+        java.lang.String[] $r9;
+        boolean $z0;
+        java.lang.Throwable $r11, $r12, $r13;
+
+        r0 := @this: com.startapp.android.publish.a.c;
+
+        $r1 := @parameter0: java.lang.String;
+
+        $r2 = staticinvoke <com.startapp.android.publish.b.a: com.startapp.android.publish.b.a a()>();
+
+        $r3 = virtualinvoke $r2.<com.startapp.android.publish.b.a: java.lang.String b(java.lang.String)>($r1);
+
+        r0.<com.startapp.android.publish.a.c: java.lang.String htmlUuid> = $r3;
+
+        $r3 = specialinvoke r0.<com.startapp.android.publish.a.c: java.lang.String extractMetadata(java.lang.String,java.lang.String)>($r1, "@smartRedirect@");
+
+        if $r3 == null goto label01;
+
+        specialinvoke r0.<com.startapp.android.publish.a.c: void setSmartRedirect(java.lang.String)>($r3);
+
+     label01:
+        $r3 = specialinvoke r0.<com.startapp.android.publish.a.c: java.lang.String extractMetadata(java.lang.String,java.lang.String)>($r1, "@trackingClickUrl@");
+
+        if $r3 == null goto label02;
+
+        specialinvoke r0.<com.startapp.android.publish.a.c: void setTrackingClickUrl(java.lang.String)>($r3);
+
+     label02:
+        $r3 = specialinvoke r0.<com.startapp.android.publish.a.c: java.lang.String extractMetadata(java.lang.String,java.lang.String)>($r1, "@closeUrl@");
+
+        if $r3 == null goto label03;
+
+        virtualinvoke r0.<com.startapp.android.publish.a.c: void setClosingUrl(java.lang.String)>($r3);
+
+     label03:
+        $r3 = specialinvoke r0.<com.startapp.android.publish.a.c: java.lang.String extractMetadata(java.lang.String,java.lang.String)>($r1, "@tracking@");
+
+        if $r3 == null goto label04;
+
+        specialinvoke r0.<com.startapp.android.publish.a.c: void setTrackingUrls(java.lang.String)>($r3);
+
+     label04:
+        $r3 = specialinvoke r0.<com.startapp.android.publish.a.c: java.lang.String extractMetadata(java.lang.String,java.lang.String)>($r1, "@packageName@");
+
+        if $r3 == null goto label05;
+
+        specialinvoke r0.<com.startapp.android.publish.a.c: void setPackageNames(java.lang.String)>($r3);
+
+     label05:
+        $r3 = specialinvoke r0.<com.startapp.android.publish.a.c: java.lang.String extractMetadata(java.lang.String,java.lang.String)>($r1, "@startappBrowserEnabled@");
+
+        if $r3 == null goto label06;
+
+        specialinvoke r0.<com.startapp.android.publish.a.c: void setInAppBrowserFlag(java.lang.String)>($r3);
+
+     label06:
+        $r3 = specialinvoke r0.<com.startapp.android.publish.a.c: java.lang.String extractMetadata(java.lang.String,java.lang.String)>($r1, "@orientation@");
+
+        if $r3 == null goto label07;
+
+        $r4 = staticinvoke <com.startapp.android.publish.splash.SplashConfig$Orientation: com.startapp.android.publish.splash.SplashConfig$Orientation getByName(java.lang.String)>($r3);
+
+        specialinvoke r0.<com.startapp.android.publish.a.c: void setOrientation(com.startapp.android.publish.splash.SplashConfig$Orientation)>($r4);
+
+     label07:
+        $r3 = specialinvoke r0.<com.startapp.android.publish.a.c: java.lang.String extractMetadata(java.lang.String,java.lang.String)>($r1, "@adInfoEnable@");
+
+        if $r3 == null goto label08;
+
+        specialinvoke r0.<com.startapp.android.publish.a.c: void setAdInfoEnableOverride(java.lang.String)>($r3);
+
+     label08:
+        $r3 = specialinvoke r0.<com.startapp.android.publish.a.c: java.lang.String extractMetadata(java.lang.String,java.lang.String)>($r1, "@adInfoPosition@");
+
+        if $r3 == null goto label09;
+
+        specialinvoke r0.<com.startapp.android.publish.a.c: void setAdInfoPositionOverride(java.lang.String)>($r3);
+
+     label09:
+        $r3 = specialinvoke r0.<com.startapp.android.publish.a.c: java.lang.String extractMetadata(java.lang.String,java.lang.String)>($r1, "@ttl@");
+
+        if $r3 == null goto label10;
+
+        specialinvoke r0.<com.startapp.android.publish.a.c: void setAdCacheTtl(java.lang.String)>($r3);
+
+     label10:
+        $r3 = specialinvoke r0.<com.startapp.android.publish.a.c: java.lang.String extractMetadata(java.lang.String,java.lang.String)>($r1, "@delayImpressionInSeconds@");
+
+        if $r3 == null goto label11;
+
+        specialinvoke r0.<com.startapp.android.publish.a.c: void setDelayImpressionInSeconds(java.lang.String)>($r3);
+
+     label11:
+        $r1 = specialinvoke r0.<com.startapp.android.publish.a.c: java.lang.String extractMetadata(java.lang.String,java.lang.String)>($r1, "@videoJson@");
+
+        if $r1 == null goto label15;
+
+     label12:
+        $r5 = new com.startapp.android.publish.e.a;
+
+        specialinvoke $r5.<com.startapp.android.publish.e.a: void <init>(java.lang.String)>($r1);
+
+     label13:
+        $r6 = virtualinvoke $r5.<com.startapp.android.publish.e.a: java.lang.Object a(java.lang.Class,org.json.JSONObject)>(class "Lcom/startapp/android/publish/video/VideoAdDetails;", null);
+
+        $r7 = (com.startapp.android.publish.video.VideoAdDetails) $r6;
+
+        r0.<com.startapp.android.publish.a.c: com.startapp.android.publish.video.VideoAdDetails videoAdDetails> = $r7;
+
+     label14:
+        virtualinvoke $r5.<com.startapp.android.publish.e.a: void close()>();
+
+     label15:
+        $r8 = r0.<com.startapp.android.publish.a.c: boolean[] smartRedirect>;
+
+        $i0 = lengthof $r8;
+
+        $r9 = r0.<com.startapp.android.publish.a.c: java.lang.String[] trackingUrls>;
+
+        $i1 = lengthof $r9;
+
+        if $i0 >= $i1 goto label25;
+
+        staticinvoke <com.startapp.android.publish.i.n: void a(int,java.lang.String)>(6, "Error in smartRedirect array in HTML");
+
+        $r9 = r0.<com.startapp.android.publish.a.c: java.lang.String[] trackingUrls>;
+
+        $i0 = lengthof $r9;
+
+        $r8 = newarray (boolean)[$i0];
+
+        $i0 = 0;
+
+     label16:
+        $r10 = r0.<com.startapp.android.publish.a.c: boolean[] smartRedirect>;
+
+        $i1 = lengthof $r10;
+
+        if $i0 >= $i1 goto label20;
+
+        $r10 = r0.<com.startapp.android.publish.a.c: boolean[] smartRedirect>;
+
+        $z0 = $r10[$i0];
+
+        $r8[$i0] = $z0;
+
+        $i0 = $i0 + 1;
+
+        goto label16;
+
+     label17:
+        $r11 := @caughtexception;
+
+        $r5 = null;
+
+     label18:
+        virtualinvoke $r5.<com.startapp.android.publish.e.a: void close()>();
+
+     label19:
+        throw $r11;
+
+     label20:
+        $r9 = r0.<com.startapp.android.publish.a.c: java.lang.String[] trackingUrls>;
+
+        $i1 = lengthof $r9;
+
+        if $i0 >= $i1 goto label21;
+
+        $r8[$i0] = 0;
+
+        $i0 = $i0 + 1;
+
+        goto label20;
+
+     label21:
+        r0.<com.startapp.android.publish.a.c: boolean[] smartRedirect> = $r8;
+
+        return;
+
+     label22:
+        $r12 := @caughtexception;
+
+        goto label15;
+
+     label23:
+        $r13 := @caughtexception;
+
+        goto label19;
+
+     label24:
+        $r11 := @caughtexception;
+
+        goto label18;
+
+     label25:
+        return;
+
+        catch java.lang.Throwable from label12 to label13 with label17;
+        catch java.lang.Throwable from label13 to label14 with label24;
+        catch java.io.IOException from label14 to label15 with label22;
+        catch java.io.IOException from label18 to label19 with label23;
+    }
+
+    public void setSize(int, int)
+    {
+        com.startapp.android.publish.a.c r0;
+        int $i0, $i1;
+
+        r0 := @this: com.startapp.android.publish.a.c;
+
+        $i0 := @parameter0: int;
+
+        $i1 := @parameter1: int;
+
+        virtualinvoke r0.<com.startapp.android.publish.a.c: void setWidth(int)>($i0);
+
+        virtualinvoke r0.<com.startapp.android.publish.a.c: void setHeight(int)>($i1);
+
+        return;
+    }
+
+    public void setWidth(int)
+    {
+        com.startapp.android.publish.a.c r0;
+        int $i0;
+
+        r0 := @this: com.startapp.android.publish.a.c;
+
+        $i0 := @parameter0: int;
+
+        r0.<com.startapp.android.publish.a.c: int width> = $i0;
+
+        return;
+    }
+}

@@ -1,0 +1,147 @@
+class com.startapp.android.publish.list3d.a$a extends android.os.AsyncTask
+{
+    int a;
+    java.lang.String b;
+    java.lang.String c;
+    final com.startapp.android.publish.list3d.a d;
+
+    public void <init>(com.startapp.android.publish.list3d.a, int, java.lang.String, java.lang.String)
+    {
+        com.startapp.android.publish.list3d.a$a r0;
+        com.startapp.android.publish.list3d.a $r1;
+        int $i0;
+        java.lang.String $r2, $r3;
+
+        r0 := @this: com.startapp.android.publish.list3d.a$a;
+
+        $r1 := @parameter0: com.startapp.android.publish.list3d.a;
+
+        $i0 := @parameter1: int;
+
+        $r2 := @parameter2: java.lang.String;
+
+        $r3 := @parameter3: java.lang.String;
+
+        r0.<com.startapp.android.publish.list3d.a$a: com.startapp.android.publish.list3d.a d> = $r1;
+
+        specialinvoke r0.<android.os.AsyncTask: void <init>()>();
+
+        r0.<com.startapp.android.publish.list3d.a$a: int a> = -1;
+
+        r0.<com.startapp.android.publish.list3d.a$a: int a> = $i0;
+
+        r0.<com.startapp.android.publish.list3d.a$a: java.lang.String b> = $r2;
+
+        r0.<com.startapp.android.publish.list3d.a$a: java.lang.String c> = $r3;
+
+        return;
+    }
+
+    protected transient android.graphics.Bitmap a(java.lang.Void[])
+    {
+        com.startapp.android.publish.list3d.a$a r0;
+        java.lang.Void[] $r1;
+        android.graphics.Bitmap $r2;
+        java.lang.String $r3;
+
+        r0 := @this: com.startapp.android.publish.list3d.a$a;
+
+        $r1 := @parameter0: java.lang.Void[];
+
+        $r3 = r0.<com.startapp.android.publish.list3d.a$a: java.lang.String c>;
+
+        $r2 = staticinvoke <com.startapp.android.publish.i.h: android.graphics.Bitmap a(java.lang.String)>($r3);
+
+        return $r2;
+    }
+
+    protected void a(android.graphics.Bitmap)
+    {
+        com.startapp.android.publish.list3d.a$a r0;
+        android.graphics.Bitmap $r1;
+        com.startapp.android.publish.list3d.a $r2;
+        int $i0;
+        java.util.Hashtable $r3;
+        java.lang.String $r4;
+        com.startapp.android.publish.list3d.g $r5;
+
+        r0 := @this: com.startapp.android.publish.list3d.a$a;
+
+        $r1 := @parameter0: android.graphics.Bitmap;
+
+        $r2 = r0.<com.startapp.android.publish.list3d.a$a: com.startapp.android.publish.list3d.a d>;
+
+        $i0 = $r2.<com.startapp.android.publish.list3d.a: int e>;
+
+        $i0 = $i0 + -1;
+
+        $r2.<com.startapp.android.publish.list3d.a: int e> = $i0;
+
+        if $r1 == null goto label2;
+
+        $r2 = r0.<com.startapp.android.publish.list3d.a$a: com.startapp.android.publish.list3d.a d>;
+
+        $r3 = $r2.<com.startapp.android.publish.list3d.a: java.util.Hashtable b>;
+
+        $r4 = r0.<com.startapp.android.publish.list3d.a$a: java.lang.String b>;
+
+        virtualinvoke $r3.<java.util.Hashtable: java.lang.Object put(java.lang.Object,java.lang.Object)>($r4, $r1);
+
+        $r2 = r0.<com.startapp.android.publish.list3d.a$a: com.startapp.android.publish.list3d.a d>;
+
+        $r5 = $r2.<com.startapp.android.publish.list3d.a: com.startapp.android.publish.list3d.g d>;
+
+        if $r5 == null goto label1;
+
+        $r2 = r0.<com.startapp.android.publish.list3d.a$a: com.startapp.android.publish.list3d.a d>;
+
+        $r5 = $r2.<com.startapp.android.publish.list3d.a: com.startapp.android.publish.list3d.g d>;
+
+        $i0 = r0.<com.startapp.android.publish.list3d.a$a: int a>;
+
+        interfaceinvoke $r5.<com.startapp.android.publish.list3d.g: void a(int)>($i0);
+
+     label1:
+        $r2 = r0.<com.startapp.android.publish.list3d.a$a: com.startapp.android.publish.list3d.a d>;
+
+        virtualinvoke $r2.<com.startapp.android.publish.list3d.a: void e()>();
+
+     label2:
+        return;
+    }
+
+    protected java.lang.Object doInBackground(java.lang.Object[])
+    {
+        com.startapp.android.publish.list3d.a$a r0;
+        android.graphics.Bitmap $r1;
+        java.lang.Object[] $r2;
+        java.lang.Void[] $r3;
+
+        r0 := @this: com.startapp.android.publish.list3d.a$a;
+
+        $r2 := @parameter0: java.lang.Object[];
+
+        $r3 = (java.lang.Void[]) $r2;
+
+        $r1 = virtualinvoke r0.<com.startapp.android.publish.list3d.a$a: android.graphics.Bitmap a(java.lang.Void[])>($r3);
+
+        return $r1;
+    }
+
+    protected void onPostExecute(java.lang.Object)
+    {
+        com.startapp.android.publish.list3d.a$a r0;
+        java.lang.Object $r1;
+        android.graphics.Bitmap $r2;
+
+        r0 := @this: com.startapp.android.publish.list3d.a$a;
+
+        $r1 := @parameter0: java.lang.Object;
+
+        $r2 = (android.graphics.Bitmap) $r1;
+
+        virtualinvoke r0.<com.startapp.android.publish.list3d.a$a: void a(android.graphics.Bitmap)>($r2);
+
+        return;
+    }
+}

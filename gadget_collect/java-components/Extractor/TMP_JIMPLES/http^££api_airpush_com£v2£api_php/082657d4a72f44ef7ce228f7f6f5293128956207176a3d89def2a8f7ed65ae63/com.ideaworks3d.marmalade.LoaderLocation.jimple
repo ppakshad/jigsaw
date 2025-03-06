@@ -1,0 +1,356 @@
+public class com.ideaworks3d.marmalade.LoaderLocation extends java.lang.Object
+{
+    private android.location.GpsStatus m_GpsStatus;
+    private com.ideaworks3d.marmalade.LoaderLocation$LocationUpdateHandler m_LocationListener;
+    private android.location.LocationManager m_LocationManager;
+    private int m_LocationUpdateDistance;
+    private int m_LocationUpdateInterval;
+
+    public void <init>()
+    {
+        com.ideaworks3d.marmalade.LoaderLocation r0;
+
+        r0 := @this: com.ideaworks3d.marmalade.LoaderLocation;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        r0.<com.ideaworks3d.marmalade.LoaderLocation: int m_LocationUpdateInterval> = 5000;
+
+        r0.<com.ideaworks3d.marmalade.LoaderLocation: int m_LocationUpdateDistance> = 2;
+
+        return;
+    }
+
+    static android.location.LocationManager access$000(com.ideaworks3d.marmalade.LoaderLocation)
+    {
+        com.ideaworks3d.marmalade.LoaderLocation $r0;
+        android.location.LocationManager r1;
+
+        $r0 := @parameter0: com.ideaworks3d.marmalade.LoaderLocation;
+
+        r1 = $r0.<com.ideaworks3d.marmalade.LoaderLocation: android.location.LocationManager m_LocationManager>;
+
+        return r1;
+    }
+
+    static android.location.GpsStatus access$100(com.ideaworks3d.marmalade.LoaderLocation)
+    {
+        com.ideaworks3d.marmalade.LoaderLocation $r0;
+        android.location.GpsStatus r1;
+
+        $r0 := @parameter0: com.ideaworks3d.marmalade.LoaderLocation;
+
+        r1 = $r0.<com.ideaworks3d.marmalade.LoaderLocation: android.location.GpsStatus m_GpsStatus>;
+
+        return r1;
+    }
+
+    static android.location.GpsStatus access$102(com.ideaworks3d.marmalade.LoaderLocation, android.location.GpsStatus)
+    {
+        com.ideaworks3d.marmalade.LoaderLocation $r0;
+        android.location.GpsStatus $r1;
+
+        $r0 := @parameter0: com.ideaworks3d.marmalade.LoaderLocation;
+
+        $r1 := @parameter1: android.location.GpsStatus;
+
+        $r0.<com.ideaworks3d.marmalade.LoaderLocation: android.location.GpsStatus m_GpsStatus> = $r1;
+
+        return $r1;
+    }
+
+    static void access$200(com.ideaworks3d.marmalade.LoaderLocation, int, long, double, double, double, float, float, float)
+    {
+        com.ideaworks3d.marmalade.LoaderLocation $r0;
+        int $i0;
+        long $l1;
+        double $d0, $d1, $d2;
+        float $f0, $f1, $f2;
+
+        $r0 := @parameter0: com.ideaworks3d.marmalade.LoaderLocation;
+
+        $i0 := @parameter1: int;
+
+        $l1 := @parameter2: long;
+
+        $d0 := @parameter3: double;
+
+        $d1 := @parameter4: double;
+
+        $d2 := @parameter5: double;
+
+        $f0 := @parameter6: float;
+
+        $f1 := @parameter7: float;
+
+        $f2 := @parameter8: float;
+
+        specialinvoke $r0.<com.ideaworks3d.marmalade.LoaderLocation: void locationUpdate(int,long,double,double,double,float,float,float)>($i0, $l1, $d0, $d1, $d2, $f0, $f1, $f2);
+
+        return;
+    }
+
+    static com.ideaworks3d.marmalade.LoaderLocation$LocationUpdateHandler access$300(com.ideaworks3d.marmalade.LoaderLocation)
+    {
+        com.ideaworks3d.marmalade.LoaderLocation $r0;
+        com.ideaworks3d.marmalade.LoaderLocation$LocationUpdateHandler r1;
+
+        $r0 := @parameter0: com.ideaworks3d.marmalade.LoaderLocation;
+
+        r1 = $r0.<com.ideaworks3d.marmalade.LoaderLocation: com.ideaworks3d.marmalade.LoaderLocation$LocationUpdateHandler m_LocationListener>;
+
+        return r1;
+    }
+
+    static com.ideaworks3d.marmalade.LoaderLocation$LocationUpdateHandler access$302(com.ideaworks3d.marmalade.LoaderLocation, com.ideaworks3d.marmalade.LoaderLocation$LocationUpdateHandler)
+    {
+        com.ideaworks3d.marmalade.LoaderLocation $r0;
+        com.ideaworks3d.marmalade.LoaderLocation$LocationUpdateHandler $r1;
+
+        $r0 := @parameter0: com.ideaworks3d.marmalade.LoaderLocation;
+
+        $r1 := @parameter1: com.ideaworks3d.marmalade.LoaderLocation$LocationUpdateHandler;
+
+        $r0.<com.ideaworks3d.marmalade.LoaderLocation: com.ideaworks3d.marmalade.LoaderLocation$LocationUpdateHandler m_LocationListener> = $r1;
+
+        return $r1;
+    }
+
+    static int access$400(com.ideaworks3d.marmalade.LoaderLocation)
+    {
+        com.ideaworks3d.marmalade.LoaderLocation $r0;
+        int i0;
+
+        $r0 := @parameter0: com.ideaworks3d.marmalade.LoaderLocation;
+
+        i0 = $r0.<com.ideaworks3d.marmalade.LoaderLocation: int m_LocationUpdateInterval>;
+
+        return i0;
+    }
+
+    static int access$500(com.ideaworks3d.marmalade.LoaderLocation)
+    {
+        com.ideaworks3d.marmalade.LoaderLocation $r0;
+        int i0;
+
+        $r0 := @parameter0: com.ideaworks3d.marmalade.LoaderLocation;
+
+        i0 = $r0.<com.ideaworks3d.marmalade.LoaderLocation: int m_LocationUpdateDistance>;
+
+        return i0;
+    }
+
+    private native void locationSatellite(int, float, float, int, float, boolean);
+
+    private native void locationUpdate(int, long, double, double, double, float, float, float);
+
+    public boolean locationGpsData()
+    {
+        com.ideaworks3d.marmalade.LoaderLocation r0;
+        int $i0, $i1;
+        android.location.GpsStatus $r1;
+        java.lang.Iterable $r2;
+        java.util.Iterator $r3;
+        boolean $z0;
+        java.lang.Object $r4;
+        android.location.GpsSatellite $r5;
+        float $f0, $f1, $f2;
+
+        r0 := @this: com.ideaworks3d.marmalade.LoaderLocation;
+
+        $i0 = 0;
+
+        $r1 = r0.<com.ideaworks3d.marmalade.LoaderLocation: android.location.GpsStatus m_GpsStatus>;
+
+        if $r1 == null goto label3;
+
+        $r1 = r0.<com.ideaworks3d.marmalade.LoaderLocation: android.location.GpsStatus m_GpsStatus>;
+
+        $r2 = virtualinvoke $r1.<android.location.GpsStatus: java.lang.Iterable getSatellites()>();
+
+        $r3 = interfaceinvoke $r2.<java.lang.Iterable: java.util.Iterator iterator()>();
+
+     label1:
+        $z0 = interfaceinvoke $r3.<java.util.Iterator: boolean hasNext()>();
+
+        if $z0 == 0 goto label2;
+
+        $r4 = interfaceinvoke $r3.<java.util.Iterator: java.lang.Object next()>();
+
+        $r5 = (android.location.GpsSatellite) $r4;
+
+        $f0 = virtualinvoke $r5.<android.location.GpsSatellite: float getAzimuth()>();
+
+        $f1 = virtualinvoke $r5.<android.location.GpsSatellite: float getElevation()>();
+
+        $i1 = virtualinvoke $r5.<android.location.GpsSatellite: int getPrn()>();
+
+        $f2 = virtualinvoke $r5.<android.location.GpsSatellite: float getSnr()>();
+
+        $z0 = virtualinvoke $r5.<android.location.GpsSatellite: boolean usedInFix()>();
+
+        specialinvoke r0.<com.ideaworks3d.marmalade.LoaderLocation: void locationSatellite(int,float,float,int,float,boolean)>($i0, $f0, $f1, $i1, $f2, $z0);
+
+        $i0 = $i0 + 1;
+
+        goto label1;
+
+     label2:
+        return 1;
+
+     label3:
+        return 0;
+    }
+
+    public boolean locationStart(com.ideaworks3d.marmalade.LoaderActivity)
+    {
+        com.ideaworks3d.marmalade.LoaderLocation r0;
+        com.ideaworks3d.marmalade.LoaderActivity $r1;
+        android.location.LocationManager $r2;
+        java.lang.Object $r3;
+        int[] $r4, $r5;
+        int $i0;
+        com.ideaworks3d.marmalade.LoaderThread $r6;
+        com.ideaworks3d.marmalade.LoaderLocation$1 $r7;
+        android.location.Location $r8;
+        byte $b1;
+        long $l2;
+        double $d0, $d1, $d2;
+        float $f0, $f1, $f2;
+        boolean $z0;
+
+        r0 := @this: com.ideaworks3d.marmalade.LoaderLocation;
+
+        $r1 := @parameter0: com.ideaworks3d.marmalade.LoaderActivity;
+
+        $r2 = r0.<com.ideaworks3d.marmalade.LoaderLocation: android.location.LocationManager m_LocationManager>;
+
+        if $r2 == null goto label1;
+
+        return 0;
+
+     label1:
+        $r3 = virtualinvoke $r1.<com.ideaworks3d.marmalade.LoaderActivity: java.lang.Object getSystemService(java.lang.String)>("location");
+
+        $r2 = (android.location.LocationManager) $r3;
+
+        r0.<com.ideaworks3d.marmalade.LoaderLocation: android.location.LocationManager m_LocationManager> = $r2;
+
+        $r4 = newarray (int)[1];
+
+        $r4[0] = 5000;
+
+        $r5 = newarray (int)[1];
+
+        $r5[0] = 2;
+
+        $i0 = staticinvoke <com.ideaworks3d.marmalade.LoaderAPI: int s3eConfigGetInt(java.lang.String,java.lang.String,int[])>("s3e", "LocUpdateInterval", $r4);
+
+        if $i0 != 0 goto label2;
+
+        $i0 = $r4[0];
+
+        r0.<com.ideaworks3d.marmalade.LoaderLocation: int m_LocationUpdateInterval> = $i0;
+
+     label2:
+        $i0 = staticinvoke <com.ideaworks3d.marmalade.LoaderAPI: int s3eConfigGetInt(java.lang.String,java.lang.String,int[])>("s3e", "AndroidLocUpdateDistance", $r5);
+
+        if $i0 != 0 goto label3;
+
+        $i0 = $r5[0];
+
+        r0.<com.ideaworks3d.marmalade.LoaderLocation: int m_LocationUpdateDistance> = $i0;
+
+     label3:
+        $r6 = virtualinvoke $r1.<com.ideaworks3d.marmalade.LoaderActivity: com.ideaworks3d.marmalade.LoaderThread LoaderThread()>();
+
+        $r7 = new com.ideaworks3d.marmalade.LoaderLocation$1;
+
+        specialinvoke $r7.<com.ideaworks3d.marmalade.LoaderLocation$1: void <init>(com.ideaworks3d.marmalade.LoaderLocation)>(r0);
+
+        virtualinvoke $r6.<com.ideaworks3d.marmalade.LoaderThread: void runOnOSThread(java.lang.Runnable)>($r7);
+
+        $r2 = r0.<com.ideaworks3d.marmalade.LoaderLocation: android.location.LocationManager m_LocationManager>;
+
+        $r8 = virtualinvoke $r2.<android.location.LocationManager: android.location.Location getLastKnownLocation(java.lang.String)>("gps");
+
+        if $r8 != null goto label8;
+
+        $r2 = r0.<com.ideaworks3d.marmalade.LoaderLocation: android.location.LocationManager m_LocationManager>;
+
+        $b1 = 3;
+
+        $r8 = virtualinvoke $r2.<android.location.LocationManager: android.location.Location getLastKnownLocation(java.lang.String)>("network");
+
+     label4:
+        if $r8 == null goto label6;
+
+        $l2 = virtualinvoke $r8.<android.location.Location: long getTime()>();
+
+        $d0 = virtualinvoke $r8.<android.location.Location: double getLatitude()>();
+
+        $d1 = virtualinvoke $r8.<android.location.Location: double getLongitude()>();
+
+        $d2 = virtualinvoke $r8.<android.location.Location: double getAltitude()>();
+
+        $f0 = virtualinvoke $r8.<android.location.Location: float getAccuracy()>();
+
+        $z0 = virtualinvoke $r8.<android.location.Location: boolean hasBearing()>();
+
+        if $z0 == 0 goto label7;
+
+        $f1 = virtualinvoke $r8.<android.location.Location: float getBearing()>();
+
+     label5:
+        $f2 = virtualinvoke $r8.<android.location.Location: float getSpeed()>();
+
+        specialinvoke r0.<com.ideaworks3d.marmalade.LoaderLocation: void locationUpdate(int,long,double,double,double,float,float,float)>($b1, $l2, $d0, $d1, $d2, $f0, $f1, $f2);
+
+     label6:
+        return 1;
+
+     label7:
+        $f1 = -1.0F;
+
+        goto label5;
+
+     label8:
+        $b1 = 1;
+
+        goto label4;
+    }
+
+    public boolean locationStop()
+    {
+        com.ideaworks3d.marmalade.LoaderLocation r0;
+        android.location.LocationManager $r1;
+        com.ideaworks3d.marmalade.LoaderLocation$LocationUpdateHandler $r2;
+
+        r0 := @this: com.ideaworks3d.marmalade.LoaderLocation;
+
+        $r1 = r0.<com.ideaworks3d.marmalade.LoaderLocation: android.location.LocationManager m_LocationManager>;
+
+        if $r1 != null goto label1;
+
+        return 0;
+
+     label1:
+        $r1 = r0.<com.ideaworks3d.marmalade.LoaderLocation: android.location.LocationManager m_LocationManager>;
+
+        $r2 = r0.<com.ideaworks3d.marmalade.LoaderLocation: com.ideaworks3d.marmalade.LoaderLocation$LocationUpdateHandler m_LocationListener>;
+
+        virtualinvoke $r1.<android.location.LocationManager: void removeGpsStatusListener(android.location.GpsStatus$Listener)>($r2);
+
+        $r1 = r0.<com.ideaworks3d.marmalade.LoaderLocation: android.location.LocationManager m_LocationManager>;
+
+        $r2 = r0.<com.ideaworks3d.marmalade.LoaderLocation: com.ideaworks3d.marmalade.LoaderLocation$LocationUpdateHandler m_LocationListener>;
+
+        virtualinvoke $r1.<android.location.LocationManager: void removeUpdates(android.location.LocationListener)>($r2);
+
+        r0.<com.ideaworks3d.marmalade.LoaderLocation: com.ideaworks3d.marmalade.LoaderLocation$LocationUpdateHandler m_LocationListener> = null;
+
+        r0.<com.ideaworks3d.marmalade.LoaderLocation: android.location.LocationManager m_LocationManager> = null;
+
+        return 1;
+    }
+}

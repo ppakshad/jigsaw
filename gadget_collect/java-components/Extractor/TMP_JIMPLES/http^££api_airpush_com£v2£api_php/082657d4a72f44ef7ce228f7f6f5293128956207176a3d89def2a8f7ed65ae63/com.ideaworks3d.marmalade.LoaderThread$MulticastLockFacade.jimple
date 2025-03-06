@@ -1,0 +1,174 @@
+class com.ideaworks3d.marmalade.LoaderThread$MulticastLockFacade extends java.lang.Object
+{
+    private java.lang.Object m_multiCastLockReal;
+    final com.ideaworks3d.marmalade.LoaderThread this$0;
+
+    public void <init>(com.ideaworks3d.marmalade.LoaderThread, android.net.wifi.WifiManager) throws java.lang.Exception
+    {
+        com.ideaworks3d.marmalade.LoaderThread$MulticastLockFacade r0;
+        com.ideaworks3d.marmalade.LoaderThread $r1;
+        android.net.wifi.WifiManager $r2;
+        java.lang.Class $r3;
+        java.lang.Class[] $r4;
+        java.lang.reflect.Method $r5;
+        java.lang.Object[] $r6;
+        java.lang.Object $r7;
+        java.lang.Exception $r8;
+
+        r0 := @this: com.ideaworks3d.marmalade.LoaderThread$MulticastLockFacade;
+
+        $r1 := @parameter0: com.ideaworks3d.marmalade.LoaderThread;
+
+        $r2 := @parameter1: android.net.wifi.WifiManager;
+
+        r0.<com.ideaworks3d.marmalade.LoaderThread$MulticastLockFacade: com.ideaworks3d.marmalade.LoaderThread this$0> = $r1;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        r0.<com.ideaworks3d.marmalade.LoaderThread$MulticastLockFacade: java.lang.Object m_multiCastLockReal> = null;
+
+     label1:
+        $r3 = virtualinvoke $r2.<java.lang.Object: java.lang.Class getClass()>();
+
+        $r4 = newarray (java.lang.Class)[1];
+
+        $r4[0] = class "Ljava/lang/String;";
+
+        $r5 = virtualinvoke $r3.<java.lang.Class: java.lang.reflect.Method getMethod(java.lang.String,java.lang.Class[])>("createMulticastLock", $r4);
+
+        $r6 = newarray (java.lang.Object)[1];
+
+        $r6[0] = "Marmalade";
+
+        $r7 = virtualinvoke $r5.<java.lang.reflect.Method: java.lang.Object invoke(java.lang.Object,java.lang.Object[])>($r2, $r6);
+
+        r0.<com.ideaworks3d.marmalade.LoaderThread$MulticastLockFacade: java.lang.Object m_multiCastLockReal> = $r7;
+
+     label2:
+        return;
+
+     label3:
+        $r8 := @caughtexception;
+
+        throw $r8;
+
+        catch java.lang.Exception from label1 to label2 with label3;
+    }
+
+    public void acquire()
+    {
+        com.ideaworks3d.marmalade.LoaderThread$MulticastLockFacade r0;
+        java.lang.Object $r1;
+        java.lang.Class $r2;
+        java.lang.reflect.Method $r3;
+        java.lang.Exception $r4;
+
+        r0 := @this: com.ideaworks3d.marmalade.LoaderThread$MulticastLockFacade;
+
+        $r1 = r0.<com.ideaworks3d.marmalade.LoaderThread$MulticastLockFacade: java.lang.Object m_multiCastLockReal>;
+
+        if $r1 == null goto label4;
+
+     label1:
+        $r1 = r0.<com.ideaworks3d.marmalade.LoaderThread$MulticastLockFacade: java.lang.Object m_multiCastLockReal>;
+
+        $r2 = virtualinvoke $r1.<java.lang.Object: java.lang.Class getClass()>();
+
+        $r3 = virtualinvoke $r2.<java.lang.Class: java.lang.reflect.Method getMethod(java.lang.String,java.lang.Class[])>("acquire", null);
+
+        $r1 = r0.<com.ideaworks3d.marmalade.LoaderThread$MulticastLockFacade: java.lang.Object m_multiCastLockReal>;
+
+        virtualinvoke $r3.<java.lang.reflect.Method: java.lang.Object invoke(java.lang.Object,java.lang.Object[])>($r1, null);
+
+     label2:
+        return;
+
+     label3:
+        $r4 := @caughtexception;
+
+     label4:
+        return;
+
+        catch java.lang.Exception from label1 to label2 with label3;
+    }
+
+    public boolean isHeld()
+    {
+        com.ideaworks3d.marmalade.LoaderThread$MulticastLockFacade r0;
+        java.lang.Object $r1;
+        java.lang.Class $r2;
+        java.lang.reflect.Method $r3;
+        java.lang.Boolean r4;
+        boolean $z0;
+        java.lang.Exception $r5;
+
+        r0 := @this: com.ideaworks3d.marmalade.LoaderThread$MulticastLockFacade;
+
+        $r1 = r0.<com.ideaworks3d.marmalade.LoaderThread$MulticastLockFacade: java.lang.Object m_multiCastLockReal>;
+
+        if $r1 == null goto label4;
+
+     label1:
+        $r1 = r0.<com.ideaworks3d.marmalade.LoaderThread$MulticastLockFacade: java.lang.Object m_multiCastLockReal>;
+
+        $r2 = virtualinvoke $r1.<java.lang.Object: java.lang.Class getClass()>();
+
+        $r3 = virtualinvoke $r2.<java.lang.Class: java.lang.reflect.Method getMethod(java.lang.String,java.lang.Class[])>("isHeld", null);
+
+        $r1 = r0.<com.ideaworks3d.marmalade.LoaderThread$MulticastLockFacade: java.lang.Object m_multiCastLockReal>;
+
+        $r1 = virtualinvoke $r3.<java.lang.reflect.Method: java.lang.Object invoke(java.lang.Object,java.lang.Object[])>($r1, null);
+
+        r4 = (java.lang.Boolean) $r1;
+
+        $z0 = virtualinvoke r4.<java.lang.Boolean: boolean booleanValue()>();
+
+     label2:
+        return $z0;
+
+     label3:
+        $r5 := @caughtexception;
+
+     label4:
+        return 0;
+
+        catch java.lang.Exception from label1 to label2 with label3;
+    }
+
+    public void release()
+    {
+        com.ideaworks3d.marmalade.LoaderThread$MulticastLockFacade r0;
+        java.lang.Object $r1;
+        java.lang.Class $r2;
+        java.lang.reflect.Method $r3;
+        java.lang.Exception $r4;
+
+        r0 := @this: com.ideaworks3d.marmalade.LoaderThread$MulticastLockFacade;
+
+        $r1 = r0.<com.ideaworks3d.marmalade.LoaderThread$MulticastLockFacade: java.lang.Object m_multiCastLockReal>;
+
+        if $r1 == null goto label4;
+
+     label1:
+        $r1 = r0.<com.ideaworks3d.marmalade.LoaderThread$MulticastLockFacade: java.lang.Object m_multiCastLockReal>;
+
+        $r2 = virtualinvoke $r1.<java.lang.Object: java.lang.Class getClass()>();
+
+        $r3 = virtualinvoke $r2.<java.lang.Class: java.lang.reflect.Method getMethod(java.lang.String,java.lang.Class[])>("release", null);
+
+        $r1 = r0.<com.ideaworks3d.marmalade.LoaderThread$MulticastLockFacade: java.lang.Object m_multiCastLockReal>;
+
+        virtualinvoke $r3.<java.lang.reflect.Method: java.lang.Object invoke(java.lang.Object,java.lang.Object[])>($r1, null);
+
+     label2:
+        return;
+
+     label3:
+        $r4 := @caughtexception;
+
+     label4:
+        return;
+
+        catch java.lang.Exception from label1 to label2 with label3;
+    }
+}

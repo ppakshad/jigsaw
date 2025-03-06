@@ -1,0 +1,340 @@
+public class com.squareup.picasso.StatsSnapshot extends java.lang.Object
+{
+    public final long averageDownloadSize;
+    public final long averageOriginalBitmapSize;
+    public final long averageTransformedBitmapSize;
+    public final long cacheHits;
+    public final long cacheMisses;
+    public final int downloadCount;
+    public final int maxSize;
+    public final int originalBitmapCount;
+    public final int size;
+    public final long timeStamp;
+    public final long totalDownloadSize;
+    public final long totalOriginalBitmapSize;
+    public final long totalTransformedBitmapSize;
+    public final int transformedBitmapCount;
+
+    public void <init>(int, int, long, long, long, long, long, long, long, long, int, int, int, long)
+    {
+        com.squareup.picasso.StatsSnapshot r0;
+        int $i0, $i1, $i10, $i11, $i12;
+        long $l2, $l3, $l4, $l5, $l6, $l7, $l8, $l9, $l13;
+
+        r0 := @this: com.squareup.picasso.StatsSnapshot;
+
+        $i0 := @parameter0: int;
+
+        $i1 := @parameter1: int;
+
+        $l2 := @parameter2: long;
+
+        $l3 := @parameter3: long;
+
+        $l4 := @parameter4: long;
+
+        $l5 := @parameter5: long;
+
+        $l6 := @parameter6: long;
+
+        $l7 := @parameter7: long;
+
+        $l8 := @parameter8: long;
+
+        $l9 := @parameter9: long;
+
+        $i10 := @parameter10: int;
+
+        $i11 := @parameter11: int;
+
+        $i12 := @parameter12: int;
+
+        $l13 := @parameter13: long;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        r0.<com.squareup.picasso.StatsSnapshot: int maxSize> = $i0;
+
+        r0.<com.squareup.picasso.StatsSnapshot: int size> = $i1;
+
+        r0.<com.squareup.picasso.StatsSnapshot: long cacheHits> = $l2;
+
+        r0.<com.squareup.picasso.StatsSnapshot: long cacheMisses> = $l3;
+
+        r0.<com.squareup.picasso.StatsSnapshot: long totalDownloadSize> = $l4;
+
+        r0.<com.squareup.picasso.StatsSnapshot: long totalOriginalBitmapSize> = $l5;
+
+        r0.<com.squareup.picasso.StatsSnapshot: long totalTransformedBitmapSize> = $l6;
+
+        r0.<com.squareup.picasso.StatsSnapshot: long averageDownloadSize> = $l7;
+
+        r0.<com.squareup.picasso.StatsSnapshot: long averageOriginalBitmapSize> = $l8;
+
+        r0.<com.squareup.picasso.StatsSnapshot: long averageTransformedBitmapSize> = $l9;
+
+        r0.<com.squareup.picasso.StatsSnapshot: int downloadCount> = $i10;
+
+        r0.<com.squareup.picasso.StatsSnapshot: int originalBitmapCount> = $i11;
+
+        r0.<com.squareup.picasso.StatsSnapshot: int transformedBitmapCount> = $i12;
+
+        r0.<com.squareup.picasso.StatsSnapshot: long timeStamp> = $l13;
+
+        return;
+    }
+
+    public void dump()
+    {
+        com.squareup.picasso.StatsSnapshot r0;
+        java.io.StringWriter $r1;
+        java.io.PrintWriter $r2;
+
+        r0 := @this: com.squareup.picasso.StatsSnapshot;
+
+        $r1 = new java.io.StringWriter;
+
+        specialinvoke $r1.<java.io.StringWriter: void <init>()>();
+
+        $r2 = new java.io.PrintWriter;
+
+        specialinvoke $r2.<java.io.PrintWriter: void <init>(java.io.Writer)>($r1);
+
+        virtualinvoke r0.<com.squareup.picasso.StatsSnapshot: void dump(java.io.PrintWriter)>($r2);
+
+        virtualinvoke $r1.<java.io.StringWriter: java.lang.String toString()>();
+
+        return;
+    }
+
+    public void dump(java.io.PrintWriter)
+    {
+        com.squareup.picasso.StatsSnapshot r0;
+        java.io.PrintWriter $r1;
+        double $d0;
+        int $i0;
+        float $f0, $f1;
+        long $l1;
+
+        r0 := @this: com.squareup.picasso.StatsSnapshot;
+
+        $r1 := @parameter0: java.io.PrintWriter;
+
+        virtualinvoke $r1.<java.io.PrintWriter: void println(java.lang.String)>("===============BEGIN PICASSO STATS ===============");
+
+        virtualinvoke $r1.<java.io.PrintWriter: void println(java.lang.String)>("Memory Cache Stats");
+
+        virtualinvoke $r1.<java.io.PrintWriter: void print(java.lang.String)>("  Max Cache Size: ");
+
+        $i0 = r0.<com.squareup.picasso.StatsSnapshot: int maxSize>;
+
+        virtualinvoke $r1.<java.io.PrintWriter: void println(int)>($i0);
+
+        virtualinvoke $r1.<java.io.PrintWriter: void print(java.lang.String)>("  Cache Size: ");
+
+        $i0 = r0.<com.squareup.picasso.StatsSnapshot: int size>;
+
+        virtualinvoke $r1.<java.io.PrintWriter: void println(int)>($i0);
+
+        virtualinvoke $r1.<java.io.PrintWriter: void print(java.lang.String)>("  Cache % Full: ");
+
+        $i0 = r0.<com.squareup.picasso.StatsSnapshot: int size>;
+
+        $f0 = (float) $i0;
+
+        $i0 = r0.<com.squareup.picasso.StatsSnapshot: int maxSize>;
+
+        $f1 = (float) $i0;
+
+        $f0 = $f0 / $f1;
+
+        $f0 = $f0 * 100.0F;
+
+        $d0 = (double) $f0;
+
+        $d0 = staticinvoke <java.lang.Math: double ceil(double)>($d0);
+
+        $i0 = (int) $d0;
+
+        virtualinvoke $r1.<java.io.PrintWriter: void println(int)>($i0);
+
+        virtualinvoke $r1.<java.io.PrintWriter: void print(java.lang.String)>("  Cache Hits: ");
+
+        $l1 = r0.<com.squareup.picasso.StatsSnapshot: long cacheHits>;
+
+        virtualinvoke $r1.<java.io.PrintWriter: void println(long)>($l1);
+
+        virtualinvoke $r1.<java.io.PrintWriter: void print(java.lang.String)>("  Cache Misses: ");
+
+        $l1 = r0.<com.squareup.picasso.StatsSnapshot: long cacheMisses>;
+
+        virtualinvoke $r1.<java.io.PrintWriter: void println(long)>($l1);
+
+        virtualinvoke $r1.<java.io.PrintWriter: void println(java.lang.String)>("Network Stats");
+
+        virtualinvoke $r1.<java.io.PrintWriter: void print(java.lang.String)>("  Download Count: ");
+
+        $i0 = r0.<com.squareup.picasso.StatsSnapshot: int downloadCount>;
+
+        virtualinvoke $r1.<java.io.PrintWriter: void println(int)>($i0);
+
+        virtualinvoke $r1.<java.io.PrintWriter: void print(java.lang.String)>("  Total Download Size: ");
+
+        $l1 = r0.<com.squareup.picasso.StatsSnapshot: long totalDownloadSize>;
+
+        virtualinvoke $r1.<java.io.PrintWriter: void println(long)>($l1);
+
+        virtualinvoke $r1.<java.io.PrintWriter: void print(java.lang.String)>("  Average Download Size: ");
+
+        $l1 = r0.<com.squareup.picasso.StatsSnapshot: long averageDownloadSize>;
+
+        virtualinvoke $r1.<java.io.PrintWriter: void println(long)>($l1);
+
+        virtualinvoke $r1.<java.io.PrintWriter: void println(java.lang.String)>("Bitmap Stats");
+
+        virtualinvoke $r1.<java.io.PrintWriter: void print(java.lang.String)>("  Total Bitmaps Decoded: ");
+
+        $i0 = r0.<com.squareup.picasso.StatsSnapshot: int originalBitmapCount>;
+
+        virtualinvoke $r1.<java.io.PrintWriter: void println(int)>($i0);
+
+        virtualinvoke $r1.<java.io.PrintWriter: void print(java.lang.String)>("  Total Bitmap Size: ");
+
+        $l1 = r0.<com.squareup.picasso.StatsSnapshot: long totalOriginalBitmapSize>;
+
+        virtualinvoke $r1.<java.io.PrintWriter: void println(long)>($l1);
+
+        virtualinvoke $r1.<java.io.PrintWriter: void print(java.lang.String)>("  Total Transformed Bitmaps: ");
+
+        $i0 = r0.<com.squareup.picasso.StatsSnapshot: int transformedBitmapCount>;
+
+        virtualinvoke $r1.<java.io.PrintWriter: void println(int)>($i0);
+
+        virtualinvoke $r1.<java.io.PrintWriter: void print(java.lang.String)>("  Total Transformed Bitmap Size: ");
+
+        $l1 = r0.<com.squareup.picasso.StatsSnapshot: long totalTransformedBitmapSize>;
+
+        virtualinvoke $r1.<java.io.PrintWriter: void println(long)>($l1);
+
+        virtualinvoke $r1.<java.io.PrintWriter: void print(java.lang.String)>("  Average Bitmap Size: ");
+
+        $l1 = r0.<com.squareup.picasso.StatsSnapshot: long averageOriginalBitmapSize>;
+
+        virtualinvoke $r1.<java.io.PrintWriter: void println(long)>($l1);
+
+        virtualinvoke $r1.<java.io.PrintWriter: void print(java.lang.String)>("  Average Transformed Bitmap Size: ");
+
+        $l1 = r0.<com.squareup.picasso.StatsSnapshot: long averageTransformedBitmapSize>;
+
+        virtualinvoke $r1.<java.io.PrintWriter: void println(long)>($l1);
+
+        virtualinvoke $r1.<java.io.PrintWriter: void println(java.lang.String)>("===============END PICASSO STATS ===============");
+
+        virtualinvoke $r1.<java.io.PrintWriter: void flush()>();
+
+        return;
+    }
+
+    public java.lang.String toString()
+    {
+        com.squareup.picasso.StatsSnapshot r0;
+        java.lang.StringBuilder $r1;
+        int $i0;
+        long $l1;
+        java.lang.String $r2;
+
+        r0 := @this: com.squareup.picasso.StatsSnapshot;
+
+        $r1 = new java.lang.StringBuilder;
+
+        specialinvoke $r1.<java.lang.StringBuilder: void <init>(java.lang.String)>("StatsSnapshot{maxSize=");
+
+        $i0 = r0.<com.squareup.picasso.StatsSnapshot: int maxSize>;
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>($i0);
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(", size=");
+
+        $i0 = r0.<com.squareup.picasso.StatsSnapshot: int size>;
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>($i0);
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(", cacheHits=");
+
+        $l1 = r0.<com.squareup.picasso.StatsSnapshot: long cacheHits>;
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(long)>($l1);
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(", cacheMisses=");
+
+        $l1 = r0.<com.squareup.picasso.StatsSnapshot: long cacheMisses>;
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(long)>($l1);
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(", downloadCount=");
+
+        $i0 = r0.<com.squareup.picasso.StatsSnapshot: int downloadCount>;
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>($i0);
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(", totalDownloadSize=");
+
+        $l1 = r0.<com.squareup.picasso.StatsSnapshot: long totalDownloadSize>;
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(long)>($l1);
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(", averageDownloadSize=");
+
+        $l1 = r0.<com.squareup.picasso.StatsSnapshot: long averageDownloadSize>;
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(long)>($l1);
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(", totalOriginalBitmapSize=");
+
+        $l1 = r0.<com.squareup.picasso.StatsSnapshot: long totalOriginalBitmapSize>;
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(long)>($l1);
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(", totalTransformedBitmapSize=");
+
+        $l1 = r0.<com.squareup.picasso.StatsSnapshot: long totalTransformedBitmapSize>;
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(long)>($l1);
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(", averageOriginalBitmapSize=");
+
+        $l1 = r0.<com.squareup.picasso.StatsSnapshot: long averageOriginalBitmapSize>;
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(long)>($l1);
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(", averageTransformedBitmapSize=");
+
+        $l1 = r0.<com.squareup.picasso.StatsSnapshot: long averageTransformedBitmapSize>;
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(long)>($l1);
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(", originalBitmapCount=");
+
+        $i0 = r0.<com.squareup.picasso.StatsSnapshot: int originalBitmapCount>;
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>($i0);
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(", transformedBitmapCount=");
+
+        $i0 = r0.<com.squareup.picasso.StatsSnapshot: int transformedBitmapCount>;
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>($i0);
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(", timeStamp=");
+
+        $l1 = r0.<com.squareup.picasso.StatsSnapshot: long timeStamp>;
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(long)>($l1);
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(char)>(125);
+
+        $r2 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        return $r2;
+    }
+}

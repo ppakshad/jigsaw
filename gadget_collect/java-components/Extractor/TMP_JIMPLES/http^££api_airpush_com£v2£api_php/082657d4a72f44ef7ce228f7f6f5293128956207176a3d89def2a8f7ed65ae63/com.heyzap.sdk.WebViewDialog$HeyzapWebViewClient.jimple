@@ -1,0 +1,108 @@
+class com.heyzap.sdk.WebViewDialog$HeyzapWebViewClient extends android.webkit.WebViewClient
+{
+    final com.heyzap.sdk.WebViewDialog this$0;
+
+    private void <init>(com.heyzap.sdk.WebViewDialog)
+    {
+        com.heyzap.sdk.WebViewDialog$HeyzapWebViewClient r0;
+        com.heyzap.sdk.WebViewDialog $r1;
+
+        r0 := @this: com.heyzap.sdk.WebViewDialog$HeyzapWebViewClient;
+
+        $r1 := @parameter0: com.heyzap.sdk.WebViewDialog;
+
+        r0.<com.heyzap.sdk.WebViewDialog$HeyzapWebViewClient: com.heyzap.sdk.WebViewDialog this$0> = $r1;
+
+        specialinvoke r0.<android.webkit.WebViewClient: void <init>()>();
+
+        return;
+    }
+
+    void <init>(com.heyzap.sdk.WebViewDialog, com.heyzap.sdk.WebViewDialog$1)
+    {
+        com.heyzap.sdk.WebViewDialog$HeyzapWebViewClient r0;
+        com.heyzap.sdk.WebViewDialog $r1;
+        com.heyzap.sdk.WebViewDialog$1 $r2;
+
+        r0 := @this: com.heyzap.sdk.WebViewDialog$HeyzapWebViewClient;
+
+        $r1 := @parameter0: com.heyzap.sdk.WebViewDialog;
+
+        $r2 := @parameter1: com.heyzap.sdk.WebViewDialog$1;
+
+        specialinvoke r0.<com.heyzap.sdk.WebViewDialog$HeyzapWebViewClient: void <init>(com.heyzap.sdk.WebViewDialog)>($r1);
+
+        return;
+    }
+
+    public void onReceivedError(android.webkit.WebView, int, java.lang.String, java.lang.String)
+    {
+        com.heyzap.sdk.WebViewDialog$HeyzapWebViewClient r0;
+        android.webkit.WebView $r1;
+        int $i0;
+        java.lang.String $r2, $r3;
+        com.heyzap.sdk.WebViewDialog $r4;
+
+        r0 := @this: com.heyzap.sdk.WebViewDialog$HeyzapWebViewClient;
+
+        $r1 := @parameter0: android.webkit.WebView;
+
+        $i0 := @parameter1: int;
+
+        $r2 := @parameter2: java.lang.String;
+
+        $r3 := @parameter3: java.lang.String;
+
+        $r4 = r0.<com.heyzap.sdk.WebViewDialog$HeyzapWebViewClient: com.heyzap.sdk.WebViewDialog this$0>;
+
+        staticinvoke <com.heyzap.sdk.WebViewDialog: boolean access$202(com.heyzap.sdk.WebViewDialog,boolean)>($r4, 1);
+
+        $r4 = r0.<com.heyzap.sdk.WebViewDialog$HeyzapWebViewClient: com.heyzap.sdk.WebViewDialog this$0>;
+
+        virtualinvoke $r4.<com.heyzap.sdk.WebViewDialog: void hide()>();
+
+        return;
+    }
+
+    public boolean shouldOverrideUrlLoading(android.webkit.WebView, java.lang.String)
+    {
+        com.heyzap.sdk.WebViewDialog$HeyzapWebViewClient r0;
+        android.webkit.WebView $r1;
+        java.lang.String $r2, $r4;
+        java.net.URL $r3;
+        boolean $z0;
+        java.lang.Throwable $r5;
+
+        r0 := @this: com.heyzap.sdk.WebViewDialog$HeyzapWebViewClient;
+
+        $r1 := @parameter0: android.webkit.WebView;
+
+        $r2 := @parameter1: java.lang.String;
+
+        $r3 = new java.net.URL;
+
+     label1:
+        specialinvoke $r3.<java.net.URL: void <init>(java.lang.String)>($r2);
+
+        $r4 = virtualinvoke $r3.<java.net.URL: java.lang.String getHost()>();
+
+        $z0 = virtualinvoke $r4.<java.lang.String: boolean endsWith(java.lang.String)>("heyzap.com");
+
+     label2:
+        if $z0 == 0 goto label4;
+
+     label3:
+        virtualinvoke $r1.<android.webkit.WebView: void loadUrl(java.lang.String)>($r2);
+
+     label4:
+        return 1;
+
+     label5:
+        $r5 := @caughtexception;
+
+        goto label4;
+
+        catch java.net.MalformedURLException from label1 to label2 with label5;
+        catch java.net.MalformedURLException from label3 to label4 with label5;
+    }
+}

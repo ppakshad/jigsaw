@@ -1,0 +1,306 @@
+public class com.go108.lic.free.util.NetAccess extends java.lang.Object
+{
+    private android.app.Activity activity;
+    private java.lang.String currentAPN;
+
+    public void <init>(android.app.Activity, java.lang.String)
+    {
+        java.lang.String $r2;
+        com.go108.lic.free.util.NetAccess r0;
+        android.app.Activity $r1;
+
+        r0 := @this: com.go108.lic.free.util.NetAccess;
+
+        $r1 := @parameter0: android.app.Activity;
+
+        $r2 := @parameter1: java.lang.String;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        r0.<com.go108.lic.free.util.NetAccess: android.app.Activity activity> = $r1;
+
+        r0.<com.go108.lic.free.util.NetAccess: java.lang.String currentAPN> = $r2;
+
+        return;
+    }
+
+    public org.w3c.dom.Document mofalingshu(java.lang.String)
+    {
+        android.content.Context $r6;
+        com.go108.lic.free.util.NetAccess r0;
+        org.w3c.dom.Document $r7;
+        java.lang.StringBuilder $r2;
+        java.lang.String $r1, $r5;
+        android.app.Activity $r3;
+        android.content.res.Resources $r4;
+
+        r0 := @this: com.go108.lic.free.util.NetAccess;
+
+        $r1 := @parameter0: java.lang.String;
+
+        $r2 = new java.lang.StringBuilder;
+
+        $r3 = r0.<com.go108.lic.free.util.NetAccess: android.app.Activity activity>;
+
+        $r4 = virtualinvoke $r3.<android.app.Activity: android.content.res.Resources getResources()>();
+
+        $r5 = virtualinvoke $r4.<android.content.res.Resources: java.lang.String getString(int)>(2131099662);
+
+        $r5 = staticinvoke <java.lang.String: java.lang.String valueOf(java.lang.Object)>($r5);
+
+        specialinvoke $r2.<java.lang.StringBuilder: void <init>(java.lang.String)>($r5);
+
+        $r2 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r1);
+
+        $r1 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        $r5 = r0.<com.go108.lic.free.util.NetAccess: java.lang.String currentAPN>;
+
+        $r3 = r0.<com.go108.lic.free.util.NetAccess: android.app.Activity activity>;
+
+        $r6 = virtualinvoke $r3.<android.app.Activity: android.content.Context getApplicationContext()>();
+
+        $r7 = staticinvoke <com.go108.lic.free.util.XMLParser: org.w3c.dom.Document connect(java.lang.String,java.lang.String,android.content.Context)>($r1, $r5, $r6);
+
+        return $r7;
+    }
+
+    public org.w3c.dom.Document relationFree(int, int, java.lang.String, java.lang.String, int)
+    {
+        android.content.Context $r7;
+        com.go108.lic.free.util.NetAccess r0;
+        org.w3c.dom.Document $r8;
+        int $i0, $i1, $i2;
+        java.lang.StringBuilder $r3;
+        java.lang.String $r1, $r2, $r6;
+        android.app.Activity $r4;
+        android.content.res.Resources $r5;
+
+        r0 := @this: com.go108.lic.free.util.NetAccess;
+
+        $i0 := @parameter0: int;
+
+        $i1 := @parameter1: int;
+
+        $r1 := @parameter2: java.lang.String;
+
+        $r2 := @parameter3: java.lang.String;
+
+        $i2 := @parameter4: int;
+
+        $r3 = new java.lang.StringBuilder;
+
+        $r4 = r0.<com.go108.lic.free.util.NetAccess: android.app.Activity activity>;
+
+        $r5 = virtualinvoke $r4.<android.app.Activity: android.content.res.Resources getResources()>();
+
+        $r6 = virtualinvoke $r5.<android.content.res.Resources: java.lang.String getString(int)>(2131099662);
+
+        $r6 = staticinvoke <java.lang.String: java.lang.String valueOf(java.lang.Object)>($r6);
+
+        specialinvoke $r3.<java.lang.StringBuilder: void <init>(java.lang.String)>($r6);
+
+        $r3 = virtualinvoke $r3.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("love_come_relation/");
+
+        $r3 = virtualinvoke $r3.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("*/Sex1:");
+
+        $r3 = virtualinvoke $r3.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>($i0);
+
+        $r3 = virtualinvoke $r3.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("/Birthday1:");
+
+        $r3 = virtualinvoke $r3.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r1);
+
+        $r3 = virtualinvoke $r3.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("/Sex2:");
+
+        $r3 = virtualinvoke $r3.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>($i1);
+
+        $r3 = virtualinvoke $r3.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("/Birthday2:");
+
+        $r3 = virtualinvoke $r3.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r2);
+
+        $r3 = virtualinvoke $r3.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("/Type:");
+
+        $r3 = virtualinvoke $r3.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>($i2);
+
+        $r1 = virtualinvoke $r3.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        $r2 = r0.<com.go108.lic.free.util.NetAccess: java.lang.String currentAPN>;
+
+        $r4 = r0.<com.go108.lic.free.util.NetAccess: android.app.Activity activity>;
+
+        $r7 = virtualinvoke $r4.<android.app.Activity: android.content.Context getApplicationContext()>();
+
+        $r8 = staticinvoke <com.go108.lic.free.util.XMLParser: org.w3c.dom.Document connect(java.lang.String,java.lang.String,android.content.Context)>($r1, $r2, $r7);
+
+        return $r8;
+    }
+
+    public org.w3c.dom.Document todayFree(int, java.lang.String, int)
+    {
+        android.content.Context $r6;
+        com.go108.lic.free.util.NetAccess r0;
+        org.w3c.dom.Document $r7;
+        int $i0, $i1;
+        java.lang.StringBuilder $r2;
+        java.lang.String $r1, $r5;
+        android.app.Activity $r3;
+        android.content.res.Resources $r4;
+
+        r0 := @this: com.go108.lic.free.util.NetAccess;
+
+        $i0 := @parameter0: int;
+
+        $r1 := @parameter1: java.lang.String;
+
+        $i1 := @parameter2: int;
+
+        $r2 = new java.lang.StringBuilder;
+
+        $r3 = r0.<com.go108.lic.free.util.NetAccess: android.app.Activity activity>;
+
+        $r4 = virtualinvoke $r3.<android.app.Activity: android.content.res.Resources getResources()>();
+
+        $r5 = virtualinvoke $r4.<android.content.res.Resources: java.lang.String getString(int)>(2131099662);
+
+        $r5 = staticinvoke <java.lang.String: java.lang.String valueOf(java.lang.Object)>($r5);
+
+        specialinvoke $r2.<java.lang.StringBuilder: void <init>(java.lang.String)>($r5);
+
+        $r2 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("love_come_today/");
+
+        $r2 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("*/Sex:");
+
+        $r2 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>($i0);
+
+        $r2 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("/Birthday:");
+
+        $r2 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r1);
+
+        $r2 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("/Type:");
+
+        $r2 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>($i1);
+
+        $r1 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        $r5 = r0.<com.go108.lic.free.util.NetAccess: java.lang.String currentAPN>;
+
+        $r3 = r0.<com.go108.lic.free.util.NetAccess: android.app.Activity activity>;
+
+        $r6 = virtualinvoke $r3.<android.app.Activity: android.content.Context getApplicationContext()>();
+
+        $r7 = staticinvoke <com.go108.lic.free.util.XMLParser: org.w3c.dom.Document connect(java.lang.String,java.lang.String,android.content.Context)>($r1, $r5, $r6);
+
+        return $r7;
+    }
+
+    public org.w3c.dom.Document weeklyFree(int, int, java.lang.String, java.lang.String, int)
+    {
+        android.content.Context $r7;
+        com.go108.lic.free.util.NetAccess r0;
+        org.w3c.dom.Document $r8;
+        int $i0, $i1, $i2;
+        java.lang.StringBuilder $r3;
+        java.lang.String $r1, $r2, $r6;
+        android.app.Activity $r4;
+        android.content.res.Resources $r5;
+
+        r0 := @this: com.go108.lic.free.util.NetAccess;
+
+        $i0 := @parameter0: int;
+
+        $i1 := @parameter1: int;
+
+        $r1 := @parameter2: java.lang.String;
+
+        $r2 := @parameter3: java.lang.String;
+
+        $i2 := @parameter4: int;
+
+        $r3 = new java.lang.StringBuilder;
+
+        $r4 = r0.<com.go108.lic.free.util.NetAccess: android.app.Activity activity>;
+
+        $r5 = virtualinvoke $r4.<android.app.Activity: android.content.res.Resources getResources()>();
+
+        $r6 = virtualinvoke $r5.<android.content.res.Resources: java.lang.String getString(int)>(2131099662);
+
+        $r6 = staticinvoke <java.lang.String: java.lang.String valueOf(java.lang.Object)>($r6);
+
+        specialinvoke $r3.<java.lang.StringBuilder: void <init>(java.lang.String)>($r6);
+
+        $r3 = virtualinvoke $r3.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("love_come_week/");
+
+        $r3 = virtualinvoke $r3.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("*/Sex1:");
+
+        $r3 = virtualinvoke $r3.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>($i0);
+
+        $r3 = virtualinvoke $r3.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("/Birthday1:");
+
+        $r3 = virtualinvoke $r3.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r1);
+
+        $r3 = virtualinvoke $r3.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("/Sex2:");
+
+        $r3 = virtualinvoke $r3.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>($i1);
+
+        $r3 = virtualinvoke $r3.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("/Birthday2:");
+
+        $r3 = virtualinvoke $r3.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r2);
+
+        $r3 = virtualinvoke $r3.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("/Type:");
+
+        $r3 = virtualinvoke $r3.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>($i2);
+
+        $r1 = virtualinvoke $r3.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        $r2 = r0.<com.go108.lic.free.util.NetAccess: java.lang.String currentAPN>;
+
+        $r4 = r0.<com.go108.lic.free.util.NetAccess: android.app.Activity activity>;
+
+        $r7 = virtualinvoke $r4.<android.app.Activity: android.content.Context getApplicationContext()>();
+
+        $r8 = staticinvoke <com.go108.lic.free.util.XMLParser: org.w3c.dom.Document connect(java.lang.String,java.lang.String,android.content.Context)>($r1, $r2, $r7);
+
+        return $r8;
+    }
+
+    public org.w3c.dom.Document zuiai(java.lang.String)
+    {
+        android.content.Context $r6;
+        com.go108.lic.free.util.NetAccess r0;
+        org.w3c.dom.Document $r7;
+        java.lang.StringBuilder $r2;
+        java.lang.String $r1, $r5;
+        android.app.Activity $r3;
+        android.content.res.Resources $r4;
+
+        r0 := @this: com.go108.lic.free.util.NetAccess;
+
+        $r1 := @parameter0: java.lang.String;
+
+        $r2 = new java.lang.StringBuilder;
+
+        $r3 = r0.<com.go108.lic.free.util.NetAccess: android.app.Activity activity>;
+
+        $r4 = virtualinvoke $r3.<android.app.Activity: android.content.res.Resources getResources()>();
+
+        $r5 = virtualinvoke $r4.<android.content.res.Resources: java.lang.String getString(int)>(2131099662);
+
+        $r5 = staticinvoke <java.lang.String: java.lang.String valueOf(java.lang.Object)>($r5);
+
+        specialinvoke $r2.<java.lang.StringBuilder: void <init>(java.lang.String)>($r5);
+
+        $r2 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r1);
+
+        $r1 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        $r5 = r0.<com.go108.lic.free.util.NetAccess: java.lang.String currentAPN>;
+
+        $r3 = r0.<com.go108.lic.free.util.NetAccess: android.app.Activity activity>;
+
+        $r6 = virtualinvoke $r3.<android.app.Activity: android.content.Context getApplicationContext()>();
+
+        $r7 = staticinvoke <com.go108.lic.free.util.XMLParser: org.w3c.dom.Document connect(java.lang.String,java.lang.String,android.content.Context)>($r1, $r5, $r6);
+
+        return $r7;
+    }
+}

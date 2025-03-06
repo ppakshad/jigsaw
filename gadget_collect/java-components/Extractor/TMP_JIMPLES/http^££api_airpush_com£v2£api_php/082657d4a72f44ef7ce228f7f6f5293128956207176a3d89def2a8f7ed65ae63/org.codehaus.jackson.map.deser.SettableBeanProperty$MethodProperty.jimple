@@ -1,0 +1,126 @@
+public final class org.codehaus.jackson.map.deser.SettableBeanProperty$MethodProperty extends org.codehaus.jackson.map.deser.SettableBeanProperty
+{
+    protected final org.codehaus.jackson.map.introspect.AnnotatedMethod _annotated;
+    protected final java.lang.reflect.Method _setter;
+
+    public void <init>(java.lang.String, org.codehaus.jackson.type.JavaType, org.codehaus.jackson.map.TypeDeserializer, org.codehaus.jackson.map.util.Annotations, org.codehaus.jackson.map.introspect.AnnotatedMethod)
+    {
+        org.codehaus.jackson.map.deser.SettableBeanProperty$MethodProperty r0;
+        java.lang.String $r1;
+        org.codehaus.jackson.type.JavaType $r2;
+        org.codehaus.jackson.map.TypeDeserializer $r3;
+        org.codehaus.jackson.map.util.Annotations $r4;
+        org.codehaus.jackson.map.introspect.AnnotatedMethod $r5;
+        java.lang.reflect.Method $r6;
+
+        r0 := @this: org.codehaus.jackson.map.deser.SettableBeanProperty$MethodProperty;
+
+        $r1 := @parameter0: java.lang.String;
+
+        $r2 := @parameter1: org.codehaus.jackson.type.JavaType;
+
+        $r3 := @parameter2: org.codehaus.jackson.map.TypeDeserializer;
+
+        $r4 := @parameter3: org.codehaus.jackson.map.util.Annotations;
+
+        $r5 := @parameter4: org.codehaus.jackson.map.introspect.AnnotatedMethod;
+
+        specialinvoke r0.<org.codehaus.jackson.map.deser.SettableBeanProperty: void <init>(java.lang.String,org.codehaus.jackson.type.JavaType,org.codehaus.jackson.map.TypeDeserializer,org.codehaus.jackson.map.util.Annotations)>($r1, $r2, $r3, $r4);
+
+        r0.<org.codehaus.jackson.map.deser.SettableBeanProperty$MethodProperty: org.codehaus.jackson.map.introspect.AnnotatedMethod _annotated> = $r5;
+
+        $r6 = virtualinvoke $r5.<org.codehaus.jackson.map.introspect.AnnotatedMethod: java.lang.reflect.Method getAnnotated()>();
+
+        r0.<org.codehaus.jackson.map.deser.SettableBeanProperty$MethodProperty: java.lang.reflect.Method _setter> = $r6;
+
+        return;
+    }
+
+    public void deserializeAndSet(org.codehaus.jackson.JsonParser, org.codehaus.jackson.map.DeserializationContext, java.lang.Object) throws java.io.IOException, org.codehaus.jackson.JsonProcessingException
+    {
+        org.codehaus.jackson.map.deser.SettableBeanProperty$MethodProperty r0;
+        org.codehaus.jackson.JsonParser $r1;
+        org.codehaus.jackson.map.DeserializationContext $r2;
+        java.lang.Object $r3, $r4;
+
+        r0 := @this: org.codehaus.jackson.map.deser.SettableBeanProperty$MethodProperty;
+
+        $r1 := @parameter0: org.codehaus.jackson.JsonParser;
+
+        $r2 := @parameter1: org.codehaus.jackson.map.DeserializationContext;
+
+        $r3 := @parameter2: java.lang.Object;
+
+        $r4 = virtualinvoke r0.<org.codehaus.jackson.map.deser.SettableBeanProperty$MethodProperty: java.lang.Object deserialize(org.codehaus.jackson.JsonParser,org.codehaus.jackson.map.DeserializationContext)>($r1, $r2);
+
+        virtualinvoke r0.<org.codehaus.jackson.map.deser.SettableBeanProperty$MethodProperty: void set(java.lang.Object,java.lang.Object)>($r3, $r4);
+
+        return;
+    }
+
+    public java.lang.'annotation'.Annotation getAnnotation(java.lang.Class)
+    {
+        org.codehaus.jackson.map.deser.SettableBeanProperty$MethodProperty r0;
+        java.lang.Class r1;
+        java.lang.'annotation'.Annotation $r2;
+        org.codehaus.jackson.map.introspect.AnnotatedMethod $r3;
+
+        r0 := @this: org.codehaus.jackson.map.deser.SettableBeanProperty$MethodProperty;
+
+        r1 := @parameter0: java.lang.Class;
+
+        $r3 = r0.<org.codehaus.jackson.map.deser.SettableBeanProperty$MethodProperty: org.codehaus.jackson.map.introspect.AnnotatedMethod _annotated>;
+
+        $r2 = virtualinvoke $r3.<org.codehaus.jackson.map.introspect.AnnotatedMethod: java.lang.'annotation'.Annotation getAnnotation(java.lang.Class)>(r1);
+
+        return $r2;
+    }
+
+    public org.codehaus.jackson.map.introspect.AnnotatedMember getMember()
+    {
+        org.codehaus.jackson.map.deser.SettableBeanProperty$MethodProperty r0;
+        org.codehaus.jackson.map.introspect.AnnotatedMethod r1;
+
+        r0 := @this: org.codehaus.jackson.map.deser.SettableBeanProperty$MethodProperty;
+
+        r1 = r0.<org.codehaus.jackson.map.deser.SettableBeanProperty$MethodProperty: org.codehaus.jackson.map.introspect.AnnotatedMethod _annotated>;
+
+        return r1;
+    }
+
+    public final void set(java.lang.Object, java.lang.Object) throws java.io.IOException
+    {
+        org.codehaus.jackson.map.deser.SettableBeanProperty$MethodProperty r0;
+        java.lang.Object $r1, $r2;
+        java.lang.reflect.Method $r3;
+        java.lang.Object[] $r4;
+        java.lang.Exception $r5;
+
+        r0 := @this: org.codehaus.jackson.map.deser.SettableBeanProperty$MethodProperty;
+
+        $r1 := @parameter0: java.lang.Object;
+
+        $r2 := @parameter1: java.lang.Object;
+
+     label1:
+        $r3 = r0.<org.codehaus.jackson.map.deser.SettableBeanProperty$MethodProperty: java.lang.reflect.Method _setter>;
+
+        $r4 = newarray (java.lang.Object)[1];
+
+        $r4[0] = $r2;
+
+        virtualinvoke $r3.<java.lang.reflect.Method: java.lang.Object invoke(java.lang.Object,java.lang.Object[])>($r1, $r4);
+
+     label2:
+        return;
+
+     label3:
+        $r5 := @caughtexception;
+
+        virtualinvoke r0.<org.codehaus.jackson.map.deser.SettableBeanProperty$MethodProperty: void _throwAsIOE(java.lang.Exception,java.lang.Object)>($r5, $r2);
+
+        return;
+
+        catch java.lang.Exception from label1 to label2 with label3;
+    }
+}

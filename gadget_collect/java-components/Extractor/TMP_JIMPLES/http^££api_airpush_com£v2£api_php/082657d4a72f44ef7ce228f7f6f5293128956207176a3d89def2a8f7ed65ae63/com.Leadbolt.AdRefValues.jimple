@@ -1,0 +1,753 @@
+public class com.Leadbolt.AdRefValues extends java.lang.Object
+{
+    private static boolean dataretrieve;
+
+    static void <clinit>()
+    {
+        <com.Leadbolt.AdRefValues: boolean dataretrieve> = 1;
+
+        return;
+    }
+
+    public void <init>()
+    {
+        com.Leadbolt.AdRefValues r0;
+
+        r0 := @this: com.Leadbolt.AdRefValues;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public static java.lang.String adRefValues(android.content.Context, android.telephony.TelephonyManager, java.lang.String, java.util.List, boolean, int, int)
+    {
+        int $i0, i1, i2, $i3;
+        java.util.ArrayList r0;
+        android.content.Context r1;
+        android.telephony.TelephonyManager r2;
+        java.lang.String r3, $r12;
+        java.util.List r4;
+        boolean z0;
+        org.apache.http.message.BasicNameValuePair r5;
+        java.lang.StringBuilder r6;
+        android.content.ContentResolver $r7;
+        java.util.Calendar $r8;
+        long $l4;
+        java.lang.Object $r9;
+        android.location.LocationManager r10;
+        android.location.Location $r11;
+        double $d0;
+        android.net.ConnectivityManager r13;
+        android.net.NetworkInfo $r14, $r15;
+        android.net.NetworkInfo$State $r16, $r17, r18;
+        byte[] $r19;
+        java.lang.Exception r20, r22, r23, r24;
+        org.apache.http.NameValuePair r21;
+
+        r1 := @parameter0: android.content.Context;
+
+        r2 := @parameter1: android.telephony.TelephonyManager;
+
+        r3 := @parameter2: java.lang.String;
+
+        r4 := @parameter3: java.util.List;
+
+        z0 := @parameter4: boolean;
+
+        i1 := @parameter5: int;
+
+        $i0 := @parameter6: int;
+
+        r0 = new java.util.ArrayList;
+
+        specialinvoke r0.<java.util.ArrayList: void <init>(int)>(2);
+
+        if r3 == null goto label01;
+
+        r5 = new org.apache.http.message.BasicNameValuePair;
+
+        specialinvoke r5.<org.apache.http.message.BasicNameValuePair: void <init>(java.lang.String,java.lang.String)>("subid", r3);
+
+        interfaceinvoke r0.<java.util.List: boolean add(java.lang.Object)>(r5);
+
+     label01:
+        if r4 == null goto label07;
+
+        r3 = "";
+
+        i2 = 0;
+
+     label02:
+        $i3 = interfaceinvoke r4.<java.util.List: int size()>();
+
+     label03:
+        if i2 < $i3 goto label73;
+
+        r5 = new org.apache.http.message.BasicNameValuePair;
+
+     label04:
+        specialinvoke r5.<org.apache.http.message.BasicNameValuePair: void <init>(java.lang.String,java.lang.String)>("tokens", r3);
+
+        interfaceinvoke r0.<java.util.List: boolean add(java.lang.Object)>(r5);
+
+     label05:
+        r6 = new java.lang.StringBuilder;
+
+     label06:
+        specialinvoke r6.<java.lang.StringBuilder: void <init>(java.lang.String)>("Token Str = ");
+
+        r6 = virtualinvoke r6.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(r3);
+
+        r3 = virtualinvoke r6.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <com.Leadbolt.AdLog: void i(java.lang.String,java.lang.String)>("LBAdController", r3);
+
+     label07:
+        $r7 = virtualinvoke r1.<android.content.Context: android.content.ContentResolver getContentResolver()>();
+
+        r3 = staticinvoke <android.provider.Settings$Secure: java.lang.String getString(android.content.ContentResolver,java.lang.String)>($r7, "android_id");
+
+        $r8 = staticinvoke <java.util.Calendar: java.util.Calendar getInstance()>();
+
+     label08:
+        r5 = new org.apache.http.message.BasicNameValuePair;
+
+     label09:
+        specialinvoke r5.<org.apache.http.message.BasicNameValuePair: void <init>(java.lang.String,java.lang.String)>("ref1", r3);
+
+        interfaceinvoke r0.<java.util.List: boolean add(java.lang.Object)>(r5);
+
+     label10:
+        r5 = new org.apache.http.message.BasicNameValuePair;
+
+        r3 = <android.os.Build$VERSION: java.lang.String RELEASE>;
+
+     label11:
+        specialinvoke r5.<org.apache.http.message.BasicNameValuePair: void <init>(java.lang.String,java.lang.String)>("ref2", r3);
+
+        interfaceinvoke r0.<java.util.List: boolean add(java.lang.Object)>(r5);
+
+     label12:
+        r5 = new org.apache.http.message.BasicNameValuePair;
+
+     label13:
+        specialinvoke r5.<org.apache.http.message.BasicNameValuePair: void <init>(java.lang.String,java.lang.String)>("ref3", "Android");
+
+        interfaceinvoke r0.<java.util.List: boolean add(java.lang.Object)>(r5);
+
+     label14:
+        r5 = new org.apache.http.message.BasicNameValuePair;
+
+     label15:
+        r3 = staticinvoke <com.Leadbolt.AdRefValues: java.lang.String getLocalIpAddress()>();
+
+        specialinvoke r5.<org.apache.http.message.BasicNameValuePair: void <init>(java.lang.String,java.lang.String)>("ref4", r3);
+
+        interfaceinvoke r0.<java.util.List: boolean add(java.lang.Object)>(r5);
+
+     label16:
+        r5 = new org.apache.http.message.BasicNameValuePair;
+
+        r6 = new java.lang.StringBuilder;
+
+     label17:
+        specialinvoke r6.<java.lang.StringBuilder: void <init>()>();
+
+        i2 = virtualinvoke $r8.<java.util.Calendar: int get(int)>(15);
+
+        r6 = virtualinvoke r6.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>(i2);
+
+        r3 = virtualinvoke r6.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke r5.<org.apache.http.message.BasicNameValuePair: void <init>(java.lang.String,java.lang.String)>("ref5", r3);
+
+        interfaceinvoke r0.<java.util.List: boolean add(java.lang.Object)>(r5);
+
+     label18:
+        r5 = new org.apache.http.message.BasicNameValuePair;
+
+        r6 = new java.lang.StringBuilder;
+
+     label19:
+        specialinvoke r6.<java.lang.StringBuilder: void <init>()>();
+
+        $l4 = virtualinvoke $r8.<java.util.Calendar: long getTimeInMillis()>();
+
+     label20:
+        $l4 = $l4 / 1000L;
+
+        i2 = (int) $l4;
+
+     label21:
+        r6 = virtualinvoke r6.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>(i2);
+
+        r3 = virtualinvoke r6.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke r5.<org.apache.http.message.BasicNameValuePair: void <init>(java.lang.String,java.lang.String)>("ref6", r3);
+
+        interfaceinvoke r0.<java.util.List: boolean add(java.lang.Object)>(r5);
+
+     label22:
+        r5 = new org.apache.http.message.BasicNameValuePair;
+
+        r6 = new java.lang.StringBuilder;
+
+     label23:
+        specialinvoke r6.<java.lang.StringBuilder: void <init>()>();
+
+        r6 = virtualinvoke r6.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>(i1);
+
+        r3 = virtualinvoke r6.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke r5.<org.apache.http.message.BasicNameValuePair: void <init>(java.lang.String,java.lang.String)>("ref7", r3);
+
+        interfaceinvoke r0.<java.util.List: boolean add(java.lang.Object)>(r5);
+
+     label24:
+        r5 = new org.apache.http.message.BasicNameValuePair;
+
+        r6 = new java.lang.StringBuilder;
+
+     label25:
+        specialinvoke r6.<java.lang.StringBuilder: void <init>()>();
+
+        r6 = virtualinvoke r6.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>($i0);
+
+        r3 = virtualinvoke r6.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke r5.<org.apache.http.message.BasicNameValuePair: void <init>(java.lang.String,java.lang.String)>("ref8", r3);
+
+        interfaceinvoke r0.<java.util.List: boolean add(java.lang.Object)>(r5);
+
+     label26:
+        if z0 == 0 goto label32;
+
+     label27:
+        $r9 = virtualinvoke r1.<android.content.Context: java.lang.Object getSystemService(java.lang.String)>("location");
+
+        r10 = (android.location.LocationManager) $r9;
+
+        $r11 = virtualinvoke r10.<android.location.LocationManager: android.location.Location getLastKnownLocation(java.lang.String)>("gps");
+
+        $d0 = virtualinvoke $r11.<android.location.Location: double getLongitude()>();
+
+        r3 = staticinvoke <java.lang.String: java.lang.String valueOf(double)>($d0);
+
+        $d0 = virtualinvoke $r11.<android.location.Location: double getLatitude()>();
+
+        $r12 = staticinvoke <java.lang.String: java.lang.String valueOf(double)>($d0);
+
+     label28:
+        r5 = new org.apache.http.message.BasicNameValuePair;
+
+     label29:
+        specialinvoke r5.<org.apache.http.message.BasicNameValuePair: void <init>(java.lang.String,java.lang.String)>("ref9", $r12);
+
+        interfaceinvoke r0.<java.util.List: boolean add(java.lang.Object)>(r5);
+
+     label30:
+        r5 = new org.apache.http.message.BasicNameValuePair;
+
+     label31:
+        specialinvoke r5.<org.apache.http.message.BasicNameValuePair: void <init>(java.lang.String,java.lang.String)>("ref10", r3);
+
+        interfaceinvoke r0.<java.util.List: boolean add(java.lang.Object)>(r5);
+
+     label32:
+        z0 = <com.Leadbolt.AdRefValues: boolean dataretrieve>;
+
+        if z0 == 0 goto label38;
+
+        r5 = new org.apache.http.message.BasicNameValuePair;
+
+     label33:
+        r3 = virtualinvoke r2.<android.telephony.TelephonyManager: java.lang.String getNetworkCountryIso()>();
+
+        specialinvoke r5.<org.apache.http.message.BasicNameValuePair: void <init>(java.lang.String,java.lang.String)>("ref11", r3);
+
+        interfaceinvoke r0.<java.util.List: boolean add(java.lang.Object)>(r5);
+
+     label34:
+        r5 = new org.apache.http.message.BasicNameValuePair;
+
+     label35:
+        r3 = virtualinvoke r2.<android.telephony.TelephonyManager: java.lang.String getNetworkOperator()>();
+
+        specialinvoke r5.<org.apache.http.message.BasicNameValuePair: void <init>(java.lang.String,java.lang.String)>("ref12", r3);
+
+        interfaceinvoke r0.<java.util.List: boolean add(java.lang.Object)>(r5);
+
+     label36:
+        r5 = new org.apache.http.message.BasicNameValuePair;
+
+     label37:
+        r3 = virtualinvoke r2.<android.telephony.TelephonyManager: java.lang.String getNetworkOperatorName()>();
+
+        specialinvoke r5.<org.apache.http.message.BasicNameValuePair: void <init>(java.lang.String,java.lang.String)>("ref13", r3);
+
+        interfaceinvoke r0.<java.util.List: boolean add(java.lang.Object)>(r5);
+
+     label38:
+        r5 = new org.apache.http.message.BasicNameValuePair;
+
+     label39:
+        specialinvoke r5.<org.apache.http.message.BasicNameValuePair: void <init>(java.lang.String,java.lang.String)>("ref15", "3");
+
+        interfaceinvoke r0.<java.util.List: boolean add(java.lang.Object)>(r5);
+
+     label40:
+        r5 = new org.apache.http.message.BasicNameValuePair;
+
+     label41:
+        specialinvoke r5.<org.apache.http.message.BasicNameValuePair: void <init>(java.lang.String,java.lang.String)>("ref16", "04a");
+
+        interfaceinvoke r0.<java.util.List: boolean add(java.lang.Object)>(r5);
+
+        r3 = virtualinvoke r2.<android.telephony.TelephonyManager: java.lang.String getDeviceId()>();
+
+     label42:
+        if r3 == null goto label78;
+
+     label43:
+        r3 = virtualinvoke r2.<android.telephony.TelephonyManager: java.lang.String getDeviceId()>();
+
+     label44:
+        r5 = new org.apache.http.message.BasicNameValuePair;
+
+     label45:
+        specialinvoke r5.<org.apache.http.message.BasicNameValuePair: void <init>(java.lang.String,java.lang.String)>("ref17", r3);
+
+        interfaceinvoke r0.<java.util.List: boolean add(java.lang.Object)>(r5);
+
+     label46:
+        r5 = new org.apache.http.message.BasicNameValuePair;
+
+        r3 = <android.os.Build: java.lang.String MANUFACTURER>;
+
+     label47:
+        specialinvoke r5.<org.apache.http.message.BasicNameValuePair: void <init>(java.lang.String,java.lang.String)>("ref18", r3);
+
+        interfaceinvoke r0.<java.util.List: boolean add(java.lang.Object)>(r5);
+
+     label48:
+        r5 = new org.apache.http.message.BasicNameValuePair;
+
+        r3 = <android.os.Build: java.lang.String MODEL>;
+
+     label49:
+        specialinvoke r5.<org.apache.http.message.BasicNameValuePair: void <init>(java.lang.String,java.lang.String)>("ref19", r3);
+
+        interfaceinvoke r0.<java.util.List: boolean add(java.lang.Object)>(r5);
+
+        $r9 = virtualinvoke r1.<android.content.Context: java.lang.Object getSystemService(java.lang.String)>("connectivity");
+
+        r13 = (android.net.ConnectivityManager) $r9;
+
+        $r14 = virtualinvoke r13.<android.net.ConnectivityManager: android.net.NetworkInfo getNetworkInfo(int)>(0);
+
+        $r15 = virtualinvoke r13.<android.net.ConnectivityManager: android.net.NetworkInfo getNetworkInfo(int)>(1);
+
+     label50:
+        if $r14 == null goto label79;
+
+     label51:
+        $r16 = virtualinvoke $r14.<android.net.NetworkInfo: android.net.NetworkInfo$State getState()>();
+
+     label52:
+        if $r15 == null goto label80;
+
+     label53:
+        $r17 = virtualinvoke $r15.<android.net.NetworkInfo: android.net.NetworkInfo$State getState()>();
+
+     label54:
+        r18 = <android.net.NetworkInfo$State: android.net.NetworkInfo$State CONNECTED>;
+
+        if $r17 == r18 goto label55;
+
+        r18 = <android.net.NetworkInfo$State: android.net.NetworkInfo$State CONNECTING>;
+
+        if $r17 != r18 goto label81;
+
+     label55:
+        $r12 = "wifi";
+
+     label56:
+        r5 = new org.apache.http.message.BasicNameValuePair;
+
+     label57:
+        specialinvoke r5.<org.apache.http.message.BasicNameValuePair: void <init>(java.lang.String,java.lang.String)>("ref20", $r12);
+
+        interfaceinvoke r0.<java.util.List: boolean add(java.lang.Object)>(r5);
+
+        i1 = virtualinvoke r2.<android.telephony.TelephonyManager: int getSimState()>();
+
+     label58:
+        lookupswitch(i1)
+        {
+            case 0: goto label88;
+            case 1: goto label83;
+            case 2: goto label85;
+            case 3: goto label86;
+            case 4: goto label84;
+            case 5: goto label87;
+            default: goto label59;
+        };
+
+     label59:
+        r3 = "";
+
+     label60:
+        r5 = new org.apache.http.message.BasicNameValuePair;
+
+     label61:
+        specialinvoke r5.<org.apache.http.message.BasicNameValuePair: void <init>(java.lang.String,java.lang.String)>("ref21", r3);
+
+        interfaceinvoke r0.<java.util.List: boolean add(java.lang.Object)>(r5);
+
+     label62:
+        r6 = new java.lang.StringBuilder;
+
+     label63:
+        specialinvoke r6.<java.lang.StringBuilder: void <init>(java.lang.String)>("r20 - ");
+
+        z0 = virtualinvoke $r12.<java.lang.String: boolean equals(java.lang.Object)>("wifi");
+
+     label64:
+        if z0 == 0 goto label89;
+
+        $r12 = "w";
+
+     label65:
+        r6 = virtualinvoke r6.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r12);
+
+        r6 = virtualinvoke r6.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(", r21 - ");
+
+        r6 = virtualinvoke r6.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(r3);
+
+        r3 = virtualinvoke r6.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <com.Leadbolt.AdLog: void d(java.lang.String,java.lang.String)>("LBAdController", r3);
+
+     label66:
+        $r12 = "";
+
+        i1 = 0;
+
+     label67:
+        $i0 = interfaceinvoke r0.<java.util.List: int size()>();
+
+     label68:
+        if i1 < $i0 goto label90;
+
+     label69:
+        i1 = virtualinvoke $r12.<java.lang.String: int length()>();
+
+     label70:
+        i1 = i1 - 1;
+
+     label71:
+        r3 = virtualinvoke $r12.<java.lang.String: java.lang.String substring(int,int)>(0, i1);
+
+        r3 = staticinvoke <com.Leadbolt.AdEncryption: java.lang.String encrypt(java.lang.String)>(r3);
+
+     label72:
+        return r3;
+
+     label73:
+        $r9 = interfaceinvoke r4.<java.util.List: java.lang.Object get(int)>(i2);
+
+        r5 = (org.apache.http.message.BasicNameValuePair) $r9;
+
+     label74:
+        r6 = new java.lang.StringBuilder;
+
+     label75:
+        r3 = staticinvoke <java.lang.String: java.lang.String valueOf(java.lang.Object)>(r3);
+
+        specialinvoke r6.<java.lang.StringBuilder: void <init>(java.lang.String)>(r3);
+
+        r3 = virtualinvoke r5.<org.apache.http.message.BasicNameValuePair: java.lang.String getName()>();
+
+        $r19 = virtualinvoke r3.<java.lang.String: byte[] getBytes()>();
+
+        r3 = staticinvoke <com.Leadbolt.AdEncryption: java.lang.String base64encode(byte[])>($r19);
+
+        r6 = virtualinvoke r6.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(r3);
+
+        r6 = virtualinvoke r6.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(":");
+
+        r3 = virtualinvoke r5.<org.apache.http.message.BasicNameValuePair: java.lang.String getValue()>();
+
+        $r19 = virtualinvoke r3.<java.lang.String: byte[] getBytes()>();
+
+        r3 = staticinvoke <com.Leadbolt.AdEncryption: java.lang.String base64encode(byte[])>($r19);
+
+        r6 = virtualinvoke r6.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(r3);
+
+        r6 = virtualinvoke r6.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(",");
+
+        r3 = virtualinvoke r6.<java.lang.StringBuilder: java.lang.String toString()>();
+
+     label76:
+        i2 = i2 + 1;
+
+        goto label02;
+
+     label77:
+        r20 := @caughtexception;
+
+        r6 = new java.lang.StringBuilder;
+
+        specialinvoke r6.<java.lang.StringBuilder: void <init>(java.lang.String)>("Error while adding tokens - ");
+
+        r3 = virtualinvoke r20.<java.lang.Exception: java.lang.String getMessage()>();
+
+        r6 = virtualinvoke r6.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(r3);
+
+        r3 = virtualinvoke r6.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <com.Leadbolt.AdLog: void e(java.lang.String,java.lang.String)>("LBAdController", r3);
+
+        goto label07;
+
+     label78:
+        r3 = "0";
+
+        goto label44;
+
+     label79:
+        $r16 = null;
+
+        goto label52;
+
+     label80:
+        $r17 = null;
+
+        goto label54;
+
+     label81:
+        $r17 = <android.net.NetworkInfo$State: android.net.NetworkInfo$State CONNECTED>;
+
+        if $r16 == $r17 goto label82;
+
+        $r17 = <android.net.NetworkInfo$State: android.net.NetworkInfo$State CONNECTING>;
+
+        if $r16 != $r17 goto label98;
+
+     label82:
+        $r12 = "carrier";
+
+        goto label56;
+
+     label83:
+        r3 = "no_sim";
+
+        goto label60;
+
+     label84:
+        r3 = "sim_carrier_locked";
+
+        goto label60;
+
+     label85:
+        r3 = "sim_user_locked";
+
+        goto label60;
+
+     label86:
+        r3 = "sim_puk_locked";
+
+        goto label60;
+
+     label87:
+        r3 = "sim_ok";
+
+        goto label60;
+
+     label88:
+        r3 = "sim_unknown";
+
+        goto label60;
+
+     label89:
+        $r12 = "c";
+
+        goto label65;
+
+     label90:
+        $r9 = interfaceinvoke r0.<java.util.List: java.lang.Object get(int)>(i1);
+
+        r21 = (org.apache.http.NameValuePair) $r9;
+
+        r3 = interfaceinvoke r21.<org.apache.http.NameValuePair: java.lang.String getValue()>();
+
+     label91:
+        if r3 == null goto label94;
+
+        r6 = new java.lang.StringBuilder;
+
+     label92:
+        $r12 = staticinvoke <java.lang.String: java.lang.String valueOf(java.lang.Object)>($r12);
+
+        specialinvoke r6.<java.lang.StringBuilder: void <init>(java.lang.String)>($r12);
+
+        $r12 = interfaceinvoke r21.<org.apache.http.NameValuePair: java.lang.String getName()>();
+
+        r6 = virtualinvoke r6.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r12);
+
+        r6 = virtualinvoke r6.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("=");
+
+        r3 = staticinvoke <java.net.URLEncoder: java.lang.String encode(java.lang.String,java.lang.String)>(r3, "UTF-8");
+
+        r6 = virtualinvoke r6.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(r3);
+
+        r6 = virtualinvoke r6.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("&");
+
+        r3 = virtualinvoke r6.<java.lang.StringBuilder: java.lang.String toString()>();
+
+     label93:
+        $r12 = r3;
+
+     label94:
+        i1 = i1 + 1;
+
+        goto label67;
+
+     label95:
+        r22 := @caughtexception;
+
+        staticinvoke <com.Leadbolt.AdLog: void printStackTrace(java.lang.String,java.lang.Exception)>("LBAdController", r22);
+
+        return "";
+
+     label96:
+        r23 := @caughtexception;
+
+        goto label38;
+
+     label97:
+        r24 := @caughtexception;
+
+        goto label32;
+
+     label98:
+        $r12 = "";
+
+        goto label56;
+
+        catch java.lang.Exception from label02 to label03 with label77;
+        catch java.lang.Exception from label04 to label05 with label77;
+        catch java.lang.Exception from label06 to label07 with label77;
+        catch java.lang.Exception from label07 to label08 with label95;
+        catch java.lang.Exception from label09 to label10 with label95;
+        catch java.lang.Exception from label11 to label12 with label95;
+        catch java.lang.Exception from label13 to label14 with label95;
+        catch java.lang.Exception from label15 to label16 with label95;
+        catch java.lang.Exception from label17 to label18 with label95;
+        catch java.lang.Exception from label19 to label20 with label95;
+        catch java.lang.Exception from label21 to label22 with label95;
+        catch java.lang.Exception from label23 to label24 with label95;
+        catch java.lang.Exception from label25 to label26 with label95;
+        catch java.lang.Exception from label27 to label28 with label97;
+        catch java.lang.Exception from label29 to label30 with label97;
+        catch java.lang.Exception from label31 to label32 with label97;
+        catch java.lang.Exception from label33 to label34 with label96;
+        catch java.lang.Exception from label35 to label36 with label96;
+        catch java.lang.Exception from label37 to label38 with label96;
+        catch java.lang.Exception from label39 to label40 with label95;
+        catch java.lang.Exception from label41 to label42 with label95;
+        catch java.lang.Exception from label43 to label44 with label95;
+        catch java.lang.Exception from label45 to label46 with label95;
+        catch java.lang.Exception from label47 to label48 with label95;
+        catch java.lang.Exception from label49 to label50 with label95;
+        catch java.lang.Exception from label51 to label52 with label95;
+        catch java.lang.Exception from label53 to label54 with label95;
+        catch java.lang.Exception from label57 to label58 with label95;
+        catch java.lang.Exception from label61 to label62 with label95;
+        catch java.lang.Exception from label63 to label64 with label95;
+        catch java.lang.Exception from label65 to label66 with label95;
+        catch java.lang.Exception from label67 to label68 with label95;
+        catch java.lang.Exception from label69 to label70 with label95;
+        catch java.lang.Exception from label71 to label72 with label95;
+        catch java.lang.Exception from label73 to label74 with label77;
+        catch java.lang.Exception from label75 to label76 with label77;
+        catch java.lang.Exception from label90 to label91 with label95;
+        catch java.lang.Exception from label92 to label93 with label95;
+    }
+
+    private static java.lang.String getLocalIpAddress()
+    {
+        java.util.Enumeration $r0, $r3;
+        boolean $z0;
+        java.lang.Object $r1;
+        java.net.NetworkInterface r2;
+        java.net.InetAddress r4;
+        java.lang.String $r5;
+        java.lang.Throwable $r6;
+        java.lang.Exception $r7;
+
+     label01:
+        $r0 = staticinvoke <java.net.NetworkInterface: java.util.Enumeration getNetworkInterfaces()>();
+
+     label02:
+        $z0 = interfaceinvoke $r0.<java.util.Enumeration: boolean hasMoreElements()>();
+
+     label03:
+        if $z0 != 0 goto label05;
+
+     label04:
+        return null;
+
+     label05:
+        $r1 = interfaceinvoke $r0.<java.util.Enumeration: java.lang.Object nextElement()>();
+
+     label06:
+        r2 = (java.net.NetworkInterface) $r1;
+
+     label07:
+        $r3 = virtualinvoke r2.<java.net.NetworkInterface: java.util.Enumeration getInetAddresses()>();
+
+     label08:
+        $z0 = interfaceinvoke $r3.<java.util.Enumeration: boolean hasMoreElements()>();
+
+     label09:
+        if $z0 == 0 goto label02;
+
+     label10:
+        $r1 = interfaceinvoke $r3.<java.util.Enumeration: java.lang.Object nextElement()>();
+
+     label11:
+        r4 = (java.net.InetAddress) $r1;
+
+     label12:
+        $z0 = virtualinvoke r4.<java.net.InetAddress: boolean isLoopbackAddress()>();
+
+     label13:
+        if $z0 != 0 goto label08;
+
+     label14:
+        $r5 = virtualinvoke r4.<java.net.InetAddress: java.lang.String getHostAddress()>();
+
+        $r5 = virtualinvoke $r5.<java.lang.String: java.lang.String toString()>();
+
+     label15:
+        return $r5;
+
+     label16:
+        $r6 := @caughtexception;
+
+        $r7 = (java.lang.Exception) $r6;
+
+        staticinvoke <com.Leadbolt.AdLog: void printStackTrace(java.lang.String,java.lang.Exception)>("LBAdController", $r7);
+
+        goto label04;
+
+        catch java.net.SocketException from label01 to label03 with label16;
+        catch java.net.SocketException from label05 to label06 with label16;
+        catch java.net.SocketException from label07 to label09 with label16;
+        catch java.net.SocketException from label10 to label11 with label16;
+        catch java.net.SocketException from label12 to label13 with label16;
+        catch java.net.SocketException from label14 to label15 with label16;
+    }
+}

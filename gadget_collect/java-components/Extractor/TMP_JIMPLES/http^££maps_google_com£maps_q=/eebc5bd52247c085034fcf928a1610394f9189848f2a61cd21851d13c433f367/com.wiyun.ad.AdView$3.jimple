@@ -1,0 +1,51 @@
+class com.wiyun.ad.AdView$3 extends java.util.TimerTask
+{
+    final com.wiyun.ad.AdView a;
+
+    void <init>(com.wiyun.ad.AdView)
+    {
+        com.wiyun.ad.AdView$3 r0;
+        com.wiyun.ad.AdView $r1;
+
+        r0 := @this: com.wiyun.ad.AdView$3;
+
+        $r1 := @parameter0: com.wiyun.ad.AdView;
+
+        r0.<com.wiyun.ad.AdView$3: com.wiyun.ad.AdView a> = $r1;
+
+        specialinvoke r0.<java.util.TimerTask: void <init>()>();
+
+        return;
+    }
+
+    static com.wiyun.ad.AdView a(com.wiyun.ad.AdView$3)
+    {
+        com.wiyun.ad.AdView$3 $r0;
+        com.wiyun.ad.AdView r1;
+
+        $r0 := @parameter0: com.wiyun.ad.AdView$3;
+
+        r1 = $r0.<com.wiyun.ad.AdView$3: com.wiyun.ad.AdView a>;
+
+        return r1;
+    }
+
+    public void run()
+    {
+        com.wiyun.ad.AdView$3 r0;
+        com.wiyun.ad.AdView $r1;
+        com.wiyun.ad.AdView$3$1 $r2;
+
+        r0 := @this: com.wiyun.ad.AdView$3;
+
+        $r1 = r0.<com.wiyun.ad.AdView$3: com.wiyun.ad.AdView a>;
+
+        $r2 = new com.wiyun.ad.AdView$3$1;
+
+        specialinvoke $r2.<com.wiyun.ad.AdView$3$1: void <init>(com.wiyun.ad.AdView$3)>(r0);
+
+        virtualinvoke $r1.<com.wiyun.ad.AdView: boolean post(java.lang.Runnable)>($r2);
+
+        return;
+    }
+}

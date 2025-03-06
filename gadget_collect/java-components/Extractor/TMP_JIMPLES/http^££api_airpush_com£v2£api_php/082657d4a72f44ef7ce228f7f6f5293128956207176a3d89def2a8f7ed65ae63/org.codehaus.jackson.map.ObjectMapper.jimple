@@ -1,0 +1,3278 @@
+public class org.codehaus.jackson.map.ObjectMapper extends org.codehaus.jackson.ObjectCodec implements org.codehaus.jackson.Versioned
+{
+    protected static final org.codehaus.jackson.map.AnnotationIntrospector DEFAULT_ANNOTATION_INTROSPECTOR;
+    protected static final org.codehaus.jackson.map.ClassIntrospector DEFAULT_INTROSPECTOR;
+    private static final org.codehaus.jackson.type.JavaType JSON_NODE_TYPE;
+    protected static final org.codehaus.jackson.map.introspect.VisibilityChecker STD_VISIBILITY_CHECKER;
+    protected org.codehaus.jackson.map.jsontype.TypeResolverBuilder _defaultTyper;
+    protected org.codehaus.jackson.map.DeserializationConfig _deserializationConfig;
+    protected org.codehaus.jackson.map.DeserializerProvider _deserializerProvider;
+    protected final org.codehaus.jackson.JsonFactory _jsonFactory;
+    protected final java.util.concurrent.ConcurrentHashMap _rootDeserializers;
+    protected org.codehaus.jackson.map.SerializationConfig _serializationConfig;
+    protected org.codehaus.jackson.map.SerializerFactory _serializerFactory;
+    protected org.codehaus.jackson.map.SerializerProvider _serializerProvider;
+    protected org.codehaus.jackson.map.jsontype.SubtypeResolver _subtypeResolver;
+    protected java.lang.ClassLoader _valueClassLoader;
+    protected org.codehaus.jackson.map.introspect.VisibilityChecker _visibilityChecker;
+
+    static void <clinit>()
+    {
+        org.codehaus.jackson.type.JavaType $r0;
+        org.codehaus.jackson.map.introspect.BasicClassIntrospector $r1;
+        org.codehaus.jackson.map.introspect.JacksonAnnotationIntrospector $r2;
+        org.codehaus.jackson.map.introspect.VisibilityChecker$Std $r3;
+
+        $r0 = staticinvoke <org.codehaus.jackson.map.type.TypeFactory: org.codehaus.jackson.type.JavaType type(java.lang.reflect.Type)>(class "Lorg/codehaus/jackson/JsonNode;");
+
+        <org.codehaus.jackson.map.ObjectMapper: org.codehaus.jackson.type.JavaType JSON_NODE_TYPE> = $r0;
+
+        $r1 = <org.codehaus.jackson.map.introspect.BasicClassIntrospector: org.codehaus.jackson.map.introspect.BasicClassIntrospector instance>;
+
+        <org.codehaus.jackson.map.ObjectMapper: org.codehaus.jackson.map.ClassIntrospector DEFAULT_INTROSPECTOR> = $r1;
+
+        $r2 = new org.codehaus.jackson.map.introspect.JacksonAnnotationIntrospector;
+
+        specialinvoke $r2.<org.codehaus.jackson.map.introspect.JacksonAnnotationIntrospector: void <init>()>();
+
+        <org.codehaus.jackson.map.ObjectMapper: org.codehaus.jackson.map.AnnotationIntrospector DEFAULT_ANNOTATION_INTROSPECTOR> = $r2;
+
+        $r3 = staticinvoke <org.codehaus.jackson.map.introspect.VisibilityChecker$Std: org.codehaus.jackson.map.introspect.VisibilityChecker$Std defaultInstance()>();
+
+        <org.codehaus.jackson.map.ObjectMapper: org.codehaus.jackson.map.introspect.VisibilityChecker STD_VISIBILITY_CHECKER> = $r3;
+
+        return;
+    }
+
+    public void <init>()
+    {
+        org.codehaus.jackson.map.ObjectMapper r0;
+
+        r0 := @this: org.codehaus.jackson.map.ObjectMapper;
+
+        specialinvoke r0.<org.codehaus.jackson.map.ObjectMapper: void <init>(org.codehaus.jackson.JsonFactory,org.codehaus.jackson.map.SerializerProvider,org.codehaus.jackson.map.DeserializerProvider)>(null, null, null);
+
+        return;
+    }
+
+    public void <init>(org.codehaus.jackson.JsonFactory)
+    {
+        org.codehaus.jackson.map.ObjectMapper r0;
+        org.codehaus.jackson.JsonFactory $r1;
+
+        r0 := @this: org.codehaus.jackson.map.ObjectMapper;
+
+        $r1 := @parameter0: org.codehaus.jackson.JsonFactory;
+
+        specialinvoke r0.<org.codehaus.jackson.map.ObjectMapper: void <init>(org.codehaus.jackson.JsonFactory,org.codehaus.jackson.map.SerializerProvider,org.codehaus.jackson.map.DeserializerProvider)>($r1, null, null);
+
+        return;
+    }
+
+    public void <init>(org.codehaus.jackson.JsonFactory, org.codehaus.jackson.map.SerializerProvider, org.codehaus.jackson.map.DeserializerProvider)
+    {
+        org.codehaus.jackson.map.ObjectMapper r0;
+        org.codehaus.jackson.JsonFactory $r1;
+        org.codehaus.jackson.map.SerializerProvider $r2;
+        org.codehaus.jackson.map.DeserializerProvider $r3;
+
+        r0 := @this: org.codehaus.jackson.map.ObjectMapper;
+
+        $r1 := @parameter0: org.codehaus.jackson.JsonFactory;
+
+        $r2 := @parameter1: org.codehaus.jackson.map.SerializerProvider;
+
+        $r3 := @parameter2: org.codehaus.jackson.map.DeserializerProvider;
+
+        specialinvoke r0.<org.codehaus.jackson.map.ObjectMapper: void <init>(org.codehaus.jackson.JsonFactory,org.codehaus.jackson.map.SerializerProvider,org.codehaus.jackson.map.DeserializerProvider,org.codehaus.jackson.map.SerializationConfig,org.codehaus.jackson.map.DeserializationConfig)>($r1, $r2, $r3, null, null);
+
+        return;
+    }
+
+    public void <init>(org.codehaus.jackson.JsonFactory, org.codehaus.jackson.map.SerializerProvider, org.codehaus.jackson.map.DeserializerProvider, org.codehaus.jackson.map.SerializationConfig, org.codehaus.jackson.map.DeserializationConfig)
+    {
+        org.codehaus.jackson.map.ObjectMapper r0;
+        org.codehaus.jackson.JsonFactory $r1;
+        org.codehaus.jackson.map.SerializerProvider $r2;
+        org.codehaus.jackson.map.DeserializerProvider $r3;
+        org.codehaus.jackson.map.SerializationConfig $r4, $r14;
+        org.codehaus.jackson.map.DeserializationConfig $r5, $r15;
+        org.codehaus.jackson.map.introspect.VisibilityChecker $r6;
+        org.codehaus.jackson.map.ser.BeanSerializerFactory $r7;
+        org.codehaus.jackson.map.ClassIntrospector $r8;
+        org.codehaus.jackson.map.AnnotationIntrospector $r9;
+        java.util.concurrent.ConcurrentHashMap $r10;
+        org.codehaus.jackson.map.MappingJsonFactory $r11;
+        org.codehaus.jackson.map.ser.StdSerializerProvider $r12;
+        org.codehaus.jackson.map.deser.StdDeserializerProvider $r13;
+
+        r0 := @this: org.codehaus.jackson.map.ObjectMapper;
+
+        $r1 := @parameter0: org.codehaus.jackson.JsonFactory;
+
+        $r2 := @parameter1: org.codehaus.jackson.map.SerializerProvider;
+
+        $r3 := @parameter2: org.codehaus.jackson.map.DeserializerProvider;
+
+        $r4 := @parameter3: org.codehaus.jackson.map.SerializationConfig;
+
+        $r5 := @parameter4: org.codehaus.jackson.map.DeserializationConfig;
+
+        specialinvoke r0.<org.codehaus.jackson.ObjectCodec: void <init>()>();
+
+        $r10 = new java.util.concurrent.ConcurrentHashMap;
+
+        specialinvoke $r10.<java.util.concurrent.ConcurrentHashMap: void <init>(int,float,int)>(64, 0.6F, 2);
+
+        r0.<org.codehaus.jackson.map.ObjectMapper: java.util.concurrent.ConcurrentHashMap _rootDeserializers> = $r10;
+
+        if $r1 != null goto label06;
+
+        $r11 = new org.codehaus.jackson.map.MappingJsonFactory;
+
+        $r1 = $r11;
+
+        specialinvoke $r11.<org.codehaus.jackson.map.MappingJsonFactory: void <init>(org.codehaus.jackson.map.ObjectMapper)>(r0);
+
+     label01:
+        r0.<org.codehaus.jackson.map.ObjectMapper: org.codehaus.jackson.JsonFactory _jsonFactory> = $r1;
+
+        $r6 = <org.codehaus.jackson.map.ObjectMapper: org.codehaus.jackson.map.introspect.VisibilityChecker STD_VISIBILITY_CHECKER>;
+
+        r0.<org.codehaus.jackson.map.ObjectMapper: org.codehaus.jackson.map.introspect.VisibilityChecker _visibilityChecker> = $r6;
+
+        if $r4 == null goto label07;
+
+     label02:
+        r0.<org.codehaus.jackson.map.ObjectMapper: org.codehaus.jackson.map.SerializationConfig _serializationConfig> = $r4;
+
+        if $r5 == null goto label08;
+
+     label03:
+        r0.<org.codehaus.jackson.map.ObjectMapper: org.codehaus.jackson.map.DeserializationConfig _deserializationConfig> = $r5;
+
+        if $r2 != null goto label09;
+
+        $r12 = new org.codehaus.jackson.map.ser.StdSerializerProvider;
+
+        $r2 = $r12;
+
+        specialinvoke $r12.<org.codehaus.jackson.map.ser.StdSerializerProvider: void <init>()>();
+
+     label04:
+        r0.<org.codehaus.jackson.map.ObjectMapper: org.codehaus.jackson.map.SerializerProvider _serializerProvider> = $r2;
+
+        if $r3 != null goto label10;
+
+        $r13 = new org.codehaus.jackson.map.deser.StdDeserializerProvider;
+
+        $r3 = $r13;
+
+        specialinvoke $r13.<org.codehaus.jackson.map.deser.StdDeserializerProvider: void <init>()>();
+
+     label05:
+        r0.<org.codehaus.jackson.map.ObjectMapper: org.codehaus.jackson.map.DeserializerProvider _deserializerProvider> = $r3;
+
+        $r7 = <org.codehaus.jackson.map.ser.BeanSerializerFactory: org.codehaus.jackson.map.ser.BeanSerializerFactory instance>;
+
+        r0.<org.codehaus.jackson.map.ObjectMapper: org.codehaus.jackson.map.SerializerFactory _serializerFactory> = $r7;
+
+        return;
+
+     label06:
+        goto label01;
+
+     label07:
+        $r14 = new org.codehaus.jackson.map.SerializationConfig;
+
+        $r4 = $r14;
+
+        $r8 = <org.codehaus.jackson.map.ObjectMapper: org.codehaus.jackson.map.ClassIntrospector DEFAULT_INTROSPECTOR>;
+
+        $r9 = <org.codehaus.jackson.map.ObjectMapper: org.codehaus.jackson.map.AnnotationIntrospector DEFAULT_ANNOTATION_INTROSPECTOR>;
+
+        $r6 = r0.<org.codehaus.jackson.map.ObjectMapper: org.codehaus.jackson.map.introspect.VisibilityChecker _visibilityChecker>;
+
+        specialinvoke $r14.<org.codehaus.jackson.map.SerializationConfig: void <init>(org.codehaus.jackson.map.ClassIntrospector,org.codehaus.jackson.map.AnnotationIntrospector,org.codehaus.jackson.map.introspect.VisibilityChecker,org.codehaus.jackson.map.jsontype.SubtypeResolver)>($r8, $r9, $r6, null);
+
+        goto label02;
+
+     label08:
+        $r15 = new org.codehaus.jackson.map.DeserializationConfig;
+
+        $r5 = $r15;
+
+        $r8 = <org.codehaus.jackson.map.ObjectMapper: org.codehaus.jackson.map.ClassIntrospector DEFAULT_INTROSPECTOR>;
+
+        $r9 = <org.codehaus.jackson.map.ObjectMapper: org.codehaus.jackson.map.AnnotationIntrospector DEFAULT_ANNOTATION_INTROSPECTOR>;
+
+        $r6 = r0.<org.codehaus.jackson.map.ObjectMapper: org.codehaus.jackson.map.introspect.VisibilityChecker _visibilityChecker>;
+
+        specialinvoke $r15.<org.codehaus.jackson.map.DeserializationConfig: void <init>(org.codehaus.jackson.map.ClassIntrospector,org.codehaus.jackson.map.AnnotationIntrospector,org.codehaus.jackson.map.introspect.VisibilityChecker,org.codehaus.jackson.map.jsontype.SubtypeResolver)>($r8, $r9, $r6, null);
+
+        goto label03;
+
+     label09:
+        goto label04;
+
+     label10:
+        goto label05;
+    }
+
+    public void <init>(org.codehaus.jackson.map.SerializerFactory)
+    {
+        org.codehaus.jackson.map.ObjectMapper r0;
+        org.codehaus.jackson.map.SerializerFactory $r1;
+
+        r0 := @this: org.codehaus.jackson.map.ObjectMapper;
+
+        $r1 := @parameter0: org.codehaus.jackson.map.SerializerFactory;
+
+        specialinvoke r0.<org.codehaus.jackson.map.ObjectMapper: void <init>(org.codehaus.jackson.JsonFactory,org.codehaus.jackson.map.SerializerProvider,org.codehaus.jackson.map.DeserializerProvider)>(null, null, null);
+
+        virtualinvoke r0.<org.codehaus.jackson.map.ObjectMapper: org.codehaus.jackson.map.ObjectMapper setSerializerFactory(org.codehaus.jackson.map.SerializerFactory)>($r1);
+
+        return;
+    }
+
+    private final void _configAndWriteCloseable(org.codehaus.jackson.JsonGenerator, java.lang.Object, org.codehaus.jackson.map.SerializationConfig) throws java.io.IOException, org.codehaus.jackson.JsonGenerationException, org.codehaus.jackson.map.JsonMappingException
+    {
+        org.codehaus.jackson.map.ObjectMapper r0;
+        java.lang.Object $r1;
+        org.codehaus.jackson.map.SerializationConfig $r2;
+        org.codehaus.jackson.JsonGenerator r3, $r4;
+        java.io.Closeable $r5, r6;
+        org.codehaus.jackson.map.SerializerProvider $r7;
+        org.codehaus.jackson.map.SerializerFactory $r8;
+        java.lang.Throwable $r9, $r10, $r11;
+
+        r0 := @this: org.codehaus.jackson.map.ObjectMapper;
+
+        $r4 := @parameter0: org.codehaus.jackson.JsonGenerator;
+
+        $r1 := @parameter1: java.lang.Object;
+
+        $r2 := @parameter2: org.codehaus.jackson.map.SerializationConfig;
+
+        $r5 = (java.io.Closeable) $r1;
+
+        r6 = $r5;
+
+     label01:
+        $r7 = r0.<org.codehaus.jackson.map.ObjectMapper: org.codehaus.jackson.map.SerializerProvider _serializerProvider>;
+
+        $r8 = r0.<org.codehaus.jackson.map.ObjectMapper: org.codehaus.jackson.map.SerializerFactory _serializerFactory>;
+
+        virtualinvoke $r7.<org.codehaus.jackson.map.SerializerProvider: void serializeValue(org.codehaus.jackson.map.SerializationConfig,org.codehaus.jackson.JsonGenerator,java.lang.Object,org.codehaus.jackson.map.SerializerFactory)>($r2, $r4, $r1, $r8);
+
+     label02:
+        r3 = $r4;
+
+        $r4 = null;
+
+     label03:
+        virtualinvoke r3.<org.codehaus.jackson.JsonGenerator: void close()>();
+
+     label04:
+        r6 = null;
+
+     label05:
+        interfaceinvoke $r5.<java.io.Closeable: void close()>();
+
+     label06:
+        goto label07;
+
+     label07:
+        goto label15;
+
+     label08:
+        $r9 := @caughtexception;
+
+        if $r4 == null goto label10;
+
+     label09:
+        virtualinvoke $r4.<org.codehaus.jackson.JsonGenerator: void close()>();
+
+     label10:
+        if r6 == null goto label12;
+
+     label11:
+        interfaceinvoke r6.<java.io.Closeable: void close()>();
+
+     label12:
+        throw $r9;
+
+     label13:
+        $r10 := @caughtexception;
+
+        goto label10;
+
+     label14:
+        $r11 := @caughtexception;
+
+        goto label12;
+
+     label15:
+        return;
+
+        catch java.lang.Throwable from label01 to label02 with label08;
+        catch java.lang.Throwable from label03 to label04 with label08;
+        catch java.lang.Throwable from label05 to label06 with label08;
+        catch java.io.IOException from label09 to label10 with label13;
+        catch java.io.IOException from label11 to label12 with label14;
+    }
+
+    private final void _writeCloseableValue(org.codehaus.jackson.JsonGenerator, java.lang.Object, org.codehaus.jackson.map.SerializationConfig) throws java.io.IOException, org.codehaus.jackson.JsonGenerationException, org.codehaus.jackson.map.JsonMappingException
+    {
+        org.codehaus.jackson.map.ObjectMapper r0;
+        org.codehaus.jackson.JsonGenerator $r1;
+        java.lang.Object $r2;
+        org.codehaus.jackson.map.SerializationConfig $r3;
+        boolean $z0;
+        java.io.Closeable $r4, r5;
+        org.codehaus.jackson.map.SerializerProvider $r6;
+        org.codehaus.jackson.map.SerializerFactory $r7;
+        org.codehaus.jackson.map.SerializationConfig$Feature $r8;
+        java.lang.Throwable $r9, $r10;
+
+        r0 := @this: org.codehaus.jackson.map.ObjectMapper;
+
+        $r1 := @parameter0: org.codehaus.jackson.JsonGenerator;
+
+        $r2 := @parameter1: java.lang.Object;
+
+        $r3 := @parameter2: org.codehaus.jackson.map.SerializationConfig;
+
+        $r4 = (java.io.Closeable) $r2;
+
+        r5 = $r4;
+
+     label01:
+        $r6 = r0.<org.codehaus.jackson.map.ObjectMapper: org.codehaus.jackson.map.SerializerProvider _serializerProvider>;
+
+        $r7 = r0.<org.codehaus.jackson.map.ObjectMapper: org.codehaus.jackson.map.SerializerFactory _serializerFactory>;
+
+        virtualinvoke $r6.<org.codehaus.jackson.map.SerializerProvider: void serializeValue(org.codehaus.jackson.map.SerializationConfig,org.codehaus.jackson.JsonGenerator,java.lang.Object,org.codehaus.jackson.map.SerializerFactory)>($r3, $r1, $r2, $r7);
+
+        $r8 = <org.codehaus.jackson.map.SerializationConfig$Feature: org.codehaus.jackson.map.SerializationConfig$Feature FLUSH_AFTER_WRITE_VALUE>;
+
+        $z0 = virtualinvoke $r3.<org.codehaus.jackson.map.SerializationConfig: boolean isEnabled(org.codehaus.jackson.map.SerializationConfig$Feature)>($r8);
+
+     label02:
+        if $z0 == 0 goto label04;
+
+     label03:
+        virtualinvoke $r1.<org.codehaus.jackson.JsonGenerator: void flush()>();
+
+     label04:
+        r5 = null;
+
+     label05:
+        interfaceinvoke $r4.<java.io.Closeable: void close()>();
+
+     label06:
+        goto label11;
+
+     label07:
+        $r9 := @caughtexception;
+
+        if r5 == null goto label09;
+
+     label08:
+        interfaceinvoke r5.<java.io.Closeable: void close()>();
+
+     label09:
+        throw $r9;
+
+     label10:
+        $r10 := @caughtexception;
+
+        goto label09;
+
+     label11:
+        return;
+
+        catch java.lang.Throwable from label01 to label02 with label07;
+        catch java.lang.Throwable from label03 to label04 with label07;
+        catch java.lang.Throwable from label05 to label06 with label07;
+        catch java.io.IOException from label08 to label09 with label10;
+    }
+
+    protected final void _configAndWriteValue(org.codehaus.jackson.JsonGenerator, java.lang.Object) throws java.io.IOException, org.codehaus.jackson.JsonGenerationException, org.codehaus.jackson.map.JsonMappingException
+    {
+        org.codehaus.jackson.map.ObjectMapper r0;
+        org.codehaus.jackson.JsonGenerator $r1;
+        java.lang.Object $r2;
+        org.codehaus.jackson.map.SerializationConfig $r3;
+        org.codehaus.jackson.map.SerializationConfig$Feature $r4;
+        boolean $z0;
+        org.codehaus.jackson.map.SerializerProvider $r5;
+        org.codehaus.jackson.map.SerializerFactory $r6;
+        java.lang.Throwable $r7, $r8;
+
+        r0 := @this: org.codehaus.jackson.map.ObjectMapper;
+
+        $r1 := @parameter0: org.codehaus.jackson.JsonGenerator;
+
+        $r2 := @parameter1: java.lang.Object;
+
+        $r3 = virtualinvoke r0.<org.codehaus.jackson.map.ObjectMapper: org.codehaus.jackson.map.SerializationConfig copySerializationConfig()>();
+
+        $r4 = <org.codehaus.jackson.map.SerializationConfig$Feature: org.codehaus.jackson.map.SerializationConfig$Feature INDENT_OUTPUT>;
+
+        $z0 = virtualinvoke $r3.<org.codehaus.jackson.map.SerializationConfig: boolean isEnabled(org.codehaus.jackson.map.SerializationConfig$Feature)>($r4);
+
+        if $z0 == 0 goto label01;
+
+        virtualinvoke $r1.<org.codehaus.jackson.JsonGenerator: org.codehaus.jackson.JsonGenerator useDefaultPrettyPrinter()>();
+
+     label01:
+        $r4 = <org.codehaus.jackson.map.SerializationConfig$Feature: org.codehaus.jackson.map.SerializationConfig$Feature CLOSE_CLOSEABLE>;
+
+        $z0 = virtualinvoke $r3.<org.codehaus.jackson.map.SerializationConfig: boolean isEnabled(org.codehaus.jackson.map.SerializationConfig$Feature)>($r4);
+
+        if $z0 == 0 goto label02;
+
+        $z0 = $r2 instanceof java.io.Closeable;
+
+        if $z0 == 0 goto label02;
+
+        specialinvoke r0.<org.codehaus.jackson.map.ObjectMapper: void _configAndWriteCloseable(org.codehaus.jackson.JsonGenerator,java.lang.Object,org.codehaus.jackson.map.SerializationConfig)>($r1, $r2, $r3);
+
+        return;
+
+     label02:
+        $z0 = 0;
+
+     label03:
+        $r5 = r0.<org.codehaus.jackson.map.ObjectMapper: org.codehaus.jackson.map.SerializerProvider _serializerProvider>;
+
+        $r6 = r0.<org.codehaus.jackson.map.ObjectMapper: org.codehaus.jackson.map.SerializerFactory _serializerFactory>;
+
+        virtualinvoke $r5.<org.codehaus.jackson.map.SerializerProvider: void serializeValue(org.codehaus.jackson.map.SerializationConfig,org.codehaus.jackson.JsonGenerator,java.lang.Object,org.codehaus.jackson.map.SerializerFactory)>($r3, $r1, $r2, $r6);
+
+     label04:
+        $z0 = 1;
+
+     label05:
+        virtualinvoke $r1.<org.codehaus.jackson.JsonGenerator: void close()>();
+
+     label06:
+        goto label11;
+
+     label07:
+        $r7 := @caughtexception;
+
+        if $z0 != 0 goto label09;
+
+     label08:
+        virtualinvoke $r1.<org.codehaus.jackson.JsonGenerator: void close()>();
+
+     label09:
+        throw $r7;
+
+     label10:
+        $r8 := @caughtexception;
+
+        goto label09;
+
+     label11:
+        return;
+
+        catch java.lang.Throwable from label03 to label04 with label07;
+        catch java.lang.Throwable from label05 to label06 with label07;
+        catch java.io.IOException from label08 to label09 with label10;
+    }
+
+    protected final void _configAndWriteValue(org.codehaus.jackson.JsonGenerator, java.lang.Object, java.lang.Class) throws java.io.IOException, org.codehaus.jackson.JsonGenerationException, org.codehaus.jackson.map.JsonMappingException
+    {
+        org.codehaus.jackson.map.ObjectMapper r0;
+        org.codehaus.jackson.JsonGenerator $r1;
+        java.lang.Object $r2;
+        java.lang.Class r3;
+        org.codehaus.jackson.map.SerializationConfig $r4;
+        org.codehaus.jackson.map.SerializationConfig$Feature $r5;
+        boolean $z0;
+        org.codehaus.jackson.map.SerializerProvider $r6;
+        org.codehaus.jackson.map.SerializerFactory $r7;
+        java.lang.Throwable $r8, $r9;
+
+        r0 := @this: org.codehaus.jackson.map.ObjectMapper;
+
+        $r1 := @parameter0: org.codehaus.jackson.JsonGenerator;
+
+        $r2 := @parameter1: java.lang.Object;
+
+        r3 := @parameter2: java.lang.Class;
+
+        $r4 = virtualinvoke r0.<org.codehaus.jackson.map.ObjectMapper: org.codehaus.jackson.map.SerializationConfig copySerializationConfig()>();
+
+        $r5 = <org.codehaus.jackson.map.SerializationConfig$Feature: org.codehaus.jackson.map.SerializationConfig$Feature INDENT_OUTPUT>;
+
+        $z0 = virtualinvoke $r4.<org.codehaus.jackson.map.SerializationConfig: boolean isEnabled(org.codehaus.jackson.map.SerializationConfig$Feature)>($r5);
+
+        if $z0 == 0 goto label01;
+
+        virtualinvoke $r1.<org.codehaus.jackson.JsonGenerator: org.codehaus.jackson.JsonGenerator useDefaultPrettyPrinter()>();
+
+     label01:
+        virtualinvoke $r4.<org.codehaus.jackson.map.SerializationConfig: void setSerializationView(java.lang.Class)>(r3);
+
+        $r5 = <org.codehaus.jackson.map.SerializationConfig$Feature: org.codehaus.jackson.map.SerializationConfig$Feature CLOSE_CLOSEABLE>;
+
+        $z0 = virtualinvoke $r4.<org.codehaus.jackson.map.SerializationConfig: boolean isEnabled(org.codehaus.jackson.map.SerializationConfig$Feature)>($r5);
+
+        if $z0 == 0 goto label02;
+
+        $z0 = $r2 instanceof java.io.Closeable;
+
+        if $z0 == 0 goto label02;
+
+        specialinvoke r0.<org.codehaus.jackson.map.ObjectMapper: void _configAndWriteCloseable(org.codehaus.jackson.JsonGenerator,java.lang.Object,org.codehaus.jackson.map.SerializationConfig)>($r1, $r2, $r4);
+
+        return;
+
+     label02:
+        $z0 = 0;
+
+     label03:
+        $r6 = r0.<org.codehaus.jackson.map.ObjectMapper: org.codehaus.jackson.map.SerializerProvider _serializerProvider>;
+
+        $r7 = r0.<org.codehaus.jackson.map.ObjectMapper: org.codehaus.jackson.map.SerializerFactory _serializerFactory>;
+
+        virtualinvoke $r6.<org.codehaus.jackson.map.SerializerProvider: void serializeValue(org.codehaus.jackson.map.SerializationConfig,org.codehaus.jackson.JsonGenerator,java.lang.Object,org.codehaus.jackson.map.SerializerFactory)>($r4, $r1, $r2, $r7);
+
+     label04:
+        $z0 = 1;
+
+     label05:
+        virtualinvoke $r1.<org.codehaus.jackson.JsonGenerator: void close()>();
+
+     label06:
+        goto label11;
+
+     label07:
+        $r8 := @caughtexception;
+
+        if $z0 != 0 goto label09;
+
+     label08:
+        virtualinvoke $r1.<org.codehaus.jackson.JsonGenerator: void close()>();
+
+     label09:
+        throw $r8;
+
+     label10:
+        $r9 := @caughtexception;
+
+        goto label09;
+
+     label11:
+        return;
+
+        catch java.lang.Throwable from label03 to label04 with label07;
+        catch java.lang.Throwable from label05 to label06 with label07;
+        catch java.io.IOException from label08 to label09 with label10;
+    }
+
+    protected java.lang.Object _convert(java.lang.Object, org.codehaus.jackson.type.JavaType) throws java.lang.IllegalArgumentException
+    {
+        org.codehaus.jackson.map.ObjectMapper r0;
+        java.lang.Object $r1;
+        org.codehaus.jackson.type.JavaType $r2;
+        org.codehaus.jackson.JsonParser $r4;
+        java.lang.Throwable $r5;
+        java.lang.String $r6;
+        org.codehaus.jackson.util.TokenBuffer $r7;
+        java.lang.IllegalArgumentException $r8;
+        java.io.IOException $r9;
+
+        r0 := @this: org.codehaus.jackson.map.ObjectMapper;
+
+        $r1 := @parameter0: java.lang.Object;
+
+        $r2 := @parameter1: org.codehaus.jackson.type.JavaType;
+
+        if $r1 != null goto label1;
+
+        return null;
+
+     label1:
+        $r7 = new org.codehaus.jackson.util.TokenBuffer;
+
+        specialinvoke $r7.<org.codehaus.jackson.util.TokenBuffer: void <init>(org.codehaus.jackson.ObjectCodec)>(r0);
+
+     label2:
+        virtualinvoke r0.<org.codehaus.jackson.map.ObjectMapper: void writeValue(org.codehaus.jackson.JsonGenerator,java.lang.Object)>($r7, $r1);
+
+        $r4 = virtualinvoke $r7.<org.codehaus.jackson.util.TokenBuffer: org.codehaus.jackson.JsonParser asParser()>();
+
+        $r1 = virtualinvoke r0.<org.codehaus.jackson.map.ObjectMapper: java.lang.Object readValue(org.codehaus.jackson.JsonParser,org.codehaus.jackson.type.JavaType)>($r4, $r2);
+
+        virtualinvoke $r4.<org.codehaus.jackson.JsonParser: void close()>();
+
+     label3:
+        return $r1;
+
+     label4:
+        $r5 := @caughtexception;
+
+        $r8 = new java.lang.IllegalArgumentException;
+
+        $r9 = (java.io.IOException) $r5;
+
+        $r6 = virtualinvoke $r9.<java.io.IOException: java.lang.String getMessage()>();
+
+        specialinvoke $r8.<java.lang.IllegalArgumentException: void <init>(java.lang.String,java.lang.Throwable)>($r6, $r5);
+
+        throw $r8;
+
+        catch java.io.IOException from label2 to label3 with label4;
+    }
+
+    protected org.codehaus.jackson.map.DeserializationContext _createDeserializationContext(org.codehaus.jackson.JsonParser, org.codehaus.jackson.map.DeserializationConfig)
+    {
+        org.codehaus.jackson.map.ObjectMapper r0;
+        org.codehaus.jackson.JsonParser $r1;
+        org.codehaus.jackson.map.DeserializationConfig $r2;
+        org.codehaus.jackson.map.deser.StdDeserializationContext $r3;
+        org.codehaus.jackson.map.DeserializerProvider $r4;
+
+        r0 := @this: org.codehaus.jackson.map.ObjectMapper;
+
+        $r1 := @parameter0: org.codehaus.jackson.JsonParser;
+
+        $r2 := @parameter1: org.codehaus.jackson.map.DeserializationConfig;
+
+        $r3 = new org.codehaus.jackson.map.deser.StdDeserializationContext;
+
+        $r4 = r0.<org.codehaus.jackson.map.ObjectMapper: org.codehaus.jackson.map.DeserializerProvider _deserializerProvider>;
+
+        specialinvoke $r3.<org.codehaus.jackson.map.deser.StdDeserializationContext: void <init>(org.codehaus.jackson.map.DeserializationConfig,org.codehaus.jackson.JsonParser,org.codehaus.jackson.map.DeserializerProvider)>($r2, $r1, $r4);
+
+        return $r3;
+    }
+
+    protected org.codehaus.jackson.PrettyPrinter _defaultPrettyPrinter()
+    {
+        org.codehaus.jackson.map.ObjectMapper r0;
+        org.codehaus.jackson.util.DefaultPrettyPrinter $r1;
+
+        r0 := @this: org.codehaus.jackson.map.ObjectMapper;
+
+        $r1 = new org.codehaus.jackson.util.DefaultPrettyPrinter;
+
+        specialinvoke $r1.<org.codehaus.jackson.util.DefaultPrettyPrinter: void <init>()>();
+
+        return $r1;
+    }
+
+    protected org.codehaus.jackson.map.JsonDeserializer _findRootDeserializer(org.codehaus.jackson.map.DeserializationConfig, org.codehaus.jackson.type.JavaType) throws org.codehaus.jackson.map.JsonMappingException
+    {
+        org.codehaus.jackson.map.ObjectMapper r0;
+        org.codehaus.jackson.map.DeserializationConfig $r1;
+        org.codehaus.jackson.type.JavaType $r2;
+        java.util.concurrent.ConcurrentHashMap $r3;
+        java.lang.Object $r4;
+        org.codehaus.jackson.map.JsonDeserializer r5;
+        org.codehaus.jackson.map.DeserializerProvider $r6;
+        org.codehaus.jackson.map.JsonMappingException $r7;
+        java.lang.StringBuilder $r8;
+        java.lang.String $r9;
+
+        r0 := @this: org.codehaus.jackson.map.ObjectMapper;
+
+        $r1 := @parameter0: org.codehaus.jackson.map.DeserializationConfig;
+
+        $r2 := @parameter1: org.codehaus.jackson.type.JavaType;
+
+        $r3 = r0.<org.codehaus.jackson.map.ObjectMapper: java.util.concurrent.ConcurrentHashMap _rootDeserializers>;
+
+        $r4 = virtualinvoke $r3.<java.util.concurrent.ConcurrentHashMap: java.lang.Object get(java.lang.Object)>($r2);
+
+        r5 = (org.codehaus.jackson.map.JsonDeserializer) $r4;
+
+        if r5 == null goto label1;
+
+        return r5;
+
+     label1:
+        $r6 = r0.<org.codehaus.jackson.map.ObjectMapper: org.codehaus.jackson.map.DeserializerProvider _deserializerProvider>;
+
+        r5 = virtualinvoke $r6.<org.codehaus.jackson.map.DeserializerProvider: org.codehaus.jackson.map.JsonDeserializer findTypedValueDeserializer(org.codehaus.jackson.map.DeserializationConfig,org.codehaus.jackson.type.JavaType,org.codehaus.jackson.map.BeanProperty)>($r1, $r2, null);
+
+        if r5 != null goto label2;
+
+        $r7 = new org.codehaus.jackson.map.JsonMappingException;
+
+        $r8 = new java.lang.StringBuilder;
+
+        specialinvoke $r8.<java.lang.StringBuilder: void <init>()>();
+
+        $r8 = virtualinvoke $r8.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Can not find a deserializer for type ");
+
+        $r8 = virtualinvoke $r8.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($r2);
+
+        $r9 = virtualinvoke $r8.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke $r7.<org.codehaus.jackson.map.JsonMappingException: void <init>(java.lang.String)>($r9);
+
+        throw $r7;
+
+     label2:
+        $r3 = r0.<org.codehaus.jackson.map.ObjectMapper: java.util.concurrent.ConcurrentHashMap _rootDeserializers>;
+
+        virtualinvoke $r3.<java.util.concurrent.ConcurrentHashMap: java.lang.Object put(java.lang.Object,java.lang.Object)>($r2, r5);
+
+        return r5;
+    }
+
+    protected org.codehaus.jackson.JsonToken _initForReading(org.codehaus.jackson.JsonParser) throws java.io.IOException, org.codehaus.jackson.JsonParseException, org.codehaus.jackson.map.JsonMappingException
+    {
+        org.codehaus.jackson.map.ObjectMapper r0;
+        org.codehaus.jackson.JsonParser $r1;
+        java.io.EOFException $r2;
+        org.codehaus.jackson.JsonToken $r3;
+
+        r0 := @this: org.codehaus.jackson.map.ObjectMapper;
+
+        $r1 := @parameter0: org.codehaus.jackson.JsonParser;
+
+        $r3 = virtualinvoke $r1.<org.codehaus.jackson.JsonParser: org.codehaus.jackson.JsonToken getCurrentToken()>();
+
+        if $r3 != null goto label1;
+
+        $r3 = virtualinvoke $r1.<org.codehaus.jackson.JsonParser: org.codehaus.jackson.JsonToken nextToken()>();
+
+        if $r3 != null goto label1;
+
+        $r2 = new java.io.EOFException;
+
+        specialinvoke $r2.<java.io.EOFException: void <init>(java.lang.String)>("No content to map to Object due to end of input");
+
+        throw $r2;
+
+     label1:
+        return $r3;
+    }
+
+    protected java.lang.Object _readMapAndClose(org.codehaus.jackson.JsonParser, org.codehaus.jackson.type.JavaType) throws java.io.IOException, org.codehaus.jackson.JsonParseException, org.codehaus.jackson.map.JsonMappingException
+    {
+        org.codehaus.jackson.map.ObjectMapper r0;
+        org.codehaus.jackson.JsonParser $r1;
+        org.codehaus.jackson.type.JavaType $r2;
+        java.lang.Throwable $r3, $r10, $r11;
+        org.codehaus.jackson.JsonToken $r4, $r5;
+        java.lang.Object r6;
+        org.codehaus.jackson.map.DeserializationConfig $r7;
+        org.codehaus.jackson.map.DeserializationContext $r8;
+        org.codehaus.jackson.map.JsonDeserializer $r9;
+
+        r0 := @this: org.codehaus.jackson.map.ObjectMapper;
+
+        $r1 := @parameter0: org.codehaus.jackson.JsonParser;
+
+        $r2 := @parameter1: org.codehaus.jackson.type.JavaType;
+
+     label01:
+        $r4 = virtualinvoke r0.<org.codehaus.jackson.map.ObjectMapper: org.codehaus.jackson.JsonToken _initForReading(org.codehaus.jackson.JsonParser)>($r1);
+
+        $r5 = <org.codehaus.jackson.JsonToken: org.codehaus.jackson.JsonToken VALUE_NULL>;
+
+     label02:
+        if $r4 == $r5 goto label07;
+
+     label03:
+        $r5 = <org.codehaus.jackson.JsonToken: org.codehaus.jackson.JsonToken END_ARRAY>;
+
+     label04:
+        if $r4 == $r5 goto label07;
+
+     label05:
+        $r5 = <org.codehaus.jackson.JsonToken: org.codehaus.jackson.JsonToken END_OBJECT>;
+
+     label06:
+        if $r4 != $r5 goto label11;
+
+     label07:
+        r6 = null;
+
+     label08:
+        virtualinvoke $r1.<org.codehaus.jackson.JsonParser: void clearCurrentToken()>();
+
+     label09:
+        virtualinvoke $r1.<org.codehaus.jackson.JsonParser: void close()>();
+
+     label10:
+        return r6;
+
+     label11:
+        $r7 = virtualinvoke r0.<org.codehaus.jackson.map.ObjectMapper: org.codehaus.jackson.map.DeserializationConfig copyDeserializationConfig()>();
+
+        $r8 = virtualinvoke r0.<org.codehaus.jackson.map.ObjectMapper: org.codehaus.jackson.map.DeserializationContext _createDeserializationContext(org.codehaus.jackson.JsonParser,org.codehaus.jackson.map.DeserializationConfig)>($r1, $r7);
+
+        $r9 = virtualinvoke r0.<org.codehaus.jackson.map.ObjectMapper: org.codehaus.jackson.map.JsonDeserializer _findRootDeserializer(org.codehaus.jackson.map.DeserializationConfig,org.codehaus.jackson.type.JavaType)>($r7, $r2);
+
+        r6 = virtualinvoke $r9.<org.codehaus.jackson.map.JsonDeserializer: java.lang.Object deserialize(org.codehaus.jackson.JsonParser,org.codehaus.jackson.map.DeserializationContext)>($r1, $r8);
+
+     label12:
+        goto label08;
+
+     label13:
+        $r10 := @caughtexception;
+
+     label14:
+        virtualinvoke $r1.<org.codehaus.jackson.JsonParser: void close()>();
+
+     label15:
+        throw $r10;
+
+     label16:
+        $r11 := @caughtexception;
+
+        return r6;
+
+     label17:
+        $r3 := @caughtexception;
+
+        goto label15;
+
+        catch java.lang.Throwable from label01 to label02 with label13;
+        catch java.lang.Throwable from label03 to label04 with label13;
+        catch java.lang.Throwable from label05 to label06 with label13;
+        catch java.lang.Throwable from label08 to label09 with label13;
+        catch java.io.IOException from label09 to label10 with label16;
+        catch java.lang.Throwable from label11 to label12 with label13;
+        catch java.io.IOException from label14 to label15 with label17;
+    }
+
+    protected java.lang.Object _readValue(org.codehaus.jackson.map.DeserializationConfig, org.codehaus.jackson.JsonParser, org.codehaus.jackson.type.JavaType) throws java.io.IOException, org.codehaus.jackson.JsonParseException, org.codehaus.jackson.map.JsonMappingException
+    {
+        org.codehaus.jackson.map.ObjectMapper r0;
+        org.codehaus.jackson.map.DeserializationConfig $r1;
+        org.codehaus.jackson.JsonParser $r2;
+        org.codehaus.jackson.type.JavaType $r3;
+        org.codehaus.jackson.JsonToken $r4, $r5;
+        java.lang.Object r6;
+        org.codehaus.jackson.map.DeserializationContext $r7;
+        org.codehaus.jackson.map.JsonDeserializer $r8;
+
+        r0 := @this: org.codehaus.jackson.map.ObjectMapper;
+
+        $r1 := @parameter0: org.codehaus.jackson.map.DeserializationConfig;
+
+        $r2 := @parameter1: org.codehaus.jackson.JsonParser;
+
+        $r3 := @parameter2: org.codehaus.jackson.type.JavaType;
+
+        $r4 = virtualinvoke r0.<org.codehaus.jackson.map.ObjectMapper: org.codehaus.jackson.JsonToken _initForReading(org.codehaus.jackson.JsonParser)>($r2);
+
+        $r5 = <org.codehaus.jackson.JsonToken: org.codehaus.jackson.JsonToken VALUE_NULL>;
+
+        if $r4 == $r5 goto label1;
+
+        $r5 = <org.codehaus.jackson.JsonToken: org.codehaus.jackson.JsonToken END_ARRAY>;
+
+        if $r4 == $r5 goto label1;
+
+        $r5 = <org.codehaus.jackson.JsonToken: org.codehaus.jackson.JsonToken END_OBJECT>;
+
+        if $r4 != $r5 goto label3;
+
+     label1:
+        r6 = null;
+
+     label2:
+        virtualinvoke $r2.<org.codehaus.jackson.JsonParser: void clearCurrentToken()>();
+
+        return r6;
+
+     label3:
+        $r7 = virtualinvoke r0.<org.codehaus.jackson.map.ObjectMapper: org.codehaus.jackson.map.DeserializationContext _createDeserializationContext(org.codehaus.jackson.JsonParser,org.codehaus.jackson.map.DeserializationConfig)>($r2, $r1);
+
+        $r8 = virtualinvoke r0.<org.codehaus.jackson.map.ObjectMapper: org.codehaus.jackson.map.JsonDeserializer _findRootDeserializer(org.codehaus.jackson.map.DeserializationConfig,org.codehaus.jackson.type.JavaType)>($r1, $r3);
+
+        r6 = virtualinvoke $r8.<org.codehaus.jackson.map.JsonDeserializer: java.lang.Object deserialize(org.codehaus.jackson.JsonParser,org.codehaus.jackson.map.DeserializationContext)>($r2, $r7);
+
+        goto label2;
+    }
+
+    public boolean canDeserialize(org.codehaus.jackson.type.JavaType)
+    {
+        org.codehaus.jackson.map.ObjectMapper r0;
+        org.codehaus.jackson.type.JavaType $r1;
+        org.codehaus.jackson.map.DeserializationConfig $r2;
+        boolean $z0;
+        org.codehaus.jackson.map.DeserializerProvider $r3;
+
+        r0 := @this: org.codehaus.jackson.map.ObjectMapper;
+
+        $r1 := @parameter0: org.codehaus.jackson.type.JavaType;
+
+        $r3 = r0.<org.codehaus.jackson.map.ObjectMapper: org.codehaus.jackson.map.DeserializerProvider _deserializerProvider>;
+
+        $r2 = r0.<org.codehaus.jackson.map.ObjectMapper: org.codehaus.jackson.map.DeserializationConfig _deserializationConfig>;
+
+        $z0 = virtualinvoke $r3.<org.codehaus.jackson.map.DeserializerProvider: boolean hasValueDeserializerFor(org.codehaus.jackson.map.DeserializationConfig,org.codehaus.jackson.type.JavaType)>($r2, $r1);
+
+        return $z0;
+    }
+
+    public boolean canSerialize(java.lang.Class)
+    {
+        org.codehaus.jackson.map.ObjectMapper r0;
+        java.lang.Class r1;
+        org.codehaus.jackson.map.SerializationConfig $r2;
+        org.codehaus.jackson.map.SerializerFactory $r3;
+        boolean $z0;
+        org.codehaus.jackson.map.SerializerProvider $r4;
+
+        r0 := @this: org.codehaus.jackson.map.ObjectMapper;
+
+        r1 := @parameter0: java.lang.Class;
+
+        $r4 = r0.<org.codehaus.jackson.map.ObjectMapper: org.codehaus.jackson.map.SerializerProvider _serializerProvider>;
+
+        $r2 = r0.<org.codehaus.jackson.map.ObjectMapper: org.codehaus.jackson.map.SerializationConfig _serializationConfig>;
+
+        $r3 = r0.<org.codehaus.jackson.map.ObjectMapper: org.codehaus.jackson.map.SerializerFactory _serializerFactory>;
+
+        $z0 = virtualinvoke $r4.<org.codehaus.jackson.map.SerializerProvider: boolean hasSerializerFor(org.codehaus.jackson.map.SerializationConfig,java.lang.Class,org.codehaus.jackson.map.SerializerFactory)>($r2, r1, $r3);
+
+        return $z0;
+    }
+
+    public org.codehaus.jackson.map.ObjectMapper configure(org.codehaus.jackson.JsonGenerator$Feature, boolean)
+    {
+        org.codehaus.jackson.map.ObjectMapper r0;
+        org.codehaus.jackson.JsonGenerator$Feature $r1;
+        boolean $z0;
+        org.codehaus.jackson.JsonFactory $r2;
+
+        r0 := @this: org.codehaus.jackson.map.ObjectMapper;
+
+        $r1 := @parameter0: org.codehaus.jackson.JsonGenerator$Feature;
+
+        $z0 := @parameter1: boolean;
+
+        $r2 = r0.<org.codehaus.jackson.map.ObjectMapper: org.codehaus.jackson.JsonFactory _jsonFactory>;
+
+        virtualinvoke $r2.<org.codehaus.jackson.JsonFactory: org.codehaus.jackson.JsonFactory configure(org.codehaus.jackson.JsonGenerator$Feature,boolean)>($r1, $z0);
+
+        return r0;
+    }
+
+    public org.codehaus.jackson.map.ObjectMapper configure(org.codehaus.jackson.JsonParser$Feature, boolean)
+    {
+        org.codehaus.jackson.map.ObjectMapper r0;
+        org.codehaus.jackson.JsonParser$Feature $r1;
+        boolean $z0;
+        org.codehaus.jackson.JsonFactory $r2;
+
+        r0 := @this: org.codehaus.jackson.map.ObjectMapper;
+
+        $r1 := @parameter0: org.codehaus.jackson.JsonParser$Feature;
+
+        $z0 := @parameter1: boolean;
+
+        $r2 = r0.<org.codehaus.jackson.map.ObjectMapper: org.codehaus.jackson.JsonFactory _jsonFactory>;
+
+        virtualinvoke $r2.<org.codehaus.jackson.JsonFactory: org.codehaus.jackson.JsonFactory configure(org.codehaus.jackson.JsonParser$Feature,boolean)>($r1, $z0);
+
+        return r0;
+    }
+
+    public org.codehaus.jackson.map.ObjectMapper configure(org.codehaus.jackson.map.DeserializationConfig$Feature, boolean)
+    {
+        org.codehaus.jackson.map.ObjectMapper r0;
+        org.codehaus.jackson.map.DeserializationConfig$Feature $r1;
+        boolean $z0;
+        org.codehaus.jackson.map.DeserializationConfig $r2;
+
+        r0 := @this: org.codehaus.jackson.map.ObjectMapper;
+
+        $r1 := @parameter0: org.codehaus.jackson.map.DeserializationConfig$Feature;
+
+        $z0 := @parameter1: boolean;
+
+        $r2 = r0.<org.codehaus.jackson.map.ObjectMapper: org.codehaus.jackson.map.DeserializationConfig _deserializationConfig>;
+
+        virtualinvoke $r2.<org.codehaus.jackson.map.DeserializationConfig: void set(org.codehaus.jackson.map.DeserializationConfig$Feature,boolean)>($r1, $z0);
+
+        return r0;
+    }
+
+    public org.codehaus.jackson.map.ObjectMapper configure(org.codehaus.jackson.map.SerializationConfig$Feature, boolean)
+    {
+        org.codehaus.jackson.map.ObjectMapper r0;
+        org.codehaus.jackson.map.SerializationConfig$Feature $r1;
+        boolean $z0;
+        org.codehaus.jackson.map.SerializationConfig $r2;
+
+        r0 := @this: org.codehaus.jackson.map.ObjectMapper;
+
+        $r1 := @parameter0: org.codehaus.jackson.map.SerializationConfig$Feature;
+
+        $z0 := @parameter1: boolean;
+
+        $r2 = r0.<org.codehaus.jackson.map.ObjectMapper: org.codehaus.jackson.map.SerializationConfig _serializationConfig>;
+
+        virtualinvoke $r2.<org.codehaus.jackson.map.SerializationConfig: void set(org.codehaus.jackson.map.SerializationConfig$Feature,boolean)>($r1, $z0);
+
+        return r0;
+    }
+
+    public java.lang.Object convertValue(java.lang.Object, java.lang.Class) throws java.lang.IllegalArgumentException
+    {
+        org.codehaus.jackson.map.ObjectMapper r0;
+        java.lang.Object $r1;
+        java.lang.Class r2;
+        org.codehaus.jackson.type.JavaType $r3;
+
+        r0 := @this: org.codehaus.jackson.map.ObjectMapper;
+
+        $r1 := @parameter0: java.lang.Object;
+
+        r2 := @parameter1: java.lang.Class;
+
+        $r3 = staticinvoke <org.codehaus.jackson.map.type.TypeFactory: org.codehaus.jackson.type.JavaType type(java.lang.reflect.Type)>(r2);
+
+        $r1 = virtualinvoke r0.<org.codehaus.jackson.map.ObjectMapper: java.lang.Object _convert(java.lang.Object,org.codehaus.jackson.type.JavaType)>($r1, $r3);
+
+        return $r1;
+    }
+
+    public java.lang.Object convertValue(java.lang.Object, org.codehaus.jackson.type.JavaType) throws java.lang.IllegalArgumentException
+    {
+        org.codehaus.jackson.map.ObjectMapper r0;
+        java.lang.Object $r1;
+        org.codehaus.jackson.type.JavaType $r2;
+
+        r0 := @this: org.codehaus.jackson.map.ObjectMapper;
+
+        $r1 := @parameter0: java.lang.Object;
+
+        $r2 := @parameter1: org.codehaus.jackson.type.JavaType;
+
+        $r1 = virtualinvoke r0.<org.codehaus.jackson.map.ObjectMapper: java.lang.Object _convert(java.lang.Object,org.codehaus.jackson.type.JavaType)>($r1, $r2);
+
+        return $r1;
+    }
+
+    public java.lang.Object convertValue(java.lang.Object, org.codehaus.jackson.type.TypeReference) throws java.lang.IllegalArgumentException
+    {
+        org.codehaus.jackson.map.ObjectMapper r0;
+        java.lang.Object $r1;
+        org.codehaus.jackson.type.TypeReference $r2;
+        org.codehaus.jackson.type.JavaType $r3;
+
+        r0 := @this: org.codehaus.jackson.map.ObjectMapper;
+
+        $r1 := @parameter0: java.lang.Object;
+
+        $r2 := @parameter1: org.codehaus.jackson.type.TypeReference;
+
+        $r3 = staticinvoke <org.codehaus.jackson.map.type.TypeFactory: org.codehaus.jackson.type.JavaType type(org.codehaus.jackson.type.TypeReference)>($r2);
+
+        $r1 = virtualinvoke r0.<org.codehaus.jackson.map.ObjectMapper: java.lang.Object _convert(java.lang.Object,org.codehaus.jackson.type.JavaType)>($r1, $r3);
+
+        return $r1;
+    }
+
+    public org.codehaus.jackson.map.DeserializationConfig copyDeserializationConfig()
+    {
+        org.codehaus.jackson.map.ObjectMapper r0;
+        org.codehaus.jackson.map.jsontype.TypeResolverBuilder $r1;
+        org.codehaus.jackson.map.introspect.VisibilityChecker $r2;
+        org.codehaus.jackson.map.jsontype.SubtypeResolver $r3;
+        org.codehaus.jackson.map.DeserializationConfig $r4;
+
+        r0 := @this: org.codehaus.jackson.map.ObjectMapper;
+
+        $r4 = r0.<org.codehaus.jackson.map.ObjectMapper: org.codehaus.jackson.map.DeserializationConfig _deserializationConfig>;
+
+        $r1 = r0.<org.codehaus.jackson.map.ObjectMapper: org.codehaus.jackson.map.jsontype.TypeResolverBuilder _defaultTyper>;
+
+        $r2 = r0.<org.codehaus.jackson.map.ObjectMapper: org.codehaus.jackson.map.introspect.VisibilityChecker _visibilityChecker>;
+
+        $r3 = r0.<org.codehaus.jackson.map.ObjectMapper: org.codehaus.jackson.map.jsontype.SubtypeResolver _subtypeResolver>;
+
+        $r4 = virtualinvoke $r4.<org.codehaus.jackson.map.DeserializationConfig: org.codehaus.jackson.map.DeserializationConfig createUnshared(org.codehaus.jackson.map.jsontype.TypeResolverBuilder,org.codehaus.jackson.map.introspect.VisibilityChecker,org.codehaus.jackson.map.jsontype.SubtypeResolver)>($r1, $r2, $r3);
+
+        return $r4;
+    }
+
+    public org.codehaus.jackson.map.SerializationConfig copySerializationConfig()
+    {
+        org.codehaus.jackson.map.ObjectMapper r0;
+        org.codehaus.jackson.map.jsontype.TypeResolverBuilder $r1;
+        org.codehaus.jackson.map.introspect.VisibilityChecker $r2;
+        org.codehaus.jackson.map.jsontype.SubtypeResolver $r3;
+        org.codehaus.jackson.map.SerializationConfig $r4;
+
+        r0 := @this: org.codehaus.jackson.map.ObjectMapper;
+
+        $r4 = r0.<org.codehaus.jackson.map.ObjectMapper: org.codehaus.jackson.map.SerializationConfig _serializationConfig>;
+
+        $r1 = r0.<org.codehaus.jackson.map.ObjectMapper: org.codehaus.jackson.map.jsontype.TypeResolverBuilder _defaultTyper>;
+
+        $r2 = r0.<org.codehaus.jackson.map.ObjectMapper: org.codehaus.jackson.map.introspect.VisibilityChecker _visibilityChecker>;
+
+        $r3 = r0.<org.codehaus.jackson.map.ObjectMapper: org.codehaus.jackson.map.jsontype.SubtypeResolver _subtypeResolver>;
+
+        $r4 = virtualinvoke $r4.<org.codehaus.jackson.map.SerializationConfig: org.codehaus.jackson.map.SerializationConfig createUnshared(org.codehaus.jackson.map.jsontype.TypeResolverBuilder,org.codehaus.jackson.map.introspect.VisibilityChecker,org.codehaus.jackson.map.jsontype.SubtypeResolver,org.codehaus.jackson.map.ser.FilterProvider)>($r1, $r2, $r3, null);
+
+        return $r4;
+    }
+
+    public volatile org.codehaus.jackson.JsonNode createArrayNode()
+    {
+        org.codehaus.jackson.map.ObjectMapper r0;
+        org.codehaus.jackson.node.ArrayNode $r1;
+
+        r0 := @this: org.codehaus.jackson.map.ObjectMapper;
+
+        $r1 = virtualinvoke r0.<org.codehaus.jackson.map.ObjectMapper: org.codehaus.jackson.node.ArrayNode createArrayNode()>();
+
+        return $r1;
+    }
+
+    public org.codehaus.jackson.node.ArrayNode createArrayNode()
+    {
+        org.codehaus.jackson.map.ObjectMapper r0;
+        org.codehaus.jackson.map.DeserializationConfig $r1;
+        org.codehaus.jackson.node.JsonNodeFactory $r2;
+        org.codehaus.jackson.node.ArrayNode $r3;
+
+        r0 := @this: org.codehaus.jackson.map.ObjectMapper;
+
+        $r1 = r0.<org.codehaus.jackson.map.ObjectMapper: org.codehaus.jackson.map.DeserializationConfig _deserializationConfig>;
+
+        $r2 = virtualinvoke $r1.<org.codehaus.jackson.map.DeserializationConfig: org.codehaus.jackson.node.JsonNodeFactory getNodeFactory()>();
+
+        $r3 = virtualinvoke $r2.<org.codehaus.jackson.node.JsonNodeFactory: org.codehaus.jackson.node.ArrayNode arrayNode()>();
+
+        return $r3;
+    }
+
+    public volatile org.codehaus.jackson.JsonNode createObjectNode()
+    {
+        org.codehaus.jackson.map.ObjectMapper r0;
+        org.codehaus.jackson.node.ObjectNode $r1;
+
+        r0 := @this: org.codehaus.jackson.map.ObjectMapper;
+
+        $r1 = virtualinvoke r0.<org.codehaus.jackson.map.ObjectMapper: org.codehaus.jackson.node.ObjectNode createObjectNode()>();
+
+        return $r1;
+    }
+
+    public org.codehaus.jackson.node.ObjectNode createObjectNode()
+    {
+        org.codehaus.jackson.map.ObjectMapper r0;
+        org.codehaus.jackson.map.DeserializationConfig $r1;
+        org.codehaus.jackson.node.JsonNodeFactory $r2;
+        org.codehaus.jackson.node.ObjectNode $r3;
+
+        r0 := @this: org.codehaus.jackson.map.ObjectMapper;
+
+        $r1 = r0.<org.codehaus.jackson.map.ObjectMapper: org.codehaus.jackson.map.DeserializationConfig _deserializationConfig>;
+
+        $r2 = virtualinvoke $r1.<org.codehaus.jackson.map.DeserializationConfig: org.codehaus.jackson.node.JsonNodeFactory getNodeFactory()>();
+
+        $r3 = virtualinvoke $r2.<org.codehaus.jackson.node.JsonNodeFactory: org.codehaus.jackson.node.ObjectNode objectNode()>();
+
+        return $r3;
+    }
+
+    public org.codehaus.jackson.map.ObjectWriter defaultPrettyPrintingWriter()
+    {
+        org.codehaus.jackson.map.ObjectMapper r0;
+        org.codehaus.jackson.map.ObjectWriter $r1;
+        org.codehaus.jackson.PrettyPrinter $r2;
+
+        r0 := @this: org.codehaus.jackson.map.ObjectMapper;
+
+        $r1 = new org.codehaus.jackson.map.ObjectWriter;
+
+        $r2 = virtualinvoke r0.<org.codehaus.jackson.map.ObjectMapper: org.codehaus.jackson.PrettyPrinter _defaultPrettyPrinter()>();
+
+        specialinvoke $r1.<org.codehaus.jackson.map.ObjectWriter: void <init>(org.codehaus.jackson.map.ObjectMapper,java.lang.Class,org.codehaus.jackson.type.JavaType,org.codehaus.jackson.PrettyPrinter)>(r0, null, null, $r2);
+
+        return $r1;
+    }
+
+    public org.codehaus.jackson.map.ObjectMapper disableDefaultTyping()
+    {
+        org.codehaus.jackson.map.ObjectMapper r0;
+
+        r0 := @this: org.codehaus.jackson.map.ObjectMapper;
+
+        r0 = virtualinvoke r0.<org.codehaus.jackson.map.ObjectMapper: org.codehaus.jackson.map.ObjectMapper setDefaultTyping(org.codehaus.jackson.map.jsontype.TypeResolverBuilder)>(null);
+
+        return r0;
+    }
+
+    public org.codehaus.jackson.map.ObjectMapper enableDefaultTyping()
+    {
+        org.codehaus.jackson.map.ObjectMapper r0;
+        org.codehaus.jackson.map.ObjectMapper$DefaultTyping $r1;
+
+        r0 := @this: org.codehaus.jackson.map.ObjectMapper;
+
+        $r1 = <org.codehaus.jackson.map.ObjectMapper$DefaultTyping: org.codehaus.jackson.map.ObjectMapper$DefaultTyping OBJECT_AND_NON_CONCRETE>;
+
+        r0 = virtualinvoke r0.<org.codehaus.jackson.map.ObjectMapper: org.codehaus.jackson.map.ObjectMapper enableDefaultTyping(org.codehaus.jackson.map.ObjectMapper$DefaultTyping)>($r1);
+
+        return r0;
+    }
+
+    public org.codehaus.jackson.map.ObjectMapper enableDefaultTyping(org.codehaus.jackson.map.ObjectMapper$DefaultTyping)
+    {
+        org.codehaus.jackson.map.ObjectMapper r0;
+        org.codehaus.jackson.map.ObjectMapper$DefaultTyping $r1;
+        org.codehaus.jackson.annotate.JsonTypeInfo$As $r2;
+
+        r0 := @this: org.codehaus.jackson.map.ObjectMapper;
+
+        $r1 := @parameter0: org.codehaus.jackson.map.ObjectMapper$DefaultTyping;
+
+        $r2 = <org.codehaus.jackson.annotate.JsonTypeInfo$As: org.codehaus.jackson.annotate.JsonTypeInfo$As WRAPPER_ARRAY>;
+
+        r0 = virtualinvoke r0.<org.codehaus.jackson.map.ObjectMapper: org.codehaus.jackson.map.ObjectMapper enableDefaultTyping(org.codehaus.jackson.map.ObjectMapper$DefaultTyping,org.codehaus.jackson.annotate.JsonTypeInfo$As)>($r1, $r2);
+
+        return r0;
+    }
+
+    public org.codehaus.jackson.map.ObjectMapper enableDefaultTyping(org.codehaus.jackson.map.ObjectMapper$DefaultTyping, org.codehaus.jackson.annotate.JsonTypeInfo$As)
+    {
+        org.codehaus.jackson.map.ObjectMapper r0;
+        org.codehaus.jackson.map.ObjectMapper$DefaultTyping $r1;
+        org.codehaus.jackson.annotate.JsonTypeInfo$As $r2;
+        org.codehaus.jackson.map.ObjectMapper$DefaultTypeResolverBuilder r3;
+        org.codehaus.jackson.annotate.JsonTypeInfo$Id $r4;
+        org.codehaus.jackson.map.jsontype.TypeResolverBuilder $r5;
+
+        r0 := @this: org.codehaus.jackson.map.ObjectMapper;
+
+        $r1 := @parameter0: org.codehaus.jackson.map.ObjectMapper$DefaultTyping;
+
+        $r2 := @parameter1: org.codehaus.jackson.annotate.JsonTypeInfo$As;
+
+        r3 = new org.codehaus.jackson.map.ObjectMapper$DefaultTypeResolverBuilder;
+
+        specialinvoke r3.<org.codehaus.jackson.map.ObjectMapper$DefaultTypeResolverBuilder: void <init>(org.codehaus.jackson.map.ObjectMapper$DefaultTyping)>($r1);
+
+        $r4 = <org.codehaus.jackson.annotate.JsonTypeInfo$Id: org.codehaus.jackson.annotate.JsonTypeInfo$Id CLASS>;
+
+        $r5 = interfaceinvoke r3.<org.codehaus.jackson.map.jsontype.TypeResolverBuilder: org.codehaus.jackson.map.jsontype.TypeResolverBuilder init(org.codehaus.jackson.annotate.JsonTypeInfo$Id,org.codehaus.jackson.map.jsontype.TypeIdResolver)>($r4, null);
+
+        $r5 = interfaceinvoke $r5.<org.codehaus.jackson.map.jsontype.TypeResolverBuilder: org.codehaus.jackson.map.jsontype.TypeResolverBuilder inclusion(org.codehaus.jackson.annotate.JsonTypeInfo$As)>($r2);
+
+        r0 = virtualinvoke r0.<org.codehaus.jackson.map.ObjectMapper: org.codehaus.jackson.map.ObjectMapper setDefaultTyping(org.codehaus.jackson.map.jsontype.TypeResolverBuilder)>($r5);
+
+        return r0;
+    }
+
+    public org.codehaus.jackson.map.ObjectMapper enableDefaultTypingAsProperty(org.codehaus.jackson.map.ObjectMapper$DefaultTyping, java.lang.String)
+    {
+        org.codehaus.jackson.map.ObjectMapper r0;
+        org.codehaus.jackson.map.ObjectMapper$DefaultTyping $r1;
+        java.lang.String $r2;
+        org.codehaus.jackson.map.ObjectMapper$DefaultTypeResolverBuilder r3;
+        org.codehaus.jackson.annotate.JsonTypeInfo$Id $r4;
+        org.codehaus.jackson.map.jsontype.TypeResolverBuilder $r5;
+        org.codehaus.jackson.annotate.JsonTypeInfo$As $r6;
+
+        r0 := @this: org.codehaus.jackson.map.ObjectMapper;
+
+        $r1 := @parameter0: org.codehaus.jackson.map.ObjectMapper$DefaultTyping;
+
+        $r2 := @parameter1: java.lang.String;
+
+        r3 = new org.codehaus.jackson.map.ObjectMapper$DefaultTypeResolverBuilder;
+
+        specialinvoke r3.<org.codehaus.jackson.map.ObjectMapper$DefaultTypeResolverBuilder: void <init>(org.codehaus.jackson.map.ObjectMapper$DefaultTyping)>($r1);
+
+        $r4 = <org.codehaus.jackson.annotate.JsonTypeInfo$Id: org.codehaus.jackson.annotate.JsonTypeInfo$Id CLASS>;
+
+        $r5 = interfaceinvoke r3.<org.codehaus.jackson.map.jsontype.TypeResolverBuilder: org.codehaus.jackson.map.jsontype.TypeResolverBuilder init(org.codehaus.jackson.annotate.JsonTypeInfo$Id,org.codehaus.jackson.map.jsontype.TypeIdResolver)>($r4, null);
+
+        $r6 = <org.codehaus.jackson.annotate.JsonTypeInfo$As: org.codehaus.jackson.annotate.JsonTypeInfo$As PROPERTY>;
+
+        $r5 = interfaceinvoke $r5.<org.codehaus.jackson.map.jsontype.TypeResolverBuilder: org.codehaus.jackson.map.jsontype.TypeResolverBuilder inclusion(org.codehaus.jackson.annotate.JsonTypeInfo$As)>($r6);
+
+        $r5 = interfaceinvoke $r5.<org.codehaus.jackson.map.jsontype.TypeResolverBuilder: org.codehaus.jackson.map.jsontype.TypeResolverBuilder typeProperty(java.lang.String)>($r2);
+
+        r0 = virtualinvoke r0.<org.codehaus.jackson.map.ObjectMapper: org.codehaus.jackson.map.ObjectMapper setDefaultTyping(org.codehaus.jackson.map.jsontype.TypeResolverBuilder)>($r5);
+
+        return r0;
+    }
+
+    public org.codehaus.jackson.map.ObjectWriter filteredWriter(org.codehaus.jackson.map.ser.FilterProvider)
+    {
+        org.codehaus.jackson.map.ObjectMapper r0;
+        org.codehaus.jackson.map.ser.FilterProvider $r1;
+        org.codehaus.jackson.map.ObjectWriter $r2;
+
+        r0 := @this: org.codehaus.jackson.map.ObjectMapper;
+
+        $r1 := @parameter0: org.codehaus.jackson.map.ser.FilterProvider;
+
+        $r2 = new org.codehaus.jackson.map.ObjectWriter;
+
+        specialinvoke $r2.<org.codehaus.jackson.map.ObjectWriter: void <init>(org.codehaus.jackson.map.ObjectMapper,org.codehaus.jackson.map.ser.FilterProvider)>(r0, $r1);
+
+        return $r2;
+    }
+
+    public org.codehaus.jackson.schema.JsonSchema generateJsonSchema(java.lang.Class) throws org.codehaus.jackson.map.JsonMappingException
+    {
+        org.codehaus.jackson.map.ObjectMapper r0;
+        java.lang.Class r1;
+        org.codehaus.jackson.map.SerializationConfig $r2;
+        org.codehaus.jackson.schema.JsonSchema $r3;
+
+        r0 := @this: org.codehaus.jackson.map.ObjectMapper;
+
+        r1 := @parameter0: java.lang.Class;
+
+        $r2 = virtualinvoke r0.<org.codehaus.jackson.map.ObjectMapper: org.codehaus.jackson.map.SerializationConfig copySerializationConfig()>();
+
+        $r3 = virtualinvoke r0.<org.codehaus.jackson.map.ObjectMapper: org.codehaus.jackson.schema.JsonSchema generateJsonSchema(java.lang.Class,org.codehaus.jackson.map.SerializationConfig)>(r1, $r2);
+
+        return $r3;
+    }
+
+    public org.codehaus.jackson.schema.JsonSchema generateJsonSchema(java.lang.Class, org.codehaus.jackson.map.SerializationConfig) throws org.codehaus.jackson.map.JsonMappingException
+    {
+        org.codehaus.jackson.map.ObjectMapper r0;
+        java.lang.Class r1;
+        org.codehaus.jackson.map.SerializationConfig $r2;
+        org.codehaus.jackson.map.SerializerFactory $r3;
+        org.codehaus.jackson.schema.JsonSchema $r4;
+        org.codehaus.jackson.map.SerializerProvider $r5;
+
+        r0 := @this: org.codehaus.jackson.map.ObjectMapper;
+
+        r1 := @parameter0: java.lang.Class;
+
+        $r2 := @parameter1: org.codehaus.jackson.map.SerializationConfig;
+
+        $r5 = r0.<org.codehaus.jackson.map.ObjectMapper: org.codehaus.jackson.map.SerializerProvider _serializerProvider>;
+
+        $r3 = r0.<org.codehaus.jackson.map.ObjectMapper: org.codehaus.jackson.map.SerializerFactory _serializerFactory>;
+
+        $r4 = virtualinvoke $r5.<org.codehaus.jackson.map.SerializerProvider: org.codehaus.jackson.schema.JsonSchema generateJsonSchema(java.lang.Class,org.codehaus.jackson.map.SerializationConfig,org.codehaus.jackson.map.SerializerFactory)>(r1, $r2, $r3);
+
+        return $r4;
+    }
+
+    public org.codehaus.jackson.map.DeserializationConfig getDeserializationConfig()
+    {
+        org.codehaus.jackson.map.ObjectMapper r0;
+        org.codehaus.jackson.map.DeserializationConfig r1;
+
+        r0 := @this: org.codehaus.jackson.map.ObjectMapper;
+
+        r1 = r0.<org.codehaus.jackson.map.ObjectMapper: org.codehaus.jackson.map.DeserializationConfig _deserializationConfig>;
+
+        return r1;
+    }
+
+    public org.codehaus.jackson.map.DeserializerProvider getDeserializerProvider()
+    {
+        org.codehaus.jackson.map.ObjectMapper r0;
+        org.codehaus.jackson.map.DeserializerProvider r1;
+
+        r0 := @this: org.codehaus.jackson.map.ObjectMapper;
+
+        r1 = r0.<org.codehaus.jackson.map.ObjectMapper: org.codehaus.jackson.map.DeserializerProvider _deserializerProvider>;
+
+        return r1;
+    }
+
+    public org.codehaus.jackson.JsonFactory getJsonFactory()
+    {
+        org.codehaus.jackson.map.ObjectMapper r0;
+        org.codehaus.jackson.JsonFactory r1;
+
+        r0 := @this: org.codehaus.jackson.map.ObjectMapper;
+
+        r1 = r0.<org.codehaus.jackson.map.ObjectMapper: org.codehaus.jackson.JsonFactory _jsonFactory>;
+
+        return r1;
+    }
+
+    public org.codehaus.jackson.node.JsonNodeFactory getNodeFactory()
+    {
+        org.codehaus.jackson.map.ObjectMapper r0;
+        org.codehaus.jackson.node.JsonNodeFactory $r1;
+        org.codehaus.jackson.map.DeserializationConfig $r2;
+
+        r0 := @this: org.codehaus.jackson.map.ObjectMapper;
+
+        $r2 = r0.<org.codehaus.jackson.map.ObjectMapper: org.codehaus.jackson.map.DeserializationConfig _deserializationConfig>;
+
+        $r1 = virtualinvoke $r2.<org.codehaus.jackson.map.DeserializationConfig: org.codehaus.jackson.node.JsonNodeFactory getNodeFactory()>();
+
+        return $r1;
+    }
+
+    public org.codehaus.jackson.map.SerializationConfig getSerializationConfig()
+    {
+        org.codehaus.jackson.map.ObjectMapper r0;
+        org.codehaus.jackson.map.SerializationConfig r1;
+
+        r0 := @this: org.codehaus.jackson.map.ObjectMapper;
+
+        r1 = r0.<org.codehaus.jackson.map.ObjectMapper: org.codehaus.jackson.map.SerializationConfig _serializationConfig>;
+
+        return r1;
+    }
+
+    public org.codehaus.jackson.map.SerializerProvider getSerializerProvider()
+    {
+        org.codehaus.jackson.map.ObjectMapper r0;
+        org.codehaus.jackson.map.SerializerProvider r1;
+
+        r0 := @this: org.codehaus.jackson.map.ObjectMapper;
+
+        r1 = r0.<org.codehaus.jackson.map.ObjectMapper: org.codehaus.jackson.map.SerializerProvider _serializerProvider>;
+
+        return r1;
+    }
+
+    public org.codehaus.jackson.map.jsontype.SubtypeResolver getSubtypeResolver()
+    {
+        org.codehaus.jackson.map.ObjectMapper r0;
+        org.codehaus.jackson.map.jsontype.SubtypeResolver $r1;
+        org.codehaus.jackson.map.jsontype.impl.StdSubtypeResolver $r2;
+
+        r0 := @this: org.codehaus.jackson.map.ObjectMapper;
+
+        $r1 = r0.<org.codehaus.jackson.map.ObjectMapper: org.codehaus.jackson.map.jsontype.SubtypeResolver _subtypeResolver>;
+
+        if $r1 != null goto label1;
+
+        $r2 = new org.codehaus.jackson.map.jsontype.impl.StdSubtypeResolver;
+
+        specialinvoke $r2.<org.codehaus.jackson.map.jsontype.impl.StdSubtypeResolver: void <init>()>();
+
+        r0.<org.codehaus.jackson.map.ObjectMapper: org.codehaus.jackson.map.jsontype.SubtypeResolver _subtypeResolver> = $r2;
+
+     label1:
+        $r1 = r0.<org.codehaus.jackson.map.ObjectMapper: org.codehaus.jackson.map.jsontype.SubtypeResolver _subtypeResolver>;
+
+        return $r1;
+    }
+
+    public org.codehaus.jackson.map.introspect.VisibilityChecker getVisibilityChecker()
+    {
+        org.codehaus.jackson.map.ObjectMapper r0;
+        org.codehaus.jackson.map.introspect.VisibilityChecker r1;
+
+        r0 := @this: org.codehaus.jackson.map.ObjectMapper;
+
+        r1 = r0.<org.codehaus.jackson.map.ObjectMapper: org.codehaus.jackson.map.introspect.VisibilityChecker _visibilityChecker>;
+
+        return r1;
+    }
+
+    public org.codehaus.jackson.map.ObjectWriter prettyPrintingWriter(org.codehaus.jackson.PrettyPrinter)
+    {
+        org.codehaus.jackson.map.ObjectMapper r0;
+        org.codehaus.jackson.map.ObjectWriter $r1;
+        org.codehaus.jackson.PrettyPrinter $r2;
+
+        r0 := @this: org.codehaus.jackson.map.ObjectMapper;
+
+        $r2 := @parameter0: org.codehaus.jackson.PrettyPrinter;
+
+        if $r2 != null goto label1;
+
+        $r2 = <org.codehaus.jackson.map.ObjectWriter: org.codehaus.jackson.PrettyPrinter NULL_PRETTY_PRINTER>;
+
+     label1:
+        $r1 = new org.codehaus.jackson.map.ObjectWriter;
+
+        specialinvoke $r1.<org.codehaus.jackson.map.ObjectWriter: void <init>(org.codehaus.jackson.map.ObjectMapper,java.lang.Class,org.codehaus.jackson.type.JavaType,org.codehaus.jackson.PrettyPrinter)>(r0, null, null, $r2);
+
+        return $r1;
+    }
+
+    public org.codehaus.jackson.JsonNode readTree(java.io.InputStream) throws java.io.IOException, org.codehaus.jackson.JsonProcessingException
+    {
+        org.codehaus.jackson.map.ObjectMapper r0;
+        java.io.InputStream $r1;
+        java.lang.Object $r2;
+        org.codehaus.jackson.type.JavaType $r3;
+        org.codehaus.jackson.JsonNode r4;
+        org.codehaus.jackson.node.NullNode r5;
+
+        r0 := @this: org.codehaus.jackson.map.ObjectMapper;
+
+        $r1 := @parameter0: java.io.InputStream;
+
+        $r3 = <org.codehaus.jackson.map.ObjectMapper: org.codehaus.jackson.type.JavaType JSON_NODE_TYPE>;
+
+        $r2 = virtualinvoke r0.<org.codehaus.jackson.map.ObjectMapper: java.lang.Object readValue(java.io.InputStream,org.codehaus.jackson.type.JavaType)>($r1, $r3);
+
+        r4 = (org.codehaus.jackson.JsonNode) $r2;
+
+        if r4 != null goto label1;
+
+        r5 = <org.codehaus.jackson.node.NullNode: org.codehaus.jackson.node.NullNode instance>;
+
+        return r5;
+
+     label1:
+        return r4;
+    }
+
+    public org.codehaus.jackson.JsonNode readTree(java.io.Reader) throws java.io.IOException, org.codehaus.jackson.JsonProcessingException
+    {
+        org.codehaus.jackson.map.ObjectMapper r0;
+        java.io.Reader $r1;
+        java.lang.Object $r2;
+        org.codehaus.jackson.type.JavaType $r3;
+        org.codehaus.jackson.JsonNode r4;
+        org.codehaus.jackson.node.NullNode r5;
+
+        r0 := @this: org.codehaus.jackson.map.ObjectMapper;
+
+        $r1 := @parameter0: java.io.Reader;
+
+        $r3 = <org.codehaus.jackson.map.ObjectMapper: org.codehaus.jackson.type.JavaType JSON_NODE_TYPE>;
+
+        $r2 = virtualinvoke r0.<org.codehaus.jackson.map.ObjectMapper: java.lang.Object readValue(java.io.Reader,org.codehaus.jackson.type.JavaType)>($r1, $r3);
+
+        r4 = (org.codehaus.jackson.JsonNode) $r2;
+
+        if r4 != null goto label1;
+
+        r5 = <org.codehaus.jackson.node.NullNode: org.codehaus.jackson.node.NullNode instance>;
+
+        return r5;
+
+     label1:
+        return r4;
+    }
+
+    public org.codehaus.jackson.JsonNode readTree(java.lang.String) throws java.io.IOException, org.codehaus.jackson.JsonProcessingException
+    {
+        org.codehaus.jackson.map.ObjectMapper r0;
+        java.lang.String $r1;
+        java.lang.Object $r2;
+        org.codehaus.jackson.type.JavaType $r3;
+        org.codehaus.jackson.JsonNode r4;
+        org.codehaus.jackson.node.NullNode r5;
+
+        r0 := @this: org.codehaus.jackson.map.ObjectMapper;
+
+        $r1 := @parameter0: java.lang.String;
+
+        $r3 = <org.codehaus.jackson.map.ObjectMapper: org.codehaus.jackson.type.JavaType JSON_NODE_TYPE>;
+
+        $r2 = virtualinvoke r0.<org.codehaus.jackson.map.ObjectMapper: java.lang.Object readValue(java.lang.String,org.codehaus.jackson.type.JavaType)>($r1, $r3);
+
+        r4 = (org.codehaus.jackson.JsonNode) $r2;
+
+        if r4 != null goto label1;
+
+        r5 = <org.codehaus.jackson.node.NullNode: org.codehaus.jackson.node.NullNode instance>;
+
+        return r5;
+
+     label1:
+        return r4;
+    }
+
+    public org.codehaus.jackson.JsonNode readTree(org.codehaus.jackson.JsonParser) throws java.io.IOException, org.codehaus.jackson.JsonProcessingException
+    {
+        org.codehaus.jackson.map.ObjectMapper r0;
+        org.codehaus.jackson.JsonParser $r1;
+        org.codehaus.jackson.map.DeserializationConfig $r2;
+        org.codehaus.jackson.JsonNode $r3;
+
+        r0 := @this: org.codehaus.jackson.map.ObjectMapper;
+
+        $r1 := @parameter0: org.codehaus.jackson.JsonParser;
+
+        $r2 = virtualinvoke r0.<org.codehaus.jackson.map.ObjectMapper: org.codehaus.jackson.map.DeserializationConfig copyDeserializationConfig()>();
+
+        $r3 = virtualinvoke r0.<org.codehaus.jackson.map.ObjectMapper: org.codehaus.jackson.JsonNode readTree(org.codehaus.jackson.JsonParser,org.codehaus.jackson.map.DeserializationConfig)>($r1, $r2);
+
+        return $r3;
+    }
+
+    public org.codehaus.jackson.JsonNode readTree(org.codehaus.jackson.JsonParser, org.codehaus.jackson.map.DeserializationConfig) throws java.io.IOException, org.codehaus.jackson.JsonProcessingException
+    {
+        org.codehaus.jackson.map.ObjectMapper r0;
+        org.codehaus.jackson.JsonParser $r1;
+        org.codehaus.jackson.map.DeserializationConfig $r2;
+        java.lang.Object $r3;
+        org.codehaus.jackson.type.JavaType $r4;
+        org.codehaus.jackson.JsonNode r5;
+        org.codehaus.jackson.node.NullNode r6;
+
+        r0 := @this: org.codehaus.jackson.map.ObjectMapper;
+
+        $r1 := @parameter0: org.codehaus.jackson.JsonParser;
+
+        $r2 := @parameter1: org.codehaus.jackson.map.DeserializationConfig;
+
+        $r4 = <org.codehaus.jackson.map.ObjectMapper: org.codehaus.jackson.type.JavaType JSON_NODE_TYPE>;
+
+        $r3 = virtualinvoke r0.<org.codehaus.jackson.map.ObjectMapper: java.lang.Object _readValue(org.codehaus.jackson.map.DeserializationConfig,org.codehaus.jackson.JsonParser,org.codehaus.jackson.type.JavaType)>($r2, $r1, $r4);
+
+        r5 = (org.codehaus.jackson.JsonNode) $r3;
+
+        if r5 != null goto label1;
+
+        r6 = <org.codehaus.jackson.node.NullNode: org.codehaus.jackson.node.NullNode instance>;
+
+        return r6;
+
+     label1:
+        return r5;
+    }
+
+    public java.lang.Object readValue(java.io.File, java.lang.Class) throws java.io.IOException, org.codehaus.jackson.JsonParseException, org.codehaus.jackson.map.JsonMappingException
+    {
+        org.codehaus.jackson.map.ObjectMapper r0;
+        java.io.File $r1;
+        java.lang.Class r2;
+        org.codehaus.jackson.JsonFactory $r3;
+        org.codehaus.jackson.JsonParser $r4;
+        org.codehaus.jackson.type.JavaType $r5;
+        java.lang.Object $r6;
+
+        r0 := @this: org.codehaus.jackson.map.ObjectMapper;
+
+        $r1 := @parameter0: java.io.File;
+
+        r2 := @parameter1: java.lang.Class;
+
+        $r3 = r0.<org.codehaus.jackson.map.ObjectMapper: org.codehaus.jackson.JsonFactory _jsonFactory>;
+
+        $r4 = virtualinvoke $r3.<org.codehaus.jackson.JsonFactory: org.codehaus.jackson.JsonParser createJsonParser(java.io.File)>($r1);
+
+        $r5 = staticinvoke <org.codehaus.jackson.map.type.TypeFactory: org.codehaus.jackson.type.JavaType type(java.lang.reflect.Type)>(r2);
+
+        $r6 = virtualinvoke r0.<org.codehaus.jackson.map.ObjectMapper: java.lang.Object _readMapAndClose(org.codehaus.jackson.JsonParser,org.codehaus.jackson.type.JavaType)>($r4, $r5);
+
+        return $r6;
+    }
+
+    public java.lang.Object readValue(java.io.File, org.codehaus.jackson.type.JavaType) throws java.io.IOException, org.codehaus.jackson.JsonParseException, org.codehaus.jackson.map.JsonMappingException
+    {
+        org.codehaus.jackson.map.ObjectMapper r0;
+        java.io.File $r1;
+        org.codehaus.jackson.type.JavaType $r2;
+        org.codehaus.jackson.JsonFactory $r3;
+        org.codehaus.jackson.JsonParser $r4;
+        java.lang.Object $r5;
+
+        r0 := @this: org.codehaus.jackson.map.ObjectMapper;
+
+        $r1 := @parameter0: java.io.File;
+
+        $r2 := @parameter1: org.codehaus.jackson.type.JavaType;
+
+        $r3 = r0.<org.codehaus.jackson.map.ObjectMapper: org.codehaus.jackson.JsonFactory _jsonFactory>;
+
+        $r4 = virtualinvoke $r3.<org.codehaus.jackson.JsonFactory: org.codehaus.jackson.JsonParser createJsonParser(java.io.File)>($r1);
+
+        $r5 = virtualinvoke r0.<org.codehaus.jackson.map.ObjectMapper: java.lang.Object _readMapAndClose(org.codehaus.jackson.JsonParser,org.codehaus.jackson.type.JavaType)>($r4, $r2);
+
+        return $r5;
+    }
+
+    public java.lang.Object readValue(java.io.File, org.codehaus.jackson.type.TypeReference) throws java.io.IOException, org.codehaus.jackson.JsonParseException, org.codehaus.jackson.map.JsonMappingException
+    {
+        org.codehaus.jackson.map.ObjectMapper r0;
+        java.io.File $r1;
+        org.codehaus.jackson.type.TypeReference $r2;
+        org.codehaus.jackson.JsonFactory $r3;
+        org.codehaus.jackson.JsonParser $r4;
+        org.codehaus.jackson.type.JavaType $r5;
+        java.lang.Object $r6;
+
+        r0 := @this: org.codehaus.jackson.map.ObjectMapper;
+
+        $r1 := @parameter0: java.io.File;
+
+        $r2 := @parameter1: org.codehaus.jackson.type.TypeReference;
+
+        $r3 = r0.<org.codehaus.jackson.map.ObjectMapper: org.codehaus.jackson.JsonFactory _jsonFactory>;
+
+        $r4 = virtualinvoke $r3.<org.codehaus.jackson.JsonFactory: org.codehaus.jackson.JsonParser createJsonParser(java.io.File)>($r1);
+
+        $r5 = staticinvoke <org.codehaus.jackson.map.type.TypeFactory: org.codehaus.jackson.type.JavaType type(org.codehaus.jackson.type.TypeReference)>($r2);
+
+        $r6 = virtualinvoke r0.<org.codehaus.jackson.map.ObjectMapper: java.lang.Object _readMapAndClose(org.codehaus.jackson.JsonParser,org.codehaus.jackson.type.JavaType)>($r4, $r5);
+
+        return $r6;
+    }
+
+    public java.lang.Object readValue(java.io.InputStream, java.lang.Class) throws java.io.IOException, org.codehaus.jackson.JsonParseException, org.codehaus.jackson.map.JsonMappingException
+    {
+        org.codehaus.jackson.map.ObjectMapper r0;
+        java.io.InputStream $r1;
+        java.lang.Class r2;
+        org.codehaus.jackson.JsonFactory $r3;
+        org.codehaus.jackson.JsonParser $r4;
+        org.codehaus.jackson.type.JavaType $r5;
+        java.lang.Object $r6;
+
+        r0 := @this: org.codehaus.jackson.map.ObjectMapper;
+
+        $r1 := @parameter0: java.io.InputStream;
+
+        r2 := @parameter1: java.lang.Class;
+
+        $r3 = r0.<org.codehaus.jackson.map.ObjectMapper: org.codehaus.jackson.JsonFactory _jsonFactory>;
+
+        $r4 = virtualinvoke $r3.<org.codehaus.jackson.JsonFactory: org.codehaus.jackson.JsonParser createJsonParser(java.io.InputStream)>($r1);
+
+        $r5 = staticinvoke <org.codehaus.jackson.map.type.TypeFactory: org.codehaus.jackson.type.JavaType type(java.lang.reflect.Type)>(r2);
+
+        $r6 = virtualinvoke r0.<org.codehaus.jackson.map.ObjectMapper: java.lang.Object _readMapAndClose(org.codehaus.jackson.JsonParser,org.codehaus.jackson.type.JavaType)>($r4, $r5);
+
+        return $r6;
+    }
+
+    public java.lang.Object readValue(java.io.InputStream, org.codehaus.jackson.type.JavaType) throws java.io.IOException, org.codehaus.jackson.JsonParseException, org.codehaus.jackson.map.JsonMappingException
+    {
+        org.codehaus.jackson.map.ObjectMapper r0;
+        java.io.InputStream $r1;
+        org.codehaus.jackson.type.JavaType $r2;
+        org.codehaus.jackson.JsonFactory $r3;
+        org.codehaus.jackson.JsonParser $r4;
+        java.lang.Object $r5;
+
+        r0 := @this: org.codehaus.jackson.map.ObjectMapper;
+
+        $r1 := @parameter0: java.io.InputStream;
+
+        $r2 := @parameter1: org.codehaus.jackson.type.JavaType;
+
+        $r3 = r0.<org.codehaus.jackson.map.ObjectMapper: org.codehaus.jackson.JsonFactory _jsonFactory>;
+
+        $r4 = virtualinvoke $r3.<org.codehaus.jackson.JsonFactory: org.codehaus.jackson.JsonParser createJsonParser(java.io.InputStream)>($r1);
+
+        $r5 = virtualinvoke r0.<org.codehaus.jackson.map.ObjectMapper: java.lang.Object _readMapAndClose(org.codehaus.jackson.JsonParser,org.codehaus.jackson.type.JavaType)>($r4, $r2);
+
+        return $r5;
+    }
+
+    public java.lang.Object readValue(java.io.InputStream, org.codehaus.jackson.type.TypeReference) throws java.io.IOException, org.codehaus.jackson.JsonParseException, org.codehaus.jackson.map.JsonMappingException
+    {
+        org.codehaus.jackson.map.ObjectMapper r0;
+        java.io.InputStream $r1;
+        org.codehaus.jackson.type.TypeReference $r2;
+        org.codehaus.jackson.JsonFactory $r3;
+        org.codehaus.jackson.JsonParser $r4;
+        org.codehaus.jackson.type.JavaType $r5;
+        java.lang.Object $r6;
+
+        r0 := @this: org.codehaus.jackson.map.ObjectMapper;
+
+        $r1 := @parameter0: java.io.InputStream;
+
+        $r2 := @parameter1: org.codehaus.jackson.type.TypeReference;
+
+        $r3 = r0.<org.codehaus.jackson.map.ObjectMapper: org.codehaus.jackson.JsonFactory _jsonFactory>;
+
+        $r4 = virtualinvoke $r3.<org.codehaus.jackson.JsonFactory: org.codehaus.jackson.JsonParser createJsonParser(java.io.InputStream)>($r1);
+
+        $r5 = staticinvoke <org.codehaus.jackson.map.type.TypeFactory: org.codehaus.jackson.type.JavaType type(org.codehaus.jackson.type.TypeReference)>($r2);
+
+        $r6 = virtualinvoke r0.<org.codehaus.jackson.map.ObjectMapper: java.lang.Object _readMapAndClose(org.codehaus.jackson.JsonParser,org.codehaus.jackson.type.JavaType)>($r4, $r5);
+
+        return $r6;
+    }
+
+    public java.lang.Object readValue(java.io.Reader, java.lang.Class) throws java.io.IOException, org.codehaus.jackson.JsonParseException, org.codehaus.jackson.map.JsonMappingException
+    {
+        org.codehaus.jackson.map.ObjectMapper r0;
+        java.io.Reader $r1;
+        java.lang.Class r2;
+        org.codehaus.jackson.JsonFactory $r3;
+        org.codehaus.jackson.JsonParser $r4;
+        org.codehaus.jackson.type.JavaType $r5;
+        java.lang.Object $r6;
+
+        r0 := @this: org.codehaus.jackson.map.ObjectMapper;
+
+        $r1 := @parameter0: java.io.Reader;
+
+        r2 := @parameter1: java.lang.Class;
+
+        $r3 = r0.<org.codehaus.jackson.map.ObjectMapper: org.codehaus.jackson.JsonFactory _jsonFactory>;
+
+        $r4 = virtualinvoke $r3.<org.codehaus.jackson.JsonFactory: org.codehaus.jackson.JsonParser createJsonParser(java.io.Reader)>($r1);
+
+        $r5 = staticinvoke <org.codehaus.jackson.map.type.TypeFactory: org.codehaus.jackson.type.JavaType type(java.lang.reflect.Type)>(r2);
+
+        $r6 = virtualinvoke r0.<org.codehaus.jackson.map.ObjectMapper: java.lang.Object _readMapAndClose(org.codehaus.jackson.JsonParser,org.codehaus.jackson.type.JavaType)>($r4, $r5);
+
+        return $r6;
+    }
+
+    public java.lang.Object readValue(java.io.Reader, org.codehaus.jackson.type.JavaType) throws java.io.IOException, org.codehaus.jackson.JsonParseException, org.codehaus.jackson.map.JsonMappingException
+    {
+        org.codehaus.jackson.map.ObjectMapper r0;
+        java.io.Reader $r1;
+        org.codehaus.jackson.type.JavaType $r2;
+        org.codehaus.jackson.JsonFactory $r3;
+        org.codehaus.jackson.JsonParser $r4;
+        java.lang.Object $r5;
+
+        r0 := @this: org.codehaus.jackson.map.ObjectMapper;
+
+        $r1 := @parameter0: java.io.Reader;
+
+        $r2 := @parameter1: org.codehaus.jackson.type.JavaType;
+
+        $r3 = r0.<org.codehaus.jackson.map.ObjectMapper: org.codehaus.jackson.JsonFactory _jsonFactory>;
+
+        $r4 = virtualinvoke $r3.<org.codehaus.jackson.JsonFactory: org.codehaus.jackson.JsonParser createJsonParser(java.io.Reader)>($r1);
+
+        $r5 = virtualinvoke r0.<org.codehaus.jackson.map.ObjectMapper: java.lang.Object _readMapAndClose(org.codehaus.jackson.JsonParser,org.codehaus.jackson.type.JavaType)>($r4, $r2);
+
+        return $r5;
+    }
+
+    public java.lang.Object readValue(java.io.Reader, org.codehaus.jackson.type.TypeReference) throws java.io.IOException, org.codehaus.jackson.JsonParseException, org.codehaus.jackson.map.JsonMappingException
+    {
+        org.codehaus.jackson.map.ObjectMapper r0;
+        java.io.Reader $r1;
+        org.codehaus.jackson.type.TypeReference $r2;
+        org.codehaus.jackson.JsonFactory $r3;
+        org.codehaus.jackson.JsonParser $r4;
+        org.codehaus.jackson.type.JavaType $r5;
+        java.lang.Object $r6;
+
+        r0 := @this: org.codehaus.jackson.map.ObjectMapper;
+
+        $r1 := @parameter0: java.io.Reader;
+
+        $r2 := @parameter1: org.codehaus.jackson.type.TypeReference;
+
+        $r3 = r0.<org.codehaus.jackson.map.ObjectMapper: org.codehaus.jackson.JsonFactory _jsonFactory>;
+
+        $r4 = virtualinvoke $r3.<org.codehaus.jackson.JsonFactory: org.codehaus.jackson.JsonParser createJsonParser(java.io.Reader)>($r1);
+
+        $r5 = staticinvoke <org.codehaus.jackson.map.type.TypeFactory: org.codehaus.jackson.type.JavaType type(org.codehaus.jackson.type.TypeReference)>($r2);
+
+        $r6 = virtualinvoke r0.<org.codehaus.jackson.map.ObjectMapper: java.lang.Object _readMapAndClose(org.codehaus.jackson.JsonParser,org.codehaus.jackson.type.JavaType)>($r4, $r5);
+
+        return $r6;
+    }
+
+    public java.lang.Object readValue(java.lang.String, java.lang.Class) throws java.io.IOException, org.codehaus.jackson.JsonParseException, org.codehaus.jackson.map.JsonMappingException
+    {
+        org.codehaus.jackson.map.ObjectMapper r0;
+        java.lang.String $r1;
+        java.lang.Class r2;
+        org.codehaus.jackson.JsonFactory $r3;
+        org.codehaus.jackson.JsonParser $r4;
+        org.codehaus.jackson.type.JavaType $r5;
+        java.lang.Object $r6;
+
+        r0 := @this: org.codehaus.jackson.map.ObjectMapper;
+
+        $r1 := @parameter0: java.lang.String;
+
+        r2 := @parameter1: java.lang.Class;
+
+        $r3 = r0.<org.codehaus.jackson.map.ObjectMapper: org.codehaus.jackson.JsonFactory _jsonFactory>;
+
+        $r4 = virtualinvoke $r3.<org.codehaus.jackson.JsonFactory: org.codehaus.jackson.JsonParser createJsonParser(java.lang.String)>($r1);
+
+        $r5 = staticinvoke <org.codehaus.jackson.map.type.TypeFactory: org.codehaus.jackson.type.JavaType type(java.lang.reflect.Type)>(r2);
+
+        $r6 = virtualinvoke r0.<org.codehaus.jackson.map.ObjectMapper: java.lang.Object _readMapAndClose(org.codehaus.jackson.JsonParser,org.codehaus.jackson.type.JavaType)>($r4, $r5);
+
+        return $r6;
+    }
+
+    public java.lang.Object readValue(java.lang.String, org.codehaus.jackson.type.JavaType) throws java.io.IOException, org.codehaus.jackson.JsonParseException, org.codehaus.jackson.map.JsonMappingException
+    {
+        org.codehaus.jackson.map.ObjectMapper r0;
+        java.lang.String $r1;
+        org.codehaus.jackson.type.JavaType $r2;
+        org.codehaus.jackson.JsonFactory $r3;
+        org.codehaus.jackson.JsonParser $r4;
+        java.lang.Object $r5;
+
+        r0 := @this: org.codehaus.jackson.map.ObjectMapper;
+
+        $r1 := @parameter0: java.lang.String;
+
+        $r2 := @parameter1: org.codehaus.jackson.type.JavaType;
+
+        $r3 = r0.<org.codehaus.jackson.map.ObjectMapper: org.codehaus.jackson.JsonFactory _jsonFactory>;
+
+        $r4 = virtualinvoke $r3.<org.codehaus.jackson.JsonFactory: org.codehaus.jackson.JsonParser createJsonParser(java.lang.String)>($r1);
+
+        $r5 = virtualinvoke r0.<org.codehaus.jackson.map.ObjectMapper: java.lang.Object _readMapAndClose(org.codehaus.jackson.JsonParser,org.codehaus.jackson.type.JavaType)>($r4, $r2);
+
+        return $r5;
+    }
+
+    public java.lang.Object readValue(java.lang.String, org.codehaus.jackson.type.TypeReference) throws java.io.IOException, org.codehaus.jackson.JsonParseException, org.codehaus.jackson.map.JsonMappingException
+    {
+        org.codehaus.jackson.map.ObjectMapper r0;
+        java.lang.String $r1;
+        org.codehaus.jackson.type.TypeReference $r2;
+        org.codehaus.jackson.JsonFactory $r3;
+        org.codehaus.jackson.JsonParser $r4;
+        org.codehaus.jackson.type.JavaType $r5;
+        java.lang.Object $r6;
+
+        r0 := @this: org.codehaus.jackson.map.ObjectMapper;
+
+        $r1 := @parameter0: java.lang.String;
+
+        $r2 := @parameter1: org.codehaus.jackson.type.TypeReference;
+
+        $r3 = r0.<org.codehaus.jackson.map.ObjectMapper: org.codehaus.jackson.JsonFactory _jsonFactory>;
+
+        $r4 = virtualinvoke $r3.<org.codehaus.jackson.JsonFactory: org.codehaus.jackson.JsonParser createJsonParser(java.lang.String)>($r1);
+
+        $r5 = staticinvoke <org.codehaus.jackson.map.type.TypeFactory: org.codehaus.jackson.type.JavaType type(org.codehaus.jackson.type.TypeReference)>($r2);
+
+        $r6 = virtualinvoke r0.<org.codehaus.jackson.map.ObjectMapper: java.lang.Object _readMapAndClose(org.codehaus.jackson.JsonParser,org.codehaus.jackson.type.JavaType)>($r4, $r5);
+
+        return $r6;
+    }
+
+    public java.lang.Object readValue(java.net.URL, java.lang.Class) throws java.io.IOException, org.codehaus.jackson.JsonParseException, org.codehaus.jackson.map.JsonMappingException
+    {
+        org.codehaus.jackson.map.ObjectMapper r0;
+        java.net.URL $r1;
+        java.lang.Class r2;
+        org.codehaus.jackson.JsonFactory $r3;
+        org.codehaus.jackson.JsonParser $r4;
+        org.codehaus.jackson.type.JavaType $r5;
+        java.lang.Object $r6;
+
+        r0 := @this: org.codehaus.jackson.map.ObjectMapper;
+
+        $r1 := @parameter0: java.net.URL;
+
+        r2 := @parameter1: java.lang.Class;
+
+        $r3 = r0.<org.codehaus.jackson.map.ObjectMapper: org.codehaus.jackson.JsonFactory _jsonFactory>;
+
+        $r4 = virtualinvoke $r3.<org.codehaus.jackson.JsonFactory: org.codehaus.jackson.JsonParser createJsonParser(java.net.URL)>($r1);
+
+        $r5 = staticinvoke <org.codehaus.jackson.map.type.TypeFactory: org.codehaus.jackson.type.JavaType type(java.lang.reflect.Type)>(r2);
+
+        $r6 = virtualinvoke r0.<org.codehaus.jackson.map.ObjectMapper: java.lang.Object _readMapAndClose(org.codehaus.jackson.JsonParser,org.codehaus.jackson.type.JavaType)>($r4, $r5);
+
+        return $r6;
+    }
+
+    public java.lang.Object readValue(java.net.URL, org.codehaus.jackson.type.JavaType) throws java.io.IOException, org.codehaus.jackson.JsonParseException, org.codehaus.jackson.map.JsonMappingException
+    {
+        org.codehaus.jackson.map.ObjectMapper r0;
+        java.net.URL $r1;
+        org.codehaus.jackson.type.JavaType $r2;
+        org.codehaus.jackson.JsonFactory $r3;
+        org.codehaus.jackson.JsonParser $r4;
+        java.lang.Object $r5;
+
+        r0 := @this: org.codehaus.jackson.map.ObjectMapper;
+
+        $r1 := @parameter0: java.net.URL;
+
+        $r2 := @parameter1: org.codehaus.jackson.type.JavaType;
+
+        $r3 = r0.<org.codehaus.jackson.map.ObjectMapper: org.codehaus.jackson.JsonFactory _jsonFactory>;
+
+        $r4 = virtualinvoke $r3.<org.codehaus.jackson.JsonFactory: org.codehaus.jackson.JsonParser createJsonParser(java.net.URL)>($r1);
+
+        $r5 = virtualinvoke r0.<org.codehaus.jackson.map.ObjectMapper: java.lang.Object _readMapAndClose(org.codehaus.jackson.JsonParser,org.codehaus.jackson.type.JavaType)>($r4, $r2);
+
+        return $r5;
+    }
+
+    public java.lang.Object readValue(java.net.URL, org.codehaus.jackson.type.TypeReference) throws java.io.IOException, org.codehaus.jackson.JsonParseException, org.codehaus.jackson.map.JsonMappingException
+    {
+        org.codehaus.jackson.map.ObjectMapper r0;
+        java.net.URL $r1;
+        org.codehaus.jackson.type.TypeReference $r2;
+        org.codehaus.jackson.JsonFactory $r3;
+        org.codehaus.jackson.JsonParser $r4;
+        org.codehaus.jackson.type.JavaType $r5;
+        java.lang.Object $r6;
+
+        r0 := @this: org.codehaus.jackson.map.ObjectMapper;
+
+        $r1 := @parameter0: java.net.URL;
+
+        $r2 := @parameter1: org.codehaus.jackson.type.TypeReference;
+
+        $r3 = r0.<org.codehaus.jackson.map.ObjectMapper: org.codehaus.jackson.JsonFactory _jsonFactory>;
+
+        $r4 = virtualinvoke $r3.<org.codehaus.jackson.JsonFactory: org.codehaus.jackson.JsonParser createJsonParser(java.net.URL)>($r1);
+
+        $r5 = staticinvoke <org.codehaus.jackson.map.type.TypeFactory: org.codehaus.jackson.type.JavaType type(org.codehaus.jackson.type.TypeReference)>($r2);
+
+        $r6 = virtualinvoke r0.<org.codehaus.jackson.map.ObjectMapper: java.lang.Object _readMapAndClose(org.codehaus.jackson.JsonParser,org.codehaus.jackson.type.JavaType)>($r4, $r5);
+
+        return $r6;
+    }
+
+    public java.lang.Object readValue(org.codehaus.jackson.JsonNode, java.lang.Class) throws java.io.IOException, org.codehaus.jackson.JsonParseException, org.codehaus.jackson.map.JsonMappingException
+    {
+        org.codehaus.jackson.map.ObjectMapper r0;
+        org.codehaus.jackson.JsonNode $r1;
+        java.lang.Class r2;
+        org.codehaus.jackson.map.DeserializationConfig $r3;
+        org.codehaus.jackson.JsonParser $r4;
+        org.codehaus.jackson.type.JavaType $r5;
+        java.lang.Object $r6;
+
+        r0 := @this: org.codehaus.jackson.map.ObjectMapper;
+
+        $r1 := @parameter0: org.codehaus.jackson.JsonNode;
+
+        r2 := @parameter1: java.lang.Class;
+
+        $r3 = virtualinvoke r0.<org.codehaus.jackson.map.ObjectMapper: org.codehaus.jackson.map.DeserializationConfig copyDeserializationConfig()>();
+
+        $r4 = virtualinvoke $r1.<org.codehaus.jackson.JsonNode: org.codehaus.jackson.JsonParser traverse()>();
+
+        $r5 = staticinvoke <org.codehaus.jackson.map.type.TypeFactory: org.codehaus.jackson.type.JavaType type(java.lang.reflect.Type)>(r2);
+
+        $r6 = virtualinvoke r0.<org.codehaus.jackson.map.ObjectMapper: java.lang.Object _readValue(org.codehaus.jackson.map.DeserializationConfig,org.codehaus.jackson.JsonParser,org.codehaus.jackson.type.JavaType)>($r3, $r4, $r5);
+
+        return $r6;
+    }
+
+    public java.lang.Object readValue(org.codehaus.jackson.JsonNode, org.codehaus.jackson.type.JavaType) throws java.io.IOException, org.codehaus.jackson.JsonParseException, org.codehaus.jackson.map.JsonMappingException
+    {
+        org.codehaus.jackson.map.ObjectMapper r0;
+        org.codehaus.jackson.JsonNode $r1;
+        org.codehaus.jackson.type.JavaType $r2;
+        org.codehaus.jackson.map.DeserializationConfig $r3;
+        org.codehaus.jackson.JsonParser $r4;
+        java.lang.Object $r5;
+
+        r0 := @this: org.codehaus.jackson.map.ObjectMapper;
+
+        $r1 := @parameter0: org.codehaus.jackson.JsonNode;
+
+        $r2 := @parameter1: org.codehaus.jackson.type.JavaType;
+
+        $r3 = virtualinvoke r0.<org.codehaus.jackson.map.ObjectMapper: org.codehaus.jackson.map.DeserializationConfig copyDeserializationConfig()>();
+
+        $r4 = virtualinvoke $r1.<org.codehaus.jackson.JsonNode: org.codehaus.jackson.JsonParser traverse()>();
+
+        $r5 = virtualinvoke r0.<org.codehaus.jackson.map.ObjectMapper: java.lang.Object _readValue(org.codehaus.jackson.map.DeserializationConfig,org.codehaus.jackson.JsonParser,org.codehaus.jackson.type.JavaType)>($r3, $r4, $r2);
+
+        return $r5;
+    }
+
+    public java.lang.Object readValue(org.codehaus.jackson.JsonNode, org.codehaus.jackson.type.TypeReference) throws java.io.IOException, org.codehaus.jackson.JsonParseException, org.codehaus.jackson.map.JsonMappingException
+    {
+        org.codehaus.jackson.map.ObjectMapper r0;
+        org.codehaus.jackson.JsonNode $r1;
+        org.codehaus.jackson.type.TypeReference $r2;
+        org.codehaus.jackson.map.DeserializationConfig $r3;
+        org.codehaus.jackson.JsonParser $r4;
+        org.codehaus.jackson.type.JavaType $r5;
+        java.lang.Object $r6;
+
+        r0 := @this: org.codehaus.jackson.map.ObjectMapper;
+
+        $r1 := @parameter0: org.codehaus.jackson.JsonNode;
+
+        $r2 := @parameter1: org.codehaus.jackson.type.TypeReference;
+
+        $r3 = virtualinvoke r0.<org.codehaus.jackson.map.ObjectMapper: org.codehaus.jackson.map.DeserializationConfig copyDeserializationConfig()>();
+
+        $r4 = virtualinvoke $r1.<org.codehaus.jackson.JsonNode: org.codehaus.jackson.JsonParser traverse()>();
+
+        $r5 = staticinvoke <org.codehaus.jackson.map.type.TypeFactory: org.codehaus.jackson.type.JavaType type(org.codehaus.jackson.type.TypeReference)>($r2);
+
+        $r6 = virtualinvoke r0.<org.codehaus.jackson.map.ObjectMapper: java.lang.Object _readValue(org.codehaus.jackson.map.DeserializationConfig,org.codehaus.jackson.JsonParser,org.codehaus.jackson.type.JavaType)>($r3, $r4, $r5);
+
+        return $r6;
+    }
+
+    public java.lang.Object readValue(org.codehaus.jackson.JsonParser, java.lang.Class) throws java.io.IOException, org.codehaus.jackson.JsonParseException, org.codehaus.jackson.map.JsonMappingException
+    {
+        org.codehaus.jackson.map.ObjectMapper r0;
+        org.codehaus.jackson.JsonParser $r1;
+        java.lang.Class r2;
+        org.codehaus.jackson.map.DeserializationConfig $r3;
+        org.codehaus.jackson.type.JavaType $r4;
+        java.lang.Object $r5;
+
+        r0 := @this: org.codehaus.jackson.map.ObjectMapper;
+
+        $r1 := @parameter0: org.codehaus.jackson.JsonParser;
+
+        r2 := @parameter1: java.lang.Class;
+
+        $r3 = virtualinvoke r0.<org.codehaus.jackson.map.ObjectMapper: org.codehaus.jackson.map.DeserializationConfig copyDeserializationConfig()>();
+
+        $r4 = staticinvoke <org.codehaus.jackson.map.type.TypeFactory: org.codehaus.jackson.type.JavaType type(java.lang.reflect.Type)>(r2);
+
+        $r5 = virtualinvoke r0.<org.codehaus.jackson.map.ObjectMapper: java.lang.Object _readValue(org.codehaus.jackson.map.DeserializationConfig,org.codehaus.jackson.JsonParser,org.codehaus.jackson.type.JavaType)>($r3, $r1, $r4);
+
+        return $r5;
+    }
+
+    public java.lang.Object readValue(org.codehaus.jackson.JsonParser, java.lang.Class, org.codehaus.jackson.map.DeserializationConfig) throws java.io.IOException, org.codehaus.jackson.JsonParseException, org.codehaus.jackson.map.JsonMappingException
+    {
+        org.codehaus.jackson.map.ObjectMapper r0;
+        org.codehaus.jackson.JsonParser $r1;
+        java.lang.Class r2;
+        org.codehaus.jackson.map.DeserializationConfig $r3;
+        org.codehaus.jackson.type.JavaType $r4;
+        java.lang.Object $r5;
+
+        r0 := @this: org.codehaus.jackson.map.ObjectMapper;
+
+        $r1 := @parameter0: org.codehaus.jackson.JsonParser;
+
+        r2 := @parameter1: java.lang.Class;
+
+        $r3 := @parameter2: org.codehaus.jackson.map.DeserializationConfig;
+
+        $r4 = staticinvoke <org.codehaus.jackson.map.type.TypeFactory: org.codehaus.jackson.type.JavaType type(java.lang.reflect.Type)>(r2);
+
+        $r5 = virtualinvoke r0.<org.codehaus.jackson.map.ObjectMapper: java.lang.Object _readValue(org.codehaus.jackson.map.DeserializationConfig,org.codehaus.jackson.JsonParser,org.codehaus.jackson.type.JavaType)>($r3, $r1, $r4);
+
+        return $r5;
+    }
+
+    public java.lang.Object readValue(org.codehaus.jackson.JsonParser, org.codehaus.jackson.type.JavaType) throws java.io.IOException, org.codehaus.jackson.JsonParseException, org.codehaus.jackson.map.JsonMappingException
+    {
+        org.codehaus.jackson.map.ObjectMapper r0;
+        org.codehaus.jackson.JsonParser $r1;
+        org.codehaus.jackson.type.JavaType $r2;
+        org.codehaus.jackson.map.DeserializationConfig $r3;
+        java.lang.Object $r4;
+
+        r0 := @this: org.codehaus.jackson.map.ObjectMapper;
+
+        $r1 := @parameter0: org.codehaus.jackson.JsonParser;
+
+        $r2 := @parameter1: org.codehaus.jackson.type.JavaType;
+
+        $r3 = virtualinvoke r0.<org.codehaus.jackson.map.ObjectMapper: org.codehaus.jackson.map.DeserializationConfig copyDeserializationConfig()>();
+
+        $r4 = virtualinvoke r0.<org.codehaus.jackson.map.ObjectMapper: java.lang.Object _readValue(org.codehaus.jackson.map.DeserializationConfig,org.codehaus.jackson.JsonParser,org.codehaus.jackson.type.JavaType)>($r3, $r1, $r2);
+
+        return $r4;
+    }
+
+    public java.lang.Object readValue(org.codehaus.jackson.JsonParser, org.codehaus.jackson.type.JavaType, org.codehaus.jackson.map.DeserializationConfig) throws java.io.IOException, org.codehaus.jackson.JsonParseException, org.codehaus.jackson.map.JsonMappingException
+    {
+        org.codehaus.jackson.map.ObjectMapper r0;
+        org.codehaus.jackson.JsonParser $r1;
+        org.codehaus.jackson.type.JavaType $r2;
+        org.codehaus.jackson.map.DeserializationConfig $r3;
+        java.lang.Object $r4;
+
+        r0 := @this: org.codehaus.jackson.map.ObjectMapper;
+
+        $r1 := @parameter0: org.codehaus.jackson.JsonParser;
+
+        $r2 := @parameter1: org.codehaus.jackson.type.JavaType;
+
+        $r3 := @parameter2: org.codehaus.jackson.map.DeserializationConfig;
+
+        $r4 = virtualinvoke r0.<org.codehaus.jackson.map.ObjectMapper: java.lang.Object _readValue(org.codehaus.jackson.map.DeserializationConfig,org.codehaus.jackson.JsonParser,org.codehaus.jackson.type.JavaType)>($r3, $r1, $r2);
+
+        return $r4;
+    }
+
+    public java.lang.Object readValue(org.codehaus.jackson.JsonParser, org.codehaus.jackson.type.TypeReference) throws java.io.IOException, org.codehaus.jackson.JsonParseException, org.codehaus.jackson.map.JsonMappingException
+    {
+        org.codehaus.jackson.map.ObjectMapper r0;
+        org.codehaus.jackson.JsonParser $r1;
+        org.codehaus.jackson.type.TypeReference r2;
+        org.codehaus.jackson.map.DeserializationConfig $r3;
+        org.codehaus.jackson.type.JavaType $r4;
+        java.lang.Object $r5;
+
+        r0 := @this: org.codehaus.jackson.map.ObjectMapper;
+
+        $r1 := @parameter0: org.codehaus.jackson.JsonParser;
+
+        r2 := @parameter1: org.codehaus.jackson.type.TypeReference;
+
+        $r3 = virtualinvoke r0.<org.codehaus.jackson.map.ObjectMapper: org.codehaus.jackson.map.DeserializationConfig copyDeserializationConfig()>();
+
+        $r4 = staticinvoke <org.codehaus.jackson.map.type.TypeFactory: org.codehaus.jackson.type.JavaType type(org.codehaus.jackson.type.TypeReference)>(r2);
+
+        $r5 = virtualinvoke r0.<org.codehaus.jackson.map.ObjectMapper: java.lang.Object _readValue(org.codehaus.jackson.map.DeserializationConfig,org.codehaus.jackson.JsonParser,org.codehaus.jackson.type.JavaType)>($r3, $r1, $r4);
+
+        return $r5;
+    }
+
+    public java.lang.Object readValue(org.codehaus.jackson.JsonParser, org.codehaus.jackson.type.TypeReference, org.codehaus.jackson.map.DeserializationConfig) throws java.io.IOException, org.codehaus.jackson.JsonParseException, org.codehaus.jackson.map.JsonMappingException
+    {
+        org.codehaus.jackson.map.ObjectMapper r0;
+        org.codehaus.jackson.JsonParser $r1;
+        org.codehaus.jackson.type.TypeReference r2;
+        org.codehaus.jackson.map.DeserializationConfig $r3;
+        org.codehaus.jackson.type.JavaType $r4;
+        java.lang.Object $r5;
+
+        r0 := @this: org.codehaus.jackson.map.ObjectMapper;
+
+        $r1 := @parameter0: org.codehaus.jackson.JsonParser;
+
+        r2 := @parameter1: org.codehaus.jackson.type.TypeReference;
+
+        $r3 := @parameter2: org.codehaus.jackson.map.DeserializationConfig;
+
+        $r4 = staticinvoke <org.codehaus.jackson.map.type.TypeFactory: org.codehaus.jackson.type.JavaType type(org.codehaus.jackson.type.TypeReference)>(r2);
+
+        $r5 = virtualinvoke r0.<org.codehaus.jackson.map.ObjectMapper: java.lang.Object _readValue(org.codehaus.jackson.map.DeserializationConfig,org.codehaus.jackson.JsonParser,org.codehaus.jackson.type.JavaType)>($r3, $r1, $r4);
+
+        return $r5;
+    }
+
+    public java.lang.Object readValue(byte[], int, int, java.lang.Class) throws java.io.IOException, org.codehaus.jackson.JsonParseException, org.codehaus.jackson.map.JsonMappingException
+    {
+        org.codehaus.jackson.map.ObjectMapper r0;
+        byte[] $r1;
+        int $i0, $i1;
+        java.lang.Class r2;
+        org.codehaus.jackson.JsonFactory $r3;
+        org.codehaus.jackson.JsonParser $r4;
+        org.codehaus.jackson.type.JavaType $r5;
+        java.lang.Object $r6;
+
+        r0 := @this: org.codehaus.jackson.map.ObjectMapper;
+
+        $r1 := @parameter0: byte[];
+
+        $i0 := @parameter1: int;
+
+        $i1 := @parameter2: int;
+
+        r2 := @parameter3: java.lang.Class;
+
+        $r3 = r0.<org.codehaus.jackson.map.ObjectMapper: org.codehaus.jackson.JsonFactory _jsonFactory>;
+
+        $r4 = virtualinvoke $r3.<org.codehaus.jackson.JsonFactory: org.codehaus.jackson.JsonParser createJsonParser(byte[],int,int)>($r1, $i0, $i1);
+
+        $r5 = staticinvoke <org.codehaus.jackson.map.type.TypeFactory: org.codehaus.jackson.type.JavaType type(java.lang.reflect.Type)>(r2);
+
+        $r6 = virtualinvoke r0.<org.codehaus.jackson.map.ObjectMapper: java.lang.Object _readMapAndClose(org.codehaus.jackson.JsonParser,org.codehaus.jackson.type.JavaType)>($r4, $r5);
+
+        return $r6;
+    }
+
+    public java.lang.Object readValue(byte[], int, int, org.codehaus.jackson.type.JavaType) throws java.io.IOException, org.codehaus.jackson.JsonParseException, org.codehaus.jackson.map.JsonMappingException
+    {
+        org.codehaus.jackson.map.ObjectMapper r0;
+        byte[] $r1;
+        int $i0, $i1;
+        org.codehaus.jackson.type.JavaType $r2;
+        org.codehaus.jackson.JsonFactory $r3;
+        org.codehaus.jackson.JsonParser $r4;
+        java.lang.Object $r5;
+
+        r0 := @this: org.codehaus.jackson.map.ObjectMapper;
+
+        $r1 := @parameter0: byte[];
+
+        $i0 := @parameter1: int;
+
+        $i1 := @parameter2: int;
+
+        $r2 := @parameter3: org.codehaus.jackson.type.JavaType;
+
+        $r3 = r0.<org.codehaus.jackson.map.ObjectMapper: org.codehaus.jackson.JsonFactory _jsonFactory>;
+
+        $r4 = virtualinvoke $r3.<org.codehaus.jackson.JsonFactory: org.codehaus.jackson.JsonParser createJsonParser(byte[],int,int)>($r1, $i0, $i1);
+
+        $r5 = virtualinvoke r0.<org.codehaus.jackson.map.ObjectMapper: java.lang.Object _readMapAndClose(org.codehaus.jackson.JsonParser,org.codehaus.jackson.type.JavaType)>($r4, $r2);
+
+        return $r5;
+    }
+
+    public java.lang.Object readValue(byte[], int, int, org.codehaus.jackson.type.TypeReference) throws java.io.IOException, org.codehaus.jackson.JsonParseException, org.codehaus.jackson.map.JsonMappingException
+    {
+        org.codehaus.jackson.map.ObjectMapper r0;
+        byte[] $r1;
+        int $i0, $i1;
+        org.codehaus.jackson.type.TypeReference $r2;
+        org.codehaus.jackson.JsonFactory $r3;
+        org.codehaus.jackson.JsonParser $r4;
+        org.codehaus.jackson.type.JavaType $r5;
+        java.lang.Object $r6;
+
+        r0 := @this: org.codehaus.jackson.map.ObjectMapper;
+
+        $r1 := @parameter0: byte[];
+
+        $i0 := @parameter1: int;
+
+        $i1 := @parameter2: int;
+
+        $r2 := @parameter3: org.codehaus.jackson.type.TypeReference;
+
+        $r3 = r0.<org.codehaus.jackson.map.ObjectMapper: org.codehaus.jackson.JsonFactory _jsonFactory>;
+
+        $r4 = virtualinvoke $r3.<org.codehaus.jackson.JsonFactory: org.codehaus.jackson.JsonParser createJsonParser(byte[],int,int)>($r1, $i0, $i1);
+
+        $r5 = staticinvoke <org.codehaus.jackson.map.type.TypeFactory: org.codehaus.jackson.type.JavaType type(org.codehaus.jackson.type.TypeReference)>($r2);
+
+        $r6 = virtualinvoke r0.<org.codehaus.jackson.map.ObjectMapper: java.lang.Object _readMapAndClose(org.codehaus.jackson.JsonParser,org.codehaus.jackson.type.JavaType)>($r4, $r5);
+
+        return $r6;
+    }
+
+    public org.codehaus.jackson.map.ObjectReader reader()
+    {
+        org.codehaus.jackson.map.ObjectMapper r0;
+        org.codehaus.jackson.map.ObjectReader $r1;
+
+        r0 := @this: org.codehaus.jackson.map.ObjectMapper;
+
+        $r1 = new org.codehaus.jackson.map.ObjectReader;
+
+        specialinvoke $r1.<org.codehaus.jackson.map.ObjectReader: void <init>(org.codehaus.jackson.map.ObjectMapper,org.codehaus.jackson.type.JavaType,java.lang.Object)>(r0, null, null);
+
+        return $r1;
+    }
+
+    public org.codehaus.jackson.map.ObjectReader reader(java.lang.Class)
+    {
+        org.codehaus.jackson.map.ObjectMapper r0;
+        java.lang.Class r1;
+        org.codehaus.jackson.type.JavaType $r2;
+        org.codehaus.jackson.map.ObjectReader $r3;
+
+        r0 := @this: org.codehaus.jackson.map.ObjectMapper;
+
+        r1 := @parameter0: java.lang.Class;
+
+        $r2 = staticinvoke <org.codehaus.jackson.map.type.TypeFactory: org.codehaus.jackson.type.JavaType type(java.lang.reflect.Type)>(r1);
+
+        $r3 = virtualinvoke r0.<org.codehaus.jackson.map.ObjectMapper: org.codehaus.jackson.map.ObjectReader reader(org.codehaus.jackson.type.JavaType)>($r2);
+
+        return $r3;
+    }
+
+    public org.codehaus.jackson.map.ObjectReader reader(org.codehaus.jackson.node.JsonNodeFactory)
+    {
+        org.codehaus.jackson.map.ObjectMapper r0;
+        org.codehaus.jackson.node.JsonNodeFactory $r1;
+        org.codehaus.jackson.map.ObjectReader $r2;
+
+        r0 := @this: org.codehaus.jackson.map.ObjectMapper;
+
+        $r1 := @parameter0: org.codehaus.jackson.node.JsonNodeFactory;
+
+        $r2 = new org.codehaus.jackson.map.ObjectReader;
+
+        specialinvoke $r2.<org.codehaus.jackson.map.ObjectReader: void <init>(org.codehaus.jackson.map.ObjectMapper,org.codehaus.jackson.type.JavaType,java.lang.Object)>(r0, null, null);
+
+        $r2 = virtualinvoke $r2.<org.codehaus.jackson.map.ObjectReader: org.codehaus.jackson.map.ObjectReader withNodeFactory(org.codehaus.jackson.node.JsonNodeFactory)>($r1);
+
+        return $r2;
+    }
+
+    public org.codehaus.jackson.map.ObjectReader reader(org.codehaus.jackson.type.JavaType)
+    {
+        org.codehaus.jackson.map.ObjectMapper r0;
+        org.codehaus.jackson.type.JavaType $r1;
+        org.codehaus.jackson.map.ObjectReader $r2;
+
+        r0 := @this: org.codehaus.jackson.map.ObjectMapper;
+
+        $r1 := @parameter0: org.codehaus.jackson.type.JavaType;
+
+        $r2 = new org.codehaus.jackson.map.ObjectReader;
+
+        specialinvoke $r2.<org.codehaus.jackson.map.ObjectReader: void <init>(org.codehaus.jackson.map.ObjectMapper,org.codehaus.jackson.type.JavaType,java.lang.Object)>(r0, $r1, null);
+
+        return $r2;
+    }
+
+    public org.codehaus.jackson.map.ObjectReader reader(org.codehaus.jackson.type.TypeReference)
+    {
+        org.codehaus.jackson.map.ObjectMapper r0;
+        org.codehaus.jackson.type.TypeReference r1;
+        org.codehaus.jackson.type.JavaType $r2;
+        org.codehaus.jackson.map.ObjectReader $r3;
+
+        r0 := @this: org.codehaus.jackson.map.ObjectMapper;
+
+        r1 := @parameter0: org.codehaus.jackson.type.TypeReference;
+
+        $r2 = staticinvoke <org.codehaus.jackson.map.type.TypeFactory: org.codehaus.jackson.type.JavaType type(org.codehaus.jackson.type.TypeReference)>(r1);
+
+        $r3 = virtualinvoke r0.<org.codehaus.jackson.map.ObjectMapper: org.codehaus.jackson.map.ObjectReader reader(org.codehaus.jackson.type.JavaType)>($r2);
+
+        return $r3;
+    }
+
+    public void registerModule(org.codehaus.jackson.map.Module)
+    {
+        org.codehaus.jackson.map.ObjectMapper r0;
+        org.codehaus.jackson.map.Module $r1;
+        java.lang.String $r2;
+        java.lang.IllegalArgumentException $r3;
+        org.codehaus.jackson.Version $r4;
+        org.codehaus.jackson.map.ObjectMapper$1 $r5;
+
+        r0 := @this: org.codehaus.jackson.map.ObjectMapper;
+
+        $r1 := @parameter0: org.codehaus.jackson.map.Module;
+
+        $r2 = virtualinvoke $r1.<org.codehaus.jackson.map.Module: java.lang.String getModuleName()>();
+
+        if $r2 != null goto label1;
+
+        $r3 = new java.lang.IllegalArgumentException;
+
+        specialinvoke $r3.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>("Module without defined name");
+
+        throw $r3;
+
+     label1:
+        $r4 = virtualinvoke $r1.<org.codehaus.jackson.map.Module: org.codehaus.jackson.Version version()>();
+
+        if $r4 != null goto label2;
+
+        $r3 = new java.lang.IllegalArgumentException;
+
+        specialinvoke $r3.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>("Module without defined version");
+
+        throw $r3;
+
+     label2:
+        $r5 = new org.codehaus.jackson.map.ObjectMapper$1;
+
+        specialinvoke $r5.<org.codehaus.jackson.map.ObjectMapper$1: void <init>(org.codehaus.jackson.map.ObjectMapper,org.codehaus.jackson.map.ObjectMapper)>(r0, r0);
+
+        virtualinvoke $r1.<org.codehaus.jackson.map.Module: void setupModule(org.codehaus.jackson.map.Module$SetupContext)>($r5);
+
+        return;
+    }
+
+    public transient void registerSubtypes(java.lang.Class[])
+    {
+        org.codehaus.jackson.map.ObjectMapper r0;
+        java.lang.Class[] r1;
+        org.codehaus.jackson.map.jsontype.SubtypeResolver $r2;
+
+        r0 := @this: org.codehaus.jackson.map.ObjectMapper;
+
+        r1 := @parameter0: java.lang.Class[];
+
+        $r2 = virtualinvoke r0.<org.codehaus.jackson.map.ObjectMapper: org.codehaus.jackson.map.jsontype.SubtypeResolver getSubtypeResolver()>();
+
+        virtualinvoke $r2.<org.codehaus.jackson.map.jsontype.SubtypeResolver: void registerSubtypes(java.lang.Class[])>(r1);
+
+        return;
+    }
+
+    public transient void registerSubtypes(org.codehaus.jackson.map.jsontype.NamedType[])
+    {
+        org.codehaus.jackson.map.ObjectMapper r0;
+        org.codehaus.jackson.map.jsontype.NamedType[] $r1;
+        org.codehaus.jackson.map.jsontype.SubtypeResolver $r2;
+
+        r0 := @this: org.codehaus.jackson.map.ObjectMapper;
+
+        $r1 := @parameter0: org.codehaus.jackson.map.jsontype.NamedType[];
+
+        $r2 = virtualinvoke r0.<org.codehaus.jackson.map.ObjectMapper: org.codehaus.jackson.map.jsontype.SubtypeResolver getSubtypeResolver()>();
+
+        virtualinvoke $r2.<org.codehaus.jackson.map.jsontype.SubtypeResolver: void registerSubtypes(org.codehaus.jackson.map.jsontype.NamedType[])>($r1);
+
+        return;
+    }
+
+    public org.codehaus.jackson.map.ObjectMapper setDefaltTyping(org.codehaus.jackson.map.jsontype.TypeResolverBuilder)
+    {
+        org.codehaus.jackson.map.ObjectMapper r0;
+        org.codehaus.jackson.map.jsontype.TypeResolverBuilder r1;
+
+        r0 := @this: org.codehaus.jackson.map.ObjectMapper;
+
+        r1 := @parameter0: org.codehaus.jackson.map.jsontype.TypeResolverBuilder;
+
+        r0.<org.codehaus.jackson.map.ObjectMapper: org.codehaus.jackson.map.jsontype.TypeResolverBuilder _defaultTyper> = r1;
+
+        return r0;
+    }
+
+    public org.codehaus.jackson.map.ObjectMapper setDefaultTyping(org.codehaus.jackson.map.jsontype.TypeResolverBuilder)
+    {
+        org.codehaus.jackson.map.ObjectMapper r0;
+        org.codehaus.jackson.map.jsontype.TypeResolverBuilder r1;
+
+        r0 := @this: org.codehaus.jackson.map.ObjectMapper;
+
+        r1 := @parameter0: org.codehaus.jackson.map.jsontype.TypeResolverBuilder;
+
+        r0.<org.codehaus.jackson.map.ObjectMapper: org.codehaus.jackson.map.jsontype.TypeResolverBuilder _defaultTyper> = r1;
+
+        return r0;
+    }
+
+    public org.codehaus.jackson.map.ObjectMapper setDeserializationConfig(org.codehaus.jackson.map.DeserializationConfig)
+    {
+        org.codehaus.jackson.map.ObjectMapper r0;
+        org.codehaus.jackson.map.DeserializationConfig $r1;
+
+        r0 := @this: org.codehaus.jackson.map.ObjectMapper;
+
+        $r1 := @parameter0: org.codehaus.jackson.map.DeserializationConfig;
+
+        r0.<org.codehaus.jackson.map.ObjectMapper: org.codehaus.jackson.map.DeserializationConfig _deserializationConfig> = $r1;
+
+        return r0;
+    }
+
+    public org.codehaus.jackson.map.ObjectMapper setDeserializerProvider(org.codehaus.jackson.map.DeserializerProvider)
+    {
+        org.codehaus.jackson.map.ObjectMapper r0;
+        org.codehaus.jackson.map.DeserializerProvider $r1;
+
+        r0 := @this: org.codehaus.jackson.map.ObjectMapper;
+
+        $r1 := @parameter0: org.codehaus.jackson.map.DeserializerProvider;
+
+        r0.<org.codehaus.jackson.map.ObjectMapper: org.codehaus.jackson.map.DeserializerProvider _deserializerProvider> = $r1;
+
+        return r0;
+    }
+
+    public org.codehaus.jackson.map.ObjectMapper setNodeFactory(org.codehaus.jackson.node.JsonNodeFactory)
+    {
+        org.codehaus.jackson.map.ObjectMapper r0;
+        org.codehaus.jackson.node.JsonNodeFactory $r1;
+        org.codehaus.jackson.map.DeserializationConfig $r2;
+
+        r0 := @this: org.codehaus.jackson.map.ObjectMapper;
+
+        $r1 := @parameter0: org.codehaus.jackson.node.JsonNodeFactory;
+
+        $r2 = r0.<org.codehaus.jackson.map.ObjectMapper: org.codehaus.jackson.map.DeserializationConfig _deserializationConfig>;
+
+        virtualinvoke $r2.<org.codehaus.jackson.map.DeserializationConfig: void setNodeFactory(org.codehaus.jackson.node.JsonNodeFactory)>($r1);
+
+        return r0;
+    }
+
+    public org.codehaus.jackson.map.ObjectMapper setSerializationConfig(org.codehaus.jackson.map.SerializationConfig)
+    {
+        org.codehaus.jackson.map.ObjectMapper r0;
+        org.codehaus.jackson.map.SerializationConfig $r1;
+
+        r0 := @this: org.codehaus.jackson.map.ObjectMapper;
+
+        $r1 := @parameter0: org.codehaus.jackson.map.SerializationConfig;
+
+        r0.<org.codehaus.jackson.map.ObjectMapper: org.codehaus.jackson.map.SerializationConfig _serializationConfig> = $r1;
+
+        return r0;
+    }
+
+    public org.codehaus.jackson.map.ObjectMapper setSerializerFactory(org.codehaus.jackson.map.SerializerFactory)
+    {
+        org.codehaus.jackson.map.ObjectMapper r0;
+        org.codehaus.jackson.map.SerializerFactory $r1;
+
+        r0 := @this: org.codehaus.jackson.map.ObjectMapper;
+
+        $r1 := @parameter0: org.codehaus.jackson.map.SerializerFactory;
+
+        r0.<org.codehaus.jackson.map.ObjectMapper: org.codehaus.jackson.map.SerializerFactory _serializerFactory> = $r1;
+
+        return r0;
+    }
+
+    public org.codehaus.jackson.map.ObjectMapper setSerializerProvider(org.codehaus.jackson.map.SerializerProvider)
+    {
+        org.codehaus.jackson.map.ObjectMapper r0;
+        org.codehaus.jackson.map.SerializerProvider $r1;
+
+        r0 := @this: org.codehaus.jackson.map.ObjectMapper;
+
+        $r1 := @parameter0: org.codehaus.jackson.map.SerializerProvider;
+
+        r0.<org.codehaus.jackson.map.ObjectMapper: org.codehaus.jackson.map.SerializerProvider _serializerProvider> = $r1;
+
+        return r0;
+    }
+
+    public void setSubtypeResolver(org.codehaus.jackson.map.jsontype.SubtypeResolver)
+    {
+        org.codehaus.jackson.map.ObjectMapper r0;
+        org.codehaus.jackson.map.jsontype.SubtypeResolver $r1;
+
+        r0 := @this: org.codehaus.jackson.map.ObjectMapper;
+
+        $r1 := @parameter0: org.codehaus.jackson.map.jsontype.SubtypeResolver;
+
+        r0.<org.codehaus.jackson.map.ObjectMapper: org.codehaus.jackson.map.jsontype.SubtypeResolver _subtypeResolver> = $r1;
+
+        return;
+    }
+
+    public void setVisibilityChecker(org.codehaus.jackson.map.introspect.VisibilityChecker)
+    {
+        org.codehaus.jackson.map.ObjectMapper r0;
+        org.codehaus.jackson.map.introspect.VisibilityChecker r1;
+
+        r0 := @this: org.codehaus.jackson.map.ObjectMapper;
+
+        r1 := @parameter0: org.codehaus.jackson.map.introspect.VisibilityChecker;
+
+        r0.<org.codehaus.jackson.map.ObjectMapper: org.codehaus.jackson.map.introspect.VisibilityChecker _visibilityChecker> = r1;
+
+        return;
+    }
+
+    public org.codehaus.jackson.JsonParser treeAsTokens(org.codehaus.jackson.JsonNode)
+    {
+        org.codehaus.jackson.map.ObjectMapper r0;
+        org.codehaus.jackson.JsonNode $r1;
+        org.codehaus.jackson.node.TreeTraversingParser $r2;
+
+        r0 := @this: org.codehaus.jackson.map.ObjectMapper;
+
+        $r1 := @parameter0: org.codehaus.jackson.JsonNode;
+
+        $r2 = new org.codehaus.jackson.node.TreeTraversingParser;
+
+        specialinvoke $r2.<org.codehaus.jackson.node.TreeTraversingParser: void <init>(org.codehaus.jackson.JsonNode,org.codehaus.jackson.ObjectCodec)>($r1, r0);
+
+        return $r2;
+    }
+
+    public java.lang.Object treeToValue(org.codehaus.jackson.JsonNode, java.lang.Class) throws java.io.IOException, org.codehaus.jackson.JsonParseException, org.codehaus.jackson.map.JsonMappingException
+    {
+        org.codehaus.jackson.map.ObjectMapper r0;
+        org.codehaus.jackson.JsonNode $r1;
+        java.lang.Class r2;
+        org.codehaus.jackson.JsonParser $r3;
+        java.lang.Object $r4;
+
+        r0 := @this: org.codehaus.jackson.map.ObjectMapper;
+
+        $r1 := @parameter0: org.codehaus.jackson.JsonNode;
+
+        r2 := @parameter1: java.lang.Class;
+
+        $r3 = virtualinvoke r0.<org.codehaus.jackson.map.ObjectMapper: org.codehaus.jackson.JsonParser treeAsTokens(org.codehaus.jackson.JsonNode)>($r1);
+
+        $r4 = virtualinvoke r0.<org.codehaus.jackson.map.ObjectMapper: java.lang.Object readValue(org.codehaus.jackson.JsonParser,java.lang.Class)>($r3, r2);
+
+        return $r4;
+    }
+
+    public org.codehaus.jackson.map.ObjectWriter typedWriter(java.lang.Class)
+    {
+        org.codehaus.jackson.map.ObjectMapper r0;
+        java.lang.Class r1;
+        org.codehaus.jackson.type.JavaType $r2;
+        org.codehaus.jackson.map.ObjectWriter $r3;
+
+        r0 := @this: org.codehaus.jackson.map.ObjectMapper;
+
+        r1 := @parameter0: java.lang.Class;
+
+        if r1 != null goto label2;
+
+        $r2 = null;
+
+     label1:
+        $r3 = new org.codehaus.jackson.map.ObjectWriter;
+
+        specialinvoke $r3.<org.codehaus.jackson.map.ObjectWriter: void <init>(org.codehaus.jackson.map.ObjectMapper,java.lang.Class,org.codehaus.jackson.type.JavaType,org.codehaus.jackson.PrettyPrinter)>(r0, null, $r2, null);
+
+        return $r3;
+
+     label2:
+        $r2 = staticinvoke <org.codehaus.jackson.map.type.TypeFactory: org.codehaus.jackson.type.JavaType type(java.lang.reflect.Type)>(r1);
+
+        goto label1;
+    }
+
+    public org.codehaus.jackson.map.ObjectWriter typedWriter(org.codehaus.jackson.type.JavaType)
+    {
+        org.codehaus.jackson.map.ObjectMapper r0;
+        org.codehaus.jackson.type.JavaType $r1;
+        org.codehaus.jackson.map.ObjectWriter $r2;
+
+        r0 := @this: org.codehaus.jackson.map.ObjectMapper;
+
+        $r1 := @parameter0: org.codehaus.jackson.type.JavaType;
+
+        $r2 = new org.codehaus.jackson.map.ObjectWriter;
+
+        specialinvoke $r2.<org.codehaus.jackson.map.ObjectWriter: void <init>(org.codehaus.jackson.map.ObjectMapper,java.lang.Class,org.codehaus.jackson.type.JavaType,org.codehaus.jackson.PrettyPrinter)>(r0, null, $r1, null);
+
+        return $r2;
+    }
+
+    public org.codehaus.jackson.map.ObjectWriter typedWriter(org.codehaus.jackson.type.TypeReference)
+    {
+        org.codehaus.jackson.map.ObjectMapper r0;
+        org.codehaus.jackson.type.TypeReference r1;
+        org.codehaus.jackson.type.JavaType $r2;
+        org.codehaus.jackson.map.ObjectWriter $r3;
+
+        r0 := @this: org.codehaus.jackson.map.ObjectMapper;
+
+        r1 := @parameter0: org.codehaus.jackson.type.TypeReference;
+
+        if r1 != null goto label2;
+
+        $r2 = null;
+
+     label1:
+        $r3 = new org.codehaus.jackson.map.ObjectWriter;
+
+        specialinvoke $r3.<org.codehaus.jackson.map.ObjectWriter: void <init>(org.codehaus.jackson.map.ObjectMapper,java.lang.Class,org.codehaus.jackson.type.JavaType,org.codehaus.jackson.PrettyPrinter)>(r0, null, $r2, null);
+
+        return $r3;
+
+     label2:
+        $r2 = staticinvoke <org.codehaus.jackson.map.type.TypeFactory: org.codehaus.jackson.type.JavaType type(org.codehaus.jackson.type.TypeReference)>(r1);
+
+        goto label1;
+    }
+
+    public org.codehaus.jackson.map.ObjectReader updatingReader(java.lang.Object)
+    {
+        org.codehaus.jackson.map.ObjectMapper r0;
+        java.lang.Object $r1;
+        java.lang.Class $r2;
+        org.codehaus.jackson.type.JavaType $r3;
+        org.codehaus.jackson.map.ObjectReader $r4;
+
+        r0 := @this: org.codehaus.jackson.map.ObjectMapper;
+
+        $r1 := @parameter0: java.lang.Object;
+
+        $r2 = virtualinvoke $r1.<java.lang.Object: java.lang.Class getClass()>();
+
+        $r3 = staticinvoke <org.codehaus.jackson.map.type.TypeFactory: org.codehaus.jackson.type.JavaType type(java.lang.reflect.Type)>($r2);
+
+        $r4 = new org.codehaus.jackson.map.ObjectReader;
+
+        specialinvoke $r4.<org.codehaus.jackson.map.ObjectReader: void <init>(org.codehaus.jackson.map.ObjectMapper,org.codehaus.jackson.type.JavaType,java.lang.Object)>(r0, $r3, $r1);
+
+        return $r4;
+    }
+
+    public org.codehaus.jackson.JsonNode valueToTree(java.lang.Object) throws java.lang.IllegalArgumentException
+    {
+        org.codehaus.jackson.map.ObjectMapper r0;
+        java.lang.Object $r1;
+        org.codehaus.jackson.JsonParser $r3;
+        org.codehaus.jackson.JsonNode $r4;
+        java.lang.Throwable $r5;
+        java.lang.String $r6;
+        org.codehaus.jackson.util.TokenBuffer $r7;
+        java.lang.IllegalArgumentException $r8;
+        java.io.IOException $r9;
+
+        r0 := @this: org.codehaus.jackson.map.ObjectMapper;
+
+        $r1 := @parameter0: java.lang.Object;
+
+        if $r1 != null goto label1;
+
+        return null;
+
+     label1:
+        $r7 = new org.codehaus.jackson.util.TokenBuffer;
+
+        specialinvoke $r7.<org.codehaus.jackson.util.TokenBuffer: void <init>(org.codehaus.jackson.ObjectCodec)>(r0);
+
+     label2:
+        virtualinvoke r0.<org.codehaus.jackson.map.ObjectMapper: void writeValue(org.codehaus.jackson.JsonGenerator,java.lang.Object)>($r7, $r1);
+
+        $r3 = virtualinvoke $r7.<org.codehaus.jackson.util.TokenBuffer: org.codehaus.jackson.JsonParser asParser()>();
+
+        $r4 = virtualinvoke r0.<org.codehaus.jackson.map.ObjectMapper: org.codehaus.jackson.JsonNode readTree(org.codehaus.jackson.JsonParser)>($r3);
+
+        virtualinvoke $r3.<org.codehaus.jackson.JsonParser: void close()>();
+
+     label3:
+        return $r4;
+
+     label4:
+        $r5 := @caughtexception;
+
+        $r8 = new java.lang.IllegalArgumentException;
+
+        $r9 = (java.io.IOException) $r5;
+
+        $r6 = virtualinvoke $r9.<java.io.IOException: java.lang.String getMessage()>();
+
+        specialinvoke $r8.<java.lang.IllegalArgumentException: void <init>(java.lang.String,java.lang.Throwable)>($r6, $r5);
+
+        throw $r8;
+
+        catch java.io.IOException from label2 to label3 with label4;
+    }
+
+    public org.codehaus.jackson.Version version()
+    {
+        org.codehaus.jackson.map.ObjectMapper r0;
+        java.lang.Class $r1;
+        org.codehaus.jackson.Version $r2;
+
+        r0 := @this: org.codehaus.jackson.map.ObjectMapper;
+
+        $r1 = virtualinvoke r0.<java.lang.Object: java.lang.Class getClass()>();
+
+        $r2 = staticinvoke <org.codehaus.jackson.util.VersionUtil: org.codehaus.jackson.Version versionFor(java.lang.Class)>($r1);
+
+        return $r2;
+    }
+
+    public org.codehaus.jackson.map.ObjectWriter viewWriter(java.lang.Class)
+    {
+        org.codehaus.jackson.map.ObjectMapper r0;
+        java.lang.Class r1;
+        org.codehaus.jackson.map.ObjectWriter $r2;
+
+        r0 := @this: org.codehaus.jackson.map.ObjectMapper;
+
+        r1 := @parameter0: java.lang.Class;
+
+        $r2 = new org.codehaus.jackson.map.ObjectWriter;
+
+        specialinvoke $r2.<org.codehaus.jackson.map.ObjectWriter: void <init>(org.codehaus.jackson.map.ObjectMapper,java.lang.Class,org.codehaus.jackson.type.JavaType,org.codehaus.jackson.PrettyPrinter)>(r0, r1, null, null);
+
+        return $r2;
+    }
+
+    public void writeTree(org.codehaus.jackson.JsonGenerator, org.codehaus.jackson.JsonNode) throws java.io.IOException, org.codehaus.jackson.JsonProcessingException
+    {
+        org.codehaus.jackson.map.ObjectMapper r0;
+        org.codehaus.jackson.JsonGenerator $r1;
+        org.codehaus.jackson.JsonNode $r2;
+        org.codehaus.jackson.map.SerializerFactory $r3;
+        org.codehaus.jackson.map.SerializationConfig $r4;
+        org.codehaus.jackson.map.SerializerProvider $r5;
+        org.codehaus.jackson.map.SerializationConfig$Feature $r6;
+        boolean $z0;
+
+        r0 := @this: org.codehaus.jackson.map.ObjectMapper;
+
+        $r1 := @parameter0: org.codehaus.jackson.JsonGenerator;
+
+        $r2 := @parameter1: org.codehaus.jackson.JsonNode;
+
+        $r4 = virtualinvoke r0.<org.codehaus.jackson.map.ObjectMapper: org.codehaus.jackson.map.SerializationConfig copySerializationConfig()>();
+
+        $r5 = r0.<org.codehaus.jackson.map.ObjectMapper: org.codehaus.jackson.map.SerializerProvider _serializerProvider>;
+
+        $r3 = r0.<org.codehaus.jackson.map.ObjectMapper: org.codehaus.jackson.map.SerializerFactory _serializerFactory>;
+
+        virtualinvoke $r5.<org.codehaus.jackson.map.SerializerProvider: void serializeValue(org.codehaus.jackson.map.SerializationConfig,org.codehaus.jackson.JsonGenerator,java.lang.Object,org.codehaus.jackson.map.SerializerFactory)>($r4, $r1, $r2, $r3);
+
+        $r6 = <org.codehaus.jackson.map.SerializationConfig$Feature: org.codehaus.jackson.map.SerializationConfig$Feature FLUSH_AFTER_WRITE_VALUE>;
+
+        $z0 = virtualinvoke $r4.<org.codehaus.jackson.map.SerializationConfig: boolean isEnabled(org.codehaus.jackson.map.SerializationConfig$Feature)>($r6);
+
+        if $z0 == 0 goto label1;
+
+        virtualinvoke $r1.<org.codehaus.jackson.JsonGenerator: void flush()>();
+
+     label1:
+        return;
+    }
+
+    public void writeTree(org.codehaus.jackson.JsonGenerator, org.codehaus.jackson.JsonNode, org.codehaus.jackson.map.SerializationConfig) throws java.io.IOException, org.codehaus.jackson.JsonProcessingException
+    {
+        org.codehaus.jackson.map.ObjectMapper r0;
+        org.codehaus.jackson.JsonGenerator $r1;
+        org.codehaus.jackson.JsonNode $r2;
+        org.codehaus.jackson.map.SerializationConfig $r3;
+        org.codehaus.jackson.map.SerializerFactory $r4;
+        boolean $z0;
+        org.codehaus.jackson.map.SerializerProvider $r5;
+        org.codehaus.jackson.map.SerializationConfig$Feature $r6;
+
+        r0 := @this: org.codehaus.jackson.map.ObjectMapper;
+
+        $r1 := @parameter0: org.codehaus.jackson.JsonGenerator;
+
+        $r2 := @parameter1: org.codehaus.jackson.JsonNode;
+
+        $r3 := @parameter2: org.codehaus.jackson.map.SerializationConfig;
+
+        $r5 = r0.<org.codehaus.jackson.map.ObjectMapper: org.codehaus.jackson.map.SerializerProvider _serializerProvider>;
+
+        $r4 = r0.<org.codehaus.jackson.map.ObjectMapper: org.codehaus.jackson.map.SerializerFactory _serializerFactory>;
+
+        virtualinvoke $r5.<org.codehaus.jackson.map.SerializerProvider: void serializeValue(org.codehaus.jackson.map.SerializationConfig,org.codehaus.jackson.JsonGenerator,java.lang.Object,org.codehaus.jackson.map.SerializerFactory)>($r3, $r1, $r2, $r4);
+
+        $r6 = <org.codehaus.jackson.map.SerializationConfig$Feature: org.codehaus.jackson.map.SerializationConfig$Feature FLUSH_AFTER_WRITE_VALUE>;
+
+        $z0 = virtualinvoke $r3.<org.codehaus.jackson.map.SerializationConfig: boolean isEnabled(org.codehaus.jackson.map.SerializationConfig$Feature)>($r6);
+
+        if $z0 == 0 goto label1;
+
+        virtualinvoke $r1.<org.codehaus.jackson.JsonGenerator: void flush()>();
+
+     label1:
+        return;
+    }
+
+    public void writeValue(java.io.File, java.lang.Object) throws java.io.IOException, org.codehaus.jackson.JsonGenerationException, org.codehaus.jackson.map.JsonMappingException
+    {
+        org.codehaus.jackson.map.ObjectMapper r0;
+        java.io.File $r1;
+        java.lang.Object $r2;
+        org.codehaus.jackson.JsonEncoding $r3;
+        org.codehaus.jackson.JsonGenerator $r4;
+        org.codehaus.jackson.JsonFactory $r5;
+
+        r0 := @this: org.codehaus.jackson.map.ObjectMapper;
+
+        $r1 := @parameter0: java.io.File;
+
+        $r2 := @parameter1: java.lang.Object;
+
+        $r5 = r0.<org.codehaus.jackson.map.ObjectMapper: org.codehaus.jackson.JsonFactory _jsonFactory>;
+
+        $r3 = <org.codehaus.jackson.JsonEncoding: org.codehaus.jackson.JsonEncoding UTF8>;
+
+        $r4 = virtualinvoke $r5.<org.codehaus.jackson.JsonFactory: org.codehaus.jackson.JsonGenerator createJsonGenerator(java.io.File,org.codehaus.jackson.JsonEncoding)>($r1, $r3);
+
+        virtualinvoke r0.<org.codehaus.jackson.map.ObjectMapper: void _configAndWriteValue(org.codehaus.jackson.JsonGenerator,java.lang.Object)>($r4, $r2);
+
+        return;
+    }
+
+    public void writeValue(java.io.OutputStream, java.lang.Object) throws java.io.IOException, org.codehaus.jackson.JsonGenerationException, org.codehaus.jackson.map.JsonMappingException
+    {
+        org.codehaus.jackson.map.ObjectMapper r0;
+        java.io.OutputStream $r1;
+        java.lang.Object $r2;
+        org.codehaus.jackson.JsonEncoding $r3;
+        org.codehaus.jackson.JsonGenerator $r4;
+        org.codehaus.jackson.JsonFactory $r5;
+
+        r0 := @this: org.codehaus.jackson.map.ObjectMapper;
+
+        $r1 := @parameter0: java.io.OutputStream;
+
+        $r2 := @parameter1: java.lang.Object;
+
+        $r5 = r0.<org.codehaus.jackson.map.ObjectMapper: org.codehaus.jackson.JsonFactory _jsonFactory>;
+
+        $r3 = <org.codehaus.jackson.JsonEncoding: org.codehaus.jackson.JsonEncoding UTF8>;
+
+        $r4 = virtualinvoke $r5.<org.codehaus.jackson.JsonFactory: org.codehaus.jackson.JsonGenerator createJsonGenerator(java.io.OutputStream,org.codehaus.jackson.JsonEncoding)>($r1, $r3);
+
+        virtualinvoke r0.<org.codehaus.jackson.map.ObjectMapper: void _configAndWriteValue(org.codehaus.jackson.JsonGenerator,java.lang.Object)>($r4, $r2);
+
+        return;
+    }
+
+    public void writeValue(java.io.Writer, java.lang.Object) throws java.io.IOException, org.codehaus.jackson.JsonGenerationException, org.codehaus.jackson.map.JsonMappingException
+    {
+        org.codehaus.jackson.map.ObjectMapper r0;
+        java.io.Writer $r1;
+        java.lang.Object $r2;
+        org.codehaus.jackson.JsonGenerator $r3;
+        org.codehaus.jackson.JsonFactory $r4;
+
+        r0 := @this: org.codehaus.jackson.map.ObjectMapper;
+
+        $r1 := @parameter0: java.io.Writer;
+
+        $r2 := @parameter1: java.lang.Object;
+
+        $r4 = r0.<org.codehaus.jackson.map.ObjectMapper: org.codehaus.jackson.JsonFactory _jsonFactory>;
+
+        $r3 = virtualinvoke $r4.<org.codehaus.jackson.JsonFactory: org.codehaus.jackson.JsonGenerator createJsonGenerator(java.io.Writer)>($r1);
+
+        virtualinvoke r0.<org.codehaus.jackson.map.ObjectMapper: void _configAndWriteValue(org.codehaus.jackson.JsonGenerator,java.lang.Object)>($r3, $r2);
+
+        return;
+    }
+
+    public void writeValue(org.codehaus.jackson.JsonGenerator, java.lang.Object) throws java.io.IOException, org.codehaus.jackson.JsonGenerationException, org.codehaus.jackson.map.JsonMappingException
+    {
+        org.codehaus.jackson.map.ObjectMapper r0;
+        org.codehaus.jackson.JsonGenerator $r1;
+        java.lang.Object $r2;
+        org.codehaus.jackson.map.SerializerFactory $r3;
+        org.codehaus.jackson.map.SerializationConfig $r4;
+        org.codehaus.jackson.map.SerializationConfig$Feature $r5;
+        boolean $z0;
+        org.codehaus.jackson.map.SerializerProvider $r6;
+
+        r0 := @this: org.codehaus.jackson.map.ObjectMapper;
+
+        $r1 := @parameter0: org.codehaus.jackson.JsonGenerator;
+
+        $r2 := @parameter1: java.lang.Object;
+
+        $r4 = virtualinvoke r0.<org.codehaus.jackson.map.ObjectMapper: org.codehaus.jackson.map.SerializationConfig copySerializationConfig()>();
+
+        $r5 = <org.codehaus.jackson.map.SerializationConfig$Feature: org.codehaus.jackson.map.SerializationConfig$Feature CLOSE_CLOSEABLE>;
+
+        $z0 = virtualinvoke $r4.<org.codehaus.jackson.map.SerializationConfig: boolean isEnabled(org.codehaus.jackson.map.SerializationConfig$Feature)>($r5);
+
+        if $z0 == 0 goto label1;
+
+        $z0 = $r2 instanceof java.io.Closeable;
+
+        if $z0 == 0 goto label1;
+
+        specialinvoke r0.<org.codehaus.jackson.map.ObjectMapper: void _writeCloseableValue(org.codehaus.jackson.JsonGenerator,java.lang.Object,org.codehaus.jackson.map.SerializationConfig)>($r1, $r2, $r4);
+
+        return;
+
+     label1:
+        $r6 = r0.<org.codehaus.jackson.map.ObjectMapper: org.codehaus.jackson.map.SerializerProvider _serializerProvider>;
+
+        $r3 = r0.<org.codehaus.jackson.map.ObjectMapper: org.codehaus.jackson.map.SerializerFactory _serializerFactory>;
+
+        virtualinvoke $r6.<org.codehaus.jackson.map.SerializerProvider: void serializeValue(org.codehaus.jackson.map.SerializationConfig,org.codehaus.jackson.JsonGenerator,java.lang.Object,org.codehaus.jackson.map.SerializerFactory)>($r4, $r1, $r2, $r3);
+
+        $r5 = <org.codehaus.jackson.map.SerializationConfig$Feature: org.codehaus.jackson.map.SerializationConfig$Feature FLUSH_AFTER_WRITE_VALUE>;
+
+        $z0 = virtualinvoke $r4.<org.codehaus.jackson.map.SerializationConfig: boolean isEnabled(org.codehaus.jackson.map.SerializationConfig$Feature)>($r5);
+
+        if $z0 == 0 goto label2;
+
+        virtualinvoke $r1.<org.codehaus.jackson.JsonGenerator: void flush()>();
+
+     label2:
+        return;
+    }
+
+    public void writeValue(org.codehaus.jackson.JsonGenerator, java.lang.Object, org.codehaus.jackson.map.SerializationConfig) throws java.io.IOException, org.codehaus.jackson.JsonGenerationException, org.codehaus.jackson.map.JsonMappingException
+    {
+        org.codehaus.jackson.map.ObjectMapper r0;
+        org.codehaus.jackson.JsonGenerator $r1;
+        java.lang.Object $r2;
+        org.codehaus.jackson.map.SerializationConfig $r3;
+        org.codehaus.jackson.map.SerializerFactory $r4;
+        org.codehaus.jackson.map.SerializationConfig$Feature $r5;
+        boolean $z0;
+        org.codehaus.jackson.map.SerializerProvider $r6;
+
+        r0 := @this: org.codehaus.jackson.map.ObjectMapper;
+
+        $r1 := @parameter0: org.codehaus.jackson.JsonGenerator;
+
+        $r2 := @parameter1: java.lang.Object;
+
+        $r3 := @parameter2: org.codehaus.jackson.map.SerializationConfig;
+
+        $r5 = <org.codehaus.jackson.map.SerializationConfig$Feature: org.codehaus.jackson.map.SerializationConfig$Feature CLOSE_CLOSEABLE>;
+
+        $z0 = virtualinvoke $r3.<org.codehaus.jackson.map.SerializationConfig: boolean isEnabled(org.codehaus.jackson.map.SerializationConfig$Feature)>($r5);
+
+        if $z0 == 0 goto label1;
+
+        $z0 = $r2 instanceof java.io.Closeable;
+
+        if $z0 == 0 goto label1;
+
+        specialinvoke r0.<org.codehaus.jackson.map.ObjectMapper: void _writeCloseableValue(org.codehaus.jackson.JsonGenerator,java.lang.Object,org.codehaus.jackson.map.SerializationConfig)>($r1, $r2, $r3);
+
+        return;
+
+     label1:
+        $r6 = r0.<org.codehaus.jackson.map.ObjectMapper: org.codehaus.jackson.map.SerializerProvider _serializerProvider>;
+
+        $r4 = r0.<org.codehaus.jackson.map.ObjectMapper: org.codehaus.jackson.map.SerializerFactory _serializerFactory>;
+
+        virtualinvoke $r6.<org.codehaus.jackson.map.SerializerProvider: void serializeValue(org.codehaus.jackson.map.SerializationConfig,org.codehaus.jackson.JsonGenerator,java.lang.Object,org.codehaus.jackson.map.SerializerFactory)>($r3, $r1, $r2, $r4);
+
+        $r5 = <org.codehaus.jackson.map.SerializationConfig$Feature: org.codehaus.jackson.map.SerializationConfig$Feature FLUSH_AFTER_WRITE_VALUE>;
+
+        $z0 = virtualinvoke $r3.<org.codehaus.jackson.map.SerializationConfig: boolean isEnabled(org.codehaus.jackson.map.SerializationConfig$Feature)>($r5);
+
+        if $z0 == 0 goto label2;
+
+        virtualinvoke $r1.<org.codehaus.jackson.JsonGenerator: void flush()>();
+
+     label2:
+        return;
+    }
+
+    public byte[] writeValueAsBytes(java.lang.Object) throws java.io.IOException, org.codehaus.jackson.JsonGenerationException, org.codehaus.jackson.map.JsonMappingException
+    {
+        org.codehaus.jackson.map.ObjectMapper r0;
+        java.lang.Object $r1;
+        org.codehaus.jackson.util.ByteArrayBuilder r2;
+        org.codehaus.jackson.JsonEncoding $r3;
+        org.codehaus.jackson.JsonFactory $r4;
+        org.codehaus.jackson.util.BufferRecycler $r5;
+        org.codehaus.jackson.JsonGenerator $r6;
+        byte[] $r7;
+
+        r0 := @this: org.codehaus.jackson.map.ObjectMapper;
+
+        $r1 := @parameter0: java.lang.Object;
+
+        r2 = new org.codehaus.jackson.util.ByteArrayBuilder;
+
+        $r4 = r0.<org.codehaus.jackson.map.ObjectMapper: org.codehaus.jackson.JsonFactory _jsonFactory>;
+
+        $r5 = virtualinvoke $r4.<org.codehaus.jackson.JsonFactory: org.codehaus.jackson.util.BufferRecycler _getBufferRecycler()>();
+
+        specialinvoke r2.<org.codehaus.jackson.util.ByteArrayBuilder: void <init>(org.codehaus.jackson.util.BufferRecycler)>($r5);
+
+        $r4 = r0.<org.codehaus.jackson.map.ObjectMapper: org.codehaus.jackson.JsonFactory _jsonFactory>;
+
+        $r3 = <org.codehaus.jackson.JsonEncoding: org.codehaus.jackson.JsonEncoding UTF8>;
+
+        $r6 = virtualinvoke $r4.<org.codehaus.jackson.JsonFactory: org.codehaus.jackson.JsonGenerator createJsonGenerator(java.io.OutputStream,org.codehaus.jackson.JsonEncoding)>(r2, $r3);
+
+        virtualinvoke r0.<org.codehaus.jackson.map.ObjectMapper: void _configAndWriteValue(org.codehaus.jackson.JsonGenerator,java.lang.Object)>($r6, $r1);
+
+        $r7 = virtualinvoke r2.<org.codehaus.jackson.util.ByteArrayBuilder: byte[] toByteArray()>();
+
+        virtualinvoke r2.<org.codehaus.jackson.util.ByteArrayBuilder: void release()>();
+
+        return $r7;
+    }
+
+    public java.lang.String writeValueAsString(java.lang.Object) throws java.io.IOException, org.codehaus.jackson.JsonGenerationException, org.codehaus.jackson.map.JsonMappingException
+    {
+        org.codehaus.jackson.map.ObjectMapper r0;
+        java.lang.Object $r1;
+        org.codehaus.jackson.io.SegmentedStringWriter r2;
+        org.codehaus.jackson.JsonFactory $r3;
+        org.codehaus.jackson.util.BufferRecycler $r4;
+        org.codehaus.jackson.JsonGenerator $r5;
+        java.lang.String $r6;
+
+        r0 := @this: org.codehaus.jackson.map.ObjectMapper;
+
+        $r1 := @parameter0: java.lang.Object;
+
+        r2 = new org.codehaus.jackson.io.SegmentedStringWriter;
+
+        $r3 = r0.<org.codehaus.jackson.map.ObjectMapper: org.codehaus.jackson.JsonFactory _jsonFactory>;
+
+        $r4 = virtualinvoke $r3.<org.codehaus.jackson.JsonFactory: org.codehaus.jackson.util.BufferRecycler _getBufferRecycler()>();
+
+        specialinvoke r2.<org.codehaus.jackson.io.SegmentedStringWriter: void <init>(org.codehaus.jackson.util.BufferRecycler)>($r4);
+
+        $r3 = r0.<org.codehaus.jackson.map.ObjectMapper: org.codehaus.jackson.JsonFactory _jsonFactory>;
+
+        $r5 = virtualinvoke $r3.<org.codehaus.jackson.JsonFactory: org.codehaus.jackson.JsonGenerator createJsonGenerator(java.io.Writer)>(r2);
+
+        virtualinvoke r0.<org.codehaus.jackson.map.ObjectMapper: void _configAndWriteValue(org.codehaus.jackson.JsonGenerator,java.lang.Object)>($r5, $r1);
+
+        $r6 = virtualinvoke r2.<org.codehaus.jackson.io.SegmentedStringWriter: java.lang.String getAndClear()>();
+
+        return $r6;
+    }
+
+    public void writeValueUsingView(java.io.OutputStream, java.lang.Object, java.lang.Class) throws java.io.IOException, org.codehaus.jackson.JsonGenerationException, org.codehaus.jackson.map.JsonMappingException
+    {
+        org.codehaus.jackson.map.ObjectMapper r0;
+        java.io.OutputStream $r1;
+        java.lang.Object $r2;
+        java.lang.Class r3;
+        org.codehaus.jackson.JsonEncoding $r4;
+        org.codehaus.jackson.JsonGenerator $r5;
+        org.codehaus.jackson.JsonFactory $r6;
+
+        r0 := @this: org.codehaus.jackson.map.ObjectMapper;
+
+        $r1 := @parameter0: java.io.OutputStream;
+
+        $r2 := @parameter1: java.lang.Object;
+
+        r3 := @parameter2: java.lang.Class;
+
+        $r6 = r0.<org.codehaus.jackson.map.ObjectMapper: org.codehaus.jackson.JsonFactory _jsonFactory>;
+
+        $r4 = <org.codehaus.jackson.JsonEncoding: org.codehaus.jackson.JsonEncoding UTF8>;
+
+        $r5 = virtualinvoke $r6.<org.codehaus.jackson.JsonFactory: org.codehaus.jackson.JsonGenerator createJsonGenerator(java.io.OutputStream,org.codehaus.jackson.JsonEncoding)>($r1, $r4);
+
+        virtualinvoke r0.<org.codehaus.jackson.map.ObjectMapper: void _configAndWriteValue(org.codehaus.jackson.JsonGenerator,java.lang.Object,java.lang.Class)>($r5, $r2, r3);
+
+        return;
+    }
+
+    public void writeValueUsingView(java.io.Writer, java.lang.Object, java.lang.Class) throws java.io.IOException, org.codehaus.jackson.JsonGenerationException, org.codehaus.jackson.map.JsonMappingException
+    {
+        org.codehaus.jackson.map.ObjectMapper r0;
+        java.io.Writer $r1;
+        java.lang.Object $r2;
+        java.lang.Class r3;
+        org.codehaus.jackson.JsonGenerator $r4;
+        org.codehaus.jackson.JsonFactory $r5;
+
+        r0 := @this: org.codehaus.jackson.map.ObjectMapper;
+
+        $r1 := @parameter0: java.io.Writer;
+
+        $r2 := @parameter1: java.lang.Object;
+
+        r3 := @parameter2: java.lang.Class;
+
+        $r5 = r0.<org.codehaus.jackson.map.ObjectMapper: org.codehaus.jackson.JsonFactory _jsonFactory>;
+
+        $r4 = virtualinvoke $r5.<org.codehaus.jackson.JsonFactory: org.codehaus.jackson.JsonGenerator createJsonGenerator(java.io.Writer)>($r1);
+
+        virtualinvoke r0.<org.codehaus.jackson.map.ObjectMapper: void _configAndWriteValue(org.codehaus.jackson.JsonGenerator,java.lang.Object,java.lang.Class)>($r4, $r2, r3);
+
+        return;
+    }
+
+    public void writeValueUsingView(org.codehaus.jackson.JsonGenerator, java.lang.Object, java.lang.Class) throws java.io.IOException, org.codehaus.jackson.JsonGenerationException, org.codehaus.jackson.map.JsonMappingException
+    {
+        org.codehaus.jackson.map.ObjectMapper r0;
+        org.codehaus.jackson.JsonGenerator $r1;
+        java.lang.Object $r2;
+        java.lang.Class r3;
+
+        r0 := @this: org.codehaus.jackson.map.ObjectMapper;
+
+        $r1 := @parameter0: org.codehaus.jackson.JsonGenerator;
+
+        $r2 := @parameter1: java.lang.Object;
+
+        r3 := @parameter2: java.lang.Class;
+
+        virtualinvoke r0.<org.codehaus.jackson.map.ObjectMapper: void _configAndWriteValue(org.codehaus.jackson.JsonGenerator,java.lang.Object,java.lang.Class)>($r1, $r2, r3);
+
+        return;
+    }
+
+    public org.codehaus.jackson.map.ObjectWriter writer()
+    {
+        org.codehaus.jackson.map.ObjectMapper r0;
+        org.codehaus.jackson.map.ObjectWriter $r1;
+
+        r0 := @this: org.codehaus.jackson.map.ObjectMapper;
+
+        $r1 = new org.codehaus.jackson.map.ObjectWriter;
+
+        specialinvoke $r1.<org.codehaus.jackson.map.ObjectWriter: void <init>(org.codehaus.jackson.map.ObjectMapper,java.lang.Class,org.codehaus.jackson.type.JavaType,org.codehaus.jackson.PrettyPrinter)>(r0, null, null, null);
+
+        return $r1;
+    }
+}

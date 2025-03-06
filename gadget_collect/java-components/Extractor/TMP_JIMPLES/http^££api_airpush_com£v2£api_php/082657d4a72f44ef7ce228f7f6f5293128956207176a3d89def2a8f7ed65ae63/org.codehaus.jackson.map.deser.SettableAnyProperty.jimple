@@ -1,0 +1,376 @@
+public final class org.codehaus.jackson.map.deser.SettableAnyProperty extends java.lang.Object
+{
+    protected final org.codehaus.jackson.map.BeanProperty _property;
+    protected final java.lang.reflect.Method _setter;
+    protected final org.codehaus.jackson.type.JavaType _type;
+    protected org.codehaus.jackson.map.JsonDeserializer _valueDeserializer;
+
+    public void <init>(org.codehaus.jackson.map.BeanProperty, org.codehaus.jackson.map.introspect.AnnotatedMethod, org.codehaus.jackson.type.JavaType)
+    {
+        org.codehaus.jackson.map.deser.SettableAnyProperty r0;
+        org.codehaus.jackson.map.BeanProperty $r1;
+        org.codehaus.jackson.map.introspect.AnnotatedMethod $r2;
+        org.codehaus.jackson.type.JavaType $r3;
+        java.lang.reflect.Method $r4;
+
+        r0 := @this: org.codehaus.jackson.map.deser.SettableAnyProperty;
+
+        $r1 := @parameter0: org.codehaus.jackson.map.BeanProperty;
+
+        $r2 := @parameter1: org.codehaus.jackson.map.introspect.AnnotatedMethod;
+
+        $r3 := @parameter2: org.codehaus.jackson.type.JavaType;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        r0.<org.codehaus.jackson.map.deser.SettableAnyProperty: org.codehaus.jackson.map.BeanProperty _property> = $r1;
+
+        r0.<org.codehaus.jackson.map.deser.SettableAnyProperty: org.codehaus.jackson.type.JavaType _type> = $r3;
+
+        $r4 = virtualinvoke $r2.<org.codehaus.jackson.map.introspect.AnnotatedMethod: java.lang.reflect.Method getAnnotated()>();
+
+        r0.<org.codehaus.jackson.map.deser.SettableAnyProperty: java.lang.reflect.Method _setter> = $r4;
+
+        return;
+    }
+
+    private java.lang.String getClassName()
+    {
+        org.codehaus.jackson.map.deser.SettableAnyProperty r0;
+        java.lang.reflect.Method $r1;
+        java.lang.Class $r2;
+        java.lang.String $r3;
+
+        r0 := @this: org.codehaus.jackson.map.deser.SettableAnyProperty;
+
+        $r1 = r0.<org.codehaus.jackson.map.deser.SettableAnyProperty: java.lang.reflect.Method _setter>;
+
+        $r2 = virtualinvoke $r1.<java.lang.reflect.Method: java.lang.Class getDeclaringClass()>();
+
+        $r3 = virtualinvoke $r2.<java.lang.Class: java.lang.String getName()>();
+
+        return $r3;
+    }
+
+    protected void _throwAsIOE(java.lang.Exception, java.lang.String, java.lang.Object) throws java.io.IOException
+    {
+        org.codehaus.jackson.map.deser.SettableAnyProperty r0;
+        java.lang.String $r1, r4;
+        java.lang.Object $r2;
+        java.lang.Exception r3;
+        boolean $z0;
+        java.lang.StringBuilder $r5, $r6;
+        org.codehaus.jackson.type.JavaType $r7;
+        org.codehaus.jackson.map.JsonMappingException $r8;
+        java.lang.Class $r9;
+        java.io.IOException r10;
+        java.lang.RuntimeException r11;
+        java.lang.Throwable r12, $r13;
+
+        r0 := @this: org.codehaus.jackson.map.deser.SettableAnyProperty;
+
+        r3 := @parameter0: java.lang.Exception;
+
+        $r1 := @parameter1: java.lang.String;
+
+        $r2 := @parameter2: java.lang.Object;
+
+        $z0 = r3 instanceof java.lang.IllegalArgumentException;
+
+        if $z0 == 0 goto label5;
+
+        if $r2 != null goto label3;
+
+        r4 = "[NULL]";
+
+     label1:
+        $r5 = new java.lang.StringBuilder;
+
+        specialinvoke $r5.<java.lang.StringBuilder: void <init>(java.lang.String)>("Problem deserializing \"any\" property \'");
+
+        $r5 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r1);
+
+        $r6 = new java.lang.StringBuilder;
+
+        specialinvoke $r6.<java.lang.StringBuilder: void <init>()>();
+
+        $r6 = virtualinvoke $r6.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("\' of class ");
+
+        $r1 = specialinvoke r0.<org.codehaus.jackson.map.deser.SettableAnyProperty: java.lang.String getClassName()>();
+
+        $r6 = virtualinvoke $r6.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r1);
+
+        $r6 = virtualinvoke $r6.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" (expected type: ");
+
+        $r1 = virtualinvoke $r6.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        $r6 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r1);
+
+        $r7 = r0.<org.codehaus.jackson.map.deser.SettableAnyProperty: org.codehaus.jackson.type.JavaType _type>;
+
+        virtualinvoke $r6.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($r7);
+
+        $r6 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("; actual type: ");
+
+        $r6 = virtualinvoke $r6.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(r4);
+
+        virtualinvoke $r6.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(")");
+
+        $r1 = virtualinvoke r3.<java.lang.Exception: java.lang.String getMessage()>();
+
+        if $r1 == null goto label4;
+
+        $r6 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(", problem: ");
+
+        virtualinvoke $r6.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r1);
+
+     label2:
+        $r8 = new org.codehaus.jackson.map.JsonMappingException;
+
+        $r1 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke $r8.<org.codehaus.jackson.map.JsonMappingException: void <init>(java.lang.String,org.codehaus.jackson.JsonLocation,java.lang.Throwable)>($r1, null, r3);
+
+        throw $r8;
+
+     label3:
+        $r9 = virtualinvoke $r2.<java.lang.Object: java.lang.Class getClass()>();
+
+        r4 = virtualinvoke $r9.<java.lang.Class: java.lang.String getName()>();
+
+        goto label1;
+
+     label4:
+        virtualinvoke $r5.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" (no error message provided)");
+
+        goto label2;
+
+     label5:
+        $z0 = r3 instanceof java.io.IOException;
+
+        if $z0 == 0 goto label6;
+
+        r10 = (java.io.IOException) r3;
+
+        throw r10;
+
+     label6:
+        $z0 = r3 instanceof java.lang.RuntimeException;
+
+        if $z0 == 0 goto label7;
+
+        r11 = (java.lang.RuntimeException) r3;
+
+        throw r11;
+
+     label7:
+        r12 = r3;
+
+     label8:
+        $r13 = virtualinvoke r12.<java.lang.Throwable: java.lang.Throwable getCause()>();
+
+        if $r13 == null goto label9;
+
+        r12 = virtualinvoke r12.<java.lang.Throwable: java.lang.Throwable getCause()>();
+
+        goto label8;
+
+     label9:
+        $r8 = new org.codehaus.jackson.map.JsonMappingException;
+
+        $r1 = virtualinvoke r12.<java.lang.Throwable: java.lang.String getMessage()>();
+
+        specialinvoke $r8.<org.codehaus.jackson.map.JsonMappingException: void <init>(java.lang.String,org.codehaus.jackson.JsonLocation,java.lang.Throwable)>($r1, null, r12);
+
+        throw $r8;
+    }
+
+    public final java.lang.Object deserialize(org.codehaus.jackson.JsonParser, org.codehaus.jackson.map.DeserializationContext) throws java.io.IOException, org.codehaus.jackson.JsonProcessingException
+    {
+        org.codehaus.jackson.map.deser.SettableAnyProperty r0;
+        org.codehaus.jackson.JsonParser $r1;
+        org.codehaus.jackson.map.DeserializationContext $r2;
+        org.codehaus.jackson.JsonToken $r3, $r4;
+        org.codehaus.jackson.map.JsonDeserializer $r5;
+        java.lang.Object $r6;
+
+        r0 := @this: org.codehaus.jackson.map.deser.SettableAnyProperty;
+
+        $r1 := @parameter0: org.codehaus.jackson.JsonParser;
+
+        $r2 := @parameter1: org.codehaus.jackson.map.DeserializationContext;
+
+        $r3 = virtualinvoke $r1.<org.codehaus.jackson.JsonParser: org.codehaus.jackson.JsonToken getCurrentToken()>();
+
+        $r4 = <org.codehaus.jackson.JsonToken: org.codehaus.jackson.JsonToken VALUE_NULL>;
+
+        if $r3 != $r4 goto label1;
+
+        return null;
+
+     label1:
+        $r5 = r0.<org.codehaus.jackson.map.deser.SettableAnyProperty: org.codehaus.jackson.map.JsonDeserializer _valueDeserializer>;
+
+        $r6 = virtualinvoke $r5.<org.codehaus.jackson.map.JsonDeserializer: java.lang.Object deserialize(org.codehaus.jackson.JsonParser,org.codehaus.jackson.map.DeserializationContext)>($r1, $r2);
+
+        return $r6;
+    }
+
+    public final void deserializeAndSet(org.codehaus.jackson.JsonParser, org.codehaus.jackson.map.DeserializationContext, java.lang.Object, java.lang.String) throws java.io.IOException, org.codehaus.jackson.JsonProcessingException
+    {
+        org.codehaus.jackson.map.deser.SettableAnyProperty r0;
+        org.codehaus.jackson.JsonParser $r1;
+        org.codehaus.jackson.map.DeserializationContext $r2;
+        java.lang.Object $r3, $r5;
+        java.lang.String $r4;
+
+        r0 := @this: org.codehaus.jackson.map.deser.SettableAnyProperty;
+
+        $r1 := @parameter0: org.codehaus.jackson.JsonParser;
+
+        $r2 := @parameter1: org.codehaus.jackson.map.DeserializationContext;
+
+        $r3 := @parameter2: java.lang.Object;
+
+        $r4 := @parameter3: java.lang.String;
+
+        $r5 = virtualinvoke r0.<org.codehaus.jackson.map.deser.SettableAnyProperty: java.lang.Object deserialize(org.codehaus.jackson.JsonParser,org.codehaus.jackson.map.DeserializationContext)>($r1, $r2);
+
+        virtualinvoke r0.<org.codehaus.jackson.map.deser.SettableAnyProperty: void set(java.lang.Object,java.lang.String,java.lang.Object)>($r3, $r4, $r5);
+
+        return;
+    }
+
+    public org.codehaus.jackson.map.BeanProperty getProperty()
+    {
+        org.codehaus.jackson.map.deser.SettableAnyProperty r0;
+        org.codehaus.jackson.map.BeanProperty r1;
+
+        r0 := @this: org.codehaus.jackson.map.deser.SettableAnyProperty;
+
+        r1 = r0.<org.codehaus.jackson.map.deser.SettableAnyProperty: org.codehaus.jackson.map.BeanProperty _property>;
+
+        return r1;
+    }
+
+    public org.codehaus.jackson.type.JavaType getType()
+    {
+        org.codehaus.jackson.map.deser.SettableAnyProperty r0;
+        org.codehaus.jackson.type.JavaType r1;
+
+        r0 := @this: org.codehaus.jackson.map.deser.SettableAnyProperty;
+
+        r1 = r0.<org.codehaus.jackson.map.deser.SettableAnyProperty: org.codehaus.jackson.type.JavaType _type>;
+
+        return r1;
+    }
+
+    public boolean hasValueDeserializer()
+    {
+        org.codehaus.jackson.map.deser.SettableAnyProperty r0;
+        org.codehaus.jackson.map.JsonDeserializer $r1;
+
+        r0 := @this: org.codehaus.jackson.map.deser.SettableAnyProperty;
+
+        $r1 = r0.<org.codehaus.jackson.map.deser.SettableAnyProperty: org.codehaus.jackson.map.JsonDeserializer _valueDeserializer>;
+
+        if $r1 == null goto label1;
+
+        return 1;
+
+     label1:
+        return 0;
+    }
+
+    public final void set(java.lang.Object, java.lang.String, java.lang.Object) throws java.io.IOException
+    {
+        org.codehaus.jackson.map.deser.SettableAnyProperty r0;
+        java.lang.Object $r1, $r3;
+        java.lang.String $r2;
+        java.lang.reflect.Method $r4;
+        java.lang.Object[] $r5;
+        java.lang.Exception $r6;
+
+        r0 := @this: org.codehaus.jackson.map.deser.SettableAnyProperty;
+
+        $r1 := @parameter0: java.lang.Object;
+
+        $r2 := @parameter1: java.lang.String;
+
+        $r3 := @parameter2: java.lang.Object;
+
+     label1:
+        $r4 = r0.<org.codehaus.jackson.map.deser.SettableAnyProperty: java.lang.reflect.Method _setter>;
+
+        $r5 = newarray (java.lang.Object)[2];
+
+        $r5[0] = $r2;
+
+        $r5[1] = $r3;
+
+        virtualinvoke $r4.<java.lang.reflect.Method: java.lang.Object invoke(java.lang.Object,java.lang.Object[])>($r1, $r5);
+
+     label2:
+        return;
+
+     label3:
+        $r6 := @caughtexception;
+
+        virtualinvoke r0.<org.codehaus.jackson.map.deser.SettableAnyProperty: void _throwAsIOE(java.lang.Exception,java.lang.String,java.lang.Object)>($r6, $r2, $r3);
+
+        return;
+
+        catch java.lang.Exception from label1 to label2 with label3;
+    }
+
+    public void setValueDeserializer(org.codehaus.jackson.map.JsonDeserializer)
+    {
+        org.codehaus.jackson.map.deser.SettableAnyProperty r0;
+        org.codehaus.jackson.map.JsonDeserializer r1, $r2;
+        java.lang.IllegalStateException $r3;
+
+        r0 := @this: org.codehaus.jackson.map.deser.SettableAnyProperty;
+
+        r1 := @parameter0: org.codehaus.jackson.map.JsonDeserializer;
+
+        $r2 = r0.<org.codehaus.jackson.map.deser.SettableAnyProperty: org.codehaus.jackson.map.JsonDeserializer _valueDeserializer>;
+
+        if $r2 == null goto label1;
+
+        $r3 = new java.lang.IllegalStateException;
+
+        specialinvoke $r3.<java.lang.IllegalStateException: void <init>(java.lang.String)>("Already had assigned deserializer for SettableAnyProperty");
+
+        throw $r3;
+
+     label1:
+        r0.<org.codehaus.jackson.map.deser.SettableAnyProperty: org.codehaus.jackson.map.JsonDeserializer _valueDeserializer> = r1;
+
+        return;
+    }
+
+    public java.lang.String toString()
+    {
+        org.codehaus.jackson.map.deser.SettableAnyProperty r0;
+        java.lang.StringBuilder $r1;
+        java.lang.String $r2;
+
+        r0 := @this: org.codehaus.jackson.map.deser.SettableAnyProperty;
+
+        $r1 = new java.lang.StringBuilder;
+
+        specialinvoke $r1.<java.lang.StringBuilder: void <init>()>();
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("[any property on class ");
+
+        $r2 = specialinvoke r0.<org.codehaus.jackson.map.deser.SettableAnyProperty: java.lang.String getClassName()>();
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r2);
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("]");
+
+        $r2 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        return $r2;
+    }
+}

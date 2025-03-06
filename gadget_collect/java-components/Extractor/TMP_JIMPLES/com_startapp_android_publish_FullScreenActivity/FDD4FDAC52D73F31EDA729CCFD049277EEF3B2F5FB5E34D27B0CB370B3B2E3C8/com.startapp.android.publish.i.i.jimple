@@ -1,0 +1,62 @@
+public class com.startapp.android.publish.i.i extends com.startapp.android.publish.i.v
+{
+    private static final long serialVersionUID;
+    private final java.lang.String DURATION_PARAM_NAME;
+    private java.lang.String duration;
+
+    public void <init>(java.lang.String, java.lang.String)
+    {
+        com.startapp.android.publish.i.i r0;
+        java.lang.String $r1, $r2;
+
+        r0 := @this: com.startapp.android.publish.i.i;
+
+        $r1 := @parameter0: java.lang.String;
+
+        $r2 := @parameter1: java.lang.String;
+
+        specialinvoke r0.<com.startapp.android.publish.i.v: void <init>(java.lang.String)>($r2);
+
+        r0.<com.startapp.android.publish.i.i: java.lang.String DURATION_PARAM_NAME> = "&displayDuration=";
+
+        r0.<com.startapp.android.publish.i.i: java.lang.String duration> = $r1;
+
+        return;
+    }
+
+    public java.lang.String getQueryString()
+    {
+        com.startapp.android.publish.i.i r0;
+        java.lang.StringBuilder $r1;
+        java.lang.String $r2;
+
+        r0 := @this: com.startapp.android.publish.i.i;
+
+        $r1 = new java.lang.StringBuilder;
+
+        specialinvoke $r1.<java.lang.StringBuilder: void <init>()>();
+
+        $r2 = specialinvoke r0.<com.startapp.android.publish.i.v: java.lang.String getQueryString()>();
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r2);
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("&displayDuration=");
+
+        $r2 = r0.<com.startapp.android.publish.i.i: java.lang.String duration>;
+
+        $r2 = virtualinvoke r0.<com.startapp.android.publish.i.i: java.lang.String encode(java.lang.String)>($r2);
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r2);
+
+        $r2 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        return $r2;
+    }
+
+    public static void <clinit>()
+    {
+        <com.startapp.android.publish.i.i: long serialVersionUID> = 1L;
+
+        return;
+    }
+}

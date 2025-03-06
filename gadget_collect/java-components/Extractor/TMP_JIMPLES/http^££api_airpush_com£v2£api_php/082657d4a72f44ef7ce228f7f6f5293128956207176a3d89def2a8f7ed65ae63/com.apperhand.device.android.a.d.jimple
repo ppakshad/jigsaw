@@ -1,0 +1,188 @@
+public final class com.apperhand.device.android.a.d extends java.lang.Object implements com.apperhand.device.a.a.d
+{
+    private android.content.Context a;
+    private android.app.NotificationManager b;
+
+    public void <init>(android.content.Context)
+    {
+        com.apperhand.device.android.a.d r0;
+        android.content.Context $r1;
+        java.lang.Object $r2;
+        android.app.NotificationManager $r3;
+
+        r0 := @this: com.apperhand.device.android.a.d;
+
+        $r1 := @parameter0: android.content.Context;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        r0.<com.apperhand.device.android.a.d: android.content.Context a> = $r1;
+
+        $r2 = virtualinvoke $r1.<android.content.Context: java.lang.Object getSystemService(java.lang.String)>("notification");
+
+        $r3 = (android.app.NotificationManager) $r2;
+
+        r0.<com.apperhand.device.android.a.d: android.app.NotificationManager b> = $r3;
+
+        return;
+    }
+
+    public final com.apperhand.common.dto.CommandInformation a()
+    {
+        com.apperhand.device.android.a.d r0;
+        com.apperhand.common.dto.CommandInformation $r1;
+        com.apperhand.common.dto.Command$Commands $r2;
+        android.content.Context $r3;
+        boolean $z0;
+        com.apperhand.common.dto.NotificationDTO $r4;
+        java.util.ArrayList $r5;
+        com.apperhand.common.dto.AssetInformation $r6;
+        java.lang.String $r7;
+        com.apperhand.common.dto.AssetInformation$State $r8;
+        java.lang.Exception $r9;
+        java.lang.StringBuilder $r10;
+
+        r0 := @this: com.apperhand.device.android.a.d;
+
+        $r1 = new com.apperhand.common.dto.CommandInformation;
+
+        $r2 = <com.apperhand.common.dto.Command$Commands: com.apperhand.common.dto.Command$Commands NOTIFICATIONS>;
+
+        specialinvoke $r1.<com.apperhand.common.dto.CommandInformation: void <init>(com.apperhand.common.dto.Command$Commands)>($r2);
+
+        virtualinvoke $r1.<com.apperhand.common.dto.CommandInformation: void setValid(boolean)>(1);
+
+        $r3 = r0.<com.apperhand.device.android.a.d: android.content.Context a>;
+
+        $z0 = staticinvoke <com.apperhand.device.android.c.d: boolean a(android.content.Context)>($r3);
+
+        if $z0 == 0 goto label5;
+
+     label1:
+        $r3 = r0.<com.apperhand.device.android.a.d: android.content.Context a>;
+
+        $r4 = staticinvoke <com.apperhand.device.android.c.d: com.apperhand.common.dto.NotificationDTO b(android.content.Context)>($r3);
+
+     label2:
+        if $r4 == null goto label4;
+
+        $r5 = new java.util.ArrayList;
+
+        specialinvoke $r5.<java.util.ArrayList: void <init>()>();
+
+        virtualinvoke $r1.<com.apperhand.common.dto.CommandInformation: void setAssets(java.util.List)>($r5);
+
+        $r6 = new com.apperhand.common.dto.AssetInformation;
+
+        specialinvoke $r6.<com.apperhand.common.dto.AssetInformation: void <init>()>();
+
+        interfaceinvoke $r5.<java.util.List: boolean add(java.lang.Object)>($r6);
+
+        $r7 = virtualinvoke $r4.<com.apperhand.common.dto.NotificationDTO: java.lang.String getLink()>();
+
+        virtualinvoke $r6.<com.apperhand.common.dto.AssetInformation: void setUrl(java.lang.String)>($r7);
+
+        $r8 = <com.apperhand.common.dto.AssetInformation$State: com.apperhand.common.dto.AssetInformation$State EXIST>;
+
+        virtualinvoke $r6.<com.apperhand.common.dto.AssetInformation: void setState(com.apperhand.common.dto.AssetInformation$State)>($r8);
+
+        return $r1;
+
+     label3:
+        $r9 := @caughtexception;
+
+        virtualinvoke $r1.<com.apperhand.common.dto.CommandInformation: void setValid(boolean)>(0);
+
+        $r10 = new java.lang.StringBuilder;
+
+        specialinvoke $r10.<java.lang.StringBuilder: void <init>()>();
+
+        $r10 = virtualinvoke $r10.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Need to show notification, message = [");
+
+        $r7 = virtualinvoke $r9.<java.lang.Exception: java.lang.String getMessage()>();
+
+        $r10 = virtualinvoke $r10.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r7);
+
+        $r10 = virtualinvoke $r10.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("]");
+
+        $r7 = virtualinvoke $r10.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        virtualinvoke $r1.<com.apperhand.common.dto.CommandInformation: void setMessage(java.lang.String)>($r7);
+
+        return $r1;
+
+     label4:
+        virtualinvoke $r1.<com.apperhand.common.dto.CommandInformation: void setValid(boolean)>(0);
+
+        virtualinvoke $r1.<com.apperhand.common.dto.CommandInformation: void setMessage(java.lang.String)>("Need to show notification, but couldn\'t read file");
+
+        return $r1;
+
+     label5:
+        virtualinvoke $r1.<com.apperhand.common.dto.CommandInformation: void setMessage(java.lang.String)>("Notification was opt out");
+
+        return $r1;
+
+        catch java.lang.Exception from label1 to label2 with label3;
+    }
+
+    public final java.lang.String a(com.apperhand.common.dto.NotificationDTO) throws com.apperhand.device.a.d.f
+    {
+        com.apperhand.device.android.a.d r0;
+        com.apperhand.common.dto.NotificationDTO $r1;
+        java.lang.String $r2;
+        android.content.Context $r3;
+        android.app.NotificationManager $r4;
+
+        r0 := @this: com.apperhand.device.android.a.d;
+
+        $r1 := @parameter0: com.apperhand.common.dto.NotificationDTO;
+
+        $r3 = r0.<com.apperhand.device.android.a.d: android.content.Context a>;
+
+        $r2 = staticinvoke <com.apperhand.device.android.c.d: java.lang.String a(android.content.Context,com.apperhand.common.dto.NotificationDTO)>($r3, $r1);
+
+        if $r2 != null goto label1;
+
+        $r3 = r0.<com.apperhand.device.android.a.d: android.content.Context a>;
+
+        staticinvoke <com.apperhand.device.android.c.d: void a(android.content.Context,boolean)>($r3, 1);
+
+        $r3 = r0.<com.apperhand.device.android.a.d: android.content.Context a>;
+
+        $r4 = r0.<com.apperhand.device.android.a.d: android.app.NotificationManager b>;
+
+        staticinvoke <com.apperhand.device.android.c.d: void a(android.content.Context,android.app.NotificationManager,com.apperhand.common.dto.NotificationDTO,int)>($r3, $r4, $r1, 71);
+
+     label1:
+        return $r2;
+    }
+
+    public final boolean a(int, boolean)
+    {
+        com.apperhand.device.android.a.d r0;
+        int $i0;
+        boolean $z0;
+        android.content.Context $r1;
+        android.app.NotificationManager $r2;
+
+        r0 := @this: com.apperhand.device.android.a.d;
+
+        $i0 := @parameter0: int;
+
+        $z0 := @parameter1: boolean;
+
+        if $z0 == 0 goto label1;
+
+        $r1 = r0.<com.apperhand.device.android.a.d: android.content.Context a>;
+
+        staticinvoke <com.apperhand.device.android.c.d: void a(android.content.Context,boolean)>($r1, 0);
+
+     label1:
+        $r2 = r0.<com.apperhand.device.android.a.d: android.app.NotificationManager b>;
+
+        virtualinvoke $r2.<android.app.NotificationManager: void cancel(int)>($i0);
+
+        return 1;
+    }
+}

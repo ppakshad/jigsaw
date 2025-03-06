@@ -1,0 +1,1091 @@
+public final class org.codehaus.jackson.io.JsonStringEncoder extends java.lang.Object
+{
+    private static final byte[] HEX_BYTES;
+    private static final char[] HEX_CHARS;
+    private static final int INT_0;
+    private static final int INT_BACKSLASH;
+    private static final int INT_U;
+    private static final int SURR1_FIRST;
+    private static final int SURR1_LAST;
+    private static final int SURR2_FIRST;
+    private static final int SURR2_LAST;
+    protected static final java.lang.ThreadLocal _threadEncoder;
+    protected org.codehaus.jackson.util.ByteArrayBuilder _byteBuilder;
+    protected final char[] _quoteBuffer;
+    protected org.codehaus.jackson.util.TextBuffer _textBuffer;
+
+    static void <clinit>()
+    {
+        char[] $r0;
+        byte[] $r1;
+        java.lang.ThreadLocal $r2;
+
+        <org.codehaus.jackson.io.JsonStringEncoder: int SURR2_LAST> = 57343;
+
+        <org.codehaus.jackson.io.JsonStringEncoder: int SURR2_FIRST> = 56320;
+
+        <org.codehaus.jackson.io.JsonStringEncoder: int SURR1_LAST> = 56319;
+
+        <org.codehaus.jackson.io.JsonStringEncoder: int SURR1_FIRST> = 55296;
+
+        <org.codehaus.jackson.io.JsonStringEncoder: int INT_U> = 117;
+
+        <org.codehaus.jackson.io.JsonStringEncoder: int INT_BACKSLASH> = 92;
+
+        <org.codehaus.jackson.io.JsonStringEncoder: int INT_0> = 48;
+
+        $r0 = staticinvoke <org.codehaus.jackson.util.CharTypes: char[] copyHexChars()>();
+
+        <org.codehaus.jackson.io.JsonStringEncoder: char[] HEX_CHARS> = $r0;
+
+        $r1 = staticinvoke <org.codehaus.jackson.util.CharTypes: byte[] copyHexBytes()>();
+
+        <org.codehaus.jackson.io.JsonStringEncoder: byte[] HEX_BYTES> = $r1;
+
+        $r2 = new java.lang.ThreadLocal;
+
+        specialinvoke $r2.<java.lang.ThreadLocal: void <init>()>();
+
+        <org.codehaus.jackson.io.JsonStringEncoder: java.lang.ThreadLocal _threadEncoder> = $r2;
+
+        return;
+    }
+
+    public void <init>()
+    {
+        org.codehaus.jackson.io.JsonStringEncoder r0;
+        char[] $r1;
+
+        r0 := @this: org.codehaus.jackson.io.JsonStringEncoder;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        $r1 = newarray (char)[6];
+
+        r0.<org.codehaus.jackson.io.JsonStringEncoder: char[] _quoteBuffer> = $r1;
+
+        $r1 = r0.<org.codehaus.jackson.io.JsonStringEncoder: char[] _quoteBuffer>;
+
+        $r1[0] = 92;
+
+        $r1 = r0.<org.codehaus.jackson.io.JsonStringEncoder: char[] _quoteBuffer>;
+
+        $r1[2] = 48;
+
+        $r1 = r0.<org.codehaus.jackson.io.JsonStringEncoder: char[] _quoteBuffer>;
+
+        $r1[3] = 48;
+
+        return;
+    }
+
+    private int _appendByteEscape(int, org.codehaus.jackson.util.ByteArrayBuilder, int)
+    {
+        org.codehaus.jackson.io.JsonStringEncoder r0;
+        int $i0, $i1;
+        org.codehaus.jackson.util.ByteArrayBuilder $r1;
+        byte[] $r2;
+        byte $b2;
+
+        r0 := @this: org.codehaus.jackson.io.JsonStringEncoder;
+
+        $i0 := @parameter0: int;
+
+        $r1 := @parameter1: org.codehaus.jackson.util.ByteArrayBuilder;
+
+        $i1 := @parameter2: int;
+
+        virtualinvoke $r1.<org.codehaus.jackson.util.ByteArrayBuilder: void setCurrentSegmentLength(int)>($i1);
+
+        virtualinvoke $r1.<org.codehaus.jackson.util.ByteArrayBuilder: void append(int)>(92);
+
+        if $i0 >= 0 goto label2;
+
+        $i0 = $i0 + 1;
+
+        $i0 = neg $i0;
+
+        virtualinvoke $r1.<org.codehaus.jackson.util.ByteArrayBuilder: void append(int)>(117);
+
+        virtualinvoke $r1.<org.codehaus.jackson.util.ByteArrayBuilder: void append(int)>(48);
+
+        virtualinvoke $r1.<org.codehaus.jackson.util.ByteArrayBuilder: void append(int)>(48);
+
+        $r2 = <org.codehaus.jackson.io.JsonStringEncoder: byte[] HEX_BYTES>;
+
+        $i1 = $i0 >> 4;
+
+        $b2 = $r2[$i1];
+
+        virtualinvoke $r1.<org.codehaus.jackson.util.ByteArrayBuilder: void append(int)>($b2);
+
+        $r2 = <org.codehaus.jackson.io.JsonStringEncoder: byte[] HEX_BYTES>;
+
+        $i0 = $i0 & 15;
+
+        $b2 = $r2[$i0];
+
+        virtualinvoke $r1.<org.codehaus.jackson.util.ByteArrayBuilder: void append(int)>($b2);
+
+     label1:
+        $i0 = virtualinvoke $r1.<org.codehaus.jackson.util.ByteArrayBuilder: int getCurrentSegmentLength()>();
+
+        return $i0;
+
+     label2:
+        $b2 = (byte) $i0;
+
+        virtualinvoke $r1.<org.codehaus.jackson.util.ByteArrayBuilder: void append(int)>($b2);
+
+        goto label1;
+    }
+
+    private int _appendSingleEscape(int, char[])
+    {
+        org.codehaus.jackson.io.JsonStringEncoder r0;
+        int $i0, $i1;
+        char[] $r1, $r2;
+        char $c2;
+
+        r0 := @this: org.codehaus.jackson.io.JsonStringEncoder;
+
+        $i0 := @parameter0: int;
+
+        $r1 := @parameter1: char[];
+
+        if $i0 >= 0 goto label1;
+
+        $i0 = $i0 + 1;
+
+        $i0 = neg $i0;
+
+        $r1[1] = 117;
+
+        $r2 = <org.codehaus.jackson.io.JsonStringEncoder: char[] HEX_CHARS>;
+
+        $i1 = $i0 >> 4;
+
+        $c2 = $r2[$i1];
+
+        $r1[4] = $c2;
+
+        $r2 = <org.codehaus.jackson.io.JsonStringEncoder: char[] HEX_CHARS>;
+
+        $i0 = $i0 & 15;
+
+        $c2 = $r2[$i0];
+
+        $r1[5] = $c2;
+
+        return 6;
+
+     label1:
+        $c2 = (char) $i0;
+
+        $r1[1] = $c2;
+
+        return 2;
+    }
+
+    private int _convertSurrogate(int, int)
+    {
+        org.codehaus.jackson.io.JsonStringEncoder r0;
+        int $i0, $i1;
+        java.lang.IllegalArgumentException $r1;
+        java.lang.StringBuilder $r2;
+        java.lang.String $r3;
+
+        r0 := @this: org.codehaus.jackson.io.JsonStringEncoder;
+
+        $i0 := @parameter0: int;
+
+        $i1 := @parameter1: int;
+
+        if $i1 < 56320 goto label1;
+
+        if $i1 <= 57343 goto label2;
+
+     label1:
+        $r1 = new java.lang.IllegalArgumentException;
+
+        $r2 = new java.lang.StringBuilder;
+
+        specialinvoke $r2.<java.lang.StringBuilder: void <init>()>();
+
+        $r2 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Broken surrogate pair: first char 0x");
+
+        $r3 = staticinvoke <java.lang.Integer: java.lang.String toHexString(int)>($i0);
+
+        $r2 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r3);
+
+        $r2 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(", second 0x");
+
+        $r3 = staticinvoke <java.lang.Integer: java.lang.String toHexString(int)>($i1);
+
+        $r2 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r3);
+
+        $r2 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("; illegal combination");
+
+        $r3 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke $r1.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>($r3);
+
+        throw $r1;
+
+     label2:
+        $i0 = $i0 - 55296;
+
+        $i0 = $i0 << 10;
+
+        $i0 = 65536 + $i0;
+
+        $i1 = $i1 - 56320;
+
+        $i0 = $i0 + $i1;
+
+        return $i0;
+    }
+
+    private void _throwIllegalSurrogate(int)
+    {
+        org.codehaus.jackson.io.JsonStringEncoder r0;
+        int $i0;
+        java.lang.IllegalArgumentException $r1;
+        java.lang.StringBuilder $r2;
+        java.lang.String $r3;
+
+        r0 := @this: org.codehaus.jackson.io.JsonStringEncoder;
+
+        $i0 := @parameter0: int;
+
+        if $i0 <= 1114111 goto label1;
+
+        $r1 = new java.lang.IllegalArgumentException;
+
+        $r2 = new java.lang.StringBuilder;
+
+        specialinvoke $r2.<java.lang.StringBuilder: void <init>()>();
+
+        $r2 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Illegal character point (0x");
+
+        $r3 = staticinvoke <java.lang.Integer: java.lang.String toHexString(int)>($i0);
+
+        $r2 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r3);
+
+        $r2 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(") to output; max is 0x10FFFF as per RFC 4627");
+
+        $r3 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke $r1.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>($r3);
+
+        throw $r1;
+
+     label1:
+        if $i0 < 55296 goto label3;
+
+        if $i0 > 56319 goto label2;
+
+        $r1 = new java.lang.IllegalArgumentException;
+
+        $r2 = new java.lang.StringBuilder;
+
+        specialinvoke $r2.<java.lang.StringBuilder: void <init>()>();
+
+        $r2 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Unmatched first part of surrogate pair (0x");
+
+        $r3 = staticinvoke <java.lang.Integer: java.lang.String toHexString(int)>($i0);
+
+        $r2 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r3);
+
+        $r2 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(")");
+
+        $r3 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke $r1.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>($r3);
+
+        throw $r1;
+
+     label2:
+        $r1 = new java.lang.IllegalArgumentException;
+
+        $r2 = new java.lang.StringBuilder;
+
+        specialinvoke $r2.<java.lang.StringBuilder: void <init>()>();
+
+        $r2 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Unmatched second part of surrogate pair (0x");
+
+        $r3 = staticinvoke <java.lang.Integer: java.lang.String toHexString(int)>($i0);
+
+        $r2 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r3);
+
+        $r2 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(")");
+
+        $r3 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke $r1.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>($r3);
+
+        throw $r1;
+
+     label3:
+        $r1 = new java.lang.IllegalArgumentException;
+
+        $r2 = new java.lang.StringBuilder;
+
+        specialinvoke $r2.<java.lang.StringBuilder: void <init>()>();
+
+        $r2 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Illegal character point (0x");
+
+        $r3 = staticinvoke <java.lang.Integer: java.lang.String toHexString(int)>($i0);
+
+        $r2 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r3);
+
+        $r2 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(") to output");
+
+        $r3 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke $r1.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>($r3);
+
+        throw $r1;
+    }
+
+    public static org.codehaus.jackson.io.JsonStringEncoder getInstance()
+    {
+        java.lang.ref.SoftReference $r0;
+        java.lang.ThreadLocal $r1;
+        java.lang.Object $r2;
+        org.codehaus.jackson.io.JsonStringEncoder r3;
+
+        $r1 = <org.codehaus.jackson.io.JsonStringEncoder: java.lang.ThreadLocal _threadEncoder>;
+
+        $r2 = virtualinvoke $r1.<java.lang.ThreadLocal: java.lang.Object get()>();
+
+        $r0 = (java.lang.ref.SoftReference) $r2;
+
+        if $r0 != null goto label2;
+
+        r3 = null;
+
+     label1:
+        if r3 != null goto label3;
+
+        r3 = new org.codehaus.jackson.io.JsonStringEncoder;
+
+        specialinvoke r3.<org.codehaus.jackson.io.JsonStringEncoder: void <init>()>();
+
+        $r1 = <org.codehaus.jackson.io.JsonStringEncoder: java.lang.ThreadLocal _threadEncoder>;
+
+        $r0 = new java.lang.ref.SoftReference;
+
+        specialinvoke $r0.<java.lang.ref.SoftReference: void <init>(java.lang.Object)>(r3);
+
+        virtualinvoke $r1.<java.lang.ThreadLocal: void set(java.lang.Object)>($r0);
+
+        return r3;
+
+     label2:
+        $r2 = virtualinvoke $r0.<java.lang.ref.SoftReference: java.lang.Object get()>();
+
+        r3 = (org.codehaus.jackson.io.JsonStringEncoder) $r2;
+
+        goto label1;
+
+     label3:
+        return r3;
+    }
+
+    public byte[] encodeAsUTF8(java.lang.String)
+    {
+        org.codehaus.jackson.io.JsonStringEncoder r0;
+        java.lang.String $r1;
+        org.codehaus.jackson.util.ByteArrayBuilder r2;
+        int $i0, i1, i2, i3, i4, i6, i8, $i9;
+        byte[] $r3, r4;
+        char $c5;
+        byte $b7;
+
+        r0 := @this: org.codehaus.jackson.io.JsonStringEncoder;
+
+        $r1 := @parameter0: java.lang.String;
+
+        r2 = r0.<org.codehaus.jackson.io.JsonStringEncoder: org.codehaus.jackson.util.ByteArrayBuilder _byteBuilder>;
+
+        if r2 != null goto label01;
+
+        r2 = new org.codehaus.jackson.util.ByteArrayBuilder;
+
+        specialinvoke r2.<org.codehaus.jackson.util.ByteArrayBuilder: void <init>(org.codehaus.jackson.util.BufferRecycler)>(null);
+
+        r0.<org.codehaus.jackson.io.JsonStringEncoder: org.codehaus.jackson.util.ByteArrayBuilder _byteBuilder> = r2;
+
+     label01:
+        $i0 = virtualinvoke $r1.<java.lang.String: int length()>();
+
+        i1 = 0;
+
+        $r3 = virtualinvoke r2.<org.codehaus.jackson.util.ByteArrayBuilder: byte[] resetAndGetFirstSegment()>();
+
+        r4 = $r3;
+
+        i2 = lengthof $r3;
+
+        i3 = 0;
+
+     label02:
+        if i3 >= $i0 goto label22;
+
+        i4 = i3 + 1;
+
+        i3 = virtualinvoke $r1.<java.lang.String: char charAt(int)>(i3);
+
+        i6 = i4;
+
+     label03:
+        if i3 > 127 goto label07;
+
+        if i1 < i2 goto label04;
+
+        $r3 = virtualinvoke r2.<org.codehaus.jackson.util.ByteArrayBuilder: byte[] finishCurrentSegment()>();
+
+        r4 = $r3;
+
+        i2 = lengthof $r3;
+
+        i1 = 0;
+
+     label04:
+        i4 = i1 + 1;
+
+        $b7 = (byte) i3;
+
+        r4[i1] = $b7;
+
+        if i6 < $i0 goto label06;
+
+        i1 = i4;
+
+     label05:
+        r2 = r0.<org.codehaus.jackson.io.JsonStringEncoder: org.codehaus.jackson.util.ByteArrayBuilder _byteBuilder>;
+
+        r4 = virtualinvoke r2.<org.codehaus.jackson.util.ByteArrayBuilder: byte[] completeAndCoalesce(int)>(i1);
+
+        return r4;
+
+     label06:
+        i3 = virtualinvoke $r1.<java.lang.String: char charAt(int)>(i6);
+
+        i1 = i4;
+
+        i6 = i6 + 1;
+
+        goto label03;
+
+     label07:
+        if i1 < i2 goto label21;
+
+        $r3 = virtualinvoke r2.<org.codehaus.jackson.util.ByteArrayBuilder: byte[] finishCurrentSegment()>();
+
+        r4 = $r3;
+
+        i2 = lengthof $r3;
+
+        i1 = 0;
+
+     label08:
+        if i3 >= 2048 goto label11;
+
+        i8 = i1 + 1;
+
+        i4 = i3 >> 6;
+
+        i4 = i4 | 192;
+
+        $b7 = (byte) i4;
+
+        r4[i1] = $b7;
+
+        i4 = i6;
+
+     label09:
+        if i8 < i2 goto label10;
+
+        $r3 = virtualinvoke r2.<org.codehaus.jackson.util.ByteArrayBuilder: byte[] finishCurrentSegment()>();
+
+        r4 = $r3;
+
+        i2 = lengthof $r3;
+
+        i8 = 0;
+
+     label10:
+        i3 = i3 & 63;
+
+        i3 = i3 | 128;
+
+        $b7 = (byte) i3;
+
+        r4[i8] = $b7;
+
+        i1 = i8 + 1;
+
+        i3 = i4;
+
+        goto label02;
+
+     label11:
+        if i3 < 55296 goto label12;
+
+        if i3 <= 57343 goto label14;
+
+     label12:
+        i4 = i1 + 1;
+
+        i8 = i3 >> 12;
+
+        i8 = i8 | 224;
+
+        $b7 = (byte) i8;
+
+        r4[i1] = $b7;
+
+        if i4 < i2 goto label13;
+
+        $r3 = virtualinvoke r2.<org.codehaus.jackson.util.ByteArrayBuilder: byte[] finishCurrentSegment()>();
+
+        r4 = $r3;
+
+        i2 = lengthof $r3;
+
+        i4 = 0;
+
+     label13:
+        i8 = i3 >> 6;
+
+        i8 = i8 & 63;
+
+        i8 = i8 | 128;
+
+        $b7 = (byte) i8;
+
+        r4[i4] = $b7;
+
+        i8 = i4 + 1;
+
+        i4 = i6;
+
+        goto label09;
+
+     label14:
+        if i3 <= 56319 goto label15;
+
+        specialinvoke r0.<org.codehaus.jackson.io.JsonStringEncoder: void _throwIllegalSurrogate(int)>(i3);
+
+     label15:
+        if i6 < $i0 goto label16;
+
+        specialinvoke r0.<org.codehaus.jackson.io.JsonStringEncoder: void _throwIllegalSurrogate(int)>(i3);
+
+     label16:
+        i4 = i6 + 1;
+
+        $c5 = virtualinvoke $r1.<java.lang.String: char charAt(int)>(i6);
+
+        i6 = specialinvoke r0.<org.codehaus.jackson.io.JsonStringEncoder: int _convertSurrogate(int,int)>(i3, $c5);
+
+        i3 = i6;
+
+        if i6 <= 1114111 goto label17;
+
+        specialinvoke r0.<org.codehaus.jackson.io.JsonStringEncoder: void _throwIllegalSurrogate(int)>(i6);
+
+     label17:
+        i8 = i1 + 1;
+
+        $i9 = i6 >> 18;
+
+        $i9 = $i9 | 240;
+
+        $b7 = (byte) $i9;
+
+        r4[i1] = $b7;
+
+        if i8 < i2 goto label18;
+
+        $r3 = virtualinvoke r2.<org.codehaus.jackson.util.ByteArrayBuilder: byte[] finishCurrentSegment()>();
+
+        r4 = $r3;
+
+        i2 = lengthof $r3;
+
+        i8 = 0;
+
+     label18:
+        i1 = i8 + 1;
+
+        $i9 = i6 >> 12;
+
+        $i9 = $i9 & 63;
+
+        $i9 = $i9 | 128;
+
+        $b7 = (byte) $i9;
+
+        r4[i8] = $b7;
+
+        if i1 < i2 goto label20;
+
+        $r3 = virtualinvoke r2.<org.codehaus.jackson.util.ByteArrayBuilder: byte[] finishCurrentSegment()>();
+
+        r4 = $r3;
+
+        i2 = lengthof $r3;
+
+        i1 = 0;
+
+     label19:
+        i6 = i6 >> 6;
+
+        i6 = i6 & 63;
+
+        i6 = i6 | 128;
+
+        $b7 = (byte) i6;
+
+        r4[i1] = $b7;
+
+        i8 = i1 + 1;
+
+        goto label09;
+
+     label20:
+        goto label19;
+
+     label21:
+        goto label08;
+
+     label22:
+        goto label05;
+    }
+
+    public char[] quoteAsString(java.lang.String)
+    {
+        org.codehaus.jackson.io.JsonStringEncoder r0;
+        java.lang.String $r1;
+        int i0, i1, i2, i3, $i4, i5, $i7;
+        org.codehaus.jackson.util.TextBuffer $r2, r3;
+        char[] $r4, $r6, $r7;
+        int[] $r5;
+        char $c6;
+
+        r0 := @this: org.codehaus.jackson.io.JsonStringEncoder;
+
+        $r1 := @parameter0: java.lang.String;
+
+        $r2 = r0.<org.codehaus.jackson.io.JsonStringEncoder: org.codehaus.jackson.util.TextBuffer _textBuffer>;
+
+        r3 = $r2;
+
+        if $r2 != null goto label01;
+
+        r3 = new org.codehaus.jackson.util.TextBuffer;
+
+        specialinvoke r3.<org.codehaus.jackson.util.TextBuffer: void <init>(org.codehaus.jackson.util.BufferRecycler)>(null);
+
+        r0.<org.codehaus.jackson.io.JsonStringEncoder: org.codehaus.jackson.util.TextBuffer _textBuffer> = r3;
+
+     label01:
+        $r4 = virtualinvoke r3.<org.codehaus.jackson.util.TextBuffer: char[] emptyAndGetCurrentSegment()>();
+
+        $r5 = staticinvoke <org.codehaus.jackson.util.CharTypes: int[] getOutputEscapes()>();
+
+        i1 = lengthof $r5;
+
+        i0 = 0;
+
+        $i4 = virtualinvoke $r1.<java.lang.String: int length()>();
+
+        i5 = 0;
+
+     label02:
+        if i0 >= $i4 goto label08;
+
+     label03:
+        $c6 = virtualinvoke $r1.<java.lang.String: char charAt(int)>(i0);
+
+        if $c6 >= i1 goto label06;
+
+        i3 = $r5[$c6];
+
+        if i3 == 0 goto label06;
+
+        i3 = i0 + 1;
+
+        $c6 = virtualinvoke $r1.<java.lang.String: char charAt(int)>(i0);
+
+        i0 = $r5[$c6];
+
+        $r6 = r0.<org.codehaus.jackson.io.JsonStringEncoder: char[] _quoteBuffer>;
+
+        i0 = specialinvoke r0.<org.codehaus.jackson.io.JsonStringEncoder: int _appendSingleEscape(int,char[])>(i0, $r6);
+
+        i2 = i5 + i0;
+
+        $i7 = lengthof $r4;
+
+        if i2 <= $i7 goto label10;
+
+        i2 = lengthof $r4;
+
+        i2 = i2 - i5;
+
+        if i2 <= 0 goto label04;
+
+        $r6 = r0.<org.codehaus.jackson.io.JsonStringEncoder: char[] _quoteBuffer>;
+
+        staticinvoke <java.lang.System: void arraycopy(java.lang.Object,int,java.lang.Object,int,int)>($r6, 0, $r4, i5, i2);
+
+     label04:
+        $r6 = virtualinvoke r3.<org.codehaus.jackson.util.TextBuffer: char[] finishCurrentSegment()>();
+
+        $r4 = $r6;
+
+        i0 = i0 - i2;
+
+        $r7 = r0.<org.codehaus.jackson.io.JsonStringEncoder: char[] _quoteBuffer>;
+
+        staticinvoke <java.lang.System: void arraycopy(java.lang.Object,int,java.lang.Object,int,int)>($r7, i2, $r6, i5, i0);
+
+        i5 = i5 + i0;
+
+     label05:
+        i0 = i3;
+
+        goto label02;
+
+     label06:
+        i3 = lengthof $r4;
+
+        if i5 < i3 goto label07;
+
+        $r4 = virtualinvoke r3.<org.codehaus.jackson.util.TextBuffer: char[] finishCurrentSegment()>();
+
+        i5 = 0;
+
+     label07:
+        i3 = i5 + 1;
+
+        $r4[i5] = $c6;
+
+        i0 = i0 + 1;
+
+        if i0 < $i4 goto label09;
+
+        i5 = i3;
+
+     label08:
+        virtualinvoke r3.<org.codehaus.jackson.util.TextBuffer: void setCurrentLength(int)>(i5);
+
+        $r4 = virtualinvoke r3.<org.codehaus.jackson.util.TextBuffer: char[] contentsAsArray()>();
+
+        return $r4;
+
+     label09:
+        i5 = i3;
+
+        goto label03;
+
+     label10:
+        $r6 = r0.<org.codehaus.jackson.io.JsonStringEncoder: char[] _quoteBuffer>;
+
+        staticinvoke <java.lang.System: void arraycopy(java.lang.Object,int,java.lang.Object,int,int)>($r6, 0, $r4, i5, i0);
+
+        i5 = i5 + i0;
+
+        goto label05;
+    }
+
+    public byte[] quoteAsUTF8(java.lang.String)
+    {
+        org.codehaus.jackson.io.JsonStringEncoder r0;
+        java.lang.String $r1;
+        int i0, i1, $i2, i3, $i6, $i8;
+        org.codehaus.jackson.util.ByteArrayBuilder r2;
+        byte[] $r3;
+        int[] $r4;
+        char $c4, $c7;
+        byte $b5;
+
+        r0 := @this: org.codehaus.jackson.io.JsonStringEncoder;
+
+        $r1 := @parameter0: java.lang.String;
+
+        r2 = r0.<org.codehaus.jackson.io.JsonStringEncoder: org.codehaus.jackson.util.ByteArrayBuilder _byteBuilder>;
+
+        if r2 != null goto label01;
+
+        r2 = new org.codehaus.jackson.util.ByteArrayBuilder;
+
+        specialinvoke r2.<org.codehaus.jackson.util.ByteArrayBuilder: void <init>(org.codehaus.jackson.util.BufferRecycler)>(null);
+
+        r0.<org.codehaus.jackson.io.JsonStringEncoder: org.codehaus.jackson.util.ByteArrayBuilder _byteBuilder> = r2;
+
+     label01:
+        i0 = 0;
+
+        $i2 = virtualinvoke $r1.<java.lang.String: int length()>();
+
+        i3 = 0;
+
+        $r3 = virtualinvoke r2.<org.codehaus.jackson.util.ByteArrayBuilder: byte[] resetAndGetFirstSegment()>();
+
+     label02:
+        if i0 >= $i2 goto label08;
+
+        $r4 = staticinvoke <org.codehaus.jackson.util.CharTypes: int[] getOutputEscapes()>();
+
+     label03:
+        $c4 = virtualinvoke $r1.<java.lang.String: char charAt(int)>(i0);
+
+        if $c4 > 127 goto label04;
+
+        i1 = $r4[$c4];
+
+        if i1 == 0 goto label06;
+
+     label04:
+        i1 = lengthof $r3;
+
+        if i3 < i1 goto label05;
+
+        $r3 = virtualinvoke r2.<org.codehaus.jackson.util.ByteArrayBuilder: byte[] finishCurrentSegment()>();
+
+        i3 = 0;
+
+     label05:
+        i1 = i0 + 1;
+
+        $c4 = virtualinvoke $r1.<java.lang.String: char charAt(int)>(i0);
+
+        if $c4 > 127 goto label10;
+
+        i0 = $r4[$c4];
+
+        i3 = specialinvoke r0.<org.codehaus.jackson.io.JsonStringEncoder: int _appendByteEscape(int,org.codehaus.jackson.util.ByteArrayBuilder,int)>(i0, r2, i3);
+
+        $r3 = virtualinvoke r2.<org.codehaus.jackson.util.ByteArrayBuilder: byte[] getCurrentSegment()>();
+
+        i0 = i1;
+
+        goto label02;
+
+     label06:
+        i1 = lengthof $r3;
+
+        if i3 < i1 goto label07;
+
+        $r3 = virtualinvoke r2.<org.codehaus.jackson.util.ByteArrayBuilder: byte[] finishCurrentSegment()>();
+
+        i3 = 0;
+
+     label07:
+        i1 = i3 + 1;
+
+        $b5 = (byte) $c4;
+
+        $r3[i3] = $b5;
+
+        i0 = i0 + 1;
+
+        if i0 < $i2 goto label09;
+
+        i3 = i1;
+
+     label08:
+        r2 = r0.<org.codehaus.jackson.io.JsonStringEncoder: org.codehaus.jackson.util.ByteArrayBuilder _byteBuilder>;
+
+        $r3 = virtualinvoke r2.<org.codehaus.jackson.util.ByteArrayBuilder: byte[] completeAndCoalesce(int)>(i3);
+
+        return $r3;
+
+     label09:
+        i3 = i1;
+
+        goto label03;
+
+     label10:
+        if $c4 > 2047 goto label13;
+
+        i0 = i3 + 1;
+
+        $i6 = $c4 >> 6;
+
+        $i6 = $i6 | 192;
+
+        $b5 = (byte) $i6;
+
+        $r3[i3] = $b5;
+
+        i3 = $c4 & 63;
+
+        i3 = i3 | 128;
+
+        $i6 = i0;
+
+        i0 = i1;
+
+     label11:
+        i1 = lengthof $r3;
+
+        if $i6 < i1 goto label12;
+
+        $r3 = virtualinvoke r2.<org.codehaus.jackson.util.ByteArrayBuilder: byte[] finishCurrentSegment()>();
+
+        $i6 = 0;
+
+     label12:
+        $b5 = (byte) i3;
+
+        $r3[$i6] = $b5;
+
+        i3 = $i6 + 1;
+
+        goto label02;
+
+     label13:
+        if $c4 < 55296 goto label14;
+
+        if $c4 <= 57343 goto label16;
+
+     label14:
+        i0 = i3 + 1;
+
+        $i6 = $c4 >> 12;
+
+        $i6 = $i6 | 224;
+
+        $b5 = (byte) $i6;
+
+        $r3[i3] = $b5;
+
+        i3 = lengthof $r3;
+
+        if i0 < i3 goto label24;
+
+        $r3 = virtualinvoke r2.<org.codehaus.jackson.util.ByteArrayBuilder: byte[] finishCurrentSegment()>();
+
+        i3 = 0;
+
+     label15:
+        i0 = i3 + 1;
+
+        $i6 = $c4 >> 6;
+
+        $i6 = $i6 & 63;
+
+        $i6 = $i6 | 128;
+
+        $b5 = (byte) $i6;
+
+        $r3[i3] = $b5;
+
+        i3 = $c4 & 63;
+
+        i3 = i3 | 128;
+
+        $i6 = i0;
+
+        i0 = i1;
+
+        goto label11;
+
+     label16:
+        if $c4 <= 56319 goto label17;
+
+        specialinvoke r0.<org.codehaus.jackson.io.JsonStringEncoder: void _throwIllegalSurrogate(int)>($c4);
+
+     label17:
+        if i1 < $i2 goto label18;
+
+        specialinvoke r0.<org.codehaus.jackson.io.JsonStringEncoder: void _throwIllegalSurrogate(int)>($c4);
+
+     label18:
+        i0 = i1 + 1;
+
+        $c7 = virtualinvoke $r1.<java.lang.String: char charAt(int)>(i1);
+
+        i1 = specialinvoke r0.<org.codehaus.jackson.io.JsonStringEncoder: int _convertSurrogate(int,int)>($c4, $c7);
+
+        if i1 <= 1114111 goto label19;
+
+        specialinvoke r0.<org.codehaus.jackson.io.JsonStringEncoder: void _throwIllegalSurrogate(int)>(i1);
+
+     label19:
+        $i6 = i3 + 1;
+
+        $i8 = i1 >> 18;
+
+        $i8 = $i8 | 240;
+
+        $b5 = (byte) $i8;
+
+        $r3[i3] = $b5;
+
+        i3 = lengthof $r3;
+
+        if $i6 < i3 goto label23;
+
+        $r3 = virtualinvoke r2.<org.codehaus.jackson.util.ByteArrayBuilder: byte[] finishCurrentSegment()>();
+
+        $i6 = 0;
+
+     label20:
+        i3 = $i6 + 1;
+
+        $i8 = i1 >> 12;
+
+        $i8 = $i8 & 63;
+
+        $i8 = $i8 | 128;
+
+        $b5 = (byte) $i8;
+
+        $r3[$i6] = $b5;
+
+        $i6 = lengthof $r3;
+
+        if i3 < $i6 goto label22;
+
+        $r3 = virtualinvoke r2.<org.codehaus.jackson.util.ByteArrayBuilder: byte[] finishCurrentSegment()>();
+
+        i3 = 0;
+
+     label21:
+        $i6 = i3 + 1;
+
+        $i8 = i1 >> 6;
+
+        $i8 = $i8 & 63;
+
+        $i8 = $i8 | 128;
+
+        $b5 = (byte) $i8;
+
+        $r3[i3] = $b5;
+
+        i1 = i1 & 63;
+
+        i3 = i1 | 128;
+
+        goto label11;
+
+     label22:
+        goto label21;
+
+     label23:
+        goto label20;
+
+     label24:
+        i3 = i0;
+
+        goto label15;
+    }
+}

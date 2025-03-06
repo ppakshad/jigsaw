@@ -1,0 +1,346 @@
+class com.Leadbolt.AdController$PollRequest extends android.os.AsyncTask
+{
+    private java.lang.String pollRes;
+    final com.Leadbolt.AdController this$0;
+
+    private void <init>(com.Leadbolt.AdController)
+    {
+        com.Leadbolt.AdController$PollRequest r0;
+        com.Leadbolt.AdController $r1;
+
+        r0 := @this: com.Leadbolt.AdController$PollRequest;
+
+        $r1 := @parameter0: com.Leadbolt.AdController;
+
+        r0.<com.Leadbolt.AdController$PollRequest: com.Leadbolt.AdController this$0> = $r1;
+
+        specialinvoke r0.<android.os.AsyncTask: void <init>()>();
+
+        r0.<com.Leadbolt.AdController$PollRequest: java.lang.String pollRes> = null;
+
+        return;
+    }
+
+    void <init>(com.Leadbolt.AdController, com.Leadbolt.AdController$PollRequest)
+    {
+        com.Leadbolt.AdController$PollRequest r0, $r2;
+        com.Leadbolt.AdController $r1;
+
+        r0 := @this: com.Leadbolt.AdController$PollRequest;
+
+        $r1 := @parameter0: com.Leadbolt.AdController;
+
+        $r2 := @parameter1: com.Leadbolt.AdController$PollRequest;
+
+        specialinvoke r0.<com.Leadbolt.AdController$PollRequest: void <init>(com.Leadbolt.AdController)>($r1);
+
+        return;
+    }
+
+    static com.Leadbolt.AdController access$3(com.Leadbolt.AdController$PollRequest)
+    {
+        com.Leadbolt.AdController$PollRequest $r0;
+        com.Leadbolt.AdController r1;
+
+        $r0 := @parameter0: com.Leadbolt.AdController$PollRequest;
+
+        r1 = $r0.<com.Leadbolt.AdController$PollRequest: com.Leadbolt.AdController this$0>;
+
+        return r1;
+    }
+
+    protected transient volatile java.lang.Object doInBackground(java.lang.Object[])
+    {
+        com.Leadbolt.AdController$PollRequest r0;
+        java.lang.String $r1;
+        java.lang.Object[] $r2;
+        java.lang.String[] $r3;
+
+        r0 := @this: com.Leadbolt.AdController$PollRequest;
+
+        $r2 := @parameter0: java.lang.Object[];
+
+        $r3 = (java.lang.String[]) $r2;
+
+        $r1 = virtualinvoke r0.<com.Leadbolt.AdController$PollRequest: java.lang.String doInBackground(java.lang.String[])>($r3);
+
+        return $r1;
+    }
+
+    protected transient java.lang.String doInBackground(java.lang.String[])
+    {
+        com.Leadbolt.AdController$PollRequest r0;
+        java.lang.String[] $r1;
+        org.apache.http.impl.client.DefaultHttpClient r2;
+        org.apache.http.client.methods.HttpGet r3;
+        java.lang.String $r4;
+        java.lang.StringBuilder $r5;
+        com.Leadbolt.AdController $r6;
+        org.apache.http.HttpResponse $r7;
+        org.apache.http.StatusLine $r8;
+        int $i0;
+        org.apache.http.HttpEntity $r9;
+        java.io.InputStream $r10;
+        java.lang.Exception $r11;
+
+        r0 := @this: com.Leadbolt.AdController$PollRequest;
+
+        $r1 := @parameter0: java.lang.String[];
+
+        staticinvoke <com.Leadbolt.AdLog: void d(java.lang.String,java.lang.String)>("LBAdController", "Initial Poll Started....");
+
+        $r4 = $r1[0];
+
+        if $r4 == null goto label12;
+
+        r2 = new org.apache.http.impl.client.DefaultHttpClient;
+
+     label01:
+        specialinvoke r2.<org.apache.http.impl.client.DefaultHttpClient: void <init>()>();
+
+     label02:
+        r3 = new org.apache.http.client.methods.HttpGet;
+
+        $r5 = new java.lang.StringBuilder;
+
+     label03:
+        $r4 = $r1[0];
+
+        $r4 = staticinvoke <java.lang.String: java.lang.String valueOf(java.lang.Object)>($r4);
+
+        specialinvoke $r5.<java.lang.StringBuilder: void <init>(java.lang.String)>($r4);
+
+        $r6 = r0.<com.Leadbolt.AdController$PollRequest: com.Leadbolt.AdController this$0>;
+
+        $r4 = staticinvoke <com.Leadbolt.AdController: java.lang.String access$0(com.Leadbolt.AdController)>($r6);
+
+        $r5 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r4);
+
+        $r4 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke r3.<org.apache.http.client.methods.HttpGet: void <init>(java.lang.String)>($r4);
+
+        $r7 = interfaceinvoke r2.<org.apache.http.client.HttpClient: org.apache.http.HttpResponse execute(org.apache.http.client.methods.HttpUriRequest)>(r3);
+
+        $r8 = interfaceinvoke $r7.<org.apache.http.HttpResponse: org.apache.http.StatusLine getStatusLine()>();
+
+        $i0 = interfaceinvoke $r8.<org.apache.http.StatusLine: int getStatusCode()>();
+
+     label04:
+        if $i0 != 200 goto label10;
+
+     label05:
+        $r9 = interfaceinvoke $r7.<org.apache.http.HttpResponse: org.apache.http.HttpEntity getEntity()>();
+
+     label06:
+        if $r9 == null goto label10;
+
+     label07:
+        $r10 = interfaceinvoke $r9.<org.apache.http.HttpEntity: java.io.InputStream getContent()>();
+
+        $r4 = staticinvoke <com.Leadbolt.AdUtilFuncs: java.lang.String convertStreamToString(java.io.InputStream)>($r10);
+
+        r0.<com.Leadbolt.AdController$PollRequest: java.lang.String pollRes> = $r4;
+
+     label08:
+        $r5 = new java.lang.StringBuilder;
+
+     label09:
+        specialinvoke $r5.<java.lang.StringBuilder: void <init>(java.lang.String)>("Result ");
+
+        $r4 = r0.<com.Leadbolt.AdController$PollRequest: java.lang.String pollRes>;
+
+        $r5 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r4);
+
+        $r4 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <com.Leadbolt.AdLog: void d(java.lang.String,java.lang.String)>("LBAdController", $r4);
+
+        virtualinvoke $r10.<java.io.InputStream: void close()>();
+
+     label10:
+        $r4 = r0.<com.Leadbolt.AdController$PollRequest: java.lang.String pollRes>;
+
+        return $r4;
+
+     label11:
+        $r11 := @caughtexception;
+
+        r0.<com.Leadbolt.AdController$PollRequest: java.lang.String pollRes> = null;
+
+        goto label10;
+
+     label12:
+        return null;
+
+        catch java.lang.Exception from label01 to label02 with label11;
+        catch java.lang.Exception from label03 to label04 with label11;
+        catch java.lang.Exception from label05 to label06 with label11;
+        catch java.lang.Exception from label07 to label08 with label11;
+        catch java.lang.Exception from label09 to label10 with label11;
+    }
+
+    protected volatile void onPostExecute(java.lang.Object)
+    {
+        com.Leadbolt.AdController$PollRequest r0;
+        java.lang.Object $r1;
+        java.lang.String $r2;
+
+        r0 := @this: com.Leadbolt.AdController$PollRequest;
+
+        $r1 := @parameter0: java.lang.Object;
+
+        $r2 = (java.lang.String) $r1;
+
+        virtualinvoke r0.<com.Leadbolt.AdController$PollRequest: void onPostExecute(java.lang.String)>($r2);
+
+        return;
+    }
+
+    protected void onPostExecute(java.lang.String)
+    {
+        com.Leadbolt.AdController$PollRequest r0;
+        java.lang.String $r1, $r3;
+        android.os.Handler r2;
+        int i0;
+        boolean $z0;
+        com.Leadbolt.AdController $r4;
+        org.json.JSONObject $r5;
+        java.lang.StringBuilder $r6;
+        com.Leadbolt.AdController$PollRequest$1 $r7;
+        long $l1;
+        java.lang.Exception $r8, $r10;
+        com.Leadbolt.AdListener $r9;
+
+        r0 := @this: com.Leadbolt.AdController$PollRequest;
+
+        $r1 := @parameter0: java.lang.String;
+
+        specialinvoke r0.<android.os.AsyncTask: void onPostExecute(java.lang.Object)>($r1);
+
+        if $r1 == null goto label01;
+
+        $r3 = virtualinvoke $r1.<java.lang.String: java.lang.String trim()>();
+
+        $z0 = virtualinvoke $r3.<java.lang.String: boolean equals(java.lang.Object)>("0");
+
+        if $z0 == 0 goto label16;
+
+     label01:
+        $r4 = r0.<com.Leadbolt.AdController$PollRequest: com.Leadbolt.AdController this$0>;
+
+        $r5 = staticinvoke <com.Leadbolt.AdController: org.json.JSONObject access$1(com.Leadbolt.AdController)>($r4);
+
+        i0 = virtualinvoke $r5.<org.json.JSONObject: int getInt(java.lang.String)>("timeopen");
+
+     label02:
+        if i0 <= 0 goto label13;
+
+     label03:
+        $r4 = r0.<com.Leadbolt.AdController$PollRequest: com.Leadbolt.AdController this$0>;
+
+        $r5 = staticinvoke <com.Leadbolt.AdController: org.json.JSONObject access$1(com.Leadbolt.AdController)>($r4);
+
+        i0 = virtualinvoke $r5.<org.json.JSONObject: int getInt(java.lang.String)>("timeopen");
+
+     label04:
+        i0 = i0 * 1000;
+
+        $r6 = new java.lang.StringBuilder;
+
+     label05:
+        specialinvoke $r6.<java.lang.StringBuilder: void <init>(java.lang.String)>("Tease Time used - ad will load after ");
+
+        $r6 = virtualinvoke $r6.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>(i0);
+
+        $r6 = virtualinvoke $r6.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("ms");
+
+        $r1 = virtualinvoke $r6.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <com.Leadbolt.AdLog: void i(java.lang.String,java.lang.String)>("LBAdController", $r1);
+
+     label06:
+        r2 = new android.os.Handler;
+
+     label07:
+        specialinvoke r2.<android.os.Handler: void <init>()>();
+
+     label08:
+        $r7 = new com.Leadbolt.AdController$PollRequest$1;
+
+     label09:
+        specialinvoke $r7.<com.Leadbolt.AdController$PollRequest$1: void <init>(com.Leadbolt.AdController$PollRequest)>(r0);
+
+     label10:
+        $l1 = (long) i0;
+
+     label11:
+        virtualinvoke r2.<android.os.Handler: boolean postDelayed(java.lang.Runnable,long)>($r7, $l1);
+
+     label12:
+        return;
+
+     label13:
+        $r4 = r0.<com.Leadbolt.AdController$PollRequest: com.Leadbolt.AdController this$0>;
+
+        staticinvoke <com.Leadbolt.AdController: void access$2(com.Leadbolt.AdController)>($r4);
+
+     label14:
+        return;
+
+     label15:
+        $r8 := @caughtexception;
+
+        $r4 = r0.<com.Leadbolt.AdController$PollRequest: com.Leadbolt.AdController this$0>;
+
+        staticinvoke <com.Leadbolt.AdController: void access$2(com.Leadbolt.AdController)>($r4);
+
+        return;
+
+     label16:
+        $r1 = virtualinvoke $r1.<java.lang.String: java.lang.String trim()>();
+
+        $z0 = virtualinvoke $r1.<java.lang.String: boolean equals(java.lang.Object)>("1");
+
+        if $z0 == 0 goto label20;
+
+        staticinvoke <com.Leadbolt.AdLog: void d(java.lang.String,java.lang.String)>("LBAdController", "Going to trigger onAdAlreadyCompleted event");
+
+        $r4 = r0.<com.Leadbolt.AdController$PollRequest: com.Leadbolt.AdController this$0>;
+
+        $r9 = staticinvoke <com.Leadbolt.AdController: com.Leadbolt.AdListener access$3(com.Leadbolt.AdController)>($r4);
+
+        if $r9 == null goto label20;
+
+     label17:
+        staticinvoke <com.Leadbolt.AdLog: void i(java.lang.String,java.lang.String)>("LBAdController", "onAdAlreadyCompleted triggered");
+
+        $r4 = r0.<com.Leadbolt.AdController$PollRequest: com.Leadbolt.AdController this$0>;
+
+        $r9 = staticinvoke <com.Leadbolt.AdController: com.Leadbolt.AdListener access$3(com.Leadbolt.AdController)>($r4);
+
+        interfaceinvoke $r9.<com.Leadbolt.AdListener: void onAdAlreadyCompleted()>();
+
+     label18:
+        return;
+
+     label19:
+        $r10 := @caughtexception;
+
+        staticinvoke <com.Leadbolt.AdLog: void e(java.lang.String,java.lang.String)>("LBAdController", "error when onAdAlreadyCompleted triggered");
+
+        staticinvoke <com.Leadbolt.AdLog: void printStackTrace(java.lang.String,java.lang.Exception)>("LBAdController", $r10);
+
+     label20:
+        return;
+
+        catch java.lang.Exception from label01 to label02 with label15;
+        catch java.lang.Exception from label03 to label04 with label15;
+        catch java.lang.Exception from label05 to label06 with label15;
+        catch java.lang.Exception from label07 to label08 with label15;
+        catch java.lang.Exception from label09 to label10 with label15;
+        catch java.lang.Exception from label11 to label12 with label15;
+        catch java.lang.Exception from label13 to label14 with label15;
+        catch java.lang.Exception from label17 to label18 with label19;
+    }
+}

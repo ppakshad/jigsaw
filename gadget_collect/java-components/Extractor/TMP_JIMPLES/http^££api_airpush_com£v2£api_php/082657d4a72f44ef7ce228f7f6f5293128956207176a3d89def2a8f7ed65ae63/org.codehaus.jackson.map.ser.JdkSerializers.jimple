@@ -1,0 +1,65 @@
+public class org.codehaus.jackson.map.ser.JdkSerializers extends java.lang.Object implements org.codehaus.jackson.map.util.Provider
+{
+
+    public void <init>()
+    {
+        org.codehaus.jackson.map.ser.JdkSerializers r0;
+
+        r0 := @this: org.codehaus.jackson.map.ser.JdkSerializers;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public java.util.Collection provide()
+    {
+        org.codehaus.jackson.map.ser.JdkSerializers r0;
+        java.util.HashMap r1;
+        org.codehaus.jackson.map.ser.ToStringSerializer r2;
+        java.util.Set $r3;
+        java.lang.Class $r4;
+
+        r0 := @this: org.codehaus.jackson.map.ser.JdkSerializers;
+
+        r1 = new java.util.HashMap;
+
+        specialinvoke r1.<java.util.HashMap: void <init>()>();
+
+        r2 = <org.codehaus.jackson.map.ser.ToStringSerializer: org.codehaus.jackson.map.ser.ToStringSerializer instance>;
+
+        virtualinvoke r1.<java.util.HashMap: java.lang.Object put(java.lang.Object,java.lang.Object)>(class "Ljava/net/URL;", r2);
+
+        virtualinvoke r1.<java.util.HashMap: java.lang.Object put(java.lang.Object,java.lang.Object)>(class "Ljava/net/URI;", r2);
+
+        virtualinvoke r1.<java.util.HashMap: java.lang.Object put(java.lang.Object,java.lang.Object)>(class "Ljava/util/Currency;", r2);
+
+        virtualinvoke r1.<java.util.HashMap: java.lang.Object put(java.lang.Object,java.lang.Object)>(class "Ljava/util/UUID;", r2);
+
+        virtualinvoke r1.<java.util.HashMap: java.lang.Object put(java.lang.Object,java.lang.Object)>(class "Ljava/util/regex/Pattern;", r2);
+
+        virtualinvoke r1.<java.util.HashMap: java.lang.Object put(java.lang.Object,java.lang.Object)>(class "Ljava/util/Locale;", r2);
+
+        virtualinvoke r1.<java.util.HashMap: java.lang.Object put(java.lang.Object,java.lang.Object)>(class "Ljava/util/Locale;", r2);
+
+        virtualinvoke r1.<java.util.HashMap: java.lang.Object put(java.lang.Object,java.lang.Object)>(class "Ljava/util/concurrent/atomic/AtomicReference;", class "Lorg/codehaus/jackson/map/ser/JdkSerializers$AtomicReferenceSerializer;");
+
+        virtualinvoke r1.<java.util.HashMap: java.lang.Object put(java.lang.Object,java.lang.Object)>(class "Ljava/util/concurrent/atomic/AtomicBoolean;", class "Lorg/codehaus/jackson/map/ser/JdkSerializers$AtomicBooleanSerializer;");
+
+        virtualinvoke r1.<java.util.HashMap: java.lang.Object put(java.lang.Object,java.lang.Object)>(class "Ljava/util/concurrent/atomic/AtomicInteger;", class "Lorg/codehaus/jackson/map/ser/JdkSerializers$AtomicIntegerSerializer;");
+
+        virtualinvoke r1.<java.util.HashMap: java.lang.Object put(java.lang.Object,java.lang.Object)>(class "Ljava/util/concurrent/atomic/AtomicLong;", class "Lorg/codehaus/jackson/map/ser/JdkSerializers$AtomicLongSerializer;");
+
+        virtualinvoke r1.<java.util.HashMap: java.lang.Object put(java.lang.Object,java.lang.Object)>(class "Ljava/io/File;", class "Lorg/codehaus/jackson/map/ser/JdkSerializers$FileSerializer;");
+
+        virtualinvoke r1.<java.util.HashMap: java.lang.Object put(java.lang.Object,java.lang.Object)>(class "Ljava/lang/Class;", class "Lorg/codehaus/jackson/map/ser/JdkSerializers$ClassSerializer;");
+
+        $r4 = <java.lang.Void: java.lang.Class TYPE>;
+
+        virtualinvoke r1.<java.util.HashMap: java.lang.Object put(java.lang.Object,java.lang.Object)>($r4, class "Lorg/codehaus/jackson/map/ser/NullSerializer;");
+
+        $r3 = virtualinvoke r1.<java.util.HashMap: java.util.Set entrySet()>();
+
+        return $r3;
+    }
+}

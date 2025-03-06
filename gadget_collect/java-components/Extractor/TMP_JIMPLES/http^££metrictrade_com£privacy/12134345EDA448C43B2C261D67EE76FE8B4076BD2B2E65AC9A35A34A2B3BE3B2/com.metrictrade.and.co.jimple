@@ -1,0 +1,864 @@
+public final class com.metrictrade.and.co extends java.lang.Object
+{
+    public byte[] a;
+    public com.metrictrade.and.cp b;
+    public com.metrictrade.and.ck c;
+    public com.metrictrade.and.ck d;
+    private java.lang.String e;
+    private java.lang.String f;
+
+    public void <init>()
+    {
+        com.metrictrade.and.cp $r1;
+        com.metrictrade.and.co r0;
+
+        r0 := @this: com.metrictrade.and.co;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        r0.<com.metrictrade.and.co: java.lang.String f> = null;
+
+        r0.<com.metrictrade.and.co: com.metrictrade.and.cp b> = null;
+
+        r0.<com.metrictrade.and.co: byte[] a> = null;
+
+        r0.<com.metrictrade.and.co: java.lang.String e> = null;
+
+        $r1 = new com.metrictrade.and.cp;
+
+        specialinvoke $r1.<com.metrictrade.and.cp: void <init>()>();
+
+        r0.<com.metrictrade.and.co: com.metrictrade.and.cp b> = $r1;
+
+        return;
+    }
+
+    private com.metrictrade.and.ck c()
+    {
+        byte[] $r1;
+        java.lang.Exception $r5;
+        com.metrictrade.and.co r0;
+        com.metrictrade.and.cn $r8;
+        com.metrictrade.and.cm $r7;
+        com.metrictrade.and.ck $r4;
+        java.lang.String $r2, $r3;
+        com.metrictrade.and.ci $r6;
+        boolean $z0;
+
+        r0 := @this: com.metrictrade.and.co;
+
+        $r1 = r0.<com.metrictrade.and.co: byte[] a>;
+
+        if $r1 != null goto label01;
+
+        return null;
+
+     label01:
+        $r2 = "AES";
+
+     label02:
+        $r3 = r0.<com.metrictrade.and.co: java.lang.String e>;
+
+        $z0 = virtualinvoke $r2.<java.lang.String: boolean equals(java.lang.Object)>($r3);
+
+     label03:
+        if $z0 == 0 goto label06;
+
+        $r6 = new com.metrictrade.and.ci;
+
+        $r4 = $r6;
+
+     label04:
+        $r1 = r0.<com.metrictrade.and.co: byte[] a>;
+
+        specialinvoke $r6.<com.metrictrade.and.ci: void <init>(int,byte[],int)>(192, $r1, 2);
+
+     label05:
+        return $r4;
+
+     label06:
+        $r2 = "AES256";
+
+     label07:
+        $r3 = r0.<com.metrictrade.and.co: java.lang.String e>;
+
+        $z0 = virtualinvoke $r2.<java.lang.String: boolean equals(java.lang.Object)>($r3);
+
+     label08:
+        if $z0 == 0 goto label12;
+
+        $r6 = new com.metrictrade.and.ci;
+
+        $r4 = $r6;
+
+     label09:
+        $r1 = r0.<com.metrictrade.and.co: byte[] a>;
+
+        specialinvoke $r6.<com.metrictrade.and.ci: void <init>(int,byte[],int)>(256, $r1, 2);
+
+     label10:
+        goto label05;
+
+     label11:
+        $r5 := @caughtexception;
+
+        $r4 = null;
+
+        goto label05;
+
+     label12:
+        $r2 = "DES3";
+
+     label13:
+        $r3 = r0.<com.metrictrade.and.co: java.lang.String e>;
+
+        $z0 = virtualinvoke $r2.<java.lang.String: boolean equals(java.lang.Object)>($r3);
+
+     label14:
+        if $z0 == 0 goto label17;
+
+        $r7 = new com.metrictrade.and.cm;
+
+        $r4 = $r7;
+
+     label15:
+        $r1 = r0.<com.metrictrade.and.co: byte[] a>;
+
+        specialinvoke $r7.<com.metrictrade.and.cm: void <init>(byte[])>($r1);
+
+     label16:
+        goto label05;
+
+     label17:
+        $r8 = new com.metrictrade.and.cn;
+
+        $r4 = $r8;
+
+     label18:
+        $r1 = r0.<com.metrictrade.and.co: byte[] a>;
+
+        specialinvoke $r8.<com.metrictrade.and.cn: void <init>(byte[])>($r1);
+
+     label19:
+        goto label05;
+
+        catch java.lang.Exception from label02 to label03 with label11;
+        catch java.lang.Exception from label04 to label05 with label11;
+        catch java.lang.Exception from label07 to label08 with label11;
+        catch java.lang.Exception from label09 to label10 with label11;
+        catch java.lang.Exception from label13 to label14 with label11;
+        catch java.lang.Exception from label15 to label16 with label11;
+        catch java.lang.Exception from label18 to label19 with label11;
+    }
+
+    public final com.metrictrade.and.ck a()
+    {
+        byte[] $r1;
+        com.metrictrade.and.co r0;
+        com.metrictrade.and.cn $r6;
+        com.metrictrade.and.cm $r5;
+        java.lang.String $r2, $r3;
+        com.metrictrade.and.ci $r4;
+        boolean $z0;
+
+        r0 := @this: com.metrictrade.and.co;
+
+        $r1 = r0.<com.metrictrade.and.co: byte[] a>;
+
+        if $r1 != null goto label1;
+
+        return null;
+
+     label1:
+        $r2 = "AES";
+
+        $r3 = r0.<com.metrictrade.and.co: java.lang.String e>;
+
+        $z0 = virtualinvoke $r2.<java.lang.String: boolean equals(java.lang.Object)>($r3);
+
+        if $z0 == 0 goto label2;
+
+        $r4 = new com.metrictrade.and.ci;
+
+        $r1 = r0.<com.metrictrade.and.co: byte[] a>;
+
+        specialinvoke $r4.<com.metrictrade.and.ci: void <init>(int,byte[],int)>(192, $r1, 1);
+
+        return $r4;
+
+     label2:
+        $r2 = "AES256";
+
+        $r3 = r0.<com.metrictrade.and.co: java.lang.String e>;
+
+        $z0 = virtualinvoke $r2.<java.lang.String: boolean equals(java.lang.Object)>($r3);
+
+        if $z0 == 0 goto label3;
+
+        $r4 = new com.metrictrade.and.ci;
+
+        $r1 = r0.<com.metrictrade.and.co: byte[] a>;
+
+        specialinvoke $r4.<com.metrictrade.and.ci: void <init>(int,byte[],int)>(256, $r1, 1);
+
+        return $r4;
+
+     label3:
+        $r2 = "DES3";
+
+        $r3 = r0.<com.metrictrade.and.co: java.lang.String e>;
+
+        $z0 = virtualinvoke $r2.<java.lang.String: boolean equals(java.lang.Object)>($r3);
+
+        if $z0 == 0 goto label4;
+
+        $r5 = new com.metrictrade.and.cm;
+
+        $r1 = r0.<com.metrictrade.and.co: byte[] a>;
+
+        specialinvoke $r5.<com.metrictrade.and.cm: void <init>(byte[])>($r1);
+
+        return $r5;
+
+     label4:
+        $r6 = new com.metrictrade.and.cn;
+
+        $r1 = r0.<com.metrictrade.and.co: byte[] a>;
+
+        specialinvoke $r6.<com.metrictrade.and.cn: void <init>(byte[])>($r1);
+
+        return $r6;
+    }
+
+    public final java.lang.String a(java.lang.String, java.lang.String)
+    {
+        com.metrictrade.and.cp $r3;
+        com.metrictrade.and.co r0;
+        java.lang.StringBuilder $r4;
+        java.math.BigInteger $r5;
+        java.lang.String $r1, $r2, $r6;
+        boolean $z0;
+
+        r0 := @this: com.metrictrade.and.co;
+
+        $r1 := @parameter0: java.lang.String;
+
+        $r2 := @parameter1: java.lang.String;
+
+        $r3 = r0.<com.metrictrade.and.co: com.metrictrade.and.cp b>;
+
+        $z0 = virtualinvoke $r3.<com.metrictrade.and.cp: boolean a()>();
+
+        if $z0 != 0 goto label1;
+
+        return null;
+
+     label1:
+        $r4 = new java.lang.StringBuilder;
+
+        $r3 = r0.<com.metrictrade.and.co: com.metrictrade.and.cp b>;
+
+        $r5 = $r3.<com.metrictrade.and.cp: java.math.BigInteger f>;
+
+        $r6 = virtualinvoke $r5.<java.math.BigInteger: java.lang.String toString(int)>(16);
+
+        $r6 = staticinvoke <java.lang.String: java.lang.String valueOf(java.lang.Object)>($r6);
+
+        specialinvoke $r4.<java.lang.StringBuilder: void <init>(java.lang.String)>($r6);
+
+        $r4 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.StringBuilder append(char)>(46);
+
+        $r1 = virtualinvoke r0.<com.metrictrade.and.co: java.lang.String a(java.lang.String,java.lang.String,byte)>($r1, $r2, 44);
+
+        $r4 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r1);
+
+        $r1 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        r0.<com.metrictrade.and.co: java.lang.String f> = $r1;
+
+        $r1 = r0.<com.metrictrade.and.co: java.lang.String f>;
+
+        return $r1;
+    }
+
+    public final java.lang.String a(java.lang.String, java.lang.String, byte)
+    {
+        java.lang.Throwable $r12, $r13;
+        byte[] $r3, $r6, $r7, $r8, $r10, $r11;
+        byte $b0, $b5;
+        com.metrictrade.and.co r0;
+        int $i1, $i2, $i3, $i4, $i6;
+        com.metrictrade.and.ck $r4;
+        java.math.BigInteger $r14;
+        java.lang.String $r1, $r2, $r5;
+
+        r0 := @this: com.metrictrade.and.co;
+
+        $r1 := @parameter0: java.lang.String;
+
+        $r2 := @parameter1: java.lang.String;
+
+        $b0 := @parameter2: byte;
+
+        entermonitor r0;
+
+     label01:
+        $r3 = r0.<com.metrictrade.and.co: byte[] a>;
+
+     label02:
+        if $r3 == null goto label41;
+
+        if $r2 == null goto label41;
+
+     label03:
+        $r4 = r0.<com.metrictrade.and.co: com.metrictrade.and.ck c>;
+
+        $i1 = $r4.<com.metrictrade.and.ck: int b>;
+
+        $r5 = <com.metrictrade.and.fj: java.lang.String aA>;
+
+     label04:
+        $r6 = virtualinvoke $r1.<java.lang.String: byte[] getBytes(java.lang.String)>($r5);
+
+     label05:
+        $r5 = <com.metrictrade.and.fj: java.lang.String aA>;
+
+     label06:
+        $r7 = virtualinvoke $r2.<java.lang.String: byte[] getBytes(java.lang.String)>($r5);
+
+     label07:
+        if $r7 == null goto label41;
+
+     label08:
+        $i2 = virtualinvoke $r1.<java.lang.String: int length()>();
+
+        $i3 = virtualinvoke $r2.<java.lang.String: int length()>();
+
+     label09:
+        $i2 = $i2 + $i3;
+
+        $i2 = $i2 + 24;
+
+        $i2 = $i2 + $i1;
+
+        $r3 = newarray (byte)[$i2];
+
+        $i2 = 0;
+
+     label10:
+        if $i2 < 16 goto label21;
+
+     label11:
+        $b0 = $r3[$i2];
+
+        $i3 = (int) $b0;
+
+        if $i3 == 44 goto label23;
+
+        $i3 = $i2 + 1;
+
+        $r3[$i2] = 44;
+
+     label12:
+        $i2 = $i3;
+
+        $i3 = 0;
+
+     label13:
+        $i4 = lengthof $r7;
+
+        if $i3 < $i4 goto label24;
+
+        $r3[$i2] = 32;
+
+        $i2 = $i2 + 1;
+
+        $i3 = 0;
+
+     label14:
+        $i4 = lengthof $r6;
+
+        if $i3 < $i4 goto label25;
+
+        $i3 = $i2 + 1;
+
+        $r3[$i2] = 32;
+
+     label15:
+        $i2 = lengthof $r3;
+
+        if $i3 < $i2 goto label26;
+
+        $i2 = $i3 / $i1;
+
+        $i2 = $i2 + 1;
+
+        $i2 = $i2 * $i1;
+
+        $r6 = newarray (byte)[$i2];
+
+        $r7 = newarray (byte)[$i1];
+
+        $r8 = newarray (byte)[$i1];
+
+        $i2 = 0;
+
+     label16:
+        $i3 = lengthof $r3;
+
+        if $i2 < $i3 goto label28;
+
+        $i2 = 0;
+
+     label17:
+        $i3 = lengthof $r6;
+
+        $i3 = $i3 - $i1;
+
+        if $i2 < $i3 goto label29;
+
+        $i1 = 0;
+
+     label18:
+        $r3 = r0.<com.metrictrade.and.co: byte[] a>;
+
+        $i2 = lengthof $r3;
+
+        if $i1 < $i2 goto label38;
+
+        $r14 = new java.math.BigInteger;
+
+     label19:
+        specialinvoke $r14.<java.math.BigInteger: void <init>(byte[])>($r6);
+
+        $r1 = virtualinvoke $r14.<java.math.BigInteger: java.lang.String toString(int)>(16);
+
+     label20:
+        exitmonitor r0;
+
+        return $r1;
+
+     label21:
+        $i3 = staticinvoke <com.metrictrade.and.cp: int c()>();
+
+     label22:
+        $i3 = $i3 & 255;
+
+        $b0 = (byte) $i3;
+
+        $r3[$i2] = $b0;
+
+        $b0 = $r3[$i2];
+
+        $i3 = (int) $b0;
+
+        if $i3 == 44 goto label11;
+
+        $i2 = $i2 + 1;
+
+        goto label10;
+
+     label23:
+        $i3 = $i2 + 1;
+
+        goto label12;
+
+     label24:
+        $b0 = $r7[$i3];
+
+        $r3[$i2] = $b0;
+
+        $i3 = $i3 + 1;
+
+        $i2 = $i2 + 1;
+
+        goto label13;
+
+     label25:
+        $b0 = $r6[$i3];
+
+        $r3[$i2] = $b0;
+
+        $i3 = $i3 + 1;
+
+        $i2 = $i2 + 1;
+
+        goto label14;
+
+     label26:
+        $i2 = staticinvoke <com.metrictrade.and.cp: int c()>();
+
+     label27:
+        $i2 = $i2 & 255;
+
+        $b0 = (byte) $i2;
+
+        $r3[$i3] = $b0;
+
+        $i3 = $i3 + 1;
+
+        goto label15;
+
+     label28:
+        $b0 = $r3[$i2];
+
+        $r10 = r0.<com.metrictrade.and.co: byte[] a>;
+
+        $r11 = r0.<com.metrictrade.and.co: byte[] a>;
+
+        $i3 = lengthof $r11;
+
+        $i3 = $i2 % $i3;
+
+        $b5 = $r10[$i3];
+
+        $b0 = $b0 ^ $b5;
+
+        $r3[$i2] = $b0;
+
+        $i2 = $i2 + 1;
+
+        goto label16;
+
+     label29:
+        $i3 = 0;
+
+     label30:
+        if $i3 < $i1 goto label34;
+
+        $r4 = r0.<com.metrictrade.and.co: com.metrictrade.and.ck c>;
+
+     label31:
+        virtualinvoke $r4.<com.metrictrade.and.ck: void a(byte[],byte[])>($r7, $r8);
+
+     label32:
+        $i3 = 0;
+
+     label33:
+        if $i3 < $i1 goto label37;
+
+        $i2 = $i2 + $i1;
+
+        goto label17;
+
+     label34:
+        $i4 = $i2 + $i3;
+
+        $i6 = lengthof $r3;
+
+        if $i4 >= $i6 goto label36;
+
+        $i4 = $i2 + $i3;
+
+        $b0 = $r3[$i4];
+
+     label35:
+        $r7[$i3] = $b0;
+
+        $i3 = $i3 + 1;
+
+        goto label30;
+
+     label36:
+        $b0 = 0;
+
+        goto label35;
+
+     label37:
+        $i4 = $i2 + $i3;
+
+        $b0 = $r8[$i3];
+
+        $r6[$i4] = $b0;
+
+        $i3 = $i3 + 1;
+
+        goto label33;
+
+     label38:
+        $i2 = lengthof $r6;
+
+        $i2 = $i1 % $i2;
+
+        $b0 = $r6[$i2];
+
+        $r3 = r0.<com.metrictrade.and.co: byte[] a>;
+
+        $b5 = $r3[$i1];
+
+        $b0 = $b0 ^ $b5;
+
+        $r6[$i2] = $b0;
+
+     label39:
+        $i1 = $i1 + 1;
+
+        goto label18;
+
+     label40:
+        $r12 := @caughtexception;
+
+     label41:
+        $r1 = null;
+
+        goto label20;
+
+     label42:
+        $r13 := @caughtexception;
+
+        exitmonitor r0;
+
+        throw $r13;
+
+        catch java.lang.Throwable from label01 to label02 with label42;
+        catch java.io.IOException from label04 to label05 with label40;
+        catch java.io.IOException from label06 to label07 with label40;
+        catch java.io.IOException from label08 to label09 with label40;
+        catch java.io.IOException from label19 to label20 with label40;
+        catch java.lang.Throwable from label03 to label20 with label42;
+        catch java.io.IOException from label21 to label22 with label40;
+        catch java.io.IOException from label26 to label27 with label40;
+        catch java.io.IOException from label31 to label32 with label40;
+        catch java.lang.Throwable from label21 to label39 with label42;
+    }
+
+    public final boolean a(java.lang.String, java.lang.String, java.lang.String, java.lang.String)
+    {
+        java.lang.Throwable $r12;
+        byte[] $r9;
+        com.metrictrade.and.cp $r5;
+        com.metrictrade.and.co r0;
+        int $i0, $i1;
+        com.metrictrade.and.ck $r10;
+        java.math.BigInteger $r6, $r7, $r8;
+        java.lang.String $r1, $r2, $r3, $r4;
+        boolean $z0;
+        java.lang.Exception $r11;
+
+        r0 := @this: com.metrictrade.and.co;
+
+        $r1 := @parameter0: java.lang.String;
+
+        $r2 := @parameter1: java.lang.String;
+
+        $r3 := @parameter2: java.lang.String;
+
+        $r4 := @parameter3: java.lang.String;
+
+        entermonitor r0;
+
+     label01:
+        r0.<com.metrictrade.and.co: java.lang.String e> = $r1;
+
+        r0.<com.metrictrade.and.co: byte[] a> = null;
+
+     label02:
+        $r5 = r0.<com.metrictrade.and.co: com.metrictrade.and.cp b>;
+
+     label03:
+        $r6 = new java.math.BigInteger;
+
+     label04:
+        specialinvoke $r6.<java.math.BigInteger: void <init>(java.lang.String,int)>($r2, 16);
+
+     label05:
+        $r7 = new java.math.BigInteger;
+
+     label06:
+        specialinvoke $r7.<java.math.BigInteger: void <init>(java.lang.String,int)>($r3, 16);
+
+        $r8 = $r5.<com.metrictrade.and.cp: java.math.BigInteger c>;
+
+     label07:
+        if $r8 == null goto label14;
+
+     label08:
+        $r8 = $r5.<com.metrictrade.and.cp: java.math.BigInteger c>;
+
+        $i0 = virtualinvoke $r8.<java.math.BigInteger: int compareTo(java.math.BigInteger)>($r6);
+
+     label09:
+        if $i0 != 0 goto label14;
+
+     label10:
+        $r8 = $r5.<com.metrictrade.and.cp: java.math.BigInteger d>;
+
+     label11:
+        if $r8 == null goto label14;
+
+     label12:
+        $r8 = $r5.<com.metrictrade.and.cp: java.math.BigInteger d>;
+
+        $i0 = virtualinvoke $r8.<java.math.BigInteger: int compareTo(java.math.BigInteger)>($r7);
+
+     label13:
+        if $i0 == 0 goto label15;
+
+     label14:
+        $r5.<com.metrictrade.and.cp: java.math.BigInteger e> = null;
+
+     label15:
+        $r5.<com.metrictrade.and.cp: java.math.BigInteger d> = $r7;
+
+        $r5.<com.metrictrade.and.cp: java.math.BigInteger c> = $r6;
+
+        $r6 = $r5.<com.metrictrade.and.cp: java.math.BigInteger e>;
+
+     label16:
+        if $r6 != null goto label18;
+
+     label17:
+        virtualinvoke $r5.<com.metrictrade.and.cp: void b()>();
+
+     label18:
+        $r6 = $r5.<com.metrictrade.and.cp: java.math.BigInteger c>;
+
+        $r7 = $r5.<com.metrictrade.and.cp: java.math.BigInteger e>;
+
+        $r8 = $r5.<com.metrictrade.and.cp: java.math.BigInteger d>;
+
+        $r6 = virtualinvoke $r6.<java.math.BigInteger: java.math.BigInteger modPow(java.math.BigInteger,java.math.BigInteger)>($r7, $r8);
+
+        $r5.<com.metrictrade.and.cp: java.math.BigInteger f> = $r6;
+
+        $r6 = $r5.<com.metrictrade.and.cp: java.math.BigInteger f>;
+
+     label19:
+        if $r6 == null goto label22;
+
+     label20:
+        $i0 = virtualinvoke $r6.<java.math.BigInteger: int bitCount()>();
+
+     label21:
+        $i1 = <com.metrictrade.and.cp: int b>;
+
+        if $i0 <= $i1 goto label22;
+
+     label22:
+        $r5 = r0.<com.metrictrade.and.co: com.metrictrade.and.cp b>;
+
+     label23:
+        if $r5 == null goto label30;
+
+     label24:
+        $r5 = r0.<com.metrictrade.and.co: com.metrictrade.and.cp b>;
+
+     label25:
+        $r6 = new java.math.BigInteger;
+
+     label26:
+        specialinvoke $r6.<java.math.BigInteger: void <init>(java.lang.String,int)>($r4, 16);
+
+        $r7 = $r5.<com.metrictrade.and.cp: java.math.BigInteger e>;
+
+        $r8 = $r5.<com.metrictrade.and.cp: java.math.BigInteger d>;
+
+        $r6 = virtualinvoke $r6.<java.math.BigInteger: java.math.BigInteger modPow(java.math.BigInteger,java.math.BigInteger)>($r7, $r8);
+
+        $r5.<com.metrictrade.and.cp: java.math.BigInteger g> = $r6;
+
+        $r6 = $r5.<com.metrictrade.and.cp: java.math.BigInteger g>;
+
+        $r9 = virtualinvoke $r6.<java.math.BigInteger: byte[] toByteArray()>();
+
+        r0.<com.metrictrade.and.co: byte[] a> = $r9;
+
+        $r10 = virtualinvoke r0.<com.metrictrade.and.co: com.metrictrade.and.ck a()>();
+
+        r0.<com.metrictrade.and.co: com.metrictrade.and.ck c> = $r10;
+
+        $r10 = specialinvoke r0.<com.metrictrade.and.co: com.metrictrade.and.ck c()>();
+
+        r0.<com.metrictrade.and.co: com.metrictrade.and.ck d> = $r10;
+
+     label27:
+        $z0 = 1;
+
+     label28:
+        exitmonitor r0;
+
+        return $z0;
+
+     label29:
+        $r11 := @caughtexception;
+
+     label30:
+        $z0 = 0;
+
+        goto label28;
+
+     label31:
+        $r12 := @caughtexception;
+
+        exitmonitor r0;
+
+        throw $r12;
+
+        catch java.lang.Throwable from label01 to label02 with label31;
+        catch java.lang.Exception from label02 to label03 with label29;
+        catch java.lang.Exception from label04 to label05 with label29;
+        catch java.lang.Exception from label06 to label07 with label29;
+        catch java.lang.Exception from label08 to label09 with label29;
+        catch java.lang.Exception from label10 to label11 with label29;
+        catch java.lang.Exception from label12 to label13 with label29;
+        catch java.lang.Exception from label14 to label16 with label29;
+        catch java.lang.Exception from label17 to label19 with label29;
+        catch java.lang.Exception from label20 to label21 with label29;
+        catch java.lang.Exception from label22 to label23 with label29;
+        catch java.lang.Exception from label24 to label25 with label29;
+        catch java.lang.Exception from label26 to label27 with label29;
+        catch java.lang.Throwable from label02 to label27 with label31;
+    }
+
+    public final com.metrictrade.and.ck b()
+    {
+        com.metrictrade.and.ck $r1;
+        com.metrictrade.and.co r0;
+
+        r0 := @this: com.metrictrade.and.co;
+
+        $r1 = r0.<com.metrictrade.and.co: com.metrictrade.and.ck d>;
+
+        if $r1 != null goto label1;
+
+        $r1 = specialinvoke r0.<com.metrictrade.and.co: com.metrictrade.and.ck c()>();
+
+        r0.<com.metrictrade.and.co: com.metrictrade.and.ck d> = $r1;
+
+        $r1 = r0.<com.metrictrade.and.co: com.metrictrade.and.ck d>;
+
+     label1:
+        return $r1;
+    }
+
+    public final java.lang.String b(java.lang.String, java.lang.String)
+    {
+        com.metrictrade.and.co r0;
+        java.lang.StringBuilder $r3;
+        java.lang.String $r1, $r2, $r4;
+
+        r0 := @this: com.metrictrade.and.co;
+
+        $r1 := @parameter0: java.lang.String;
+
+        $r2 := @parameter1: java.lang.String;
+
+        $r3 = new java.lang.StringBuilder;
+
+        $r4 = r0.<com.metrictrade.and.co: java.lang.String f>;
+
+        $r4 = staticinvoke <java.lang.String: java.lang.String valueOf(java.lang.Object)>($r4);
+
+        specialinvoke $r3.<java.lang.StringBuilder: void <init>(java.lang.String)>($r4);
+
+        $r3 = virtualinvoke $r3.<java.lang.StringBuilder: java.lang.StringBuilder append(char)>(46);
+
+        $r1 = virtualinvoke r0.<com.metrictrade.and.co: java.lang.String a(java.lang.String,java.lang.String,byte)>($r1, $r2, 44);
+
+        $r3 = virtualinvoke $r3.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r1);
+
+        $r1 = virtualinvoke $r3.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        return $r1;
+    }
+}

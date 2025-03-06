@@ -1,0 +1,412 @@
+public class com.movesky.app.engine.sound.MusicPlayer extends java.lang.Object
+{
+    private static final int IDLE;
+    private static final int PAUSED;
+    private static final int PLAYING;
+    private static final int RELEASED;
+    private static final int STOPPED;
+    private android.media.MediaPlayer _mediaPlayer;
+    private long _startTime;
+    private int _state;
+
+    public void <init>()
+    {
+        com.movesky.app.engine.sound.MusicPlayer r0;
+        android.media.MediaPlayer $r1;
+
+        r0 := @this: com.movesky.app.engine.sound.MusicPlayer;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        $r1 = new android.media.MediaPlayer;
+
+        specialinvoke $r1.<android.media.MediaPlayer: void <init>()>();
+
+        r0.<com.movesky.app.engine.sound.MusicPlayer: android.media.MediaPlayer _mediaPlayer> = $r1;
+
+        r0.<com.movesky.app.engine.sound.MusicPlayer: int _state> = 0;
+
+        return;
+    }
+
+    public void <init>(android.content.Context, int)
+    {
+        com.movesky.app.engine.sound.MusicPlayer r0;
+        android.content.Context $r1;
+        int $i0;
+        android.media.MediaPlayer $r2;
+
+        r0 := @this: com.movesky.app.engine.sound.MusicPlayer;
+
+        $r1 := @parameter0: android.content.Context;
+
+        $i0 := @parameter1: int;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        $r2 = staticinvoke <android.media.MediaPlayer: android.media.MediaPlayer create(android.content.Context,int)>($r1, 1000);
+
+        r0.<com.movesky.app.engine.sound.MusicPlayer: android.media.MediaPlayer _mediaPlayer> = $r2;
+
+        r0.<com.movesky.app.engine.sound.MusicPlayer: int _state> = 0;
+
+        return;
+    }
+
+    public int getCurrentPosition()
+    {
+        com.movesky.app.engine.sound.MusicPlayer r0;
+        long $l0, $l2;
+        byte $b1;
+        int $i3;
+
+        r0 := @this: com.movesky.app.engine.sound.MusicPlayer;
+
+        $l0 = r0.<com.movesky.app.engine.sound.MusicPlayer: long _startTime>;
+
+        $b1 = $l0 cmp 0L;
+
+        if $b1 != 0 goto label1;
+
+        return -1;
+
+     label1:
+        $l0 = staticinvoke <java.lang.System: long currentTimeMillis()>();
+
+        $l2 = r0.<com.movesky.app.engine.sound.MusicPlayer: long _startTime>;
+
+        $l0 = $l0 - $l2;
+
+        $i3 = (int) $l0;
+
+        return $i3;
+    }
+
+    public int getSongLength()
+    {
+        com.movesky.app.engine.sound.MusicPlayer r0;
+        int $i0;
+        android.media.MediaPlayer $r1;
+
+        r0 := @this: com.movesky.app.engine.sound.MusicPlayer;
+
+        $i0 = r0.<com.movesky.app.engine.sound.MusicPlayer: int _state>;
+
+        if $i0 == 1 goto label1;
+
+        $i0 = r0.<com.movesky.app.engine.sound.MusicPlayer: int _state>;
+
+        if $i0 == 2 goto label1;
+
+        $i0 = r0.<com.movesky.app.engine.sound.MusicPlayer: int _state>;
+
+        if $i0 != 3 goto label2;
+
+     label1:
+        $r1 = r0.<com.movesky.app.engine.sound.MusicPlayer: android.media.MediaPlayer _mediaPlayer>;
+
+        $i0 = virtualinvoke $r1.<android.media.MediaPlayer: int getDuration()>();
+
+        return $i0;
+
+     label2:
+        return 0;
+    }
+
+    public boolean isLooping()
+    {
+        com.movesky.app.engine.sound.MusicPlayer r0;
+        boolean $z0;
+        int $i0;
+        android.media.MediaPlayer $r1;
+
+        r0 := @this: com.movesky.app.engine.sound.MusicPlayer;
+
+        $i0 = r0.<com.movesky.app.engine.sound.MusicPlayer: int _state>;
+
+        if $i0 == 4 goto label1;
+
+        $r1 = r0.<com.movesky.app.engine.sound.MusicPlayer: android.media.MediaPlayer _mediaPlayer>;
+
+        $z0 = virtualinvoke $r1.<android.media.MediaPlayer: boolean isLooping()>();
+
+        return $z0;
+
+     label1:
+        return 0;
+    }
+
+    public boolean isPlaying()
+    {
+        com.movesky.app.engine.sound.MusicPlayer r0;
+        int $i0;
+
+        r0 := @this: com.movesky.app.engine.sound.MusicPlayer;
+
+        $i0 = r0.<com.movesky.app.engine.sound.MusicPlayer: int _state>;
+
+        if $i0 != 1 goto label1;
+
+        return 1;
+
+     label1:
+        return 0;
+    }
+
+    public void loop()
+    {
+        com.movesky.app.engine.sound.MusicPlayer r0;
+        int $i0;
+        android.media.MediaPlayer $r1;
+
+        r0 := @this: com.movesky.app.engine.sound.MusicPlayer;
+
+        $i0 = r0.<com.movesky.app.engine.sound.MusicPlayer: int _state>;
+
+        if $i0 == 0 goto label1;
+
+        $i0 = r0.<com.movesky.app.engine.sound.MusicPlayer: int _state>;
+
+        if $i0 != 2 goto label2;
+
+     label1:
+        $r1 = r0.<com.movesky.app.engine.sound.MusicPlayer: android.media.MediaPlayer _mediaPlayer>;
+
+        virtualinvoke $r1.<android.media.MediaPlayer: void setLooping(boolean)>(1);
+
+        virtualinvoke r0.<com.movesky.app.engine.sound.MusicPlayer: void play()>();
+
+     label2:
+        return;
+    }
+
+    public void pause()
+    {
+        com.movesky.app.engine.sound.MusicPlayer r0;
+        int $i0;
+        android.media.MediaPlayer $r1;
+
+        r0 := @this: com.movesky.app.engine.sound.MusicPlayer;
+
+        $i0 = r0.<com.movesky.app.engine.sound.MusicPlayer: int _state>;
+
+        if $i0 != 1 goto label1;
+
+        $r1 = r0.<com.movesky.app.engine.sound.MusicPlayer: android.media.MediaPlayer _mediaPlayer>;
+
+        virtualinvoke $r1.<android.media.MediaPlayer: void pause()>();
+
+        r0.<com.movesky.app.engine.sound.MusicPlayer: int _state> = 2;
+
+     label1:
+        return;
+    }
+
+    public void play()
+    {
+        com.movesky.app.engine.sound.MusicPlayer r0;
+        long $l0;
+        int $i1;
+        android.media.MediaPlayer $r1;
+
+        r0 := @this: com.movesky.app.engine.sound.MusicPlayer;
+
+        $i1 = r0.<com.movesky.app.engine.sound.MusicPlayer: int _state>;
+
+        if $i1 == 0 goto label1;
+
+        $i1 = r0.<com.movesky.app.engine.sound.MusicPlayer: int _state>;
+
+        if $i1 != 2 goto label2;
+
+     label1:
+        $r1 = r0.<com.movesky.app.engine.sound.MusicPlayer: android.media.MediaPlayer _mediaPlayer>;
+
+        virtualinvoke $r1.<android.media.MediaPlayer: void start()>();
+
+        r0.<com.movesky.app.engine.sound.MusicPlayer: int _state> = 1;
+
+        $l0 = staticinvoke <java.lang.System: long currentTimeMillis()>();
+
+        r0.<com.movesky.app.engine.sound.MusicPlayer: long _startTime> = $l0;
+
+     label2:
+        return;
+    }
+
+    public void release()
+    {
+        com.movesky.app.engine.sound.MusicPlayer r0;
+        int $i0;
+        android.media.MediaPlayer $r1;
+
+        r0 := @this: com.movesky.app.engine.sound.MusicPlayer;
+
+        $i0 = r0.<com.movesky.app.engine.sound.MusicPlayer: int _state>;
+
+        if $i0 == 4 goto label1;
+
+        $r1 = r0.<com.movesky.app.engine.sound.MusicPlayer: android.media.MediaPlayer _mediaPlayer>;
+
+        virtualinvoke $r1.<android.media.MediaPlayer: void release()>();
+
+        r0.<com.movesky.app.engine.sound.MusicPlayer: int _state> = 4;
+
+     label1:
+        return;
+    }
+
+    public void seekToPosition(int)
+    {
+        com.movesky.app.engine.sound.MusicPlayer r0;
+        int $i0, $i3;
+        long $l1, $l2;
+        android.media.MediaPlayer $r1;
+
+        r0 := @this: com.movesky.app.engine.sound.MusicPlayer;
+
+        $i0 := @parameter0: int;
+
+        $i3 = r0.<com.movesky.app.engine.sound.MusicPlayer: int _state>;
+
+        if $i3 == 1 goto label1;
+
+        $i3 = r0.<com.movesky.app.engine.sound.MusicPlayer: int _state>;
+
+        if $i3 != 2 goto label2;
+
+     label1:
+        $r1 = r0.<com.movesky.app.engine.sound.MusicPlayer: android.media.MediaPlayer _mediaPlayer>;
+
+        virtualinvoke $r1.<android.media.MediaPlayer: void seekTo(int)>($i0);
+
+        $l2 = staticinvoke <java.lang.System: long currentTimeMillis()>();
+
+        $l1 = (long) $i0;
+
+        $l1 = $l2 - $l1;
+
+        r0.<com.movesky.app.engine.sound.MusicPlayer: long _startTime> = $l1;
+
+     label2:
+        return;
+    }
+
+    public void setOnCompletionListener(com.movesky.app.engine.sound.MusicPlayer$OnCompletionListener)
+    {
+        com.movesky.app.engine.sound.MusicPlayer r0;
+        com.movesky.app.engine.sound.MusicPlayer$OnCompletionListener $r1;
+        int $i0;
+        android.media.MediaPlayer $r2;
+        com.movesky.app.engine.sound.MusicPlayer$1 $r3;
+
+        r0 := @this: com.movesky.app.engine.sound.MusicPlayer;
+
+        $r1 := @parameter0: com.movesky.app.engine.sound.MusicPlayer$OnCompletionListener;
+
+        $i0 = r0.<com.movesky.app.engine.sound.MusicPlayer: int _state>;
+
+        if $i0 == 4 goto label1;
+
+        $r2 = r0.<com.movesky.app.engine.sound.MusicPlayer: android.media.MediaPlayer _mediaPlayer>;
+
+        $r3 = new com.movesky.app.engine.sound.MusicPlayer$1;
+
+        specialinvoke $r3.<com.movesky.app.engine.sound.MusicPlayer$1: void <init>(com.movesky.app.engine.sound.MusicPlayer,com.movesky.app.engine.sound.MusicPlayer$OnCompletionListener)>(r0, $r1);
+
+        virtualinvoke $r2.<android.media.MediaPlayer: void setOnCompletionListener(android.media.MediaPlayer$OnCompletionListener)>($r3);
+
+     label1:
+        return;
+    }
+
+    public void setStartDelay(int)
+    {
+        com.movesky.app.engine.sound.MusicPlayer r0;
+        int $i0;
+        long $l1, $l2;
+
+        r0 := @this: com.movesky.app.engine.sound.MusicPlayer;
+
+        $i0 := @parameter0: int;
+
+        $l2 = staticinvoke <java.lang.System: long currentTimeMillis()>();
+
+        $l1 = (long) $i0;
+
+        $l1 = $l2 + $l1;
+
+        r0.<com.movesky.app.engine.sound.MusicPlayer: long _startTime> = $l1;
+
+        return;
+    }
+
+    public void setVolume(float)
+    {
+        com.movesky.app.engine.sound.MusicPlayer r0;
+        float $f0;
+        int $i0;
+        android.media.MediaPlayer $r1;
+
+        r0 := @this: com.movesky.app.engine.sound.MusicPlayer;
+
+        $f0 := @parameter0: float;
+
+        $i0 = r0.<com.movesky.app.engine.sound.MusicPlayer: int _state>;
+
+        if $i0 == 4 goto label1;
+
+        $r1 = r0.<com.movesky.app.engine.sound.MusicPlayer: android.media.MediaPlayer _mediaPlayer>;
+
+        virtualinvoke $r1.<android.media.MediaPlayer: void setVolume(float,float)>($f0, $f0);
+
+     label1:
+        return;
+    }
+
+    public void stop()
+    {
+        com.movesky.app.engine.sound.MusicPlayer r0;
+        int $i0;
+        android.media.MediaPlayer $r1;
+
+        r0 := @this: com.movesky.app.engine.sound.MusicPlayer;
+
+        $i0 = r0.<com.movesky.app.engine.sound.MusicPlayer: int _state>;
+
+        if $i0 == 1 goto label1;
+
+        $i0 = r0.<com.movesky.app.engine.sound.MusicPlayer: int _state>;
+
+        if $i0 == 2 goto label1;
+
+        $i0 = r0.<com.movesky.app.engine.sound.MusicPlayer: int _state>;
+
+        if $i0 != 3 goto label2;
+
+     label1:
+        $r1 = r0.<com.movesky.app.engine.sound.MusicPlayer: android.media.MediaPlayer _mediaPlayer>;
+
+        virtualinvoke $r1.<android.media.MediaPlayer: void stop()>();
+
+        r0.<com.movesky.app.engine.sound.MusicPlayer: int _state> = 3;
+
+     label2:
+        return;
+    }
+
+    public static void <clinit>()
+    {
+        <com.movesky.app.engine.sound.MusicPlayer: int STOPPED> = 3;
+
+        <com.movesky.app.engine.sound.MusicPlayer: int RELEASED> = 4;
+
+        <com.movesky.app.engine.sound.MusicPlayer: int PLAYING> = 1;
+
+        <com.movesky.app.engine.sound.MusicPlayer: int PAUSED> = 2;
+
+        <com.movesky.app.engine.sound.MusicPlayer: int IDLE> = 0;
+
+        return;
+    }
+}

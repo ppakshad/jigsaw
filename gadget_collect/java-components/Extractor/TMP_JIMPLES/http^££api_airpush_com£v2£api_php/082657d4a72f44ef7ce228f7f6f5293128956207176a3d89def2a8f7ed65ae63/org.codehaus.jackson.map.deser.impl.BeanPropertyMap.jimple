@@ -1,0 +1,378 @@
+public final class org.codehaus.jackson.map.deser.impl.BeanPropertyMap extends java.lang.Object
+{
+    private final org.codehaus.jackson.map.deser.impl.BeanPropertyMap$Bucket[] _buckets;
+    private final int _hashMask;
+    private final int _size;
+
+    public void <init>(java.util.Collection)
+    {
+        org.codehaus.jackson.map.deser.impl.BeanPropertyMap r0;
+        java.util.Collection r1;
+        org.codehaus.jackson.map.deser.impl.BeanPropertyMap$Bucket[] r2;
+        int i0, $i1;
+        java.util.Iterator $r3;
+        boolean $z0;
+        java.lang.Object $r4;
+        org.codehaus.jackson.map.deser.SettableBeanProperty r5;
+        java.lang.String $r6;
+        org.codehaus.jackson.map.deser.impl.BeanPropertyMap$Bucket $r7, $r8;
+
+        r0 := @this: org.codehaus.jackson.map.deser.impl.BeanPropertyMap;
+
+        r1 := @parameter0: java.util.Collection;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        i0 = interfaceinvoke r1.<java.util.Collection: int size()>();
+
+        r0.<org.codehaus.jackson.map.deser.impl.BeanPropertyMap: int _size> = i0;
+
+        i0 = r0.<org.codehaus.jackson.map.deser.impl.BeanPropertyMap: int _size>;
+
+        i0 = staticinvoke <org.codehaus.jackson.map.deser.impl.BeanPropertyMap: int findSize(int)>(i0);
+
+        $i1 = i0 - 1;
+
+        r0.<org.codehaus.jackson.map.deser.impl.BeanPropertyMap: int _hashMask> = $i1;
+
+        r2 = newarray (org.codehaus.jackson.map.deser.impl.BeanPropertyMap$Bucket)[i0];
+
+        $r3 = interfaceinvoke r1.<java.util.Collection: java.util.Iterator iterator()>();
+
+     label1:
+        $z0 = interfaceinvoke $r3.<java.util.Iterator: boolean hasNext()>();
+
+        if $z0 == 0 goto label2;
+
+        $r4 = interfaceinvoke $r3.<java.util.Iterator: java.lang.Object next()>();
+
+        r5 = (org.codehaus.jackson.map.deser.SettableBeanProperty) $r4;
+
+        $r6 = virtualinvoke r5.<org.codehaus.jackson.map.deser.SettableBeanProperty: java.lang.String getName()>();
+
+        i0 = virtualinvoke $r6.<java.lang.String: int hashCode()>();
+
+        $i1 = r0.<org.codehaus.jackson.map.deser.impl.BeanPropertyMap: int _hashMask>;
+
+        i0 = i0 & $i1;
+
+        $r7 = new org.codehaus.jackson.map.deser.impl.BeanPropertyMap$Bucket;
+
+        $r8 = r2[i0];
+
+        specialinvoke $r7.<org.codehaus.jackson.map.deser.impl.BeanPropertyMap$Bucket: void <init>(org.codehaus.jackson.map.deser.impl.BeanPropertyMap$Bucket,java.lang.String,org.codehaus.jackson.map.deser.SettableBeanProperty)>($r8, $r6, r5);
+
+        r2[i0] = $r7;
+
+        goto label1;
+
+     label2:
+        r0.<org.codehaus.jackson.map.deser.impl.BeanPropertyMap: org.codehaus.jackson.map.deser.impl.BeanPropertyMap$Bucket[] _buckets> = r2;
+
+        return;
+    }
+
+    private org.codehaus.jackson.map.deser.SettableBeanProperty _findWithEquals(java.lang.String, int)
+    {
+        org.codehaus.jackson.map.deser.impl.BeanPropertyMap r0;
+        java.lang.String $r1, $r4;
+        int $i0;
+        boolean $z0;
+        org.codehaus.jackson.map.deser.impl.BeanPropertyMap$Bucket[] $r2;
+        org.codehaus.jackson.map.deser.impl.BeanPropertyMap$Bucket r3;
+        org.codehaus.jackson.map.deser.SettableBeanProperty r5;
+
+        r0 := @this: org.codehaus.jackson.map.deser.impl.BeanPropertyMap;
+
+        $r1 := @parameter0: java.lang.String;
+
+        $i0 := @parameter1: int;
+
+        $r2 = r0.<org.codehaus.jackson.map.deser.impl.BeanPropertyMap: org.codehaus.jackson.map.deser.impl.BeanPropertyMap$Bucket[] _buckets>;
+
+        r3 = $r2[$i0];
+
+     label1:
+        if r3 == null goto label3;
+
+        $r4 = r3.<org.codehaus.jackson.map.deser.impl.BeanPropertyMap$Bucket: java.lang.String key>;
+
+        $z0 = virtualinvoke $r1.<java.lang.String: boolean equals(java.lang.Object)>($r4);
+
+        if $z0 == 0 goto label2;
+
+        r5 = r3.<org.codehaus.jackson.map.deser.impl.BeanPropertyMap$Bucket: org.codehaus.jackson.map.deser.SettableBeanProperty value>;
+
+        return r5;
+
+     label2:
+        r3 = r3.<org.codehaus.jackson.map.deser.impl.BeanPropertyMap$Bucket: org.codehaus.jackson.map.deser.impl.BeanPropertyMap$Bucket next>;
+
+        goto label1;
+
+     label3:
+        return null;
+    }
+
+    private static final int findSize(int)
+    {
+        int $i0, i1;
+
+        $i0 := @parameter0: int;
+
+        if $i0 > 32 goto label3;
+
+        $i0 = $i0 + $i0;
+
+     label1:
+        i1 = 2;
+
+     label2:
+        if i1 >= $i0 goto label4;
+
+        i1 = i1 + i1;
+
+        goto label2;
+
+     label3:
+        i1 = $i0 >> 2;
+
+        $i0 = i1 + $i0;
+
+        goto label1;
+
+     label4:
+        return i1;
+    }
+
+    public java.util.Iterator allProperties()
+    {
+        org.codehaus.jackson.map.deser.impl.BeanPropertyMap r0;
+        org.codehaus.jackson.map.deser.impl.BeanPropertyMap$IteratorImpl $r1;
+        org.codehaus.jackson.map.deser.impl.BeanPropertyMap$Bucket[] $r2;
+
+        r0 := @this: org.codehaus.jackson.map.deser.impl.BeanPropertyMap;
+
+        $r1 = new org.codehaus.jackson.map.deser.impl.BeanPropertyMap$IteratorImpl;
+
+        $r2 = r0.<org.codehaus.jackson.map.deser.impl.BeanPropertyMap: org.codehaus.jackson.map.deser.impl.BeanPropertyMap$Bucket[] _buckets>;
+
+        specialinvoke $r1.<org.codehaus.jackson.map.deser.impl.BeanPropertyMap$IteratorImpl: void <init>(org.codehaus.jackson.map.deser.impl.BeanPropertyMap$Bucket[])>($r2);
+
+        return $r1;
+    }
+
+    public void assignIndexes()
+    {
+        org.codehaus.jackson.map.deser.impl.BeanPropertyMap r0;
+        org.codehaus.jackson.map.deser.impl.BeanPropertyMap$Bucket[] r1;
+        int i0, i1, i2;
+        org.codehaus.jackson.map.deser.SettableBeanProperty $r2;
+        org.codehaus.jackson.map.deser.impl.BeanPropertyMap$Bucket r3;
+
+        r0 := @this: org.codehaus.jackson.map.deser.impl.BeanPropertyMap;
+
+        i1 = 0;
+
+        r1 = r0.<org.codehaus.jackson.map.deser.impl.BeanPropertyMap: org.codehaus.jackson.map.deser.impl.BeanPropertyMap$Bucket[] _buckets>;
+
+        i0 = lengthof r1;
+
+        i2 = 0;
+
+     label1:
+        if i2 >= i0 goto label4;
+
+        r3 = r1[i2];
+
+     label2:
+        if r3 == null goto label3;
+
+        $r2 = r3.<org.codehaus.jackson.map.deser.impl.BeanPropertyMap$Bucket: org.codehaus.jackson.map.deser.SettableBeanProperty value>;
+
+        virtualinvoke $r2.<org.codehaus.jackson.map.deser.SettableBeanProperty: void assignIndex(int)>(i1);
+
+        r3 = r3.<org.codehaus.jackson.map.deser.impl.BeanPropertyMap$Bucket: org.codehaus.jackson.map.deser.impl.BeanPropertyMap$Bucket next>;
+
+        i1 = i1 + 1;
+
+        goto label2;
+
+     label3:
+        i2 = i2 + 1;
+
+        goto label1;
+
+     label4:
+        return;
+    }
+
+    public org.codehaus.jackson.map.deser.SettableBeanProperty find(java.lang.String)
+    {
+        org.codehaus.jackson.map.deser.impl.BeanPropertyMap r0;
+        java.lang.String $r1, $r4;
+        int i0, $i1;
+        org.codehaus.jackson.map.deser.impl.BeanPropertyMap$Bucket[] $r2;
+        org.codehaus.jackson.map.deser.impl.BeanPropertyMap$Bucket r3;
+        org.codehaus.jackson.map.deser.SettableBeanProperty $r5;
+
+        r0 := @this: org.codehaus.jackson.map.deser.impl.BeanPropertyMap;
+
+        $r1 := @parameter0: java.lang.String;
+
+        $i1 = virtualinvoke $r1.<java.lang.String: int hashCode()>();
+
+        i0 = r0.<org.codehaus.jackson.map.deser.impl.BeanPropertyMap: int _hashMask>;
+
+        i0 = $i1 & i0;
+
+        $r2 = r0.<org.codehaus.jackson.map.deser.impl.BeanPropertyMap: org.codehaus.jackson.map.deser.impl.BeanPropertyMap$Bucket[] _buckets>;
+
+        r3 = $r2[i0];
+
+        if r3 != null goto label1;
+
+        return null;
+
+     label1:
+        $r4 = r3.<org.codehaus.jackson.map.deser.impl.BeanPropertyMap$Bucket: java.lang.String key>;
+
+        if $r4 != $r1 goto label2;
+
+        $r5 = r3.<org.codehaus.jackson.map.deser.impl.BeanPropertyMap$Bucket: org.codehaus.jackson.map.deser.SettableBeanProperty value>;
+
+        return $r5;
+
+     label2:
+        r3 = r3.<org.codehaus.jackson.map.deser.impl.BeanPropertyMap$Bucket: org.codehaus.jackson.map.deser.impl.BeanPropertyMap$Bucket next>;
+
+        if r3 == null goto label3;
+
+        $r4 = r3.<org.codehaus.jackson.map.deser.impl.BeanPropertyMap$Bucket: java.lang.String key>;
+
+        if $r4 != $r1 goto label2;
+
+        $r5 = r3.<org.codehaus.jackson.map.deser.impl.BeanPropertyMap$Bucket: org.codehaus.jackson.map.deser.SettableBeanProperty value>;
+
+        return $r5;
+
+     label3:
+        $r5 = specialinvoke r0.<org.codehaus.jackson.map.deser.impl.BeanPropertyMap: org.codehaus.jackson.map.deser.SettableBeanProperty _findWithEquals(java.lang.String,int)>($r1, i0);
+
+        return $r5;
+    }
+
+    public void replace(org.codehaus.jackson.map.deser.SettableBeanProperty)
+    {
+        org.codehaus.jackson.map.deser.impl.BeanPropertyMap r0;
+        org.codehaus.jackson.map.deser.SettableBeanProperty $r1, $r8;
+        int i0, $i1;
+        java.lang.String $r2, $r6;
+        org.codehaus.jackson.map.deser.impl.BeanPropertyMap$Bucket[] $r3;
+        boolean z0, $z1;
+        org.codehaus.jackson.map.deser.impl.BeanPropertyMap$Bucket r4, r5, r7;
+        java.util.NoSuchElementException $r9;
+        java.lang.StringBuilder $r10;
+
+        r0 := @this: org.codehaus.jackson.map.deser.impl.BeanPropertyMap;
+
+        $r1 := @parameter0: org.codehaus.jackson.map.deser.SettableBeanProperty;
+
+        $r2 = virtualinvoke $r1.<org.codehaus.jackson.map.deser.SettableBeanProperty: java.lang.String getName()>();
+
+        i0 = virtualinvoke $r2.<java.lang.String: int hashCode()>();
+
+        $r3 = r0.<org.codehaus.jackson.map.deser.impl.BeanPropertyMap: org.codehaus.jackson.map.deser.impl.BeanPropertyMap$Bucket[] _buckets>;
+
+        $i1 = lengthof $r3;
+
+        $i1 = $i1 - 1;
+
+        i0 = i0 & $i1;
+
+        z0 = 0;
+
+        $r3 = r0.<org.codehaus.jackson.map.deser.impl.BeanPropertyMap: org.codehaus.jackson.map.deser.impl.BeanPropertyMap$Bucket[] _buckets>;
+
+        r4 = $r3[i0];
+
+        r5 = null;
+
+     label1:
+        if r4 == null goto label4;
+
+        if z0 != 0 goto label3;
+
+        $r6 = r4.<org.codehaus.jackson.map.deser.impl.BeanPropertyMap$Bucket: java.lang.String key>;
+
+        $z1 = virtualinvoke $r6.<java.lang.String: boolean equals(java.lang.Object)>($r2);
+
+        if $z1 == 0 goto label3;
+
+        z0 = 1;
+
+        r7 = r5;
+
+     label2:
+        r4 = r4.<org.codehaus.jackson.map.deser.impl.BeanPropertyMap$Bucket: org.codehaus.jackson.map.deser.impl.BeanPropertyMap$Bucket next>;
+
+        r5 = r7;
+
+        goto label1;
+
+     label3:
+        r7 = new org.codehaus.jackson.map.deser.impl.BeanPropertyMap$Bucket;
+
+        $r6 = r4.<org.codehaus.jackson.map.deser.impl.BeanPropertyMap$Bucket: java.lang.String key>;
+
+        $r8 = r4.<org.codehaus.jackson.map.deser.impl.BeanPropertyMap$Bucket: org.codehaus.jackson.map.deser.SettableBeanProperty value>;
+
+        specialinvoke r7.<org.codehaus.jackson.map.deser.impl.BeanPropertyMap$Bucket: void <init>(org.codehaus.jackson.map.deser.impl.BeanPropertyMap$Bucket,java.lang.String,org.codehaus.jackson.map.deser.SettableBeanProperty)>(r5, $r6, $r8);
+
+        goto label2;
+
+     label4:
+        if z0 != 0 goto label5;
+
+        $r9 = new java.util.NoSuchElementException;
+
+        $r10 = new java.lang.StringBuilder;
+
+        specialinvoke $r10.<java.lang.StringBuilder: void <init>()>();
+
+        $r10 = virtualinvoke $r10.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("No entry \'");
+
+        $r10 = virtualinvoke $r10.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($r1);
+
+        $r10 = virtualinvoke $r10.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("\' found, can\'t replace");
+
+        $r2 = virtualinvoke $r10.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke $r9.<java.util.NoSuchElementException: void <init>(java.lang.String)>($r2);
+
+        throw $r9;
+
+     label5:
+        $r3 = r0.<org.codehaus.jackson.map.deser.impl.BeanPropertyMap: org.codehaus.jackson.map.deser.impl.BeanPropertyMap$Bucket[] _buckets>;
+
+        r4 = new org.codehaus.jackson.map.deser.impl.BeanPropertyMap$Bucket;
+
+        specialinvoke r4.<org.codehaus.jackson.map.deser.impl.BeanPropertyMap$Bucket: void <init>(org.codehaus.jackson.map.deser.impl.BeanPropertyMap$Bucket,java.lang.String,org.codehaus.jackson.map.deser.SettableBeanProperty)>(r5, $r2, $r1);
+
+        $r3[i0] = r4;
+
+        return;
+    }
+
+    public int size()
+    {
+        org.codehaus.jackson.map.deser.impl.BeanPropertyMap r0;
+        int i0;
+
+        r0 := @this: org.codehaus.jackson.map.deser.impl.BeanPropertyMap;
+
+        i0 = r0.<org.codehaus.jackson.map.deser.impl.BeanPropertyMap: int _size>;
+
+        return i0;
+    }
+}

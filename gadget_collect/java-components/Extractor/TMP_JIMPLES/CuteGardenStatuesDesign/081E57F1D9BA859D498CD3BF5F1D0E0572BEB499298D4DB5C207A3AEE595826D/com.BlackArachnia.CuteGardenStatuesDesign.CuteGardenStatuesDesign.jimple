@@ -1,0 +1,446 @@
+public class com.BlackArachnia.CuteGardenStatuesDesign.CuteGardenStatuesDesign extends android.app.Activity
+{
+    private android.widget.RelativeLayout _layout;
+    private com.google.android.gms.ads.AdView adView;
+    public boolean iresumed;
+    public boolean needads;
+    private android.app.ProgressDialog progressDialog;
+    private android.webkit.WebView webView;
+
+    public void <init>()
+    {
+        com.BlackArachnia.CuteGardenStatuesDesign.CuteGardenStatuesDesign r0;
+
+        r0 := @this: com.BlackArachnia.CuteGardenStatuesDesign.CuteGardenStatuesDesign;
+
+        specialinvoke r0.<android.app.Activity: void <init>()>();
+
+        r0.<com.BlackArachnia.CuteGardenStatuesDesign.CuteGardenStatuesDesign: boolean needads> = 1;
+
+        r0.<com.BlackArachnia.CuteGardenStatuesDesign.CuteGardenStatuesDesign: boolean iresumed> = 1;
+
+        return;
+    }
+
+    static android.app.ProgressDialog access$200(com.BlackArachnia.CuteGardenStatuesDesign.CuteGardenStatuesDesign)
+    {
+        com.BlackArachnia.CuteGardenStatuesDesign.CuteGardenStatuesDesign $r0;
+        android.app.ProgressDialog r1;
+
+        $r0 := @parameter0: com.BlackArachnia.CuteGardenStatuesDesign.CuteGardenStatuesDesign;
+
+        r1 = $r0.<com.BlackArachnia.CuteGardenStatuesDesign.CuteGardenStatuesDesign: android.app.ProgressDialog progressDialog>;
+
+        return r1;
+    }
+
+    public void onCreate(android.os.Bundle)
+    {
+        com.BlackArachnia.CuteGardenStatuesDesign.CuteGardenStatuesDesign r0;
+        android.os.Bundle $r1;
+        android.view.View $r2;
+        android.widget.RelativeLayout $r3;
+        android.webkit.WebView $r4;
+        android.webkit.WebSettings $r5;
+        com.BlackArachnia.CuteGardenStatuesDesign.CuteGardenStatuesDesign$MyWebChromeClient $r6;
+        com.BlackArachnia.CuteGardenStatuesDesign.CuteGardenStatuesDesign$MyWebViewClient $r7;
+        android.content.Context $r8;
+        java.io.File $r9;
+        java.lang.String $r10;
+        android.app.ProgressDialog $r11;
+        com.google.android.gms.ads.AdView $r12;
+        com.google.android.gms.ads.d $r13;
+        com.google.android.gms.ads.b $r14;
+        boolean $z0;
+        android.content.Intent $r15;
+
+        r0 := @this: com.BlackArachnia.CuteGardenStatuesDesign.CuteGardenStatuesDesign;
+
+        $r1 := @parameter0: android.os.Bundle;
+
+        specialinvoke r0.<android.app.Activity: void onCreate(android.os.Bundle)>($r1);
+
+        virtualinvoke r0.<com.BlackArachnia.CuteGardenStatuesDesign.CuteGardenStatuesDesign: void setContentView(int)>(2130903041);
+
+        $r2 = virtualinvoke r0.<com.BlackArachnia.CuteGardenStatuesDesign.CuteGardenStatuesDesign: android.view.View findViewById(int)>(2131099668);
+
+        $r3 = (android.widget.RelativeLayout) $r2;
+
+        r0.<com.BlackArachnia.CuteGardenStatuesDesign.CuteGardenStatuesDesign: android.widget.RelativeLayout _layout> = $r3;
+
+        $r2 = virtualinvoke r0.<com.BlackArachnia.CuteGardenStatuesDesign.CuteGardenStatuesDesign: android.view.View findViewById(int)>(2131099669);
+
+        $r4 = (android.webkit.WebView) $r2;
+
+        r0.<com.BlackArachnia.CuteGardenStatuesDesign.CuteGardenStatuesDesign: android.webkit.WebView webView> = $r4;
+
+        $r4 = r0.<com.BlackArachnia.CuteGardenStatuesDesign.CuteGardenStatuesDesign: android.webkit.WebView webView>;
+
+        $r5 = virtualinvoke $r4.<android.webkit.WebView: android.webkit.WebSettings getSettings()>();
+
+        virtualinvoke $r5.<android.webkit.WebSettings: void setJavaScriptEnabled(boolean)>(1);
+
+        $r4 = r0.<com.BlackArachnia.CuteGardenStatuesDesign.CuteGardenStatuesDesign: android.webkit.WebView webView>;
+
+        $r5 = virtualinvoke $r4.<android.webkit.WebView: android.webkit.WebSettings getSettings()>();
+
+        virtualinvoke $r5.<android.webkit.WebSettings: void setSupportZoom(boolean)>(1);
+
+        $r4 = r0.<com.BlackArachnia.CuteGardenStatuesDesign.CuteGardenStatuesDesign: android.webkit.WebView webView>;
+
+        $r5 = virtualinvoke $r4.<android.webkit.WebView: android.webkit.WebSettings getSettings()>();
+
+        virtualinvoke $r5.<android.webkit.WebSettings: void setBuiltInZoomControls(boolean)>(1);
+
+        $r4 = r0.<com.BlackArachnia.CuteGardenStatuesDesign.CuteGardenStatuesDesign: android.webkit.WebView webView>;
+
+        $r5 = virtualinvoke $r4.<android.webkit.WebView: android.webkit.WebSettings getSettings()>();
+
+        virtualinvoke $r5.<android.webkit.WebSettings: void setCacheMode(int)>(1);
+
+        $r4 = r0.<com.BlackArachnia.CuteGardenStatuesDesign.CuteGardenStatuesDesign: android.webkit.WebView webView>;
+
+        $r5 = virtualinvoke $r4.<android.webkit.WebView: android.webkit.WebSettings getSettings()>();
+
+        virtualinvoke $r5.<android.webkit.WebSettings: void setDomStorageEnabled(boolean)>(1);
+
+        $r4 = r0.<com.BlackArachnia.CuteGardenStatuesDesign.CuteGardenStatuesDesign: android.webkit.WebView webView>;
+
+        $r5 = virtualinvoke $r4.<android.webkit.WebView: android.webkit.WebSettings getSettings()>();
+
+        virtualinvoke $r5.<android.webkit.WebSettings: void setAppCacheMaxSize(long)>(16777216L);
+
+        $r4 = r0.<com.BlackArachnia.CuteGardenStatuesDesign.CuteGardenStatuesDesign: android.webkit.WebView webView>;
+
+        $r5 = virtualinvoke $r4.<android.webkit.WebView: android.webkit.WebSettings getSettings()>();
+
+        virtualinvoke $r5.<android.webkit.WebSettings: void setAllowFileAccess(boolean)>(1);
+
+        $r4 = r0.<com.BlackArachnia.CuteGardenStatuesDesign.CuteGardenStatuesDesign: android.webkit.WebView webView>;
+
+        $r5 = virtualinvoke $r4.<android.webkit.WebView: android.webkit.WebSettings getSettings()>();
+
+        virtualinvoke $r5.<android.webkit.WebSettings: void setAppCacheEnabled(boolean)>(1);
+
+        $r4 = r0.<com.BlackArachnia.CuteGardenStatuesDesign.CuteGardenStatuesDesign: android.webkit.WebView webView>;
+
+        $r6 = new com.BlackArachnia.CuteGardenStatuesDesign.CuteGardenStatuesDesign$MyWebChromeClient;
+
+        specialinvoke $r6.<com.BlackArachnia.CuteGardenStatuesDesign.CuteGardenStatuesDesign$MyWebChromeClient: void <init>(com.BlackArachnia.CuteGardenStatuesDesign.CuteGardenStatuesDesign,com.BlackArachnia.CuteGardenStatuesDesign.CuteGardenStatuesDesign$1)>(r0, null);
+
+        virtualinvoke $r4.<android.webkit.WebView: void setWebChromeClient(android.webkit.WebChromeClient)>($r6);
+
+        $r4 = r0.<com.BlackArachnia.CuteGardenStatuesDesign.CuteGardenStatuesDesign: android.webkit.WebView webView>;
+
+        $r7 = new com.BlackArachnia.CuteGardenStatuesDesign.CuteGardenStatuesDesign$MyWebViewClient;
+
+        specialinvoke $r7.<com.BlackArachnia.CuteGardenStatuesDesign.CuteGardenStatuesDesign$MyWebViewClient: void <init>(com.BlackArachnia.CuteGardenStatuesDesign.CuteGardenStatuesDesign,com.BlackArachnia.CuteGardenStatuesDesign.CuteGardenStatuesDesign$1)>(r0, null);
+
+        virtualinvoke $r4.<android.webkit.WebView: void setWebViewClient(android.webkit.WebViewClient)>($r7);
+
+        $r8 = virtualinvoke r0.<com.BlackArachnia.CuteGardenStatuesDesign.CuteGardenStatuesDesign: android.content.Context getApplicationContext()>();
+
+        $r9 = virtualinvoke $r8.<android.content.Context: java.io.File getCacheDir()>();
+
+        $r10 = virtualinvoke $r9.<java.io.File: java.lang.String getAbsolutePath()>();
+
+        $r4 = r0.<com.BlackArachnia.CuteGardenStatuesDesign.CuteGardenStatuesDesign: android.webkit.WebView webView>;
+
+        $r5 = virtualinvoke $r4.<android.webkit.WebView: android.webkit.WebSettings getSettings()>();
+
+        virtualinvoke $r5.<android.webkit.WebSettings: void setAppCachePath(java.lang.String)>($r10);
+
+        $r4 = r0.<com.BlackArachnia.CuteGardenStatuesDesign.CuteGardenStatuesDesign: android.webkit.WebView webView>;
+
+        $r8 = virtualinvoke $r4.<android.webkit.WebView: android.content.Context getContext()>();
+
+        $r11 = staticinvoke <android.app.ProgressDialog: android.app.ProgressDialog show(android.content.Context,java.lang.CharSequence,java.lang.CharSequence)>($r8, "Loading...", "Loading...");
+
+        r0.<com.BlackArachnia.CuteGardenStatuesDesign.CuteGardenStatuesDesign: android.app.ProgressDialog progressDialog> = $r11;
+
+        $r11 = r0.<com.BlackArachnia.CuteGardenStatuesDesign.CuteGardenStatuesDesign: android.app.ProgressDialog progressDialog>;
+
+        virtualinvoke $r11.<android.app.ProgressDialog: void setProgressStyle(int)>(0);
+
+        $r4 = r0.<com.BlackArachnia.CuteGardenStatuesDesign.CuteGardenStatuesDesign: android.webkit.WebView webView>;
+
+        $r10 = virtualinvoke r0.<com.BlackArachnia.CuteGardenStatuesDesign.CuteGardenStatuesDesign: java.lang.String getString(int)>(2130968609);
+
+        virtualinvoke $r4.<android.webkit.WebView: void loadUrl(java.lang.String)>($r10);
+
+        $r2 = virtualinvoke r0.<com.BlackArachnia.CuteGardenStatuesDesign.CuteGardenStatuesDesign: android.view.View findViewById(int)>(2131099670);
+
+        $r12 = (com.google.android.gms.ads.AdView) $r2;
+
+        $r13 = new com.google.android.gms.ads.d;
+
+        specialinvoke $r13.<com.google.android.gms.ads.d: void <init>()>();
+
+        $r10 = <com.google.android.gms.ads.b: java.lang.String DEVICE_ID_EMULATOR>;
+
+        $r13 = virtualinvoke $r13.<com.google.android.gms.ads.d: com.google.android.gms.ads.d b(java.lang.String)>($r10);
+
+        $r14 = virtualinvoke $r13.<com.google.android.gms.ads.d: com.google.android.gms.ads.b a()>();
+
+        virtualinvoke $r12.<com.google.android.gms.ads.AdView: void a(com.google.android.gms.ads.b)>($r14);
+
+        $z0 = r0.<com.BlackArachnia.CuteGardenStatuesDesign.CuteGardenStatuesDesign: boolean needads>;
+
+        if $z0 == 0 goto label1;
+
+        $r15 = new android.content.Intent;
+
+        specialinvoke $r15.<android.content.Intent: void <init>(android.content.Context,java.lang.Class)>(r0, class "Lcom/BlackArachnia/CuteGardenStatuesDesign/AdsActivity;");
+
+        virtualinvoke r0.<com.BlackArachnia.CuteGardenStatuesDesign.CuteGardenStatuesDesign: void startActivity(android.content.Intent)>($r15);
+
+        r0.<com.BlackArachnia.CuteGardenStatuesDesign.CuteGardenStatuesDesign: boolean needads> = 0;
+
+     label1:
+        return;
+    }
+
+    public boolean onCreateOptionsMenu(android.view.Menu)
+    {
+        com.BlackArachnia.CuteGardenStatuesDesign.CuteGardenStatuesDesign r0;
+        android.view.Menu $r1;
+        android.view.MenuInflater $r2;
+
+        r0 := @this: com.BlackArachnia.CuteGardenStatuesDesign.CuteGardenStatuesDesign;
+
+        $r1 := @parameter0: android.view.Menu;
+
+        $r2 = virtualinvoke r0.<com.BlackArachnia.CuteGardenStatuesDesign.CuteGardenStatuesDesign: android.view.MenuInflater getMenuInflater()>();
+
+        virtualinvoke $r2.<android.view.MenuInflater: void inflate(int,android.view.Menu)>(2130903042, $r1);
+
+        return 1;
+    }
+
+    public void onDestroy()
+    {
+        com.BlackArachnia.CuteGardenStatuesDesign.CuteGardenStatuesDesign r0;
+        com.google.android.gms.ads.AdView $r1;
+        android.widget.RelativeLayout $r2;
+        android.webkit.WebView $r3;
+
+        r0 := @this: com.BlackArachnia.CuteGardenStatuesDesign.CuteGardenStatuesDesign;
+
+        $r1 = r0.<com.BlackArachnia.CuteGardenStatuesDesign.CuteGardenStatuesDesign: com.google.android.gms.ads.AdView adView>;
+
+        if $r1 == null goto label1;
+
+        $r1 = r0.<com.BlackArachnia.CuteGardenStatuesDesign.CuteGardenStatuesDesign: com.google.android.gms.ads.AdView adView>;
+
+        virtualinvoke $r1.<com.google.android.gms.ads.AdView: void a()>();
+
+     label1:
+        $r2 = r0.<com.BlackArachnia.CuteGardenStatuesDesign.CuteGardenStatuesDesign: android.widget.RelativeLayout _layout>;
+
+        $r3 = r0.<com.BlackArachnia.CuteGardenStatuesDesign.CuteGardenStatuesDesign: android.webkit.WebView webView>;
+
+        virtualinvoke $r2.<android.widget.RelativeLayout: void removeView(android.view.View)>($r3);
+
+        $r3 = r0.<com.BlackArachnia.CuteGardenStatuesDesign.CuteGardenStatuesDesign: android.webkit.WebView webView>;
+
+        virtualinvoke $r3.<android.webkit.WebView: void removeAllViews()>();
+
+        $r3 = r0.<com.BlackArachnia.CuteGardenStatuesDesign.CuteGardenStatuesDesign: android.webkit.WebView webView>;
+
+        virtualinvoke $r3.<android.webkit.WebView: void clearHistory()>();
+
+        $r3 = r0.<com.BlackArachnia.CuteGardenStatuesDesign.CuteGardenStatuesDesign: android.webkit.WebView webView>;
+
+        virtualinvoke $r3.<android.webkit.WebView: void clearCache(boolean)>(1);
+
+        $r3 = r0.<com.BlackArachnia.CuteGardenStatuesDesign.CuteGardenStatuesDesign: android.webkit.WebView webView>;
+
+        virtualinvoke $r3.<android.webkit.WebView: void destroy()>();
+
+        specialinvoke r0.<android.app.Activity: void onDestroy()>();
+
+        return;
+    }
+
+    public boolean onKeyDown(int, android.view.KeyEvent)
+    {
+        com.BlackArachnia.CuteGardenStatuesDesign.CuteGardenStatuesDesign r0;
+        int $i0;
+        android.view.KeyEvent $r1;
+        android.webkit.WebView $r2;
+        boolean $z0;
+        android.app.AlertDialog$Builder $r3;
+        com.BlackArachnia.CuteGardenStatuesDesign.CuteGardenStatuesDesign$1 $r4;
+
+        r0 := @this: com.BlackArachnia.CuteGardenStatuesDesign.CuteGardenStatuesDesign;
+
+        $i0 := @parameter0: int;
+
+        $r1 := @parameter1: android.view.KeyEvent;
+
+        if $i0 != 4 goto label1;
+
+        $r2 = r0.<com.BlackArachnia.CuteGardenStatuesDesign.CuteGardenStatuesDesign: android.webkit.WebView webView>;
+
+        $z0 = virtualinvoke $r2.<android.webkit.WebView: boolean canGoBack()>();
+
+        if $z0 == 0 goto label1;
+
+        $r2 = r0.<com.BlackArachnia.CuteGardenStatuesDesign.CuteGardenStatuesDesign: android.webkit.WebView webView>;
+
+        virtualinvoke $r2.<android.webkit.WebView: void goBack()>();
+
+        return 1;
+
+     label1:
+        if $i0 != 4 goto label2;
+
+        $r2 = r0.<com.BlackArachnia.CuteGardenStatuesDesign.CuteGardenStatuesDesign: android.webkit.WebView webView>;
+
+        $z0 = virtualinvoke $r2.<android.webkit.WebView: boolean canGoBack()>();
+
+        if $z0 != 0 goto label2;
+
+        $r3 = new android.app.AlertDialog$Builder;
+
+        specialinvoke $r3.<android.app.AlertDialog$Builder: void <init>(android.content.Context)>(r0);
+
+        $r3 = virtualinvoke $r3.<android.app.AlertDialog$Builder: android.app.AlertDialog$Builder setIcon(int)>(17301659);
+
+        $r3 = virtualinvoke $r3.<android.app.AlertDialog$Builder: android.app.AlertDialog$Builder setTitle(java.lang.CharSequence)>("Quit application");
+
+        $r3 = virtualinvoke $r3.<android.app.AlertDialog$Builder: android.app.AlertDialog$Builder setMessage(java.lang.CharSequence)>("Are you really sure?");
+
+        $r4 = new com.BlackArachnia.CuteGardenStatuesDesign.CuteGardenStatuesDesign$1;
+
+        specialinvoke $r4.<com.BlackArachnia.CuteGardenStatuesDesign.CuteGardenStatuesDesign$1: void <init>(com.BlackArachnia.CuteGardenStatuesDesign.CuteGardenStatuesDesign)>(r0);
+
+        $r3 = virtualinvoke $r3.<android.app.AlertDialog$Builder: android.app.AlertDialog$Builder setPositiveButton(java.lang.CharSequence,android.content.DialogInterface$OnClickListener)>("Yes", $r4);
+
+        $r3 = virtualinvoke $r3.<android.app.AlertDialog$Builder: android.app.AlertDialog$Builder setNegativeButton(java.lang.CharSequence,android.content.DialogInterface$OnClickListener)>("Nope", null);
+
+        virtualinvoke $r3.<android.app.AlertDialog$Builder: android.app.AlertDialog show()>();
+
+     label2:
+        $z0 = specialinvoke r0.<android.app.Activity: boolean onKeyDown(int,android.view.KeyEvent)>($i0, $r1);
+
+        return $z0;
+    }
+
+    public boolean onOptionsItemSelected(android.view.MenuItem)
+    {
+        com.BlackArachnia.CuteGardenStatuesDesign.CuteGardenStatuesDesign r0;
+        android.view.MenuItem $r1;
+        int $i0;
+        boolean $z0;
+        android.webkit.WebView $r2;
+        android.content.Context $r3;
+        android.widget.Toast $r4;
+        java.lang.String $r5;
+
+        r0 := @this: com.BlackArachnia.CuteGardenStatuesDesign.CuteGardenStatuesDesign;
+
+        $r1 := @parameter0: android.view.MenuItem;
+
+        $i0 = interfaceinvoke $r1.<android.view.MenuItem: int getItemId()>();
+
+        lookupswitch($i0)
+        {
+            case 2131099671: goto label2;
+            case 2131099672: goto label3;
+            case 2131099673: goto label5;
+            case 2131099674: goto label6;
+            case 2131099675: goto label7;
+            case 2131099676: goto label8;
+            default: goto label1;
+        };
+
+     label1:
+        $z0 = specialinvoke r0.<android.app.Activity: boolean onOptionsItemSelected(android.view.MenuItem)>($r1);
+
+        return $z0;
+
+     label2:
+        $r2 = r0.<com.BlackArachnia.CuteGardenStatuesDesign.CuteGardenStatuesDesign: android.webkit.WebView webView>;
+
+        $z0 = virtualinvoke $r2.<android.webkit.WebView: boolean canGoBack()>();
+
+        if $z0 == 0 goto label9;
+
+        $r2 = r0.<com.BlackArachnia.CuteGardenStatuesDesign.CuteGardenStatuesDesign: android.webkit.WebView webView>;
+
+        virtualinvoke $r2.<android.webkit.WebView: void goBack()>();
+
+        return 1;
+
+     label3:
+        $r2 = r0.<com.BlackArachnia.CuteGardenStatuesDesign.CuteGardenStatuesDesign: android.webkit.WebView webView>;
+
+        $z0 = virtualinvoke $r2.<android.webkit.WebView: boolean canGoForward()>();
+
+        if $z0 == 0 goto label4;
+
+        $r2 = r0.<com.BlackArachnia.CuteGardenStatuesDesign.CuteGardenStatuesDesign: android.webkit.WebView webView>;
+
+        virtualinvoke $r2.<android.webkit.WebView: void goForward()>();
+
+        return 1;
+
+     label4:
+        $r2 = r0.<com.BlackArachnia.CuteGardenStatuesDesign.CuteGardenStatuesDesign: android.webkit.WebView webView>;
+
+        $r3 = virtualinvoke $r2.<android.webkit.WebView: android.content.Context getContext()>();
+
+        $r4 = staticinvoke <android.widget.Toast: android.widget.Toast makeText(android.content.Context,java.lang.CharSequence,int)>($r3, "Can\'t go forward now!", 0);
+
+        virtualinvoke $r4.<android.widget.Toast: void show()>();
+
+        return 1;
+
+     label5:
+        $r2 = r0.<com.BlackArachnia.CuteGardenStatuesDesign.CuteGardenStatuesDesign: android.webkit.WebView webView>;
+
+        virtualinvoke $r2.<android.webkit.WebView: void reload()>();
+
+        return 1;
+
+     label6:
+        $r2 = r0.<com.BlackArachnia.CuteGardenStatuesDesign.CuteGardenStatuesDesign: android.webkit.WebView webView>;
+
+        $r5 = virtualinvoke r0.<com.BlackArachnia.CuteGardenStatuesDesign.CuteGardenStatuesDesign: java.lang.String getString(int)>(2130968609);
+
+        virtualinvoke $r2.<android.webkit.WebView: void loadUrl(java.lang.String)>($r5);
+
+        return 1;
+
+     label7:
+        $r2 = r0.<com.BlackArachnia.CuteGardenStatuesDesign.CuteGardenStatuesDesign: android.webkit.WebView webView>;
+
+        virtualinvoke $r2.<android.webkit.WebView: void stopLoading()>();
+
+        return 1;
+
+     label8:
+        virtualinvoke r0.<com.BlackArachnia.CuteGardenStatuesDesign.CuteGardenStatuesDesign: boolean moveTaskToBack(boolean)>(1);
+
+     label9:
+        return 1;
+    }
+
+    protected void onRestart()
+    {
+        com.BlackArachnia.CuteGardenStatuesDesign.CuteGardenStatuesDesign r0;
+        boolean $z0;
+
+        r0 := @this: com.BlackArachnia.CuteGardenStatuesDesign.CuteGardenStatuesDesign;
+
+        specialinvoke r0.<android.app.Activity: void onRestart()>();
+
+        $z0 = r0.<com.BlackArachnia.CuteGardenStatuesDesign.CuteGardenStatuesDesign: boolean iresumed>;
+
+        if $z0 == 0 goto label1;
+
+     label1:
+        return;
+    }
+}

@@ -1,0 +1,105 @@
+public final class com.apperhand.device.a.b.j extends com.apperhand.device.a.b.b
+{
+
+    public void <init>(com.apperhand.device.a.b, com.apperhand.device.a.a, java.lang.String, com.apperhand.common.dto.Command$Commands)
+    {
+        com.apperhand.device.a.b.j r0;
+        com.apperhand.device.a.b $r1;
+        com.apperhand.device.a.a $r2;
+        java.lang.String $r3;
+        com.apperhand.common.dto.Command$Commands $r4;
+
+        r0 := @this: com.apperhand.device.a.b.j;
+
+        $r1 := @parameter0: com.apperhand.device.a.b;
+
+        $r2 := @parameter1: com.apperhand.device.a.a;
+
+        $r3 := @parameter2: java.lang.String;
+
+        $r4 := @parameter3: com.apperhand.common.dto.Command$Commands;
+
+        specialinvoke r0.<com.apperhand.device.a.b.b: void <init>(com.apperhand.device.a.b,com.apperhand.device.a.a,java.lang.String,com.apperhand.common.dto.Command$Commands)>($r1, $r2, $r3, $r4);
+
+        return;
+    }
+
+    protected final com.apperhand.common.dto.protocol.BaseResponse a() throws com.apperhand.device.a.d.f
+    {
+        com.apperhand.device.a.b.j r0;
+        com.apperhand.device.a.a.f $r1;
+        com.apperhand.device.a.a $r2;
+        com.apperhand.device.a.b $r3;
+        com.apperhand.device.a.b.j$1 $r4;
+
+        r0 := @this: com.apperhand.device.a.b.j;
+
+        $r2 = r0.<com.apperhand.device.a.b.j: com.apperhand.device.a.a e>;
+
+        $r1 = interfaceinvoke $r2.<com.apperhand.device.a.a: com.apperhand.device.a.a.f f()>();
+
+        interfaceinvoke $r1.<com.apperhand.device.a.a.f: void a()>();
+
+        $r3 = r0.<com.apperhand.device.a.b.j: com.apperhand.device.a.b f>;
+
+        virtualinvoke $r3.<com.apperhand.device.a.b: void f()>();
+
+        $r4 = new com.apperhand.device.a.b.j$1;
+
+        specialinvoke $r4.<com.apperhand.device.a.b.j$1: void <init>(com.apperhand.device.a.b.j)>(r0);
+
+        return $r4;
+    }
+
+    protected final java.util.Map a(com.apperhand.common.dto.protocol.BaseResponse) throws com.apperhand.device.a.d.f
+    {
+        com.apperhand.device.a.b.j r0;
+        com.apperhand.common.dto.protocol.BaseResponse $r1;
+
+        r0 := @this: com.apperhand.device.a.b.j;
+
+        $r1 := @parameter0: com.apperhand.common.dto.protocol.BaseResponse;
+
+        return null;
+    }
+
+    protected final void a(java.util.Map) throws com.apperhand.device.a.d.f
+    {
+        com.apperhand.device.a.b.j r0;
+        java.util.Map $r1;
+        com.apperhand.common.dto.protocol.CommandStatusRequest $r2;
+
+        r0 := @this: com.apperhand.device.a.b.j;
+
+        $r1 := @parameter0: java.util.Map;
+
+        $r2 = virtualinvoke r0.<com.apperhand.device.a.b.j: com.apperhand.common.dto.protocol.CommandStatusRequest b()>();
+
+        virtualinvoke r0.<com.apperhand.device.a.b.j: void a(com.apperhand.common.dto.protocol.CommandStatusRequest)>($r2);
+
+        return;
+    }
+
+    protected final com.apperhand.common.dto.protocol.CommandStatusRequest b() throws com.apperhand.device.a.d.f
+    {
+        com.apperhand.device.a.b.j r0;
+        com.apperhand.common.dto.CommandStatus$Status $r1;
+        com.apperhand.common.dto.protocol.CommandStatusRequest $r2;
+        com.apperhand.common.dto.Command$Commands $r3;
+        java.util.List $r4;
+
+        r0 := @this: com.apperhand.device.a.b.j;
+
+        $r2 = specialinvoke r0.<com.apperhand.device.a.b.b: com.apperhand.common.dto.protocol.CommandStatusRequest b()>();
+
+        $r3 = <com.apperhand.common.dto.Command$Commands: com.apperhand.common.dto.Command$Commands TERMINATE>;
+
+        $r1 = <com.apperhand.common.dto.CommandStatus$Status: com.apperhand.common.dto.CommandStatus$Status SUCCESS>;
+
+        $r4 = virtualinvoke r0.<com.apperhand.device.a.b.j: java.util.List a(com.apperhand.common.dto.Command$Commands,com.apperhand.common.dto.CommandStatus$Status,java.lang.String,java.util.Map)>($r3, $r1, "SABABA!!!", null);
+
+        virtualinvoke $r2.<com.apperhand.common.dto.protocol.CommandStatusRequest: void setStatuses(java.util.List)>($r4);
+
+        return $r2;
+    }
+}

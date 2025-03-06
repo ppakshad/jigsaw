@@ -1,0 +1,146 @@
+class com.heyzap.sdk.WebViewDialog$HeyzapJavascriptBindings extends java.lang.Object
+{
+    final com.heyzap.sdk.WebViewDialog this$0;
+
+    private void <init>(com.heyzap.sdk.WebViewDialog)
+    {
+        com.heyzap.sdk.WebViewDialog$HeyzapJavascriptBindings r0;
+        com.heyzap.sdk.WebViewDialog $r1;
+
+        r0 := @this: com.heyzap.sdk.WebViewDialog$HeyzapJavascriptBindings;
+
+        $r1 := @parameter0: com.heyzap.sdk.WebViewDialog;
+
+        r0.<com.heyzap.sdk.WebViewDialog$HeyzapJavascriptBindings: com.heyzap.sdk.WebViewDialog this$0> = $r1;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    void <init>(com.heyzap.sdk.WebViewDialog, com.heyzap.sdk.WebViewDialog$1)
+    {
+        com.heyzap.sdk.WebViewDialog$HeyzapJavascriptBindings r0;
+        com.heyzap.sdk.WebViewDialog $r1;
+        com.heyzap.sdk.WebViewDialog$1 $r2;
+
+        r0 := @this: com.heyzap.sdk.WebViewDialog$HeyzapJavascriptBindings;
+
+        $r1 := @parameter0: com.heyzap.sdk.WebViewDialog;
+
+        $r2 := @parameter1: com.heyzap.sdk.WebViewDialog$1;
+
+        specialinvoke r0.<com.heyzap.sdk.WebViewDialog$HeyzapJavascriptBindings: void <init>(com.heyzap.sdk.WebViewDialog)>($r1);
+
+        return;
+    }
+
+    public void endActivity()
+    {
+        com.heyzap.sdk.WebViewDialog$HeyzapJavascriptBindings r0;
+        com.heyzap.sdk.WebViewDialog $r1;
+
+        r0 := @this: com.heyzap.sdk.WebViewDialog$HeyzapJavascriptBindings;
+
+        $r1 = r0.<com.heyzap.sdk.WebViewDialog$HeyzapJavascriptBindings: com.heyzap.sdk.WebViewDialog this$0>;
+
+        virtualinvoke $r1.<com.heyzap.sdk.WebViewDialog: void hide()>();
+
+        return;
+    }
+
+    public void gotoHeyzapOnMarket()
+    {
+        com.heyzap.sdk.WebViewDialog$HeyzapJavascriptBindings r0;
+        com.heyzap.sdk.WebViewDialog $r1;
+        boolean $z0;
+        android.content.Context $r2;
+        java.lang.StringBuilder $r3;
+        java.lang.String $r4, $r5;
+        android.content.Intent $r6;
+        android.net.Uri $r7;
+
+        r0 := @this: com.heyzap.sdk.WebViewDialog$HeyzapJavascriptBindings;
+
+        $r1 = r0.<com.heyzap.sdk.WebViewDialog$HeyzapJavascriptBindings: com.heyzap.sdk.WebViewDialog this$0>;
+
+        $z0 = staticinvoke <com.heyzap.sdk.WebViewDialog: boolean access$200(com.heyzap.sdk.WebViewDialog)>($r1);
+
+        if $z0 == 0 goto label1;
+
+        $r1 = r0.<com.heyzap.sdk.WebViewDialog$HeyzapJavascriptBindings: com.heyzap.sdk.WebViewDialog this$0>;
+
+        $r2 = virtualinvoke $r1.<com.heyzap.sdk.WebViewDialog: android.content.Context getContext()>();
+
+        staticinvoke <com.heyzap.sdk.HeyzapLib: void sendNotification(android.content.Context)>($r2);
+
+     label1:
+        $r3 = new java.lang.StringBuilder;
+
+        specialinvoke $r3.<java.lang.StringBuilder: void <init>()>();
+
+        $r3 = virtualinvoke $r3.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("market://details?id=com.heyzap.android&referrer=");
+
+        $r1 = r0.<com.heyzap.sdk.WebViewDialog$HeyzapJavascriptBindings: com.heyzap.sdk.WebViewDialog this$0>;
+
+        $r2 = virtualinvoke $r1.<com.heyzap.sdk.WebViewDialog: android.content.Context getContext()>();
+
+        $r4 = staticinvoke <com.heyzap.sdk.HeyzapAnalytics: java.lang.String getAnalyticsReferrer(android.content.Context)>($r2);
+
+        $r3 = virtualinvoke $r3.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r4);
+
+        $r4 = virtualinvoke $r3.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        $r1 = r0.<com.heyzap.sdk.WebViewDialog$HeyzapJavascriptBindings: com.heyzap.sdk.WebViewDialog this$0>;
+
+        $r2 = virtualinvoke $r1.<com.heyzap.sdk.WebViewDialog: android.content.Context getContext()>();
+
+        staticinvoke <com.heyzap.sdk.HeyzapAnalytics: void trackEvent(android.content.Context,java.lang.String)>($r2, "install-button-clicked");
+
+        $r3 = new java.lang.StringBuilder;
+
+        specialinvoke $r3.<java.lang.StringBuilder: void <init>()>();
+
+        $r3 = virtualinvoke $r3.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Sending player to market, uri: ");
+
+        $r3 = virtualinvoke $r3.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r4);
+
+        $r5 = virtualinvoke $r3.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <android.util.Log: int d(java.lang.String,java.lang.String)>("HeyzapSDK", $r5);
+
+        $r6 = new android.content.Intent;
+
+        $r7 = staticinvoke <android.net.Uri: android.net.Uri parse(java.lang.String)>($r4);
+
+        specialinvoke $r6.<android.content.Intent: void <init>(java.lang.String,android.net.Uri)>("android.intent.action.VIEW", $r7);
+
+        virtualinvoke $r6.<android.content.Intent: android.content.Intent addFlags(int)>(402653184);
+
+        $r1 = r0.<com.heyzap.sdk.WebViewDialog$HeyzapJavascriptBindings: com.heyzap.sdk.WebViewDialog this$0>;
+
+        $r2 = virtualinvoke $r1.<com.heyzap.sdk.WebViewDialog: android.content.Context getContext()>();
+
+        virtualinvoke $r2.<android.content.Context: void startActivity(android.content.Intent)>($r6);
+
+        $r1 = r0.<com.heyzap.sdk.WebViewDialog$HeyzapJavascriptBindings: com.heyzap.sdk.WebViewDialog this$0>;
+
+        virtualinvoke $r1.<com.heyzap.sdk.WebViewDialog: void hide()>();
+
+        return;
+    }
+
+    public void setNotDead()
+    {
+        com.heyzap.sdk.WebViewDialog$HeyzapJavascriptBindings r0;
+        com.heyzap.sdk.WebViewDialog $r1;
+
+        r0 := @this: com.heyzap.sdk.WebViewDialog$HeyzapJavascriptBindings;
+
+        $r1 = r0.<com.heyzap.sdk.WebViewDialog$HeyzapJavascriptBindings: com.heyzap.sdk.WebViewDialog this$0>;
+
+        staticinvoke <com.heyzap.sdk.WebViewDialog: boolean access$302(com.heyzap.sdk.WebViewDialog,boolean)>($r1, 0);
+
+        return;
+    }
+}

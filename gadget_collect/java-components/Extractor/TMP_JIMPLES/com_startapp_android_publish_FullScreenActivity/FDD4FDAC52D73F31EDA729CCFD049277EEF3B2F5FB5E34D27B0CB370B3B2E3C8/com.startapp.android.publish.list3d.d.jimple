@@ -1,0 +1,586 @@
+public class com.startapp.android.publish.list3d.d extends java.lang.Object
+{
+    private android.widget.RelativeLayout a;
+    private android.widget.ImageView b;
+    private android.widget.TextView c;
+    private android.widget.TextView d;
+    private android.widget.TextView e;
+    private com.startapp.android.publish.i.q f;
+    private com.startapp.android.publish.model.MetaDataStyle g;
+
+    public void <init>(android.content.Context)
+    {
+        com.startapp.android.publish.list3d.d r0;
+        android.content.Context $r1;
+        android.view.ViewGroup$LayoutParams $r2;
+        android.widget.RelativeLayout $r3;
+        android.graphics.drawable.GradientDrawable $r4;
+        android.graphics.drawable.GradientDrawable$Orientation $r5;
+        int[] $r6;
+        com.startapp.android.publish.model.MetaData $r7;
+        int $i0, $i1, $i2, $i3, $i4, $i5;
+        android.widget.ImageView $r8;
+        android.widget.RelativeLayout$LayoutParams $r9;
+        android.widget.TextView $r10;
+        java.lang.Integer $r11;
+        float $f0;
+        android.text.TextUtils$TruncateAt $r12;
+        java.util.Set $r13;
+        com.startapp.android.publish.i.q $r14;
+        com.startapp.android.publish.list3d.d$1 $r15;
+        android.graphics.drawable.shapes.RoundRectShape $r16;
+        float[] $r17;
+
+        r0 := @this: com.startapp.android.publish.list3d.d;
+
+        $r1 := @parameter0: android.content.Context;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        r0.<com.startapp.android.publish.list3d.d: com.startapp.android.publish.model.MetaDataStyle g> = null;
+
+        virtualinvoke $r1.<android.content.Context: void setTheme(int)>(16973829);
+
+        $r2 = new android.view.ViewGroup$LayoutParams;
+
+        specialinvoke $r2.<android.view.ViewGroup$LayoutParams: void <init>(int,int)>(-2, -2);
+
+        $r3 = new android.widget.RelativeLayout;
+
+        specialinvoke $r3.<android.widget.RelativeLayout: void <init>(android.content.Context)>($r1);
+
+        r0.<com.startapp.android.publish.list3d.d: android.widget.RelativeLayout a> = $r3;
+
+        $r4 = new android.graphics.drawable.GradientDrawable;
+
+        $r5 = <android.graphics.drawable.GradientDrawable$Orientation: android.graphics.drawable.GradientDrawable$Orientation TOP_BOTTOM>;
+
+        $r6 = newarray (int)[2];
+
+        $r7 = staticinvoke <com.startapp.android.publish.model.MetaData: com.startapp.android.publish.model.MetaData getInstance()>();
+
+        $i0 = virtualinvoke $r7.<com.startapp.android.publish.model.MetaData: int getItemGradientTop()>();
+
+        $r6[0] = $i0;
+
+        $r7 = staticinvoke <com.startapp.android.publish.model.MetaData: com.startapp.android.publish.model.MetaData getInstance()>();
+
+        $i0 = virtualinvoke $r7.<com.startapp.android.publish.model.MetaData: int getItemGradientBottom()>();
+
+        $r6[1] = $i0;
+
+        specialinvoke $r4.<android.graphics.drawable.GradientDrawable: void <init>(android.graphics.drawable.GradientDrawable$Orientation,int[])>($r5, $r6);
+
+        $r3 = r0.<com.startapp.android.publish.list3d.d: android.widget.RelativeLayout a>;
+
+        virtualinvoke $r3.<android.widget.RelativeLayout: void setBackgroundDrawable(android.graphics.drawable.Drawable)>($r4);
+
+        $r3 = r0.<com.startapp.android.publish.list3d.d: android.widget.RelativeLayout a>;
+
+        virtualinvoke $r3.<android.widget.RelativeLayout: void setLayoutParams(android.view.ViewGroup$LayoutParams)>($r2);
+
+        $i1 = staticinvoke <com.startapp.android.publish.i.w: int a(android.content.Context,int)>($r1, 3);
+
+        $i2 = staticinvoke <com.startapp.android.publish.i.w: int a(android.content.Context,int)>($r1, 4);
+
+        $i3 = staticinvoke <com.startapp.android.publish.i.w: int a(android.content.Context,int)>($r1, 5);
+
+        $i0 = staticinvoke <com.startapp.android.publish.i.w: int a(android.content.Context,int)>($r1, 6);
+
+        $i4 = staticinvoke <com.startapp.android.publish.i.w: int a(android.content.Context,int)>($r1, 10);
+
+        $i5 = staticinvoke <com.startapp.android.publish.i.w: int a(android.content.Context,int)>($r1, 84);
+
+        $r3 = r0.<com.startapp.android.publish.list3d.d: android.widget.RelativeLayout a>;
+
+        virtualinvoke $r3.<android.widget.RelativeLayout: void setPadding(int,int,int,int)>($i4, $i1, $i4, $i1);
+
+        $r3 = r0.<com.startapp.android.publish.list3d.d: android.widget.RelativeLayout a>;
+
+        virtualinvoke $r3.<android.widget.RelativeLayout: void setTag(java.lang.Object)>(r0);
+
+        $r8 = new android.widget.ImageView;
+
+        specialinvoke $r8.<android.widget.ImageView: void <init>(android.content.Context)>($r1);
+
+        r0.<com.startapp.android.publish.list3d.d: android.widget.ImageView b> = $r8;
+
+        $r8 = r0.<com.startapp.android.publish.list3d.d: android.widget.ImageView b>;
+
+        virtualinvoke $r8.<android.widget.ImageView: void setId(int)>(1);
+
+        $r9 = new android.widget.RelativeLayout$LayoutParams;
+
+        specialinvoke $r9.<android.widget.RelativeLayout$LayoutParams: void <init>(int,int)>($i5, $i5);
+
+        virtualinvoke $r9.<android.widget.RelativeLayout$LayoutParams: void addRule(int)>(15);
+
+        $r8 = r0.<com.startapp.android.publish.list3d.d: android.widget.ImageView b>;
+
+        virtualinvoke $r8.<android.widget.ImageView: void setLayoutParams(android.view.ViewGroup$LayoutParams)>($r9);
+
+        $r8 = r0.<com.startapp.android.publish.list3d.d: android.widget.ImageView b>;
+
+        virtualinvoke $r8.<android.widget.ImageView: void setPadding(int,int,int,int)>(0, 0, $i0, 0);
+
+        $r10 = new android.widget.TextView;
+
+        specialinvoke $r10.<android.widget.TextView: void <init>(android.content.Context)>($r1);
+
+        r0.<com.startapp.android.publish.list3d.d: android.widget.TextView c> = $r10;
+
+        $r10 = r0.<com.startapp.android.publish.list3d.d: android.widget.TextView c>;
+
+        virtualinvoke $r10.<android.widget.TextView: void setId(int)>(2);
+
+        $r9 = new android.widget.RelativeLayout$LayoutParams;
+
+        specialinvoke $r9.<android.widget.RelativeLayout$LayoutParams: void <init>(int,int)>(-1, -2);
+
+        $i1 = staticinvoke <com.startapp.android.publish.i.b: int a(int)>(17);
+
+        virtualinvoke $r9.<android.widget.RelativeLayout$LayoutParams: void addRule(int,int)>($i1, 1);
+
+        virtualinvoke $r9.<android.widget.RelativeLayout$LayoutParams: void addRule(int,int)>(6, 1);
+
+        $r10 = r0.<com.startapp.android.publish.list3d.d: android.widget.TextView c>;
+
+        virtualinvoke $r10.<android.widget.TextView: void setLayoutParams(android.view.ViewGroup$LayoutParams)>($r9);
+
+        $r10 = r0.<com.startapp.android.publish.list3d.d: android.widget.TextView c>;
+
+        virtualinvoke $r10.<android.widget.TextView: void setPadding(int,int,int,int)>(0, 0, 0, $i3);
+
+        $r10 = r0.<com.startapp.android.publish.list3d.d: android.widget.TextView c>;
+
+        $r7 = staticinvoke <com.startapp.android.publish.model.MetaData: com.startapp.android.publish.model.MetaData getInstance()>();
+
+        $r11 = virtualinvoke $r7.<com.startapp.android.publish.model.MetaData: java.lang.Integer getItemTitleTextColor()>();
+
+        $i1 = virtualinvoke $r11.<java.lang.Integer: int intValue()>();
+
+        virtualinvoke $r10.<android.widget.TextView: void setTextColor(int)>($i1);
+
+        $r10 = r0.<com.startapp.android.publish.list3d.d: android.widget.TextView c>;
+
+        $r7 = staticinvoke <com.startapp.android.publish.model.MetaData: com.startapp.android.publish.model.MetaData getInstance()>();
+
+        $r11 = virtualinvoke $r7.<com.startapp.android.publish.model.MetaData: java.lang.Integer getItemTitleTextSize()>();
+
+        $i1 = virtualinvoke $r11.<java.lang.Integer: int intValue()>();
+
+        $f0 = (float) $i1;
+
+        virtualinvoke $r10.<android.widget.TextView: void setTextSize(float)>($f0);
+
+        $r10 = r0.<com.startapp.android.publish.list3d.d: android.widget.TextView c>;
+
+        virtualinvoke $r10.<android.widget.TextView: void setSingleLine(boolean)>(1);
+
+        $r10 = r0.<com.startapp.android.publish.list3d.d: android.widget.TextView c>;
+
+        $r12 = <android.text.TextUtils$TruncateAt: android.text.TextUtils$TruncateAt END>;
+
+        virtualinvoke $r10.<android.widget.TextView: void setEllipsize(android.text.TextUtils$TruncateAt)>($r12);
+
+        $r10 = r0.<com.startapp.android.publish.list3d.d: android.widget.TextView c>;
+
+        $r7 = staticinvoke <com.startapp.android.publish.model.MetaData: com.startapp.android.publish.model.MetaData getInstance()>();
+
+        $r13 = virtualinvoke $r7.<com.startapp.android.publish.model.MetaData: java.util.Set getItemTitleTextDecoration()>();
+
+        staticinvoke <com.startapp.android.publish.i.w: void a(android.widget.TextView,java.util.Set)>($r10, $r13);
+
+        $r10 = new android.widget.TextView;
+
+        specialinvoke $r10.<android.widget.TextView: void <init>(android.content.Context)>($r1);
+
+        r0.<com.startapp.android.publish.list3d.d: android.widget.TextView d> = $r10;
+
+        $r10 = r0.<com.startapp.android.publish.list3d.d: android.widget.TextView d>;
+
+        virtualinvoke $r10.<android.widget.TextView: void setId(int)>(3);
+
+        $r9 = new android.widget.RelativeLayout$LayoutParams;
+
+        specialinvoke $r9.<android.widget.RelativeLayout$LayoutParams: void <init>(int,int)>(-1, -2);
+
+        $i1 = staticinvoke <com.startapp.android.publish.i.b: int a(int)>(17);
+
+        virtualinvoke $r9.<android.widget.RelativeLayout$LayoutParams: void addRule(int,int)>($i1, 1);
+
+        virtualinvoke $r9.<android.widget.RelativeLayout$LayoutParams: void addRule(int,int)>(3, 2);
+
+        virtualinvoke $r9.<android.widget.RelativeLayout$LayoutParams: void setMargins(int,int,int,int)>(0, 0, 0, $i3);
+
+        $r10 = r0.<com.startapp.android.publish.list3d.d: android.widget.TextView d>;
+
+        virtualinvoke $r10.<android.widget.TextView: void setLayoutParams(android.view.ViewGroup$LayoutParams)>($r9);
+
+        $r10 = r0.<com.startapp.android.publish.list3d.d: android.widget.TextView d>;
+
+        $r7 = staticinvoke <com.startapp.android.publish.model.MetaData: com.startapp.android.publish.model.MetaData getInstance()>();
+
+        $r11 = virtualinvoke $r7.<com.startapp.android.publish.model.MetaData: java.lang.Integer getItemDescriptionTextColor()>();
+
+        $i1 = virtualinvoke $r11.<java.lang.Integer: int intValue()>();
+
+        virtualinvoke $r10.<android.widget.TextView: void setTextColor(int)>($i1);
+
+        $r10 = r0.<com.startapp.android.publish.list3d.d: android.widget.TextView d>;
+
+        $r7 = staticinvoke <com.startapp.android.publish.model.MetaData: com.startapp.android.publish.model.MetaData getInstance()>();
+
+        $r11 = virtualinvoke $r7.<com.startapp.android.publish.model.MetaData: java.lang.Integer getItemDescriptionTextSize()>();
+
+        $i1 = virtualinvoke $r11.<java.lang.Integer: int intValue()>();
+
+        $f0 = (float) $i1;
+
+        virtualinvoke $r10.<android.widget.TextView: void setTextSize(float)>($f0);
+
+        $r10 = r0.<com.startapp.android.publish.list3d.d: android.widget.TextView d>;
+
+        virtualinvoke $r10.<android.widget.TextView: void setSingleLine(boolean)>(1);
+
+        $r10 = r0.<com.startapp.android.publish.list3d.d: android.widget.TextView d>;
+
+        $r12 = <android.text.TextUtils$TruncateAt: android.text.TextUtils$TruncateAt END>;
+
+        virtualinvoke $r10.<android.widget.TextView: void setEllipsize(android.text.TextUtils$TruncateAt)>($r12);
+
+        $r10 = r0.<com.startapp.android.publish.list3d.d: android.widget.TextView d>;
+
+        $r7 = staticinvoke <com.startapp.android.publish.model.MetaData: com.startapp.android.publish.model.MetaData getInstance()>();
+
+        $r13 = virtualinvoke $r7.<com.startapp.android.publish.model.MetaData: java.util.Set getItemDescriptionTextDecoration()>();
+
+        staticinvoke <com.startapp.android.publish.i.w: void a(android.widget.TextView,java.util.Set)>($r10, $r13);
+
+        $r14 = new com.startapp.android.publish.i.q;
+
+        specialinvoke $r14.<com.startapp.android.publish.i.q: void <init>(android.content.Context)>($r1);
+
+        r0.<com.startapp.android.publish.list3d.d: com.startapp.android.publish.i.q f> = $r14;
+
+        $r9 = new android.widget.RelativeLayout$LayoutParams;
+
+        specialinvoke $r9.<android.widget.RelativeLayout$LayoutParams: void <init>(int,int)>(-2, -2);
+
+        $i1 = staticinvoke <com.startapp.android.publish.i.b: int a(int)>(17);
+
+        virtualinvoke $r9.<android.widget.RelativeLayout$LayoutParams: void addRule(int,int)>($i1, 1);
+
+        virtualinvoke $r9.<android.widget.RelativeLayout$LayoutParams: void addRule(int,int)>(8, 1);
+
+        $i3 = neg $i3;
+
+        virtualinvoke $r9.<android.widget.RelativeLayout$LayoutParams: void setMargins(int,int,int,int)>(0, 0, 0, $i3);
+
+        $r14 = r0.<com.startapp.android.publish.list3d.d: com.startapp.android.publish.i.q f>;
+
+        virtualinvoke $r14.<com.startapp.android.publish.i.q: void setLayoutParams(android.view.ViewGroup$LayoutParams)>($r9);
+
+        $r14 = r0.<com.startapp.android.publish.list3d.d: com.startapp.android.publish.i.q f>;
+
+        virtualinvoke $r14.<com.startapp.android.publish.i.q: void setPadding(int,int,int,int)>(0, 0, 0, $i2);
+
+        $r14 = r0.<com.startapp.android.publish.list3d.d: com.startapp.android.publish.i.q f>;
+
+        virtualinvoke $r14.<com.startapp.android.publish.i.q: void setId(int)>(5);
+
+        $r10 = new android.widget.TextView;
+
+        specialinvoke $r10.<android.widget.TextView: void <init>(android.content.Context)>($r1);
+
+        r0.<com.startapp.android.publish.list3d.d: android.widget.TextView e> = $r10;
+
+        $r9 = new android.widget.RelativeLayout$LayoutParams;
+
+        specialinvoke $r9.<android.widget.RelativeLayout$LayoutParams: void <init>(int,int)>(-2, -2);
+
+        $i2 = staticinvoke <com.startapp.android.publish.i.b: int a(int)>(21);
+
+        virtualinvoke $r9.<android.widget.RelativeLayout$LayoutParams: void addRule(int)>($i2);
+
+        virtualinvoke $r9.<android.widget.RelativeLayout$LayoutParams: void addRule(int,int)>(8, 1);
+
+        $r10 = r0.<com.startapp.android.publish.list3d.d: android.widget.TextView e>;
+
+        virtualinvoke $r10.<android.widget.TextView: void setLayoutParams(android.view.ViewGroup$LayoutParams)>($r9);
+
+        virtualinvoke r0.<com.startapp.android.publish.list3d.d: void a(boolean)>(0);
+
+        $r10 = r0.<com.startapp.android.publish.list3d.d: android.widget.TextView e>;
+
+        virtualinvoke $r10.<android.widget.TextView: void setTextColor(int)>(-1);
+
+        $r10 = r0.<com.startapp.android.publish.list3d.d: android.widget.TextView e>;
+
+        virtualinvoke $r10.<android.widget.TextView: void setTextSize(float)>(12.0F);
+
+        $r10 = r0.<com.startapp.android.publish.list3d.d: android.widget.TextView e>;
+
+        virtualinvoke $r10.<android.widget.TextView: void setTypeface(android.graphics.Typeface,int)>(null, 1);
+
+        $r10 = r0.<com.startapp.android.publish.list3d.d: android.widget.TextView e>;
+
+        virtualinvoke $r10.<android.widget.TextView: void setPadding(int,int,int,int)>($i4, $i0, $i4, $i0);
+
+        $r10 = r0.<com.startapp.android.publish.list3d.d: android.widget.TextView e>;
+
+        virtualinvoke $r10.<android.widget.TextView: void setId(int)>(4);
+
+        $r10 = r0.<com.startapp.android.publish.list3d.d: android.widget.TextView e>;
+
+        virtualinvoke $r10.<android.widget.TextView: void setShadowLayer(float,float,float,int)>(2.5F, -3.0F, 3.0F, -9013642);
+
+        $r15 = new com.startapp.android.publish.list3d.d$1;
+
+        $r16 = new android.graphics.drawable.shapes.RoundRectShape;
+
+        $r17 = newarray (float)[8];
+
+        $r17[0] = 10.0F;
+
+        $r17[1] = 10.0F;
+
+        $r17[2] = 10.0F;
+
+        $r17[3] = 10.0F;
+
+        $r17[4] = 10.0F;
+
+        $r17[5] = 10.0F;
+
+        $r17[6] = 10.0F;
+
+        $r17[7] = 10.0F;
+
+        specialinvoke $r16.<android.graphics.drawable.shapes.RoundRectShape: void <init>(float[],android.graphics.RectF,float[])>($r17, null, null);
+
+        specialinvoke $r15.<com.startapp.android.publish.list3d.d$1: void <init>(com.startapp.android.publish.list3d.d,android.graphics.drawable.shapes.Shape)>(r0, $r16);
+
+        $r10 = r0.<com.startapp.android.publish.list3d.d: android.widget.TextView e>;
+
+        virtualinvoke $r10.<android.widget.TextView: void setBackgroundDrawable(android.graphics.drawable.Drawable)>($r15);
+
+        $r3 = r0.<com.startapp.android.publish.list3d.d: android.widget.RelativeLayout a>;
+
+        $r8 = r0.<com.startapp.android.publish.list3d.d: android.widget.ImageView b>;
+
+        virtualinvoke $r3.<android.widget.RelativeLayout: void addView(android.view.View)>($r8);
+
+        $r3 = r0.<com.startapp.android.publish.list3d.d: android.widget.RelativeLayout a>;
+
+        $r10 = r0.<com.startapp.android.publish.list3d.d: android.widget.TextView c>;
+
+        virtualinvoke $r3.<android.widget.RelativeLayout: void addView(android.view.View)>($r10);
+
+        $r3 = r0.<com.startapp.android.publish.list3d.d: android.widget.RelativeLayout a>;
+
+        $r10 = r0.<com.startapp.android.publish.list3d.d: android.widget.TextView d>;
+
+        virtualinvoke $r3.<android.widget.RelativeLayout: void addView(android.view.View)>($r10);
+
+        $r3 = r0.<com.startapp.android.publish.list3d.d: android.widget.RelativeLayout a>;
+
+        $r14 = r0.<com.startapp.android.publish.list3d.d: com.startapp.android.publish.i.q f>;
+
+        virtualinvoke $r3.<android.widget.RelativeLayout: void addView(android.view.View)>($r14);
+
+        $r3 = r0.<com.startapp.android.publish.list3d.d: android.widget.RelativeLayout a>;
+
+        $r10 = r0.<com.startapp.android.publish.list3d.d: android.widget.TextView e>;
+
+        virtualinvoke $r3.<android.widget.RelativeLayout: void addView(android.view.View)>($r10);
+
+        return;
+    }
+
+    public android.widget.RelativeLayout a()
+    {
+        com.startapp.android.publish.list3d.d r0;
+        android.widget.RelativeLayout r1;
+
+        r0 := @this: com.startapp.android.publish.list3d.d;
+
+        r1 = r0.<com.startapp.android.publish.list3d.d: android.widget.RelativeLayout a>;
+
+        return r1;
+    }
+
+    public void a(com.startapp.android.publish.model.MetaDataStyle)
+    {
+        com.startapp.android.publish.list3d.d r0;
+        com.startapp.android.publish.model.MetaDataStyle $r1, $r2;
+        android.graphics.drawable.GradientDrawable $r3;
+        android.graphics.drawable.GradientDrawable$Orientation $r4;
+        int[] $r5;
+        java.lang.Integer $r6;
+        int $i0;
+        android.widget.RelativeLayout $r7;
+        android.widget.TextView $r8;
+        float $f0;
+        java.util.Set $r9;
+
+        r0 := @this: com.startapp.android.publish.list3d.d;
+
+        $r1 := @parameter0: com.startapp.android.publish.model.MetaDataStyle;
+
+        $r2 = r0.<com.startapp.android.publish.list3d.d: com.startapp.android.publish.model.MetaDataStyle g>;
+
+        if $r2 == $r1 goto label1;
+
+        r0.<com.startapp.android.publish.list3d.d: com.startapp.android.publish.model.MetaDataStyle g> = $r1;
+
+        $r3 = new android.graphics.drawable.GradientDrawable;
+
+        $r4 = <android.graphics.drawable.GradientDrawable$Orientation: android.graphics.drawable.GradientDrawable$Orientation TOP_BOTTOM>;
+
+        $r5 = newarray (int)[2];
+
+        $r6 = virtualinvoke $r1.<com.startapp.android.publish.model.MetaDataStyle: java.lang.Integer getItemGradientTop()>();
+
+        $i0 = virtualinvoke $r6.<java.lang.Integer: int intValue()>();
+
+        $r5[0] = $i0;
+
+        $r6 = virtualinvoke $r1.<com.startapp.android.publish.model.MetaDataStyle: java.lang.Integer getItemGradientBottom()>();
+
+        $i0 = virtualinvoke $r6.<java.lang.Integer: int intValue()>();
+
+        $r5[1] = $i0;
+
+        specialinvoke $r3.<android.graphics.drawable.GradientDrawable: void <init>(android.graphics.drawable.GradientDrawable$Orientation,int[])>($r4, $r5);
+
+        $r7 = r0.<com.startapp.android.publish.list3d.d: android.widget.RelativeLayout a>;
+
+        virtualinvoke $r7.<android.widget.RelativeLayout: void setBackgroundDrawable(android.graphics.drawable.Drawable)>($r3);
+
+        $r8 = r0.<com.startapp.android.publish.list3d.d: android.widget.TextView c>;
+
+        $r6 = virtualinvoke $r1.<com.startapp.android.publish.model.MetaDataStyle: java.lang.Integer getItemTitleTextSize()>();
+
+        $i0 = virtualinvoke $r6.<java.lang.Integer: int intValue()>();
+
+        $f0 = (float) $i0;
+
+        virtualinvoke $r8.<android.widget.TextView: void setTextSize(float)>($f0);
+
+        $r8 = r0.<com.startapp.android.publish.list3d.d: android.widget.TextView c>;
+
+        $r6 = virtualinvoke $r1.<com.startapp.android.publish.model.MetaDataStyle: java.lang.Integer getItemTitleTextColor()>();
+
+        $i0 = virtualinvoke $r6.<java.lang.Integer: int intValue()>();
+
+        virtualinvoke $r8.<android.widget.TextView: void setTextColor(int)>($i0);
+
+        $r8 = r0.<com.startapp.android.publish.list3d.d: android.widget.TextView c>;
+
+        $r9 = virtualinvoke $r1.<com.startapp.android.publish.model.MetaDataStyle: java.util.Set getItemTitleTextDecoration()>();
+
+        staticinvoke <com.startapp.android.publish.i.w: void a(android.widget.TextView,java.util.Set)>($r8, $r9);
+
+        $r8 = r0.<com.startapp.android.publish.list3d.d: android.widget.TextView d>;
+
+        $r6 = virtualinvoke $r1.<com.startapp.android.publish.model.MetaDataStyle: java.lang.Integer getItemDescriptionTextSize()>();
+
+        $i0 = virtualinvoke $r6.<java.lang.Integer: int intValue()>();
+
+        $f0 = (float) $i0;
+
+        virtualinvoke $r8.<android.widget.TextView: void setTextSize(float)>($f0);
+
+        $r8 = r0.<com.startapp.android.publish.list3d.d: android.widget.TextView d>;
+
+        $r6 = virtualinvoke $r1.<com.startapp.android.publish.model.MetaDataStyle: java.lang.Integer getItemDescriptionTextColor()>();
+
+        $i0 = virtualinvoke $r6.<java.lang.Integer: int intValue()>();
+
+        virtualinvoke $r8.<android.widget.TextView: void setTextColor(int)>($i0);
+
+        $r8 = r0.<com.startapp.android.publish.list3d.d: android.widget.TextView d>;
+
+        $r9 = virtualinvoke $r1.<com.startapp.android.publish.model.MetaDataStyle: java.util.Set getItemDescriptionTextDecoration()>();
+
+        staticinvoke <com.startapp.android.publish.i.w: void a(android.widget.TextView,java.util.Set)>($r8, $r9);
+
+     label1:
+        return;
+    }
+
+    public void a(boolean)
+    {
+        com.startapp.android.publish.list3d.d r0;
+        boolean $z0;
+        android.widget.TextView $r1;
+
+        r0 := @this: com.startapp.android.publish.list3d.d;
+
+        $z0 := @parameter0: boolean;
+
+        if $z0 == 0 goto label1;
+
+        $r1 = r0.<com.startapp.android.publish.list3d.d: android.widget.TextView e>;
+
+        virtualinvoke $r1.<android.widget.TextView: void setText(java.lang.CharSequence)>("Open");
+
+        return;
+
+     label1:
+        $r1 = r0.<com.startapp.android.publish.list3d.d: android.widget.TextView e>;
+
+        virtualinvoke $r1.<android.widget.TextView: void setText(java.lang.CharSequence)>("Download");
+
+        return;
+    }
+
+    public android.widget.ImageView b()
+    {
+        com.startapp.android.publish.list3d.d r0;
+        android.widget.ImageView r1;
+
+        r0 := @this: com.startapp.android.publish.list3d.d;
+
+        r1 = r0.<com.startapp.android.publish.list3d.d: android.widget.ImageView b>;
+
+        return r1;
+    }
+
+    public android.widget.TextView c()
+    {
+        com.startapp.android.publish.list3d.d r0;
+        android.widget.TextView r1;
+
+        r0 := @this: com.startapp.android.publish.list3d.d;
+
+        r1 = r0.<com.startapp.android.publish.list3d.d: android.widget.TextView c>;
+
+        return r1;
+    }
+
+    public android.widget.TextView d()
+    {
+        com.startapp.android.publish.list3d.d r0;
+        android.widget.TextView r1;
+
+        r0 := @this: com.startapp.android.publish.list3d.d;
+
+        r1 = r0.<com.startapp.android.publish.list3d.d: android.widget.TextView d>;
+
+        return r1;
+    }
+
+    public com.startapp.android.publish.i.q e()
+    {
+        com.startapp.android.publish.list3d.d r0;
+        com.startapp.android.publish.i.q r1;
+
+        r0 := @this: com.startapp.android.publish.list3d.d;
+
+        r1 = r0.<com.startapp.android.publish.list3d.d: com.startapp.android.publish.i.q f>;
+
+        return r1;
+    }
+}

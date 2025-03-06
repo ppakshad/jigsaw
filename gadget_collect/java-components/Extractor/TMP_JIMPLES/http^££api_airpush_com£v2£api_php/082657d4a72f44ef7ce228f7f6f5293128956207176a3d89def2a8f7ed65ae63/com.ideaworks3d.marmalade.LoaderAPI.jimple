@@ -1,0 +1,296 @@
+public class com.ideaworks3d.marmalade.LoaderAPI extends java.lang.Object
+{
+    public static final int S3E_RESULT_ERROR;
+    public static final int S3E_RESULT_SUCCESS;
+    private static java.util.Stack m_KeyListeners;
+    private static java.util.List m_Listeners;
+
+    static void <clinit>()
+    {
+        java.util.ArrayList $r0;
+        java.util.Stack $r1;
+
+        <com.ideaworks3d.marmalade.LoaderAPI: int S3E_RESULT_ERROR> = 1;
+
+        $r0 = new java.util.ArrayList;
+
+        specialinvoke $r0.<java.util.ArrayList: void <init>()>();
+
+        <com.ideaworks3d.marmalade.LoaderAPI: java.util.List m_Listeners> = $r0;
+
+        $r1 = new java.util.Stack;
+
+        specialinvoke $r1.<java.util.Stack: void <init>()>();
+
+        <com.ideaworks3d.marmalade.LoaderAPI: java.util.Stack m_KeyListeners> = $r1;
+
+        return;
+    }
+
+    public void <init>()
+    {
+        com.ideaworks3d.marmalade.LoaderAPI r0;
+
+        r0 := @this: com.ideaworks3d.marmalade.LoaderAPI;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public static void addSuspendResumeListener(com.ideaworks3d.marmalade.SuspendResumeListener)
+    {
+        com.ideaworks3d.marmalade.SuspendResumeListener $r0;
+        boolean $z0;
+        java.util.List $r1;
+
+        $r0 := @parameter0: com.ideaworks3d.marmalade.SuspendResumeListener;
+
+        $r1 = <com.ideaworks3d.marmalade.LoaderAPI: java.util.List m_Listeners>;
+
+        $z0 = interfaceinvoke $r1.<java.util.List: boolean contains(java.lang.Object)>($r0);
+
+        if $z0 != 0 goto label1;
+
+        $r1 = <com.ideaworks3d.marmalade.LoaderAPI: java.util.List m_Listeners>;
+
+        interfaceinvoke $r1.<java.util.List: boolean add(java.lang.Object)>($r0);
+
+     label1:
+        return;
+    }
+
+    public static com.ideaworks3d.marmalade.LoaderActivity getActivity()
+    {
+        com.ideaworks3d.marmalade.LoaderActivity r0;
+
+        r0 = <com.ideaworks3d.marmalade.LoaderActivity: com.ideaworks3d.marmalade.LoaderActivity m_Activity>;
+
+        return r0;
+    }
+
+    public static android.widget.FrameLayout getFrameLayout()
+    {
+        com.ideaworks3d.marmalade.LoaderActivity $r0;
+        android.widget.FrameLayout r1;
+
+        $r0 = <com.ideaworks3d.marmalade.LoaderActivity: com.ideaworks3d.marmalade.LoaderActivity m_Activity>;
+
+        r1 = $r0.<com.ideaworks3d.marmalade.LoaderActivity: android.widget.FrameLayout m_FrameLayout>;
+
+        return r1;
+    }
+
+    public static android.view.View getMainView()
+    {
+        com.ideaworks3d.marmalade.LoaderActivity $r0;
+        com.ideaworks3d.marmalade.LoaderView r1;
+
+        $r0 = <com.ideaworks3d.marmalade.LoaderActivity: com.ideaworks3d.marmalade.LoaderActivity m_Activity>;
+
+        r1 = $r0.<com.ideaworks3d.marmalade.LoaderActivity: com.ideaworks3d.marmalade.LoaderView m_View>;
+
+        return r1;
+    }
+
+    public static java.lang.String getStackTrace()
+    {
+        java.io.PrintWriter $r0;
+        java.lang.String $r1;
+        java.lang.Exception $r2;
+        java.io.StringWriter $r3;
+
+        $r2 = new java.lang.Exception;
+
+     label1:
+        specialinvoke $r2.<java.lang.Exception: void <init>(java.lang.String)>("Tracer");
+
+        throw $r2;
+
+     label2:
+        $r2 := @caughtexception;
+
+        $r3 = new java.io.StringWriter;
+
+        specialinvoke $r3.<java.io.StringWriter: void <init>()>();
+
+        $r0 = new java.io.PrintWriter;
+
+        specialinvoke $r0.<java.io.PrintWriter: void <init>(java.io.Writer)>($r3);
+
+        virtualinvoke $r2.<java.lang.Exception: void printStackTrace(java.io.PrintWriter)>($r0);
+
+        $r1 = virtualinvoke $r3.<java.lang.Object: java.lang.String toString()>();
+
+        return $r1;
+
+        catch java.lang.Exception from label1 to label2 with label2;
+    }
+
+    public static java.lang.String getStackTrace(java.lang.Throwable)
+    {
+        java.lang.Throwable $r0;
+        java.io.PrintWriter $r1;
+        java.lang.String $r2;
+        java.io.StringWriter $r3;
+
+        $r0 := @parameter0: java.lang.Throwable;
+
+        $r3 = new java.io.StringWriter;
+
+        specialinvoke $r3.<java.io.StringWriter: void <init>()>();
+
+        $r1 = new java.io.PrintWriter;
+
+        specialinvoke $r1.<java.io.PrintWriter: void <init>(java.io.Writer)>($r3);
+
+        virtualinvoke $r0.<java.lang.Throwable: void printStackTrace(java.io.PrintWriter)>($r1);
+
+        $r2 = virtualinvoke $r3.<java.lang.Object: java.lang.String toString()>();
+
+        return $r2;
+    }
+
+    public static void notifySuspendResumeListeners(com.ideaworks3d.marmalade.SuspendResumeEvent)
+    {
+        com.ideaworks3d.marmalade.SuspendResumeEvent $r0;
+        java.util.List $r1;
+        java.util.Iterator $r2;
+        boolean $z0;
+        java.lang.Object $r3;
+        com.ideaworks3d.marmalade.SuspendResumeListener $r4;
+
+        $r0 := @parameter0: com.ideaworks3d.marmalade.SuspendResumeEvent;
+
+        $r1 = <com.ideaworks3d.marmalade.LoaderAPI: java.util.List m_Listeners>;
+
+        $r2 = interfaceinvoke $r1.<java.util.List: java.util.Iterator iterator()>();
+
+     label1:
+        $z0 = interfaceinvoke $r2.<java.util.Iterator: boolean hasNext()>();
+
+        if $z0 == 0 goto label2;
+
+        $r3 = interfaceinvoke $r2.<java.util.Iterator: java.lang.Object next()>();
+
+        $r4 = (com.ideaworks3d.marmalade.SuspendResumeListener) $r3;
+
+        interfaceinvoke $r4.<com.ideaworks3d.marmalade.SuspendResumeListener: void onSuspendResumeEvent(com.ideaworks3d.marmalade.SuspendResumeEvent)>($r0);
+
+        goto label1;
+
+     label2:
+        return;
+    }
+
+    public static android.view.View$OnKeyListener popKeyListener()
+    {
+        java.util.Stack $r0;
+        java.lang.Object $r1;
+        android.view.View$OnKeyListener $r2;
+        android.view.View $r3;
+
+        $r0 = <com.ideaworks3d.marmalade.LoaderAPI: java.util.Stack m_KeyListeners>;
+
+        $r1 = virtualinvoke $r0.<java.util.Stack: java.lang.Object pop()>();
+
+        $r2 = (android.view.View$OnKeyListener) $r1;
+
+        $r3 = staticinvoke <com.ideaworks3d.marmalade.LoaderAPI: android.view.View getMainView()>();
+
+        virtualinvoke $r3.<android.view.View: void setOnKeyListener(android.view.View$OnKeyListener)>($r2);
+
+        return $r2;
+    }
+
+    public static void pushKeyListener(android.view.View$OnKeyListener)
+    {
+        android.view.View$OnKeyListener $r0;
+        android.view.View $r1;
+        java.util.Stack $r2;
+
+        $r0 := @parameter0: android.view.View$OnKeyListener;
+
+        $r2 = <com.ideaworks3d.marmalade.LoaderAPI: java.util.Stack m_KeyListeners>;
+
+        virtualinvoke $r2.<java.util.Stack: java.lang.Object push(java.lang.Object)>($r0);
+
+        $r1 = staticinvoke <com.ideaworks3d.marmalade.LoaderAPI: android.view.View getMainView()>();
+
+        virtualinvoke $r1.<android.view.View: void setOnKeyListener(android.view.View$OnKeyListener)>($r0);
+
+        return;
+    }
+
+    public static boolean removeSuspendResumeListener(com.ideaworks3d.marmalade.SuspendResumeListener)
+    {
+        com.ideaworks3d.marmalade.SuspendResumeListener $r0;
+        boolean $z0;
+        java.util.List $r1;
+
+        $r0 := @parameter0: com.ideaworks3d.marmalade.SuspendResumeListener;
+
+        $r1 = <com.ideaworks3d.marmalade.LoaderAPI: java.util.List m_Listeners>;
+
+        $z0 = interfaceinvoke $r1.<java.util.List: boolean remove(java.lang.Object)>($r0);
+
+        return $z0;
+    }
+
+    public static native int s3eConfigGet(java.lang.String, int);
+
+    public static native int s3eConfigGetInt(java.lang.String, java.lang.String, int[]);
+
+    public static native int s3eConfigGetString(java.lang.String, java.lang.String, java.lang.String[]);
+
+    public static native void s3eDebugTraceLine(java.lang.String);
+
+    public static native void s3eDeviceYield(int);
+
+    public static void trace(java.lang.String)
+    {
+        java.lang.String $r0;
+        com.ideaworks3d.marmalade.LoaderActivity $r1;
+
+        $r0 := @parameter0: java.lang.String;
+
+        $r1 = <com.ideaworks3d.marmalade.LoaderActivity: com.ideaworks3d.marmalade.LoaderActivity m_Activity>;
+
+        if $r1 == null goto label1;
+
+        staticinvoke <com.ideaworks3d.marmalade.LoaderAPI: void s3eDebugTraceLine(java.lang.String)>($r0);
+
+        return;
+
+     label1:
+        staticinvoke <android.util.Log: int i(java.lang.String,java.lang.String)>("MARMALADE", $r0);
+
+        return;
+    }
+
+    public static void traceChan(java.lang.String, java.lang.String)
+    {
+        java.lang.String $r0, $r1;
+        java.lang.StringBuilder $r2;
+
+        $r0 := @parameter0: java.lang.String;
+
+        $r1 := @parameter1: java.lang.String;
+
+        $r2 = new java.lang.StringBuilder;
+
+        specialinvoke $r2.<java.lang.StringBuilder: void <init>()>();
+
+        $r2 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r0);
+
+        $r2 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(": ");
+
+        $r2 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r1);
+
+        $r0 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <com.ideaworks3d.marmalade.LoaderAPI: void trace(java.lang.String)>($r0);
+
+        return;
+    }
+}

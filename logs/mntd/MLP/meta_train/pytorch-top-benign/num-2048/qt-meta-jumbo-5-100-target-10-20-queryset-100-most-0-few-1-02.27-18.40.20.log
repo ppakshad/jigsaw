@@ -1,0 +1,35 @@
+Using TensorFlow backend.
+WARNING: 02-27 18:40:41: mntd_run_meta.py:88 * 125467116386112 Running with configuration:
+{'backdoor_target_model_type': 'pytorch',
+ 'benign_target_model_type': 'pytorch',
+ 'clf': 'MLP',
+ 'debug_mode': 'queryset-100-most-0-few-1',
+ 'half_training': 1,
+ 'jumbo_max_troj_size': 100,
+ 'load_exist': True,
+ 'method': 'baseline-pytorch',
+ 'no_qt': False,
+ 'subset_family': None,
+ 'target_max_troj_size': 20,
+ 'task': 'apg',
+ 'train_num': 2048,
+ 'troj_type': 'Top-benign',
+ 'trojan_part': None,
+ 'trojan_size': None}
+CRITICAL: 02-27 18:40:41: mntd_run_meta.py:91 * 125467116386112 debug_setting: queryset-100-most-0-few-1
+INFO: 02-27 18:40:41: mntd_run_meta.py:106 * 125467116386112 args.no_qt: False
+INFO: 02-27 18:40:41: mntd_run_meta.py:275 * 125467116386112 clean_shadow_path: ./models/mntd/shadow_model_ckpt/apg_MLP/models/shadow_benign
+INFO: 02-27 18:40:41: mntd_run_meta.py:276 * 125467116386112 jumbo_shadow_path: ./models/mntd/shadow_model_ckpt/apg_MLP_top_benign/models/random_size_5_100
+INFO: 02-27 18:40:41: mntd_run_meta.py:277 * 125467116386112 meta_model_save_path: ./models/mntd/meta_classifier_ckpt_2048/MLP_Top-benign/apg_with_qt.model
+INFO: 02-27 18:40:41: mntd_run_meta.py:115 * 125467116386112 Task: apg; Trojan type: Top-benign; input size: (10000,); class num: 1
+INFO: 02-27 18:40:41: mntd_run_meta.py:296 * 125467116386112 len(train_dataset): 4096
+INFO: 02-27 18:40:41: mntd_run_meta.py:297 * 125467116386112 len(val_dataset): 512
+INFO: 02-27 18:40:41: mntd_run_meta.py:298 * 125467116386112 train_dataset[0]: ('./models/mntd/shadow_model_ckpt/apg_MLP_top_benign/models/random_size_5_100/shadow_jumbo_0.model', 1)
+INFO: 02-27 18:40:41: mntd_run_meta.py:299 * 125467116386112 train_dataset[1]: ('./models/mntd/shadow_model_ckpt/apg_MLP/models/shadow_benign/shadow_benign_0.model', 0)
+INFO: 02-27 18:40:41: mntd_run_meta.py:300 * 125467116386112 val_dataset[0]: ('./models/mntd/shadow_model_ckpt/apg_MLP_top_benign/models/random_size_5_100/shadow_jumbo_2048.model', 1)
+INFO: 02-27 18:40:41: mntd_run_meta.py:301 * 125467116386112 val_dataset[1]: ('./models/mntd/shadow_model_ckpt/apg_MLP/models/shadow_benign/shadow_benign_2048.model', 0)
+INFO: 02-27 18:40:41: mntd_run_meta.py:335 * 125467116386112 test_dataset[0]: ('models/mntd/target_model_ckpt/apg_min_10_max_20/models/target_trojTop-benign-target_0.model', 1)
+INFO: 02-27 18:40:41: mntd_run_meta.py:336 * 125467116386112 test_dataset[1]: ('./models/mntd/shadow_model_ckpt/apg_MLP/models/256_target_benign/target_benign_0.model', 0)
+INFO: 02-27 18:40:41: mntd_run_meta.py:348 * 125467116386112 REPORT_FOLDER: report/mntd/MLP_shadow_2048/baseline-pytorch/pytorch/queryset-100-most-0-few-1
+INFO: 02-27 18:40:41: mntd_run_meta.py:364 * 125467116386112 experiment_name: apg_with_qt_top_benign_jumbo_100_target_20
+INFO: 02-27 18:40:41: mntd_run_meta.py:365 * 125467116386112 report_path: report/mntd/MLP_shadow_2048/baseline-pytorch/pytorch/queryset-100-most-0-few-1/apg_with_qt_top_benign_jumbo_100_target_20.txt

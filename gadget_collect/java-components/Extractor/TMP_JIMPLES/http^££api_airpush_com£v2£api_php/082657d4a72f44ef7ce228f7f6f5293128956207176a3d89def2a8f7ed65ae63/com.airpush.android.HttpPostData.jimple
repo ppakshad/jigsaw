@@ -1,0 +1,859 @@
+public final class com.airpush.android.HttpPostData extends java.lang.Object
+{
+    private static final java.lang.String ENCODING_GZIP;
+    private static final java.lang.String HEADER_ACCEPT_ENCODING;
+    private static android.content.Context ctx;
+    private static org.apache.http.HttpEntity entity;
+    private static org.apache.http.impl.client.DefaultHttpClient httpClient;
+    private static org.apache.http.params.BasicHttpParams httpParameters;
+    private static org.apache.http.client.methods.HttpPost httpPost;
+    private static org.apache.http.message.BasicHttpResponse httpResponse;
+    private static org.apache.http.client.methods.HttpPost post;
+    private static org.apache.http.HttpEntity response;
+    protected static long timeDiff;
+    private static int timeoutConnection;
+    private static int timeoutSocket;
+    private static java.lang.String url;
+    private org.apache.http.message.BasicHttpResponse httpResponse2;
+
+    static void <clinit>()
+    {
+        <com.airpush.android.HttpPostData: java.lang.String HEADER_ACCEPT_ENCODING> = "Accept-Encoding";
+
+        <com.airpush.android.HttpPostData: java.lang.String ENCODING_GZIP> = "gzip";
+
+        <com.airpush.android.HttpPostData: long timeDiff> = 1800000L;
+
+        return;
+    }
+
+    public void <init>()
+    {
+        com.airpush.android.HttpPostData r0;
+
+        r0 := @this: com.airpush.android.HttpPostData;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    protected static org.apache.http.HttpEntity postData(java.util.List, android.content.Context)
+    {
+        org.apache.http.impl.client.DefaultHttpClient $r5, $r20;
+        java.lang.Throwable $r11, $r13, $r14, $r15;
+        org.apache.http.client.ClientProtocolException $r26;
+        android.content.Context $r0;
+        org.apache.http.client.methods.HttpPost $r2, $r17;
+        org.apache.http.params.BasicHttpParams $r4, $r19;
+        org.apache.http.client.entity.UrlEncodedFormEntity $r18;
+        long $l1;
+        org.apache.http.client.methods.HttpUriRequest $r24;
+        org.apache.http.message.BasicHttpResponse r9;
+        java.net.SocketTimeoutException $r25;
+        int $i0;
+        java.lang.String $r12;
+        boolean $z0;
+        com.airpush.android.HttpPostData$1 $r21;
+        java.net.MalformedURLException $r27;
+        com.airpush.android.HttpPostData$2 $r22;
+        org.apache.http.HttpEntity $r10;
+        java.io.IOException $r28;
+        java.lang.Exception $r16;
+        java.util.List r1;
+        org.apache.http.params.HttpParams $r23;
+        org.apache.http.HttpResponse $r8;
+
+        r1 := @parameter0: java.util.List;
+
+        $r0 := @parameter1: android.content.Context;
+
+        $z0 = staticinvoke <com.airpush.android.Constants: boolean checkInternetConnection(android.content.Context)>($r0);
+
+        if $z0 == 0 goto label33;
+
+        <com.airpush.android.HttpPostData: android.content.Context ctx> = $r0;
+
+        $r17 = new org.apache.http.client.methods.HttpPost;
+
+     label01:
+        specialinvoke $r17.<org.apache.http.client.methods.HttpPost: void <init>(java.lang.String)>("http://api.airpush.com/v2/api.php");
+
+     label02:
+        <com.airpush.android.HttpPostData: org.apache.http.client.methods.HttpPost httpPost> = $r17;
+
+        $r2 = <com.airpush.android.HttpPostData: org.apache.http.client.methods.HttpPost httpPost>;
+
+        $r18 = new org.apache.http.client.entity.UrlEncodedFormEntity;
+
+     label03:
+        specialinvoke $r18.<org.apache.http.client.entity.UrlEncodedFormEntity: void <init>(java.util.List)>(r1);
+
+     label04:
+        $r10 = (org.apache.http.HttpEntity) $r18;
+
+     label05:
+        virtualinvoke $r2.<org.apache.http.client.methods.HttpPost: void setEntity(org.apache.http.HttpEntity)>($r10);
+
+     label06:
+        $r19 = new org.apache.http.params.BasicHttpParams;
+
+     label07:
+        specialinvoke $r19.<org.apache.http.params.BasicHttpParams: void <init>()>();
+
+     label08:
+        <com.airpush.android.HttpPostData: org.apache.http.params.BasicHttpParams httpParameters> = $r19;
+
+        <com.airpush.android.HttpPostData: int timeoutConnection> = 3000;
+
+        $r4 = <com.airpush.android.HttpPostData: org.apache.http.params.BasicHttpParams httpParameters>;
+
+        $i0 = <com.airpush.android.HttpPostData: int timeoutConnection>;
+
+     label09:
+        $r23 = (org.apache.http.params.HttpParams) $r4;
+
+     label10:
+        staticinvoke <org.apache.http.params.HttpConnectionParams: void setConnectionTimeout(org.apache.http.params.HttpParams,int)>($r23, $i0);
+
+     label11:
+        <com.airpush.android.HttpPostData: int timeoutSocket> = 3000;
+
+        $r4 = <com.airpush.android.HttpPostData: org.apache.http.params.BasicHttpParams httpParameters>;
+
+        $i0 = <com.airpush.android.HttpPostData: int timeoutSocket>;
+
+     label12:
+        $r23 = (org.apache.http.params.HttpParams) $r4;
+
+     label13:
+        staticinvoke <org.apache.http.params.HttpConnectionParams: void setSoTimeout(org.apache.http.params.HttpParams,int)>($r23, $i0);
+
+     label14:
+        $r20 = new org.apache.http.impl.client.DefaultHttpClient;
+
+        $r4 = <com.airpush.android.HttpPostData: org.apache.http.params.BasicHttpParams httpParameters>;
+
+     label15:
+        $r23 = (org.apache.http.params.HttpParams) $r4;
+
+     label16:
+        specialinvoke $r20.<org.apache.http.impl.client.DefaultHttpClient: void <init>(org.apache.http.params.HttpParams)>($r23);
+
+     label17:
+        <com.airpush.android.HttpPostData: org.apache.http.impl.client.DefaultHttpClient httpClient> = $r20;
+
+        $r5 = <com.airpush.android.HttpPostData: org.apache.http.impl.client.DefaultHttpClient httpClient>;
+
+        $r21 = new com.airpush.android.HttpPostData$1;
+
+     label18:
+        specialinvoke $r21.<com.airpush.android.HttpPostData$1: void <init>()>();
+
+        virtualinvoke $r5.<org.apache.http.impl.client.DefaultHttpClient: void addRequestInterceptor(org.apache.http.HttpRequestInterceptor)>($r21);
+
+     label19:
+        $r5 = <com.airpush.android.HttpPostData: org.apache.http.impl.client.DefaultHttpClient httpClient>;
+
+        $r22 = new com.airpush.android.HttpPostData$2;
+
+     label20:
+        specialinvoke $r22.<com.airpush.android.HttpPostData$2: void <init>()>();
+
+        virtualinvoke $r5.<org.apache.http.impl.client.DefaultHttpClient: void addResponseInterceptor(org.apache.http.HttpResponseInterceptor)>($r22);
+
+     label21:
+        $r5 = <com.airpush.android.HttpPostData: org.apache.http.impl.client.DefaultHttpClient httpClient>;
+
+        $r2 = <com.airpush.android.HttpPostData: org.apache.http.client.methods.HttpPost httpPost>;
+
+     label22:
+        $r24 = (org.apache.http.client.methods.HttpUriRequest) $r2;
+
+     label23:
+        $r8 = virtualinvoke $r5.<org.apache.http.impl.client.DefaultHttpClient: org.apache.http.HttpResponse execute(org.apache.http.client.methods.HttpUriRequest)>($r24);
+
+     label24:
+        r9 = (org.apache.http.message.BasicHttpResponse) $r8;
+
+     label25:
+        <com.airpush.android.HttpPostData: org.apache.http.message.BasicHttpResponse httpResponse> = r9;
+
+        r9 = <com.airpush.android.HttpPostData: org.apache.http.message.BasicHttpResponse httpResponse>;
+
+     label26:
+        $r10 = virtualinvoke r9.<org.apache.http.message.BasicHttpResponse: org.apache.http.HttpEntity getEntity()>();
+
+     label27:
+        <com.airpush.android.HttpPostData: org.apache.http.HttpEntity entity> = $r10;
+
+        $r10 = <com.airpush.android.HttpPostData: org.apache.http.HttpEntity entity>;
+
+        return $r10;
+
+     label28:
+        $r11 := @caughtexception;
+
+        $r25 = (java.net.SocketTimeoutException) $r11;
+
+        $r12 = virtualinvoke $r25.<java.net.SocketTimeoutException: java.lang.String toString()>();
+
+        staticinvoke <android.util.Log: int d(java.lang.String,java.lang.String)>("SocketTimeoutException Thrown", $r12);
+
+        $r0 = <com.airpush.android.HttpPostData: android.content.Context ctx>;
+
+        staticinvoke <com.airpush.android.Airpush: void reStartSDK(android.content.Context,long)>($r0, 1800000L);
+
+        return null;
+
+     label29:
+        $r13 := @caughtexception;
+
+        $r26 = (org.apache.http.client.ClientProtocolException) $r13;
+
+        $r12 = virtualinvoke $r26.<org.apache.http.client.ClientProtocolException: java.lang.String toString()>();
+
+        staticinvoke <android.util.Log: int d(java.lang.String,java.lang.String)>("ClientProtocolException Thrown", $r12);
+
+        $r0 = <com.airpush.android.HttpPostData: android.content.Context ctx>;
+
+        staticinvoke <com.airpush.android.Airpush: void reStartSDK(android.content.Context,long)>($r0, 1800000L);
+
+        return null;
+
+     label30:
+        $r14 := @caughtexception;
+
+        $r0 = <com.airpush.android.HttpPostData: android.content.Context ctx>;
+
+        staticinvoke <com.airpush.android.Airpush: void reStartSDK(android.content.Context,long)>($r0, 1800000L);
+
+        $r27 = (java.net.MalformedURLException) $r14;
+
+        $r12 = virtualinvoke $r27.<java.net.MalformedURLException: java.lang.String toString()>();
+
+        staticinvoke <android.util.Log: int d(java.lang.String,java.lang.String)>("MalformedURLException Thrown", $r12);
+
+        return null;
+
+     label31:
+        $r15 := @caughtexception;
+
+        $r0 = <com.airpush.android.HttpPostData: android.content.Context ctx>;
+
+        staticinvoke <com.airpush.android.Airpush: void reStartSDK(android.content.Context,long)>($r0, 1800000L);
+
+        $r28 = (java.io.IOException) $r15;
+
+        $r12 = virtualinvoke $r28.<java.io.IOException: java.lang.String toString()>();
+
+        staticinvoke <android.util.Log: int d(java.lang.String,java.lang.String)>("IOException Thrown", $r12);
+
+        return null;
+
+     label32:
+        $r16 := @caughtexception;
+
+        $r12 = virtualinvoke $r16.<java.lang.Exception: java.lang.String toString()>();
+
+        staticinvoke <android.util.Log: int i(java.lang.String,java.lang.String)>("AirpushSDK", $r12);
+
+        $r0 = <com.airpush.android.HttpPostData: android.content.Context ctx>;
+
+        staticinvoke <com.airpush.android.Airpush: void reStartSDK(android.content.Context,long)>($r0, 1800000L);
+
+        return null;
+
+     label33:
+        $l1 = <com.airpush.android.HttpPostData: long timeDiff>;
+
+        staticinvoke <com.airpush.android.Airpush: void reStartSDK(android.content.Context,long)>($r0, $l1);
+
+        return null;
+
+        catch java.net.SocketTimeoutException from label01 to label02 with label28;
+        catch java.net.SocketTimeoutException from label03 to label04 with label28;
+        catch java.net.SocketTimeoutException from label05 to label06 with label28;
+        catch java.net.SocketTimeoutException from label07 to label08 with label28;
+        catch java.net.SocketTimeoutException from label10 to label11 with label28;
+        catch java.net.SocketTimeoutException from label13 to label14 with label28;
+        catch java.net.SocketTimeoutException from label16 to label17 with label28;
+        catch java.net.SocketTimeoutException from label18 to label19 with label28;
+        catch java.net.SocketTimeoutException from label20 to label21 with label28;
+        catch java.net.SocketTimeoutException from label23 to label24 with label28;
+        catch java.net.SocketTimeoutException from label26 to label27 with label28;
+        catch org.apache.http.client.ClientProtocolException from label01 to label02 with label29;
+        catch org.apache.http.client.ClientProtocolException from label03 to label04 with label29;
+        catch org.apache.http.client.ClientProtocolException from label05 to label06 with label29;
+        catch org.apache.http.client.ClientProtocolException from label07 to label08 with label29;
+        catch org.apache.http.client.ClientProtocolException from label10 to label11 with label29;
+        catch org.apache.http.client.ClientProtocolException from label13 to label14 with label29;
+        catch org.apache.http.client.ClientProtocolException from label16 to label17 with label29;
+        catch org.apache.http.client.ClientProtocolException from label18 to label19 with label29;
+        catch org.apache.http.client.ClientProtocolException from label20 to label21 with label29;
+        catch org.apache.http.client.ClientProtocolException from label23 to label24 with label29;
+        catch org.apache.http.client.ClientProtocolException from label26 to label27 with label29;
+        catch java.net.MalformedURLException from label01 to label02 with label30;
+        catch java.net.MalformedURLException from label03 to label04 with label30;
+        catch java.net.MalformedURLException from label05 to label06 with label30;
+        catch java.net.MalformedURLException from label07 to label08 with label30;
+        catch java.net.MalformedURLException from label10 to label11 with label30;
+        catch java.net.MalformedURLException from label13 to label14 with label30;
+        catch java.net.MalformedURLException from label16 to label17 with label30;
+        catch java.net.MalformedURLException from label18 to label19 with label30;
+        catch java.net.MalformedURLException from label20 to label21 with label30;
+        catch java.net.MalformedURLException from label23 to label24 with label30;
+        catch java.net.MalformedURLException from label26 to label27 with label30;
+        catch java.io.IOException from label01 to label02 with label31;
+        catch java.io.IOException from label03 to label04 with label31;
+        catch java.io.IOException from label05 to label06 with label31;
+        catch java.io.IOException from label07 to label08 with label31;
+        catch java.io.IOException from label10 to label11 with label31;
+        catch java.io.IOException from label13 to label14 with label31;
+        catch java.io.IOException from label16 to label17 with label31;
+        catch java.io.IOException from label18 to label19 with label31;
+        catch java.io.IOException from label20 to label21 with label31;
+        catch java.io.IOException from label23 to label24 with label31;
+        catch java.io.IOException from label26 to label27 with label31;
+        catch java.lang.Exception from label01 to label02 with label32;
+        catch java.lang.Exception from label03 to label06 with label32;
+        catch java.lang.Exception from label07 to label08 with label32;
+        catch java.lang.Exception from label09 to label11 with label32;
+        catch java.lang.Exception from label12 to label14 with label32;
+        catch java.lang.Exception from label15 to label17 with label32;
+        catch java.lang.Exception from label18 to label19 with label32;
+        catch java.lang.Exception from label20 to label21 with label32;
+        catch java.lang.Exception from label22 to label25 with label32;
+        catch java.lang.Exception from label26 to label27 with label32;
+    }
+
+    protected static java.lang.String postData2(java.lang.String, java.lang.String, java.lang.String, android.content.Context)
+    {
+        java.net.HttpURLConnection r6;
+        java.lang.Throwable r11, r12, r13, r14;
+        org.apache.http.client.ClientProtocolException $r21;
+        android.content.Context r3;
+        java.net.URL r4, $r16;
+        long l1;
+        java.net.URLConnection $r5;
+        java.lang.StringBuffer r7, $r17;
+        java.net.SocketTimeoutException $r20;
+        int $i0;
+        java.lang.String r0, r1, r2;
+        boolean $z0;
+        java.net.MalformedURLException $r22;
+        java.io.IOException $r23;
+        java.io.InputStreamReader r9, $r18;
+        java.lang.Exception r15;
+        java.io.BufferedReader r8, $r19;
+        java.io.InputStream $r10;
+
+        r0 := @parameter0: java.lang.String;
+
+        r1 := @parameter1: java.lang.String;
+
+        r2 := @parameter2: java.lang.String;
+
+        r3 := @parameter3: android.content.Context;
+
+        $z0 = staticinvoke <com.airpush.android.Constants: boolean checkInternetConnection(android.content.Context)>(r3);
+
+        if $z0 == 0 goto label22;
+
+        <com.airpush.android.HttpPostData: android.content.Context ctx> = r3;
+
+     label01:
+        $z0 = staticinvoke <com.airpush.android.Constants: boolean checkInternetConnection(android.content.Context)>(r3);
+
+     label02:
+        if $z0 == 0 goto label17;
+
+        $r16 = new java.net.URL;
+
+        r4 = $r16;
+
+     label03:
+        specialinvoke $r16.<java.net.URL: void <init>(java.lang.String)>(r0);
+
+        $r5 = virtualinvoke r4.<java.net.URL: java.net.URLConnection openConnection()>();
+
+     label04:
+        r6 = (java.net.HttpURLConnection) $r5;
+
+     label05:
+        virtualinvoke r6.<java.net.HttpURLConnection: void setRequestMethod(java.lang.String)>("GET");
+
+        virtualinvoke r6.<java.net.HttpURLConnection: void setDoOutput(boolean)>(1);
+
+        virtualinvoke r6.<java.net.HttpURLConnection: void setDoInput(boolean)>(1);
+
+        virtualinvoke r6.<java.net.HttpURLConnection: void setConnectTimeout(int)>(3000);
+
+        virtualinvoke r6.<java.net.HttpURLConnection: void connect()>();
+
+        $i0 = virtualinvoke r6.<java.net.HttpURLConnection: int getResponseCode()>();
+
+     label06:
+        if $i0 != 200 goto label17;
+
+        $r17 = new java.lang.StringBuffer;
+
+        r7 = $r17;
+
+     label07:
+        specialinvoke $r17.<java.lang.StringBuffer: void <init>()>();
+
+     label08:
+        $r19 = new java.io.BufferedReader;
+
+        r8 = $r19;
+
+        $r18 = new java.io.InputStreamReader;
+
+        r9 = $r18;
+
+     label09:
+        $r10 = virtualinvoke r6.<java.net.HttpURLConnection: java.io.InputStream getInputStream()>();
+
+        specialinvoke $r18.<java.io.InputStreamReader: void <init>(java.io.InputStream)>($r10);
+
+        specialinvoke $r19.<java.io.BufferedReader: void <init>(java.io.Reader)>(r9);
+
+     label10:
+        r0 = virtualinvoke r8.<java.io.BufferedReader: java.lang.String readLine()>();
+
+     label11:
+        if r0 != null goto label14;
+
+     label12:
+        r0 = virtualinvoke r7.<java.lang.StringBuffer: java.lang.String toString()>();
+
+     label13:
+        return r0;
+
+     label14:
+        virtualinvoke r7.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.String)>(r0);
+
+     label15:
+        goto label10;
+
+     label16:
+        r11 := @caughtexception;
+
+        $r20 = (java.net.SocketTimeoutException) r11;
+
+        r0 = virtualinvoke $r20.<java.net.SocketTimeoutException: java.lang.String toString()>();
+
+        staticinvoke <android.util.Log: int d(java.lang.String,java.lang.String)>("SocketTimeoutException Thrown", r0);
+
+        r3 = <com.airpush.android.HttpPostData: android.content.Context ctx>;
+
+        staticinvoke <com.airpush.android.Airpush: void reStartSDK(android.content.Context,long)>(r3, 1800000L);
+
+     label17:
+        return "";
+
+     label18:
+        r12 := @caughtexception;
+
+        $r21 = (org.apache.http.client.ClientProtocolException) r12;
+
+        r0 = virtualinvoke $r21.<org.apache.http.client.ClientProtocolException: java.lang.String toString()>();
+
+        staticinvoke <android.util.Log: int d(java.lang.String,java.lang.String)>("ClientProtocolException Thrown", r0);
+
+        r3 = <com.airpush.android.HttpPostData: android.content.Context ctx>;
+
+        staticinvoke <com.airpush.android.Airpush: void reStartSDK(android.content.Context,long)>(r3, 1800000L);
+
+        goto label17;
+
+     label19:
+        r13 := @caughtexception;
+
+        $r22 = (java.net.MalformedURLException) r13;
+
+        virtualinvoke $r22.<java.net.MalformedURLException: void printStackTrace()>();
+
+        r3 = <com.airpush.android.HttpPostData: android.content.Context ctx>;
+
+        staticinvoke <com.airpush.android.Airpush: void reStartSDK(android.content.Context,long)>(r3, 1800000L);
+
+        $r22 = (java.net.MalformedURLException) r13;
+
+        r0 = virtualinvoke $r22.<java.net.MalformedURLException: java.lang.String toString()>();
+
+        staticinvoke <android.util.Log: int d(java.lang.String,java.lang.String)>("MalformedURLException Thrown", r0);
+
+        goto label17;
+
+     label20:
+        r14 := @caughtexception;
+
+        $r23 = (java.io.IOException) r14;
+
+        virtualinvoke $r23.<java.io.IOException: void printStackTrace()>();
+
+        r3 = <com.airpush.android.HttpPostData: android.content.Context ctx>;
+
+        staticinvoke <com.airpush.android.Airpush: void reStartSDK(android.content.Context,long)>(r3, 1800000L);
+
+        $r23 = (java.io.IOException) r14;
+
+        r0 = virtualinvoke $r23.<java.io.IOException: java.lang.String toString()>();
+
+        staticinvoke <android.util.Log: int d(java.lang.String,java.lang.String)>("IOException Thrown", r0);
+
+        goto label17;
+
+     label21:
+        r15 := @caughtexception;
+
+        r3 = <com.airpush.android.HttpPostData: android.content.Context ctx>;
+
+        staticinvoke <com.airpush.android.Airpush: void reStartSDK(android.content.Context,long)>(r3, 1800000L);
+
+        goto label17;
+
+     label22:
+        l1 = <com.airpush.android.HttpPostData: long timeDiff>;
+
+        staticinvoke <com.airpush.android.Airpush: void reStartSDK(android.content.Context,long)>(r3, l1);
+
+        return "";
+
+        catch java.net.SocketTimeoutException from label01 to label02 with label16;
+        catch java.net.SocketTimeoutException from label03 to label04 with label16;
+        catch java.net.SocketTimeoutException from label05 to label06 with label16;
+        catch java.net.SocketTimeoutException from label07 to label08 with label16;
+        catch java.net.SocketTimeoutException from label09 to label11 with label16;
+        catch java.net.SocketTimeoutException from label12 to label13 with label16;
+        catch java.net.SocketTimeoutException from label14 to label15 with label16;
+        catch org.apache.http.client.ClientProtocolException from label01 to label02 with label18;
+        catch org.apache.http.client.ClientProtocolException from label03 to label04 with label18;
+        catch org.apache.http.client.ClientProtocolException from label05 to label06 with label18;
+        catch org.apache.http.client.ClientProtocolException from label07 to label08 with label18;
+        catch org.apache.http.client.ClientProtocolException from label09 to label11 with label18;
+        catch org.apache.http.client.ClientProtocolException from label12 to label13 with label18;
+        catch org.apache.http.client.ClientProtocolException from label14 to label15 with label18;
+        catch java.net.MalformedURLException from label01 to label02 with label19;
+        catch java.net.MalformedURLException from label03 to label04 with label19;
+        catch java.net.MalformedURLException from label05 to label06 with label19;
+        catch java.net.MalformedURLException from label07 to label08 with label19;
+        catch java.net.MalformedURLException from label09 to label11 with label19;
+        catch java.net.MalformedURLException from label12 to label13 with label19;
+        catch java.net.MalformedURLException from label14 to label15 with label19;
+        catch java.io.IOException from label01 to label02 with label20;
+        catch java.io.IOException from label03 to label04 with label20;
+        catch java.io.IOException from label05 to label06 with label20;
+        catch java.io.IOException from label07 to label08 with label20;
+        catch java.io.IOException from label09 to label11 with label20;
+        catch java.io.IOException from label12 to label13 with label20;
+        catch java.io.IOException from label14 to label15 with label20;
+        catch java.lang.Exception from label01 to label02 with label21;
+        catch java.lang.Exception from label03 to label06 with label21;
+        catch java.lang.Exception from label07 to label08 with label21;
+        catch java.lang.Exception from label09 to label11 with label21;
+        catch java.lang.Exception from label12 to label13 with label21;
+        catch java.lang.Exception from label14 to label15 with label21;
+    }
+
+    protected static org.apache.http.HttpEntity postData3(java.util.List, boolean, android.content.Context)
+    {
+        org.apache.http.impl.client.DefaultHttpClient $r6, $r20;
+        java.lang.Throwable $r12, $r13, $r14, $r15;
+        org.apache.http.client.ClientProtocolException $r26;
+        android.content.Context $r0;
+        org.apache.http.client.methods.HttpPost $r2, $r17;
+        org.apache.http.params.BasicHttpParams $r5, $r19;
+        org.apache.http.client.entity.UrlEncodedFormEntity $r18;
+        long $l1;
+        org.apache.http.client.methods.HttpUriRequest $r24;
+        org.apache.http.message.BasicHttpResponse r10;
+        java.net.SocketTimeoutException $r25;
+        int $i0;
+        java.lang.String $r3;
+        boolean $z0, $z1;
+        java.net.MalformedURLException $r27;
+        com.airpush.android.HttpPostData$3 $r21;
+        org.apache.http.HttpEntity $r11;
+        com.airpush.android.HttpPostData$4 $r22;
+        java.io.IOException $r28;
+        java.lang.Exception $r16;
+        java.util.List r1;
+        org.apache.http.params.HttpParams $r23;
+        org.apache.http.HttpResponse $r9;
+
+        r1 := @parameter0: java.util.List;
+
+        $z0 := @parameter1: boolean;
+
+        $r0 := @parameter2: android.content.Context;
+
+        $z1 = staticinvoke <com.airpush.android.Constants: boolean checkInternetConnection(android.content.Context)>($r0);
+
+        if $z1 == 0 goto label35;
+
+        <com.airpush.android.HttpPostData: android.content.Context ctx> = $r0;
+
+        if $z0 == 0 goto label29;
+
+        <com.airpush.android.HttpPostData: java.lang.String url> = "http://api.airpush.com/testmsg2.php";
+
+     label01:
+        $r17 = new org.apache.http.client.methods.HttpPost;
+
+        $r3 = <com.airpush.android.HttpPostData: java.lang.String url>;
+
+     label02:
+        specialinvoke $r17.<org.apache.http.client.methods.HttpPost: void <init>(java.lang.String)>($r3);
+
+     label03:
+        <com.airpush.android.HttpPostData: org.apache.http.client.methods.HttpPost httpPost> = $r17;
+
+        $r2 = <com.airpush.android.HttpPostData: org.apache.http.client.methods.HttpPost httpPost>;
+
+        $r18 = new org.apache.http.client.entity.UrlEncodedFormEntity;
+
+     label04:
+        specialinvoke $r18.<org.apache.http.client.entity.UrlEncodedFormEntity: void <init>(java.util.List)>(r1);
+
+     label05:
+        $r11 = (org.apache.http.HttpEntity) $r18;
+
+     label06:
+        virtualinvoke $r2.<org.apache.http.client.methods.HttpPost: void setEntity(org.apache.http.HttpEntity)>($r11);
+
+     label07:
+        $r19 = new org.apache.http.params.BasicHttpParams;
+
+     label08:
+        specialinvoke $r19.<org.apache.http.params.BasicHttpParams: void <init>()>();
+
+     label09:
+        <com.airpush.android.HttpPostData: org.apache.http.params.BasicHttpParams httpParameters> = $r19;
+
+        <com.airpush.android.HttpPostData: int timeoutConnection> = 10000;
+
+        $r5 = <com.airpush.android.HttpPostData: org.apache.http.params.BasicHttpParams httpParameters>;
+
+        $i0 = <com.airpush.android.HttpPostData: int timeoutConnection>;
+
+     label10:
+        $r23 = (org.apache.http.params.HttpParams) $r5;
+
+     label11:
+        staticinvoke <org.apache.http.params.HttpConnectionParams: void setConnectionTimeout(org.apache.http.params.HttpParams,int)>($r23, $i0);
+
+     label12:
+        <com.airpush.android.HttpPostData: int timeoutSocket> = 10000;
+
+        $r5 = <com.airpush.android.HttpPostData: org.apache.http.params.BasicHttpParams httpParameters>;
+
+        $i0 = <com.airpush.android.HttpPostData: int timeoutSocket>;
+
+     label13:
+        $r23 = (org.apache.http.params.HttpParams) $r5;
+
+     label14:
+        staticinvoke <org.apache.http.params.HttpConnectionParams: void setSoTimeout(org.apache.http.params.HttpParams,int)>($r23, $i0);
+
+     label15:
+        $r20 = new org.apache.http.impl.client.DefaultHttpClient;
+
+        $r5 = <com.airpush.android.HttpPostData: org.apache.http.params.BasicHttpParams httpParameters>;
+
+     label16:
+        $r23 = (org.apache.http.params.HttpParams) $r5;
+
+     label17:
+        specialinvoke $r20.<org.apache.http.impl.client.DefaultHttpClient: void <init>(org.apache.http.params.HttpParams)>($r23);
+
+     label18:
+        <com.airpush.android.HttpPostData: org.apache.http.impl.client.DefaultHttpClient httpClient> = $r20;
+
+        $r6 = <com.airpush.android.HttpPostData: org.apache.http.impl.client.DefaultHttpClient httpClient>;
+
+        $r21 = new com.airpush.android.HttpPostData$3;
+
+     label19:
+        specialinvoke $r21.<com.airpush.android.HttpPostData$3: void <init>()>();
+
+        virtualinvoke $r6.<org.apache.http.impl.client.DefaultHttpClient: void addRequestInterceptor(org.apache.http.HttpRequestInterceptor)>($r21);
+
+     label20:
+        $r6 = <com.airpush.android.HttpPostData: org.apache.http.impl.client.DefaultHttpClient httpClient>;
+
+        $r22 = new com.airpush.android.HttpPostData$4;
+
+     label21:
+        specialinvoke $r22.<com.airpush.android.HttpPostData$4: void <init>()>();
+
+        virtualinvoke $r6.<org.apache.http.impl.client.DefaultHttpClient: void addResponseInterceptor(org.apache.http.HttpResponseInterceptor)>($r22);
+
+     label22:
+        $r6 = <com.airpush.android.HttpPostData: org.apache.http.impl.client.DefaultHttpClient httpClient>;
+
+        $r2 = <com.airpush.android.HttpPostData: org.apache.http.client.methods.HttpPost httpPost>;
+
+     label23:
+        $r24 = (org.apache.http.client.methods.HttpUriRequest) $r2;
+
+     label24:
+        $r9 = virtualinvoke $r6.<org.apache.http.impl.client.DefaultHttpClient: org.apache.http.HttpResponse execute(org.apache.http.client.methods.HttpUriRequest)>($r24);
+
+     label25:
+        r10 = (org.apache.http.message.BasicHttpResponse) $r9;
+
+     label26:
+        <com.airpush.android.HttpPostData: org.apache.http.message.BasicHttpResponse httpResponse> = r10;
+
+        r10 = <com.airpush.android.HttpPostData: org.apache.http.message.BasicHttpResponse httpResponse>;
+
+     label27:
+        $r11 = virtualinvoke r10.<org.apache.http.message.BasicHttpResponse: org.apache.http.HttpEntity getEntity()>();
+
+     label28:
+        <com.airpush.android.HttpPostData: org.apache.http.HttpEntity entity> = $r11;
+
+        $r11 = <com.airpush.android.HttpPostData: org.apache.http.HttpEntity entity>;
+
+        return $r11;
+
+     label29:
+        <com.airpush.android.HttpPostData: java.lang.String url> = "http://api.airpush.com/v2/api.php";
+
+        goto label01;
+
+     label30:
+        $r12 := @caughtexception;
+
+        $r25 = (java.net.SocketTimeoutException) $r12;
+
+        $r3 = virtualinvoke $r25.<java.net.SocketTimeoutException: java.lang.String toString()>();
+
+        staticinvoke <android.util.Log: int d(java.lang.String,java.lang.String)>("SocketTimeoutException Thrown", $r3);
+
+        $r0 = <com.airpush.android.HttpPostData: android.content.Context ctx>;
+
+        staticinvoke <com.airpush.android.Airpush: void reStartSDK(android.content.Context,long)>($r0, 1800000L);
+
+        return null;
+
+     label31:
+        $r13 := @caughtexception;
+
+        $r26 = (org.apache.http.client.ClientProtocolException) $r13;
+
+        $r3 = virtualinvoke $r26.<org.apache.http.client.ClientProtocolException: java.lang.String toString()>();
+
+        staticinvoke <android.util.Log: int d(java.lang.String,java.lang.String)>("ClientProtocolException Thrown", $r3);
+
+        $r0 = <com.airpush.android.HttpPostData: android.content.Context ctx>;
+
+        staticinvoke <com.airpush.android.Airpush: void reStartSDK(android.content.Context,long)>($r0, 1800000L);
+
+        return null;
+
+     label32:
+        $r14 := @caughtexception;
+
+        $r0 = <com.airpush.android.HttpPostData: android.content.Context ctx>;
+
+        staticinvoke <com.airpush.android.Airpush: void reStartSDK(android.content.Context,long)>($r0, 1800000L);
+
+        $r27 = (java.net.MalformedURLException) $r14;
+
+        $r3 = virtualinvoke $r27.<java.net.MalformedURLException: java.lang.String toString()>();
+
+        staticinvoke <android.util.Log: int d(java.lang.String,java.lang.String)>("MalformedURLException Thrown", $r3);
+
+        return null;
+
+     label33:
+        $r15 := @caughtexception;
+
+        $r0 = <com.airpush.android.HttpPostData: android.content.Context ctx>;
+
+        staticinvoke <com.airpush.android.Airpush: void reStartSDK(android.content.Context,long)>($r0, 1800000L);
+
+        $r28 = (java.io.IOException) $r15;
+
+        $r3 = virtualinvoke $r28.<java.io.IOException: java.lang.String toString()>();
+
+        staticinvoke <android.util.Log: int d(java.lang.String,java.lang.String)>("IOException Thrown", $r3);
+
+        return null;
+
+     label34:
+        $r16 := @caughtexception;
+
+        $r0 = <com.airpush.android.HttpPostData: android.content.Context ctx>;
+
+        staticinvoke <com.airpush.android.Airpush: void reStartSDK(android.content.Context,long)>($r0, 1800000L);
+
+        return null;
+
+     label35:
+        $l1 = <com.airpush.android.HttpPostData: long timeDiff>;
+
+        staticinvoke <com.airpush.android.Airpush: void reStartSDK(android.content.Context,long)>($r0, $l1);
+
+        return null;
+
+        catch java.net.SocketTimeoutException from label02 to label03 with label30;
+        catch java.net.SocketTimeoutException from label04 to label05 with label30;
+        catch java.net.SocketTimeoutException from label06 to label07 with label30;
+        catch java.net.SocketTimeoutException from label08 to label09 with label30;
+        catch java.net.SocketTimeoutException from label11 to label12 with label30;
+        catch java.net.SocketTimeoutException from label14 to label15 with label30;
+        catch java.net.SocketTimeoutException from label17 to label18 with label30;
+        catch java.net.SocketTimeoutException from label19 to label20 with label30;
+        catch java.net.SocketTimeoutException from label21 to label22 with label30;
+        catch java.net.SocketTimeoutException from label24 to label25 with label30;
+        catch java.net.SocketTimeoutException from label27 to label28 with label30;
+        catch org.apache.http.client.ClientProtocolException from label02 to label03 with label31;
+        catch org.apache.http.client.ClientProtocolException from label04 to label05 with label31;
+        catch org.apache.http.client.ClientProtocolException from label06 to label07 with label31;
+        catch org.apache.http.client.ClientProtocolException from label08 to label09 with label31;
+        catch org.apache.http.client.ClientProtocolException from label11 to label12 with label31;
+        catch org.apache.http.client.ClientProtocolException from label14 to label15 with label31;
+        catch org.apache.http.client.ClientProtocolException from label17 to label18 with label31;
+        catch org.apache.http.client.ClientProtocolException from label19 to label20 with label31;
+        catch org.apache.http.client.ClientProtocolException from label21 to label22 with label31;
+        catch org.apache.http.client.ClientProtocolException from label24 to label25 with label31;
+        catch org.apache.http.client.ClientProtocolException from label27 to label28 with label31;
+        catch java.net.MalformedURLException from label02 to label03 with label32;
+        catch java.net.MalformedURLException from label04 to label05 with label32;
+        catch java.net.MalformedURLException from label06 to label07 with label32;
+        catch java.net.MalformedURLException from label08 to label09 with label32;
+        catch java.net.MalformedURLException from label11 to label12 with label32;
+        catch java.net.MalformedURLException from label14 to label15 with label32;
+        catch java.net.MalformedURLException from label17 to label18 with label32;
+        catch java.net.MalformedURLException from label19 to label20 with label32;
+        catch java.net.MalformedURLException from label21 to label22 with label32;
+        catch java.net.MalformedURLException from label24 to label25 with label32;
+        catch java.net.MalformedURLException from label27 to label28 with label32;
+        catch java.io.IOException from label02 to label03 with label33;
+        catch java.io.IOException from label04 to label05 with label33;
+        catch java.io.IOException from label06 to label07 with label33;
+        catch java.io.IOException from label08 to label09 with label33;
+        catch java.io.IOException from label11 to label12 with label33;
+        catch java.io.IOException from label14 to label15 with label33;
+        catch java.io.IOException from label17 to label18 with label33;
+        catch java.io.IOException from label19 to label20 with label33;
+        catch java.io.IOException from label21 to label22 with label33;
+        catch java.io.IOException from label24 to label25 with label33;
+        catch java.io.IOException from label27 to label28 with label33;
+        catch java.lang.Exception from label02 to label03 with label34;
+        catch java.lang.Exception from label04 to label07 with label34;
+        catch java.lang.Exception from label08 to label09 with label34;
+        catch java.lang.Exception from label10 to label12 with label34;
+        catch java.lang.Exception from label13 to label15 with label34;
+        catch java.lang.Exception from label16 to label18 with label34;
+        catch java.lang.Exception from label19 to label20 with label34;
+        catch java.lang.Exception from label21 to label22 with label34;
+        catch java.lang.Exception from label23 to label26 with label34;
+        catch java.lang.Exception from label27 to label28 with label34;
+    }
+}

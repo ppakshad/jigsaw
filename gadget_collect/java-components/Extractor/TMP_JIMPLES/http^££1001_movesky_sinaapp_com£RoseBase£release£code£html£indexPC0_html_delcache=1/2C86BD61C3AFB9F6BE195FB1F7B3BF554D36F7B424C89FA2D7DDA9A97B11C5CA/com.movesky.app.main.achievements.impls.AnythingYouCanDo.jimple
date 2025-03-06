@@ -1,0 +1,61 @@
+public class com.movesky.app.main.achievements.impls.AnythingYouCanDo extends com.movesky.app.main.achievements.BBTHAchievement
+{
+
+    public void <init>(com.movesky.app.engine.achievements.AchievementInfo)
+    {
+        com.movesky.app.main.achievements.impls.AnythingYouCanDo r0;
+        com.movesky.app.engine.achievements.AchievementInfo $r1;
+
+        r0 := @this: com.movesky.app.main.achievements.impls.AnythingYouCanDo;
+
+        $r1 := @parameter0: com.movesky.app.engine.achievements.AchievementInfo;
+
+        specialinvoke r0.<com.movesky.app.main.achievements.BBTHAchievement: void <init>(com.movesky.app.engine.achievements.AchievementInfo)>($r1);
+
+        return;
+    }
+
+    public void gameEnded(com.movesky.app.main.achievements.events.GameEndedEvent)
+    {
+        com.movesky.app.main.achievements.impls.AnythingYouCanDo r0;
+        com.movesky.app.main.achievements.events.GameEndedEvent $r1;
+        boolean $z0;
+        com.movesky.app.main.Player $r2, $r3;
+        float $f0;
+        byte $b0;
+
+        r0 := @this: com.movesky.app.main.achievements.impls.AnythingYouCanDo;
+
+        $r1 := @parameter0: com.movesky.app.main.achievements.events.GameEndedEvent;
+
+        $z0 = virtualinvoke $r1.<com.movesky.app.main.achievements.events.GameEndedEvent: boolean isSingleplayer()>();
+
+        if $z0 == 0 goto label1;
+
+        $r2 = virtualinvoke $r1.<com.movesky.app.main.achievements.events.GameEndedEvent: com.movesky.app.main.Player getLocalPlayer()>();
+
+        $r3 = virtualinvoke $r1.<com.movesky.app.main.achievements.events.GameEndedEvent: com.movesky.app.main.Player getWinningPlayer()>();
+
+        if $r2 != $r3 goto label1;
+
+        $f0 = virtualinvoke $r1.<com.movesky.app.main.achievements.events.GameEndedEvent: float getAiDifficulty()>();
+
+        $b0 = $f0 cmpl 1.0F;
+
+        if $b0 < 0 goto label1;
+
+        virtualinvoke r0.<com.movesky.app.main.achievements.impls.AnythingYouCanDo: void increment()>();
+
+     label1:
+        return;
+    }
+
+    public boolean usesGameEnded()
+    {
+        com.movesky.app.main.achievements.impls.AnythingYouCanDo r0;
+
+        r0 := @this: com.movesky.app.main.achievements.impls.AnythingYouCanDo;
+
+        return 1;
+    }
+}

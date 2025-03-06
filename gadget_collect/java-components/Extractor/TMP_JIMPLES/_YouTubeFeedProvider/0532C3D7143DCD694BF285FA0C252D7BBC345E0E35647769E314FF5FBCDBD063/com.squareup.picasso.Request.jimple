@@ -1,0 +1,566 @@
+public final class com.squareup.picasso.Request extends java.lang.Object
+{
+    private static final long TOO_LONG_LOG;
+    public final boolean centerCrop;
+    public final boolean centerInside;
+    public final android.graphics.Bitmap$Config config;
+    public final boolean hasRotationPivot;
+    int id;
+    int networkPolicy;
+    public final boolean onlyScaleDown;
+    public final com.squareup.picasso.Picasso$Priority priority;
+    public final int resourceId;
+    public final float rotationDegrees;
+    public final float rotationPivotX;
+    public final float rotationPivotY;
+    public final java.lang.String stableKey;
+    long started;
+    public final int targetHeight;
+    public final int targetWidth;
+    public final java.util.List transformations;
+    public final android.net.Uri uri;
+
+    static void <clinit>()
+    {
+        long $l0;
+        java.util.concurrent.TimeUnit $r0;
+
+        $r0 = <java.util.concurrent.TimeUnit: java.util.concurrent.TimeUnit SECONDS>;
+
+        $l0 = virtualinvoke $r0.<java.util.concurrent.TimeUnit: long toNanos(long)>(5L);
+
+        <com.squareup.picasso.Request: long TOO_LONG_LOG> = $l0;
+
+        return;
+    }
+
+    private void <init>(android.net.Uri, int, java.lang.String, java.util.List, int, int, boolean, boolean, boolean, float, float, float, boolean, android.graphics.Bitmap$Config, com.squareup.picasso.Picasso$Priority)
+    {
+        com.squareup.picasso.Request r0;
+        android.net.Uri $r1;
+        int $i0, $i1, $i2;
+        java.lang.String $r2;
+        java.util.List $r3;
+        boolean $z0, $z1, $z2, $z3;
+        float $f0, $f1, $f2;
+        android.graphics.Bitmap$Config $r4;
+        com.squareup.picasso.Picasso$Priority $r5;
+
+        r0 := @this: com.squareup.picasso.Request;
+
+        $r1 := @parameter0: android.net.Uri;
+
+        $i0 := @parameter1: int;
+
+        $r2 := @parameter2: java.lang.String;
+
+        $r3 := @parameter3: java.util.List;
+
+        $i1 := @parameter4: int;
+
+        $i2 := @parameter5: int;
+
+        $z0 := @parameter6: boolean;
+
+        $z1 := @parameter7: boolean;
+
+        $z2 := @parameter8: boolean;
+
+        $f0 := @parameter9: float;
+
+        $f1 := @parameter10: float;
+
+        $f2 := @parameter11: float;
+
+        $z3 := @parameter12: boolean;
+
+        $r4 := @parameter13: android.graphics.Bitmap$Config;
+
+        $r5 := @parameter14: com.squareup.picasso.Picasso$Priority;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        r0.<com.squareup.picasso.Request: android.net.Uri uri> = $r1;
+
+        r0.<com.squareup.picasso.Request: int resourceId> = $i0;
+
+        r0.<com.squareup.picasso.Request: java.lang.String stableKey> = $r2;
+
+        if $r3 != null goto label2;
+
+        r0.<com.squareup.picasso.Request: java.util.List transformations> = null;
+
+     label1:
+        r0.<com.squareup.picasso.Request: int targetWidth> = $i1;
+
+        r0.<com.squareup.picasso.Request: int targetHeight> = $i2;
+
+        r0.<com.squareup.picasso.Request: boolean centerCrop> = $z0;
+
+        r0.<com.squareup.picasso.Request: boolean centerInside> = $z1;
+
+        r0.<com.squareup.picasso.Request: boolean onlyScaleDown> = $z2;
+
+        r0.<com.squareup.picasso.Request: float rotationDegrees> = $f0;
+
+        r0.<com.squareup.picasso.Request: float rotationPivotX> = $f1;
+
+        r0.<com.squareup.picasso.Request: float rotationPivotY> = $f2;
+
+        r0.<com.squareup.picasso.Request: boolean hasRotationPivot> = $z3;
+
+        r0.<com.squareup.picasso.Request: android.graphics.Bitmap$Config config> = $r4;
+
+        r0.<com.squareup.picasso.Request: com.squareup.picasso.Picasso$Priority priority> = $r5;
+
+        return;
+
+     label2:
+        $r3 = staticinvoke <java.util.Collections: java.util.List unmodifiableList(java.util.List)>($r3);
+
+        r0.<com.squareup.picasso.Request: java.util.List transformations> = $r3;
+
+        goto label1;
+    }
+
+    void <init>(android.net.Uri, int, java.lang.String, java.util.List, int, int, boolean, boolean, boolean, float, float, float, boolean, android.graphics.Bitmap$Config, com.squareup.picasso.Picasso$Priority, com.squareup.picasso.Request$1)
+    {
+        com.squareup.picasso.Request r0;
+        android.net.Uri $r1;
+        int $i0, $i1, $i2;
+        java.lang.String $r2;
+        java.util.List $r3;
+        boolean $z0, $z1, $z2, $z3;
+        float $f0, $f1, $f2;
+        android.graphics.Bitmap$Config $r4;
+        com.squareup.picasso.Picasso$Priority $r5;
+        com.squareup.picasso.Request$1 $r6;
+
+        r0 := @this: com.squareup.picasso.Request;
+
+        $r1 := @parameter0: android.net.Uri;
+
+        $i0 := @parameter1: int;
+
+        $r2 := @parameter2: java.lang.String;
+
+        $r3 := @parameter3: java.util.List;
+
+        $i1 := @parameter4: int;
+
+        $i2 := @parameter5: int;
+
+        $z0 := @parameter6: boolean;
+
+        $z1 := @parameter7: boolean;
+
+        $z2 := @parameter8: boolean;
+
+        $f0 := @parameter9: float;
+
+        $f1 := @parameter10: float;
+
+        $f2 := @parameter11: float;
+
+        $z3 := @parameter12: boolean;
+
+        $r4 := @parameter13: android.graphics.Bitmap$Config;
+
+        $r5 := @parameter14: com.squareup.picasso.Picasso$Priority;
+
+        $r6 := @parameter15: com.squareup.picasso.Request$1;
+
+        specialinvoke r0.<com.squareup.picasso.Request: void <init>(android.net.Uri,int,java.lang.String,java.util.List,int,int,boolean,boolean,boolean,float,float,float,boolean,android.graphics.Bitmap$Config,com.squareup.picasso.Picasso$Priority)>($r1, $i0, $r2, $r3, $i1, $i2, $z0, $z1, $z2, $f0, $f1, $f2, $z3, $r4, $r5);
+
+        return;
+    }
+
+    public final com.squareup.picasso.Request$Builder buildUpon()
+    {
+        com.squareup.picasso.Request r0;
+        com.squareup.picasso.Request$Builder $r1;
+
+        r0 := @this: com.squareup.picasso.Request;
+
+        $r1 = new com.squareup.picasso.Request$Builder;
+
+        specialinvoke $r1.<com.squareup.picasso.Request$Builder: void <init>(com.squareup.picasso.Request,com.squareup.picasso.Request$1)>(r0, null);
+
+        return $r1;
+    }
+
+    final java.lang.String getName()
+    {
+        com.squareup.picasso.Request r0;
+        android.net.Uri $r1;
+        java.lang.String $r2;
+        int $i0;
+
+        r0 := @this: com.squareup.picasso.Request;
+
+        $r1 = r0.<com.squareup.picasso.Request: android.net.Uri uri>;
+
+        if $r1 == null goto label1;
+
+        $r1 = r0.<com.squareup.picasso.Request: android.net.Uri uri>;
+
+        $r2 = virtualinvoke $r1.<android.net.Uri: java.lang.String getPath()>();
+
+        $r2 = staticinvoke <java.lang.String: java.lang.String valueOf(java.lang.Object)>($r2);
+
+        return $r2;
+
+     label1:
+        $i0 = r0.<com.squareup.picasso.Request: int resourceId>;
+
+        $r2 = staticinvoke <java.lang.Integer: java.lang.String toHexString(int)>($i0);
+
+        return $r2;
+    }
+
+    final boolean hasCustomTransformations()
+    {
+        com.squareup.picasso.Request r0;
+        java.util.List $r1;
+
+        r0 := @this: com.squareup.picasso.Request;
+
+        $r1 = r0.<com.squareup.picasso.Request: java.util.List transformations>;
+
+        if $r1 == null goto label1;
+
+        return 1;
+
+     label1:
+        return 0;
+    }
+
+    public final boolean hasSize()
+    {
+        com.squareup.picasso.Request r0;
+        int $i0;
+
+        r0 := @this: com.squareup.picasso.Request;
+
+        $i0 = r0.<com.squareup.picasso.Request: int targetWidth>;
+
+        if $i0 != 0 goto label1;
+
+        $i0 = r0.<com.squareup.picasso.Request: int targetHeight>;
+
+        if $i0 == 0 goto label2;
+
+     label1:
+        return 1;
+
+     label2:
+        return 0;
+    }
+
+    final java.lang.String logId()
+    {
+        com.squareup.picasso.Request r0;
+        long $l0, $l1;
+        byte $b2;
+        java.lang.StringBuilder $r1;
+        java.lang.String $r2;
+        java.util.concurrent.TimeUnit $r3;
+
+        r0 := @this: com.squareup.picasso.Request;
+
+        $l0 = staticinvoke <java.lang.System: long nanoTime()>();
+
+        $l1 = r0.<com.squareup.picasso.Request: long started>;
+
+        $l0 = $l0 - $l1;
+
+        $l1 = <com.squareup.picasso.Request: long TOO_LONG_LOG>;
+
+        $b2 = $l0 cmp $l1;
+
+        if $b2 <= 0 goto label1;
+
+        $r1 = new java.lang.StringBuilder;
+
+        specialinvoke $r1.<java.lang.StringBuilder: void <init>()>();
+
+        $r2 = virtualinvoke r0.<com.squareup.picasso.Request: java.lang.String plainId()>();
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r2);
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(char)>(43);
+
+        $r3 = <java.util.concurrent.TimeUnit: java.util.concurrent.TimeUnit NANOSECONDS>;
+
+        $l0 = virtualinvoke $r3.<java.util.concurrent.TimeUnit: long toSeconds(long)>($l0);
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(long)>($l0);
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(char)>(115);
+
+        $r2 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        return $r2;
+
+     label1:
+        $r1 = new java.lang.StringBuilder;
+
+        specialinvoke $r1.<java.lang.StringBuilder: void <init>()>();
+
+        $r2 = virtualinvoke r0.<com.squareup.picasso.Request: java.lang.String plainId()>();
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r2);
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(char)>(43);
+
+        $r3 = <java.util.concurrent.TimeUnit: java.util.concurrent.TimeUnit NANOSECONDS>;
+
+        $l0 = virtualinvoke $r3.<java.util.concurrent.TimeUnit: long toMillis(long)>($l0);
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(long)>($l0);
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("ms");
+
+        $r2 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        return $r2;
+    }
+
+    final boolean needsMatrixTransform()
+    {
+        com.squareup.picasso.Request r0;
+        boolean $z0;
+        float $f0;
+        byte $b0;
+
+        r0 := @this: com.squareup.picasso.Request;
+
+        $z0 = virtualinvoke r0.<com.squareup.picasso.Request: boolean hasSize()>();
+
+        if $z0 != 0 goto label1;
+
+        $f0 = r0.<com.squareup.picasso.Request: float rotationDegrees>;
+
+        $b0 = $f0 cmpl 0.0F;
+
+        if $b0 == 0 goto label2;
+
+     label1:
+        return 1;
+
+     label2:
+        return 0;
+    }
+
+    final boolean needsTransformation()
+    {
+        com.squareup.picasso.Request r0;
+        boolean $z0;
+
+        r0 := @this: com.squareup.picasso.Request;
+
+        $z0 = virtualinvoke r0.<com.squareup.picasso.Request: boolean needsMatrixTransform()>();
+
+        if $z0 != 0 goto label1;
+
+        $z0 = virtualinvoke r0.<com.squareup.picasso.Request: boolean hasCustomTransformations()>();
+
+        if $z0 == 0 goto label2;
+
+     label1:
+        return 1;
+
+     label2:
+        return 0;
+    }
+
+    final java.lang.String plainId()
+    {
+        com.squareup.picasso.Request r0;
+        java.lang.StringBuilder $r1;
+        int $i0;
+        java.lang.String $r2;
+
+        r0 := @this: com.squareup.picasso.Request;
+
+        $r1 = new java.lang.StringBuilder;
+
+        specialinvoke $r1.<java.lang.StringBuilder: void <init>(java.lang.String)>("[R");
+
+        $i0 = r0.<com.squareup.picasso.Request: int id>;
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>($i0);
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(char)>(93);
+
+        $r2 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        return $r2;
+    }
+
+    public final java.lang.String toString()
+    {
+        com.squareup.picasso.Request r0;
+        java.lang.StringBuilder $r1, $r6;
+        int $i0;
+        java.util.List $r2;
+        boolean $z0;
+        java.util.Iterator $r3;
+        java.lang.Object $r4;
+        com.squareup.picasso.Transformation $r5;
+        java.lang.String $r7;
+        android.net.Uri $r8;
+        float $f0;
+        byte $b1;
+        android.graphics.Bitmap$Config $r9;
+
+        r0 := @this: com.squareup.picasso.Request;
+
+        $r1 = new java.lang.StringBuilder;
+
+        specialinvoke $r1.<java.lang.StringBuilder: void <init>(java.lang.String)>("Request{");
+
+        $i0 = r0.<com.squareup.picasso.Request: int resourceId>;
+
+        if $i0 <= 0 goto label03;
+
+        $i0 = r0.<com.squareup.picasso.Request: int resourceId>;
+
+        virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>($i0);
+
+     label01:
+        $r2 = r0.<com.squareup.picasso.Request: java.util.List transformations>;
+
+        if $r2 == null goto label04;
+
+        $r2 = r0.<com.squareup.picasso.Request: java.util.List transformations>;
+
+        $z0 = interfaceinvoke $r2.<java.util.List: boolean isEmpty()>();
+
+        if $z0 != 0 goto label04;
+
+        $r2 = r0.<com.squareup.picasso.Request: java.util.List transformations>;
+
+        $r3 = interfaceinvoke $r2.<java.util.List: java.util.Iterator iterator()>();
+
+     label02:
+        $z0 = interfaceinvoke $r3.<java.util.Iterator: boolean hasNext()>();
+
+        if $z0 == 0 goto label04;
+
+        $r4 = interfaceinvoke $r3.<java.util.Iterator: java.lang.Object next()>();
+
+        $r5 = (com.squareup.picasso.Transformation) $r4;
+
+        $r6 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(char)>(32);
+
+        $r7 = interfaceinvoke $r5.<com.squareup.picasso.Transformation: java.lang.String key()>();
+
+        virtualinvoke $r6.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r7);
+
+        goto label02;
+
+     label03:
+        $r8 = r0.<com.squareup.picasso.Request: android.net.Uri uri>;
+
+        virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($r8);
+
+        goto label01;
+
+     label04:
+        $r7 = r0.<com.squareup.picasso.Request: java.lang.String stableKey>;
+
+        if $r7 == null goto label05;
+
+        $r6 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" stableKey(");
+
+        $r7 = r0.<com.squareup.picasso.Request: java.lang.String stableKey>;
+
+        $r6 = virtualinvoke $r6.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r7);
+
+        virtualinvoke $r6.<java.lang.StringBuilder: java.lang.StringBuilder append(char)>(41);
+
+     label05:
+        $i0 = r0.<com.squareup.picasso.Request: int targetWidth>;
+
+        if $i0 <= 0 goto label06;
+
+        $r6 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" resize(");
+
+        $i0 = r0.<com.squareup.picasso.Request: int targetWidth>;
+
+        $r6 = virtualinvoke $r6.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>($i0);
+
+        $r6 = virtualinvoke $r6.<java.lang.StringBuilder: java.lang.StringBuilder append(char)>(44);
+
+        $i0 = r0.<com.squareup.picasso.Request: int targetHeight>;
+
+        $r6 = virtualinvoke $r6.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>($i0);
+
+        virtualinvoke $r6.<java.lang.StringBuilder: java.lang.StringBuilder append(char)>(41);
+
+     label06:
+        $z0 = r0.<com.squareup.picasso.Request: boolean centerCrop>;
+
+        if $z0 == 0 goto label07;
+
+        virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" centerCrop");
+
+     label07:
+        $z0 = r0.<com.squareup.picasso.Request: boolean centerInside>;
+
+        if $z0 == 0 goto label08;
+
+        virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" centerInside");
+
+     label08:
+        $f0 = r0.<com.squareup.picasso.Request: float rotationDegrees>;
+
+        $b1 = $f0 cmpl 0.0F;
+
+        if $b1 == 0 goto label10;
+
+        $r6 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" rotation(");
+
+        $f0 = r0.<com.squareup.picasso.Request: float rotationDegrees>;
+
+        virtualinvoke $r6.<java.lang.StringBuilder: java.lang.StringBuilder append(float)>($f0);
+
+        $z0 = r0.<com.squareup.picasso.Request: boolean hasRotationPivot>;
+
+        if $z0 == 0 goto label09;
+
+        $r6 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" @ ");
+
+        $f0 = r0.<com.squareup.picasso.Request: float rotationPivotX>;
+
+        $r6 = virtualinvoke $r6.<java.lang.StringBuilder: java.lang.StringBuilder append(float)>($f0);
+
+        $r6 = virtualinvoke $r6.<java.lang.StringBuilder: java.lang.StringBuilder append(char)>(44);
+
+        $f0 = r0.<com.squareup.picasso.Request: float rotationPivotY>;
+
+        virtualinvoke $r6.<java.lang.StringBuilder: java.lang.StringBuilder append(float)>($f0);
+
+     label09:
+        virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(char)>(41);
+
+     label10:
+        $r9 = r0.<com.squareup.picasso.Request: android.graphics.Bitmap$Config config>;
+
+        if $r9 == null goto label11;
+
+        $r6 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(char)>(32);
+
+        $r9 = r0.<com.squareup.picasso.Request: android.graphics.Bitmap$Config config>;
+
+        virtualinvoke $r6.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($r9);
+
+     label11:
+        virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(char)>(125);
+
+        $r7 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        return $r7;
+    }
+}

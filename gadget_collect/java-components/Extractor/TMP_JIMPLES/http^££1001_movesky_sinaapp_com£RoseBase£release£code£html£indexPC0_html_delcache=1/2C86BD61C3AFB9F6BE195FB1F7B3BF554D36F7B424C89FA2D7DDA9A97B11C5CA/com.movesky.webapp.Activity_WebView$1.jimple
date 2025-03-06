@@ -1,0 +1,36 @@
+class com.movesky.webapp.Activity_WebView$1 extends java.lang.Object implements com.movesky.webapp.PermissionHelper$OnApplyPermissionListener
+{
+    final com.movesky.webapp.Activity_WebView this$0;
+
+    void <init>(com.movesky.webapp.Activity_WebView)
+    {
+        com.movesky.webapp.Activity_WebView$1 r0;
+        com.movesky.webapp.Activity_WebView $r1;
+
+        r0 := @this: com.movesky.webapp.Activity_WebView$1;
+
+        $r1 := @parameter0: com.movesky.webapp.Activity_WebView;
+
+        r0.<com.movesky.webapp.Activity_WebView$1: com.movesky.webapp.Activity_WebView this$0> = $r1;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public void onAfterApplyAllPermission()
+    {
+        com.movesky.webapp.Activity_WebView$1 r0;
+        com.movesky.webapp.Activity_WebView $r1;
+
+        r0 := @this: com.movesky.webapp.Activity_WebView$1;
+
+        staticinvoke <com.zrd.common.ZrdCommon$ZrdLog: void Log(java.lang.String)>("All of requested permissions has been granted, so run app logic.");
+
+        $r1 = r0.<com.movesky.webapp.Activity_WebView$1: com.movesky.webapp.Activity_WebView this$0>;
+
+        staticinvoke <com.movesky.webapp.Activity_WebView: void access$000(com.movesky.webapp.Activity_WebView)>($r1);
+
+        return;
+    }
+}

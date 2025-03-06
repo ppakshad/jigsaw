@@ -1,0 +1,153 @@
+public class com.squareup.picasso.Downloader$Response extends java.lang.Object
+{
+    final android.graphics.Bitmap bitmap;
+    final boolean cached;
+    final long contentLength;
+    final java.io.InputStream stream;
+
+    public void <init>(android.graphics.Bitmap, boolean)
+    {
+        com.squareup.picasso.Downloader$Response r0;
+        android.graphics.Bitmap $r1;
+        boolean $z0;
+        java.lang.IllegalArgumentException $r2;
+
+        r0 := @this: com.squareup.picasso.Downloader$Response;
+
+        $r1 := @parameter0: android.graphics.Bitmap;
+
+        $z0 := @parameter1: boolean;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        if $r1 != null goto label1;
+
+        $r2 = new java.lang.IllegalArgumentException;
+
+        specialinvoke $r2.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>("Bitmap may not be null.");
+
+        throw $r2;
+
+     label1:
+        r0.<com.squareup.picasso.Downloader$Response: java.io.InputStream stream> = null;
+
+        r0.<com.squareup.picasso.Downloader$Response: android.graphics.Bitmap bitmap> = $r1;
+
+        r0.<com.squareup.picasso.Downloader$Response: boolean cached> = $z0;
+
+        r0.<com.squareup.picasso.Downloader$Response: long contentLength> = -1L;
+
+        return;
+    }
+
+    public void <init>(android.graphics.Bitmap, boolean, long)
+    {
+        com.squareup.picasso.Downloader$Response r0;
+        android.graphics.Bitmap $r1;
+        boolean $z0;
+        long $l0;
+
+        r0 := @this: com.squareup.picasso.Downloader$Response;
+
+        $r1 := @parameter0: android.graphics.Bitmap;
+
+        $z0 := @parameter1: boolean;
+
+        $l0 := @parameter2: long;
+
+        specialinvoke r0.<com.squareup.picasso.Downloader$Response: void <init>(android.graphics.Bitmap,boolean)>($r1, $z0);
+
+        return;
+    }
+
+    public void <init>(java.io.InputStream, boolean)
+    {
+        com.squareup.picasso.Downloader$Response r0;
+        java.io.InputStream $r1;
+        boolean $z0;
+
+        r0 := @this: com.squareup.picasso.Downloader$Response;
+
+        $r1 := @parameter0: java.io.InputStream;
+
+        $z0 := @parameter1: boolean;
+
+        specialinvoke r0.<com.squareup.picasso.Downloader$Response: void <init>(java.io.InputStream,boolean,long)>($r1, $z0, -1L);
+
+        return;
+    }
+
+    public void <init>(java.io.InputStream, boolean, long)
+    {
+        com.squareup.picasso.Downloader$Response r0;
+        java.io.InputStream $r1;
+        boolean $z0;
+        long $l0;
+        java.lang.IllegalArgumentException $r2;
+
+        r0 := @this: com.squareup.picasso.Downloader$Response;
+
+        $r1 := @parameter0: java.io.InputStream;
+
+        $z0 := @parameter1: boolean;
+
+        $l0 := @parameter2: long;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        if $r1 != null goto label1;
+
+        $r2 = new java.lang.IllegalArgumentException;
+
+        specialinvoke $r2.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>("Stream may not be null.");
+
+        throw $r2;
+
+     label1:
+        r0.<com.squareup.picasso.Downloader$Response: java.io.InputStream stream> = $r1;
+
+        r0.<com.squareup.picasso.Downloader$Response: android.graphics.Bitmap bitmap> = null;
+
+        r0.<com.squareup.picasso.Downloader$Response: boolean cached> = $z0;
+
+        r0.<com.squareup.picasso.Downloader$Response: long contentLength> = $l0;
+
+        return;
+    }
+
+    public android.graphics.Bitmap getBitmap()
+    {
+        com.squareup.picasso.Downloader$Response r0;
+        android.graphics.Bitmap r1;
+
+        r0 := @this: com.squareup.picasso.Downloader$Response;
+
+        r1 = r0.<com.squareup.picasso.Downloader$Response: android.graphics.Bitmap bitmap>;
+
+        return r1;
+    }
+
+    public long getContentLength()
+    {
+        com.squareup.picasso.Downloader$Response r0;
+        long l0;
+
+        r0 := @this: com.squareup.picasso.Downloader$Response;
+
+        l0 = r0.<com.squareup.picasso.Downloader$Response: long contentLength>;
+
+        return l0;
+    }
+
+    public java.io.InputStream getInputStream()
+    {
+        com.squareup.picasso.Downloader$Response r0;
+        java.io.InputStream r1;
+
+        r0 := @this: com.squareup.picasso.Downloader$Response;
+
+        r1 = r0.<com.squareup.picasso.Downloader$Response: java.io.InputStream stream>;
+
+        return r1;
+    }
+}

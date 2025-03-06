@@ -1,0 +1,43 @@
+class com.startapp.android.publish.c.d$4 extends java.lang.Object implements android.view.View$OnTouchListener
+{
+    final com.startapp.android.publish.c.d a;
+
+    void <init>(com.startapp.android.publish.c.d)
+    {
+        com.startapp.android.publish.c.d$4 r0;
+        com.startapp.android.publish.c.d $r1;
+
+        r0 := @this: com.startapp.android.publish.c.d$4;
+
+        $r1 := @parameter0: com.startapp.android.publish.c.d;
+
+        r0.<com.startapp.android.publish.c.d$4: com.startapp.android.publish.c.d a> = $r1;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public boolean onTouch(android.view.View, android.view.MotionEvent)
+    {
+        com.startapp.android.publish.c.d$4 r0;
+        android.view.View $r1;
+        android.view.MotionEvent $r2;
+        int $i0;
+
+        r0 := @this: com.startapp.android.publish.c.d$4;
+
+        $r1 := @parameter0: android.view.View;
+
+        $r2 := @parameter1: android.view.MotionEvent;
+
+        $i0 = virtualinvoke $r2.<android.view.MotionEvent: int getAction()>();
+
+        if $i0 != 2 goto label1;
+
+        return 1;
+
+     label1:
+        return 0;
+    }
+}

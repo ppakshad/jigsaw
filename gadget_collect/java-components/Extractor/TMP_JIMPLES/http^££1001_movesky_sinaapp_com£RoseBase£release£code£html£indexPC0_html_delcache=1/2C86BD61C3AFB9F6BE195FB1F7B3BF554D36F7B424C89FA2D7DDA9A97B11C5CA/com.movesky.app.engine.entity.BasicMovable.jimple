@@ -1,0 +1,258 @@
+public class com.movesky.app.engine.entity.BasicMovable extends java.lang.Object implements com.movesky.app.engine.entity.Movable
+{
+    private float m_x;
+    private float m_x_vel;
+    private float m_y;
+    private float m_y_vel;
+
+    public void <init>()
+    {
+        com.movesky.app.engine.entity.BasicMovable r0;
+
+        r0 := @this: com.movesky.app.engine.entity.BasicMovable;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public float getHeading()
+    {
+        com.movesky.app.engine.entity.BasicMovable r0;
+        float $f0, $f1;
+
+        r0 := @this: com.movesky.app.engine.entity.BasicMovable;
+
+        $f1 = r0.<com.movesky.app.engine.entity.BasicMovable: float m_x_vel>;
+
+        $f0 = r0.<com.movesky.app.engine.entity.BasicMovable: float m_y_vel>;
+
+        $f0 = staticinvoke <com.movesky.app.engine.util.MathUtils: float getAngle(float,float,float,float)>(0.0F, 0.0F, $f1, $f0);
+
+        return $f0;
+    }
+
+    public float getSpeed()
+    {
+        com.movesky.app.engine.entity.BasicMovable r0;
+        float $f0, $f1, $f2;
+
+        r0 := @this: com.movesky.app.engine.entity.BasicMovable;
+
+        $f1 = r0.<com.movesky.app.engine.entity.BasicMovable: float m_x_vel>;
+
+        $f0 = r0.<com.movesky.app.engine.entity.BasicMovable: float m_x_vel>;
+
+        $f1 = $f1 * $f0;
+
+        $f2 = r0.<com.movesky.app.engine.entity.BasicMovable: float m_y_vel>;
+
+        $f0 = r0.<com.movesky.app.engine.entity.BasicMovable: float m_y_vel>;
+
+        $f0 = $f2 * $f0;
+
+        $f1 = $f1 + $f0;
+
+        $f1 = staticinvoke <android.util.FloatMath: float sqrt(float)>($f1);
+
+        return $f1;
+    }
+
+    public float getX()
+    {
+        com.movesky.app.engine.entity.BasicMovable r0;
+        float f0;
+
+        r0 := @this: com.movesky.app.engine.entity.BasicMovable;
+
+        f0 = r0.<com.movesky.app.engine.entity.BasicMovable: float m_x>;
+
+        return f0;
+    }
+
+    public float getXVel()
+    {
+        com.movesky.app.engine.entity.BasicMovable r0;
+        float f0;
+
+        r0 := @this: com.movesky.app.engine.entity.BasicMovable;
+
+        f0 = r0.<com.movesky.app.engine.entity.BasicMovable: float m_x_vel>;
+
+        return f0;
+    }
+
+    public float getY()
+    {
+        com.movesky.app.engine.entity.BasicMovable r0;
+        float f0;
+
+        r0 := @this: com.movesky.app.engine.entity.BasicMovable;
+
+        f0 = r0.<com.movesky.app.engine.entity.BasicMovable: float m_y>;
+
+        return f0;
+    }
+
+    public float getYVel()
+    {
+        com.movesky.app.engine.entity.BasicMovable r0;
+        float f0;
+
+        r0 := @this: com.movesky.app.engine.entity.BasicMovable;
+
+        f0 = r0.<com.movesky.app.engine.entity.BasicMovable: float m_y_vel>;
+
+        return f0;
+    }
+
+    public void setPosition(float, float)
+    {
+        com.movesky.app.engine.entity.BasicMovable r0;
+        float $f0, $f1;
+
+        r0 := @this: com.movesky.app.engine.entity.BasicMovable;
+
+        $f0 := @parameter0: float;
+
+        $f1 := @parameter1: float;
+
+        r0.<com.movesky.app.engine.entity.BasicMovable: float m_x> = $f0;
+
+        r0.<com.movesky.app.engine.entity.BasicMovable: float m_y> = $f1;
+
+        return;
+    }
+
+    public void setVelocity(float, float)
+    {
+        com.movesky.app.engine.entity.BasicMovable r0;
+        float $f0, $f1, $f2;
+
+        r0 := @this: com.movesky.app.engine.entity.BasicMovable;
+
+        $f0 := @parameter0: float;
+
+        $f1 := @parameter1: float;
+
+        $f2 = staticinvoke <android.util.FloatMath: float cos(float)>($f1);
+
+        $f2 = $f2 * $f0;
+
+        r0.<com.movesky.app.engine.entity.BasicMovable: float m_x_vel> = $f2;
+
+        $f1 = staticinvoke <android.util.FloatMath: float sin(float)>($f1);
+
+        $f0 = $f1 * $f0;
+
+        r0.<com.movesky.app.engine.entity.BasicMovable: float m_y_vel> = $f0;
+
+        return;
+    }
+
+    public void setVelocityComponents(float, float)
+    {
+        com.movesky.app.engine.entity.BasicMovable r0;
+        float $f0, $f1;
+
+        r0 := @this: com.movesky.app.engine.entity.BasicMovable;
+
+        $f0 := @parameter0: float;
+
+        $f1 := @parameter1: float;
+
+        r0.<com.movesky.app.engine.entity.BasicMovable: float m_x_vel> = $f0;
+
+        r0.<com.movesky.app.engine.entity.BasicMovable: float m_y_vel> = $f1;
+
+        return;
+    }
+
+    public void setX(float)
+    {
+        com.movesky.app.engine.entity.BasicMovable r0;
+        float $f0;
+
+        r0 := @this: com.movesky.app.engine.entity.BasicMovable;
+
+        $f0 := @parameter0: float;
+
+        r0.<com.movesky.app.engine.entity.BasicMovable: float m_x> = $f0;
+
+        return;
+    }
+
+    public void setXVel(float)
+    {
+        com.movesky.app.engine.entity.BasicMovable r0;
+        float $f0;
+
+        r0 := @this: com.movesky.app.engine.entity.BasicMovable;
+
+        $f0 := @parameter0: float;
+
+        r0.<com.movesky.app.engine.entity.BasicMovable: float m_x_vel> = $f0;
+
+        return;
+    }
+
+    public void setY(float)
+    {
+        com.movesky.app.engine.entity.BasicMovable r0;
+        float $f0;
+
+        r0 := @this: com.movesky.app.engine.entity.BasicMovable;
+
+        $f0 := @parameter0: float;
+
+        r0.<com.movesky.app.engine.entity.BasicMovable: float m_y> = $f0;
+
+        return;
+    }
+
+    public void setYVel(float)
+    {
+        com.movesky.app.engine.entity.BasicMovable r0;
+        float $f0;
+
+        r0 := @this: com.movesky.app.engine.entity.BasicMovable;
+
+        $f0 := @parameter0: float;
+
+        r0.<com.movesky.app.engine.entity.BasicMovable: float m_y_vel> = $f0;
+
+        return;
+    }
+
+    public void update(float)
+    {
+        com.movesky.app.engine.entity.BasicMovable r0;
+        float $f0, $f1, $f2;
+
+        r0 := @this: com.movesky.app.engine.entity.BasicMovable;
+
+        $f0 := @parameter0: float;
+
+        $f1 = r0.<com.movesky.app.engine.entity.BasicMovable: float m_x>;
+
+        $f2 = r0.<com.movesky.app.engine.entity.BasicMovable: float m_x_vel>;
+
+        $f2 = $f2 * $f0;
+
+        $f1 = $f1 + $f2;
+
+        r0.<com.movesky.app.engine.entity.BasicMovable: float m_x> = $f1;
+
+        $f1 = r0.<com.movesky.app.engine.entity.BasicMovable: float m_y>;
+
+        $f2 = r0.<com.movesky.app.engine.entity.BasicMovable: float m_y_vel>;
+
+        $f0 = $f2 * $f0;
+
+        $f0 = $f1 + $f0;
+
+        r0.<com.movesky.app.engine.entity.BasicMovable: float m_y> = $f0;
+
+        return;
+    }
+}

@@ -1,0 +1,443 @@
+public class com.squareup.picasso.Picasso$Builder extends java.lang.Object
+{
+    private com.squareup.picasso.Cache cache;
+    private final android.content.Context context;
+    private android.graphics.Bitmap$Config defaultBitmapConfig;
+    private com.squareup.picasso.Downloader downloader;
+    private boolean indicatorsEnabled;
+    private com.squareup.picasso.Picasso$Listener listener;
+    private boolean loggingEnabled;
+    private java.util.List requestHandlers;
+    private java.util.concurrent.ExecutorService service;
+    private com.squareup.picasso.Picasso$RequestTransformer transformer;
+
+    public void <init>(android.content.Context)
+    {
+        com.squareup.picasso.Picasso$Builder r0;
+        android.content.Context $r1;
+        java.lang.IllegalArgumentException $r2;
+
+        r0 := @this: com.squareup.picasso.Picasso$Builder;
+
+        $r1 := @parameter0: android.content.Context;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        if $r1 != null goto label1;
+
+        $r2 = new java.lang.IllegalArgumentException;
+
+        specialinvoke $r2.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>("Context must not be null.");
+
+        throw $r2;
+
+     label1:
+        $r1 = virtualinvoke $r1.<android.content.Context: android.content.Context getApplicationContext()>();
+
+        r0.<com.squareup.picasso.Picasso$Builder: android.content.Context context> = $r1;
+
+        return;
+    }
+
+    public com.squareup.picasso.Picasso$Builder addRequestHandler(com.squareup.picasso.RequestHandler)
+    {
+        com.squareup.picasso.Picasso$Builder r0;
+        com.squareup.picasso.RequestHandler $r1;
+        boolean $z0;
+        java.lang.IllegalArgumentException $r2;
+        java.util.List $r3;
+        java.util.ArrayList $r4;
+        java.lang.IllegalStateException $r5;
+
+        r0 := @this: com.squareup.picasso.Picasso$Builder;
+
+        $r1 := @parameter0: com.squareup.picasso.RequestHandler;
+
+        if $r1 != null goto label1;
+
+        $r2 = new java.lang.IllegalArgumentException;
+
+        specialinvoke $r2.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>("RequestHandler must not be null.");
+
+        throw $r2;
+
+     label1:
+        $r3 = r0.<com.squareup.picasso.Picasso$Builder: java.util.List requestHandlers>;
+
+        if $r3 != null goto label2;
+
+        $r4 = new java.util.ArrayList;
+
+        specialinvoke $r4.<java.util.ArrayList: void <init>()>();
+
+        r0.<com.squareup.picasso.Picasso$Builder: java.util.List requestHandlers> = $r4;
+
+     label2:
+        $r3 = r0.<com.squareup.picasso.Picasso$Builder: java.util.List requestHandlers>;
+
+        $z0 = interfaceinvoke $r3.<java.util.List: boolean contains(java.lang.Object)>($r1);
+
+        if $z0 == 0 goto label3;
+
+        $r5 = new java.lang.IllegalStateException;
+
+        specialinvoke $r5.<java.lang.IllegalStateException: void <init>(java.lang.String)>("RequestHandler already registered.");
+
+        throw $r5;
+
+     label3:
+        $r3 = r0.<com.squareup.picasso.Picasso$Builder: java.util.List requestHandlers>;
+
+        interfaceinvoke $r3.<java.util.List: boolean add(java.lang.Object)>($r1);
+
+        return r0;
+    }
+
+    public com.squareup.picasso.Picasso build()
+    {
+        com.squareup.picasso.Picasso$Builder r0;
+        android.content.Context $r1;
+        java.util.concurrent.ExecutorService $r2;
+        android.os.Handler $r3;
+        com.squareup.picasso.Downloader $r4;
+        com.squareup.picasso.Cache $r5;
+        com.squareup.picasso.Stats $r6;
+        com.squareup.picasso.Picasso $r7;
+        com.squareup.picasso.Picasso$Listener $r8;
+        com.squareup.picasso.Picasso$RequestTransformer $r9;
+        java.util.List $r10;
+        com.squareup.picasso.LruCache $r11;
+        com.squareup.picasso.PicassoExecutorService $r12;
+        com.squareup.picasso.Dispatcher $r13;
+        android.graphics.Bitmap$Config $r14;
+        boolean $z0, $z1;
+
+        r0 := @this: com.squareup.picasso.Picasso$Builder;
+
+        $r1 = r0.<com.squareup.picasso.Picasso$Builder: android.content.Context context>;
+
+        $r4 = r0.<com.squareup.picasso.Picasso$Builder: com.squareup.picasso.Downloader downloader>;
+
+        if $r4 != null goto label1;
+
+        $r4 = staticinvoke <com.squareup.picasso.Utils: com.squareup.picasso.Downloader createDefaultDownloader(android.content.Context)>($r1);
+
+        r0.<com.squareup.picasso.Picasso$Builder: com.squareup.picasso.Downloader downloader> = $r4;
+
+     label1:
+        $r5 = r0.<com.squareup.picasso.Picasso$Builder: com.squareup.picasso.Cache cache>;
+
+        if $r5 != null goto label2;
+
+        $r11 = new com.squareup.picasso.LruCache;
+
+        specialinvoke $r11.<com.squareup.picasso.LruCache: void <init>(android.content.Context)>($r1);
+
+        r0.<com.squareup.picasso.Picasso$Builder: com.squareup.picasso.Cache cache> = $r11;
+
+     label2:
+        $r2 = r0.<com.squareup.picasso.Picasso$Builder: java.util.concurrent.ExecutorService service>;
+
+        if $r2 != null goto label3;
+
+        $r12 = new com.squareup.picasso.PicassoExecutorService;
+
+        specialinvoke $r12.<com.squareup.picasso.PicassoExecutorService: void <init>()>();
+
+        r0.<com.squareup.picasso.Picasso$Builder: java.util.concurrent.ExecutorService service> = $r12;
+
+     label3:
+        $r9 = r0.<com.squareup.picasso.Picasso$Builder: com.squareup.picasso.Picasso$RequestTransformer transformer>;
+
+        if $r9 != null goto label4;
+
+        $r9 = <com.squareup.picasso.Picasso$RequestTransformer: com.squareup.picasso.Picasso$RequestTransformer IDENTITY>;
+
+        r0.<com.squareup.picasso.Picasso$Builder: com.squareup.picasso.Picasso$RequestTransformer transformer> = $r9;
+
+     label4:
+        $r6 = new com.squareup.picasso.Stats;
+
+        $r5 = r0.<com.squareup.picasso.Picasso$Builder: com.squareup.picasso.Cache cache>;
+
+        specialinvoke $r6.<com.squareup.picasso.Stats: void <init>(com.squareup.picasso.Cache)>($r5);
+
+        $r13 = new com.squareup.picasso.Dispatcher;
+
+        $r2 = r0.<com.squareup.picasso.Picasso$Builder: java.util.concurrent.ExecutorService service>;
+
+        $r3 = <com.squareup.picasso.Picasso: android.os.Handler HANDLER>;
+
+        $r4 = r0.<com.squareup.picasso.Picasso$Builder: com.squareup.picasso.Downloader downloader>;
+
+        $r5 = r0.<com.squareup.picasso.Picasso$Builder: com.squareup.picasso.Cache cache>;
+
+        specialinvoke $r13.<com.squareup.picasso.Dispatcher: void <init>(android.content.Context,java.util.concurrent.ExecutorService,android.os.Handler,com.squareup.picasso.Downloader,com.squareup.picasso.Cache,com.squareup.picasso.Stats)>($r1, $r2, $r3, $r4, $r5, $r6);
+
+        $r7 = new com.squareup.picasso.Picasso;
+
+        $r5 = r0.<com.squareup.picasso.Picasso$Builder: com.squareup.picasso.Cache cache>;
+
+        $r8 = r0.<com.squareup.picasso.Picasso$Builder: com.squareup.picasso.Picasso$Listener listener>;
+
+        $r9 = r0.<com.squareup.picasso.Picasso$Builder: com.squareup.picasso.Picasso$RequestTransformer transformer>;
+
+        $r10 = r0.<com.squareup.picasso.Picasso$Builder: java.util.List requestHandlers>;
+
+        $r14 = r0.<com.squareup.picasso.Picasso$Builder: android.graphics.Bitmap$Config defaultBitmapConfig>;
+
+        $z0 = r0.<com.squareup.picasso.Picasso$Builder: boolean indicatorsEnabled>;
+
+        $z1 = r0.<com.squareup.picasso.Picasso$Builder: boolean loggingEnabled>;
+
+        specialinvoke $r7.<com.squareup.picasso.Picasso: void <init>(android.content.Context,com.squareup.picasso.Dispatcher,com.squareup.picasso.Cache,com.squareup.picasso.Picasso$Listener,com.squareup.picasso.Picasso$RequestTransformer,java.util.List,com.squareup.picasso.Stats,android.graphics.Bitmap$Config,boolean,boolean)>($r1, $r13, $r5, $r8, $r9, $r10, $r6, $r14, $z0, $z1);
+
+        return $r7;
+    }
+
+    public com.squareup.picasso.Picasso$Builder debugging(boolean)
+    {
+        com.squareup.picasso.Picasso$Builder r0;
+        boolean $z0;
+
+        r0 := @this: com.squareup.picasso.Picasso$Builder;
+
+        $z0 := @parameter0: boolean;
+
+        r0 = virtualinvoke r0.<com.squareup.picasso.Picasso$Builder: com.squareup.picasso.Picasso$Builder indicatorsEnabled(boolean)>($z0);
+
+        return r0;
+    }
+
+    public com.squareup.picasso.Picasso$Builder defaultBitmapConfig(android.graphics.Bitmap$Config)
+    {
+        com.squareup.picasso.Picasso$Builder r0;
+        android.graphics.Bitmap$Config $r1;
+        java.lang.IllegalArgumentException $r2;
+
+        r0 := @this: com.squareup.picasso.Picasso$Builder;
+
+        $r1 := @parameter0: android.graphics.Bitmap$Config;
+
+        if $r1 != null goto label1;
+
+        $r2 = new java.lang.IllegalArgumentException;
+
+        specialinvoke $r2.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>("Bitmap config must not be null.");
+
+        throw $r2;
+
+     label1:
+        r0.<com.squareup.picasso.Picasso$Builder: android.graphics.Bitmap$Config defaultBitmapConfig> = $r1;
+
+        return r0;
+    }
+
+    public com.squareup.picasso.Picasso$Builder downloader(com.squareup.picasso.Downloader)
+    {
+        com.squareup.picasso.Picasso$Builder r0;
+        com.squareup.picasso.Downloader $r1, $r3;
+        java.lang.IllegalArgumentException $r2;
+        java.lang.IllegalStateException $r4;
+
+        r0 := @this: com.squareup.picasso.Picasso$Builder;
+
+        $r1 := @parameter0: com.squareup.picasso.Downloader;
+
+        if $r1 != null goto label1;
+
+        $r2 = new java.lang.IllegalArgumentException;
+
+        specialinvoke $r2.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>("Downloader must not be null.");
+
+        throw $r2;
+
+     label1:
+        $r3 = r0.<com.squareup.picasso.Picasso$Builder: com.squareup.picasso.Downloader downloader>;
+
+        if $r3 == null goto label2;
+
+        $r4 = new java.lang.IllegalStateException;
+
+        specialinvoke $r4.<java.lang.IllegalStateException: void <init>(java.lang.String)>("Downloader already set.");
+
+        throw $r4;
+
+     label2:
+        r0.<com.squareup.picasso.Picasso$Builder: com.squareup.picasso.Downloader downloader> = $r1;
+
+        return r0;
+    }
+
+    public com.squareup.picasso.Picasso$Builder executor(java.util.concurrent.ExecutorService)
+    {
+        com.squareup.picasso.Picasso$Builder r0;
+        java.util.concurrent.ExecutorService $r1, $r3;
+        java.lang.IllegalArgumentException $r2;
+        java.lang.IllegalStateException $r4;
+
+        r0 := @this: com.squareup.picasso.Picasso$Builder;
+
+        $r1 := @parameter0: java.util.concurrent.ExecutorService;
+
+        if $r1 != null goto label1;
+
+        $r2 = new java.lang.IllegalArgumentException;
+
+        specialinvoke $r2.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>("Executor service must not be null.");
+
+        throw $r2;
+
+     label1:
+        $r3 = r0.<com.squareup.picasso.Picasso$Builder: java.util.concurrent.ExecutorService service>;
+
+        if $r3 == null goto label2;
+
+        $r4 = new java.lang.IllegalStateException;
+
+        specialinvoke $r4.<java.lang.IllegalStateException: void <init>(java.lang.String)>("Executor service already set.");
+
+        throw $r4;
+
+     label2:
+        r0.<com.squareup.picasso.Picasso$Builder: java.util.concurrent.ExecutorService service> = $r1;
+
+        return r0;
+    }
+
+    public com.squareup.picasso.Picasso$Builder indicatorsEnabled(boolean)
+    {
+        com.squareup.picasso.Picasso$Builder r0;
+        boolean $z0;
+
+        r0 := @this: com.squareup.picasso.Picasso$Builder;
+
+        $z0 := @parameter0: boolean;
+
+        r0.<com.squareup.picasso.Picasso$Builder: boolean indicatorsEnabled> = $z0;
+
+        return r0;
+    }
+
+    public com.squareup.picasso.Picasso$Builder listener(com.squareup.picasso.Picasso$Listener)
+    {
+        com.squareup.picasso.Picasso$Builder r0;
+        com.squareup.picasso.Picasso$Listener $r1, $r3;
+        java.lang.IllegalArgumentException $r2;
+        java.lang.IllegalStateException $r4;
+
+        r0 := @this: com.squareup.picasso.Picasso$Builder;
+
+        $r1 := @parameter0: com.squareup.picasso.Picasso$Listener;
+
+        if $r1 != null goto label1;
+
+        $r2 = new java.lang.IllegalArgumentException;
+
+        specialinvoke $r2.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>("Listener must not be null.");
+
+        throw $r2;
+
+     label1:
+        $r3 = r0.<com.squareup.picasso.Picasso$Builder: com.squareup.picasso.Picasso$Listener listener>;
+
+        if $r3 == null goto label2;
+
+        $r4 = new java.lang.IllegalStateException;
+
+        specialinvoke $r4.<java.lang.IllegalStateException: void <init>(java.lang.String)>("Listener already set.");
+
+        throw $r4;
+
+     label2:
+        r0.<com.squareup.picasso.Picasso$Builder: com.squareup.picasso.Picasso$Listener listener> = $r1;
+
+        return r0;
+    }
+
+    public com.squareup.picasso.Picasso$Builder loggingEnabled(boolean)
+    {
+        com.squareup.picasso.Picasso$Builder r0;
+        boolean $z0;
+
+        r0 := @this: com.squareup.picasso.Picasso$Builder;
+
+        $z0 := @parameter0: boolean;
+
+        r0.<com.squareup.picasso.Picasso$Builder: boolean loggingEnabled> = $z0;
+
+        return r0;
+    }
+
+    public com.squareup.picasso.Picasso$Builder memoryCache(com.squareup.picasso.Cache)
+    {
+        com.squareup.picasso.Picasso$Builder r0;
+        com.squareup.picasso.Cache $r1, $r3;
+        java.lang.IllegalArgumentException $r2;
+        java.lang.IllegalStateException $r4;
+
+        r0 := @this: com.squareup.picasso.Picasso$Builder;
+
+        $r1 := @parameter0: com.squareup.picasso.Cache;
+
+        if $r1 != null goto label1;
+
+        $r2 = new java.lang.IllegalArgumentException;
+
+        specialinvoke $r2.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>("Memory cache must not be null.");
+
+        throw $r2;
+
+     label1:
+        $r3 = r0.<com.squareup.picasso.Picasso$Builder: com.squareup.picasso.Cache cache>;
+
+        if $r3 == null goto label2;
+
+        $r4 = new java.lang.IllegalStateException;
+
+        specialinvoke $r4.<java.lang.IllegalStateException: void <init>(java.lang.String)>("Memory cache already set.");
+
+        throw $r4;
+
+     label2:
+        r0.<com.squareup.picasso.Picasso$Builder: com.squareup.picasso.Cache cache> = $r1;
+
+        return r0;
+    }
+
+    public com.squareup.picasso.Picasso$Builder requestTransformer(com.squareup.picasso.Picasso$RequestTransformer)
+    {
+        com.squareup.picasso.Picasso$Builder r0;
+        com.squareup.picasso.Picasso$RequestTransformer $r1, $r3;
+        java.lang.IllegalArgumentException $r2;
+        java.lang.IllegalStateException $r4;
+
+        r0 := @this: com.squareup.picasso.Picasso$Builder;
+
+        $r1 := @parameter0: com.squareup.picasso.Picasso$RequestTransformer;
+
+        if $r1 != null goto label1;
+
+        $r2 = new java.lang.IllegalArgumentException;
+
+        specialinvoke $r2.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>("Transformer must not be null.");
+
+        throw $r2;
+
+     label1:
+        $r3 = r0.<com.squareup.picasso.Picasso$Builder: com.squareup.picasso.Picasso$RequestTransformer transformer>;
+
+        if $r3 == null goto label2;
+
+        $r4 = new java.lang.IllegalStateException;
+
+        specialinvoke $r4.<java.lang.IllegalStateException: void <init>(java.lang.String)>("Transformer already set.");
+
+        throw $r4;
+
+     label2:
+        r0.<com.squareup.picasso.Picasso$Builder: com.squareup.picasso.Picasso$RequestTransformer transformer> = $r1;
+
+        return r0;
+    }
+}

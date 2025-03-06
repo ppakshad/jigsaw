@@ -1,0 +1,76 @@
+DEBUG: 02-27 18:26:15: backdoor_general.py:121 * 139089064896320 Fetching model...
+DEBUG: 02-27 18:26:15: models.py:242 * 139089064896320 Loading model from models/apg/SVM/svm-f10000.p...
+DEBUG: 02-27 18:26:15: backdoor_general.py:121 * 140540911896384 Fetching model...
+DEBUG: 02-27 18:26:15: models.py:242 * 140540911896384 Loading model from models/apg/SVM/svm-f10000.p...
+INFO: 02-27 18:26:17: backdoor_general.py:168 * 140540911896384 Using classifier:
+SVM
+INFO: 02-27 18:26:17: backdoor_general.py:169 * 140540911896384 X_train: (100187, 10000), X_test: (49347, 10000)
+INFO: 02-27 18:26:17: backdoor_general.py:170 * 140540911896384 y_train: (100187,), y_test: (49347,)
+INFO: 02-27 18:26:17: backdoor_general.py:171 * 140540911896384 y_train counter: Counter({0: 90288, 1: 9899})
+INFO: 02-27 18:26:17: backdoor_general.py:168 * 139089064896320 Using classifier:
+SVM
+INFO: 02-27 18:26:17: backdoor_general.py:169 * 139089064896320 X_train: (100187, 10000), X_test: (49347, 10000)
+INFO: 02-27 18:26:17: backdoor_general.py:170 * 139089064896320 y_train: (100187,), y_test: (49347,)
+INFO: 02-27 18:26:17: backdoor_general.py:172 * 140540911896384 y_test counter: Counter({0: 44471, 1: 4876})
+INFO: 02-27 18:26:17: backdoor_general.py:171 * 139089064896320 y_train counter: Counter({0: 90288, 1: 9899})
+INFO: 02-27 18:26:17: backdoor_general.py:172 * 139089064896320 y_test counter: Counter({0: 44471, 1: 4876})
+INFO: 02-27 18:26:18: backdoor_general.py:177 * 139089064896320 X_train_mal: (9899, 10000)
+INFO: 02-27 18:26:18: backdoor_general.py:177 * 140540911896384 X_train_mal: (9899, 10000)
+CRITICAL: 02-27 18:26:25: backdoor_general.py:179 * 139089064896320 X_train_mal after np.unique: (7427, 10000)
+CRITICAL: 02-27 18:26:25: backdoor_general.py:228 * 139089064896320 models/apg/SVM/SVM_full_feature_weights_c1_iter10000_nfea10000.csv already exists, no overwrite
+CRITICAL: 02-27 18:26:25: backdoor_general.py:228 * 139089064896320 models/apg/SVM/SVM_benign_feature_weights_c1_iter10000_nfea10000.csv already exists, no overwrite
+CRITICAL: 02-27 18:26:25: backdoor_general.py:228 * 139089064896320 models/apg/SVM/SVM_malicious_feature_weights_c1_iter10000_nfea10000.csv already exists, no overwrite
+INFO: 02-27 18:26:25: myutil.py:158 * 139089064896320 Dumping data to models/apg/SVM/all_feature_names_10000.json...
+INFO: 02-27 18:26:25: backdoor_general.py:200 * 139089064896320 Original classifier: 
+CRITICAL: 02-27 18:26:25: backdoor_general.py:179 * 140540911896384 X_train_mal after np.unique: (7427, 10000)
+CRITICAL: 02-27 18:26:25: backdoor_general.py:228 * 140540911896384 models/apg/SVM/SVM_full_feature_weights_c1_iter10000_nfea10000.csv already exists, no overwrite
+CRITICAL: 02-27 18:26:25: backdoor_general.py:228 * 140540911896384 models/apg/SVM/SVM_benign_feature_weights_c1_iter10000_nfea10000.csv already exists, no overwrite
+CRITICAL: 02-27 18:26:25: backdoor_general.py:228 * 140540911896384 models/apg/SVM/SVM_malicious_feature_weights_c1_iter10000_nfea10000.csv already exists, no overwrite
+INFO: 02-27 18:26:25: myutil.py:158 * 140540911896384 Dumping data to models/apg/SVM/all_feature_names_10000.json...
+INFO: 02-27 18:26:25: backdoor_general.py:200 * 140540911896384 Original classifier: 
+INFO: 02-27 18:26:27: myutil.py:292 * 140540911896384 ROC curve saved
+INFO: 02-27 18:26:27: myutil.py:292 * 139089064896320 ROC curve saved
+DEBUG: 02-27 18:26:27: myutil.py:184 * 140540911896384 cm: [[90125   163]
+ [  241  9658]]
+DEBUG: 02-27 18:26:27: myutil.py:184 * 139089064896320 cm: [[90125   163]
+ [  241  9658]]
+DEBUG: 02-27 18:26:27: myutil.py:184 * 139089064896320 cm: [[44147   324]
+ [  448  4428]]
+DEBUG: 02-27 18:26:27: myutil.py:184 * 140540911896384 cm: [[44147   324]
+ [  448  4428]]
+INFO: 02-27 18:26:27: myutil.py:268 * 140540911896384 Performance on training:
+{'model_performance': {'acc': 0.995967540698893,
+                       'cm': array([[90125,   163],
+       [  241,  9658]]),
+                       'f1': 0.9795131845841785,
+                       'fpr': 0.0018053340421761474,
+                       'precision': 0.9834029121270746,
+                       'recall': 0.9756541064754015}}
+INFO: 02-27 18:26:27: myutil.py:269 * 140540911896384 Performance on testing:
+{'model_performance': {'acc': 0.9843556852493566,
+                       'cm': array([[44147,   324],
+       [  448,  4428]]),
+                       'f1': 0.919817199833818,
+                       'fpr': 0.007285646826021452,
+                       'precision': 0.9318181818181818,
+                       'recall': 0.9081214109926169},
+ 'number_of_apps': {'test': 49347, 'tps': 4428, 'train': 100187}}
+INFO: 02-27 18:26:27: backdoor_general.py:263 * 140540911896384 time elapsed: 11.7 seconds
+INFO: 02-27 18:26:27: myutil.py:268 * 139089064896320 Performance on training:
+{'model_performance': {'acc': 0.995967540698893,
+                       'cm': array([[90125,   163],
+       [  241,  9658]]),
+                       'f1': 0.9795131845841785,
+                       'fpr': 0.0018053340421761474,
+                       'precision': 0.9834029121270746,
+                       'recall': 0.9756541064754015}}
+INFO: 02-27 18:26:27: myutil.py:269 * 139089064896320 Performance on testing:
+{'model_performance': {'acc': 0.9843556852493566,
+                       'cm': array([[44147,   324],
+       [  448,  4428]]),
+                       'f1': 0.919817199833818,
+                       'fpr': 0.007285646826021452,
+                       'precision': 0.9318181818181818,
+                       'recall': 0.9081214109926169},
+ 'number_of_apps': {'test': 49347, 'tps': 4428, 'train': 100187}}
+INFO: 02-27 18:26:27: backdoor_general.py:263 * 139089064896320 time elapsed: 11.7 seconds

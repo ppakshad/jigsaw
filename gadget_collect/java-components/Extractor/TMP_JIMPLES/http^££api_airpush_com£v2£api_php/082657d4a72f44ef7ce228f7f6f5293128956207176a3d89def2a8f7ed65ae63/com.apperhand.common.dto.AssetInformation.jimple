@@ -1,0 +1,174 @@
+public class com.apperhand.common.dto.AssetInformation extends com.apperhand.common.dto.BaseDTO
+{
+    private static final long serialVersionUID;
+    private java.util.Map parameters;
+    private int position;
+    private com.apperhand.common.dto.AssetInformation$State state;
+    private java.lang.String url;
+
+    public void <init>()
+    {
+        com.apperhand.common.dto.AssetInformation r0;
+
+        r0 := @this: com.apperhand.common.dto.AssetInformation;
+
+        specialinvoke r0.<com.apperhand.common.dto.BaseDTO: void <init>()>();
+
+        return;
+    }
+
+    public java.util.Map getParameters()
+    {
+        com.apperhand.common.dto.AssetInformation r0;
+        java.util.Map r1;
+
+        r0 := @this: com.apperhand.common.dto.AssetInformation;
+
+        r1 = r0.<com.apperhand.common.dto.AssetInformation: java.util.Map parameters>;
+
+        return r1;
+    }
+
+    public int getPosition()
+    {
+        com.apperhand.common.dto.AssetInformation r0;
+        int i0;
+
+        r0 := @this: com.apperhand.common.dto.AssetInformation;
+
+        i0 = r0.<com.apperhand.common.dto.AssetInformation: int position>;
+
+        return i0;
+    }
+
+    public com.apperhand.common.dto.AssetInformation$State getState()
+    {
+        com.apperhand.common.dto.AssetInformation r0;
+        com.apperhand.common.dto.AssetInformation$State r1;
+
+        r0 := @this: com.apperhand.common.dto.AssetInformation;
+
+        r1 = r0.<com.apperhand.common.dto.AssetInformation: com.apperhand.common.dto.AssetInformation$State state>;
+
+        return r1;
+    }
+
+    public java.lang.String getUrl()
+    {
+        com.apperhand.common.dto.AssetInformation r0;
+        java.lang.String r1;
+
+        r0 := @this: com.apperhand.common.dto.AssetInformation;
+
+        r1 = r0.<com.apperhand.common.dto.AssetInformation: java.lang.String url>;
+
+        return r1;
+    }
+
+    public void setParameters(java.util.Map)
+    {
+        com.apperhand.common.dto.AssetInformation r0;
+        java.util.Map r1;
+
+        r0 := @this: com.apperhand.common.dto.AssetInformation;
+
+        r1 := @parameter0: java.util.Map;
+
+        r0.<com.apperhand.common.dto.AssetInformation: java.util.Map parameters> = r1;
+
+        return;
+    }
+
+    public void setPosition(int)
+    {
+        com.apperhand.common.dto.AssetInformation r0;
+        int $i0;
+
+        r0 := @this: com.apperhand.common.dto.AssetInformation;
+
+        $i0 := @parameter0: int;
+
+        r0.<com.apperhand.common.dto.AssetInformation: int position> = $i0;
+
+        return;
+    }
+
+    public void setState(com.apperhand.common.dto.AssetInformation$State)
+    {
+        com.apperhand.common.dto.AssetInformation r0;
+        com.apperhand.common.dto.AssetInformation$State $r1;
+
+        r0 := @this: com.apperhand.common.dto.AssetInformation;
+
+        $r1 := @parameter0: com.apperhand.common.dto.AssetInformation$State;
+
+        r0.<com.apperhand.common.dto.AssetInformation: com.apperhand.common.dto.AssetInformation$State state> = $r1;
+
+        return;
+    }
+
+    public void setUrl(java.lang.String)
+    {
+        com.apperhand.common.dto.AssetInformation r0;
+        java.lang.String $r1;
+
+        r0 := @this: com.apperhand.common.dto.AssetInformation;
+
+        $r1 := @parameter0: java.lang.String;
+
+        r0.<com.apperhand.common.dto.AssetInformation: java.lang.String url> = $r1;
+
+        return;
+    }
+
+    public java.lang.String toString()
+    {
+        com.apperhand.common.dto.AssetInformation r0;
+        java.lang.StringBuilder $r1;
+        java.lang.String $r2;
+        int $i0;
+        com.apperhand.common.dto.AssetInformation$State $r3;
+        java.util.Map $r4;
+
+        r0 := @this: com.apperhand.common.dto.AssetInformation;
+
+        $r1 = new java.lang.StringBuilder;
+
+        specialinvoke $r1.<java.lang.StringBuilder: void <init>(java.lang.String)>("AssetInformation [url=");
+
+        $r2 = r0.<com.apperhand.common.dto.AssetInformation: java.lang.String url>;
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r2);
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(", position=");
+
+        $i0 = r0.<com.apperhand.common.dto.AssetInformation: int position>;
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>($i0);
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(", state=");
+
+        $r3 = r0.<com.apperhand.common.dto.AssetInformation: com.apperhand.common.dto.AssetInformation$State state>;
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($r3);
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(", parameters=");
+
+        $r4 = r0.<com.apperhand.common.dto.AssetInformation: java.util.Map parameters>;
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($r4);
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("]");
+
+        $r2 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        return $r2;
+    }
+
+    public static void <clinit>()
+    {
+        <com.apperhand.common.dto.AssetInformation: long serialVersionUID> = 3787775034992581869L;
+
+        return;
+    }
+}

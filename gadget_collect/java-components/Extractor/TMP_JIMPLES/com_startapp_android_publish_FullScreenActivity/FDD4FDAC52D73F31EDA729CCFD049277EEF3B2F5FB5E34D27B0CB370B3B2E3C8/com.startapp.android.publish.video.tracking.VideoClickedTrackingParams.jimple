@@ -1,0 +1,95 @@
+public class com.startapp.android.publish.video.tracking.VideoClickedTrackingParams extends com.startapp.android.publish.video.tracking.VideoTrackingParams
+{
+    private static final long serialVersionUID;
+    private com.startapp.android.publish.video.tracking.VideoClickedTrackingParams$ClickOrigin clickOrigin;
+
+    public void <init>(java.lang.String, int, int, com.startapp.android.publish.video.tracking.VideoClickedTrackingParams$ClickOrigin, java.lang.String)
+    {
+        com.startapp.android.publish.video.tracking.VideoClickedTrackingParams r0;
+        java.lang.String $r1, $r3;
+        int $i0, $i1;
+        com.startapp.android.publish.video.tracking.VideoClickedTrackingParams$ClickOrigin $r2;
+
+        r0 := @this: com.startapp.android.publish.video.tracking.VideoClickedTrackingParams;
+
+        $r1 := @parameter0: java.lang.String;
+
+        $i0 := @parameter1: int;
+
+        $i1 := @parameter2: int;
+
+        $r2 := @parameter3: com.startapp.android.publish.video.tracking.VideoClickedTrackingParams$ClickOrigin;
+
+        $r3 := @parameter4: java.lang.String;
+
+        specialinvoke r0.<com.startapp.android.publish.video.tracking.VideoTrackingParams: void <init>(java.lang.String,int,int,java.lang.String)>($r1, $i0, $i1, $r3);
+
+        r0.<com.startapp.android.publish.video.tracking.VideoClickedTrackingParams: com.startapp.android.publish.video.tracking.VideoClickedTrackingParams$ClickOrigin clickOrigin> = $r2;
+
+        return;
+    }
+
+    private java.lang.String getClickOriginQuery()
+    {
+        com.startapp.android.publish.video.tracking.VideoClickedTrackingParams r0;
+        java.lang.StringBuilder $r1;
+        com.startapp.android.publish.video.tracking.VideoClickedTrackingParams$ClickOrigin $r2;
+        java.lang.String $r3;
+
+        r0 := @this: com.startapp.android.publish.video.tracking.VideoClickedTrackingParams;
+
+        $r1 = new java.lang.StringBuilder;
+
+        specialinvoke $r1.<java.lang.StringBuilder: void <init>()>();
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("&co=");
+
+        $r2 = r0.<com.startapp.android.publish.video.tracking.VideoClickedTrackingParams: com.startapp.android.publish.video.tracking.VideoClickedTrackingParams$ClickOrigin clickOrigin>;
+
+        $r3 = virtualinvoke $r2.<com.startapp.android.publish.video.tracking.VideoClickedTrackingParams$ClickOrigin: java.lang.String toString()>();
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r3);
+
+        $r3 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        return $r3;
+    }
+
+    public java.lang.String getQueryString()
+    {
+        com.startapp.android.publish.video.tracking.VideoClickedTrackingParams r0;
+        java.lang.StringBuilder $r1;
+        java.lang.String $r2;
+
+        r0 := @this: com.startapp.android.publish.video.tracking.VideoClickedTrackingParams;
+
+        $r1 = new java.lang.StringBuilder;
+
+        specialinvoke $r1.<java.lang.StringBuilder: void <init>()>();
+
+        $r2 = virtualinvoke r0.<com.startapp.android.publish.video.tracking.VideoClickedTrackingParams: java.lang.String getCompletedQuery()>();
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r2);
+
+        $r2 = specialinvoke r0.<com.startapp.android.publish.video.tracking.VideoClickedTrackingParams: java.lang.String getClickOriginQuery()>();
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r2);
+
+        $r2 = virtualinvoke r0.<com.startapp.android.publish.video.tracking.VideoClickedTrackingParams: java.lang.String getVideoPlayingModeQuery()>();
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r2);
+
+        $r2 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        $r2 = virtualinvoke r0.<com.startapp.android.publish.video.tracking.VideoClickedTrackingParams: java.lang.String getQueryString(java.lang.String)>($r2);
+
+        return $r2;
+    }
+
+    public static void <clinit>()
+    {
+        <com.startapp.android.publish.video.tracking.VideoClickedTrackingParams: long serialVersionUID> = 1L;
+
+        return;
+    }
+}

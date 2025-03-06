@@ -1,0 +1,408 @@
+public class com.startapp.android.publish.h extends java.lang.Object
+{
+    private static final boolean a;
+    private android.os.Handler b;
+    private long c;
+    private android.content.Context d;
+    private long e;
+    private long f;
+    private boolean g;
+    private boolean h;
+    private java.lang.String[] i;
+    private com.startapp.android.publish.i.v j;
+    private java.util.concurrent.atomic.AtomicBoolean k;
+
+    static void <clinit>()
+    {
+        com.startapp.android.publish.model.MetaData $r0;
+        boolean $z0;
+
+        $r0 = staticinvoke <com.startapp.android.publish.model.MetaData: com.startapp.android.publish.model.MetaData getInstance()>();
+
+        $z0 = virtualinvoke $r0.<com.startapp.android.publish.model.MetaData: boolean isSupportIABViewability()>();
+
+        <com.startapp.android.publish.h: boolean a> = $z0;
+
+        return;
+    }
+
+    public void <init>(android.content.Context, java.lang.String[], com.startapp.android.publish.i.v, long)
+    {
+        com.startapp.android.publish.h r0;
+        android.content.Context $r1;
+        java.lang.String[] $r2;
+        com.startapp.android.publish.i.v $r3;
+        long $l0;
+        android.os.Handler $r4;
+        java.util.concurrent.atomic.AtomicBoolean $r5;
+
+        r0 := @this: com.startapp.android.publish.h;
+
+        $r1 := @parameter0: android.content.Context;
+
+        $r2 := @parameter1: java.lang.String[];
+
+        $r3 := @parameter2: com.startapp.android.publish.i.v;
+
+        $l0 := @parameter3: long;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        $r4 = new android.os.Handler;
+
+        specialinvoke $r4.<android.os.Handler: void <init>()>();
+
+        r0.<com.startapp.android.publish.h: android.os.Handler b> = $r4;
+
+        r0.<com.startapp.android.publish.h: long e> = -1L;
+
+        $r5 = new java.util.concurrent.atomic.AtomicBoolean;
+
+        specialinvoke $r5.<java.util.concurrent.atomic.AtomicBoolean: void <init>(boolean)>(0);
+
+        r0.<com.startapp.android.publish.h: java.util.concurrent.atomic.AtomicBoolean k> = $r5;
+
+        $r1 = virtualinvoke $r1.<android.content.Context: android.content.Context getApplicationContext()>();
+
+        r0.<com.startapp.android.publish.h: android.content.Context d> = $r1;
+
+        r0.<com.startapp.android.publish.h: java.lang.String[] i> = $r2;
+
+        r0.<com.startapp.android.publish.h: com.startapp.android.publish.i.v j> = $r3;
+
+        r0.<com.startapp.android.publish.h: long c> = $l0;
+
+        return;
+    }
+
+    private void a(long)
+    {
+        com.startapp.android.publish.h r0;
+        long $l0, $l2;
+        byte $b1;
+        boolean $z0;
+        java.lang.StringBuilder $r1;
+        java.lang.String[] $r2;
+        int $i3;
+        java.lang.String $r3;
+        android.os.Handler $r4;
+        com.startapp.android.publish.h$1 $r5;
+
+        r0 := @this: com.startapp.android.publish.h;
+
+        $l0 := @parameter0: long;
+
+        $b1 = $l0 cmp 0L;
+
+        if $b1 < 0 goto label2;
+
+        $z0 = r0.<com.startapp.android.publish.h: boolean h>;
+
+        if $z0 != 0 goto label2;
+
+        r0.<com.startapp.android.publish.h: boolean h> = 1;
+
+        $z0 = r0.<com.startapp.android.publish.h: boolean g>;
+
+        if $z0 != 0 goto label1;
+
+        r0.<com.startapp.android.publish.h: boolean g> = 1;
+
+        $l2 = staticinvoke <java.lang.System: long currentTimeMillis()>();
+
+        r0.<com.startapp.android.publish.h: long f> = $l2;
+
+     label1:
+        $r1 = new java.lang.StringBuilder;
+
+        specialinvoke $r1.<java.lang.StringBuilder: void <init>()>();
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Scheduling timer to: ");
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(long)>($l0);
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" millis, Num urls = ");
+
+        $r2 = r0.<com.startapp.android.publish.h: java.lang.String[] i>;
+
+        $i3 = lengthof $r2;
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>($i3);
+
+        $r3 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <com.startapp.android.publish.i.n: void a(java.lang.String,int,java.lang.String)>("ScheduledImpression", 3, $r3);
+
+        $r4 = r0.<com.startapp.android.publish.h: android.os.Handler b>;
+
+        $r5 = new com.startapp.android.publish.h$1;
+
+        specialinvoke $r5.<com.startapp.android.publish.h$1: void <init>(com.startapp.android.publish.h)>(r0);
+
+        virtualinvoke $r4.<android.os.Handler: boolean postDelayed(java.lang.Runnable,long)>($r5, $l0);
+
+        return;
+
+     label2:
+        $r1 = new java.lang.StringBuilder;
+
+        specialinvoke $r1.<java.lang.StringBuilder: void <init>()>();
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Can\'t start timer with negative delay: ");
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(long)>($l0);
+
+        $r3 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <com.startapp.android.publish.i.n: void a(java.lang.String,int,java.lang.String)>("ScheduledImpression", 3, $r3);
+
+        return;
+    }
+
+    static void a(com.startapp.android.publish.h, boolean)
+    {
+        com.startapp.android.publish.h $r0;
+        boolean $z0;
+
+        $r0 := @parameter0: com.startapp.android.publish.h;
+
+        $z0 := @parameter1: boolean;
+
+        specialinvoke $r0.<com.startapp.android.publish.h: void b(boolean)>($z0);
+
+        return;
+    }
+
+    private void b(boolean)
+    {
+        com.startapp.android.publish.h r0;
+        boolean $z0, $z1;
+        java.util.concurrent.atomic.AtomicBoolean $r1;
+        android.content.Context $r2;
+        java.lang.String[] $r3;
+        com.startapp.android.publish.i.v $r4;
+        java.lang.String $r5, $r7;
+        com.startapp.android.publish.AdDisplayListener$NotDisplayedReason $r6;
+
+        r0 := @this: com.startapp.android.publish.h;
+
+        $z0 := @parameter0: boolean;
+
+        $r1 = r0.<com.startapp.android.publish.h: java.util.concurrent.atomic.AtomicBoolean k>;
+
+        $z1 = virtualinvoke $r1.<java.util.concurrent.atomic.AtomicBoolean: boolean compareAndSet(boolean,boolean)>(0, 1);
+
+        if $z1 == 0 goto label2;
+
+        if $z0 == 0 goto label1;
+
+        staticinvoke <com.startapp.android.publish.i.n: void a(java.lang.String,int,java.lang.String)>("ScheduledImpression", 3, "Sending impression");
+
+        $r2 = r0.<com.startapp.android.publish.h: android.content.Context d>;
+
+        $r3 = r0.<com.startapp.android.publish.h: java.lang.String[] i>;
+
+        $r4 = r0.<com.startapp.android.publish.h: com.startapp.android.publish.i.v j>;
+
+        staticinvoke <com.startapp.android.publish.i.x: void a(android.content.Context,java.lang.String[],com.startapp.android.publish.i.v)>($r2, $r3, $r4);
+
+        return;
+
+     label1:
+        staticinvoke <com.startapp.android.publish.i.n: void a(java.lang.String,int,java.lang.String)>("ScheduledImpression", 3, "Sending non-impression");
+
+        $r2 = r0.<com.startapp.android.publish.h: android.content.Context d>;
+
+        $r3 = r0.<com.startapp.android.publish.h: java.lang.String[] i>;
+
+        $r4 = r0.<com.startapp.android.publish.h: com.startapp.android.publish.i.v j>;
+
+        $r5 = virtualinvoke $r4.<com.startapp.android.publish.i.v: java.lang.String getAdTag()>();
+
+        $r6 = <com.startapp.android.publish.AdDisplayListener$NotDisplayedReason: com.startapp.android.publish.AdDisplayListener$NotDisplayedReason AD_CLOSED_TOO_QUICKLY>;
+
+        $r7 = virtualinvoke $r6.<com.startapp.android.publish.AdDisplayListener$NotDisplayedReason: java.lang.String toString()>();
+
+        staticinvoke <com.startapp.android.publish.i.x: void a(android.content.Context,java.lang.String[],java.lang.String,java.lang.String)>($r2, $r3, $r5, $r7);
+
+        return;
+
+     label2:
+        staticinvoke <com.startapp.android.publish.i.n: void a(java.lang.String,int,java.lang.String)>("ScheduledImpression", 4, "Already sent");
+
+        return;
+    }
+
+    private void d()
+    {
+        com.startapp.android.publish.h r0;
+        android.os.Handler $r1;
+        java.util.concurrent.atomic.AtomicBoolean $r2;
+
+        r0 := @this: com.startapp.android.publish.h;
+
+        staticinvoke <com.startapp.android.publish.i.n: void a(java.lang.String,int,java.lang.String)>("ScheduledImpression", 4, "reset");
+
+        r0.<com.startapp.android.publish.h: boolean g> = 0;
+
+        $r1 = r0.<com.startapp.android.publish.h: android.os.Handler b>;
+
+        virtualinvoke $r1.<android.os.Handler: void removeCallbacksAndMessages(java.lang.Object)>(null);
+
+        r0.<com.startapp.android.publish.h: boolean h> = 0;
+
+        r0.<com.startapp.android.publish.h: long e> = -1L;
+
+        r0.<com.startapp.android.publish.h: long f> = 0L;
+
+        $r2 = r0.<com.startapp.android.publish.h: java.util.concurrent.atomic.AtomicBoolean k>;
+
+        virtualinvoke $r2.<java.util.concurrent.atomic.AtomicBoolean: void set(boolean)>(0);
+
+        return;
+    }
+
+    public void a()
+    {
+        com.startapp.android.publish.h r0;
+        long $l0, $l1, $l3;
+        boolean $z0;
+        byte $b2;
+
+        r0 := @this: com.startapp.android.publish.h;
+
+        staticinvoke <com.startapp.android.publish.i.n: void a(java.lang.String,int,java.lang.String)>("ScheduledImpression", 4, "schedule");
+
+        $z0 = virtualinvoke r0.<com.startapp.android.publish.h: boolean c()>();
+
+        if $z0 != 0 goto label3;
+
+        $z0 = <com.startapp.android.publish.h: boolean a>;
+
+        if $z0 == 0 goto label2;
+
+        $l1 = r0.<com.startapp.android.publish.h: long e>;
+
+        $b2 = $l1 cmp 0L;
+
+        if $b2 < 0 goto label1;
+
+        $l1 = r0.<com.startapp.android.publish.h: long c>;
+
+        $l3 = r0.<com.startapp.android.publish.h: long e>;
+
+        $l0 = r0.<com.startapp.android.publish.h: long f>;
+
+        $l0 = $l3 - $l0;
+
+        $l1 = $l1 - $l0;
+
+        specialinvoke r0.<com.startapp.android.publish.h: void a(long)>($l1);
+
+        return;
+
+     label1:
+        $l1 = r0.<com.startapp.android.publish.h: long c>;
+
+        specialinvoke r0.<com.startapp.android.publish.h: void a(long)>($l1);
+
+        return;
+
+     label2:
+        staticinvoke <com.startapp.android.publish.i.n: void a(java.lang.String,int,java.lang.String)>("ScheduledImpression", 3, "Delay feature disabled, sending impression now!");
+
+        specialinvoke r0.<com.startapp.android.publish.h: void b(boolean)>(1);
+
+        return;
+
+     label3:
+        staticinvoke <com.startapp.android.publish.i.n: void a(java.lang.String,int,java.lang.String)>("ScheduledImpression", 3, "Already sent impression. Must call cancel(true/false) to reschedule");
+
+        return;
+    }
+
+    public void a(boolean)
+    {
+        com.startapp.android.publish.h r0;
+        boolean $z0, $z1;
+        java.lang.StringBuilder $r1;
+        java.lang.String $r2;
+
+        r0 := @this: com.startapp.android.publish.h;
+
+        $z0 := @parameter0: boolean;
+
+        $z1 = r0.<com.startapp.android.publish.h: boolean g>;
+
+        if $z1 == 0 goto label1;
+
+        $r1 = new java.lang.StringBuilder;
+
+        specialinvoke $r1.<java.lang.StringBuilder: void <init>()>();
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("cancel(");
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(boolean)>($z0);
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(")");
+
+        $r2 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <com.startapp.android.publish.i.n: void a(java.lang.String,int,java.lang.String)>("ScheduledImpression", 4, $r2);
+
+        specialinvoke r0.<com.startapp.android.publish.h: void b(boolean)>($z0);
+
+        specialinvoke r0.<com.startapp.android.publish.h: void d()>();
+
+     label1:
+        return;
+    }
+
+    public void b()
+    {
+        com.startapp.android.publish.h r0;
+        long $l0;
+        boolean $z0;
+        android.os.Handler $r1;
+
+        r0 := @this: com.startapp.android.publish.h;
+
+        $z0 = r0.<com.startapp.android.publish.h: boolean g>;
+
+        if $z0 == 0 goto label1;
+
+        $z0 = r0.<com.startapp.android.publish.h: boolean h>;
+
+        if $z0 == 0 goto label1;
+
+        staticinvoke <com.startapp.android.publish.i.n: void a(java.lang.String,int,java.lang.String)>("ScheduledImpression", 4, "pause");
+
+        $r1 = r0.<com.startapp.android.publish.h: android.os.Handler b>;
+
+        virtualinvoke $r1.<android.os.Handler: void removeCallbacksAndMessages(java.lang.Object)>(null);
+
+        $l0 = staticinvoke <java.lang.System: long currentTimeMillis()>();
+
+        r0.<com.startapp.android.publish.h: long e> = $l0;
+
+        r0.<com.startapp.android.publish.h: boolean h> = 0;
+
+     label1:
+        return;
+    }
+
+    public boolean c()
+    {
+        com.startapp.android.publish.h r0;
+        boolean $z0;
+        java.util.concurrent.atomic.AtomicBoolean $r1;
+
+        r0 := @this: com.startapp.android.publish.h;
+
+        $r1 = r0.<com.startapp.android.publish.h: java.util.concurrent.atomic.AtomicBoolean k>;
+
+        $z0 = virtualinvoke $r1.<java.util.concurrent.atomic.AtomicBoolean: boolean get()>();
+
+        return $z0;
+    }
+}

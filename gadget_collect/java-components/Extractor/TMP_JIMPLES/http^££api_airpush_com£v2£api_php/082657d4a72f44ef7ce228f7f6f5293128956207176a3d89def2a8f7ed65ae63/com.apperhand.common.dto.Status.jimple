@@ -1,0 +1,108 @@
+public final enum class com.apperhand.common.dto.Status extends java.lang.Enum
+{
+    public static final enum com.apperhand.common.dto.Status ADD;
+    public static final enum com.apperhand.common.dto.Status DELETE;
+    private static final com.apperhand.common.dto.Status[] ENUM$VALUES;
+    public static final enum com.apperhand.common.dto.Status EXISTS;
+    public static final enum com.apperhand.common.dto.Status UPDATE;
+
+    static void <clinit>()
+    {
+        com.apperhand.common.dto.Status $r0;
+        com.apperhand.common.dto.Status[] $r1;
+
+        $r0 = new com.apperhand.common.dto.Status;
+
+        specialinvoke $r0.<com.apperhand.common.dto.Status: void <init>(java.lang.String,int)>("ADD", 0);
+
+        <com.apperhand.common.dto.Status: com.apperhand.common.dto.Status ADD> = $r0;
+
+        $r0 = new com.apperhand.common.dto.Status;
+
+        specialinvoke $r0.<com.apperhand.common.dto.Status: void <init>(java.lang.String,int)>("DELETE", 1);
+
+        <com.apperhand.common.dto.Status: com.apperhand.common.dto.Status DELETE> = $r0;
+
+        $r0 = new com.apperhand.common.dto.Status;
+
+        specialinvoke $r0.<com.apperhand.common.dto.Status: void <init>(java.lang.String,int)>("EXISTS", 2);
+
+        <com.apperhand.common.dto.Status: com.apperhand.common.dto.Status EXISTS> = $r0;
+
+        $r0 = new com.apperhand.common.dto.Status;
+
+        specialinvoke $r0.<com.apperhand.common.dto.Status: void <init>(java.lang.String,int)>("UPDATE", 3);
+
+        <com.apperhand.common.dto.Status: com.apperhand.common.dto.Status UPDATE> = $r0;
+
+        $r1 = newarray (com.apperhand.common.dto.Status)[4];
+
+        $r0 = <com.apperhand.common.dto.Status: com.apperhand.common.dto.Status ADD>;
+
+        $r1[0] = $r0;
+
+        $r0 = <com.apperhand.common.dto.Status: com.apperhand.common.dto.Status DELETE>;
+
+        $r1[1] = $r0;
+
+        $r0 = <com.apperhand.common.dto.Status: com.apperhand.common.dto.Status EXISTS>;
+
+        $r1[2] = $r0;
+
+        $r0 = <com.apperhand.common.dto.Status: com.apperhand.common.dto.Status UPDATE>;
+
+        $r1[3] = $r0;
+
+        <com.apperhand.common.dto.Status: com.apperhand.common.dto.Status[] ENUM$VALUES> = $r1;
+
+        return;
+    }
+
+    private void <init>(java.lang.String, int)
+    {
+        com.apperhand.common.dto.Status r0;
+        java.lang.String $r1;
+        int $i0;
+
+        r0 := @this: com.apperhand.common.dto.Status;
+
+        $r1 := @parameter0: java.lang.String;
+
+        $i0 := @parameter1: int;
+
+        specialinvoke r0.<java.lang.Enum: void <init>(java.lang.String,int)>($r1, $i0);
+
+        return;
+    }
+
+    public static com.apperhand.common.dto.Status valueOf(java.lang.String)
+    {
+        java.lang.Enum $r0;
+        java.lang.String $r1;
+        com.apperhand.common.dto.Status $r2;
+
+        $r1 := @parameter0: java.lang.String;
+
+        $r0 = staticinvoke <java.lang.Enum: java.lang.Enum valueOf(java.lang.Class,java.lang.String)>(class "Lcom/apperhand/common/dto/Status;", $r1);
+
+        $r2 = (com.apperhand.common.dto.Status) $r0;
+
+        return $r2;
+    }
+
+    public static com.apperhand.common.dto.Status[] values()
+    {
+        com.apperhand.common.dto.Status[] $r0, $r1;
+        int $i0;
+
+        $r0 = <com.apperhand.common.dto.Status: com.apperhand.common.dto.Status[] ENUM$VALUES>;
+
+        $i0 = lengthof $r0;
+
+        $r1 = newarray (com.apperhand.common.dto.Status)[$i0];
+
+        staticinvoke <java.lang.System: void arraycopy(java.lang.Object,int,java.lang.Object,int,int)>($r0, 0, $r1, 0, $i0);
+
+        return $r1;
+    }
+}

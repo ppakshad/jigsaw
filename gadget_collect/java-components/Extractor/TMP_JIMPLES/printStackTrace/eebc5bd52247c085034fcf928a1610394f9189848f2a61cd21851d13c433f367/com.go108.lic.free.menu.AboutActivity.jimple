@@ -1,0 +1,191 @@
+public class com.go108.lic.free.menu.AboutActivity extends android.app.Activity implements android.view.View$OnClickListener
+{
+    private android.widget.TextView mobile;
+    private java.lang.String phoneNumber;
+    private android.widget.TextView version_name;
+
+    public void <init>()
+    {
+        com.go108.lic.free.menu.AboutActivity r0;
+
+        r0 := @this: com.go108.lic.free.menu.AboutActivity;
+
+        specialinvoke r0.<android.app.Activity: void <init>()>();
+
+        r0.<com.go108.lic.free.menu.AboutActivity: java.lang.String phoneNumber> = "073184285152";
+
+        return;
+    }
+
+    static java.lang.String access$0(com.go108.lic.free.menu.AboutActivity)
+    {
+        com.go108.lic.free.menu.AboutActivity $r0;
+        java.lang.String r1;
+
+        $r0 := @parameter0: com.go108.lic.free.menu.AboutActivity;
+
+        r1 = $r0.<com.go108.lic.free.menu.AboutActivity: java.lang.String phoneNumber>;
+
+        return r1;
+    }
+
+    private void showCallDialog()
+    {
+        android.app.AlertDialog$Builder $r1;
+        com.go108.lic.free.menu.AboutActivity$2 $r3;
+        com.go108.lic.free.menu.AboutActivity r0;
+        com.go108.lic.free.menu.AboutActivity$1 $r2;
+
+        r0 := @this: com.go108.lic.free.menu.AboutActivity;
+
+        $r1 = new android.app.AlertDialog$Builder;
+
+        specialinvoke $r1.<android.app.AlertDialog$Builder: void <init>(android.content.Context)>(r0);
+
+        $r1 = virtualinvoke $r1.<android.app.AlertDialog$Builder: android.app.AlertDialog$Builder setTitle(java.lang.CharSequence)>("\u62e8\u6253");
+
+        $r1 = virtualinvoke $r1.<android.app.AlertDialog$Builder: android.app.AlertDialog$Builder setIcon(int)>(17301558);
+
+        $r1 = virtualinvoke $r1.<android.app.AlertDialog$Builder: android.app.AlertDialog$Builder setMessage(java.lang.CharSequence)>("\u786e\u5b9a\u8981\u8054\u7cfb\u5ba2\u670d\u5417\uff1f");
+
+        $r2 = new com.go108.lic.free.menu.AboutActivity$1;
+
+        specialinvoke $r2.<com.go108.lic.free.menu.AboutActivity$1: void <init>(com.go108.lic.free.menu.AboutActivity)>(r0);
+
+        $r1 = virtualinvoke $r1.<android.app.AlertDialog$Builder: android.app.AlertDialog$Builder setPositiveButton(java.lang.CharSequence,android.content.DialogInterface$OnClickListener)>("\u786e\u5b9a", $r2);
+
+        $r3 = new com.go108.lic.free.menu.AboutActivity$2;
+
+        specialinvoke $r3.<com.go108.lic.free.menu.AboutActivity$2: void <init>(com.go108.lic.free.menu.AboutActivity)>(r0);
+
+        $r1 = virtualinvoke $r1.<android.app.AlertDialog$Builder: android.app.AlertDialog$Builder setNegativeButton(java.lang.CharSequence,android.content.DialogInterface$OnClickListener)>("\u53d6\u6d88", $r3);
+
+        virtualinvoke $r1.<android.app.AlertDialog$Builder: android.app.AlertDialog show()>();
+
+        return;
+    }
+
+    public void onClick(android.view.View)
+    {
+        int $i0;
+        com.go108.lic.free.menu.AboutActivity r0;
+        android.view.View $r1;
+
+        r0 := @this: com.go108.lic.free.menu.AboutActivity;
+
+        $r1 := @parameter0: android.view.View;
+
+        $i0 = virtualinvoke $r1.<android.view.View: int getId()>();
+
+        lookupswitch($i0)
+        {
+            case 2131296257: goto label2;
+            default: goto label1;
+        };
+
+     label1:
+        return;
+
+     label2:
+        specialinvoke r0.<com.go108.lic.free.menu.AboutActivity: void showCallDialog()>();
+
+        return;
+    }
+
+    public void onCreate(android.os.Bundle)
+    {
+        android.os.Bundle $r1;
+        android.content.pm.PackageManager $r5;
+        android.content.pm.PackageManager$NameNotFoundException $r8;
+        android.content.pm.PackageInfo $r7;
+        android.widget.TextView $r3;
+        com.go108.lic.free.menu.AboutActivity r0;
+        android.view.View $r2;
+        java.lang.StringBuilder $r4;
+        java.lang.String $r6;
+
+        r0 := @this: com.go108.lic.free.menu.AboutActivity;
+
+        $r1 := @parameter0: android.os.Bundle;
+
+        specialinvoke r0.<android.app.Activity: void onCreate(android.os.Bundle)>($r1);
+
+        virtualinvoke r0.<com.go108.lic.free.menu.AboutActivity: boolean requestWindowFeature(int)>(1);
+
+        virtualinvoke r0.<com.go108.lic.free.menu.AboutActivity: void setContentView(int)>(2130903040);
+
+        $r2 = virtualinvoke r0.<com.go108.lic.free.menu.AboutActivity: android.view.View findViewById(int)>(2131296257);
+
+        $r3 = (android.widget.TextView) $r2;
+
+        r0.<com.go108.lic.free.menu.AboutActivity: android.widget.TextView mobile> = $r3;
+
+        $r2 = virtualinvoke r0.<com.go108.lic.free.menu.AboutActivity: android.view.View findViewById(int)>(2131296256);
+
+        $r3 = (android.widget.TextView) $r2;
+
+        r0.<com.go108.lic.free.menu.AboutActivity: android.widget.TextView version_name> = $r3;
+
+        $r3 = r0.<com.go108.lic.free.menu.AboutActivity: android.widget.TextView version_name>;
+
+        $r4 = new java.lang.StringBuilder;
+
+     label1:
+        specialinvoke $r4.<java.lang.StringBuilder: void <init>(java.lang.String)>("\t\t");
+
+        $r5 = virtualinvoke r0.<com.go108.lic.free.menu.AboutActivity: android.content.pm.PackageManager getPackageManager()>();
+
+        $r6 = virtualinvoke r0.<com.go108.lic.free.menu.AboutActivity: java.lang.String getPackageName()>();
+
+        $r7 = virtualinvoke $r5.<android.content.pm.PackageManager: android.content.pm.PackageInfo getPackageInfo(java.lang.String,int)>($r6, 0);
+
+     label2:
+        $r6 = $r7.<android.content.pm.PackageInfo: java.lang.String versionName>;
+
+     label3:
+        $r4 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r6);
+
+        $r6 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        virtualinvoke $r3.<android.widget.TextView: void setText(java.lang.CharSequence)>($r6);
+
+     label4:
+        $r3 = r0.<com.go108.lic.free.menu.AboutActivity: android.widget.TextView mobile>;
+
+        virtualinvoke $r3.<android.widget.TextView: void setOnClickListener(android.view.View$OnClickListener)>(r0);
+
+        return;
+
+     label5:
+        $r8 := @caughtexception;
+
+        virtualinvoke $r8.<android.content.pm.PackageManager$NameNotFoundException: void printStackTrace()>();
+
+        goto label4;
+
+        catch android.content.pm.PackageManager$NameNotFoundException from label1 to label2 with label5;
+        catch android.content.pm.PackageManager$NameNotFoundException from label3 to label4 with label5;
+    }
+
+    protected void onPause()
+    {
+        com.go108.lic.free.menu.AboutActivity r0;
+
+        r0 := @this: com.go108.lic.free.menu.AboutActivity;
+
+        specialinvoke r0.<android.app.Activity: void onPause()>();
+
+        return;
+    }
+
+    protected void onResume()
+    {
+        com.go108.lic.free.menu.AboutActivity r0;
+
+        r0 := @this: com.go108.lic.free.menu.AboutActivity;
+
+        specialinvoke r0.<android.app.Activity: void onResume()>();
+
+        return;
+    }
+}

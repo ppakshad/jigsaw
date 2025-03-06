@@ -1,0 +1,486 @@
+final class com.squareup.picasso.MarkableInputStream extends java.io.InputStream
+{
+    private static final int DEFAULT_BUFFER_SIZE;
+    private long defaultMark;
+    private final java.io.InputStream in;
+    private long limit;
+    private long offset;
+    private long reset;
+
+    public void <init>(java.io.InputStream)
+    {
+        com.squareup.picasso.MarkableInputStream r0;
+        java.io.InputStream $r1;
+
+        r0 := @this: com.squareup.picasso.MarkableInputStream;
+
+        $r1 := @parameter0: java.io.InputStream;
+
+        specialinvoke r0.<com.squareup.picasso.MarkableInputStream: void <init>(java.io.InputStream,int)>($r1, 4096);
+
+        return;
+    }
+
+    public void <init>(java.io.InputStream, int)
+    {
+        com.squareup.picasso.MarkableInputStream r0;
+        int $i0;
+        boolean $z0;
+        java.lang.Object $r1;
+        java.io.BufferedInputStream $r2;
+        java.io.InputStream $r3;
+
+        r0 := @this: com.squareup.picasso.MarkableInputStream;
+
+        $r1 := @parameter0: java.io.InputStream;
+
+        $i0 := @parameter1: int;
+
+        specialinvoke r0.<java.io.InputStream: void <init>()>();
+
+        r0.<com.squareup.picasso.MarkableInputStream: long defaultMark> = -1L;
+
+        $r3 = (java.io.InputStream) $r1;
+
+        $z0 = virtualinvoke $r3.<java.io.InputStream: boolean markSupported()>();
+
+        if $z0 != 0 goto label1;
+
+        $r2 = new java.io.BufferedInputStream;
+
+        $r3 = (java.io.InputStream) $r1;
+
+        specialinvoke $r2.<java.io.BufferedInputStream: void <init>(java.io.InputStream,int)>($r3, $i0);
+
+        $r1 = $r2;
+
+     label1:
+        $r3 = (java.io.InputStream) $r1;
+
+        r0.<com.squareup.picasso.MarkableInputStream: java.io.InputStream in> = $r3;
+
+        return;
+    }
+
+    private void setLimit(long)
+    {
+        com.squareup.picasso.MarkableInputStream r0;
+        long $l0, $l1, $l2;
+        byte $b3;
+        java.io.InputStream $r1;
+        int $i4;
+        java.lang.Throwable $r2;
+        java.lang.IllegalStateException $r3;
+        java.lang.StringBuilder $r4;
+        java.lang.String $r5;
+
+        r0 := @this: com.squareup.picasso.MarkableInputStream;
+
+        $l0 := @parameter0: long;
+
+        $l1 = r0.<com.squareup.picasso.MarkableInputStream: long reset>;
+
+        $l2 = r0.<com.squareup.picasso.MarkableInputStream: long offset>;
+
+        $b3 = $l1 cmp $l2;
+
+        if $b3 >= 0 goto label07;
+
+        $l1 = r0.<com.squareup.picasso.MarkableInputStream: long offset>;
+
+        $l2 = r0.<com.squareup.picasso.MarkableInputStream: long limit>;
+
+        $b3 = $l1 cmp $l2;
+
+        if $b3 > 0 goto label07;
+
+        $r1 = r0.<com.squareup.picasso.MarkableInputStream: java.io.InputStream in>;
+
+     label01:
+        virtualinvoke $r1.<java.io.InputStream: void reset()>();
+
+     label02:
+        $r1 = r0.<com.squareup.picasso.MarkableInputStream: java.io.InputStream in>;
+
+        $l1 = r0.<com.squareup.picasso.MarkableInputStream: long reset>;
+
+        $l1 = $l0 - $l1;
+
+        $i4 = (int) $l1;
+
+     label03:
+        virtualinvoke $r1.<java.io.InputStream: void mark(int)>($i4);
+
+     label04:
+        $l1 = r0.<com.squareup.picasso.MarkableInputStream: long reset>;
+
+        $l2 = r0.<com.squareup.picasso.MarkableInputStream: long offset>;
+
+     label05:
+        specialinvoke r0.<com.squareup.picasso.MarkableInputStream: void skip(long,long)>($l1, $l2);
+
+     label06:
+        r0.<com.squareup.picasso.MarkableInputStream: long limit> = $l0;
+
+        return;
+
+     label07:
+        $l1 = r0.<com.squareup.picasso.MarkableInputStream: long offset>;
+
+        r0.<com.squareup.picasso.MarkableInputStream: long reset> = $l1;
+
+        $r1 = r0.<com.squareup.picasso.MarkableInputStream: java.io.InputStream in>;
+
+        $l1 = r0.<com.squareup.picasso.MarkableInputStream: long offset>;
+
+        $l1 = $l0 - $l1;
+
+        $i4 = (int) $l1;
+
+     label08:
+        virtualinvoke $r1.<java.io.InputStream: void mark(int)>($i4);
+
+     label09:
+        goto label06;
+
+     label10:
+        $r2 := @caughtexception;
+
+        $r3 = new java.lang.IllegalStateException;
+
+        $r4 = new java.lang.StringBuilder;
+
+        specialinvoke $r4.<java.lang.StringBuilder: void <init>(java.lang.String)>("Unable to mark: ");
+
+        $r4 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($r2);
+
+        $r5 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke $r3.<java.lang.IllegalStateException: void <init>(java.lang.String)>($r5);
+
+        throw $r3;
+
+        catch java.io.IOException from label01 to label02 with label10;
+        catch java.io.IOException from label03 to label04 with label10;
+        catch java.io.IOException from label05 to label06 with label10;
+        catch java.io.IOException from label08 to label09 with label10;
+    }
+
+    private void skip(long, long) throws java.io.IOException
+    {
+        com.squareup.picasso.MarkableInputStream r0;
+        long $l0, $l1, $l3, $l4;
+        byte $b2;
+        java.io.InputStream $r1;
+        int $i5;
+
+        r0 := @this: com.squareup.picasso.MarkableInputStream;
+
+        $l1 := @parameter0: long;
+
+        $l0 := @parameter1: long;
+
+     label1:
+        $b2 = $l1 cmp $l0;
+
+        if $b2 >= 0 goto label3;
+
+        $r1 = r0.<com.squareup.picasso.MarkableInputStream: java.io.InputStream in>;
+
+        $l3 = $l0 - $l1;
+
+        $l3 = virtualinvoke $r1.<java.io.InputStream: long skip(long)>($l3);
+
+        $l4 = $l3;
+
+        $b2 = $l3 cmp 0L;
+
+        if $b2 != 0 goto label2;
+
+        $i5 = virtualinvoke r0.<com.squareup.picasso.MarkableInputStream: int read()>();
+
+        if $i5 == -1 goto label3;
+
+        $l4 = 1L;
+
+     label2:
+        $l1 = $l1 + $l4;
+
+        goto label1;
+
+     label3:
+        return;
+    }
+
+    public final int available() throws java.io.IOException
+    {
+        com.squareup.picasso.MarkableInputStream r0;
+        int $i0;
+        java.io.InputStream $r1;
+
+        r0 := @this: com.squareup.picasso.MarkableInputStream;
+
+        $r1 = r0.<com.squareup.picasso.MarkableInputStream: java.io.InputStream in>;
+
+        $i0 = virtualinvoke $r1.<java.io.InputStream: int available()>();
+
+        return $i0;
+    }
+
+    public final void close() throws java.io.IOException
+    {
+        com.squareup.picasso.MarkableInputStream r0;
+        java.io.InputStream $r1;
+
+        r0 := @this: com.squareup.picasso.MarkableInputStream;
+
+        $r1 = r0.<com.squareup.picasso.MarkableInputStream: java.io.InputStream in>;
+
+        virtualinvoke $r1.<java.io.InputStream: void close()>();
+
+        return;
+    }
+
+    public final void mark(int)
+    {
+        com.squareup.picasso.MarkableInputStream r0;
+        int $i0;
+        long $l1;
+
+        r0 := @this: com.squareup.picasso.MarkableInputStream;
+
+        $i0 := @parameter0: int;
+
+        $l1 = virtualinvoke r0.<com.squareup.picasso.MarkableInputStream: long savePosition(int)>($i0);
+
+        r0.<com.squareup.picasso.MarkableInputStream: long defaultMark> = $l1;
+
+        return;
+    }
+
+    public final boolean markSupported()
+    {
+        com.squareup.picasso.MarkableInputStream r0;
+        boolean $z0;
+        java.io.InputStream $r1;
+
+        r0 := @this: com.squareup.picasso.MarkableInputStream;
+
+        $r1 = r0.<com.squareup.picasso.MarkableInputStream: java.io.InputStream in>;
+
+        $z0 = virtualinvoke $r1.<java.io.InputStream: boolean markSupported()>();
+
+        return $z0;
+    }
+
+    public final int read() throws java.io.IOException
+    {
+        com.squareup.picasso.MarkableInputStream r0;
+        int $i0;
+        java.io.InputStream $r1;
+        long $l1;
+
+        r0 := @this: com.squareup.picasso.MarkableInputStream;
+
+        $r1 = r0.<com.squareup.picasso.MarkableInputStream: java.io.InputStream in>;
+
+        $i0 = virtualinvoke $r1.<java.io.InputStream: int read()>();
+
+        if $i0 == -1 goto label1;
+
+        $l1 = r0.<com.squareup.picasso.MarkableInputStream: long offset>;
+
+        $l1 = $l1 + 1L;
+
+        r0.<com.squareup.picasso.MarkableInputStream: long offset> = $l1;
+
+     label1:
+        return $i0;
+    }
+
+    public final int read(byte[]) throws java.io.IOException
+    {
+        com.squareup.picasso.MarkableInputStream r0;
+        byte[] $r1;
+        long $l0, $l2;
+        int $i1;
+        java.io.InputStream $r2;
+
+        r0 := @this: com.squareup.picasso.MarkableInputStream;
+
+        $r1 := @parameter0: byte[];
+
+        $r2 = r0.<com.squareup.picasso.MarkableInputStream: java.io.InputStream in>;
+
+        $i1 = virtualinvoke $r2.<java.io.InputStream: int read(byte[])>($r1);
+
+        if $i1 == -1 goto label1;
+
+        $l2 = r0.<com.squareup.picasso.MarkableInputStream: long offset>;
+
+        $l0 = (long) $i1;
+
+        $l0 = $l2 + $l0;
+
+        r0.<com.squareup.picasso.MarkableInputStream: long offset> = $l0;
+
+     label1:
+        return $i1;
+    }
+
+    public final int read(byte[], int, int) throws java.io.IOException
+    {
+        com.squareup.picasso.MarkableInputStream r0;
+        byte[] $r1;
+        int $i0, $i1;
+        long $l2, $l3;
+        java.io.InputStream $r2;
+
+        r0 := @this: com.squareup.picasso.MarkableInputStream;
+
+        $r1 := @parameter0: byte[];
+
+        $i0 := @parameter1: int;
+
+        $i1 := @parameter2: int;
+
+        $r2 = r0.<com.squareup.picasso.MarkableInputStream: java.io.InputStream in>;
+
+        $i0 = virtualinvoke $r2.<java.io.InputStream: int read(byte[],int,int)>($r1, $i0, $i1);
+
+        if $i0 == -1 goto label1;
+
+        $l3 = r0.<com.squareup.picasso.MarkableInputStream: long offset>;
+
+        $l2 = (long) $i0;
+
+        $l2 = $l3 + $l2;
+
+        r0.<com.squareup.picasso.MarkableInputStream: long offset> = $l2;
+
+     label1:
+        return $i0;
+    }
+
+    public final void reset() throws java.io.IOException
+    {
+        com.squareup.picasso.MarkableInputStream r0;
+        long $l0;
+
+        r0 := @this: com.squareup.picasso.MarkableInputStream;
+
+        $l0 = r0.<com.squareup.picasso.MarkableInputStream: long defaultMark>;
+
+        virtualinvoke r0.<com.squareup.picasso.MarkableInputStream: void reset(long)>($l0);
+
+        return;
+    }
+
+    public final void reset(long) throws java.io.IOException
+    {
+        com.squareup.picasso.MarkableInputStream r0;
+        long $l0, $l1, $l2;
+        byte $b3;
+        java.io.IOException $r1;
+        java.io.InputStream $r2;
+
+        r0 := @this: com.squareup.picasso.MarkableInputStream;
+
+        $l0 := @parameter0: long;
+
+        $l2 = r0.<com.squareup.picasso.MarkableInputStream: long offset>;
+
+        $l1 = r0.<com.squareup.picasso.MarkableInputStream: long limit>;
+
+        $b3 = $l2 cmp $l1;
+
+        if $b3 > 0 goto label1;
+
+        $l1 = r0.<com.squareup.picasso.MarkableInputStream: long reset>;
+
+        $b3 = $l0 cmp $l1;
+
+        if $b3 >= 0 goto label2;
+
+     label1:
+        $r1 = new java.io.IOException;
+
+        specialinvoke $r1.<java.io.IOException: void <init>(java.lang.String)>("Cannot reset");
+
+        throw $r1;
+
+     label2:
+        $r2 = r0.<com.squareup.picasso.MarkableInputStream: java.io.InputStream in>;
+
+        virtualinvoke $r2.<java.io.InputStream: void reset()>();
+
+        $l1 = r0.<com.squareup.picasso.MarkableInputStream: long reset>;
+
+        specialinvoke r0.<com.squareup.picasso.MarkableInputStream: void skip(long,long)>($l1, $l0);
+
+        r0.<com.squareup.picasso.MarkableInputStream: long offset> = $l0;
+
+        return;
+    }
+
+    public final long savePosition(int)
+    {
+        com.squareup.picasso.MarkableInputStream r0;
+        int $i0;
+        long $l1, $l2;
+        byte $b3;
+
+        r0 := @this: com.squareup.picasso.MarkableInputStream;
+
+        $i0 := @parameter0: int;
+
+        $l1 = r0.<com.squareup.picasso.MarkableInputStream: long offset>;
+
+        $l2 = (long) $i0;
+
+        $l1 = $l1 + $l2;
+
+        $l2 = r0.<com.squareup.picasso.MarkableInputStream: long limit>;
+
+        $b3 = $l2 cmp $l1;
+
+        if $b3 >= 0 goto label1;
+
+        specialinvoke r0.<com.squareup.picasso.MarkableInputStream: void setLimit(long)>($l1);
+
+     label1:
+        $l1 = r0.<com.squareup.picasso.MarkableInputStream: long offset>;
+
+        return $l1;
+    }
+
+    public final long skip(long) throws java.io.IOException
+    {
+        com.squareup.picasso.MarkableInputStream r0;
+        long $l0, $l1;
+        java.io.InputStream $r1;
+
+        r0 := @this: com.squareup.picasso.MarkableInputStream;
+
+        $l0 := @parameter0: long;
+
+        $r1 = r0.<com.squareup.picasso.MarkableInputStream: java.io.InputStream in>;
+
+        $l0 = virtualinvoke $r1.<java.io.InputStream: long skip(long)>($l0);
+
+        $l1 = r0.<com.squareup.picasso.MarkableInputStream: long offset>;
+
+        $l1 = $l1 + $l0;
+
+        r0.<com.squareup.picasso.MarkableInputStream: long offset> = $l1;
+
+        return $l0;
+    }
+
+    public static void <clinit>()
+    {
+        <com.squareup.picasso.MarkableInputStream: int DEFAULT_BUFFER_SIZE> = 4096;
+
+        return;
+    }
+}

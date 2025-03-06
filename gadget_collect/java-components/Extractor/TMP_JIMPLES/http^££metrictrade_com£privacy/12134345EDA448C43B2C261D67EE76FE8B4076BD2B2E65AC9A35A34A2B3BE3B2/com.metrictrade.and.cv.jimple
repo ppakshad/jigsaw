@@ -1,0 +1,2098 @@
+public final class com.metrictrade.and.cv extends com.metrictrade.and.cu
+{
+    private static int q;
+    private static boolean r;
+    private static long s;
+    private static long t;
+    public int f;
+    long g;
+    long h;
+    public final com.metrictrade.and.ct i;
+    public int j;
+    public int k;
+    public long[] l;
+    private int m;
+    private int n;
+    private com.metrictrade.and.ak o;
+    private com.metrictrade.and.ak p;
+
+    static void <clinit>()
+    {
+        <com.metrictrade.and.cv: int q> = 0;
+
+        return;
+    }
+
+    public void <init>(com.metrictrade.and.ct)
+    {
+        com.metrictrade.and.ct $r1;
+        long[] $r3;
+        com.metrictrade.and.ak $r2;
+        com.metrictrade.and.cv r0;
+
+        r0 := @this: com.metrictrade.and.cv;
+
+        $r1 := @parameter0: com.metrictrade.and.ct;
+
+        specialinvoke r0.<com.metrictrade.and.cu: void <init>()>();
+
+        r0.<com.metrictrade.and.cv: com.metrictrade.and.ct i> = $r1;
+
+        $r2 = new com.metrictrade.and.ak;
+
+        specialinvoke $r2.<com.metrictrade.and.ak: void <init>()>();
+
+        r0.<com.metrictrade.and.cv: com.metrictrade.and.ak o> = $r2;
+
+        $r2 = new com.metrictrade.and.ak;
+
+        specialinvoke $r2.<com.metrictrade.and.ak: void <init>()>();
+
+        r0.<com.metrictrade.and.cv: com.metrictrade.and.ak p> = $r2;
+
+        $r3 = newarray (long)[32];
+
+        r0.<com.metrictrade.and.cv: long[] l> = $r3;
+
+        return;
+    }
+
+    private com.metrictrade.and.cy a(long, boolean)
+    {
+        java.lang.Throwable $r5;
+        long $l0, $l9, $l11;
+        com.metrictrade.and.cy $r4;
+        com.metrictrade.and.cx $r1;
+        com.metrictrade.and.cv r0;
+        com.metrictrade.and.ct $r8;
+        long[] $r6;
+        byte $b10;
+        com.metrictrade.and.ak $r2;
+        int $i1, $i2, $i3, $i4, $i5, $i6, $i7;
+        java.lang.String $r7;
+        boolean $z0, $z1;
+        java.lang.Exception $r9;
+        java.lang.Object $r3;
+
+        r0 := @this: com.metrictrade.and.cv;
+
+        $l0 := @parameter0: long;
+
+        $z0 := @parameter1: boolean;
+
+        $i2 = 0;
+
+        $i3 = 0;
+
+        $i4 = 0;
+
+        entermonitor r0;
+
+     label01:
+        $r2 = r0.<com.metrictrade.and.cv: com.metrictrade.and.ak o>;
+
+        $i5 = $r2.<com.metrictrade.and.ak: int a>;
+
+        $i5 = $i5 + -1;
+
+     label02:
+        $z1 = r0.<com.metrictrade.and.cv: boolean b>;
+
+        if $z1 == 0 goto label03;
+
+        if $i5 >= 0 goto label05;
+
+     label03:
+        r0.<com.metrictrade.and.cv: int j> = $i3;
+
+        r0.<com.metrictrade.and.cv: int k> = $i2;
+
+        exitmonitor r0;
+
+     label04:
+        return null;
+
+     label05:
+        $r2 = r0.<com.metrictrade.and.cv: com.metrictrade.and.ak o>;
+
+        $r3 = virtualinvoke $r2.<com.metrictrade.and.ak: java.lang.Object a(int)>($i5);
+
+        $r4 = (com.metrictrade.and.cy) $r3;
+
+     label06:
+        if $r4 != null goto label08;
+
+        $i6 = $i4;
+
+        $i1 = $i3;
+
+        $i7 = $i2;
+
+     label07:
+        $i5 = $i5 + -1;
+
+        $i2 = $i7;
+
+        $i3 = $i1;
+
+        $i4 = $i6;
+
+        goto label02;
+
+     label08:
+        $r1 = $r4.<com.metrictrade.and.cy: com.metrictrade.and.cx b>;
+
+     label09:
+        $i2 = $i2 + 1;
+
+     label10:
+        $z1 = $r4.<com.metrictrade.and.cy: boolean d>;
+
+     label11:
+        if $z1 != 0 goto label27;
+
+     label12:
+        $z1 = $r4.<com.metrictrade.and.cy: boolean c>;
+
+     label13:
+        if $z1 != 0 goto label16;
+
+     label14:
+        specialinvoke r0.<com.metrictrade.and.cv: void a(com.metrictrade.and.cy,java.lang.String)>($r4, "RRF");
+
+     label15:
+        $i6 = $i2 + -1;
+
+        $i1 = $i3;
+
+        $i7 = $i6;
+
+        $i6 = $i4;
+
+        goto label07;
+
+     label16:
+        $r1 = $r4.<com.metrictrade.and.cy: com.metrictrade.and.cx b>;
+
+     label17:
+        if $r1 == null goto label19;
+
+     label18:
+        $r4.<com.metrictrade.and.cy: com.metrictrade.and.cx b> = null;
+
+        specialinvoke r0.<com.metrictrade.and.cv: void c(com.metrictrade.and.cx)>($r1);
+
+     label19:
+        if $z0 == 0 goto label24;
+
+     label20:
+        exitmonitor r0;
+
+     label21:
+        return $r4;
+
+     label22:
+        $r5 := @caughtexception;
+
+        exitmonitor r0;
+
+     label23:
+        throw $r5;
+
+     label24:
+        $i4 = $i4 + 1;
+
+        if $i4 <= 2 goto label87;
+
+     label25:
+        specialinvoke r0.<com.metrictrade.and.cv: void a(com.metrictrade.and.cy,java.lang.String)>($r4, "FRE");
+
+     label26:
+        $i6 = $i4;
+
+        $i1 = $i3;
+
+        $i7 = $i2;
+
+        goto label07;
+
+     label27:
+        if $r1 == null goto label32;
+
+     label28:
+        $r6 = r0.<com.metrictrade.and.cv: long[] l>;
+
+     label29:
+        $i1 = $i3 % 32;
+
+     label30:
+        $l9 = $r1.<com.metrictrade.and.cx: long m>;
+
+        $r6[$i1] = $l9;
+
+     label31:
+        $i3 = $i3 + 1;
+
+     label32:
+        $z1 = $r4.<com.metrictrade.and.cy: boolean c>;
+
+     label33:
+        if $z1 != 0 goto label36;
+
+     label34:
+        specialinvoke r0.<com.metrictrade.and.cv: void a(com.metrictrade.and.cy,java.lang.String)>($r4, "RRB");
+
+     label35:
+        $i6 = $i2 + -1;
+
+        $i1 = $i3;
+
+        $i7 = $i6;
+
+        $i6 = $i4;
+
+        goto label07;
+
+     label36:
+        if $r1 == null goto label75;
+
+     label37:
+        $l9 = $r1.<com.metrictrade.and.cx: long l>;
+
+     label38:
+        $b10 = $l9 cmp 0L;
+
+        if $b10 == 0 goto label75;
+
+     label39:
+        $l9 = $r1.<com.metrictrade.and.cx: long l>;
+
+     label40:
+        $l9 = $l0 - $l9;
+
+     label41:
+        $l9 = staticinvoke <com.metrictrade.and.dc: long a(long)>($l9);
+
+     label42:
+        $i1 = <com.metrictrade.and.fj: int an>;
+
+        $l11 = (long) $i1;
+
+        $b10 = $l9 cmp $l11;
+
+        $i1 = (int) $b10;
+
+        if $i1 <= 0 goto label75;
+
+     label43:
+        $r7 = $r1.<com.metrictrade.and.cx: java.lang.String c>;
+
+     label44:
+        if $r7 == null goto label62;
+
+     label45:
+        $z1 = virtualinvoke $r7.<java.lang.String: boolean startsWith(java.lang.String)>("mon");
+
+     label46:
+        if $z1 == 0 goto label62;
+
+     label47:
+        $r8 = r0.<com.metrictrade.and.cv: com.metrictrade.and.ct i>;
+
+     label48:
+        if $r8 == null goto label62;
+
+     label49:
+        $i1 = r0.<com.metrictrade.and.cv: int f>;
+
+     label50:
+        $i1 = $i1 + 1;
+
+     label51:
+        r0.<com.metrictrade.and.cv: int f> = $i1;
+
+     label52:
+        $i1 = <com.metrictrade.and.fj: int an>;
+
+     label53:
+        $i6 = r0.<com.metrictrade.and.cv: int f>;
+
+     label54:
+        if $i6 <= 3 goto label67;
+
+        $b10 = 5;
+
+     label55:
+        $i1 = $i1 << $b10;
+
+        <com.metrictrade.and.fj: int ao> = $i1;
+
+     label56:
+        $z1 = virtualinvoke $r7.<java.lang.String: boolean startsWith(java.lang.String)>("monx");
+
+     label57:
+        if $z1 == 0 goto label68;
+
+     label58:
+        r0.<com.metrictrade.and.cv: long h> = $l0;
+
+        $r8 = r0.<com.metrictrade.and.cv: com.metrictrade.and.ct i>;
+
+        $i1 = $r8.<com.metrictrade.and.ct: int w>;
+
+     label59:
+        $i1 = $i1 + 1;
+
+     label60:
+        $r8.<com.metrictrade.and.ct: int w> = $i1;
+
+     label61:
+        virtualinvoke $r1.<com.metrictrade.and.cx: void a(java.lang.String,boolean)>("SO", 0);
+
+     label62:
+        virtualinvoke $r1.<com.metrictrade.and.cx: void a(java.lang.String,boolean)>("OU", 0);
+
+        specialinvoke r0.<com.metrictrade.and.cv: void a(com.metrictrade.and.cy,java.lang.String)>($r4, "OU");
+
+     label63:
+        $z1 = 1;
+
+     label64:
+        if $r1 == null goto label87;
+
+     label65:
+        $r8 = r0.<com.metrictrade.and.cv: com.metrictrade.and.ct i>;
+
+        $r8.<com.metrictrade.and.ct: boolean P> = $z1;
+
+     label66:
+        $i6 = $i4;
+
+        $i1 = $i3;
+
+        $i7 = $i2;
+
+        goto label07;
+
+     label67:
+        $b10 = 3;
+
+        goto label55;
+
+     label68:
+        r0.<com.metrictrade.and.cv: long g> = $l0;
+
+        $r8 = r0.<com.metrictrade.and.cv: com.metrictrade.and.ct i>;
+
+        $i1 = $r8.<com.metrictrade.and.ct: int v>;
+
+     label69:
+        $i1 = $i1 + 1;
+
+     label70:
+        $r8.<com.metrictrade.and.ct: int v> = $i1;
+
+     label71:
+        goto label61;
+
+     label72:
+        $r9 := @caughtexception;
+
+        $i6 = $i4;
+
+        $i1 = $i3;
+
+        $i7 = $i2;
+
+     label73:
+        virtualinvoke $r9.<java.lang.Exception: void printStackTrace()>();
+
+     label74:
+        goto label07;
+
+     label75:
+        if $r1 == null goto label86;
+
+     label76:
+        $i1 = $r1.<com.metrictrade.and.cx: int h>;
+
+     label77:
+        if $i1 <= 1 goto label86;
+
+     label78:
+        $r7 = $r1.<com.metrictrade.and.cx: java.lang.String d>;
+
+     label79:
+        if $r7 == null goto label86;
+
+     label80:
+        $r7 = $r1.<com.metrictrade.and.cx: java.lang.String d>;
+
+        $i1 = virtualinvoke $r7.<java.lang.String: int indexOf(java.lang.String)>("f");
+
+     label81:
+        if $i1 <= 0 goto label86;
+
+     label82:
+        $i1 = r0.<com.metrictrade.and.cv: int f>;
+
+     label83:
+        if $i1 == 0 goto label86;
+
+     label84:
+        r0.<com.metrictrade.and.cv: int f> = 0;
+
+     label85:
+        <com.metrictrade.and.fj: int ao> = 60000;
+
+     label86:
+        $z1 = 0;
+
+        goto label64;
+
+     label87:
+        $i6 = $i4;
+
+        $i1 = $i3;
+
+        $i7 = $i2;
+
+        goto label07;
+
+        catch java.lang.Throwable from label01 to label04 with label22;
+        catch java.lang.Exception from label05 to label06 with label72;
+        catch java.lang.Exception from label08 to label09 with label72;
+        catch java.lang.Exception from label10 to label11 with label72;
+        catch java.lang.Exception from label12 to label13 with label72;
+        catch java.lang.Exception from label14 to label15 with label72;
+        catch java.lang.Exception from label16 to label17 with label72;
+        catch java.lang.Exception from label18 to label19 with label72;
+        catch java.lang.Throwable from label05 to label19 with label22;
+        catch java.lang.Throwable from label20 to label21 with label22;
+        catch java.lang.Throwable from label22 to label23 with label22;
+        catch java.lang.Exception from label25 to label26 with label72;
+        catch java.lang.Exception from label28 to label29 with label72;
+        catch java.lang.Exception from label30 to label31 with label72;
+        catch java.lang.Exception from label32 to label33 with label72;
+        catch java.lang.Exception from label34 to label35 with label72;
+        catch java.lang.Exception from label37 to label38 with label72;
+        catch java.lang.Exception from label39 to label40 with label72;
+        catch java.lang.Exception from label41 to label42 with label72;
+        catch java.lang.Exception from label43 to label44 with label72;
+        catch java.lang.Exception from label45 to label46 with label72;
+        catch java.lang.Exception from label47 to label48 with label72;
+        catch java.lang.Exception from label49 to label50 with label72;
+        catch java.lang.Exception from label51 to label52 with label72;
+        catch java.lang.Exception from label53 to label54 with label72;
+        catch java.lang.Exception from label56 to label57 with label72;
+        catch java.lang.Exception from label58 to label59 with label72;
+        catch java.lang.Exception from label60 to label63 with label72;
+        catch java.lang.Exception from label65 to label66 with label72;
+        catch java.lang.Exception from label68 to label69 with label72;
+        catch java.lang.Exception from label70 to label71 with label72;
+        catch java.lang.Throwable from label25 to label71 with label22;
+        catch java.lang.Throwable from label73 to label74 with label22;
+        catch java.lang.Exception from label76 to label77 with label72;
+        catch java.lang.Exception from label78 to label79 with label72;
+        catch java.lang.Exception from label80 to label81 with label72;
+        catch java.lang.Exception from label82 to label83 with label72;
+        catch java.lang.Exception from label84 to label85 with label72;
+        catch java.lang.Throwable from label76 to label86 with label22;
+    }
+
+    private void a(com.metrictrade.and.cy, java.lang.String)
+    {
+        java.lang.Throwable $r5;
+        com.metrictrade.and.ak $r4;
+        com.metrictrade.and.cy $r1;
+        java.lang.String $r2;
+        com.metrictrade.and.cx $r3;
+        com.metrictrade.and.cv r0;
+
+        r0 := @this: com.metrictrade.and.cv;
+
+        $r1 := @parameter0: com.metrictrade.and.cy;
+
+        $r2 := @parameter1: java.lang.String;
+
+        if $r1 != null goto label1;
+
+        return;
+
+     label1:
+        $r3 = $r1.<com.metrictrade.and.cy: com.metrictrade.and.cx b>;
+
+        $r1.<com.metrictrade.and.cy: boolean c> = 0;
+
+        $r1.<com.metrictrade.and.cy: boolean c> = 0;
+
+        entermonitor r0;
+
+     label2:
+        $r4 = r0.<com.metrictrade.and.cv: com.metrictrade.and.ak o>;
+
+        virtualinvoke $r4.<com.metrictrade.and.ak: boolean d(java.lang.Object)>($r1);
+
+        if $r3 == null goto label3;
+
+        specialinvoke r0.<com.metrictrade.and.cv: void c(com.metrictrade.and.cx)>($r3);
+
+        virtualinvoke $r3.<com.metrictrade.and.cx: void a(java.lang.String,boolean)>($r2, 0);
+
+     label3:
+        exitmonitor r0;
+
+     label4:
+        return;
+
+     label5:
+        $r5 := @caughtexception;
+
+        exitmonitor r0;
+
+     label6:
+        throw $r5;
+
+        catch java.lang.Throwable from label2 to label4 with label5;
+        catch java.lang.Throwable from label5 to label6 with label5;
+    }
+
+    private boolean a(com.metrictrade.and.cx, long, boolean)
+    {
+        long $l0, $l1;
+        com.metrictrade.and.cy $r6;
+        com.metrictrade.and.cx $r1, $r2;
+        com.metrictrade.and.cv r0;
+        com.metrictrade.and.ct $r5;
+        int $i2, $i3, $i4;
+        java.lang.String $r3, $r4;
+        boolean $z0, $z1;
+
+        r0 := @this: com.metrictrade.and.cv;
+
+        $r1 := @parameter0: com.metrictrade.and.cx;
+
+        $l0 := @parameter1: long;
+
+        $z0 := @parameter2: boolean;
+
+        $l1 = staticinvoke <com.metrictrade.and.fj: long b()>();
+
+        specialinvoke r0.<com.metrictrade.and.cv: com.metrictrade.and.cy a(long,boolean)>($l1, 0);
+
+        $i2 = 0;
+
+     label1:
+        $i3 = virtualinvoke r0.<com.metrictrade.and.cv: int a()>();
+
+        if $i2 < $i3 goto label2;
+
+        return 0;
+
+     label2:
+        $r2 = virtualinvoke r0.<com.metrictrade.and.cv: com.metrictrade.and.cx a(int)>($i2);
+
+        if $r2 == null goto label5;
+
+        $i3 = $r2.<com.metrictrade.and.cx: int b>;
+
+        $i4 = $r1.<com.metrictrade.and.cx: int b>;
+
+        if $i3 != $i4 goto label5;
+
+        $r3 = $r2.<com.metrictrade.and.cx: java.lang.String c>;
+
+        $r4 = $r1.<com.metrictrade.and.cx: java.lang.String c>;
+
+        $z1 = virtualinvoke $r3.<java.lang.String: boolean startsWith(java.lang.String)>($r4);
+
+        if $z1 == 0 goto label5;
+
+        if $z0 == 0 goto label3;
+
+        $i2 = r0.<com.metrictrade.and.cv: int m>;
+
+        $r5 = r0.<com.metrictrade.and.cv: com.metrictrade.and.ct i>;
+
+        $i3 = $r5.<com.metrictrade.and.ct: int v>;
+
+        if $i2 == $i3 goto label4;
+
+        $r5 = r0.<com.metrictrade.and.cv: com.metrictrade.and.ct i>;
+
+        $i2 = $r5.<com.metrictrade.and.ct: int v>;
+
+        r0.<com.metrictrade.and.cv: int m> = $i2;
+
+        $l1 = $r1.<com.metrictrade.and.cx: long o>;
+
+        $l0 = $l0 - $l1;
+
+        $l0 = $l0 - 1L;
+
+        virtualinvoke $r1.<com.metrictrade.and.cx: void a(long,java.lang.String,boolean)>($l0, "CH", 0);
+
+        $r6 = $r2.<com.metrictrade.and.cx: com.metrictrade.and.cy q>;
+
+        specialinvoke r0.<com.metrictrade.and.cv: void a(com.metrictrade.and.cy,java.lang.String)>($r6, "CHA");
+
+        return 0;
+
+     label3:
+        $i2 = r0.<com.metrictrade.and.cv: int n>;
+
+        $r5 = r0.<com.metrictrade.and.cv: com.metrictrade.and.ct i>;
+
+        $i3 = $r5.<com.metrictrade.and.ct: int w>;
+
+        if $i2 == $i3 goto label4;
+
+        $r5 = r0.<com.metrictrade.and.cv: com.metrictrade.and.ct i>;
+
+        $i2 = $r5.<com.metrictrade.and.ct: int w>;
+
+        r0.<com.metrictrade.and.cv: int n> = $i2;
+
+        $l1 = $r1.<com.metrictrade.and.cx: long o>;
+
+        $l0 = $l0 - $l1;
+
+        $l0 = $l0 - 1L;
+
+        virtualinvoke $r1.<com.metrictrade.and.cx: void a(long,java.lang.String,boolean)>($l0, "CH", 0);
+
+        $r6 = $r2.<com.metrictrade.and.cx: com.metrictrade.and.cy q>;
+
+        specialinvoke r0.<com.metrictrade.and.cv: void a(com.metrictrade.and.cy,java.lang.String)>($r6, "CHA");
+
+        return 0;
+
+     label4:
+        return 1;
+
+     label5:
+        $i2 = $i2 + 1;
+
+        goto label1;
+    }
+
+    public static void c()
+    {
+        long $l0;
+
+        $l0 = staticinvoke <java.lang.System: long currentTimeMillis()>();
+
+        <com.metrictrade.and.cv: long t> = $l0;
+
+        <com.metrictrade.and.cv: long s> = $l0;
+
+        return;
+    }
+
+    private void c(com.metrictrade.and.cx)
+    {
+        java.lang.Throwable $r3;
+        com.metrictrade.and.ak $r2;
+        com.metrictrade.and.cx $r1;
+        com.metrictrade.and.cv r0;
+
+        r0 := @this: com.metrictrade.and.cv;
+
+        $r1 := @parameter0: com.metrictrade.and.cx;
+
+        if $r1 == null goto label5;
+
+        entermonitor r0;
+
+     label1:
+        $r2 = r0.<com.metrictrade.and.cv: com.metrictrade.and.ak a>;
+
+        virtualinvoke $r2.<com.metrictrade.and.ak: boolean d(java.lang.Object)>($r1);
+
+        exitmonitor r0;
+
+     label2:
+        return;
+
+     label3:
+        $r3 := @caughtexception;
+
+        exitmonitor r0;
+
+     label4:
+        throw $r3;
+
+     label5:
+        return;
+
+        catch java.lang.Throwable from label1 to label2 with label3;
+        catch java.lang.Throwable from label3 to label4 with label3;
+    }
+
+    public final void a(com.metrictrade.and.cx, boolean, boolean)
+    {
+        java.lang.Throwable $r5;
+        long $l2;
+        com.metrictrade.and.cx $r1, $r4;
+        com.metrictrade.and.cv r0;
+        byte $b3;
+        com.metrictrade.and.ak $r2;
+        int $i0, $i1;
+        java.lang.Object $r3;
+        boolean $z0, $z1;
+
+        r0 := @this: com.metrictrade.and.cv;
+
+        $r1 := @parameter0: com.metrictrade.and.cx;
+
+        $z0 := @parameter1: boolean;
+
+        $z1 := @parameter2: boolean;
+
+        virtualinvoke $r1.<com.metrictrade.and.cx: void b()>();
+
+        $i0 = 0;
+
+     label01:
+        $r2 = r0.<com.metrictrade.and.cv: com.metrictrade.and.ak p>;
+
+        $i1 = $r2.<com.metrictrade.and.ak: int a>;
+
+        if $i0 < $i1 goto label05;
+
+        $l2 = $r1.<com.metrictrade.and.cx: long o>;
+
+        $b3 = $l2 cmp 0L;
+
+        $i0 = (int) $b3;
+
+        if $i0 <= 0 goto label10;
+
+        entermonitor r0;
+
+        if $z1 != 0 goto label03;
+
+     label02:
+        $l2 = staticinvoke <com.metrictrade.and.fj: long b()>();
+
+        virtualinvoke $r1.<com.metrictrade.and.cx: void a(long,java.lang.String,boolean)>($l2, "DL", 0);
+
+     label03:
+        $r2 = r0.<com.metrictrade.and.cv: com.metrictrade.and.ak p>;
+
+        virtualinvoke $r2.<com.metrictrade.and.ak: boolean c(java.lang.Object)>($r1);
+
+        exitmonitor r0;
+
+     label04:
+        return;
+
+     label05:
+        $r2 = r0.<com.metrictrade.and.cv: com.metrictrade.and.ak p>;
+
+        $r3 = virtualinvoke $r2.<com.metrictrade.and.ak: java.lang.Object a(int)>($i0);
+
+        $r4 = (com.metrictrade.and.cx) $r3;
+
+        if $r4 == null goto label06;
+
+        $z0 = virtualinvoke $r1.<com.metrictrade.and.cx: boolean a(com.metrictrade.and.cx,boolean)>($r4, 0);
+
+        if $z0 == 0 goto label06;
+
+        if $z1 == 0 goto label10;
+
+        virtualinvoke $r4.<com.metrictrade.and.cx: void a(long,java.lang.String,boolean)>(0L, "DI", 0);
+
+        return;
+
+     label06:
+        $i0 = $i0 + 1;
+
+        goto label01;
+
+     label07:
+        $r5 := @caughtexception;
+
+     label08:
+        exitmonitor r0;
+
+     label09:
+        throw $r5;
+
+     label10:
+        return;
+
+        catch java.lang.Throwable from label02 to label04 with label07;
+        catch java.lang.Throwable from label08 to label09 with label07;
+    }
+
+    public final void b()
+    {
+        java.lang.Throwable $r5;
+        com.metrictrade.and.ak $r2;
+        int $i0;
+        java.lang.Object $r1;
+        com.metrictrade.and.cy $r3;
+        com.metrictrade.and.cv r0;
+        java.lang.Exception $r4;
+
+        r0 := @this: com.metrictrade.and.cv;
+
+        r0.<com.metrictrade.and.cv: boolean b> = 0;
+
+        $r2 = r0.<com.metrictrade.and.cv: com.metrictrade.and.ak p>;
+
+        virtualinvoke $r2.<com.metrictrade.and.ak: void a()>();
+
+        $r2 = r0.<com.metrictrade.and.cv: com.metrictrade.and.ak a>;
+
+        virtualinvoke $r2.<com.metrictrade.and.ak: void a()>();
+
+        entermonitor r0;
+
+     label1:
+        $r2 = r0.<com.metrictrade.and.cv: com.metrictrade.and.ak o>;
+
+        $i0 = $r2.<com.metrictrade.and.ak: int a>;
+
+        $i0 = $i0 + -1;
+
+     label2:
+        if $i0 >= 0 goto label4;
+
+        $r2 = r0.<com.metrictrade.and.cv: com.metrictrade.and.ak o>;
+
+        virtualinvoke $r2.<com.metrictrade.and.ak: void a()>();
+
+        exitmonitor r0;
+
+     label3:
+        return;
+
+     label4:
+        $r2 = r0.<com.metrictrade.and.cv: com.metrictrade.and.ak o>;
+
+        $r1 = virtualinvoke $r2.<com.metrictrade.and.ak: java.lang.Object a(int)>($i0);
+
+        $r3 = (com.metrictrade.and.cy) $r1;
+
+        specialinvoke r0.<com.metrictrade.and.cv: void a(com.metrictrade.and.cy,java.lang.String)>($r3, "HLP");
+
+     label5:
+        $i0 = $i0 + -1;
+
+        goto label2;
+
+     label6:
+        $r4 := @caughtexception;
+
+     label7:
+        virtualinvoke $r4.<java.lang.Exception: void printStackTrace()>();
+
+        goto label5;
+
+     label8:
+        $r5 := @caughtexception;
+
+        exitmonitor r0;
+
+     label9:
+        throw $r5;
+
+        catch java.lang.Throwable from label1 to label3 with label8;
+        catch java.lang.Exception from label4 to label5 with label6;
+        catch java.lang.Throwable from label4 to label5 with label8;
+        catch java.lang.Throwable from label7 to label9 with label8;
+    }
+
+    public final boolean b(com.metrictrade.and.cx)
+    {
+        java.lang.Throwable $r7;
+        long $l0;
+        com.metrictrade.and.cy $r2;
+        com.metrictrade.and.cx $r1;
+        com.metrictrade.and.cv r0;
+        java.lang.Exception $r6;
+        com.metrictrade.and.ct $r3;
+        com.metrictrade.and.ak $r5;
+        int $i1, $i2;
+        com.metrictrade.and.fj $r4;
+
+        r0 := @this: com.metrictrade.and.cv;
+
+        $r1 := @parameter0: com.metrictrade.and.cx;
+
+        entermonitor r0;
+
+     label01:
+        $l0 = staticinvoke <com.metrictrade.and.fj: long b()>();
+
+        $r2 = specialinvoke r0.<com.metrictrade.and.cv: com.metrictrade.and.cy a(long,boolean)>($l0, 1);
+
+     label02:
+        if $r2 != null goto label08;
+
+     label03:
+        $i1 = r0.<com.metrictrade.and.cv: int j>;
+
+     label04:
+        $i2 = <com.metrictrade.and.fj: int as>;
+
+     label05:
+        if $i1 < $i2 goto label08;
+
+     label06:
+        exitmonitor r0;
+
+     label07:
+        return 0;
+
+     label08:
+        virtualinvoke $r1.<com.metrictrade.and.cx: void a(long,java.lang.String,boolean)>($l0, null, 0);
+
+        $r1.<com.metrictrade.and.cx: int k> = 1;
+
+     label09:
+        if $r2 != null goto label16;
+
+        $r2 = new com.metrictrade.and.cy;
+
+     label10:
+        $r3 = r0.<com.metrictrade.and.cv: com.metrictrade.and.ct i>;
+
+        $r4 = $r3.<com.metrictrade.and.ct: com.metrictrade.and.fj a>;
+
+     label11:
+        $i1 = <com.metrictrade.and.cv: int q>;
+
+        $i1 = $i1 + 1;
+
+        <com.metrictrade.and.cv: int q> = $i1;
+
+     label12:
+        specialinvoke $r2.<com.metrictrade.and.cy: void <init>(com.metrictrade.and.cv,com.metrictrade.and.fj,int,com.metrictrade.and.cx,boolean)>(r0, $r4, $i1, $r1, 1);
+
+        staticinvoke <com.metrictrade.and.fj: void a(java.lang.Thread,int)>($r2, 0);
+
+        $r5 = r0.<com.metrictrade.and.cv: com.metrictrade.and.ak o>;
+
+        virtualinvoke $r5.<com.metrictrade.and.ak: boolean c(java.lang.Object)>($r2);
+
+     label13:
+        staticinvoke <java.lang.Thread: void sleep(long)>(3L);
+
+     label14:
+        exitmonitor r0;
+
+     label15:
+        return 1;
+
+     label16:
+        $r1 = virtualinvoke $r2.<com.metrictrade.and.cy: com.metrictrade.and.cx a(com.metrictrade.and.cx)>($r1);
+
+        specialinvoke r0.<com.metrictrade.and.cv: void c(com.metrictrade.and.cx)>($r1);
+
+     label17:
+        goto label13;
+
+     label18:
+        $r6 := @caughtexception;
+
+     label19:
+        virtualinvoke $r6.<java.lang.Exception: void printStackTrace()>();
+
+        exitmonitor r0;
+
+     label20:
+        return 0;
+
+     label21:
+        $r7 := @caughtexception;
+
+        exitmonitor r0;
+
+     label22:
+        throw $r7;
+
+        catch java.lang.Exception from label01 to label02 with label18;
+        catch java.lang.Exception from label03 to label04 with label18;
+        catch java.lang.Throwable from label01 to label05 with label21;
+        catch java.lang.Throwable from label06 to label07 with label21;
+        catch java.lang.Exception from label08 to label09 with label18;
+        catch java.lang.Exception from label10 to label11 with label18;
+        catch java.lang.Exception from label12 to label14 with label18;
+        catch java.lang.Throwable from label08 to label14 with label21;
+        catch java.lang.Throwable from label14 to label15 with label21;
+        catch java.lang.Exception from label16 to label17 with label18;
+        catch java.lang.Throwable from label16 to label17 with label21;
+        catch java.lang.Throwable from label19 to label20 with label21;
+        catch java.lang.Throwable from label21 to label22 with label21;
+    }
+
+    public final void run()
+    {
+        com.metrictrade.and.cx $r11, $r19;
+        com.metrictrade.and.cv r0;
+        com.metrictrade.and.ct $r2, $r7;
+        byte $b5, $b10;
+        com.metrictrade.and.y $r3;
+        boolean $z0, $z1, $z2, $z3;
+        java.lang.Exception $r16, $r23;
+        java.lang.StringBuilder $r5, $r24;
+        com.metrictrade.and.fj $r9;
+        java.lang.Throwable $r13, $r15, $r21, $r22;
+        long $l0, $l1, $l2, $l6, $l8, $l9, $l11, $l12;
+        com.metrictrade.and.ey $r8;
+        short $s4;
+        com.metrictrade.and.ep $r12;
+        com.metrictrade.and.ak $r10;
+        int $i3, $i7, $i13, $i14;
+        java.lang.String $r6, $r20;
+        java.io.PrintStream $r4;
+        java.lang.Class $r1, $r17, $r18;
+        java.lang.Object $r14;
+
+        r0 := @this: com.metrictrade.and.cv;
+
+        r0.<com.metrictrade.and.cv: boolean b> = 1;
+
+        $l0 = staticinvoke <java.lang.System: long currentTimeMillis()>();
+
+        $l1 = 1000L + $l0;
+
+        <com.metrictrade.and.cv: long t> = $l1;
+
+        <com.metrictrade.and.cv: long s> = $l1;
+
+        $l1 = staticinvoke <com.metrictrade.and.ct: long e()>();
+
+        $r1 = null;
+
+        $l2 = staticinvoke <java.lang.System: long currentTimeMillis()>();
+
+        $l2 = 10000L + $l2;
+
+        $z0 = 0;
+
+        <com.metrictrade.and.fj: long aS> = $l2;
+
+        $r2 = r0.<com.metrictrade.and.cv: com.metrictrade.and.ct i>;
+
+        $z1 = <com.metrictrade.and.fj: boolean aW>;
+
+        $r2.<com.metrictrade.and.ct: boolean O> = $z1;
+
+        $r2 = r0.<com.metrictrade.and.cv: com.metrictrade.and.ct i>;
+
+        $r3 = <com.metrictrade.and.fj: com.metrictrade.and.y s>;
+
+        $i3 = interfaceinvoke $r3.<com.metrictrade.and.y: int a(boolean)>(0);
+
+        $r2.<com.metrictrade.and.ct: int Q> = $i3;
+
+        $s4 = 3200;
+
+        $i3 = <com.metrictrade.and.fj: int M>;
+
+        if $i3 != 0 goto label178;
+
+        $b5 = 12;
+
+        $l6 = $l2;
+
+     label001:
+        $z1 = r0.<com.metrictrade.and.cv: boolean b>;
+
+     label002:
+        if $z1 == 0 goto label176;
+
+        $r2 = <com.metrictrade.and.fj: com.metrictrade.and.ct t>;
+
+     label003:
+        r0.<com.metrictrade.and.cv: int c> = 0;
+
+     label004:
+        $i7 = 0;
+
+        $i3 = 0;
+
+     label005:
+        if $i3 < 2 goto label075;
+
+        if $i7 <= 0 goto label022;
+
+     label006:
+        $z1 = r0.<com.metrictrade.and.cv: boolean e>;
+
+     label007:
+        if $z1 != 0 goto label022;
+
+     label008:
+        r0.<com.metrictrade.and.cv: boolean e> = 1;
+
+     label009:
+        $z1 = 0;
+
+     label010:
+        $l8 = staticinvoke <com.metrictrade.and.fj: long b()>();
+
+     label011:
+        $i3 = 0;
+
+     label012:
+        if $i3 < 300 goto label099;
+
+     label013:
+        if $z1 != 0 goto label022;
+
+     label014:
+        $l9 = staticinvoke <com.metrictrade.and.fj: long b()>();
+
+     label015:
+        $r4 = <java.lang.System: java.io.PrintStream out>;
+
+        $r24 = new java.lang.StringBuilder;
+
+     label016:
+        specialinvoke $r24.<java.lang.StringBuilder: void <init>(java.lang.String)>("\u039d\u03bft Loaded: ");
+
+     label017:
+        $l8 = $l9 - $l8;
+
+     label018:
+        $r5 = virtualinvoke $r24.<java.lang.StringBuilder: java.lang.StringBuilder append(long)>($l8);
+
+        $r5 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("ms ");
+
+        $r5 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>($i3);
+
+        $r6 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        virtualinvoke $r4.<java.io.PrintStream: void println(java.lang.String)>($r6);
+
+     label019:
+        r0.<com.metrictrade.and.cv: long g> = $l9;
+
+        $r7 = r0.<com.metrictrade.and.cv: com.metrictrade.and.ct i>;
+
+        $i3 = $r7.<com.metrictrade.and.ct: int v>;
+
+     label020:
+        $i3 = $i3 + 1;
+
+     label021:
+        $r7.<com.metrictrade.and.ct: int v> = $i3;
+
+     label022:
+        $l9 = staticinvoke <java.lang.System: long currentTimeMillis()>();
+
+     label023:
+        $l8 = $l9 - $l6;
+
+        $b10 = $l8 cmp 5000L;
+
+        $i3 = (int) $b10;
+
+        if $i3 > 0 goto label024;
+
+        if $z0 == 0 goto label056;
+
+        $l8 = $l6 - $l9;
+
+        $b10 = $l8 cmp 5000L;
+
+        $i3 = (int) $b10;
+
+        if $i3 <= 0 goto label056;
+
+     label024:
+        $z0 = 1;
+
+        $z1 = <com.metrictrade.and.fj: boolean L>;
+
+        $l8 = <com.metrictrade.and.fj: long aT>;
+
+        $l8 = $l9 - $l8;
+
+        $b10 = $l8 cmp 0L;
+
+        $i3 = (int) $b10;
+
+        if $i3 >= 0 goto label175;
+
+        $l8 = $l8 - $l8;
+
+     label025:
+        $z1 = 0;
+
+        $l11 = $l9 - $l2;
+
+     label026:
+        $l11 = staticinvoke <com.metrictrade.and.dc: long a(long)>($l11);
+
+     label027:
+        $z2 = <com.metrictrade.and.fj: boolean aR>;
+
+        if $z2 == 0 goto label106;
+
+        $i3 = 30000;
+
+     label028:
+        $l12 = (long) $i3;
+
+        $b10 = $l11 cmp $l12;
+
+        $i3 = (int) $b10;
+
+        if $i3 <= 0 goto label029;
+
+        $z1 = 1;
+
+        $l2 = $l9;
+
+     label029:
+        $r3 = <com.metrictrade.and.fj: com.metrictrade.and.y s>;
+
+     label030:
+        $i3 = interfaceinvoke $r3.<com.metrictrade.and.y: int a(boolean)>($z1);
+
+     label031:
+        $i7 = <com.metrictrade.and.fj: int aY>;
+
+        if $i7 != 1 goto label107;
+
+        $z1 = 1;
+
+     label032:
+        $r7 = r0.<com.metrictrade.and.cv: com.metrictrade.and.ct i>;
+
+        $z2 = $r7.<com.metrictrade.and.ct: boolean N>;
+
+     label033:
+        if $z2 != $z1 goto label038;
+
+     label034:
+        $r7 = r0.<com.metrictrade.and.cv: com.metrictrade.and.ct i>;
+
+        $z2 = $r7.<com.metrictrade.and.ct: boolean O>;
+
+     label035:
+        $z3 = <com.metrictrade.and.fj: boolean aW>;
+
+        if $z2 != $z3 goto label038;
+
+     label036:
+        $r7 = r0.<com.metrictrade.and.cv: com.metrictrade.and.ct i>;
+
+        $i7 = $r7.<com.metrictrade.and.ct: int Q>;
+
+     label037:
+        if $i7 == $i3 goto label044;
+
+     label038:
+        $l8 = <com.metrictrade.and.fj: long aS>;
+
+        $l8 = $l9 - $l8;
+
+     label039:
+        $l8 = staticinvoke <com.metrictrade.and.dc: long a(long)>($l8);
+
+     label040:
+        $b10 = $l8 cmp 60000L;
+
+        $i7 = (int) $b10;
+
+        if $i7 <= 0 goto label044;
+
+        <com.metrictrade.and.fj: long aS> = $l9;
+
+     label041:
+        $r7 = r0.<com.metrictrade.and.cv: com.metrictrade.and.ct i>;
+
+     label042:
+        $z2 = <com.metrictrade.and.fj: boolean aW>;
+
+     label043:
+        virtualinvoke $r7.<com.metrictrade.and.ct: void a(boolean,boolean,int)>($z1, $z2, $i3);
+
+     label044:
+        $i3 = <com.metrictrade.and.fj: int ak>;
+
+        $i3 = $i3 & -511;
+
+        if $i3 == 0 goto label051;
+
+        $l8 = <com.metrictrade.and.fj: long aj>;
+
+        $l8 = $l9 - $l8;
+
+     label045:
+        $l8 = staticinvoke <com.metrictrade.and.dc: long a(long)>($l8);
+
+     label046:
+        $b10 = $l8 cmp 120000L;
+
+        $i3 = (int) $b10;
+
+        if $i3 <= 0 goto label051;
+
+        $r8 = <com.metrictrade.and.fj: com.metrictrade.and.ey u>;
+
+        if $r8 == null goto label051;
+
+     label047:
+        $i3 = interfaceinvoke $r8.<com.metrictrade.and.ey: int q()>();
+
+     label048:
+        if $i3 == -2 goto label051;
+
+     label049:
+        $r7 = r0.<com.metrictrade.and.cv: com.metrictrade.and.ct i>;
+
+        $r9 = $r7.<com.metrictrade.and.ct: com.metrictrade.and.fj a>;
+
+        $r7 = r0.<com.metrictrade.and.cv: com.metrictrade.and.ct i>;
+
+     label050:
+        virtualinvoke $r9.<com.metrictrade.and.fj: boolean a(com.metrictrade.and.ct,boolean)>($r7, 0);
+
+     label051:
+        $z1 = <com.metrictrade.and.cv: boolean r>;
+
+        if $z1 != 0 goto label055;
+
+        $l8 = $l9 - $l0;
+
+     label052:
+        $l8 = staticinvoke <com.metrictrade.and.dc: long a(long)>($l8);
+
+     label053:
+        $b10 = $l8 cmp 150000L;
+
+        $i3 = (int) $b10;
+
+        if $i3 <= 0 goto label055;
+
+        <com.metrictrade.and.cv: boolean r> = 1;
+
+        $r3 = <com.metrictrade.and.fj: com.metrictrade.and.y s>;
+
+     label054:
+        interfaceinvoke $r3.<com.metrictrade.and.y: void i()>();
+
+     label055:
+        $l6 = $l9;
+
+     label056:
+        $l8 = staticinvoke <com.metrictrade.and.ct: long e()>();
+
+     label057:
+        $b10 = $l1 cmp $l8;
+
+        if $b10 == 0 goto label113;
+
+        $l8 = <com.metrictrade.and.cv: long t>;
+
+        $l8 = $l9 - $l8;
+
+     label058:
+        $l8 = staticinvoke <com.metrictrade.and.dc: long a(long)>($l8);
+
+     label059:
+        $b10 = $l8 cmp 480L;
+
+        $i3 = (int) $b10;
+
+        if $i3 <= 0 goto label066;
+
+     label060:
+        $l8 = staticinvoke <com.metrictrade.and.ct: long e()>();
+
+     label061:
+        $l1 = $l8;
+
+     label062:
+        r0.<com.metrictrade.and.cv: boolean d> = 0;
+
+     label063:
+        if $r2 == null goto label065;
+
+     label064:
+        virtualinvoke $r2.<com.metrictrade.and.ct: void a(java.lang.Object,int,long)>(null, 528, $l9);
+
+     label065:
+        <com.metrictrade.and.cv: long t> = $l9;
+
+        <com.metrictrade.and.cv: long s> = $l9;
+
+        $s4 = 480;
+
+     label066:
+        $i3 = 0;
+
+     label067:
+        if $i3 < $b5 goto label116;
+
+     label068:
+        $i3 = <com.metrictrade.and.fj: int ap>;
+
+        if $i3 <= 0 goto label069;
+
+        $i3 = <com.metrictrade.and.fj: int aq>;
+
+        $i7 = <com.metrictrade.and.fj: int ap>;
+
+        if $i3 >= $i7 goto label072;
+
+     label069:
+        $i3 = 0;
+
+     label070:
+        $r10 = r0.<com.metrictrade.and.cv: com.metrictrade.and.ak p>;
+
+        $i7 = $r10.<com.metrictrade.and.ak: int a>;
+
+     label071:
+        if $i3 < $i7 goto label126;
+
+     label072:
+        $z1 = r0.<com.metrictrade.and.cv: boolean b>;
+
+     label073:
+        if $z1 != 0 goto label001;
+
+     label074:
+        $z1 = r0.<com.metrictrade.and.cv: boolean b>;
+
+        if $z1 != 0 goto label177;
+
+        return;
+
+     label075:
+        $i13 = virtualinvoke r0.<com.metrictrade.and.cv: int a()>();
+
+     label076:
+        $i13 = $i13 + -1;
+
+     label077:
+        $z1 = r0.<com.metrictrade.and.cv: boolean b>;
+
+     label078:
+        if $z1 == 0 goto label079;
+
+        if $i13 >= 0 goto label080;
+
+     label079:
+        $i3 = $i3 + 1;
+
+        goto label005;
+
+     label080:
+        $r11 = virtualinvoke r0.<com.metrictrade.and.cv: com.metrictrade.and.cx a(int)>($i13);
+
+     label081:
+        if $r11 == null goto label097;
+
+        if $i3 != 0 goto label084;
+
+     label082:
+        $r6 = $r11.<com.metrictrade.and.cx: java.lang.String g>;
+
+     label083:
+        if $r6 == null goto label097;
+
+     label084:
+        $r6 = $r11.<com.metrictrade.and.cx: java.lang.String c>;
+
+     label085:
+        if $r6 == null goto label097;
+
+     label086:
+        $i14 = $r11.<com.metrictrade.and.cx: int k>;
+
+     label087:
+        if $i14 > 0 goto label097;
+
+     label088:
+        $r7 = r0.<com.metrictrade.and.cv: com.metrictrade.and.ct i>;
+
+        $z1 = $r7.<com.metrictrade.and.ct: boolean z>;
+
+     label089:
+        if $z1 != 0 goto label098;
+
+     label090:
+        $z1 = $r11.<com.metrictrade.and.cx: boolean w>;
+
+     label091:
+        if $z1 != 0 goto label098;
+
+        $z1 = 0;
+
+     label092:
+        if $z1 == 0 goto label097;
+
+     label093:
+        virtualinvoke r0.<com.metrictrade.and.cv: boolean b(com.metrictrade.and.cx)>($r11);
+
+     label094:
+        $i7 = $i7 + 1;
+
+     label095:
+        $z1 = r0.<com.metrictrade.and.cv: boolean e>;
+
+     label096:
+        if $z1 == 0 goto label079;
+
+     label097:
+        $i13 = $i13 + -1;
+
+        goto label077;
+
+     label098:
+        $z1 = 1;
+
+        goto label092;
+
+     label099:
+        staticinvoke <java.lang.Thread: void sleep(long)>(90L);
+
+     label100:
+        $r7 = r0.<com.metrictrade.and.cv: com.metrictrade.and.ct i>;
+
+        $z2 = $r7.<com.metrictrade.and.ct: boolean z>;
+
+     label101:
+        if $z2 == 0 goto label105;
+
+        $r8 = <com.metrictrade.and.fj: com.metrictrade.and.ey u>;
+
+     label102:
+        $r12 = (com.metrictrade.and.ep) $r8;
+
+     label103:
+        interfaceinvoke $r12.<com.metrictrade.and.ep: void a(java.lang.Object,long)>(null, 0L);
+
+     label104:
+        $z1 = 1;
+
+        goto label013;
+
+     label105:
+        $i3 = $i3 + 1;
+
+        goto label012;
+
+     label106:
+        $i3 = 60000;
+
+        goto label028;
+
+     label107:
+        $i7 = <com.metrictrade.and.fj: int aY>;
+
+        if $i7 == 2 goto label112;
+
+        if $i3 != 0 goto label108;
+
+        $z1 = 1;
+
+        goto label032;
+
+     label108:
+        $z1 = <com.metrictrade.and.fj: boolean aW>;
+
+        if $z1 == 0 goto label110;
+
+        $i7 = 60000;
+
+     label109:
+        $l11 = (long) $i7;
+
+        $b10 = $l8 cmp $l11;
+
+        $i7 = (int) $b10;
+
+        if $i7 <= 0 goto label112;
+
+        $z1 = 1;
+
+        goto label032;
+
+     label110:
+        $i7 = <com.metrictrade.and.fj: int M>;
+
+        if $i7 != 0 goto label111;
+
+        $i7 = 600000;
+
+        goto label109;
+
+     label111:
+        $i7 = 240000;
+
+        goto label109;
+
+     label112:
+        $z1 = 0;
+
+        goto label032;
+
+     label113:
+        $l8 = <com.metrictrade.and.cv: long s>;
+
+        $l8 = $l9 - $l8;
+
+        $l11 = (long) $s4;
+
+        $b10 = $l8 cmp $l11;
+
+        $i3 = (int) $b10;
+
+        if $i3 <= 0 goto label066;
+
+        if $r2 == null goto label115;
+
+     label114:
+        virtualinvoke $r2.<com.metrictrade.and.ct: void a(java.lang.Object,int,long)>(null, 768, $l9);
+
+     label115:
+        <com.metrictrade.and.cv: long s> = $l9;
+
+        $s4 = 3200;
+
+        goto label066;
+
+     label116:
+        staticinvoke <java.lang.Thread: void sleep(long)>(24L);
+
+     label117:
+        if $r2 == null goto label121;
+
+     label118:
+        $r7 = r0.<com.metrictrade.and.cv: com.metrictrade.and.ct i>;
+
+        $r12 = $r7.<com.metrictrade.and.ct: com.metrictrade.and.ep t>;
+
+     label119:
+        if $r12 == null goto label121;
+
+        $i7 = $i3 % 2;
+
+        if $i7 != 1 goto label121;
+
+     label120:
+        $l8 = staticinvoke <java.lang.System: long currentTimeMillis()>();
+
+        virtualinvoke $r2.<com.metrictrade.and.ct: void a(java.lang.Object,int,long)>(null, 512, $l8);
+
+     label121:
+        $z1 = r0.<com.metrictrade.and.cv: boolean d>;
+
+     label122:
+        if $z1 == 0 goto label124;
+
+        $l8 = $l9 - 480L;
+
+        $l8 = $l8 - 480L;
+
+        <com.metrictrade.and.cv: long t> = $l8;
+
+        goto label068;
+
+     label123:
+        $r13 := @caughtexception;
+
+        return;
+
+     label124:
+        $i7 = r0.<com.metrictrade.and.cv: int c>;
+
+     label125:
+        if $i7 > 0 goto label068;
+
+        $l8 = <com.metrictrade.and.cv: long s>;
+
+        $l8 = $l9 - $l8;
+
+        $l11 = (long) $s4;
+
+        $b10 = $l8 cmp $l11;
+
+        $i7 = (int) $b10;
+
+        if $i7 > 0 goto label068;
+
+        $i3 = $i3 + 1;
+
+        goto label067;
+
+     label126:
+        $r10 = r0.<com.metrictrade.and.cv: com.metrictrade.and.ak p>;
+
+     label127:
+        $r14 = virtualinvoke $r10.<com.metrictrade.and.ak: java.lang.Object a(int)>($i3);
+
+     label128:
+        $r11 = (com.metrictrade.and.cx) $r14;
+
+     label129:
+        if $r11 == null goto label174;
+
+     label130:
+        $i7 = $r11.<com.metrictrade.and.cx: int b>;
+
+     label131:
+        $z1 = staticinvoke <com.metrictrade.and.fj: boolean u(int)>($i7);
+
+     label132:
+        if $z1 == 0 goto label147;
+
+        $z1 = 0;
+
+     label133:
+        $z2 = $r11.<com.metrictrade.and.cx: boolean v>;
+
+     label134:
+        if $z2 != 0 goto label137;
+
+     label135:
+        $z2 = specialinvoke r0.<com.metrictrade.and.cv: boolean a(com.metrictrade.and.cx,long,boolean)>($r11, $l9, $z1);
+
+     label136:
+        if $z2 != 0 goto label174;
+
+     label137:
+        $l8 = $r11.<com.metrictrade.and.cx: long l>;
+
+     label138:
+        $l8 = $l9 - $l8;
+
+     label139:
+        $l8 = staticinvoke <java.lang.Math: long abs(long)>($l8);
+
+     label140:
+        $l11 = $r11.<com.metrictrade.and.cx: long o>;
+
+     label141:
+        $b10 = $l8 cmp $l11;
+
+        $i7 = (int) $b10;
+
+        if $i7 <= 0 goto label174;
+
+     label142:
+        $r11.<com.metrictrade.and.cx: long l> = $l9;
+
+        $z2 = $r11.<com.metrictrade.and.cx: boolean v>;
+
+     label143:
+        if $z2 == 0 goto label155;
+
+     label144:
+        entermonitor r0;
+
+     label145:
+        $r10 = r0.<com.metrictrade.and.cv: com.metrictrade.and.ak p>;
+
+        virtualinvoke $r10.<com.metrictrade.and.ak: boolean d(java.lang.Object)>($r11);
+
+        $r11.<com.metrictrade.and.cx: int k> = 0;
+
+        $r10 = r0.<com.metrictrade.and.cv: com.metrictrade.and.ak a>;
+
+        virtualinvoke $r10.<com.metrictrade.and.ak: boolean c(java.lang.Object)>($r11);
+
+        $i7 = r0.<com.metrictrade.and.cv: int c>;
+
+        $i7 = $i7 + 1;
+
+        r0.<com.metrictrade.and.cv: int c> = $i7;
+
+        $i3 = $i3 + -1;
+
+        exitmonitor r0;
+
+     label146:
+        $i3 = $i3 + 1;
+
+        goto label070;
+
+     label147:
+        $z1 = 1;
+
+        goto label133;
+
+     label148:
+        $r15 := @caughtexception;
+
+        exitmonitor r0;
+
+     label149:
+        throw $r15;
+
+     label150:
+        $r16 := @caughtexception;
+
+     label151:
+        $r17 = virtualinvoke $r16.<java.lang.Object: java.lang.Class getClass()>();
+
+        $r18 = $r17;
+
+        if $r17 == $r1 goto label173;
+
+        $r4 = <java.lang.System: java.io.PrintStream out>;
+
+        $r24 = new java.lang.StringBuilder;
+
+        specialinvoke $r24.<java.lang.StringBuilder: void <init>(java.lang.String)>("** runexception ");
+
+        $r6 = virtualinvoke $r16.<java.lang.Exception: java.lang.String toString()>();
+
+        $r5 = virtualinvoke $r24.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r6);
+
+        $r6 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        virtualinvoke $r4.<java.io.PrintStream: void println(java.lang.String)>($r6);
+
+        virtualinvoke $r16.<java.lang.Exception: void printStackTrace()>();
+
+     label152:
+        $z1 = r0.<com.metrictrade.and.cv: boolean b>;
+
+        if $z1 == 0 goto label171;
+
+     label153:
+        staticinvoke <java.lang.Thread: void sleep(long)>(300L);
+
+     label154:
+        $r1 = $r18;
+
+        goto label074;
+
+     label155:
+        if $z1 == 0 goto label164;
+
+     label156:
+        $r2 = r0.<com.metrictrade.and.cv: com.metrictrade.and.ct i>;
+
+        $i7 = $r2.<com.metrictrade.and.ct: int v>;
+
+        r0.<com.metrictrade.and.cv: int m> = $i7;
+
+     label157:
+        $r14 = virtualinvoke $r11.<com.metrictrade.and.cx: java.lang.Object clone()>();
+
+     label158:
+        $r11 = (com.metrictrade.and.cx) $r14;
+
+        entermonitor r0;
+
+     label159:
+        $r10 = r0.<com.metrictrade.and.cv: com.metrictrade.and.ak a>;
+
+        $i7 = $r10.<com.metrictrade.and.ak: int a>;
+
+        $i7 = $i7 + -1;
+
+     label160:
+        if $i7 >= 0 goto label166;
+
+     label161:
+        if $r11 == null goto label162;
+
+        $r10 = r0.<com.metrictrade.and.cv: com.metrictrade.and.ak a>;
+
+        virtualinvoke $r10.<com.metrictrade.and.ak: boolean c(java.lang.Object)>($r11);
+
+        $i7 = r0.<com.metrictrade.and.cv: int c>;
+
+        $i7 = $i7 + 1;
+
+        r0.<com.metrictrade.and.cv: int c> = $i7;
+
+     label162:
+        exitmonitor r0;
+
+     label163:
+        goto label146;
+
+     label164:
+        $r2 = r0.<com.metrictrade.and.cv: com.metrictrade.and.ct i>;
+
+        $i7 = $r2.<com.metrictrade.and.ct: int w>;
+
+        r0.<com.metrictrade.and.cv: int n> = $i7;
+
+     label165:
+        goto label157;
+
+     label166:
+        $r19 = virtualinvoke r0.<com.metrictrade.and.cv: com.metrictrade.and.cx a(int)>($i7);
+
+        if $r19 == null goto label167;
+
+        $r6 = $r11.<com.metrictrade.and.cx: java.lang.String c>;
+
+        $r20 = $r19.<com.metrictrade.and.cx: java.lang.String c>;
+
+        $z1 = virtualinvoke $r6.<java.lang.String: boolean equals(java.lang.Object)>($r20);
+
+        if $z1 == 0 goto label167;
+
+        $r11 = null;
+
+        goto label161;
+
+     label167:
+        $i7 = $i7 + -1;
+
+        goto label160;
+
+     label168:
+        $r21 := @caughtexception;
+
+        exitmonitor r0;
+
+     label169:
+        throw $r21;
+
+     label170:
+        $r22 := @caughtexception;
+
+     label171:
+        $r1 = $r18;
+
+        goto label074;
+
+     label172:
+        $r23 := @caughtexception;
+
+        $r16 = $r23;
+
+        $l6 = $l9;
+
+        goto label151;
+
+     label173:
+        $r18 = $r1;
+
+        goto label152;
+
+     label174:
+        goto label146;
+
+     label175:
+        goto label025;
+
+     label176:
+        goto label074;
+
+     label177:
+        goto label001;
+
+     label178:
+        $b5 = 24;
+
+        $l6 = $l2;
+
+        goto label001;
+
+        catch java.lang.InterruptedException from label010 to label011 with label123;
+        catch java.lang.InterruptedException from label014 to label015 with label123;
+        catch java.lang.InterruptedException from label016 to label017 with label123;
+        catch java.lang.InterruptedException from label018 to label019 with label123;
+        catch java.lang.InterruptedException from label022 to label023 with label123;
+        catch java.lang.Exception from label001 to label002 with label150;
+        catch java.lang.Exception from label003 to label004 with label150;
+        catch java.lang.Exception from label006 to label007 with label150;
+        catch java.lang.Exception from label008 to label009 with label150;
+        catch java.lang.Exception from label010 to label011 with label150;
+        catch java.lang.Exception from label014 to label015 with label150;
+        catch java.lang.Exception from label016 to label017 with label150;
+        catch java.lang.Exception from label018 to label020 with label150;
+        catch java.lang.Exception from label021 to label023 with label150;
+        catch java.lang.InterruptedException from label026 to label027 with label123;
+        catch java.lang.InterruptedException from label030 to label031 with label123;
+        catch java.lang.InterruptedException from label039 to label040 with label123;
+        catch java.lang.InterruptedException from label043 to label044 with label123;
+        catch java.lang.InterruptedException from label045 to label046 with label123;
+        catch java.lang.InterruptedException from label047 to label048 with label123;
+        catch java.lang.InterruptedException from label050 to label051 with label123;
+        catch java.lang.InterruptedException from label052 to label053 with label123;
+        catch java.lang.InterruptedException from label054 to label055 with label123;
+        catch java.lang.Exception from label026 to label027 with label172;
+        catch java.lang.Exception from label030 to label031 with label172;
+        catch java.lang.Exception from label032 to label033 with label172;
+        catch java.lang.Exception from label034 to label035 with label172;
+        catch java.lang.Exception from label036 to label037 with label172;
+        catch java.lang.Exception from label039 to label040 with label172;
+        catch java.lang.Exception from label041 to label042 with label172;
+        catch java.lang.Exception from label043 to label044 with label172;
+        catch java.lang.Exception from label045 to label046 with label172;
+        catch java.lang.Exception from label047 to label048 with label172;
+        catch java.lang.Exception from label049 to label051 with label172;
+        catch java.lang.Exception from label052 to label053 with label172;
+        catch java.lang.Exception from label054 to label055 with label172;
+        catch java.lang.InterruptedException from label056 to label057 with label123;
+        catch java.lang.InterruptedException from label058 to label059 with label123;
+        catch java.lang.InterruptedException from label060 to label061 with label123;
+        catch java.lang.InterruptedException from label064 to label065 with label123;
+        catch java.lang.Exception from label056 to label057 with label150;
+        catch java.lang.Exception from label058 to label059 with label150;
+        catch java.lang.Exception from label060 to label061 with label150;
+        catch java.lang.Exception from label062 to label063 with label150;
+        catch java.lang.Exception from label064 to label065 with label150;
+        catch java.lang.Exception from label070 to label071 with label150;
+        catch java.lang.Exception from label072 to label073 with label150;
+        catch java.lang.InterruptedException from label075 to label076 with label123;
+        catch java.lang.InterruptedException from label080 to label081 with label123;
+        catch java.lang.InterruptedException from label093 to label094 with label123;
+        catch java.lang.InterruptedException from label099 to label100 with label123;
+        catch java.lang.InterruptedException from label103 to label104 with label123;
+        catch java.lang.Exception from label075 to label076 with label150;
+        catch java.lang.Exception from label077 to label078 with label150;
+        catch java.lang.Exception from label080 to label081 with label150;
+        catch java.lang.Exception from label082 to label083 with label150;
+        catch java.lang.Exception from label084 to label085 with label150;
+        catch java.lang.Exception from label086 to label087 with label150;
+        catch java.lang.Exception from label088 to label089 with label150;
+        catch java.lang.Exception from label090 to label091 with label150;
+        catch java.lang.Exception from label093 to label094 with label150;
+        catch java.lang.Exception from label095 to label096 with label150;
+        catch java.lang.Exception from label099 to label101 with label150;
+        catch java.lang.Exception from label102 to label104 with label150;
+        catch java.lang.InterruptedException from label114 to label115 with label123;
+        catch java.lang.InterruptedException from label116 to label117 with label123;
+        catch java.lang.InterruptedException from label120 to label121 with label123;
+        catch java.lang.InterruptedException from label127 to label128 with label123;
+        catch java.lang.InterruptedException from label131 to label132 with label123;
+        catch java.lang.InterruptedException from label135 to label136 with label123;
+        catch java.lang.InterruptedException from label139 to label140 with label123;
+        catch java.lang.Exception from label114 to label115 with label150;
+        catch java.lang.Exception from label116 to label117 with label150;
+        catch java.lang.Exception from label118 to label119 with label150;
+        catch java.lang.Exception from label120 to label122 with label150;
+        catch java.lang.Exception from label124 to label125 with label150;
+        catch java.lang.Exception from label126 to label129 with label150;
+        catch java.lang.Exception from label130 to label132 with label150;
+        catch java.lang.Exception from label133 to label134 with label150;
+        catch java.lang.Exception from label135 to label136 with label150;
+        catch java.lang.Exception from label137 to label138 with label150;
+        catch java.lang.Exception from label139 to label141 with label150;
+        catch java.lang.Exception from label142 to label143 with label150;
+        catch java.lang.Exception from label144 to label145 with label150;
+        catch java.lang.Throwable from label145 to label149 with label148;
+        catch java.lang.InterruptedException from label149 to label150 with label123;
+        catch java.lang.Exception from label149 to label150 with label150;
+        catch java.lang.InterruptedException from label153 to label154 with label170;
+        catch java.lang.InterruptedException from label157 to label158 with label123;
+        catch java.lang.Exception from label156 to label159 with label150;
+        catch java.lang.Throwable from label159 to label163 with label168;
+        catch java.lang.Exception from label164 to label165 with label150;
+        catch java.lang.Throwable from label166 to label169 with label168;
+        catch java.lang.InterruptedException from label169 to label170 with label123;
+        catch java.lang.Exception from label169 to label170 with label150;
+    }
+}

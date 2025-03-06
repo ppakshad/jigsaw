@@ -1,0 +1,59 @@
+class com.go108.lic.free.dialog.PopupShow$6 extends java.lang.Object implements android.view.View$OnTouchListener
+{
+    final com.go108.lic.free.dialog.PopupShow this$0;
+
+    void <init>(com.go108.lic.free.dialog.PopupShow)
+    {
+        com.go108.lic.free.dialog.PopupShow $r1;
+        com.go108.lic.free.dialog.PopupShow$6 r0;
+
+        r0 := @this: com.go108.lic.free.dialog.PopupShow$6;
+
+        $r1 := @parameter0: com.go108.lic.free.dialog.PopupShow;
+
+        r0.<com.go108.lic.free.dialog.PopupShow$6: com.go108.lic.free.dialog.PopupShow this$0> = $r1;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public boolean onTouch(android.view.View, android.view.MotionEvent)
+    {
+        com.go108.lic.free.dialog.PopupShow $r3;
+        android.widget.TextView $r4;
+        android.view.MotionEvent $r2;
+        int $i0;
+        android.view.View $r1;
+        com.go108.lic.free.dialog.PopupShow$6 r0;
+
+        r0 := @this: com.go108.lic.free.dialog.PopupShow$6;
+
+        $r1 := @parameter0: android.view.View;
+
+        $r2 := @parameter1: android.view.MotionEvent;
+
+        $i0 = virtualinvoke $r2.<android.view.MotionEvent: int getAction()>();
+
+        if $i0 != 0 goto label1;
+
+        $r3 = r0.<com.go108.lic.free.dialog.PopupShow$6: com.go108.lic.free.dialog.PopupShow this$0>;
+
+        $r4 = staticinvoke <com.go108.lic.free.dialog.PopupShow: android.widget.TextView access$4(com.go108.lic.free.dialog.PopupShow)>($r3);
+
+        $i0 = staticinvoke <android.graphics.Color: int rgb(int,int,int)>(255, 179, 211);
+
+        virtualinvoke $r4.<android.widget.TextView: void setBackgroundColor(int)>($i0);
+
+        return 0;
+
+     label1:
+        $r3 = r0.<com.go108.lic.free.dialog.PopupShow$6: com.go108.lic.free.dialog.PopupShow this$0>;
+
+        $r4 = staticinvoke <com.go108.lic.free.dialog.PopupShow: android.widget.TextView access$4(com.go108.lic.free.dialog.PopupShow)>($r3);
+
+        virtualinvoke $r4.<android.widget.TextView: void setBackgroundColor(int)>(0);
+
+        return 0;
+    }
+}

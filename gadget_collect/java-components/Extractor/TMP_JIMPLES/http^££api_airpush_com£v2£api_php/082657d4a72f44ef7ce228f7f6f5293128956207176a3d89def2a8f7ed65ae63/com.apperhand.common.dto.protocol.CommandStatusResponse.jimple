@@ -1,0 +1,99 @@
+public class com.apperhand.common.dto.protocol.CommandStatusResponse extends com.apperhand.common.dto.protocol.BaseResponse
+{
+    private static final long serialVersionUID;
+    private long nextCommandInterval;
+
+    public void <init>()
+    {
+        com.apperhand.common.dto.protocol.CommandStatusResponse r0;
+
+        r0 := @this: com.apperhand.common.dto.protocol.CommandStatusResponse;
+
+        specialinvoke r0.<com.apperhand.common.dto.protocol.BaseResponse: void <init>()>();
+
+        r0.<com.apperhand.common.dto.protocol.CommandStatusResponse: long nextCommandInterval> = -1L;
+
+        return;
+    }
+
+    public void <init>(long)
+    {
+        com.apperhand.common.dto.protocol.CommandStatusResponse r0;
+        long $l0;
+
+        r0 := @this: com.apperhand.common.dto.protocol.CommandStatusResponse;
+
+        $l0 := @parameter0: long;
+
+        specialinvoke r0.<com.apperhand.common.dto.protocol.BaseResponse: void <init>()>();
+
+        r0.<com.apperhand.common.dto.protocol.CommandStatusResponse: long nextCommandInterval> = -1L;
+
+        r0.<com.apperhand.common.dto.protocol.CommandStatusResponse: long nextCommandInterval> = $l0;
+
+        return;
+    }
+
+    public long getNextCommandInterval()
+    {
+        com.apperhand.common.dto.protocol.CommandStatusResponse r0;
+        long l0;
+
+        r0 := @this: com.apperhand.common.dto.protocol.CommandStatusResponse;
+
+        l0 = r0.<com.apperhand.common.dto.protocol.CommandStatusResponse: long nextCommandInterval>;
+
+        return l0;
+    }
+
+    public void setNextCommandInterval(long)
+    {
+        com.apperhand.common.dto.protocol.CommandStatusResponse r0;
+        long $l0;
+
+        r0 := @this: com.apperhand.common.dto.protocol.CommandStatusResponse;
+
+        $l0 := @parameter0: long;
+
+        r0.<com.apperhand.common.dto.protocol.CommandStatusResponse: long nextCommandInterval> = $l0;
+
+        return;
+    }
+
+    public java.lang.String toString()
+    {
+        com.apperhand.common.dto.protocol.CommandStatusResponse r0;
+        java.lang.StringBuilder $r1;
+        long $l0;
+        java.lang.String $r2;
+
+        r0 := @this: com.apperhand.common.dto.protocol.CommandStatusResponse;
+
+        $r1 = new java.lang.StringBuilder;
+
+        specialinvoke $r1.<java.lang.StringBuilder: void <init>(java.lang.String)>("CommandStatusResponse [nextCommandInterval=");
+
+        $l0 = r0.<com.apperhand.common.dto.protocol.CommandStatusResponse: long nextCommandInterval>;
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(long)>($l0);
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(", toString()=");
+
+        $r2 = specialinvoke r0.<com.apperhand.common.dto.protocol.BaseResponse: java.lang.String toString()>();
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r2);
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("]");
+
+        $r2 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        return $r2;
+    }
+
+    public static void <clinit>()
+    {
+        <com.apperhand.common.dto.protocol.CommandStatusResponse: long serialVersionUID> = 1904444010626981649L;
+
+        return;
+    }
+}

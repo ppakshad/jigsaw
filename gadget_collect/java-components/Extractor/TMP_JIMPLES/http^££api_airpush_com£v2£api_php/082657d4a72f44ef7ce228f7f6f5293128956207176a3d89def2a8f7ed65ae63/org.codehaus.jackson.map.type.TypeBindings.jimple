@@ -1,0 +1,632 @@
+public class org.codehaus.jackson.map.type.TypeBindings extends java.lang.Object
+{
+    private static final org.codehaus.jackson.type.JavaType[] NO_TYPES;
+    public static final org.codehaus.jackson.type.JavaType UNBOUND;
+    protected java.util.Map _bindings;
+    protected final java.lang.Class _contextClass;
+    protected final org.codehaus.jackson.type.JavaType _contextType;
+    protected java.util.HashSet _placeholders;
+
+    static void <clinit>()
+    {
+        org.codehaus.jackson.type.JavaType[] $r0;
+        org.codehaus.jackson.map.type.SimpleType $r1;
+
+        $r0 = newarray (org.codehaus.jackson.type.JavaType)[0];
+
+        <org.codehaus.jackson.map.type.TypeBindings: org.codehaus.jackson.type.JavaType[] NO_TYPES> = $r0;
+
+        $r1 = new org.codehaus.jackson.map.type.SimpleType;
+
+        specialinvoke $r1.<org.codehaus.jackson.map.type.SimpleType: void <init>(java.lang.Class)>(class "Ljava/lang/Object;");
+
+        <org.codehaus.jackson.map.type.TypeBindings: org.codehaus.jackson.type.JavaType UNBOUND> = $r1;
+
+        return;
+    }
+
+    public void <init>(java.lang.Class)
+    {
+        org.codehaus.jackson.map.type.TypeBindings r0;
+        java.lang.Class r1;
+
+        r0 := @this: org.codehaus.jackson.map.type.TypeBindings;
+
+        r1 := @parameter0: java.lang.Class;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        r0.<org.codehaus.jackson.map.type.TypeBindings: java.lang.Class _contextClass> = r1;
+
+        r0.<org.codehaus.jackson.map.type.TypeBindings: org.codehaus.jackson.type.JavaType _contextType> = null;
+
+        return;
+    }
+
+    public void <init>(org.codehaus.jackson.type.JavaType)
+    {
+        org.codehaus.jackson.map.type.TypeBindings r0;
+        org.codehaus.jackson.type.JavaType $r1;
+        java.lang.Class $r2;
+
+        r0 := @this: org.codehaus.jackson.map.type.TypeBindings;
+
+        $r1 := @parameter0: org.codehaus.jackson.type.JavaType;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        r0.<org.codehaus.jackson.map.type.TypeBindings: org.codehaus.jackson.type.JavaType _contextType> = $r1;
+
+        $r2 = virtualinvoke $r1.<org.codehaus.jackson.type.JavaType: java.lang.Class getRawClass()>();
+
+        r0.<org.codehaus.jackson.map.type.TypeBindings: java.lang.Class _contextClass> = $r2;
+
+        return;
+    }
+
+    public void _addPlaceholder(java.lang.String)
+    {
+        org.codehaus.jackson.map.type.TypeBindings r0;
+        java.lang.String $r1;
+        java.util.HashSet $r2;
+
+        r0 := @this: org.codehaus.jackson.map.type.TypeBindings;
+
+        $r1 := @parameter0: java.lang.String;
+
+        $r2 = r0.<org.codehaus.jackson.map.type.TypeBindings: java.util.HashSet _placeholders>;
+
+        if $r2 != null goto label1;
+
+        $r2 = new java.util.HashSet;
+
+        specialinvoke $r2.<java.util.HashSet: void <init>()>();
+
+        r0.<org.codehaus.jackson.map.type.TypeBindings: java.util.HashSet _placeholders> = $r2;
+
+     label1:
+        $r2 = r0.<org.codehaus.jackson.map.type.TypeBindings: java.util.HashSet _placeholders>;
+
+        virtualinvoke $r2.<java.util.HashSet: boolean add(java.lang.Object)>($r1);
+
+        return;
+    }
+
+    protected void _resolve()
+    {
+        org.codehaus.jackson.map.type.TypeBindings r0;
+        java.lang.Class $r1;
+        org.codehaus.jackson.type.JavaType $r2;
+        int $i0, i1;
+        java.util.Map $r3;
+        java.util.LinkedHashMap $r4;
+        java.lang.String $r5;
+
+        r0 := @this: org.codehaus.jackson.map.type.TypeBindings;
+
+        $r1 = r0.<org.codehaus.jackson.map.type.TypeBindings: java.lang.Class _contextClass>;
+
+        virtualinvoke r0.<org.codehaus.jackson.map.type.TypeBindings: void _resolveBindings(java.lang.reflect.Type)>($r1);
+
+        $r2 = r0.<org.codehaus.jackson.map.type.TypeBindings: org.codehaus.jackson.type.JavaType _contextType>;
+
+        if $r2 == null goto label3;
+
+        $r2 = r0.<org.codehaus.jackson.map.type.TypeBindings: org.codehaus.jackson.type.JavaType _contextType>;
+
+        $i0 = virtualinvoke $r2.<org.codehaus.jackson.type.JavaType: int containedTypeCount()>();
+
+        if $i0 <= 0 goto label3;
+
+        $r3 = r0.<org.codehaus.jackson.map.type.TypeBindings: java.util.Map _bindings>;
+
+        if $r3 != null goto label1;
+
+        $r4 = new java.util.LinkedHashMap;
+
+        specialinvoke $r4.<java.util.LinkedHashMap: void <init>()>();
+
+        r0.<org.codehaus.jackson.map.type.TypeBindings: java.util.Map _bindings> = $r4;
+
+     label1:
+        i1 = 0;
+
+     label2:
+        if i1 >= $i0 goto label3;
+
+        $r2 = r0.<org.codehaus.jackson.map.type.TypeBindings: org.codehaus.jackson.type.JavaType _contextType>;
+
+        $r5 = virtualinvoke $r2.<org.codehaus.jackson.type.JavaType: java.lang.String containedTypeName(int)>(i1);
+
+        $r2 = r0.<org.codehaus.jackson.map.type.TypeBindings: org.codehaus.jackson.type.JavaType _contextType>;
+
+        $r2 = virtualinvoke $r2.<org.codehaus.jackson.type.JavaType: org.codehaus.jackson.type.JavaType containedType(int)>(i1);
+
+        $r3 = r0.<org.codehaus.jackson.map.type.TypeBindings: java.util.Map _bindings>;
+
+        interfaceinvoke $r3.<java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>($r5, $r2);
+
+        i1 = i1 + 1;
+
+        goto label2;
+
+     label3:
+        $r3 = r0.<org.codehaus.jackson.map.type.TypeBindings: java.util.Map _bindings>;
+
+        if $r3 != null goto label4;
+
+        $r3 = staticinvoke <java.util.Collections: java.util.Map emptyMap()>();
+
+        r0.<org.codehaus.jackson.map.type.TypeBindings: java.util.Map _bindings> = $r3;
+
+     label4:
+        return;
+    }
+
+    protected void _resolveBindings(java.lang.reflect.Type)
+    {
+        org.codehaus.jackson.map.type.TypeBindings r0;
+        java.lang.reflect.Type $r1;
+        int i0, $i1;
+        boolean $z0;
+        java.lang.reflect.ParameterizedType $r2;
+        java.lang.reflect.Type[] $r3;
+        java.lang.Class r4, $r14;
+        java.lang.reflect.TypeVariable[] $r5;
+        java.lang.IllegalArgumentException $r6;
+        java.lang.StringBuilder $r7;
+        java.lang.String $r8;
+        java.lang.reflect.TypeVariable r9;
+        java.util.Map $r10;
+        java.util.LinkedHashMap $r11;
+        org.codehaus.jackson.map.type.TypeFactory $r12;
+        org.codehaus.jackson.type.JavaType $r13;
+
+        r0 := @this: org.codehaus.jackson.map.type.TypeBindings;
+
+        $r1 := @parameter0: java.lang.reflect.Type;
+
+        if $r1 != null goto label01;
+
+        return;
+
+     label01:
+        $z0 = $r1 instanceof java.lang.reflect.ParameterizedType;
+
+        if $z0 == 0 goto label10;
+
+        $r2 = (java.lang.reflect.ParameterizedType) $r1;
+
+        $r3 = interfaceinvoke $r2.<java.lang.reflect.ParameterizedType: java.lang.reflect.Type[] getActualTypeArguments()>();
+
+        if $r3 == null goto label07;
+
+        i0 = lengthof $r3;
+
+        if i0 <= 0 goto label07;
+
+        $r1 = interfaceinvoke $r2.<java.lang.reflect.ParameterizedType: java.lang.reflect.Type getRawType()>();
+
+        r4 = (java.lang.Class) $r1;
+
+        $r5 = virtualinvoke r4.<java.lang.Class: java.lang.reflect.TypeVariable[] getTypeParameters()>();
+
+        i0 = lengthof $r5;
+
+        $i1 = lengthof $r3;
+
+        if i0 == $i1 goto label02;
+
+        $r6 = new java.lang.IllegalArgumentException;
+
+        $r7 = new java.lang.StringBuilder;
+
+        specialinvoke $r7.<java.lang.StringBuilder: void <init>()>();
+
+        $r7 = virtualinvoke $r7.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Strange parametrized type (in class ");
+
+        $r8 = virtualinvoke r4.<java.lang.Class: java.lang.String getName()>();
+
+        $r7 = virtualinvoke $r7.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r8);
+
+        $r7 = virtualinvoke $r7.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("): number of type arguments != number of type parameters (");
+
+        i0 = lengthof $r3;
+
+        $r7 = virtualinvoke $r7.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>(i0);
+
+        $r7 = virtualinvoke $r7.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" vs ");
+
+        i0 = lengthof $r5;
+
+        $r7 = virtualinvoke $r7.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>(i0);
+
+        $r7 = virtualinvoke $r7.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(")");
+
+        $r8 = virtualinvoke $r7.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke $r6.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>($r8);
+
+        throw $r6;
+
+     label02:
+        $i1 = 0;
+
+        i0 = lengthof $r3;
+
+     label03:
+        if $i1 >= i0 goto label07;
+
+        r9 = $r5[$i1];
+
+        $r8 = interfaceinvoke r9.<java.lang.reflect.TypeVariable: java.lang.String getName()>();
+
+        $r10 = r0.<org.codehaus.jackson.map.type.TypeBindings: java.util.Map _bindings>;
+
+        if $r10 != null goto label06;
+
+        $r11 = new java.util.LinkedHashMap;
+
+        specialinvoke $r11.<java.util.LinkedHashMap: void <init>()>();
+
+        r0.<org.codehaus.jackson.map.type.TypeBindings: java.util.Map _bindings> = $r11;
+
+     label04:
+        virtualinvoke r0.<org.codehaus.jackson.map.type.TypeBindings: void _addPlaceholder(java.lang.String)>($r8);
+
+        $r10 = r0.<org.codehaus.jackson.map.type.TypeBindings: java.util.Map _bindings>;
+
+        $r12 = <org.codehaus.jackson.map.type.TypeFactory: org.codehaus.jackson.map.type.TypeFactory instance>;
+
+        $r1 = $r3[$i1];
+
+        $r13 = virtualinvoke $r12.<org.codehaus.jackson.map.type.TypeFactory: org.codehaus.jackson.type.JavaType _fromType(java.lang.reflect.Type,org.codehaus.jackson.map.type.TypeBindings)>($r1, r0);
+
+        interfaceinvoke $r10.<java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>($r8, $r13);
+
+     label05:
+        $i1 = $i1 + 1;
+
+        goto label03;
+
+     label06:
+        $r10 = r0.<org.codehaus.jackson.map.type.TypeBindings: java.util.Map _bindings>;
+
+        $z0 = interfaceinvoke $r10.<java.util.Map: boolean containsKey(java.lang.Object)>($r8);
+
+        if $z0 == 0 goto label04;
+
+        goto label05;
+
+     label07:
+        $r1 = interfaceinvoke $r2.<java.lang.reflect.ParameterizedType: java.lang.reflect.Type getRawType()>();
+
+        r4 = (java.lang.Class) $r1;
+
+     label08:
+        $r1 = virtualinvoke r4.<java.lang.Class: java.lang.reflect.Type getGenericSuperclass()>();
+
+        virtualinvoke r0.<org.codehaus.jackson.map.type.TypeBindings: void _resolveBindings(java.lang.reflect.Type)>($r1);
+
+        $r3 = virtualinvoke r4.<java.lang.Class: java.lang.reflect.Type[] getGenericInterfaces()>();
+
+        i0 = lengthof $r3;
+
+        $i1 = 0;
+
+     label09:
+        if $i1 >= i0 goto label15;
+
+        $r1 = $r3[$i1];
+
+        virtualinvoke r0.<org.codehaus.jackson.map.type.TypeBindings: void _resolveBindings(java.lang.reflect.Type)>($r1);
+
+        $i1 = $i1 + 1;
+
+        goto label09;
+
+     label10:
+        $z0 = $r1 instanceof java.lang.Class;
+
+        if $z0 == 0 goto label15;
+
+        $r14 = (java.lang.Class) $r1;
+
+        r4 = $r14;
+
+        $r5 = virtualinvoke $r14.<java.lang.Class: java.lang.reflect.TypeVariable[] getTypeParameters()>();
+
+        if $r5 == null goto label08;
+
+        i0 = lengthof $r5;
+
+        if i0 <= 0 goto label08;
+
+        i0 = lengthof $r5;
+
+        $i1 = 0;
+
+     label11:
+        if $i1 >= i0 goto label08;
+
+        r9 = $r5[$i1];
+
+        $r8 = interfaceinvoke r9.<java.lang.reflect.TypeVariable: java.lang.String getName()>();
+
+        $r3 = interfaceinvoke r9.<java.lang.reflect.TypeVariable: java.lang.reflect.Type[] getBounds()>();
+
+        $r1 = $r3[0];
+
+        if $r1 == null goto label13;
+
+        $r10 = r0.<org.codehaus.jackson.map.type.TypeBindings: java.util.Map _bindings>;
+
+        if $r10 != null goto label14;
+
+        $r11 = new java.util.LinkedHashMap;
+
+        specialinvoke $r11.<java.util.LinkedHashMap: void <init>()>();
+
+        r0.<org.codehaus.jackson.map.type.TypeBindings: java.util.Map _bindings> = $r11;
+
+     label12:
+        virtualinvoke r0.<org.codehaus.jackson.map.type.TypeBindings: void _addPlaceholder(java.lang.String)>($r8);
+
+        $r10 = r0.<org.codehaus.jackson.map.type.TypeBindings: java.util.Map _bindings>;
+
+        $r12 = <org.codehaus.jackson.map.type.TypeFactory: org.codehaus.jackson.map.type.TypeFactory instance>;
+
+        $r13 = virtualinvoke $r12.<org.codehaus.jackson.map.type.TypeFactory: org.codehaus.jackson.type.JavaType _fromType(java.lang.reflect.Type,org.codehaus.jackson.map.type.TypeBindings)>($r1, r0);
+
+        interfaceinvoke $r10.<java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>($r8, $r13);
+
+     label13:
+        $i1 = $i1 + 1;
+
+        goto label11;
+
+     label14:
+        $r10 = r0.<org.codehaus.jackson.map.type.TypeBindings: java.util.Map _bindings>;
+
+        $z0 = interfaceinvoke $r10.<java.util.Map: boolean containsKey(java.lang.Object)>($r8);
+
+        if $z0 == 0 goto label12;
+
+        goto label13;
+
+     label15:
+        return;
+    }
+
+    public void addBinding(java.lang.String, org.codehaus.jackson.type.JavaType)
+    {
+        org.codehaus.jackson.map.type.TypeBindings r0;
+        java.lang.String $r1;
+        org.codehaus.jackson.type.JavaType $r2;
+        java.util.Map $r3;
+        java.util.LinkedHashMap $r4;
+
+        r0 := @this: org.codehaus.jackson.map.type.TypeBindings;
+
+        $r1 := @parameter0: java.lang.String;
+
+        $r2 := @parameter1: org.codehaus.jackson.type.JavaType;
+
+        $r3 = r0.<org.codehaus.jackson.map.type.TypeBindings: java.util.Map _bindings>;
+
+        if $r3 != null goto label1;
+
+        $r4 = new java.util.LinkedHashMap;
+
+        specialinvoke $r4.<java.util.LinkedHashMap: void <init>()>();
+
+        r0.<org.codehaus.jackson.map.type.TypeBindings: java.util.Map _bindings> = $r4;
+
+     label1:
+        $r3 = r0.<org.codehaus.jackson.map.type.TypeBindings: java.util.Map _bindings>;
+
+        interfaceinvoke $r3.<java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>($r1, $r2);
+
+        return;
+    }
+
+    public org.codehaus.jackson.type.JavaType findType(java.lang.String)
+    {
+        org.codehaus.jackson.map.type.TypeBindings r0;
+        java.lang.String $r1;
+        java.util.Map $r2;
+        java.lang.Object $r3;
+        org.codehaus.jackson.type.JavaType r4;
+        java.util.HashSet $r5;
+        boolean $z0;
+        java.lang.IllegalArgumentException $r6;
+        java.lang.StringBuilder $r7;
+        java.lang.Class $r8;
+
+        r0 := @this: org.codehaus.jackson.map.type.TypeBindings;
+
+        $r1 := @parameter0: java.lang.String;
+
+        $r2 = r0.<org.codehaus.jackson.map.type.TypeBindings: java.util.Map _bindings>;
+
+        if $r2 != null goto label1;
+
+        virtualinvoke r0.<org.codehaus.jackson.map.type.TypeBindings: void _resolve()>();
+
+     label1:
+        $r2 = r0.<org.codehaus.jackson.map.type.TypeBindings: java.util.Map _bindings>;
+
+        $r3 = interfaceinvoke $r2.<java.util.Map: java.lang.Object get(java.lang.Object)>($r1);
+
+        r4 = (org.codehaus.jackson.type.JavaType) $r3;
+
+        if r4 != null goto label3;
+
+        $r5 = r0.<org.codehaus.jackson.map.type.TypeBindings: java.util.HashSet _placeholders>;
+
+        if $r5 == null goto label2;
+
+        $r5 = r0.<org.codehaus.jackson.map.type.TypeBindings: java.util.HashSet _placeholders>;
+
+        $z0 = virtualinvoke $r5.<java.util.HashSet: boolean contains(java.lang.Object)>($r1);
+
+        if $z0 == 0 goto label2;
+
+        r4 = <org.codehaus.jackson.map.type.TypeBindings: org.codehaus.jackson.type.JavaType UNBOUND>;
+
+        return r4;
+
+     label2:
+        $r6 = new java.lang.IllegalArgumentException;
+
+        $r7 = new java.lang.StringBuilder;
+
+        specialinvoke $r7.<java.lang.StringBuilder: void <init>()>();
+
+        $r7 = virtualinvoke $r7.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Type variable \'");
+
+        $r7 = virtualinvoke $r7.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r1);
+
+        $r7 = virtualinvoke $r7.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("\' can not be resolved (with context of class ");
+
+        $r8 = r0.<org.codehaus.jackson.map.type.TypeBindings: java.lang.Class _contextClass>;
+
+        $r1 = virtualinvoke $r8.<java.lang.Class: java.lang.String getName()>();
+
+        $r7 = virtualinvoke $r7.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r1);
+
+        $r7 = virtualinvoke $r7.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(")");
+
+        $r1 = virtualinvoke $r7.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke $r6.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>($r1);
+
+        throw $r6;
+
+     label3:
+        return r4;
+    }
+
+    public int getBindingCount()
+    {
+        org.codehaus.jackson.map.type.TypeBindings r0;
+        int $i0;
+        java.util.Map $r1;
+
+        r0 := @this: org.codehaus.jackson.map.type.TypeBindings;
+
+        $r1 = r0.<org.codehaus.jackson.map.type.TypeBindings: java.util.Map _bindings>;
+
+        if $r1 != null goto label1;
+
+        virtualinvoke r0.<org.codehaus.jackson.map.type.TypeBindings: void _resolve()>();
+
+     label1:
+        $r1 = r0.<org.codehaus.jackson.map.type.TypeBindings: java.util.Map _bindings>;
+
+        $i0 = interfaceinvoke $r1.<java.util.Map: int size()>();
+
+        return $i0;
+    }
+
+    public java.lang.String toString()
+    {
+        org.codehaus.jackson.map.type.TypeBindings r0;
+        java.lang.StringBuilder r1, $r5;
+        java.util.Map $r2;
+        org.codehaus.jackson.type.JavaType $r3;
+        java.lang.String $r4;
+        java.lang.Class $r6;
+
+        r0 := @this: org.codehaus.jackson.map.type.TypeBindings;
+
+        $r2 = r0.<org.codehaus.jackson.map.type.TypeBindings: java.util.Map _bindings>;
+
+        if $r2 != null goto label1;
+
+        virtualinvoke r0.<org.codehaus.jackson.map.type.TypeBindings: void _resolve()>();
+
+     label1:
+        r1 = new java.lang.StringBuilder;
+
+        specialinvoke r1.<java.lang.StringBuilder: void <init>(java.lang.String)>("[TypeBindings for ");
+
+        $r3 = r0.<org.codehaus.jackson.map.type.TypeBindings: org.codehaus.jackson.type.JavaType _contextType>;
+
+        if $r3 == null goto label3;
+
+        $r3 = r0.<org.codehaus.jackson.map.type.TypeBindings: org.codehaus.jackson.type.JavaType _contextType>;
+
+        $r4 = virtualinvoke $r3.<org.codehaus.jackson.type.JavaType: java.lang.String toString()>();
+
+        virtualinvoke r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r4);
+
+     label2:
+        $r5 = virtualinvoke r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(": ");
+
+        $r2 = r0.<org.codehaus.jackson.map.type.TypeBindings: java.util.Map _bindings>;
+
+        $r5 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($r2);
+
+        virtualinvoke $r5.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("]");
+
+        $r4 = virtualinvoke r1.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        return $r4;
+
+     label3:
+        $r6 = r0.<org.codehaus.jackson.map.type.TypeBindings: java.lang.Class _contextClass>;
+
+        $r4 = virtualinvoke $r6.<java.lang.Class: java.lang.String getName()>();
+
+        virtualinvoke r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r4);
+
+        goto label2;
+    }
+
+    public org.codehaus.jackson.type.JavaType[] typesAsArray()
+    {
+        org.codehaus.jackson.map.type.TypeBindings r0;
+        java.util.Map $r1;
+        int $i0;
+        java.util.Collection $r2;
+        org.codehaus.jackson.type.JavaType[] $r3;
+        java.lang.Object[] $r4;
+
+        r0 := @this: org.codehaus.jackson.map.type.TypeBindings;
+
+        $r1 = r0.<org.codehaus.jackson.map.type.TypeBindings: java.util.Map _bindings>;
+
+        if $r1 != null goto label1;
+
+        virtualinvoke r0.<org.codehaus.jackson.map.type.TypeBindings: void _resolve()>();
+
+     label1:
+        $r1 = r0.<org.codehaus.jackson.map.type.TypeBindings: java.util.Map _bindings>;
+
+        $i0 = interfaceinvoke $r1.<java.util.Map: int size()>();
+
+        if $i0 != 0 goto label2;
+
+        $r3 = <org.codehaus.jackson.map.type.TypeBindings: org.codehaus.jackson.type.JavaType[] NO_TYPES>;
+
+        return $r3;
+
+     label2:
+        $r1 = r0.<org.codehaus.jackson.map.type.TypeBindings: java.util.Map _bindings>;
+
+        $r2 = interfaceinvoke $r1.<java.util.Map: java.util.Collection values()>();
+
+        $r1 = r0.<org.codehaus.jackson.map.type.TypeBindings: java.util.Map _bindings>;
+
+        $i0 = interfaceinvoke $r1.<java.util.Map: int size()>();
+
+        $r3 = newarray (org.codehaus.jackson.type.JavaType)[$i0];
+
+        $r4 = interfaceinvoke $r2.<java.util.Collection: java.lang.Object[] toArray(java.lang.Object[])>($r3);
+
+        $r3 = (org.codehaus.jackson.type.JavaType[]) $r4;
+
+        return $r3;
+    }
+}

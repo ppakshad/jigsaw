@@ -1,0 +1,144 @@
+public class com.movesky.app.engine.ai.fsm.FiniteState extends java.lang.Object
+{
+    private com.movesky.app.engine.ai.fsm.FSMAction m_action;
+    private java.lang.String m_name;
+    private java.util.ArrayList m_transitions;
+
+    public void <init>(java.lang.String)
+    {
+        com.movesky.app.engine.ai.fsm.FiniteState r0;
+        java.lang.String $r1;
+        java.util.ArrayList $r2;
+
+        r0 := @this: com.movesky.app.engine.ai.fsm.FiniteState;
+
+        $r1 := @parameter0: java.lang.String;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        r0.<com.movesky.app.engine.ai.fsm.FiniteState: java.lang.String m_name> = $r1;
+
+        r0.<com.movesky.app.engine.ai.fsm.FiniteState: com.movesky.app.engine.ai.fsm.FSMAction m_action> = null;
+
+        $r2 = new java.util.ArrayList;
+
+        specialinvoke $r2.<java.util.ArrayList: void <init>()>();
+
+        r0.<com.movesky.app.engine.ai.fsm.FiniteState: java.util.ArrayList m_transitions> = $r2;
+
+        return;
+    }
+
+    public void addTransition(com.movesky.app.engine.ai.fsm.StateTransition)
+    {
+        com.movesky.app.engine.ai.fsm.FiniteState r0;
+        com.movesky.app.engine.ai.fsm.StateTransition $r1;
+        java.util.ArrayList $r2;
+
+        r0 := @this: com.movesky.app.engine.ai.fsm.FiniteState;
+
+        $r1 := @parameter0: com.movesky.app.engine.ai.fsm.StateTransition;
+
+        $r2 = r0.<com.movesky.app.engine.ai.fsm.FiniteState: java.util.ArrayList m_transitions>;
+
+        virtualinvoke $r2.<java.util.ArrayList: boolean add(java.lang.Object)>($r1);
+
+        return;
+    }
+
+    public void applyAction(java.util.HashMap)
+    {
+        com.movesky.app.engine.ai.fsm.FiniteState r0;
+        java.util.HashMap $r1;
+        com.movesky.app.engine.ai.fsm.FSMAction $r2;
+
+        r0 := @this: com.movesky.app.engine.ai.fsm.FiniteState;
+
+        $r1 := @parameter0: java.util.HashMap;
+
+        $r2 = r0.<com.movesky.app.engine.ai.fsm.FiniteState: com.movesky.app.engine.ai.fsm.FSMAction m_action>;
+
+        if $r2 != null goto label1;
+
+        return;
+
+     label1:
+        $r2 = r0.<com.movesky.app.engine.ai.fsm.FiniteState: com.movesky.app.engine.ai.fsm.FSMAction m_action>;
+
+        interfaceinvoke $r2.<com.movesky.app.engine.ai.fsm.FSMAction: void apply(java.util.HashMap)>($r1);
+
+        return;
+    }
+
+    public com.movesky.app.engine.ai.fsm.FiniteState checkTransitions(java.util.HashMap)
+    {
+        java.util.HashMap $r0;
+        com.movesky.app.engine.ai.fsm.FiniteState r1;
+        java.util.ArrayList $r2;
+        int $i0, $i1;
+        java.lang.Object $r3;
+        com.movesky.app.engine.ai.fsm.StateTransition $r4;
+        boolean $z0;
+
+        r1 := @this: com.movesky.app.engine.ai.fsm.FiniteState;
+
+        $r0 := @parameter0: java.util.HashMap;
+
+        $r2 = r1.<com.movesky.app.engine.ai.fsm.FiniteState: java.util.ArrayList m_transitions>;
+
+        $i0 = virtualinvoke $r2.<java.util.ArrayList: int size()>();
+
+        $i1 = 0;
+
+     label1:
+        if $i1 >= $i0 goto label3;
+
+        $r2 = r1.<com.movesky.app.engine.ai.fsm.FiniteState: java.util.ArrayList m_transitions>;
+
+        $r3 = virtualinvoke $r2.<java.util.ArrayList: java.lang.Object get(int)>($i1);
+
+        $r4 = (com.movesky.app.engine.ai.fsm.StateTransition) $r3;
+
+        $z0 = virtualinvoke $r4.<com.movesky.app.engine.ai.fsm.StateTransition: boolean checkConditions(java.util.HashMap)>($r0);
+
+        if $z0 == 0 goto label2;
+
+        r1 = virtualinvoke $r4.<com.movesky.app.engine.ai.fsm.StateTransition: com.movesky.app.engine.ai.fsm.FiniteState getNewState()>();
+
+        return r1;
+
+     label2:
+        $i1 = $i1 + 1;
+
+        goto label1;
+
+     label3:
+        return r1;
+    }
+
+    public java.lang.String getName()
+    {
+        com.movesky.app.engine.ai.fsm.FiniteState r0;
+        java.lang.String r1;
+
+        r0 := @this: com.movesky.app.engine.ai.fsm.FiniteState;
+
+        r1 = r0.<com.movesky.app.engine.ai.fsm.FiniteState: java.lang.String m_name>;
+
+        return r1;
+    }
+
+    public void setAction(com.movesky.app.engine.ai.fsm.FSMAction)
+    {
+        com.movesky.app.engine.ai.fsm.FiniteState r0;
+        com.movesky.app.engine.ai.fsm.FSMAction $r1;
+
+        r0 := @this: com.movesky.app.engine.ai.fsm.FiniteState;
+
+        $r1 := @parameter0: com.movesky.app.engine.ai.fsm.FSMAction;
+
+        r0.<com.movesky.app.engine.ai.fsm.FiniteState: com.movesky.app.engine.ai.fsm.FSMAction m_action> = $r1;
+
+        return;
+    }
+}

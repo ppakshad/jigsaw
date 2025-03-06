@@ -1,0 +1,233 @@
+final class org.codehaus.jackson.map.deser.Creator$NumberBased extends java.lang.Object
+{
+    protected final java.lang.reflect.Constructor _intCtor;
+    protected final java.lang.reflect.Method _intFactoryMethod;
+    protected final java.lang.reflect.Constructor _longCtor;
+    protected final java.lang.reflect.Method _longFactoryMethod;
+    protected final java.lang.Class _valueClass;
+
+    public void <init>(java.lang.Class, org.codehaus.jackson.map.introspect.AnnotatedConstructor, org.codehaus.jackson.map.introspect.AnnotatedMethod, org.codehaus.jackson.map.introspect.AnnotatedConstructor, org.codehaus.jackson.map.introspect.AnnotatedMethod)
+    {
+        org.codehaus.jackson.map.deser.Creator$NumberBased r0;
+        java.lang.Class r1;
+        org.codehaus.jackson.map.introspect.AnnotatedConstructor $r2, $r4;
+        org.codehaus.jackson.map.introspect.AnnotatedMethod $r3, $r5;
+        java.lang.reflect.Constructor $r6;
+        java.lang.reflect.Method $r7;
+
+        r0 := @this: org.codehaus.jackson.map.deser.Creator$NumberBased;
+
+        r1 := @parameter0: java.lang.Class;
+
+        $r2 := @parameter1: org.codehaus.jackson.map.introspect.AnnotatedConstructor;
+
+        $r3 := @parameter2: org.codehaus.jackson.map.introspect.AnnotatedMethod;
+
+        $r4 := @parameter3: org.codehaus.jackson.map.introspect.AnnotatedConstructor;
+
+        $r5 := @parameter4: org.codehaus.jackson.map.introspect.AnnotatedMethod;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        r0.<org.codehaus.jackson.map.deser.Creator$NumberBased: java.lang.Class _valueClass> = r1;
+
+        if $r2 != null goto label5;
+
+        $r6 = null;
+
+     label1:
+        r0.<org.codehaus.jackson.map.deser.Creator$NumberBased: java.lang.reflect.Constructor _intCtor> = $r6;
+
+        if $r4 != null goto label6;
+
+        $r6 = null;
+
+     label2:
+        r0.<org.codehaus.jackson.map.deser.Creator$NumberBased: java.lang.reflect.Constructor _longCtor> = $r6;
+
+        if $r3 != null goto label7;
+
+        $r7 = null;
+
+     label3:
+        r0.<org.codehaus.jackson.map.deser.Creator$NumberBased: java.lang.reflect.Method _intFactoryMethod> = $r7;
+
+        if $r5 != null goto label8;
+
+        $r7 = null;
+
+     label4:
+        r0.<org.codehaus.jackson.map.deser.Creator$NumberBased: java.lang.reflect.Method _longFactoryMethod> = $r7;
+
+        return;
+
+     label5:
+        $r6 = virtualinvoke $r2.<org.codehaus.jackson.map.introspect.AnnotatedConstructor: java.lang.reflect.Constructor getAnnotated()>();
+
+        goto label1;
+
+     label6:
+        $r6 = virtualinvoke $r4.<org.codehaus.jackson.map.introspect.AnnotatedConstructor: java.lang.reflect.Constructor getAnnotated()>();
+
+        goto label2;
+
+     label7:
+        $r7 = virtualinvoke $r3.<org.codehaus.jackson.map.introspect.AnnotatedMethod: java.lang.reflect.Method getAnnotated()>();
+
+        goto label3;
+
+     label8:
+        $r7 = virtualinvoke $r5.<org.codehaus.jackson.map.introspect.AnnotatedMethod: java.lang.reflect.Method getAnnotated()>();
+
+        goto label4;
+    }
+
+    public java.lang.Object construct(int)
+    {
+        org.codehaus.jackson.map.deser.Creator$NumberBased r0;
+        int $i0;
+        java.lang.reflect.Constructor $r1;
+        java.lang.Object[] $r2;
+        java.lang.Integer $r3;
+        java.lang.Object $r4;
+        java.lang.reflect.Method $r5;
+        java.lang.Class $r6;
+        java.lang.Exception $r7;
+        long $l1;
+
+        r0 := @this: org.codehaus.jackson.map.deser.Creator$NumberBased;
+
+        $i0 := @parameter0: int;
+
+     label01:
+        $r1 = r0.<org.codehaus.jackson.map.deser.Creator$NumberBased: java.lang.reflect.Constructor _intCtor>;
+
+     label02:
+        if $r1 == null goto label05;
+
+     label03:
+        $r1 = r0.<org.codehaus.jackson.map.deser.Creator$NumberBased: java.lang.reflect.Constructor _intCtor>;
+
+        $r2 = newarray (java.lang.Object)[1];
+
+        $r3 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>($i0);
+
+        $r2[0] = $r3;
+
+        $r4 = virtualinvoke $r1.<java.lang.reflect.Constructor: java.lang.Object newInstance(java.lang.Object[])>($r2);
+
+     label04:
+        return $r4;
+
+     label05:
+        $r5 = r0.<org.codehaus.jackson.map.deser.Creator$NumberBased: java.lang.reflect.Method _intFactoryMethod>;
+
+     label06:
+        if $r5 == null goto label10;
+
+     label07:
+        $r5 = r0.<org.codehaus.jackson.map.deser.Creator$NumberBased: java.lang.reflect.Method _intFactoryMethod>;
+
+        $r6 = r0.<org.codehaus.jackson.map.deser.Creator$NumberBased: java.lang.Class _valueClass>;
+
+        $r2 = newarray (java.lang.Object)[1];
+
+        $r3 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>($i0);
+
+        $r2[0] = $r3;
+
+        $r4 = virtualinvoke $r5.<java.lang.reflect.Method: java.lang.Object invoke(java.lang.Object,java.lang.Object[])>($r6, $r2);
+
+     label08:
+        return $r4;
+
+     label09:
+        $r7 := @caughtexception;
+
+        staticinvoke <org.codehaus.jackson.map.util.ClassUtil: void unwrapAndThrowAsIAE(java.lang.Throwable)>($r7);
+
+     label10:
+        $l1 = (long) $i0;
+
+        $r4 = virtualinvoke r0.<org.codehaus.jackson.map.deser.Creator$NumberBased: java.lang.Object construct(long)>($l1);
+
+        return $r4;
+
+        catch java.lang.Exception from label01 to label02 with label09;
+        catch java.lang.Exception from label03 to label04 with label09;
+        catch java.lang.Exception from label05 to label06 with label09;
+        catch java.lang.Exception from label07 to label08 with label09;
+    }
+
+    public java.lang.Object construct(long)
+    {
+        org.codehaus.jackson.map.deser.Creator$NumberBased r0;
+        long $l0;
+        java.lang.reflect.Constructor $r1;
+        java.lang.Object[] $r2;
+        java.lang.Long $r3;
+        java.lang.Object $r4;
+        java.lang.reflect.Method $r5;
+        java.lang.Class $r6;
+        java.lang.Exception $r7;
+
+        r0 := @this: org.codehaus.jackson.map.deser.Creator$NumberBased;
+
+        $l0 := @parameter0: long;
+
+     label01:
+        $r1 = r0.<org.codehaus.jackson.map.deser.Creator$NumberBased: java.lang.reflect.Constructor _longCtor>;
+
+     label02:
+        if $r1 == null goto label05;
+
+     label03:
+        $r1 = r0.<org.codehaus.jackson.map.deser.Creator$NumberBased: java.lang.reflect.Constructor _longCtor>;
+
+        $r2 = newarray (java.lang.Object)[1];
+
+        $r3 = staticinvoke <java.lang.Long: java.lang.Long valueOf(long)>($l0);
+
+        $r2[0] = $r3;
+
+        $r4 = virtualinvoke $r1.<java.lang.reflect.Constructor: java.lang.Object newInstance(java.lang.Object[])>($r2);
+
+     label04:
+        return $r4;
+
+     label05:
+        $r5 = r0.<org.codehaus.jackson.map.deser.Creator$NumberBased: java.lang.reflect.Method _longFactoryMethod>;
+
+     label06:
+        if $r5 == null goto label10;
+
+     label07:
+        $r5 = r0.<org.codehaus.jackson.map.deser.Creator$NumberBased: java.lang.reflect.Method _longFactoryMethod>;
+
+        $r6 = r0.<org.codehaus.jackson.map.deser.Creator$NumberBased: java.lang.Class _valueClass>;
+
+        $r2 = newarray (java.lang.Object)[1];
+
+        $r3 = staticinvoke <java.lang.Long: java.lang.Long valueOf(long)>($l0);
+
+        $r2[0] = $r3;
+
+        $r4 = virtualinvoke $r5.<java.lang.reflect.Method: java.lang.Object invoke(java.lang.Object,java.lang.Object[])>($r6, $r2);
+
+     label08:
+        return $r4;
+
+     label09:
+        $r7 := @caughtexception;
+
+        staticinvoke <org.codehaus.jackson.map.util.ClassUtil: void unwrapAndThrowAsIAE(java.lang.Throwable)>($r7);
+
+     label10:
+        return null;
+
+        catch java.lang.Exception from label01 to label02 with label09;
+        catch java.lang.Exception from label03 to label04 with label09;
+        catch java.lang.Exception from label05 to label06 with label09;
+        catch java.lang.Exception from label07 to label08 with label09;
+    }
+}

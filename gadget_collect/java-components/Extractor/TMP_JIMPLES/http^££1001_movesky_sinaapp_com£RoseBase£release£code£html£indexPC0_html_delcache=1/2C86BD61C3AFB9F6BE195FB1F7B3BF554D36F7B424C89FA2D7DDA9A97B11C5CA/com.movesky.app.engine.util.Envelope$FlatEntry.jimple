@@ -1,0 +1,40 @@
+class com.movesky.app.engine.util.Envelope$FlatEntry extends com.movesky.app.engine.util.Envelope$Entry
+{
+    double value;
+
+    public void <init>(float, float, double)
+    {
+        com.movesky.app.engine.util.Envelope$FlatEntry r0;
+        float $f0, $f1;
+        double $d0;
+
+        r0 := @this: com.movesky.app.engine.util.Envelope$FlatEntry;
+
+        $f0 := @parameter0: float;
+
+        $f1 := @parameter1: float;
+
+        $d0 := @parameter2: double;
+
+        specialinvoke r0.<com.movesky.app.engine.util.Envelope$Entry: void <init>(float,float)>(0.0F, 0.0F);
+
+        r0.<com.movesky.app.engine.util.Envelope$FlatEntry: double value> = $d0;
+
+        return;
+    }
+
+    public double getValueAtTime(float)
+    {
+        com.movesky.app.engine.util.Envelope$FlatEntry r0;
+        float $f0;
+        double d0;
+
+        r0 := @this: com.movesky.app.engine.util.Envelope$FlatEntry;
+
+        $f0 := @parameter0: float;
+
+        d0 = r0.<com.movesky.app.engine.util.Envelope$FlatEntry: double value>;
+
+        return d0;
+    }
+}

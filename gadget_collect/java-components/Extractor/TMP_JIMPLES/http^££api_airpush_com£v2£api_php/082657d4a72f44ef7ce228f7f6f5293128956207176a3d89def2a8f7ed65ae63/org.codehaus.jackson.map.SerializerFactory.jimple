@@ -1,0 +1,96 @@
+public abstract class org.codehaus.jackson.map.SerializerFactory extends java.lang.Object
+{
+
+    public void <init>()
+    {
+        org.codehaus.jackson.map.SerializerFactory r0;
+
+        r0 := @this: org.codehaus.jackson.map.SerializerFactory;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public abstract org.codehaus.jackson.map.JsonSerializer createSerializer(org.codehaus.jackson.map.SerializationConfig, org.codehaus.jackson.type.JavaType, org.codehaus.jackson.map.BeanProperty);
+
+    public final org.codehaus.jackson.map.JsonSerializer createSerializer(org.codehaus.jackson.type.JavaType, org.codehaus.jackson.map.SerializationConfig)
+    {
+        org.codehaus.jackson.map.SerializerFactory r0;
+        org.codehaus.jackson.type.JavaType $r1;
+        org.codehaus.jackson.map.SerializationConfig $r2;
+        org.codehaus.jackson.map.JsonSerializer $r3;
+
+        r0 := @this: org.codehaus.jackson.map.SerializerFactory;
+
+        $r1 := @parameter0: org.codehaus.jackson.type.JavaType;
+
+        $r2 := @parameter1: org.codehaus.jackson.map.SerializationConfig;
+
+        $r3 = virtualinvoke r0.<org.codehaus.jackson.map.SerializerFactory: org.codehaus.jackson.map.JsonSerializer createSerializer(org.codehaus.jackson.map.SerializationConfig,org.codehaus.jackson.type.JavaType,org.codehaus.jackson.map.BeanProperty)>($r2, $r1, null);
+
+        return $r3;
+    }
+
+    public abstract org.codehaus.jackson.map.TypeSerializer createTypeSerializer(org.codehaus.jackson.map.SerializationConfig, org.codehaus.jackson.type.JavaType, org.codehaus.jackson.map.BeanProperty);
+
+    public final org.codehaus.jackson.map.TypeSerializer createTypeSerializer(org.codehaus.jackson.type.JavaType, org.codehaus.jackson.map.SerializationConfig)
+    {
+        org.codehaus.jackson.map.SerializerFactory r0;
+        org.codehaus.jackson.type.JavaType $r1;
+        org.codehaus.jackson.map.SerializationConfig $r2;
+        org.codehaus.jackson.map.TypeSerializer $r3;
+
+        r0 := @this: org.codehaus.jackson.map.SerializerFactory;
+
+        $r1 := @parameter0: org.codehaus.jackson.type.JavaType;
+
+        $r2 := @parameter1: org.codehaus.jackson.map.SerializationConfig;
+
+        $r3 = virtualinvoke r0.<org.codehaus.jackson.map.SerializerFactory: org.codehaus.jackson.map.TypeSerializer createTypeSerializer(org.codehaus.jackson.map.SerializationConfig,org.codehaus.jackson.type.JavaType,org.codehaus.jackson.map.BeanProperty)>($r2, $r1, null);
+
+        return $r3;
+    }
+
+    public abstract org.codehaus.jackson.map.SerializerFactory$Config getConfig();
+
+    public final org.codehaus.jackson.map.SerializerFactory withAdditionalSerializers(org.codehaus.jackson.map.Serializers)
+    {
+        org.codehaus.jackson.map.SerializerFactory r0;
+        org.codehaus.jackson.map.Serializers $r1;
+        org.codehaus.jackson.map.SerializerFactory$Config $r2;
+
+        r0 := @this: org.codehaus.jackson.map.SerializerFactory;
+
+        $r1 := @parameter0: org.codehaus.jackson.map.Serializers;
+
+        $r2 = virtualinvoke r0.<org.codehaus.jackson.map.SerializerFactory: org.codehaus.jackson.map.SerializerFactory$Config getConfig()>();
+
+        $r2 = virtualinvoke $r2.<org.codehaus.jackson.map.SerializerFactory$Config: org.codehaus.jackson.map.SerializerFactory$Config withAdditionalSerializers(org.codehaus.jackson.map.Serializers)>($r1);
+
+        r0 = virtualinvoke r0.<org.codehaus.jackson.map.SerializerFactory: org.codehaus.jackson.map.SerializerFactory withConfig(org.codehaus.jackson.map.SerializerFactory$Config)>($r2);
+
+        return r0;
+    }
+
+    public abstract org.codehaus.jackson.map.SerializerFactory withConfig(org.codehaus.jackson.map.SerializerFactory$Config);
+
+    public final org.codehaus.jackson.map.SerializerFactory withSerializerModifier(org.codehaus.jackson.map.ser.BeanSerializerModifier)
+    {
+        org.codehaus.jackson.map.SerializerFactory r0;
+        org.codehaus.jackson.map.ser.BeanSerializerModifier $r1;
+        org.codehaus.jackson.map.SerializerFactory$Config $r2;
+
+        r0 := @this: org.codehaus.jackson.map.SerializerFactory;
+
+        $r1 := @parameter0: org.codehaus.jackson.map.ser.BeanSerializerModifier;
+
+        $r2 = virtualinvoke r0.<org.codehaus.jackson.map.SerializerFactory: org.codehaus.jackson.map.SerializerFactory$Config getConfig()>();
+
+        $r2 = virtualinvoke $r2.<org.codehaus.jackson.map.SerializerFactory$Config: org.codehaus.jackson.map.SerializerFactory$Config withSerializerModifier(org.codehaus.jackson.map.ser.BeanSerializerModifier)>($r1);
+
+        r0 = virtualinvoke r0.<org.codehaus.jackson.map.SerializerFactory: org.codehaus.jackson.map.SerializerFactory withConfig(org.codehaus.jackson.map.SerializerFactory$Config)>($r2);
+
+        return r0;
+    }
+}

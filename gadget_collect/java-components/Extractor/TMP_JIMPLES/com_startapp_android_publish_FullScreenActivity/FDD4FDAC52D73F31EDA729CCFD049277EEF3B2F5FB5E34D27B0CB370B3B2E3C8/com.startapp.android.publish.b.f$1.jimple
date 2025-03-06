@@ -1,0 +1,85 @@
+class com.startapp.android.publish.b.f$1 extends java.lang.Object implements com.startapp.android.publish.AdEventListener
+{
+    final com.startapp.android.publish.b.f$a a;
+    final com.startapp.android.publish.b.f b;
+
+    void <init>(com.startapp.android.publish.b.f, com.startapp.android.publish.b.f$a)
+    {
+        com.startapp.android.publish.b.f$1 r0;
+        com.startapp.android.publish.b.f $r1;
+        com.startapp.android.publish.b.f$a $r2;
+
+        r0 := @this: com.startapp.android.publish.b.f$1;
+
+        $r1 := @parameter0: com.startapp.android.publish.b.f;
+
+        $r2 := @parameter1: com.startapp.android.publish.b.f$a;
+
+        r0.<com.startapp.android.publish.b.f$1: com.startapp.android.publish.b.f b> = $r1;
+
+        r0.<com.startapp.android.publish.b.f$1: com.startapp.android.publish.b.f$a a> = $r2;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public void onFailedToReceiveAd(com.startapp.android.publish.Ad)
+    {
+        com.startapp.android.publish.b.f$1 r0;
+        com.startapp.android.publish.Ad $r1;
+        java.lang.StringBuilder $r2;
+        com.startapp.android.publish.b.f $r3;
+        com.startapp.android.publish.model.AdPreferences$Placement $r4;
+        java.lang.String $r5;
+
+        r0 := @this: com.startapp.android.publish.b.f$1;
+
+        $r1 := @parameter0: com.startapp.android.publish.Ad;
+
+        $r2 = new java.lang.StringBuilder;
+
+        specialinvoke $r2.<java.lang.StringBuilder: void <init>()>();
+
+        $r2 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Failed to load ");
+
+        $r3 = r0.<com.startapp.android.publish.b.f$1: com.startapp.android.publish.b.f b>;
+
+        $r4 = staticinvoke <com.startapp.android.publish.b.f: com.startapp.android.publish.model.AdPreferences$Placement f(com.startapp.android.publish.b.f)>($r3);
+
+        $r2 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($r4);
+
+        $r2 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" from disk");
+
+        $r5 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <com.startapp.android.publish.i.n: void a(java.lang.String,int,java.lang.String)>("CachedAd", 3, $r5);
+
+        $r3 = r0.<com.startapp.android.publish.b.f$1: com.startapp.android.publish.b.f b>;
+
+        staticinvoke <com.startapp.android.publish.b.f: com.startapp.android.publish.g a(com.startapp.android.publish.b.f,com.startapp.android.publish.g)>($r3, null);
+
+        $r3 = r0.<com.startapp.android.publish.b.f$1: com.startapp.android.publish.b.f b>;
+
+        staticinvoke <com.startapp.android.publish.b.f: void g(com.startapp.android.publish.b.f)>($r3);
+
+        return;
+    }
+
+    public void onReceiveAd(com.startapp.android.publish.Ad)
+    {
+        com.startapp.android.publish.b.f$1 r0;
+        com.startapp.android.publish.Ad $r1;
+        com.startapp.android.publish.b.f$a $r2;
+
+        r0 := @this: com.startapp.android.publish.b.f$1;
+
+        $r1 := @parameter0: com.startapp.android.publish.Ad;
+
+        $r2 = r0.<com.startapp.android.publish.b.f$1: com.startapp.android.publish.b.f$a a>;
+
+        virtualinvoke $r2.<com.startapp.android.publish.b.f$a: void onReceiveAd(com.startapp.android.publish.Ad)>($r1);
+
+        return;
+    }
+}

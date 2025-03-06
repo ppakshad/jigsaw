@@ -1,0 +1,86 @@
+public class com.movesky.app.main.achievements.impls.Humiliation extends com.movesky.app.main.achievements.BBTHAchievement
+{
+    private static final float dist;
+
+    public void <init>(com.movesky.app.engine.achievements.AchievementInfo)
+    {
+        com.movesky.app.main.achievements.impls.Humiliation r0;
+        com.movesky.app.engine.achievements.AchievementInfo $r1;
+
+        r0 := @this: com.movesky.app.main.achievements.impls.Humiliation;
+
+        $r1 := @parameter0: com.movesky.app.engine.achievements.AchievementInfo;
+
+        specialinvoke r0.<com.movesky.app.main.achievements.BBTHAchievement: void <init>(com.movesky.app.engine.achievements.AchievementInfo)>($r1);
+
+        return;
+    }
+
+    public void unitCreated(com.movesky.app.main.achievements.events.UnitCreatedEvent)
+    {
+        com.movesky.app.main.achievements.impls.Humiliation r0;
+        com.movesky.app.main.achievements.events.UnitCreatedEvent $r1;
+        com.movesky.app.main.units.Unit $r2;
+        com.movesky.app.main.Player $r3;
+        com.movesky.app.main.Team $r4, $r5;
+        float $f0;
+        byte $b0;
+
+        r0 := @this: com.movesky.app.main.achievements.impls.Humiliation;
+
+        $r1 := @parameter0: com.movesky.app.main.achievements.events.UnitCreatedEvent;
+
+        $r2 = virtualinvoke $r1.<com.movesky.app.main.achievements.events.UnitCreatedEvent: com.movesky.app.main.units.Unit getUnit()>();
+
+        $r3 = virtualinvoke $r1.<com.movesky.app.main.achievements.events.UnitCreatedEvent: com.movesky.app.main.Player getLocalPlayer()>();
+
+        $r4 = virtualinvoke $r3.<com.movesky.app.main.Player: com.movesky.app.main.Team getTeam()>();
+
+        $r5 = virtualinvoke $r2.<com.movesky.app.main.units.Unit: com.movesky.app.main.Team getTeam()>();
+
+        if $r4 != $r5 goto label3;
+
+        $r5 = <com.movesky.app.main.Team: com.movesky.app.main.Team SERVER>;
+
+        if $r4 != $r5 goto label1;
+
+        $f0 = virtualinvoke $r2.<com.movesky.app.main.units.Unit: float getY()>();
+
+        $b0 = $f0 cmpl 500.0F;
+
+        if $b0 > 0 goto label2;
+
+     label1:
+        $r5 = <com.movesky.app.main.Team: com.movesky.app.main.Team CLIENT>;
+
+        if $r4 != $r5 goto label3;
+
+        $f0 = virtualinvoke $r2.<com.movesky.app.main.units.Unit: float getY()>();
+
+        $b0 = $f0 cmpg 30.0F;
+
+        if $b0 >= 0 goto label3;
+
+     label2:
+        virtualinvoke r0.<com.movesky.app.main.achievements.impls.Humiliation: void increment()>();
+
+     label3:
+        return;
+    }
+
+    public boolean usesUnitCreated()
+    {
+        com.movesky.app.main.achievements.impls.Humiliation r0;
+
+        r0 := @this: com.movesky.app.main.achievements.impls.Humiliation;
+
+        return 1;
+    }
+
+    public static void <clinit>()
+    {
+        <com.movesky.app.main.achievements.impls.Humiliation: float dist> = 10.0F;
+
+        return;
+    }
+}

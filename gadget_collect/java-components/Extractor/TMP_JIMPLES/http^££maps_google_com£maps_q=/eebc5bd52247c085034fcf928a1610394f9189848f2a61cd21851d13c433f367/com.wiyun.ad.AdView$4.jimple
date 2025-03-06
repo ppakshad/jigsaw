@@ -1,0 +1,87 @@
+class com.wiyun.ad.AdView$4 extends java.lang.Object implements android.view.animation.Animation$AnimationListener
+{
+    final com.wiyun.ad.AdView a;
+    private final android.widget.LinearLayout b;
+
+    void <init>(com.wiyun.ad.AdView, android.widget.LinearLayout)
+    {
+        com.wiyun.ad.AdView$4 r0;
+        com.wiyun.ad.AdView $r1;
+        android.widget.LinearLayout $r2;
+
+        r0 := @this: com.wiyun.ad.AdView$4;
+
+        $r1 := @parameter0: com.wiyun.ad.AdView;
+
+        $r2 := @parameter1: android.widget.LinearLayout;
+
+        r0.<com.wiyun.ad.AdView$4: com.wiyun.ad.AdView a> = $r1;
+
+        r0.<com.wiyun.ad.AdView$4: android.widget.LinearLayout b> = $r2;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public void onAnimationEnd(android.view.animation.Animation)
+    {
+        com.wiyun.ad.AdView$4 r0;
+        android.view.animation.Animation $r1;
+        android.view.ViewParent $r2;
+        android.widget.LinearLayout $r3;
+        android.view.ViewGroup $r4;
+        com.wiyun.ad.AdView $r5;
+
+        r0 := @this: com.wiyun.ad.AdView$4;
+
+        $r1 := @parameter0: android.view.animation.Animation;
+
+        $r3 = r0.<com.wiyun.ad.AdView$4: android.widget.LinearLayout b>;
+
+        $r2 = virtualinvoke $r3.<android.widget.LinearLayout: android.view.ViewParent getParent()>();
+
+        $r4 = (android.view.ViewGroup) $r2;
+
+        if $r4 == null goto label1;
+
+        $r3 = r0.<com.wiyun.ad.AdView$4: android.widget.LinearLayout b>;
+
+        virtualinvoke $r4.<android.view.ViewGroup: void removeView(android.view.View)>($r3);
+
+     label1:
+        $r5 = r0.<com.wiyun.ad.AdView$4: com.wiyun.ad.AdView a>;
+
+        staticinvoke <com.wiyun.ad.AdView: void b(com.wiyun.ad.AdView,boolean)>($r5, 0);
+
+        $r5 = r0.<com.wiyun.ad.AdView$4: com.wiyun.ad.AdView a>;
+
+        staticinvoke <com.wiyun.ad.AdView: void a(com.wiyun.ad.AdView,android.view.View)>($r5, null);
+
+        return;
+    }
+
+    public void onAnimationRepeat(android.view.animation.Animation)
+    {
+        com.wiyun.ad.AdView$4 r0;
+        android.view.animation.Animation $r1;
+
+        r0 := @this: com.wiyun.ad.AdView$4;
+
+        $r1 := @parameter0: android.view.animation.Animation;
+
+        return;
+    }
+
+    public void onAnimationStart(android.view.animation.Animation)
+    {
+        com.wiyun.ad.AdView$4 r0;
+        android.view.animation.Animation $r1;
+
+        r0 := @this: com.wiyun.ad.AdView$4;
+
+        $r1 := @parameter0: android.view.animation.Animation;
+
+        return;
+    }
+}

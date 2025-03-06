@@ -1,0 +1,646 @@
+public class com.movesky.app.main.GridAcceleration extends java.lang.Object
+{
+    private float cellHeight;
+    private float cellWidth;
+    private java.util.ArrayList cells;
+    private int cellsInX;
+    private int cellsInY;
+
+    public void <init>(float, float, float)
+    {
+        com.movesky.app.main.GridAcceleration r0;
+        float $f0, $f1, $f2;
+        com.movesky.app.main.GridAcceleration$Cell $r1;
+        java.util.ArrayList $r2;
+        double $d0;
+        int $i0, $i1, $i2;
+
+        r0 := @this: com.movesky.app.main.GridAcceleration;
+
+        $f0 := @parameter0: float;
+
+        $f1 := @parameter1: float;
+
+        $f2 := @parameter2: float;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        $r2 = new java.util.ArrayList;
+
+        specialinvoke $r2.<java.util.ArrayList: void <init>()>();
+
+        r0.<com.movesky.app.main.GridAcceleration: java.util.ArrayList cells> = $r2;
+
+        $d0 = (double) 10.0F;
+
+        $d0 = staticinvoke <java.lang.Math: double ceil(double)>($d0);
+
+        $i0 = (int) $d0;
+
+        r0.<com.movesky.app.main.GridAcceleration: int cellsInX> = $i0;
+
+        $d0 = (double) 16.5625F;
+
+        $d0 = staticinvoke <java.lang.Math: double ceil(double)>($d0);
+
+        $i0 = (int) $d0;
+
+        r0.<com.movesky.app.main.GridAcceleration: int cellsInY> = $i0;
+
+        $i0 = r0.<com.movesky.app.main.GridAcceleration: int cellsInX>;
+
+        $f2 = (float) $i0;
+
+        $f0 = 320.0F / $f2;
+
+        r0.<com.movesky.app.main.GridAcceleration: float cellWidth> = $f0;
+
+        $i0 = r0.<com.movesky.app.main.GridAcceleration: int cellsInY>;
+
+        $f0 = (float) $i0;
+
+        $f0 = 530.0F / $f0;
+
+        r0.<com.movesky.app.main.GridAcceleration: float cellHeight> = $f0;
+
+        $i0 = 0;
+
+        $i1 = r0.<com.movesky.app.main.GridAcceleration: int cellsInX>;
+
+        $i2 = r0.<com.movesky.app.main.GridAcceleration: int cellsInY>;
+
+        $i1 = $i1 * $i2;
+
+     label1:
+        if $i0 >= $i1 goto label2;
+
+        $r2 = r0.<com.movesky.app.main.GridAcceleration: java.util.ArrayList cells>;
+
+        $r1 = new com.movesky.app.main.GridAcceleration$Cell;
+
+        specialinvoke $r1.<com.movesky.app.main.GridAcceleration$Cell: void <init>(com.movesky.app.main.GridAcceleration$1)>(null);
+
+        virtualinvoke $r2.<java.util.ArrayList: boolean add(java.lang.Object)>($r1);
+
+        $i0 = $i0 + 1;
+
+        goto label1;
+
+     label2:
+        return;
+    }
+
+    public void clearUnits()
+    {
+        com.movesky.app.main.GridAcceleration r0;
+        java.lang.Object $r1;
+        int $i0, $i1;
+        java.util.ArrayList $r2;
+        com.movesky.app.main.GridAcceleration$Cell $r3;
+
+        r0 := @this: com.movesky.app.main.GridAcceleration;
+
+        $i0 = r0.<com.movesky.app.main.GridAcceleration: int cellsInX>;
+
+        $i1 = r0.<com.movesky.app.main.GridAcceleration: int cellsInY>;
+
+        $i0 = $i1 * $i0;
+
+        $i1 = 0;
+
+     label1:
+        if $i1 >= $i0 goto label2;
+
+        $r2 = r0.<com.movesky.app.main.GridAcceleration: java.util.ArrayList cells>;
+
+        $r1 = virtualinvoke $r2.<java.util.ArrayList: java.lang.Object get(int)>($i1);
+
+        $r3 = (com.movesky.app.main.GridAcceleration$Cell) $r1;
+
+        $r2 = $r3.<com.movesky.app.main.GridAcceleration$Cell: java.util.ArrayList units>;
+
+        virtualinvoke $r2.<java.util.ArrayList: void clear()>();
+
+        $i1 = $i1 + 1;
+
+        goto label1;
+
+     label2:
+        return;
+    }
+
+    public void clearWalls()
+    {
+        com.movesky.app.main.GridAcceleration r0;
+        java.lang.Object $r1;
+        int $i0, $i1;
+        java.util.ArrayList $r2;
+        com.movesky.app.main.GridAcceleration$Cell $r3;
+
+        r0 := @this: com.movesky.app.main.GridAcceleration;
+
+        $i0 = r0.<com.movesky.app.main.GridAcceleration: int cellsInX>;
+
+        $i1 = r0.<com.movesky.app.main.GridAcceleration: int cellsInY>;
+
+        $i0 = $i1 * $i0;
+
+        $i1 = 0;
+
+     label1:
+        if $i1 >= $i0 goto label2;
+
+        $r2 = r0.<com.movesky.app.main.GridAcceleration: java.util.ArrayList cells>;
+
+        $r1 = virtualinvoke $r2.<java.util.ArrayList: java.lang.Object get(int)>($i1);
+
+        $r3 = (com.movesky.app.main.GridAcceleration$Cell) $r1;
+
+        $r2 = $r3.<com.movesky.app.main.GridAcceleration$Cell: java.util.ArrayList walls>;
+
+        virtualinvoke $r2.<java.util.ArrayList: void clear()>();
+
+        $i1 = $i1 + 1;
+
+        goto label1;
+
+     label2:
+        return;
+    }
+
+    public void getUnitsInAABB(float, float, float, float, java.util.HashSet)
+    {
+        com.movesky.app.main.GridAcceleration r0;
+        float $f0, $f1, $f2, $f3, $f4;
+        java.util.HashSet $r1;
+        int $i0, $i1, $i2, $i3, $i4, $i5, $i6;
+        java.util.ArrayList $r2;
+        java.lang.Object $r3;
+        com.movesky.app.main.GridAcceleration$Cell $r4;
+
+        r0 := @this: com.movesky.app.main.GridAcceleration;
+
+        $f0 := @parameter0: float;
+
+        $f1 := @parameter1: float;
+
+        $f2 := @parameter2: float;
+
+        $f3 := @parameter3: float;
+
+        $r1 := @parameter4: java.util.HashSet;
+
+        $i0 = r0.<com.movesky.app.main.GridAcceleration: int cellsInX>;
+
+        $i0 = $i0 + -1;
+
+        $f4 = r0.<com.movesky.app.main.GridAcceleration: float cellWidth>;
+
+        $f0 = $f0 / $f4;
+
+        $i1 = (int) $f0;
+
+        $i0 = staticinvoke <java.lang.Math: int min(int,int)>($i0, $i1);
+
+        $i0 = staticinvoke <java.lang.Math: int max(int,int)>(0, $i0);
+
+        $i1 = r0.<com.movesky.app.main.GridAcceleration: int cellsInY>;
+
+        $i1 = $i1 + -1;
+
+        $f0 = r0.<com.movesky.app.main.GridAcceleration: float cellHeight>;
+
+        $f0 = $f1 / $f0;
+
+        $i2 = (int) $f0;
+
+        $i1 = staticinvoke <java.lang.Math: int min(int,int)>($i1, $i2);
+
+        $i3 = staticinvoke <java.lang.Math: int max(int,int)>(0, $i1);
+
+        $i1 = r0.<com.movesky.app.main.GridAcceleration: int cellsInX>;
+
+        $i1 = $i1 + -1;
+
+        $f0 = r0.<com.movesky.app.main.GridAcceleration: float cellWidth>;
+
+        $f0 = $f2 / $f0;
+
+        $i2 = (int) $f0;
+
+        $i1 = staticinvoke <java.lang.Math: int min(int,int)>($i1, $i2);
+
+        $i1 = staticinvoke <java.lang.Math: int max(int,int)>(0, $i1);
+
+        $i2 = r0.<com.movesky.app.main.GridAcceleration: int cellsInY>;
+
+        $i2 = $i2 + -1;
+
+        $f0 = r0.<com.movesky.app.main.GridAcceleration: float cellHeight>;
+
+        $f0 = $f3 / $f0;
+
+        $i4 = (int) $f0;
+
+        $i2 = staticinvoke <java.lang.Math: int min(int,int)>($i2, $i4);
+
+        $i2 = staticinvoke <java.lang.Math: int max(int,int)>(0, $i2);
+
+        virtualinvoke $r1.<java.util.HashSet: void clear()>();
+
+     label1:
+        if $i3 > $i2 goto label6;
+
+        $i4 = $i0;
+
+     label2:
+        if $i4 > $i1 goto label5;
+
+        $r2 = r0.<com.movesky.app.main.GridAcceleration: java.util.ArrayList cells>;
+
+        $i5 = r0.<com.movesky.app.main.GridAcceleration: int cellsInX>;
+
+        $i5 = $i5 * $i3;
+
+        $i5 = $i5 + $i4;
+
+        $r3 = virtualinvoke $r2.<java.util.ArrayList: java.lang.Object get(int)>($i5);
+
+        $r4 = (com.movesky.app.main.GridAcceleration$Cell) $r3;
+
+        $r2 = $r4.<com.movesky.app.main.GridAcceleration$Cell: java.util.ArrayList units>;
+
+        $i5 = 0;
+
+     label3:
+        $i6 = virtualinvoke $r2.<java.util.ArrayList: int size()>();
+
+        if $i5 >= $i6 goto label4;
+
+        $r3 = virtualinvoke $r2.<java.util.ArrayList: java.lang.Object get(int)>($i5);
+
+        virtualinvoke $r1.<java.util.HashSet: boolean add(java.lang.Object)>($r3);
+
+        $i5 = $i5 + 1;
+
+        goto label3;
+
+     label4:
+        $i4 = $i4 + 1;
+
+        goto label2;
+
+     label5:
+        $i3 = $i3 + 1;
+
+        goto label1;
+
+     label6:
+        return;
+    }
+
+    public void getWallsInAABB(float, float, float, float, java.util.HashSet)
+    {
+        com.movesky.app.main.GridAcceleration r0;
+        float $f0, $f1, $f2, $f3, $f4;
+        java.util.HashSet $r1;
+        int $i0, $i1, $i2, $i3, $i4, $i5, $i6;
+        java.util.ArrayList $r2;
+        java.lang.Object $r3;
+        com.movesky.app.main.GridAcceleration$Cell $r4;
+
+        r0 := @this: com.movesky.app.main.GridAcceleration;
+
+        $f0 := @parameter0: float;
+
+        $f1 := @parameter1: float;
+
+        $f2 := @parameter2: float;
+
+        $f3 := @parameter3: float;
+
+        $r1 := @parameter4: java.util.HashSet;
+
+        $i0 = r0.<com.movesky.app.main.GridAcceleration: int cellsInX>;
+
+        $i0 = $i0 + -1;
+
+        $f4 = r0.<com.movesky.app.main.GridAcceleration: float cellWidth>;
+
+        $f0 = $f0 / $f4;
+
+        $i1 = (int) $f0;
+
+        $i0 = staticinvoke <java.lang.Math: int min(int,int)>($i0, $i1);
+
+        $i0 = staticinvoke <java.lang.Math: int max(int,int)>(0, $i0);
+
+        $i1 = r0.<com.movesky.app.main.GridAcceleration: int cellsInY>;
+
+        $i1 = $i1 + -1;
+
+        $f0 = r0.<com.movesky.app.main.GridAcceleration: float cellHeight>;
+
+        $f0 = $f1 / $f0;
+
+        $i2 = (int) $f0;
+
+        $i1 = staticinvoke <java.lang.Math: int min(int,int)>($i1, $i2);
+
+        $i3 = staticinvoke <java.lang.Math: int max(int,int)>(0, $i1);
+
+        $i1 = r0.<com.movesky.app.main.GridAcceleration: int cellsInX>;
+
+        $i1 = $i1 + -1;
+
+        $f0 = r0.<com.movesky.app.main.GridAcceleration: float cellWidth>;
+
+        $f0 = $f2 / $f0;
+
+        $i2 = (int) $f0;
+
+        $i1 = staticinvoke <java.lang.Math: int min(int,int)>($i1, $i2);
+
+        $i1 = staticinvoke <java.lang.Math: int max(int,int)>(0, $i1);
+
+        $i2 = r0.<com.movesky.app.main.GridAcceleration: int cellsInY>;
+
+        $i2 = $i2 + -1;
+
+        $f0 = r0.<com.movesky.app.main.GridAcceleration: float cellHeight>;
+
+        $f0 = $f3 / $f0;
+
+        $i4 = (int) $f0;
+
+        $i2 = staticinvoke <java.lang.Math: int min(int,int)>($i2, $i4);
+
+        $i2 = staticinvoke <java.lang.Math: int max(int,int)>(0, $i2);
+
+        virtualinvoke $r1.<java.util.HashSet: void clear()>();
+
+     label1:
+        if $i3 > $i2 goto label6;
+
+        $i4 = $i0;
+
+     label2:
+        if $i4 > $i1 goto label5;
+
+        $r2 = r0.<com.movesky.app.main.GridAcceleration: java.util.ArrayList cells>;
+
+        $i5 = r0.<com.movesky.app.main.GridAcceleration: int cellsInX>;
+
+        $i5 = $i5 * $i3;
+
+        $i5 = $i5 + $i4;
+
+        $r3 = virtualinvoke $r2.<java.util.ArrayList: java.lang.Object get(int)>($i5);
+
+        $r4 = (com.movesky.app.main.GridAcceleration$Cell) $r3;
+
+        $r2 = $r4.<com.movesky.app.main.GridAcceleration$Cell: java.util.ArrayList walls>;
+
+        $i5 = 0;
+
+     label3:
+        $i6 = virtualinvoke $r2.<java.util.ArrayList: int size()>();
+
+        if $i5 >= $i6 goto label4;
+
+        $r3 = virtualinvoke $r2.<java.util.ArrayList: java.lang.Object get(int)>($i5);
+
+        virtualinvoke $r1.<java.util.HashSet: boolean add(java.lang.Object)>($r3);
+
+        $i5 = $i5 + 1;
+
+        goto label3;
+
+     label4:
+        $i4 = $i4 + 1;
+
+        goto label2;
+
+     label5:
+        $i3 = $i3 + 1;
+
+        goto label1;
+
+     label6:
+        return;
+    }
+
+    public void insertUnits(java.util.List)
+    {
+        com.movesky.app.main.GridAcceleration r0;
+        java.util.List $r1;
+        int $i0, $i1, $i2, $i3, $i4;
+        java.lang.Object $r2;
+        com.movesky.app.main.units.Unit $r3;
+        float $f0, $f1;
+        java.util.ArrayList $r4;
+        com.movesky.app.main.GridAcceleration$Cell $r5;
+
+        r0 := @this: com.movesky.app.main.GridAcceleration;
+
+        $r1 := @parameter0: java.util.List;
+
+        $i0 = interfaceinvoke $r1.<java.util.List: int size()>();
+
+        $i1 = 0;
+
+     label1:
+        if $i1 >= $i0 goto label2;
+
+        $r2 = interfaceinvoke $r1.<java.util.List: java.lang.Object get(int)>($i1);
+
+        $r3 = (com.movesky.app.main.units.Unit) $r2;
+
+        $i2 = r0.<com.movesky.app.main.GridAcceleration: int cellsInX>;
+
+        $i2 = $i2 + -1;
+
+        $f0 = virtualinvoke $r3.<com.movesky.app.main.units.Unit: float getX()>();
+
+        $f1 = r0.<com.movesky.app.main.GridAcceleration: float cellWidth>;
+
+        $f0 = $f0 / $f1;
+
+        $i3 = (int) $f0;
+
+        $i2 = staticinvoke <java.lang.Math: int min(int,int)>($i2, $i3);
+
+        $i2 = staticinvoke <java.lang.Math: int max(int,int)>(0, $i2);
+
+        $i3 = r0.<com.movesky.app.main.GridAcceleration: int cellsInY>;
+
+        $i3 = $i3 + -1;
+
+        $f0 = virtualinvoke $r3.<com.movesky.app.main.units.Unit: float getY()>();
+
+        $f1 = r0.<com.movesky.app.main.GridAcceleration: float cellHeight>;
+
+        $f0 = $f0 / $f1;
+
+        $i4 = (int) $f0;
+
+        $i3 = staticinvoke <java.lang.Math: int min(int,int)>($i3, $i4);
+
+        $i3 = staticinvoke <java.lang.Math: int max(int,int)>(0, $i3);
+
+        $r4 = r0.<com.movesky.app.main.GridAcceleration: java.util.ArrayList cells>;
+
+        $i4 = r0.<com.movesky.app.main.GridAcceleration: int cellsInX>;
+
+        $i3 = $i3 * $i4;
+
+        $i2 = $i2 + $i3;
+
+        $r2 = virtualinvoke $r4.<java.util.ArrayList: java.lang.Object get(int)>($i2);
+
+        $r5 = (com.movesky.app.main.GridAcceleration$Cell) $r2;
+
+        $r4 = $r5.<com.movesky.app.main.GridAcceleration$Cell: java.util.ArrayList units>;
+
+        virtualinvoke $r4.<java.util.ArrayList: boolean add(java.lang.Object)>($r3);
+
+        $i1 = $i1 + 1;
+
+        goto label1;
+
+     label2:
+        return;
+    }
+
+    public void insertWalls(java.util.List)
+    {
+        com.movesky.app.main.GridAcceleration r0;
+        java.util.List $r1;
+        int $i0, $i1, $i2, $i3, $i4, $i5, $i6, $i7;
+        java.lang.Object $r2;
+        com.movesky.app.engine.fastgraph.Wall $r3;
+        float $f0, $f1;
+        java.util.ArrayList $r4;
+        com.movesky.app.main.GridAcceleration$Cell $r5;
+
+        r0 := @this: com.movesky.app.main.GridAcceleration;
+
+        $r1 := @parameter0: java.util.List;
+
+        $i0 = interfaceinvoke $r1.<java.util.List: int size()>();
+
+        $i1 = 0;
+
+     label1:
+        if $i1 >= $i0 goto label6;
+
+        $r2 = interfaceinvoke $r1.<java.util.List: java.lang.Object get(int)>($i1);
+
+        $r3 = (com.movesky.app.engine.fastgraph.Wall) $r2;
+
+        $i2 = r0.<com.movesky.app.main.GridAcceleration: int cellsInX>;
+
+        $i2 = $i2 + -1;
+
+        $f0 = virtualinvoke $r3.<com.movesky.app.engine.fastgraph.Wall: float getMinX()>();
+
+        $f1 = r0.<com.movesky.app.main.GridAcceleration: float cellWidth>;
+
+        $f0 = $f0 / $f1;
+
+        $i3 = (int) $f0;
+
+        $i2 = staticinvoke <java.lang.Math: int min(int,int)>($i2, $i3);
+
+        $i2 = staticinvoke <java.lang.Math: int max(int,int)>(0, $i2);
+
+        $i3 = r0.<com.movesky.app.main.GridAcceleration: int cellsInY>;
+
+        $i3 = $i3 + -1;
+
+        $f0 = virtualinvoke $r3.<com.movesky.app.engine.fastgraph.Wall: float getMinY()>();
+
+        $f1 = r0.<com.movesky.app.main.GridAcceleration: float cellHeight>;
+
+        $f0 = $f0 / $f1;
+
+        $i4 = (int) $f0;
+
+        $i3 = staticinvoke <java.lang.Math: int min(int,int)>($i3, $i4);
+
+        $i4 = staticinvoke <java.lang.Math: int max(int,int)>(0, $i3);
+
+        $i3 = r0.<com.movesky.app.main.GridAcceleration: int cellsInX>;
+
+        $i3 = $i3 + -1;
+
+        $f0 = virtualinvoke $r3.<com.movesky.app.engine.fastgraph.Wall: float getMaxX()>();
+
+        $f1 = r0.<com.movesky.app.main.GridAcceleration: float cellWidth>;
+
+        $f0 = $f0 / $f1;
+
+        $i5 = (int) $f0;
+
+        $i3 = staticinvoke <java.lang.Math: int min(int,int)>($i3, $i5);
+
+        $i3 = staticinvoke <java.lang.Math: int max(int,int)>(0, $i3);
+
+        $i5 = r0.<com.movesky.app.main.GridAcceleration: int cellsInY>;
+
+        $i5 = $i5 + -1;
+
+        $f0 = virtualinvoke $r3.<com.movesky.app.engine.fastgraph.Wall: float getMaxY()>();
+
+        $f1 = r0.<com.movesky.app.main.GridAcceleration: float cellHeight>;
+
+        $f0 = $f0 / $f1;
+
+        $i6 = (int) $f0;
+
+        $i5 = staticinvoke <java.lang.Math: int min(int,int)>($i5, $i6);
+
+        $i5 = staticinvoke <java.lang.Math: int max(int,int)>(0, $i5);
+
+     label2:
+        if $i4 > $i5 goto label5;
+
+        $i6 = $i2;
+
+     label3:
+        if $i6 > $i3 goto label4;
+
+        $r4 = r0.<com.movesky.app.main.GridAcceleration: java.util.ArrayList cells>;
+
+        $i7 = r0.<com.movesky.app.main.GridAcceleration: int cellsInX>;
+
+        $i7 = $i7 * $i4;
+
+        $i7 = $i7 + $i6;
+
+        $r2 = virtualinvoke $r4.<java.util.ArrayList: java.lang.Object get(int)>($i7);
+
+        $r5 = (com.movesky.app.main.GridAcceleration$Cell) $r2;
+
+        $r4 = $r5.<com.movesky.app.main.GridAcceleration$Cell: java.util.ArrayList walls>;
+
+        virtualinvoke $r4.<java.util.ArrayList: boolean add(java.lang.Object)>($r3);
+
+        $i6 = $i6 + 1;
+
+        goto label3;
+
+     label4:
+        $i4 = $i4 + 1;
+
+        goto label2;
+
+     label5:
+        $i1 = $i1 + 1;
+
+        goto label1;
+
+     label6:
+        return;
+    }
+}

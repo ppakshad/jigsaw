@@ -1,0 +1,139 @@
+public abstract class com.startapp.android.publish.a.e extends com.startapp.android.publish.Ad
+{
+    private static final long serialVersionUID;
+    private java.util.List adsDetails;
+
+    public void <init>(android.content.Context, com.startapp.android.publish.model.AdPreferences$Placement)
+    {
+        com.startapp.android.publish.a.e r0;
+        android.content.Context $r1;
+        com.startapp.android.publish.model.AdPreferences$Placement $r2;
+
+        r0 := @this: com.startapp.android.publish.a.e;
+
+        $r1 := @parameter0: android.content.Context;
+
+        $r2 := @parameter1: com.startapp.android.publish.model.AdPreferences$Placement;
+
+        specialinvoke r0.<com.startapp.android.publish.Ad: void <init>(android.content.Context,com.startapp.android.publish.model.AdPreferences$Placement)>($r1, $r2);
+
+        r0.<com.startapp.android.publish.a.e: java.util.List adsDetails> = null;
+
+        return;
+    }
+
+    private void a()
+    {
+        com.startapp.android.publish.a.e r0;
+        java.lang.Long $r1, $r6;
+        java.util.List $r2;
+        java.util.Iterator $r3;
+        boolean $z0;
+        java.lang.Object $r4;
+        com.startapp.android.publish.model.AdDetails $r5;
+        long $l0, $l1;
+        byte $b2;
+        java.util.concurrent.TimeUnit $r7;
+
+        r0 := @this: com.startapp.android.publish.a.e;
+
+        $r1 = null;
+
+        $r2 = r0.<com.startapp.android.publish.a.e: java.util.List adsDetails>;
+
+        if $r2 == null goto label4;
+
+        $r2 = r0.<com.startapp.android.publish.a.e: java.util.List adsDetails>;
+
+        $r3 = interfaceinvoke $r2.<java.util.List: java.util.Iterator iterator()>();
+
+     label1:
+        $z0 = interfaceinvoke $r3.<java.util.Iterator: boolean hasNext()>();
+
+        if $z0 == 0 goto label4;
+
+        $r4 = interfaceinvoke $r3.<java.util.Iterator: java.lang.Object next()>();
+
+        $r5 = (com.startapp.android.publish.model.AdDetails) $r4;
+
+        if $r5 == null goto label5;
+
+        $r6 = virtualinvoke $r5.<com.startapp.android.publish.model.AdDetails: java.lang.Long getTtl()>();
+
+        if $r6 == null goto label5;
+
+        if $r1 == null goto label2;
+
+        $r6 = virtualinvoke $r5.<com.startapp.android.publish.model.AdDetails: java.lang.Long getTtl()>();
+
+        $l0 = virtualinvoke $r6.<java.lang.Long: long longValue()>();
+
+        $l1 = virtualinvoke $r1.<java.lang.Long: long longValue()>();
+
+        $b2 = $l0 cmp $l1;
+
+        if $b2 >= 0 goto label5;
+
+     label2:
+        $r1 = virtualinvoke $r5.<com.startapp.android.publish.model.AdDetails: java.lang.Long getTtl()>();
+
+     label3:
+        goto label1;
+
+     label4:
+        if $r1 == null goto label6;
+
+        $r7 = <java.util.concurrent.TimeUnit: java.util.concurrent.TimeUnit SECONDS>;
+
+        $l0 = virtualinvoke $r1.<java.lang.Long: long longValue()>();
+
+        $l0 = virtualinvoke $r7.<java.util.concurrent.TimeUnit: long toMillis(long)>($l0);
+
+        $r1 = staticinvoke <java.lang.Long: java.lang.Long valueOf(long)>($l0);
+
+        r0.<com.startapp.android.publish.a.e: java.lang.Long adCacheTtl> = $r1;
+
+        return;
+
+     label5:
+        goto label3;
+
+     label6:
+        return;
+    }
+
+    public void a(java.util.List)
+    {
+        com.startapp.android.publish.a.e r0;
+        java.util.List $r1;
+
+        r0 := @this: com.startapp.android.publish.a.e;
+
+        $r1 := @parameter0: java.util.List;
+
+        r0.<com.startapp.android.publish.a.e: java.util.List adsDetails> = $r1;
+
+        specialinvoke r0.<com.startapp.android.publish.a.e: void a()>();
+
+        return;
+    }
+
+    public java.util.List b()
+    {
+        com.startapp.android.publish.a.e r0;
+        java.util.List r1;
+
+        r0 := @this: com.startapp.android.publish.a.e;
+
+        r1 = r0.<com.startapp.android.publish.a.e: java.util.List adsDetails>;
+
+        return r1;
+    }
+
+    public static void <clinit>()
+    {
+        <com.startapp.android.publish.a.e: long serialVersionUID> = 1L;
+
+        return;
+    }
+}

@@ -1,0 +1,88 @@
+public class com.apperhand.common.dto.Homepage extends com.apperhand.common.dto.BaseDTO
+{
+    private static final long serialVersionUID;
+    private java.lang.String pageURL;
+
+    public void <init>()
+    {
+        com.apperhand.common.dto.Homepage r0;
+
+        r0 := @this: com.apperhand.common.dto.Homepage;
+
+        specialinvoke r0.<com.apperhand.common.dto.BaseDTO: void <init>()>();
+
+        return;
+    }
+
+    public void <init>(java.lang.String)
+    {
+        com.apperhand.common.dto.Homepage r0;
+        java.lang.String $r1;
+
+        r0 := @this: com.apperhand.common.dto.Homepage;
+
+        $r1 := @parameter0: java.lang.String;
+
+        specialinvoke r0.<com.apperhand.common.dto.BaseDTO: void <init>()>();
+
+        r0.<com.apperhand.common.dto.Homepage: java.lang.String pageURL> = $r1;
+
+        return;
+    }
+
+    public java.lang.String getPageURL()
+    {
+        com.apperhand.common.dto.Homepage r0;
+        java.lang.String r1;
+
+        r0 := @this: com.apperhand.common.dto.Homepage;
+
+        r1 = r0.<com.apperhand.common.dto.Homepage: java.lang.String pageURL>;
+
+        return r1;
+    }
+
+    public void setPageURL(java.lang.String)
+    {
+        com.apperhand.common.dto.Homepage r0;
+        java.lang.String $r1;
+
+        r0 := @this: com.apperhand.common.dto.Homepage;
+
+        $r1 := @parameter0: java.lang.String;
+
+        r0.<com.apperhand.common.dto.Homepage: java.lang.String pageURL> = $r1;
+
+        return;
+    }
+
+    public java.lang.String toString()
+    {
+        com.apperhand.common.dto.Homepage r0;
+        java.lang.StringBuilder $r1;
+        java.lang.String $r2;
+
+        r0 := @this: com.apperhand.common.dto.Homepage;
+
+        $r1 = new java.lang.StringBuilder;
+
+        specialinvoke $r1.<java.lang.StringBuilder: void <init>(java.lang.String)>("Homepage [pageURL=");
+
+        $r2 = r0.<com.apperhand.common.dto.Homepage: java.lang.String pageURL>;
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r2);
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("]");
+
+        $r2 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        return $r2;
+    }
+
+    public static void <clinit>()
+    {
+        <com.apperhand.common.dto.Homepage: long serialVersionUID> = 7900798598608490759L;
+
+        return;
+    }
+}

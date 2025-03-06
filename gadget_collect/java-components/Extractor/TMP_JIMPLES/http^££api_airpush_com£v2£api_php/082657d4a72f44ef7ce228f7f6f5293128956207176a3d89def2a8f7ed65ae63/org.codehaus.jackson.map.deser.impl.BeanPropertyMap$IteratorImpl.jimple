@@ -1,0 +1,154 @@
+final class org.codehaus.jackson.map.deser.impl.BeanPropertyMap$IteratorImpl extends java.lang.Object implements java.util.Iterator
+{
+    private final org.codehaus.jackson.map.deser.impl.BeanPropertyMap$Bucket[] _buckets;
+    private org.codehaus.jackson.map.deser.impl.BeanPropertyMap$Bucket _currentBucket;
+    private int _nextBucketIndex;
+
+    public void <init>(org.codehaus.jackson.map.deser.impl.BeanPropertyMap$Bucket[])
+    {
+        org.codehaus.jackson.map.deser.impl.BeanPropertyMap$IteratorImpl r0;
+        org.codehaus.jackson.map.deser.impl.BeanPropertyMap$Bucket[] $r1;
+        org.codehaus.jackson.map.deser.impl.BeanPropertyMap$Bucket r2;
+        int i0, i1, i2;
+
+        r0 := @this: org.codehaus.jackson.map.deser.impl.BeanPropertyMap$IteratorImpl;
+
+        $r1 := @parameter0: org.codehaus.jackson.map.deser.impl.BeanPropertyMap$Bucket[];
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        r0.<org.codehaus.jackson.map.deser.impl.BeanPropertyMap$IteratorImpl: org.codehaus.jackson.map.deser.impl.BeanPropertyMap$Bucket[] _buckets> = $r1;
+
+        $r1 = r0.<org.codehaus.jackson.map.deser.impl.BeanPropertyMap$IteratorImpl: org.codehaus.jackson.map.deser.impl.BeanPropertyMap$Bucket[] _buckets>;
+
+        i0 = lengthof $r1;
+
+        i1 = 0;
+
+     label1:
+        if i1 >= i0 goto label4;
+
+        $r1 = r0.<org.codehaus.jackson.map.deser.impl.BeanPropertyMap$IteratorImpl: org.codehaus.jackson.map.deser.impl.BeanPropertyMap$Bucket[] _buckets>;
+
+        i2 = i1 + 1;
+
+        r2 = $r1[i1];
+
+        if r2 == null goto label3;
+
+        r0.<org.codehaus.jackson.map.deser.impl.BeanPropertyMap$IteratorImpl: org.codehaus.jackson.map.deser.impl.BeanPropertyMap$Bucket _currentBucket> = r2;
+
+     label2:
+        r0.<org.codehaus.jackson.map.deser.impl.BeanPropertyMap$IteratorImpl: int _nextBucketIndex> = i2;
+
+        return;
+
+     label3:
+        i1 = i2;
+
+        goto label1;
+
+     label4:
+        i2 = i1;
+
+        goto label2;
+    }
+
+    public boolean hasNext()
+    {
+        org.codehaus.jackson.map.deser.impl.BeanPropertyMap$IteratorImpl r0;
+        org.codehaus.jackson.map.deser.impl.BeanPropertyMap$Bucket $r1;
+
+        r0 := @this: org.codehaus.jackson.map.deser.impl.BeanPropertyMap$IteratorImpl;
+
+        $r1 = r0.<org.codehaus.jackson.map.deser.impl.BeanPropertyMap$IteratorImpl: org.codehaus.jackson.map.deser.impl.BeanPropertyMap$Bucket _currentBucket>;
+
+        if $r1 == null goto label1;
+
+        return 1;
+
+     label1:
+        return 0;
+    }
+
+    public volatile java.lang.Object next()
+    {
+        org.codehaus.jackson.map.deser.impl.BeanPropertyMap$IteratorImpl r0;
+        org.codehaus.jackson.map.deser.SettableBeanProperty $r1;
+
+        r0 := @this: org.codehaus.jackson.map.deser.impl.BeanPropertyMap$IteratorImpl;
+
+        $r1 = virtualinvoke r0.<org.codehaus.jackson.map.deser.impl.BeanPropertyMap$IteratorImpl: org.codehaus.jackson.map.deser.SettableBeanProperty next()>();
+
+        return $r1;
+    }
+
+    public org.codehaus.jackson.map.deser.SettableBeanProperty next()
+    {
+        org.codehaus.jackson.map.deser.impl.BeanPropertyMap$IteratorImpl r0;
+        org.codehaus.jackson.map.deser.impl.BeanPropertyMap$Bucket r1, r3;
+        int $i0, $i1;
+        java.util.NoSuchElementException $r2;
+        org.codehaus.jackson.map.deser.impl.BeanPropertyMap$Bucket[] $r4;
+        org.codehaus.jackson.map.deser.SettableBeanProperty r5;
+
+        r0 := @this: org.codehaus.jackson.map.deser.impl.BeanPropertyMap$IteratorImpl;
+
+        r1 = r0.<org.codehaus.jackson.map.deser.impl.BeanPropertyMap$IteratorImpl: org.codehaus.jackson.map.deser.impl.BeanPropertyMap$Bucket _currentBucket>;
+
+        if r1 != null goto label1;
+
+        $r2 = new java.util.NoSuchElementException;
+
+        specialinvoke $r2.<java.util.NoSuchElementException: void <init>()>();
+
+        throw $r2;
+
+     label1:
+        r3 = r1.<org.codehaus.jackson.map.deser.impl.BeanPropertyMap$Bucket: org.codehaus.jackson.map.deser.impl.BeanPropertyMap$Bucket next>;
+
+     label2:
+        if r3 != null goto label3;
+
+        $i0 = r0.<org.codehaus.jackson.map.deser.impl.BeanPropertyMap$IteratorImpl: int _nextBucketIndex>;
+
+        $r4 = r0.<org.codehaus.jackson.map.deser.impl.BeanPropertyMap$IteratorImpl: org.codehaus.jackson.map.deser.impl.BeanPropertyMap$Bucket[] _buckets>;
+
+        $i1 = lengthof $r4;
+
+        if $i0 >= $i1 goto label3;
+
+        $r4 = r0.<org.codehaus.jackson.map.deser.impl.BeanPropertyMap$IteratorImpl: org.codehaus.jackson.map.deser.impl.BeanPropertyMap$Bucket[] _buckets>;
+
+        $i1 = r0.<org.codehaus.jackson.map.deser.impl.BeanPropertyMap$IteratorImpl: int _nextBucketIndex>;
+
+        $i0 = $i1 + 1;
+
+        r0.<org.codehaus.jackson.map.deser.impl.BeanPropertyMap$IteratorImpl: int _nextBucketIndex> = $i0;
+
+        r3 = $r4[$i1];
+
+        goto label2;
+
+     label3:
+        r0.<org.codehaus.jackson.map.deser.impl.BeanPropertyMap$IteratorImpl: org.codehaus.jackson.map.deser.impl.BeanPropertyMap$Bucket _currentBucket> = r3;
+
+        r5 = r1.<org.codehaus.jackson.map.deser.impl.BeanPropertyMap$Bucket: org.codehaus.jackson.map.deser.SettableBeanProperty value>;
+
+        return r5;
+    }
+
+    public void remove()
+    {
+        org.codehaus.jackson.map.deser.impl.BeanPropertyMap$IteratorImpl r0;
+        java.lang.UnsupportedOperationException $r1;
+
+        r0 := @this: org.codehaus.jackson.map.deser.impl.BeanPropertyMap$IteratorImpl;
+
+        $r1 = new java.lang.UnsupportedOperationException;
+
+        specialinvoke $r1.<java.lang.UnsupportedOperationException: void <init>()>();
+
+        throw $r1;
+    }
+}

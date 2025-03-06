@@ -1,0 +1,129 @@
+public class org.codehaus.jackson.map.util.RootNameLookup extends java.lang.Object
+{
+    protected org.codehaus.jackson.map.util.LRUMap _rootNames;
+
+    public void <init>()
+    {
+        org.codehaus.jackson.map.util.RootNameLookup r0;
+
+        r0 := @this: org.codehaus.jackson.map.util.RootNameLookup;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public org.codehaus.jackson.io.SerializedString findRootName(java.lang.Class, org.codehaus.jackson.map.MapperConfig)
+    {
+        org.codehaus.jackson.map.util.RootNameLookup r0;
+        java.lang.Class r1;
+        org.codehaus.jackson.map.MapperConfig r2;
+        org.codehaus.jackson.map.type.ClassKey r3;
+        org.codehaus.jackson.map.util.LRUMap $r4;
+        org.codehaus.jackson.map.BeanDescription $r5;
+        org.codehaus.jackson.map.introspect.BasicBeanDescription r6;
+        org.codehaus.jackson.map.AnnotationIntrospector $r7;
+        org.codehaus.jackson.map.introspect.AnnotatedClass $r8;
+        java.lang.String $r9, r10;
+        org.codehaus.jackson.io.SerializedString r11;
+        java.lang.Object $r12;
+        java.lang.Throwable $r13;
+
+        r0 := @this: org.codehaus.jackson.map.util.RootNameLookup;
+
+        r1 := @parameter0: java.lang.Class;
+
+        r2 := @parameter1: org.codehaus.jackson.map.MapperConfig;
+
+        entermonitor r0;
+
+     label1:
+        r3 = new org.codehaus.jackson.map.type.ClassKey;
+
+        specialinvoke r3.<org.codehaus.jackson.map.type.ClassKey: void <init>(java.lang.Class)>(r1);
+
+        $r4 = r0.<org.codehaus.jackson.map.util.RootNameLookup: org.codehaus.jackson.map.util.LRUMap _rootNames>;
+
+        if $r4 != null goto label5;
+
+        $r4 = new org.codehaus.jackson.map.util.LRUMap;
+
+        specialinvoke $r4.<org.codehaus.jackson.map.util.LRUMap: void <init>(int,int)>(20, 200);
+
+        r0.<org.codehaus.jackson.map.util.RootNameLookup: org.codehaus.jackson.map.util.LRUMap _rootNames> = $r4;
+
+     label2:
+        $r5 = interfaceinvoke r2.<org.codehaus.jackson.map.MapperConfig: org.codehaus.jackson.map.BeanDescription introspectClassAnnotations(java.lang.Class)>(r1);
+
+        r6 = (org.codehaus.jackson.map.introspect.BasicBeanDescription) $r5;
+
+        $r7 = interfaceinvoke r2.<org.codehaus.jackson.map.MapperConfig: org.codehaus.jackson.map.AnnotationIntrospector getAnnotationIntrospector()>();
+
+        $r8 = virtualinvoke r6.<org.codehaus.jackson.map.introspect.BasicBeanDescription: org.codehaus.jackson.map.introspect.AnnotatedClass getClassInfo()>();
+
+        $r9 = virtualinvoke $r7.<org.codehaus.jackson.map.AnnotationIntrospector: java.lang.String findRootName(org.codehaus.jackson.map.introspect.AnnotatedClass)>($r8);
+
+        r10 = $r9;
+
+        if $r9 != null goto label3;
+
+        r10 = virtualinvoke r1.<java.lang.Class: java.lang.String getSimpleName()>();
+
+     label3:
+        r11 = new org.codehaus.jackson.io.SerializedString;
+
+        specialinvoke r11.<org.codehaus.jackson.io.SerializedString: void <init>(java.lang.String)>(r10);
+
+        $r4 = r0.<org.codehaus.jackson.map.util.RootNameLookup: org.codehaus.jackson.map.util.LRUMap _rootNames>;
+
+        virtualinvoke $r4.<org.codehaus.jackson.map.util.LRUMap: java.lang.Object put(java.lang.Object,java.lang.Object)>(r3, r11);
+
+     label4:
+        exitmonitor r0;
+
+        return r11;
+
+     label5:
+        $r4 = r0.<org.codehaus.jackson.map.util.RootNameLookup: org.codehaus.jackson.map.util.LRUMap _rootNames>;
+
+        $r12 = virtualinvoke $r4.<org.codehaus.jackson.map.util.LRUMap: java.lang.Object get(java.lang.Object)>(r3);
+
+        r11 = (org.codehaus.jackson.io.SerializedString) $r12;
+
+     label6:
+        if r11 == null goto label2;
+
+        goto label4;
+
+     label7:
+        $r13 := @caughtexception;
+
+        exitmonitor r0;
+
+        throw $r13;
+
+        catch java.lang.Throwable from label1 to label4 with label7;
+        catch java.lang.Throwable from label5 to label6 with label7;
+    }
+
+    public org.codehaus.jackson.io.SerializedString findRootName(org.codehaus.jackson.type.JavaType, org.codehaus.jackson.map.MapperConfig)
+    {
+        org.codehaus.jackson.map.util.RootNameLookup r0;
+        org.codehaus.jackson.type.JavaType $r1;
+        org.codehaus.jackson.map.MapperConfig r2;
+        java.lang.Class $r3;
+        org.codehaus.jackson.io.SerializedString $r4;
+
+        r0 := @this: org.codehaus.jackson.map.util.RootNameLookup;
+
+        $r1 := @parameter0: org.codehaus.jackson.type.JavaType;
+
+        r2 := @parameter1: org.codehaus.jackson.map.MapperConfig;
+
+        $r3 = virtualinvoke $r1.<org.codehaus.jackson.type.JavaType: java.lang.Class getRawClass()>();
+
+        $r4 = virtualinvoke r0.<org.codehaus.jackson.map.util.RootNameLookup: org.codehaus.jackson.io.SerializedString findRootName(java.lang.Class,org.codehaus.jackson.map.MapperConfig)>($r3, r2);
+
+        return $r4;
+    }
+}

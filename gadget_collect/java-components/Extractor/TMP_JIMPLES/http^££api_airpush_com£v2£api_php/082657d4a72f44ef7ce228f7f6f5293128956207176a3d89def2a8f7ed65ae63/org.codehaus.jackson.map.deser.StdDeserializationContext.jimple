@@ -1,0 +1,774 @@
+public class org.codehaus.jackson.map.deser.StdDeserializationContext extends org.codehaus.jackson.map.DeserializationContext
+{
+    static final int MAX_ERROR_STR_LEN;
+    protected org.codehaus.jackson.map.util.ArrayBuilders _arrayBuilders;
+    protected java.text.DateFormat _dateFormat;
+    protected final org.codehaus.jackson.map.DeserializerProvider _deserProvider;
+    protected org.codehaus.jackson.map.util.ObjectBuffer _objectBuffer;
+    protected org.codehaus.jackson.JsonParser _parser;
+
+    public void <init>(org.codehaus.jackson.map.DeserializationConfig, org.codehaus.jackson.JsonParser, org.codehaus.jackson.map.DeserializerProvider)
+    {
+        org.codehaus.jackson.map.deser.StdDeserializationContext r0;
+        org.codehaus.jackson.map.DeserializationConfig $r1;
+        org.codehaus.jackson.JsonParser $r2;
+        org.codehaus.jackson.map.DeserializerProvider $r3;
+
+        r0 := @this: org.codehaus.jackson.map.deser.StdDeserializationContext;
+
+        $r1 := @parameter0: org.codehaus.jackson.map.DeserializationConfig;
+
+        $r2 := @parameter1: org.codehaus.jackson.JsonParser;
+
+        $r3 := @parameter2: org.codehaus.jackson.map.DeserializerProvider;
+
+        specialinvoke r0.<org.codehaus.jackson.map.DeserializationContext: void <init>(org.codehaus.jackson.map.DeserializationConfig)>($r1);
+
+        r0.<org.codehaus.jackson.map.deser.StdDeserializationContext: org.codehaus.jackson.JsonParser _parser> = $r2;
+
+        r0.<org.codehaus.jackson.map.deser.StdDeserializationContext: org.codehaus.jackson.map.DeserializerProvider _deserProvider> = $r3;
+
+        return;
+    }
+
+    protected java.lang.String _calcName(java.lang.Class)
+    {
+        org.codehaus.jackson.map.deser.StdDeserializationContext r0;
+        java.lang.Class r1;
+        boolean $z0;
+        java.lang.StringBuilder $r2;
+        java.lang.String $r3;
+
+        r0 := @this: org.codehaus.jackson.map.deser.StdDeserializationContext;
+
+        r1 := @parameter0: java.lang.Class;
+
+        $z0 = virtualinvoke r1.<java.lang.Class: boolean isArray()>();
+
+        if $z0 == 0 goto label1;
+
+        $r2 = new java.lang.StringBuilder;
+
+        specialinvoke $r2.<java.lang.StringBuilder: void <init>()>();
+
+        r1 = virtualinvoke r1.<java.lang.Class: java.lang.Class getComponentType()>();
+
+        $r3 = virtualinvoke r0.<org.codehaus.jackson.map.deser.StdDeserializationContext: java.lang.String _calcName(java.lang.Class)>(r1);
+
+        $r2 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r3);
+
+        $r2 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("[]");
+
+        $r3 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        return $r3;
+
+     label1:
+        $r3 = virtualinvoke r1.<java.lang.Class: java.lang.String getName()>();
+
+        return $r3;
+    }
+
+    protected java.lang.String _desc(java.lang.String)
+    {
+        org.codehaus.jackson.map.deser.StdDeserializationContext r0;
+        java.lang.String $r1, $r3;
+        int $i0;
+        java.lang.StringBuilder $r2;
+
+        r0 := @this: org.codehaus.jackson.map.deser.StdDeserializationContext;
+
+        $r1 := @parameter0: java.lang.String;
+
+        $i0 = virtualinvoke $r1.<java.lang.String: int length()>();
+
+        if $i0 <= 500 goto label1;
+
+        $r2 = new java.lang.StringBuilder;
+
+        specialinvoke $r2.<java.lang.StringBuilder: void <init>()>();
+
+        $r3 = virtualinvoke $r1.<java.lang.String: java.lang.String substring(int,int)>(0, 500);
+
+        $r2 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r3);
+
+        $r2 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("]...[");
+
+        $i0 = virtualinvoke $r1.<java.lang.String: int length()>();
+
+        $i0 = $i0 - 500;
+
+        $r1 = virtualinvoke $r1.<java.lang.String: java.lang.String substring(int)>($i0);
+
+        $r2 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r1);
+
+        $r1 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.String toString()>();
+
+     label1:
+        return $r1;
+    }
+
+    protected java.lang.String _valueDesc()
+    {
+        org.codehaus.jackson.map.deser.StdDeserializationContext r0;
+        org.codehaus.jackson.JsonParser $r1;
+        java.lang.String $r2;
+        java.lang.Exception $r3;
+
+        r0 := @this: org.codehaus.jackson.map.deser.StdDeserializationContext;
+
+     label1:
+        $r1 = r0.<org.codehaus.jackson.map.deser.StdDeserializationContext: org.codehaus.jackson.JsonParser _parser>;
+
+        $r2 = virtualinvoke $r1.<org.codehaus.jackson.JsonParser: java.lang.String getText()>();
+
+        $r2 = virtualinvoke r0.<org.codehaus.jackson.map.deser.StdDeserializationContext: java.lang.String _desc(java.lang.String)>($r2);
+
+     label2:
+        return $r2;
+
+     label3:
+        $r3 := @caughtexception;
+
+        return "[N/A]";
+
+        catch java.lang.Exception from label1 to label2 with label3;
+    }
+
+    public java.util.Calendar constructCalendar(java.util.Date)
+    {
+        org.codehaus.jackson.map.deser.StdDeserializationContext r0;
+        java.util.Date $r1;
+        java.util.Calendar $r2;
+
+        r0 := @this: org.codehaus.jackson.map.deser.StdDeserializationContext;
+
+        $r1 := @parameter0: java.util.Date;
+
+        $r2 = staticinvoke <java.util.Calendar: java.util.Calendar getInstance()>();
+
+        virtualinvoke $r2.<java.util.Calendar: void setTime(java.util.Date)>($r1);
+
+        return $r2;
+    }
+
+    protected java.lang.String determineClassName(java.lang.Object)
+    {
+        org.codehaus.jackson.map.deser.StdDeserializationContext r0;
+        java.lang.Object $r1;
+        java.lang.String $r2;
+
+        r0 := @this: org.codehaus.jackson.map.deser.StdDeserializationContext;
+
+        $r1 := @parameter0: java.lang.Object;
+
+        $r2 = staticinvoke <org.codehaus.jackson.map.util.ClassUtil: java.lang.String getClassDescription(java.lang.Object)>($r1);
+
+        return $r2;
+    }
+
+    public final org.codehaus.jackson.map.util.ArrayBuilders getArrayBuilders()
+    {
+        org.codehaus.jackson.map.deser.StdDeserializationContext r0;
+        org.codehaus.jackson.map.util.ArrayBuilders $r1;
+
+        r0 := @this: org.codehaus.jackson.map.deser.StdDeserializationContext;
+
+        $r1 = r0.<org.codehaus.jackson.map.deser.StdDeserializationContext: org.codehaus.jackson.map.util.ArrayBuilders _arrayBuilders>;
+
+        if $r1 != null goto label1;
+
+        $r1 = new org.codehaus.jackson.map.util.ArrayBuilders;
+
+        specialinvoke $r1.<org.codehaus.jackson.map.util.ArrayBuilders: void <init>()>();
+
+        r0.<org.codehaus.jackson.map.deser.StdDeserializationContext: org.codehaus.jackson.map.util.ArrayBuilders _arrayBuilders> = $r1;
+
+     label1:
+        $r1 = r0.<org.codehaus.jackson.map.deser.StdDeserializationContext: org.codehaus.jackson.map.util.ArrayBuilders _arrayBuilders>;
+
+        return $r1;
+    }
+
+    protected java.text.DateFormat getDateFormat()
+    {
+        org.codehaus.jackson.map.deser.StdDeserializationContext r0;
+        java.text.DateFormat $r1;
+        org.codehaus.jackson.map.DeserializationConfig $r2;
+        java.lang.Object $r3;
+
+        r0 := @this: org.codehaus.jackson.map.deser.StdDeserializationContext;
+
+        $r1 = r0.<org.codehaus.jackson.map.deser.StdDeserializationContext: java.text.DateFormat _dateFormat>;
+
+        if $r1 != null goto label1;
+
+        $r2 = r0.<org.codehaus.jackson.map.deser.StdDeserializationContext: org.codehaus.jackson.map.DeserializationConfig _config>;
+
+        $r1 = virtualinvoke $r2.<org.codehaus.jackson.map.DeserializationConfig: java.text.DateFormat getDateFormat()>();
+
+        $r3 = virtualinvoke $r1.<java.text.DateFormat: java.lang.Object clone()>();
+
+        $r1 = (java.text.DateFormat) $r3;
+
+        r0.<org.codehaus.jackson.map.deser.StdDeserializationContext: java.text.DateFormat _dateFormat> = $r1;
+
+     label1:
+        $r1 = r0.<org.codehaus.jackson.map.deser.StdDeserializationContext: java.text.DateFormat _dateFormat>;
+
+        return $r1;
+    }
+
+    public org.codehaus.jackson.map.DeserializerProvider getDeserializerProvider()
+    {
+        org.codehaus.jackson.map.deser.StdDeserializationContext r0;
+        org.codehaus.jackson.map.DeserializerProvider r1;
+
+        r0 := @this: org.codehaus.jackson.map.deser.StdDeserializationContext;
+
+        r1 = r0.<org.codehaus.jackson.map.deser.StdDeserializationContext: org.codehaus.jackson.map.DeserializerProvider _deserProvider>;
+
+        return r1;
+    }
+
+    public org.codehaus.jackson.JsonParser getParser()
+    {
+        org.codehaus.jackson.map.deser.StdDeserializationContext r0;
+        org.codehaus.jackson.JsonParser r1;
+
+        r0 := @this: org.codehaus.jackson.map.deser.StdDeserializationContext;
+
+        r1 = r0.<org.codehaus.jackson.map.deser.StdDeserializationContext: org.codehaus.jackson.JsonParser _parser>;
+
+        return r1;
+    }
+
+    public boolean handleUnknownProperty(org.codehaus.jackson.JsonParser, org.codehaus.jackson.map.JsonDeserializer, java.lang.Object, java.lang.String) throws java.io.IOException, org.codehaus.jackson.JsonProcessingException
+    {
+        org.codehaus.jackson.map.deser.StdDeserializationContext r0;
+        org.codehaus.jackson.JsonParser $r1, r5;
+        org.codehaus.jackson.map.JsonDeserializer r2;
+        java.lang.Object $r3, $r9;
+        java.lang.String $r4;
+        org.codehaus.jackson.map.DeserializationConfig $r6;
+        org.codehaus.jackson.map.util.LinkedNode $r7, r8;
+        org.codehaus.jackson.map.DeserializationProblemHandler $r10;
+        boolean $z0;
+        java.lang.Throwable $r11;
+
+        r0 := @this: org.codehaus.jackson.map.deser.StdDeserializationContext;
+
+        $r1 := @parameter0: org.codehaus.jackson.JsonParser;
+
+        r2 := @parameter1: org.codehaus.jackson.map.JsonDeserializer;
+
+        $r3 := @parameter2: java.lang.Object;
+
+        $r4 := @parameter3: java.lang.String;
+
+        $r6 = r0.<org.codehaus.jackson.map.deser.StdDeserializationContext: org.codehaus.jackson.map.DeserializationConfig _config>;
+
+        $r7 = virtualinvoke $r6.<org.codehaus.jackson.map.DeserializationConfig: org.codehaus.jackson.map.util.LinkedNode getProblemHandlers()>();
+
+        r8 = $r7;
+
+        if $r7 == null goto label7;
+
+        r5 = r0.<org.codehaus.jackson.map.deser.StdDeserializationContext: org.codehaus.jackson.JsonParser _parser>;
+
+        r0.<org.codehaus.jackson.map.deser.StdDeserializationContext: org.codehaus.jackson.JsonParser _parser> = $r1;
+
+     label1:
+        if r8 == null goto label6;
+
+     label2:
+        $r9 = virtualinvoke r8.<org.codehaus.jackson.map.util.LinkedNode: java.lang.Object value()>();
+
+        $r10 = (org.codehaus.jackson.map.DeserializationProblemHandler) $r9;
+
+        $z0 = virtualinvoke $r10.<org.codehaus.jackson.map.DeserializationProblemHandler: boolean handleUnknownProperty(org.codehaus.jackson.map.DeserializationContext,org.codehaus.jackson.map.JsonDeserializer,java.lang.Object,java.lang.String)>(r0, r2, $r3, $r4);
+
+     label3:
+        if $z0 == 0 goto label4;
+
+        r0.<org.codehaus.jackson.map.deser.StdDeserializationContext: org.codehaus.jackson.JsonParser _parser> = r5;
+
+        return 1;
+
+     label4:
+        $r7 = virtualinvoke r8.<org.codehaus.jackson.map.util.LinkedNode: org.codehaus.jackson.map.util.LinkedNode next()>();
+
+     label5:
+        r8 = $r7;
+
+        goto label1;
+
+     label6:
+        r0.<org.codehaus.jackson.map.deser.StdDeserializationContext: org.codehaus.jackson.JsonParser _parser> = r5;
+
+     label7:
+        return 0;
+
+     label8:
+        $r11 := @caughtexception;
+
+        r0.<org.codehaus.jackson.map.deser.StdDeserializationContext: org.codehaus.jackson.JsonParser _parser> = r5;
+
+        throw $r11;
+
+        catch java.lang.Throwable from label2 to label3 with label8;
+        catch java.lang.Throwable from label4 to label5 with label8;
+    }
+
+    public org.codehaus.jackson.map.JsonMappingException instantiationException(java.lang.Class, java.lang.Exception)
+    {
+        org.codehaus.jackson.map.deser.StdDeserializationContext r0;
+        java.lang.Class r1;
+        java.lang.Exception $r2;
+        org.codehaus.jackson.JsonParser $r3;
+        java.lang.StringBuilder $r4;
+        java.lang.String $r5;
+        org.codehaus.jackson.map.JsonMappingException $r6;
+
+        r0 := @this: org.codehaus.jackson.map.deser.StdDeserializationContext;
+
+        r1 := @parameter0: java.lang.Class;
+
+        $r2 := @parameter1: java.lang.Exception;
+
+        $r3 = r0.<org.codehaus.jackson.map.deser.StdDeserializationContext: org.codehaus.jackson.JsonParser _parser>;
+
+        $r4 = new java.lang.StringBuilder;
+
+        specialinvoke $r4.<java.lang.StringBuilder: void <init>()>();
+
+        $r4 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Can not construct instance of ");
+
+        $r5 = virtualinvoke r1.<java.lang.Class: java.lang.String getName()>();
+
+        $r4 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r5);
+
+        $r4 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(", problem: ");
+
+        $r5 = virtualinvoke $r2.<java.lang.Exception: java.lang.String getMessage()>();
+
+        $r4 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r5);
+
+        $r5 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        $r6 = staticinvoke <org.codehaus.jackson.map.JsonMappingException: org.codehaus.jackson.map.JsonMappingException 'from'(org.codehaus.jackson.JsonParser,java.lang.String)>($r3, $r5);
+
+        return $r6;
+    }
+
+    public org.codehaus.jackson.map.JsonMappingException instantiationException(java.lang.Class, java.lang.String)
+    {
+        org.codehaus.jackson.map.deser.StdDeserializationContext r0;
+        java.lang.Class r1;
+        java.lang.String $r2, $r5;
+        org.codehaus.jackson.JsonParser $r3;
+        java.lang.StringBuilder $r4;
+        org.codehaus.jackson.map.JsonMappingException $r6;
+
+        r0 := @this: org.codehaus.jackson.map.deser.StdDeserializationContext;
+
+        r1 := @parameter0: java.lang.Class;
+
+        $r2 := @parameter1: java.lang.String;
+
+        $r3 = r0.<org.codehaus.jackson.map.deser.StdDeserializationContext: org.codehaus.jackson.JsonParser _parser>;
+
+        $r4 = new java.lang.StringBuilder;
+
+        specialinvoke $r4.<java.lang.StringBuilder: void <init>()>();
+
+        $r4 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Can not construct instance of ");
+
+        $r5 = virtualinvoke r1.<java.lang.Class: java.lang.String getName()>();
+
+        $r4 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r5);
+
+        $r4 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(", problem: ");
+
+        $r4 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r2);
+
+        $r2 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        $r6 = staticinvoke <org.codehaus.jackson.map.JsonMappingException: org.codehaus.jackson.map.JsonMappingException 'from'(org.codehaus.jackson.JsonParser,java.lang.String)>($r3, $r2);
+
+        return $r6;
+    }
+
+    public final org.codehaus.jackson.map.util.ObjectBuffer leaseObjectBuffer()
+    {
+        org.codehaus.jackson.map.deser.StdDeserializationContext r0;
+        org.codehaus.jackson.map.util.ObjectBuffer r1;
+
+        r0 := @this: org.codehaus.jackson.map.deser.StdDeserializationContext;
+
+        r1 = r0.<org.codehaus.jackson.map.deser.StdDeserializationContext: org.codehaus.jackson.map.util.ObjectBuffer _objectBuffer>;
+
+        if r1 != null goto label1;
+
+        r1 = new org.codehaus.jackson.map.util.ObjectBuffer;
+
+        specialinvoke r1.<org.codehaus.jackson.map.util.ObjectBuffer: void <init>()>();
+
+        return r1;
+
+     label1:
+        r0.<org.codehaus.jackson.map.deser.StdDeserializationContext: org.codehaus.jackson.map.util.ObjectBuffer _objectBuffer> = null;
+
+        return r1;
+    }
+
+    public org.codehaus.jackson.map.JsonMappingException mappingException(java.lang.Class)
+    {
+        org.codehaus.jackson.map.deser.StdDeserializationContext r0;
+        java.lang.Class r1;
+        java.lang.String $r2;
+        org.codehaus.jackson.JsonParser $r3, $r5;
+        java.lang.StringBuilder $r4;
+        org.codehaus.jackson.JsonToken $r6;
+        org.codehaus.jackson.map.JsonMappingException $r7;
+
+        r0 := @this: org.codehaus.jackson.map.deser.StdDeserializationContext;
+
+        r1 := @parameter0: java.lang.Class;
+
+        $r2 = virtualinvoke r0.<org.codehaus.jackson.map.deser.StdDeserializationContext: java.lang.String _calcName(java.lang.Class)>(r1);
+
+        $r3 = r0.<org.codehaus.jackson.map.deser.StdDeserializationContext: org.codehaus.jackson.JsonParser _parser>;
+
+        $r4 = new java.lang.StringBuilder;
+
+        specialinvoke $r4.<java.lang.StringBuilder: void <init>()>();
+
+        $r4 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Can not deserialize instance of ");
+
+        $r4 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r2);
+
+        $r4 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" out of ");
+
+        $r5 = r0.<org.codehaus.jackson.map.deser.StdDeserializationContext: org.codehaus.jackson.JsonParser _parser>;
+
+        $r6 = virtualinvoke $r5.<org.codehaus.jackson.JsonParser: org.codehaus.jackson.JsonToken getCurrentToken()>();
+
+        $r4 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($r6);
+
+        $r4 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" token");
+
+        $r2 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        $r7 = staticinvoke <org.codehaus.jackson.map.JsonMappingException: org.codehaus.jackson.map.JsonMappingException 'from'(org.codehaus.jackson.JsonParser,java.lang.String)>($r3, $r2);
+
+        return $r7;
+    }
+
+    public java.util.Date parseDate(java.lang.String) throws java.lang.IllegalArgumentException
+    {
+        org.codehaus.jackson.map.deser.StdDeserializationContext r0;
+        java.lang.String $r1;
+        java.text.DateFormat $r2;
+        java.util.Date $r3;
+        java.lang.Throwable $r4;
+        java.lang.IllegalArgumentException $r5;
+        java.text.ParseException $r6;
+
+        r0 := @this: org.codehaus.jackson.map.deser.StdDeserializationContext;
+
+        $r1 := @parameter0: java.lang.String;
+
+     label1:
+        $r2 = virtualinvoke r0.<org.codehaus.jackson.map.deser.StdDeserializationContext: java.text.DateFormat getDateFormat()>();
+
+        $r3 = virtualinvoke $r2.<java.text.DateFormat: java.util.Date parse(java.lang.String)>($r1);
+
+     label2:
+        return $r3;
+
+     label3:
+        $r4 := @caughtexception;
+
+        $r5 = new java.lang.IllegalArgumentException;
+
+        $r6 = (java.text.ParseException) $r4;
+
+        $r1 = virtualinvoke $r6.<java.text.ParseException: java.lang.String getMessage()>();
+
+        specialinvoke $r5.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>($r1);
+
+        throw $r5;
+
+        catch java.text.ParseException from label1 to label2 with label3;
+    }
+
+    public final void returnObjectBuffer(org.codehaus.jackson.map.util.ObjectBuffer)
+    {
+        org.codehaus.jackson.map.deser.StdDeserializationContext r0;
+        org.codehaus.jackson.map.util.ObjectBuffer $r1, $r2;
+        int $i0, $i1;
+
+        r0 := @this: org.codehaus.jackson.map.deser.StdDeserializationContext;
+
+        $r1 := @parameter0: org.codehaus.jackson.map.util.ObjectBuffer;
+
+        $r2 = r0.<org.codehaus.jackson.map.deser.StdDeserializationContext: org.codehaus.jackson.map.util.ObjectBuffer _objectBuffer>;
+
+        if $r2 == null goto label1;
+
+        $i0 = virtualinvoke $r1.<org.codehaus.jackson.map.util.ObjectBuffer: int initialCapacity()>();
+
+        $r2 = r0.<org.codehaus.jackson.map.deser.StdDeserializationContext: org.codehaus.jackson.map.util.ObjectBuffer _objectBuffer>;
+
+        $i1 = virtualinvoke $r2.<org.codehaus.jackson.map.util.ObjectBuffer: int initialCapacity()>();
+
+        if $i0 < $i1 goto label2;
+
+     label1:
+        r0.<org.codehaus.jackson.map.deser.StdDeserializationContext: org.codehaus.jackson.map.util.ObjectBuffer _objectBuffer> = $r1;
+
+     label2:
+        return;
+    }
+
+    public org.codehaus.jackson.map.JsonMappingException unknownFieldException(java.lang.Object, java.lang.String)
+    {
+        org.codehaus.jackson.map.deser.StdDeserializationContext r0;
+        java.lang.Object $r1;
+        java.lang.String $r2;
+        org.codehaus.jackson.map.exc.UnrecognizedPropertyException $r3;
+        org.codehaus.jackson.JsonParser $r4;
+
+        r0 := @this: org.codehaus.jackson.map.deser.StdDeserializationContext;
+
+        $r1 := @parameter0: java.lang.Object;
+
+        $r2 := @parameter1: java.lang.String;
+
+        $r4 = r0.<org.codehaus.jackson.map.deser.StdDeserializationContext: org.codehaus.jackson.JsonParser _parser>;
+
+        $r3 = staticinvoke <org.codehaus.jackson.map.exc.UnrecognizedPropertyException: org.codehaus.jackson.map.exc.UnrecognizedPropertyException 'from'(org.codehaus.jackson.JsonParser,java.lang.Object,java.lang.String)>($r4, $r1, $r2);
+
+        return $r3;
+    }
+
+    public org.codehaus.jackson.map.JsonMappingException unknownTypeException(org.codehaus.jackson.type.JavaType, java.lang.String)
+    {
+        org.codehaus.jackson.map.deser.StdDeserializationContext r0;
+        org.codehaus.jackson.type.JavaType $r1;
+        java.lang.String $r2;
+        org.codehaus.jackson.JsonParser $r3;
+        java.lang.StringBuilder $r4;
+        org.codehaus.jackson.map.JsonMappingException $r5;
+
+        r0 := @this: org.codehaus.jackson.map.deser.StdDeserializationContext;
+
+        $r1 := @parameter0: org.codehaus.jackson.type.JavaType;
+
+        $r2 := @parameter1: java.lang.String;
+
+        $r3 = r0.<org.codehaus.jackson.map.deser.StdDeserializationContext: org.codehaus.jackson.JsonParser _parser>;
+
+        $r4 = new java.lang.StringBuilder;
+
+        specialinvoke $r4.<java.lang.StringBuilder: void <init>()>();
+
+        $r4 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Could not resolve type id \'");
+
+        $r4 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r2);
+
+        $r4 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("\' into a subtype of ");
+
+        $r4 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($r1);
+
+        $r2 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        $r5 = staticinvoke <org.codehaus.jackson.map.JsonMappingException: org.codehaus.jackson.map.JsonMappingException 'from'(org.codehaus.jackson.JsonParser,java.lang.String)>($r3, $r2);
+
+        return $r5;
+    }
+
+    public org.codehaus.jackson.map.JsonMappingException weirdKeyException(java.lang.Class, java.lang.String, java.lang.String)
+    {
+        org.codehaus.jackson.map.deser.StdDeserializationContext r0;
+        java.lang.Class r1;
+        java.lang.String $r2, $r3, $r6;
+        org.codehaus.jackson.JsonParser $r4;
+        java.lang.StringBuilder $r5;
+        org.codehaus.jackson.map.JsonMappingException $r7;
+
+        r0 := @this: org.codehaus.jackson.map.deser.StdDeserializationContext;
+
+        r1 := @parameter0: java.lang.Class;
+
+        $r2 := @parameter1: java.lang.String;
+
+        $r3 := @parameter2: java.lang.String;
+
+        $r4 = r0.<org.codehaus.jackson.map.deser.StdDeserializationContext: org.codehaus.jackson.JsonParser _parser>;
+
+        $r5 = new java.lang.StringBuilder;
+
+        specialinvoke $r5.<java.lang.StringBuilder: void <init>()>();
+
+        $r5 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Can not construct Map key of type ");
+
+        $r6 = virtualinvoke r1.<java.lang.Class: java.lang.String getName()>();
+
+        $r5 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r6);
+
+        $r5 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" from String \"");
+
+        $r2 = virtualinvoke r0.<org.codehaus.jackson.map.deser.StdDeserializationContext: java.lang.String _desc(java.lang.String)>($r2);
+
+        $r5 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r2);
+
+        $r5 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("\": ");
+
+        $r5 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r3);
+
+        $r2 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        $r7 = staticinvoke <org.codehaus.jackson.map.JsonMappingException: org.codehaus.jackson.map.JsonMappingException 'from'(org.codehaus.jackson.JsonParser,java.lang.String)>($r4, $r2);
+
+        return $r7;
+    }
+
+    public org.codehaus.jackson.map.JsonMappingException weirdNumberException(java.lang.Class, java.lang.String)
+    {
+        org.codehaus.jackson.map.deser.StdDeserializationContext r0;
+        java.lang.Class r1;
+        java.lang.String $r2, $r5;
+        org.codehaus.jackson.JsonParser $r3;
+        java.lang.StringBuilder $r4;
+        org.codehaus.jackson.map.JsonMappingException $r6;
+
+        r0 := @this: org.codehaus.jackson.map.deser.StdDeserializationContext;
+
+        r1 := @parameter0: java.lang.Class;
+
+        $r2 := @parameter1: java.lang.String;
+
+        $r3 = r0.<org.codehaus.jackson.map.deser.StdDeserializationContext: org.codehaus.jackson.JsonParser _parser>;
+
+        $r4 = new java.lang.StringBuilder;
+
+        specialinvoke $r4.<java.lang.StringBuilder: void <init>()>();
+
+        $r4 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Can not construct instance of ");
+
+        $r5 = virtualinvoke r1.<java.lang.Class: java.lang.String getName()>();
+
+        $r4 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r5);
+
+        $r4 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" from number value (");
+
+        $r5 = virtualinvoke r0.<org.codehaus.jackson.map.deser.StdDeserializationContext: java.lang.String _valueDesc()>();
+
+        $r4 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r5);
+
+        $r4 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("): ");
+
+        $r4 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r2);
+
+        $r2 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        $r6 = staticinvoke <org.codehaus.jackson.map.JsonMappingException: org.codehaus.jackson.map.JsonMappingException 'from'(org.codehaus.jackson.JsonParser,java.lang.String)>($r3, $r2);
+
+        return $r6;
+    }
+
+    public org.codehaus.jackson.map.JsonMappingException weirdStringException(java.lang.Class, java.lang.String)
+    {
+        org.codehaus.jackson.map.deser.StdDeserializationContext r0;
+        java.lang.Class r1;
+        java.lang.String $r2, $r5;
+        org.codehaus.jackson.JsonParser $r3;
+        java.lang.StringBuilder $r4;
+        org.codehaus.jackson.map.JsonMappingException $r6;
+
+        r0 := @this: org.codehaus.jackson.map.deser.StdDeserializationContext;
+
+        r1 := @parameter0: java.lang.Class;
+
+        $r2 := @parameter1: java.lang.String;
+
+        $r3 = r0.<org.codehaus.jackson.map.deser.StdDeserializationContext: org.codehaus.jackson.JsonParser _parser>;
+
+        $r4 = new java.lang.StringBuilder;
+
+        specialinvoke $r4.<java.lang.StringBuilder: void <init>()>();
+
+        $r4 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Can not construct instance of ");
+
+        $r5 = virtualinvoke r1.<java.lang.Class: java.lang.String getName()>();
+
+        $r4 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r5);
+
+        $r4 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" from String value \'");
+
+        $r5 = virtualinvoke r0.<org.codehaus.jackson.map.deser.StdDeserializationContext: java.lang.String _valueDesc()>();
+
+        $r4 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r5);
+
+        $r4 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("\': ");
+
+        $r4 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r2);
+
+        $r2 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        $r6 = staticinvoke <org.codehaus.jackson.map.JsonMappingException: org.codehaus.jackson.map.JsonMappingException 'from'(org.codehaus.jackson.JsonParser,java.lang.String)>($r3, $r2);
+
+        return $r6;
+    }
+
+    public org.codehaus.jackson.map.JsonMappingException wrongTokenException(org.codehaus.jackson.JsonParser, org.codehaus.jackson.JsonToken, java.lang.String)
+    {
+        org.codehaus.jackson.map.deser.StdDeserializationContext r0;
+        org.codehaus.jackson.JsonParser $r1;
+        org.codehaus.jackson.JsonToken $r2, $r5;
+        java.lang.String $r3;
+        java.lang.StringBuilder $r4;
+        org.codehaus.jackson.map.JsonMappingException $r6;
+
+        r0 := @this: org.codehaus.jackson.map.deser.StdDeserializationContext;
+
+        $r1 := @parameter0: org.codehaus.jackson.JsonParser;
+
+        $r2 := @parameter1: org.codehaus.jackson.JsonToken;
+
+        $r3 := @parameter2: java.lang.String;
+
+        $r4 = new java.lang.StringBuilder;
+
+        specialinvoke $r4.<java.lang.StringBuilder: void <init>()>();
+
+        $r4 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Unexpected token (");
+
+        $r5 = virtualinvoke $r1.<org.codehaus.jackson.JsonParser: org.codehaus.jackson.JsonToken getCurrentToken()>();
+
+        $r4 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($r5);
+
+        $r4 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("), expected ");
+
+        $r4 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($r2);
+
+        $r4 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(": ");
+
+        $r4 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r3);
+
+        $r3 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        $r6 = staticinvoke <org.codehaus.jackson.map.JsonMappingException: org.codehaus.jackson.map.JsonMappingException 'from'(org.codehaus.jackson.JsonParser,java.lang.String)>($r1, $r3);
+
+        return $r6;
+    }
+
+    public static void <clinit>()
+    {
+        <org.codehaus.jackson.map.deser.StdDeserializationContext: int MAX_ERROR_STR_LEN> = 500;
+
+        return;
+    }
+}

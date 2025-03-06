@@ -1,0 +1,2106 @@
+public abstract class com.startapp.android.publish.model.BaseRequest extends java.lang.Object implements com.startapp.android.publish.model.NameValueSerializer
+{
+    private static final java.lang.String OS;
+    private java.lang.String androidId;
+    private int appCode;
+    private java.lang.String appVersion;
+    private java.lang.String blat;
+    private java.lang.String blon;
+    private java.lang.String bssid;
+    private java.lang.String cellSignalLevel;
+    private java.lang.String cellTimingAdv;
+    private java.lang.String cid;
+    private java.lang.String clientSessionId;
+    private float density;
+    private java.lang.String deviceVersion;
+    private java.util.Map frameworksMap;
+    private int height;
+    private java.util.Set inputLangs;
+    private java.lang.String installerPkg;
+    private java.lang.String isp;
+    private java.lang.String ispName;
+    private java.lang.String lac;
+    private java.lang.String locale;
+    private java.lang.String manufacturer;
+    private java.lang.String model;
+    private java.lang.String netOper;
+    private java.lang.String networkType;
+    private java.lang.String os;
+    private java.lang.String packageId;
+    private java.util.Map parameters;
+    private java.lang.String productId;
+    private java.lang.String publisherId;
+    private int sdkId;
+    private java.lang.String sdkVersion;
+    private java.lang.String signalLevel;
+    private java.lang.String ssid;
+    private java.lang.String subProductId;
+    private java.lang.String subPublisherId;
+    private java.lang.Boolean unknownSourcesAllowed;
+    private com.startapp.android.publish.i.a$c userAdvertisingId;
+    private java.lang.String wfScanRes;
+    private int width;
+    private java.lang.String wifiRSSILevel;
+    private java.lang.String wifiSignalLevel;
+
+    public void <init>()
+    {
+        com.startapp.android.publish.model.BaseRequest r0;
+        java.util.HashMap $r1;
+        java.lang.String $r2;
+        com.startapp.android.publish.i $r3;
+        java.util.Map $r4;
+
+        r0 := @this: com.startapp.android.publish.model.BaseRequest;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        $r1 = new java.util.HashMap;
+
+        specialinvoke $r1.<java.util.HashMap: void <init>()>();
+
+        r0.<com.startapp.android.publish.model.BaseRequest: java.util.Map parameters> = $r1;
+
+        $r2 = <com.startapp.android.publish.e: java.lang.String h>;
+
+        r0.<com.startapp.android.publish.model.BaseRequest: java.lang.String sdkVersion> = $r2;
+
+        $r3 = staticinvoke <com.startapp.android.publish.i: com.startapp.android.publish.i a()>();
+
+        $r4 = virtualinvoke $r3.<com.startapp.android.publish.i: java.util.Map m()>();
+
+        r0.<com.startapp.android.publish.model.BaseRequest: java.util.Map frameworksMap> = $r4;
+
+        r0.<com.startapp.android.publish.model.BaseRequest: java.lang.String os> = "android";
+
+        r0.<com.startapp.android.publish.model.BaseRequest: int sdkId> = 3;
+
+        return;
+    }
+
+    private void fillCellLocationDetails(android.content.Context, android.telephony.TelephonyManager)
+    {
+        com.startapp.android.publish.model.BaseRequest r0;
+        android.content.Context $r1;
+        android.telephony.TelephonyManager $r2;
+        boolean $z0;
+        android.telephony.CellLocation $r3;
+        android.telephony.gsm.GsmCellLocation $r4;
+        int $i0;
+        java.lang.String $r5;
+        android.telephony.cdma.CdmaCellLocation $r6;
+
+        r0 := @this: com.startapp.android.publish.model.BaseRequest;
+
+        $r1 := @parameter0: android.content.Context;
+
+        $r2 := @parameter1: android.telephony.TelephonyManager;
+
+        $z0 = staticinvoke <com.startapp.android.publish.i.b: boolean a(android.content.Context,java.lang.String)>($r1, "android.permission.ACCESS_FINE_LOCATION");
+
+        if $z0 != 0 goto label1;
+
+        $z0 = staticinvoke <com.startapp.android.publish.i.b: boolean a(android.content.Context,java.lang.String)>($r1, "android.permission.ACCESS_COARSE_LOCATION");
+
+        if $z0 == 0 goto label3;
+
+     label1:
+        $r3 = virtualinvoke $r2.<android.telephony.TelephonyManager: android.telephony.CellLocation getCellLocation()>();
+
+        if $r3 == null goto label3;
+
+        $z0 = $r3 instanceof android.telephony.gsm.GsmCellLocation;
+
+        if $z0 == 0 goto label2;
+
+        $r4 = (android.telephony.gsm.GsmCellLocation) $r3;
+
+        $i0 = virtualinvoke $r4.<android.telephony.gsm.GsmCellLocation: int getCid()>();
+
+        $r5 = staticinvoke <java.lang.String: java.lang.String valueOf(int)>($i0);
+
+        $r5 = staticinvoke <com.startapp.android.publish.i.x: java.lang.String e(java.lang.String)>($r5);
+
+        virtualinvoke r0.<com.startapp.android.publish.model.BaseRequest: void setCid(java.lang.String)>($r5);
+
+        $i0 = virtualinvoke $r4.<android.telephony.gsm.GsmCellLocation: int getLac()>();
+
+        $r5 = staticinvoke <java.lang.String: java.lang.String valueOf(int)>($i0);
+
+        $r5 = staticinvoke <com.startapp.android.publish.i.x: java.lang.String e(java.lang.String)>($r5);
+
+        virtualinvoke r0.<com.startapp.android.publish.model.BaseRequest: void setLac(java.lang.String)>($r5);
+
+        return;
+
+     label2:
+        $z0 = $r3 instanceof android.telephony.cdma.CdmaCellLocation;
+
+        if $z0 == 0 goto label3;
+
+        $r6 = (android.telephony.cdma.CdmaCellLocation) $r3;
+
+        $i0 = virtualinvoke $r6.<android.telephony.cdma.CdmaCellLocation: int getBaseStationLatitude()>();
+
+        $r5 = staticinvoke <java.lang.String: java.lang.String valueOf(int)>($i0);
+
+        $r5 = staticinvoke <com.startapp.android.publish.i.x: java.lang.String e(java.lang.String)>($r5);
+
+        virtualinvoke r0.<com.startapp.android.publish.model.BaseRequest: void setBlat(java.lang.String)>($r5);
+
+        $i0 = virtualinvoke $r6.<android.telephony.cdma.CdmaCellLocation: int getBaseStationLongitude()>();
+
+        $r5 = staticinvoke <java.lang.String: java.lang.String valueOf(int)>($i0);
+
+        $r5 = staticinvoke <com.startapp.android.publish.i.x: java.lang.String e(java.lang.String)>($r5);
+
+        virtualinvoke r0.<com.startapp.android.publish.model.BaseRequest: void setBlon(java.lang.String)>($r5);
+
+     label3:
+        return;
+    }
+
+    private void fillNetworkOperatorDetails(android.content.Context, android.telephony.TelephonyManager)
+    {
+        com.startapp.android.publish.model.BaseRequest r0;
+        android.content.Context $r1;
+        android.telephony.TelephonyManager $r2;
+        int $i0;
+        java.lang.String $r3;
+
+        r0 := @this: com.startapp.android.publish.model.BaseRequest;
+
+        $r1 := @parameter0: android.content.Context;
+
+        $r2 := @parameter1: android.telephony.TelephonyManager;
+
+        $i0 = virtualinvoke $r2.<android.telephony.TelephonyManager: int getPhoneType()>();
+
+        if $i0 == 0 goto label1;
+
+        if $i0 == 2 goto label1;
+
+        $r3 = virtualinvoke $r2.<android.telephony.TelephonyManager: java.lang.String getNetworkOperator()>();
+
+        if $r3 == null goto label1;
+
+        $r3 = staticinvoke <com.startapp.android.publish.i.x: java.lang.String e(java.lang.String)>($r3);
+
+        virtualinvoke r0.<com.startapp.android.publish.model.BaseRequest: void setNetOper(java.lang.String)>($r3);
+
+     label1:
+        return;
+    }
+
+    private void fillSimDetails(android.telephony.TelephonyManager)
+    {
+        com.startapp.android.publish.model.BaseRequest r0;
+        android.telephony.TelephonyManager $r1;
+        int $i0;
+        java.lang.String $r2;
+
+        r0 := @this: com.startapp.android.publish.model.BaseRequest;
+
+        $r1 := @parameter0: android.telephony.TelephonyManager;
+
+        $i0 = virtualinvoke $r1.<android.telephony.TelephonyManager: int getSimState()>();
+
+        if $i0 != 5 goto label1;
+
+        $r2 = virtualinvoke $r1.<android.telephony.TelephonyManager: java.lang.String getSimOperator()>();
+
+        virtualinvoke r0.<com.startapp.android.publish.model.BaseRequest: void setIsp(java.lang.String)>($r2);
+
+        $r2 = virtualinvoke $r1.<android.telephony.TelephonyManager: java.lang.String getSimOperatorName()>();
+
+        virtualinvoke r0.<com.startapp.android.publish.model.BaseRequest: void setIspName(java.lang.String)>($r2);
+
+     label1:
+        return;
+    }
+
+    private void fillWifiDetails(android.content.Context)
+    {
+        com.startapp.android.publish.model.BaseRequest r0;
+        android.content.Context $r1;
+        java.util.ArrayList $r2;
+        java.lang.Object $r3;
+        android.net.wifi.WifiManager $r4;
+        boolean $z0;
+        java.lang.String $r5, $r7;
+        android.net.wifi.WifiInfo $r6;
+        com.startapp.android.publish.model.MetaData $r8;
+        java.util.List $r9, $r10;
+        int $i0, $i1;
+        android.net.wifi.ScanResult $r11;
+        com.startapp.android.publish.model.BaseRequest$WifiScanResult $r12;
+        java.lang.Exception $r13;
+
+        r0 := @this: com.startapp.android.publish.model.BaseRequest;
+
+        $r1 := @parameter0: android.content.Context;
+
+     label01:
+        $r3 = virtualinvoke $r1.<android.content.Context: java.lang.Object getSystemService(java.lang.String)>("wifi");
+
+        $r4 = (android.net.wifi.WifiManager) $r3;
+
+     label02:
+        if $r4 == null goto label31;
+
+     label03:
+        $z0 = staticinvoke <com.startapp.android.publish.i.b: boolean a(android.content.Context,java.lang.String)>($r1, "android.permission.ACCESS_WIFI_STATE");
+
+     label04:
+        if $z0 == 0 goto label31;
+
+     label05:
+        $r5 = virtualinvoke r0.<com.startapp.android.publish.model.BaseRequest: java.lang.String getNetworkType()>();
+
+        $z0 = virtualinvoke $r5.<java.lang.String: boolean equals(java.lang.Object)>("WIFI");
+
+     label06:
+        if $z0 == 0 goto label14;
+
+     label07:
+        $r6 = virtualinvoke $r4.<android.net.wifi.WifiManager: android.net.wifi.WifiInfo getConnectionInfo()>();
+
+     label08:
+        if $r6 == null goto label14;
+
+     label09:
+        $r7 = virtualinvoke $r6.<android.net.wifi.WifiInfo: java.lang.String getSSID()>();
+
+        $r5 = virtualinvoke $r6.<android.net.wifi.WifiInfo: java.lang.String getBSSID()>();
+
+     label10:
+        if $r7 == null goto label12;
+
+     label11:
+        $r7 = staticinvoke <com.startapp.android.publish.i.x: java.lang.String e(java.lang.String)>($r7);
+
+        virtualinvoke r0.<com.startapp.android.publish.model.BaseRequest: void setSsid(java.lang.String)>($r7);
+
+     label12:
+        if $r5 == null goto label14;
+
+     label13:
+        $r5 = staticinvoke <com.startapp.android.publish.i.x: java.lang.String e(java.lang.String)>($r5);
+
+        virtualinvoke r0.<com.startapp.android.publish.model.BaseRequest: void setBssid(java.lang.String)>($r5);
+
+     label14:
+        $r8 = staticinvoke <com.startapp.android.publish.model.MetaData: com.startapp.android.publish.model.MetaData getInstance()>();
+
+        $z0 = virtualinvoke $r8.<com.startapp.android.publish.model.MetaData: boolean isWfScanEnabled()>();
+
+     label15:
+        if $z0 == 0 goto label31;
+
+     label16:
+        $r9 = staticinvoke <com.startapp.android.publish.i.b: java.util.List a(android.content.Context,android.net.wifi.WifiManager)>($r1, $r4);
+
+     label17:
+        if $r9 == null goto label31;
+
+        $r10 = <java.util.Collections: java.util.List EMPTY_LIST>;
+
+     label18:
+        $z0 = interfaceinvoke $r9.<java.util.List: boolean equals(java.lang.Object)>($r10);
+
+     label19:
+        if $z0 != 0 goto label31;
+
+        $r2 = new java.util.ArrayList;
+
+     label20:
+        specialinvoke $r2.<java.util.ArrayList: void <init>()>();
+
+     label21:
+        $i0 = 0;
+
+     label22:
+        $i1 = interfaceinvoke $r9.<java.util.List: int size()>();
+
+        $i1 = staticinvoke <java.lang.Math: int min(int,int)>(5, $i1);
+
+     label23:
+        if $i0 >= $i1 goto label28;
+
+     label24:
+        $r3 = interfaceinvoke $r9.<java.util.List: java.lang.Object get(int)>($i0);
+
+        $r11 = (android.net.wifi.ScanResult) $r3;
+
+     label25:
+        $r12 = new com.startapp.android.publish.model.BaseRequest$WifiScanResult;
+
+     label26:
+        specialinvoke $r12.<com.startapp.android.publish.model.BaseRequest$WifiScanResult: void <init>(android.net.wifi.ScanResult)>($r11);
+
+        interfaceinvoke $r2.<java.util.List: boolean add(java.lang.Object)>($r12);
+
+     label27:
+        $i0 = $i0 + 1;
+
+        goto label22;
+
+     label28:
+        $r5 = staticinvoke <android.text.TextUtils: java.lang.String join(java.lang.CharSequence,java.lang.Iterable)>(";", $r2);
+
+        $r5 = staticinvoke <com.startapp.android.publish.i.x: java.lang.String e(java.lang.String)>($r5);
+
+        virtualinvoke r0.<com.startapp.android.publish.model.BaseRequest: void setWfScanRes(java.lang.String)>($r5);
+
+     label29:
+        return;
+
+     label30:
+        $r13 := @caughtexception;
+
+     label31:
+        return;
+
+        catch java.lang.Exception from label01 to label02 with label30;
+        catch java.lang.Exception from label03 to label04 with label30;
+        catch java.lang.Exception from label05 to label06 with label30;
+        catch java.lang.Exception from label07 to label08 with label30;
+        catch java.lang.Exception from label09 to label10 with label30;
+        catch java.lang.Exception from label11 to label12 with label30;
+        catch java.lang.Exception from label13 to label15 with label30;
+        catch java.lang.Exception from label16 to label17 with label30;
+        catch java.lang.Exception from label18 to label19 with label30;
+        catch java.lang.Exception from label20 to label21 with label30;
+        catch java.lang.Exception from label22 to label23 with label30;
+        catch java.lang.Exception from label24 to label25 with label30;
+        catch java.lang.Exception from label26 to label27 with label30;
+        catch java.lang.Exception from label28 to label29 with label30;
+    }
+
+    private java.lang.String getCellTimingAdv()
+    {
+        com.startapp.android.publish.model.BaseRequest r0;
+        java.lang.String r1;
+
+        r0 := @this: com.startapp.android.publish.model.BaseRequest;
+
+        r1 = r0.<com.startapp.android.publish.model.BaseRequest: java.lang.String cellTimingAdv>;
+
+        return r1;
+    }
+
+    private void setAndroidId(android.content.Context)
+    {
+        com.startapp.android.publish.model.BaseRequest r0;
+        android.content.Context $r1;
+        boolean $z0;
+        android.content.pm.PackageManager $r2;
+        android.content.pm.PackageInfo $r3;
+        int $i0;
+        java.lang.String $r4;
+        android.content.ContentResolver $r5;
+        java.lang.Exception $r6;
+        android.content.pm.PackageManager$NameNotFoundException $r7;
+
+        r0 := @this: com.startapp.android.publish.model.BaseRequest;
+
+        $r1 := @parameter0: android.content.Context;
+
+        $z0 = staticinvoke <com.startapp.android.publish.i.x: boolean a(android.content.Context,java.lang.String,int)>($r1, "com.google.android.gms", 0);
+
+        if $z0 == 0 goto label10;
+
+     label01:
+        $r2 = virtualinvoke $r1.<android.content.Context: android.content.pm.PackageManager getPackageManager()>();
+
+        $r3 = virtualinvoke $r2.<android.content.pm.PackageManager: android.content.pm.PackageInfo getPackageInfo(java.lang.String,int)>("com.google.android.gms", 0);
+
+     label02:
+        $i0 = $r3.<android.content.pm.PackageInfo: int versionCode>;
+
+     label03:
+        $r4 = staticinvoke <java.lang.Integer: java.lang.String toString(int)>($i0);
+
+        $r4 = virtualinvoke $r4.<java.lang.String: java.lang.String substring(int,int)>(0, 1);
+
+        $i0 = staticinvoke <java.lang.Integer: int parseInt(java.lang.String)>($r4);
+
+     label04:
+        if $i0 < 4 goto label10;
+
+     label05:
+        $r5 = virtualinvoke $r1.<android.content.Context: android.content.ContentResolver getContentResolver()>();
+
+        $r4 = staticinvoke <android.provider.Settings$Secure: java.lang.String getString(android.content.ContentResolver,java.lang.String)>($r5, "android_id");
+
+     label06:
+        r0.<com.startapp.android.publish.model.BaseRequest: java.lang.String androidId> = $r4;
+
+     label07:
+        return;
+
+     label08:
+        $r6 := @caughtexception;
+
+        return;
+
+     label09:
+        $r7 := @caughtexception;
+
+     label10:
+        return;
+
+        catch android.content.pm.PackageManager$NameNotFoundException from label01 to label02 with label09;
+        catch android.content.pm.PackageManager$NameNotFoundException from label03 to label04 with label09;
+        catch android.content.pm.PackageManager$NameNotFoundException from label05 to label06 with label09;
+        catch java.lang.Exception from label01 to label04 with label08;
+        catch java.lang.Exception from label05 to label07 with label08;
+    }
+
+    private void setCellTimingAdv(android.content.Context, android.telephony.TelephonyManager)
+    {
+        com.startapp.android.publish.model.BaseRequest r0;
+        android.content.Context $r1;
+        android.telephony.TelephonyManager $r2;
+        java.lang.String $r3;
+
+        r0 := @this: com.startapp.android.publish.model.BaseRequest;
+
+        $r1 := @parameter0: android.content.Context;
+
+        $r2 := @parameter1: android.telephony.TelephonyManager;
+
+        $r3 = staticinvoke <com.startapp.android.publish.i.b: java.lang.String b(android.content.Context,android.telephony.TelephonyManager)>($r1, $r2);
+
+        r0.<com.startapp.android.publish.model.BaseRequest: java.lang.String cellTimingAdv> = $r3;
+
+        return;
+    }
+
+    private void setNetworkLevels(android.content.Context)
+    {
+        com.startapp.android.publish.model.BaseRequest r0;
+        android.content.Context $r1;
+        com.startapp.android.publish.i.o $r2;
+        java.lang.String $r3;
+        com.startapp.android.publish.model.BaseRequest$WifiSignalInfo $r4;
+        java.lang.Exception $r5;
+
+        r0 := @this: com.startapp.android.publish.model.BaseRequest;
+
+        $r1 := @parameter0: android.content.Context;
+
+     label01:
+        $r2 = staticinvoke <com.startapp.android.publish.i.o: com.startapp.android.publish.i.o a()>();
+
+     label02:
+        if $r2 == null goto label14;
+
+     label03:
+        $r3 = virtualinvoke $r2.<com.startapp.android.publish.i.o: java.lang.String b()>();
+
+        r0.<com.startapp.android.publish.model.BaseRequest: java.lang.String cellSignalLevel> = $r3;
+
+        $r3 = r0.<com.startapp.android.publish.model.BaseRequest: java.lang.String networkType>;
+
+        $r4 = virtualinvoke $r2.<com.startapp.android.publish.i.o: com.startapp.android.publish.model.BaseRequest$WifiSignalInfo a(java.lang.String)>($r3);
+
+     label04:
+        if $r4 == null goto label12;
+
+     label05:
+        $r3 = virtualinvoke $r4.<com.startapp.android.publish.model.BaseRequest$WifiSignalInfo: java.lang.String getErrorCode()>();
+
+     label06:
+        if $r3 != null goto label09;
+
+     label07:
+        $r3 = staticinvoke <com.startapp.android.publish.model.BaseRequest$WifiSignalInfo: java.lang.String access$000(com.startapp.android.publish.model.BaseRequest$WifiSignalInfo)>($r4);
+
+        r0.<com.startapp.android.publish.model.BaseRequest: java.lang.String signalLevel> = $r3;
+
+        $r3 = staticinvoke <com.startapp.android.publish.model.BaseRequest$WifiSignalInfo: java.lang.String access$100(com.startapp.android.publish.model.BaseRequest$WifiSignalInfo)>($r4);
+
+        r0.<com.startapp.android.publish.model.BaseRequest: java.lang.String wifiRSSILevel> = $r3;
+
+        $r3 = staticinvoke <com.startapp.android.publish.model.BaseRequest$WifiSignalInfo: java.lang.String access$000(com.startapp.android.publish.model.BaseRequest$WifiSignalInfo)>($r4);
+
+        r0.<com.startapp.android.publish.model.BaseRequest: java.lang.String wifiSignalLevel> = $r3;
+
+     label08:
+        return;
+
+     label09:
+        $r3 = staticinvoke <com.startapp.android.publish.model.BaseRequest$WifiSignalInfo: java.lang.String access$200(com.startapp.android.publish.model.BaseRequest$WifiSignalInfo)>($r4);
+
+        r0.<com.startapp.android.publish.model.BaseRequest: java.lang.String signalLevel> = $r3;
+
+        $r3 = staticinvoke <com.startapp.android.publish.model.BaseRequest$WifiSignalInfo: java.lang.String access$200(com.startapp.android.publish.model.BaseRequest$WifiSignalInfo)>($r4);
+
+        r0.<com.startapp.android.publish.model.BaseRequest: java.lang.String wifiRSSILevel> = $r3;
+
+        $r3 = staticinvoke <com.startapp.android.publish.model.BaseRequest$WifiSignalInfo: java.lang.String access$200(com.startapp.android.publish.model.BaseRequest$WifiSignalInfo)>($r4);
+
+        r0.<com.startapp.android.publish.model.BaseRequest: java.lang.String wifiSignalLevel> = $r3;
+
+     label10:
+        return;
+
+     label11:
+        $r5 := @caughtexception;
+
+        return;
+
+     label12:
+        $r3 = r0.<com.startapp.android.publish.model.BaseRequest: java.lang.String cellSignalLevel>;
+
+        r0.<com.startapp.android.publish.model.BaseRequest: java.lang.String signalLevel> = $r3;
+
+     label13:
+        return;
+
+     label14:
+        r0.<com.startapp.android.publish.model.BaseRequest: java.lang.String signalLevel> = "e106";
+
+        r0.<com.startapp.android.publish.model.BaseRequest: java.lang.String cellSignalLevel> = "e106";
+
+        r0.<com.startapp.android.publish.model.BaseRequest: java.lang.String wifiSignalLevel> = "e106";
+
+        r0.<com.startapp.android.publish.model.BaseRequest: java.lang.String wifiRSSILevel> = "e106";
+
+     label15:
+        return;
+
+        catch java.lang.Exception from label01 to label02 with label11;
+        catch java.lang.Exception from label03 to label04 with label11;
+        catch java.lang.Exception from label05 to label06 with label11;
+        catch java.lang.Exception from label07 to label08 with label11;
+        catch java.lang.Exception from label09 to label10 with label11;
+        catch java.lang.Exception from label12 to label13 with label11;
+        catch java.lang.Exception from label14 to label15 with label11;
+    }
+
+    private void setNetworkType(android.content.Context)
+    {
+        com.startapp.android.publish.model.BaseRequest r0;
+        android.content.Context $r1;
+        java.lang.String $r2;
+
+        r0 := @this: com.startapp.android.publish.model.BaseRequest;
+
+        $r1 := @parameter0: android.content.Context;
+
+        $r2 = staticinvoke <com.startapp.android.publish.i.p: java.lang.String b(android.content.Context)>($r1);
+
+        r0.<com.startapp.android.publish.model.BaseRequest: java.lang.String networkType> = $r2;
+
+        return;
+    }
+
+    public void fillApplicationDetails(android.content.Context, com.startapp.android.publish.model.AdPreferences)
+    {
+        com.startapp.android.publish.model.BaseRequest r0;
+        android.content.Context $r1;
+        com.startapp.android.publish.model.AdPreferences $r2;
+        java.lang.String $r3;
+        java.lang.Boolean $r4;
+        boolean $z0;
+        com.startapp.android.publish.i.a $r5;
+        com.startapp.android.publish.i.a$c $r6;
+        int $i0;
+        android.content.res.Resources $r7;
+        android.content.res.Configuration $r8;
+        java.util.Locale $r9;
+        java.util.Set $r10;
+        android.util.DisplayMetrics $r11;
+        float $f0;
+        com.startapp.android.publish.model.adrules.SessionManager $r12;
+        java.lang.Object $r13;
+        android.telephony.TelephonyManager $r14;
+        java.lang.Exception $r15;
+
+        r0 := @this: com.startapp.android.publish.model.BaseRequest;
+
+        $r1 := @parameter0: android.content.Context;
+
+        $r2 := @parameter1: com.startapp.android.publish.model.AdPreferences;
+
+        $r3 = virtualinvoke $r2.<com.startapp.android.publish.model.AdPreferences: java.lang.String getPublisherId()>();
+
+        virtualinvoke r0.<com.startapp.android.publish.model.BaseRequest: void setPublisherId(java.lang.String)>($r3);
+
+        $r3 = virtualinvoke $r2.<com.startapp.android.publish.model.AdPreferences: java.lang.String getProductId()>();
+
+        virtualinvoke r0.<com.startapp.android.publish.model.BaseRequest: void setProductId(java.lang.String)>($r3);
+
+        $r4 = <com.startapp.android.publish.e: java.lang.Boolean g>;
+
+        $z0 = virtualinvoke $r4.<java.lang.Boolean: boolean booleanValue()>();
+
+        if $z0 != 0 goto label1;
+
+        $r5 = staticinvoke <com.startapp.android.publish.i.a: com.startapp.android.publish.i.a a()>();
+
+        $r6 = virtualinvoke $r5.<com.startapp.android.publish.i.a: com.startapp.android.publish.i.a$c a(android.content.Context)>($r1);
+
+        virtualinvoke r0.<com.startapp.android.publish.model.BaseRequest: void setUserAdvertisingId(com.startapp.android.publish.i.a$c)>($r6);
+
+        $r6 = r0.<com.startapp.android.publish.model.BaseRequest: com.startapp.android.publish.i.a$c userAdvertisingId>;
+
+        if $r6 != null goto label1;
+
+        specialinvoke r0.<com.startapp.android.publish.model.BaseRequest: void setAndroidId(android.content.Context)>($r1);
+
+     label1:
+        $r3 = virtualinvoke $r1.<android.content.Context: java.lang.String getPackageName()>();
+
+        virtualinvoke r0.<com.startapp.android.publish.model.BaseRequest: void setPackageId(java.lang.String)>($r3);
+
+        $r3 = staticinvoke <com.startapp.android.publish.i.x: java.lang.String g(android.content.Context)>($r1);
+
+        virtualinvoke r0.<com.startapp.android.publish.model.BaseRequest: void setInstallerPkg(java.lang.String)>($r3);
+
+        $r3 = <android.os.Build: java.lang.String MANUFACTURER>;
+
+        virtualinvoke r0.<com.startapp.android.publish.model.BaseRequest: void setManufacturer(java.lang.String)>($r3);
+
+        $r3 = <android.os.Build: java.lang.String MODEL>;
+
+        virtualinvoke r0.<com.startapp.android.publish.model.BaseRequest: void setModel(java.lang.String)>($r3);
+
+        $i0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        $r3 = staticinvoke <java.lang.Integer: java.lang.String toString(int)>($i0);
+
+        virtualinvoke r0.<com.startapp.android.publish.model.BaseRequest: void setDeviceVersion(java.lang.String)>($r3);
+
+        $r7 = virtualinvoke $r1.<android.content.Context: android.content.res.Resources getResources()>();
+
+        $r8 = virtualinvoke $r7.<android.content.res.Resources: android.content.res.Configuration getConfiguration()>();
+
+        $r9 = $r8.<android.content.res.Configuration: java.util.Locale locale>;
+
+        $r3 = virtualinvoke $r9.<java.util.Locale: java.lang.String toString()>();
+
+        virtualinvoke r0.<com.startapp.android.publish.model.BaseRequest: void setLocale(java.lang.String)>($r3);
+
+        $r10 = staticinvoke <com.startapp.android.publish.i.b: java.util.Set c(android.content.Context)>($r1);
+
+        virtualinvoke r0.<com.startapp.android.publish.model.BaseRequest: void setInputLangs(java.util.Set)>($r10);
+
+        $r7 = virtualinvoke $r1.<android.content.Context: android.content.res.Resources getResources()>();
+
+        $r11 = virtualinvoke $r7.<android.content.res.Resources: android.util.DisplayMetrics getDisplayMetrics()>();
+
+        $i0 = $r11.<android.util.DisplayMetrics: int widthPixels>;
+
+        virtualinvoke r0.<com.startapp.android.publish.model.BaseRequest: void setWidth(int)>($i0);
+
+        $r7 = virtualinvoke $r1.<android.content.Context: android.content.res.Resources getResources()>();
+
+        $r11 = virtualinvoke $r7.<android.content.res.Resources: android.util.DisplayMetrics getDisplayMetrics()>();
+
+        $i0 = $r11.<android.util.DisplayMetrics: int heightPixels>;
+
+        virtualinvoke r0.<com.startapp.android.publish.model.BaseRequest: void setHeight(int)>($i0);
+
+        $r7 = virtualinvoke $r1.<android.content.Context: android.content.res.Resources getResources()>();
+
+        $r11 = virtualinvoke $r7.<android.content.res.Resources: android.util.DisplayMetrics getDisplayMetrics()>();
+
+        $f0 = $r11.<android.util.DisplayMetrics: float density>;
+
+        virtualinvoke r0.<com.startapp.android.publish.model.BaseRequest: void setDensity(float)>($f0);
+
+        $r12 = staticinvoke <com.startapp.android.publish.model.adrules.SessionManager: com.startapp.android.publish.model.adrules.SessionManager getInstance()>();
+
+        $r3 = virtualinvoke $r12.<com.startapp.android.publish.model.adrules.SessionManager: java.lang.String getSessionId()>();
+
+        virtualinvoke r0.<com.startapp.android.publish.model.BaseRequest: void setSessionId(java.lang.String)>($r3);
+
+        $z0 = staticinvoke <com.startapp.android.publish.i.b: boolean a(android.content.Context)>($r1);
+
+        $r4 = staticinvoke <java.lang.Boolean: java.lang.Boolean valueOf(boolean)>($z0);
+
+        virtualinvoke r0.<com.startapp.android.publish.model.BaseRequest: void setUnknownSourcesAllowed(java.lang.Boolean)>($r4);
+
+        specialinvoke r0.<com.startapp.android.publish.model.BaseRequest: void setNetworkType(android.content.Context)>($r1);
+
+        specialinvoke r0.<com.startapp.android.publish.model.BaseRequest: void setNetworkLevels(android.content.Context)>($r1);
+
+        $r3 = staticinvoke <com.startapp.android.publish.i.x: java.lang.String i(android.content.Context)>($r1);
+
+        virtualinvoke r0.<com.startapp.android.publish.model.BaseRequest: void setAppVersion(java.lang.String)>($r3);
+
+        $i0 = staticinvoke <com.startapp.android.publish.i.x: int j(android.content.Context)>($r1);
+
+        virtualinvoke r0.<com.startapp.android.publish.model.BaseRequest: void setAppCode(int)>($i0);
+
+     label2:
+        $r13 = virtualinvoke $r1.<android.content.Context: java.lang.Object getSystemService(java.lang.String)>("phone");
+
+        $r14 = (android.telephony.TelephonyManager) $r13;
+
+     label3:
+        if $r14 == null goto label5;
+
+     label4:
+        specialinvoke r0.<com.startapp.android.publish.model.BaseRequest: void fillSimDetails(android.telephony.TelephonyManager)>($r14);
+
+        specialinvoke r0.<com.startapp.android.publish.model.BaseRequest: void fillNetworkOperatorDetails(android.content.Context,android.telephony.TelephonyManager)>($r1, $r14);
+
+        specialinvoke r0.<com.startapp.android.publish.model.BaseRequest: void fillCellLocationDetails(android.content.Context,android.telephony.TelephonyManager)>($r1, $r14);
+
+        specialinvoke r0.<com.startapp.android.publish.model.BaseRequest: void setCellTimingAdv(android.content.Context,android.telephony.TelephonyManager)>($r1, $r14);
+
+     label5:
+        specialinvoke r0.<com.startapp.android.publish.model.BaseRequest: void fillWifiDetails(android.content.Context)>($r1);
+
+        return;
+
+     label6:
+        $r15 := @caughtexception;
+
+        goto label5;
+
+        catch java.lang.Exception from label2 to label3 with label6;
+        catch java.lang.Exception from label4 to label5 with label6;
+    }
+
+    public java.lang.String getAndroidId()
+    {
+        com.startapp.android.publish.model.BaseRequest r0;
+        java.lang.String r1;
+
+        r0 := @this: com.startapp.android.publish.model.BaseRequest;
+
+        r1 = r0.<com.startapp.android.publish.model.BaseRequest: java.lang.String androidId>;
+
+        return r1;
+    }
+
+    public int getAppCode()
+    {
+        com.startapp.android.publish.model.BaseRequest r0;
+        int i0;
+
+        r0 := @this: com.startapp.android.publish.model.BaseRequest;
+
+        i0 = r0.<com.startapp.android.publish.model.BaseRequest: int appCode>;
+
+        return i0;
+    }
+
+    public java.lang.String getAppVersion()
+    {
+        com.startapp.android.publish.model.BaseRequest r0;
+        java.lang.String r1;
+
+        r0 := @this: com.startapp.android.publish.model.BaseRequest;
+
+        r1 = r0.<com.startapp.android.publish.model.BaseRequest: java.lang.String appVersion>;
+
+        return r1;
+    }
+
+    public java.lang.String getBlat()
+    {
+        com.startapp.android.publish.model.BaseRequest r0;
+        java.lang.String r1;
+
+        r0 := @this: com.startapp.android.publish.model.BaseRequest;
+
+        r1 = r0.<com.startapp.android.publish.model.BaseRequest: java.lang.String blat>;
+
+        return r1;
+    }
+
+    public java.lang.String getBlon()
+    {
+        com.startapp.android.publish.model.BaseRequest r0;
+        java.lang.String r1;
+
+        r0 := @this: com.startapp.android.publish.model.BaseRequest;
+
+        r1 = r0.<com.startapp.android.publish.model.BaseRequest: java.lang.String blon>;
+
+        return r1;
+    }
+
+    public java.lang.String getBssid()
+    {
+        com.startapp.android.publish.model.BaseRequest r0;
+        java.lang.String r1;
+
+        r0 := @this: com.startapp.android.publish.model.BaseRequest;
+
+        r1 = r0.<com.startapp.android.publish.model.BaseRequest: java.lang.String bssid>;
+
+        return r1;
+    }
+
+    public java.lang.String getCellSignalLevel()
+    {
+        com.startapp.android.publish.model.BaseRequest r0;
+        java.lang.String r1;
+
+        r0 := @this: com.startapp.android.publish.model.BaseRequest;
+
+        r1 = r0.<com.startapp.android.publish.model.BaseRequest: java.lang.String cellSignalLevel>;
+
+        return r1;
+    }
+
+    public java.lang.String getCid()
+    {
+        com.startapp.android.publish.model.BaseRequest r0;
+        java.lang.String r1;
+
+        r0 := @this: com.startapp.android.publish.model.BaseRequest;
+
+        r1 = r0.<com.startapp.android.publish.model.BaseRequest: java.lang.String cid>;
+
+        return r1;
+    }
+
+    public float getDensity()
+    {
+        com.startapp.android.publish.model.BaseRequest r0;
+        float f0;
+
+        r0 := @this: com.startapp.android.publish.model.BaseRequest;
+
+        f0 = r0.<com.startapp.android.publish.model.BaseRequest: float density>;
+
+        return f0;
+    }
+
+    public java.lang.String getDeviceVersion()
+    {
+        com.startapp.android.publish.model.BaseRequest r0;
+        java.lang.String r1;
+
+        r0 := @this: com.startapp.android.publish.model.BaseRequest;
+
+        r1 = r0.<com.startapp.android.publish.model.BaseRequest: java.lang.String deviceVersion>;
+
+        return r1;
+    }
+
+    public int getHeight()
+    {
+        com.startapp.android.publish.model.BaseRequest r0;
+        int i0;
+
+        r0 := @this: com.startapp.android.publish.model.BaseRequest;
+
+        i0 = r0.<com.startapp.android.publish.model.BaseRequest: int height>;
+
+        return i0;
+    }
+
+    public java.util.Set getInputLangs()
+    {
+        com.startapp.android.publish.model.BaseRequest r0;
+        java.util.Set r1;
+
+        r0 := @this: com.startapp.android.publish.model.BaseRequest;
+
+        r1 = r0.<com.startapp.android.publish.model.BaseRequest: java.util.Set inputLangs>;
+
+        return r1;
+    }
+
+    public java.lang.String getInstallerPkg()
+    {
+        com.startapp.android.publish.model.BaseRequest r0;
+        java.lang.String r1;
+
+        r0 := @this: com.startapp.android.publish.model.BaseRequest;
+
+        r1 = r0.<com.startapp.android.publish.model.BaseRequest: java.lang.String installerPkg>;
+
+        return r1;
+    }
+
+    public java.lang.String getIsp()
+    {
+        com.startapp.android.publish.model.BaseRequest r0;
+        java.lang.String r1;
+
+        r0 := @this: com.startapp.android.publish.model.BaseRequest;
+
+        r1 = r0.<com.startapp.android.publish.model.BaseRequest: java.lang.String isp>;
+
+        return r1;
+    }
+
+    public java.lang.String getIspName()
+    {
+        com.startapp.android.publish.model.BaseRequest r0;
+        java.lang.String r1;
+
+        r0 := @this: com.startapp.android.publish.model.BaseRequest;
+
+        r1 = r0.<com.startapp.android.publish.model.BaseRequest: java.lang.String ispName>;
+
+        return r1;
+    }
+
+    public java.lang.String getLac()
+    {
+        com.startapp.android.publish.model.BaseRequest r0;
+        java.lang.String r1;
+
+        r0 := @this: com.startapp.android.publish.model.BaseRequest;
+
+        r1 = r0.<com.startapp.android.publish.model.BaseRequest: java.lang.String lac>;
+
+        return r1;
+    }
+
+    public java.lang.String getLocale()
+    {
+        com.startapp.android.publish.model.BaseRequest r0;
+        java.lang.String r1;
+
+        r0 := @this: com.startapp.android.publish.model.BaseRequest;
+
+        r1 = r0.<com.startapp.android.publish.model.BaseRequest: java.lang.String locale>;
+
+        return r1;
+    }
+
+    public java.lang.String getManufacturer()
+    {
+        com.startapp.android.publish.model.BaseRequest r0;
+        java.lang.String r1;
+
+        r0 := @this: com.startapp.android.publish.model.BaseRequest;
+
+        r1 = r0.<com.startapp.android.publish.model.BaseRequest: java.lang.String manufacturer>;
+
+        return r1;
+    }
+
+    public java.lang.String getModel()
+    {
+        com.startapp.android.publish.model.BaseRequest r0;
+        java.lang.String r1;
+
+        r0 := @this: com.startapp.android.publish.model.BaseRequest;
+
+        r1 = r0.<com.startapp.android.publish.model.BaseRequest: java.lang.String model>;
+
+        return r1;
+    }
+
+    public java.util.List getNameValueMap()
+    {
+        com.startapp.android.publish.model.BaseRequest r0;
+        java.util.ArrayList $r1;
+        java.lang.String $r2, $r7;
+        java.util.Map $r3;
+        java.util.Set $r4;
+        java.util.Iterator $r5;
+        boolean $z0;
+        java.lang.Object $r6;
+        java.lang.StringBuilder $r8;
+        int $i0;
+        com.startapp.android.publish.i.a$c $r9;
+        java.lang.Boolean $r10;
+        float $f0;
+        java.lang.Integer $r11;
+
+        r0 := @this: com.startapp.android.publish.model.BaseRequest;
+
+        $r1 = new java.util.ArrayList;
+
+        specialinvoke $r1.<java.util.ArrayList: void <init>()>();
+
+        $r2 = r0.<com.startapp.android.publish.model.BaseRequest: java.lang.String publisherId>;
+
+        staticinvoke <com.startapp.android.publish.i.x: void a(java.util.List,java.lang.String,java.lang.Object,boolean)>($r1, "publisherId", $r2, 0);
+
+        $r2 = r0.<com.startapp.android.publish.model.BaseRequest: java.lang.String productId>;
+
+        staticinvoke <com.startapp.android.publish.i.x: void a(java.util.List,java.lang.String,java.lang.Object,boolean)>($r1, "productId", $r2, 1);
+
+        $r2 = r0.<com.startapp.android.publish.model.BaseRequest: java.lang.String os>;
+
+        staticinvoke <com.startapp.android.publish.i.x: void a(java.util.List,java.lang.String,java.lang.Object,boolean)>($r1, "os", $r2, 1);
+
+        $r2 = r0.<com.startapp.android.publish.model.BaseRequest: java.lang.String sdkVersion>;
+
+        staticinvoke <com.startapp.android.publish.i.x: void a(java.util.List,java.lang.String,java.lang.Object,boolean)>($r1, "sdkVersion", $r2, 0);
+
+        $r3 = r0.<com.startapp.android.publish.model.BaseRequest: java.util.Map frameworksMap>;
+
+        if $r3 == null goto label3;
+
+        $r3 = r0.<com.startapp.android.publish.model.BaseRequest: java.util.Map frameworksMap>;
+
+        $r4 = interfaceinvoke $r3.<java.util.Map: java.util.Set keySet()>();
+
+        $r5 = interfaceinvoke $r4.<java.util.Set: java.util.Iterator iterator()>();
+
+        $r2 = "";
+
+     label1:
+        $z0 = interfaceinvoke $r5.<java.util.Iterator: boolean hasNext()>();
+
+        if $z0 == 0 goto label2;
+
+        $r6 = interfaceinvoke $r5.<java.util.Iterator: java.lang.Object next()>();
+
+        $r7 = (java.lang.String) $r6;
+
+        $r8 = new java.lang.StringBuilder;
+
+        specialinvoke $r8.<java.lang.StringBuilder: void <init>()>();
+
+        $r8 = virtualinvoke $r8.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r2);
+
+        $r8 = virtualinvoke $r8.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r7);
+
+        $r8 = virtualinvoke $r8.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(":");
+
+        $r3 = r0.<com.startapp.android.publish.model.BaseRequest: java.util.Map frameworksMap>;
+
+        $r6 = interfaceinvoke $r3.<java.util.Map: java.lang.Object get(java.lang.Object)>($r7);
+
+        $r2 = (java.lang.String) $r6;
+
+        $r8 = virtualinvoke $r8.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r2);
+
+        $r8 = virtualinvoke $r8.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(";");
+
+        $r2 = virtualinvoke $r8.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        goto label1;
+
+     label2:
+        $i0 = virtualinvoke $r2.<java.lang.String: int length()>();
+
+        $i0 = $i0 + -1;
+
+        $r2 = virtualinvoke $r2.<java.lang.String: java.lang.String substring(int,int)>(0, $i0);
+
+        staticinvoke <com.startapp.android.publish.i.x: void a(java.util.List,java.lang.String,java.lang.Object,boolean,boolean)>($r1, "frameworksData", $r2, 0, 0);
+
+     label3:
+        $r2 = r0.<com.startapp.android.publish.model.BaseRequest: java.lang.String packageId>;
+
+        staticinvoke <com.startapp.android.publish.i.x: void a(java.util.List,java.lang.String,java.lang.Object,boolean)>($r1, "packageId", $r2, 0);
+
+        $r2 = r0.<com.startapp.android.publish.model.BaseRequest: java.lang.String installerPkg>;
+
+        staticinvoke <com.startapp.android.publish.i.x: void a(java.util.List,java.lang.String,java.lang.Object,boolean)>($r1, "installerPkg", $r2, 0);
+
+        $r9 = r0.<com.startapp.android.publish.model.BaseRequest: com.startapp.android.publish.i.a$c userAdvertisingId>;
+
+        if $r9 == null goto label9;
+
+        $r9 = r0.<com.startapp.android.publish.model.BaseRequest: com.startapp.android.publish.i.a$c userAdvertisingId>;
+
+        $r2 = virtualinvoke $r9.<com.startapp.android.publish.i.a$c: java.lang.String a()>();
+
+        staticinvoke <com.startapp.android.publish.i.x: void a(java.util.List,java.lang.String,java.lang.Object,boolean)>($r1, "userAdvertisingId", $r2, 0);
+
+        $r9 = r0.<com.startapp.android.publish.model.BaseRequest: com.startapp.android.publish.i.a$c userAdvertisingId>;
+
+        $z0 = virtualinvoke $r9.<com.startapp.android.publish.i.a$c: boolean b()>();
+
+        if $z0 == 0 goto label4;
+
+        $r9 = r0.<com.startapp.android.publish.model.BaseRequest: com.startapp.android.publish.i.a$c userAdvertisingId>;
+
+        $z0 = virtualinvoke $r9.<com.startapp.android.publish.i.a$c: boolean b()>();
+
+        $r10 = staticinvoke <java.lang.Boolean: java.lang.Boolean valueOf(boolean)>($z0);
+
+        staticinvoke <com.startapp.android.publish.i.x: void a(java.util.List,java.lang.String,java.lang.Object,boolean)>($r1, "limat", $r10, 0);
+
+     label4:
+        $r9 = r0.<com.startapp.android.publish.model.BaseRequest: com.startapp.android.publish.i.a$c userAdvertisingId>;
+
+        $r2 = virtualinvoke $r9.<com.startapp.android.publish.i.a$c: java.lang.String c()>();
+
+        staticinvoke <com.startapp.android.publish.i.x: void a(java.util.List,java.lang.String,java.lang.Object,boolean)>($r1, "advertisingIdSource", $r2, 0);
+
+     label5:
+        $r2 = r0.<com.startapp.android.publish.model.BaseRequest: java.lang.String model>;
+
+        staticinvoke <com.startapp.android.publish.i.x: void a(java.util.List,java.lang.String,java.lang.Object,boolean)>($r1, "model", $r2, 0);
+
+        $r2 = r0.<com.startapp.android.publish.model.BaseRequest: java.lang.String manufacturer>;
+
+        staticinvoke <com.startapp.android.publish.i.x: void a(java.util.List,java.lang.String,java.lang.Object,boolean)>($r1, "manufacturer", $r2, 0);
+
+        $r2 = r0.<com.startapp.android.publish.model.BaseRequest: java.lang.String deviceVersion>;
+
+        staticinvoke <com.startapp.android.publish.i.x: void a(java.util.List,java.lang.String,java.lang.Object,boolean)>($r1, "deviceVersion", $r2, 0);
+
+        $r2 = r0.<com.startapp.android.publish.model.BaseRequest: java.lang.String locale>;
+
+        staticinvoke <com.startapp.android.publish.i.x: void a(java.util.List,java.lang.String,java.lang.Object,boolean)>($r1, "locale", $r2, 0);
+
+        $r4 = r0.<com.startapp.android.publish.model.BaseRequest: java.util.Set inputLangs>;
+
+        staticinvoke <com.startapp.android.publish.i.x: void a(java.util.List,java.lang.String,java.util.Set,boolean)>($r1, "inputLangs", $r4, 0);
+
+        $r2 = r0.<com.startapp.android.publish.model.BaseRequest: java.lang.String isp>;
+
+        staticinvoke <com.startapp.android.publish.i.x: void a(java.util.List,java.lang.String,java.lang.Object,boolean)>($r1, "isp", $r2, 0);
+
+        $r2 = r0.<com.startapp.android.publish.model.BaseRequest: java.lang.String ispName>;
+
+        staticinvoke <com.startapp.android.publish.i.x: void a(java.util.List,java.lang.String,java.lang.Object,boolean)>($r1, "ispName", $r2, 0);
+
+        $r2 = virtualinvoke r0.<com.startapp.android.publish.model.BaseRequest: java.lang.String getNetOper()>();
+
+        staticinvoke <com.startapp.android.publish.i.x: void a(java.util.List,java.lang.String,java.lang.Object,boolean)>($r1, "netOper", $r2, 0);
+
+        $r2 = virtualinvoke r0.<com.startapp.android.publish.model.BaseRequest: java.lang.String getCid()>();
+
+        staticinvoke <com.startapp.android.publish.i.x: void a(java.util.List,java.lang.String,java.lang.Object,boolean)>($r1, "cid", $r2, 0);
+
+        $r2 = virtualinvoke r0.<com.startapp.android.publish.model.BaseRequest: java.lang.String getLac()>();
+
+        staticinvoke <com.startapp.android.publish.i.x: void a(java.util.List,java.lang.String,java.lang.Object,boolean)>($r1, "lac", $r2, 0);
+
+        $r2 = virtualinvoke r0.<com.startapp.android.publish.model.BaseRequest: java.lang.String getBlat()>();
+
+        staticinvoke <com.startapp.android.publish.i.x: void a(java.util.List,java.lang.String,java.lang.Object,boolean)>($r1, "blat", $r2, 0);
+
+        $r2 = virtualinvoke r0.<com.startapp.android.publish.model.BaseRequest: java.lang.String getBlon()>();
+
+        staticinvoke <com.startapp.android.publish.i.x: void a(java.util.List,java.lang.String,java.lang.Object,boolean)>($r1, "blon", $r2, 0);
+
+        $r2 = virtualinvoke r0.<com.startapp.android.publish.model.BaseRequest: java.lang.String getSsid()>();
+
+        staticinvoke <com.startapp.android.publish.i.x: void a(java.util.List,java.lang.String,java.lang.Object,boolean)>($r1, "ssid", $r2, 0);
+
+        $r2 = virtualinvoke r0.<com.startapp.android.publish.model.BaseRequest: java.lang.String getBssid()>();
+
+        staticinvoke <com.startapp.android.publish.i.x: void a(java.util.List,java.lang.String,java.lang.Object,boolean)>($r1, "bssid", $r2, 0);
+
+        $r2 = virtualinvoke r0.<com.startapp.android.publish.model.BaseRequest: java.lang.String getWfScanRes()>();
+
+        staticinvoke <com.startapp.android.publish.i.x: void a(java.util.List,java.lang.String,java.lang.Object,boolean)>($r1, "wfScanRes", $r2, 0);
+
+        $r2 = r0.<com.startapp.android.publish.model.BaseRequest: java.lang.String subPublisherId>;
+
+        staticinvoke <com.startapp.android.publish.i.x: void a(java.util.List,java.lang.String,java.lang.Object,boolean)>($r1, "subPublisherId", $r2, 0);
+
+        $r2 = r0.<com.startapp.android.publish.model.BaseRequest: java.lang.String subProductId>;
+
+        staticinvoke <com.startapp.android.publish.i.x: void a(java.util.List,java.lang.String,java.lang.Object,boolean)>($r1, "subProductId", $r2, 0);
+
+        $r2 = virtualinvoke r0.<com.startapp.android.publish.model.BaseRequest: java.lang.String getNetworkType()>();
+
+        staticinvoke <com.startapp.android.publish.i.x: void a(java.util.List,java.lang.String,java.lang.Object,boolean)>($r1, "grid", $r2, 0);
+
+        $r2 = virtualinvoke r0.<com.startapp.android.publish.model.BaseRequest: java.lang.String getSignalLevel()>();
+
+        staticinvoke <com.startapp.android.publish.i.x: void a(java.util.List,java.lang.String,java.lang.Object,boolean)>($r1, "silev", $r2, 0);
+
+        $r2 = virtualinvoke r0.<com.startapp.android.publish.model.BaseRequest: java.lang.String getCellSignalLevel()>();
+
+        staticinvoke <com.startapp.android.publish.i.x: void a(java.util.List,java.lang.String,java.lang.Object,boolean)>($r1, "cellSignalLevel", $r2, 0);
+
+        $r2 = virtualinvoke r0.<com.startapp.android.publish.model.BaseRequest: java.lang.String getWifiSignalLevel()>();
+
+        if $r2 == null goto label6;
+
+        $r2 = virtualinvoke r0.<com.startapp.android.publish.model.BaseRequest: java.lang.String getWifiSignalLevel()>();
+
+        staticinvoke <com.startapp.android.publish.i.x: void a(java.util.List,java.lang.String,java.lang.Object,boolean)>($r1, "wifiSignalLevel", $r2, 0);
+
+     label6:
+        $r2 = virtualinvoke r0.<com.startapp.android.publish.model.BaseRequest: java.lang.String getWifiRssiLevel()>();
+
+        if $r2 == null goto label7;
+
+        $r2 = virtualinvoke r0.<com.startapp.android.publish.model.BaseRequest: java.lang.String getWifiRssiLevel()>();
+
+        staticinvoke <com.startapp.android.publish.i.x: void a(java.util.List,java.lang.String,java.lang.Object,boolean)>($r1, "wifiRssiLevel", $r2, 0);
+
+     label7:
+        $r2 = specialinvoke r0.<com.startapp.android.publish.model.BaseRequest: java.lang.String getCellTimingAdv()>();
+
+        if $r2 == null goto label8;
+
+        $r2 = specialinvoke r0.<com.startapp.android.publish.model.BaseRequest: java.lang.String getCellTimingAdv()>();
+
+        staticinvoke <com.startapp.android.publish.i.x: void a(java.util.List,java.lang.String,java.lang.Object,boolean)>($r1, "cellTimingAdv", $r2, 0);
+
+     label8:
+        $r10 = virtualinvoke r0.<com.startapp.android.publish.model.BaseRequest: java.lang.Boolean isUnknownSourcesAllowed()>();
+
+        staticinvoke <com.startapp.android.publish.i.x: void a(java.util.List,java.lang.String,java.lang.Object,boolean)>($r1, "outsource", $r10, 0);
+
+        $i0 = r0.<com.startapp.android.publish.model.BaseRequest: int width>;
+
+        $r2 = staticinvoke <java.lang.String: java.lang.String valueOf(int)>($i0);
+
+        staticinvoke <com.startapp.android.publish.i.x: void a(java.util.List,java.lang.String,java.lang.Object,boolean)>($r1, "width", $r2, 0);
+
+        $i0 = r0.<com.startapp.android.publish.model.BaseRequest: int height>;
+
+        $r2 = staticinvoke <java.lang.String: java.lang.String valueOf(int)>($i0);
+
+        staticinvoke <com.startapp.android.publish.i.x: void a(java.util.List,java.lang.String,java.lang.Object,boolean)>($r1, "height", $r2, 0);
+
+        $f0 = r0.<com.startapp.android.publish.model.BaseRequest: float density>;
+
+        $r2 = staticinvoke <java.lang.String: java.lang.String valueOf(float)>($f0);
+
+        staticinvoke <com.startapp.android.publish.i.x: void a(java.util.List,java.lang.String,java.lang.Object,boolean)>($r1, "density", $r2, 0);
+
+        $i0 = r0.<com.startapp.android.publish.model.BaseRequest: int sdkId>;
+
+        $r2 = staticinvoke <java.lang.String: java.lang.String valueOf(int)>($i0);
+
+        staticinvoke <com.startapp.android.publish.i.x: void a(java.util.List,java.lang.String,java.lang.Object,boolean)>($r1, "sdkId", $r2, 1);
+
+        $r2 = r0.<com.startapp.android.publish.model.BaseRequest: java.lang.String clientSessionId>;
+
+        staticinvoke <com.startapp.android.publish.i.x: void a(java.util.List,java.lang.String,java.lang.Object,boolean)>($r1, "clientSessionId", $r2, 0);
+
+        $r2 = r0.<com.startapp.android.publish.model.BaseRequest: java.lang.String appVersion>;
+
+        staticinvoke <com.startapp.android.publish.i.x: void a(java.util.List,java.lang.String,java.lang.Object,boolean)>($r1, "appVersion", $r2, 0);
+
+        $i0 = r0.<com.startapp.android.publish.model.BaseRequest: int appCode>;
+
+        $r11 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>($i0);
+
+        staticinvoke <com.startapp.android.publish.i.x: void a(java.util.List,java.lang.String,java.lang.Object,boolean)>($r1, "appCode", $r11, 0);
+
+        return $r1;
+
+     label9:
+        $r2 = r0.<com.startapp.android.publish.model.BaseRequest: java.lang.String androidId>;
+
+        if $r2 == null goto label5;
+
+        $r2 = r0.<com.startapp.android.publish.model.BaseRequest: java.lang.String androidId>;
+
+        staticinvoke <com.startapp.android.publish.i.x: void a(java.util.List,java.lang.String,java.lang.Object,boolean)>($r1, "userId", $r2, 0);
+
+        goto label5;
+    }
+
+    public java.lang.String getNetOper()
+    {
+        com.startapp.android.publish.model.BaseRequest r0;
+        java.lang.String r1;
+
+        r0 := @this: com.startapp.android.publish.model.BaseRequest;
+
+        r1 = r0.<com.startapp.android.publish.model.BaseRequest: java.lang.String netOper>;
+
+        return r1;
+    }
+
+    public java.lang.String getNetworkType()
+    {
+        com.startapp.android.publish.model.BaseRequest r0;
+        java.lang.String r1;
+
+        r0 := @this: com.startapp.android.publish.model.BaseRequest;
+
+        r1 = r0.<com.startapp.android.publish.model.BaseRequest: java.lang.String networkType>;
+
+        return r1;
+    }
+
+    public java.lang.String getOs()
+    {
+        com.startapp.android.publish.model.BaseRequest r0;
+        java.lang.String r1;
+
+        r0 := @this: com.startapp.android.publish.model.BaseRequest;
+
+        r1 = r0.<com.startapp.android.publish.model.BaseRequest: java.lang.String os>;
+
+        return r1;
+    }
+
+    public java.lang.String getPackageId()
+    {
+        com.startapp.android.publish.model.BaseRequest r0;
+        java.lang.String r1;
+
+        r0 := @this: com.startapp.android.publish.model.BaseRequest;
+
+        r1 = r0.<com.startapp.android.publish.model.BaseRequest: java.lang.String packageId>;
+
+        return r1;
+    }
+
+    public java.util.Map getParameters()
+    {
+        com.startapp.android.publish.model.BaseRequest r0;
+        java.util.Map r1;
+
+        r0 := @this: com.startapp.android.publish.model.BaseRequest;
+
+        r1 = r0.<com.startapp.android.publish.model.BaseRequest: java.util.Map parameters>;
+
+        return r1;
+    }
+
+    public java.lang.String getProductId()
+    {
+        com.startapp.android.publish.model.BaseRequest r0;
+        java.lang.String r1;
+
+        r0 := @this: com.startapp.android.publish.model.BaseRequest;
+
+        r1 = r0.<com.startapp.android.publish.model.BaseRequest: java.lang.String productId>;
+
+        return r1;
+    }
+
+    public java.lang.String getPublisherId()
+    {
+        com.startapp.android.publish.model.BaseRequest r0;
+        java.lang.String r1;
+
+        r0 := @this: com.startapp.android.publish.model.BaseRequest;
+
+        r1 = r0.<com.startapp.android.publish.model.BaseRequest: java.lang.String publisherId>;
+
+        return r1;
+    }
+
+    public java.lang.String getRequestString()
+    {
+        com.startapp.android.publish.model.BaseRequest r0;
+        java.lang.StringBuilder $r1, $r7;
+        java.util.List $r2;
+        java.lang.String $r3, $r10;
+        java.util.Iterator $r4, $r9;
+        boolean $z0;
+        java.lang.Object $r5;
+        com.startapp.android.publish.model.NameValueObject $r6;
+        java.util.Set $r8;
+        int $i0;
+
+        r0 := @this: com.startapp.android.publish.model.BaseRequest;
+
+        $r1 = new java.lang.StringBuilder;
+
+        specialinvoke $r1.<java.lang.StringBuilder: void <init>()>();
+
+        $r2 = virtualinvoke r0.<com.startapp.android.publish.model.BaseRequest: java.util.List getNameValueMap()>();
+
+        if $r2 != null goto label1;
+
+        $r3 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        return $r3;
+
+     label1:
+        virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(char)>(63);
+
+        $r4 = interfaceinvoke $r2.<java.util.List: java.util.Iterator iterator()>();
+
+     label2:
+        $z0 = interfaceinvoke $r4.<java.util.Iterator: boolean hasNext()>();
+
+        if $z0 == 0 goto label5;
+
+        $r5 = interfaceinvoke $r4.<java.util.Iterator: java.lang.Object next()>();
+
+        $r6 = (com.startapp.android.publish.model.NameValueObject) $r5;
+
+        $r3 = virtualinvoke $r6.<com.startapp.android.publish.model.NameValueObject: java.lang.String getValue()>();
+
+        if $r3 == null goto label3;
+
+        $r3 = virtualinvoke $r6.<com.startapp.android.publish.model.NameValueObject: java.lang.String getName()>();
+
+        $r7 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r3);
+
+        $r7 = virtualinvoke $r7.<java.lang.StringBuilder: java.lang.StringBuilder append(char)>(61);
+
+        $r3 = virtualinvoke $r6.<com.startapp.android.publish.model.NameValueObject: java.lang.String getValue()>();
+
+        $r7 = virtualinvoke $r7.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r3);
+
+        virtualinvoke $r7.<java.lang.StringBuilder: java.lang.StringBuilder append(char)>(38);
+
+        goto label2;
+
+     label3:
+        $r8 = virtualinvoke $r6.<com.startapp.android.publish.model.NameValueObject: java.util.Set getValueSet()>();
+
+        if $r8 == null goto label2;
+
+        $r8 = virtualinvoke $r6.<com.startapp.android.publish.model.NameValueObject: java.util.Set getValueSet()>();
+
+        if $r8 == null goto label2;
+
+        $r9 = interfaceinvoke $r8.<java.util.Set: java.util.Iterator iterator()>();
+
+     label4:
+        $z0 = interfaceinvoke $r9.<java.util.Iterator: boolean hasNext()>();
+
+        if $z0 == 0 goto label2;
+
+        $r5 = interfaceinvoke $r9.<java.util.Iterator: java.lang.Object next()>();
+
+        $r3 = (java.lang.String) $r5;
+
+        $r10 = virtualinvoke $r6.<com.startapp.android.publish.model.NameValueObject: java.lang.String getName()>();
+
+        $r7 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r10);
+
+        $r7 = virtualinvoke $r7.<java.lang.StringBuilder: java.lang.StringBuilder append(char)>(61);
+
+        $r7 = virtualinvoke $r7.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r3);
+
+        virtualinvoke $r7.<java.lang.StringBuilder: java.lang.StringBuilder append(char)>(38);
+
+        goto label4;
+
+     label5:
+        $i0 = virtualinvoke $r1.<java.lang.StringBuilder: int length()>();
+
+        if $i0 == 0 goto label6;
+
+        $i0 = virtualinvoke $r1.<java.lang.StringBuilder: int length()>();
+
+        $i0 = $i0 + -1;
+
+        virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder deleteCharAt(int)>($i0);
+
+     label6:
+        $r3 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        $r3 = virtualinvoke $r3.<java.lang.String: java.lang.String replace(java.lang.CharSequence,java.lang.CharSequence)>("+", "%20");
+
+        return $r3;
+    }
+
+    public java.lang.String getSdkVersion()
+    {
+        com.startapp.android.publish.model.BaseRequest r0;
+        java.lang.String r1;
+
+        r0 := @this: com.startapp.android.publish.model.BaseRequest;
+
+        r1 = r0.<com.startapp.android.publish.model.BaseRequest: java.lang.String sdkVersion>;
+
+        return r1;
+    }
+
+    public java.lang.String getSessionId()
+    {
+        com.startapp.android.publish.model.BaseRequest r0;
+        java.lang.String $r1;
+
+        r0 := @this: com.startapp.android.publish.model.BaseRequest;
+
+        $r1 = r0.<com.startapp.android.publish.model.BaseRequest: java.lang.String clientSessionId>;
+
+        if $r1 != null goto label1;
+
+        return "";
+
+     label1:
+        $r1 = r0.<com.startapp.android.publish.model.BaseRequest: java.lang.String clientSessionId>;
+
+        return $r1;
+    }
+
+    public java.lang.String getSignalLevel()
+    {
+        com.startapp.android.publish.model.BaseRequest r0;
+        java.lang.String r1;
+
+        r0 := @this: com.startapp.android.publish.model.BaseRequest;
+
+        r1 = r0.<com.startapp.android.publish.model.BaseRequest: java.lang.String signalLevel>;
+
+        return r1;
+    }
+
+    public java.lang.String getSsid()
+    {
+        com.startapp.android.publish.model.BaseRequest r0;
+        java.lang.String r1;
+
+        r0 := @this: com.startapp.android.publish.model.BaseRequest;
+
+        r1 = r0.<com.startapp.android.publish.model.BaseRequest: java.lang.String ssid>;
+
+        return r1;
+    }
+
+    public java.lang.String getSubProductId()
+    {
+        com.startapp.android.publish.model.BaseRequest r0;
+        java.lang.String r1;
+
+        r0 := @this: com.startapp.android.publish.model.BaseRequest;
+
+        r1 = r0.<com.startapp.android.publish.model.BaseRequest: java.lang.String subProductId>;
+
+        return r1;
+    }
+
+    public java.lang.String getSubPublisherId()
+    {
+        com.startapp.android.publish.model.BaseRequest r0;
+        java.lang.String r1;
+
+        r0 := @this: com.startapp.android.publish.model.BaseRequest;
+
+        r1 = r0.<com.startapp.android.publish.model.BaseRequest: java.lang.String subPublisherId>;
+
+        return r1;
+    }
+
+    public com.startapp.android.publish.i.a$c getUserAdvertisingId()
+    {
+        com.startapp.android.publish.model.BaseRequest r0;
+        com.startapp.android.publish.i.a$c r1;
+
+        r0 := @this: com.startapp.android.publish.model.BaseRequest;
+
+        r1 = r0.<com.startapp.android.publish.model.BaseRequest: com.startapp.android.publish.i.a$c userAdvertisingId>;
+
+        return r1;
+    }
+
+    public java.lang.String getWfScanRes()
+    {
+        com.startapp.android.publish.model.BaseRequest r0;
+        java.lang.String r1;
+
+        r0 := @this: com.startapp.android.publish.model.BaseRequest;
+
+        r1 = r0.<com.startapp.android.publish.model.BaseRequest: java.lang.String wfScanRes>;
+
+        return r1;
+    }
+
+    public int getWidth()
+    {
+        com.startapp.android.publish.model.BaseRequest r0;
+        int i0;
+
+        r0 := @this: com.startapp.android.publish.model.BaseRequest;
+
+        i0 = r0.<com.startapp.android.publish.model.BaseRequest: int width>;
+
+        return i0;
+    }
+
+    public java.lang.String getWifiRssiLevel()
+    {
+        com.startapp.android.publish.model.BaseRequest r0;
+        java.lang.String r1;
+
+        r0 := @this: com.startapp.android.publish.model.BaseRequest;
+
+        r1 = r0.<com.startapp.android.publish.model.BaseRequest: java.lang.String wifiRSSILevel>;
+
+        return r1;
+    }
+
+    public java.lang.String getWifiSignalLevel()
+    {
+        com.startapp.android.publish.model.BaseRequest r0;
+        java.lang.String r1;
+
+        r0 := @this: com.startapp.android.publish.model.BaseRequest;
+
+        r1 = r0.<com.startapp.android.publish.model.BaseRequest: java.lang.String wifiSignalLevel>;
+
+        return r1;
+    }
+
+    public java.lang.Boolean isUnknownSourcesAllowed()
+    {
+        com.startapp.android.publish.model.BaseRequest r0;
+        java.lang.Boolean r1;
+
+        r0 := @this: com.startapp.android.publish.model.BaseRequest;
+
+        r1 = r0.<com.startapp.android.publish.model.BaseRequest: java.lang.Boolean unknownSourcesAllowed>;
+
+        return r1;
+    }
+
+    public void setAppCode(int)
+    {
+        com.startapp.android.publish.model.BaseRequest r0;
+        int $i0;
+
+        r0 := @this: com.startapp.android.publish.model.BaseRequest;
+
+        $i0 := @parameter0: int;
+
+        r0.<com.startapp.android.publish.model.BaseRequest: int appCode> = $i0;
+
+        return;
+    }
+
+    public void setAppVersion(java.lang.String)
+    {
+        com.startapp.android.publish.model.BaseRequest r0;
+        java.lang.String $r1;
+
+        r0 := @this: com.startapp.android.publish.model.BaseRequest;
+
+        $r1 := @parameter0: java.lang.String;
+
+        r0.<com.startapp.android.publish.model.BaseRequest: java.lang.String appVersion> = $r1;
+
+        return;
+    }
+
+    public void setBlat(java.lang.String)
+    {
+        com.startapp.android.publish.model.BaseRequest r0;
+        java.lang.String $r1;
+
+        r0 := @this: com.startapp.android.publish.model.BaseRequest;
+
+        $r1 := @parameter0: java.lang.String;
+
+        r0.<com.startapp.android.publish.model.BaseRequest: java.lang.String blat> = $r1;
+
+        return;
+    }
+
+    public void setBlon(java.lang.String)
+    {
+        com.startapp.android.publish.model.BaseRequest r0;
+        java.lang.String $r1;
+
+        r0 := @this: com.startapp.android.publish.model.BaseRequest;
+
+        $r1 := @parameter0: java.lang.String;
+
+        r0.<com.startapp.android.publish.model.BaseRequest: java.lang.String blon> = $r1;
+
+        return;
+    }
+
+    public void setBssid(java.lang.String)
+    {
+        com.startapp.android.publish.model.BaseRequest r0;
+        java.lang.String $r1;
+
+        r0 := @this: com.startapp.android.publish.model.BaseRequest;
+
+        $r1 := @parameter0: java.lang.String;
+
+        r0.<com.startapp.android.publish.model.BaseRequest: java.lang.String bssid> = $r1;
+
+        return;
+    }
+
+    public void setCid(java.lang.String)
+    {
+        com.startapp.android.publish.model.BaseRequest r0;
+        java.lang.String $r1;
+
+        r0 := @this: com.startapp.android.publish.model.BaseRequest;
+
+        $r1 := @parameter0: java.lang.String;
+
+        r0.<com.startapp.android.publish.model.BaseRequest: java.lang.String cid> = $r1;
+
+        return;
+    }
+
+    public void setDensity(float)
+    {
+        com.startapp.android.publish.model.BaseRequest r0;
+        float $f0;
+
+        r0 := @this: com.startapp.android.publish.model.BaseRequest;
+
+        $f0 := @parameter0: float;
+
+        r0.<com.startapp.android.publish.model.BaseRequest: float density> = $f0;
+
+        return;
+    }
+
+    public void setDeviceVersion(java.lang.String)
+    {
+        com.startapp.android.publish.model.BaseRequest r0;
+        java.lang.String $r1;
+
+        r0 := @this: com.startapp.android.publish.model.BaseRequest;
+
+        $r1 := @parameter0: java.lang.String;
+
+        r0.<com.startapp.android.publish.model.BaseRequest: java.lang.String deviceVersion> = $r1;
+
+        return;
+    }
+
+    public void setHeight(int)
+    {
+        com.startapp.android.publish.model.BaseRequest r0;
+        int $i0;
+
+        r0 := @this: com.startapp.android.publish.model.BaseRequest;
+
+        $i0 := @parameter0: int;
+
+        r0.<com.startapp.android.publish.model.BaseRequest: int height> = $i0;
+
+        return;
+    }
+
+    public void setInputLangs(java.util.Set)
+    {
+        com.startapp.android.publish.model.BaseRequest r0;
+        java.util.Set r1;
+
+        r0 := @this: com.startapp.android.publish.model.BaseRequest;
+
+        r1 := @parameter0: java.util.Set;
+
+        r0.<com.startapp.android.publish.model.BaseRequest: java.util.Set inputLangs> = r1;
+
+        return;
+    }
+
+    public void setInstallerPkg(java.lang.String)
+    {
+        com.startapp.android.publish.model.BaseRequest r0;
+        java.lang.String $r1;
+
+        r0 := @this: com.startapp.android.publish.model.BaseRequest;
+
+        $r1 := @parameter0: java.lang.String;
+
+        r0.<com.startapp.android.publish.model.BaseRequest: java.lang.String installerPkg> = $r1;
+
+        return;
+    }
+
+    public void setIsp(java.lang.String)
+    {
+        com.startapp.android.publish.model.BaseRequest r0;
+        java.lang.String $r1;
+
+        r0 := @this: com.startapp.android.publish.model.BaseRequest;
+
+        $r1 := @parameter0: java.lang.String;
+
+        r0.<com.startapp.android.publish.model.BaseRequest: java.lang.String isp> = $r1;
+
+        return;
+    }
+
+    public void setIspName(java.lang.String)
+    {
+        com.startapp.android.publish.model.BaseRequest r0;
+        java.lang.String $r1;
+
+        r0 := @this: com.startapp.android.publish.model.BaseRequest;
+
+        $r1 := @parameter0: java.lang.String;
+
+        r0.<com.startapp.android.publish.model.BaseRequest: java.lang.String ispName> = $r1;
+
+        return;
+    }
+
+    public void setLac(java.lang.String)
+    {
+        com.startapp.android.publish.model.BaseRequest r0;
+        java.lang.String $r1;
+
+        r0 := @this: com.startapp.android.publish.model.BaseRequest;
+
+        $r1 := @parameter0: java.lang.String;
+
+        r0.<com.startapp.android.publish.model.BaseRequest: java.lang.String lac> = $r1;
+
+        return;
+    }
+
+    public void setLocale(java.lang.String)
+    {
+        com.startapp.android.publish.model.BaseRequest r0;
+        java.lang.String $r1;
+
+        r0 := @this: com.startapp.android.publish.model.BaseRequest;
+
+        $r1 := @parameter0: java.lang.String;
+
+        r0.<com.startapp.android.publish.model.BaseRequest: java.lang.String locale> = $r1;
+
+        return;
+    }
+
+    public void setManufacturer(java.lang.String)
+    {
+        com.startapp.android.publish.model.BaseRequest r0;
+        java.lang.String $r1;
+
+        r0 := @this: com.startapp.android.publish.model.BaseRequest;
+
+        $r1 := @parameter0: java.lang.String;
+
+        r0.<com.startapp.android.publish.model.BaseRequest: java.lang.String manufacturer> = $r1;
+
+        return;
+    }
+
+    public void setModel(java.lang.String)
+    {
+        com.startapp.android.publish.model.BaseRequest r0;
+        java.lang.String $r1;
+
+        r0 := @this: com.startapp.android.publish.model.BaseRequest;
+
+        $r1 := @parameter0: java.lang.String;
+
+        r0.<com.startapp.android.publish.model.BaseRequest: java.lang.String model> = $r1;
+
+        return;
+    }
+
+    public void setNetOper(java.lang.String)
+    {
+        com.startapp.android.publish.model.BaseRequest r0;
+        java.lang.String $r1;
+
+        r0 := @this: com.startapp.android.publish.model.BaseRequest;
+
+        $r1 := @parameter0: java.lang.String;
+
+        r0.<com.startapp.android.publish.model.BaseRequest: java.lang.String netOper> = $r1;
+
+        return;
+    }
+
+    public void setPackageId(java.lang.String)
+    {
+        com.startapp.android.publish.model.BaseRequest r0;
+        java.lang.String $r1;
+
+        r0 := @this: com.startapp.android.publish.model.BaseRequest;
+
+        $r1 := @parameter0: java.lang.String;
+
+        r0.<com.startapp.android.publish.model.BaseRequest: java.lang.String packageId> = $r1;
+
+        return;
+    }
+
+    public void setParameters(java.util.Map)
+    {
+        com.startapp.android.publish.model.BaseRequest r0;
+        java.util.Map r1;
+
+        r0 := @this: com.startapp.android.publish.model.BaseRequest;
+
+        r1 := @parameter0: java.util.Map;
+
+        r0.<com.startapp.android.publish.model.BaseRequest: java.util.Map parameters> = r1;
+
+        return;
+    }
+
+    public void setProductId(java.lang.String)
+    {
+        com.startapp.android.publish.model.BaseRequest r0;
+        java.lang.String $r1;
+
+        r0 := @this: com.startapp.android.publish.model.BaseRequest;
+
+        $r1 := @parameter0: java.lang.String;
+
+        r0.<com.startapp.android.publish.model.BaseRequest: java.lang.String productId> = $r1;
+
+        return;
+    }
+
+    public void setPublisherId(java.lang.String)
+    {
+        com.startapp.android.publish.model.BaseRequest r0;
+        java.lang.String $r1;
+
+        r0 := @this: com.startapp.android.publish.model.BaseRequest;
+
+        $r1 := @parameter0: java.lang.String;
+
+        r0.<com.startapp.android.publish.model.BaseRequest: java.lang.String publisherId> = $r1;
+
+        return;
+    }
+
+    public void setSdkVersion(java.lang.String)
+    {
+        com.startapp.android.publish.model.BaseRequest r0;
+        java.lang.String $r1;
+
+        r0 := @this: com.startapp.android.publish.model.BaseRequest;
+
+        $r1 := @parameter0: java.lang.String;
+
+        r0.<com.startapp.android.publish.model.BaseRequest: java.lang.String sdkVersion> = $r1;
+
+        return;
+    }
+
+    public void setSessionId(java.lang.String)
+    {
+        com.startapp.android.publish.model.BaseRequest r0;
+        java.lang.String $r1;
+
+        r0 := @this: com.startapp.android.publish.model.BaseRequest;
+
+        $r1 := @parameter0: java.lang.String;
+
+        r0.<com.startapp.android.publish.model.BaseRequest: java.lang.String clientSessionId> = $r1;
+
+        return;
+    }
+
+    public void setSsid(java.lang.String)
+    {
+        com.startapp.android.publish.model.BaseRequest r0;
+        java.lang.String $r1;
+
+        r0 := @this: com.startapp.android.publish.model.BaseRequest;
+
+        $r1 := @parameter0: java.lang.String;
+
+        r0.<com.startapp.android.publish.model.BaseRequest: java.lang.String ssid> = $r1;
+
+        return;
+    }
+
+    public void setSubProductId(java.lang.String)
+    {
+        com.startapp.android.publish.model.BaseRequest r0;
+        java.lang.String $r1;
+
+        r0 := @this: com.startapp.android.publish.model.BaseRequest;
+
+        $r1 := @parameter0: java.lang.String;
+
+        r0.<com.startapp.android.publish.model.BaseRequest: java.lang.String subProductId> = $r1;
+
+        return;
+    }
+
+    public void setSubPublisherId(java.lang.String)
+    {
+        com.startapp.android.publish.model.BaseRequest r0;
+        java.lang.String $r1;
+
+        r0 := @this: com.startapp.android.publish.model.BaseRequest;
+
+        $r1 := @parameter0: java.lang.String;
+
+        r0.<com.startapp.android.publish.model.BaseRequest: java.lang.String subPublisherId> = $r1;
+
+        return;
+    }
+
+    public void setUnknownSourcesAllowed(java.lang.Boolean)
+    {
+        com.startapp.android.publish.model.BaseRequest r0;
+        java.lang.Boolean $r1;
+
+        r0 := @this: com.startapp.android.publish.model.BaseRequest;
+
+        $r1 := @parameter0: java.lang.Boolean;
+
+        r0.<com.startapp.android.publish.model.BaseRequest: java.lang.Boolean unknownSourcesAllowed> = $r1;
+
+        return;
+    }
+
+    public void setUserAdvertisingId(com.startapp.android.publish.i.a$c)
+    {
+        com.startapp.android.publish.model.BaseRequest r0;
+        com.startapp.android.publish.i.a$c $r1;
+
+        r0 := @this: com.startapp.android.publish.model.BaseRequest;
+
+        $r1 := @parameter0: com.startapp.android.publish.i.a$c;
+
+        r0.<com.startapp.android.publish.model.BaseRequest: com.startapp.android.publish.i.a$c userAdvertisingId> = $r1;
+
+        return;
+    }
+
+    public void setWfScanRes(java.lang.String)
+    {
+        com.startapp.android.publish.model.BaseRequest r0;
+        java.lang.String $r1;
+
+        r0 := @this: com.startapp.android.publish.model.BaseRequest;
+
+        $r1 := @parameter0: java.lang.String;
+
+        r0.<com.startapp.android.publish.model.BaseRequest: java.lang.String wfScanRes> = $r1;
+
+        return;
+    }
+
+    public void setWidth(int)
+    {
+        com.startapp.android.publish.model.BaseRequest r0;
+        int $i0;
+
+        r0 := @this: com.startapp.android.publish.model.BaseRequest;
+
+        $i0 := @parameter0: int;
+
+        r0.<com.startapp.android.publish.model.BaseRequest: int width> = $i0;
+
+        return;
+    }
+
+    public java.lang.String toString()
+    {
+        com.startapp.android.publish.model.BaseRequest r0;
+        java.lang.StringBuilder $r1;
+        java.util.Map $r2;
+        java.lang.String $r3;
+
+        r0 := @this: com.startapp.android.publish.model.BaseRequest;
+
+        $r1 = new java.lang.StringBuilder;
+
+        specialinvoke $r1.<java.lang.StringBuilder: void <init>()>();
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("BaseRequest [parameters=");
+
+        $r2 = r0.<com.startapp.android.publish.model.BaseRequest: java.util.Map parameters>;
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($r2);
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("]");
+
+        $r3 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        return $r3;
+    }
+
+    public static void <clinit>()
+    {
+        <com.startapp.android.publish.model.BaseRequest: java.lang.String OS> = "android";
+
+        return;
+    }
+}

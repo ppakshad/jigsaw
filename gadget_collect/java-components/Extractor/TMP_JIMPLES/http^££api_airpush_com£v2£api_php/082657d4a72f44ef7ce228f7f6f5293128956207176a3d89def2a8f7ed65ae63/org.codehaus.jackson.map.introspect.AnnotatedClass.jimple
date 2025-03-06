@@ -1,0 +1,2255 @@
+public final class org.codehaus.jackson.map.introspect.AnnotatedClass extends org.codehaus.jackson.map.introspect.Annotated
+{
+    protected final org.codehaus.jackson.map.AnnotationIntrospector _annotationIntrospector;
+    protected final java.lang.Class _class;
+    protected org.codehaus.jackson.map.introspect.AnnotationMap _classAnnotations;
+    protected java.util.List _constructors;
+    protected java.util.List _creatorMethods;
+    protected org.codehaus.jackson.map.introspect.AnnotatedConstructor _defaultConstructor;
+    protected java.util.List _fields;
+    protected java.util.List _ignoredFields;
+    protected java.util.List _ignoredMethods;
+    protected org.codehaus.jackson.map.introspect.AnnotatedMethodMap _memberMethods;
+    protected final org.codehaus.jackson.map.ClassIntrospector$MixInResolver _mixInResolver;
+    protected final java.lang.Class _primaryMixIn;
+    protected final java.util.Collection _superTypes;
+
+    private void <init>(java.lang.Class, java.util.List, org.codehaus.jackson.map.AnnotationIntrospector, org.codehaus.jackson.map.ClassIntrospector$MixInResolver)
+    {
+        org.codehaus.jackson.map.introspect.AnnotatedClass r0;
+        java.lang.Class r1;
+        java.util.List r2;
+        org.codehaus.jackson.map.AnnotationIntrospector $r3;
+        org.codehaus.jackson.map.ClassIntrospector$MixInResolver $r4;
+
+        r0 := @this: org.codehaus.jackson.map.introspect.AnnotatedClass;
+
+        r1 := @parameter0: java.lang.Class;
+
+        r2 := @parameter1: java.util.List;
+
+        $r3 := @parameter2: org.codehaus.jackson.map.AnnotationIntrospector;
+
+        $r4 := @parameter3: org.codehaus.jackson.map.ClassIntrospector$MixInResolver;
+
+        specialinvoke r0.<org.codehaus.jackson.map.introspect.Annotated: void <init>()>();
+
+        r0.<org.codehaus.jackson.map.introspect.AnnotatedClass: java.lang.Class _class> = r1;
+
+        r0.<org.codehaus.jackson.map.introspect.AnnotatedClass: java.util.Collection _superTypes> = r2;
+
+        r0.<org.codehaus.jackson.map.introspect.AnnotatedClass: org.codehaus.jackson.map.AnnotationIntrospector _annotationIntrospector> = $r3;
+
+        r0.<org.codehaus.jackson.map.introspect.AnnotatedClass: org.codehaus.jackson.map.ClassIntrospector$MixInResolver _mixInResolver> = $r4;
+
+        $r4 = r0.<org.codehaus.jackson.map.introspect.AnnotatedClass: org.codehaus.jackson.map.ClassIntrospector$MixInResolver _mixInResolver>;
+
+        if $r4 != null goto label2;
+
+        r1 = null;
+
+     label1:
+        r0.<org.codehaus.jackson.map.introspect.AnnotatedClass: java.lang.Class _primaryMixIn> = r1;
+
+        return;
+
+     label2:
+        $r4 = r0.<org.codehaus.jackson.map.introspect.AnnotatedClass: org.codehaus.jackson.map.ClassIntrospector$MixInResolver _mixInResolver>;
+
+        r1 = r0.<org.codehaus.jackson.map.introspect.AnnotatedClass: java.lang.Class _class>;
+
+        r1 = interfaceinvoke $r4.<org.codehaus.jackson.map.ClassIntrospector$MixInResolver: java.lang.Class findMixInClassFor(java.lang.Class)>(r1);
+
+        goto label1;
+    }
+
+    private boolean _isIncludableField(java.lang.reflect.Field)
+    {
+        org.codehaus.jackson.map.introspect.AnnotatedClass r0;
+        java.lang.reflect.Field $r1;
+        boolean $z0;
+        int $i0;
+
+        r0 := @this: org.codehaus.jackson.map.introspect.AnnotatedClass;
+
+        $r1 := @parameter0: java.lang.reflect.Field;
+
+        $z0 = virtualinvoke $r1.<java.lang.reflect.Field: boolean isSynthetic()>();
+
+        if $z0 == 0 goto label1;
+
+        return 0;
+
+     label1:
+        $i0 = virtualinvoke $r1.<java.lang.reflect.Field: int getModifiers()>();
+
+        $z0 = staticinvoke <java.lang.reflect.Modifier: boolean isStatic(int)>($i0);
+
+        if $z0 != 0 goto label2;
+
+        $z0 = staticinvoke <java.lang.reflect.Modifier: boolean isTransient(int)>($i0);
+
+        if $z0 == 0 goto label3;
+
+     label2:
+        return 0;
+
+     label3:
+        return 1;
+    }
+
+    public static org.codehaus.jackson.map.introspect.AnnotatedClass construct(java.lang.Class, org.codehaus.jackson.map.AnnotationIntrospector, org.codehaus.jackson.map.ClassIntrospector$MixInResolver)
+    {
+        java.lang.Class r0;
+        org.codehaus.jackson.map.AnnotationIntrospector $r1;
+        org.codehaus.jackson.map.ClassIntrospector$MixInResolver $r2;
+        org.codehaus.jackson.map.introspect.AnnotatedClass r3;
+        java.util.List $r4;
+
+        r0 := @parameter0: java.lang.Class;
+
+        $r1 := @parameter1: org.codehaus.jackson.map.AnnotationIntrospector;
+
+        $r2 := @parameter2: org.codehaus.jackson.map.ClassIntrospector$MixInResolver;
+
+        $r4 = staticinvoke <org.codehaus.jackson.map.util.ClassUtil: java.util.List findSuperTypes(java.lang.Class,java.lang.Class)>(r0, null);
+
+        r3 = new org.codehaus.jackson.map.introspect.AnnotatedClass;
+
+        specialinvoke r3.<org.codehaus.jackson.map.introspect.AnnotatedClass: void <init>(java.lang.Class,java.util.List,org.codehaus.jackson.map.AnnotationIntrospector,org.codehaus.jackson.map.ClassIntrospector$MixInResolver)>(r0, $r4, $r1, $r2);
+
+        virtualinvoke r3.<org.codehaus.jackson.map.introspect.AnnotatedClass: void resolveClassAnnotations()>();
+
+        return r3;
+    }
+
+    public static org.codehaus.jackson.map.introspect.AnnotatedClass constructWithoutSuperTypes(java.lang.Class, org.codehaus.jackson.map.AnnotationIntrospector, org.codehaus.jackson.map.ClassIntrospector$MixInResolver)
+    {
+        java.lang.Class r0;
+        org.codehaus.jackson.map.AnnotationIntrospector $r1;
+        org.codehaus.jackson.map.ClassIntrospector$MixInResolver $r2;
+        org.codehaus.jackson.map.introspect.AnnotatedClass r3;
+        java.util.List $r4;
+
+        r0 := @parameter0: java.lang.Class;
+
+        $r1 := @parameter1: org.codehaus.jackson.map.AnnotationIntrospector;
+
+        $r2 := @parameter2: org.codehaus.jackson.map.ClassIntrospector$MixInResolver;
+
+        $r4 = staticinvoke <java.util.Collections: java.util.List emptyList()>();
+
+        r3 = new org.codehaus.jackson.map.introspect.AnnotatedClass;
+
+        specialinvoke r3.<org.codehaus.jackson.map.introspect.AnnotatedClass: void <init>(java.lang.Class,java.util.List,org.codehaus.jackson.map.AnnotationIntrospector,org.codehaus.jackson.map.ClassIntrospector$MixInResolver)>(r0, $r4, $r1, $r2);
+
+        virtualinvoke r3.<org.codehaus.jackson.map.introspect.AnnotatedClass: void resolveClassAnnotations()>();
+
+        return r3;
+    }
+
+    protected void _addClassMixIns(org.codehaus.jackson.map.introspect.AnnotationMap, java.lang.Class)
+    {
+        org.codehaus.jackson.map.introspect.AnnotatedClass r0;
+        org.codehaus.jackson.map.introspect.AnnotationMap $r1;
+        java.lang.Class r2, $r3;
+        org.codehaus.jackson.map.ClassIntrospector$MixInResolver $r4;
+
+        r0 := @this: org.codehaus.jackson.map.introspect.AnnotatedClass;
+
+        $r1 := @parameter0: org.codehaus.jackson.map.introspect.AnnotationMap;
+
+        r2 := @parameter1: java.lang.Class;
+
+        $r4 = r0.<org.codehaus.jackson.map.introspect.AnnotatedClass: org.codehaus.jackson.map.ClassIntrospector$MixInResolver _mixInResolver>;
+
+        if $r4 == null goto label1;
+
+        $r4 = r0.<org.codehaus.jackson.map.introspect.AnnotatedClass: org.codehaus.jackson.map.ClassIntrospector$MixInResolver _mixInResolver>;
+
+        $r3 = interfaceinvoke $r4.<org.codehaus.jackson.map.ClassIntrospector$MixInResolver: java.lang.Class findMixInClassFor(java.lang.Class)>(r2);
+
+        virtualinvoke r0.<org.codehaus.jackson.map.introspect.AnnotatedClass: void _addClassMixIns(org.codehaus.jackson.map.introspect.AnnotationMap,java.lang.Class,java.lang.Class)>($r1, r2, $r3);
+
+     label1:
+        return;
+    }
+
+    protected void _addClassMixIns(org.codehaus.jackson.map.introspect.AnnotationMap, java.lang.Class, java.lang.Class)
+    {
+        org.codehaus.jackson.map.introspect.AnnotatedClass r0;
+        org.codehaus.jackson.map.introspect.AnnotationMap $r1;
+        java.lang.Class r2, r3;
+        java.lang.'annotation'.Annotation[] $r4;
+        int i0, i1;
+        java.lang.'annotation'.Annotation r5;
+        org.codehaus.jackson.map.AnnotationIntrospector $r6;
+        boolean $z0;
+        java.util.List $r7;
+        java.util.Iterator $r8;
+        java.lang.Object $r9;
+
+        r0 := @this: org.codehaus.jackson.map.introspect.AnnotatedClass;
+
+        $r1 := @parameter0: org.codehaus.jackson.map.introspect.AnnotationMap;
+
+        r2 := @parameter1: java.lang.Class;
+
+        r3 := @parameter2: java.lang.Class;
+
+        if r3 != null goto label1;
+
+        return;
+
+     label1:
+        $r4 = virtualinvoke r3.<java.lang.Class: java.lang.'annotation'.Annotation[] getDeclaredAnnotations()>();
+
+        i0 = lengthof $r4;
+
+        i1 = 0;
+
+     label2:
+        if i1 >= i0 goto label4;
+
+        r5 = $r4[i1];
+
+        $r6 = r0.<org.codehaus.jackson.map.introspect.AnnotatedClass: org.codehaus.jackson.map.AnnotationIntrospector _annotationIntrospector>;
+
+        $z0 = virtualinvoke $r6.<org.codehaus.jackson.map.AnnotationIntrospector: boolean isHandled(java.lang.'annotation'.Annotation)>(r5);
+
+        if $z0 == 0 goto label3;
+
+        virtualinvoke $r1.<org.codehaus.jackson.map.introspect.AnnotationMap: void addIfNotPresent(java.lang.'annotation'.Annotation)>(r5);
+
+     label3:
+        i1 = i1 + 1;
+
+        goto label2;
+
+     label4:
+        $r7 = staticinvoke <org.codehaus.jackson.map.util.ClassUtil: java.util.List findSuperTypes(java.lang.Class,java.lang.Class)>(r3, r2);
+
+        $r8 = interfaceinvoke $r7.<java.util.List: java.util.Iterator iterator()>();
+
+     label5:
+        $z0 = interfaceinvoke $r8.<java.util.Iterator: boolean hasNext()>();
+
+        if $z0 == 0 goto label8;
+
+        $r9 = interfaceinvoke $r8.<java.util.Iterator: java.lang.Object next()>();
+
+        r2 = (java.lang.Class) $r9;
+
+        $r4 = virtualinvoke r2.<java.lang.Class: java.lang.'annotation'.Annotation[] getDeclaredAnnotations()>();
+
+        i0 = lengthof $r4;
+
+        i1 = 0;
+
+     label6:
+        if i1 >= i0 goto label5;
+
+        r5 = $r4[i1];
+
+        $r6 = r0.<org.codehaus.jackson.map.introspect.AnnotatedClass: org.codehaus.jackson.map.AnnotationIntrospector _annotationIntrospector>;
+
+        $z0 = virtualinvoke $r6.<org.codehaus.jackson.map.AnnotationIntrospector: boolean isHandled(java.lang.'annotation'.Annotation)>(r5);
+
+        if $z0 == 0 goto label7;
+
+        virtualinvoke $r1.<org.codehaus.jackson.map.introspect.AnnotationMap: void addIfNotPresent(java.lang.'annotation'.Annotation)>(r5);
+
+     label7:
+        i1 = i1 + 1;
+
+        goto label6;
+
+     label8:
+        return;
+    }
+
+    protected void _addConstructorMixIns(java.lang.Class)
+    {
+        org.codehaus.jackson.map.introspect.AnnotatedClass r0;
+        java.lang.Class r1;
+        java.lang.reflect.Constructor r2, $r10;
+        org.codehaus.jackson.map.introspect.MemberKey r3, $r11;
+        int i0, i1, i2, $i3;
+        org.codehaus.jackson.map.introspect.MemberKey[] r4;
+        java.util.List $r5;
+        java.lang.reflect.Constructor[] $r6;
+        java.lang.Class[] $r7;
+        java.lang.Object $r8;
+        org.codehaus.jackson.map.introspect.AnnotatedConstructor $r9;
+        boolean $z0;
+
+        r0 := @this: org.codehaus.jackson.map.introspect.AnnotatedClass;
+
+        r1 := @parameter0: java.lang.Class;
+
+        r4 = null;
+
+        $r5 = r0.<org.codehaus.jackson.map.introspect.AnnotatedClass: java.util.List _constructors>;
+
+        if $r5 != null goto label05;
+
+        i1 = 0;
+
+     label01:
+        $r6 = virtualinvoke r1.<java.lang.Class: java.lang.reflect.Constructor[] getDeclaredConstructors()>();
+
+        i0 = lengthof $r6;
+
+        i2 = 0;
+
+     label02:
+        if i2 >= i0 goto label11;
+
+        r2 = $r6[i2];
+
+        $r7 = virtualinvoke r2.<java.lang.reflect.Constructor: java.lang.Class[] getParameterTypes()>();
+
+        $i3 = lengthof $r7;
+
+        lookupswitch($i3)
+        {
+            case 0: goto label06;
+            default: goto label03;
+        };
+
+     label03:
+        if r4 != null goto label08;
+
+        r4 = newarray (org.codehaus.jackson.map.introspect.MemberKey)[i1];
+
+        $i3 = 0;
+
+     label04:
+        if $i3 >= i1 goto label08;
+
+        r3 = new org.codehaus.jackson.map.introspect.MemberKey;
+
+        $r5 = r0.<org.codehaus.jackson.map.introspect.AnnotatedClass: java.util.List _constructors>;
+
+        $r8 = interfaceinvoke $r5.<java.util.List: java.lang.Object get(int)>($i3);
+
+        $r9 = (org.codehaus.jackson.map.introspect.AnnotatedConstructor) $r8;
+
+        $r10 = virtualinvoke $r9.<org.codehaus.jackson.map.introspect.AnnotatedConstructor: java.lang.reflect.Constructor getAnnotated()>();
+
+        specialinvoke r3.<org.codehaus.jackson.map.introspect.MemberKey: void <init>(java.lang.reflect.Constructor)>($r10);
+
+        r4[$i3] = r3;
+
+        $i3 = $i3 + 1;
+
+        goto label04;
+
+     label05:
+        $r5 = r0.<org.codehaus.jackson.map.introspect.AnnotatedClass: java.util.List _constructors>;
+
+        i1 = interfaceinvoke $r5.<java.util.List: int size()>();
+
+        goto label01;
+
+     label06:
+        $r9 = r0.<org.codehaus.jackson.map.introspect.AnnotatedClass: org.codehaus.jackson.map.introspect.AnnotatedConstructor _defaultConstructor>;
+
+        if $r9 == null goto label07;
+
+        $r9 = r0.<org.codehaus.jackson.map.introspect.AnnotatedClass: org.codehaus.jackson.map.introspect.AnnotatedConstructor _defaultConstructor>;
+
+        virtualinvoke r0.<org.codehaus.jackson.map.introspect.AnnotatedClass: void _addMixOvers(java.lang.reflect.Constructor,org.codehaus.jackson.map.introspect.AnnotatedConstructor,boolean)>(r2, $r9, 0);
+
+     label07:
+        i2 = i2 + 1;
+
+        goto label02;
+
+     label08:
+        r3 = new org.codehaus.jackson.map.introspect.MemberKey;
+
+        specialinvoke r3.<org.codehaus.jackson.map.introspect.MemberKey: void <init>(java.lang.reflect.Constructor)>(r2);
+
+        $i3 = 0;
+
+     label09:
+        if $i3 >= i1 goto label07;
+
+        $r11 = r4[$i3];
+
+        $z0 = virtualinvoke r3.<org.codehaus.jackson.map.introspect.MemberKey: boolean equals(java.lang.Object)>($r11);
+
+        if $z0 != 0 goto label10;
+
+        $i3 = $i3 + 1;
+
+        goto label09;
+
+     label10:
+        $r5 = r0.<org.codehaus.jackson.map.introspect.AnnotatedClass: java.util.List _constructors>;
+
+        $r8 = interfaceinvoke $r5.<java.util.List: java.lang.Object get(int)>($i3);
+
+        $r9 = (org.codehaus.jackson.map.introspect.AnnotatedConstructor) $r8;
+
+        virtualinvoke r0.<org.codehaus.jackson.map.introspect.AnnotatedClass: void _addMixOvers(java.lang.reflect.Constructor,org.codehaus.jackson.map.introspect.AnnotatedConstructor,boolean)>(r2, $r9, 1);
+
+        goto label07;
+
+     label11:
+        return;
+    }
+
+    protected void _addFactoryMixIns(java.lang.Class)
+    {
+        org.codehaus.jackson.map.introspect.AnnotatedClass r0;
+        java.lang.Class r1;
+        org.codehaus.jackson.map.introspect.MemberKey r2, $r11;
+        int i0, $i1, i2, $i3;
+        java.lang.reflect.Method r3, $r10;
+        org.codehaus.jackson.map.introspect.MemberKey[] r4;
+        java.util.List $r5;
+        java.lang.reflect.Method[] $r6;
+        boolean $z0;
+        java.lang.Class[] $r7;
+        java.lang.Object $r8;
+        org.codehaus.jackson.map.introspect.AnnotatedMethod $r9;
+
+        r0 := @this: org.codehaus.jackson.map.introspect.AnnotatedClass;
+
+        r1 := @parameter0: java.lang.Class;
+
+        r4 = null;
+
+        $r5 = r0.<org.codehaus.jackson.map.introspect.AnnotatedClass: java.util.List _creatorMethods>;
+
+        $i1 = interfaceinvoke $r5.<java.util.List: int size()>();
+
+        $r6 = virtualinvoke r1.<java.lang.Class: java.lang.reflect.Method[] getDeclaredMethods()>();
+
+        i0 = lengthof $r6;
+
+        i2 = 0;
+
+     label1:
+        if i2 >= i0 goto label8;
+
+        r3 = $r6[i2];
+
+        $i3 = virtualinvoke r3.<java.lang.reflect.Method: int getModifiers()>();
+
+        $z0 = staticinvoke <java.lang.reflect.Modifier: boolean isStatic(int)>($i3);
+
+        if $z0 != 0 goto label3;
+
+     label2:
+        i2 = i2 + 1;
+
+        goto label1;
+
+     label3:
+        $r7 = virtualinvoke r3.<java.lang.reflect.Method: java.lang.Class[] getParameterTypes()>();
+
+        $i3 = lengthof $r7;
+
+        if $i3 == 0 goto label2;
+
+        if r4 != null goto label5;
+
+        r4 = newarray (org.codehaus.jackson.map.introspect.MemberKey)[$i1];
+
+        $i3 = 0;
+
+     label4:
+        if $i3 >= $i1 goto label5;
+
+        r2 = new org.codehaus.jackson.map.introspect.MemberKey;
+
+        $r5 = r0.<org.codehaus.jackson.map.introspect.AnnotatedClass: java.util.List _creatorMethods>;
+
+        $r8 = interfaceinvoke $r5.<java.util.List: java.lang.Object get(int)>($i3);
+
+        $r9 = (org.codehaus.jackson.map.introspect.AnnotatedMethod) $r8;
+
+        $r10 = virtualinvoke $r9.<org.codehaus.jackson.map.introspect.AnnotatedMethod: java.lang.reflect.Method getAnnotated()>();
+
+        specialinvoke r2.<org.codehaus.jackson.map.introspect.MemberKey: void <init>(java.lang.reflect.Method)>($r10);
+
+        r4[$i3] = r2;
+
+        $i3 = $i3 + 1;
+
+        goto label4;
+
+     label5:
+        r2 = new org.codehaus.jackson.map.introspect.MemberKey;
+
+        specialinvoke r2.<org.codehaus.jackson.map.introspect.MemberKey: void <init>(java.lang.reflect.Method)>(r3);
+
+        $i3 = 0;
+
+     label6:
+        if $i3 >= $i1 goto label2;
+
+        $r11 = r4[$i3];
+
+        $z0 = virtualinvoke r2.<org.codehaus.jackson.map.introspect.MemberKey: boolean equals(java.lang.Object)>($r11);
+
+        if $z0 != 0 goto label7;
+
+        $i3 = $i3 + 1;
+
+        goto label6;
+
+     label7:
+        $r5 = r0.<org.codehaus.jackson.map.introspect.AnnotatedClass: java.util.List _creatorMethods>;
+
+        $r8 = interfaceinvoke $r5.<java.util.List: java.lang.Object get(int)>($i3);
+
+        $r9 = (org.codehaus.jackson.map.introspect.AnnotatedMethod) $r8;
+
+        virtualinvoke r0.<org.codehaus.jackson.map.introspect.AnnotatedClass: void _addMixOvers(java.lang.reflect.Method,org.codehaus.jackson.map.introspect.AnnotatedMethod,boolean)>(r3, $r9, 1);
+
+        goto label2;
+
+     label8:
+        return;
+    }
+
+    protected void _addFieldMixIns(java.lang.Class, java.util.Map)
+    {
+        org.codehaus.jackson.map.introspect.AnnotatedClass r0;
+        java.lang.Class r1;
+        java.util.Map r2;
+        java.lang.'annotation'.Annotation r3;
+        int i0, i1, i2, i3;
+        java.lang.reflect.Field r4;
+        java.lang.reflect.Field[] $r5;
+        boolean $z0;
+        java.lang.String $r6;
+        java.lang.Object $r7;
+        org.codehaus.jackson.map.introspect.AnnotatedField r8;
+        java.lang.'annotation'.Annotation[] $r9;
+        org.codehaus.jackson.map.AnnotationIntrospector $r10;
+
+        r0 := @this: org.codehaus.jackson.map.introspect.AnnotatedClass;
+
+        r1 := @parameter0: java.lang.Class;
+
+        r2 := @parameter1: java.util.Map;
+
+        $r5 = virtualinvoke r1.<java.lang.Class: java.lang.reflect.Field[] getDeclaredFields()>();
+
+        i0 = lengthof $r5;
+
+        i2 = 0;
+
+     label1:
+        if i2 >= i0 goto label6;
+
+        r4 = $r5[i2];
+
+        $z0 = specialinvoke r0.<org.codehaus.jackson.map.introspect.AnnotatedClass: boolean _isIncludableField(java.lang.reflect.Field)>(r4);
+
+        if $z0 != 0 goto label3;
+
+     label2:
+        i2 = i2 + 1;
+
+        goto label1;
+
+     label3:
+        $r6 = virtualinvoke r4.<java.lang.reflect.Field: java.lang.String getName()>();
+
+        $r7 = interfaceinvoke r2.<java.util.Map: java.lang.Object get(java.lang.Object)>($r6);
+
+        r8 = (org.codehaus.jackson.map.introspect.AnnotatedField) $r7;
+
+        if r8 == null goto label2;
+
+        $r9 = virtualinvoke r4.<java.lang.reflect.Field: java.lang.'annotation'.Annotation[] getDeclaredAnnotations()>();
+
+        i1 = lengthof $r9;
+
+        i3 = 0;
+
+     label4:
+        if i3 >= i1 goto label2;
+
+        r3 = $r9[i3];
+
+        $r10 = r0.<org.codehaus.jackson.map.introspect.AnnotatedClass: org.codehaus.jackson.map.AnnotationIntrospector _annotationIntrospector>;
+
+        $z0 = virtualinvoke $r10.<org.codehaus.jackson.map.AnnotationIntrospector: boolean isHandled(java.lang.'annotation'.Annotation)>(r3);
+
+        if $z0 == 0 goto label5;
+
+        virtualinvoke r8.<org.codehaus.jackson.map.introspect.AnnotatedField: void addOrOverride(java.lang.'annotation'.Annotation)>(r3);
+
+     label5:
+        i3 = i3 + 1;
+
+        goto label4;
+
+     label6:
+        return;
+    }
+
+    protected void _addFields(java.util.Map, java.lang.Class)
+    {
+        org.codehaus.jackson.map.introspect.AnnotatedClass r0;
+        java.util.Map r1;
+        java.lang.Class r2, $r4;
+        java.lang.reflect.Field r3;
+        int i0, i1;
+        java.lang.reflect.Field[] $r5;
+        boolean $z0;
+        java.lang.String $r6;
+        org.codehaus.jackson.map.introspect.AnnotatedField $r7;
+        org.codehaus.jackson.map.ClassIntrospector$MixInResolver $r8;
+
+        r0 := @this: org.codehaus.jackson.map.introspect.AnnotatedClass;
+
+        r1 := @parameter0: java.util.Map;
+
+        r2 := @parameter1: java.lang.Class;
+
+        $r4 = virtualinvoke r2.<java.lang.Class: java.lang.Class getSuperclass()>();
+
+        if $r4 == null goto label5;
+
+        virtualinvoke r0.<org.codehaus.jackson.map.introspect.AnnotatedClass: void _addFields(java.util.Map,java.lang.Class)>(r1, $r4);
+
+        $r5 = virtualinvoke r2.<java.lang.Class: java.lang.reflect.Field[] getDeclaredFields()>();
+
+        i0 = lengthof $r5;
+
+        i1 = 0;
+
+     label1:
+        if i1 >= i0 goto label4;
+
+        r3 = $r5[i1];
+
+        $z0 = specialinvoke r0.<org.codehaus.jackson.map.introspect.AnnotatedClass: boolean _isIncludableField(java.lang.reflect.Field)>(r3);
+
+        if $z0 != 0 goto label3;
+
+     label2:
+        i1 = i1 + 1;
+
+        goto label1;
+
+     label3:
+        $r6 = virtualinvoke r3.<java.lang.reflect.Field: java.lang.String getName()>();
+
+        $r7 = virtualinvoke r0.<org.codehaus.jackson.map.introspect.AnnotatedClass: org.codehaus.jackson.map.introspect.AnnotatedField _constructField(java.lang.reflect.Field)>(r3);
+
+        interfaceinvoke r1.<java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>($r6, $r7);
+
+        goto label2;
+
+     label4:
+        $r8 = r0.<org.codehaus.jackson.map.introspect.AnnotatedClass: org.codehaus.jackson.map.ClassIntrospector$MixInResolver _mixInResolver>;
+
+        if $r8 == null goto label5;
+
+        $r8 = r0.<org.codehaus.jackson.map.introspect.AnnotatedClass: org.codehaus.jackson.map.ClassIntrospector$MixInResolver _mixInResolver>;
+
+        r2 = interfaceinvoke $r8.<org.codehaus.jackson.map.ClassIntrospector$MixInResolver: java.lang.Class findMixInClassFor(java.lang.Class)>(r2);
+
+        if r2 == null goto label5;
+
+        virtualinvoke r0.<org.codehaus.jackson.map.introspect.AnnotatedClass: void _addFieldMixIns(java.lang.Class,java.util.Map)>(r2, r1);
+
+     label5:
+        return;
+    }
+
+    protected void _addMemberMethods(java.lang.Class, org.codehaus.jackson.map.introspect.MethodFilter, org.codehaus.jackson.map.introspect.AnnotatedMethodMap, java.lang.Class, org.codehaus.jackson.map.introspect.AnnotatedMethodMap)
+    {
+        org.codehaus.jackson.map.introspect.AnnotatedClass r0;
+        java.lang.Class r1, r4;
+        org.codehaus.jackson.map.introspect.MethodFilter $r2;
+        org.codehaus.jackson.map.introspect.AnnotatedMethodMap $r3, $r5;
+        int i0, i1;
+        java.lang.reflect.Method r6;
+        java.lang.reflect.Method[] $r7;
+        boolean $z0;
+        org.codehaus.jackson.map.introspect.AnnotatedMethod $r8, $r9;
+
+        r0 := @this: org.codehaus.jackson.map.introspect.AnnotatedClass;
+
+        r1 := @parameter0: java.lang.Class;
+
+        $r2 := @parameter1: org.codehaus.jackson.map.introspect.MethodFilter;
+
+        $r3 := @parameter2: org.codehaus.jackson.map.introspect.AnnotatedMethodMap;
+
+        r4 := @parameter3: java.lang.Class;
+
+        $r5 := @parameter4: org.codehaus.jackson.map.introspect.AnnotatedMethodMap;
+
+        if r4 == null goto label1;
+
+        virtualinvoke r0.<org.codehaus.jackson.map.introspect.AnnotatedClass: void _addMethodMixIns(org.codehaus.jackson.map.introspect.MethodFilter,org.codehaus.jackson.map.introspect.AnnotatedMethodMap,java.lang.Class,org.codehaus.jackson.map.introspect.AnnotatedMethodMap)>($r2, $r3, r4, $r5);
+
+     label1:
+        if r1 != null goto label2;
+
+        return;
+
+     label2:
+        $r7 = virtualinvoke r1.<java.lang.Class: java.lang.reflect.Method[] getDeclaredMethods()>();
+
+        i0 = lengthof $r7;
+
+        i1 = 0;
+
+     label3:
+        if i1 >= i0 goto label7;
+
+        r6 = $r7[i1];
+
+        $z0 = virtualinvoke r0.<org.codehaus.jackson.map.introspect.AnnotatedClass: boolean _isIncludableMethod(java.lang.reflect.Method,org.codehaus.jackson.map.introspect.MethodFilter)>(r6, $r2);
+
+        if $z0 != 0 goto label5;
+
+     label4:
+        i1 = i1 + 1;
+
+        goto label3;
+
+     label5:
+        $r8 = virtualinvoke $r3.<org.codehaus.jackson.map.introspect.AnnotatedMethodMap: org.codehaus.jackson.map.introspect.AnnotatedMethod find(java.lang.reflect.Method)>(r6);
+
+        if $r8 != null goto label6;
+
+        $r8 = virtualinvoke r0.<org.codehaus.jackson.map.introspect.AnnotatedClass: org.codehaus.jackson.map.introspect.AnnotatedMethod _constructMethod(java.lang.reflect.Method)>(r6);
+
+        virtualinvoke $r3.<org.codehaus.jackson.map.introspect.AnnotatedMethodMap: void add(org.codehaus.jackson.map.introspect.AnnotatedMethod)>($r8);
+
+        $r9 = virtualinvoke $r5.<org.codehaus.jackson.map.introspect.AnnotatedMethodMap: org.codehaus.jackson.map.introspect.AnnotatedMethod remove(java.lang.reflect.Method)>(r6);
+
+        if $r9 == null goto label4;
+
+        r6 = virtualinvoke $r9.<org.codehaus.jackson.map.introspect.AnnotatedMethod: java.lang.reflect.Method getAnnotated()>();
+
+        virtualinvoke r0.<org.codehaus.jackson.map.introspect.AnnotatedClass: void _addMixOvers(java.lang.reflect.Method,org.codehaus.jackson.map.introspect.AnnotatedMethod,boolean)>(r6, $r8, 0);
+
+        goto label4;
+
+     label6:
+        virtualinvoke r0.<org.codehaus.jackson.map.introspect.AnnotatedClass: void _addMixUnders(java.lang.reflect.Method,org.codehaus.jackson.map.introspect.AnnotatedMethod)>(r6, $r8);
+
+        r1 = virtualinvoke $r8.<org.codehaus.jackson.map.introspect.AnnotatedMethod: java.lang.Class getDeclaringClass()>();
+
+        $z0 = virtualinvoke r1.<java.lang.Class: boolean isInterface()>();
+
+        if $z0 == 0 goto label4;
+
+        r1 = virtualinvoke r6.<java.lang.reflect.Method: java.lang.Class getDeclaringClass()>();
+
+        $z0 = virtualinvoke r1.<java.lang.Class: boolean isInterface()>();
+
+        if $z0 != 0 goto label4;
+
+        $r8 = virtualinvoke $r8.<org.codehaus.jackson.map.introspect.AnnotatedMethod: org.codehaus.jackson.map.introspect.AnnotatedMethod withMethod(java.lang.reflect.Method)>(r6);
+
+        virtualinvoke $r3.<org.codehaus.jackson.map.introspect.AnnotatedMethodMap: void add(org.codehaus.jackson.map.introspect.AnnotatedMethod)>($r8);
+
+        goto label4;
+
+     label7:
+        return;
+    }
+
+    protected void _addMethodMixIns(org.codehaus.jackson.map.introspect.MethodFilter, org.codehaus.jackson.map.introspect.AnnotatedMethodMap, java.lang.Class, org.codehaus.jackson.map.introspect.AnnotatedMethodMap)
+    {
+        org.codehaus.jackson.map.introspect.AnnotatedClass r0;
+        org.codehaus.jackson.map.introspect.MethodFilter $r1;
+        org.codehaus.jackson.map.introspect.AnnotatedMethodMap $r2, $r4;
+        java.lang.Class r3;
+        int i0, i1;
+        java.lang.reflect.Method r5;
+        java.lang.reflect.Method[] $r6;
+        boolean $z0;
+        org.codehaus.jackson.map.introspect.AnnotatedMethod $r7;
+
+        r0 := @this: org.codehaus.jackson.map.introspect.AnnotatedClass;
+
+        $r1 := @parameter0: org.codehaus.jackson.map.introspect.MethodFilter;
+
+        $r2 := @parameter1: org.codehaus.jackson.map.introspect.AnnotatedMethodMap;
+
+        r3 := @parameter2: java.lang.Class;
+
+        $r4 := @parameter3: org.codehaus.jackson.map.introspect.AnnotatedMethodMap;
+
+        $r6 = virtualinvoke r3.<java.lang.Class: java.lang.reflect.Method[] getDeclaredMethods()>();
+
+        i0 = lengthof $r6;
+
+        i1 = 0;
+
+     label1:
+        if i1 >= i0 goto label5;
+
+        r5 = $r6[i1];
+
+        $z0 = virtualinvoke r0.<org.codehaus.jackson.map.introspect.AnnotatedClass: boolean _isIncludableMethod(java.lang.reflect.Method,org.codehaus.jackson.map.introspect.MethodFilter)>(r5, $r1);
+
+        if $z0 != 0 goto label3;
+
+     label2:
+        i1 = i1 + 1;
+
+        goto label1;
+
+     label3:
+        $r7 = virtualinvoke $r2.<org.codehaus.jackson.map.introspect.AnnotatedMethodMap: org.codehaus.jackson.map.introspect.AnnotatedMethod find(java.lang.reflect.Method)>(r5);
+
+        if $r7 == null goto label4;
+
+        virtualinvoke r0.<org.codehaus.jackson.map.introspect.AnnotatedClass: void _addMixUnders(java.lang.reflect.Method,org.codehaus.jackson.map.introspect.AnnotatedMethod)>(r5, $r7);
+
+        goto label2;
+
+     label4:
+        $r7 = virtualinvoke r0.<org.codehaus.jackson.map.introspect.AnnotatedClass: org.codehaus.jackson.map.introspect.AnnotatedMethod _constructMethod(java.lang.reflect.Method)>(r5);
+
+        virtualinvoke $r4.<org.codehaus.jackson.map.introspect.AnnotatedMethodMap: void add(org.codehaus.jackson.map.introspect.AnnotatedMethod)>($r7);
+
+        goto label2;
+
+     label5:
+        return;
+    }
+
+    protected void _addMixOvers(java.lang.reflect.Constructor, org.codehaus.jackson.map.introspect.AnnotatedConstructor, boolean)
+    {
+        org.codehaus.jackson.map.introspect.AnnotatedClass r0;
+        java.lang.reflect.Constructor r1;
+        org.codehaus.jackson.map.introspect.AnnotatedConstructor $r2;
+        boolean $z0, $z1;
+        int i0, i1, i2, i3;
+        java.lang.'annotation'.Annotation[] $r3;
+        java.lang.'annotation'.Annotation r4;
+        org.codehaus.jackson.map.AnnotationIntrospector $r5;
+        java.lang.'annotation'.Annotation[][] $r6;
+
+        r0 := @this: org.codehaus.jackson.map.introspect.AnnotatedClass;
+
+        r1 := @parameter0: java.lang.reflect.Constructor;
+
+        $r2 := @parameter1: org.codehaus.jackson.map.introspect.AnnotatedConstructor;
+
+        $z0 := @parameter2: boolean;
+
+        $r3 = virtualinvoke r1.<java.lang.reflect.Constructor: java.lang.'annotation'.Annotation[] getDeclaredAnnotations()>();
+
+        i0 = lengthof $r3;
+
+        i1 = 0;
+
+     label1:
+        if i1 >= i0 goto label3;
+
+        r4 = $r3[i1];
+
+        $r5 = r0.<org.codehaus.jackson.map.introspect.AnnotatedClass: org.codehaus.jackson.map.AnnotationIntrospector _annotationIntrospector>;
+
+        $z1 = virtualinvoke $r5.<org.codehaus.jackson.map.AnnotationIntrospector: boolean isHandled(java.lang.'annotation'.Annotation)>(r4);
+
+        if $z1 == 0 goto label2;
+
+        virtualinvoke $r2.<org.codehaus.jackson.map.introspect.AnnotatedConstructor: void addOrOverride(java.lang.'annotation'.Annotation)>(r4);
+
+     label2:
+        i1 = i1 + 1;
+
+        goto label1;
+
+     label3:
+        if $z0 == 0 goto label7;
+
+        $r6 = virtualinvoke r1.<java.lang.reflect.Constructor: java.lang.'annotation'.Annotation[][] getParameterAnnotations()>();
+
+        i1 = 0;
+
+        i0 = lengthof $r6;
+
+     label4:
+        if i1 >= i0 goto label7;
+
+        $r3 = $r6[i1];
+
+        i2 = lengthof $r3;
+
+        i3 = 0;
+
+     label5:
+        if i3 >= i2 goto label6;
+
+        r4 = $r3[i3];
+
+        virtualinvoke $r2.<org.codehaus.jackson.map.introspect.AnnotatedConstructor: void addOrOverrideParam(int,java.lang.'annotation'.Annotation)>(i1, r4);
+
+        i3 = i3 + 1;
+
+        goto label5;
+
+     label6:
+        i1 = i1 + 1;
+
+        goto label4;
+
+     label7:
+        return;
+    }
+
+    protected void _addMixOvers(java.lang.reflect.Method, org.codehaus.jackson.map.introspect.AnnotatedMethod, boolean)
+    {
+        org.codehaus.jackson.map.introspect.AnnotatedClass r0;
+        java.lang.reflect.Method $r1;
+        org.codehaus.jackson.map.introspect.AnnotatedMethod $r2;
+        boolean $z0, $z1;
+        int i0, i1, i2, i3;
+        java.lang.'annotation'.Annotation[] $r3;
+        java.lang.'annotation'.Annotation r4;
+        org.codehaus.jackson.map.AnnotationIntrospector $r5;
+        java.lang.'annotation'.Annotation[][] $r6;
+
+        r0 := @this: org.codehaus.jackson.map.introspect.AnnotatedClass;
+
+        $r1 := @parameter0: java.lang.reflect.Method;
+
+        $r2 := @parameter1: org.codehaus.jackson.map.introspect.AnnotatedMethod;
+
+        $z0 := @parameter2: boolean;
+
+        $r3 = virtualinvoke $r1.<java.lang.reflect.Method: java.lang.'annotation'.Annotation[] getDeclaredAnnotations()>();
+
+        i0 = lengthof $r3;
+
+        i1 = 0;
+
+     label1:
+        if i1 >= i0 goto label3;
+
+        r4 = $r3[i1];
+
+        $r5 = r0.<org.codehaus.jackson.map.introspect.AnnotatedClass: org.codehaus.jackson.map.AnnotationIntrospector _annotationIntrospector>;
+
+        $z1 = virtualinvoke $r5.<org.codehaus.jackson.map.AnnotationIntrospector: boolean isHandled(java.lang.'annotation'.Annotation)>(r4);
+
+        if $z1 == 0 goto label2;
+
+        virtualinvoke $r2.<org.codehaus.jackson.map.introspect.AnnotatedMethod: void addOrOverride(java.lang.'annotation'.Annotation)>(r4);
+
+     label2:
+        i1 = i1 + 1;
+
+        goto label1;
+
+     label3:
+        if $z0 == 0 goto label7;
+
+        $r6 = virtualinvoke $r1.<java.lang.reflect.Method: java.lang.'annotation'.Annotation[][] getParameterAnnotations()>();
+
+        i1 = 0;
+
+        i0 = lengthof $r6;
+
+     label4:
+        if i1 >= i0 goto label7;
+
+        $r3 = $r6[i1];
+
+        i2 = lengthof $r3;
+
+        i3 = 0;
+
+     label5:
+        if i3 >= i2 goto label6;
+
+        r4 = $r3[i3];
+
+        virtualinvoke $r2.<org.codehaus.jackson.map.introspect.AnnotatedMethod: void addOrOverrideParam(int,java.lang.'annotation'.Annotation)>(i1, r4);
+
+        i3 = i3 + 1;
+
+        goto label5;
+
+     label6:
+        i1 = i1 + 1;
+
+        goto label4;
+
+     label7:
+        return;
+    }
+
+    protected void _addMixUnders(java.lang.reflect.Method, org.codehaus.jackson.map.introspect.AnnotatedMethod)
+    {
+        org.codehaus.jackson.map.introspect.AnnotatedClass r0;
+        java.lang.reflect.Method $r1;
+        org.codehaus.jackson.map.introspect.AnnotatedMethod $r2;
+        java.lang.'annotation'.Annotation r3;
+        int i0, i1;
+        java.lang.'annotation'.Annotation[] $r4;
+        org.codehaus.jackson.map.AnnotationIntrospector $r5;
+        boolean $z0;
+
+        r0 := @this: org.codehaus.jackson.map.introspect.AnnotatedClass;
+
+        $r1 := @parameter0: java.lang.reflect.Method;
+
+        $r2 := @parameter1: org.codehaus.jackson.map.introspect.AnnotatedMethod;
+
+        $r4 = virtualinvoke $r1.<java.lang.reflect.Method: java.lang.'annotation'.Annotation[] getDeclaredAnnotations()>();
+
+        i0 = lengthof $r4;
+
+        i1 = 0;
+
+     label1:
+        if i1 >= i0 goto label3;
+
+        r3 = $r4[i1];
+
+        $r5 = r0.<org.codehaus.jackson.map.introspect.AnnotatedClass: org.codehaus.jackson.map.AnnotationIntrospector _annotationIntrospector>;
+
+        $z0 = virtualinvoke $r5.<org.codehaus.jackson.map.AnnotationIntrospector: boolean isHandled(java.lang.'annotation'.Annotation)>(r3);
+
+        if $z0 == 0 goto label2;
+
+        virtualinvoke $r2.<org.codehaus.jackson.map.introspect.AnnotatedMethod: void addIfNotPresent(java.lang.'annotation'.Annotation)>(r3);
+
+     label2:
+        i1 = i1 + 1;
+
+        goto label1;
+
+     label3:
+        return;
+    }
+
+    protected org.codehaus.jackson.map.introspect.AnnotationMap _collectRelevantAnnotations(java.lang.'annotation'.Annotation[])
+    {
+        org.codehaus.jackson.map.introspect.AnnotatedClass r0;
+        java.lang.'annotation'.Annotation[] $r1;
+        java.lang.'annotation'.Annotation r2;
+        org.codehaus.jackson.map.introspect.AnnotationMap r3;
+        int i0, i1;
+        boolean $z0;
+        org.codehaus.jackson.map.AnnotationIntrospector $r4;
+
+        r0 := @this: org.codehaus.jackson.map.introspect.AnnotatedClass;
+
+        $r1 := @parameter0: java.lang.'annotation'.Annotation[];
+
+        r3 = new org.codehaus.jackson.map.introspect.AnnotationMap;
+
+        specialinvoke r3.<org.codehaus.jackson.map.introspect.AnnotationMap: void <init>()>();
+
+        if $r1 == null goto label3;
+
+        i0 = lengthof $r1;
+
+        i1 = 0;
+
+     label1:
+        if i1 >= i0 goto label3;
+
+        r2 = $r1[i1];
+
+        $r4 = r0.<org.codehaus.jackson.map.introspect.AnnotatedClass: org.codehaus.jackson.map.AnnotationIntrospector _annotationIntrospector>;
+
+        $z0 = virtualinvoke $r4.<org.codehaus.jackson.map.AnnotationIntrospector: boolean isHandled(java.lang.'annotation'.Annotation)>(r2);
+
+        if $z0 == 0 goto label2;
+
+        virtualinvoke r3.<org.codehaus.jackson.map.introspect.AnnotationMap: void add(java.lang.'annotation'.Annotation)>(r2);
+
+     label2:
+        i1 = i1 + 1;
+
+        goto label1;
+
+     label3:
+        return r3;
+    }
+
+    protected org.codehaus.jackson.map.introspect.AnnotationMap[] _collectRelevantAnnotations(java.lang.'annotation'.Annotation[][])
+    {
+        org.codehaus.jackson.map.introspect.AnnotatedClass r0;
+        java.lang.'annotation'.Annotation[][] $r1;
+        int i0, i1;
+        org.codehaus.jackson.map.introspect.AnnotationMap[] r2;
+        org.codehaus.jackson.map.introspect.AnnotationMap $r3;
+        java.lang.'annotation'.Annotation[] $r4;
+
+        r0 := @this: org.codehaus.jackson.map.introspect.AnnotatedClass;
+
+        $r1 := @parameter0: java.lang.'annotation'.Annotation[][];
+
+        i0 = lengthof $r1;
+
+        r2 = newarray (org.codehaus.jackson.map.introspect.AnnotationMap)[i0];
+
+        i1 = 0;
+
+     label1:
+        if i1 >= i0 goto label2;
+
+        $r4 = $r1[i1];
+
+        $r3 = virtualinvoke r0.<org.codehaus.jackson.map.introspect.AnnotatedClass: org.codehaus.jackson.map.introspect.AnnotationMap _collectRelevantAnnotations(java.lang.'annotation'.Annotation[])>($r4);
+
+        r2[i1] = $r3;
+
+        i1 = i1 + 1;
+
+        goto label1;
+
+     label2:
+        return r2;
+    }
+
+    protected org.codehaus.jackson.map.introspect.AnnotatedConstructor _constructConstructor(java.lang.reflect.Constructor, boolean)
+    {
+        org.codehaus.jackson.map.introspect.AnnotatedClass r0;
+        java.lang.reflect.Constructor r1;
+        boolean $z0;
+        org.codehaus.jackson.map.introspect.AnnotatedConstructor $r2;
+        java.lang.'annotation'.Annotation[] $r3;
+        org.codehaus.jackson.map.introspect.AnnotationMap $r4;
+        org.codehaus.jackson.map.introspect.AnnotationMap[] $r5;
+        java.lang.'annotation'.Annotation[][] $r6;
+
+        r0 := @this: org.codehaus.jackson.map.introspect.AnnotatedClass;
+
+        r1 := @parameter0: java.lang.reflect.Constructor;
+
+        $z0 := @parameter1: boolean;
+
+        $r2 = new org.codehaus.jackson.map.introspect.AnnotatedConstructor;
+
+        $r3 = virtualinvoke r1.<java.lang.reflect.Constructor: java.lang.'annotation'.Annotation[] getDeclaredAnnotations()>();
+
+        $r4 = virtualinvoke r0.<org.codehaus.jackson.map.introspect.AnnotatedClass: org.codehaus.jackson.map.introspect.AnnotationMap _collectRelevantAnnotations(java.lang.'annotation'.Annotation[])>($r3);
+
+        if $z0 == 0 goto label2;
+
+        $r5 = null;
+
+     label1:
+        specialinvoke $r2.<org.codehaus.jackson.map.introspect.AnnotatedConstructor: void <init>(java.lang.reflect.Constructor,org.codehaus.jackson.map.introspect.AnnotationMap,org.codehaus.jackson.map.introspect.AnnotationMap[])>(r1, $r4, $r5);
+
+        return $r2;
+
+     label2:
+        $r6 = virtualinvoke r1.<java.lang.reflect.Constructor: java.lang.'annotation'.Annotation[][] getParameterAnnotations()>();
+
+        $r5 = virtualinvoke r0.<org.codehaus.jackson.map.introspect.AnnotatedClass: org.codehaus.jackson.map.introspect.AnnotationMap[] _collectRelevantAnnotations(java.lang.'annotation'.Annotation[][])>($r6);
+
+        goto label1;
+    }
+
+    protected org.codehaus.jackson.map.introspect.AnnotatedMethod _constructCreatorMethod(java.lang.reflect.Method)
+    {
+        org.codehaus.jackson.map.introspect.AnnotatedClass r0;
+        java.lang.reflect.Method $r1;
+        org.codehaus.jackson.map.introspect.AnnotatedMethod $r2;
+        java.lang.'annotation'.Annotation[] $r3;
+        org.codehaus.jackson.map.introspect.AnnotationMap $r4;
+        java.lang.'annotation'.Annotation[][] $r5;
+        org.codehaus.jackson.map.introspect.AnnotationMap[] $r6;
+
+        r0 := @this: org.codehaus.jackson.map.introspect.AnnotatedClass;
+
+        $r1 := @parameter0: java.lang.reflect.Method;
+
+        $r2 = new org.codehaus.jackson.map.introspect.AnnotatedMethod;
+
+        $r3 = virtualinvoke $r1.<java.lang.reflect.Method: java.lang.'annotation'.Annotation[] getDeclaredAnnotations()>();
+
+        $r4 = virtualinvoke r0.<org.codehaus.jackson.map.introspect.AnnotatedClass: org.codehaus.jackson.map.introspect.AnnotationMap _collectRelevantAnnotations(java.lang.'annotation'.Annotation[])>($r3);
+
+        $r5 = virtualinvoke $r1.<java.lang.reflect.Method: java.lang.'annotation'.Annotation[][] getParameterAnnotations()>();
+
+        $r6 = virtualinvoke r0.<org.codehaus.jackson.map.introspect.AnnotatedClass: org.codehaus.jackson.map.introspect.AnnotationMap[] _collectRelevantAnnotations(java.lang.'annotation'.Annotation[][])>($r5);
+
+        specialinvoke $r2.<org.codehaus.jackson.map.introspect.AnnotatedMethod: void <init>(java.lang.reflect.Method,org.codehaus.jackson.map.introspect.AnnotationMap,org.codehaus.jackson.map.introspect.AnnotationMap[])>($r1, $r4, $r6);
+
+        return $r2;
+    }
+
+    protected org.codehaus.jackson.map.introspect.AnnotatedField _constructField(java.lang.reflect.Field)
+    {
+        org.codehaus.jackson.map.introspect.AnnotatedClass r0;
+        java.lang.reflect.Field $r1;
+        org.codehaus.jackson.map.introspect.AnnotatedField $r2;
+        java.lang.'annotation'.Annotation[] $r3;
+        org.codehaus.jackson.map.introspect.AnnotationMap $r4;
+
+        r0 := @this: org.codehaus.jackson.map.introspect.AnnotatedClass;
+
+        $r1 := @parameter0: java.lang.reflect.Field;
+
+        $r2 = new org.codehaus.jackson.map.introspect.AnnotatedField;
+
+        $r3 = virtualinvoke $r1.<java.lang.reflect.Field: java.lang.'annotation'.Annotation[] getDeclaredAnnotations()>();
+
+        $r4 = virtualinvoke r0.<org.codehaus.jackson.map.introspect.AnnotatedClass: org.codehaus.jackson.map.introspect.AnnotationMap _collectRelevantAnnotations(java.lang.'annotation'.Annotation[])>($r3);
+
+        specialinvoke $r2.<org.codehaus.jackson.map.introspect.AnnotatedField: void <init>(java.lang.reflect.Field,org.codehaus.jackson.map.introspect.AnnotationMap)>($r1, $r4);
+
+        return $r2;
+    }
+
+    protected org.codehaus.jackson.map.introspect.AnnotatedMethod _constructMethod(java.lang.reflect.Method)
+    {
+        org.codehaus.jackson.map.introspect.AnnotatedClass r0;
+        java.lang.reflect.Method $r1;
+        org.codehaus.jackson.map.introspect.AnnotatedMethod $r2;
+        java.lang.'annotation'.Annotation[] $r3;
+        org.codehaus.jackson.map.introspect.AnnotationMap $r4;
+
+        r0 := @this: org.codehaus.jackson.map.introspect.AnnotatedClass;
+
+        $r1 := @parameter0: java.lang.reflect.Method;
+
+        $r2 = new org.codehaus.jackson.map.introspect.AnnotatedMethod;
+
+        $r3 = virtualinvoke $r1.<java.lang.reflect.Method: java.lang.'annotation'.Annotation[] getDeclaredAnnotations()>();
+
+        $r4 = virtualinvoke r0.<org.codehaus.jackson.map.introspect.AnnotatedClass: org.codehaus.jackson.map.introspect.AnnotationMap _collectRelevantAnnotations(java.lang.'annotation'.Annotation[])>($r3);
+
+        specialinvoke $r2.<org.codehaus.jackson.map.introspect.AnnotatedMethod: void <init>(java.lang.reflect.Method,org.codehaus.jackson.map.introspect.AnnotationMap,org.codehaus.jackson.map.introspect.AnnotationMap[])>($r1, $r4, null);
+
+        return $r2;
+    }
+
+    protected boolean _isIncludableMethod(java.lang.reflect.Method, org.codehaus.jackson.map.introspect.MethodFilter)
+    {
+        org.codehaus.jackson.map.introspect.AnnotatedClass r0;
+        java.lang.reflect.Method $r1;
+        org.codehaus.jackson.map.introspect.MethodFilter $r2;
+        boolean $z0;
+
+        r0 := @this: org.codehaus.jackson.map.introspect.AnnotatedClass;
+
+        $r1 := @parameter0: java.lang.reflect.Method;
+
+        $r2 := @parameter1: org.codehaus.jackson.map.introspect.MethodFilter;
+
+        if $r2 == null goto label1;
+
+        $z0 = interfaceinvoke $r2.<org.codehaus.jackson.map.introspect.MethodFilter: boolean includeMethod(java.lang.reflect.Method)>($r1);
+
+        if $z0 != 0 goto label1;
+
+        return 0;
+
+     label1:
+        $z0 = virtualinvoke $r1.<java.lang.reflect.Method: boolean isSynthetic()>();
+
+        if $z0 != 0 goto label2;
+
+        $z0 = virtualinvoke $r1.<java.lang.reflect.Method: boolean isBridge()>();
+
+        if $z0 == 0 goto label3;
+
+     label2:
+        return 0;
+
+     label3:
+        return 1;
+    }
+
+    public java.lang.Iterable fields()
+    {
+        org.codehaus.jackson.map.introspect.AnnotatedClass r0;
+        java.util.List $r1;
+
+        r0 := @this: org.codehaus.jackson.map.introspect.AnnotatedClass;
+
+        $r1 = r0.<org.codehaus.jackson.map.introspect.AnnotatedClass: java.util.List _fields>;
+
+        if $r1 != null goto label1;
+
+        $r1 = staticinvoke <java.util.Collections: java.util.List emptyList()>();
+
+        return $r1;
+
+     label1:
+        $r1 = r0.<org.codehaus.jackson.map.introspect.AnnotatedClass: java.util.List _fields>;
+
+        return $r1;
+    }
+
+    public org.codehaus.jackson.map.introspect.AnnotatedMethod findMethod(java.lang.String, java.lang.Class[])
+    {
+        org.codehaus.jackson.map.introspect.AnnotatedClass r0;
+        java.lang.String $r1;
+        java.lang.Class[] r2;
+        org.codehaus.jackson.map.introspect.AnnotatedMethod $r3;
+        org.codehaus.jackson.map.introspect.AnnotatedMethodMap $r4;
+
+        r0 := @this: org.codehaus.jackson.map.introspect.AnnotatedClass;
+
+        $r1 := @parameter0: java.lang.String;
+
+        r2 := @parameter1: java.lang.Class[];
+
+        $r4 = r0.<org.codehaus.jackson.map.introspect.AnnotatedClass: org.codehaus.jackson.map.introspect.AnnotatedMethodMap _memberMethods>;
+
+        $r3 = virtualinvoke $r4.<org.codehaus.jackson.map.introspect.AnnotatedMethodMap: org.codehaus.jackson.map.introspect.AnnotatedMethod find(java.lang.String,java.lang.Class[])>($r1, r2);
+
+        return $r3;
+    }
+
+    public java.lang.Class getAnnotated()
+    {
+        org.codehaus.jackson.map.introspect.AnnotatedClass r0;
+        java.lang.Class r1;
+
+        r0 := @this: org.codehaus.jackson.map.introspect.AnnotatedClass;
+
+        r1 = r0.<org.codehaus.jackson.map.introspect.AnnotatedClass: java.lang.Class _class>;
+
+        return r1;
+    }
+
+    public volatile java.lang.reflect.AnnotatedElement getAnnotated()
+    {
+        org.codehaus.jackson.map.introspect.AnnotatedClass r0;
+        java.lang.Class $r1;
+
+        r0 := @this: org.codehaus.jackson.map.introspect.AnnotatedClass;
+
+        $r1 = virtualinvoke r0.<org.codehaus.jackson.map.introspect.AnnotatedClass: java.lang.Class getAnnotated()>();
+
+        return $r1;
+    }
+
+    public java.lang.'annotation'.Annotation getAnnotation(java.lang.Class)
+    {
+        org.codehaus.jackson.map.introspect.AnnotatedClass r0;
+        java.lang.Class r1;
+        java.lang.'annotation'.Annotation $r2;
+        org.codehaus.jackson.map.introspect.AnnotationMap $r3;
+
+        r0 := @this: org.codehaus.jackson.map.introspect.AnnotatedClass;
+
+        r1 := @parameter0: java.lang.Class;
+
+        $r3 = r0.<org.codehaus.jackson.map.introspect.AnnotatedClass: org.codehaus.jackson.map.introspect.AnnotationMap _classAnnotations>;
+
+        if $r3 != null goto label1;
+
+        return null;
+
+     label1:
+        $r3 = r0.<org.codehaus.jackson.map.introspect.AnnotatedClass: org.codehaus.jackson.map.introspect.AnnotationMap _classAnnotations>;
+
+        $r2 = virtualinvoke $r3.<org.codehaus.jackson.map.introspect.AnnotationMap: java.lang.'annotation'.Annotation get(java.lang.Class)>(r1);
+
+        return $r2;
+    }
+
+    public org.codehaus.jackson.map.util.Annotations getAnnotations()
+    {
+        org.codehaus.jackson.map.introspect.AnnotatedClass r0;
+        org.codehaus.jackson.map.introspect.AnnotationMap r1;
+
+        r0 := @this: org.codehaus.jackson.map.introspect.AnnotatedClass;
+
+        r1 = r0.<org.codehaus.jackson.map.introspect.AnnotatedClass: org.codehaus.jackson.map.introspect.AnnotationMap _classAnnotations>;
+
+        return r1;
+    }
+
+    public java.util.List getConstructors()
+    {
+        org.codehaus.jackson.map.introspect.AnnotatedClass r0;
+        java.util.List $r1;
+
+        r0 := @this: org.codehaus.jackson.map.introspect.AnnotatedClass;
+
+        $r1 = r0.<org.codehaus.jackson.map.introspect.AnnotatedClass: java.util.List _constructors>;
+
+        if $r1 != null goto label1;
+
+        $r1 = staticinvoke <java.util.Collections: java.util.List emptyList()>();
+
+        return $r1;
+
+     label1:
+        $r1 = r0.<org.codehaus.jackson.map.introspect.AnnotatedClass: java.util.List _constructors>;
+
+        return $r1;
+    }
+
+    public org.codehaus.jackson.map.introspect.AnnotatedConstructor getDefaultConstructor()
+    {
+        org.codehaus.jackson.map.introspect.AnnotatedClass r0;
+        org.codehaus.jackson.map.introspect.AnnotatedConstructor r1;
+
+        r0 := @this: org.codehaus.jackson.map.introspect.AnnotatedClass;
+
+        r1 = r0.<org.codehaus.jackson.map.introspect.AnnotatedClass: org.codehaus.jackson.map.introspect.AnnotatedConstructor _defaultConstructor>;
+
+        return r1;
+    }
+
+    public int getFieldCount()
+    {
+        org.codehaus.jackson.map.introspect.AnnotatedClass r0;
+        int $i0;
+        java.util.List $r1;
+
+        r0 := @this: org.codehaus.jackson.map.introspect.AnnotatedClass;
+
+        $r1 = r0.<org.codehaus.jackson.map.introspect.AnnotatedClass: java.util.List _fields>;
+
+        if $r1 != null goto label1;
+
+        return 0;
+
+     label1:
+        $r1 = r0.<org.codehaus.jackson.map.introspect.AnnotatedClass: java.util.List _fields>;
+
+        $i0 = interfaceinvoke $r1.<java.util.List: int size()>();
+
+        return $i0;
+    }
+
+    public java.lang.reflect.Type getGenericType()
+    {
+        org.codehaus.jackson.map.introspect.AnnotatedClass r0;
+        java.lang.Class r1;
+
+        r0 := @this: org.codehaus.jackson.map.introspect.AnnotatedClass;
+
+        r1 = r0.<org.codehaus.jackson.map.introspect.AnnotatedClass: java.lang.Class _class>;
+
+        return r1;
+    }
+
+    public int getMemberMethodCount()
+    {
+        org.codehaus.jackson.map.introspect.AnnotatedClass r0;
+        int $i0;
+        org.codehaus.jackson.map.introspect.AnnotatedMethodMap $r1;
+
+        r0 := @this: org.codehaus.jackson.map.introspect.AnnotatedClass;
+
+        $r1 = r0.<org.codehaus.jackson.map.introspect.AnnotatedClass: org.codehaus.jackson.map.introspect.AnnotatedMethodMap _memberMethods>;
+
+        $i0 = virtualinvoke $r1.<org.codehaus.jackson.map.introspect.AnnotatedMethodMap: int size()>();
+
+        return $i0;
+    }
+
+    public int getModifiers()
+    {
+        org.codehaus.jackson.map.introspect.AnnotatedClass r0;
+        int $i0;
+        java.lang.Class $r1;
+
+        r0 := @this: org.codehaus.jackson.map.introspect.AnnotatedClass;
+
+        $r1 = r0.<org.codehaus.jackson.map.introspect.AnnotatedClass: java.lang.Class _class>;
+
+        $i0 = virtualinvoke $r1.<java.lang.Class: int getModifiers()>();
+
+        return $i0;
+    }
+
+    public java.lang.String getName()
+    {
+        org.codehaus.jackson.map.introspect.AnnotatedClass r0;
+        java.lang.String $r1;
+        java.lang.Class $r2;
+
+        r0 := @this: org.codehaus.jackson.map.introspect.AnnotatedClass;
+
+        $r2 = r0.<org.codehaus.jackson.map.introspect.AnnotatedClass: java.lang.Class _class>;
+
+        $r1 = virtualinvoke $r2.<java.lang.Class: java.lang.String getName()>();
+
+        return $r1;
+    }
+
+    public java.lang.Class getRawType()
+    {
+        org.codehaus.jackson.map.introspect.AnnotatedClass r0;
+        java.lang.Class r1;
+
+        r0 := @this: org.codehaus.jackson.map.introspect.AnnotatedClass;
+
+        r1 = r0.<org.codehaus.jackson.map.introspect.AnnotatedClass: java.lang.Class _class>;
+
+        return r1;
+    }
+
+    public java.util.List getStaticMethods()
+    {
+        org.codehaus.jackson.map.introspect.AnnotatedClass r0;
+        java.util.List $r1;
+
+        r0 := @this: org.codehaus.jackson.map.introspect.AnnotatedClass;
+
+        $r1 = r0.<org.codehaus.jackson.map.introspect.AnnotatedClass: java.util.List _creatorMethods>;
+
+        if $r1 != null goto label1;
+
+        $r1 = staticinvoke <java.util.Collections: java.util.List emptyList()>();
+
+        return $r1;
+
+     label1:
+        $r1 = r0.<org.codehaus.jackson.map.introspect.AnnotatedClass: java.util.List _creatorMethods>;
+
+        return $r1;
+    }
+
+    public boolean hasAnnotations()
+    {
+        org.codehaus.jackson.map.introspect.AnnotatedClass r0;
+        int $i0;
+        org.codehaus.jackson.map.introspect.AnnotationMap $r1;
+
+        r0 := @this: org.codehaus.jackson.map.introspect.AnnotatedClass;
+
+        $r1 = r0.<org.codehaus.jackson.map.introspect.AnnotatedClass: org.codehaus.jackson.map.introspect.AnnotationMap _classAnnotations>;
+
+        $i0 = virtualinvoke $r1.<org.codehaus.jackson.map.introspect.AnnotationMap: int size()>();
+
+        if $i0 <= 0 goto label1;
+
+        return 1;
+
+     label1:
+        return 0;
+    }
+
+    public java.lang.Iterable ignoredFields()
+    {
+        org.codehaus.jackson.map.introspect.AnnotatedClass r0;
+        java.util.List $r1;
+
+        r0 := @this: org.codehaus.jackson.map.introspect.AnnotatedClass;
+
+        $r1 = r0.<org.codehaus.jackson.map.introspect.AnnotatedClass: java.util.List _ignoredFields>;
+
+        if $r1 != null goto label1;
+
+        $r1 = staticinvoke <java.util.Collections: java.util.List emptyList()>();
+
+        return $r1;
+
+     label1:
+        $r1 = r0.<org.codehaus.jackson.map.introspect.AnnotatedClass: java.util.List _ignoredFields>;
+
+        return $r1;
+    }
+
+    public java.lang.Iterable ignoredMemberMethods()
+    {
+        org.codehaus.jackson.map.introspect.AnnotatedClass r0;
+        java.util.List $r1;
+
+        r0 := @this: org.codehaus.jackson.map.introspect.AnnotatedClass;
+
+        $r1 = r0.<org.codehaus.jackson.map.introspect.AnnotatedClass: java.util.List _ignoredMethods>;
+
+        if $r1 != null goto label1;
+
+        $r1 = staticinvoke <java.util.Collections: java.util.List emptyList()>();
+
+        return $r1;
+
+     label1:
+        $r1 = r0.<org.codehaus.jackson.map.introspect.AnnotatedClass: java.util.List _ignoredMethods>;
+
+        return $r1;
+    }
+
+    public java.lang.Iterable memberMethods()
+    {
+        org.codehaus.jackson.map.introspect.AnnotatedClass r0;
+        org.codehaus.jackson.map.introspect.AnnotatedMethodMap r1;
+
+        r0 := @this: org.codehaus.jackson.map.introspect.AnnotatedClass;
+
+        r1 = r0.<org.codehaus.jackson.map.introspect.AnnotatedClass: org.codehaus.jackson.map.introspect.AnnotatedMethodMap _memberMethods>;
+
+        return r1;
+    }
+
+    protected void resolveClassAnnotations()
+    {
+        org.codehaus.jackson.map.introspect.AnnotatedClass r0;
+        java.lang.Class $r1, $r3;
+        org.codehaus.jackson.map.introspect.AnnotationMap $r2;
+        java.lang.'annotation'.Annotation[] $r4;
+        int i0, i1;
+        java.lang.'annotation'.Annotation r5;
+        org.codehaus.jackson.map.AnnotationIntrospector $r6;
+        boolean $z0;
+        java.util.Collection $r7;
+        java.util.Iterator $r8;
+        java.lang.Object $r9;
+
+        r0 := @this: org.codehaus.jackson.map.introspect.AnnotatedClass;
+
+        $r2 = new org.codehaus.jackson.map.introspect.AnnotationMap;
+
+        specialinvoke $r2.<org.codehaus.jackson.map.introspect.AnnotationMap: void <init>()>();
+
+        r0.<org.codehaus.jackson.map.introspect.AnnotatedClass: org.codehaus.jackson.map.introspect.AnnotationMap _classAnnotations> = $r2;
+
+        $r1 = r0.<org.codehaus.jackson.map.introspect.AnnotatedClass: java.lang.Class _primaryMixIn>;
+
+        if $r1 == null goto label1;
+
+        $r2 = r0.<org.codehaus.jackson.map.introspect.AnnotatedClass: org.codehaus.jackson.map.introspect.AnnotationMap _classAnnotations>;
+
+        $r3 = r0.<org.codehaus.jackson.map.introspect.AnnotatedClass: java.lang.Class _class>;
+
+        $r1 = r0.<org.codehaus.jackson.map.introspect.AnnotatedClass: java.lang.Class _primaryMixIn>;
+
+        virtualinvoke r0.<org.codehaus.jackson.map.introspect.AnnotatedClass: void _addClassMixIns(org.codehaus.jackson.map.introspect.AnnotationMap,java.lang.Class,java.lang.Class)>($r2, $r3, $r1);
+
+     label1:
+        $r1 = r0.<org.codehaus.jackson.map.introspect.AnnotatedClass: java.lang.Class _class>;
+
+        $r4 = virtualinvoke $r1.<java.lang.Class: java.lang.'annotation'.Annotation[] getDeclaredAnnotations()>();
+
+        i0 = lengthof $r4;
+
+        i1 = 0;
+
+     label2:
+        if i1 >= i0 goto label4;
+
+        r5 = $r4[i1];
+
+        $r6 = r0.<org.codehaus.jackson.map.introspect.AnnotatedClass: org.codehaus.jackson.map.AnnotationIntrospector _annotationIntrospector>;
+
+        $z0 = virtualinvoke $r6.<org.codehaus.jackson.map.AnnotationIntrospector: boolean isHandled(java.lang.'annotation'.Annotation)>(r5);
+
+        if $z0 == 0 goto label3;
+
+        $r2 = r0.<org.codehaus.jackson.map.introspect.AnnotatedClass: org.codehaus.jackson.map.introspect.AnnotationMap _classAnnotations>;
+
+        virtualinvoke $r2.<org.codehaus.jackson.map.introspect.AnnotationMap: void addIfNotPresent(java.lang.'annotation'.Annotation)>(r5);
+
+     label3:
+        i1 = i1 + 1;
+
+        goto label2;
+
+     label4:
+        $r7 = r0.<org.codehaus.jackson.map.introspect.AnnotatedClass: java.util.Collection _superTypes>;
+
+        $r8 = interfaceinvoke $r7.<java.util.Collection: java.util.Iterator iterator()>();
+
+     label5:
+        $z0 = interfaceinvoke $r8.<java.util.Iterator: boolean hasNext()>();
+
+        if $z0 == 0 goto label8;
+
+        $r9 = interfaceinvoke $r8.<java.util.Iterator: java.lang.Object next()>();
+
+        $r1 = (java.lang.Class) $r9;
+
+        $r2 = r0.<org.codehaus.jackson.map.introspect.AnnotatedClass: org.codehaus.jackson.map.introspect.AnnotationMap _classAnnotations>;
+
+        virtualinvoke r0.<org.codehaus.jackson.map.introspect.AnnotatedClass: void _addClassMixIns(org.codehaus.jackson.map.introspect.AnnotationMap,java.lang.Class)>($r2, $r1);
+
+        $r4 = virtualinvoke $r1.<java.lang.Class: java.lang.'annotation'.Annotation[] getDeclaredAnnotations()>();
+
+        i0 = lengthof $r4;
+
+        i1 = 0;
+
+     label6:
+        if i1 >= i0 goto label5;
+
+        r5 = $r4[i1];
+
+        $r6 = r0.<org.codehaus.jackson.map.introspect.AnnotatedClass: org.codehaus.jackson.map.AnnotationIntrospector _annotationIntrospector>;
+
+        $z0 = virtualinvoke $r6.<org.codehaus.jackson.map.AnnotationIntrospector: boolean isHandled(java.lang.'annotation'.Annotation)>(r5);
+
+        if $z0 == 0 goto label7;
+
+        $r2 = r0.<org.codehaus.jackson.map.introspect.AnnotatedClass: org.codehaus.jackson.map.introspect.AnnotationMap _classAnnotations>;
+
+        virtualinvoke $r2.<org.codehaus.jackson.map.introspect.AnnotationMap: void addIfNotPresent(java.lang.'annotation'.Annotation)>(r5);
+
+     label7:
+        i1 = i1 + 1;
+
+        goto label6;
+
+     label8:
+        $r2 = r0.<org.codehaus.jackson.map.introspect.AnnotatedClass: org.codehaus.jackson.map.introspect.AnnotationMap _classAnnotations>;
+
+        virtualinvoke r0.<org.codehaus.jackson.map.introspect.AnnotatedClass: void _addClassMixIns(org.codehaus.jackson.map.introspect.AnnotationMap,java.lang.Class)>($r2, class "Ljava/lang/Object;");
+
+        return;
+    }
+
+    public void resolveCreators(boolean)
+    {
+        org.codehaus.jackson.map.introspect.AnnotatedClass r0;
+        boolean $z0, $z1;
+        int i0, i1, i2;
+        java.lang.reflect.Constructor r1;
+        java.lang.reflect.Method r2;
+        java.lang.Class $r3;
+        java.lang.reflect.Constructor[] $r4;
+        java.lang.Class[] $r5;
+        java.util.List $r6;
+        java.util.ArrayList $r7;
+        org.codehaus.jackson.map.introspect.AnnotatedConstructor $r8;
+        org.codehaus.jackson.map.AnnotationIntrospector $r9;
+        java.lang.Object $r10;
+        java.lang.reflect.Method[] $r11;
+        org.codehaus.jackson.map.introspect.AnnotatedMethod $r12;
+
+        r0 := @this: org.codehaus.jackson.map.introspect.AnnotatedClass;
+
+        $z0 := @parameter0: boolean;
+
+        r0.<org.codehaus.jackson.map.introspect.AnnotatedClass: java.util.List _constructors> = null;
+
+        $r3 = r0.<org.codehaus.jackson.map.introspect.AnnotatedClass: java.lang.Class _class>;
+
+        $r4 = virtualinvoke $r3.<java.lang.Class: java.lang.reflect.Constructor[] getDeclaredConstructors()>();
+
+        i1 = lengthof $r4;
+
+        i2 = 0;
+
+     label01:
+        if i2 >= i1 goto label06;
+
+        r1 = $r4[i2];
+
+        $r5 = virtualinvoke r1.<java.lang.reflect.Constructor: java.lang.Class[] getParameterTypes()>();
+
+        i0 = lengthof $r5;
+
+        lookupswitch(i0)
+        {
+            case 0: goto label05;
+            default: goto label02;
+        };
+
+     label02:
+        if $z0 == 0 goto label04;
+
+        $r6 = r0.<org.codehaus.jackson.map.introspect.AnnotatedClass: java.util.List _constructors>;
+
+        if $r6 != null goto label03;
+
+        $r7 = new java.util.ArrayList;
+
+        specialinvoke $r7.<java.util.ArrayList: void <init>()>();
+
+        r0.<org.codehaus.jackson.map.introspect.AnnotatedClass: java.util.List _constructors> = $r7;
+
+     label03:
+        $r6 = r0.<org.codehaus.jackson.map.introspect.AnnotatedClass: java.util.List _constructors>;
+
+        $r8 = virtualinvoke r0.<org.codehaus.jackson.map.introspect.AnnotatedClass: org.codehaus.jackson.map.introspect.AnnotatedConstructor _constructConstructor(java.lang.reflect.Constructor,boolean)>(r1, 0);
+
+        interfaceinvoke $r6.<java.util.List: boolean add(java.lang.Object)>($r8);
+
+     label04:
+        i2 = i2 + 1;
+
+        goto label01;
+
+     label05:
+        $r8 = virtualinvoke r0.<org.codehaus.jackson.map.introspect.AnnotatedClass: org.codehaus.jackson.map.introspect.AnnotatedConstructor _constructConstructor(java.lang.reflect.Constructor,boolean)>(r1, 1);
+
+        r0.<org.codehaus.jackson.map.introspect.AnnotatedClass: org.codehaus.jackson.map.introspect.AnnotatedConstructor _defaultConstructor> = $r8;
+
+        goto label04;
+
+     label06:
+        $r3 = r0.<org.codehaus.jackson.map.introspect.AnnotatedClass: java.lang.Class _primaryMixIn>;
+
+        if $r3 == null goto label08;
+
+        $r8 = r0.<org.codehaus.jackson.map.introspect.AnnotatedClass: org.codehaus.jackson.map.introspect.AnnotatedConstructor _defaultConstructor>;
+
+        if $r8 != null goto label07;
+
+        $r6 = r0.<org.codehaus.jackson.map.introspect.AnnotatedClass: java.util.List _constructors>;
+
+        if $r6 == null goto label08;
+
+     label07:
+        $r3 = r0.<org.codehaus.jackson.map.introspect.AnnotatedClass: java.lang.Class _primaryMixIn>;
+
+        virtualinvoke r0.<org.codehaus.jackson.map.introspect.AnnotatedClass: void _addConstructorMixIns(java.lang.Class)>($r3);
+
+     label08:
+        $r8 = r0.<org.codehaus.jackson.map.introspect.AnnotatedClass: org.codehaus.jackson.map.introspect.AnnotatedConstructor _defaultConstructor>;
+
+        if $r8 == null goto label09;
+
+        $r9 = r0.<org.codehaus.jackson.map.introspect.AnnotatedClass: org.codehaus.jackson.map.AnnotationIntrospector _annotationIntrospector>;
+
+        $r8 = r0.<org.codehaus.jackson.map.introspect.AnnotatedClass: org.codehaus.jackson.map.introspect.AnnotatedConstructor _defaultConstructor>;
+
+        $z1 = virtualinvoke $r9.<org.codehaus.jackson.map.AnnotationIntrospector: boolean isIgnorableConstructor(org.codehaus.jackson.map.introspect.AnnotatedConstructor)>($r8);
+
+        if $z1 == 0 goto label09;
+
+        r0.<org.codehaus.jackson.map.introspect.AnnotatedClass: org.codehaus.jackson.map.introspect.AnnotatedConstructor _defaultConstructor> = null;
+
+     label09:
+        $r6 = r0.<org.codehaus.jackson.map.introspect.AnnotatedClass: java.util.List _constructors>;
+
+        if $r6 == null goto label11;
+
+        $r6 = r0.<org.codehaus.jackson.map.introspect.AnnotatedClass: java.util.List _constructors>;
+
+        i1 = interfaceinvoke $r6.<java.util.List: int size()>();
+
+     label10:
+        i1 = i1 + -1;
+
+        if i1 < 0 goto label11;
+
+        $r9 = r0.<org.codehaus.jackson.map.introspect.AnnotatedClass: org.codehaus.jackson.map.AnnotationIntrospector _annotationIntrospector>;
+
+        $r6 = r0.<org.codehaus.jackson.map.introspect.AnnotatedClass: java.util.List _constructors>;
+
+        $r10 = interfaceinvoke $r6.<java.util.List: java.lang.Object get(int)>(i1);
+
+        $r8 = (org.codehaus.jackson.map.introspect.AnnotatedConstructor) $r10;
+
+        $z1 = virtualinvoke $r9.<org.codehaus.jackson.map.AnnotationIntrospector: boolean isIgnorableConstructor(org.codehaus.jackson.map.introspect.AnnotatedConstructor)>($r8);
+
+        if $z1 == 0 goto label10;
+
+        $r6 = r0.<org.codehaus.jackson.map.introspect.AnnotatedClass: java.util.List _constructors>;
+
+        interfaceinvoke $r6.<java.util.List: java.lang.Object remove(int)>(i1);
+
+        goto label10;
+
+     label11:
+        r0.<org.codehaus.jackson.map.introspect.AnnotatedClass: java.util.List _creatorMethods> = null;
+
+        if $z0 == 0 goto label19;
+
+        $r3 = r0.<org.codehaus.jackson.map.introspect.AnnotatedClass: java.lang.Class _class>;
+
+        $r11 = virtualinvoke $r3.<java.lang.Class: java.lang.reflect.Method[] getDeclaredMethods()>();
+
+        i1 = lengthof $r11;
+
+        i2 = 0;
+
+     label12:
+        if i2 >= i1 goto label16;
+
+        r2 = $r11[i2];
+
+        i0 = virtualinvoke r2.<java.lang.reflect.Method: int getModifiers()>();
+
+        $z0 = staticinvoke <java.lang.reflect.Modifier: boolean isStatic(int)>(i0);
+
+        if $z0 != 0 goto label14;
+
+     label13:
+        i2 = i2 + 1;
+
+        goto label12;
+
+     label14:
+        $r5 = virtualinvoke r2.<java.lang.reflect.Method: java.lang.Class[] getParameterTypes()>();
+
+        i0 = lengthof $r5;
+
+        if i0 < 1 goto label13;
+
+        $r6 = r0.<org.codehaus.jackson.map.introspect.AnnotatedClass: java.util.List _creatorMethods>;
+
+        if $r6 != null goto label15;
+
+        $r7 = new java.util.ArrayList;
+
+        specialinvoke $r7.<java.util.ArrayList: void <init>()>();
+
+        r0.<org.codehaus.jackson.map.introspect.AnnotatedClass: java.util.List _creatorMethods> = $r7;
+
+     label15:
+        $r6 = r0.<org.codehaus.jackson.map.introspect.AnnotatedClass: java.util.List _creatorMethods>;
+
+        $r12 = virtualinvoke r0.<org.codehaus.jackson.map.introspect.AnnotatedClass: org.codehaus.jackson.map.introspect.AnnotatedMethod _constructCreatorMethod(java.lang.reflect.Method)>(r2);
+
+        interfaceinvoke $r6.<java.util.List: boolean add(java.lang.Object)>($r12);
+
+        goto label13;
+
+     label16:
+        $r3 = r0.<org.codehaus.jackson.map.introspect.AnnotatedClass: java.lang.Class _primaryMixIn>;
+
+        if $r3 == null goto label17;
+
+        $r6 = r0.<org.codehaus.jackson.map.introspect.AnnotatedClass: java.util.List _creatorMethods>;
+
+        if $r6 == null goto label17;
+
+        $r3 = r0.<org.codehaus.jackson.map.introspect.AnnotatedClass: java.lang.Class _primaryMixIn>;
+
+        virtualinvoke r0.<org.codehaus.jackson.map.introspect.AnnotatedClass: void _addFactoryMixIns(java.lang.Class)>($r3);
+
+     label17:
+        $r6 = r0.<org.codehaus.jackson.map.introspect.AnnotatedClass: java.util.List _creatorMethods>;
+
+        if $r6 == null goto label19;
+
+        $r6 = r0.<org.codehaus.jackson.map.introspect.AnnotatedClass: java.util.List _creatorMethods>;
+
+        i1 = interfaceinvoke $r6.<java.util.List: int size()>();
+
+     label18:
+        i1 = i1 + -1;
+
+        if i1 < 0 goto label19;
+
+        $r9 = r0.<org.codehaus.jackson.map.introspect.AnnotatedClass: org.codehaus.jackson.map.AnnotationIntrospector _annotationIntrospector>;
+
+        $r6 = r0.<org.codehaus.jackson.map.introspect.AnnotatedClass: java.util.List _creatorMethods>;
+
+        $r10 = interfaceinvoke $r6.<java.util.List: java.lang.Object get(int)>(i1);
+
+        $r12 = (org.codehaus.jackson.map.introspect.AnnotatedMethod) $r10;
+
+        $z0 = virtualinvoke $r9.<org.codehaus.jackson.map.AnnotationIntrospector: boolean isIgnorableMethod(org.codehaus.jackson.map.introspect.AnnotatedMethod)>($r12);
+
+        if $z0 == 0 goto label18;
+
+        $r6 = r0.<org.codehaus.jackson.map.introspect.AnnotatedClass: java.util.List _creatorMethods>;
+
+        interfaceinvoke $r6.<java.util.List: java.lang.Object remove(int)>(i1);
+
+        goto label18;
+
+     label19:
+        return;
+    }
+
+    public void resolveFields(boolean)
+    {
+        org.codehaus.jackson.map.introspect.AnnotatedClass r0;
+        boolean $z0, $z1;
+        java.util.LinkedHashMap r1;
+        java.lang.Class $r2;
+        java.util.Set $r3;
+        java.util.Iterator $r4;
+        java.lang.Object $r5;
+        java.util.Map$Entry $r6;
+        org.codehaus.jackson.map.introspect.AnnotatedField r7;
+        org.codehaus.jackson.map.AnnotationIntrospector $r8;
+        java.util.List $r9;
+        java.util.ArrayList $r10;
+        int $i0;
+        java.util.Collection $r11;
+
+        r0 := @this: org.codehaus.jackson.map.introspect.AnnotatedClass;
+
+        $z0 := @parameter0: boolean;
+
+        r1 = new java.util.LinkedHashMap;
+
+        specialinvoke r1.<java.util.LinkedHashMap: void <init>()>();
+
+        $r2 = r0.<org.codehaus.jackson.map.introspect.AnnotatedClass: java.lang.Class _class>;
+
+        virtualinvoke r0.<org.codehaus.jackson.map.introspect.AnnotatedClass: void _addFields(java.util.Map,java.lang.Class)>(r1, $r2);
+
+        $r3 = virtualinvoke r1.<java.util.LinkedHashMap: java.util.Set entrySet()>();
+
+        $r4 = interfaceinvoke $r3.<java.util.Set: java.util.Iterator iterator()>();
+
+     label1:
+        $z1 = interfaceinvoke $r4.<java.util.Iterator: boolean hasNext()>();
+
+        if $z1 == 0 goto label2;
+
+        $r5 = interfaceinvoke $r4.<java.util.Iterator: java.lang.Object next()>();
+
+        $r6 = (java.util.Map$Entry) $r5;
+
+        $r5 = interfaceinvoke $r6.<java.util.Map$Entry: java.lang.Object getValue()>();
+
+        r7 = (org.codehaus.jackson.map.introspect.AnnotatedField) $r5;
+
+        $r8 = r0.<org.codehaus.jackson.map.introspect.AnnotatedClass: org.codehaus.jackson.map.AnnotationIntrospector _annotationIntrospector>;
+
+        $z1 = virtualinvoke $r8.<org.codehaus.jackson.map.AnnotationIntrospector: boolean isIgnorableField(org.codehaus.jackson.map.introspect.AnnotatedField)>(r7);
+
+        if $z1 == 0 goto label1;
+
+        interfaceinvoke $r4.<java.util.Iterator: void remove()>();
+
+        if $z0 == 0 goto label1;
+
+        $r9 = r0.<org.codehaus.jackson.map.introspect.AnnotatedClass: java.util.List _ignoredFields>;
+
+        $r9 = staticinvoke <org.codehaus.jackson.map.util.ArrayBuilders: java.util.List addToList(java.util.List,java.lang.Object)>($r9, r7);
+
+        r0.<org.codehaus.jackson.map.introspect.AnnotatedClass: java.util.List _ignoredFields> = $r9;
+
+        goto label1;
+
+     label2:
+        $z0 = virtualinvoke r1.<java.util.LinkedHashMap: boolean isEmpty()>();
+
+        if $z0 == 0 goto label3;
+
+        $r9 = staticinvoke <java.util.Collections: java.util.List emptyList()>();
+
+        r0.<org.codehaus.jackson.map.introspect.AnnotatedClass: java.util.List _fields> = $r9;
+
+        return;
+
+     label3:
+        $r10 = new java.util.ArrayList;
+
+        $i0 = virtualinvoke r1.<java.util.LinkedHashMap: int size()>();
+
+        specialinvoke $r10.<java.util.ArrayList: void <init>(int)>($i0);
+
+        r0.<org.codehaus.jackson.map.introspect.AnnotatedClass: java.util.List _fields> = $r10;
+
+        $r9 = r0.<org.codehaus.jackson.map.introspect.AnnotatedClass: java.util.List _fields>;
+
+        $r11 = virtualinvoke r1.<java.util.LinkedHashMap: java.util.Collection values()>();
+
+        interfaceinvoke $r9.<java.util.List: boolean addAll(java.util.Collection)>($r11);
+
+        return;
+    }
+
+    public void resolveMemberMethods(org.codehaus.jackson.map.introspect.MethodFilter, boolean)
+    {
+        org.codehaus.jackson.map.introspect.AnnotatedClass r0;
+        org.codehaus.jackson.map.introspect.MethodFilter $r1;
+        boolean $z0, $z1;
+        org.codehaus.jackson.map.introspect.AnnotatedMethodMap r2, $r4;
+        java.lang.Class r3, r5;
+        java.util.Collection $r6;
+        java.util.Iterator $r7;
+        java.lang.Object $r8;
+        org.codehaus.jackson.map.ClassIntrospector$MixInResolver $r9;
+        org.codehaus.jackson.map.introspect.AnnotatedMethod r10, $r14;
+        java.lang.String $r11;
+        java.lang.Class[] $r12;
+        java.lang.reflect.Method $r13;
+        java.lang.Exception $r15;
+        org.codehaus.jackson.map.AnnotationIntrospector $r16;
+        java.util.List $r17;
+
+        r0 := @this: org.codehaus.jackson.map.introspect.AnnotatedClass;
+
+        $r1 := @parameter0: org.codehaus.jackson.map.introspect.MethodFilter;
+
+        $z0 := @parameter1: boolean;
+
+        r2 = new org.codehaus.jackson.map.introspect.AnnotatedMethodMap;
+
+        specialinvoke r2.<org.codehaus.jackson.map.introspect.AnnotatedMethodMap: void <init>()>();
+
+        r0.<org.codehaus.jackson.map.introspect.AnnotatedClass: org.codehaus.jackson.map.introspect.AnnotatedMethodMap _memberMethods> = r2;
+
+        r2 = new org.codehaus.jackson.map.introspect.AnnotatedMethodMap;
+
+        specialinvoke r2.<org.codehaus.jackson.map.introspect.AnnotatedMethodMap: void <init>()>();
+
+        r3 = r0.<org.codehaus.jackson.map.introspect.AnnotatedClass: java.lang.Class _class>;
+
+        $r4 = r0.<org.codehaus.jackson.map.introspect.AnnotatedClass: org.codehaus.jackson.map.introspect.AnnotatedMethodMap _memberMethods>;
+
+        r5 = r0.<org.codehaus.jackson.map.introspect.AnnotatedClass: java.lang.Class _primaryMixIn>;
+
+        virtualinvoke r0.<org.codehaus.jackson.map.introspect.AnnotatedClass: void _addMemberMethods(java.lang.Class,org.codehaus.jackson.map.introspect.MethodFilter,org.codehaus.jackson.map.introspect.AnnotatedMethodMap,java.lang.Class,org.codehaus.jackson.map.introspect.AnnotatedMethodMap)>(r3, $r1, $r4, r5, r2);
+
+        $r6 = r0.<org.codehaus.jackson.map.introspect.AnnotatedClass: java.util.Collection _superTypes>;
+
+        $r7 = interfaceinvoke $r6.<java.util.Collection: java.util.Iterator iterator()>();
+
+     label01:
+        $z1 = interfaceinvoke $r7.<java.util.Iterator: boolean hasNext()>();
+
+        if $z1 == 0 goto label04;
+
+        $r8 = interfaceinvoke $r7.<java.util.Iterator: java.lang.Object next()>();
+
+        r3 = (java.lang.Class) $r8;
+
+        $r9 = r0.<org.codehaus.jackson.map.introspect.AnnotatedClass: org.codehaus.jackson.map.ClassIntrospector$MixInResolver _mixInResolver>;
+
+        if $r9 != null goto label03;
+
+        r5 = null;
+
+     label02:
+        $r4 = r0.<org.codehaus.jackson.map.introspect.AnnotatedClass: org.codehaus.jackson.map.introspect.AnnotatedMethodMap _memberMethods>;
+
+        virtualinvoke r0.<org.codehaus.jackson.map.introspect.AnnotatedClass: void _addMemberMethods(java.lang.Class,org.codehaus.jackson.map.introspect.MethodFilter,org.codehaus.jackson.map.introspect.AnnotatedMethodMap,java.lang.Class,org.codehaus.jackson.map.introspect.AnnotatedMethodMap)>(r3, $r1, $r4, r5, r2);
+
+        goto label01;
+
+     label03:
+        $r9 = r0.<org.codehaus.jackson.map.introspect.AnnotatedClass: org.codehaus.jackson.map.ClassIntrospector$MixInResolver _mixInResolver>;
+
+        r5 = interfaceinvoke $r9.<org.codehaus.jackson.map.ClassIntrospector$MixInResolver: java.lang.Class findMixInClassFor(java.lang.Class)>(r3);
+
+        goto label02;
+
+     label04:
+        $r9 = r0.<org.codehaus.jackson.map.introspect.AnnotatedClass: org.codehaus.jackson.map.ClassIntrospector$MixInResolver _mixInResolver>;
+
+        if $r9 == null goto label05;
+
+        $r9 = r0.<org.codehaus.jackson.map.introspect.AnnotatedClass: org.codehaus.jackson.map.ClassIntrospector$MixInResolver _mixInResolver>;
+
+        r3 = interfaceinvoke $r9.<org.codehaus.jackson.map.ClassIntrospector$MixInResolver: java.lang.Class findMixInClassFor(java.lang.Class)>(class "Ljava/lang/Object;");
+
+        if r3 == null goto label05;
+
+        $r4 = r0.<org.codehaus.jackson.map.introspect.AnnotatedClass: org.codehaus.jackson.map.introspect.AnnotatedMethodMap _memberMethods>;
+
+        virtualinvoke r0.<org.codehaus.jackson.map.introspect.AnnotatedClass: void _addMethodMixIns(org.codehaus.jackson.map.introspect.MethodFilter,org.codehaus.jackson.map.introspect.AnnotatedMethodMap,java.lang.Class,org.codehaus.jackson.map.introspect.AnnotatedMethodMap)>($r1, $r4, r3, r2);
+
+     label05:
+        $z1 = virtualinvoke r2.<org.codehaus.jackson.map.introspect.AnnotatedMethodMap: boolean isEmpty()>();
+
+        if $z1 != 0 goto label12;
+
+        $r7 = virtualinvoke r2.<org.codehaus.jackson.map.introspect.AnnotatedMethodMap: java.util.Iterator iterator()>();
+
+     label06:
+        $z1 = interfaceinvoke $r7.<java.util.Iterator: boolean hasNext()>();
+
+        if $z1 == 0 goto label12;
+
+        $r8 = interfaceinvoke $r7.<java.util.Iterator: java.lang.Object next()>();
+
+        r10 = (org.codehaus.jackson.map.introspect.AnnotatedMethod) $r8;
+
+        r3 = class "Ljava/lang/Object;";
+
+     label07:
+        $r11 = virtualinvoke r10.<org.codehaus.jackson.map.introspect.AnnotatedMethod: java.lang.String getName()>();
+
+        $r12 = virtualinvoke r10.<org.codehaus.jackson.map.introspect.AnnotatedMethod: java.lang.Class[] getParameterClasses()>();
+
+        $r13 = virtualinvoke r3.<java.lang.Class: java.lang.reflect.Method getDeclaredMethod(java.lang.String,java.lang.Class[])>($r11, $r12);
+
+     label08:
+        if $r13 == null goto label06;
+
+     label09:
+        $r14 = virtualinvoke r0.<org.codehaus.jackson.map.introspect.AnnotatedClass: org.codehaus.jackson.map.introspect.AnnotatedMethod _constructMethod(java.lang.reflect.Method)>($r13);
+
+        $r13 = virtualinvoke r10.<org.codehaus.jackson.map.introspect.AnnotatedMethod: java.lang.reflect.Method getAnnotated()>();
+
+        virtualinvoke r0.<org.codehaus.jackson.map.introspect.AnnotatedClass: void _addMixOvers(java.lang.reflect.Method,org.codehaus.jackson.map.introspect.AnnotatedMethod,boolean)>($r13, $r14, 0);
+
+        r2 = r0.<org.codehaus.jackson.map.introspect.AnnotatedClass: org.codehaus.jackson.map.introspect.AnnotatedMethodMap _memberMethods>;
+
+        virtualinvoke r2.<org.codehaus.jackson.map.introspect.AnnotatedMethodMap: void add(org.codehaus.jackson.map.introspect.AnnotatedMethod)>($r14);
+
+     label10:
+        goto label06;
+
+     label11:
+        $r15 := @caughtexception;
+
+        goto label06;
+
+     label12:
+        r2 = r0.<org.codehaus.jackson.map.introspect.AnnotatedClass: org.codehaus.jackson.map.introspect.AnnotatedMethodMap _memberMethods>;
+
+        $r7 = virtualinvoke r2.<org.codehaus.jackson.map.introspect.AnnotatedMethodMap: java.util.Iterator iterator()>();
+
+     label13:
+        $z1 = interfaceinvoke $r7.<java.util.Iterator: boolean hasNext()>();
+
+        if $z1 == 0 goto label14;
+
+        $r8 = interfaceinvoke $r7.<java.util.Iterator: java.lang.Object next()>();
+
+        r10 = (org.codehaus.jackson.map.introspect.AnnotatedMethod) $r8;
+
+        $r16 = r0.<org.codehaus.jackson.map.introspect.AnnotatedClass: org.codehaus.jackson.map.AnnotationIntrospector _annotationIntrospector>;
+
+        $z1 = virtualinvoke $r16.<org.codehaus.jackson.map.AnnotationIntrospector: boolean isIgnorableMethod(org.codehaus.jackson.map.introspect.AnnotatedMethod)>(r10);
+
+        if $z1 == 0 goto label13;
+
+        interfaceinvoke $r7.<java.util.Iterator: void remove()>();
+
+        if $z0 == 0 goto label13;
+
+        $r17 = r0.<org.codehaus.jackson.map.introspect.AnnotatedClass: java.util.List _ignoredMethods>;
+
+        $r17 = staticinvoke <org.codehaus.jackson.map.util.ArrayBuilders: java.util.List addToList(java.util.List,java.lang.Object)>($r17, r10);
+
+        r0.<org.codehaus.jackson.map.introspect.AnnotatedClass: java.util.List _ignoredMethods> = $r17;
+
+        goto label13;
+
+     label14:
+        return;
+
+        catch java.lang.Exception from label07 to label08 with label11;
+        catch java.lang.Exception from label09 to label10 with label11;
+    }
+
+    public java.lang.String toString()
+    {
+        org.codehaus.jackson.map.introspect.AnnotatedClass r0;
+        java.lang.StringBuilder $r1;
+        java.lang.Class $r2;
+        java.lang.String $r3;
+
+        r0 := @this: org.codehaus.jackson.map.introspect.AnnotatedClass;
+
+        $r1 = new java.lang.StringBuilder;
+
+        specialinvoke $r1.<java.lang.StringBuilder: void <init>()>();
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("[AnnotedClass ");
+
+        $r2 = r0.<org.codehaus.jackson.map.introspect.AnnotatedClass: java.lang.Class _class>;
+
+        $r3 = virtualinvoke $r2.<java.lang.Class: java.lang.String getName()>();
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r3);
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("]");
+
+        $r3 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        return $r3;
+    }
+}

@@ -1,0 +1,255 @@
+public final class org.codehaus.jackson.map.deser.EnumResolver extends java.lang.Object
+{
+    protected final java.lang.Class _enumClass;
+    protected final java.lang.Enum[] _enums;
+    protected final java.util.HashMap _enumsById;
+
+    private void <init>(java.lang.Class, java.lang.Enum[], java.util.HashMap)
+    {
+        org.codehaus.jackson.map.deser.EnumResolver r0;
+        java.lang.Class r1;
+        java.lang.Enum[] r2;
+        java.util.HashMap r3;
+
+        r0 := @this: org.codehaus.jackson.map.deser.EnumResolver;
+
+        r1 := @parameter0: java.lang.Class;
+
+        r2 := @parameter1: java.lang.Enum[];
+
+        r3 := @parameter2: java.util.HashMap;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        r0.<org.codehaus.jackson.map.deser.EnumResolver: java.lang.Class _enumClass> = r1;
+
+        r0.<org.codehaus.jackson.map.deser.EnumResolver: java.lang.Enum[] _enums> = r2;
+
+        r0.<org.codehaus.jackson.map.deser.EnumResolver: java.util.HashMap _enumsById> = r3;
+
+        return;
+    }
+
+    public static org.codehaus.jackson.map.deser.EnumResolver constructFor(java.lang.Class, org.codehaus.jackson.map.AnnotationIntrospector)
+    {
+        java.lang.Class r0;
+        org.codehaus.jackson.map.AnnotationIntrospector $r1;
+        java.lang.Enum r2;
+        int i0, i1;
+        java.util.HashMap r3;
+        java.lang.Object[] $r4;
+        java.lang.Enum[] r5;
+        java.lang.IllegalArgumentException $r6;
+        java.lang.StringBuilder $r7;
+        java.lang.String $r8;
+        org.codehaus.jackson.map.deser.EnumResolver $r9;
+
+        r0 := @parameter0: java.lang.Class;
+
+        $r1 := @parameter1: org.codehaus.jackson.map.AnnotationIntrospector;
+
+        $r4 = virtualinvoke r0.<java.lang.Class: java.lang.Object[] getEnumConstants()>();
+
+        r5 = (java.lang.Enum[]) $r4;
+
+        if r5 != null goto label1;
+
+        $r6 = new java.lang.IllegalArgumentException;
+
+        $r7 = new java.lang.StringBuilder;
+
+        specialinvoke $r7.<java.lang.StringBuilder: void <init>()>();
+
+        $r7 = virtualinvoke $r7.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("No enum constants for class ");
+
+        $r8 = virtualinvoke r0.<java.lang.Class: java.lang.String getName()>();
+
+        $r7 = virtualinvoke $r7.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r8);
+
+        $r8 = virtualinvoke $r7.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke $r6.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>($r8);
+
+        throw $r6;
+
+     label1:
+        r3 = new java.util.HashMap;
+
+        specialinvoke r3.<java.util.HashMap: void <init>()>();
+
+        i0 = lengthof r5;
+
+        i1 = 0;
+
+     label2:
+        if i1 >= i0 goto label3;
+
+        r2 = r5[i1];
+
+        $r8 = virtualinvoke $r1.<org.codehaus.jackson.map.AnnotationIntrospector: java.lang.String findEnumValue(java.lang.Enum)>(r2);
+
+        virtualinvoke r3.<java.util.HashMap: java.lang.Object put(java.lang.Object,java.lang.Object)>($r8, r2);
+
+        i1 = i1 + 1;
+
+        goto label2;
+
+     label3:
+        $r9 = new org.codehaus.jackson.map.deser.EnumResolver;
+
+        specialinvoke $r9.<org.codehaus.jackson.map.deser.EnumResolver: void <init>(java.lang.Class,java.lang.Enum[],java.util.HashMap)>(r0, r5, r3);
+
+        return $r9;
+    }
+
+    public static org.codehaus.jackson.map.deser.EnumResolver constructUnsafe(java.lang.Class, org.codehaus.jackson.map.AnnotationIntrospector)
+    {
+        java.lang.Class r0;
+        org.codehaus.jackson.map.AnnotationIntrospector $r1;
+        org.codehaus.jackson.map.deser.EnumResolver $r2;
+
+        r0 := @parameter0: java.lang.Class;
+
+        $r1 := @parameter1: org.codehaus.jackson.map.AnnotationIntrospector;
+
+        $r2 = staticinvoke <org.codehaus.jackson.map.deser.EnumResolver: org.codehaus.jackson.map.deser.EnumResolver constructFor(java.lang.Class,org.codehaus.jackson.map.AnnotationIntrospector)>(r0, $r1);
+
+        return $r2;
+    }
+
+    public static org.codehaus.jackson.map.deser.EnumResolver constructUnsafeUsingToString(java.lang.Class)
+    {
+        java.lang.Class r0;
+        org.codehaus.jackson.map.deser.EnumResolver $r1;
+
+        r0 := @parameter0: java.lang.Class;
+
+        $r1 = staticinvoke <org.codehaus.jackson.map.deser.EnumResolver: org.codehaus.jackson.map.deser.EnumResolver constructUsingToString(java.lang.Class)>(r0);
+
+        return $r1;
+    }
+
+    public static org.codehaus.jackson.map.deser.EnumResolver constructUsingToString(java.lang.Class)
+    {
+        java.lang.Class r0;
+        java.lang.Enum r1;
+        java.util.HashMap r2;
+        java.lang.Object[] $r3;
+        java.lang.Enum[] r4;
+        int i0;
+        java.lang.String $r5;
+        org.codehaus.jackson.map.deser.EnumResolver $r6;
+
+        r0 := @parameter0: java.lang.Class;
+
+        $r3 = virtualinvoke r0.<java.lang.Class: java.lang.Object[] getEnumConstants()>();
+
+        r4 = (java.lang.Enum[]) $r3;
+
+        r2 = new java.util.HashMap;
+
+        specialinvoke r2.<java.util.HashMap: void <init>()>();
+
+        i0 = lengthof r4;
+
+     label1:
+        i0 = i0 + -1;
+
+        if i0 < 0 goto label2;
+
+        r1 = r4[i0];
+
+        $r5 = virtualinvoke r1.<java.lang.Enum: java.lang.String toString()>();
+
+        virtualinvoke r2.<java.util.HashMap: java.lang.Object put(java.lang.Object,java.lang.Object)>($r5, r1);
+
+        goto label1;
+
+     label2:
+        $r6 = new org.codehaus.jackson.map.deser.EnumResolver;
+
+        specialinvoke $r6.<org.codehaus.jackson.map.deser.EnumResolver: void <init>(java.lang.Class,java.lang.Enum[],java.util.HashMap)>(r0, r4, r2);
+
+        return $r6;
+    }
+
+    public java.lang.Enum findEnum(java.lang.String)
+    {
+        java.lang.String $r0;
+        java.util.HashMap $r1;
+        java.lang.Object $r2;
+        org.codehaus.jackson.map.deser.EnumResolver r3;
+        java.lang.Enum r4;
+
+        r3 := @this: org.codehaus.jackson.map.deser.EnumResolver;
+
+        $r0 := @parameter0: java.lang.String;
+
+        $r1 = r3.<org.codehaus.jackson.map.deser.EnumResolver: java.util.HashMap _enumsById>;
+
+        $r2 = virtualinvoke $r1.<java.util.HashMap: java.lang.Object get(java.lang.Object)>($r0);
+
+        r4 = (java.lang.Enum) $r2;
+
+        return r4;
+    }
+
+    public java.lang.Enum getEnum(int)
+    {
+        org.codehaus.jackson.map.deser.EnumResolver r0;
+        int $i0, $i1;
+        java.lang.Enum[] $r1;
+        java.lang.Enum $r2;
+
+        r0 := @this: org.codehaus.jackson.map.deser.EnumResolver;
+
+        $i0 := @parameter0: int;
+
+        if $i0 < 0 goto label1;
+
+        $r1 = r0.<org.codehaus.jackson.map.deser.EnumResolver: java.lang.Enum[] _enums>;
+
+        $i1 = lengthof $r1;
+
+        if $i0 < $i1 goto label2;
+
+     label1:
+        return null;
+
+     label2:
+        $r1 = r0.<org.codehaus.jackson.map.deser.EnumResolver: java.lang.Enum[] _enums>;
+
+        $r2 = $r1[$i0];
+
+        return $r2;
+    }
+
+    public java.lang.Class getEnumClass()
+    {
+        org.codehaus.jackson.map.deser.EnumResolver r0;
+        java.lang.Class r1;
+
+        r0 := @this: org.codehaus.jackson.map.deser.EnumResolver;
+
+        r1 = r0.<org.codehaus.jackson.map.deser.EnumResolver: java.lang.Class _enumClass>;
+
+        return r1;
+    }
+
+    public int lastValidIndex()
+    {
+        org.codehaus.jackson.map.deser.EnumResolver r0;
+        java.lang.Enum[] $r1;
+        int $i0;
+
+        r0 := @this: org.codehaus.jackson.map.deser.EnumResolver;
+
+        $r1 = r0.<org.codehaus.jackson.map.deser.EnumResolver: java.lang.Enum[] _enums>;
+
+        $i0 = lengthof $r1;
+
+        $i0 = $i0 - 1;
+
+        return $i0;
+    }
+}

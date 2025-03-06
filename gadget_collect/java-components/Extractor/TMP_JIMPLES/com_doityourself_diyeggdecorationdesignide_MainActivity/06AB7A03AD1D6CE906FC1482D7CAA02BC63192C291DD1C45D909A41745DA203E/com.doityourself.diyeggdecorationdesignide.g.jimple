@@ -1,0 +1,56 @@
+class com.doityourself.diyeggdecorationdesignide.g extends java.lang.Object implements android.webkit.DownloadListener
+{
+    final com.doityourself.diyeggdecorationdesignide.MainActivity a;
+
+    void <init>(com.doityourself.diyeggdecorationdesignide.MainActivity)
+    {
+        com.doityourself.diyeggdecorationdesignide.g r0;
+        com.doityourself.diyeggdecorationdesignide.MainActivity $r1;
+
+        r0 := @this: com.doityourself.diyeggdecorationdesignide.g;
+
+        $r1 := @parameter0: com.doityourself.diyeggdecorationdesignide.MainActivity;
+
+        r0.<com.doityourself.diyeggdecorationdesignide.g: com.doityourself.diyeggdecorationdesignide.MainActivity a> = $r1;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public void onDownloadStart(java.lang.String, java.lang.String, java.lang.String, java.lang.String, long)
+    {
+        com.doityourself.diyeggdecorationdesignide.g r0;
+        java.lang.String $r1, $r2, $r3, $r4;
+        long $l0;
+        android.content.Intent $r5;
+        android.net.Uri $r6;
+        com.doityourself.diyeggdecorationdesignide.MainActivity $r7;
+
+        r0 := @this: com.doityourself.diyeggdecorationdesignide.g;
+
+        $r1 := @parameter0: java.lang.String;
+
+        $r2 := @parameter1: java.lang.String;
+
+        $r3 := @parameter2: java.lang.String;
+
+        $r4 := @parameter3: java.lang.String;
+
+        $l0 := @parameter4: long;
+
+        $r5 = new android.content.Intent;
+
+        specialinvoke $r5.<android.content.Intent: void <init>(java.lang.String)>("android.intent.action.VIEW");
+
+        $r6 = staticinvoke <android.net.Uri: android.net.Uri parse(java.lang.String)>($r1);
+
+        virtualinvoke $r5.<android.content.Intent: android.content.Intent setData(android.net.Uri)>($r6);
+
+        $r7 = r0.<com.doityourself.diyeggdecorationdesignide.g: com.doityourself.diyeggdecorationdesignide.MainActivity a>;
+
+        virtualinvoke $r7.<com.doityourself.diyeggdecorationdesignide.MainActivity: void startActivity(android.content.Intent)>($r5);
+
+        return;
+    }
+}

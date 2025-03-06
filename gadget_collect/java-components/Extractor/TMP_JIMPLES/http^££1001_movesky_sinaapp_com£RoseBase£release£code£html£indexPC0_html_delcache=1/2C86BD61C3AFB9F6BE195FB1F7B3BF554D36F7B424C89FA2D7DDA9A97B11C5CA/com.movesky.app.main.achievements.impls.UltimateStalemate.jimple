@@ -1,0 +1,60 @@
+public class com.movesky.app.main.achievements.impls.UltimateStalemate extends com.movesky.app.main.achievements.BBTHAchievement
+{
+
+    public void <init>(com.movesky.app.engine.achievements.AchievementInfo)
+    {
+        com.movesky.app.main.achievements.impls.UltimateStalemate r0;
+        com.movesky.app.engine.achievements.AchievementInfo $r1;
+
+        r0 := @this: com.movesky.app.main.achievements.impls.UltimateStalemate;
+
+        $r1 := @parameter0: com.movesky.app.engine.achievements.AchievementInfo;
+
+        specialinvoke r0.<com.movesky.app.main.achievements.BBTHAchievement: void <init>(com.movesky.app.engine.achievements.AchievementInfo)>($r1);
+
+        return;
+    }
+
+    public void gameEnded(com.movesky.app.main.achievements.events.GameEndedEvent)
+    {
+        com.movesky.app.main.achievements.impls.UltimateStalemate r0;
+        com.movesky.app.main.achievements.events.GameEndedEvent $r1;
+        boolean $z0;
+        com.movesky.app.main.BeatTrack $r2;
+        int $i0;
+        com.movesky.app.engine.achievements.Achievements $r3;
+        com.movesky.app.engine.achievements.AchievementInfo $r4;
+
+        r0 := @this: com.movesky.app.main.achievements.impls.UltimateStalemate;
+
+        $r1 := @parameter0: com.movesky.app.main.achievements.events.GameEndedEvent;
+
+        $z0 = virtualinvoke $r1.<com.movesky.app.main.achievements.events.GameEndedEvent: boolean isTie()>();
+
+        if $z0 == 0 goto label1;
+
+        $r2 = virtualinvoke $r1.<com.movesky.app.main.achievements.events.GameEndedEvent: com.movesky.app.main.BeatTrack getBeatTrack()>();
+
+        $i0 = virtualinvoke $r2.<com.movesky.app.main.BeatTrack: int getSongLength()>();
+
+        if $i0 <= 120000 goto label1;
+
+        $r3 = <com.movesky.app.engine.achievements.Achievements: com.movesky.app.engine.achievements.Achievements INSTANCE>;
+
+        $r4 = r0.<com.movesky.app.main.achievements.impls.UltimateStalemate: com.movesky.app.engine.achievements.AchievementInfo achievementInfo>;
+
+        virtualinvoke $r3.<com.movesky.app.engine.achievements.Achievements: boolean increment(com.movesky.app.engine.achievements.AchievementInfo)>($r4);
+
+     label1:
+        return;
+    }
+
+    public boolean usesGameEnded()
+    {
+        com.movesky.app.main.achievements.impls.UltimateStalemate r0;
+
+        r0 := @this: com.movesky.app.main.achievements.impls.UltimateStalemate;
+
+        return 1;
+    }
+}

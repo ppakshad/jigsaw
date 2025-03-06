@@ -1,0 +1,110 @@
+class com.startapp.android.publish.model.BaseRequest$WifiScanResult extends java.lang.Object
+{
+    private static final char DELIMITER;
+    private android.net.wifi.ScanResult sr;
+
+    public void <init>(android.net.wifi.ScanResult)
+    {
+        com.startapp.android.publish.model.BaseRequest$WifiScanResult r0;
+        android.net.wifi.ScanResult $r1;
+
+        r0 := @this: com.startapp.android.publish.model.BaseRequest$WifiScanResult;
+
+        $r1 := @parameter0: android.net.wifi.ScanResult;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        r0.<com.startapp.android.publish.model.BaseRequest$WifiScanResult: android.net.wifi.ScanResult sr> = $r1;
+
+        return;
+    }
+
+    public java.lang.String toString()
+    {
+        com.startapp.android.publish.model.BaseRequest$WifiScanResult r0;
+        java.lang.StringBuilder $r1, $r4;
+        android.net.wifi.ScanResult $r2;
+        java.lang.String $r3;
+        int $i0;
+        long $l1;
+        byte $b2;
+        java.lang.CharSequence $r5;
+
+        r0 := @this: com.startapp.android.publish.model.BaseRequest$WifiScanResult;
+
+        $r1 = new java.lang.StringBuilder;
+
+        specialinvoke $r1.<java.lang.StringBuilder: void <init>()>();
+
+        $r2 = r0.<com.startapp.android.publish.model.BaseRequest$WifiScanResult: android.net.wifi.ScanResult sr>;
+
+        if $r2 == null goto label2;
+
+        $r2 = r0.<com.startapp.android.publish.model.BaseRequest$WifiScanResult: android.net.wifi.ScanResult sr>;
+
+        $r3 = $r2.<android.net.wifi.ScanResult: java.lang.String SSID>;
+
+        $r4 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r3);
+
+        virtualinvoke $r4.<java.lang.StringBuilder: java.lang.StringBuilder append(char)>(44);
+
+        $r2 = r0.<com.startapp.android.publish.model.BaseRequest$WifiScanResult: android.net.wifi.ScanResult sr>;
+
+        $r3 = $r2.<android.net.wifi.ScanResult: java.lang.String BSSID>;
+
+        $r4 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r3);
+
+        virtualinvoke $r4.<java.lang.StringBuilder: java.lang.StringBuilder append(char)>(44);
+
+        $r2 = r0.<com.startapp.android.publish.model.BaseRequest$WifiScanResult: android.net.wifi.ScanResult sr>;
+
+        $i0 = $r2.<android.net.wifi.ScanResult: int level>;
+
+        $i0 = staticinvoke <android.net.wifi.WifiManager: int calculateSignalLevel(int,int)>($i0, 5);
+
+        $r4 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>($i0);
+
+        virtualinvoke $r4.<java.lang.StringBuilder: java.lang.StringBuilder append(char)>(44);
+
+        $r2 = r0.<com.startapp.android.publish.model.BaseRequest$WifiScanResult: android.net.wifi.ScanResult sr>;
+
+        $i0 = $r2.<android.net.wifi.ScanResult: int level>;
+
+        $r4 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>($i0);
+
+        virtualinvoke $r4.<java.lang.StringBuilder: java.lang.StringBuilder append(char)>(44);
+
+        $r2 = r0.<com.startapp.android.publish.model.BaseRequest$WifiScanResult: android.net.wifi.ScanResult sr>;
+
+        $l1 = staticinvoke <com.startapp.android.publish.i.b: long a(android.net.wifi.ScanResult)>($r2);
+
+        $b2 = $l1 cmp 0L;
+
+        if $b2 == 0 goto label1;
+
+        virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(long)>($l1);
+
+     label1:
+        virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(char)>(44);
+
+        $r2 = r0.<com.startapp.android.publish.model.BaseRequest$WifiScanResult: android.net.wifi.ScanResult sr>;
+
+        $r5 = staticinvoke <com.startapp.android.publish.i.b: java.lang.CharSequence b(android.net.wifi.ScanResult)>($r2);
+
+        if $r5 == null goto label2;
+
+        virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.CharSequence)>($r5);
+
+     label2:
+        $r3 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        return $r3;
+    }
+
+    public static void <clinit>()
+    {
+        <com.startapp.android.publish.model.BaseRequest$WifiScanResult: char DELIMITER> = 44;
+
+        return;
+    }
+}

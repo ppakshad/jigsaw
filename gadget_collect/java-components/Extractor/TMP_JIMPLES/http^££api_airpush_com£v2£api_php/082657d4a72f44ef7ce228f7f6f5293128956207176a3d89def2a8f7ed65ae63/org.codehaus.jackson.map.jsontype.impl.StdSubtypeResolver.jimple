@@ -1,0 +1,421 @@
+public class org.codehaus.jackson.map.jsontype.impl.StdSubtypeResolver extends org.codehaus.jackson.map.jsontype.SubtypeResolver
+{
+    protected java.util.LinkedHashSet _registeredSubtypes;
+
+    public void <init>()
+    {
+        org.codehaus.jackson.map.jsontype.impl.StdSubtypeResolver r0;
+
+        r0 := @this: org.codehaus.jackson.map.jsontype.impl.StdSubtypeResolver;
+
+        specialinvoke r0.<org.codehaus.jackson.map.jsontype.SubtypeResolver: void <init>()>();
+
+        return;
+    }
+
+    protected java.util.Collection _collectAndResolve(org.codehaus.jackson.map.introspect.AnnotatedMember, org.codehaus.jackson.map.MapperConfig, org.codehaus.jackson.map.AnnotationIntrospector, java.util.Collection)
+    {
+        org.codehaus.jackson.map.jsontype.impl.StdSubtypeResolver r0;
+        org.codehaus.jackson.map.introspect.AnnotatedMember $r1;
+        org.codehaus.jackson.map.MapperConfig r2;
+        org.codehaus.jackson.map.AnnotationIntrospector $r3;
+        java.util.Collection r4;
+        java.util.HashSet r5;
+        java.util.ArrayList r6;
+        int i0, $i1;
+        java.lang.Object $r7;
+        org.codehaus.jackson.map.jsontype.NamedType r8;
+        java.lang.Class $r9;
+        org.codehaus.jackson.map.introspect.AnnotatedClass $r10;
+        boolean $z0;
+        java.lang.String $r11;
+        java.util.List $r12;
+        java.util.Iterator $r13;
+
+        r0 := @this: org.codehaus.jackson.map.jsontype.impl.StdSubtypeResolver;
+
+        $r1 := @parameter0: org.codehaus.jackson.map.introspect.AnnotatedMember;
+
+        r2 := @parameter1: org.codehaus.jackson.map.MapperConfig;
+
+        $r3 := @parameter2: org.codehaus.jackson.map.AnnotationIntrospector;
+
+        r4 := @parameter3: java.util.Collection;
+
+        r5 = new java.util.HashSet;
+
+        specialinvoke r5.<java.util.HashSet: void <init>(java.util.Collection)>(r4);
+
+        r6 = new java.util.ArrayList;
+
+        specialinvoke r6.<java.util.ArrayList: void <init>(java.util.Collection)>(r4);
+
+        i0 = 0;
+
+     label1:
+        $i1 = virtualinvoke r6.<java.util.ArrayList: int size()>();
+
+        if i0 >= $i1 goto label5;
+
+        $r7 = virtualinvoke r6.<java.util.ArrayList: java.lang.Object get(int)>(i0);
+
+        r8 = (org.codehaus.jackson.map.jsontype.NamedType) $r7;
+
+        $r9 = virtualinvoke r8.<org.codehaus.jackson.map.jsontype.NamedType: java.lang.Class getType()>();
+
+        $r10 = staticinvoke <org.codehaus.jackson.map.introspect.AnnotatedClass: org.codehaus.jackson.map.introspect.AnnotatedClass constructWithoutSuperTypes(java.lang.Class,org.codehaus.jackson.map.AnnotationIntrospector,org.codehaus.jackson.map.ClassIntrospector$MixInResolver)>($r9, $r3, r2);
+
+        $z0 = virtualinvoke r8.<org.codehaus.jackson.map.jsontype.NamedType: boolean hasName()>();
+
+        if $z0 != 0 goto label2;
+
+        $r11 = virtualinvoke $r3.<org.codehaus.jackson.map.AnnotationIntrospector: java.lang.String findTypeName(org.codehaus.jackson.map.introspect.AnnotatedClass)>($r10);
+
+        virtualinvoke r8.<org.codehaus.jackson.map.jsontype.NamedType: void setName(java.lang.String)>($r11);
+
+     label2:
+        $r12 = virtualinvoke $r3.<org.codehaus.jackson.map.AnnotationIntrospector: java.util.List findSubtypes(org.codehaus.jackson.map.introspect.Annotated)>($r10);
+
+        if $r12 == null goto label4;
+
+        $r13 = interfaceinvoke $r12.<java.util.List: java.util.Iterator iterator()>();
+
+     label3:
+        $z0 = interfaceinvoke $r13.<java.util.Iterator: boolean hasNext()>();
+
+        if $z0 == 0 goto label4;
+
+        $r7 = interfaceinvoke $r13.<java.util.Iterator: java.lang.Object next()>();
+
+        r8 = (org.codehaus.jackson.map.jsontype.NamedType) $r7;
+
+        $z0 = virtualinvoke r5.<java.util.HashSet: boolean add(java.lang.Object)>(r8);
+
+        if $z0 == 0 goto label3;
+
+        virtualinvoke r6.<java.util.ArrayList: boolean add(java.lang.Object)>(r8);
+
+        goto label3;
+
+     label4:
+        i0 = i0 + 1;
+
+        goto label1;
+
+     label5:
+        return r6;
+    }
+
+    protected void _collectAndResolve(org.codehaus.jackson.map.introspect.AnnotatedClass, org.codehaus.jackson.map.jsontype.NamedType, org.codehaus.jackson.map.MapperConfig, org.codehaus.jackson.map.AnnotationIntrospector, java.util.HashMap)
+    {
+        org.codehaus.jackson.map.jsontype.impl.StdSubtypeResolver r0;
+        org.codehaus.jackson.map.introspect.AnnotatedClass $r1;
+        org.codehaus.jackson.map.MapperConfig r2;
+        org.codehaus.jackson.map.AnnotationIntrospector $r3;
+        java.util.HashMap r4;
+        org.codehaus.jackson.map.jsontype.NamedType r5, r6;
+        boolean $z0;
+        java.lang.String $r7;
+        java.lang.Class $r8;
+        java.lang.Object $r9;
+        java.util.List $r10;
+        java.util.Iterator $r11;
+
+        r0 := @this: org.codehaus.jackson.map.jsontype.impl.StdSubtypeResolver;
+
+        $r1 := @parameter0: org.codehaus.jackson.map.introspect.AnnotatedClass;
+
+        r6 := @parameter1: org.codehaus.jackson.map.jsontype.NamedType;
+
+        r2 := @parameter2: org.codehaus.jackson.map.MapperConfig;
+
+        $r3 := @parameter3: org.codehaus.jackson.map.AnnotationIntrospector;
+
+        r4 := @parameter4: java.util.HashMap;
+
+        $z0 = virtualinvoke r6.<org.codehaus.jackson.map.jsontype.NamedType: boolean hasName()>();
+
+        if $z0 != 0 goto label1;
+
+        $r7 = virtualinvoke $r3.<org.codehaus.jackson.map.AnnotationIntrospector: java.lang.String findTypeName(org.codehaus.jackson.map.introspect.AnnotatedClass)>($r1);
+
+        if $r7 == null goto label1;
+
+        r5 = new org.codehaus.jackson.map.jsontype.NamedType;
+
+        $r8 = virtualinvoke r6.<org.codehaus.jackson.map.jsontype.NamedType: java.lang.Class getType()>();
+
+        specialinvoke r5.<org.codehaus.jackson.map.jsontype.NamedType: void <init>(java.lang.Class,java.lang.String)>($r8, $r7);
+
+        r6 = r5;
+
+     label1:
+        $z0 = virtualinvoke r4.<java.util.HashMap: boolean containsKey(java.lang.Object)>(r6);
+
+        if $z0 == 0 goto label2;
+
+        $z0 = virtualinvoke r6.<org.codehaus.jackson.map.jsontype.NamedType: boolean hasName()>();
+
+        if $z0 == 0 goto label5;
+
+        $r9 = virtualinvoke r4.<java.util.HashMap: java.lang.Object get(java.lang.Object)>(r6);
+
+        r5 = (org.codehaus.jackson.map.jsontype.NamedType) $r9;
+
+        $z0 = virtualinvoke r5.<org.codehaus.jackson.map.jsontype.NamedType: boolean hasName()>();
+
+        if $z0 != 0 goto label5;
+
+        virtualinvoke r4.<java.util.HashMap: java.lang.Object put(java.lang.Object,java.lang.Object)>(r6, r6);
+
+        return;
+
+     label2:
+        virtualinvoke r4.<java.util.HashMap: java.lang.Object put(java.lang.Object,java.lang.Object)>(r6, r6);
+
+        $r10 = virtualinvoke $r3.<org.codehaus.jackson.map.AnnotationIntrospector: java.util.List findSubtypes(org.codehaus.jackson.map.introspect.Annotated)>($r1);
+
+        if $r10 == null goto label5;
+
+        $z0 = interfaceinvoke $r10.<java.util.Collection: boolean isEmpty()>();
+
+        if $z0 != 0 goto label5;
+
+        $r11 = interfaceinvoke $r10.<java.util.Collection: java.util.Iterator iterator()>();
+
+     label3:
+        $z0 = interfaceinvoke $r11.<java.util.Iterator: boolean hasNext()>();
+
+        if $z0 == 0 goto label5;
+
+        $r9 = interfaceinvoke $r11.<java.util.Iterator: java.lang.Object next()>();
+
+        r5 = (org.codehaus.jackson.map.jsontype.NamedType) $r9;
+
+        $r8 = virtualinvoke r5.<org.codehaus.jackson.map.jsontype.NamedType: java.lang.Class getType()>();
+
+        $r1 = staticinvoke <org.codehaus.jackson.map.introspect.AnnotatedClass: org.codehaus.jackson.map.introspect.AnnotatedClass constructWithoutSuperTypes(java.lang.Class,org.codehaus.jackson.map.AnnotationIntrospector,org.codehaus.jackson.map.ClassIntrospector$MixInResolver)>($r8, $r3, r2);
+
+        $z0 = virtualinvoke r5.<org.codehaus.jackson.map.jsontype.NamedType: boolean hasName()>();
+
+        if $z0 != 0 goto label4;
+
+        r6 = new org.codehaus.jackson.map.jsontype.NamedType;
+
+        $r8 = virtualinvoke r5.<org.codehaus.jackson.map.jsontype.NamedType: java.lang.Class getType()>();
+
+        $r7 = virtualinvoke $r3.<org.codehaus.jackson.map.AnnotationIntrospector: java.lang.String findTypeName(org.codehaus.jackson.map.introspect.AnnotatedClass)>($r1);
+
+        specialinvoke r6.<org.codehaus.jackson.map.jsontype.NamedType: void <init>(java.lang.Class,java.lang.String)>($r8, $r7);
+
+        r5 = r6;
+
+     label4:
+        virtualinvoke r0.<org.codehaus.jackson.map.jsontype.impl.StdSubtypeResolver: void _collectAndResolve(org.codehaus.jackson.map.introspect.AnnotatedClass,org.codehaus.jackson.map.jsontype.NamedType,org.codehaus.jackson.map.MapperConfig,org.codehaus.jackson.map.AnnotationIntrospector,java.util.HashMap)>($r1, r5, r2, $r3, r4);
+
+        goto label3;
+
+     label5:
+        return;
+    }
+
+    public java.util.Collection collectAndResolveSubtypes(org.codehaus.jackson.map.introspect.AnnotatedClass, org.codehaus.jackson.map.MapperConfig, org.codehaus.jackson.map.AnnotationIntrospector)
+    {
+        org.codehaus.jackson.map.jsontype.impl.StdSubtypeResolver r0;
+        org.codehaus.jackson.map.introspect.AnnotatedClass $r1, $r11;
+        org.codehaus.jackson.map.MapperConfig r2;
+        org.codehaus.jackson.map.AnnotationIntrospector $r3;
+        java.util.HashMap r4;
+        org.codehaus.jackson.map.jsontype.NamedType r5;
+        java.util.LinkedHashSet $r6;
+        java.lang.Class $r7, $r10;
+        java.util.Iterator $r8;
+        boolean $z0;
+        java.lang.Object $r9;
+        java.util.ArrayList $r12;
+        java.util.Collection $r13;
+
+        r0 := @this: org.codehaus.jackson.map.jsontype.impl.StdSubtypeResolver;
+
+        $r1 := @parameter0: org.codehaus.jackson.map.introspect.AnnotatedClass;
+
+        r2 := @parameter1: org.codehaus.jackson.map.MapperConfig;
+
+        $r3 := @parameter2: org.codehaus.jackson.map.AnnotationIntrospector;
+
+        r4 = new java.util.HashMap;
+
+        specialinvoke r4.<java.util.HashMap: void <init>()>();
+
+        $r6 = r0.<org.codehaus.jackson.map.jsontype.impl.StdSubtypeResolver: java.util.LinkedHashSet _registeredSubtypes>;
+
+        if $r6 == null goto label2;
+
+        $r7 = virtualinvoke $r1.<org.codehaus.jackson.map.introspect.AnnotatedClass: java.lang.Class getRawType()>();
+
+        $r6 = r0.<org.codehaus.jackson.map.jsontype.impl.StdSubtypeResolver: java.util.LinkedHashSet _registeredSubtypes>;
+
+        $r8 = virtualinvoke $r6.<java.util.LinkedHashSet: java.util.Iterator iterator()>();
+
+     label1:
+        $z0 = interfaceinvoke $r8.<java.util.Iterator: boolean hasNext()>();
+
+        if $z0 == 0 goto label2;
+
+        $r9 = interfaceinvoke $r8.<java.util.Iterator: java.lang.Object next()>();
+
+        r5 = (org.codehaus.jackson.map.jsontype.NamedType) $r9;
+
+        $r10 = virtualinvoke r5.<org.codehaus.jackson.map.jsontype.NamedType: java.lang.Class getType()>();
+
+        $z0 = virtualinvoke $r7.<java.lang.Class: boolean isAssignableFrom(java.lang.Class)>($r10);
+
+        if $z0 == 0 goto label1;
+
+        $r10 = virtualinvoke r5.<org.codehaus.jackson.map.jsontype.NamedType: java.lang.Class getType()>();
+
+        $r11 = staticinvoke <org.codehaus.jackson.map.introspect.AnnotatedClass: org.codehaus.jackson.map.introspect.AnnotatedClass constructWithoutSuperTypes(java.lang.Class,org.codehaus.jackson.map.AnnotationIntrospector,org.codehaus.jackson.map.ClassIntrospector$MixInResolver)>($r10, $r3, r2);
+
+        virtualinvoke r0.<org.codehaus.jackson.map.jsontype.impl.StdSubtypeResolver: void _collectAndResolve(org.codehaus.jackson.map.introspect.AnnotatedClass,org.codehaus.jackson.map.jsontype.NamedType,org.codehaus.jackson.map.MapperConfig,org.codehaus.jackson.map.AnnotationIntrospector,java.util.HashMap)>($r11, r5, r2, $r3, r4);
+
+        goto label1;
+
+     label2:
+        r5 = new org.codehaus.jackson.map.jsontype.NamedType;
+
+        $r7 = virtualinvoke $r1.<org.codehaus.jackson.map.introspect.AnnotatedClass: java.lang.Class getRawType()>();
+
+        specialinvoke r5.<org.codehaus.jackson.map.jsontype.NamedType: void <init>(java.lang.Class,java.lang.String)>($r7, null);
+
+        virtualinvoke r0.<org.codehaus.jackson.map.jsontype.impl.StdSubtypeResolver: void _collectAndResolve(org.codehaus.jackson.map.introspect.AnnotatedClass,org.codehaus.jackson.map.jsontype.NamedType,org.codehaus.jackson.map.MapperConfig,org.codehaus.jackson.map.AnnotationIntrospector,java.util.HashMap)>($r1, r5, r2, $r3, r4);
+
+        $r12 = new java.util.ArrayList;
+
+        $r13 = virtualinvoke r4.<java.util.HashMap: java.util.Collection values()>();
+
+        specialinvoke $r12.<java.util.ArrayList: void <init>(java.util.Collection)>($r13);
+
+        return $r12;
+    }
+
+    public java.util.Collection collectAndResolveSubtypes(org.codehaus.jackson.map.introspect.AnnotatedMember, org.codehaus.jackson.map.MapperConfig, org.codehaus.jackson.map.AnnotationIntrospector)
+    {
+        org.codehaus.jackson.map.jsontype.impl.StdSubtypeResolver r0;
+        org.codehaus.jackson.map.introspect.AnnotatedMember $r1;
+        org.codehaus.jackson.map.MapperConfig r2;
+        org.codehaus.jackson.map.AnnotationIntrospector $r3;
+        java.util.List $r4;
+        boolean $z0;
+        java.util.Collection $r5;
+
+        r0 := @this: org.codehaus.jackson.map.jsontype.impl.StdSubtypeResolver;
+
+        $r1 := @parameter0: org.codehaus.jackson.map.introspect.AnnotatedMember;
+
+        r2 := @parameter1: org.codehaus.jackson.map.MapperConfig;
+
+        $r3 := @parameter2: org.codehaus.jackson.map.AnnotationIntrospector;
+
+        $r4 = virtualinvoke $r3.<org.codehaus.jackson.map.AnnotationIntrospector: java.util.List findSubtypes(org.codehaus.jackson.map.introspect.Annotated)>($r1);
+
+        if $r4 == null goto label1;
+
+        $z0 = interfaceinvoke $r4.<java.util.Collection: boolean isEmpty()>();
+
+        if $z0 == 0 goto label2;
+
+     label1:
+        return null;
+
+     label2:
+        $r5 = virtualinvoke r0.<org.codehaus.jackson.map.jsontype.impl.StdSubtypeResolver: java.util.Collection _collectAndResolve(org.codehaus.jackson.map.introspect.AnnotatedMember,org.codehaus.jackson.map.MapperConfig,org.codehaus.jackson.map.AnnotationIntrospector,java.util.Collection)>($r1, r2, $r3, $r4);
+
+        return $r5;
+    }
+
+    public transient void registerSubtypes(java.lang.Class[])
+    {
+        org.codehaus.jackson.map.jsontype.impl.StdSubtypeResolver r0;
+        java.lang.Class[] r1;
+        int i0, i1;
+        org.codehaus.jackson.map.jsontype.NamedType[] r2;
+        java.lang.Class $r3;
+        org.codehaus.jackson.map.jsontype.NamedType $r4;
+
+        r0 := @this: org.codehaus.jackson.map.jsontype.impl.StdSubtypeResolver;
+
+        r1 := @parameter0: java.lang.Class[];
+
+        i0 = lengthof r1;
+
+        r2 = newarray (org.codehaus.jackson.map.jsontype.NamedType)[i0];
+
+        i1 = 0;
+
+        i0 = lengthof r1;
+
+     label1:
+        if i1 >= i0 goto label2;
+
+        $r4 = new org.codehaus.jackson.map.jsontype.NamedType;
+
+        $r3 = r1[i1];
+
+        specialinvoke $r4.<org.codehaus.jackson.map.jsontype.NamedType: void <init>(java.lang.Class)>($r3);
+
+        r2[i1] = $r4;
+
+        i1 = i1 + 1;
+
+        goto label1;
+
+     label2:
+        virtualinvoke r0.<org.codehaus.jackson.map.jsontype.impl.StdSubtypeResolver: void registerSubtypes(org.codehaus.jackson.map.jsontype.NamedType[])>(r2);
+
+        return;
+    }
+
+    public transient void registerSubtypes(org.codehaus.jackson.map.jsontype.NamedType[])
+    {
+        org.codehaus.jackson.map.jsontype.impl.StdSubtypeResolver r0;
+        org.codehaus.jackson.map.jsontype.NamedType[] $r1;
+        int i0, i1;
+        org.codehaus.jackson.map.jsontype.NamedType r2;
+        java.util.LinkedHashSet $r3;
+
+        r0 := @this: org.codehaus.jackson.map.jsontype.impl.StdSubtypeResolver;
+
+        $r1 := @parameter0: org.codehaus.jackson.map.jsontype.NamedType[];
+
+        $r3 = r0.<org.codehaus.jackson.map.jsontype.impl.StdSubtypeResolver: java.util.LinkedHashSet _registeredSubtypes>;
+
+        if $r3 != null goto label1;
+
+        $r3 = new java.util.LinkedHashSet;
+
+        specialinvoke $r3.<java.util.LinkedHashSet: void <init>()>();
+
+        r0.<org.codehaus.jackson.map.jsontype.impl.StdSubtypeResolver: java.util.LinkedHashSet _registeredSubtypes> = $r3;
+
+     label1:
+        i0 = lengthof $r1;
+
+        i1 = 0;
+
+     label2:
+        if i1 >= i0 goto label3;
+
+        r2 = $r1[i1];
+
+        $r3 = r0.<org.codehaus.jackson.map.jsontype.impl.StdSubtypeResolver: java.util.LinkedHashSet _registeredSubtypes>;
+
+        virtualinvoke $r3.<java.util.LinkedHashSet: boolean add(java.lang.Object)>(r2);
+
+        i1 = i1 + 1;
+
+        goto label2;
+
+     label3:
+        return;
+    }
+}

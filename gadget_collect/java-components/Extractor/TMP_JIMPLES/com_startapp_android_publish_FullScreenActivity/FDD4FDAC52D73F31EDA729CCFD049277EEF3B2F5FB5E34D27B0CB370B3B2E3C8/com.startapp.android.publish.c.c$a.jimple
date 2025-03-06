@@ -1,0 +1,349 @@
+class com.startapp.android.publish.c.c$a extends android.webkit.WebViewClient
+{
+    private android.content.Context a;
+    private com.startapp.android.publish.inappbrowser.a b;
+    private com.startapp.android.publish.inappbrowser.AnimatingProgressBar c;
+    private int d;
+    private boolean e;
+
+    public void <init>(android.content.Context, com.startapp.android.publish.inappbrowser.a, com.startapp.android.publish.inappbrowser.AnimatingProgressBar)
+    {
+        com.startapp.android.publish.c.c$a r0;
+        android.content.Context $r1;
+        com.startapp.android.publish.inappbrowser.a $r2;
+        com.startapp.android.publish.inappbrowser.AnimatingProgressBar $r3;
+
+        r0 := @this: com.startapp.android.publish.c.c$a;
+
+        $r1 := @parameter0: android.content.Context;
+
+        $r2 := @parameter1: com.startapp.android.publish.inappbrowser.a;
+
+        $r3 := @parameter2: com.startapp.android.publish.inappbrowser.AnimatingProgressBar;
+
+        specialinvoke r0.<android.webkit.WebViewClient: void <init>()>();
+
+        r0.<com.startapp.android.publish.c.c$a: int d> = 0;
+
+        r0.<com.startapp.android.publish.c.c$a: boolean e> = 0;
+
+        r0.<com.startapp.android.publish.c.c$a: android.content.Context a> = $r1;
+
+        r0.<com.startapp.android.publish.c.c$a: com.startapp.android.publish.inappbrowser.AnimatingProgressBar c> = $r3;
+
+        r0.<com.startapp.android.publish.c.c$a: com.startapp.android.publish.inappbrowser.a b> = $r2;
+
+        return;
+    }
+
+    public void onPageFinished(android.webkit.WebView, java.lang.String)
+    {
+        com.startapp.android.publish.c.c$a r0;
+        android.webkit.WebView $r1;
+        java.lang.String $r2, $r4;
+        boolean $z0;
+        java.lang.StringBuilder $r3;
+        com.startapp.android.publish.inappbrowser.a $r5;
+        int $i0;
+        com.startapp.android.publish.inappbrowser.AnimatingProgressBar $r6;
+
+        r0 := @this: com.startapp.android.publish.c.c$a;
+
+        $r1 := @parameter0: android.webkit.WebView;
+
+        $r2 := @parameter1: java.lang.String;
+
+        $z0 = staticinvoke <com.startapp.android.publish.c.c: boolean x()>();
+
+        if $z0 != 0 goto label3;
+
+        $r3 = new java.lang.StringBuilder;
+
+        specialinvoke $r3.<java.lang.StringBuilder: void <init>()>();
+
+        $r3 = virtualinvoke $r3.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("IABWebViewClient::onPageFinished - [");
+
+        $r3 = virtualinvoke $r3.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r2);
+
+        $r3 = virtualinvoke $r3.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("]");
+
+        $r4 = virtualinvoke $r3.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <com.startapp.android.publish.i.n: void a(java.lang.String,int,java.lang.String)>("IABrowserMode", 3, $r4);
+
+        $r5 = r0.<com.startapp.android.publish.c.c$a: com.startapp.android.publish.inappbrowser.a b>;
+
+        virtualinvoke $r5.<com.startapp.android.publish.inappbrowser.a: void a(android.webkit.WebView)>($r1);
+
+        $i0 = r0.<com.startapp.android.publish.c.c$a: int d>;
+
+        $i0 = $i0 + -1;
+
+        r0.<com.startapp.android.publish.c.c$a: int d> = $i0;
+
+        if $i0 != 0 goto label2;
+
+        r0.<com.startapp.android.publish.c.c$a: boolean e> = 0;
+
+        $r6 = r0.<com.startapp.android.publish.c.c$a: com.startapp.android.publish.inappbrowser.AnimatingProgressBar c>;
+
+        virtualinvoke $r6.<com.startapp.android.publish.inappbrowser.AnimatingProgressBar: void a()>();
+
+        $r6 = r0.<com.startapp.android.publish.c.c$a: com.startapp.android.publish.inappbrowser.AnimatingProgressBar c>;
+
+        $z0 = virtualinvoke $r6.<com.startapp.android.publish.inappbrowser.AnimatingProgressBar: boolean isShown()>();
+
+        if $z0 == 0 goto label1;
+
+        $r6 = r0.<com.startapp.android.publish.c.c$a: com.startapp.android.publish.inappbrowser.AnimatingProgressBar c>;
+
+        virtualinvoke $r6.<com.startapp.android.publish.inappbrowser.AnimatingProgressBar: void setVisibility(int)>(8);
+
+     label1:
+        $r5 = r0.<com.startapp.android.publish.c.c$a: com.startapp.android.publish.inappbrowser.a b>;
+
+        virtualinvoke $r5.<com.startapp.android.publish.inappbrowser.a: void a(android.webkit.WebView)>($r1);
+
+     label2:
+        specialinvoke r0.<android.webkit.WebViewClient: void onPageFinished(android.webkit.WebView,java.lang.String)>($r1, $r2);
+
+     label3:
+        return;
+    }
+
+    public void onPageStarted(android.webkit.WebView, java.lang.String, android.graphics.Bitmap)
+    {
+        com.startapp.android.publish.c.c$a r0;
+        android.webkit.WebView $r1;
+        java.lang.String $r2, $r5;
+        android.graphics.Bitmap $r3;
+        boolean $z0;
+        java.lang.StringBuilder $r4;
+        int $i0;
+        com.startapp.android.publish.inappbrowser.AnimatingProgressBar $r6;
+        com.startapp.android.publish.inappbrowser.a $r7;
+        android.widget.TextView $r8;
+
+        r0 := @this: com.startapp.android.publish.c.c$a;
+
+        $r1 := @parameter0: android.webkit.WebView;
+
+        $r2 := @parameter1: java.lang.String;
+
+        $r3 := @parameter2: android.graphics.Bitmap;
+
+        $z0 = staticinvoke <com.startapp.android.publish.c.c: boolean x()>();
+
+        if $z0 != 0 goto label3;
+
+        $r4 = new java.lang.StringBuilder;
+
+        specialinvoke $r4.<java.lang.StringBuilder: void <init>()>();
+
+        $r4 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("IABWebViewClient::onPageStarted - [");
+
+        $r4 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r2);
+
+        $r4 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("]");
+
+        $r4 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("REDIRECTED  -> ");
+
+        $i0 = r0.<com.startapp.android.publish.c.c$a: int d>;
+
+        $r4 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>($i0);
+
+        $r4 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" Can go back ");
+
+        $z0 = virtualinvoke $r1.<android.webkit.WebView: boolean canGoBack()>();
+
+        $r4 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.StringBuilder append(boolean)>($z0);
+
+        $r5 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <com.startapp.android.publish.i.n: void a(java.lang.String,int,java.lang.String)>("IABrowserMode", 3, $r5);
+
+        $z0 = r0.<com.startapp.android.publish.c.c$a: boolean e>;
+
+        if $z0 == 0 goto label2;
+
+        r0.<com.startapp.android.publish.c.c$a: int d> = 1;
+
+        $r6 = r0.<com.startapp.android.publish.c.c$a: com.startapp.android.publish.inappbrowser.AnimatingProgressBar c>;
+
+        virtualinvoke $r6.<com.startapp.android.publish.inappbrowser.AnimatingProgressBar: void a()>();
+
+        $r7 = r0.<com.startapp.android.publish.c.c$a: com.startapp.android.publish.inappbrowser.a b>;
+
+        virtualinvoke $r7.<com.startapp.android.publish.inappbrowser.a: void a(android.webkit.WebView)>($r1);
+
+     label1:
+        $r6 = r0.<com.startapp.android.publish.c.c$a: com.startapp.android.publish.inappbrowser.AnimatingProgressBar c>;
+
+        virtualinvoke $r6.<com.startapp.android.publish.inappbrowser.AnimatingProgressBar: void setVisibility(int)>(0);
+
+        $r7 = r0.<com.startapp.android.publish.c.c$a: com.startapp.android.publish.inappbrowser.a b>;
+
+        $r8 = virtualinvoke $r7.<com.startapp.android.publish.inappbrowser.a: android.widget.TextView getUrlTxt()>();
+
+        virtualinvoke $r8.<android.widget.TextView: void setText(java.lang.CharSequence)>($r2);
+
+        $r7 = r0.<com.startapp.android.publish.c.c$a: com.startapp.android.publish.inappbrowser.a b>;
+
+        virtualinvoke $r7.<com.startapp.android.publish.inappbrowser.a: void a(android.webkit.WebView)>($r1);
+
+        specialinvoke r0.<android.webkit.WebViewClient: void onPageStarted(android.webkit.WebView,java.lang.String,android.graphics.Bitmap)>($r1, $r2, $r3);
+
+        return;
+
+     label2:
+        $i0 = r0.<com.startapp.android.publish.c.c$a: int d>;
+
+        $i0 = staticinvoke <java.lang.Math: int max(int,int)>($i0, 1);
+
+        r0.<com.startapp.android.publish.c.c$a: int d> = $i0;
+
+        goto label1;
+
+     label3:
+        return;
+    }
+
+    public void onReceivedError(android.webkit.WebView, int, java.lang.String, java.lang.String)
+    {
+        com.startapp.android.publish.c.c$a r0;
+        android.webkit.WebView $r1;
+        int $i0;
+        java.lang.String $r2, $r3, $r5;
+        java.lang.StringBuilder $r4;
+        com.startapp.android.publish.inappbrowser.AnimatingProgressBar $r6;
+
+        r0 := @this: com.startapp.android.publish.c.c$a;
+
+        $r1 := @parameter0: android.webkit.WebView;
+
+        $i0 := @parameter1: int;
+
+        $r2 := @parameter2: java.lang.String;
+
+        $r3 := @parameter3: java.lang.String;
+
+        $r4 = new java.lang.StringBuilder;
+
+        specialinvoke $r4.<java.lang.StringBuilder: void <init>()>();
+
+        $r4 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("IABWebViewClient::onReceivedError - [");
+
+        $r4 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r2);
+
+        $r4 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("], [");
+
+        $r4 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r3);
+
+        $r4 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("]");
+
+        $r5 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <com.startapp.android.publish.i.n: void a(java.lang.String,int,java.lang.String)>("IABrowserMode", 3, $r5);
+
+        $r6 = r0.<com.startapp.android.publish.c.c$a: com.startapp.android.publish.inappbrowser.AnimatingProgressBar c>;
+
+        virtualinvoke $r6.<com.startapp.android.publish.inappbrowser.AnimatingProgressBar: void a()>();
+
+        specialinvoke r0.<android.webkit.WebViewClient: void onReceivedError(android.webkit.WebView,int,java.lang.String,java.lang.String)>($r1, $i0, $r2, $r3);
+
+        return;
+    }
+
+    public boolean shouldOverrideUrlLoading(android.webkit.WebView, java.lang.String)
+    {
+        com.startapp.android.publish.c.c$a r0;
+        android.webkit.WebView $r1;
+        java.lang.String $r2, $r4;
+        java.lang.StringBuilder $r3;
+        boolean $z0;
+        com.startapp.android.publish.inappbrowser.AnimatingProgressBar $r5;
+        int $i0;
+        android.content.Intent $r6;
+        android.net.Uri $r7;
+        android.content.Context $r8;
+
+        r0 := @this: com.startapp.android.publish.c.c$a;
+
+        $r1 := @parameter0: android.webkit.WebView;
+
+        $r2 := @parameter1: java.lang.String;
+
+        $r3 = new java.lang.StringBuilder;
+
+        specialinvoke $r3.<java.lang.StringBuilder: void <init>()>();
+
+        $r3 = virtualinvoke $r3.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("IABWebViewClient::shouldOverrideUrlLoading - [");
+
+        $r3 = virtualinvoke $r3.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r2);
+
+        $r3 = virtualinvoke $r3.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("]");
+
+        $r4 = virtualinvoke $r3.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <com.startapp.android.publish.i.n: void a(java.lang.String,int,java.lang.String)>("IABrowserMode", 3, $r4);
+
+        $z0 = staticinvoke <com.startapp.android.publish.c.c: boolean x()>();
+
+        if $z0 != 0 goto label4;
+
+        $z0 = r0.<com.startapp.android.publish.c.c$a: boolean e>;
+
+        if $z0 != 0 goto label1;
+
+        r0.<com.startapp.android.publish.c.c$a: boolean e> = 1;
+
+        $r5 = r0.<com.startapp.android.publish.c.c$a: com.startapp.android.publish.inappbrowser.AnimatingProgressBar c>;
+
+        virtualinvoke $r5.<com.startapp.android.publish.inappbrowser.AnimatingProgressBar: void a()>();
+
+        r0.<com.startapp.android.publish.c.c$a: int d> = 0;
+
+     label1:
+        $i0 = r0.<com.startapp.android.publish.c.c$a: int d>;
+
+        $i0 = $i0 + 1;
+
+        r0.<com.startapp.android.publish.c.c$a: int d> = $i0;
+
+        $z0 = virtualinvoke $r2.<java.lang.String: boolean startsWith(java.lang.String)>("http:");
+
+        if $z0 != 0 goto label2;
+
+        $z0 = virtualinvoke $r2.<java.lang.String: boolean startsWith(java.lang.String)>("https:");
+
+        if $z0 == 0 goto label3;
+
+     label2:
+        $z0 = virtualinvoke $r2.<java.lang.String: boolean startsWith(java.lang.String)>("http://play.google.com");
+
+        if $z0 != 0 goto label3;
+
+        $z0 = virtualinvoke $r2.<java.lang.String: boolean startsWith(java.lang.String)>("https://play.google.com");
+
+        if $z0 == 0 goto label5;
+
+     label3:
+        r0.<com.startapp.android.publish.c.c$a: int d> = 1;
+
+        $r6 = new android.content.Intent;
+
+        $r7 = staticinvoke <android.net.Uri: android.net.Uri parse(java.lang.String)>($r2);
+
+        specialinvoke $r6.<android.content.Intent: void <init>(java.lang.String,android.net.Uri)>("android.intent.action.VIEW", $r7);
+
+        $r8 = r0.<com.startapp.android.publish.c.c$a: android.content.Context a>;
+
+        virtualinvoke $r8.<android.content.Context: void startActivity(android.content.Intent)>($r6);
+
+     label4:
+        return 1;
+
+     label5:
+        return 0;
+    }
+}

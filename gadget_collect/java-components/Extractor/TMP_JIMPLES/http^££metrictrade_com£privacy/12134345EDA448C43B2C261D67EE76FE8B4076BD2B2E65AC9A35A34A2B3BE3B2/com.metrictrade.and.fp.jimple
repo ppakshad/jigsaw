@@ -1,0 +1,5683 @@
+public final class com.metrictrade.and.fp extends java.lang.Object
+{
+    public static com.metrictrade.and.fs a;
+    public static int b;
+    public static int c;
+    public static int[][] d;
+    public static int[] e;
+    public static int[][] f;
+    private static java.lang.Object h;
+    private int g;
+
+    static void <clinit>()
+    {
+        int[][] $r1;
+        java.lang.Object $r2;
+        int[] $r0;
+
+        <com.metrictrade.and.fp: int b> = 3385856;
+
+        $r0 = newarray (int)[32];
+
+        $r0[0] = 32;
+
+        $r0[1] = 1;
+
+        $r0[4] = 5;
+
+        $r0[6] = 2015;
+
+        $r0[16] = 1;
+
+        $r0[17] = 102;
+
+        $r0[18] = 1;
+
+        $r0[19] = 14;
+
+        <com.metrictrade.and.fp: int[] e> = $r0;
+
+        $r1 = newarray (int[])[1];
+
+        $r0 = <com.metrictrade.and.fp: int[] e>;
+
+        $r1[0] = $r0;
+
+        <com.metrictrade.and.fp: int[][] f> = $r1;
+
+        $r2 = new java.lang.Object;
+
+        specialinvoke $r2.<java.lang.Object: void <init>()>();
+
+        <com.metrictrade.and.fp: java.lang.Object h> = $r2;
+
+        return;
+    }
+
+    public void <init>(int)
+    {
+        int $i0;
+        com.metrictrade.and.fp r0;
+
+        r0 := @this: com.metrictrade.and.fp;
+
+        $i0 := @parameter0: int;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        r0.<com.metrictrade.and.fp: int g> = $i0;
+
+        return;
+    }
+
+    public static int a(java.lang.String, int[])
+    {
+        java.lang.Throwable $r9;
+        int[][] $r3, $r4;
+        java.lang.String[] $r5, $r6, $r7, $r8;
+        int[] $r1;
+        int $i0, $i1, $i2, $i3;
+        java.lang.Object $r2;
+        java.lang.String $r0;
+
+        $r0 := @parameter0: java.lang.String;
+
+        $r1 := @parameter1: int[];
+
+        $i0 = 0;
+
+        $r2 = <com.metrictrade.and.fp: java.lang.Object h>;
+
+        entermonitor $r2;
+
+     label01:
+        $r3 = <com.metrictrade.and.fp: int[][] d>;
+
+        if $r3 != null goto label10;
+
+        $i1 = 0;
+
+     label02:
+        $i2 = $i1 + 1;
+
+        $r4 = newarray (int[])[$i2];
+
+        if $i1 <= 0 goto label03;
+
+        staticinvoke <java.lang.System: void arraycopy(java.lang.Object,int,java.lang.Object,int,int)>($r3, 0, $r4, 0, $i1);
+
+     label03:
+        $r5 = <com.metrictrade.pub.G2: java.lang.String[] c>;
+
+        if $r5 != null goto label11;
+
+        $i2 = 0;
+
+     label04:
+        if $i2 <= $i1 goto label05;
+
+        $i2 = $i1;
+
+     label05:
+        $i3 = $i1 + 1;
+
+        $r6 = newarray (java.lang.String)[$i3];
+
+        if $i2 <= 0 goto label06;
+
+        staticinvoke <java.lang.System: void arraycopy(java.lang.Object,int,java.lang.Object,int,int)>($r5, 0, $r6, 0, $i2);
+
+     label06:
+        $r4[$i1] = $r1;
+
+        $r6[$i1] = $r0;
+
+        $i2 = 0;
+
+     label07:
+        $i3 = lengthof $r6;
+
+        if $i2 < $i3 goto label12;
+
+        $i1 = $i1 + 1;
+
+        $r5 = <com.metrictrade.pub.G2: java.lang.String[] d>;
+
+        $i2 = lengthof $r5;
+
+        $i2 = $i2 + $i1;
+
+        $i2 = $i2 + 3;
+
+        $r7 = newarray (java.lang.String)[$i2];
+
+        $r8 = <com.metrictrade.pub.G2: java.lang.String[] e>;
+
+        $r0 = $r8[0];
+
+        $r7[0] = $r0;
+
+        $r0 = <com.metrictrade.and.z: java.lang.String Q>;
+
+        $r7[1] = $r0;
+
+     label08:
+        $i2 = $i0 + 2;
+
+        $i3 = lengthof $r7;
+
+        if $i2 < $i3 goto label14;
+
+        <com.metrictrade.and.fp: int[][] d> = $r4;
+
+        <com.metrictrade.pub.G2: java.lang.String[] c> = $r6;
+
+        <com.metrictrade.pub.G2: java.lang.String[] e> = $r7;
+
+        exitmonitor $r2;
+
+     label09:
+        $i0 = $i1 + -1;
+
+        return $i0;
+
+     label10:
+        $i1 = lengthof $r3;
+
+        goto label02;
+
+     label11:
+        $i2 = lengthof $r5;
+
+        goto label04;
+
+     label12:
+        $r0 = $r6[$i2];
+
+        if $r0 != null goto label13;
+
+        $i3 = $i2 + 1;
+
+        $r0 = staticinvoke <java.lang.Integer: java.lang.String toString(int)>($i3);
+
+        $r6[$i2] = $r0;
+
+     label13:
+        $i2 = $i2 + 1;
+
+        goto label07;
+
+     label14:
+        if $i0 >= $i1 goto label16;
+
+        $i2 = $i0 + 2;
+
+        $r0 = $r6[$i0];
+
+        $r7[$i2] = $r0;
+
+     label15:
+        $i0 = $i0 + 1;
+
+        goto label08;
+
+     label16:
+        if $i0 != $i1 goto label19;
+
+        $i2 = $i0 + 2;
+
+        $r0 = <com.metrictrade.and.z: java.lang.String Q>;
+
+        $r7[$i2] = $r0;
+
+        goto label15;
+
+     label17:
+        $r9 := @caughtexception;
+
+        exitmonitor $r2;
+
+     label18:
+        throw $r9;
+
+     label19:
+        $i2 = $i0 + 2;
+
+        $i3 = $i0 - $i1;
+
+        $i3 = $i3 + -1;
+
+     label20:
+        $r0 = $r5[$i3];
+
+        $r7[$i2] = $r0;
+
+     label21:
+        goto label15;
+
+        catch java.lang.Throwable from label01 to label09 with label17;
+        catch java.lang.Throwable from label10 to label18 with label17;
+        catch java.lang.Throwable from label20 to label21 with label17;
+    }
+
+    public static java.lang.String a(int)
+    {
+        int $i0, $i1, $i2;
+        java.lang.String[] $r1;
+        java.lang.String $r0;
+
+        $i0 := @parameter0: int;
+
+        if $i0 < 501 goto label2;
+
+        $r1 = <com.metrictrade.pub.G2: java.lang.String[] e>;
+
+        if $r1 == null goto label2;
+
+        $i1 = $i0 + -501;
+
+        if $i1 >= 20 goto label1;
+
+        $r1 = <com.metrictrade.pub.G2: java.lang.String[] d>;
+
+        $i2 = lengthof $r1;
+
+        if $i1 >= $i2 goto label2;
+
+        $r1 = <com.metrictrade.pub.G2: java.lang.String[] d>;
+
+        $r0 = $r1[$i1];
+
+        return $r0;
+
+     label1:
+        $r1 = <com.metrictrade.pub.G2: java.lang.String[] c>;
+
+        if $r1 == null goto label2;
+
+        $i1 = $i1 + -20;
+
+        $r1 = <com.metrictrade.pub.G2: java.lang.String[] c>;
+
+        $i2 = lengthof $r1;
+
+        if $i1 >= $i2 goto label2;
+
+        $r1 = <com.metrictrade.pub.G2: java.lang.String[] c>;
+
+        $r0 = $r1[$i1];
+
+        return $r0;
+
+     label2:
+        $r0 = staticinvoke <java.lang.Integer: java.lang.String toString(int)>($i0);
+
+        return $r0;
+    }
+
+    public static void a(int, int[])
+    {
+        int[][] $r1;
+        int[] $r0;
+        int $i0, $i1;
+
+        $i0 := @parameter0: int;
+
+        $r0 := @parameter1: int[];
+
+        if $i0 >= 20 goto label1;
+
+        $r1 = <com.metrictrade.and.fp: int[][] f>;
+
+        if $r1 == null goto label3;
+
+        $r1 = <com.metrictrade.and.fp: int[][] f>;
+
+        $i1 = lengthof $r1;
+
+        if $i0 >= $i1 goto label3;
+
+        $r1 = <com.metrictrade.and.fp: int[][] f>;
+
+        $r1[$i0] = $r0;
+
+        return;
+
+     label1:
+        $r1 = <com.metrictrade.and.fp: int[][] d>;
+
+        if $r1 == null goto label3;
+
+        $i0 = $i0 + -20;
+
+        $r1 = <com.metrictrade.and.fp: int[][] d>;
+
+        $i1 = lengthof $r1;
+
+        if $i0 >= $i1 goto label2;
+
+        $r1 = <com.metrictrade.and.fp: int[][] d>;
+
+        $r1[$i0] = $r0;
+
+     label2:
+        staticinvoke <com.metrictrade.and.fj: void j(int)>(256);
+
+     label3:
+        return;
+    }
+
+    public static void a(com.metrictrade.and.am)
+    {
+        java.lang.Throwable $r5;
+        int[][] $r2;
+        java.lang.String[] $r3;
+        com.metrictrade.and.am $r0, $r7;
+        int[] $r4;
+        int $i0, $i1, $i2, $i3, $i4, $i5, $i6;
+        java.lang.String $r6;
+        boolean $z0;
+        java.lang.Object $r1;
+
+        $r0 := @parameter0: com.metrictrade.and.am;
+
+        $r1 = <com.metrictrade.and.fp: java.lang.Object h>;
+
+        entermonitor $r1;
+
+     label01:
+        $r2 = <com.metrictrade.and.fp: int[][] d>;
+
+        $r3 = <com.metrictrade.pub.G2: java.lang.String[] c>;
+
+        if $r2 == null goto label02;
+
+        if $r3 != null goto label04;
+
+     label02:
+        virtualinvoke $r0.<com.metrictrade.and.am: com.metrictrade.and.am a(java.lang.String)>("<ls>adv;\'a0\',\'null\'</ls>");
+
+        exitmonitor $r1;
+
+     label03:
+        return;
+
+     label04:
+        $i1 = lengthof $r2;
+
+        $i2 = lengthof $r3;
+
+        if $i1 <= $i2 goto label21;
+
+        $i1 = lengthof $r3;
+
+     label05:
+        virtualinvoke $r0.<com.metrictrade.and.am: com.metrictrade.and.am a(java.lang.String)>("<ls>adv");
+
+        $i2 = 0;
+
+     label06:
+        if $i2 < $i1 goto label10;
+
+        virtualinvoke $r0.<com.metrictrade.and.am: com.metrictrade.and.am a(java.lang.String)>("</ls>");
+
+        exitmonitor $r1;
+
+     label07:
+        return;
+
+     label08:
+        $r5 := @caughtexception;
+
+        exitmonitor $r1;
+
+     label09:
+        throw $r5;
+
+     label10:
+        $r6 = $r3[$i2];
+
+        $r4 = $r2[$i2];
+
+        if $r6 == null goto label12;
+
+        if $r4 == null goto label12;
+
+        $r6 = virtualinvoke $r6.<java.lang.String: java.lang.String replace(char,char)>(39, 32);
+
+        $r6 = virtualinvoke $r6.<java.lang.String: java.lang.String replace(char,char)>(35, 45);
+
+        $r6 = virtualinvoke $r6.<java.lang.String: java.lang.String replace(char,char)>(44, 32);
+
+        $r6 = virtualinvoke $r6.<java.lang.String: java.lang.String replace(char,char)>(46, 32);
+
+        $r7 = virtualinvoke $r0.<com.metrictrade.and.am: com.metrictrade.and.am a(java.lang.String)>(";a");
+
+        $r7 = virtualinvoke $r7.<com.metrictrade.and.am: com.metrictrade.and.am e(int)>($i2);
+
+        $r7 = virtualinvoke $r7.<com.metrictrade.and.am: com.metrictrade.and.am a(java.lang.String)>(",\'");
+
+        virtualinvoke $r7.<com.metrictrade.and.am: com.metrictrade.and.am a(java.lang.String)>($r6);
+
+        $i0 = lengthof $r4;
+
+        $i0 = $i0 + -16;
+
+        $i3 = 0;
+
+     label11:
+        if $i3 <= $i0 goto label13;
+
+        virtualinvoke $r0.<com.metrictrade.and.am: com.metrictrade.and.am a(char)>(39);
+
+     label12:
+        $i2 = $i2 + 1;
+
+        goto label06;
+
+     label13:
+        $i4 = $i3 + 16;
+
+        $i4 = $i4 + -1;
+
+     label14:
+        if $i4 > $i3 goto label17;
+
+     label15:
+        virtualinvoke $r0.<com.metrictrade.and.am: com.metrictrade.and.am a(char)>(35);
+
+        $i5 = $i3;
+
+        $z0 = 0;
+
+     label16:
+        if $i5 <= $i4 goto label18;
+
+        $i3 = $i3 + 16;
+
+        goto label11;
+
+     label17:
+        $i5 = $r4[$i4];
+
+        if $i5 != 0 goto label15;
+
+        $i4 = $i4 + -1;
+
+        goto label14;
+
+     label18:
+        if $z0 == 0 goto label19;
+
+        virtualinvoke $r0.<com.metrictrade.and.am: com.metrictrade.and.am a(char)>(44);
+
+     label19:
+        $i6 = $r4[$i5];
+
+        virtualinvoke $r0.<com.metrictrade.and.am: com.metrictrade.and.am e(int)>($i6);
+
+     label20:
+        $z0 = 1;
+
+        $i5 = $i5 + 1;
+
+        goto label16;
+
+     label21:
+        goto label05;
+
+        catch java.lang.Throwable from label01 to label03 with label08;
+        catch java.lang.Throwable from label04 to label07 with label08;
+        catch java.lang.Throwable from label08 to label09 with label08;
+        catch java.lang.Throwable from label10 to label20 with label08;
+    }
+
+    public static void a(com.metrictrade.and.fs, int[], int[], boolean, boolean[], boolean[], int[], int[], int, int, int, double[], double[], int, int, int, int, int, boolean, com.metrictrade.and.fy)
+    {
+        byte $b25;
+        int[] $r1, $r2, $r5, $r6;
+        boolean $z0, $z1, $z2, $z3, $z4;
+        com.metrictrade.and.fy $r9;
+        com.metrictrade.and.fs $r0;
+        double[][] $r10;
+        double[] $r7, $r8, $r11, $r12, $r13, $r14;
+        int $i0, $i1, $i2, $i3, $i4, $i5, $i6, $i7, $i8, $i9, $i10, $i11, $i12, $i13, $i14, $i15, $i16, $i17, $i18, $i19, $i20, $i21, $i22, $i23, $i24, $i26, $i27, $i28, $i29;
+        double $d0, $d1, $d2, $d3, $d4, $d5, $d6, $d7, $d8, $d9, $d10;
+        boolean[] $r3, $r4;
+
+        $r0 := @parameter0: com.metrictrade.and.fs;
+
+        $r1 := @parameter1: int[];
+
+        $r2 := @parameter2: int[];
+
+        $z0 := @parameter3: boolean;
+
+        $r3 := @parameter4: boolean[];
+
+        $r4 := @parameter5: boolean[];
+
+        $r5 := @parameter6: int[];
+
+        $r6 := @parameter7: int[];
+
+        $i0 := @parameter8: int;
+
+        $i10 := @parameter9: int;
+
+        $i1 := @parameter10: int;
+
+        $r7 := @parameter11: double[];
+
+        $r8 := @parameter12: double[];
+
+        $i2 := @parameter13: int;
+
+        $i3 := @parameter14: int;
+
+        $i4 := @parameter15: int;
+
+        $i5 := @parameter16: int;
+
+        $i6 := @parameter17: int;
+
+        $z1 := @parameter18: boolean;
+
+        $r9 := @parameter19: com.metrictrade.and.fy;
+
+        $i11 = 16;
+
+        $i12 = -1;
+
+        $i13 = -1;
+
+        $i14 = -1;
+
+        $i15 = -1;
+
+        $i16 = 0;
+
+        $i17 = 16;
+
+     label001:
+        if $i17 <= $i0 goto label011;
+
+        if $i13 > 0 goto label002;
+
+        if $i12 <= 0 goto label234;
+
+     label002:
+        if $i2 != 0 goto label167;
+
+        if $i3 != 0 goto label167;
+
+        $z0 = 0;
+
+     label003:
+        if $z0 != 0 goto label168;
+
+        if $i5 != 0 goto label168;
+
+        $z2 = 0;
+
+     label004:
+        if $z1 == 0 goto label198;
+
+        if $i12 <= 0 goto label169;
+
+        $r10 = $r0.<com.metrictrade.and.fs: double[][] i>;
+
+        $r11 = $r10[$i12];
+
+     label005:
+        if $i14 <= 0 goto label170;
+
+        $r10 = $r0.<com.metrictrade.and.fs: double[][] i>;
+
+        $r12 = $r10[$i14];
+
+     label006:
+        if $i13 <= 0 goto label171;
+
+        $r10 = $r0.<com.metrictrade.and.fs: double[][] i>;
+
+        $r13 = $r10[$i13];
+
+     label007:
+        $z3 = 0;
+
+        $d0 = #NaN;
+
+        $d1 = 0.0;
+
+        $d2 = 0.0;
+
+        $i0 = 0;
+
+        $d3 = #NaN;
+
+        $z4 = 0;
+
+        $i11 = 0;
+
+        $d4 = #NaN;
+
+     label008:
+        if $i10 < $i1 goto label172;
+
+     label009:
+        $r0.<com.metrictrade.and.fs: double j> = $d3;
+
+        $r0.<com.metrictrade.and.fs: double k> = $d4;
+
+        $r0.<com.metrictrade.and.fs: int l> = $i0;
+
+        $r0.<com.metrictrade.and.fs: int m> = $i11;
+
+        if $z1 == 0 goto label231;
+
+        $z0 = 0;
+
+     label010:
+        $r0.<com.metrictrade.and.fs: boolean n> = $z0;
+
+        $z0 = $r0.<com.metrictrade.and.fs: boolean g>;
+
+        if $z0 != 0 goto label259;
+
+        $r0.<com.metrictrade.and.fs: int c> = 3377152;
+
+        $r0.<com.metrictrade.and.fs: boolean g> = 1;
+
+        return;
+
+     label011:
+        $i7 = $r6[$i17];
+
+        $i11 = $i11 + 8;
+
+        lookupswitch($i7)
+        {
+            case 1: goto label014;
+            case 2: goto label086;
+            case 3: goto label086;
+            case 4: goto label086;
+            case 5: goto label086;
+            case 6: goto label086;
+            case 7: goto label012;
+            case 8: goto label012;
+            case 9: goto label012;
+            case 10: goto label033;
+            case 11: goto label033;
+            case 12: goto label033;
+            case 13: goto label033;
+            case 14: goto label033;
+            case 15: goto label033;
+            case 16: goto label033;
+            case 17: goto label033;
+            case 18: goto label033;
+            default: goto label012;
+        };
+
+     label012:
+        $i18 = $i16;
+
+        $i8 = $i13;
+
+     label013:
+        $i17 = $i17 + 16;
+
+        $i16 = $i18;
+
+        $i13 = $i8;
+
+        goto label001;
+
+     label014:
+        $i8 = $i17 + 1;
+
+        $i8 = $r6[$i8];
+
+        $i18 = $i17 + 2;
+
+        $i18 = $r6[$i18];
+
+        $i7 = $i17 + 3;
+
+        $i19 = $r6[$i7];
+
+        $i7 = $i17 + 4;
+
+        $i7 = $r6[$i7];
+
+        $i9 = $i17 + 5;
+
+        $i9 = $r6[$i9];
+
+        $i20 = $i17 + 6;
+
+        $i20 = $r6[$i20];
+
+        $i21 = $i17 + 16;
+
+        $i21 = $i21 + -1;
+
+        $i21 = $r6[$i21];
+
+        if $z0 == 0 goto label025;
+
+        $i21 = staticinvoke <com.metrictrade.and.fx: int c(int,int)>($i8, 0);
+
+        if $i8 >= 200 goto label258;
+
+        if $i8 == 108 goto label258;
+
+        $i21 = 1;
+
+     label015:
+        $i22 = $i16 + $i21;
+
+        if 16 <= $i22 goto label257;
+
+        $i22 = 0;
+
+     label016:
+        if $i22 < $i21 goto label024;
+
+        $i22 = $i17 + 16;
+
+        $i22 = $i22 + -1;
+
+        $r6[$i22] = $i21;
+
+     label017:
+        if $i8 == 281 goto label018;
+
+        if $i8 == 112 goto label018;
+
+        if $i8 != 228 goto label029;
+
+     label018:
+        $i21 = 0;
+
+        $i9 = $i7;
+
+        $i22 = $i19;
+
+        $i7 = $i20;
+
+     label019:
+        if $i18 != 0 goto label020;
+
+        $i18 = 1;
+
+     label020:
+        if $r2 != null goto label030;
+
+        $z2 = 1;
+
+     label021:
+        if $z2 != 0 goto label023;
+
+        $i19 = 0;
+
+     label022:
+        if $i19 < $i16 goto label031;
+
+     label023:
+        if $z2 == 0 goto label252;
+
+        virtualinvoke $r0.<com.metrictrade.and.fs: void a(com.metrictrade.and.fs,int,int,int,int,int,boolean,com.metrictrade.and.fy,int,int)>($r0, $i8, $i21, $i22, $i9, $i7, 0, $r9, $i18, $i11);
+
+        $i18 = $i16;
+
+        $i8 = $i13;
+
+        goto label013;
+
+     label024:
+        $i24 = $i17 + 3;
+
+        $i24 = $i24 + $i22;
+
+        $r1[$i16] = $i24;
+
+        $i22 = $i22 + 1;
+
+        $i16 = $i16 + 1;
+
+        goto label016;
+
+     label025:
+        $i22 = $i16 + $i21;
+
+        if 16 < $i22 goto label257;
+
+        if $i21 <= 0 goto label256;
+
+        $i22 = $i16 + 1;
+
+        $i19 = $r1[$i16];
+
+     label026:
+        if $i21 <= 1 goto label255;
+
+        $i23 = $i22 + 1;
+
+        $i7 = $r1[$i22];
+
+     label027:
+        if $i21 <= 2 goto label254;
+
+        $i16 = $i23 + 1;
+
+        $i9 = $r1[$i23];
+
+     label028:
+        if $i21 <= 3 goto label017;
+
+        $i20 = $r1[$i16];
+
+        $i16 = $i16 + 1;
+
+        goto label017;
+
+     label029:
+        if $i8 >= 200 goto label253;
+
+        if $i8 == 108 goto label253;
+
+        $i22 = 0;
+
+        $i21 = $i19;
+
+        goto label019;
+
+     label030:
+        $z2 = 0;
+
+        goto label021;
+
+     label031:
+        $i20 = $r1[$i19];
+
+        $i23 = $r2[$i19];
+
+        if $i20 == $i23 goto label032;
+
+        $z2 = 1;
+
+        goto label023;
+
+     label032:
+        $i19 = $i19 + 1;
+
+        goto label022;
+
+     label033:
+        $i8 = $i17 + 1;
+
+        $i8 = $r6[$i8];
+
+        $i18 = $i17 + 2;
+
+        $i20 = $r6[$i18];
+
+        $i18 = $i17 + 3;
+
+        $i9 = $r6[$i18];
+
+        $i18 = $i17 + 4;
+
+        $i19 = $r6[$i18];
+
+        if $i8 != 1 goto label040;
+
+        if $i20 <= 0 goto label040;
+
+        $r10 = $r0.<com.metrictrade.and.fs: double[][] i>;
+
+        $i18 = lengthof $r10;
+
+        if $i20 >= $i18 goto label040;
+
+        $r10 = $r0.<com.metrictrade.and.fs: double[][] i>;
+
+        $i18 = $i16;
+
+        $r11 = $r10[$i20];
+
+        $i16 = $i20;
+
+     label034:
+        if $i9 != 1 goto label042;
+
+        if $i19 <= 0 goto label042;
+
+        $r10 = $r0.<com.metrictrade.and.fs: double[][] i>;
+
+        $i20 = lengthof $r10;
+
+        if $i19 >= $i20 goto label042;
+
+        $r10 = $r0.<com.metrictrade.and.fs: double[][] i>;
+
+        $r12 = $r10[$i19];
+
+     label035:
+        if $z0 != 0 goto label243;
+
+        if $i8 != 1 goto label036;
+
+        if $r11 == null goto label243;
+
+     label036:
+        if $i9 != 1 goto label037;
+
+        if $r12 == null goto label243;
+
+     label037:
+        $r13 = virtualinvoke $r0.<com.metrictrade.and.fs: double[] b(int,int)>($i11, $i1);
+
+        if $i7 != 18 goto label249;
+
+        $i20 = $i10 - $i19;
+
+        if $i20 >= 0 goto label038;
+
+        $i20 = 0;
+
+     label038:
+        $i21 = $i20;
+
+        $z2 = 0;
+
+     label039:
+        if $i21 < $i1 goto label044;
+
+        $i8 = $i13;
+
+        goto label013;
+
+     label040:
+        if $z0 == 0 goto label041;
+
+        if 16 <= $i16 goto label251;
+
+        $i18 = $i16 + 1;
+
+        $i21 = $i17 + 2;
+
+        $r1[$i16] = $i21;
+
+        $r11 = null;
+
+        $i16 = $i20;
+
+        goto label034;
+
+     label041:
+        if 16 <= $i16 goto label251;
+
+        $i18 = $i16 + 1;
+
+        $r11 = null;
+
+        $i16 = $r1[$i16];
+
+        goto label034;
+
+     label042:
+        if $z0 == 0 goto label043;
+
+        if 16 <= $i18 goto label250;
+
+        $i21 = $i17 + 4;
+
+        $r1[$i18] = $i21;
+
+        $i18 = $i18 + 1;
+
+        $r12 = null;
+
+        goto label035;
+
+     label043:
+        if 16 <= $i18 goto label250;
+
+        $r12 = null;
+
+        $i19 = $r1[$i18];
+
+        $i18 = $i18 + 1;
+
+        goto label035;
+
+     label044:
+        if $i8 != 1 goto label045;
+
+        if $r11 == null goto label081;
+
+     label045:
+        if $i9 != 1 goto label046;
+
+        if $r12 == null goto label081;
+
+     label046:
+        $d4 = (double) $i19;
+
+        if $i8 != 1 goto label248;
+
+        $i22 = lengthof $r11;
+
+        if $i21 >= $i22 goto label243;
+
+        $d3 = $r11[$i21];
+
+     label047:
+        if $i9 != 1 goto label247;
+
+        $i22 = lengthof $r12;
+
+        if $i21 >= $i22 goto label243;
+
+        $d4 = $r12[$i21];
+
+     label048:
+        if $i7 != 14 goto label068;
+
+        $d2 = #NaN;
+
+        $i22 = 6;
+
+        $d5 = #NaN;
+
+     label049:
+        if $i22 <= 8 goto label061;
+
+        $i22 = 0;
+
+        $d0 = 0.0;
+
+        $b25 = $d3 cmpl $d3;
+
+        if $b25 != 0 goto label050;
+
+        $i22 = 1;
+
+        $d0 = 0.0 + $d3;
+
+     label050:
+        $b25 = $d4 cmpl $d4;
+
+        if $b25 != 0 goto label051;
+
+        $i22 = $i22 + 1;
+
+        $d0 = $d0 + $d4;
+
+     label051:
+        $b25 = $d2 cmpl $d2;
+
+        if $b25 != 0 goto label245;
+
+        $d0 = $d0 + $d2;
+
+        $i22 = $i22 + 1;
+
+     label052:
+        $b25 = $d5 cmpl $d5;
+
+        if $b25 != 0 goto label244;
+
+        $d3 = $d5 + $d0;
+
+        $i22 = $i22 + 1;
+
+     label053:
+        if $i22 == 0 goto label067;
+
+        $d4 = (double) $i22;
+
+        $d3 = $d3 / $d4;
+
+     label054:
+        $r13[$i21] = $d3;
+
+     label055:
+        if $i21 != $i20 goto label060;
+
+        if $r2 != null goto label082;
+
+        $z3 = 1;
+
+     label056:
+        if $z3 != 0 goto label058;
+
+        $i22 = 0;
+
+     label057:
+        if $i22 < $i18 goto label083;
+
+     label058:
+        if $z3 == 0 goto label243;
+
+        $i22 = 0;
+
+     label059:
+        if $i22 < $i20 goto label085;
+
+     label060:
+        $i21 = $i21 + 1;
+
+        goto label039;
+
+     label061:
+        $i23 = $i17 + $i22;
+
+        $i23 = $r6[$i23];
+
+        if $i23 == 0 goto label246;
+
+        $d0 = #NaN;
+
+        $i24 = $i17 + $i22;
+
+        $i24 = $i24 + -1;
+
+        $i24 = $r6[$i24];
+
+        if $i24 != 1 goto label065;
+
+        $r14 = null;
+
+        if $i23 <= 0 goto label062;
+
+        $r10 = $r0.<com.metrictrade.and.fs: double[][] i>;
+
+        $i24 = lengthof $r10;
+
+        if $i23 >= $i24 goto label062;
+
+        $r10 = $r0.<com.metrictrade.and.fs: double[][] i>;
+
+        $r14 = $r10[$i23];
+
+     label062:
+        if $r14 == null goto label063;
+
+        $i23 = lengthof $r14;
+
+        if $i21 >= $i23 goto label063;
+
+        $d0 = $r14[$i21];
+
+     label063:
+        if $i22 != 6 goto label066;
+
+     label064:
+        $i22 = $i22 + 2;
+
+        $d2 = $d0;
+
+        goto label049;
+
+     label065:
+        if $i23 == 0 goto label063;
+
+        $d0 = (double) $i23;
+
+        goto label063;
+
+     label066:
+        $d5 = $d0;
+
+        $d0 = $d2;
+
+        goto label064;
+
+     label067:
+        $d3 = #NaN;
+
+        goto label054;
+
+     label068:
+        if $i7 != 18 goto label071;
+
+        $i22 = $i21 + $i19;
+
+        if $i22 < 0 goto label081;
+
+        $i23 = lengthof $r13;
+
+        if $i22 >= $i23 goto label081;
+
+        $r13[$i22] = $d3;
+
+        if $z2 != 0 goto label081;
+
+        $i23 = 0;
+
+     label069:
+        if $i23 < $i22 goto label070;
+
+        $z2 = 1;
+
+        goto label055;
+
+     label070:
+        $r13[$i23] = #NaN;
+
+        $i23 = $i23 + 1;
+
+        goto label069;
+
+     label071:
+        $b25 = $d3 cmpl $d3;
+
+        if $b25 != 0 goto label080;
+
+        $b25 = $d4 cmpl $d4;
+
+        if $b25 != 0 goto label080;
+
+        if $i7 != 17 goto label072;
+
+        $d3 = $d3 * $d4;
+
+        $d3 = $d3 / 100.0;
+
+        $r13[$i21] = $d3;
+
+        goto label055;
+
+     label072:
+        if $i7 != 15 goto label073;
+
+        $d3 = staticinvoke <java.lang.Math: double max(double,double)>($d3, $d4);
+
+        $r13[$i21] = $d3;
+
+        goto label055;
+
+     label073:
+        if $i7 != 16 goto label074;
+
+        $d3 = staticinvoke <java.lang.Math: double min(double,double)>($d3, $d4);
+
+        $r13[$i21] = $d3;
+
+        goto label055;
+
+     label074:
+        if $i7 != 10 goto label076;
+
+        $d3 = $d3 + $d4;
+
+     label075:
+        $r13[$i21] = $d3;
+
+        goto label055;
+
+     label076:
+        if $i7 != 11 goto label077;
+
+        $d3 = $d3 - $d4;
+
+        goto label075;
+
+     label077:
+        if $i7 != 12 goto label078;
+
+        $d3 = $d3 * $d4;
+
+        goto label075;
+
+     label078:
+        $b25 = $d4 cmpl 0.0;
+
+        if $b25 != 0 goto label079;
+
+        $d3 = #NaN;
+
+        goto label075;
+
+     label079:
+        $d3 = $d3 / $d4;
+
+        goto label075;
+
+     label080:
+        $r13[$i21] = #NaN;
+
+     label081:
+        goto label055;
+
+     label082:
+        $z3 = 0;
+
+        goto label056;
+
+     label083:
+        $i23 = $r1[$i22];
+
+        $i24 = $r2[$i22];
+
+        if $i23 == $i24 goto label084;
+
+        $z3 = 1;
+
+        goto label058;
+
+     label084:
+        $i22 = $i22 + 1;
+
+        goto label057;
+
+     label085:
+        $r13[$i22] = #NaN;
+
+        $i22 = $i22 + 1;
+
+        goto label059;
+
+     label086:
+        $i8 = $i7 + -3;
+
+        $i8 = $i8 + 13;
+
+        $i8 = $i8 + 2;
+
+        if $i7 != 2 goto label087;
+
+        $i8 = $i11;
+
+     label087:
+        $r11 = virtualinvoke $r0.<com.metrictrade.and.fs: double[] b(int,int)>($i8, $i1);
+
+        if $i7 != 3 goto label088;
+
+        $i12 = $i8;
+
+     label088:
+        if $i7 != 4 goto label242;
+
+        $i18 = $i8;
+
+     label089:
+        if $i7 != 4 goto label241;
+
+        $i13 = $i8;
+
+     label090:
+        if $i7 != 4 goto label240;
+
+     label091:
+        $i15 = $i17 + 16;
+
+     label092:
+        if $i15 < $i0 goto label100;
+
+     label093:
+        $i14 = $i15 - $i17;
+
+        $i14 = $i14 >> 4;
+
+        if $i14 <= 16 goto label094;
+
+        $i14 = 16;
+
+     label094:
+        $i7 = 0;
+
+     label095:
+        if $i7 < 16 goto label102;
+
+        $i9 = 0;
+
+        $i19 = 0;
+
+        $i7 = $i10;
+
+     label096:
+        if $i19 < $i14 goto label103;
+
+        if $i7 >= 0 goto label097;
+
+        $i7 = 0;
+
+     label097:
+        $i19 = $i7;
+
+     label098:
+        if $i19 < $i1 goto label105;
+
+     label099:
+        $i17 = $i15 + -16;
+
+        $i15 = $i8;
+
+        $i8 = $i18;
+
+        $i18 = $i16 + $i9;
+
+        $i14 = $i13;
+
+        goto label013;
+
+     label100:
+        $i14 = $r6[$i15];
+
+        if $i14 == 21 goto label101;
+
+        $i14 = $r6[$i15];
+
+        if $i14 != 20 goto label093;
+
+     label101:
+        $i15 = $i15 + 16;
+
+        goto label092;
+
+     label102:
+        $r5[$i7] = 0;
+
+        $r4[$i7] = 0;
+
+        $i7 = $i7 + 1;
+
+        goto label095;
+
+     label103:
+        $i20 = $i19 << 4;
+
+        $i20 = $i20 + $i17;
+
+        $i21 = $i20 + 4;
+
+        $i21 = $r6[$i21];
+
+        if $i21 != 6 goto label104;
+
+        $i20 = $i20 + 6;
+
+        $i20 = $r6[$i20];
+
+        $i20 = $i10 - $i20;
+
+        $i7 = staticinvoke <java.lang.Math: int min(int,int)>($i7, $i20);
+
+     label104:
+        $i19 = $i19 + 1;
+
+        goto label096;
+
+     label105:
+        $i20 = 0;
+
+     label106:
+        if $i20 < $i14 goto label115;
+
+     label107:
+        $z3 = $r3[0];
+
+        $i22 = 0;
+
+        $z2 = 0;
+
+     label108:
+        if $i22 < $i14 goto label149;
+
+        if $z3 == 0 goto label162;
+
+        $d3 = $r8[$i19];
+
+     label109:
+        $r11[$i19] = $d3;
+
+        if $i19 != $i7 goto label114;
+
+        if $r2 != null goto label163;
+
+        $z2 = 1;
+
+     label110:
+        if $z2 != 0 goto label112;
+
+        $i20 = 0;
+
+     label111:
+        $i21 = $i16 + $i9;
+
+        if $i20 < $i21 goto label164;
+
+     label112:
+        if $z2 == 0 goto label099;
+
+        $i20 = 0;
+
+     label113:
+        if $i20 < $i7 goto label166;
+
+     label114:
+        $i19 = $i19 + 1;
+
+        goto label098;
+
+     label115:
+        $i21 = $i20 << 4;
+
+        $i24 = $i17 + $i21;
+
+        $r3[$i20] = 0;
+
+        $i21 = $i24 + 4;
+
+        $i21 = $r6[$i21];
+
+        $i22 = $i24 + 2;
+
+        $i22 = $r6[$i22];
+
+        $i23 = $i24 + 3;
+
+        $i26 = $r6[$i23];
+
+        $i23 = $i24 + 5;
+
+        $i23 = $r6[$i23];
+
+        $i27 = $i24 + 6;
+
+        $i27 = $r6[$i27];
+
+        if $i22 != 1 goto label125;
+
+        if $i26 <= 0 goto label125;
+
+        $r10 = $r0.<com.metrictrade.and.fs: double[][] i>;
+
+        $i28 = lengthof $r10;
+
+        if $i26 >= $i28 goto label125;
+
+        $r10 = $r0.<com.metrictrade.and.fs: double[][] i>;
+
+        $r12 = $r10[$i26];
+
+        $i28 = $i16;
+
+     label116:
+        if $i23 != 1 goto label127;
+
+        if $i27 <= 0 goto label127;
+
+        $r10 = $r0.<com.metrictrade.and.fs: double[][] i>;
+
+        $i29 = lengthof $r10;
+
+        if $i27 >= $i29 goto label127;
+
+        $r10 = $r0.<com.metrictrade.and.fs: double[][] i>;
+
+        $i24 = $i28;
+
+        $r13 = $r10[$i27];
+
+     label117:
+        if $i22 != 1 goto label118;
+
+        if $r12 == null goto label123;
+
+     label118:
+        if $i23 != 1 goto label119;
+
+        if $r13 == null goto label123;
+
+     label119:
+        $d3 = (double) $i26;
+
+        $d4 = (double) $i27;
+
+        if $i22 != 1 goto label120;
+
+        $i26 = lengthof $r12;
+
+        if $i19 >= $i26 goto label107;
+
+        $d3 = $r12[$i19];
+
+     label120:
+        if $i23 != 1 goto label121;
+
+        $i23 = lengthof $r13;
+
+        if $i19 >= $i23 goto label107;
+
+        $d4 = $r13[$i19];
+
+     label121:
+        $b25 = $d3 cmpl $d3;
+
+        if $b25 != 0 goto label123;
+
+        $b25 = $d4 cmpl $d4;
+
+        if $b25 != 0 goto label123;
+
+        $z2 = 0;
+
+        lookupswitch($i21)
+        {
+            case 1: goto label131;
+            case 2: goto label133;
+            case 3: goto label129;
+            case 4: goto label135;
+            case 5: goto label140;
+            case 6: goto label145;
+            default: goto label122;
+        };
+
+     label122:
+        $r3[$i20] = $z2;
+
+        $r4[$i20] = $z2;
+
+     label123:
+        if $i19 != $i10 goto label237;
+
+        if $i20 != 0 goto label237;
+
+        $i9 = $i24 - $i16;
+
+     label124:
+        $i20 = $i20 + 1;
+
+        goto label106;
+
+     label125:
+        if $z0 == 0 goto label126;
+
+        if $i19 != $i10 goto label239;
+
+        if 16 <= $i16 goto label239;
+
+        $i28 = $i16 + 1;
+
+        $i29 = $i24 + 3;
+
+        $r1[$i16] = $i29;
+
+        $r12 = null;
+
+        goto label116;
+
+     label126:
+        if 16 <= $i16 goto label239;
+
+        $i28 = $i16 + 1;
+
+        $r12 = null;
+
+        $i26 = $r1[$i16];
+
+        goto label116;
+
+     label127:
+        if $z0 == 0 goto label128;
+
+        if $i19 != $i10 goto label238;
+
+        if 16 <= $i28 goto label238;
+
+        $i24 = $i24 + 6;
+
+        $r1[$i28] = $i24;
+
+        $i24 = $i28 + 1;
+
+        $r13 = null;
+
+        goto label117;
+
+     label128:
+        if 16 <= $i28 goto label238;
+
+        $i24 = $i28 + 1;
+
+        $i27 = $r1[$i28];
+
+        $r13 = null;
+
+        goto label117;
+
+     label129:
+        $b25 = $d3 cmpl $d4;
+
+        if $b25 != 0 goto label130;
+
+        $z2 = 1;
+
+        goto label122;
+
+     label130:
+        $z2 = 0;
+
+        goto label122;
+
+     label131:
+        $b25 = $d3 cmpl $d4;
+
+        $i21 = (int) $b25;
+
+        if $i21 <= 0 goto label132;
+
+        $z2 = 1;
+
+        goto label122;
+
+     label132:
+        $z2 = 0;
+
+        goto label122;
+
+     label133:
+        $b25 = $d3 cmpg $d4;
+
+        $i21 = (int) $b25;
+
+        if $i21 >= 0 goto label134;
+
+        $z2 = 1;
+
+        goto label122;
+
+     label134:
+        $z2 = 0;
+
+        goto label122;
+
+     label135:
+        $i21 = $r5[$i20];
+
+        if $i21 >= 0 goto label138;
+
+        $b25 = $d3 cmpl $d4;
+
+        $i21 = (int) $b25;
+
+        if $i21 <= 0 goto label138;
+
+        $z2 = 1;
+
+     label136:
+        $b25 = $d3 cmpl $d4;
+
+        $i21 = (int) $b25;
+
+        if $i21 <= 0 goto label139;
+
+        $b25 = 1;
+
+     label137:
+        $r5[$i20] = $b25;
+
+        goto label122;
+
+     label138:
+        $z2 = 0;
+
+        goto label136;
+
+     label139:
+        $b25 = -1;
+
+        goto label137;
+
+     label140:
+        $i21 = $r5[$i20];
+
+        if $i21 <= 0 goto label143;
+
+        $b25 = $d3 cmpg $d4;
+
+        $i21 = (int) $b25;
+
+        if $i21 >= 0 goto label143;
+
+        $z2 = 1;
+
+     label141:
+        $b25 = $d3 cmpl $d4;
+
+        $i21 = (int) $b25;
+
+        if $i21 <= 0 goto label144;
+
+        $b25 = 1;
+
+     label142:
+        $r5[$i20] = $b25;
+
+        goto label122;
+
+     label143:
+        $z2 = 0;
+
+        goto label141;
+
+     label144:
+        $b25 = -1;
+
+        goto label142;
+
+     label145:
+        $z2 = 0;
+
+        $b25 = $d3 cmpl $d3;
+
+        if $b25 != 0 goto label122;
+
+        if $i22 != 1 goto label122;
+
+        if $i27 != 0 goto label146;
+
+        $z2 = 1;
+
+        goto label122;
+
+     label146:
+        $i21 = $i19 - $i27;
+
+        if $i21 >= 0 goto label147;
+
+        $i21 = 0;
+
+     label147:
+        if $i21 >= $i19 goto label122;
+
+        $d3 = $r12[$i21];
+
+        $d4 = $r12[$i21];
+
+        $b25 = $d3 cmpl $d4;
+
+        if $b25 != 0 goto label148;
+
+        $z2 = 1;
+
+        goto label122;
+
+     label148:
+        $i21 = $i21 + 1;
+
+        goto label147;
+
+     label149:
+        $i20 = $i22 << 4;
+
+        $i20 = $i17 + $i20;
+
+        $z4 = $r3[$i22];
+
+        $i21 = $i22 + 1;
+
+     label150:
+        if $i21 < $i14 goto label154;
+
+     label151:
+        if $z2 != 0 goto label235;
+
+        $z3 = $z4;
+
+     label152:
+        $i21 = $r6[$i20];
+
+        if $i21 != 21 goto label160;
+
+        if $z3 != 0 goto label159;
+
+        if $z4 != 0 goto label159;
+
+        $z3 = 0;
+
+     label153:
+        $i22 = $i22 + 1;
+
+        $z2 = 1;
+
+        goto label108;
+
+     label154:
+        $i22 = $i21 << 4;
+
+        $i22 = $i22 + $i17;
+
+        $i23 = $r6[$i22];
+
+        if $i23 != 21 goto label157;
+
+        if $z4 != 0 goto label156;
+
+        $z4 = $r3[$i21];
+
+        if $z4 != 0 goto label156;
+
+        $z4 = 0;
+
+     label155:
+        $i22 = $i22 + 8;
+
+        $i22 = $r6[$i22];
+
+        if $i22 == 32 goto label236;
+
+        $i22 = $i21;
+
+        $i21 = $i21 + 1;
+
+        goto label150;
+
+     label156:
+        $z4 = 1;
+
+        goto label155;
+
+     label157:
+        $i23 = $r6[$i22];
+
+        if $i23 != 20 goto label155;
+
+        if $z4 == 0 goto label158;
+
+        $z4 = $r3[$i21];
+
+        if $z4 == 0 goto label158;
+
+        $z4 = 1;
+
+        goto label155;
+
+     label158:
+        $z4 = 0;
+
+        goto label155;
+
+     label159:
+        $z3 = 1;
+
+        goto label153;
+
+     label160:
+        $i20 = $r6[$i20];
+
+        if $i20 != 20 goto label153;
+
+        if $z3 == 0 goto label161;
+
+        if $z4 == 0 goto label161;
+
+        $z3 = 1;
+
+        goto label153;
+
+     label161:
+        $z3 = 0;
+
+        goto label153;
+
+     label162:
+        $d3 = #NaN;
+
+        goto label109;
+
+     label163:
+        $z2 = 0;
+
+        goto label110;
+
+     label164:
+        $i21 = $r1[$i20];
+
+        $i22 = $r2[$i20];
+
+        if $i21 == $i22 goto label165;
+
+        $z2 = 1;
+
+        goto label112;
+
+     label165:
+        $i20 = $i20 + 1;
+
+        goto label111;
+
+     label166:
+        $r11[$i20] = #NaN;
+
+        $i20 = $i20 + 1;
+
+        goto label113;
+
+     label167:
+        $z0 = 1;
+
+        goto label003;
+
+     label168:
+        $z2 = 1;
+
+        goto label004;
+
+     label169:
+        $r11 = null;
+
+        goto label005;
+
+     label170:
+        $r12 = null;
+
+        goto label006;
+
+     label171:
+        $r13 = null;
+
+        goto label007;
+
+     label172:
+        if $r11 != null goto label178;
+
+        $d6 = #NaN;
+
+     label173:
+        if $r13 != null goto label179;
+
+        $d7 = #NaN;
+
+     label174:
+        if $r12 != null goto label180;
+
+        $d8 = #NaN;
+
+     label175:
+        $d5 = $r8[$i10];
+
+        if $z2 == 0 goto label185;
+
+        if $z3 == 0 goto label185;
+
+        $b25 = $d5 cmpl $d5;
+
+        if $b25 != 0 goto label185;
+
+        $b25 = $d0 cmpl $d0;
+
+        if $b25 != 0 goto label185;
+
+        if $z0 == 0 goto label183;
+
+        if $i2 == 0 goto label181;
+
+        $i12 = $i4 - $i2;
+
+        $d9 = (double) $i12;
+
+        $d9 = $d9 * $d0;
+
+        $d10 = (double) $i4;
+
+        $d9 = $d9 / $d10;
+
+        $b25 = $d5 cmpg $d9;
+
+        $i12 = (int) $b25;
+
+        if $i12 >= 0 goto label181;
+
+        $d4 = $d5 + $d2;
+
+        $r7[$i10] = $d4;
+
+        $b25 = $d0 cmpl $d5;
+
+        $i12 = (int) $b25;
+
+        if $i12 <= 0 goto label176;
+
+        $i11 = $i11 + 1;
+
+     label176:
+        $z3 = 0;
+
+        $z4 = 0;
+
+        $d0 = $d5;
+
+     label177:
+        $i10 = $i10 + 1;
+
+        $d1 = $d5;
+
+        goto label008;
+
+     label178:
+        $d6 = $r11[$i10];
+
+        goto label173;
+
+     label179:
+        $d7 = $r13[$i10];
+
+        goto label174;
+
+     label180:
+        $d8 = $r12[$i10];
+
+        goto label175;
+
+     label181:
+        if $i3 == 0 goto label183;
+
+        $i12 = $i4 - $i3;
+
+        $d9 = (double) $i12;
+
+        $d9 = $d9 * $d1;
+
+        $d10 = (double) $i4;
+
+        $d9 = $d9 / $d10;
+
+        $b25 = $d5 cmpg $d9;
+
+        $i12 = (int) $b25;
+
+        if $i12 >= 0 goto label183;
+
+        $d4 = $d5 + $d2;
+
+        $r7[$i10] = $d4;
+
+        $b25 = $d0 cmpl $d5;
+
+        $i12 = (int) $b25;
+
+        if $i12 <= 0 goto label182;
+
+        $i11 = $i11 + 1;
+
+     label182:
+        $z3 = 0;
+
+        $z4 = 0;
+
+        $d0 = $d5;
+
+        goto label177;
+
+     label183:
+        if $i5 == 0 goto label185;
+
+        $i12 = $i6 + $i5;
+
+        $d9 = (double) $i12;
+
+        $d9 = $d9 * $d0;
+
+        $d10 = (double) $i6;
+
+        $d9 = $d9 / $d10;
+
+        $b25 = $d5 cmpl $d9;
+
+        $i12 = (int) $b25;
+
+        if $i12 <= 0 goto label185;
+
+        $d4 = $d5 + $d2;
+
+        $r7[$i10] = $d4;
+
+        $b25 = $d0 cmpl $d5;
+
+        $i12 = (int) $b25;
+
+        if $i12 <= 0 goto label184;
+
+        $i11 = $i11 + 1;
+
+     label184:
+        $z3 = 0;
+
+        $z4 = 0;
+
+        $d0 = $d5;
+
+        goto label177;
+
+     label185:
+        $b25 = $d7 cmpl $d7;
+
+        if $b25 == 0 goto label186;
+
+        $b25 = $d8 cmpl $d8;
+
+        if $b25 != 0 goto label191;
+
+     label186:
+        $z3 = 0;
+
+     label187:
+        if $z3 != 0 goto label188;
+
+        if $z4 == 0 goto label197;
+
+     label188:
+        $b25 = $d5 cmpl $d5;
+
+        if $b25 != 0 goto label197;
+
+        if $z4 == 0 goto label192;
+
+        if $z3 != 0 goto label192;
+
+        $d4 = $d5 + $d2;
+
+        $r7[$i10] = $d4;
+
+        $b25 = $d0 cmpl $d5;
+
+        $i12 = (int) $b25;
+
+        if $i12 <= 0 goto label189;
+
+        $i11 = $i11 + 1;
+
+     label189:
+        $d0 = $d5;
+
+     label190:
+        $z4 = $z3;
+
+        goto label177;
+
+     label191:
+        $b25 = $d6 cmpl $d6;
+
+        if $b25 != 0 goto label187;
+
+        $z3 = 1;
+
+        goto label187;
+
+     label192:
+        if $z3 == 0 goto label195;
+
+        if $z4 != 0 goto label195;
+
+        $b25 = $d0 cmpl $d0;
+
+        if $b25 != 0 goto label194;
+
+        $d4 = $d0 - $d5;
+
+        $d2 = $d4 + $d2;
+
+     label193:
+        $i0 = $i0 + 1;
+
+        $d4 = $d5 + $d2;
+
+        $r7[$i10] = $d4;
+
+        $d0 = $d5;
+
+        goto label190;
+
+     label194:
+        $d3 = $d5;
+
+        goto label193;
+
+     label195:
+        $b25 = $d5 cmpl $d1;
+
+        $i12 = (int) $b25;
+
+        if $i12 <= 0 goto label233;
+
+        $d1 = $d5;
+
+     label196:
+        $d4 = $d5 + $d2;
+
+        $r7[$i10] = $d4;
+
+        $d5 = $d1;
+
+        goto label190;
+
+     label197:
+        $r7[$i10] = #NaN;
+
+        $d5 = $d1;
+
+        goto label190;
+
+     label198:
+        $d0 = #NaN;
+
+        $d2 = 0.0;
+
+        if $i12 <= 0 goto label208;
+
+        $r10 = $r0.<com.metrictrade.and.fs: double[][] i>;
+
+        $r11 = $r10[$i12];
+
+     label199:
+        if $i13 <= 0 goto label209;
+
+        $r10 = $r0.<com.metrictrade.and.fs: double[][] i>;
+
+        $r12 = $r10[$i13];
+
+     label200:
+        if $i15 <= 0 goto label210;
+
+        $r10 = $r0.<com.metrictrade.and.fs: double[][] i>;
+
+        $r13 = $r10[$i15];
+
+     label201:
+        $d1 = 0.0;
+
+        $z3 = 0;
+
+        $i0 = 0;
+
+        $d3 = #NaN;
+
+        $z4 = 0;
+
+        $i11 = 0;
+
+        $d4 = #NaN;
+
+     label202:
+        if $i10 >= $i1 goto label009;
+
+        if $r11 != null goto label211;
+
+        $d6 = #NaN;
+
+     label203:
+        if $r12 != null goto label212;
+
+        $d7 = #NaN;
+
+     label204:
+        if $r13 != null goto label213;
+
+        $d8 = #NaN;
+
+     label205:
+        $d5 = $r8[$i10];
+
+        if $z2 == 0 goto label218;
+
+        if $z3 == 0 goto label218;
+
+        $b25 = $d5 cmpl $d5;
+
+        if $b25 != 0 goto label218;
+
+        $b25 = $d0 cmpl $d0;
+
+        if $b25 != 0 goto label218;
+
+        if $z0 == 0 goto label216;
+
+        if $i2 == 0 goto label214;
+
+        $i12 = $i4 + $i2;
+
+        $d9 = (double) $i12;
+
+        $d9 = $d9 * $d0;
+
+        $d10 = (double) $i4;
+
+        $d9 = $d9 / $d10;
+
+        $b25 = $d5 cmpl $d9;
+
+        $i12 = (int) $b25;
+
+        if $i12 <= 0 goto label214;
+
+        $d4 = $d5 + $d2;
+
+        $r7[$i10] = $d4;
+
+        $b25 = $d0 cmpg $d5;
+
+        $i12 = (int) $b25;
+
+        if $i12 >= 0 goto label206;
+
+        $i11 = $i11 + 1;
+
+     label206:
+        $z3 = 0;
+
+        $z4 = 0;
+
+        $d0 = $d5;
+
+     label207:
+        $i10 = $i10 + 1;
+
+        $d1 = $d5;
+
+        goto label202;
+
+     label208:
+        $r11 = null;
+
+        goto label199;
+
+     label209:
+        $r12 = null;
+
+        goto label200;
+
+     label210:
+        $r13 = null;
+
+        goto label201;
+
+     label211:
+        $d6 = $r11[$i10];
+
+        goto label203;
+
+     label212:
+        $d7 = $r12[$i10];
+
+        goto label204;
+
+     label213:
+        $d8 = $r13[$i10];
+
+        goto label205;
+
+     label214:
+        if $i3 == 0 goto label216;
+
+        $i12 = $i4 + $i3;
+
+        $d9 = (double) $i12;
+
+        $d9 = $d9 * $d1;
+
+        $d10 = (double) $i4;
+
+        $d9 = $d9 / $d10;
+
+        $b25 = $d5 cmpl $d9;
+
+        $i12 = (int) $b25;
+
+        if $i12 <= 0 goto label216;
+
+        $d4 = $d5 + $d2;
+
+        $r7[$i10] = $d4;
+
+        $b25 = $d0 cmpg $d5;
+
+        $i12 = (int) $b25;
+
+        if $i12 >= 0 goto label215;
+
+        $i11 = $i11 + 1;
+
+     label215:
+        $z3 = 0;
+
+        $z4 = 0;
+
+        $d0 = $d5;
+
+        goto label207;
+
+     label216:
+        if $i5 == 0 goto label218;
+
+        $i12 = $i6 - $i5;
+
+        $d9 = (double) $i12;
+
+        $d9 = $d9 * $d0;
+
+        $d10 = (double) $i6;
+
+        $d9 = $d9 / $d10;
+
+        $b25 = $d5 cmpg $d9;
+
+        $i12 = (int) $b25;
+
+        if $i12 >= 0 goto label218;
+
+        $d4 = $d5 + $d2;
+
+        $r7[$i10] = $d4;
+
+        $b25 = $d0 cmpg $d5;
+
+        $i12 = (int) $b25;
+
+        if $i12 >= 0 goto label217;
+
+        $i11 = $i11 + 1;
+
+     label217:
+        $z3 = 0;
+
+        $z4 = 0;
+
+        $d0 = $d5;
+
+        goto label207;
+
+     label218:
+        $b25 = $d7 cmpl $d7;
+
+        if $b25 != 0 goto label223;
+
+        $z3 = 1;
+
+     label219:
+        if $z3 != 0 goto label220;
+
+        if $z4 == 0 goto label230;
+
+     label220:
+        $b25 = $d5 cmpl $d5;
+
+        if $b25 != 0 goto label230;
+
+        if $z4 == 0 goto label225;
+
+        if $z3 != 0 goto label225;
+
+        $d4 = $d5 + $d2;
+
+        $r7[$i10] = $d4;
+
+        $b25 = $d0 cmpg $d5;
+
+        $i12 = (int) $b25;
+
+        if $i12 >= 0 goto label221;
+
+        $i11 = $i11 + 1;
+
+     label221:
+        $d0 = $d5;
+
+     label222:
+        $z4 = $z3;
+
+        goto label207;
+
+     label223:
+        $b25 = $d6 cmpl $d6;
+
+        if $b25 == 0 goto label224;
+
+        $b25 = $d8 cmpl $d8;
+
+        if $b25 != 0 goto label219;
+
+     label224:
+        $z3 = 0;
+
+        goto label219;
+
+     label225:
+        if $z3 == 0 goto label228;
+
+        if $z4 != 0 goto label228;
+
+        $b25 = $d0 cmpl $d0;
+
+        if $b25 != 0 goto label227;
+
+        $d4 = $d0 - $d5;
+
+        $d2 = $d4 + $d2;
+
+     label226:
+        $i0 = $i0 + 1;
+
+        $d4 = $d5 + $d2;
+
+        $r7[$i10] = $d4;
+
+        $d0 = $d5;
+
+        goto label222;
+
+     label227:
+        $d3 = $d5;
+
+        goto label226;
+
+     label228:
+        $b25 = $d5 cmpg $d1;
+
+        $i12 = (int) $b25;
+
+        if $i12 >= 0 goto label232;
+
+        $d1 = $d5;
+
+     label229:
+        $d4 = $d5 + $d2;
+
+        $r7[$i10] = $d4;
+
+        $d5 = $d1;
+
+        goto label222;
+
+     label230:
+        $r7[$i10] = #NaN;
+
+        $d5 = $d1;
+
+        goto label222;
+
+     label231:
+        $z0 = 1;
+
+        goto label010;
+
+     label232:
+        goto label229;
+
+     label233:
+        goto label196;
+
+     label234:
+        $i11 = 0;
+
+        $i0 = 0;
+
+        $d3 = #NaN;
+
+        $d4 = #NaN;
+
+        goto label009;
+
+     label235:
+        goto label152;
+
+     label236:
+        $i22 = $i21;
+
+        goto label151;
+
+     label237:
+        goto label124;
+
+     label238:
+        $i24 = $i28;
+
+        $r13 = null;
+
+        goto label117;
+
+     label239:
+        $i28 = $i16;
+
+        $r12 = null;
+
+        goto label116;
+
+     label240:
+        $i8 = $i15;
+
+        goto label091;
+
+     label241:
+        $i13 = $i14;
+
+        goto label090;
+
+     label242:
+        $i18 = $i13;
+
+        goto label089;
+
+     label243:
+        $i8 = $i13;
+
+        goto label013;
+
+     label244:
+        $d3 = $d0;
+
+        goto label053;
+
+     label245:
+        goto label052;
+
+     label246:
+        $d0 = $d2;
+
+        goto label064;
+
+     label247:
+        goto label048;
+
+     label248:
+        $d3 = (double) $i16;
+
+        goto label047;
+
+     label249:
+        $i20 = $i10;
+
+        goto label038;
+
+     label250:
+        $r12 = null;
+
+        goto label035;
+
+     label251:
+        $i18 = $i16;
+
+        $r11 = null;
+
+        $i16 = $i20;
+
+        goto label034;
+
+     label252:
+        $i18 = $i16;
+
+        $i8 = $i13;
+
+        goto label013;
+
+     label253:
+        $i22 = $i7;
+
+        $i21 = $i19;
+
+        $i7 = $i20;
+
+        goto label019;
+
+     label254:
+        $i16 = $i23;
+
+        goto label028;
+
+     label255:
+        $i23 = $i22;
+
+        goto label027;
+
+     label256:
+        $i22 = $i16;
+
+        goto label026;
+
+     label257:
+        goto label017;
+
+     label258:
+        goto label015;
+
+     label259:
+        return;
+    }
+
+    public static void a(java.lang.String, int)
+    {
+        int[][] $r1;
+        int $i0, $i1;
+        java.lang.String[] $r2;
+        java.lang.String $r0;
+
+        $r0 := @parameter0: java.lang.String;
+
+        $i0 := @parameter1: int;
+
+        if $i0 < 20 goto label3;
+
+        $r1 = <com.metrictrade.and.fp: int[][] d>;
+
+        if $r1 == null goto label3;
+
+        $i0 = $i0 + -20;
+
+        $r2 = <com.metrictrade.pub.G2: java.lang.String[] c>;
+
+        $i1 = lengthof $r2;
+
+        if $i0 >= $i1 goto label1;
+
+        $r2 = <com.metrictrade.pub.G2: java.lang.String[] c>;
+
+        $r2[$i0] = $r0;
+
+     label1:
+        $i0 = $i0 + 2;
+
+        $r2 = <com.metrictrade.pub.G2: java.lang.String[] e>;
+
+        $i1 = lengthof $r2;
+
+        if $i0 >= $i1 goto label2;
+
+        $r2 = <com.metrictrade.pub.G2: java.lang.String[] e>;
+
+        $r2[$i0] = $r0;
+
+     label2:
+        staticinvoke <com.metrictrade.and.fj: void j(int)>(256);
+
+     label3:
+        return;
+    }
+
+    public static int b(int)
+    {
+        java.lang.Throwable $r4;
+        int[][] $r1, $r3;
+        java.lang.String[] $r5, $r6, $r7, $r8;
+        int $i0, $i1, $i2, $i3, $i4;
+        java.lang.Object $r0;
+        java.lang.String $r2;
+
+        $i0 := @parameter0: int;
+
+        $i1 = 0;
+
+        if $i0 >= 20 goto label01;
+
+        return 0;
+
+     label01:
+        $r1 = <com.metrictrade.and.fp: int[][] d>;
+
+        if $r1 == null goto label25;
+
+        $i2 = $i0 + -20;
+
+        $r0 = <com.metrictrade.and.fp: java.lang.Object h>;
+
+        entermonitor $r0;
+
+     label02:
+        $r3 = <com.metrictrade.and.fp: int[][] d>;
+
+        if $r3 != null goto label08;
+
+        $i0 = 0;
+
+     label03:
+        if $i0 > 0 goto label09;
+
+        <com.metrictrade.and.fp: int[][] d> = null;
+
+        <com.metrictrade.pub.G2: java.lang.String[] c> = null;
+
+     label04:
+        staticinvoke <com.metrictrade.and.fj: void j(int)>(256);
+
+        exitmonitor $r0;
+
+     label05:
+        return 0;
+
+     label06:
+        $r4 := @caughtexception;
+
+        exitmonitor $r0;
+
+     label07:
+        throw $r4;
+
+     label08:
+        $i0 = lengthof $r3;
+
+        $i0 = $i0 + -1;
+
+        goto label03;
+
+     label09:
+        if $i2 > $i0 goto label04;
+
+        $r1 = newarray (int[])[$i0];
+
+        staticinvoke <java.lang.System: void arraycopy(java.lang.Object,int,java.lang.Object,int,int)>($r3, 0, $r1, 0, $i2);
+
+        if $i0 <= $i2 goto label10;
+
+        $i3 = $i2 + 1;
+
+        $i4 = $i0 - $i2;
+
+        staticinvoke <java.lang.System: void arraycopy(java.lang.Object,int,java.lang.Object,int,int)>($r3, $i3, $r1, $i2, $i4);
+
+     label10:
+        $r5 = <com.metrictrade.pub.G2: java.lang.String[] c>;
+
+        if $r5 != null goto label17;
+
+        $i4 = 0;
+
+     label11:
+        if $i4 <= $i0 goto label12;
+
+        $i4 = $i0;
+
+     label12:
+        $r6 = newarray (java.lang.String)[$i0];
+
+        staticinvoke <java.lang.System: void arraycopy(java.lang.Object,int,java.lang.Object,int,int)>($r5, 0, $r6, 0, $i2);
+
+        if $i4 <= $i2 goto label13;
+
+        $i3 = $i2 + 1;
+
+        $i4 = $i4 - $i2;
+
+        staticinvoke <java.lang.System: void arraycopy(java.lang.Object,int,java.lang.Object,int,int)>($r5, $i3, $r6, $i2, $i4);
+
+     label13:
+        $i2 = 0;
+
+     label14:
+        if $i2 < $i0 goto label18;
+
+        $r5 = <com.metrictrade.pub.G2: java.lang.String[] d>;
+
+        $i2 = lengthof $r5;
+
+        $i2 = $i2 + $i0;
+
+        $i2 = $i2 + 3;
+
+        $r7 = newarray (java.lang.String)[$i2];
+
+        $r8 = <com.metrictrade.pub.G2: java.lang.String[] e>;
+
+        $r2 = $r8[0];
+
+        $r7[0] = $r2;
+
+        $r2 = <com.metrictrade.and.z: java.lang.String Q>;
+
+        $r7[1] = $r2;
+
+     label15:
+        $i2 = $i1 + 2;
+
+        $i3 = lengthof $r7;
+
+        if $i2 < $i3 goto label20;
+
+        <com.metrictrade.and.fp: int[][] d> = $r1;
+
+        <com.metrictrade.pub.G2: java.lang.String[] c> = $r6;
+
+        <com.metrictrade.pub.G2: java.lang.String[] e> = $r7;
+
+        exitmonitor $r0;
+
+     label16:
+        return 20;
+
+     label17:
+        $i4 = lengthof $r5;
+
+        goto label11;
+
+     label18:
+        $r2 = $r6[$i2];
+
+        if $r2 != null goto label19;
+
+        $i3 = $i2 + 1;
+
+        $r2 = staticinvoke <java.lang.Integer: java.lang.String toString(int)>($i3);
+
+        $r6[$i2] = $r2;
+
+     label19:
+        $i2 = $i2 + 1;
+
+        goto label14;
+
+     label20:
+        if $i1 >= $i0 goto label22;
+
+        $i2 = $i1 + 2;
+
+        $r2 = $r6[$i1];
+
+        $r7[$i2] = $r2;
+
+     label21:
+        $i1 = $i1 + 1;
+
+        goto label15;
+
+     label22:
+        if $i1 != $i0 goto label23;
+
+        $i2 = $i1 + 2;
+
+        $r2 = <com.metrictrade.and.z: java.lang.String Q>;
+
+        $r7[$i2] = $r2;
+
+        goto label21;
+
+     label23:
+        $i2 = $i1 + 2;
+
+        $i3 = $i1 - $i0;
+
+        $i3 = $i3 + -1;
+
+        $r2 = $r5[$i3];
+
+        $r7[$i2] = $r2;
+
+     label24:
+        goto label21;
+
+     label25:
+        return 0;
+
+        catch java.lang.Throwable from label02 to label05 with label06;
+        catch java.lang.Throwable from label06 to label07 with label06;
+        catch java.lang.Throwable from label08 to label16 with label06;
+        catch java.lang.Throwable from label17 to label24 with label06;
+    }
+
+    public final void a(com.metrictrade.and.fs, com.metrictrade.and.fs, com.metrictrade.and.fy)
+    {
+        byte $b18;
+        double[][] $r11, $r17;
+        double[] $r4, $r10, $r12, $r15, $r16, $r18;
+        short $s9, $s10, $s17;
+        java.util.Calendar $r13;
+        boolean[] $r7, $r8;
+        int[][] $r6;
+        int[] $r5, $r9;
+        boolean $z0, $z1, $z2, $z3, $z4, $z5, $z6;
+        com.metrictrade.and.fy $r3;
+        com.metrictrade.and.fs $r1, $r2, $r14;
+        com.metrictrade.and.fp r0;
+        int $i0, $i1, $i2, $i3, $i4, $i5, $i6, $i7, $i8, $i11, $i12, $i13, $i14, $i15, $i16, $i19, $i20, $i21, $i22, $i23, $i24, $i25, $i26, $i27;
+        double $d0, $d1, $d2, $d3, $d4, $d5, $d6, $d7, $d8, $d9, $d10;
+
+        r0 := @this: com.metrictrade.and.fp;
+
+        $r1 := @parameter0: com.metrictrade.and.fs;
+
+        $r2 := @parameter1: com.metrictrade.and.fs;
+
+        $r3 := @parameter2: com.metrictrade.and.fy;
+
+        $r5 = <com.metrictrade.and.fp: int[] e>;
+
+        $i0 = r0.<com.metrictrade.and.fp: int g>;
+
+        if $i0 >= 0 goto label001;
+
+        $i0 = 0;
+
+     label001:
+        if $i0 >= 20 goto label025;
+
+        $r6 = <com.metrictrade.and.fp: int[][] f>;
+
+        if $r6 == null goto label002;
+
+        $r6 = <com.metrictrade.and.fp: int[][] f>;
+
+        $i1 = lengthof $r6;
+
+        if $i0 >= $i1 goto label002;
+
+        $r6 = <com.metrictrade.and.fp: int[][] f>;
+
+        $r5 = $r6[$i0];
+
+     label002:
+        if $r5 != null goto label288;
+
+        $r5 = <com.metrictrade.and.fp: int[] e>;
+
+     label003:
+        $i2 = 16;
+
+        $i3 = lengthof $r5;
+
+        $r7 = newarray (boolean)[16];
+
+        $r8 = newarray (boolean)[16];
+
+        $r9 = newarray (int)[16];
+
+        $i4 = -1;
+
+        $i5 = -1;
+
+        $i6 = -1;
+
+        $i7 = -1;
+
+        $i8 = 0;
+
+        $i1 = 0;
+
+        $s9 = 100;
+
+        $i0 = 0;
+
+        $s10 = 100;
+
+        $i11 = 0;
+
+        $z0 = 1;
+
+        $i12 = $r5[0];
+
+        if $i12 != 32 goto label286;
+
+        $i11 = $r5[2];
+
+        $i13 = $r5[3];
+
+        $i14 = $r5[4];
+
+        $i15 = $r5[5];
+
+        $i12 = $r5[6];
+
+        $i16 = $r5[7];
+
+        if $i14 != 0 goto label026;
+
+        $i8 = $i15;
+
+     label004:
+        if $i11 != 0 goto label029;
+
+        $i0 = $i13;
+
+        $i11 = $i16;
+
+     label005:
+        if $i11 <= 0 goto label006;
+
+        if $i11 < 19000101 goto label030;
+
+     label006:
+        if $i12 != 1 goto label286;
+
+        $z1 = 0;
+
+     label007:
+        $i13 = 0;
+
+        $i12 = $r1.<com.metrictrade.and.fs: int h>;
+
+        $i14 = 0;
+
+     label008:
+        if $i14 < 7 goto label031;
+
+        $r10 = virtualinvoke $r2.<com.metrictrade.and.fs: double[] b(int,int)>(13, $i12);
+
+        $r11 = $r2.<com.metrictrade.and.fs: double[][] i>;
+
+        $r4 = $r11[1];
+
+        if $i11 <= 0 goto label285;
+
+        $r11 = $r2.<com.metrictrade.and.fs: double[][] i>;
+
+        $r12 = $r11[0];
+
+        $i14 = 0;
+
+     label009:
+        if $i14 < $i12 goto label032;
+
+     label010:
+        $i14 = <com.metrictrade.and.fp: int c>;
+
+        if $i14 != 0 goto label011;
+
+        $r13 = <com.metrictrade.and.fj: java.util.Calendar B>;
+
+        $d2 = staticinvoke <com.metrictrade.and.fj: double a(java.util.Calendar)>($r13);
+
+        $i14 = (int) $d2;
+
+        <com.metrictrade.and.fp: int c> = $i14;
+
+     label011:
+        $i14 = <com.metrictrade.and.fp: int c>;
+
+        $i14 = $i14 / 10000;
+
+        $i11 = $i11 / 10000;
+
+        $i11 = $i14 - $i11;
+
+        $i11 = $i11 * 153;
+
+        $r14 = <com.metrictrade.and.fp: com.metrictrade.and.fs a>;
+
+        if $r1 != $r14 goto label033;
+
+        $s17 = 300;
+
+     label012:
+        $i11 = $s17 + $i11;
+
+        $b18 = 1;
+
+        $i14 = $r1.<com.metrictrade.and.fs: int o>;
+
+        lookupswitch($i14)
+        {
+            case 5: goto label034;
+            case 10: goto label035;
+            case 15: goto label036;
+            case 30: goto label037;
+            case 60: goto label038;
+            case 62: goto label039;
+            case 64: goto label040;
+            default: goto label013;
+        };
+
+     label013:
+        if $b18 <= 1 goto label284;
+
+        $i11 = $i11 * $b18;
+
+     label014:
+        $r2.<com.metrictrade.and.fs: int h> = $i12;
+
+        $z2 = 0;
+
+        $i14 = 16;
+
+     label015:
+        if $i14 < $i3 goto label041;
+
+        if $i5 > 0 goto label016;
+
+        if $i4 <= 0 goto label264;
+
+     label016:
+        if $i8 != 0 goto label181;
+
+        if $i1 != 0 goto label181;
+
+        $z3 = 0;
+
+     label017:
+        if $z3 != 0 goto label182;
+
+        if $i0 != 0 goto label182;
+
+        $z4 = 0;
+
+     label018:
+        if $z1 == 0 goto label218;
+
+        if $i4 <= 0 goto label183;
+
+        $r11 = $r2.<com.metrictrade.and.fs: double[][] i>;
+
+        $r12 = $r11[$i4];
+
+     label019:
+        if $i6 <= 0 goto label184;
+
+        $r11 = $r2.<com.metrictrade.and.fs: double[][] i>;
+
+        $r15 = $r11[$i6];
+
+     label020:
+        if $i5 <= 0 goto label185;
+
+        $r11 = $r2.<com.metrictrade.and.fs: double[][] i>;
+
+        $r16 = $r11[$i5];
+
+     label021:
+        $z5 = 0;
+
+        $d3 = 0.0;
+
+        $d1 = 0.0;
+
+        $z6 = 0;
+
+        $d0 = #NaN;
+
+        $i2 = 0;
+
+        $i3 = 0;
+
+        $d4 = #NaN;
+
+        $d2 = #NaN;
+
+     label022:
+        if $i13 < $i12 goto label186;
+
+     label023:
+        $r2.<com.metrictrade.and.fs: double j> = $d2;
+
+        $r2.<com.metrictrade.and.fs: double k> = $d0;
+
+        $r2.<com.metrictrade.and.fs: int l> = $i2;
+
+        $r2.<com.metrictrade.and.fs: int m> = $i3;
+
+        if $z1 == 0 goto label257;
+
+        $z1 = 0;
+
+     label024:
+        $r2.<com.metrictrade.and.fs: boolean n> = $z1;
+
+        $r2.<com.metrictrade.and.fs: boolean A> = $z2;
+
+        $r2.<com.metrictrade.and.fs: int z> = $i11;
+
+        $z1 = $r2.<com.metrictrade.and.fs: boolean g>;
+
+        if $z1 != 0 goto label289;
+
+        if $z0 == 0 goto label289;
+
+        $r2.<com.metrictrade.and.fs: int c> = 3377152;
+
+        $r2.<com.metrictrade.and.fs: boolean g> = 1;
+
+        return;
+
+     label025:
+        $r6 = <com.metrictrade.and.fp: int[][] d>;
+
+        if $r6 == null goto label002;
+
+        $i0 = $i0 + -20;
+
+        $r6 = <com.metrictrade.and.fp: int[][] d>;
+
+        $i1 = lengthof $r6;
+
+        if $i0 >= $i1 goto label002;
+
+        $r5 = $r6[$i0];
+
+        goto label002;
+
+     label026:
+        if $i14 != 1 goto label027;
+
+        $i1 = $i15;
+
+        goto label004;
+
+     label027:
+        if $i14 != 2 goto label028;
+
+        $s9 = 10000;
+
+        $i8 = $i15;
+
+        goto label004;
+
+     label028:
+        if $i14 != 3 goto label004;
+
+        $s9 = 10000;
+
+        $i1 = $i15;
+
+        goto label004;
+
+     label029:
+        if $i11 != 1 goto label287;
+
+        $s10 = 10000;
+
+        $i0 = $i13;
+
+        $i11 = $i16;
+
+        goto label005;
+
+     label030:
+        $i11 = $i11 * 10;
+
+        goto label005;
+
+     label031:
+        $r11 = $r2.<com.metrictrade.and.fs: double[][] i>;
+
+        $r17 = $r1.<com.metrictrade.and.fs: double[][] i>;
+
+        $r4 = $r17[$i14];
+
+        $r11[$i14] = $r4;
+
+        $i14 = $i14 + 1;
+
+        goto label008;
+
+     label032:
+        if $i11 <= 0 goto label010;
+
+        $d2 = $r12[$i14];
+
+        $d0 = (double) $i11;
+
+        $b18 = $d2 cmpg $d0;
+
+        $i15 = (int) $b18;
+
+        if $i15 >= 0 goto label010;
+
+        $r10[$i14] = #NaN;
+
+        $i15 = $i14;
+
+        $i14 = $i14 + 1;
+
+        $i13 = $i15;
+
+        goto label009;
+
+     label033:
+        $s17 = 0;
+
+        goto label012;
+
+     label034:
+        $b18 = 80;
+
+        goto label013;
+
+     label035:
+        $b18 = 40;
+
+        goto label013;
+
+     label036:
+        $b18 = 30;
+
+        goto label013;
+
+     label037:
+        $b18 = 15;
+
+        goto label013;
+
+     label038:
+        $b18 = 7;
+
+        goto label013;
+
+     label039:
+        $b18 = 4;
+
+        goto label013;
+
+     label040:
+        $b18 = 2;
+
+        goto label013;
+
+     label041:
+        $i19 = $r5[$i14];
+
+        $i2 = $i2 + 8;
+
+        $z3 = 0;
+
+        lookupswitch($i19)
+        {
+            case 1: goto label044;
+            case 2: goto label119;
+            case 3: goto label119;
+            case 4: goto label119;
+            case 5: goto label119;
+            case 6: goto label119;
+            case 7: goto label042;
+            case 8: goto label042;
+            case 9: goto label042;
+            case 10: goto label067;
+            case 11: goto label067;
+            case 12: goto label067;
+            case 13: goto label067;
+            case 14: goto label067;
+            case 15: goto label067;
+            case 16: goto label067;
+            case 17: goto label067;
+            case 18: goto label067;
+            default: goto label042;
+        };
+
+     label042:
+        $i15 = $i4;
+
+     label043:
+        $i14 = $i14 + 16;
+
+        $i4 = $i15;
+
+        goto label015;
+
+     label044:
+        $i15 = $i14 + 1;
+
+        $i15 = $r5[$i15];
+
+        $i16 = $i14 + 2;
+
+        $i16 = $r5[$i16];
+
+        $i19 = $i14 + 3;
+
+        $i19 = $r5[$i19];
+
+        $i20 = $i14 + 4;
+
+        $i20 = $r5[$i20];
+
+        $i21 = $i14 + 5;
+
+        $i21 = $r5[$i21];
+
+        $i22 = $i14 + 6;
+
+        $i23 = $r5[$i22];
+
+        if $i15 == 281 goto label045;
+
+        if $i15 == 112 goto label045;
+
+        if $i15 != 228 goto label056;
+
+     label045:
+        $i21 = $i20;
+
+        $i20 = $i23;
+
+        $i22 = $i19;
+
+        $i19 = 0;
+
+     label046:
+        if $i16 != 0 goto label047;
+
+        $i16 = 1;
+
+     label047:
+        if $i15 < 101 goto label282;
+
+        if $i15 >= 500 goto label282;
+
+        $i23 = staticinvoke <java.lang.Math: int max(int,int)>($i22, $i21);
+
+        $i23 = staticinvoke <java.lang.Math: int max(int,int)>($i19, $i23);
+
+        $i23 = $i23 << 2;
+
+        $i11 = staticinvoke <java.lang.Math: int max(int,int)>($i11, $i23);
+
+     label048:
+        virtualinvoke $r2.<com.metrictrade.and.fs: void a(com.metrictrade.and.fs,int,int,int,int,int,boolean,com.metrictrade.and.fy,int,int)>($r2, $i15, $i19, $i22, $i21, $i20, 0, $r3, $i16, $i2);
+
+        if $i15 != 113 goto label281;
+
+        $z2 = 1;
+
+     label049:
+        $i16 = $i14 + 9;
+
+        $i16 = $r5[$i16];
+
+        if $i16 != 1 goto label280;
+
+        $i16 = 0;
+
+     label050:
+        if $i16 < $i12 goto label057;
+
+        $i15 = staticinvoke <com.metrictrade.and.ga: int a(int,int,boolean)>($i15, $i15, 1);
+
+        $i16 = $i15;
+
+        if $i15 != 0 goto label051;
+
+        $i16 = <com.metrictrade.and.fp: int b>;
+
+     label051:
+        $r2.<com.metrictrade.and.fs: int c> = $i16;
+
+        $r2.<com.metrictrade.and.fs: boolean g> = 0;
+
+        $r12 = $r2.<com.metrictrade.and.fs: double[] G>;
+
+        $i15 = 0;
+
+        $i16 = $i14 + 16;
+
+     label052:
+        if $i16 < $i3 goto label058;
+
+     label053:
+        $r15 = $r12;
+
+        if $r12 == null goto label055;
+
+     label054:
+        $i16 = lengthof $r15;
+
+        if $i15 < $i16 goto label066;
+
+        $r2.<com.metrictrade.and.fs: double[] G> = $r15;
+
+     label055:
+        $z0 = 0;
+
+        $i15 = $i4;
+
+        goto label043;
+
+     label056:
+        if $i15 >= 200 goto label283;
+
+        if $i15 == 108 goto label283;
+
+        $i22 = 0;
+
+        goto label046;
+
+     label057:
+        $r11 = $r2.<com.metrictrade.and.fs: double[][] i>;
+
+        $r12 = $r11[$i2];
+
+        $d2 = $r12[$i16];
+
+        $r10[$i16] = $d2;
+
+        $i16 = $i16 + 1;
+
+        goto label050;
+
+     label058:
+        $i19 = $r5[$i16];
+
+        if $i19 == 3 goto label059;
+
+        if $i19 == 4 goto label059;
+
+        if $i19 == 5 goto label059;
+
+        if $i19 == 6 goto label059;
+
+        if $i19 == 2 goto label059;
+
+        if $i19 == 20 goto label059;
+
+        if $i19 != 21 goto label279;
+
+     label059:
+        $i19 = $i16 + 2;
+
+        $i19 = $r5[$i19];
+
+        $i20 = $i16 + 3;
+
+        $i20 = $r5[$i20];
+
+        $i21 = $i16 + 5;
+
+        $i22 = $r5[$i21];
+
+        $i21 = $i16 + 6;
+
+        $i21 = $r5[$i21];
+
+        if $i19 != 1 goto label060;
+
+        if $i20 != $i2 goto label060;
+
+        if $i22 != 1 goto label061;
+
+     label060:
+        if $i22 != 1 goto label279;
+
+        if $i21 != $i2 goto label279;
+
+        if $i19 == 1 goto label279;
+
+     label061:
+        if $r12 != null goto label062;
+
+        $r12 = newarray (double)[4];
+
+     label062:
+        $i22 = lengthof $r12;
+
+        if $i15 >= $i22 goto label053;
+
+        $i22 = $i15 + 1;
+
+        if $i19 != 1 goto label065;
+
+     label063:
+        $d2 = (double) $i21;
+
+        $r12[$i15] = $d2;
+
+        $i15 = $i22;
+
+     label064:
+        $i16 = $i16 + 16;
+
+        goto label052;
+
+     label065:
+        $i21 = $i20;
+
+        goto label063;
+
+     label066:
+        $r15[$i15] = #NaN;
+
+        $i15 = $i15 + 1;
+
+        goto label054;
+
+     label067:
+        $i15 = $i14 + 1;
+
+        $i15 = $r5[$i15];
+
+        $i16 = $i14 + 2;
+
+        $i16 = $r5[$i16];
+
+        $i20 = $i14 + 3;
+
+        $i20 = $r5[$i20];
+
+        $i21 = $i14 + 4;
+
+        $i21 = $r5[$i21];
+
+        if $i15 != 1 goto label278;
+
+        if $i16 <= 0 goto label278;
+
+        $r11 = $r2.<com.metrictrade.and.fs: double[][] i>;
+
+        $i22 = lengthof $r11;
+
+        if $i16 >= $i22 goto label278;
+
+        $r11 = $r2.<com.metrictrade.and.fs: double[][] i>;
+
+        $r12 = $r11[$i16];
+
+     label068:
+        if $i20 != 1 goto label277;
+
+        if $i21 <= 0 goto label277;
+
+        $r11 = $r2.<com.metrictrade.and.fs: double[][] i>;
+
+        $i22 = lengthof $r11;
+
+        if $i21 >= $i22 goto label277;
+
+        $r11 = $r2.<com.metrictrade.and.fs: double[][] i>;
+
+        $r15 = $r11[$i21];
+
+     label069:
+        if $i15 != 1 goto label070;
+
+        if $r12 == null goto label074;
+
+     label070:
+        if $i20 != 1 goto label071;
+
+        if $r15 == null goto label074;
+
+     label071:
+        $r16 = virtualinvoke $r2.<com.metrictrade.and.fs: double[] b(int,int)>($i2, $i12);
+
+        if $i19 != 18 goto label276;
+
+        $i22 = $i13 - $i21;
+
+        if $i22 >= 0 goto label072;
+
+        $i22 = 0;
+
+     label072:
+        $i23 = $i22;
+
+     label073:
+        if $i23 < $i12 goto label081;
+
+     label074:
+        $i15 = $i14 + 9;
+
+        $i15 = $r5[$i15];
+
+        if $i15 != 1 goto label042;
+
+        $i15 = 0;
+
+     label075:
+        if $i15 < $i12 goto label109;
+
+        $i15 = staticinvoke <com.metrictrade.and.ga: int a(int,int,boolean)>(290, 290, 1);
+
+        $i16 = $i15;
+
+        if $i15 != 0 goto label076;
+
+        $i16 = <com.metrictrade.and.fp: int b>;
+
+     label076:
+        $r2.<com.metrictrade.and.fs: int c> = $i16;
+
+        $r2.<com.metrictrade.and.fs: boolean g> = 0;
+
+        $i15 = 0;
+
+        $i16 = $i14 + 16;
+
+        $r12 = $r2.<com.metrictrade.and.fs: double[] G>;
+
+     label077:
+        if $i16 < $i3 goto label110;
+
+     label078:
+        $r15 = $r12;
+
+        if $r12 == null goto label080;
+
+     label079:
+        $i16 = lengthof $r15;
+
+        if $i15 < $i16 goto label118;
+
+        $r2.<com.metrictrade.and.fs: double[] G> = $r15;
+
+     label080:
+        $z0 = 0;
+
+        $i15 = $i4;
+
+        goto label043;
+
+     label081:
+        if $i15 != 1 goto label082;
+
+        if $r12 == null goto label107;
+
+     label082:
+        if $i20 != 1 goto label083;
+
+        if $r15 == null goto label107;
+
+     label083:
+        $d0 = (double) $i21;
+
+        if $i15 != 1 goto label275;
+
+        $i24 = lengthof $r12;
+
+        if $i23 >= $i24 goto label074;
+
+        $d2 = $r12[$i23];
+
+     label084:
+        if $i20 != 1 goto label274;
+
+        $i24 = lengthof $r15;
+
+        if $i23 >= $i24 goto label074;
+
+        $d5 = $r15[$i23];
+
+     label085:
+        if $i19 != 14 goto label094;
+
+        $b18 = $d2 cmpl $d2;
+
+        if $b18 != 0 goto label107;
+
+        $b18 = $d5 cmpl $d5;
+
+        if $b18 != 0 goto label107;
+
+        $i24 = $i14 + 6;
+
+        $i24 = $r5[$i24];
+
+        if $i24 != 0 goto label089;
+
+        $d2 = $d2 + $d5;
+
+        $d2 = $d2 / 2.0;
+
+        $r16[$i23] = $d2;
+
+     label086:
+        if $i23 != $i22 goto label088;
+
+        $i24 = 0;
+
+     label087:
+        if $i24 < $i22 goto label108;
+
+     label088:
+        $i23 = $i23 + 1;
+
+        goto label073;
+
+     label089:
+        $i25 = $i14 + 5;
+
+        $i25 = $r5[$i25];
+
+        if $i25 != 1 goto label093;
+
+        $r18 = null;
+
+        if $i24 <= 0 goto label090;
+
+        $r11 = $r2.<com.metrictrade.and.fs: double[][] i>;
+
+        $i25 = lengthof $r11;
+
+        if $i24 >= $i25 goto label090;
+
+        $r11 = $r2.<com.metrictrade.and.fs: double[][] i>;
+
+        $r18 = $r11[$i24];
+
+     label090:
+        if $r18 == null goto label091;
+
+        $i24 = lengthof $r18;
+
+        if $i23 >= $i24 goto label091;
+
+        $d0 = $r18[$i23];
+
+        $d1 = $r18[$i23];
+
+        $b18 = $d0 cmpl $d1;
+
+        if $b18 == 0 goto label092;
+
+     label091:
+        $r16[$i23] = #NaN;
+
+        goto label086;
+
+     label092:
+        $d2 = $d5 + $d2;
+
+        $d0 = $r18[$i23];
+
+        $d2 = $d0 + $d2;
+
+        $d2 = $d2 / 3.0;
+
+        $r16[$i23] = $d2;
+
+        goto label086;
+
+     label093:
+        $d2 = $d5 + $d2;
+
+        $d0 = (double) $i24;
+
+        $d2 = $d0 + $d2;
+
+        $d2 = $d2 / 3.0;
+
+        $r16[$i23] = $d2;
+
+        goto label086;
+
+     label094:
+        if $i19 != 18 goto label097;
+
+        $i24 = (int) $d5;
+
+        $i24 = $i23 + $i24;
+
+        if $i24 < 0 goto label107;
+
+        $i25 = lengthof $r16;
+
+        if $i24 >= $i25 goto label107;
+
+        $r16[$i24] = $d2;
+
+        if $z3 != 0 goto label107;
+
+        $i25 = 0;
+
+     label095:
+        if $i25 < $i24 goto label096;
+
+        $z3 = 1;
+
+        goto label086;
+
+     label096:
+        $r16[$i25] = #NaN;
+
+        $i25 = $i25 + 1;
+
+        goto label095;
+
+     label097:
+        $b18 = $d2 cmpl $d2;
+
+        if $b18 != 0 goto label106;
+
+        $b18 = $d5 cmpl $d5;
+
+        if $b18 != 0 goto label106;
+
+        if $i19 != 17 goto label098;
+
+        $d2 = $d2 * $d5;
+
+        $d2 = $d2 / 100.0;
+
+        $r16[$i23] = $d2;
+
+        goto label086;
+
+     label098:
+        if $i19 != 15 goto label099;
+
+        $d2 = staticinvoke <java.lang.Math: double max(double,double)>($d2, $d5);
+
+        $r16[$i23] = $d2;
+
+        goto label086;
+
+     label099:
+        if $i19 != 16 goto label100;
+
+        $d2 = staticinvoke <java.lang.Math: double min(double,double)>($d2, $d5);
+
+        $r16[$i23] = $d2;
+
+        goto label086;
+
+     label100:
+        if $i19 != 10 goto label102;
+
+        $d2 = $d2 + $d5;
+
+     label101:
+        $r16[$i23] = $d2;
+
+        goto label086;
+
+     label102:
+        if $i19 != 11 goto label103;
+
+        $d2 = $d2 - $d5;
+
+        goto label101;
+
+     label103:
+        if $i19 != 12 goto label104;
+
+        $d2 = $d2 * $d5;
+
+        goto label101;
+
+     label104:
+        $b18 = $d5 cmpl 0.0;
+
+        if $b18 != 0 goto label105;
+
+        $d2 = #NaN;
+
+        goto label101;
+
+     label105:
+        $d2 = $d2 / $d5;
+
+        goto label101;
+
+     label106:
+        $r16[$i23] = #NaN;
+
+     label107:
+        goto label086;
+
+     label108:
+        $r16[$i24] = #NaN;
+
+        $i24 = $i24 + 1;
+
+        goto label087;
+
+     label109:
+        $r11 = $r2.<com.metrictrade.and.fs: double[][] i>;
+
+        $r12 = $r11[$i2];
+
+        $d2 = $r12[$i15];
+
+        $r10[$i15] = $d2;
+
+        $i15 = $i15 + 1;
+
+        goto label075;
+
+     label110:
+        $i19 = $r5[$i16];
+
+        if $i19 == 3 goto label111;
+
+        if $i19 == 4 goto label111;
+
+        if $i19 == 5 goto label111;
+
+        if $i19 == 6 goto label111;
+
+        if $i19 == 2 goto label111;
+
+        if $i19 == 20 goto label111;
+
+        if $i19 != 21 goto label273;
+
+     label111:
+        $i19 = $i16 + 2;
+
+        $i19 = $r5[$i19];
+
+        $i20 = $i16 + 3;
+
+        $i20 = $r5[$i20];
+
+        $i21 = $i16 + 5;
+
+        $i22 = $r5[$i21];
+
+        $i21 = $i16 + 6;
+
+        $i21 = $r5[$i21];
+
+        if $i19 != 1 goto label112;
+
+        if $i20 != $i2 goto label112;
+
+        if $i22 != 1 goto label113;
+
+     label112:
+        if $i22 != 1 goto label273;
+
+        if $i21 != $i2 goto label273;
+
+        if $i19 == 1 goto label273;
+
+     label113:
+        if $r12 != null goto label114;
+
+        $r12 = newarray (double)[4];
+
+     label114:
+        $i22 = lengthof $r12;
+
+        if $i15 >= $i22 goto label078;
+
+        $i22 = $i15 + 1;
+
+        if $i19 != 1 goto label117;
+
+     label115:
+        $d2 = (double) $i21;
+
+        $r12[$i15] = $d2;
+
+        $i15 = $i22;
+
+     label116:
+        $i16 = $i16 + 16;
+
+        goto label077;
+
+     label117:
+        $i21 = $i20;
+
+        goto label115;
+
+     label118:
+        $r15[$i15] = #NaN;
+
+        $i15 = $i15 + 1;
+
+        goto label079;
+
+     label119:
+        $i15 = $i19 + -3;
+
+        $i15 = $i15 + 13;
+
+        $i15 = $i15 + 2;
+
+        if $i19 != 2 goto label120;
+
+        $i15 = $i2;
+
+     label120:
+        $r12 = virtualinvoke $r2.<com.metrictrade.and.fs: double[] b(int,int)>($i15, $i12);
+
+        if $i19 != 3 goto label272;
+
+        $i16 = $i15;
+
+     label121:
+        if $i19 != 4 goto label271;
+
+        $i5 = $i15;
+
+     label122:
+        if $i19 != 4 goto label270;
+
+        $i4 = $i15;
+
+     label123:
+        if $i19 != 4 goto label269;
+
+     label124:
+        $i7 = $i14 + 16;
+
+     label125:
+        if $i7 < $i3 goto label132;
+
+     label126:
+        $i6 = $i7 - $i14;
+
+        $i6 = $i6 >> 4;
+
+        if $i6 <= 16 goto label127;
+
+        $i6 = 16;
+
+     label127:
+        $i19 = 0;
+
+     label128:
+        if $i19 < 16 goto label134;
+
+        $i20 = 0;
+
+        $i19 = $i13;
+
+     label129:
+        if $i20 < $i6 goto label135;
+
+        if $i19 >= 0 goto label130;
+
+        $i19 = 0;
+
+     label130:
+        $i20 = $i13;
+
+     label131:
+        if $i20 < $i12 goto label137;
+
+        $i14 = $i7 + -16;
+
+        $i7 = $i15;
+
+        $i15 = $i16;
+
+        $i6 = $i4;
+
+        goto label043;
+
+     label132:
+        $i6 = $r5[$i7];
+
+        if $i6 == 21 goto label133;
+
+        $i6 = $r5[$i7];
+
+        if $i6 != 20 goto label126;
+
+     label133:
+        $i7 = $i7 + 16;
+
+        goto label125;
+
+     label134:
+        $r9[$i19] = 0;
+
+        $r8[$i19] = 0;
+
+        $i19 = $i19 + 1;
+
+        goto label128;
+
+     label135:
+        $i21 = $i20 << 4;
+
+        $i21 = $i21 + $i14;
+
+        $i22 = $i21 + 4;
+
+        $i22 = $r5[$i22];
+
+        if $i22 != 6 goto label136;
+
+        $i21 = $i21 + 6;
+
+        $i21 = $r5[$i21];
+
+        $i21 = $i13 - $i21;
+
+        $i19 = staticinvoke <java.lang.Math: int min(int,int)>($i19, $i21);
+
+     label136:
+        $i20 = $i20 + 1;
+
+        goto label129;
+
+     label137:
+        $i21 = 0;
+
+     label138:
+        if $i21 < $i6 goto label144;
+
+     label139:
+        $z3 = 0;
+
+        $i21 = 0;
+
+        $z4 = $r7[0];
+
+     label140:
+        if $i21 < $i6 goto label173;
+
+        if $z4 == 0 goto label179;
+
+        $d2 = $r4[$i20];
+
+     label141:
+        $r12[$i20] = $d2;
+
+        if $i20 != $i19 goto label143;
+
+        $i21 = 0;
+
+     label142:
+        if $i21 < $i19 goto label180;
+
+     label143:
+        $i20 = $i20 + 1;
+
+        goto label131;
+
+     label144:
+        $i22 = $i21 << 4;
+
+        $i26 = $i22 + $i14;
+
+        $r7[$i21] = 0;
+
+        $i22 = $i26 + 4;
+
+        $i22 = $r5[$i22];
+
+        $i23 = $i26 + 2;
+
+        $i23 = $r5[$i23];
+
+        $i24 = $i26 + 3;
+
+        $i24 = $r5[$i24];
+
+        $i25 = $i26 + 5;
+
+        $i25 = $r5[$i25];
+
+        $i26 = $i26 + 6;
+
+        $i26 = $r5[$i26];
+
+        if $i23 != 1 goto label268;
+
+        if $i24 <= 0 goto label268;
+
+        $r11 = $r2.<com.metrictrade.and.fs: double[][] i>;
+
+        $i27 = lengthof $r11;
+
+        if $i24 >= $i27 goto label268;
+
+        $r11 = $r2.<com.metrictrade.and.fs: double[][] i>;
+
+        $r15 = $r11[$i24];
+
+     label145:
+        if $i25 != 1 goto label267;
+
+        if $i26 <= 0 goto label267;
+
+        $r11 = $r2.<com.metrictrade.and.fs: double[][] i>;
+
+        $i27 = lengthof $r11;
+
+        if $i26 >= $i27 goto label267;
+
+        $r11 = $r2.<com.metrictrade.and.fs: double[][] i>;
+
+        $r16 = $r11[$i26];
+
+     label146:
+        if $i23 != 1 goto label147;
+
+        if $r15 == null goto label152;
+
+     label147:
+        if $i25 != 1 goto label148;
+
+        if $r16 == null goto label152;
+
+     label148:
+        $d2 = (double) $i26;
+
+        if $i23 != 1 goto label266;
+
+        $i24 = lengthof $r15;
+
+        if $i20 >= $i24 goto label139;
+
+        $d0 = $r15[$i20];
+
+     label149:
+        if $i25 != 1 goto label265;
+
+        $i24 = lengthof $r16;
+
+        if $i20 >= $i24 goto label139;
+
+        $d2 = $r16[$i20];
+
+     label150:
+        $b18 = $d0 cmpl $d0;
+
+        if $b18 != 0 goto label152;
+
+        $b18 = $d2 cmpl $d2;
+
+        if $b18 != 0 goto label152;
+
+        $z3 = 0;
+
+        lookupswitch($i22)
+        {
+            case 1: goto label155;
+            case 2: goto label157;
+            case 3: goto label153;
+            case 4: goto label159;
+            case 5: goto label164;
+            case 6: goto label169;
+            default: goto label151;
+        };
+
+     label151:
+        $r7[$i21] = $z3;
+
+        $r8[$i21] = $z3;
+
+     label152:
+        $i21 = $i21 + 1;
+
+        goto label138;
+
+     label153:
+        $b18 = $d0 cmpl $d2;
+
+        if $b18 != 0 goto label154;
+
+        $z3 = 1;
+
+        goto label151;
+
+     label154:
+        $z3 = 0;
+
+        goto label151;
+
+     label155:
+        $b18 = $d0 cmpl $d2;
+
+        $i22 = (int) $b18;
+
+        if $i22 <= 0 goto label156;
+
+        $z3 = 1;
+
+        goto label151;
+
+     label156:
+        $z3 = 0;
+
+        goto label151;
+
+     label157:
+        $b18 = $d0 cmpg $d2;
+
+        $i22 = (int) $b18;
+
+        if $i22 >= 0 goto label158;
+
+        $z3 = 1;
+
+        goto label151;
+
+     label158:
+        $z3 = 0;
+
+        goto label151;
+
+     label159:
+        $i22 = $r9[$i21];
+
+        if $i22 >= 0 goto label162;
+
+        $b18 = $d0 cmpl $d2;
+
+        $i22 = (int) $b18;
+
+        if $i22 <= 0 goto label162;
+
+        $z3 = 1;
+
+     label160:
+        $b18 = $d0 cmpl $d2;
+
+        $i22 = (int) $b18;
+
+        if $i22 <= 0 goto label163;
+
+        $b18 = 1;
+
+     label161:
+        $r9[$i21] = $b18;
+
+        goto label151;
+
+     label162:
+        $z3 = 0;
+
+        goto label160;
+
+     label163:
+        $b18 = -1;
+
+        goto label161;
+
+     label164:
+        $i22 = $r9[$i21];
+
+        if $i22 <= 0 goto label167;
+
+        $b18 = $d0 cmpg $d2;
+
+        $i22 = (int) $b18;
+
+        if $i22 >= 0 goto label167;
+
+        $z3 = 1;
+
+     label165:
+        $b18 = $d0 cmpl $d2;
+
+        $i22 = (int) $b18;
+
+        if $i22 <= 0 goto label168;
+
+        $b18 = 1;
+
+     label166:
+        $r9[$i21] = $b18;
+
+        goto label151;
+
+     label167:
+        $z3 = 0;
+
+        goto label165;
+
+     label168:
+        $b18 = -1;
+
+        goto label166;
+
+     label169:
+        $z3 = 0;
+
+        $b18 = $d0 cmpl $d0;
+
+        if $b18 != 0 goto label151;
+
+        if $i23 != 1 goto label151;
+
+        if $i26 != 0 goto label170;
+
+        $z3 = 1;
+
+        goto label151;
+
+     label170:
+        $i22 = $i20 - $i26;
+
+        if $i22 >= 0 goto label171;
+
+        $i22 = 0;
+
+     label171:
+        if $i22 >= $i20 goto label151;
+
+        $d2 = $r15[$i22];
+
+        $d0 = $r15[$i22];
+
+        $b18 = $d2 cmpl $d0;
+
+        if $b18 != 0 goto label172;
+
+        $z3 = 1;
+
+        goto label151;
+
+     label172:
+        $i22 = $i22 + 1;
+
+        goto label171;
+
+     label173:
+        $i22 = $i21 << 4;
+
+        $i22 = $i14 + $i22;
+
+        $z5 = $r7[$i21];
+
+        if $z3 != 0 goto label174;
+
+        $z4 = $z5;
+
+     label174:
+        $i23 = $r5[$i22];
+
+        if $i23 != 21 goto label177;
+
+        if $z4 != 0 goto label176;
+
+        if $z5 != 0 goto label176;
+
+        $z4 = 0;
+
+     label175:
+        $z3 = 1;
+
+        $i21 = $i21 + 1;
+
+        goto label140;
+
+     label176:
+        $z4 = 1;
+
+        goto label175;
+
+     label177:
+        $i22 = $r5[$i22];
+
+        if $i22 != 20 goto label175;
+
+        if $z4 == 0 goto label178;
+
+        if $z5 == 0 goto label178;
+
+        $z4 = 1;
+
+        goto label175;
+
+     label178:
+        $z4 = 0;
+
+        goto label175;
+
+     label179:
+        $d2 = #NaN;
+
+        goto label141;
+
+     label180:
+        $r12[$i21] = #NaN;
+
+        $i21 = $i21 + 1;
+
+        goto label142;
+
+     label181:
+        $z3 = 1;
+
+        goto label017;
+
+     label182:
+        $z4 = 1;
+
+        goto label018;
+
+     label183:
+        $r12 = null;
+
+        goto label019;
+
+     label184:
+        $r15 = null;
+
+        goto label020;
+
+     label185:
+        $r16 = null;
+
+        goto label021;
+
+     label186:
+        if $r12 != null goto label193;
+
+        $d6 = #NaN;
+
+     label187:
+        if $r16 != null goto label194;
+
+        $d7 = #NaN;
+
+     label188:
+        if $r15 != null goto label195;
+
+        $d8 = #NaN;
+
+     label189:
+        $d5 = $r4[$i13];
+
+        if $z4 == 0 goto label202;
+
+        if $z5 == 0 goto label202;
+
+        $b18 = $d5 cmpl $d5;
+
+        if $b18 != 0 goto label202;
+
+        $b18 = $d4 cmpl $d4;
+
+        if $b18 != 0 goto label202;
+
+        if $z3 == 0 goto label199;
+
+        if $i8 == 0 goto label196;
+
+        $i14 = $s9 - $i8;
+
+        $d9 = (double) $i14;
+
+        $d9 = $d9 * $d4;
+
+        $d10 = (double) $s9;
+
+        $d9 = $d9 / $d10;
+
+        $b18 = $d5 cmpg $d9;
+
+        $i14 = (int) $b18;
+
+        if $i14 >= 0 goto label196;
+
+        $d3 = $d5 + $d1;
+
+        if $z0 == 0 goto label190;
+
+        $r10[$i13] = $d3;
+
+     label190:
+        $b18 = $d4 cmpl $d5;
+
+        $i14 = (int) $b18;
+
+        if $i14 <= 0 goto label263;
+
+        $i3 = $i3 + 1;
+
+     label191:
+        $z6 = 0;
+
+        $z5 = 0;
+
+        $d4 = $d5;
+
+     label192:
+        $d0 = $d3;
+
+        $i13 = $i13 + 1;
+
+        $d3 = $d5;
+
+        goto label022;
+
+     label193:
+        $d6 = $r12[$i13];
+
+        goto label187;
+
+     label194:
+        $d7 = $r16[$i13];
+
+        goto label188;
+
+     label195:
+        $d8 = $r15[$i13];
+
+        goto label189;
+
+     label196:
+        if $i1 == 0 goto label199;
+
+        $i14 = $s9 - $i1;
+
+        $d9 = (double) $i14;
+
+        $d9 = $d9 * $d3;
+
+        $d10 = (double) $s9;
+
+        $d9 = $d9 / $d10;
+
+        $b18 = $d5 cmpg $d9;
+
+        $i14 = (int) $b18;
+
+        if $i14 >= 0 goto label199;
+
+        $d3 = $d5 + $d1;
+
+        if $z0 == 0 goto label197;
+
+        $r10[$i13] = $d3;
+
+     label197:
+        $b18 = $d4 cmpl $d5;
+
+        $i14 = (int) $b18;
+
+        if $i14 <= 0 goto label198;
+
+        $i3 = $i3 + 1;
+
+     label198:
+        $z5 = 0;
+
+        $z6 = 0;
+
+        $d4 = $d5;
+
+        goto label192;
+
+     label199:
+        if $i0 == 0 goto label202;
+
+        $i14 = $s10 + $i0;
+
+        $d9 = (double) $i14;
+
+        $d9 = $d9 * $d4;
+
+        $d10 = (double) $s10;
+
+        $d9 = $d9 / $d10;
+
+        $b18 = $d5 cmpl $d9;
+
+        $i14 = (int) $b18;
+
+        if $i14 <= 0 goto label202;
+
+        $d3 = $d5 + $d1;
+
+        if $z0 == 0 goto label200;
+
+        $r10[$i13] = $d3;
+
+     label200:
+        $b18 = $d4 cmpl $d5;
+
+        $i14 = (int) $b18;
+
+        if $i14 <= 0 goto label201;
+
+        $i3 = $i3 + 1;
+
+     label201:
+        $z5 = 0;
+
+        $z6 = 0;
+
+        $d4 = $d5;
+
+        goto label192;
+
+     label202:
+        $b18 = $d7 cmpl $d7;
+
+        if $b18 != 0 goto label208;
+
+        $z5 = 0;
+
+     label203:
+        if $z5 != 0 goto label204;
+
+        if $z6 == 0 goto label216;
+
+     label204:
+        $b18 = $d5 cmpl $d5;
+
+        if $b18 != 0 goto label216;
+
+        if $z6 == 0 goto label210;
+
+        if $z5 != 0 goto label210;
+
+        $d3 = $d5 + $d1;
+
+        if $z0 == 0 goto label205;
+
+        $r10[$i13] = $d3;
+
+     label205:
+        $b18 = $d4 cmpl $d5;
+
+        $i14 = (int) $b18;
+
+        if $i14 <= 0 goto label206;
+
+        $i3 = $i3 + 1;
+
+     label206:
+        $d0 = $d5;
+
+        $d4 = $d3;
+
+     label207:
+        $d3 = $d4;
+
+        $d4 = $d5;
+
+        $d5 = $d0;
+
+        $z6 = $z5;
+
+        goto label192;
+
+     label208:
+        $b18 = $d6 cmpl $d6;
+
+        if $b18 == 0 goto label209;
+
+        $b18 = $d8 cmpl $d8;
+
+        if $b18 != 0 goto label203;
+
+     label209:
+        $z5 = 1;
+
+        goto label203;
+
+     label210:
+        if $z5 == 0 goto label214;
+
+        if $z6 != 0 goto label214;
+
+        $b18 = $d4 cmpl $d4;
+
+        if $b18 != 0 goto label213;
+
+        $d0 = $d4 - $d5;
+
+        $d1 = $d0 + $d1;
+
+     label211:
+        $i2 = $i2 + 1;
+
+        $d4 = $d5 + $d1;
+
+        if $z0 == 0 goto label212;
+
+        $r10[$i13] = $d4;
+
+     label212:
+        $d0 = $d5;
+
+        goto label207;
+
+     label213:
+        $d2 = $d5;
+
+        goto label211;
+
+     label214:
+        $b18 = $d5 cmpl $d3;
+
+        $i14 = (int) $b18;
+
+        if $i14 <= 0 goto label262;
+
+        $d0 = $d5;
+
+     label215:
+        $d3 = $d5 + $d1;
+
+        if $z0 == 0 goto label261;
+
+        $r10[$i13] = $d3;
+
+        $d5 = $d4;
+
+        $d4 = $d3;
+
+        goto label207;
+
+     label216:
+        if $z0 == 0 goto label217;
+
+        $r10[$i13] = #NaN;
+
+     label217:
+        $d5 = $d4;
+
+        $d4 = $d0;
+
+        $d0 = $d3;
+
+        goto label207;
+
+     label218:
+        $d3 = 0.0;
+
+        $d1 = 0.0;
+
+        if $i4 <= 0 goto label229;
+
+        $r11 = $r2.<com.metrictrade.and.fs: double[][] i>;
+
+        $r12 = $r11[$i4];
+
+     label219:
+        if $i5 <= 0 goto label230;
+
+        $r11 = $r2.<com.metrictrade.and.fs: double[][] i>;
+
+        $r15 = $r11[$i5];
+
+     label220:
+        if $i7 <= 0 goto label231;
+
+        $r11 = $r2.<com.metrictrade.and.fs: double[][] i>;
+
+        $r16 = $r11[$i7];
+
+     label221:
+        $z6 = 0;
+
+        $z5 = 0;
+
+        $d0 = #NaN;
+
+        $i3 = 0;
+
+        $i2 = 0;
+
+        $d2 = #NaN;
+
+        $d4 = #NaN;
+
+     label222:
+        if $i13 >= $i12 goto label023;
+
+        if $r12 != null goto label232;
+
+        $d6 = #NaN;
+
+     label223:
+        if $r15 != null goto label233;
+
+        $d7 = #NaN;
+
+     label224:
+        if $r16 != null goto label234;
+
+        $d8 = #NaN;
+
+     label225:
+        $d5 = $r4[$i13];
+
+        if $z4 == 0 goto label241;
+
+        if $z5 == 0 goto label241;
+
+        $b18 = $d5 cmpl $d5;
+
+        if $b18 != 0 goto label241;
+
+        $b18 = $d4 cmpl $d4;
+
+        if $b18 != 0 goto label241;
+
+        if $z3 == 0 goto label238;
+
+        if $i8 == 0 goto label235;
+
+        $i14 = $s9 + $i8;
+
+        $d9 = (double) $i14;
+
+        $d9 = $d9 * $d4;
+
+        $d10 = (double) $s9;
+
+        $d9 = $d9 / $d10;
+
+        $b18 = $d5 cmpl $d9;
+
+        $i14 = (int) $b18;
+
+        if $i14 <= 0 goto label235;
+
+        $d3 = $d5 + $d1;
+
+        if $z0 == 0 goto label226;
+
+        $r10[$i13] = $d3;
+
+     label226:
+        $b18 = $d4 cmpg $d5;
+
+        $i14 = (int) $b18;
+
+        if $i14 >= 0 goto label260;
+
+        $i3 = $i3 + 1;
+
+     label227:
+        $z6 = 0;
+
+        $z5 = 0;
+
+        $d4 = $d5;
+
+     label228:
+        $d0 = $d3;
+
+        $i13 = $i13 + 1;
+
+        $d3 = $d5;
+
+        goto label222;
+
+     label229:
+        $r12 = null;
+
+        goto label219;
+
+     label230:
+        $r15 = null;
+
+        goto label220;
+
+     label231:
+        $r16 = null;
+
+        goto label221;
+
+     label232:
+        $d6 = $r12[$i13];
+
+        goto label223;
+
+     label233:
+        $d7 = $r15[$i13];
+
+        goto label224;
+
+     label234:
+        $d8 = $r16[$i13];
+
+        goto label225;
+
+     label235:
+        if $i1 == 0 goto label238;
+
+        $i14 = $s9 + $i1;
+
+        $d9 = (double) $i14;
+
+        $d9 = $d9 * $d3;
+
+        $d10 = (double) $s9;
+
+        $d9 = $d9 / $d10;
+
+        $b18 = $d5 cmpl $d9;
+
+        $i14 = (int) $b18;
+
+        if $i14 <= 0 goto label238;
+
+        $d3 = $d5 + $d1;
+
+        if $z0 == 0 goto label236;
+
+        $r10[$i13] = $d3;
+
+     label236:
+        $b18 = $d4 cmpg $d5;
+
+        $i14 = (int) $b18;
+
+        if $i14 >= 0 goto label237;
+
+        $i3 = $i3 + 1;
+
+     label237:
+        $z5 = 0;
+
+        $z6 = 0;
+
+        $d4 = $d5;
+
+        goto label228;
+
+     label238:
+        if $i0 == 0 goto label241;
+
+        $i14 = $s10 - $i0;
+
+        $d9 = (double) $i14;
+
+        $d9 = $d9 * $d4;
+
+        $d10 = (double) $s10;
+
+        $d9 = $d9 / $d10;
+
+        $b18 = $d5 cmpg $d9;
+
+        $i14 = (int) $b18;
+
+        if $i14 >= 0 goto label241;
+
+        $d3 = $d5 + $d1;
+
+        if $z0 == 0 goto label239;
+
+        $r10[$i13] = $d3;
+
+     label239:
+        $b18 = $d4 cmpg $d5;
+
+        $i14 = (int) $b18;
+
+        if $i14 >= 0 goto label240;
+
+        $i3 = $i3 + 1;
+
+     label240:
+        $z5 = 0;
+
+        $z6 = 0;
+
+        $d4 = $d5;
+
+        goto label228;
+
+     label241:
+        $b18 = $d7 cmpl $d7;
+
+        if $b18 != 0 goto label247;
+
+        $z5 = 1;
+
+     label242:
+        if $z5 != 0 goto label243;
+
+        if $z6 == 0 goto label255;
+
+     label243:
+        $b18 = $d5 cmpl $d5;
+
+        if $b18 != 0 goto label255;
+
+        if $z6 == 0 goto label249;
+
+        if $z5 != 0 goto label249;
+
+        $d3 = $d5 + $d1;
+
+        if $z0 == 0 goto label244;
+
+        $r10[$i13] = $d3;
+
+     label244:
+        $b18 = $d4 cmpg $d5;
+
+        $i14 = (int) $b18;
+
+        if $i14 >= 0 goto label245;
+
+        $i3 = $i3 + 1;
+
+     label245:
+        $d0 = $d5;
+
+        $d4 = $d3;
+
+     label246:
+        $d3 = $d4;
+
+        $d4 = $d5;
+
+        $d5 = $d0;
+
+        $z6 = $z5;
+
+        goto label228;
+
+     label247:
+        $b18 = $d6 cmpl $d6;
+
+        if $b18 == 0 goto label248;
+
+        $b18 = $d8 cmpl $d8;
+
+        if $b18 != 0 goto label242;
+
+     label248:
+        $z5 = 0;
+
+        goto label242;
+
+     label249:
+        if $z5 == 0 goto label253;
+
+        if $z6 != 0 goto label253;
+
+        $b18 = $d4 cmpl $d4;
+
+        if $b18 != 0 goto label252;
+
+        $d0 = $d4 - $d5;
+
+        $d1 = $d0 + $d1;
+
+     label250:
+        $i2 = $i2 + 1;
+
+        $d4 = $d5 + $d1;
+
+        if $z0 == 0 goto label251;
+
+        $r10[$i13] = $d4;
+
+     label251:
+        $d0 = $d5;
+
+        goto label246;
+
+     label252:
+        $d2 = $d5;
+
+        goto label250;
+
+     label253:
+        $b18 = $d5 cmpg $d3;
+
+        $i14 = (int) $b18;
+
+        if $i14 >= 0 goto label259;
+
+        $d0 = $d5;
+
+     label254:
+        $d3 = $d5 + $d1;
+
+        if $z0 == 0 goto label258;
+
+        $r10[$i13] = $d3;
+
+        $d5 = $d4;
+
+        $d4 = $d3;
+
+        goto label246;
+
+     label255:
+        if $z0 == 0 goto label256;
+
+        $r10[$i13] = #NaN;
+
+     label256:
+        $d5 = $d4;
+
+        $d4 = $d0;
+
+        $d0 = $d3;
+
+        goto label246;
+
+     label257:
+        $z1 = 1;
+
+        goto label024;
+
+     label258:
+        $d5 = $d4;
+
+        $d4 = $d3;
+
+        goto label246;
+
+     label259:
+        $d0 = $d3;
+
+        goto label254;
+
+     label260:
+        goto label227;
+
+     label261:
+        $d5 = $d4;
+
+        $d4 = $d3;
+
+        goto label207;
+
+     label262:
+        $d0 = $d3;
+
+        goto label215;
+
+     label263:
+        goto label191;
+
+     label264:
+        $d0 = #NaN;
+
+        $i3 = 0;
+
+        $i2 = 0;
+
+        $d2 = #NaN;
+
+        goto label023;
+
+     label265:
+        goto label150;
+
+     label266:
+        $d0 = (double) $i24;
+
+        goto label149;
+
+     label267:
+        $r16 = null;
+
+        goto label146;
+
+     label268:
+        $r15 = null;
+
+        goto label145;
+
+     label269:
+        $i15 = $i7;
+
+        goto label124;
+
+     label270:
+        $i4 = $i6;
+
+        goto label123;
+
+     label271:
+        goto label122;
+
+     label272:
+        $i16 = $i4;
+
+        goto label121;
+
+     label273:
+        goto label116;
+
+     label274:
+        $d5 = $d0;
+
+        goto label085;
+
+     label275:
+        $d2 = (double) $i16;
+
+        goto label084;
+
+     label276:
+        $i22 = $i13;
+
+        goto label072;
+
+     label277:
+        $r15 = null;
+
+        goto label069;
+
+     label278:
+        $r12 = null;
+
+        goto label068;
+
+     label279:
+        goto label064;
+
+     label280:
+        $i15 = $i4;
+
+        goto label043;
+
+     label281:
+        goto label049;
+
+     label282:
+        goto label048;
+
+     label283:
+        $i22 = $i20;
+
+        $i20 = $i23;
+
+        goto label046;
+
+     label284:
+        goto label014;
+
+     label285:
+        $i13 = 0;
+
+        $i11 = 30;
+
+        goto label014;
+
+     label286:
+        $z1 = 1;
+
+        goto label007;
+
+     label287:
+        $i11 = $i16;
+
+        goto label005;
+
+     label288:
+        goto label003;
+
+     label289:
+        return;
+    }
+}

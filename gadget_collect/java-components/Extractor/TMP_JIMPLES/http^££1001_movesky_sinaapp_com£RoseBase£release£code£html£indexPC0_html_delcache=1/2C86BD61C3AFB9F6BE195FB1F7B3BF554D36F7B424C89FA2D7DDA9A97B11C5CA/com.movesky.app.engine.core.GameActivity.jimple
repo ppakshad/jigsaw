@@ -1,0 +1,205 @@
+public abstract class com.movesky.app.engine.core.GameActivity extends android.app.Activity
+{
+    public static com.movesky.app.engine.core.GameActivity instance;
+    private com.movesky.app.engine.core.Game game;
+    private com.movesky.app.engine.core.GameView view;
+
+    static void <clinit>()
+    {
+        <com.movesky.app.engine.core.GameActivity: com.movesky.app.engine.core.GameActivity instance> = null;
+
+        return;
+    }
+
+    public void <init>()
+    {
+        com.movesky.app.engine.core.GameActivity r0;
+
+        r0 := @this: com.movesky.app.engine.core.GameActivity;
+
+        specialinvoke r0.<android.app.Activity: void <init>()>();
+
+        <com.movesky.app.engine.core.GameActivity: com.movesky.app.engine.core.GameActivity instance> = r0;
+
+        return;
+    }
+
+    private void start()
+    {
+        com.movesky.app.engine.core.GameActivity r0;
+        com.movesky.app.engine.core.Game $r1;
+        com.movesky.app.engine.core.GameView $r2;
+
+        r0 := @this: com.movesky.app.engine.core.GameActivity;
+
+        $r1 = r0.<com.movesky.app.engine.core.GameActivity: com.movesky.app.engine.core.Game game>;
+
+        virtualinvoke $r1.<com.movesky.app.engine.core.Game: void onStart()>();
+
+        $r2 = r0.<com.movesky.app.engine.core.GameActivity: com.movesky.app.engine.core.GameView view>;
+
+        virtualinvoke $r2.<com.movesky.app.engine.core.GameView: void onStart()>();
+
+        return;
+    }
+
+    private void stop()
+    {
+        com.movesky.app.engine.core.GameActivity r0;
+        com.movesky.app.engine.core.GameView $r1;
+        com.movesky.app.engine.core.Game $r2;
+
+        r0 := @this: com.movesky.app.engine.core.GameActivity;
+
+        $r1 = r0.<com.movesky.app.engine.core.GameActivity: com.movesky.app.engine.core.GameView view>;
+
+        virtualinvoke $r1.<com.movesky.app.engine.core.GameView: void onStop()>();
+
+        $r2 = r0.<com.movesky.app.engine.core.GameActivity: com.movesky.app.engine.core.Game game>;
+
+        virtualinvoke $r2.<com.movesky.app.engine.core.Game: void onStop()>();
+
+        return;
+    }
+
+    protected abstract com.movesky.app.engine.core.Game getGame();
+
+    public java.lang.String getString(java.lang.String)
+    {
+        com.movesky.app.engine.core.GameActivity r0;
+        java.lang.String $r1;
+
+        r0 := @this: com.movesky.app.engine.core.GameActivity;
+
+        $r1 := @parameter0: java.lang.String;
+
+        return null;
+    }
+
+    public void onActivityResult(int, int, android.content.Intent)
+    {
+        com.movesky.app.engine.core.GameActivity r0;
+        int $i0, $i1;
+        android.content.Intent $r1;
+        com.movesky.app.engine.core.Game $r2;
+
+        r0 := @this: com.movesky.app.engine.core.GameActivity;
+
+        $i0 := @parameter0: int;
+
+        $i1 := @parameter1: int;
+
+        $r1 := @parameter2: android.content.Intent;
+
+        $r2 = r0.<com.movesky.app.engine.core.GameActivity: com.movesky.app.engine.core.Game game>;
+
+        virtualinvoke $r2.<com.movesky.app.engine.core.Game: void onActivityResult(int,int)>($i0, $i1);
+
+        return;
+    }
+
+    public void onBackPressed()
+    {
+        com.movesky.app.engine.core.GameActivity r0;
+        com.movesky.app.engine.core.Game $r1;
+
+        r0 := @this: com.movesky.app.engine.core.GameActivity;
+
+        $r1 = r0.<com.movesky.app.engine.core.GameActivity: com.movesky.app.engine.core.Game game>;
+
+        virtualinvoke $r1.<com.movesky.app.engine.core.Game: void onBackPressed()>();
+
+        return;
+    }
+
+    public void onCreate(android.os.Bundle)
+    {
+        com.movesky.app.engine.core.GameActivity r0;
+        android.os.Bundle $r1;
+        com.movesky.app.engine.core.Game $r2;
+        com.movesky.app.engine.core.GameView $r3;
+        android.view.Window $r4;
+
+        r0 := @this: com.movesky.app.engine.core.GameActivity;
+
+        $r1 := @parameter0: android.os.Bundle;
+
+        specialinvoke r0.<android.app.Activity: void onCreate(android.os.Bundle)>($r1);
+
+        $r2 = virtualinvoke r0.<com.movesky.app.engine.core.GameActivity: com.movesky.app.engine.core.Game getGame()>();
+
+        r0.<com.movesky.app.engine.core.GameActivity: com.movesky.app.engine.core.Game game> = $r2;
+
+        $r3 = new com.movesky.app.engine.core.GameView;
+
+        $r2 = r0.<com.movesky.app.engine.core.GameActivity: com.movesky.app.engine.core.Game game>;
+
+        specialinvoke $r3.<com.movesky.app.engine.core.GameView: void <init>(android.content.Context,com.movesky.app.engine.core.Game)>(r0, $r2);
+
+        r0.<com.movesky.app.engine.core.GameActivity: com.movesky.app.engine.core.GameView view> = $r3;
+
+        virtualinvoke r0.<com.movesky.app.engine.core.GameActivity: boolean requestWindowFeature(int)>(1);
+
+        $r4 = virtualinvoke r0.<com.movesky.app.engine.core.GameActivity: android.view.Window getWindow()>();
+
+        virtualinvoke $r4.<android.view.Window: void setFlags(int,int)>(1024, 1024);
+
+        $r3 = r0.<com.movesky.app.engine.core.GameActivity: com.movesky.app.engine.core.GameView view>;
+
+        virtualinvoke r0.<com.movesky.app.engine.core.GameActivity: void setContentView(android.view.View)>($r3);
+
+        return;
+    }
+
+    public void onDestroy()
+    {
+        com.movesky.app.engine.core.GameActivity r0;
+
+        r0 := @this: com.movesky.app.engine.core.GameActivity;
+
+        specialinvoke r0.<com.movesky.app.engine.core.GameActivity: void stop()>();
+
+        specialinvoke r0.<android.app.Activity: void onDestroy()>();
+
+        return;
+    }
+
+    public void onPause()
+    {
+        com.movesky.app.engine.core.GameActivity r0;
+
+        r0 := @this: com.movesky.app.engine.core.GameActivity;
+
+        specialinvoke r0.<com.movesky.app.engine.core.GameActivity: void stop()>();
+
+        specialinvoke r0.<android.app.Activity: void onPause()>();
+
+        return;
+    }
+
+    public void onResume()
+    {
+        com.movesky.app.engine.core.GameActivity r0;
+
+        r0 := @this: com.movesky.app.engine.core.GameActivity;
+
+        specialinvoke r0.<android.app.Activity: void onResume()>();
+
+        specialinvoke r0.<com.movesky.app.engine.core.GameActivity: void start()>();
+
+        return;
+    }
+
+    public void onStop()
+    {
+        com.movesky.app.engine.core.GameActivity r0;
+
+        r0 := @this: com.movesky.app.engine.core.GameActivity;
+
+        specialinvoke r0.<com.movesky.app.engine.core.GameActivity: void stop()>();
+
+        specialinvoke r0.<android.app.Activity: void onStop()>();
+
+        return;
+    }
+}

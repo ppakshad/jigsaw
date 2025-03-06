@@ -1,0 +1,71 @@
+class com.movesky.webapp.Activity_WebView$MyWebViewDownLoadListener extends java.lang.Object implements android.webkit.DownloadListener
+{
+    final com.movesky.webapp.Activity_WebView this$0;
+
+    private void <init>(com.movesky.webapp.Activity_WebView)
+    {
+        com.movesky.webapp.Activity_WebView$MyWebViewDownLoadListener r0;
+        com.movesky.webapp.Activity_WebView $r1;
+
+        r0 := @this: com.movesky.webapp.Activity_WebView$MyWebViewDownLoadListener;
+
+        $r1 := @parameter0: com.movesky.webapp.Activity_WebView;
+
+        r0.<com.movesky.webapp.Activity_WebView$MyWebViewDownLoadListener: com.movesky.webapp.Activity_WebView this$0> = $r1;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    void <init>(com.movesky.webapp.Activity_WebView, com.movesky.webapp.Activity_WebView$1)
+    {
+        com.movesky.webapp.Activity_WebView$MyWebViewDownLoadListener r0;
+        com.movesky.webapp.Activity_WebView $r1;
+        com.movesky.webapp.Activity_WebView$1 $r2;
+
+        r0 := @this: com.movesky.webapp.Activity_WebView$MyWebViewDownLoadListener;
+
+        $r1 := @parameter0: com.movesky.webapp.Activity_WebView;
+
+        $r2 := @parameter1: com.movesky.webapp.Activity_WebView$1;
+
+        specialinvoke r0.<com.movesky.webapp.Activity_WebView$MyWebViewDownLoadListener: void <init>(com.movesky.webapp.Activity_WebView)>($r1);
+
+        return;
+    }
+
+    public void onDownloadStart(java.lang.String, java.lang.String, java.lang.String, java.lang.String, long)
+    {
+        com.movesky.webapp.Activity_WebView$MyWebViewDownLoadListener r0;
+        java.lang.String $r1, $r2, $r3, $r4;
+        long $l0;
+        android.content.Intent $r5;
+        android.net.Uri $r6;
+        com.movesky.webapp.Activity_WebView $r7;
+
+        r0 := @this: com.movesky.webapp.Activity_WebView$MyWebViewDownLoadListener;
+
+        $r1 := @parameter0: java.lang.String;
+
+        $r2 := @parameter1: java.lang.String;
+
+        $r3 := @parameter2: java.lang.String;
+
+        $r4 := @parameter3: java.lang.String;
+
+        $l0 := @parameter4: long;
+
+        $r6 = staticinvoke <android.net.Uri: android.net.Uri parse(java.lang.String)>($r1);
+
+        $r5 = new android.content.Intent;
+
+        specialinvoke $r5.<android.content.Intent: void <init>(java.lang.String,android.net.Uri)>("android.intent.action.VIEW", $r6);
+
+        $r7 = r0.<com.movesky.webapp.Activity_WebView$MyWebViewDownLoadListener: com.movesky.webapp.Activity_WebView this$0>;
+
+        virtualinvoke $r7.<com.movesky.webapp.Activity_WebView: void startActivity(android.content.Intent)>($r5);
+
+        return;
+    }
+}

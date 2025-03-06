@@ -1,0 +1,197 @@
+public final class com.airpush.android.Constants extends java.lang.Object
+{
+    protected static final long ALARM_TRIGGER_AT_TIME;
+    protected static final boolean DebugMode;
+    protected static final java.lang.Integer IntervalFirstTime;
+    protected static long IntervalGetMessage;
+    protected static final java.lang.Integer IntervalSdkReexecute;
+    protected static final java.lang.Integer IntervalUserInfo;
+    protected static final boolean VibrateMode;
+    protected static java.lang.String apiMessageUrl;
+    protected static final java.lang.String apiUrl;
+    protected static int[] icons;
+    protected static long searchIconNextMessageCheckTime;
+    protected static final boolean sendLog;
+    private static boolean testMode;
+
+    static void <clinit>()
+    {
+        java.lang.Integer $r0;
+        long $l0;
+        int[] $r1;
+
+        <com.airpush.android.Constants: java.lang.String apiUrl> = "http://api.airpush.com/v2/api.php";
+
+        <com.airpush.android.Constants: boolean VibrateMode> = 1;
+
+        <com.airpush.android.Constants: boolean DebugMode> = 0;
+
+        <com.airpush.android.Constants: java.lang.String apiMessageUrl> = "http://api.airpush.com/v2/api.php";
+
+        $r0 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>(20000);
+
+        <com.airpush.android.Constants: java.lang.Integer IntervalUserInfo> = $r0;
+
+        <com.airpush.android.Constants: long IntervalGetMessage> = 14400000L;
+
+        $r0 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>(6000);
+
+        <com.airpush.android.Constants: java.lang.Integer IntervalFirstTime> = $r0;
+
+        $l0 = staticinvoke <android.os.SystemClock: long elapsedRealtime()>();
+
+        $l0 = $l0 + 15000L;
+
+        <com.airpush.android.Constants: long ALARM_TRIGGER_AT_TIME> = $l0;
+
+        $r0 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>(240);
+
+        <com.airpush.android.Constants: java.lang.Integer IntervalSdkReexecute> = $r0;
+
+        <com.airpush.android.Constants: long searchIconNextMessageCheckTime> = 14400000L;
+
+        $r1 = newarray (int)[3];
+
+        $r1[0] = 17301620;
+
+        $r1[1] = 17301547;
+
+        $r1[2] = 17301611;
+
+        <com.airpush.android.Constants: int[] icons> = $r1;
+
+        return;
+    }
+
+    public void <init>()
+    {
+        com.airpush.android.Constants r0;
+
+        r0 := @this: com.airpush.android.Constants;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    protected static boolean checkInternetConnection(android.content.Context)
+    {
+        android.content.Context $r0;
+        java.lang.String r1, r2;
+        java.lang.Object $r3;
+        android.net.ConnectivityManager r4;
+        android.net.NetworkInfo $r5;
+        boolean $z0;
+        java.lang.StringBuilder $r6;
+        long $l0;
+        java.lang.Exception $r7;
+
+        $r0 := @parameter0: android.content.Context;
+
+        r1 = new java.lang.String;
+
+        specialinvoke r1.<java.lang.String: void <init>(java.lang.String)>("ABC");
+
+        r2 = new java.lang.String;
+
+        specialinvoke r2.<java.lang.String: void <init>(java.lang.String)>(r1);
+
+     label01:
+        $r3 = virtualinvoke $r0.<android.content.Context: java.lang.Object getSystemService(java.lang.String)>("connectivity");
+
+        r4 = (android.net.ConnectivityManager) $r3;
+
+        $r5 = virtualinvoke r4.<android.net.ConnectivityManager: android.net.NetworkInfo getActiveNetworkInfo()>();
+
+     label02:
+        if $r5 == null goto label07;
+
+     label03:
+        $r5 = virtualinvoke r4.<android.net.ConnectivityManager: android.net.NetworkInfo getActiveNetworkInfo()>();
+
+        $z0 = virtualinvoke $r5.<android.net.NetworkInfo: boolean isAvailable()>();
+
+     label04:
+        if $z0 == 0 goto label07;
+
+     label05:
+        $r5 = virtualinvoke r4.<android.net.ConnectivityManager: android.net.NetworkInfo getActiveNetworkInfo()>();
+
+        $z0 = virtualinvoke $r5.<android.net.NetworkInfo: boolean isConnected()>();
+
+     label06:
+        if $z0 == 0 goto label07;
+
+        return 1;
+
+     label07:
+        staticinvoke <android.util.Log: int i(java.lang.String,java.lang.String)>("AirpushSDK", "Internet Connection Not Found");
+
+     label08:
+        $r6 = new java.lang.StringBuilder;
+
+     label09:
+        specialinvoke $r6.<java.lang.StringBuilder: void <init>(java.lang.String)>("Internet Error: SDK will retry after ");
+
+     label10:
+        $l0 = <com.airpush.android.HttpPostData: long timeDiff>;
+
+     label11:
+        $r6 = virtualinvoke $r6.<java.lang.StringBuilder: java.lang.StringBuilder append(long)>($l0);
+
+        $r6 = virtualinvoke $r6.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" ms");
+
+        r1 = virtualinvoke $r6.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <android.util.Log: int i(java.lang.String,java.lang.String)>("AirpushSDK", r1);
+
+     label12:
+        return 0;
+
+     label13:
+        $r7 := @caughtexception;
+
+        return 0;
+
+        catch java.lang.Exception from label01 to label02 with label13;
+        catch java.lang.Exception from label03 to label04 with label13;
+        catch java.lang.Exception from label05 to label06 with label13;
+        catch java.lang.Exception from label07 to label08 with label13;
+        catch java.lang.Exception from label09 to label10 with label13;
+        catch java.lang.Exception from label11 to label12 with label13;
+    }
+
+    protected static void doToast(android.content.Context, java.lang.String)
+    {
+        android.content.Context $r0;
+        java.lang.String $r1;
+
+        $r0 := @parameter0: android.content.Context;
+
+        $r1 := @parameter1: java.lang.String;
+
+        return;
+    }
+
+    protected static void setUrl(boolean)
+    {
+        boolean $z0;
+
+        $z0 := @parameter0: boolean;
+
+        <com.airpush.android.Constants: boolean testMode> = $z0;
+
+        $z0 = <com.airpush.android.Constants: boolean testMode>;
+
+        if $z0 == 0 goto label1;
+
+        <com.airpush.android.Constants: java.lang.String apiMessageUrl> = "http://api.airpush.com/testmsg2.php";
+
+        return;
+
+     label1:
+        <com.airpush.android.Constants: java.lang.String apiMessageUrl> = "http://api.airpush.com/v2/api.php";
+
+        return;
+    }
+}

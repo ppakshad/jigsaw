@@ -1,0 +1,63 @@
+public class org.codehaus.jackson.map.ext.CoreXMLSerializers extends java.lang.Object implements org.codehaus.jackson.map.util.Provider
+{
+    static final java.util.HashMap _serializers;
+
+    static void <clinit>()
+    {
+        org.codehaus.jackson.map.ser.ToStringSerializer r0;
+        org.codehaus.jackson.map.ext.CoreXMLSerializers$XMLGregorianCalendarSerializer $r1;
+        java.util.HashMap $r2;
+
+        $r2 = new java.util.HashMap;
+
+        specialinvoke $r2.<java.util.HashMap: void <init>()>();
+
+        <org.codehaus.jackson.map.ext.CoreXMLSerializers: java.util.HashMap _serializers> = $r2;
+
+        r0 = <org.codehaus.jackson.map.ser.ToStringSerializer: org.codehaus.jackson.map.ser.ToStringSerializer instance>;
+
+        $r2 = <org.codehaus.jackson.map.ext.CoreXMLSerializers: java.util.HashMap _serializers>;
+
+        virtualinvoke $r2.<java.util.HashMap: java.lang.Object put(java.lang.Object,java.lang.Object)>(class "Ljavax/xml/datatype/Duration;", r0);
+
+        $r2 = <org.codehaus.jackson.map.ext.CoreXMLSerializers: java.util.HashMap _serializers>;
+
+        $r1 = new org.codehaus.jackson.map.ext.CoreXMLSerializers$XMLGregorianCalendarSerializer;
+
+        specialinvoke $r1.<org.codehaus.jackson.map.ext.CoreXMLSerializers$XMLGregorianCalendarSerializer: void <init>()>();
+
+        virtualinvoke $r2.<java.util.HashMap: java.lang.Object put(java.lang.Object,java.lang.Object)>(class "Ljavax/xml/datatype/XMLGregorianCalendar;", $r1);
+
+        $r2 = <org.codehaus.jackson.map.ext.CoreXMLSerializers: java.util.HashMap _serializers>;
+
+        virtualinvoke $r2.<java.util.HashMap: java.lang.Object put(java.lang.Object,java.lang.Object)>(class "Ljavax/xml/namespace/QName;", r0);
+
+        return;
+    }
+
+    public void <init>()
+    {
+        org.codehaus.jackson.map.ext.CoreXMLSerializers r0;
+
+        r0 := @this: org.codehaus.jackson.map.ext.CoreXMLSerializers;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public java.util.Collection provide()
+    {
+        org.codehaus.jackson.map.ext.CoreXMLSerializers r0;
+        java.util.Set $r1;
+        java.util.HashMap $r2;
+
+        r0 := @this: org.codehaus.jackson.map.ext.CoreXMLSerializers;
+
+        $r2 = <org.codehaus.jackson.map.ext.CoreXMLSerializers: java.util.HashMap _serializers>;
+
+        $r1 = virtualinvoke $r2.<java.util.HashMap: java.util.Set entrySet()>();
+
+        return $r1;
+    }
+}

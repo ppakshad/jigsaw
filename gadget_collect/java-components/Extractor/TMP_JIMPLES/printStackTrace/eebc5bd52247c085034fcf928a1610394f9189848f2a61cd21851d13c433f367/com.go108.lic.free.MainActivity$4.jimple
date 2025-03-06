@@ -1,0 +1,57 @@
+class com.go108.lic.free.MainActivity$4 extends java.lang.Object implements android.view.View$OnClickListener
+{
+    final com.go108.lic.free.MainActivity this$0;
+
+    void <init>(com.go108.lic.free.MainActivity)
+    {
+        com.go108.lic.free.MainActivity $r1;
+        com.go108.lic.free.MainActivity$4 r0;
+
+        r0 := @this: com.go108.lic.free.MainActivity$4;
+
+        $r1 := @parameter0: com.go108.lic.free.MainActivity;
+
+        r0.<com.go108.lic.free.MainActivity$4: com.go108.lic.free.MainActivity this$0> = $r1;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public void onClick(android.view.View)
+    {
+        android.content.Context $r4;
+        android.view.View $r1;
+        com.go108.lic.free.MainActivity $r3, $r5;
+        android.content.Intent $r2;
+        com.go108.lic.free.MainActivity$4 r0;
+
+        r0 := @this: com.go108.lic.free.MainActivity$4;
+
+        $r1 := @parameter0: android.view.View;
+
+        $r5 = r0.<com.go108.lic.free.MainActivity$4: com.go108.lic.free.MainActivity this$0>;
+
+        $r2 = new android.content.Intent;
+
+        $r3 = r0.<com.go108.lic.free.MainActivity$4: com.go108.lic.free.MainActivity this$0>;
+
+        specialinvoke $r2.<android.content.Intent: void <init>(android.content.Context,java.lang.Class)>($r3, class "Lcom/go108/lic/free/util/DownloadFileService;");
+
+        virtualinvoke $r5.<com.go108.lic.free.MainActivity: boolean stopService(android.content.Intent)>($r2);
+
+        $r3 = r0.<com.go108.lic.free.MainActivity$4: com.go108.lic.free.MainActivity this$0>;
+
+        virtualinvoke $r3.<com.go108.lic.free.MainActivity: void finish()>();
+
+        $r3 = r0.<com.go108.lic.free.MainActivity$4: com.go108.lic.free.MainActivity this$0>;
+
+        $r4 = virtualinvoke $r3.<com.go108.lic.free.MainActivity: android.content.Context getApplicationContext()>();
+
+        staticinvoke <cn.com.go108.pickinfo.SendInfomation: void sendEnd(android.content.Context)>($r4);
+
+        staticinvoke <java.lang.System: void exit(int)>(0);
+
+        return;
+    }
+}

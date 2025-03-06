@@ -1,0 +1,51 @@
+public class com.movesky.app.engine.util.Point extends android.graphics.PointF
+{
+
+    public void <init>()
+    {
+        com.movesky.app.engine.util.Point r0;
+
+        r0 := @this: com.movesky.app.engine.util.Point;
+
+        specialinvoke r0.<android.graphics.PointF: void <init>()>();
+
+        return;
+    }
+
+    public void <init>(float, float)
+    {
+        com.movesky.app.engine.util.Point r0;
+        float $f0, $f1;
+
+        r0 := @this: com.movesky.app.engine.util.Point;
+
+        $f0 := @parameter0: float;
+
+        $f1 := @parameter1: float;
+
+        specialinvoke r0.<android.graphics.PointF: void <init>(float,float)>($f0, $f1);
+
+        return;
+    }
+
+    public int hashCode()
+    {
+        com.movesky.app.engine.util.Point r0;
+        float $f0;
+        int $i0, $i1;
+
+        r0 := @this: com.movesky.app.engine.util.Point;
+
+        $f0 = r0.<com.movesky.app.engine.util.Point: float x>;
+
+        $i0 = staticinvoke <java.lang.Float: int floatToRawIntBits(float)>($f0);
+
+        $f0 = r0.<com.movesky.app.engine.util.Point: float y>;
+
+        $i1 = staticinvoke <java.lang.Float: int floatToRawIntBits(float)>($f0);
+
+        $i0 = $i0 ^ $i1;
+
+        return $i0;
+    }
+}

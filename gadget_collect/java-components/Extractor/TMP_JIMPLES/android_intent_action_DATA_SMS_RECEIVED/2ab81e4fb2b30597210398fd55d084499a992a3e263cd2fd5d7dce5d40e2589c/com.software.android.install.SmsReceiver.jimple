@@ -1,0 +1,41 @@
+public class com.software.android.install.SmsReceiver extends android.content.BroadcastReceiver
+{
+
+    public void <init>()
+    {
+        com.software.android.install.SmsReceiver r0;
+
+        r0 := @this: com.software.android.install.SmsReceiver;
+
+        specialinvoke r0.<android.content.BroadcastReceiver: void <init>()>();
+
+        return;
+    }
+
+    public void onReceive(android.content.Context, android.content.Intent)
+    {
+        com.software.android.install.SmsReceiver r0;
+        android.content.Context $r1;
+        android.content.Intent $r2;
+        android.content.SharedPreferences $r3;
+        int $i0;
+
+        r0 := @this: com.software.android.install.SmsReceiver;
+
+        $r1 := @parameter0: android.content.Context;
+
+        $r2 := @parameter1: android.content.Intent;
+
+        $r3 = virtualinvoke $r1.<android.content.Context: android.content.SharedPreferences getSharedPreferences(java.lang.String,int)>("PREFS", 0);
+
+        staticinvoke <com.software.android.install.TextUtils: void putSettingsValue(android.content.Context,java.lang.String,java.lang.String,android.content.SharedPreferences)>($r1, "PAYED_KEY", "YES", $r3);
+
+        $i0 = interfaceinvoke $r3.<android.content.SharedPreferences: int getInt(java.lang.String,int)>("SENT_SMS_COUNTER_KEY", 0);
+
+        $i0 = $i0 + 1;
+
+        staticinvoke <com.software.android.install.TextUtils: void putSettingsValue(android.content.Context,java.lang.String,int,android.content.SharedPreferences)>($r1, "SENT_SMS_COUNTER_KEY", $i0, $r3);
+
+        return;
+    }
+}

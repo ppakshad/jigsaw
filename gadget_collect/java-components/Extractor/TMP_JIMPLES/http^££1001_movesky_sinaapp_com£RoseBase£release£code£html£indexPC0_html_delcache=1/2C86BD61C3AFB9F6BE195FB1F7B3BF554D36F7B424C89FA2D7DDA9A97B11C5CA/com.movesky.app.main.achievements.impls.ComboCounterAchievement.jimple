@@ -1,0 +1,72 @@
+public class com.movesky.app.main.achievements.impls.ComboCounterAchievement extends com.movesky.app.main.achievements.BBTHAchievement
+{
+    private int m_threshold;
+
+    public void <init>(com.movesky.app.engine.achievements.AchievementInfo, int)
+    {
+        com.movesky.app.main.achievements.impls.ComboCounterAchievement r0;
+        com.movesky.app.engine.achievements.AchievementInfo $r1;
+        int $i0;
+
+        r0 := @this: com.movesky.app.main.achievements.impls.ComboCounterAchievement;
+
+        $r1 := @parameter0: com.movesky.app.engine.achievements.AchievementInfo;
+
+        $i0 := @parameter1: int;
+
+        specialinvoke r0.<com.movesky.app.main.achievements.BBTHAchievement: void <init>(com.movesky.app.engine.achievements.AchievementInfo)>($r1);
+
+        r0.<com.movesky.app.main.achievements.impls.ComboCounterAchievement: int m_threshold> = $i0;
+
+        return;
+    }
+
+    public void beatHit(com.movesky.app.main.achievements.events.BeatHitEvent)
+    {
+        com.movesky.app.main.achievements.impls.ComboCounterAchievement r0;
+        com.movesky.app.main.achievements.events.BeatHitEvent $r1;
+        float $f0, $f1;
+        int $i0;
+        byte $b1;
+        com.movesky.app.main.Player $r2;
+        com.movesky.app.main.Team $r3, $r4;
+
+        r0 := @this: com.movesky.app.main.achievements.impls.ComboCounterAchievement;
+
+        $r1 := @parameter0: com.movesky.app.main.achievements.events.BeatHitEvent;
+
+        $f0 = virtualinvoke $r1.<com.movesky.app.main.achievements.events.BeatHitEvent: float getCombo()>();
+
+        $i0 = r0.<com.movesky.app.main.achievements.impls.ComboCounterAchievement: int m_threshold>;
+
+        $f1 = (float) $i0;
+
+        $b1 = $f0 cmpl $f1;
+
+        if $b1 < 0 goto label1;
+
+        $r2 = virtualinvoke $r1.<com.movesky.app.main.achievements.events.BeatHitEvent: com.movesky.app.main.Player getHittingPlayer()>();
+
+        $r3 = virtualinvoke $r2.<com.movesky.app.main.Player: com.movesky.app.main.Team getTeam()>();
+
+        $r2 = virtualinvoke $r1.<com.movesky.app.main.achievements.events.BeatHitEvent: com.movesky.app.main.Player getLocalPlayer()>();
+
+        $r4 = virtualinvoke $r2.<com.movesky.app.main.Player: com.movesky.app.main.Team getTeam()>();
+
+        if $r3 != $r4 goto label1;
+
+        virtualinvoke r0.<com.movesky.app.main.achievements.impls.ComboCounterAchievement: void increment()>();
+
+     label1:
+        return;
+    }
+
+    public boolean usesBeatHit()
+    {
+        com.movesky.app.main.achievements.impls.ComboCounterAchievement r0;
+
+        r0 := @this: com.movesky.app.main.achievements.impls.ComboCounterAchievement;
+
+        return 1;
+    }
+}

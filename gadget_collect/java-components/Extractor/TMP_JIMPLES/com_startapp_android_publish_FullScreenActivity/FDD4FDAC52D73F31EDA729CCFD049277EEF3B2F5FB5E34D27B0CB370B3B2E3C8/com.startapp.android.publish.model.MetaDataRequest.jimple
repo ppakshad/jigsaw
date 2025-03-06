@@ -1,0 +1,456 @@
+public class com.startapp.android.publish.model.MetaDataRequest extends com.startapp.android.publish.model.BaseRequest
+{
+    private java.lang.String apkHash;
+    private int daysSinceFirstSession;
+    private float paidAmount;
+    private boolean payingUser;
+    private java.lang.String profileId;
+    private com.startapp.android.publish.model.MetaDataRequest$RequestReason reason;
+    private int totalSessions;
+
+    public void <init>(android.content.Context, com.startapp.android.publish.model.MetaDataRequest$RequestReason)
+    {
+        com.startapp.android.publish.model.MetaDataRequest r0;
+        android.content.Context $r1;
+        com.startapp.android.publish.model.MetaDataRequest$RequestReason $r2;
+        java.lang.Integer $r3;
+        int $i0;
+        java.lang.Float $r4;
+        float $f0;
+        java.lang.Boolean $r5;
+        boolean $z0;
+        com.startapp.android.publish.model.MetaData $r6;
+        java.lang.String $r7;
+
+        r0 := @this: com.startapp.android.publish.model.MetaDataRequest;
+
+        $r1 := @parameter0: android.content.Context;
+
+        $r2 := @parameter1: com.startapp.android.publish.model.MetaDataRequest$RequestReason;
+
+        specialinvoke r0.<com.startapp.android.publish.model.BaseRequest: void <init>()>();
+
+        $r3 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>(0);
+
+        $r3 = staticinvoke <com.startapp.android.publish.i.j: java.lang.Integer a(android.content.Context,java.lang.String,java.lang.Integer)>($r1, "totalSessions", $r3);
+
+        $i0 = virtualinvoke $r3.<java.lang.Integer: int intValue()>();
+
+        r0.<com.startapp.android.publish.model.MetaDataRequest: int totalSessions> = $i0;
+
+        $i0 = specialinvoke r0.<com.startapp.android.publish.model.MetaDataRequest: int calcDaysSinceFirstSession(android.content.Context)>($r1);
+
+        r0.<com.startapp.android.publish.model.MetaDataRequest: int daysSinceFirstSession> = $i0;
+
+        $r4 = staticinvoke <java.lang.Float: java.lang.Float valueOf(float)>(0.0F);
+
+        $r4 = staticinvoke <com.startapp.android.publish.i.j: java.lang.Float a(android.content.Context,java.lang.String,java.lang.Float)>($r1, "inAppPurchaseAmount", $r4);
+
+        $f0 = virtualinvoke $r4.<java.lang.Float: float floatValue()>();
+
+        r0.<com.startapp.android.publish.model.MetaDataRequest: float paidAmount> = $f0;
+
+        $r5 = staticinvoke <java.lang.Boolean: java.lang.Boolean valueOf(boolean)>(0);
+
+        $r5 = staticinvoke <com.startapp.android.publish.i.j: java.lang.Boolean a(android.content.Context,java.lang.String,java.lang.Boolean)>($r1, "payingUser", $r5);
+
+        $z0 = virtualinvoke $r5.<java.lang.Boolean: boolean booleanValue()>();
+
+        r0.<com.startapp.android.publish.model.MetaDataRequest: boolean payingUser> = $z0;
+
+        $r6 = staticinvoke <com.startapp.android.publish.model.MetaData: com.startapp.android.publish.model.MetaData getInstance()>();
+
+        $r7 = virtualinvoke $r6.<com.startapp.android.publish.model.MetaData: java.lang.String getProfileId()>();
+
+        r0.<com.startapp.android.publish.model.MetaDataRequest: java.lang.String profileId> = $r7;
+
+        r0.<com.startapp.android.publish.model.MetaDataRequest: com.startapp.android.publish.model.MetaDataRequest$RequestReason reason> = $r2;
+
+        $r7 = staticinvoke <com.startapp.android.publish.i.x: java.lang.String a(java.lang.String,android.content.Context)>("SHA-256", $r1);
+
+        r0.<com.startapp.android.publish.model.MetaDataRequest: java.lang.String apkHash> = $r7;
+
+        return;
+    }
+
+    private int calcDaysSinceFirstSession(android.content.Context)
+    {
+        com.startapp.android.publish.model.MetaDataRequest r0;
+        android.content.Context $r1;
+        long $l0, $l1;
+        java.lang.Long $r2;
+        int $i2;
+
+        r0 := @this: com.startapp.android.publish.model.MetaDataRequest;
+
+        $r1 := @parameter0: android.content.Context;
+
+        $l0 = staticinvoke <java.lang.System: long currentTimeMillis()>();
+
+        $l1 = staticinvoke <java.lang.System: long currentTimeMillis()>();
+
+        $r2 = staticinvoke <java.lang.Long: java.lang.Long valueOf(long)>($l1);
+
+        $r2 = staticinvoke <com.startapp.android.publish.i.j: java.lang.Long a(android.content.Context,java.lang.String,java.lang.Long)>($r1, "firstSessionTime", $r2);
+
+        $l1 = virtualinvoke $r2.<java.lang.Long: long longValue()>();
+
+        $l0 = $l0 - $l1;
+
+        $i2 = specialinvoke r0.<com.startapp.android.publish.model.MetaDataRequest: int millisToDays(long)>($l0);
+
+        return $i2;
+    }
+
+    private int millisToDays(long)
+    {
+        com.startapp.android.publish.model.MetaDataRequest r0;
+        long $l0;
+        int $i1;
+
+        r0 := @this: com.startapp.android.publish.model.MetaDataRequest;
+
+        $l0 := @parameter0: long;
+
+        $l0 = $l0 / 86400000L;
+
+        $i1 = (int) $l0;
+
+        return $i1;
+    }
+
+    public java.lang.String getApkHash()
+    {
+        com.startapp.android.publish.model.MetaDataRequest r0;
+        java.lang.String r1;
+
+        r0 := @this: com.startapp.android.publish.model.MetaDataRequest;
+
+        r1 = r0.<com.startapp.android.publish.model.MetaDataRequest: java.lang.String apkHash>;
+
+        return r1;
+    }
+
+    public int getDaysSinceFirstSession()
+    {
+        com.startapp.android.publish.model.MetaDataRequest r0;
+        int i0;
+
+        r0 := @this: com.startapp.android.publish.model.MetaDataRequest;
+
+        i0 = r0.<com.startapp.android.publish.model.MetaDataRequest: int daysSinceFirstSession>;
+
+        return i0;
+    }
+
+    public java.util.List getNameValueMap()
+    {
+        com.startapp.android.publish.model.MetaDataRequest r0;
+        java.util.List $r1;
+        java.lang.Object $r2;
+        int $i0;
+        java.lang.Integer $r3;
+        boolean $z0;
+        java.lang.Boolean $r4;
+        java.lang.String $r5;
+        float $f0;
+        java.lang.Float $r6;
+        com.startapp.android.publish.model.MetaDataRequest$RequestReason $r7;
+        java.util.ArrayList $r8;
+
+        r0 := @this: com.startapp.android.publish.model.MetaDataRequest;
+
+        $r1 = specialinvoke r0.<com.startapp.android.publish.model.BaseRequest: java.util.List getNameValueMap()>();
+
+        $r2 = $r1;
+
+        if $r1 != null goto label1;
+
+        $r8 = new java.util.ArrayList;
+
+        $r2 = $r8;
+
+        specialinvoke $r8.<java.util.ArrayList: void <init>()>();
+
+     label1:
+        $i0 = r0.<com.startapp.android.publish.model.MetaDataRequest: int totalSessions>;
+
+        $r3 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>($i0);
+
+        $r1 = (java.util.List) $r2;
+
+        staticinvoke <com.startapp.android.publish.i.x: void a(java.util.List,java.lang.String,java.lang.Object,boolean)>($r1, "totalSessions", $r3, 1);
+
+        $i0 = r0.<com.startapp.android.publish.model.MetaDataRequest: int daysSinceFirstSession>;
+
+        $r3 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>($i0);
+
+        $r1 = (java.util.List) $r2;
+
+        staticinvoke <com.startapp.android.publish.i.x: void a(java.util.List,java.lang.String,java.lang.Object,boolean)>($r1, "daysSinceFirstSession", $r3, 1);
+
+        $z0 = r0.<com.startapp.android.publish.model.MetaDataRequest: boolean payingUser>;
+
+        $r4 = staticinvoke <java.lang.Boolean: java.lang.Boolean valueOf(boolean)>($z0);
+
+        $r1 = (java.util.List) $r2;
+
+        staticinvoke <com.startapp.android.publish.i.x: void a(java.util.List,java.lang.String,java.lang.Object,boolean)>($r1, "payingUser", $r4, 1);
+
+        $r5 = r0.<com.startapp.android.publish.model.MetaDataRequest: java.lang.String profileId>;
+
+        $r1 = (java.util.List) $r2;
+
+        staticinvoke <com.startapp.android.publish.i.x: void a(java.util.List,java.lang.String,java.lang.Object,boolean)>($r1, "profileId", $r5, 0);
+
+        $f0 = r0.<com.startapp.android.publish.model.MetaDataRequest: float paidAmount>;
+
+        $r6 = staticinvoke <java.lang.Float: java.lang.Float valueOf(float)>($f0);
+
+        $r1 = (java.util.List) $r2;
+
+        staticinvoke <com.startapp.android.publish.i.x: void a(java.util.List,java.lang.String,java.lang.Object,boolean)>($r1, "paidAmount", $r6, 1);
+
+        $r7 = r0.<com.startapp.android.publish.model.MetaDataRequest: com.startapp.android.publish.model.MetaDataRequest$RequestReason reason>;
+
+        $r1 = (java.util.List) $r2;
+
+        staticinvoke <com.startapp.android.publish.i.x: void a(java.util.List,java.lang.String,java.lang.Object,boolean)>($r1, "reason", $r7, 1);
+
+        $r5 = r0.<com.startapp.android.publish.model.MetaDataRequest: java.lang.String apkHash>;
+
+        if $r5 == null goto label2;
+
+        $r5 = r0.<com.startapp.android.publish.model.MetaDataRequest: java.lang.String apkHash>;
+
+        $r1 = (java.util.List) $r2;
+
+        staticinvoke <com.startapp.android.publish.i.x: void a(java.util.List,java.lang.String,java.lang.Object,boolean)>($r1, "apkHash", $r5, 0);
+
+        $r1 = (java.util.List) $r2;
+
+        return $r1;
+
+     label2:
+        $r1 = (java.util.List) $r2;
+
+        return $r1;
+    }
+
+    public float getPaidAmount()
+    {
+        com.startapp.android.publish.model.MetaDataRequest r0;
+        float f0;
+
+        r0 := @this: com.startapp.android.publish.model.MetaDataRequest;
+
+        f0 = r0.<com.startapp.android.publish.model.MetaDataRequest: float paidAmount>;
+
+        return f0;
+    }
+
+    public java.lang.String getProfileId()
+    {
+        com.startapp.android.publish.model.MetaDataRequest r0;
+        java.lang.String r1;
+
+        r0 := @this: com.startapp.android.publish.model.MetaDataRequest;
+
+        r1 = r0.<com.startapp.android.publish.model.MetaDataRequest: java.lang.String profileId>;
+
+        return r1;
+    }
+
+    public com.startapp.android.publish.model.MetaDataRequest$RequestReason getReason()
+    {
+        com.startapp.android.publish.model.MetaDataRequest r0;
+        com.startapp.android.publish.model.MetaDataRequest$RequestReason r1;
+
+        r0 := @this: com.startapp.android.publish.model.MetaDataRequest;
+
+        r1 = r0.<com.startapp.android.publish.model.MetaDataRequest: com.startapp.android.publish.model.MetaDataRequest$RequestReason reason>;
+
+        return r1;
+    }
+
+    public int getTotalSessions()
+    {
+        com.startapp.android.publish.model.MetaDataRequest r0;
+        int i0;
+
+        r0 := @this: com.startapp.android.publish.model.MetaDataRequest;
+
+        i0 = r0.<com.startapp.android.publish.model.MetaDataRequest: int totalSessions>;
+
+        return i0;
+    }
+
+    public boolean isPayingUser()
+    {
+        com.startapp.android.publish.model.MetaDataRequest r0;
+        boolean z0;
+
+        r0 := @this: com.startapp.android.publish.model.MetaDataRequest;
+
+        z0 = r0.<com.startapp.android.publish.model.MetaDataRequest: boolean payingUser>;
+
+        return z0;
+    }
+
+    public void setApkHash(java.lang.String)
+    {
+        com.startapp.android.publish.model.MetaDataRequest r0;
+        java.lang.String $r1;
+
+        r0 := @this: com.startapp.android.publish.model.MetaDataRequest;
+
+        $r1 := @parameter0: java.lang.String;
+
+        r0.<com.startapp.android.publish.model.MetaDataRequest: java.lang.String apkHash> = $r1;
+
+        return;
+    }
+
+    public void setDaysSinceFirstSession(int)
+    {
+        com.startapp.android.publish.model.MetaDataRequest r0;
+        int $i0;
+
+        r0 := @this: com.startapp.android.publish.model.MetaDataRequest;
+
+        $i0 := @parameter0: int;
+
+        r0.<com.startapp.android.publish.model.MetaDataRequest: int daysSinceFirstSession> = $i0;
+
+        return;
+    }
+
+    public void setPaidAmount(float)
+    {
+        com.startapp.android.publish.model.MetaDataRequest r0;
+        float $f0;
+
+        r0 := @this: com.startapp.android.publish.model.MetaDataRequest;
+
+        $f0 := @parameter0: float;
+
+        r0.<com.startapp.android.publish.model.MetaDataRequest: float paidAmount> = $f0;
+
+        return;
+    }
+
+    public void setPayingUser(boolean)
+    {
+        com.startapp.android.publish.model.MetaDataRequest r0;
+        boolean $z0;
+
+        r0 := @this: com.startapp.android.publish.model.MetaDataRequest;
+
+        $z0 := @parameter0: boolean;
+
+        r0.<com.startapp.android.publish.model.MetaDataRequest: boolean payingUser> = $z0;
+
+        return;
+    }
+
+    public void setProfileId(java.lang.String)
+    {
+        com.startapp.android.publish.model.MetaDataRequest r0;
+        java.lang.String $r1;
+
+        r0 := @this: com.startapp.android.publish.model.MetaDataRequest;
+
+        $r1 := @parameter0: java.lang.String;
+
+        r0.<com.startapp.android.publish.model.MetaDataRequest: java.lang.String profileId> = $r1;
+
+        return;
+    }
+
+    public void setReason(com.startapp.android.publish.model.MetaDataRequest$RequestReason)
+    {
+        com.startapp.android.publish.model.MetaDataRequest r0;
+        com.startapp.android.publish.model.MetaDataRequest$RequestReason $r1;
+
+        r0 := @this: com.startapp.android.publish.model.MetaDataRequest;
+
+        $r1 := @parameter0: com.startapp.android.publish.model.MetaDataRequest$RequestReason;
+
+        r0.<com.startapp.android.publish.model.MetaDataRequest: com.startapp.android.publish.model.MetaDataRequest$RequestReason reason> = $r1;
+
+        return;
+    }
+
+    public void setTotalSessions(int)
+    {
+        com.startapp.android.publish.model.MetaDataRequest r0;
+        int $i0;
+
+        r0 := @this: com.startapp.android.publish.model.MetaDataRequest;
+
+        $i0 := @parameter0: int;
+
+        r0.<com.startapp.android.publish.model.MetaDataRequest: int totalSessions> = $i0;
+
+        return;
+    }
+
+    public java.lang.String toString()
+    {
+        com.startapp.android.publish.model.MetaDataRequest r0;
+        java.lang.StringBuilder $r1;
+        int $i0;
+        boolean $z0;
+        float $f0;
+        com.startapp.android.publish.model.MetaDataRequest$RequestReason $r2;
+        java.lang.String $r3;
+
+        r0 := @this: com.startapp.android.publish.model.MetaDataRequest;
+
+        $r1 = new java.lang.StringBuilder;
+
+        specialinvoke $r1.<java.lang.StringBuilder: void <init>()>();
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("MetaDataRequest [totalSessions=");
+
+        $i0 = r0.<com.startapp.android.publish.model.MetaDataRequest: int totalSessions>;
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>($i0);
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(", daysSinceFirstSession=");
+
+        $i0 = r0.<com.startapp.android.publish.model.MetaDataRequest: int daysSinceFirstSession>;
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>($i0);
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(", payingUser=");
+
+        $z0 = r0.<com.startapp.android.publish.model.MetaDataRequest: boolean payingUser>;
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(boolean)>($z0);
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(", paidAmount=");
+
+        $f0 = r0.<com.startapp.android.publish.model.MetaDataRequest: float paidAmount>;
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(float)>($f0);
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(", reason=");
+
+        $r2 = r0.<com.startapp.android.publish.model.MetaDataRequest: com.startapp.android.publish.model.MetaDataRequest$RequestReason reason>;
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($r2);
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(", profileId=");
+
+        $r3 = r0.<com.startapp.android.publish.model.MetaDataRequest: java.lang.String profileId>;
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r3);
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("]");
+
+        $r3 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        return $r3;
+    }
+}

@@ -1,0 +1,770 @@
+public class com.startapp.android.publish.video.a extends java.lang.Object
+{
+    private boolean a;
+    private com.startapp.android.publish.video.b.c$c b;
+    private java.lang.String c;
+
+    private void <init>()
+    {
+        com.startapp.android.publish.video.a r0;
+
+        r0 := @this: com.startapp.android.publish.video.a;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        r0.<com.startapp.android.publish.video.a: boolean a> = 1;
+
+        r0.<com.startapp.android.publish.video.a: com.startapp.android.publish.video.b.c$c b> = null;
+
+        r0.<com.startapp.android.publish.video.a: java.lang.String c> = null;
+
+        return;
+    }
+
+    void <init>(com.startapp.android.publish.video.a$1)
+    {
+        com.startapp.android.publish.video.a r0;
+        com.startapp.android.publish.video.a$1 $r1;
+
+        r0 := @this: com.startapp.android.publish.video.a;
+
+        $r1 := @parameter0: com.startapp.android.publish.video.a$1;
+
+        specialinvoke r0.<com.startapp.android.publish.video.a: void <init>()>();
+
+        return;
+    }
+
+    public static com.startapp.android.publish.video.a a()
+    {
+        com.startapp.android.publish.video.a $r0;
+
+        $r0 = staticinvoke <com.startapp.android.publish.video.a$b: com.startapp.android.publish.video.a a()>();
+
+        return $r0;
+    }
+
+    static com.startapp.android.publish.video.b.c$c a(com.startapp.android.publish.video.a)
+    {
+        com.startapp.android.publish.video.a $r0;
+        com.startapp.android.publish.video.b.c$c r1;
+
+        $r0 := @parameter0: com.startapp.android.publish.video.a;
+
+        r1 = $r0.<com.startapp.android.publish.video.a: com.startapp.android.publish.video.b.c$c b>;
+
+        return r1;
+    }
+
+    private void a(int)
+    {
+        com.startapp.android.publish.video.a r0;
+        int $i0;
+        android.os.Looper $r1;
+        com.startapp.android.publish.video.b.c$c $r2;
+        android.os.Handler $r3;
+        com.startapp.android.publish.video.a$2 $r4;
+
+        r0 := @this: com.startapp.android.publish.video.a;
+
+        $i0 := @parameter0: int;
+
+        $r2 = r0.<com.startapp.android.publish.video.a: com.startapp.android.publish.video.b.c$c b>;
+
+        if $r2 == null goto label1;
+
+        $r3 = new android.os.Handler;
+
+        $r1 = staticinvoke <android.os.Looper: android.os.Looper getMainLooper()>();
+
+        specialinvoke $r3.<android.os.Handler: void <init>(android.os.Looper)>($r1);
+
+        $r4 = new com.startapp.android.publish.video.a$2;
+
+        specialinvoke $r4.<com.startapp.android.publish.video.a$2: void <init>(com.startapp.android.publish.video.a,int)>(r0, $i0);
+
+        virtualinvoke $r3.<android.os.Handler: boolean post(java.lang.Runnable)>($r4);
+
+     label1:
+        return;
+    }
+
+    private void a(android.content.Context, java.io.File, java.io.File)
+    {
+        com.startapp.android.publish.video.a r0;
+        android.content.Context $r1;
+        java.io.File $r2, $r3;
+        int $i0;
+        java.lang.Object $r4;
+        java.io.FileInputStream $r5, $r16;
+        java.io.FileOutputStream $r6, $r17;
+        byte[] $r7;
+        java.lang.Exception $r8, $r9, $r11, $r13, $r14, $r15;
+        java.lang.Throwable $r10, $r12;
+        java.io.InputStream $r18;
+        java.io.OutputStream $r19;
+
+        r0 := @this: com.startapp.android.publish.video.a;
+
+        $r1 := @parameter0: android.content.Context;
+
+        $r2 := @parameter1: java.io.File;
+
+        $r3 := @parameter2: java.io.File;
+
+        $r4 = null;
+
+     label01:
+        $r16 = new java.io.FileInputStream;
+
+     label02:
+        $r5 = $r16;
+
+     label03:
+        specialinvoke $r16.<java.io.FileInputStream: void <init>(java.io.File)>($r2);
+
+     label04:
+        $r17 = new java.io.FileOutputStream;
+
+     label05:
+        $r6 = $r17;
+
+     label06:
+        specialinvoke $r17.<java.io.FileOutputStream: void <init>(java.io.File)>($r3);
+
+     label07:
+        $r7 = newarray (byte)[1024];
+
+     label08:
+        $i0 = virtualinvoke $r16.<java.io.InputStream: int read(byte[])>($r7);
+
+     label09:
+        if $i0 <= 0 goto label15;
+
+     label10:
+        virtualinvoke $r17.<java.io.OutputStream: void write(byte[],int,int)>($r7, 0, $i0);
+
+     label11:
+        goto label08;
+
+     label12:
+        $r8 := @caughtexception;
+
+        $r4 = $r16;
+
+     label13:
+        $r18 = (java.io.InputStream) $r4;
+
+        virtualinvoke $r18.<java.io.InputStream: void close()>();
+
+        virtualinvoke $r6.<java.io.OutputStream: void close()>();
+
+     label14:
+        return;
+
+     label15:
+        virtualinvoke $r16.<java.io.InputStream: void close()>();
+
+        virtualinvoke $r17.<java.io.OutputStream: void close()>();
+
+     label16:
+        return;
+
+     label17:
+        $r9 := @caughtexception;
+
+        return;
+
+     label18:
+        $r10 := @caughtexception;
+
+        $r5 = null;
+
+     label19:
+        virtualinvoke $r5.<java.io.InputStream: void close()>();
+
+        $r19 = (java.io.OutputStream) $r4;
+
+        virtualinvoke $r19.<java.io.OutputStream: void close()>();
+
+     label20:
+        throw $r10;
+
+     label21:
+        $r11 := @caughtexception;
+
+        goto label20;
+
+     label22:
+        $r10 := @caughtexception;
+
+        goto label19;
+
+     label23:
+        $r12 := @caughtexception;
+
+        $r4 = $r17;
+
+        $r10 = $r12;
+
+        goto label19;
+
+     label24:
+        $r13 := @caughtexception;
+
+        return;
+
+     label25:
+        $r14 := @caughtexception;
+
+        $r6 = null;
+
+        goto label13;
+
+     label26:
+        $r15 := @caughtexception;
+
+        $r6 = null;
+
+        $r4 = $r16;
+
+        goto label13;
+
+        catch java.lang.Exception from label03 to label04 with label25;
+        catch java.lang.Throwable from label01 to label02 with label18;
+        catch java.lang.Throwable from label03 to label04 with label18;
+        catch java.lang.Exception from label06 to label07 with label26;
+        catch java.lang.Throwable from label04 to label05 with label22;
+        catch java.lang.Throwable from label06 to label07 with label22;
+        catch java.lang.Exception from label07 to label09 with label12;
+        catch java.lang.Exception from label10 to label11 with label12;
+        catch java.lang.Throwable from label08 to label09 with label23;
+        catch java.lang.Throwable from label10 to label11 with label23;
+        catch java.lang.Exception from label13 to label14 with label24;
+        catch java.lang.Exception from label15 to label16 with label17;
+        catch java.lang.Exception from label19 to label20 with label21;
+    }
+
+    private void a(com.startapp.android.publish.video.a$a, java.lang.String)
+    {
+        com.startapp.android.publish.video.a r0;
+        com.startapp.android.publish.video.a$a $r1;
+        java.lang.String $r2;
+        android.os.Handler $r3;
+        android.os.Looper $r4;
+        com.startapp.android.publish.video.a$1 $r5;
+
+        r0 := @this: com.startapp.android.publish.video.a;
+
+        $r1 := @parameter0: com.startapp.android.publish.video.a$a;
+
+        $r2 := @parameter1: java.lang.String;
+
+        $r3 = new android.os.Handler;
+
+        $r4 = staticinvoke <android.os.Looper: android.os.Looper getMainLooper()>();
+
+        specialinvoke $r3.<android.os.Handler: void <init>(android.os.Looper)>($r4);
+
+        $r5 = new com.startapp.android.publish.video.a$1;
+
+        specialinvoke $r5.<com.startapp.android.publish.video.a$1: void <init>(com.startapp.android.publish.video.a,com.startapp.android.publish.video.a$a,java.lang.String)>(r0, $r1, $r2);
+
+        virtualinvoke $r3.<android.os.Handler: boolean post(java.lang.Runnable)>($r5);
+
+        return;
+    }
+
+    public java.lang.String a(android.content.Context, java.net.URL, java.lang.String, com.startapp.android.publish.video.a$a)
+    {
+        com.startapp.android.publish.video.a r0;
+        android.content.Context $r1;
+        java.net.URL $r2;
+        java.lang.String $r3, $r8, $r12, $r17;
+        com.startapp.android.publish.video.a$a $r4;
+        java.io.File $r5, $r20;
+        byte[] $r6;
+        java.lang.StringBuilder $r7;
+        java.io.FileOutputStream $r9, $r18;
+        com.startapp.android.publish.model.MetaData $r10;
+        com.startapp.android.publish.model.VideoConfig $r11;
+        int $i0, $i1, $i2, $i3, $i4, $i5;
+        boolean $z0, $z1;
+        java.net.URLConnection $r13;
+        java.io.InputStream $r14, $r15;
+        java.io.DataInputStream $r16;
+        double $d0, $d1;
+        java.lang.Exception $r19, $r21, $r22, $r23, $r25, $r26;
+        java.lang.Throwable $r24;
+        java.lang.NullPointerException r27;
+
+        r0 := @this: com.startapp.android.publish.video.a;
+
+        $r1 := @parameter0: android.content.Context;
+
+        $r2 := @parameter1: java.net.URL;
+
+        $r3 := @parameter2: java.lang.String;
+
+        $r4 := @parameter3: com.startapp.android.publish.video.a$a;
+
+        $r7 = new java.lang.StringBuilder;
+
+        specialinvoke $r7.<java.lang.StringBuilder: void <init>()>();
+
+        $r7 = virtualinvoke $r7.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Downloading video from ");
+
+        $r7 = virtualinvoke $r7.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($r2);
+
+        $r8 = virtualinvoke $r7.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <com.startapp.android.publish.i.n: void a(java.lang.String,int,java.lang.String)>("StartAppWall.ProgressiveVideoManager", 3, $r8);
+
+        $r8 = virtualinvoke $r2.<java.net.URL: java.lang.String toString()>();
+
+        r0.<com.startapp.android.publish.video.a: java.lang.String c> = $r8;
+
+        r0.<com.startapp.android.publish.video.a: boolean a> = 1;
+
+        $r9 = null;
+
+        $r8 = null;
+
+        $r10 = staticinvoke <com.startapp.android.publish.model.MetaData: com.startapp.android.publish.model.MetaData getInstance()>();
+
+        $r11 = virtualinvoke $r10.<com.startapp.android.publish.model.MetaData: com.startapp.android.publish.model.VideoConfig getVideoConfig()>();
+
+        $i0 = virtualinvoke $r11.<com.startapp.android.publish.model.VideoConfig: int getProgressiveMinBufferToPlayFromCache()>();
+
+     label01:
+        $r12 = staticinvoke <com.startapp.android.publish.video.c: java.lang.String a(android.content.Context,java.lang.String)>($r1, $r3);
+
+     label02:
+        $r5 = new java.io.File;
+
+     label03:
+        specialinvoke $r5.<java.io.File: void <init>(java.lang.String)>($r12);
+
+        $z0 = virtualinvoke $r5.<java.io.File: boolean exists()>();
+
+     label04:
+        if $z0 == 0 goto label08;
+
+     label05:
+        r0.<com.startapp.android.publish.video.a: java.lang.String c> = null;
+
+     label06:
+        r27 = new java.lang.NullPointerException;
+
+     label07:
+        specialinvoke r27.<java.lang.NullPointerException: void <init>(java.lang.String)>("This statement would have triggered an Exception: virtualinvoke $u5#17.<java.io.InputStream: void close()>()");
+
+        throw r27;
+
+     label08:
+        $r13 = virtualinvoke $r2.<java.net.URL: java.net.URLConnection openConnection()>();
+
+        virtualinvoke $r13.<java.net.URLConnection: void connect()>();
+
+        $i1 = virtualinvoke $r13.<java.net.URLConnection: int getContentLength()>();
+
+        $r14 = virtualinvoke $r2.<java.net.URL: java.io.InputStream openStream()>();
+
+     label09:
+        $r15 = $r14;
+
+     label10:
+        $r16 = new java.io.DataInputStream;
+
+     label11:
+        specialinvoke $r16.<java.io.DataInputStream: void <init>(java.io.InputStream)>($r14);
+
+     label12:
+        $r6 = newarray (byte)[4096];
+
+     label13:
+        $r7 = new java.lang.StringBuilder;
+
+     label14:
+        specialinvoke $r7.<java.lang.StringBuilder: void <init>()>();
+
+        $r7 = virtualinvoke $r7.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r3);
+
+        $r7 = virtualinvoke $r7.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(".temp");
+
+        $r3 = virtualinvoke $r7.<java.lang.StringBuilder: java.lang.String toString()>();
+
+     label15:
+        $r8 = $r3;
+
+     label16:
+        $r7 = new java.lang.StringBuilder;
+
+     label17:
+        specialinvoke $r7.<java.lang.StringBuilder: void <init>()>();
+
+        $r7 = virtualinvoke $r7.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r12);
+
+        $r7 = virtualinvoke $r7.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(".temp");
+
+        $r17 = virtualinvoke $r7.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        $r18 = virtualinvoke $r1.<android.content.Context: java.io.FileOutputStream openFileOutput(java.lang.String,int)>($r3, 0);
+
+     label18:
+        $r9 = $r18;
+
+        $z0 = 0;
+
+        $i2 = 0;
+
+        $i3 = 0;
+
+     label19:
+        $i4 = virtualinvoke $r16.<java.io.DataInputStream: int read(byte[])>($r6);
+
+     label20:
+        if $i4 <= 0 goto label29;
+
+     label21:
+        $z1 = r0.<com.startapp.android.publish.video.a: boolean a>;
+
+     label22:
+        if $z1 == 0 goto label29;
+
+     label23:
+        virtualinvoke $r18.<java.io.FileOutputStream: void write(byte[],int,int)>($r6, 0, $i4);
+
+     label24:
+        $i2 = $i4 + $i2;
+
+        $d0 = (double) $i2;
+
+        $d0 = $d0 * 100.0;
+
+        $d1 = (double) $i1;
+
+        $d0 = $d0 / $d1;
+
+        $i4 = (int) $d0;
+
+        if $i4 < $i0 goto label57;
+
+        if $z0 != 0 goto label26;
+
+        if $r4 == null goto label26;
+
+        $z0 = 1;
+
+     label25:
+        specialinvoke r0.<com.startapp.android.publish.video.a: void a(com.startapp.android.publish.video.a$a,java.lang.String)>($r4, $r17);
+
+     label26:
+        $i5 = $i3 + 1;
+
+        if $i4 < $i5 goto label57;
+
+     label27:
+        specialinvoke r0.<com.startapp.android.publish.video.a: void a(int)>($i4);
+
+     label28:
+        $i3 = $i4;
+
+        goto label19;
+
+     label29:
+        $z0 = r0.<com.startapp.android.publish.video.a: boolean a>;
+
+     label30:
+        if $z0 != 0 goto label37;
+
+        if $i4 <= 0 goto label37;
+
+     label31:
+        staticinvoke <com.startapp.android.publish.i.n: void a(java.lang.String,int,java.lang.String)>("StartAppWall.ProgressiveVideoManager", 3, "Video downloading disabled");
+
+     label32:
+        $r5 = new java.io.File;
+
+     label33:
+        $r3 = staticinvoke <com.startapp.android.publish.video.c: java.lang.String a(android.content.Context,java.lang.String)>($r1, $r3);
+
+        specialinvoke $r5.<java.io.File: void <init>(java.lang.String)>($r3);
+
+        virtualinvoke $r5.<java.io.File: boolean delete()>();
+
+     label34:
+        r0.<com.startapp.android.publish.video.a: java.lang.String c> = null;
+
+        virtualinvoke $r14.<java.io.InputStream: void close()>();
+
+        virtualinvoke $r16.<java.io.DataInputStream: void close()>();
+
+        virtualinvoke $r18.<java.io.FileOutputStream: void close()>();
+
+     label35:
+        return "downloadInterrupted";
+
+     label36:
+        $r19 := @caughtexception;
+
+        return "downloadInterrupted";
+
+     label37:
+        $r20 = new java.io.File;
+
+     label38:
+        $r3 = staticinvoke <com.startapp.android.publish.video.c: java.lang.String a(android.content.Context,java.lang.String)>($r1, $r3);
+
+        specialinvoke $r20.<java.io.File: void <init>(java.lang.String)>($r3);
+
+        specialinvoke r0.<com.startapp.android.publish.video.a: void a(android.content.Context,java.io.File,java.io.File)>($r1, $r20, $r5);
+
+     label39:
+        r0.<com.startapp.android.publish.video.a: java.lang.String c> = null;
+
+        virtualinvoke $r14.<java.io.InputStream: void close()>();
+
+        virtualinvoke $r16.<java.io.DataInputStream: void close()>();
+
+        virtualinvoke $r18.<java.io.FileOutputStream: void close()>();
+
+     label40:
+        return $r12;
+
+     label41:
+        $r21 := @caughtexception;
+
+        return $r12;
+
+     label42:
+        $r22 := @caughtexception;
+
+        $r14 = null;
+
+        $r16 = null;
+
+     label43:
+        $r7 = new java.lang.StringBuilder;
+
+        specialinvoke $r7.<java.lang.StringBuilder: void <init>()>();
+
+        $r7 = virtualinvoke $r7.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Error downloading video from ");
+
+        $r7 = virtualinvoke $r7.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($r2);
+
+        $r3 = virtualinvoke $r7.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <com.startapp.android.publish.i.n: void a(java.lang.String,int,java.lang.String,java.lang.Throwable)>("StartAppWall.ProgressiveVideoManager", 6, $r3, $r22);
+
+        $r5 = new java.io.File;
+
+        $r3 = staticinvoke <com.startapp.android.publish.video.c: java.lang.String a(android.content.Context,java.lang.String)>($r1, $r8);
+
+        specialinvoke $r5.<java.io.File: void <init>(java.lang.String)>($r3);
+
+        virtualinvoke $r5.<java.io.File: boolean delete()>();
+
+     label44:
+        r0.<com.startapp.android.publish.video.a: java.lang.String c> = null;
+
+        virtualinvoke $r14.<java.io.InputStream: void close()>();
+
+        virtualinvoke $r16.<java.io.DataInputStream: void close()>();
+
+        virtualinvoke $r9.<java.io.FileOutputStream: void close()>();
+
+     label45:
+        return null;
+
+     label46:
+        $r23 := @caughtexception;
+
+        return null;
+
+     label47:
+        $r24 := @caughtexception;
+
+        $r15 = null;
+
+        $r16 = null;
+
+     label48:
+        r0.<com.startapp.android.publish.video.a: java.lang.String c> = null;
+
+        virtualinvoke $r15.<java.io.InputStream: void close()>();
+
+        virtualinvoke $r16.<java.io.DataInputStream: void close()>();
+
+        virtualinvoke $r9.<java.io.FileOutputStream: void close()>();
+
+     label49:
+        throw $r24;
+
+     label50:
+        $r25 := @caughtexception;
+
+        goto label49;
+
+     label51:
+        $r24 := @caughtexception;
+
+        $r16 = null;
+
+        goto label48;
+
+     label52:
+        $r24 := @caughtexception;
+
+        goto label48;
+
+     label53:
+        $r24 := @caughtexception;
+
+        $r15 = $r14;
+
+        goto label48;
+
+     label54:
+        $r22 := @caughtexception;
+
+        $r16 = null;
+
+        goto label43;
+
+     label55:
+        $r22 := @caughtexception;
+
+        goto label43;
+
+     label56:
+        $r26 := @caughtexception;
+
+        return $r12;
+
+     label57:
+        goto label19;
+
+        catch java.lang.Exception from label01 to label02 with label42;
+        catch java.lang.Exception from label03 to label04 with label42;
+        catch java.lang.Throwable from label01 to label04 with label47;
+        catch java.lang.Exception from label05 to label06 with label56;
+        catch java.lang.Exception from label07 to label08 with label56;
+        catch java.lang.Exception from label08 to label09 with label42;
+        catch java.lang.Throwable from label08 to label09 with label47;
+        catch java.lang.Exception from label11 to label12 with label54;
+        catch java.lang.Throwable from label10 to label12 with label51;
+        catch java.lang.Exception from label12 to label13 with label55;
+        catch java.lang.Exception from label14 to label15 with label55;
+        catch java.lang.Exception from label17 to label18 with label55;
+        catch java.lang.Exception from label19 to label20 with label55;
+        catch java.lang.Exception from label21 to label22 with label55;
+        catch java.lang.Exception from label23 to label24 with label55;
+        catch java.lang.Exception from label25 to label26 with label55;
+        catch java.lang.Exception from label27 to label28 with label55;
+        catch java.lang.Exception from label29 to label30 with label55;
+        catch java.lang.Exception from label31 to label32 with label55;
+        catch java.lang.Exception from label33 to label34 with label55;
+        catch java.lang.Throwable from label13 to label15 with label52;
+        catch java.lang.Throwable from label16 to label18 with label52;
+        catch java.lang.Throwable from label19 to label20 with label52;
+        catch java.lang.Throwable from label21 to label22 with label52;
+        catch java.lang.Throwable from label23 to label24 with label52;
+        catch java.lang.Throwable from label25 to label26 with label52;
+        catch java.lang.Throwable from label27 to label28 with label52;
+        catch java.lang.Throwable from label29 to label30 with label52;
+        catch java.lang.Throwable from label31 to label34 with label52;
+        catch java.lang.Exception from label34 to label35 with label36;
+        catch java.lang.Exception from label38 to label39 with label55;
+        catch java.lang.Throwable from label37 to label39 with label52;
+        catch java.lang.Exception from label39 to label40 with label41;
+        catch java.lang.Throwable from label43 to label44 with label53;
+        catch java.lang.Exception from label44 to label45 with label46;
+        catch java.lang.Exception from label48 to label49 with label50;
+    }
+
+    public void a(com.startapp.android.publish.video.b.c$c)
+    {
+        com.startapp.android.publish.video.a r0;
+        com.startapp.android.publish.video.b.c$c $r1;
+
+        r0 := @this: com.startapp.android.publish.video.a;
+
+        $r1 := @parameter0: com.startapp.android.publish.video.b.c$c;
+
+        r0.<com.startapp.android.publish.video.a: com.startapp.android.publish.video.b.c$c b> = $r1;
+
+        return;
+    }
+
+    public void a(java.lang.String)
+    {
+        com.startapp.android.publish.video.a r0;
+        java.lang.String $r1, $r2;
+        boolean $z0;
+
+        r0 := @this: com.startapp.android.publish.video.a;
+
+        $r1 := @parameter0: java.lang.String;
+
+        if $r1 == null goto label1;
+
+        $r2 = r0.<com.startapp.android.publish.video.a: java.lang.String c>;
+
+        $z0 = virtualinvoke $r1.<java.lang.String: boolean equals(java.lang.Object)>($r2);
+
+        if $z0 == 0 goto label1;
+
+        r0.<com.startapp.android.publish.video.a: boolean a> = 0;
+
+     label1:
+        return;
+    }
+
+    public boolean b(java.lang.String)
+    {
+        com.startapp.android.publish.video.a r0;
+        java.lang.String $r1;
+        boolean $z0;
+
+        r0 := @this: com.startapp.android.publish.video.a;
+
+        $r1 := @parameter0: java.lang.String;
+
+        if $r1 == null goto label1;
+
+        $z0 = virtualinvoke $r1.<java.lang.String: boolean endsWith(java.lang.String)>(".temp");
+
+        if $z0 == 0 goto label1;
+
+        return 1;
+
+     label1:
+        return 0;
+    }
+
+    public void c(java.lang.String)
+    {
+        com.startapp.android.publish.video.a r0;
+        java.lang.String $r1;
+        boolean $z0;
+        java.io.File $r2;
+
+        r0 := @this: com.startapp.android.publish.video.a;
+
+        $r1 := @parameter0: java.lang.String;
+
+        $z0 = virtualinvoke r0.<com.startapp.android.publish.video.a: boolean b(java.lang.String)>($r1);
+
+        if $z0 == 0 goto label1;
+
+        $r2 = new java.io.File;
+
+        specialinvoke $r2.<java.io.File: void <init>(java.lang.String)>($r1);
+
+        virtualinvoke $r2.<java.io.File: boolean delete()>();
+
+     label1:
+        return;
+    }
+}

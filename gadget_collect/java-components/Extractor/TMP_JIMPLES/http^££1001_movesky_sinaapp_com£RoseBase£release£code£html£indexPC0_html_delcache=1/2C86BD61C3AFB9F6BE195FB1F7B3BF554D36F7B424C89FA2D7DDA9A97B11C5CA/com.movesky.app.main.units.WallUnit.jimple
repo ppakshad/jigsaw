@@ -1,0 +1,163 @@
+public class com.movesky.app.main.units.WallUnit extends com.movesky.app.main.units.Unit
+{
+    public static final int HEALTH;
+    private com.movesky.app.engine.fastgraph.Wall wall;
+
+    public void <init>(com.movesky.app.engine.fastgraph.Wall, com.movesky.app.main.units.UnitManager, com.movesky.app.main.Team, android.graphics.Paint, com.movesky.app.engine.particles.ParticleSystem)
+    {
+        com.movesky.app.main.units.WallUnit r0;
+        com.movesky.app.engine.fastgraph.Wall $r1;
+        com.movesky.app.main.units.UnitManager $r2;
+        com.movesky.app.main.Team $r3;
+        android.graphics.Paint $r4;
+        com.movesky.app.engine.particles.ParticleSystem $r5;
+
+        r0 := @this: com.movesky.app.main.units.WallUnit;
+
+        $r1 := @parameter0: com.movesky.app.engine.fastgraph.Wall;
+
+        $r2 := @parameter1: com.movesky.app.main.units.UnitManager;
+
+        $r3 := @parameter2: com.movesky.app.main.Team;
+
+        $r4 := @parameter3: android.graphics.Paint;
+
+        $r5 := @parameter4: com.movesky.app.engine.particles.ParticleSystem;
+
+        specialinvoke r0.<com.movesky.app.main.units.Unit: void <init>(com.movesky.app.main.units.UnitManager,com.movesky.app.main.Team,android.graphics.Paint,com.movesky.app.engine.particles.ParticleSystem)>($r2, $r3, $r4, $r5);
+
+        r0.<com.movesky.app.main.units.WallUnit: com.movesky.app.engine.fastgraph.Wall wall> = $r1;
+
+        $r2 = r0.<com.movesky.app.main.units.WallUnit: com.movesky.app.main.units.UnitManager unitManager>;
+
+        interfaceinvoke $r2.<com.movesky.app.main.units.UnitManager: void notifyUnitDead(com.movesky.app.main.units.Unit)>(r0);
+
+        return;
+    }
+
+    public void drawChassis(android.graphics.Canvas)
+    {
+        com.movesky.app.main.units.WallUnit r0;
+        android.graphics.Canvas $r1;
+        float $f0, $f1, $f2, $f3;
+        android.graphics.Paint $r2;
+        int $i0;
+        com.movesky.app.engine.fastgraph.Wall $r3;
+        com.movesky.app.engine.util.Point $r4;
+
+        r0 := @this: com.movesky.app.main.units.WallUnit;
+
+        $r1 := @parameter0: android.graphics.Canvas;
+
+        $r2 = r0.<com.movesky.app.main.units.WallUnit: android.graphics.Paint paint>;
+
+        $i0 = r0.<com.movesky.app.main.units.WallUnit: int health>;
+
+        $i0 = $i0 * 255;
+
+        $i0 = $i0 / 10000;
+
+        virtualinvoke $r2.<android.graphics.Paint: void setAlpha(int)>($i0);
+
+        $r3 = r0.<com.movesky.app.main.units.WallUnit: com.movesky.app.engine.fastgraph.Wall wall>;
+
+        $r4 = $r3.<com.movesky.app.engine.fastgraph.Wall: com.movesky.app.engine.util.Point a>;
+
+        $f3 = $r4.<com.movesky.app.engine.util.Point: float x>;
+
+        $r3 = r0.<com.movesky.app.main.units.WallUnit: com.movesky.app.engine.fastgraph.Wall wall>;
+
+        $r4 = $r3.<com.movesky.app.engine.fastgraph.Wall: com.movesky.app.engine.util.Point a>;
+
+        $f0 = $r4.<com.movesky.app.engine.util.Point: float y>;
+
+        $r3 = r0.<com.movesky.app.main.units.WallUnit: com.movesky.app.engine.fastgraph.Wall wall>;
+
+        $r4 = $r3.<com.movesky.app.engine.fastgraph.Wall: com.movesky.app.engine.util.Point b>;
+
+        $f1 = $r4.<com.movesky.app.engine.util.Point: float x>;
+
+        $r3 = r0.<com.movesky.app.main.units.WallUnit: com.movesky.app.engine.fastgraph.Wall wall>;
+
+        $r4 = $r3.<com.movesky.app.engine.fastgraph.Wall: com.movesky.app.engine.util.Point b>;
+
+        $f2 = $r4.<com.movesky.app.engine.util.Point: float y>;
+
+        $r2 = r0.<com.movesky.app.main.units.WallUnit: android.graphics.Paint paint>;
+
+        virtualinvoke $r1.<android.graphics.Canvas: void drawLine(float,float,float,float,android.graphics.Paint)>($f3, $f0, $f1, $f2, $r2);
+
+        $r2 = r0.<com.movesky.app.main.units.WallUnit: android.graphics.Paint paint>;
+
+        virtualinvoke $r2.<android.graphics.Paint: void setAlpha(int)>(255);
+
+        return;
+    }
+
+    public float getRadius()
+    {
+        com.movesky.app.main.units.WallUnit r0;
+
+        r0 := @this: com.movesky.app.main.units.WallUnit;
+
+        return 0.0F;
+    }
+
+    public int getStartingHealth()
+    {
+        com.movesky.app.main.units.WallUnit r0;
+
+        r0 := @this: com.movesky.app.main.units.WallUnit;
+
+        return 10000;
+    }
+
+    public com.movesky.app.main.units.UnitType getType()
+    {
+        com.movesky.app.main.units.WallUnit r0;
+        com.movesky.app.main.units.UnitType r1;
+
+        r0 := @this: com.movesky.app.main.units.WallUnit;
+
+        r1 = <com.movesky.app.main.units.UnitType: com.movesky.app.main.units.UnitType WALL>;
+
+        return r1;
+    }
+
+    public com.movesky.app.engine.fastgraph.Wall getWall()
+    {
+        com.movesky.app.main.units.WallUnit r0;
+        com.movesky.app.engine.fastgraph.Wall r1;
+
+        r0 := @this: com.movesky.app.main.units.WallUnit;
+
+        r1 = r0.<com.movesky.app.main.units.WallUnit: com.movesky.app.engine.fastgraph.Wall wall>;
+
+        return r1;
+    }
+
+    public void update(float)
+    {
+        com.movesky.app.main.units.WallUnit r0;
+        float $f0;
+
+        r0 := @this: com.movesky.app.main.units.WallUnit;
+
+        $f0 := @parameter0: float;
+
+        specialinvoke r0.<com.movesky.app.main.units.Unit: void update(float)>($f0);
+
+        $f0 = 1000.0F * $f0;
+
+        virtualinvoke r0.<com.movesky.app.main.units.WallUnit: void takeDamage(float,com.movesky.app.main.units.Unit)>($f0, null);
+
+        return;
+    }
+
+    public static void <clinit>()
+    {
+        <com.movesky.app.main.units.WallUnit: int HEALTH> = 10000;
+
+        return;
+    }
+}

@@ -1,0 +1,355 @@
+public class com.go108.lic.free.MoreExctingActivity extends android.app.Activity implements android.view.View$OnClickListener, android.widget.AdapterView$OnItemClickListener
+{
+    private com.go108.lic.free.ExctingProductAdapter adapter;
+    private java.util.List data;
+    private android.widget.LinearLayout hot_layout;
+    private com.go108.lic.free.ExctingProductBean item;
+    private android.widget.ListView listView;
+    private java.lang.String strURL;
+
+    public void <init>()
+    {
+        com.go108.lic.free.MoreExctingActivity r0;
+
+        r0 := @this: com.go108.lic.free.MoreExctingActivity;
+
+        specialinvoke r0.<android.app.Activity: void <init>()>();
+
+        return;
+    }
+
+    private void initElseContent()
+    {
+        com.go108.lic.free.MoreExctingActivity r0;
+        java.util.List $r3;
+        com.go108.lic.free.ExctingProductBean $r2;
+        java.util.ArrayList $r1;
+
+        r0 := @this: com.go108.lic.free.MoreExctingActivity;
+
+        $r1 = new java.util.ArrayList;
+
+        specialinvoke $r1.<java.util.ArrayList: void <init>()>();
+
+        r0.<com.go108.lic.free.MoreExctingActivity: java.util.List data> = $r1;
+
+        $r2 = new com.go108.lic.free.ExctingProductBean;
+
+        specialinvoke $r2.<com.go108.lic.free.ExctingProductBean: void <init>()>();
+
+        r0.<com.go108.lic.free.MoreExctingActivity: com.go108.lic.free.ExctingProductBean item> = $r2;
+
+        $r2 = r0.<com.go108.lic.free.MoreExctingActivity: com.go108.lic.free.ExctingProductBean item>;
+
+        virtualinvoke $r2.<com.go108.lic.free.ExctingProductBean: void setImgResource(int)>(2130837602);
+
+        $r2 = r0.<com.go108.lic.free.MoreExctingActivity: com.go108.lic.free.ExctingProductBean item>;
+
+        virtualinvoke $r2.<com.go108.lic.free.ExctingProductBean: void setContent(java.lang.String)>("\u544a\u8bc9\u4f60\u795e\u9a6c\u53eb\u505a\u7231!(\u65e0\u5e7f\u544a\u4e13\u4e1a\u52a0\u5f3a\u7248\uff09\u70b9\u51fb\u5373\u53ef\u4e0b\u8f7d\uff01");
+
+        $r2 = r0.<com.go108.lic.free.MoreExctingActivity: com.go108.lic.free.ExctingProductBean item>;
+
+        virtualinvoke $r2.<com.go108.lic.free.ExctingProductBean: void setProductName(java.lang.String)>("\u8d8a\u6d4b\u8d8a\u7231\u7cbe\u88c5\u7248");
+
+        $r2 = r0.<com.go108.lic.free.MoreExctingActivity: com.go108.lic.free.ExctingProductBean item>;
+
+        virtualinvoke $r2.<com.go108.lic.free.ExctingProductBean: void setLinkPath(java.lang.String)>("http://www.go108.com.cn/mobile/Client/apk/ycya.apk");
+
+        $r2 = r0.<com.go108.lic.free.MoreExctingActivity: com.go108.lic.free.ExctingProductBean item>;
+
+        virtualinvoke $r2.<com.go108.lic.free.ExctingProductBean: void setType(int)>(0);
+
+        $r3 = r0.<com.go108.lic.free.MoreExctingActivity: java.util.List data>;
+
+        $r2 = r0.<com.go108.lic.free.MoreExctingActivity: com.go108.lic.free.ExctingProductBean item>;
+
+        interfaceinvoke $r3.<java.util.List: boolean add(java.lang.Object)>($r2);
+
+        $r2 = new com.go108.lic.free.ExctingProductBean;
+
+        specialinvoke $r2.<com.go108.lic.free.ExctingProductBean: void <init>()>();
+
+        r0.<com.go108.lic.free.MoreExctingActivity: com.go108.lic.free.ExctingProductBean item> = $r2;
+
+        $r2 = r0.<com.go108.lic.free.MoreExctingActivity: com.go108.lic.free.ExctingProductBean item>;
+
+        virtualinvoke $r2.<com.go108.lic.free.ExctingProductBean: void setImgResource(int)>(2130837549);
+
+        $r2 = r0.<com.go108.lic.free.MoreExctingActivity: com.go108.lic.free.ExctingProductBean item>;
+
+        virtualinvoke $r2.<com.go108.lic.free.ExctingProductBean: void setContent(java.lang.String)>("\u7d2b\u5fae\u6613\u5366\u5e2e\u4f60\u6307\u70b9\u8ff7\u6d25\u6c42\u5f97\u6b63\u786e\u65b9\u5411\u3002\u70b9\u51fb\u5373\u53ef\u4e0b\u8f7d\uff01");
+
+        $r2 = r0.<com.go108.lic.free.MoreExctingActivity: com.go108.lic.free.ExctingProductBean item>;
+
+        virtualinvoke $r2.<com.go108.lic.free.ExctingProductBean: void setProductName(java.lang.String)>("\u7d2b\u5fae\u6613\u5366");
+
+        $r2 = r0.<com.go108.lic.free.MoreExctingActivity: com.go108.lic.free.ExctingProductBean item>;
+
+        virtualinvoke $r2.<com.go108.lic.free.ExctingProductBean: void setLinkPath(java.lang.String)>("http://www.go108.com.cn/mobile/Client/apk/iching.apk");
+
+        $r2 = r0.<com.go108.lic.free.MoreExctingActivity: com.go108.lic.free.ExctingProductBean item>;
+
+        virtualinvoke $r2.<com.go108.lic.free.ExctingProductBean: void setType(int)>(0);
+
+        $r3 = r0.<com.go108.lic.free.MoreExctingActivity: java.util.List data>;
+
+        $r2 = r0.<com.go108.lic.free.MoreExctingActivity: com.go108.lic.free.ExctingProductBean item>;
+
+        interfaceinvoke $r3.<java.util.List: boolean add(java.lang.Object)>($r2);
+
+        $r2 = new com.go108.lic.free.ExctingProductBean;
+
+        specialinvoke $r2.<com.go108.lic.free.ExctingProductBean: void <init>()>();
+
+        r0.<com.go108.lic.free.MoreExctingActivity: com.go108.lic.free.ExctingProductBean item> = $r2;
+
+        $r2 = r0.<com.go108.lic.free.MoreExctingActivity: com.go108.lic.free.ExctingProductBean item>;
+
+        virtualinvoke $r2.<com.go108.lic.free.ExctingProductBean: void setImgResource(int)>(2130837548);
+
+        $r2 = r0.<com.go108.lic.free.MoreExctingActivity: com.go108.lic.free.ExctingProductBean item>;
+
+        virtualinvoke $r2.<com.go108.lic.free.ExctingProductBean: void setContent(java.lang.String)>("\u7d2b\u5fae\u547d\u52a8\u5e2e\u52a9\u4f60\u6700\u6709\u6548\u7684\u5904\u7406\u4eba\u9645\u5173\u7cfb\u3002\u70b9\u51fb\u5373\u53ef\u4e0b\u8f7d\uff01");
+
+        $r2 = r0.<com.go108.lic.free.MoreExctingActivity: com.go108.lic.free.ExctingProductBean item>;
+
+        virtualinvoke $r2.<com.go108.lic.free.ExctingProductBean: void setProductName(java.lang.String)>("\u7d2b\u5fae\u547d\u52a8");
+
+        $r2 = r0.<com.go108.lic.free.MoreExctingActivity: com.go108.lic.free.ExctingProductBean item>;
+
+        virtualinvoke $r2.<com.go108.lic.free.ExctingProductBean: void setLinkPath(java.lang.String)>("http://www.go108.com.cn/mobile/Client/apk/tzuwei_md.apk");
+
+        $r2 = r0.<com.go108.lic.free.MoreExctingActivity: com.go108.lic.free.ExctingProductBean item>;
+
+        virtualinvoke $r2.<com.go108.lic.free.ExctingProductBean: void setType(int)>(0);
+
+        $r3 = r0.<com.go108.lic.free.MoreExctingActivity: java.util.List data>;
+
+        $r2 = r0.<com.go108.lic.free.MoreExctingActivity: com.go108.lic.free.ExctingProductBean item>;
+
+        interfaceinvoke $r3.<java.util.List: boolean add(java.lang.Object)>($r2);
+
+        $r2 = new com.go108.lic.free.ExctingProductBean;
+
+        specialinvoke $r2.<com.go108.lic.free.ExctingProductBean: void <init>()>();
+
+        r0.<com.go108.lic.free.MoreExctingActivity: com.go108.lic.free.ExctingProductBean item> = $r2;
+
+        $r2 = r0.<com.go108.lic.free.MoreExctingActivity: com.go108.lic.free.ExctingProductBean item>;
+
+        virtualinvoke $r2.<com.go108.lic.free.ExctingProductBean: void setImgResource(int)>(2130837601);
+
+        $r2 = r0.<com.go108.lic.free.MoreExctingActivity: com.go108.lic.free.ExctingProductBean item>;
+
+        virtualinvoke $r2.<com.go108.lic.free.ExctingProductBean: void setContent(java.lang.String)>("10W\u4eba\u6d4b\uff0c\u661f\u5ea7\u604b\u7231\u8d85\u901f\u914d\uff01\u70b9\u51fb\u5373\u53ef\u8fdb\u5165!");
+
+        $r2 = r0.<com.go108.lic.free.MoreExctingActivity: com.go108.lic.free.ExctingProductBean item>;
+
+        virtualinvoke $r2.<com.go108.lic.free.ExctingProductBean: void setProductName(java.lang.String)>("wap");
+
+        $r2 = r0.<com.go108.lic.free.MoreExctingActivity: com.go108.lic.free.ExctingProductBean item>;
+
+        virtualinvoke $r2.<com.go108.lic.free.ExctingProductBean: void setLinkPath(java.lang.String)>("http://wap.go108.cn/astro/cin.jsp?c=aqll");
+
+        $r2 = r0.<com.go108.lic.free.MoreExctingActivity: com.go108.lic.free.ExctingProductBean item>;
+
+        virtualinvoke $r2.<com.go108.lic.free.ExctingProductBean: void setType(int)>(1);
+
+        $r3 = r0.<com.go108.lic.free.MoreExctingActivity: java.util.List data>;
+
+        $r2 = r0.<com.go108.lic.free.MoreExctingActivity: com.go108.lic.free.ExctingProductBean item>;
+
+        interfaceinvoke $r3.<java.util.List: boolean add(java.lang.Object)>($r2);
+
+        return;
+    }
+
+    private void linkSite(com.go108.lic.free.ExctingProductBean)
+    {
+        com.go108.lic.free.util.CommInstall r2;
+        android.net.Uri $r6;
+        android.content.Intent r3;
+        com.go108.lic.free.MoreExctingActivity r0;
+        int $i0;
+        com.go108.lic.free.ExctingProductBean $r1;
+        java.lang.String $r4, $r5;
+
+        r0 := @this: com.go108.lic.free.MoreExctingActivity;
+
+        $r1 := @parameter0: com.go108.lic.free.ExctingProductBean;
+
+        $i0 = virtualinvoke $r1.<com.go108.lic.free.ExctingProductBean: int getType()>();
+
+        if $i0 != 0 goto label1;
+
+        r2 = new com.go108.lic.free.util.CommInstall;
+
+        specialinvoke r2.<com.go108.lic.free.util.CommInstall: void <init>(android.app.Activity)>(r0);
+
+        $r4 = virtualinvoke $r1.<com.go108.lic.free.ExctingProductBean: java.lang.String getLinkPath()>();
+
+        $r5 = virtualinvoke $r1.<com.go108.lic.free.ExctingProductBean: java.lang.String getProductName()>();
+
+        virtualinvoke r2.<com.go108.lic.free.util.CommInstall: void downloadAndInstall(java.lang.String,java.lang.String)>($r4, $r5);
+
+        return;
+
+     label1:
+        $r4 = r0.<com.go108.lic.free.MoreExctingActivity: java.lang.String strURL>;
+
+        $r6 = staticinvoke <android.net.Uri: android.net.Uri parse(java.lang.String)>($r4);
+
+        r3 = new android.content.Intent;
+
+        specialinvoke r3.<android.content.Intent: void <init>(java.lang.String,android.net.Uri)>("android.intent.action.VIEW", $r6);
+
+        virtualinvoke r0.<com.go108.lic.free.MoreExctingActivity: void startActivity(android.content.Intent)>(r3);
+
+        return;
+    }
+
+    public void onClick(android.view.View)
+    {
+        com.go108.lic.free.MoreExctingActivity r0;
+        int $i0;
+        android.view.View $r1;
+        com.go108.lic.free.ExctingProductBean r2;
+        java.lang.String $r3;
+
+        r0 := @this: com.go108.lic.free.MoreExctingActivity;
+
+        $r1 := @parameter0: android.view.View;
+
+        $i0 = virtualinvoke $r1.<android.view.View: int getId()>();
+
+        lookupswitch($i0)
+        {
+            case 2131296322: goto label2;
+            default: goto label1;
+        };
+
+     label1:
+        return;
+
+     label2:
+        r0.<com.go108.lic.free.MoreExctingActivity: java.lang.String strURL> = "http://www.go108.com.cn/mobile/Client/apk/lic.apk";
+
+        r2 = new com.go108.lic.free.ExctingProductBean;
+
+        specialinvoke r2.<com.go108.lic.free.ExctingProductBean: void <init>()>();
+
+        virtualinvoke r2.<com.go108.lic.free.ExctingProductBean: void setProductName(java.lang.String)>("\u7231\u60c5\u6765\u5566\u7cbe\u88c5\u7248");
+
+        $r3 = r0.<com.go108.lic.free.MoreExctingActivity: java.lang.String strURL>;
+
+        virtualinvoke r2.<com.go108.lic.free.ExctingProductBean: void setLinkPath(java.lang.String)>($r3);
+
+        virtualinvoke r2.<com.go108.lic.free.ExctingProductBean: void setType(int)>(0);
+
+        specialinvoke r0.<com.go108.lic.free.MoreExctingActivity: void linkSite(com.go108.lic.free.ExctingProductBean)>(r2);
+
+        return;
+    }
+
+    public void onCreate(android.os.Bundle)
+    {
+        com.go108.lic.free.MoreExctingActivity r0;
+        java.util.List $r2;
+        android.widget.LinearLayout $r4;
+        com.go108.lic.free.ExctingProductAdapter $r6;
+        android.os.Bundle $r1;
+        android.view.View $r3;
+        android.widget.ListView $r5;
+
+        r0 := @this: com.go108.lic.free.MoreExctingActivity;
+
+        $r1 := @parameter0: android.os.Bundle;
+
+        specialinvoke r0.<android.app.Activity: void onCreate(android.os.Bundle)>($r1);
+
+        virtualinvoke r0.<com.go108.lic.free.MoreExctingActivity: boolean requestWindowFeature(int)>(1);
+
+        virtualinvoke r0.<com.go108.lic.free.MoreExctingActivity: void setContentView(int)>(2130903051);
+
+        $r3 = virtualinvoke r0.<com.go108.lic.free.MoreExctingActivity: android.view.View findViewById(int)>(2131296322);
+
+        $r4 = (android.widget.LinearLayout) $r3;
+
+        r0.<com.go108.lic.free.MoreExctingActivity: android.widget.LinearLayout hot_layout> = $r4;
+
+        $r3 = virtualinvoke r0.<com.go108.lic.free.MoreExctingActivity: android.view.View findViewById(int)>(2131296324);
+
+        $r5 = (android.widget.ListView) $r3;
+
+        r0.<com.go108.lic.free.MoreExctingActivity: android.widget.ListView listView> = $r5;
+
+        specialinvoke r0.<com.go108.lic.free.MoreExctingActivity: void initElseContent()>();
+
+        $r6 = new com.go108.lic.free.ExctingProductAdapter;
+
+        $r2 = r0.<com.go108.lic.free.MoreExctingActivity: java.util.List data>;
+
+        specialinvoke $r6.<com.go108.lic.free.ExctingProductAdapter: void <init>(android.content.Context,int,java.util.List)>(r0, 2130903052, $r2);
+
+        r0.<com.go108.lic.free.MoreExctingActivity: com.go108.lic.free.ExctingProductAdapter adapter> = $r6;
+
+        $r5 = r0.<com.go108.lic.free.MoreExctingActivity: android.widget.ListView listView>;
+
+        $r6 = r0.<com.go108.lic.free.MoreExctingActivity: com.go108.lic.free.ExctingProductAdapter adapter>;
+
+        virtualinvoke $r5.<android.widget.ListView: void setAdapter(android.widget.ListAdapter)>($r6);
+
+        $r5 = r0.<com.go108.lic.free.MoreExctingActivity: android.widget.ListView listView>;
+
+        virtualinvoke $r5.<android.widget.ListView: void setOnItemClickListener(android.widget.AdapterView$OnItemClickListener)>(r0);
+
+        $r4 = r0.<com.go108.lic.free.MoreExctingActivity: android.widget.LinearLayout hot_layout>;
+
+        virtualinvoke $r4.<android.widget.LinearLayout: void setOnClickListener(android.view.View$OnClickListener)>(r0);
+
+        return;
+    }
+
+    public void onItemClick(android.widget.AdapterView, android.view.View, int, long)
+    {
+        long $l1;
+        com.go108.lic.free.MoreExctingActivity r0;
+        java.util.List $r3;
+        int $i0;
+        android.view.View $r2;
+        com.go108.lic.free.ExctingProductBean $r5;
+        java.lang.Object $r4;
+        android.widget.AdapterView r1;
+        java.lang.String $r6;
+
+        r0 := @this: com.go108.lic.free.MoreExctingActivity;
+
+        r1 := @parameter0: android.widget.AdapterView;
+
+        $r2 := @parameter1: android.view.View;
+
+        $i0 := @parameter2: int;
+
+        $l1 := @parameter3: long;
+
+        $r3 = r0.<com.go108.lic.free.MoreExctingActivity: java.util.List data>;
+
+        $r4 = interfaceinvoke $r3.<java.util.List: java.lang.Object get(int)>($i0);
+
+        $r5 = (com.go108.lic.free.ExctingProductBean) $r4;
+
+        $r6 = virtualinvoke $r5.<com.go108.lic.free.ExctingProductBean: java.lang.String getLinkPath()>();
+
+        r0.<com.go108.lic.free.MoreExctingActivity: java.lang.String strURL> = $r6;
+
+        $r3 = r0.<com.go108.lic.free.MoreExctingActivity: java.util.List data>;
+
+        $r4 = interfaceinvoke $r3.<java.util.List: java.lang.Object get(int)>($i0);
+
+        $r5 = (com.go108.lic.free.ExctingProductBean) $r4;
+
+        specialinvoke r0.<com.go108.lic.free.MoreExctingActivity: void linkSite(com.go108.lic.free.ExctingProductBean)>($r5);
+
+        return;
+    }
+}

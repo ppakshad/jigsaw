@@ -1,0 +1,94 @@
+public class com.movesky.app.engine.net.simulation.LockStep extends java.lang.Object implements java.lang.Comparable
+{
+    public int coarseTime;
+    public java.util.ArrayList events;
+    public int hash;
+
+    public void <init>()
+    {
+        com.movesky.app.engine.net.simulation.LockStep r0;
+        java.util.ArrayList $r1;
+
+        r0 := @this: com.movesky.app.engine.net.simulation.LockStep;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        $r1 = new java.util.ArrayList;
+
+        specialinvoke $r1.<java.util.ArrayList: void <init>()>();
+
+        r0.<com.movesky.app.engine.net.simulation.LockStep: java.util.ArrayList events> = $r1;
+
+        return;
+    }
+
+    public void addEventsToQueue(java.util.PriorityQueue)
+    {
+        com.movesky.app.engine.net.simulation.LockStep r0;
+        java.util.PriorityQueue $r1;
+        int $i0, $i1;
+        java.util.ArrayList $r2;
+        java.lang.Object $r3;
+
+        r0 := @this: com.movesky.app.engine.net.simulation.LockStep;
+
+        $r1 := @parameter0: java.util.PriorityQueue;
+
+        $i0 = 0;
+
+        $r2 = r0.<com.movesky.app.engine.net.simulation.LockStep: java.util.ArrayList events>;
+
+        $i1 = virtualinvoke $r2.<java.util.ArrayList: int size()>();
+
+     label1:
+        if $i0 >= $i1 goto label2;
+
+        $r2 = r0.<com.movesky.app.engine.net.simulation.LockStep: java.util.ArrayList events>;
+
+        $r3 = virtualinvoke $r2.<java.util.ArrayList: java.lang.Object get(int)>($i0);
+
+        virtualinvoke $r1.<java.util.PriorityQueue: boolean add(java.lang.Object)>($r3);
+
+        $i0 = $i0 + 1;
+
+        goto label1;
+
+     label2:
+        return;
+    }
+
+    public int compareTo(com.movesky.app.engine.net.simulation.LockStep)
+    {
+        com.movesky.app.engine.net.simulation.LockStep r0, $r1;
+        int $i0, $i1;
+
+        r0 := @this: com.movesky.app.engine.net.simulation.LockStep;
+
+        $r1 := @parameter0: com.movesky.app.engine.net.simulation.LockStep;
+
+        $i1 = r0.<com.movesky.app.engine.net.simulation.LockStep: int coarseTime>;
+
+        $i0 = $r1.<com.movesky.app.engine.net.simulation.LockStep: int coarseTime>;
+
+        $i0 = $i1 - $i0;
+
+        return $i0;
+    }
+
+    public volatile int compareTo(java.lang.Object)
+    {
+        com.movesky.app.engine.net.simulation.LockStep r0, $r2;
+        int $i0;
+        java.lang.Object $r1;
+
+        r0 := @this: com.movesky.app.engine.net.simulation.LockStep;
+
+        $r1 := @parameter0: java.lang.Object;
+
+        $r2 = (com.movesky.app.engine.net.simulation.LockStep) $r1;
+
+        $i0 = virtualinvoke r0.<com.movesky.app.engine.net.simulation.LockStep: int compareTo(com.movesky.app.engine.net.simulation.LockStep)>($r2);
+
+        return $i0;
+    }
+}

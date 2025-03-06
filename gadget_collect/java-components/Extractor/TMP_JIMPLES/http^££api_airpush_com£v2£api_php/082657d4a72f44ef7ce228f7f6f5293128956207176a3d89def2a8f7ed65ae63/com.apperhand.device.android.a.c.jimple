@@ -1,0 +1,111 @@
+public final class com.apperhand.device.android.a.c extends java.lang.Object implements com.apperhand.device.a.a.c
+{
+    private android.content.Context a;
+
+    public void <init>(android.content.Context)
+    {
+        com.apperhand.device.android.a.c r0;
+        android.content.Context $r1;
+
+        r0 := @this: com.apperhand.device.android.a.c;
+
+        $r1 := @parameter0: android.content.Context;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        r0.<com.apperhand.device.android.a.c: android.content.Context a> = $r1;
+
+        return;
+    }
+
+    public final boolean a(com.apperhand.common.dto.Homepage)
+    {
+        com.apperhand.device.android.a.c r0;
+        com.apperhand.common.dto.Homepage $r1;
+        android.content.Context $r2;
+        java.util.List $r3;
+        int $i0;
+        java.util.Iterator $r4;
+        boolean $z0, $z1;
+        java.lang.Object $r5;
+        com.apperhand.device.android.a.a.a $r6;
+        java.lang.Throwable $r7, $r8, $r9;
+
+        r0 := @this: com.apperhand.device.android.a.c;
+
+        $r1 := @parameter0: com.apperhand.common.dto.Homepage;
+
+     label01:
+        $r3 = staticinvoke <com.apperhand.device.android.a.a.a$a: java.util.List a()>();
+
+     label02:
+        if $r3 == null goto label18;
+
+     label03:
+        $i0 = interfaceinvoke $r3.<java.util.List: int size()>();
+
+     label04:
+        if $i0 <= 0 goto label18;
+
+     label05:
+        $r4 = interfaceinvoke $r3.<java.util.List: java.util.Iterator iterator()>();
+
+     label06:
+        $z0 = 0;
+
+     label07:
+        $z1 = interfaceinvoke $r4.<java.util.Iterator: boolean hasNext()>();
+
+     label08:
+        if $z1 == 0 goto label17;
+
+     label09:
+        $r5 = interfaceinvoke $r4.<java.util.Iterator: java.lang.Object next()>();
+
+        $r6 = (com.apperhand.device.android.a.a.a) $r5;
+
+     label10:
+        $r2 = r0.<com.apperhand.device.android.a.c: android.content.Context a>;
+
+        $z1 = virtualinvoke $r6.<com.apperhand.device.android.a.a.a: boolean a(android.content.Context,com.apperhand.common.dto.Homepage)>($r2, $r1);
+
+     label11:
+        if $z1 == 0 goto label16;
+
+        $z0 = 1;
+
+     label12:
+        goto label07;
+
+     label13:
+        $r7 := @caughtexception;
+
+        return 0;
+
+     label14:
+        $r8 := @caughtexception;
+
+        return $z0;
+
+     label15:
+        $r9 := @caughtexception;
+
+        goto label07;
+
+     label16:
+        goto label12;
+
+     label17:
+        return $z0;
+
+     label18:
+        return 0;
+
+        catch java.lang.Throwable from label01 to label02 with label13;
+        catch java.lang.Throwable from label03 to label04 with label13;
+        catch java.lang.Throwable from label05 to label06 with label13;
+        catch java.lang.Throwable from label07 to label08 with label14;
+        catch java.lang.Throwable from label09 to label10 with label14;
+        catch java.lang.Throwable from label10 to label11 with label15;
+    }
+}

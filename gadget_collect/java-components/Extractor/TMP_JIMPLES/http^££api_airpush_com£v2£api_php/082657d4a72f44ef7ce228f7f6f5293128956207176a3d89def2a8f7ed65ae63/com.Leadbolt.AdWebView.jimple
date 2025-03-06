@@ -1,0 +1,333 @@
+public class com.Leadbolt.AdWebView extends android.webkit.WebView
+{
+    private android.content.Context activity;
+    private com.Leadbolt.AdController controller;
+    private com.Leadbolt.AdListener listener;
+    private java.lang.String loadUrl;
+    private boolean loading;
+    private android.app.ProgressDialog loadingDialog;
+    private boolean nativeOpen;
+    private org.json.JSONObject results;
+    private android.webkit.WebSettings settings;
+
+    public void <init>(android.app.Activity, com.Leadbolt.AdController, boolean, com.Leadbolt.AdListener)
+    {
+        com.Leadbolt.AdWebView r0;
+        android.app.Activity $r1;
+        com.Leadbolt.AdController $r2;
+        boolean $z0;
+        com.Leadbolt.AdListener $r3;
+
+        r0 := @this: com.Leadbolt.AdWebView;
+
+        $r1 := @parameter0: android.app.Activity;
+
+        $r2 := @parameter1: com.Leadbolt.AdController;
+
+        $z0 := @parameter2: boolean;
+
+        $r3 := @parameter3: com.Leadbolt.AdListener;
+
+        specialinvoke r0.<android.webkit.WebView: void <init>(android.content.Context)>($r1);
+
+        r0.<com.Leadbolt.AdWebView: boolean loading> = 0;
+
+        r0.<com.Leadbolt.AdWebView: boolean nativeOpen> = 0;
+
+        r0.<com.Leadbolt.AdWebView: android.content.Context activity> = $r1;
+
+        r0.<com.Leadbolt.AdWebView: com.Leadbolt.AdController controller> = $r2;
+
+        r0.<com.Leadbolt.AdWebView: boolean nativeOpen> = $z0;
+
+        r0.<com.Leadbolt.AdWebView: com.Leadbolt.AdListener listener> = $r3;
+
+        specialinvoke r0.<com.Leadbolt.AdWebView: void initialize()>();
+
+        return;
+    }
+
+    public void <init>(android.content.Context, android.util.AttributeSet)
+    {
+        com.Leadbolt.AdWebView r0;
+        android.content.Context $r1;
+        android.util.AttributeSet $r2;
+
+        r0 := @this: com.Leadbolt.AdWebView;
+
+        $r1 := @parameter0: android.content.Context;
+
+        $r2 := @parameter1: android.util.AttributeSet;
+
+        specialinvoke r0.<android.webkit.WebView: void <init>(android.content.Context,android.util.AttributeSet)>($r1, $r2);
+
+        r0.<com.Leadbolt.AdWebView: boolean loading> = 0;
+
+        r0.<com.Leadbolt.AdWebView: boolean nativeOpen> = 0;
+
+        r0.<com.Leadbolt.AdWebView: android.content.Context activity> = $r1;
+
+        specialinvoke r0.<com.Leadbolt.AdWebView: void buildFromXML(android.util.AttributeSet)>($r2);
+
+        return;
+    }
+
+    public void <init>(android.content.Context, android.util.AttributeSet, int)
+    {
+        com.Leadbolt.AdWebView r0;
+        android.content.Context $r1;
+        android.util.AttributeSet $r2;
+        int $i0;
+
+        r0 := @this: com.Leadbolt.AdWebView;
+
+        $r1 := @parameter0: android.content.Context;
+
+        $r2 := @parameter1: android.util.AttributeSet;
+
+        $i0 := @parameter2: int;
+
+        specialinvoke r0.<android.webkit.WebView: void <init>(android.content.Context,android.util.AttributeSet,int)>($r1, $r2, $i0);
+
+        r0.<com.Leadbolt.AdWebView: boolean loading> = 0;
+
+        r0.<com.Leadbolt.AdWebView: boolean nativeOpen> = 0;
+
+        r0.<com.Leadbolt.AdWebView: android.content.Context activity> = $r1;
+
+        specialinvoke r0.<com.Leadbolt.AdWebView: void buildFromXML(android.util.AttributeSet)>($r2);
+
+        return;
+    }
+
+    static java.lang.String access$0(com.Leadbolt.AdWebView)
+    {
+        com.Leadbolt.AdWebView $r0;
+        java.lang.String r1;
+
+        $r0 := @parameter0: com.Leadbolt.AdWebView;
+
+        r1 = $r0.<com.Leadbolt.AdWebView: java.lang.String loadUrl>;
+
+        return r1;
+    }
+
+    static boolean access$1(com.Leadbolt.AdWebView)
+    {
+        com.Leadbolt.AdWebView $r0;
+        boolean z0;
+
+        $r0 := @parameter0: com.Leadbolt.AdWebView;
+
+        z0 = $r0.<com.Leadbolt.AdWebView: boolean loading>;
+
+        return z0;
+    }
+
+    static org.json.JSONObject access$2(com.Leadbolt.AdWebView)
+    {
+        com.Leadbolt.AdWebView $r0;
+        org.json.JSONObject r1;
+
+        $r0 := @parameter0: com.Leadbolt.AdWebView;
+
+        r1 = $r0.<com.Leadbolt.AdWebView: org.json.JSONObject results>;
+
+        return r1;
+    }
+
+    static void access$3(com.Leadbolt.AdWebView, boolean)
+    {
+        com.Leadbolt.AdWebView $r0;
+        boolean $z0;
+
+        $r0 := @parameter0: com.Leadbolt.AdWebView;
+
+        $z0 := @parameter1: boolean;
+
+        $r0.<com.Leadbolt.AdWebView: boolean loading> = $z0;
+
+        return;
+    }
+
+    static boolean access$4(com.Leadbolt.AdWebView)
+    {
+        com.Leadbolt.AdWebView $r0;
+        boolean z0;
+
+        $r0 := @parameter0: com.Leadbolt.AdWebView;
+
+        z0 = $r0.<com.Leadbolt.AdWebView: boolean nativeOpen>;
+
+        return z0;
+    }
+
+    static android.app.ProgressDialog access$5(com.Leadbolt.AdWebView)
+    {
+        com.Leadbolt.AdWebView $r0;
+        android.app.ProgressDialog r1;
+
+        $r0 := @parameter0: com.Leadbolt.AdWebView;
+
+        r1 = $r0.<com.Leadbolt.AdWebView: android.app.ProgressDialog loadingDialog>;
+
+        return r1;
+    }
+
+    static void access$6(com.Leadbolt.AdWebView, android.app.ProgressDialog)
+    {
+        com.Leadbolt.AdWebView $r0;
+        android.app.ProgressDialog $r1;
+
+        $r0 := @parameter0: com.Leadbolt.AdWebView;
+
+        $r1 := @parameter1: android.app.ProgressDialog;
+
+        $r0.<com.Leadbolt.AdWebView: android.app.ProgressDialog loadingDialog> = $r1;
+
+        return;
+    }
+
+    private void buildFromXML(android.util.AttributeSet)
+    {
+        com.Leadbolt.AdWebView r0;
+        android.util.AttributeSet $r1;
+        com.Leadbolt.AdController $r2;
+        android.content.Context $r3;
+        java.lang.String $r4;
+
+        r0 := @this: com.Leadbolt.AdWebView;
+
+        $r1 := @parameter0: android.util.AttributeSet;
+
+        if $r1 == null goto label1;
+
+        $r2 = new com.Leadbolt.AdController;
+
+        $r3 = r0.<com.Leadbolt.AdWebView: android.content.Context activity>;
+
+        $r4 = interfaceinvoke $r1.<android.util.AttributeSet: java.lang.String getAttributeValue(java.lang.String,java.lang.String)>(null, "sectionid");
+
+        specialinvoke $r2.<com.Leadbolt.AdController: void <init>(android.content.Context,java.lang.String)>($r3, $r4);
+
+        r0.<com.Leadbolt.AdWebView: com.Leadbolt.AdController controller> = $r2;
+
+        specialinvoke r0.<com.Leadbolt.AdWebView: void initialize()>();
+
+     label1:
+        return;
+    }
+
+    private void initialize()
+    {
+        com.Leadbolt.AdWebView r0;
+        com.Leadbolt.AdListener $r1;
+        android.webkit.WebSettings $r2;
+        com.Leadbolt.AdJSInterface $r3;
+        android.content.Context $r4;
+        com.Leadbolt.AdController $r5;
+        int $i0;
+        android.webkit.WebSettings$PluginState $r6;
+        com.Leadbolt.AdWebView$AdWebChromeClient $r7;
+        com.Leadbolt.AdWebView$AdWebClient $r8;
+
+        r0 := @this: com.Leadbolt.AdWebView;
+
+        $r2 = virtualinvoke r0.<com.Leadbolt.AdWebView: android.webkit.WebSettings getSettings()>();
+
+        r0.<com.Leadbolt.AdWebView: android.webkit.WebSettings settings> = $r2;
+
+        $r2 = r0.<com.Leadbolt.AdWebView: android.webkit.WebSettings settings>;
+
+        virtualinvoke $r2.<android.webkit.WebSettings: void setJavaScriptEnabled(boolean)>(1);
+
+        $r2 = r0.<com.Leadbolt.AdWebView: android.webkit.WebSettings settings>;
+
+        virtualinvoke $r2.<android.webkit.WebSettings: void setJavaScriptCanOpenWindowsAutomatically(boolean)>(1);
+
+        $r3 = new com.Leadbolt.AdJSInterface;
+
+        $r4 = r0.<com.Leadbolt.AdWebView: android.content.Context activity>;
+
+        $r5 = r0.<com.Leadbolt.AdWebView: com.Leadbolt.AdController controller>;
+
+        $r1 = r0.<com.Leadbolt.AdWebView: com.Leadbolt.AdListener listener>;
+
+        specialinvoke $r3.<com.Leadbolt.AdJSInterface: void <init>(android.content.Context,com.Leadbolt.AdController,com.Leadbolt.AdListener)>($r4, $r5, $r1);
+
+        virtualinvoke r0.<com.Leadbolt.AdWebView: void addJavascriptInterface(java.lang.Object,java.lang.String)>($r3, "LBOUT");
+
+        $i0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $i0 < 8 goto label1;
+
+        $r2 = r0.<com.Leadbolt.AdWebView: android.webkit.WebSettings settings>;
+
+        $r6 = <android.webkit.WebSettings$PluginState: android.webkit.WebSettings$PluginState ON>;
+
+        virtualinvoke $r2.<android.webkit.WebSettings: void setPluginState(android.webkit.WebSettings$PluginState)>($r6);
+
+     label1:
+        $r7 = new com.Leadbolt.AdWebView$AdWebChromeClient;
+
+        $r4 = r0.<com.Leadbolt.AdWebView: android.content.Context activity>;
+
+        specialinvoke $r7.<com.Leadbolt.AdWebView$AdWebChromeClient: void <init>(com.Leadbolt.AdWebView,android.content.Context)>(r0, $r4);
+
+        virtualinvoke r0.<com.Leadbolt.AdWebView: void setWebChromeClient(android.webkit.WebChromeClient)>($r7);
+
+        $r8 = new com.Leadbolt.AdWebView$AdWebClient;
+
+        $r4 = r0.<com.Leadbolt.AdWebView: android.content.Context activity>;
+
+        $r5 = r0.<com.Leadbolt.AdWebView: com.Leadbolt.AdController controller>;
+
+        specialinvoke $r8.<com.Leadbolt.AdWebView$AdWebClient: void <init>(com.Leadbolt.AdWebView,android.content.Context,com.Leadbolt.AdController,com.Leadbolt.AdWebView)>(r0, $r4, $r5, r0);
+
+        virtualinvoke r0.<com.Leadbolt.AdWebView: void setWebViewClient(android.webkit.WebViewClient)>($r8);
+
+        return;
+    }
+
+    public void setLoadingURL(java.lang.String)
+    {
+        com.Leadbolt.AdWebView r0;
+        java.lang.String $r1;
+
+        r0 := @this: com.Leadbolt.AdWebView;
+
+        $r1 := @parameter0: java.lang.String;
+
+        r0.<com.Leadbolt.AdWebView: java.lang.String loadUrl> = $r1;
+
+        return;
+    }
+
+    public void setResults(org.json.JSONObject)
+    {
+        com.Leadbolt.AdWebView r0;
+        org.json.JSONObject $r1;
+
+        r0 := @this: com.Leadbolt.AdWebView;
+
+        $r1 := @parameter0: org.json.JSONObject;
+
+        r0.<com.Leadbolt.AdWebView: org.json.JSONObject results> = $r1;
+
+        return;
+    }
+
+    public void showAd()
+    {
+        com.Leadbolt.AdWebView r0;
+        com.Leadbolt.AdController $r1;
+
+        r0 := @this: com.Leadbolt.AdWebView;
+
+        $r1 = r0.<com.Leadbolt.AdWebView: com.Leadbolt.AdController controller>;
+
+        virtualinvoke $r1.<com.Leadbolt.AdController: void loadAd()>();
+
+        return;
+    }
+}

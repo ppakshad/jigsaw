@@ -1,0 +1,124 @@
+public class com.startapp.android.publish.model.adrules.AdRulesResult extends java.lang.Object implements java.io.Serializable
+{
+    private static final long serialVersionUID;
+    private java.lang.String reason;
+    private boolean shouldDisplayAd;
+
+    public void <init>(boolean)
+    {
+        com.startapp.android.publish.model.adrules.AdRulesResult r0;
+        boolean $z0;
+
+        r0 := @this: com.startapp.android.publish.model.adrules.AdRulesResult;
+
+        $z0 := @parameter0: boolean;
+
+        specialinvoke r0.<com.startapp.android.publish.model.adrules.AdRulesResult: void <init>(boolean,java.lang.String)>($z0, "");
+
+        return;
+    }
+
+    public void <init>(boolean, java.lang.String)
+    {
+        com.startapp.android.publish.model.adrules.AdRulesResult r0;
+        boolean $z0;
+        java.lang.String $r1;
+
+        r0 := @this: com.startapp.android.publish.model.adrules.AdRulesResult;
+
+        $z0 := @parameter0: boolean;
+
+        $r1 := @parameter1: java.lang.String;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        r0.<com.startapp.android.publish.model.adrules.AdRulesResult: boolean shouldDisplayAd> = $z0;
+
+        r0.<com.startapp.android.publish.model.adrules.AdRulesResult: java.lang.String reason> = $r1;
+
+        return;
+    }
+
+    public java.lang.String getReason()
+    {
+        com.startapp.android.publish.model.adrules.AdRulesResult r0;
+        java.lang.String r1;
+
+        r0 := @this: com.startapp.android.publish.model.adrules.AdRulesResult;
+
+        r1 = r0.<com.startapp.android.publish.model.adrules.AdRulesResult: java.lang.String reason>;
+
+        return r1;
+    }
+
+    public java.lang.String getSimpleReason()
+    {
+        com.startapp.android.publish.model.adrules.AdRulesResult r0;
+        java.lang.String[] $r1;
+        java.lang.String $r2;
+
+        r0 := @this: com.startapp.android.publish.model.adrules.AdRulesResult;
+
+        $r2 = r0.<com.startapp.android.publish.model.adrules.AdRulesResult: java.lang.String reason>;
+
+        if $r2 == null goto label1;
+
+        $r2 = r0.<com.startapp.android.publish.model.adrules.AdRulesResult: java.lang.String reason>;
+
+        $r1 = virtualinvoke $r2.<java.lang.String: java.lang.String[] split(java.lang.String)>(" ");
+
+        $r2 = $r1[0];
+
+        return $r2;
+
+     label1:
+        return "";
+    }
+
+    public void setReason(java.lang.String)
+    {
+        com.startapp.android.publish.model.adrules.AdRulesResult r0;
+        java.lang.String $r1;
+
+        r0 := @this: com.startapp.android.publish.model.adrules.AdRulesResult;
+
+        $r1 := @parameter0: java.lang.String;
+
+        r0.<com.startapp.android.publish.model.adrules.AdRulesResult: java.lang.String reason> = $r1;
+
+        return;
+    }
+
+    public void setShouldDisplayAd(boolean)
+    {
+        com.startapp.android.publish.model.adrules.AdRulesResult r0;
+        boolean $z0;
+
+        r0 := @this: com.startapp.android.publish.model.adrules.AdRulesResult;
+
+        $z0 := @parameter0: boolean;
+
+        r0.<com.startapp.android.publish.model.adrules.AdRulesResult: boolean shouldDisplayAd> = $z0;
+
+        return;
+    }
+
+    public boolean shouldDisplayAd()
+    {
+        com.startapp.android.publish.model.adrules.AdRulesResult r0;
+        boolean z0;
+
+        r0 := @this: com.startapp.android.publish.model.adrules.AdRulesResult;
+
+        z0 = r0.<com.startapp.android.publish.model.adrules.AdRulesResult: boolean shouldDisplayAd>;
+
+        return z0;
+    }
+
+    public static void <clinit>()
+    {
+        <com.startapp.android.publish.model.adrules.AdRulesResult: long serialVersionUID> = 1L;
+
+        return;
+    }
+}

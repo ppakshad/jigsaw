@@ -1,0 +1,130 @@
+class com.ideaworks3d.marmalade.MultiTouch extends java.lang.Object
+{
+    private static final int POINTER_DOWN;
+    private static final int POINTER_MOVE;
+    private static final int POINTER_UP;
+    private static final int TOUCH_DOWN;
+    private static final int TOUCH_MOVE;
+    private static final int TOUCH_UP;
+
+    void <init>()
+    {
+        com.ideaworks3d.marmalade.MultiTouch r0;
+
+        r0 := @this: com.ideaworks3d.marmalade.MultiTouch;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public static boolean onTouchEvent(com.ideaworks3d.marmalade.LoaderThread, android.view.MotionEvent)
+    {
+        com.ideaworks3d.marmalade.LoaderThread $r0;
+        android.view.MotionEvent $r1;
+        int $i0, $i1, $i2, $i3, $i4;
+        float $f0;
+        byte $b5;
+
+        $r0 := @parameter0: com.ideaworks3d.marmalade.LoaderThread;
+
+        $r1 := @parameter1: android.view.MotionEvent;
+
+        $i0 = virtualinvoke $r1.<android.view.MotionEvent: int getAction()>();
+
+        $i0 = $i0 & 255;
+
+        if $i0 != 2 goto label2;
+
+        $i0 = virtualinvoke $r1.<android.view.MotionEvent: int getPointerCount()>();
+
+        $i1 = 0;
+
+     label1:
+        if $i1 >= $i0 goto label8;
+
+        $i2 = virtualinvoke $r1.<android.view.MotionEvent: int getPointerId(int)>($i1);
+
+        $f0 = virtualinvoke $r1.<android.view.MotionEvent: float getX(int)>($i1);
+
+        $i3 = (int) $f0;
+
+        $f0 = virtualinvoke $r1.<android.view.MotionEvent: float getY(int)>($i1);
+
+        $i4 = (int) $f0;
+
+        virtualinvoke $r0.<com.ideaworks3d.marmalade.LoaderThread: void onMotionEvent(int,int,int,int)>($i2, 6, $i3, $i4);
+
+        $i1 = $i1 + 1;
+
+        goto label1;
+
+     label2:
+        if $i0 == 0 goto label3;
+
+        if $i0 != 5 goto label5;
+
+     label3:
+        $b5 = 4;
+
+     label4:
+        if $b5 == 0 goto label8;
+
+        $i0 = virtualinvoke $r1.<android.view.MotionEvent: int getAction()>();
+
+        $i0 = $i0 & 65280;
+
+        $i2 = $i0 >>> 8;
+
+        $i0 = virtualinvoke $r1.<android.view.MotionEvent: int getPointerId(int)>($i2);
+
+        $f0 = virtualinvoke $r1.<android.view.MotionEvent: float getX(int)>($i2);
+
+        $i1 = (int) $f0;
+
+        $f0 = virtualinvoke $r1.<android.view.MotionEvent: float getY(int)>($i2);
+
+        $i2 = (int) $f0;
+
+        virtualinvoke $r0.<com.ideaworks3d.marmalade.LoaderThread: void onMotionEvent(int,int,int,int)>($i0, $b5, $i1, $i2);
+
+        return 1;
+
+     label5:
+        if $i0 == 1 goto label6;
+
+        if $i0 == 3 goto label6;
+
+        if $i0 != 6 goto label7;
+
+     label6:
+        $b5 = 5;
+
+        goto label4;
+
+     label7:
+        $b5 = 0;
+
+        goto label4;
+
+     label8:
+        return 1;
+    }
+
+    public static void <clinit>()
+    {
+        <com.ideaworks3d.marmalade.MultiTouch: int TOUCH_UP> = 5;
+
+        <com.ideaworks3d.marmalade.MultiTouch: int TOUCH_MOVE> = 6;
+
+        <com.ideaworks3d.marmalade.MultiTouch: int TOUCH_DOWN> = 4;
+
+        <com.ideaworks3d.marmalade.MultiTouch: int POINTER_UP> = 2;
+
+        <com.ideaworks3d.marmalade.MultiTouch: int POINTER_MOVE> = 3;
+
+        <com.ideaworks3d.marmalade.MultiTouch: int POINTER_DOWN> = 1;
+
+        return;
+    }
+}

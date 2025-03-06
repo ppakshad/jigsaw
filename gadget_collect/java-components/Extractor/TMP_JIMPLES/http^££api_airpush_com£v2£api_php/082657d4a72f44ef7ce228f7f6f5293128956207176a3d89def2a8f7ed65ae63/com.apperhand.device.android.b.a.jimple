@@ -1,0 +1,159 @@
+public final class com.apperhand.device.android.b.a extends java.lang.Object
+{
+    private static org.codehaus.jackson.map.ObjectMapper a;
+    private static org.codehaus.jackson.JsonFactory b;
+
+    static void <clinit>()
+    {
+        org.codehaus.jackson.map.ObjectMapper $r0;
+        org.codehaus.jackson.JsonFactory $r1;
+
+        $r0 = new org.codehaus.jackson.map.ObjectMapper;
+
+        specialinvoke $r0.<org.codehaus.jackson.map.ObjectMapper: void <init>()>();
+
+        <com.apperhand.device.android.b.a: org.codehaus.jackson.map.ObjectMapper a> = $r0;
+
+        $r1 = new org.codehaus.jackson.JsonFactory;
+
+        specialinvoke $r1.<org.codehaus.jackson.JsonFactory: void <init>()>();
+
+        <com.apperhand.device.android.b.a: org.codehaus.jackson.JsonFactory b> = $r1;
+
+        return;
+    }
+
+    public void <init>()
+    {
+        com.apperhand.device.android.b.a r0;
+
+        r0 := @this: com.apperhand.device.android.b.a;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public static java.lang.Object a(java.lang.String, java.lang.Class) throws com.apperhand.device.a.d.f
+    {
+        java.lang.String $r0;
+        java.lang.Class $r1;
+        com.apperhand.device.a.d.f $r2;
+        com.apperhand.device.a.d.f$a $r3;
+        org.codehaus.jackson.map.ObjectMapper $r4;
+        java.lang.Object $r5;
+        java.lang.Exception $r6;
+        java.lang.StringBuilder $r7;
+
+        $r0 := @parameter0: java.lang.String;
+
+        $r1 := @parameter1: java.lang.Class;
+
+        $r4 = <com.apperhand.device.android.b.a: org.codehaus.jackson.map.ObjectMapper a>;
+
+     label1:
+        $r5 = virtualinvoke $r4.<org.codehaus.jackson.map.ObjectMapper: java.lang.Object readValue(java.lang.String,java.lang.Class)>($r0, $r1);
+
+     label2:
+        return $r5;
+
+     label3:
+        $r6 := @caughtexception;
+
+        $r2 = new com.apperhand.device.a.d.f;
+
+        $r3 = <com.apperhand.device.a.d.f$a: com.apperhand.device.a.d.f$a a>;
+
+        $r7 = new java.lang.StringBuilder;
+
+        specialinvoke $r7.<java.lang.StringBuilder: void <init>()>();
+
+        $r7 = virtualinvoke $r7.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Could not write JSON, string=[");
+
+        $r0 = virtualinvoke $r0.<java.lang.String: java.lang.String toString()>();
+
+        $r7 = virtualinvoke $r7.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r0);
+
+        $r7 = virtualinvoke $r7.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("] ");
+
+        $r0 = virtualinvoke $r6.<java.lang.Exception: java.lang.String getMessage()>();
+
+        $r7 = virtualinvoke $r7.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r0);
+
+        $r0 = virtualinvoke $r7.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke $r2.<com.apperhand.device.a.d.f: void <init>(com.apperhand.device.a.d.f$a,java.lang.String,java.lang.Throwable)>($r3, $r0, $r6);
+
+        throw $r2;
+
+        catch java.lang.Exception from label1 to label2 with label3;
+    }
+
+    public static java.lang.String a(java.lang.Object) throws com.apperhand.device.a.d.f
+    {
+        java.lang.Object $r0;
+        java.io.StringWriter $r1;
+        org.codehaus.jackson.JsonFactory $r2;
+        org.codehaus.jackson.JsonGenerator $r3;
+        org.codehaus.jackson.map.ObjectMapper $r4;
+        java.lang.String $r5;
+        java.lang.Exception $r6;
+        com.apperhand.device.a.d.f $r7;
+        com.apperhand.device.a.d.f$a $r8;
+        java.lang.StringBuilder $r9;
+
+        $r0 := @parameter0: java.lang.Object;
+
+        $r1 = new java.io.StringWriter;
+
+        specialinvoke $r1.<java.io.StringWriter: void <init>()>();
+
+        $r2 = <com.apperhand.device.android.b.a: org.codehaus.jackson.JsonFactory b>;
+
+     label1:
+        $r3 = virtualinvoke $r2.<org.codehaus.jackson.JsonFactory: org.codehaus.jackson.JsonGenerator createJsonGenerator(java.io.Writer)>($r1);
+
+     label2:
+        $r4 = <com.apperhand.device.android.b.a: org.codehaus.jackson.map.ObjectMapper a>;
+
+     label3:
+        virtualinvoke $r4.<org.codehaus.jackson.map.ObjectMapper: void writeValue(org.codehaus.jackson.JsonGenerator,java.lang.Object)>($r3, $r0);
+
+     label4:
+        $r5 = virtualinvoke $r1.<java.io.StringWriter: java.lang.String toString()>();
+
+        return $r5;
+
+     label5:
+        $r6 := @caughtexception;
+
+        $r7 = new com.apperhand.device.a.d.f;
+
+        $r8 = <com.apperhand.device.a.d.f$a: com.apperhand.device.a.d.f$a a>;
+
+        $r9 = new java.lang.StringBuilder;
+
+        specialinvoke $r9.<java.lang.StringBuilder: void <init>()>();
+
+        $r9 = virtualinvoke $r9.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Could not read JSON, object=[");
+
+        $r5 = virtualinvoke $r0.<java.lang.Object: java.lang.String toString()>();
+
+        $r9 = virtualinvoke $r9.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r5);
+
+        $r9 = virtualinvoke $r9.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("] ");
+
+        $r5 = virtualinvoke $r6.<java.lang.Exception: java.lang.String getMessage()>();
+
+        $r9 = virtualinvoke $r9.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r5);
+
+        $r5 = virtualinvoke $r9.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke $r7.<com.apperhand.device.a.d.f: void <init>(com.apperhand.device.a.d.f$a,java.lang.String,java.lang.Throwable)>($r8, $r5, $r6);
+
+        throw $r7;
+
+        catch java.lang.Exception from label1 to label2 with label5;
+        catch java.lang.Exception from label3 to label4 with label5;
+    }
+}

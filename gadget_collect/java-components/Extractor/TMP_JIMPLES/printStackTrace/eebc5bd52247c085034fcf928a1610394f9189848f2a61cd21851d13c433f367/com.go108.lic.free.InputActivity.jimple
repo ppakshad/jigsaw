@@ -1,0 +1,938 @@
+public class com.go108.lic.free.InputActivity extends android.app.Activity implements android.view.View$OnClickListener, android.view.View$OnTouchListener, android.widget.RadioGroup$OnCheckedChangeListener
+{
+    private static final int DATE_DIALOG_1;
+    private static final int DATE_DIALOG_2;
+    private android.widget.Button btMyDay;
+    private android.widget.Button btMyMonth;
+    private android.widget.Button btMyYear;
+    private android.widget.Button btTADay;
+    private android.widget.Button btTAMonth;
+    private android.widget.Button btTAYear;
+    private int day;
+    private int dayTA;
+    private android.app.DatePickerDialog$OnDateSetListener friendDateSetListener;
+    private android.widget.RadioGroup gender;
+    private android.widget.RadioGroup genderTA;
+    private byte genderTAVal;
+    private byte genderVal;
+    private android.widget.RadioGroup loveState;
+    private byte loveStateVal;
+    private int month;
+    private int monthTA;
+    private android.app.DatePickerDialog$OnDateSetListener myDateSetListener;
+    private com.go108.lic.free.util.PersonDB personDB;
+    private boolean setGender;
+    private boolean setGenderTA;
+    private boolean setState;
+    private android.widget.Button submit;
+    private int year;
+    private int yearTA;
+
+    public void <init>()
+    {
+        com.go108.lic.free.InputActivity r0;
+        com.go108.lic.free.InputActivity$2 $r2;
+        com.go108.lic.free.InputActivity$1 $r1;
+
+        r0 := @this: com.go108.lic.free.InputActivity;
+
+        specialinvoke r0.<android.app.Activity: void <init>()>();
+
+        r0.<com.go108.lic.free.InputActivity: int year> = 1985;
+
+        r0.<com.go108.lic.free.InputActivity: int month> = 6;
+
+        r0.<com.go108.lic.free.InputActivity: int day> = 15;
+
+        r0.<com.go108.lic.free.InputActivity: int yearTA> = 1985;
+
+        r0.<com.go108.lic.free.InputActivity: int monthTA> = 6;
+
+        r0.<com.go108.lic.free.InputActivity: int dayTA> = 15;
+
+        $r1 = new com.go108.lic.free.InputActivity$1;
+
+        specialinvoke $r1.<com.go108.lic.free.InputActivity$1: void <init>(com.go108.lic.free.InputActivity)>(r0);
+
+        r0.<com.go108.lic.free.InputActivity: android.app.DatePickerDialog$OnDateSetListener myDateSetListener> = $r1;
+
+        $r2 = new com.go108.lic.free.InputActivity$2;
+
+        specialinvoke $r2.<com.go108.lic.free.InputActivity$2: void <init>(com.go108.lic.free.InputActivity)>(r0);
+
+        r0.<com.go108.lic.free.InputActivity: android.app.DatePickerDialog$OnDateSetListener friendDateSetListener> = $r2;
+
+        return;
+    }
+
+    static void access$0(com.go108.lic.free.InputActivity, int)
+    {
+        com.go108.lic.free.InputActivity $r0;
+        int $i0;
+
+        $r0 := @parameter0: com.go108.lic.free.InputActivity;
+
+        $i0 := @parameter1: int;
+
+        $r0.<com.go108.lic.free.InputActivity: int year> = $i0;
+
+        return;
+    }
+
+    static void access$1(com.go108.lic.free.InputActivity, int)
+    {
+        com.go108.lic.free.InputActivity $r0;
+        int $i0;
+
+        $r0 := @parameter0: com.go108.lic.free.InputActivity;
+
+        $i0 := @parameter1: int;
+
+        $r0.<com.go108.lic.free.InputActivity: int month> = $i0;
+
+        return;
+    }
+
+    static android.widget.Button access$10(com.go108.lic.free.InputActivity)
+    {
+        com.go108.lic.free.InputActivity $r0;
+        android.widget.Button r1;
+
+        $r0 := @parameter0: com.go108.lic.free.InputActivity;
+
+        r1 = $r0.<com.go108.lic.free.InputActivity: android.widget.Button btTAYear>;
+
+        return r1;
+    }
+
+    static android.widget.Button access$11(com.go108.lic.free.InputActivity)
+    {
+        com.go108.lic.free.InputActivity $r0;
+        android.widget.Button r1;
+
+        $r0 := @parameter0: com.go108.lic.free.InputActivity;
+
+        r1 = $r0.<com.go108.lic.free.InputActivity: android.widget.Button btTAMonth>;
+
+        return r1;
+    }
+
+    static android.widget.Button access$12(com.go108.lic.free.InputActivity)
+    {
+        com.go108.lic.free.InputActivity $r0;
+        android.widget.Button r1;
+
+        $r0 := @parameter0: com.go108.lic.free.InputActivity;
+
+        r1 = $r0.<com.go108.lic.free.InputActivity: android.widget.Button btTADay>;
+
+        return r1;
+    }
+
+    static void access$13(com.go108.lic.free.InputActivity)
+    {
+        com.go108.lic.free.InputActivity $r0;
+
+        $r0 := @parameter0: com.go108.lic.free.InputActivity;
+
+        specialinvoke $r0.<com.go108.lic.free.InputActivity: void send()>();
+
+        return;
+    }
+
+    static void access$2(com.go108.lic.free.InputActivity, int)
+    {
+        com.go108.lic.free.InputActivity $r0;
+        int $i0;
+
+        $r0 := @parameter0: com.go108.lic.free.InputActivity;
+
+        $i0 := @parameter1: int;
+
+        $r0.<com.go108.lic.free.InputActivity: int day> = $i0;
+
+        return;
+    }
+
+    static android.widget.Button access$3(com.go108.lic.free.InputActivity)
+    {
+        com.go108.lic.free.InputActivity $r0;
+        android.widget.Button r1;
+
+        $r0 := @parameter0: com.go108.lic.free.InputActivity;
+
+        r1 = $r0.<com.go108.lic.free.InputActivity: android.widget.Button btMyYear>;
+
+        return r1;
+    }
+
+    static java.lang.String access$4(com.go108.lic.free.InputActivity, int)
+    {
+        com.go108.lic.free.InputActivity $r0;
+        int $i0;
+        java.lang.String $r1;
+
+        $r0 := @parameter0: com.go108.lic.free.InputActivity;
+
+        $i0 := @parameter1: int;
+
+        $r1 = specialinvoke $r0.<com.go108.lic.free.InputActivity: java.lang.String formateInt(int)>($i0);
+
+        return $r1;
+    }
+
+    static android.widget.Button access$5(com.go108.lic.free.InputActivity)
+    {
+        com.go108.lic.free.InputActivity $r0;
+        android.widget.Button r1;
+
+        $r0 := @parameter0: com.go108.lic.free.InputActivity;
+
+        r1 = $r0.<com.go108.lic.free.InputActivity: android.widget.Button btMyMonth>;
+
+        return r1;
+    }
+
+    static android.widget.Button access$6(com.go108.lic.free.InputActivity)
+    {
+        com.go108.lic.free.InputActivity $r0;
+        android.widget.Button r1;
+
+        $r0 := @parameter0: com.go108.lic.free.InputActivity;
+
+        r1 = $r0.<com.go108.lic.free.InputActivity: android.widget.Button btMyDay>;
+
+        return r1;
+    }
+
+    static void access$7(com.go108.lic.free.InputActivity, int)
+    {
+        com.go108.lic.free.InputActivity $r0;
+        int $i0;
+
+        $r0 := @parameter0: com.go108.lic.free.InputActivity;
+
+        $i0 := @parameter1: int;
+
+        $r0.<com.go108.lic.free.InputActivity: int yearTA> = $i0;
+
+        return;
+    }
+
+    static void access$8(com.go108.lic.free.InputActivity, int)
+    {
+        com.go108.lic.free.InputActivity $r0;
+        int $i0;
+
+        $r0 := @parameter0: com.go108.lic.free.InputActivity;
+
+        $i0 := @parameter1: int;
+
+        $r0.<com.go108.lic.free.InputActivity: int monthTA> = $i0;
+
+        return;
+    }
+
+    static void access$9(com.go108.lic.free.InputActivity, int)
+    {
+        com.go108.lic.free.InputActivity $r0;
+        int $i0;
+
+        $r0 := @parameter0: com.go108.lic.free.InputActivity;
+
+        $i0 := @parameter1: int;
+
+        $r0.<com.go108.lic.free.InputActivity: int dayTA> = $i0;
+
+        return;
+    }
+
+    private boolean checkInput()
+    {
+        com.go108.lic.free.InputActivity r0;
+        boolean $z0;
+
+        r0 := @this: com.go108.lic.free.InputActivity;
+
+        $z0 = r0.<com.go108.lic.free.InputActivity: boolean setState>;
+
+        if $z0 != 0 goto label1;
+
+        staticinvoke <com.go108.lic.free.menu.SystemShare: void showMessage(android.app.Activity,java.lang.String)>(r0, "\u8bf7\u9009\u62e9\u60a8\u7684\u7231\u60c5\u73b0\u72b6\uff01");
+
+        return 0;
+
+     label1:
+        $z0 = r0.<com.go108.lic.free.InputActivity: boolean setGender>;
+
+        if $z0 != 0 goto label2;
+
+        staticinvoke <com.go108.lic.free.menu.SystemShare: void showMessage(android.app.Activity,java.lang.String)>(r0, "\u8bf7\u9009\u62e9\u60a8\u7684\u6027\u522b\uff01");
+
+        return 0;
+
+     label2:
+        $z0 = r0.<com.go108.lic.free.InputActivity: boolean setGenderTA>;
+
+        if $z0 != 0 goto label3;
+
+        staticinvoke <com.go108.lic.free.menu.SystemShare: void showMessage(android.app.Activity,java.lang.String)>(r0, "\u8bf7\u9009\u62e9TA\u7684\u6027\u522b\uff01");
+
+        return 0;
+
+     label3:
+        return 1;
+    }
+
+    private java.lang.String formateInt(int)
+    {
+        com.go108.lic.free.InputActivity r0;
+        int $i0;
+        java.lang.StringBuilder $r2;
+        java.lang.String $r1;
+
+        r0 := @this: com.go108.lic.free.InputActivity;
+
+        $i0 := @parameter0: int;
+
+        $r1 = staticinvoke <java.lang.String: java.lang.String valueOf(int)>($i0);
+
+        if $i0 >= 10 goto label1;
+
+        $r2 = new java.lang.StringBuilder;
+
+        specialinvoke $r2.<java.lang.StringBuilder: void <init>(java.lang.String)>("0");
+
+        $r2 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>($i0);
+
+        $r1 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.String toString()>();
+
+     label1:
+        return $r1;
+    }
+
+    private void save()
+    {
+        com.go108.lic.free.util.PersonBean r3, r4;
+        android.os.Bundle r1;
+        android.content.Intent r2;
+        byte $b0;
+        com.go108.lic.free.InputActivity r0;
+        int $i1;
+        com.go108.lic.free.util.PersonDB $r5;
+        boolean $z0;
+
+        r0 := @this: com.go108.lic.free.InputActivity;
+
+        $z0 = specialinvoke r0.<com.go108.lic.free.InputActivity: boolean checkInput()>();
+
+        if $z0 == 0 goto label1;
+
+        r2 = new android.content.Intent;
+
+        specialinvoke r2.<android.content.Intent: void <init>()>();
+
+        r3 = new com.go108.lic.free.util.PersonBean;
+
+        specialinvoke r3.<com.go108.lic.free.util.PersonBean: void <init>()>();
+
+        r4 = new com.go108.lic.free.util.PersonBean;
+
+        specialinvoke r4.<com.go108.lic.free.util.PersonBean: void <init>()>();
+
+        $b0 = r0.<com.go108.lic.free.InputActivity: byte genderVal>;
+
+        virtualinvoke r3.<com.go108.lic.free.util.PersonBean: void setGender(byte)>($b0);
+
+        $i1 = r0.<com.go108.lic.free.InputActivity: int year>;
+
+        virtualinvoke r3.<com.go108.lic.free.util.PersonBean: void setYear(int)>($i1);
+
+        $i1 = r0.<com.go108.lic.free.InputActivity: int month>;
+
+        virtualinvoke r3.<com.go108.lic.free.util.PersonBean: void setMonth(int)>($i1);
+
+        $i1 = r0.<com.go108.lic.free.InputActivity: int day>;
+
+        virtualinvoke r3.<com.go108.lic.free.util.PersonBean: void setDay(int)>($i1);
+
+        $b0 = r0.<com.go108.lic.free.InputActivity: byte loveStateVal>;
+
+        virtualinvoke r3.<com.go108.lic.free.util.PersonBean: void setLoveState(byte)>($b0);
+
+        $b0 = r0.<com.go108.lic.free.InputActivity: byte genderTAVal>;
+
+        virtualinvoke r4.<com.go108.lic.free.util.PersonBean: void setGender(byte)>($b0);
+
+        $i1 = r0.<com.go108.lic.free.InputActivity: int yearTA>;
+
+        virtualinvoke r4.<com.go108.lic.free.util.PersonBean: void setYear(int)>($i1);
+
+        $i1 = r0.<com.go108.lic.free.InputActivity: int monthTA>;
+
+        virtualinvoke r4.<com.go108.lic.free.util.PersonBean: void setMonth(int)>($i1);
+
+        $i1 = r0.<com.go108.lic.free.InputActivity: int dayTA>;
+
+        virtualinvoke r4.<com.go108.lic.free.util.PersonBean: void setDay(int)>($i1);
+
+        virtualinvoke r4.<com.go108.lic.free.util.PersonBean: void setType(byte)>(1);
+
+        $r5 = r0.<com.go108.lic.free.InputActivity: com.go108.lic.free.util.PersonDB personDB>;
+
+        virtualinvoke $r5.<com.go108.lic.free.util.PersonDB: long insert(com.go108.lic.free.util.PersonBean)>(r3);
+
+        $r5 = r0.<com.go108.lic.free.InputActivity: com.go108.lic.free.util.PersonDB personDB>;
+
+        virtualinvoke $r5.<com.go108.lic.free.util.PersonDB: long insert(com.go108.lic.free.util.PersonBean)>(r4);
+
+        virtualinvoke r2.<android.content.Intent: android.content.Intent setClass(android.content.Context,java.lang.Class)>(r0, class "Lcom/go108/lic/free/MainActivity;");
+
+        r1 = new android.os.Bundle;
+
+        specialinvoke r1.<android.os.Bundle: void <init>()>();
+
+        virtualinvoke r1.<android.os.Bundle: void putInt(java.lang.String,int)>("readFlag", 1);
+
+        virtualinvoke r2.<android.content.Intent: android.content.Intent putExtras(android.os.Bundle)>(r1);
+
+        virtualinvoke r0.<com.go108.lic.free.InputActivity: void startActivity(android.content.Intent)>(r2);
+
+        virtualinvoke r0.<com.go108.lic.free.InputActivity: void finish()>();
+
+        specialinvoke r0.<com.go108.lic.free.InputActivity: void startSendInfo()>();
+
+     label1:
+        return;
+    }
+
+    private void send()
+    {
+        android.content.Context $r2;
+        byte $b1;
+        com.go108.lic.free.InputActivity r0;
+        int $i0;
+        java.lang.StringBuilder $r1, $r4;
+        java.lang.String $r3;
+
+        r0 := @this: com.go108.lic.free.InputActivity;
+
+        $r4 = new java.lang.StringBuilder;
+
+        specialinvoke $r4.<java.lang.StringBuilder: void <init>(java.lang.String)>("/Age:");
+
+        $i0 = r0.<com.go108.lic.free.InputActivity: int year>;
+
+        $r1 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>($i0);
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("-");
+
+        $i0 = r0.<com.go108.lic.free.InputActivity: int month>;
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>($i0);
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("-");
+
+        $i0 = r0.<com.go108.lic.free.InputActivity: int day>;
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>($i0);
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("/Sex:");
+
+        $b1 = r0.<com.go108.lic.free.InputActivity: byte genderVal>;
+
+        $i0 = (int) $b1;
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>($i0);
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("/Love_status:");
+
+        $b1 = r0.<com.go108.lic.free.InputActivity: byte loveStateVal>;
+
+        $i0 = (int) $b1;
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>($i0);
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("/Mobile_type:");
+
+        $r2 = virtualinvoke r0.<com.go108.lic.free.InputActivity: android.content.Context getApplicationContext()>();
+
+        $r3 = staticinvoke <cn.com.go108.pickinfo.DeviceInfo: java.lang.String getDeviceName(android.content.Context)>($r2);
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r3);
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("/Mobile_os:");
+
+        $r2 = virtualinvoke r0.<com.go108.lic.free.InputActivity: android.content.Context getApplicationContext()>();
+
+        $r3 = staticinvoke <cn.com.go108.pickinfo.DeviceInfo: java.lang.String getOS(android.content.Context)>($r2);
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r3);
+
+        $r3 = staticinvoke <cn.com.go108.pickinfo.DeviceInfo: java.lang.String getDisplayMetrics(android.app.Activity)>(r0);
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r3);
+
+        $r3 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <cn.com.go108.pickinfo.SendInfomation: void sendUserInfo(android.content.Context,java.lang.String)>(r0, $r3);
+
+        return;
+    }
+
+    private void startSendInfo()
+    {
+        com.go108.lic.free.InputActivity r0;
+        com.go108.lic.free.InputActivity$3 r1;
+
+        r0 := @this: com.go108.lic.free.InputActivity;
+
+        r1 = new com.go108.lic.free.InputActivity$3;
+
+        specialinvoke r1.<com.go108.lic.free.InputActivity$3: void <init>(com.go108.lic.free.InputActivity)>(r0);
+
+        virtualinvoke r1.<java.lang.Thread: void start()>();
+
+        return;
+    }
+
+    public void onCheckedChanged(android.widget.RadioGroup, int)
+    {
+        com.go108.lic.free.InputActivity r0;
+        int $i0;
+        android.widget.RadioGroup $r1;
+
+        r0 := @this: com.go108.lic.free.InputActivity;
+
+        $r1 := @parameter0: android.widget.RadioGroup;
+
+        $i0 := @parameter1: int;
+
+        lookupswitch($i0)
+        {
+            case 2131296282: goto label2;
+            case 2131296283: goto label3;
+            case 2131296284: goto label1;
+            case 2131296285: goto label4;
+            case 2131296286: goto label5;
+            case 2131296287: goto label1;
+            case 2131296288: goto label1;
+            case 2131296289: goto label1;
+            case 2131296290: goto label1;
+            case 2131296291: goto label6;
+            case 2131296292: goto label7;
+            default: goto label1;
+        };
+
+     label1:
+        return;
+
+     label2:
+        r0.<com.go108.lic.free.InputActivity: byte loveStateVal> = 1;
+
+        r0.<com.go108.lic.free.InputActivity: boolean setState> = 1;
+
+        return;
+
+     label3:
+        r0.<com.go108.lic.free.InputActivity: byte loveStateVal> = 2;
+
+        r0.<com.go108.lic.free.InputActivity: boolean setState> = 1;
+
+        return;
+
+     label4:
+        r0.<com.go108.lic.free.InputActivity: byte genderVal> = 1;
+
+        r0.<com.go108.lic.free.InputActivity: boolean setGender> = 1;
+
+        return;
+
+     label5:
+        r0.<com.go108.lic.free.InputActivity: byte genderVal> = 0;
+
+        r0.<com.go108.lic.free.InputActivity: boolean setGender> = 1;
+
+        return;
+
+     label6:
+        r0.<com.go108.lic.free.InputActivity: byte genderTAVal> = 1;
+
+        r0.<com.go108.lic.free.InputActivity: boolean setGenderTA> = 1;
+
+        return;
+
+     label7:
+        r0.<com.go108.lic.free.InputActivity: byte genderTAVal> = 0;
+
+        r0.<com.go108.lic.free.InputActivity: boolean setGenderTA> = 1;
+
+        return;
+    }
+
+    public void onClick(android.view.View)
+    {
+        com.go108.lic.free.InputActivity r0;
+        int $i0;
+        android.view.View $r1;
+
+        r0 := @this: com.go108.lic.free.InputActivity;
+
+        $r1 := @parameter0: android.view.View;
+
+        $i0 = virtualinvoke $r1.<android.view.View: int getId()>();
+
+        lookupswitch($i0)
+        {
+            case 2131296287: goto label2;
+            case 2131296288: goto label2;
+            case 2131296289: goto label2;
+            case 2131296290: goto label1;
+            case 2131296291: goto label1;
+            case 2131296292: goto label1;
+            case 2131296293: goto label3;
+            case 2131296294: goto label3;
+            case 2131296295: goto label3;
+            case 2131296296: goto label4;
+            default: goto label1;
+        };
+
+     label1:
+        return;
+
+     label2:
+        virtualinvoke r0.<com.go108.lic.free.InputActivity: void showDialog(int)>(1);
+
+        return;
+
+     label3:
+        virtualinvoke r0.<com.go108.lic.free.InputActivity: void showDialog(int)>(2);
+
+        return;
+
+     label4:
+        specialinvoke r0.<com.go108.lic.free.InputActivity: void save()>();
+
+        return;
+    }
+
+    public void onCreate(android.os.Bundle)
+    {
+        android.os.Bundle $r1;
+        android.widget.RadioGroup $r4;
+        com.go108.lic.free.InputActivity r0;
+        int $i0;
+        android.view.View $r3;
+        android.widget.Button $r5;
+        java.lang.String $r6;
+        com.go108.lic.free.util.PersonDB $r2;
+
+        r0 := @this: com.go108.lic.free.InputActivity;
+
+        $r1 := @parameter0: android.os.Bundle;
+
+        specialinvoke r0.<android.app.Activity: void onCreate(android.os.Bundle)>($r1);
+
+        virtualinvoke r0.<com.go108.lic.free.InputActivity: boolean requestWindowFeature(int)>(1);
+
+        virtualinvoke r0.<com.go108.lic.free.InputActivity: void setContentView(int)>(2130903047);
+
+        $r2 = new com.go108.lic.free.util.PersonDB;
+
+        specialinvoke $r2.<com.go108.lic.free.util.PersonDB: void <init>(android.content.Context)>(r0);
+
+        r0.<com.go108.lic.free.InputActivity: com.go108.lic.free.util.PersonDB personDB> = $r2;
+
+        $r3 = virtualinvoke r0.<com.go108.lic.free.InputActivity: android.view.View findViewById(int)>(2131296281);
+
+        $r4 = (android.widget.RadioGroup) $r3;
+
+        r0.<com.go108.lic.free.InputActivity: android.widget.RadioGroup loveState> = $r4;
+
+        $r3 = virtualinvoke r0.<com.go108.lic.free.InputActivity: android.view.View findViewById(int)>(2131296284);
+
+        $r4 = (android.widget.RadioGroup) $r3;
+
+        r0.<com.go108.lic.free.InputActivity: android.widget.RadioGroup gender> = $r4;
+
+        $r3 = virtualinvoke r0.<com.go108.lic.free.InputActivity: android.view.View findViewById(int)>(2131296290);
+
+        $r4 = (android.widget.RadioGroup) $r3;
+
+        r0.<com.go108.lic.free.InputActivity: android.widget.RadioGroup genderTA> = $r4;
+
+        $r3 = virtualinvoke r0.<com.go108.lic.free.InputActivity: android.view.View findViewById(int)>(2131296287);
+
+        $r5 = (android.widget.Button) $r3;
+
+        r0.<com.go108.lic.free.InputActivity: android.widget.Button btMyYear> = $r5;
+
+        $r3 = virtualinvoke r0.<com.go108.lic.free.InputActivity: android.view.View findViewById(int)>(2131296288);
+
+        $r5 = (android.widget.Button) $r3;
+
+        r0.<com.go108.lic.free.InputActivity: android.widget.Button btMyMonth> = $r5;
+
+        $r3 = virtualinvoke r0.<com.go108.lic.free.InputActivity: android.view.View findViewById(int)>(2131296289);
+
+        $r5 = (android.widget.Button) $r3;
+
+        r0.<com.go108.lic.free.InputActivity: android.widget.Button btMyDay> = $r5;
+
+        $r3 = virtualinvoke r0.<com.go108.lic.free.InputActivity: android.view.View findViewById(int)>(2131296293);
+
+        $r5 = (android.widget.Button) $r3;
+
+        r0.<com.go108.lic.free.InputActivity: android.widget.Button btTAYear> = $r5;
+
+        $r3 = virtualinvoke r0.<com.go108.lic.free.InputActivity: android.view.View findViewById(int)>(2131296294);
+
+        $r5 = (android.widget.Button) $r3;
+
+        r0.<com.go108.lic.free.InputActivity: android.widget.Button btTAMonth> = $r5;
+
+        $r3 = virtualinvoke r0.<com.go108.lic.free.InputActivity: android.view.View findViewById(int)>(2131296295);
+
+        $r5 = (android.widget.Button) $r3;
+
+        r0.<com.go108.lic.free.InputActivity: android.widget.Button btTADay> = $r5;
+
+        $r3 = virtualinvoke r0.<com.go108.lic.free.InputActivity: android.view.View findViewById(int)>(2131296296);
+
+        $r5 = (android.widget.Button) $r3;
+
+        r0.<com.go108.lic.free.InputActivity: android.widget.Button submit> = $r5;
+
+        $r4 = r0.<com.go108.lic.free.InputActivity: android.widget.RadioGroup loveState>;
+
+        virtualinvoke $r4.<android.widget.RadioGroup: void setOnCheckedChangeListener(android.widget.RadioGroup$OnCheckedChangeListener)>(r0);
+
+        $r4 = r0.<com.go108.lic.free.InputActivity: android.widget.RadioGroup gender>;
+
+        virtualinvoke $r4.<android.widget.RadioGroup: void setOnCheckedChangeListener(android.widget.RadioGroup$OnCheckedChangeListener)>(r0);
+
+        $r4 = r0.<com.go108.lic.free.InputActivity: android.widget.RadioGroup genderTA>;
+
+        virtualinvoke $r4.<android.widget.RadioGroup: void setOnCheckedChangeListener(android.widget.RadioGroup$OnCheckedChangeListener)>(r0);
+
+        $r5 = r0.<com.go108.lic.free.InputActivity: android.widget.Button btMyYear>;
+
+        virtualinvoke $r5.<android.widget.Button: void setOnClickListener(android.view.View$OnClickListener)>(r0);
+
+        $r5 = r0.<com.go108.lic.free.InputActivity: android.widget.Button btMyMonth>;
+
+        virtualinvoke $r5.<android.widget.Button: void setOnClickListener(android.view.View$OnClickListener)>(r0);
+
+        $r5 = r0.<com.go108.lic.free.InputActivity: android.widget.Button btMyDay>;
+
+        virtualinvoke $r5.<android.widget.Button: void setOnClickListener(android.view.View$OnClickListener)>(r0);
+
+        $r5 = r0.<com.go108.lic.free.InputActivity: android.widget.Button btTAYear>;
+
+        virtualinvoke $r5.<android.widget.Button: void setOnClickListener(android.view.View$OnClickListener)>(r0);
+
+        $r5 = r0.<com.go108.lic.free.InputActivity: android.widget.Button btTAMonth>;
+
+        virtualinvoke $r5.<android.widget.Button: void setOnClickListener(android.view.View$OnClickListener)>(r0);
+
+        $r5 = r0.<com.go108.lic.free.InputActivity: android.widget.Button btTADay>;
+
+        virtualinvoke $r5.<android.widget.Button: void setOnClickListener(android.view.View$OnClickListener)>(r0);
+
+        $r5 = r0.<com.go108.lic.free.InputActivity: android.widget.Button submit>;
+
+        virtualinvoke $r5.<android.widget.Button: void setOnClickListener(android.view.View$OnClickListener)>(r0);
+
+        $r5 = r0.<com.go108.lic.free.InputActivity: android.widget.Button btMyYear>;
+
+        virtualinvoke $r5.<android.widget.Button: void setOnTouchListener(android.view.View$OnTouchListener)>(r0);
+
+        $r5 = r0.<com.go108.lic.free.InputActivity: android.widget.Button btMyMonth>;
+
+        virtualinvoke $r5.<android.widget.Button: void setOnTouchListener(android.view.View$OnTouchListener)>(r0);
+
+        $r5 = r0.<com.go108.lic.free.InputActivity: android.widget.Button btMyDay>;
+
+        virtualinvoke $r5.<android.widget.Button: void setOnTouchListener(android.view.View$OnTouchListener)>(r0);
+
+        $r5 = r0.<com.go108.lic.free.InputActivity: android.widget.Button btTAYear>;
+
+        virtualinvoke $r5.<android.widget.Button: void setOnTouchListener(android.view.View$OnTouchListener)>(r0);
+
+        $r5 = r0.<com.go108.lic.free.InputActivity: android.widget.Button btTAMonth>;
+
+        virtualinvoke $r5.<android.widget.Button: void setOnTouchListener(android.view.View$OnTouchListener)>(r0);
+
+        $r5 = r0.<com.go108.lic.free.InputActivity: android.widget.Button btTADay>;
+
+        virtualinvoke $r5.<android.widget.Button: void setOnTouchListener(android.view.View$OnTouchListener)>(r0);
+
+        $r5 = r0.<com.go108.lic.free.InputActivity: android.widget.Button btMyYear>;
+
+        $i0 = r0.<com.go108.lic.free.InputActivity: int year>;
+
+        $r6 = specialinvoke r0.<com.go108.lic.free.InputActivity: java.lang.String formateInt(int)>($i0);
+
+        virtualinvoke $r5.<android.widget.Button: void setText(java.lang.CharSequence)>($r6);
+
+        $r5 = r0.<com.go108.lic.free.InputActivity: android.widget.Button btMyMonth>;
+
+        $i0 = r0.<com.go108.lic.free.InputActivity: int month>;
+
+        $r6 = specialinvoke r0.<com.go108.lic.free.InputActivity: java.lang.String formateInt(int)>($i0);
+
+        virtualinvoke $r5.<android.widget.Button: void setText(java.lang.CharSequence)>($r6);
+
+        $r5 = r0.<com.go108.lic.free.InputActivity: android.widget.Button btMyDay>;
+
+        $i0 = r0.<com.go108.lic.free.InputActivity: int day>;
+
+        $r6 = specialinvoke r0.<com.go108.lic.free.InputActivity: java.lang.String formateInt(int)>($i0);
+
+        virtualinvoke $r5.<android.widget.Button: void setText(java.lang.CharSequence)>($r6);
+
+        $r5 = r0.<com.go108.lic.free.InputActivity: android.widget.Button btTAYear>;
+
+        $i0 = r0.<com.go108.lic.free.InputActivity: int yearTA>;
+
+        $r6 = specialinvoke r0.<com.go108.lic.free.InputActivity: java.lang.String formateInt(int)>($i0);
+
+        virtualinvoke $r5.<android.widget.Button: void setText(java.lang.CharSequence)>($r6);
+
+        $r5 = r0.<com.go108.lic.free.InputActivity: android.widget.Button btTAMonth>;
+
+        $i0 = r0.<com.go108.lic.free.InputActivity: int monthTA>;
+
+        $r6 = specialinvoke r0.<com.go108.lic.free.InputActivity: java.lang.String formateInt(int)>($i0);
+
+        virtualinvoke $r5.<android.widget.Button: void setText(java.lang.CharSequence)>($r6);
+
+        $r5 = r0.<com.go108.lic.free.InputActivity: android.widget.Button btTADay>;
+
+        $i0 = r0.<com.go108.lic.free.InputActivity: int dayTA>;
+
+        $r6 = specialinvoke r0.<com.go108.lic.free.InputActivity: java.lang.String formateInt(int)>($i0);
+
+        virtualinvoke $r5.<android.widget.Button: void setText(java.lang.CharSequence)>($r6);
+
+        return;
+    }
+
+    protected android.app.Dialog onCreateDialog(int)
+    {
+        android.app.DatePickerDialog $r1;
+        android.app.DatePickerDialog$OnDateSetListener $r2;
+        com.go108.lic.free.InputActivity r0;
+        int $i0, $i1, $i2;
+
+        r0 := @this: com.go108.lic.free.InputActivity;
+
+        $i0 := @parameter0: int;
+
+        lookupswitch($i0)
+        {
+            case 1: goto label2;
+            case 2: goto label3;
+            default: goto label1;
+        };
+
+     label1:
+        return null;
+
+     label2:
+        $r1 = new android.app.DatePickerDialog;
+
+        $r2 = r0.<com.go108.lic.free.InputActivity: android.app.DatePickerDialog$OnDateSetListener myDateSetListener>;
+
+        $i0 = r0.<com.go108.lic.free.InputActivity: int year>;
+
+        $i1 = r0.<com.go108.lic.free.InputActivity: int month>;
+
+        $i1 = $i1 - 1;
+
+        $i2 = r0.<com.go108.lic.free.InputActivity: int day>;
+
+        specialinvoke $r1.<android.app.DatePickerDialog: void <init>(android.content.Context,android.app.DatePickerDialog$OnDateSetListener,int,int,int)>(r0, $r2, $i0, $i1, $i2);
+
+        return $r1;
+
+     label3:
+        $r1 = new android.app.DatePickerDialog;
+
+        $r2 = r0.<com.go108.lic.free.InputActivity: android.app.DatePickerDialog$OnDateSetListener friendDateSetListener>;
+
+        $i0 = r0.<com.go108.lic.free.InputActivity: int yearTA>;
+
+        $i1 = r0.<com.go108.lic.free.InputActivity: int monthTA>;
+
+        $i1 = $i1 - 1;
+
+        $i2 = r0.<com.go108.lic.free.InputActivity: int dayTA>;
+
+        specialinvoke $r1.<android.app.DatePickerDialog: void <init>(android.content.Context,android.app.DatePickerDialog$OnDateSetListener,int,int,int)>(r0, $r2, $i0, $i1, $i2);
+
+        return $r1;
+    }
+
+    protected void onDestroy()
+    {
+        com.go108.lic.free.InputActivity r0;
+        com.go108.lic.free.util.PersonDB $r1;
+
+        r0 := @this: com.go108.lic.free.InputActivity;
+
+        $r1 = r0.<com.go108.lic.free.InputActivity: com.go108.lic.free.util.PersonDB personDB>;
+
+        virtualinvoke $r1.<com.go108.lic.free.util.PersonDB: void close()>();
+
+        specialinvoke r0.<android.app.Activity: void onDestroy()>();
+
+        return;
+    }
+
+    protected void onPause()
+    {
+        com.go108.lic.free.InputActivity r0;
+
+        r0 := @this: com.go108.lic.free.InputActivity;
+
+        specialinvoke r0.<android.app.Activity: void onPause()>();
+
+        return;
+    }
+
+    protected void onResume()
+    {
+        com.go108.lic.free.InputActivity r0;
+
+        r0 := @this: com.go108.lic.free.InputActivity;
+
+        specialinvoke r0.<android.app.Activity: void onResume()>();
+
+        return;
+    }
+
+    public boolean onTouch(android.view.View, android.view.MotionEvent)
+    {
+        com.go108.lic.free.InputActivity r0;
+        android.view.View $r1;
+        android.view.MotionEvent $r2;
+
+        r0 := @this: com.go108.lic.free.InputActivity;
+
+        $r1 := @parameter0: android.view.View;
+
+        $r2 := @parameter1: android.view.MotionEvent;
+
+        return 0;
+    }
+
+    public static void <clinit>()
+    {
+        <com.go108.lic.free.InputActivity: int DATE_DIALOG_2> = 2;
+
+        <com.go108.lic.free.InputActivity: int DATE_DIALOG_1> = 1;
+
+        return;
+    }
+}

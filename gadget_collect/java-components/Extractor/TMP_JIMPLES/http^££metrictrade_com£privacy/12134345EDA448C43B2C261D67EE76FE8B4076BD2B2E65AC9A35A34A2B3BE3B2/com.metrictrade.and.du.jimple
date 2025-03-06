@@ -1,0 +1,127 @@
+public final class com.metrictrade.and.du extends java.lang.Object
+{
+    int a;
+
+    public void <init>()
+    {
+        com.metrictrade.and.du r0;
+
+        r0 := @this: com.metrictrade.and.du;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        r0.<com.metrictrade.and.du: int a> = 1;
+
+        return;
+    }
+
+    public final long a()
+    {
+        com.metrictrade.and.du r0;
+        int $i0;
+        long $l1;
+
+        r0 := @this: com.metrictrade.and.du;
+
+        $i0 = r0.<com.metrictrade.and.du: int a>;
+
+        $l1 = (long) $i0;
+
+        $l1 = $l1 & 4294967295L;
+
+        return $l1;
+    }
+
+    public final void a(byte[], int, int)
+    {
+        byte[] $r1;
+        com.metrictrade.and.du r0;
+        short $s7;
+        byte $b6;
+        int $i0, $i1, $i2, $i3, $i4, $i5;
+
+        r0 := @this: com.metrictrade.and.du;
+
+        $r1 := @parameter0: byte[];
+
+        $i0 := @parameter1: int;
+
+        $i1 := @parameter2: int;
+
+        $i2 = r0.<com.metrictrade.and.du: int a>;
+
+        $i3 = $i2 & 65535;
+
+        $i2 = r0.<com.metrictrade.and.du: int a>;
+
+        $i4 = $i2 >>> 16;
+
+        $i5 = $i0;
+
+     label1:
+        if $i1 > 0 goto label2;
+
+        $i0 = $i4 << 16;
+
+        $i0 = $i0 | $i3;
+
+        r0.<com.metrictrade.and.du: int a> = $i0;
+
+        return;
+
+     label2:
+        if 3800 <= $i1 goto label6;
+
+        $i2 = $i1;
+
+     label3:
+        $i0 = $i1 - $i2;
+
+        $i1 = $i4;
+
+        $i4 = $i3;
+
+        $i3 = $i5;
+
+     label4:
+        $i2 = $i2 + -1;
+
+        if $i2 >= 0 goto label5;
+
+        $i2 = $i4 % 65521;
+
+        $i4 = $i1 % 65521;
+
+        $i1 = $i0;
+
+        $i5 = $i3;
+
+        $i3 = $i2;
+
+        goto label1;
+
+     label5:
+        $i5 = $i3 + 1;
+
+        $b6 = $r1[$i3];
+
+        $s7 = (short) $b6;
+
+        $s7 = $s7 & 255;
+
+        $i3 = (int) $s7;
+
+        $i4 = $i4 + $i3;
+
+        $i1 = $i1 + $i4;
+
+        $i3 = $i5;
+
+        goto label4;
+
+     label6:
+        $i2 = 3800;
+
+        goto label3;
+    }
+}

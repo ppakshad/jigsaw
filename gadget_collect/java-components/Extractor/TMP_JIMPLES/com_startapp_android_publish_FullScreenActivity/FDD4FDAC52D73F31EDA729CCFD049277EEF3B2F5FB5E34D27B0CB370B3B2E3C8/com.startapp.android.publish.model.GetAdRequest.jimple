@@ -1,0 +1,2172 @@
+public class com.startapp.android.publish.model.GetAdRequest extends com.startapp.android.publish.model.BaseRequest
+{
+    private int adsDisplayed;
+    private int adsNumber;
+    private java.lang.String advertiserId;
+    private java.lang.String age;
+    private java.lang.Boolean ai;
+    private java.lang.Boolean as;
+    private java.util.Set categories;
+    private java.util.Set categoriesExclude;
+    private java.lang.String cellScanRes;
+    private boolean contentAd;
+    private java.lang.String country;
+    private boolean engInclude;
+    private com.startapp.android.publish.SDKAdPreferences$Gender gender;
+    private java.lang.Boolean isAutoDateTimeEnabled;
+    private boolean isHardwareAccelerated;
+    private java.lang.String keywords;
+    private java.util.List locations;
+    private java.lang.String moreImg;
+    private int offset;
+    private java.util.Set packageExclude;
+    private java.util.Set packageInclude;
+    private java.util.Set participants;
+    private com.startapp.android.publish.model.AdPreferences$Placement placement;
+    private java.lang.String primaryImg;
+    private java.lang.String profileId;
+    private java.lang.String simpleToken;
+    private com.startapp.android.publish.model.SodaPreferences$SocialContext socialContext;
+    private java.lang.String template;
+    private boolean testMode;
+    private long timeSinceSessionStart;
+    private com.startapp.android.publish.Ad$AdType type;
+    private com.startapp.android.publish.model.GetAdRequest$VideoRequestMode videoRequestMode;
+    private com.startapp.android.publish.model.GetAdRequest$VideoRequestType videoRequestType;
+
+    public void <init>()
+    {
+        com.startapp.android.publish.model.GetAdRequest r0;
+        com.startapp.android.publish.model.GetAdRequest$VideoRequestMode $r1;
+        long $l0, $l1;
+        com.startapp.android.publish.model.adrules.SessionManager $r2;
+        int $i2;
+        com.startapp.android.publish.model.MetaData $r3;
+        java.lang.String $r4;
+
+        r0 := @this: com.startapp.android.publish.model.GetAdRequest;
+
+        specialinvoke r0.<com.startapp.android.publish.model.BaseRequest: void <init>()>();
+
+        r0.<com.startapp.android.publish.model.GetAdRequest: int adsNumber> = 1;
+
+        $r1 = <com.startapp.android.publish.model.GetAdRequest$VideoRequestMode: com.startapp.android.publish.model.GetAdRequest$VideoRequestMode INTERSTITIAL>;
+
+        r0.<com.startapp.android.publish.model.GetAdRequest: com.startapp.android.publish.model.GetAdRequest$VideoRequestMode videoRequestMode> = $r1;
+
+        r0.<com.startapp.android.publish.model.GetAdRequest: boolean isHardwareAccelerated> = 1;
+
+        r0.<com.startapp.android.publish.model.GetAdRequest: int offset> = 0;
+
+        r0.<com.startapp.android.publish.model.GetAdRequest: java.util.Set categories> = null;
+
+        r0.<com.startapp.android.publish.model.GetAdRequest: java.util.Set categoriesExclude> = null;
+
+        r0.<com.startapp.android.publish.model.GetAdRequest: java.util.Set packageExclude> = null;
+
+        r0.<com.startapp.android.publish.model.GetAdRequest: java.util.Set packageInclude> = null;
+
+        r0.<com.startapp.android.publish.model.GetAdRequest: boolean engInclude> = 1;
+
+        r0.<com.startapp.android.publish.model.GetAdRequest: java.util.List locations> = null;
+
+        r0.<com.startapp.android.publish.model.GetAdRequest: java.lang.String country> = null;
+
+        r0.<com.startapp.android.publish.model.GetAdRequest: java.lang.String advertiserId> = null;
+
+        r0.<com.startapp.android.publish.model.GetAdRequest: com.startapp.android.publish.Ad$AdType type> = null;
+
+        r0.<com.startapp.android.publish.model.GetAdRequest: com.startapp.android.publish.model.SodaPreferences$SocialContext socialContext> = null;
+
+        r0.<com.startapp.android.publish.model.GetAdRequest: java.util.Set participants> = null;
+
+        $l0 = staticinvoke <java.lang.System: long currentTimeMillis()>();
+
+        $r2 = staticinvoke <com.startapp.android.publish.model.adrules.SessionManager: com.startapp.android.publish.model.adrules.SessionManager getInstance()>();
+
+        $l1 = virtualinvoke $r2.<com.startapp.android.publish.model.adrules.SessionManager: long getSessionStartTime()>();
+
+        $l0 = $l0 - $l1;
+
+        r0.<com.startapp.android.publish.model.GetAdRequest: long timeSinceSessionStart> = $l0;
+
+        $r2 = staticinvoke <com.startapp.android.publish.model.adrules.SessionManager: com.startapp.android.publish.model.adrules.SessionManager getInstance()>();
+
+        $i2 = virtualinvoke $r2.<com.startapp.android.publish.model.adrules.SessionManager: int getNumOfAdsDisplayed()>();
+
+        r0.<com.startapp.android.publish.model.GetAdRequest: int adsDisplayed> = $i2;
+
+        $r3 = staticinvoke <com.startapp.android.publish.model.MetaData: com.startapp.android.publish.model.MetaData getInstance()>();
+
+        $r4 = virtualinvoke $r3.<com.startapp.android.publish.model.MetaData: java.lang.String getProfileId()>();
+
+        r0.<com.startapp.android.publish.model.GetAdRequest: java.lang.String profileId> = $r4;
+
+        return;
+    }
+
+    private void fillCellDetails(android.content.Context, android.telephony.TelephonyManager)
+    {
+        com.startapp.android.publish.model.GetAdRequest r0;
+        android.content.Context $r1;
+        android.telephony.TelephonyManager $r2;
+        java.util.List $r3;
+        int $i0;
+        java.lang.String $r4;
+
+        r0 := @this: com.startapp.android.publish.model.GetAdRequest;
+
+        $r1 := @parameter0: android.content.Context;
+
+        $r2 := @parameter1: android.telephony.TelephonyManager;
+
+        $r3 = staticinvoke <com.startapp.android.publish.i.b: java.util.List a(android.content.Context,android.telephony.TelephonyManager)>($r1, $r2);
+
+        if $r3 == null goto label1;
+
+        $i0 = interfaceinvoke $r3.<java.util.List: int size()>();
+
+        if $i0 <= 0 goto label1;
+
+        $r4 = virtualinvoke $r3.<java.lang.Object: java.lang.String toString()>();
+
+        $r4 = staticinvoke <com.startapp.android.publish.i.x: java.lang.String e(java.lang.String)>($r4);
+
+        virtualinvoke r0.<com.startapp.android.publish.model.GetAdRequest: void setCellScanRes(java.lang.String)>($r4);
+
+     label1:
+        return;
+    }
+
+    private void fillLocationDetails(com.startapp.android.publish.model.AdPreferences, android.content.Context)
+    {
+        com.startapp.android.publish.model.GetAdRequest r0;
+        com.startapp.android.publish.model.AdPreferences $r1;
+        android.content.Context $r2;
+        java.util.ArrayList $r3;
+        boolean $z0;
+        java.lang.Double $r4;
+        android.location.Location $r5;
+        double $d0;
+        java.util.List $r6, $r7;
+        int $i0;
+
+        r0 := @this: com.startapp.android.publish.model.GetAdRequest;
+
+        $r1 := @parameter0: com.startapp.android.publish.model.AdPreferences;
+
+        $r2 := @parameter1: android.content.Context;
+
+        $r3 = new java.util.ArrayList;
+
+        specialinvoke $r3.<java.util.ArrayList: void <init>()>();
+
+        r0.<com.startapp.android.publish.model.GetAdRequest: java.util.List locations> = $r3;
+
+        $z0 = 0;
+
+        $r4 = virtualinvoke $r1.<com.startapp.android.publish.model.AdPreferences: java.lang.Double getLatitude()>();
+
+        if $r4 == null goto label1;
+
+        $r4 = virtualinvoke $r1.<com.startapp.android.publish.model.AdPreferences: java.lang.Double getLongitude()>();
+
+        if $r4 == null goto label1;
+
+        $r5 = new android.location.Location;
+
+        specialinvoke $r5.<android.location.Location: void <init>(java.lang.String)>("loc");
+
+        $r4 = virtualinvoke $r1.<com.startapp.android.publish.model.AdPreferences: java.lang.Double getLongitude()>();
+
+        $d0 = virtualinvoke $r4.<java.lang.Double: double doubleValue()>();
+
+        virtualinvoke $r5.<android.location.Location: void setLongitude(double)>($d0);
+
+        $r4 = virtualinvoke $r1.<com.startapp.android.publish.model.AdPreferences: java.lang.Double getLongitude()>();
+
+        $d0 = virtualinvoke $r4.<java.lang.Double: double doubleValue()>();
+
+        virtualinvoke $r5.<android.location.Location: void setLongitude(double)>($d0);
+
+        virtualinvoke $r5.<android.location.Location: void setProvider(java.lang.String)>("API");
+
+        $r6 = r0.<com.startapp.android.publish.model.GetAdRequest: java.util.List locations>;
+
+        interfaceinvoke $r6.<java.util.List: boolean add(java.lang.Object)>($r5);
+
+        $z0 = 1;
+
+     label1:
+        $r6 = staticinvoke <com.startapp.android.publish.i.m: java.util.List a(android.content.Context)>($r2);
+
+        if $r6 == null goto label2;
+
+        $i0 = interfaceinvoke $r6.<java.util.List: int size()>();
+
+        if $i0 <= 0 goto label2;
+
+        $r7 = r0.<com.startapp.android.publish.model.GetAdRequest: java.util.List locations>;
+
+        interfaceinvoke $r7.<java.util.List: boolean addAll(java.util.Collection)>($r6);
+
+        $z0 = 1;
+
+     label2:
+        staticinvoke <com.startapp.android.publish.i.m: void a(android.content.Context,boolean)>($r2, $z0);
+
+        return;
+    }
+
+    private void setVideoRequestMode()
+    {
+        com.startapp.android.publish.model.GetAdRequest r0;
+        com.startapp.android.publish.Ad$AdType $r1, $r2;
+        com.startapp.android.publish.model.GetAdRequest$VideoRequestMode $r3;
+
+        r0 := @this: com.startapp.android.publish.model.GetAdRequest;
+
+        $r2 = virtualinvoke r0.<com.startapp.android.publish.model.GetAdRequest: com.startapp.android.publish.Ad$AdType getType()>();
+
+        $r1 = <com.startapp.android.publish.Ad$AdType: com.startapp.android.publish.Ad$AdType REWARDED_VIDEO>;
+
+        if $r2 != $r1 goto label1;
+
+        $r3 = <com.startapp.android.publish.model.GetAdRequest$VideoRequestMode: com.startapp.android.publish.model.GetAdRequest$VideoRequestMode REWARDED>;
+
+        r0.<com.startapp.android.publish.model.GetAdRequest: com.startapp.android.publish.model.GetAdRequest$VideoRequestMode videoRequestMode> = $r3;
+
+     label1:
+        return;
+    }
+
+    private void setVideoRequestType(android.content.Context)
+    {
+        com.startapp.android.publish.model.GetAdRequest r0;
+        android.content.Context $r1;
+        com.startapp.android.publish.Ad$AdType $r2, $r3;
+        com.startapp.android.publish.model.GetAdRequest$VideoRequestType $r4;
+        boolean $z0;
+        com.startapp.android.publish.video.c$a $r5, $r6;
+
+        r0 := @this: com.startapp.android.publish.model.GetAdRequest;
+
+        $r1 := @parameter0: android.content.Context;
+
+        $r2 = virtualinvoke r0.<com.startapp.android.publish.model.GetAdRequest: com.startapp.android.publish.Ad$AdType getType()>();
+
+        if $r2 == null goto label2;
+
+        $r2 = virtualinvoke r0.<com.startapp.android.publish.model.GetAdRequest: com.startapp.android.publish.Ad$AdType getType()>();
+
+        $r3 = <com.startapp.android.publish.Ad$AdType: com.startapp.android.publish.Ad$AdType NON_VIDEO>;
+
+        if $r2 != $r3 goto label1;
+
+        $r4 = <com.startapp.android.publish.model.GetAdRequest$VideoRequestType: com.startapp.android.publish.model.GetAdRequest$VideoRequestType DISABLED>;
+
+        r0.<com.startapp.android.publish.model.GetAdRequest: com.startapp.android.publish.model.GetAdRequest$VideoRequestType videoRequestType> = $r4;
+
+        return;
+
+     label1:
+        $z0 = virtualinvoke r0.<com.startapp.android.publish.model.GetAdRequest: boolean isAdTypeVideo()>();
+
+        if $z0 == 0 goto label4;
+
+        $r4 = <com.startapp.android.publish.model.GetAdRequest$VideoRequestType: com.startapp.android.publish.model.GetAdRequest$VideoRequestType FORCED>;
+
+        r0.<com.startapp.android.publish.model.GetAdRequest: com.startapp.android.publish.model.GetAdRequest$VideoRequestType videoRequestType> = $r4;
+
+        return;
+
+     label2:
+        $r5 = staticinvoke <com.startapp.android.publish.video.c: com.startapp.android.publish.video.c$a a(android.content.Context)>($r1);
+
+        $r6 = <com.startapp.android.publish.video.c$a: com.startapp.android.publish.video.c$a a>;
+
+        if $r5 != $r6 goto label3;
+
+        $r4 = <com.startapp.android.publish.model.GetAdRequest$VideoRequestType: com.startapp.android.publish.model.GetAdRequest$VideoRequestType ENABLED>;
+
+        r0.<com.startapp.android.publish.model.GetAdRequest: com.startapp.android.publish.model.GetAdRequest$VideoRequestType videoRequestType> = $r4;
+
+        return;
+
+     label3:
+        $r4 = <com.startapp.android.publish.model.GetAdRequest$VideoRequestType: com.startapp.android.publish.model.GetAdRequest$VideoRequestType DISABLED>;
+
+        r0.<com.startapp.android.publish.model.GetAdRequest: com.startapp.android.publish.model.GetAdRequest$VideoRequestType videoRequestType> = $r4;
+
+     label4:
+        return;
+    }
+
+    public void addCategory(java.lang.String)
+    {
+        com.startapp.android.publish.model.GetAdRequest r0;
+        java.lang.String $r1;
+        java.util.Set $r2;
+        java.util.HashSet $r3;
+
+        r0 := @this: com.startapp.android.publish.model.GetAdRequest;
+
+        $r1 := @parameter0: java.lang.String;
+
+        $r2 = r0.<com.startapp.android.publish.model.GetAdRequest: java.util.Set categories>;
+
+        if $r2 != null goto label1;
+
+        $r3 = new java.util.HashSet;
+
+        specialinvoke $r3.<java.util.HashSet: void <init>()>();
+
+        r0.<com.startapp.android.publish.model.GetAdRequest: java.util.Set categories> = $r3;
+
+     label1:
+        $r2 = r0.<com.startapp.android.publish.model.GetAdRequest: java.util.Set categories>;
+
+        interfaceinvoke $r2.<java.util.Set: boolean add(java.lang.Object)>($r1);
+
+        return;
+    }
+
+    public void addCategoryExclude(java.lang.String)
+    {
+        com.startapp.android.publish.model.GetAdRequest r0;
+        java.lang.String $r1;
+        java.util.Set $r2;
+        java.util.HashSet $r3;
+
+        r0 := @this: com.startapp.android.publish.model.GetAdRequest;
+
+        $r1 := @parameter0: java.lang.String;
+
+        $r2 = r0.<com.startapp.android.publish.model.GetAdRequest: java.util.Set categoriesExclude>;
+
+        if $r2 != null goto label1;
+
+        $r3 = new java.util.HashSet;
+
+        specialinvoke $r3.<java.util.HashSet: void <init>()>();
+
+        r0.<com.startapp.android.publish.model.GetAdRequest: java.util.Set categoriesExclude> = $r3;
+
+     label1:
+        $r2 = r0.<com.startapp.android.publish.model.GetAdRequest: java.util.Set categoriesExclude>;
+
+        interfaceinvoke $r2.<java.util.Set: boolean add(java.lang.Object)>($r1);
+
+        return;
+    }
+
+    public void fillAdPreferences(android.content.Context, com.startapp.android.publish.model.AdPreferences, com.startapp.android.publish.model.AdPreferences$Placement, java.lang.String)
+    {
+        com.startapp.android.publish.model.GetAdRequest r0;
+        android.content.Context $r1;
+        com.startapp.android.publish.model.AdPreferences $r2;
+        com.startapp.android.publish.model.AdPreferences$Placement $r3;
+        java.lang.String $r4;
+        com.startapp.android.publish.model.MetaData $r5;
+        com.startapp.android.publish.adinformation.AdInformationConfig $r6;
+        com.startapp.android.publish.adinformation.e $r7;
+        boolean $z0;
+        java.lang.Boolean $r8;
+        com.startapp.android.publish.SDKAdPreferences$Gender $r9;
+        java.util.Set $r10;
+        com.startapp.android.publish.Ad$AdType $r11;
+        java.lang.Object $r12;
+        android.telephony.TelephonyManager $r13;
+
+        r0 := @this: com.startapp.android.publish.model.GetAdRequest;
+
+        $r1 := @parameter0: android.content.Context;
+
+        $r2 := @parameter1: com.startapp.android.publish.model.AdPreferences;
+
+        $r3 := @parameter2: com.startapp.android.publish.model.AdPreferences$Placement;
+
+        $r4 := @parameter3: java.lang.String;
+
+        r0.<com.startapp.android.publish.model.GetAdRequest: com.startapp.android.publish.model.AdPreferences$Placement placement> = $r3;
+
+        $r5 = staticinvoke <com.startapp.android.publish.model.MetaData: com.startapp.android.publish.model.MetaData getInstance()>();
+
+        $r6 = virtualinvoke $r5.<com.startapp.android.publish.model.MetaData: com.startapp.android.publish.adinformation.AdInformationConfig getAdInformationConfig()>();
+
+        $r7 = virtualinvoke $r6.<com.startapp.android.publish.adinformation.AdInformationConfig: com.startapp.android.publish.adinformation.e g()>();
+
+        $z0 = virtualinvoke $r7.<com.startapp.android.publish.adinformation.e: boolean a(android.content.Context)>($r1);
+
+        if $z0 == 0 goto label2;
+
+        $z0 = virtualinvoke $r2.<com.startapp.android.publish.model.AdPreferences: boolean isSimpleToken()>();
+
+        if $z0 == 0 goto label2;
+
+        r0.<com.startapp.android.publish.model.GetAdRequest: java.lang.String simpleToken> = $r4;
+
+     label1:
+        $r8 = virtualinvoke $r2.<com.startapp.android.publish.model.AdPreferences: java.lang.Boolean getAi()>();
+
+        r0.<com.startapp.android.publish.model.GetAdRequest: java.lang.Boolean ai> = $r8;
+
+        $r8 = virtualinvoke $r2.<com.startapp.android.publish.model.AdPreferences: java.lang.Boolean getAs()>();
+
+        r0.<com.startapp.android.publish.model.GetAdRequest: java.lang.Boolean as> = $r8;
+
+        $r4 = virtualinvoke $r2.<com.startapp.android.publish.model.AdPreferences: java.lang.String getAge(android.content.Context)>($r1);
+
+        r0.<com.startapp.android.publish.model.GetAdRequest: java.lang.String age> = $r4;
+
+        $r9 = virtualinvoke $r2.<com.startapp.android.publish.model.AdPreferences: com.startapp.android.publish.SDKAdPreferences$Gender getGender(android.content.Context)>($r1);
+
+        r0.<com.startapp.android.publish.model.GetAdRequest: com.startapp.android.publish.SDKAdPreferences$Gender gender> = $r9;
+
+        $r4 = virtualinvoke $r2.<com.startapp.android.publish.model.AdPreferences: java.lang.String getKeywords()>();
+
+        r0.<com.startapp.android.publish.model.GetAdRequest: java.lang.String keywords> = $r4;
+
+        $z0 = virtualinvoke $r2.<com.startapp.android.publish.model.AdPreferences: boolean isTestMode()>();
+
+        r0.<com.startapp.android.publish.model.GetAdRequest: boolean testMode> = $z0;
+
+        $r10 = virtualinvoke $r2.<com.startapp.android.publish.model.AdPreferences: java.util.Set getCategories()>();
+
+        r0.<com.startapp.android.publish.model.GetAdRequest: java.util.Set categories> = $r10;
+
+        $r10 = virtualinvoke $r2.<com.startapp.android.publish.model.AdPreferences: java.util.Set getCategoriesExclude()>();
+
+        r0.<com.startapp.android.publish.model.GetAdRequest: java.util.Set categoriesExclude> = $r10;
+
+        $z0 = virtualinvoke $r2.<com.startapp.android.publish.model.AdPreferences: boolean isHardwareAccelerated()>();
+
+        r0.<com.startapp.android.publish.model.GetAdRequest: boolean isHardwareAccelerated> = $z0;
+
+        $z0 = staticinvoke <com.startapp.android.publish.i.b: boolean d(android.content.Context)>($r1);
+
+        $r8 = staticinvoke <java.lang.Boolean: java.lang.Boolean valueOf(boolean)>($z0);
+
+        r0.<com.startapp.android.publish.model.GetAdRequest: java.lang.Boolean isAutoDateTimeEnabled> = $r8;
+
+        specialinvoke r0.<com.startapp.android.publish.model.GetAdRequest: void fillLocationDetails(com.startapp.android.publish.model.AdPreferences,android.content.Context)>($r2, $r1);
+
+        $r4 = $r2.<com.startapp.android.publish.model.AdPreferences: java.lang.String country>;
+
+        virtualinvoke r0.<com.startapp.android.publish.model.GetAdRequest: void setCountry(java.lang.String)>($r4);
+
+        $r4 = $r2.<com.startapp.android.publish.model.AdPreferences: java.lang.String advertiserId>;
+
+        virtualinvoke r0.<com.startapp.android.publish.model.GetAdRequest: void setAdvertiser(java.lang.String)>($r4);
+
+        $r4 = $r2.<com.startapp.android.publish.model.AdPreferences: java.lang.String template>;
+
+        virtualinvoke r0.<com.startapp.android.publish.model.GetAdRequest: void setTemplate(java.lang.String)>($r4);
+
+        $r11 = $r2.<com.startapp.android.publish.model.AdPreferences: com.startapp.android.publish.Ad$AdType type>;
+
+        virtualinvoke r0.<com.startapp.android.publish.model.GetAdRequest: void setType(com.startapp.android.publish.Ad$AdType)>($r11);
+
+        specialinvoke r0.<com.startapp.android.publish.model.GetAdRequest: void setVideoRequestType(android.content.Context)>($r1);
+
+        specialinvoke r0.<com.startapp.android.publish.model.GetAdRequest: void setVideoRequestMode()>();
+
+        $r10 = $r2.<com.startapp.android.publish.model.AdPreferences: java.util.Set packageInclude>;
+
+        virtualinvoke r0.<com.startapp.android.publish.model.GetAdRequest: void setPackageInclude(java.util.Set)>($r10);
+
+        $r12 = virtualinvoke $r1.<android.content.Context: java.lang.Object getSystemService(java.lang.String)>("phone");
+
+        $r13 = (android.telephony.TelephonyManager) $r12;
+
+        if $r13 == null goto label3;
+
+        specialinvoke r0.<com.startapp.android.publish.model.GetAdRequest: void fillCellDetails(android.content.Context,android.telephony.TelephonyManager)>($r1, $r13);
+
+        return;
+
+     label2:
+        r0.<com.startapp.android.publish.model.GetAdRequest: java.lang.String simpleToken> = "";
+
+        goto label1;
+
+     label3:
+        return;
+    }
+
+    public void fillSodaPreferences(android.content.Context, com.startapp.android.publish.model.SodaPreferences)
+    {
+        com.startapp.android.publish.model.GetAdRequest r0;
+        android.content.Context $r1;
+        com.startapp.android.publish.model.SodaPreferences $r2;
+        java.util.Set $r3;
+        com.startapp.android.publish.model.SodaPreferences$SocialContext $r4;
+
+        r0 := @this: com.startapp.android.publish.model.GetAdRequest;
+
+        $r1 := @parameter0: android.content.Context;
+
+        $r2 := @parameter1: com.startapp.android.publish.model.SodaPreferences;
+
+        if $r2 != null goto label1;
+
+        return;
+
+     label1:
+        $r3 = $r2.<com.startapp.android.publish.model.SodaPreferences: java.util.Set participants>;
+
+        virtualinvoke r0.<com.startapp.android.publish.model.GetAdRequest: void setParticipants(java.util.Set)>($r3);
+
+        $r4 = $r2.<com.startapp.android.publish.model.SodaPreferences: com.startapp.android.publish.model.SodaPreferences$SocialContext socialContext>;
+
+        virtualinvoke r0.<com.startapp.android.publish.model.GetAdRequest: void setSocialContext(com.startapp.android.publish.model.SodaPreferences$SocialContext)>($r4);
+
+        return;
+    }
+
+    public int getAdsDisplayed()
+    {
+        com.startapp.android.publish.model.GetAdRequest r0;
+        int i0;
+
+        r0 := @this: com.startapp.android.publish.model.GetAdRequest;
+
+        i0 = r0.<com.startapp.android.publish.model.GetAdRequest: int adsDisplayed>;
+
+        return i0;
+    }
+
+    public int getAdsNumber()
+    {
+        com.startapp.android.publish.model.GetAdRequest r0;
+        int i0;
+
+        r0 := @this: com.startapp.android.publish.model.GetAdRequest;
+
+        i0 = r0.<com.startapp.android.publish.model.GetAdRequest: int adsNumber>;
+
+        return i0;
+    }
+
+    public java.lang.String getAdvertiserId()
+    {
+        com.startapp.android.publish.model.GetAdRequest r0;
+        java.lang.String r1;
+
+        r0 := @this: com.startapp.android.publish.model.GetAdRequest;
+
+        r1 = r0.<com.startapp.android.publish.model.GetAdRequest: java.lang.String advertiserId>;
+
+        return r1;
+    }
+
+    public java.lang.String getAge()
+    {
+        com.startapp.android.publish.model.GetAdRequest r0;
+        java.lang.String r1;
+
+        r0 := @this: com.startapp.android.publish.model.GetAdRequest;
+
+        r1 = r0.<com.startapp.android.publish.model.GetAdRequest: java.lang.String age>;
+
+        return r1;
+    }
+
+    public java.lang.Boolean getAi()
+    {
+        com.startapp.android.publish.model.GetAdRequest r0;
+        java.lang.Boolean r1;
+
+        r0 := @this: com.startapp.android.publish.model.GetAdRequest;
+
+        r1 = r0.<com.startapp.android.publish.model.GetAdRequest: java.lang.Boolean ai>;
+
+        return r1;
+    }
+
+    public java.lang.Boolean getAs()
+    {
+        com.startapp.android.publish.model.GetAdRequest r0;
+        java.lang.Boolean r1;
+
+        r0 := @this: com.startapp.android.publish.model.GetAdRequest;
+
+        r1 = r0.<com.startapp.android.publish.model.GetAdRequest: java.lang.Boolean as>;
+
+        return r1;
+    }
+
+    public java.util.Set getCategories()
+    {
+        com.startapp.android.publish.model.GetAdRequest r0;
+        java.util.Set r1;
+
+        r0 := @this: com.startapp.android.publish.model.GetAdRequest;
+
+        r1 = r0.<com.startapp.android.publish.model.GetAdRequest: java.util.Set categories>;
+
+        return r1;
+    }
+
+    public java.util.Set getCategoriesExclude()
+    {
+        com.startapp.android.publish.model.GetAdRequest r0;
+        java.util.Set r1;
+
+        r0 := @this: com.startapp.android.publish.model.GetAdRequest;
+
+        r1 = r0.<com.startapp.android.publish.model.GetAdRequest: java.util.Set categoriesExclude>;
+
+        return r1;
+    }
+
+    public java.lang.String getCellScanRes()
+    {
+        com.startapp.android.publish.model.GetAdRequest r0;
+        java.lang.String r1;
+
+        r0 := @this: com.startapp.android.publish.model.GetAdRequest;
+
+        r1 = r0.<com.startapp.android.publish.model.GetAdRequest: java.lang.String cellScanRes>;
+
+        return r1;
+    }
+
+    public java.lang.String getCountry()
+    {
+        com.startapp.android.publish.model.GetAdRequest r0;
+        java.lang.String r1;
+
+        r0 := @this: com.startapp.android.publish.model.GetAdRequest;
+
+        r1 = r0.<com.startapp.android.publish.model.GetAdRequest: java.lang.String country>;
+
+        return r1;
+    }
+
+    public com.startapp.android.publish.SDKAdPreferences$Gender getGender()
+    {
+        com.startapp.android.publish.model.GetAdRequest r0;
+        com.startapp.android.publish.SDKAdPreferences$Gender r1;
+
+        r0 := @this: com.startapp.android.publish.model.GetAdRequest;
+
+        r1 = r0.<com.startapp.android.publish.model.GetAdRequest: com.startapp.android.publish.SDKAdPreferences$Gender gender>;
+
+        return r1;
+    }
+
+    public java.lang.String getKeywords()
+    {
+        com.startapp.android.publish.model.GetAdRequest r0;
+        java.lang.String r1;
+
+        r0 := @this: com.startapp.android.publish.model.GetAdRequest;
+
+        r1 = r0.<com.startapp.android.publish.model.GetAdRequest: java.lang.String keywords>;
+
+        return r1;
+    }
+
+    public java.util.List getLocations()
+    {
+        com.startapp.android.publish.model.GetAdRequest r0;
+        java.util.List r1;
+
+        r0 := @this: com.startapp.android.publish.model.GetAdRequest;
+
+        r1 = r0.<com.startapp.android.publish.model.GetAdRequest: java.util.List locations>;
+
+        return r1;
+    }
+
+    public java.lang.String getMoreImg()
+    {
+        com.startapp.android.publish.model.GetAdRequest r0;
+        java.lang.String r1;
+
+        r0 := @this: com.startapp.android.publish.model.GetAdRequest;
+
+        r1 = r0.<com.startapp.android.publish.model.GetAdRequest: java.lang.String moreImg>;
+
+        return r1;
+    }
+
+    public java.util.List getNameValueMap()
+    {
+        com.startapp.android.publish.model.GetAdRequest r0;
+        java.util.List $r1;
+        java.lang.Object $r2;
+        com.startapp.android.publish.model.AdPreferences$Placement $r3;
+        java.lang.String $r4, $r16, $r18;
+        boolean $z0;
+        com.startapp.android.publish.SDKAdPreferences$Gender $r5;
+        int $i0;
+        java.util.Set $r6;
+        java.lang.Boolean $r7;
+        com.startapp.android.publish.model.MetaData $r8;
+        com.startapp.android.publish.model.GetAdRequest$VideoRequestType $r9;
+        com.startapp.android.publish.Ad$AdType $r10, $r11;
+        long $l1;
+        java.lang.Long $r12;
+        java.lang.Integer $r13;
+        com.startapp.android.publish.model.GetAdRequest$VideoRequestMode $r14;
+        com.startapp.android.publish.model.SodaPreferences$SocialContext $r15;
+        java.lang.StringBuilder $r17, $r20;
+        java.util.ArrayList $r19;
+
+        r0 := @this: com.startapp.android.publish.model.GetAdRequest;
+
+        $r1 = specialinvoke r0.<com.startapp.android.publish.model.BaseRequest: java.util.List getNameValueMap()>();
+
+        $r2 = $r1;
+
+        if $r1 != null goto label01;
+
+        $r19 = new java.util.ArrayList;
+
+        $r2 = $r19;
+
+        specialinvoke $r19.<java.util.ArrayList: void <init>()>();
+
+     label01:
+        $r3 = r0.<com.startapp.android.publish.model.GetAdRequest: com.startapp.android.publish.model.AdPreferences$Placement placement>;
+
+        $r4 = virtualinvoke $r3.<com.startapp.android.publish.model.AdPreferences$Placement: java.lang.String name()>();
+
+        $r1 = (java.util.List) $r2;
+
+        staticinvoke <com.startapp.android.publish.i.x: void a(java.util.List,java.lang.String,java.lang.Object,boolean)>($r1, "placement", $r4, 1);
+
+        $z0 = r0.<com.startapp.android.publish.model.GetAdRequest: boolean testMode>;
+
+        $r4 = staticinvoke <java.lang.Boolean: java.lang.String toString(boolean)>($z0);
+
+        $r1 = (java.util.List) $r2;
+
+        staticinvoke <com.startapp.android.publish.i.x: void a(java.util.List,java.lang.String,java.lang.Object,boolean)>($r1, "testMode", $r4, 0);
+
+        $r5 = r0.<com.startapp.android.publish.model.GetAdRequest: com.startapp.android.publish.SDKAdPreferences$Gender gender>;
+
+        $r1 = (java.util.List) $r2;
+
+        staticinvoke <com.startapp.android.publish.i.x: void a(java.util.List,java.lang.String,java.lang.Object,boolean)>($r1, "gender", $r5, 0);
+
+        $r4 = r0.<com.startapp.android.publish.model.GetAdRequest: java.lang.String age>;
+
+        $r1 = (java.util.List) $r2;
+
+        staticinvoke <com.startapp.android.publish.i.x: void a(java.util.List,java.lang.String,java.lang.Object,boolean)>($r1, "age", $r4, 0);
+
+        $r4 = r0.<com.startapp.android.publish.model.GetAdRequest: java.lang.String keywords>;
+
+        $r1 = (java.util.List) $r2;
+
+        staticinvoke <com.startapp.android.publish.i.x: void a(java.util.List,java.lang.String,java.lang.Object,boolean)>($r1, "keywords", $r4, 0);
+
+        $r4 = r0.<com.startapp.android.publish.model.GetAdRequest: java.lang.String template>;
+
+        $r1 = (java.util.List) $r2;
+
+        staticinvoke <com.startapp.android.publish.i.x: void a(java.util.List,java.lang.String,java.lang.Object,boolean)>($r1, "template", $r4, 0);
+
+        $i0 = r0.<com.startapp.android.publish.model.GetAdRequest: int adsNumber>;
+
+        $r4 = staticinvoke <java.lang.Integer: java.lang.String toString(int)>($i0);
+
+        $r1 = (java.util.List) $r2;
+
+        staticinvoke <com.startapp.android.publish.i.x: void a(java.util.List,java.lang.String,java.lang.Object,boolean)>($r1, "adsNumber", $r4, 0);
+
+        $r6 = r0.<com.startapp.android.publish.model.GetAdRequest: java.util.Set categories>;
+
+        $r1 = (java.util.List) $r2;
+
+        staticinvoke <com.startapp.android.publish.i.x: void a(java.util.List,java.lang.String,java.util.Set,boolean)>($r1, "category", $r6, 0);
+
+        $r6 = r0.<com.startapp.android.publish.model.GetAdRequest: java.util.Set categoriesExclude>;
+
+        $r1 = (java.util.List) $r2;
+
+        staticinvoke <com.startapp.android.publish.i.x: void a(java.util.List,java.lang.String,java.util.Set,boolean)>($r1, "categoryExclude", $r6, 0);
+
+        $r6 = r0.<com.startapp.android.publish.model.GetAdRequest: java.util.Set packageExclude>;
+
+        $r1 = (java.util.List) $r2;
+
+        staticinvoke <com.startapp.android.publish.i.x: void a(java.util.List,java.lang.String,java.util.Set,boolean)>($r1, "packageExclude", $r6, 0);
+
+        $i0 = r0.<com.startapp.android.publish.model.GetAdRequest: int offset>;
+
+        $r4 = staticinvoke <java.lang.Integer: java.lang.String toString(int)>($i0);
+
+        $r1 = (java.util.List) $r2;
+
+        staticinvoke <com.startapp.android.publish.i.x: void a(java.util.List,java.lang.String,java.lang.Object,boolean)>($r1, "offset", $r4, 0);
+
+        $r7 = r0.<com.startapp.android.publish.model.GetAdRequest: java.lang.Boolean ai>;
+
+        $r1 = (java.util.List) $r2;
+
+        staticinvoke <com.startapp.android.publish.i.x: void a(java.util.List,java.lang.String,java.lang.Object,boolean)>($r1, "ai", $r7, 0);
+
+        $r7 = r0.<com.startapp.android.publish.model.GetAdRequest: java.lang.Boolean as>;
+
+        $r1 = (java.util.List) $r2;
+
+        staticinvoke <com.startapp.android.publish.i.x: void a(java.util.List,java.lang.String,java.lang.Object,boolean)>($r1, "as", $r7, 0);
+
+        $z0 = r0.<com.startapp.android.publish.model.GetAdRequest: boolean engInclude>;
+
+        $r4 = staticinvoke <java.lang.Boolean: java.lang.String toString(boolean)>($z0);
+
+        $r1 = (java.util.List) $r2;
+
+        staticinvoke <com.startapp.android.publish.i.x: void a(java.util.List,java.lang.String,java.lang.Object,boolean)>($r1, "engInclude", $r4, 0);
+
+        $r8 = staticinvoke <com.startapp.android.publish.model.MetaData: com.startapp.android.publish.model.MetaData getInstance()>();
+
+        $z0 = virtualinvoke $r8.<com.startapp.android.publish.model.MetaData: boolean isDisableTwoClicks()>();
+
+        if $z0 != 0 goto label02;
+
+        $r4 = staticinvoke <java.lang.Boolean: java.lang.String toString(boolean)>(1);
+
+        $r1 = (java.util.List) $r2;
+
+        staticinvoke <com.startapp.android.publish.i.x: void a(java.util.List,java.lang.String,java.lang.Object,boolean)>($r1, "twoClicks", $r4, 0);
+
+     label02:
+        $r9 = r0.<com.startapp.android.publish.model.GetAdRequest: com.startapp.android.publish.model.GetAdRequest$VideoRequestType videoRequestType>;
+
+        $r1 = (java.util.List) $r2;
+
+        staticinvoke <com.startapp.android.publish.i.x: void a(java.util.List,java.lang.String,java.lang.Object,boolean)>($r1, "video", $r9, 0);
+
+        $r10 = virtualinvoke r0.<com.startapp.android.publish.model.GetAdRequest: com.startapp.android.publish.Ad$AdType getType()>();
+
+        $r11 = <com.startapp.android.publish.Ad$AdType: com.startapp.android.publish.Ad$AdType INTERSTITIAL>;
+
+        if $r10 == $r11 goto label03;
+
+        $r10 = virtualinvoke r0.<com.startapp.android.publish.model.GetAdRequest: com.startapp.android.publish.Ad$AdType getType()>();
+
+        $r11 = <com.startapp.android.publish.Ad$AdType: com.startapp.android.publish.Ad$AdType RICH_TEXT>;
+
+        if $r10 != $r11 goto label04;
+
+     label03:
+        $r10 = r0.<com.startapp.android.publish.model.GetAdRequest: com.startapp.android.publish.Ad$AdType type>;
+
+        $r1 = (java.util.List) $r2;
+
+        staticinvoke <com.startapp.android.publish.i.x: void a(java.util.List,java.lang.String,java.lang.Object,boolean)>($r1, "type", $r10, 0);
+
+     label04:
+        $l1 = r0.<com.startapp.android.publish.model.GetAdRequest: long timeSinceSessionStart>;
+
+        $r12 = staticinvoke <java.lang.Long: java.lang.Long valueOf(long)>($l1);
+
+        $r1 = (java.util.List) $r2;
+
+        staticinvoke <com.startapp.android.publish.i.x: void a(java.util.List,java.lang.String,java.lang.Object,boolean)>($r1, "timeSinceSessionStart", $r12, 1);
+
+        $i0 = r0.<com.startapp.android.publish.model.GetAdRequest: int adsDisplayed>;
+
+        $r13 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>($i0);
+
+        $r1 = (java.util.List) $r2;
+
+        staticinvoke <com.startapp.android.publish.i.x: void a(java.util.List,java.lang.String,java.lang.Object,boolean)>($r1, "adsDisplayed", $r13, 1);
+
+        $r4 = r0.<com.startapp.android.publish.model.GetAdRequest: java.lang.String profileId>;
+
+        $r1 = (java.util.List) $r2;
+
+        staticinvoke <com.startapp.android.publish.i.x: void a(java.util.List,java.lang.String,java.lang.Object,boolean)>($r1, "profileId", $r4, 0);
+
+        $z0 = r0.<com.startapp.android.publish.model.GetAdRequest: boolean isHardwareAccelerated>;
+
+        $r7 = staticinvoke <java.lang.Boolean: java.lang.Boolean valueOf(boolean)>($z0);
+
+        $r1 = (java.util.List) $r2;
+
+        staticinvoke <com.startapp.android.publish.i.x: void a(java.util.List,java.lang.String,java.lang.Object,boolean)>($r1, "hardwareAccelerated", $r7, 0);
+
+        $r7 = r0.<com.startapp.android.publish.model.GetAdRequest: java.lang.Boolean isAutoDateTimeEnabled>;
+
+        $r1 = (java.util.List) $r2;
+
+        staticinvoke <com.startapp.android.publish.i.x: void a(java.util.List,java.lang.String,java.lang.Object,boolean)>($r1, "dts", $r7, 0);
+
+        $r14 = r0.<com.startapp.android.publish.model.GetAdRequest: com.startapp.android.publish.model.GetAdRequest$VideoRequestMode videoRequestMode>;
+
+        $r1 = (java.util.List) $r2;
+
+        staticinvoke <com.startapp.android.publish.i.x: void a(java.util.List,java.lang.String,java.lang.Object,boolean)>($r1, "videoMode", $r14, 0);
+
+        $r1 = (java.util.List) $r2;
+
+        staticinvoke <com.startapp.android.publish.i.x: void a(java.util.List,java.lang.String,java.lang.Object,boolean)>($r1, "downloadingMode", "CACHE", 0);
+
+        $r4 = r0.<com.startapp.android.publish.model.GetAdRequest: java.lang.String primaryImg>;
+
+        $r1 = (java.util.List) $r2;
+
+        staticinvoke <com.startapp.android.publish.i.x: void a(java.util.List,java.lang.String,java.lang.Object,boolean)>($r1, "primaryImg", $r4, 0);
+
+        $r4 = r0.<com.startapp.android.publish.model.GetAdRequest: java.lang.String moreImg>;
+
+        $r1 = (java.util.List) $r2;
+
+        staticinvoke <com.startapp.android.publish.i.x: void a(java.util.List,java.lang.String,java.lang.Object,boolean)>($r1, "moreImg", $r4, 0);
+
+        $z0 = r0.<com.startapp.android.publish.model.GetAdRequest: boolean contentAd>;
+
+        $r4 = staticinvoke <java.lang.Boolean: java.lang.String toString(boolean)>($z0);
+
+        $r1 = (java.util.List) $r2;
+
+        staticinvoke <com.startapp.android.publish.i.x: void a(java.util.List,java.lang.String,java.lang.Object,boolean)>($r1, "contentAd", $r4, 0);
+
+        $r15 = virtualinvoke r0.<com.startapp.android.publish.model.GetAdRequest: com.startapp.android.publish.model.SodaPreferences$SocialContext getSocialContext()>();
+
+        if $r15 == null goto label05;
+
+        $r15 = r0.<com.startapp.android.publish.model.GetAdRequest: com.startapp.android.publish.model.SodaPreferences$SocialContext socialContext>;
+
+        $r4 = virtualinvoke $r15.<com.startapp.android.publish.model.SodaPreferences$SocialContext: java.lang.String name()>();
+
+        $r1 = (java.util.List) $r2;
+
+        staticinvoke <com.startapp.android.publish.i.x: void a(java.util.List,java.lang.String,java.lang.Object,boolean)>($r1, "socialContext", $r4, 0);
+
+     label05:
+        $r4 = virtualinvoke r0.<com.startapp.android.publish.model.GetAdRequest: java.lang.String getCellScanRes()>();
+
+        if $r4 == null goto label06;
+
+        $r4 = virtualinvoke r0.<com.startapp.android.publish.model.GetAdRequest: java.lang.String getCellScanRes()>();
+
+        $r1 = (java.util.List) $r2;
+
+        staticinvoke <com.startapp.android.publish.i.x: void a(java.util.List,java.lang.String,java.lang.Object,boolean)>($r1, "cellScanRes", $r4, 0);
+
+     label06:
+        $r16 = staticinvoke <com.startapp.android.publish.i.d: java.lang.String a()>();
+
+        $r4 = <com.startapp.android.publish.i.d: java.lang.String b>;
+
+        $r1 = (java.util.List) $r2;
+
+        staticinvoke <com.startapp.android.publish.i.x: void a(java.util.List,java.lang.String,java.lang.Object,boolean)>($r1, $r4, $r16, 1);
+
+        $r4 = <com.startapp.android.publish.i.d: java.lang.String d>;
+
+        $r20 = new java.lang.StringBuilder;
+
+        specialinvoke $r20.<java.lang.StringBuilder: void <init>()>();
+
+        $r18 = virtualinvoke r0.<com.startapp.android.publish.model.GetAdRequest: java.lang.String getProductId()>();
+
+        $r17 = virtualinvoke $r20.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r18);
+
+        $r3 = r0.<com.startapp.android.publish.model.GetAdRequest: com.startapp.android.publish.model.AdPreferences$Placement placement>;
+
+        $r18 = virtualinvoke $r3.<com.startapp.android.publish.model.AdPreferences$Placement: java.lang.String name()>();
+
+        $r17 = virtualinvoke $r17.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r18);
+
+        $r18 = virtualinvoke r0.<com.startapp.android.publish.model.GetAdRequest: java.lang.String getSessionId()>();
+
+        $r17 = virtualinvoke $r17.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r18);
+
+        $r18 = virtualinvoke r0.<com.startapp.android.publish.model.GetAdRequest: java.lang.String getSdkVersion()>();
+
+        $r17 = virtualinvoke $r17.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r18);
+
+        $r17 = virtualinvoke $r17.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r16);
+
+        $r16 = virtualinvoke $r17.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        $r16 = staticinvoke <com.startapp.android.publish.i.d: java.lang.String b(java.lang.String)>($r16);
+
+        $r1 = (java.util.List) $r2;
+
+        staticinvoke <com.startapp.android.publish.i.x: void a(java.util.List,java.lang.String,java.lang.Object,boolean,boolean)>($r1, $r4, $r16, 1, 0);
+
+        $r4 = virtualinvoke r0.<com.startapp.android.publish.model.GetAdRequest: java.lang.String getCountry()>();
+
+        if $r4 == null goto label07;
+
+        $r4 = virtualinvoke r0.<com.startapp.android.publish.model.GetAdRequest: java.lang.String getCountry()>();
+
+        $r1 = (java.util.List) $r2;
+
+        staticinvoke <com.startapp.android.publish.i.x: void a(java.util.List,java.lang.String,java.lang.Object,boolean)>($r1, "country", $r4, 0);
+
+     label07:
+        $r4 = virtualinvoke r0.<com.startapp.android.publish.model.GetAdRequest: java.lang.String getAdvertiserId()>();
+
+        if $r4 == null goto label08;
+
+        $r4 = virtualinvoke r0.<com.startapp.android.publish.model.GetAdRequest: java.lang.String getAdvertiserId()>();
+
+        $r1 = (java.util.List) $r2;
+
+        staticinvoke <com.startapp.android.publish.i.x: void a(java.util.List,java.lang.String,java.lang.Object,boolean)>($r1, "advertiserId", $r4, 0);
+
+     label08:
+        $r6 = virtualinvoke r0.<com.startapp.android.publish.model.GetAdRequest: java.util.Set getPackageInclude()>();
+
+        if $r6 == null goto label09;
+
+        $r6 = virtualinvoke r0.<com.startapp.android.publish.model.GetAdRequest: java.util.Set getPackageInclude()>();
+
+        $r1 = (java.util.List) $r2;
+
+        staticinvoke <com.startapp.android.publish.i.x: void a(java.util.List,java.lang.String,java.util.Set,boolean)>($r1, "packageInclude", $r6, 0);
+
+     label09:
+        $r6 = virtualinvoke r0.<com.startapp.android.publish.model.GetAdRequest: java.util.Set getParticipants()>();
+
+        if $r6 == null goto label10;
+
+        $r6 = virtualinvoke r0.<com.startapp.android.publish.model.GetAdRequest: java.util.Set getParticipants()>();
+
+        $r4 = staticinvoke <com.startapp.android.publish.i.x: java.lang.String a(java.util.Set,java.lang.String)>($r6, ";");
+
+        $z0 = virtualinvoke $r4.<java.lang.String: boolean equals(java.lang.Object)>("");
+
+        if $z0 != 0 goto label10;
+
+        $r1 = (java.util.List) $r2;
+
+        staticinvoke <com.startapp.android.publish.i.x: void a(java.util.List,java.lang.String,java.lang.Object,boolean)>($r1, "participants", $r4, 0);
+
+     label10:
+        $r1 = virtualinvoke r0.<com.startapp.android.publish.model.GetAdRequest: java.util.List getLocations()>();
+
+        if $r1 == null goto label11;
+
+        $r1 = virtualinvoke r0.<com.startapp.android.publish.model.GetAdRequest: java.util.List getLocations()>();
+
+        $i0 = interfaceinvoke $r1.<java.util.List: int size()>();
+
+        if $i0 <= 0 goto label11;
+
+        $r1 = r0.<com.startapp.android.publish.model.GetAdRequest: java.util.List locations>;
+
+        $r4 = staticinvoke <com.startapp.android.publish.i.m: java.lang.String a(java.util.List)>($r1);
+
+        if $r4 == null goto label11;
+
+        $z0 = virtualinvoke $r4.<java.lang.String: boolean equals(java.lang.Object)>("");
+
+        if $z0 != 0 goto label11;
+
+        $r4 = staticinvoke <com.startapp.android.publish.i.x: java.lang.String e(java.lang.String)>($r4);
+
+        $r1 = (java.util.List) $r2;
+
+        staticinvoke <com.startapp.android.publish.i.x: void a(java.util.List,java.lang.String,java.lang.Object,boolean)>($r1, "locations", $r4, 0);
+
+     label11:
+        $r4 = r0.<com.startapp.android.publish.model.GetAdRequest: java.lang.String simpleToken>;
+
+        $r1 = (java.util.List) $r2;
+
+        staticinvoke <com.startapp.android.publish.i.x: void a(java.util.List,java.lang.String,java.lang.Object,boolean)>($r1, "token", $r4, 0);
+
+        $r1 = (java.util.List) $r2;
+
+        return $r1;
+    }
+
+    public int getOffset()
+    {
+        com.startapp.android.publish.model.GetAdRequest r0;
+        int i0;
+
+        r0 := @this: com.startapp.android.publish.model.GetAdRequest;
+
+        i0 = r0.<com.startapp.android.publish.model.GetAdRequest: int offset>;
+
+        return i0;
+    }
+
+    public java.util.Set getPackageExclude()
+    {
+        com.startapp.android.publish.model.GetAdRequest r0;
+        java.util.Set r1;
+
+        r0 := @this: com.startapp.android.publish.model.GetAdRequest;
+
+        r1 = r0.<com.startapp.android.publish.model.GetAdRequest: java.util.Set packageExclude>;
+
+        return r1;
+    }
+
+    public java.util.Set getPackageInclude()
+    {
+        com.startapp.android.publish.model.GetAdRequest r0;
+        java.util.Set r1;
+
+        r0 := @this: com.startapp.android.publish.model.GetAdRequest;
+
+        r1 = r0.<com.startapp.android.publish.model.GetAdRequest: java.util.Set packageInclude>;
+
+        return r1;
+    }
+
+    public java.util.Set getParticipants()
+    {
+        com.startapp.android.publish.model.GetAdRequest r0;
+        java.util.Set r1;
+
+        r0 := @this: com.startapp.android.publish.model.GetAdRequest;
+
+        r1 = r0.<com.startapp.android.publish.model.GetAdRequest: java.util.Set participants>;
+
+        return r1;
+    }
+
+    public com.startapp.android.publish.model.AdPreferences$Placement getPlacement()
+    {
+        com.startapp.android.publish.model.GetAdRequest r0;
+        com.startapp.android.publish.model.AdPreferences$Placement r1;
+
+        r0 := @this: com.startapp.android.publish.model.GetAdRequest;
+
+        r1 = r0.<com.startapp.android.publish.model.GetAdRequest: com.startapp.android.publish.model.AdPreferences$Placement placement>;
+
+        return r1;
+    }
+
+    public java.lang.String getPrimaryImg()
+    {
+        com.startapp.android.publish.model.GetAdRequest r0;
+        java.lang.String r1;
+
+        r0 := @this: com.startapp.android.publish.model.GetAdRequest;
+
+        r1 = r0.<com.startapp.android.publish.model.GetAdRequest: java.lang.String primaryImg>;
+
+        return r1;
+    }
+
+    public java.lang.String getProfileId()
+    {
+        com.startapp.android.publish.model.GetAdRequest r0;
+        java.lang.String r1;
+
+        r0 := @this: com.startapp.android.publish.model.GetAdRequest;
+
+        r1 = r0.<com.startapp.android.publish.model.GetAdRequest: java.lang.String profileId>;
+
+        return r1;
+    }
+
+    public java.lang.String getSimpleToken()
+    {
+        com.startapp.android.publish.model.GetAdRequest r0;
+        java.lang.String r1;
+
+        r0 := @this: com.startapp.android.publish.model.GetAdRequest;
+
+        r1 = r0.<com.startapp.android.publish.model.GetAdRequest: java.lang.String simpleToken>;
+
+        return r1;
+    }
+
+    public com.startapp.android.publish.model.SodaPreferences$SocialContext getSocialContext()
+    {
+        com.startapp.android.publish.model.GetAdRequest r0;
+        com.startapp.android.publish.model.SodaPreferences$SocialContext r1;
+
+        r0 := @this: com.startapp.android.publish.model.GetAdRequest;
+
+        r1 = r0.<com.startapp.android.publish.model.GetAdRequest: com.startapp.android.publish.model.SodaPreferences$SocialContext socialContext>;
+
+        return r1;
+    }
+
+    public java.lang.String getTemplate()
+    {
+        com.startapp.android.publish.model.GetAdRequest r0;
+        java.lang.String r1;
+
+        r0 := @this: com.startapp.android.publish.model.GetAdRequest;
+
+        r1 = r0.<com.startapp.android.publish.model.GetAdRequest: java.lang.String template>;
+
+        return r1;
+    }
+
+    public long getTineSinceSessionStart()
+    {
+        com.startapp.android.publish.model.GetAdRequest r0;
+        long l0;
+
+        r0 := @this: com.startapp.android.publish.model.GetAdRequest;
+
+        l0 = r0.<com.startapp.android.publish.model.GetAdRequest: long timeSinceSessionStart>;
+
+        return l0;
+    }
+
+    public com.startapp.android.publish.Ad$AdType getType()
+    {
+        com.startapp.android.publish.model.GetAdRequest r0;
+        com.startapp.android.publish.Ad$AdType r1;
+
+        r0 := @this: com.startapp.android.publish.model.GetAdRequest;
+
+        r1 = r0.<com.startapp.android.publish.model.GetAdRequest: com.startapp.android.publish.Ad$AdType type>;
+
+        return r1;
+    }
+
+    public com.startapp.android.publish.model.GetAdRequest$VideoRequestMode getVideoRequestMode()
+    {
+        com.startapp.android.publish.model.GetAdRequest r0;
+        com.startapp.android.publish.model.GetAdRequest$VideoRequestMode r1;
+
+        r0 := @this: com.startapp.android.publish.model.GetAdRequest;
+
+        r1 = r0.<com.startapp.android.publish.model.GetAdRequest: com.startapp.android.publish.model.GetAdRequest$VideoRequestMode videoRequestMode>;
+
+        return r1;
+    }
+
+    public boolean isAdTypeVideo()
+    {
+        com.startapp.android.publish.model.GetAdRequest r0;
+        com.startapp.android.publish.Ad$AdType $r1, $r2;
+
+        r0 := @this: com.startapp.android.publish.model.GetAdRequest;
+
+        $r1 = virtualinvoke r0.<com.startapp.android.publish.model.GetAdRequest: com.startapp.android.publish.Ad$AdType getType()>();
+
+        $r2 = <com.startapp.android.publish.Ad$AdType: com.startapp.android.publish.Ad$AdType VIDEO>;
+
+        if $r1 == $r2 goto label1;
+
+        $r1 = virtualinvoke r0.<com.startapp.android.publish.model.GetAdRequest: com.startapp.android.publish.Ad$AdType getType()>();
+
+        $r2 = <com.startapp.android.publish.Ad$AdType: com.startapp.android.publish.Ad$AdType REWARDED_VIDEO>;
+
+        if $r1 != $r2 goto label2;
+
+     label1:
+        return 1;
+
+     label2:
+        return 0;
+    }
+
+    public boolean isContentAd()
+    {
+        com.startapp.android.publish.model.GetAdRequest r0;
+        boolean z0;
+
+        r0 := @this: com.startapp.android.publish.model.GetAdRequest;
+
+        z0 = r0.<com.startapp.android.publish.model.GetAdRequest: boolean contentAd>;
+
+        return z0;
+    }
+
+    public boolean isEngInclude()
+    {
+        com.startapp.android.publish.model.GetAdRequest r0;
+        boolean z0;
+
+        r0 := @this: com.startapp.android.publish.model.GetAdRequest;
+
+        z0 = r0.<com.startapp.android.publish.model.GetAdRequest: boolean engInclude>;
+
+        return z0;
+    }
+
+    public boolean isTestMode()
+    {
+        com.startapp.android.publish.model.GetAdRequest r0;
+        boolean z0;
+
+        r0 := @this: com.startapp.android.publish.model.GetAdRequest;
+
+        z0 = r0.<com.startapp.android.publish.model.GetAdRequest: boolean testMode>;
+
+        return z0;
+    }
+
+    public void setAdsDisplayed(int)
+    {
+        com.startapp.android.publish.model.GetAdRequest r0;
+        int $i0;
+
+        r0 := @this: com.startapp.android.publish.model.GetAdRequest;
+
+        $i0 := @parameter0: int;
+
+        r0.<com.startapp.android.publish.model.GetAdRequest: int adsDisplayed> = $i0;
+
+        return;
+    }
+
+    public void setAdsNumber(int)
+    {
+        com.startapp.android.publish.model.GetAdRequest r0;
+        int $i0;
+
+        r0 := @this: com.startapp.android.publish.model.GetAdRequest;
+
+        $i0 := @parameter0: int;
+
+        r0.<com.startapp.android.publish.model.GetAdRequest: int adsNumber> = $i0;
+
+        return;
+    }
+
+    public void setAdvertiser(java.lang.String)
+    {
+        com.startapp.android.publish.model.GetAdRequest r0;
+        java.lang.String $r1;
+
+        r0 := @this: com.startapp.android.publish.model.GetAdRequest;
+
+        $r1 := @parameter0: java.lang.String;
+
+        r0.<com.startapp.android.publish.model.GetAdRequest: java.lang.String advertiserId> = $r1;
+
+        return;
+    }
+
+    public void setAge(java.lang.String)
+    {
+        com.startapp.android.publish.model.GetAdRequest r0;
+        java.lang.String $r1;
+
+        r0 := @this: com.startapp.android.publish.model.GetAdRequest;
+
+        $r1 := @parameter0: java.lang.String;
+
+        r0.<com.startapp.android.publish.model.GetAdRequest: java.lang.String age> = $r1;
+
+        return;
+    }
+
+    public void setAi(java.lang.Boolean)
+    {
+        com.startapp.android.publish.model.GetAdRequest r0;
+        java.lang.Boolean $r1;
+
+        r0 := @this: com.startapp.android.publish.model.GetAdRequest;
+
+        $r1 := @parameter0: java.lang.Boolean;
+
+        r0.<com.startapp.android.publish.model.GetAdRequest: java.lang.Boolean ai> = $r1;
+
+        return;
+    }
+
+    public void setAs(java.lang.Boolean)
+    {
+        com.startapp.android.publish.model.GetAdRequest r0;
+        java.lang.Boolean $r1;
+
+        r0 := @this: com.startapp.android.publish.model.GetAdRequest;
+
+        $r1 := @parameter0: java.lang.Boolean;
+
+        r0.<com.startapp.android.publish.model.GetAdRequest: java.lang.Boolean as> = $r1;
+
+        return;
+    }
+
+    public void setCategories(java.util.Set)
+    {
+        com.startapp.android.publish.model.GetAdRequest r0;
+        java.util.Set r1;
+
+        r0 := @this: com.startapp.android.publish.model.GetAdRequest;
+
+        r1 := @parameter0: java.util.Set;
+
+        r0.<com.startapp.android.publish.model.GetAdRequest: java.util.Set categories> = r1;
+
+        return;
+    }
+
+    public void setCategoriesExclude(java.util.Set)
+    {
+        com.startapp.android.publish.model.GetAdRequest r0;
+        java.util.Set r1;
+
+        r0 := @this: com.startapp.android.publish.model.GetAdRequest;
+
+        r1 := @parameter0: java.util.Set;
+
+        r0.<com.startapp.android.publish.model.GetAdRequest: java.util.Set categoriesExclude> = r1;
+
+        return;
+    }
+
+    public void setCellScanRes(java.lang.String)
+    {
+        com.startapp.android.publish.model.GetAdRequest r0;
+        java.lang.String $r1;
+
+        r0 := @this: com.startapp.android.publish.model.GetAdRequest;
+
+        $r1 := @parameter0: java.lang.String;
+
+        r0.<com.startapp.android.publish.model.GetAdRequest: java.lang.String cellScanRes> = $r1;
+
+        return;
+    }
+
+    public void setContentAd(boolean)
+    {
+        com.startapp.android.publish.model.GetAdRequest r0;
+        boolean $z0;
+
+        r0 := @this: com.startapp.android.publish.model.GetAdRequest;
+
+        $z0 := @parameter0: boolean;
+
+        r0.<com.startapp.android.publish.model.GetAdRequest: boolean contentAd> = $z0;
+
+        return;
+    }
+
+    public void setCountry(java.lang.String)
+    {
+        com.startapp.android.publish.model.GetAdRequest r0;
+        java.lang.String $r1;
+
+        r0 := @this: com.startapp.android.publish.model.GetAdRequest;
+
+        $r1 := @parameter0: java.lang.String;
+
+        r0.<com.startapp.android.publish.model.GetAdRequest: java.lang.String country> = $r1;
+
+        return;
+    }
+
+    public void setEngInclude(boolean)
+    {
+        com.startapp.android.publish.model.GetAdRequest r0;
+        boolean $z0;
+
+        r0 := @this: com.startapp.android.publish.model.GetAdRequest;
+
+        $z0 := @parameter0: boolean;
+
+        r0.<com.startapp.android.publish.model.GetAdRequest: boolean engInclude> = $z0;
+
+        return;
+    }
+
+    public void setGender(com.startapp.android.publish.SDKAdPreferences$Gender)
+    {
+        com.startapp.android.publish.model.GetAdRequest r0;
+        com.startapp.android.publish.SDKAdPreferences$Gender $r1;
+
+        r0 := @this: com.startapp.android.publish.model.GetAdRequest;
+
+        $r1 := @parameter0: com.startapp.android.publish.SDKAdPreferences$Gender;
+
+        r0.<com.startapp.android.publish.model.GetAdRequest: com.startapp.android.publish.SDKAdPreferences$Gender gender> = $r1;
+
+        return;
+    }
+
+    public void setKeywords(java.lang.String)
+    {
+        com.startapp.android.publish.model.GetAdRequest r0;
+        java.lang.String $r1;
+
+        r0 := @this: com.startapp.android.publish.model.GetAdRequest;
+
+        $r1 := @parameter0: java.lang.String;
+
+        r0.<com.startapp.android.publish.model.GetAdRequest: java.lang.String keywords> = $r1;
+
+        return;
+    }
+
+    public void setLocations(java.util.List)
+    {
+        com.startapp.android.publish.model.GetAdRequest r0;
+        java.util.List r1;
+
+        r0 := @this: com.startapp.android.publish.model.GetAdRequest;
+
+        r1 := @parameter0: java.util.List;
+
+        r0.<com.startapp.android.publish.model.GetAdRequest: java.util.List locations> = r1;
+
+        return;
+    }
+
+    public void setMoreImg(java.lang.String)
+    {
+        com.startapp.android.publish.model.GetAdRequest r0;
+        java.lang.String $r1;
+
+        r0 := @this: com.startapp.android.publish.model.GetAdRequest;
+
+        $r1 := @parameter0: java.lang.String;
+
+        r0.<com.startapp.android.publish.model.GetAdRequest: java.lang.String moreImg> = $r1;
+
+        return;
+    }
+
+    public void setOffset(int)
+    {
+        com.startapp.android.publish.model.GetAdRequest r0;
+        int $i0;
+
+        r0 := @this: com.startapp.android.publish.model.GetAdRequest;
+
+        $i0 := @parameter0: int;
+
+        r0.<com.startapp.android.publish.model.GetAdRequest: int offset> = $i0;
+
+        return;
+    }
+
+    public void setPackageExclude(java.util.Set)
+    {
+        com.startapp.android.publish.model.GetAdRequest r0;
+        java.util.Set r1;
+
+        r0 := @this: com.startapp.android.publish.model.GetAdRequest;
+
+        r1 := @parameter0: java.util.Set;
+
+        r0.<com.startapp.android.publish.model.GetAdRequest: java.util.Set packageExclude> = r1;
+
+        return;
+    }
+
+    public void setPackageInclude(java.util.Set)
+    {
+        com.startapp.android.publish.model.GetAdRequest r0;
+        java.util.Set r1;
+
+        r0 := @this: com.startapp.android.publish.model.GetAdRequest;
+
+        r1 := @parameter0: java.util.Set;
+
+        r0.<com.startapp.android.publish.model.GetAdRequest: java.util.Set packageInclude> = r1;
+
+        return;
+    }
+
+    public void setParticipants(java.util.Set)
+    {
+        com.startapp.android.publish.model.GetAdRequest r0;
+        java.util.Set r1;
+
+        r0 := @this: com.startapp.android.publish.model.GetAdRequest;
+
+        r1 := @parameter0: java.util.Set;
+
+        r0.<com.startapp.android.publish.model.GetAdRequest: java.util.Set participants> = r1;
+
+        return;
+    }
+
+    public void setPlacement(com.startapp.android.publish.model.AdPreferences$Placement)
+    {
+        com.startapp.android.publish.model.GetAdRequest r0;
+        com.startapp.android.publish.model.AdPreferences$Placement $r1;
+
+        r0 := @this: com.startapp.android.publish.model.GetAdRequest;
+
+        $r1 := @parameter0: com.startapp.android.publish.model.AdPreferences$Placement;
+
+        r0.<com.startapp.android.publish.model.GetAdRequest: com.startapp.android.publish.model.AdPreferences$Placement placement> = $r1;
+
+        return;
+    }
+
+    public void setPrimaryImg(java.lang.String)
+    {
+        com.startapp.android.publish.model.GetAdRequest r0;
+        java.lang.String $r1;
+
+        r0 := @this: com.startapp.android.publish.model.GetAdRequest;
+
+        $r1 := @parameter0: java.lang.String;
+
+        r0.<com.startapp.android.publish.model.GetAdRequest: java.lang.String primaryImg> = $r1;
+
+        return;
+    }
+
+    public void setProfileId(java.lang.String)
+    {
+        com.startapp.android.publish.model.GetAdRequest r0;
+        java.lang.String $r1;
+
+        r0 := @this: com.startapp.android.publish.model.GetAdRequest;
+
+        $r1 := @parameter0: java.lang.String;
+
+        r0.<com.startapp.android.publish.model.GetAdRequest: java.lang.String profileId> = $r1;
+
+        return;
+    }
+
+    public void setSimpleToken(java.lang.String)
+    {
+        com.startapp.android.publish.model.GetAdRequest r0;
+        java.lang.String $r1;
+
+        r0 := @this: com.startapp.android.publish.model.GetAdRequest;
+
+        $r1 := @parameter0: java.lang.String;
+
+        r0.<com.startapp.android.publish.model.GetAdRequest: java.lang.String simpleToken> = $r1;
+
+        return;
+    }
+
+    public void setSocialContext(com.startapp.android.publish.model.SodaPreferences$SocialContext)
+    {
+        com.startapp.android.publish.model.GetAdRequest r0;
+        com.startapp.android.publish.model.SodaPreferences$SocialContext $r1;
+
+        r0 := @this: com.startapp.android.publish.model.GetAdRequest;
+
+        $r1 := @parameter0: com.startapp.android.publish.model.SodaPreferences$SocialContext;
+
+        r0.<com.startapp.android.publish.model.GetAdRequest: com.startapp.android.publish.model.SodaPreferences$SocialContext socialContext> = $r1;
+
+        return;
+    }
+
+    public void setTemplate(java.lang.String)
+    {
+        com.startapp.android.publish.model.GetAdRequest r0;
+        java.lang.String $r1;
+
+        r0 := @this: com.startapp.android.publish.model.GetAdRequest;
+
+        $r1 := @parameter0: java.lang.String;
+
+        r0.<com.startapp.android.publish.model.GetAdRequest: java.lang.String template> = $r1;
+
+        return;
+    }
+
+    public void setTestMode(boolean)
+    {
+        com.startapp.android.publish.model.GetAdRequest r0;
+        boolean $z0;
+
+        r0 := @this: com.startapp.android.publish.model.GetAdRequest;
+
+        $z0 := @parameter0: boolean;
+
+        r0.<com.startapp.android.publish.model.GetAdRequest: boolean testMode> = $z0;
+
+        return;
+    }
+
+    public void setTimeSinceSessionStart(long)
+    {
+        com.startapp.android.publish.model.GetAdRequest r0;
+        long $l0;
+
+        r0 := @this: com.startapp.android.publish.model.GetAdRequest;
+
+        $l0 := @parameter0: long;
+
+        r0.<com.startapp.android.publish.model.GetAdRequest: long timeSinceSessionStart> = $l0;
+
+        return;
+    }
+
+    public void setType(com.startapp.android.publish.Ad$AdType)
+    {
+        com.startapp.android.publish.model.GetAdRequest r0;
+        com.startapp.android.publish.Ad$AdType $r1;
+
+        r0 := @this: com.startapp.android.publish.model.GetAdRequest;
+
+        $r1 := @parameter0: com.startapp.android.publish.Ad$AdType;
+
+        r0.<com.startapp.android.publish.model.GetAdRequest: com.startapp.android.publish.Ad$AdType type> = $r1;
+
+        return;
+    }
+
+    public void setVideoRequestMode(com.startapp.android.publish.model.GetAdRequest$VideoRequestMode)
+    {
+        com.startapp.android.publish.model.GetAdRequest r0;
+        com.startapp.android.publish.model.GetAdRequest$VideoRequestMode $r1;
+
+        r0 := @this: com.startapp.android.publish.model.GetAdRequest;
+
+        $r1 := @parameter0: com.startapp.android.publish.model.GetAdRequest$VideoRequestMode;
+
+        r0.<com.startapp.android.publish.model.GetAdRequest: com.startapp.android.publish.model.GetAdRequest$VideoRequestMode videoRequestMode> = $r1;
+
+        return;
+    }
+
+    public java.lang.String toString()
+    {
+        com.startapp.android.publish.model.GetAdRequest r0;
+        java.lang.StringBuilder $r1, $r2;
+        com.startapp.android.publish.model.AdPreferences$Placement $r3;
+        java.lang.String $r4;
+        boolean $z0;
+        com.startapp.android.publish.SDKAdPreferences$Gender $r5;
+        java.lang.Boolean $r6;
+        int $i0;
+        java.util.Set $r7;
+        com.startapp.android.publish.Ad$AdType $r8;
+        long $l1;
+        com.startapp.android.publish.model.SodaPreferences$SocialContext $r9;
+        java.util.List $r10;
+
+        r0 := @this: com.startapp.android.publish.model.GetAdRequest;
+
+        $r1 = new java.lang.StringBuilder;
+
+        specialinvoke $r1.<java.lang.StringBuilder: void <init>(java.lang.String)>("GetAdRequest [");
+
+        $r2 = new java.lang.StringBuilder;
+
+        specialinvoke $r2.<java.lang.StringBuilder: void <init>()>();
+
+        $r2 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("placement=");
+
+        $r3 = r0.<com.startapp.android.publish.model.GetAdRequest: com.startapp.android.publish.model.AdPreferences$Placement placement>;
+
+        $r2 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($r3);
+
+        $r4 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r4);
+
+        $r2 = new java.lang.StringBuilder;
+
+        specialinvoke $r2.<java.lang.StringBuilder: void <init>()>();
+
+        $r2 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(", testMode=");
+
+        $z0 = r0.<com.startapp.android.publish.model.GetAdRequest: boolean testMode>;
+
+        $r2 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(boolean)>($z0);
+
+        $r4 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r4);
+
+        $r2 = new java.lang.StringBuilder;
+
+        specialinvoke $r2.<java.lang.StringBuilder: void <init>()>();
+
+        $r2 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(", gender=");
+
+        $r5 = r0.<com.startapp.android.publish.model.GetAdRequest: com.startapp.android.publish.SDKAdPreferences$Gender gender>;
+
+        $r2 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($r5);
+
+        $r4 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r4);
+
+        $r2 = new java.lang.StringBuilder;
+
+        specialinvoke $r2.<java.lang.StringBuilder: void <init>()>();
+
+        $r2 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(", age=");
+
+        $r4 = r0.<com.startapp.android.publish.model.GetAdRequest: java.lang.String age>;
+
+        $r2 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r4);
+
+        $r4 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r4);
+
+        $r2 = new java.lang.StringBuilder;
+
+        specialinvoke $r2.<java.lang.StringBuilder: void <init>()>();
+
+        $r2 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(", ai=");
+
+        $r6 = r0.<com.startapp.android.publish.model.GetAdRequest: java.lang.Boolean ai>;
+
+        $r2 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($r6);
+
+        $r4 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r4);
+
+        $r2 = new java.lang.StringBuilder;
+
+        specialinvoke $r2.<java.lang.StringBuilder: void <init>()>();
+
+        $r2 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(", as=");
+
+        $r6 = r0.<com.startapp.android.publish.model.GetAdRequest: java.lang.Boolean as>;
+
+        $r2 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($r6);
+
+        $r4 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r4);
+
+        $r2 = new java.lang.StringBuilder;
+
+        specialinvoke $r2.<java.lang.StringBuilder: void <init>()>();
+
+        $r2 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(", keywords=");
+
+        $r4 = r0.<com.startapp.android.publish.model.GetAdRequest: java.lang.String keywords>;
+
+        $r2 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r4);
+
+        $r4 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r4);
+
+        $r2 = new java.lang.StringBuilder;
+
+        specialinvoke $r2.<java.lang.StringBuilder: void <init>()>();
+
+        $r2 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(", template=");
+
+        $r4 = r0.<com.startapp.android.publish.model.GetAdRequest: java.lang.String template>;
+
+        $r2 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r4);
+
+        $r4 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r4);
+
+        $r2 = new java.lang.StringBuilder;
+
+        specialinvoke $r2.<java.lang.StringBuilder: void <init>()>();
+
+        $r2 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(", adsNumber=");
+
+        $i0 = r0.<com.startapp.android.publish.model.GetAdRequest: int adsNumber>;
+
+        $r2 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>($i0);
+
+        $r4 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r4);
+
+        $r2 = new java.lang.StringBuilder;
+
+        specialinvoke $r2.<java.lang.StringBuilder: void <init>()>();
+
+        $r2 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(", offset=");
+
+        $i0 = r0.<com.startapp.android.publish.model.GetAdRequest: int offset>;
+
+        $r2 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>($i0);
+
+        $r4 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r4);
+
+        $r2 = new java.lang.StringBuilder;
+
+        specialinvoke $r2.<java.lang.StringBuilder: void <init>()>();
+
+        $r2 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(", categories=");
+
+        $r7 = r0.<com.startapp.android.publish.model.GetAdRequest: java.util.Set categories>;
+
+        $r2 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($r7);
+
+        $r4 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r4);
+
+        $r2 = new java.lang.StringBuilder;
+
+        specialinvoke $r2.<java.lang.StringBuilder: void <init>()>();
+
+        $r2 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(", categoriesExclude=");
+
+        $r7 = r0.<com.startapp.android.publish.model.GetAdRequest: java.util.Set categoriesExclude>;
+
+        $r2 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($r7);
+
+        $r4 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r4);
+
+        $r2 = new java.lang.StringBuilder;
+
+        specialinvoke $r2.<java.lang.StringBuilder: void <init>()>();
+
+        $r2 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(", packageExclude=");
+
+        $r7 = r0.<com.startapp.android.publish.model.GetAdRequest: java.util.Set packageExclude>;
+
+        $r2 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($r7);
+
+        $r4 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r4);
+
+        $r2 = new java.lang.StringBuilder;
+
+        specialinvoke $r2.<java.lang.StringBuilder: void <init>()>();
+
+        $r2 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(", packageInclude=");
+
+        $r7 = r0.<com.startapp.android.publish.model.GetAdRequest: java.util.Set packageInclude>;
+
+        $r2 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($r7);
+
+        $r4 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r4);
+
+        $r2 = new java.lang.StringBuilder;
+
+        specialinvoke $r2.<java.lang.StringBuilder: void <init>()>();
+
+        $r2 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(", simpleToken=");
+
+        $r4 = r0.<com.startapp.android.publish.model.GetAdRequest: java.lang.String simpleToken>;
+
+        $r2 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r4);
+
+        $r4 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r4);
+
+        $r2 = new java.lang.StringBuilder;
+
+        specialinvoke $r2.<java.lang.StringBuilder: void <init>()>();
+
+        $r2 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(", engInclude=");
+
+        $z0 = r0.<com.startapp.android.publish.model.GetAdRequest: boolean engInclude>;
+
+        $r2 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(boolean)>($z0);
+
+        $r4 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r4);
+
+        $r2 = new java.lang.StringBuilder;
+
+        specialinvoke $r2.<java.lang.StringBuilder: void <init>()>();
+
+        $r2 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(", country=");
+
+        $r4 = r0.<com.startapp.android.publish.model.GetAdRequest: java.lang.String country>;
+
+        $r2 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r4);
+
+        $r4 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r4);
+
+        $r2 = new java.lang.StringBuilder;
+
+        specialinvoke $r2.<java.lang.StringBuilder: void <init>()>();
+
+        $r2 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(", advertiserId=");
+
+        $r4 = r0.<com.startapp.android.publish.model.GetAdRequest: java.lang.String advertiserId>;
+
+        $r2 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r4);
+
+        $r4 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r4);
+
+        $r2 = new java.lang.StringBuilder;
+
+        specialinvoke $r2.<java.lang.StringBuilder: void <init>()>();
+
+        $r2 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(", type=");
+
+        $r8 = r0.<com.startapp.android.publish.model.GetAdRequest: com.startapp.android.publish.Ad$AdType type>;
+
+        $r2 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($r8);
+
+        $r4 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r4);
+
+        $r2 = new java.lang.StringBuilder;
+
+        specialinvoke $r2.<java.lang.StringBuilder: void <init>()>();
+
+        $r2 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(", sessionStartTime=");
+
+        $l1 = r0.<com.startapp.android.publish.model.GetAdRequest: long timeSinceSessionStart>;
+
+        $r2 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(long)>($l1);
+
+        $r4 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r4);
+
+        $r2 = new java.lang.StringBuilder;
+
+        specialinvoke $r2.<java.lang.StringBuilder: void <init>()>();
+
+        $r2 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(", adsDisplayed=");
+
+        $i0 = r0.<com.startapp.android.publish.model.GetAdRequest: int adsDisplayed>;
+
+        $r2 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>($i0);
+
+        $r4 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r4);
+
+        $r2 = new java.lang.StringBuilder;
+
+        specialinvoke $r2.<java.lang.StringBuilder: void <init>()>();
+
+        $r2 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(", profileId=");
+
+        $r4 = r0.<com.startapp.android.publish.model.GetAdRequest: java.lang.String profileId>;
+
+        $r2 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r4);
+
+        $r4 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r4);
+
+        $r2 = new java.lang.StringBuilder;
+
+        specialinvoke $r2.<java.lang.StringBuilder: void <init>()>();
+
+        $r2 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(", hardwareAccelerated=");
+
+        $z0 = r0.<com.startapp.android.publish.model.GetAdRequest: boolean isHardwareAccelerated>;
+
+        $r2 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(boolean)>($z0);
+
+        $r4 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r4);
+
+        $r2 = new java.lang.StringBuilder;
+
+        specialinvoke $r2.<java.lang.StringBuilder: void <init>()>();
+
+        $r2 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(", primaryImg=");
+
+        $r4 = r0.<com.startapp.android.publish.model.GetAdRequest: java.lang.String primaryImg>;
+
+        $r2 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r4);
+
+        $r4 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r4);
+
+        $r2 = new java.lang.StringBuilder;
+
+        specialinvoke $r2.<java.lang.StringBuilder: void <init>()>();
+
+        $r2 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(", moreImg=");
+
+        $r4 = r0.<com.startapp.android.publish.model.GetAdRequest: java.lang.String moreImg>;
+
+        $r2 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r4);
+
+        $r4 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r4);
+
+        $r2 = new java.lang.StringBuilder;
+
+        specialinvoke $r2.<java.lang.StringBuilder: void <init>()>();
+
+        $r2 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(", contentAd=");
+
+        $z0 = r0.<com.startapp.android.publish.model.GetAdRequest: boolean contentAd>;
+
+        $r2 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(boolean)>($z0);
+
+        $r4 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r4);
+
+        $r2 = new java.lang.StringBuilder;
+
+        specialinvoke $r2.<java.lang.StringBuilder: void <init>()>();
+
+        $r2 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(", socialContext=");
+
+        $r9 = r0.<com.startapp.android.publish.model.GetAdRequest: com.startapp.android.publish.model.SodaPreferences$SocialContext socialContext>;
+
+        $r2 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($r9);
+
+        $r4 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r4);
+
+        $r2 = new java.lang.StringBuilder;
+
+        specialinvoke $r2.<java.lang.StringBuilder: void <init>()>();
+
+        $r2 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(", chatsParticipants=");
+
+        $r7 = r0.<com.startapp.android.publish.model.GetAdRequest: java.util.Set participants>;
+
+        $r2 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($r7);
+
+        $r4 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r4);
+
+        $r2 = new java.lang.StringBuilder;
+
+        specialinvoke $r2.<java.lang.StringBuilder: void <init>()>();
+
+        $r2 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(", cellScanRes=");
+
+        $r4 = r0.<com.startapp.android.publish.model.GetAdRequest: java.lang.String cellScanRes>;
+
+        $r2 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r4);
+
+        $r4 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r4);
+
+        $r2 = new java.lang.StringBuilder;
+
+        specialinvoke $r2.<java.lang.StringBuilder: void <init>()>();
+
+        $r2 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(", locations=");
+
+        $r10 = r0.<com.startapp.android.publish.model.GetAdRequest: java.util.List locations>;
+
+        $r2 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($r10);
+
+        $r4 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r4);
+
+        virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("]");
+
+        $r4 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        return $r4;
+    }
+}

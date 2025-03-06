@@ -1,0 +1,519 @@
+class com.heyzap.sdk.HeyzapAnalytics extends java.lang.Object
+{
+    private static final java.lang.String HEYZAP_ANALYTICS_ID_PREF;
+    private static final java.lang.String HEYZAP_ENDPOINT;
+    private static final java.lang.String HEYZAP_SDK_PLATFORM;
+    private static final java.lang.String HEYZAP_SDK_VERSION;
+    public static final java.lang.String LOG_TAG;
+    private static java.lang.String deviceId;
+    private static boolean loaded;
+    private static java.lang.String packageName;
+    private static java.util.concurrent.ExecutorService requestThread;
+    private static java.lang.String trackHash;
+
+    static void <clinit>()
+    {
+        java.util.concurrent.ExecutorService $r0;
+
+        <com.heyzap.sdk.HeyzapAnalytics: java.lang.String LOG_TAG> = "HeyzapSDK";
+
+        <com.heyzap.sdk.HeyzapAnalytics: java.lang.String HEYZAP_SDK_VERSION> = "2.0.11";
+
+        <com.heyzap.sdk.HeyzapAnalytics: java.lang.String HEYZAP_SDK_PLATFORM> = "android";
+
+        <com.heyzap.sdk.HeyzapAnalytics: java.lang.String HEYZAP_ENDPOINT> = "http://android.heyzap.com/mobile/track_sdk_event";
+
+        <com.heyzap.sdk.HeyzapAnalytics: java.lang.String HEYZAP_ANALYTICS_ID_PREF> = "heyzap_button_analytics_id";
+
+        <com.heyzap.sdk.HeyzapAnalytics: boolean loaded> = 0;
+
+        <com.heyzap.sdk.HeyzapAnalytics: java.lang.String deviceId> = "unknown";
+
+        <com.heyzap.sdk.HeyzapAnalytics: java.lang.String packageName> = "unknown";
+
+        <com.heyzap.sdk.HeyzapAnalytics: java.lang.String trackHash> = "";
+
+        $r0 = staticinvoke <java.util.concurrent.Executors: java.util.concurrent.ExecutorService newSingleThreadExecutor()>();
+
+        <com.heyzap.sdk.HeyzapAnalytics: java.util.concurrent.ExecutorService requestThread> = $r0;
+
+        return;
+    }
+
+    void <init>()
+    {
+        com.heyzap.sdk.HeyzapAnalytics r0;
+
+        r0 := @this: com.heyzap.sdk.HeyzapAnalytics;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    static java.lang.String access$000()
+    {
+        java.lang.String r0;
+
+        r0 = <com.heyzap.sdk.HeyzapAnalytics: java.lang.String packageName>;
+
+        return r0;
+    }
+
+    static java.lang.String access$100()
+    {
+        java.lang.String r0;
+
+        r0 = <com.heyzap.sdk.HeyzapAnalytics: java.lang.String deviceId>;
+
+        return r0;
+    }
+
+    static java.lang.String access$200()
+    {
+        java.lang.String r0;
+
+        r0 = <com.heyzap.sdk.HeyzapAnalytics: java.lang.String trackHash>;
+
+        return r0;
+    }
+
+    static java.lang.String access$202(java.lang.String)
+    {
+        java.lang.String $r0;
+
+        $r0 := @parameter0: java.lang.String;
+
+        <com.heyzap.sdk.HeyzapAnalytics: java.lang.String trackHash> = $r0;
+
+        return $r0;
+    }
+
+    static java.lang.String access$300(java.io.InputStream)
+    {
+        java.io.InputStream $r0;
+        java.lang.String $r1;
+
+        $r0 := @parameter0: java.io.InputStream;
+
+        $r1 = staticinvoke <com.heyzap.sdk.HeyzapAnalytics: java.lang.String convertStreamToString(java.io.InputStream)>($r0);
+
+        return $r1;
+    }
+
+    static void access$400(android.content.Context, java.lang.String)
+    {
+        android.content.Context $r0;
+        java.lang.String $r1;
+
+        $r0 := @parameter0: android.content.Context;
+
+        $r1 := @parameter1: java.lang.String;
+
+        staticinvoke <com.heyzap.sdk.HeyzapAnalytics: void setTrackHash(android.content.Context,java.lang.String)>($r0, $r1);
+
+        return;
+    }
+
+    static java.lang.String access$500(android.content.Context)
+    {
+        android.content.Context $r0;
+        java.lang.String $r1;
+
+        $r0 := @parameter0: android.content.Context;
+
+        $r1 = staticinvoke <com.heyzap.sdk.HeyzapAnalytics: java.lang.String getTrackHash(android.content.Context)>($r0);
+
+        return $r1;
+    }
+
+    private static java.lang.String convertStreamToString(java.io.InputStream)
+    {
+        java.io.InputStream $r0;
+        java.lang.StringBuilder $r2, $r4, $r12;
+        java.lang.String $r3;
+        java.lang.Throwable $r5, $r6, $r7, $r8, $r9;
+        java.io.InputStreamReader $r10;
+        java.io.BufferedReader $r11;
+        java.io.IOException $r13;
+
+        $r0 := @parameter0: java.io.InputStream;
+
+        $r11 = new java.io.BufferedReader;
+
+        $r10 = new java.io.InputStreamReader;
+
+        specialinvoke $r10.<java.io.InputStreamReader: void <init>(java.io.InputStream)>($r0);
+
+        specialinvoke $r11.<java.io.BufferedReader: void <init>(java.io.Reader)>($r10);
+
+        $r4 = new java.lang.StringBuilder;
+
+        $r2 = $r4;
+
+        specialinvoke $r4.<java.lang.StringBuilder: void <init>()>();
+
+     label01:
+        $r3 = virtualinvoke $r11.<java.io.BufferedReader: java.lang.String readLine()>();
+
+     label02:
+        if $r3 == null goto label10;
+
+     label03:
+        $r12 = new java.lang.StringBuilder;
+
+     label04:
+        specialinvoke $r12.<java.lang.StringBuilder: void <init>()>();
+
+        $r4 = virtualinvoke $r12.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r3);
+
+        $r4 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("\n");
+
+        $r3 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r3);
+
+     label05:
+        goto label01;
+
+     label06:
+        $r5 := @caughtexception;
+
+     label07:
+        $r13 = (java.io.IOException) $r5;
+
+        virtualinvoke $r13.<java.io.IOException: void printStackTrace()>();
+
+     label08:
+        virtualinvoke $r0.<java.io.InputStream: void close()>();
+
+     label09:
+        $r3 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        return $r3;
+
+     label10:
+        virtualinvoke $r0.<java.io.InputStream: void close()>();
+
+     label11:
+        goto label09;
+
+     label12:
+        $r6 := @caughtexception;
+
+        $r13 = (java.io.IOException) $r6;
+
+        virtualinvoke $r13.<java.io.IOException: void printStackTrace()>();
+
+        goto label09;
+
+     label13:
+        $r7 := @caughtexception;
+
+        $r13 = (java.io.IOException) $r7;
+
+        virtualinvoke $r13.<java.io.IOException: void printStackTrace()>();
+
+        goto label09;
+
+     label14:
+        $r8 := @caughtexception;
+
+     label15:
+        virtualinvoke $r0.<java.io.InputStream: void close()>();
+
+     label16:
+        throw $r8;
+
+     label17:
+        $r9 := @caughtexception;
+
+        $r13 = (java.io.IOException) $r9;
+
+        virtualinvoke $r13.<java.io.IOException: void printStackTrace()>();
+
+        goto label16;
+
+        catch java.io.IOException from label01 to label02 with label06;
+        catch java.io.IOException from label04 to label05 with label06;
+        catch java.lang.Throwable from label01 to label02 with label14;
+        catch java.lang.Throwable from label03 to label04 with label14;
+        catch java.lang.Throwable from label04 to label05 with label14;
+        catch java.lang.Throwable from label07 to label08 with label14;
+        catch java.io.IOException from label08 to label09 with label13;
+        catch java.io.IOException from label10 to label11 with label12;
+        catch java.io.IOException from label15 to label16 with label17;
+    }
+
+    public static java.lang.String getAnalyticsReferrer(android.content.Context)
+    {
+        android.content.Context $r0;
+        java.lang.String $r1;
+
+        $r0 := @parameter0: android.content.Context;
+
+        $r1 = staticinvoke <com.heyzap.sdk.HeyzapAnalytics: java.lang.String getAnalyticsReferrer(android.content.Context,java.lang.String)>($r0, null);
+
+        return $r1;
+    }
+
+    public static java.lang.String getAnalyticsReferrer(android.content.Context, java.lang.String)
+    {
+        android.content.Context $r0;
+        java.lang.String $r1, $r2;
+        java.lang.StringBuilder $r3;
+
+        $r0 := @parameter0: android.content.Context;
+
+        $r1 := @parameter1: java.lang.String;
+
+        $r2 = staticinvoke <com.heyzap.sdk.HeyzapAnalytics: java.lang.String getTrackHash(android.content.Context)>($r0);
+
+        if $r2 == null goto label3;
+
+        $r3 = new java.lang.StringBuilder;
+
+        specialinvoke $r3.<java.lang.StringBuilder: void <init>()>();
+
+        $r3 = virtualinvoke $r3.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("utm_medium=device&utm_source=heyzap_track&utm_campaign=");
+
+        $r3 = virtualinvoke $r3.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r2);
+
+        $r2 = virtualinvoke $r3.<java.lang.StringBuilder: java.lang.String toString()>();
+
+     label1:
+        if $r1 == null goto label2;
+
+        $r3 = new java.lang.StringBuilder;
+
+        specialinvoke $r3.<java.lang.StringBuilder: void <init>()>();
+
+        $r3 = virtualinvoke $r3.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r2);
+
+        $r3 = virtualinvoke $r3.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("&");
+
+        $r3 = virtualinvoke $r3.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r1);
+
+        $r2 = virtualinvoke $r3.<java.lang.StringBuilder: java.lang.String toString()>();
+
+     label2:
+        $r1 = staticinvoke <java.net.URLEncoder: java.lang.String encode(java.lang.String)>($r2);
+
+        return $r1;
+
+     label3:
+        $r3 = new java.lang.StringBuilder;
+
+        specialinvoke $r3.<java.lang.StringBuilder: void <init>()>();
+
+        $r3 = virtualinvoke $r3.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("utm_medium=device&utm_source=sdk&utm_campaign=");
+
+        $r2 = virtualinvoke $r0.<android.content.Context: java.lang.String getPackageName()>();
+
+        $r3 = virtualinvoke $r3.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r2);
+
+        $r2 = virtualinvoke $r3.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        goto label1;
+    }
+
+    private static java.lang.String getTrackHash(android.content.Context)
+    {
+        android.content.Context $r0;
+        java.lang.String $r1;
+        android.content.SharedPreferences $r2;
+        boolean $z0;
+
+        $r0 := @parameter0: android.content.Context;
+
+        $r1 = <com.heyzap.sdk.HeyzapAnalytics: java.lang.String trackHash>;
+
+        if $r1 != null goto label1;
+
+        $r2 = virtualinvoke $r0.<android.content.Context: android.content.SharedPreferences getSharedPreferences(java.lang.String,int)>("heyzap_button_analytics_id", 0);
+
+        if $r2 == null goto label1;
+
+        $r1 = interfaceinvoke $r2.<android.content.SharedPreferences: java.lang.String getString(java.lang.String,java.lang.String)>("heyzap_button_analytics_id", null);
+
+        <com.heyzap.sdk.HeyzapAnalytics: java.lang.String trackHash> = $r1;
+
+     label1:
+        $r1 = <com.heyzap.sdk.HeyzapAnalytics: java.lang.String trackHash>;
+
+        if $r1 == null goto label2;
+
+        $r1 = <com.heyzap.sdk.HeyzapAnalytics: java.lang.String trackHash>;
+
+        $r1 = virtualinvoke $r1.<java.lang.String: java.lang.String trim()>();
+
+        $z0 = virtualinvoke $r1.<java.lang.String: boolean equals(java.lang.Object)>("");
+
+        if $z0 == 0 goto label2;
+
+        return null;
+
+     label2:
+        $r1 = <com.heyzap.sdk.HeyzapAnalytics: java.lang.String trackHash>;
+
+        return $r1;
+    }
+
+    private static void init(android.content.Context)
+    {
+        android.content.Context $r0;
+        java.lang.String $r1, $r3;
+        android.content.ContentResolver $r2;
+        java.lang.StringBuilder $r4;
+        java.lang.Thread $r5;
+        com.heyzap.sdk.HeyzapAnalytics$2 $r6;
+
+        $r0 := @parameter0: android.content.Context;
+
+        $r1 = <android.os.Build: java.lang.String PRODUCT>;
+
+        $r2 = virtualinvoke $r0.<android.content.Context: android.content.ContentResolver getContentResolver()>();
+
+        $r3 = staticinvoke <android.provider.Settings$Secure: java.lang.String getString(android.content.ContentResolver,java.lang.String)>($r2, "android_id");
+
+        if $r1 == null goto label1;
+
+        if $r3 == null goto label1;
+
+        $r4 = new java.lang.StringBuilder;
+
+        specialinvoke $r4.<java.lang.StringBuilder: void <init>()>();
+
+        $r4 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r1);
+
+        $r4 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("_");
+
+        $r4 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r3);
+
+        $r1 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        <com.heyzap.sdk.HeyzapAnalytics: java.lang.String deviceId> = $r1;
+
+     label1:
+        $r5 = new java.lang.Thread;
+
+        $r6 = new com.heyzap.sdk.HeyzapAnalytics$2;
+
+        specialinvoke $r6.<com.heyzap.sdk.HeyzapAnalytics$2: void <init>(android.content.Context)>($r0);
+
+        specialinvoke $r5.<java.lang.Thread: void <init>(java.lang.Runnable)>($r6);
+
+        virtualinvoke $r5.<java.lang.Thread: void start()>();
+
+        $r1 = virtualinvoke $r0.<android.content.Context: java.lang.String getPackageName()>();
+
+        <com.heyzap.sdk.HeyzapAnalytics: java.lang.String packageName> = $r1;
+
+        return;
+    }
+
+    private static void setTrackHash(android.content.Context, java.lang.String)
+    {
+        android.content.Context $r0;
+        java.lang.String $r1, $r2;
+        boolean $z0;
+        android.content.SharedPreferences $r3;
+        android.content.SharedPreferences$Editor $r4;
+
+        $r0 := @parameter0: android.content.Context;
+
+        $r1 := @parameter1: java.lang.String;
+
+        if $r1 == null goto label1;
+
+        $r2 = virtualinvoke $r1.<java.lang.String: java.lang.String trim()>();
+
+        $z0 = virtualinvoke $r2.<java.lang.String: boolean equals(java.lang.Object)>("");
+
+        if $z0 != 0 goto label1;
+
+        $r2 = <com.heyzap.sdk.HeyzapAnalytics: java.lang.String trackHash>;
+
+        $z0 = virtualinvoke $r2.<java.lang.String: boolean equals(java.lang.Object)>($r1);
+
+        if $z0 != 0 goto label1;
+
+        <com.heyzap.sdk.HeyzapAnalytics: java.lang.String trackHash> = $r1;
+
+        $r3 = virtualinvoke $r0.<android.content.Context: android.content.SharedPreferences getSharedPreferences(java.lang.String,int)>("heyzap_button_analytics_id", 0);
+
+        $r4 = interfaceinvoke $r3.<android.content.SharedPreferences: android.content.SharedPreferences$Editor edit()>();
+
+        $r1 = <com.heyzap.sdk.HeyzapAnalytics: java.lang.String trackHash>;
+
+        interfaceinvoke $r4.<android.content.SharedPreferences$Editor: android.content.SharedPreferences$Editor putString(java.lang.String,java.lang.String)>("heyzap_button_analytics_id", $r1);
+
+        interfaceinvoke $r4.<android.content.SharedPreferences$Editor: boolean commit()>();
+
+     label1:
+        return;
+    }
+
+    public static void trackEvent(android.content.Context, java.lang.String)
+    {
+        android.content.Context $r0;
+        java.lang.String $r1, $r3;
+        java.lang.StringBuilder $r2;
+        boolean $z0;
+        java.util.concurrent.ExecutorService $r4;
+        com.heyzap.sdk.HeyzapAnalytics$1 $r5;
+        java.lang.Throwable $r6;
+
+        $r0 := @parameter0: android.content.Context;
+
+        $r1 := @parameter1: java.lang.String;
+
+        entermonitor class "Lcom/heyzap/sdk/HeyzapAnalytics;";
+
+     label1:
+        $r2 = new java.lang.StringBuilder;
+
+        specialinvoke $r2.<java.lang.StringBuilder: void <init>()>();
+
+        $r2 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Tracking ");
+
+        $r2 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r1);
+
+        $r2 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" event.");
+
+        $r3 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <android.util.Log: int d(java.lang.String,java.lang.String)>("HeyzapSDK", $r3);
+
+        $z0 = <com.heyzap.sdk.HeyzapAnalytics: boolean loaded>;
+
+        if $z0 != 0 goto label2;
+
+        staticinvoke <com.heyzap.sdk.HeyzapAnalytics: void init(android.content.Context)>($r0);
+
+        <com.heyzap.sdk.HeyzapAnalytics: boolean loaded> = 1;
+
+     label2:
+        $r4 = <com.heyzap.sdk.HeyzapAnalytics: java.util.concurrent.ExecutorService requestThread>;
+
+        $r5 = new com.heyzap.sdk.HeyzapAnalytics$1;
+
+        specialinvoke $r5.<com.heyzap.sdk.HeyzapAnalytics$1: void <init>(java.lang.String,android.content.Context)>($r1, $r0);
+
+        interfaceinvoke $r4.<java.util.concurrent.ExecutorService: void execute(java.lang.Runnable)>($r5);
+
+     label3:
+        exitmonitor class "Lcom/heyzap/sdk/HeyzapAnalytics;";
+
+        return;
+
+     label4:
+        $r6 := @caughtexception;
+
+        exitmonitor class "Lcom/heyzap/sdk/HeyzapAnalytics;";
+
+        throw $r6;
+
+        catch java.lang.Throwable from label1 to label3 with label4;
+    }
+}

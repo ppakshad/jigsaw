@@ -1,0 +1,244 @@
+public class com.movesky.app.main.GameStatusMessageScreen$WinScreen extends com.movesky.app.main.GameStatusMessageScreen
+{
+    private static final int NUM_PARTICLES;
+    private static final com.movesky.app.engine.particles.ParticleSystem PARTICLES;
+    private static final android.graphics.Paint PARTICLE_PAINT;
+    private static final float PARTICLE_THRESHOLD;
+    private float secondsUntilNext;
+    float[] tempHsv;
+
+    static void <clinit>()
+    {
+        com.movesky.app.engine.particles.ParticleSystem $r0;
+        android.graphics.Paint $r1;
+
+        <com.movesky.app.main.GameStatusMessageScreen$WinScreen: float PARTICLE_THRESHOLD> = 0.5F;
+
+        <com.movesky.app.main.GameStatusMessageScreen$WinScreen: int NUM_PARTICLES> = 1000;
+
+        $r0 = new com.movesky.app.engine.particles.ParticleSystem;
+
+        specialinvoke $r0.<com.movesky.app.engine.particles.ParticleSystem: void <init>(int,float)>(1000, 0.5F);
+
+        <com.movesky.app.main.GameStatusMessageScreen$WinScreen: com.movesky.app.engine.particles.ParticleSystem PARTICLES> = $r0;
+
+        $r1 = new android.graphics.Paint;
+
+        specialinvoke $r1.<android.graphics.Paint: void <init>()>();
+
+        <com.movesky.app.main.GameStatusMessageScreen$WinScreen: android.graphics.Paint PARTICLE_PAINT> = $r1;
+
+        $r1 = <com.movesky.app.main.GameStatusMessageScreen$WinScreen: android.graphics.Paint PARTICLE_PAINT>;
+
+        virtualinvoke $r1.<android.graphics.Paint: void setStrokeWidth(float)>(2.0F);
+
+        $r1 = <com.movesky.app.main.GameStatusMessageScreen$WinScreen: android.graphics.Paint PARTICLE_PAINT>;
+
+        virtualinvoke $r1.<android.graphics.Paint: void setAntiAlias(boolean)>(1);
+
+        return;
+    }
+
+    public void <init>(com.movesky.app.engine.ui.UINavigationController, boolean)
+    {
+        com.movesky.app.main.GameStatusMessageScreen$WinScreen r0;
+        com.movesky.app.engine.ui.UINavigationController $r1;
+        boolean $z0;
+        java.lang.String $r2;
+        com.movesky.app.engine.core.GameActivity $r3;
+        float[] $r4;
+        com.movesky.app.engine.particles.ParticleSystem $r5;
+
+        r0 := @this: com.movesky.app.main.GameStatusMessageScreen$WinScreen;
+
+        $r1 := @parameter0: com.movesky.app.engine.ui.UINavigationController;
+
+        $z0 := @parameter1: boolean;
+
+        $r3 = <com.movesky.app.engine.core.GameActivity: com.movesky.app.engine.core.GameActivity instance>;
+
+        $r2 = virtualinvoke $r3.<com.movesky.app.engine.core.GameActivity: java.lang.String getString(java.lang.String)>("R.string.congratulationsyouwin");
+
+        specialinvoke r0.<com.movesky.app.main.GameStatusMessageScreen: void <init>(java.lang.String,com.movesky.app.engine.ui.UINavigationController,boolean)>($r2, $r1, $z0);
+
+        $r4 = newarray (float)[3];
+
+        r0.<com.movesky.app.main.GameStatusMessageScreen$WinScreen: float[] tempHsv> = $r4;
+
+        $r5 = <com.movesky.app.main.GameStatusMessageScreen$WinScreen: com.movesky.app.engine.particles.ParticleSystem PARTICLES>;
+
+        virtualinvoke $r5.<com.movesky.app.engine.particles.ParticleSystem: void reset()>();
+
+        return;
+    }
+
+    public void onDraw(android.graphics.Canvas)
+    {
+        com.movesky.app.main.GameStatusMessageScreen$WinScreen r0;
+        android.graphics.Canvas $r1;
+        com.movesky.app.engine.particles.ParticleSystem $r2;
+        android.graphics.Paint $r3;
+
+        r0 := @this: com.movesky.app.main.GameStatusMessageScreen$WinScreen;
+
+        $r1 := @parameter0: android.graphics.Canvas;
+
+        $r2 = <com.movesky.app.main.GameStatusMessageScreen$WinScreen: com.movesky.app.engine.particles.ParticleSystem PARTICLES>;
+
+        $r3 = <com.movesky.app.main.GameStatusMessageScreen$WinScreen: android.graphics.Paint PARTICLE_PAINT>;
+
+        virtualinvoke $r2.<com.movesky.app.engine.particles.ParticleSystem: void draw(android.graphics.Canvas,android.graphics.Paint)>($r1, $r3);
+
+        specialinvoke r0.<com.movesky.app.main.GameStatusMessageScreen: void onDraw(android.graphics.Canvas)>($r1);
+
+        return;
+    }
+
+    public void onUpdate(float)
+    {
+        com.movesky.app.main.GameStatusMessageScreen$WinScreen r0;
+        float $f0, $f1, $f2, $f3, $f4, $f5;
+        com.movesky.app.engine.particles.ParticleSystem $r1;
+        byte $b0;
+        int $i1, $i2, $i3, $i4;
+        float[] $r2;
+        com.movesky.app.engine.particles.Particle $r3;
+
+        r0 := @this: com.movesky.app.main.GameStatusMessageScreen$WinScreen;
+
+        $f0 := @parameter0: float;
+
+        $r1 = <com.movesky.app.main.GameStatusMessageScreen$WinScreen: com.movesky.app.engine.particles.ParticleSystem PARTICLES>;
+
+        virtualinvoke $r1.<com.movesky.app.engine.particles.ParticleSystem: void tick(float)>($f0);
+
+        $r1 = <com.movesky.app.main.GameStatusMessageScreen$WinScreen: com.movesky.app.engine.particles.ParticleSystem PARTICLES>;
+
+        $f1 = 150.0F * $f0;
+
+        virtualinvoke $r1.<com.movesky.app.engine.particles.ParticleSystem: void gravity(float)>($f1);
+
+        $r1 = <com.movesky.app.main.GameStatusMessageScreen$WinScreen: com.movesky.app.engine.particles.ParticleSystem PARTICLES>;
+
+        virtualinvoke $r1.<com.movesky.app.engine.particles.ParticleSystem: void updateAngles()>();
+
+        $f1 = r0.<com.movesky.app.main.GameStatusMessageScreen$WinScreen: float secondsUntilNext>;
+
+        $f0 = $f1 - $f0;
+
+        r0.<com.movesky.app.main.GameStatusMessageScreen$WinScreen: float secondsUntilNext> = $f0;
+
+     label1:
+        $f0 = r0.<com.movesky.app.main.GameStatusMessageScreen$WinScreen: float secondsUntilNext>;
+
+        $b0 = $f0 cmpg 0.0F;
+
+        if $b0 >= 0 goto label7;
+
+        $f0 = r0.<com.movesky.app.main.GameStatusMessageScreen$WinScreen: float secondsUntilNext>;
+
+        $f0 = $f0 + 0.5F;
+
+        r0.<com.movesky.app.main.GameStatusMessageScreen$WinScreen: float secondsUntilNext> = $f0;
+
+        $f0 = staticinvoke <com.movesky.app.engine.util.MathUtils: float randInRange(float,float)>(0.0F, 320.0F);
+
+        $f1 = staticinvoke <com.movesky.app.engine.util.MathUtils: float randInRange(float,float)>(0.0F, 530.0F);
+
+        $i1 = staticinvoke <com.movesky.app.engine.util.ColorUtils: int randomHSV(float,float,float,float,float,float)>(0.0F, 360.0F, 0.8F, 1.0F, 0.5F, 1.0F);
+
+        $r2 = r0.<com.movesky.app.main.GameStatusMessageScreen$WinScreen: float[] tempHsv>;
+
+        staticinvoke <android.graphics.Color: void colorToHSV(int,float[])>($i1, $r2);
+
+        $i2 = staticinvoke <com.movesky.app.engine.util.MathUtils: int randInRange(int,int)>(0, 1);
+
+        if $i2 != 0 goto label5;
+
+        $f2 = -1.0F;
+
+     label2:
+        $r2 = r0.<com.movesky.app.main.GameStatusMessageScreen$WinScreen: float[] tempHsv>;
+
+        $f3 = $r2[0];
+
+        $f3 = $f3 + 15.0F;
+
+        $f3 = $f3 * $f2;
+
+        $f3 = $f3 % 360.0F;
+
+        $r2 = r0.<com.movesky.app.main.GameStatusMessageScreen$WinScreen: float[] tempHsv>;
+
+        $f4 = $r2[0];
+
+        $f4 = $f4 + 30.0F;
+
+        $f2 = $f2 * $f4;
+
+        $f2 = $f2 % 360.0F;
+
+        $i2 = staticinvoke <com.movesky.app.engine.util.ColorUtils: int randomHSV(float,float,float,float,float,float)>($f3, $f2, 0.8F, 1.0F, 0.5F, 1.0F);
+
+        $i3 = 0;
+
+     label3:
+        if $i3 >= 100 goto label1;
+
+        $f2 = staticinvoke <com.movesky.app.engine.util.MathUtils: float randInRange(float,float)>(0.0F, 6.2831855F);
+
+        $i4 = staticinvoke <com.movesky.app.engine.util.MathUtils: int randInRange(int,int)>(0, 150);
+
+        $f3 = (float) $i4;
+
+        $f4 = staticinvoke <android.util.FloatMath: float cos(float)>($f2);
+
+        $f4 = $f4 * $f3;
+
+        $f5 = staticinvoke <android.util.FloatMath: float sin(float)>($f2);
+
+        $f3 = $f3 * $f5;
+
+        $r1 = <com.movesky.app.main.GameStatusMessageScreen$WinScreen: com.movesky.app.engine.particles.ParticleSystem PARTICLES>;
+
+        $r3 = virtualinvoke $r1.<com.movesky.app.engine.particles.ParticleSystem: com.movesky.app.engine.particles.Particle createParticle()>();
+
+        $r3 = virtualinvoke $r3.<com.movesky.app.engine.particles.Particle: com.movesky.app.engine.particles.Particle position(float,float)>($f0, $f1);
+
+        $r3 = virtualinvoke $r3.<com.movesky.app.engine.particles.Particle: com.movesky.app.engine.particles.Particle velocity(float,float)>($f4, $f3);
+
+        $r3 = virtualinvoke $r3.<com.movesky.app.engine.particles.Particle: com.movesky.app.engine.particles.Particle angle(float)>($f2);
+
+        $r3 = virtualinvoke $r3.<com.movesky.app.engine.particles.Particle: com.movesky.app.engine.particles.Particle shrink(float,float)>(0.1F, 0.2F);
+
+        $r3 = virtualinvoke $r3.<com.movesky.app.engine.particles.Particle: com.movesky.app.engine.particles.Particle line()>();
+
+        $r3 = virtualinvoke $r3.<com.movesky.app.engine.particles.Particle: com.movesky.app.engine.particles.Particle radius(float)>(10.0F);
+
+        $i4 = $i3 % 2;
+
+        if $i4 != 0 goto label6;
+
+        $i4 = $i1;
+
+     label4:
+        virtualinvoke $r3.<com.movesky.app.engine.particles.Particle: com.movesky.app.engine.particles.Particle color(int)>($i4);
+
+        $i3 = $i3 + 1;
+
+        goto label3;
+
+     label5:
+        $f2 = 1.0F;
+
+        goto label2;
+
+     label6:
+        $i4 = $i2;
+
+        goto label4;
+
+     label7:
+        return;
+    }
+}

@@ -1,0 +1,116 @@
+final class org.codehaus.jackson.map.ser.impl.PropertySerializerMap$Multi extends org.codehaus.jackson.map.ser.impl.PropertySerializerMap
+{
+    private static final int MAX_ENTRIES;
+    private final org.codehaus.jackson.map.ser.impl.PropertySerializerMap$TypeAndSerializer[] _entries;
+
+    public void <init>(org.codehaus.jackson.map.ser.impl.PropertySerializerMap$TypeAndSerializer[])
+    {
+        org.codehaus.jackson.map.ser.impl.PropertySerializerMap$Multi r0;
+        org.codehaus.jackson.map.ser.impl.PropertySerializerMap$TypeAndSerializer[] $r1;
+
+        r0 := @this: org.codehaus.jackson.map.ser.impl.PropertySerializerMap$Multi;
+
+        $r1 := @parameter0: org.codehaus.jackson.map.ser.impl.PropertySerializerMap$TypeAndSerializer[];
+
+        specialinvoke r0.<org.codehaus.jackson.map.ser.impl.PropertySerializerMap: void <init>()>();
+
+        r0.<org.codehaus.jackson.map.ser.impl.PropertySerializerMap$Multi: org.codehaus.jackson.map.ser.impl.PropertySerializerMap$TypeAndSerializer[] _entries> = $r1;
+
+        return;
+    }
+
+    protected org.codehaus.jackson.map.ser.impl.PropertySerializerMap newWith(java.lang.Class, org.codehaus.jackson.map.JsonSerializer)
+    {
+        org.codehaus.jackson.map.ser.impl.PropertySerializerMap$Multi r0;
+        java.lang.Class r1;
+        org.codehaus.jackson.map.JsonSerializer r2;
+        org.codehaus.jackson.map.ser.impl.PropertySerializerMap$TypeAndSerializer[] r3, $r4;
+        int i0, $i1;
+        org.codehaus.jackson.map.ser.impl.PropertySerializerMap$TypeAndSerializer $r5;
+
+        r0 := @this: org.codehaus.jackson.map.ser.impl.PropertySerializerMap$Multi;
+
+        r1 := @parameter0: java.lang.Class;
+
+        r2 := @parameter1: org.codehaus.jackson.map.JsonSerializer;
+
+        r3 = r0.<org.codehaus.jackson.map.ser.impl.PropertySerializerMap$Multi: org.codehaus.jackson.map.ser.impl.PropertySerializerMap$TypeAndSerializer[] _entries>;
+
+        i0 = lengthof r3;
+
+        if i0 != 8 goto label1;
+
+        return r0;
+
+     label1:
+        $i1 = i0 + 1;
+
+        r3 = newarray (org.codehaus.jackson.map.ser.impl.PropertySerializerMap$TypeAndSerializer)[$i1];
+
+        $r4 = r0.<org.codehaus.jackson.map.ser.impl.PropertySerializerMap$Multi: org.codehaus.jackson.map.ser.impl.PropertySerializerMap$TypeAndSerializer[] _entries>;
+
+        staticinvoke <java.lang.System: void arraycopy(java.lang.Object,int,java.lang.Object,int,int)>($r4, 0, r3, 0, i0);
+
+        $r5 = new org.codehaus.jackson.map.ser.impl.PropertySerializerMap$TypeAndSerializer;
+
+        specialinvoke $r5.<org.codehaus.jackson.map.ser.impl.PropertySerializerMap$TypeAndSerializer: void <init>(java.lang.Class,org.codehaus.jackson.map.JsonSerializer)>(r1, r2);
+
+        r3[i0] = $r5;
+
+        r0 = new org.codehaus.jackson.map.ser.impl.PropertySerializerMap$Multi;
+
+        specialinvoke r0.<org.codehaus.jackson.map.ser.impl.PropertySerializerMap$Multi: void <init>(org.codehaus.jackson.map.ser.impl.PropertySerializerMap$TypeAndSerializer[])>(r3);
+
+        return r0;
+    }
+
+    public org.codehaus.jackson.map.JsonSerializer serializerFor(java.lang.Class)
+    {
+        org.codehaus.jackson.map.ser.impl.PropertySerializerMap$Multi r0;
+        java.lang.Class r1, $r4;
+        org.codehaus.jackson.map.ser.impl.PropertySerializerMap$TypeAndSerializer r2;
+        int i0, i1;
+        org.codehaus.jackson.map.ser.impl.PropertySerializerMap$TypeAndSerializer[] $r3;
+        org.codehaus.jackson.map.JsonSerializer r5;
+
+        r0 := @this: org.codehaus.jackson.map.ser.impl.PropertySerializerMap$Multi;
+
+        r1 := @parameter0: java.lang.Class;
+
+        i1 = 0;
+
+        $r3 = r0.<org.codehaus.jackson.map.ser.impl.PropertySerializerMap$Multi: org.codehaus.jackson.map.ser.impl.PropertySerializerMap$TypeAndSerializer[] _entries>;
+
+        i0 = lengthof $r3;
+
+     label1:
+        if i1 >= i0 goto label3;
+
+        $r3 = r0.<org.codehaus.jackson.map.ser.impl.PropertySerializerMap$Multi: org.codehaus.jackson.map.ser.impl.PropertySerializerMap$TypeAndSerializer[] _entries>;
+
+        r2 = $r3[i1];
+
+        $r4 = r2.<org.codehaus.jackson.map.ser.impl.PropertySerializerMap$TypeAndSerializer: java.lang.Class type>;
+
+        if $r4 != r1 goto label2;
+
+        r5 = r2.<org.codehaus.jackson.map.ser.impl.PropertySerializerMap$TypeAndSerializer: org.codehaus.jackson.map.JsonSerializer serializer>;
+
+        return r5;
+
+     label2:
+        i1 = i1 + 1;
+
+        goto label1;
+
+     label3:
+        return null;
+    }
+
+    public static void <clinit>()
+    {
+        <org.codehaus.jackson.map.ser.impl.PropertySerializerMap$Multi: int MAX_ENTRIES> = 8;
+
+        return;
+    }
+}

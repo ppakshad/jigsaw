@@ -1,0 +1,55 @@
+class AnimCreatorExt$2$1 extends java.lang.Object implements java.lang.Runnable
+{
+    final AnimCreatorExt$2 this$1;
+
+    void <init>(AnimCreatorExt$2)
+    {
+        AnimCreatorExt$2$1 r0;
+        AnimCreatorExt$2 $r1;
+
+        r0 := @this: AnimCreatorExt$2$1;
+
+        $r1 := @parameter0: AnimCreatorExt$2;
+
+        r0.<AnimCreatorExt$2$1: AnimCreatorExt$2 this$1> = $r1;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public void run()
+    {
+        AnimCreatorExt$2$1 r0;
+        AnimCreatorExt$2 $r1;
+        AnimCreatorExt $r2;
+        com.Leadbolt.AdController $r3;
+
+        r0 := @this: AnimCreatorExt$2$1;
+
+        $r1 = r0.<AnimCreatorExt$2$1: AnimCreatorExt$2 this$1>;
+
+        $r2 = $r1.<AnimCreatorExt$2: AnimCreatorExt this$0>;
+
+        $r3 = $r2.<AnimCreatorExt: com.Leadbolt.AdController _advance>;
+
+        if $r3 == null goto label1;
+
+        $r1 = r0.<AnimCreatorExt$2$1: AnimCreatorExt$2 this$1>;
+
+        $r2 = $r1.<AnimCreatorExt$2: AnimCreatorExt this$0>;
+
+        $r3 = $r2.<AnimCreatorExt: com.Leadbolt.AdController _advance>;
+
+        virtualinvoke $r3.<com.Leadbolt.AdController: void destroyAd()>();
+
+        $r1 = r0.<AnimCreatorExt$2$1: AnimCreatorExt$2 this$1>;
+
+        $r2 = $r1.<AnimCreatorExt$2: AnimCreatorExt this$0>;
+
+        $r2.<AnimCreatorExt: com.Leadbolt.AdController _advance> = null;
+
+     label1:
+        return;
+    }
+}

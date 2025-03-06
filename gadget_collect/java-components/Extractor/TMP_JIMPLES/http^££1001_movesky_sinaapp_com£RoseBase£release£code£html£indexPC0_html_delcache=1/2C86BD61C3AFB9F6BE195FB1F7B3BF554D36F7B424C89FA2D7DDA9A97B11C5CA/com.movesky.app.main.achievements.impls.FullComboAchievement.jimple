@@ -1,0 +1,90 @@
+public class com.movesky.app.main.achievements.impls.FullComboAchievement extends com.movesky.app.main.achievements.BBTHAchievement
+{
+
+    public void <init>(com.movesky.app.engine.achievements.AchievementInfo)
+    {
+        com.movesky.app.main.achievements.impls.FullComboAchievement r0;
+        com.movesky.app.engine.achievements.AchievementInfo $r1;
+
+        r0 := @this: com.movesky.app.main.achievements.impls.FullComboAchievement;
+
+        $r1 := @parameter0: com.movesky.app.engine.achievements.AchievementInfo;
+
+        specialinvoke r0.<com.movesky.app.main.achievements.BBTHAchievement: void <init>(com.movesky.app.engine.achievements.AchievementInfo)>($r1);
+
+        return;
+    }
+
+    public void gameEnded(com.movesky.app.main.achievements.events.GameEndedEvent)
+    {
+        com.movesky.app.main.achievements.impls.FullComboAchievement r0;
+        com.movesky.app.main.achievements.events.GameEndedEvent $r1;
+        int $i0, $i1;
+        boolean $z0, $z1;
+        com.movesky.app.main.BeatTrack $r2;
+        java.io.PrintStream $r3;
+        com.movesky.app.engine.sound.Beat[] $r4;
+        com.movesky.app.engine.sound.Beat $r5;
+
+        r0 := @this: com.movesky.app.main.achievements.impls.FullComboAchievement;
+
+        $r1 := @parameter0: com.movesky.app.main.achievements.events.GameEndedEvent;
+
+        $z0 = 0;
+
+        $r2 = virtualinvoke $r1.<com.movesky.app.main.achievements.events.GameEndedEvent: com.movesky.app.main.BeatTrack getBeatTrack()>();
+
+        if $r2 != null goto label1;
+
+        $r3 = <java.lang.System: java.io.PrintStream err>;
+
+        virtualinvoke $r3.<java.io.PrintStream: void println(java.lang.String)>("Error: no beat track.");
+
+        return;
+
+     label1:
+        $r4 = virtualinvoke $r2.<com.movesky.app.main.BeatTrack: com.movesky.app.engine.sound.Beat[] getAllBeats()>();
+
+        $i0 = lengthof $r4;
+
+        $i1 = 0;
+
+     label2:
+        if $i1 >= $i0 goto label5;
+
+        $r5 = $r4[$i1];
+
+        $z1 = virtualinvoke $r5.<com.movesky.app.engine.sound.Beat: boolean isTapped()>();
+
+        if $z1 != 0 goto label4;
+
+     label3:
+        if $z0 == 0 goto label6;
+
+        virtualinvoke r0.<com.movesky.app.main.achievements.impls.FullComboAchievement: void increment()>();
+
+        return;
+
+     label4:
+        $i1 = $i1 + 1;
+
+        goto label2;
+
+     label5:
+        $z0 = 1;
+
+        goto label3;
+
+     label6:
+        return;
+    }
+
+    public boolean usesGameEnded()
+    {
+        com.movesky.app.main.achievements.impls.FullComboAchievement r0;
+
+        r0 := @this: com.movesky.app.main.achievements.impls.FullComboAchievement;
+
+        return 1;
+    }
+}

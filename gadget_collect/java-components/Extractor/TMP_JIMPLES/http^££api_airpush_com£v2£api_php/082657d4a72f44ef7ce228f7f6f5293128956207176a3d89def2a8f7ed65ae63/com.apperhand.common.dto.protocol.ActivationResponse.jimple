@@ -1,0 +1,95 @@
+public class com.apperhand.common.dto.protocol.ActivationResponse extends com.apperhand.common.dto.protocol.BaseResponse
+{
+    private static final long serialVersionUID;
+    private com.apperhand.common.dto.Activation activation;
+
+    public void <init>()
+    {
+        com.apperhand.common.dto.protocol.ActivationResponse r0;
+
+        r0 := @this: com.apperhand.common.dto.protocol.ActivationResponse;
+
+        specialinvoke r0.<com.apperhand.common.dto.protocol.ActivationResponse: void <init>(com.apperhand.common.dto.Activation)>(null);
+
+        return;
+    }
+
+    public void <init>(com.apperhand.common.dto.Activation)
+    {
+        com.apperhand.common.dto.protocol.ActivationResponse r0;
+        com.apperhand.common.dto.Activation $r1;
+
+        r0 := @this: com.apperhand.common.dto.protocol.ActivationResponse;
+
+        $r1 := @parameter0: com.apperhand.common.dto.Activation;
+
+        specialinvoke r0.<com.apperhand.common.dto.protocol.BaseResponse: void <init>()>();
+
+        r0.<com.apperhand.common.dto.protocol.ActivationResponse: com.apperhand.common.dto.Activation activation> = $r1;
+
+        return;
+    }
+
+    public com.apperhand.common.dto.Activation getActivation()
+    {
+        com.apperhand.common.dto.protocol.ActivationResponse r0;
+        com.apperhand.common.dto.Activation r1;
+
+        r0 := @this: com.apperhand.common.dto.protocol.ActivationResponse;
+
+        r1 = r0.<com.apperhand.common.dto.protocol.ActivationResponse: com.apperhand.common.dto.Activation activation>;
+
+        return r1;
+    }
+
+    public void setActivation(com.apperhand.common.dto.Activation)
+    {
+        com.apperhand.common.dto.protocol.ActivationResponse r0;
+        com.apperhand.common.dto.Activation $r1;
+
+        r0 := @this: com.apperhand.common.dto.protocol.ActivationResponse;
+
+        $r1 := @parameter0: com.apperhand.common.dto.Activation;
+
+        r0.<com.apperhand.common.dto.protocol.ActivationResponse: com.apperhand.common.dto.Activation activation> = $r1;
+
+        return;
+    }
+
+    public java.lang.String toString()
+    {
+        com.apperhand.common.dto.protocol.ActivationResponse r0;
+        java.lang.StringBuilder $r1;
+        com.apperhand.common.dto.Activation $r2;
+        java.lang.String $r3;
+
+        r0 := @this: com.apperhand.common.dto.protocol.ActivationResponse;
+
+        $r1 = new java.lang.StringBuilder;
+
+        specialinvoke $r1.<java.lang.StringBuilder: void <init>(java.lang.String)>("ActivationResponse [activation=");
+
+        $r2 = r0.<com.apperhand.common.dto.protocol.ActivationResponse: com.apperhand.common.dto.Activation activation>;
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($r2);
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(", toString()=");
+
+        $r3 = specialinvoke r0.<com.apperhand.common.dto.protocol.BaseResponse: java.lang.String toString()>();
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r3);
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("]");
+
+        $r3 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        return $r3;
+    }
+
+    public static void <clinit>()
+    {
+        <com.apperhand.common.dto.protocol.ActivationResponse: long serialVersionUID> = 5276891535662703443L;
+
+        return;
+    }
+}

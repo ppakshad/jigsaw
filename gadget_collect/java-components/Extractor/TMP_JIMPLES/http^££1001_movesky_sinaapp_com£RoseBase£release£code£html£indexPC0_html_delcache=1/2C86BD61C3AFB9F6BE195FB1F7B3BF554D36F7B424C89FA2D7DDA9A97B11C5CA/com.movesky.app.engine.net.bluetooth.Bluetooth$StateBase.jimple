@@ -1,0 +1,65 @@
+abstract class com.movesky.app.engine.net.bluetooth.Bluetooth$StateBase extends java.lang.Object
+{
+    java.lang.String stateString;
+
+    private void <init>()
+    {
+        com.movesky.app.engine.net.bluetooth.Bluetooth$StateBase r0;
+        java.lang.String $r1;
+
+        r0 := @this: com.movesky.app.engine.net.bluetooth.Bluetooth$StateBase;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        $r1 = virtualinvoke r0.<com.movesky.app.engine.net.bluetooth.Bluetooth$StateBase: java.lang.String getStateString()>();
+
+        r0.<com.movesky.app.engine.net.bluetooth.Bluetooth$StateBase: java.lang.String stateString> = $r1;
+
+        return;
+    }
+
+    void <init>(com.movesky.app.engine.net.bluetooth.Bluetooth$1)
+    {
+        com.movesky.app.engine.net.bluetooth.Bluetooth$StateBase r0;
+        com.movesky.app.engine.net.bluetooth.Bluetooth$1 $r1;
+
+        r0 := @this: com.movesky.app.engine.net.bluetooth.Bluetooth$StateBase;
+
+        $r1 := @parameter0: com.movesky.app.engine.net.bluetooth.Bluetooth$1;
+
+        specialinvoke r0.<com.movesky.app.engine.net.bluetooth.Bluetooth$StateBase: void <init>()>();
+
+        return;
+    }
+
+    public abstract com.movesky.app.engine.net.bluetooth.State getState();
+
+    protected java.lang.String getStateString()
+    {
+        com.movesky.app.engine.net.bluetooth.Bluetooth$StateBase r0;
+        java.lang.String $r1;
+        com.movesky.app.engine.core.GameActivity $r2;
+
+        r0 := @this: com.movesky.app.engine.net.bluetooth.Bluetooth$StateBase;
+
+        $r2 = <com.movesky.app.engine.core.GameActivity: com.movesky.app.engine.core.GameActivity instance>;
+
+        $r1 = virtualinvoke $r2.<com.movesky.app.engine.core.GameActivity: java.lang.String getString(int)>(0);
+
+        return $r1;
+    }
+
+    public java.lang.String getString()
+    {
+        com.movesky.app.engine.net.bluetooth.Bluetooth$StateBase r0;
+        java.lang.String r1;
+
+        r0 := @this: com.movesky.app.engine.net.bluetooth.Bluetooth$StateBase;
+
+        r1 = r0.<com.movesky.app.engine.net.bluetooth.Bluetooth$StateBase: java.lang.String stateString>;
+
+        return r1;
+    }
+
+    public abstract void run() throws java.lang.InterruptedException;
+}

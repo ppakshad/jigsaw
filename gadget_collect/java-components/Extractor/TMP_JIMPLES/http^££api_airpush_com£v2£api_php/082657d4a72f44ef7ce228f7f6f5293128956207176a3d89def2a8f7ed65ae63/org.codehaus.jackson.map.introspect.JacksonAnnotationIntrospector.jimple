@@ -1,0 +1,1415 @@
+public class org.codehaus.jackson.map.introspect.JacksonAnnotationIntrospector extends org.codehaus.jackson.map.AnnotationIntrospector
+{
+
+    public void <init>()
+    {
+        org.codehaus.jackson.map.introspect.JacksonAnnotationIntrospector r0;
+
+        r0 := @this: org.codehaus.jackson.map.introspect.JacksonAnnotationIntrospector;
+
+        specialinvoke r0.<org.codehaus.jackson.map.AnnotationIntrospector: void <init>()>();
+
+        return;
+    }
+
+    protected org.codehaus.jackson.map.jsontype.impl.StdTypeResolverBuilder _constructStdTypeResolverBuilder()
+    {
+        org.codehaus.jackson.map.introspect.JacksonAnnotationIntrospector r0;
+        org.codehaus.jackson.map.jsontype.impl.StdTypeResolverBuilder $r1;
+
+        r0 := @this: org.codehaus.jackson.map.introspect.JacksonAnnotationIntrospector;
+
+        $r1 = new org.codehaus.jackson.map.jsontype.impl.StdTypeResolverBuilder;
+
+        specialinvoke $r1.<org.codehaus.jackson.map.jsontype.impl.StdTypeResolverBuilder: void <init>()>();
+
+        return $r1;
+    }
+
+    protected org.codehaus.jackson.map.jsontype.TypeResolverBuilder _findTypeResolver(org.codehaus.jackson.map.introspect.Annotated, org.codehaus.jackson.type.JavaType)
+    {
+        org.codehaus.jackson.map.introspect.Annotated $r0;
+        org.codehaus.jackson.type.JavaType $r1;
+        org.codehaus.jackson.map.introspect.JacksonAnnotationIntrospector r2;
+        java.lang.'annotation'.Annotation $r3;
+        org.codehaus.jackson.annotate.JsonTypeInfo r4;
+        org.codehaus.jackson.map.annotate.JsonTypeResolver r5;
+        java.lang.Class $r6;
+        java.lang.Object $r7;
+        org.codehaus.jackson.map.jsontype.TypeResolverBuilder r8;
+        org.codehaus.jackson.map.annotate.JsonTypeIdResolver r9;
+        org.codehaus.jackson.map.jsontype.TypeIdResolver r10;
+        org.codehaus.jackson.annotate.JsonTypeInfo$Id $r11, $r14;
+        org.codehaus.jackson.annotate.JsonTypeInfo$As $r12;
+        java.lang.String $r13;
+
+        r2 := @this: org.codehaus.jackson.map.introspect.JacksonAnnotationIntrospector;
+
+        $r0 := @parameter0: org.codehaus.jackson.map.introspect.Annotated;
+
+        $r1 := @parameter1: org.codehaus.jackson.type.JavaType;
+
+        $r3 = virtualinvoke $r0.<org.codehaus.jackson.map.introspect.Annotated: java.lang.'annotation'.Annotation getAnnotation(java.lang.Class)>(class "Lorg/codehaus/jackson/annotate/JsonTypeInfo;");
+
+        r4 = (org.codehaus.jackson.annotate.JsonTypeInfo) $r3;
+
+        $r3 = virtualinvoke $r0.<org.codehaus.jackson.map.introspect.Annotated: java.lang.'annotation'.Annotation getAnnotation(java.lang.Class)>(class "Lorg/codehaus/jackson/map/annotate/JsonTypeResolver;");
+
+        r5 = (org.codehaus.jackson.map.annotate.JsonTypeResolver) $r3;
+
+        if r5 == null goto label5;
+
+        if r4 != null goto label1;
+
+        return null;
+
+     label1:
+        $r6 = interfaceinvoke r5.<org.codehaus.jackson.map.annotate.JsonTypeResolver: java.lang.Class value()>();
+
+        $r7 = staticinvoke <org.codehaus.jackson.map.util.ClassUtil: java.lang.Object createInstance(java.lang.Class,boolean)>($r6, 0);
+
+        r8 = (org.codehaus.jackson.map.jsontype.TypeResolverBuilder) $r7;
+
+     label2:
+        $r3 = virtualinvoke $r0.<org.codehaus.jackson.map.introspect.Annotated: java.lang.'annotation'.Annotation getAnnotation(java.lang.Class)>(class "Lorg/codehaus/jackson/map/annotate/JsonTypeIdResolver;");
+
+        r9 = (org.codehaus.jackson.map.annotate.JsonTypeIdResolver) $r3;
+
+        if r9 != null goto label8;
+
+        r10 = null;
+
+     label3:
+        if r10 == null goto label4;
+
+        interfaceinvoke r10.<org.codehaus.jackson.map.jsontype.TypeIdResolver: void init(org.codehaus.jackson.type.JavaType)>($r1);
+
+     label4:
+        $r11 = interfaceinvoke r4.<org.codehaus.jackson.annotate.JsonTypeInfo: org.codehaus.jackson.annotate.JsonTypeInfo$Id use()>();
+
+        r8 = interfaceinvoke r8.<org.codehaus.jackson.map.jsontype.TypeResolverBuilder: org.codehaus.jackson.map.jsontype.TypeResolverBuilder init(org.codehaus.jackson.annotate.JsonTypeInfo$Id,org.codehaus.jackson.map.jsontype.TypeIdResolver)>($r11, r10);
+
+        $r12 = interfaceinvoke r4.<org.codehaus.jackson.annotate.JsonTypeInfo: org.codehaus.jackson.annotate.JsonTypeInfo$As include()>();
+
+        r8 = interfaceinvoke r8.<org.codehaus.jackson.map.jsontype.TypeResolverBuilder: org.codehaus.jackson.map.jsontype.TypeResolverBuilder inclusion(org.codehaus.jackson.annotate.JsonTypeInfo$As)>($r12);
+
+        $r13 = interfaceinvoke r4.<org.codehaus.jackson.annotate.JsonTypeInfo: java.lang.String property()>();
+
+        r8 = interfaceinvoke r8.<org.codehaus.jackson.map.jsontype.TypeResolverBuilder: org.codehaus.jackson.map.jsontype.TypeResolverBuilder typeProperty(java.lang.String)>($r13);
+
+        return r8;
+
+     label5:
+        if r4 == null goto label6;
+
+        $r11 = interfaceinvoke r4.<org.codehaus.jackson.annotate.JsonTypeInfo: org.codehaus.jackson.annotate.JsonTypeInfo$Id use()>();
+
+        $r14 = <org.codehaus.jackson.annotate.JsonTypeInfo$Id: org.codehaus.jackson.annotate.JsonTypeInfo$Id NONE>;
+
+        if $r11 != $r14 goto label7;
+
+     label6:
+        return null;
+
+     label7:
+        r8 = virtualinvoke r2.<org.codehaus.jackson.map.introspect.JacksonAnnotationIntrospector: org.codehaus.jackson.map.jsontype.impl.StdTypeResolverBuilder _constructStdTypeResolverBuilder()>();
+
+        goto label2;
+
+     label8:
+        $r6 = interfaceinvoke r9.<org.codehaus.jackson.map.annotate.JsonTypeIdResolver: java.lang.Class value()>();
+
+        $r7 = staticinvoke <org.codehaus.jackson.map.util.ClassUtil: java.lang.Object createInstance(java.lang.Class,boolean)>($r6, 1);
+
+        r10 = (org.codehaus.jackson.map.jsontype.TypeIdResolver) $r7;
+
+        goto label3;
+    }
+
+    protected boolean _isIgnorable(org.codehaus.jackson.map.introspect.Annotated)
+    {
+        org.codehaus.jackson.map.introspect.JacksonAnnotationIntrospector r0;
+        org.codehaus.jackson.map.introspect.Annotated $r1;
+        java.lang.'annotation'.Annotation $r2;
+        org.codehaus.jackson.annotate.JsonIgnore r3;
+        boolean $z0;
+
+        r0 := @this: org.codehaus.jackson.map.introspect.JacksonAnnotationIntrospector;
+
+        $r1 := @parameter0: org.codehaus.jackson.map.introspect.Annotated;
+
+        $r2 = virtualinvoke $r1.<org.codehaus.jackson.map.introspect.Annotated: java.lang.'annotation'.Annotation getAnnotation(java.lang.Class)>(class "Lorg/codehaus/jackson/annotate/JsonIgnore;");
+
+        r3 = (org.codehaus.jackson.annotate.JsonIgnore) $r2;
+
+        if r3 == null goto label1;
+
+        $z0 = interfaceinvoke r3.<org.codehaus.jackson.annotate.JsonIgnore: boolean value()>();
+
+        if $z0 == 0 goto label1;
+
+        return 1;
+
+     label1:
+        return 0;
+    }
+
+    public org.codehaus.jackson.map.introspect.VisibilityChecker findAutoDetectVisibility(org.codehaus.jackson.map.introspect.AnnotatedClass, org.codehaus.jackson.map.introspect.VisibilityChecker)
+    {
+        org.codehaus.jackson.map.introspect.JacksonAnnotationIntrospector r0;
+        org.codehaus.jackson.map.introspect.AnnotatedClass $r1;
+        org.codehaus.jackson.map.introspect.VisibilityChecker r2;
+        java.lang.'annotation'.Annotation $r3;
+        org.codehaus.jackson.annotate.JsonAutoDetect r4;
+
+        r0 := @this: org.codehaus.jackson.map.introspect.JacksonAnnotationIntrospector;
+
+        $r1 := @parameter0: org.codehaus.jackson.map.introspect.AnnotatedClass;
+
+        r2 := @parameter1: org.codehaus.jackson.map.introspect.VisibilityChecker;
+
+        $r3 = virtualinvoke $r1.<org.codehaus.jackson.map.introspect.AnnotatedClass: java.lang.'annotation'.Annotation getAnnotation(java.lang.Class)>(class "Lorg/codehaus/jackson/annotate/JsonAutoDetect;");
+
+        r4 = (org.codehaus.jackson.annotate.JsonAutoDetect) $r3;
+
+        if r4 != null goto label1;
+
+        return r2;
+
+     label1:
+        r2 = interfaceinvoke r2.<org.codehaus.jackson.map.introspect.VisibilityChecker: org.codehaus.jackson.map.introspect.VisibilityChecker 'with'(org.codehaus.jackson.annotate.JsonAutoDetect)>(r4);
+
+        return r2;
+    }
+
+    public java.lang.Boolean findCachability(org.codehaus.jackson.map.introspect.AnnotatedClass)
+    {
+        org.codehaus.jackson.map.introspect.JacksonAnnotationIntrospector r0;
+        org.codehaus.jackson.map.introspect.AnnotatedClass $r1;
+        java.lang.'annotation'.Annotation $r2;
+        org.codehaus.jackson.map.annotate.JsonCachable r3;
+        boolean $z0;
+        java.lang.Boolean r4;
+
+        r0 := @this: org.codehaus.jackson.map.introspect.JacksonAnnotationIntrospector;
+
+        $r1 := @parameter0: org.codehaus.jackson.map.introspect.AnnotatedClass;
+
+        $r2 = virtualinvoke $r1.<org.codehaus.jackson.map.introspect.AnnotatedClass: java.lang.'annotation'.Annotation getAnnotation(java.lang.Class)>(class "Lorg/codehaus/jackson/map/annotate/JsonCachable;");
+
+        r3 = (org.codehaus.jackson.map.annotate.JsonCachable) $r2;
+
+        if r3 != null goto label1;
+
+        return null;
+
+     label1:
+        $z0 = interfaceinvoke r3.<org.codehaus.jackson.map.annotate.JsonCachable: boolean value()>();
+
+        if $z0 == 0 goto label2;
+
+        r4 = <java.lang.Boolean: java.lang.Boolean TRUE>;
+
+        return r4;
+
+     label2:
+        r4 = <java.lang.Boolean: java.lang.Boolean FALSE>;
+
+        return r4;
+    }
+
+    public java.lang.Class findContentDeserializer(org.codehaus.jackson.map.introspect.Annotated)
+    {
+        org.codehaus.jackson.map.introspect.JacksonAnnotationIntrospector r0;
+        org.codehaus.jackson.map.introspect.Annotated $r1;
+        java.lang.'annotation'.Annotation $r2;
+        org.codehaus.jackson.map.annotate.JsonDeserialize r3;
+        java.lang.Class $r4;
+
+        r0 := @this: org.codehaus.jackson.map.introspect.JacksonAnnotationIntrospector;
+
+        $r1 := @parameter0: org.codehaus.jackson.map.introspect.Annotated;
+
+        $r2 = virtualinvoke $r1.<org.codehaus.jackson.map.introspect.Annotated: java.lang.'annotation'.Annotation getAnnotation(java.lang.Class)>(class "Lorg/codehaus/jackson/map/annotate/JsonDeserialize;");
+
+        r3 = (org.codehaus.jackson.map.annotate.JsonDeserialize) $r2;
+
+        if r3 == null goto label1;
+
+        $r4 = interfaceinvoke r3.<org.codehaus.jackson.map.annotate.JsonDeserialize: java.lang.Class contentUsing()>();
+
+        if $r4 == class "Lorg/codehaus/jackson/map/JsonDeserializer$None;" goto label1;
+
+        return $r4;
+
+     label1:
+        return null;
+    }
+
+    public java.lang.String findDeserializablePropertyName(org.codehaus.jackson.map.introspect.AnnotatedField)
+    {
+        org.codehaus.jackson.map.introspect.JacksonAnnotationIntrospector r0;
+        org.codehaus.jackson.map.introspect.AnnotatedField $r1;
+        java.lang.'annotation'.Annotation $r2;
+        org.codehaus.jackson.annotate.JsonProperty r3;
+        java.lang.String $r4;
+        boolean $z0;
+
+        r0 := @this: org.codehaus.jackson.map.introspect.JacksonAnnotationIntrospector;
+
+        $r1 := @parameter0: org.codehaus.jackson.map.introspect.AnnotatedField;
+
+        $r2 = virtualinvoke $r1.<org.codehaus.jackson.map.introspect.AnnotatedField: java.lang.'annotation'.Annotation getAnnotation(java.lang.Class)>(class "Lorg/codehaus/jackson/annotate/JsonProperty;");
+
+        r3 = (org.codehaus.jackson.annotate.JsonProperty) $r2;
+
+        if r3 == null goto label1;
+
+        $r4 = interfaceinvoke r3.<org.codehaus.jackson.annotate.JsonProperty: java.lang.String value()>();
+
+        return $r4;
+
+     label1:
+        $z0 = virtualinvoke $r1.<org.codehaus.jackson.map.introspect.AnnotatedField: boolean hasAnnotation(java.lang.Class)>(class "Lorg/codehaus/jackson/map/annotate/JsonDeserialize;");
+
+        if $z0 != 0 goto label2;
+
+        $z0 = virtualinvoke $r1.<org.codehaus.jackson.map.introspect.AnnotatedField: boolean hasAnnotation(java.lang.Class)>(class "Lorg/codehaus/jackson/map/annotate/JsonView;");
+
+        if $z0 == 0 goto label3;
+
+     label2:
+        return "";
+
+     label3:
+        return null;
+    }
+
+    public java.lang.Class findDeserializationContentType(org.codehaus.jackson.map.introspect.Annotated, org.codehaus.jackson.type.JavaType, java.lang.String)
+    {
+        org.codehaus.jackson.map.introspect.JacksonAnnotationIntrospector r0;
+        org.codehaus.jackson.map.introspect.Annotated $r1;
+        org.codehaus.jackson.type.JavaType $r2;
+        java.lang.String $r3;
+        java.lang.'annotation'.Annotation $r4;
+        org.codehaus.jackson.map.annotate.JsonDeserialize r5;
+        java.lang.Class $r6;
+        org.codehaus.jackson.annotate.JsonContentClass r7;
+
+        r0 := @this: org.codehaus.jackson.map.introspect.JacksonAnnotationIntrospector;
+
+        $r1 := @parameter0: org.codehaus.jackson.map.introspect.Annotated;
+
+        $r2 := @parameter1: org.codehaus.jackson.type.JavaType;
+
+        $r3 := @parameter2: java.lang.String;
+
+        $r4 = virtualinvoke $r1.<org.codehaus.jackson.map.introspect.Annotated: java.lang.'annotation'.Annotation getAnnotation(java.lang.Class)>(class "Lorg/codehaus/jackson/map/annotate/JsonDeserialize;");
+
+        r5 = (org.codehaus.jackson.map.annotate.JsonDeserialize) $r4;
+
+        if r5 == null goto label1;
+
+        $r6 = interfaceinvoke r5.<org.codehaus.jackson.map.annotate.JsonDeserialize: java.lang.Class contentAs()>();
+
+        if $r6 == class "Lorg/codehaus/jackson/map/annotate/NoClass;" goto label1;
+
+        return $r6;
+
+     label1:
+        $r4 = virtualinvoke $r1.<org.codehaus.jackson.map.introspect.Annotated: java.lang.'annotation'.Annotation getAnnotation(java.lang.Class)>(class "Lorg/codehaus/jackson/annotate/JsonContentClass;");
+
+        r7 = (org.codehaus.jackson.annotate.JsonContentClass) $r4;
+
+        if r7 == null goto label2;
+
+        $r6 = interfaceinvoke r7.<org.codehaus.jackson.annotate.JsonContentClass: java.lang.Class value()>();
+
+        if $r6 == class "Lorg/codehaus/jackson/map/annotate/NoClass;" goto label2;
+
+        return $r6;
+
+     label2:
+        return null;
+    }
+
+    public java.lang.Class findDeserializationKeyType(org.codehaus.jackson.map.introspect.Annotated, org.codehaus.jackson.type.JavaType, java.lang.String)
+    {
+        org.codehaus.jackson.map.introspect.JacksonAnnotationIntrospector r0;
+        org.codehaus.jackson.map.introspect.Annotated $r1;
+        org.codehaus.jackson.type.JavaType $r2;
+        java.lang.String $r3;
+        java.lang.'annotation'.Annotation $r4;
+        org.codehaus.jackson.map.annotate.JsonDeserialize r5;
+        java.lang.Class $r6;
+        org.codehaus.jackson.annotate.JsonKeyClass r7;
+
+        r0 := @this: org.codehaus.jackson.map.introspect.JacksonAnnotationIntrospector;
+
+        $r1 := @parameter0: org.codehaus.jackson.map.introspect.Annotated;
+
+        $r2 := @parameter1: org.codehaus.jackson.type.JavaType;
+
+        $r3 := @parameter2: java.lang.String;
+
+        $r4 = virtualinvoke $r1.<org.codehaus.jackson.map.introspect.Annotated: java.lang.'annotation'.Annotation getAnnotation(java.lang.Class)>(class "Lorg/codehaus/jackson/map/annotate/JsonDeserialize;");
+
+        r5 = (org.codehaus.jackson.map.annotate.JsonDeserialize) $r4;
+
+        if r5 == null goto label1;
+
+        $r6 = interfaceinvoke r5.<org.codehaus.jackson.map.annotate.JsonDeserialize: java.lang.Class keyAs()>();
+
+        if $r6 == class "Lorg/codehaus/jackson/map/annotate/NoClass;" goto label1;
+
+        return $r6;
+
+     label1:
+        $r4 = virtualinvoke $r1.<org.codehaus.jackson.map.introspect.Annotated: java.lang.'annotation'.Annotation getAnnotation(java.lang.Class)>(class "Lorg/codehaus/jackson/annotate/JsonKeyClass;");
+
+        r7 = (org.codehaus.jackson.annotate.JsonKeyClass) $r4;
+
+        if r7 == null goto label2;
+
+        $r6 = interfaceinvoke r7.<org.codehaus.jackson.annotate.JsonKeyClass: java.lang.Class value()>();
+
+        if $r6 == class "Lorg/codehaus/jackson/map/annotate/NoClass;" goto label2;
+
+        return $r6;
+
+     label2:
+        return null;
+    }
+
+    public java.lang.Class findDeserializationType(org.codehaus.jackson.map.introspect.Annotated, org.codehaus.jackson.type.JavaType, java.lang.String)
+    {
+        org.codehaus.jackson.map.introspect.JacksonAnnotationIntrospector r0;
+        org.codehaus.jackson.map.introspect.Annotated $r1;
+        org.codehaus.jackson.type.JavaType $r2;
+        java.lang.String $r3;
+        java.lang.'annotation'.Annotation $r4;
+        org.codehaus.jackson.map.annotate.JsonDeserialize r5;
+        java.lang.Class $r6;
+        org.codehaus.jackson.annotate.JsonClass r7;
+
+        r0 := @this: org.codehaus.jackson.map.introspect.JacksonAnnotationIntrospector;
+
+        $r1 := @parameter0: org.codehaus.jackson.map.introspect.Annotated;
+
+        $r2 := @parameter1: org.codehaus.jackson.type.JavaType;
+
+        $r3 := @parameter2: java.lang.String;
+
+        $r4 = virtualinvoke $r1.<org.codehaus.jackson.map.introspect.Annotated: java.lang.'annotation'.Annotation getAnnotation(java.lang.Class)>(class "Lorg/codehaus/jackson/map/annotate/JsonDeserialize;");
+
+        r5 = (org.codehaus.jackson.map.annotate.JsonDeserialize) $r4;
+
+        if r5 == null goto label1;
+
+        $r6 = interfaceinvoke r5.<org.codehaus.jackson.map.annotate.JsonDeserialize: java.lang.Class as()>();
+
+        if $r6 == class "Lorg/codehaus/jackson/map/annotate/NoClass;" goto label1;
+
+        return $r6;
+
+     label1:
+        $r4 = virtualinvoke $r1.<org.codehaus.jackson.map.introspect.Annotated: java.lang.'annotation'.Annotation getAnnotation(java.lang.Class)>(class "Lorg/codehaus/jackson/annotate/JsonClass;");
+
+        r7 = (org.codehaus.jackson.annotate.JsonClass) $r4;
+
+        if r7 == null goto label2;
+
+        $r6 = interfaceinvoke r7.<org.codehaus.jackson.annotate.JsonClass: java.lang.Class value()>();
+
+        if $r6 == class "Lorg/codehaus/jackson/map/annotate/NoClass;" goto label2;
+
+        return $r6;
+
+     label2:
+        return null;
+    }
+
+    public java.lang.Class findDeserializer(org.codehaus.jackson.map.introspect.Annotated, org.codehaus.jackson.map.BeanProperty)
+    {
+        org.codehaus.jackson.map.introspect.JacksonAnnotationIntrospector r0;
+        org.codehaus.jackson.map.introspect.Annotated $r1;
+        org.codehaus.jackson.map.BeanProperty $r2;
+        java.lang.'annotation'.Annotation $r3;
+        org.codehaus.jackson.map.annotate.JsonDeserialize r4;
+        java.lang.Class $r5;
+
+        r0 := @this: org.codehaus.jackson.map.introspect.JacksonAnnotationIntrospector;
+
+        $r1 := @parameter0: org.codehaus.jackson.map.introspect.Annotated;
+
+        $r2 := @parameter1: org.codehaus.jackson.map.BeanProperty;
+
+        $r3 = virtualinvoke $r1.<org.codehaus.jackson.map.introspect.Annotated: java.lang.'annotation'.Annotation getAnnotation(java.lang.Class)>(class "Lorg/codehaus/jackson/map/annotate/JsonDeserialize;");
+
+        r4 = (org.codehaus.jackson.map.annotate.JsonDeserialize) $r3;
+
+        if r4 == null goto label1;
+
+        $r5 = interfaceinvoke r4.<org.codehaus.jackson.map.annotate.JsonDeserialize: java.lang.Class using()>();
+
+        if $r5 == class "Lorg/codehaus/jackson/map/JsonDeserializer$None;" goto label1;
+
+        return $r5;
+
+     label1:
+        return null;
+    }
+
+    public volatile java.lang.Object findDeserializer(org.codehaus.jackson.map.introspect.Annotated, org.codehaus.jackson.map.BeanProperty)
+    {
+        org.codehaus.jackson.map.introspect.JacksonAnnotationIntrospector r0;
+        org.codehaus.jackson.map.introspect.Annotated $r1;
+        org.codehaus.jackson.map.BeanProperty $r2;
+        java.lang.Class $r3;
+
+        r0 := @this: org.codehaus.jackson.map.introspect.JacksonAnnotationIntrospector;
+
+        $r1 := @parameter0: org.codehaus.jackson.map.introspect.Annotated;
+
+        $r2 := @parameter1: org.codehaus.jackson.map.BeanProperty;
+
+        $r3 = virtualinvoke r0.<org.codehaus.jackson.map.introspect.JacksonAnnotationIntrospector: java.lang.Class findDeserializer(org.codehaus.jackson.map.introspect.Annotated,org.codehaus.jackson.map.BeanProperty)>($r1, $r2);
+
+        return $r3;
+    }
+
+    public java.lang.String findEnumValue(java.lang.Enum)
+    {
+        org.codehaus.jackson.map.introspect.JacksonAnnotationIntrospector r0;
+        java.lang.Enum r1;
+        java.lang.String $r2;
+
+        r0 := @this: org.codehaus.jackson.map.introspect.JacksonAnnotationIntrospector;
+
+        r1 := @parameter0: java.lang.Enum;
+
+        $r2 = virtualinvoke r1.<java.lang.Enum: java.lang.String name()>();
+
+        return $r2;
+    }
+
+    public java.lang.Object findFilterId(org.codehaus.jackson.map.introspect.AnnotatedClass)
+    {
+        org.codehaus.jackson.map.introspect.JacksonAnnotationIntrospector r0;
+        org.codehaus.jackson.map.introspect.AnnotatedClass $r1;
+        java.lang.'annotation'.Annotation $r2;
+        org.codehaus.jackson.map.annotate.JsonFilter r3;
+        java.lang.String $r4;
+        int $i0;
+
+        r0 := @this: org.codehaus.jackson.map.introspect.JacksonAnnotationIntrospector;
+
+        $r1 := @parameter0: org.codehaus.jackson.map.introspect.AnnotatedClass;
+
+        $r2 = virtualinvoke $r1.<org.codehaus.jackson.map.introspect.AnnotatedClass: java.lang.'annotation'.Annotation getAnnotation(java.lang.Class)>(class "Lorg/codehaus/jackson/map/annotate/JsonFilter;");
+
+        r3 = (org.codehaus.jackson.map.annotate.JsonFilter) $r2;
+
+        if r3 == null goto label1;
+
+        $r4 = interfaceinvoke r3.<org.codehaus.jackson.map.annotate.JsonFilter: java.lang.String value()>();
+
+        $i0 = virtualinvoke $r4.<java.lang.String: int length()>();
+
+        if $i0 <= 0 goto label1;
+
+        return $r4;
+
+     label1:
+        return null;
+    }
+
+    public java.lang.String findGettablePropertyName(org.codehaus.jackson.map.introspect.AnnotatedMethod)
+    {
+        org.codehaus.jackson.map.introspect.JacksonAnnotationIntrospector r0;
+        org.codehaus.jackson.map.introspect.AnnotatedMethod $r1;
+        java.lang.'annotation'.Annotation $r2;
+        org.codehaus.jackson.annotate.JsonProperty r3;
+        java.lang.String $r4;
+        org.codehaus.jackson.annotate.JsonGetter r5;
+        boolean $z0;
+
+        r0 := @this: org.codehaus.jackson.map.introspect.JacksonAnnotationIntrospector;
+
+        $r1 := @parameter0: org.codehaus.jackson.map.introspect.AnnotatedMethod;
+
+        $r2 = virtualinvoke $r1.<org.codehaus.jackson.map.introspect.AnnotatedMethod: java.lang.'annotation'.Annotation getAnnotation(java.lang.Class)>(class "Lorg/codehaus/jackson/annotate/JsonProperty;");
+
+        r3 = (org.codehaus.jackson.annotate.JsonProperty) $r2;
+
+        if r3 == null goto label1;
+
+        $r4 = interfaceinvoke r3.<org.codehaus.jackson.annotate.JsonProperty: java.lang.String value()>();
+
+        return $r4;
+
+     label1:
+        $r2 = virtualinvoke $r1.<org.codehaus.jackson.map.introspect.AnnotatedMethod: java.lang.'annotation'.Annotation getAnnotation(java.lang.Class)>(class "Lorg/codehaus/jackson/annotate/JsonGetter;");
+
+        r5 = (org.codehaus.jackson.annotate.JsonGetter) $r2;
+
+        if r5 == null goto label2;
+
+        $r4 = interfaceinvoke r5.<org.codehaus.jackson.annotate.JsonGetter: java.lang.String value()>();
+
+        return $r4;
+
+     label2:
+        $z0 = virtualinvoke $r1.<org.codehaus.jackson.map.introspect.AnnotatedMethod: boolean hasAnnotation(java.lang.Class)>(class "Lorg/codehaus/jackson/map/annotate/JsonSerialize;");
+
+        if $z0 != 0 goto label3;
+
+        $z0 = virtualinvoke $r1.<org.codehaus.jackson.map.introspect.AnnotatedMethod: boolean hasAnnotation(java.lang.Class)>(class "Lorg/codehaus/jackson/map/annotate/JsonView;");
+
+        if $z0 == 0 goto label4;
+
+     label3:
+        return "";
+
+     label4:
+        return null;
+    }
+
+    public java.lang.Boolean findIgnoreUnknownProperties(org.codehaus.jackson.map.introspect.AnnotatedClass)
+    {
+        org.codehaus.jackson.map.introspect.JacksonAnnotationIntrospector r0;
+        org.codehaus.jackson.map.introspect.AnnotatedClass $r1;
+        java.lang.'annotation'.Annotation $r2;
+        org.codehaus.jackson.annotate.JsonIgnoreProperties r3;
+        boolean $z0;
+        java.lang.Boolean $r4;
+
+        r0 := @this: org.codehaus.jackson.map.introspect.JacksonAnnotationIntrospector;
+
+        $r1 := @parameter0: org.codehaus.jackson.map.introspect.AnnotatedClass;
+
+        $r2 = virtualinvoke $r1.<org.codehaus.jackson.map.introspect.AnnotatedClass: java.lang.'annotation'.Annotation getAnnotation(java.lang.Class)>(class "Lorg/codehaus/jackson/annotate/JsonIgnoreProperties;");
+
+        r3 = (org.codehaus.jackson.annotate.JsonIgnoreProperties) $r2;
+
+        if r3 != null goto label1;
+
+        return null;
+
+     label1:
+        $z0 = interfaceinvoke r3.<org.codehaus.jackson.annotate.JsonIgnoreProperties: boolean ignoreUnknown()>();
+
+        $r4 = staticinvoke <java.lang.Boolean: java.lang.Boolean valueOf(boolean)>($z0);
+
+        return $r4;
+    }
+
+    public java.lang.Class findKeyDeserializer(org.codehaus.jackson.map.introspect.Annotated)
+    {
+        org.codehaus.jackson.map.introspect.JacksonAnnotationIntrospector r0;
+        org.codehaus.jackson.map.introspect.Annotated $r1;
+        java.lang.'annotation'.Annotation $r2;
+        org.codehaus.jackson.map.annotate.JsonDeserialize r3;
+        java.lang.Class $r4;
+
+        r0 := @this: org.codehaus.jackson.map.introspect.JacksonAnnotationIntrospector;
+
+        $r1 := @parameter0: org.codehaus.jackson.map.introspect.Annotated;
+
+        $r2 = virtualinvoke $r1.<org.codehaus.jackson.map.introspect.Annotated: java.lang.'annotation'.Annotation getAnnotation(java.lang.Class)>(class "Lorg/codehaus/jackson/map/annotate/JsonDeserialize;");
+
+        r3 = (org.codehaus.jackson.map.annotate.JsonDeserialize) $r2;
+
+        if r3 == null goto label1;
+
+        $r4 = interfaceinvoke r3.<org.codehaus.jackson.map.annotate.JsonDeserialize: java.lang.Class keyUsing()>();
+
+        if $r4 == class "Lorg/codehaus/jackson/map/KeyDeserializer$None;" goto label1;
+
+        return $r4;
+
+     label1:
+        return null;
+    }
+
+    public java.lang.String[] findPropertiesToIgnore(org.codehaus.jackson.map.introspect.AnnotatedClass)
+    {
+        org.codehaus.jackson.map.introspect.JacksonAnnotationIntrospector r0;
+        org.codehaus.jackson.map.introspect.AnnotatedClass $r1;
+        java.lang.'annotation'.Annotation $r2;
+        org.codehaus.jackson.annotate.JsonIgnoreProperties r3;
+        java.lang.String[] $r4;
+
+        r0 := @this: org.codehaus.jackson.map.introspect.JacksonAnnotationIntrospector;
+
+        $r1 := @parameter0: org.codehaus.jackson.map.introspect.AnnotatedClass;
+
+        $r2 = virtualinvoke $r1.<org.codehaus.jackson.map.introspect.AnnotatedClass: java.lang.'annotation'.Annotation getAnnotation(java.lang.Class)>(class "Lorg/codehaus/jackson/annotate/JsonIgnoreProperties;");
+
+        r3 = (org.codehaus.jackson.annotate.JsonIgnoreProperties) $r2;
+
+        if r3 != null goto label1;
+
+        return null;
+
+     label1:
+        $r4 = interfaceinvoke r3.<org.codehaus.jackson.annotate.JsonIgnoreProperties: java.lang.String[] value()>();
+
+        return $r4;
+    }
+
+    public org.codehaus.jackson.map.jsontype.TypeResolverBuilder findPropertyContentTypeResolver(org.codehaus.jackson.map.introspect.AnnotatedMember, org.codehaus.jackson.type.JavaType)
+    {
+        org.codehaus.jackson.map.introspect.JacksonAnnotationIntrospector r0;
+        org.codehaus.jackson.map.introspect.AnnotatedMember $r1;
+        org.codehaus.jackson.type.JavaType $r2;
+        boolean $z0;
+        java.lang.IllegalArgumentException $r3;
+        java.lang.StringBuilder $r4;
+        java.lang.String $r5;
+        org.codehaus.jackson.map.jsontype.TypeResolverBuilder $r6;
+
+        r0 := @this: org.codehaus.jackson.map.introspect.JacksonAnnotationIntrospector;
+
+        $r1 := @parameter0: org.codehaus.jackson.map.introspect.AnnotatedMember;
+
+        $r2 := @parameter1: org.codehaus.jackson.type.JavaType;
+
+        $z0 = virtualinvoke $r2.<org.codehaus.jackson.type.JavaType: boolean isContainerType()>();
+
+        if $z0 != 0 goto label1;
+
+        $r3 = new java.lang.IllegalArgumentException;
+
+        $r4 = new java.lang.StringBuilder;
+
+        specialinvoke $r4.<java.lang.StringBuilder: void <init>()>();
+
+        $r4 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Must call method with a container type (got ");
+
+        $r4 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($r2);
+
+        $r4 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(")");
+
+        $r5 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke $r3.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>($r5);
+
+        throw $r3;
+
+     label1:
+        $r6 = virtualinvoke r0.<org.codehaus.jackson.map.introspect.JacksonAnnotationIntrospector: org.codehaus.jackson.map.jsontype.TypeResolverBuilder _findTypeResolver(org.codehaus.jackson.map.introspect.Annotated,org.codehaus.jackson.type.JavaType)>($r1, $r2);
+
+        return $r6;
+    }
+
+    public java.lang.String findPropertyNameForParam(org.codehaus.jackson.map.introspect.AnnotatedParameter)
+    {
+        org.codehaus.jackson.map.introspect.JacksonAnnotationIntrospector r0;
+        org.codehaus.jackson.map.introspect.AnnotatedParameter $r1;
+        java.lang.'annotation'.Annotation $r2;
+        org.codehaus.jackson.annotate.JsonProperty r3;
+        java.lang.String $r4;
+
+        r0 := @this: org.codehaus.jackson.map.introspect.JacksonAnnotationIntrospector;
+
+        $r1 := @parameter0: org.codehaus.jackson.map.introspect.AnnotatedParameter;
+
+        if $r1 == null goto label1;
+
+        $r2 = virtualinvoke $r1.<org.codehaus.jackson.map.introspect.AnnotatedParameter: java.lang.'annotation'.Annotation getAnnotation(java.lang.Class)>(class "Lorg/codehaus/jackson/annotate/JsonProperty;");
+
+        r3 = (org.codehaus.jackson.annotate.JsonProperty) $r2;
+
+        if r3 == null goto label1;
+
+        $r4 = interfaceinvoke r3.<org.codehaus.jackson.annotate.JsonProperty: java.lang.String value()>();
+
+        return $r4;
+
+     label1:
+        return null;
+    }
+
+    public org.codehaus.jackson.map.jsontype.TypeResolverBuilder findPropertyTypeResolver(org.codehaus.jackson.map.introspect.AnnotatedMember, org.codehaus.jackson.type.JavaType)
+    {
+        org.codehaus.jackson.map.introspect.JacksonAnnotationIntrospector r0;
+        org.codehaus.jackson.map.introspect.AnnotatedMember $r1;
+        org.codehaus.jackson.type.JavaType $r2;
+        boolean $z0;
+        org.codehaus.jackson.map.jsontype.TypeResolverBuilder $r3;
+
+        r0 := @this: org.codehaus.jackson.map.introspect.JacksonAnnotationIntrospector;
+
+        $r1 := @parameter0: org.codehaus.jackson.map.introspect.AnnotatedMember;
+
+        $r2 := @parameter1: org.codehaus.jackson.type.JavaType;
+
+        $z0 = virtualinvoke $r2.<org.codehaus.jackson.type.JavaType: boolean isContainerType()>();
+
+        if $z0 == 0 goto label1;
+
+        return null;
+
+     label1:
+        $r3 = virtualinvoke r0.<org.codehaus.jackson.map.introspect.JacksonAnnotationIntrospector: org.codehaus.jackson.map.jsontype.TypeResolverBuilder _findTypeResolver(org.codehaus.jackson.map.introspect.Annotated,org.codehaus.jackson.type.JavaType)>($r1, $r2);
+
+        return $r3;
+    }
+
+    public org.codehaus.jackson.map.AnnotationIntrospector$ReferenceProperty findReferenceType(org.codehaus.jackson.map.introspect.AnnotatedMember)
+    {
+        org.codehaus.jackson.map.introspect.JacksonAnnotationIntrospector r0;
+        org.codehaus.jackson.map.introspect.AnnotatedMember $r1;
+        java.lang.'annotation'.Annotation $r2;
+        org.codehaus.jackson.annotate.JsonManagedReference r3;
+        java.lang.String $r4;
+        org.codehaus.jackson.map.AnnotationIntrospector$ReferenceProperty $r5;
+        org.codehaus.jackson.annotate.JsonBackReference r6;
+
+        r0 := @this: org.codehaus.jackson.map.introspect.JacksonAnnotationIntrospector;
+
+        $r1 := @parameter0: org.codehaus.jackson.map.introspect.AnnotatedMember;
+
+        $r2 = virtualinvoke $r1.<org.codehaus.jackson.map.introspect.AnnotatedMember: java.lang.'annotation'.Annotation getAnnotation(java.lang.Class)>(class "Lorg/codehaus/jackson/annotate/JsonManagedReference;");
+
+        r3 = (org.codehaus.jackson.annotate.JsonManagedReference) $r2;
+
+        if r3 == null goto label1;
+
+        $r4 = interfaceinvoke r3.<org.codehaus.jackson.annotate.JsonManagedReference: java.lang.String value()>();
+
+        $r5 = staticinvoke <org.codehaus.jackson.map.AnnotationIntrospector$ReferenceProperty: org.codehaus.jackson.map.AnnotationIntrospector$ReferenceProperty managed(java.lang.String)>($r4);
+
+        return $r5;
+
+     label1:
+        $r2 = virtualinvoke $r1.<org.codehaus.jackson.map.introspect.AnnotatedMember: java.lang.'annotation'.Annotation getAnnotation(java.lang.Class)>(class "Lorg/codehaus/jackson/annotate/JsonBackReference;");
+
+        r6 = (org.codehaus.jackson.annotate.JsonBackReference) $r2;
+
+        if r6 == null goto label2;
+
+        $r4 = interfaceinvoke r6.<org.codehaus.jackson.annotate.JsonBackReference: java.lang.String value()>();
+
+        $r5 = staticinvoke <org.codehaus.jackson.map.AnnotationIntrospector$ReferenceProperty: org.codehaus.jackson.map.AnnotationIntrospector$ReferenceProperty back(java.lang.String)>($r4);
+
+        return $r5;
+
+     label2:
+        return null;
+    }
+
+    public java.lang.String findRootName(org.codehaus.jackson.map.introspect.AnnotatedClass)
+    {
+        org.codehaus.jackson.map.introspect.JacksonAnnotationIntrospector r0;
+        org.codehaus.jackson.map.introspect.AnnotatedClass $r1;
+
+        r0 := @this: org.codehaus.jackson.map.introspect.JacksonAnnotationIntrospector;
+
+        $r1 := @parameter0: org.codehaus.jackson.map.introspect.AnnotatedClass;
+
+        return null;
+    }
+
+    public java.lang.String findSerializablePropertyName(org.codehaus.jackson.map.introspect.AnnotatedField)
+    {
+        org.codehaus.jackson.map.introspect.JacksonAnnotationIntrospector r0;
+        org.codehaus.jackson.map.introspect.AnnotatedField $r1;
+        java.lang.'annotation'.Annotation $r2;
+        org.codehaus.jackson.annotate.JsonProperty r3;
+        java.lang.String $r4;
+        boolean $z0;
+
+        r0 := @this: org.codehaus.jackson.map.introspect.JacksonAnnotationIntrospector;
+
+        $r1 := @parameter0: org.codehaus.jackson.map.introspect.AnnotatedField;
+
+        $r2 = virtualinvoke $r1.<org.codehaus.jackson.map.introspect.AnnotatedField: java.lang.'annotation'.Annotation getAnnotation(java.lang.Class)>(class "Lorg/codehaus/jackson/annotate/JsonProperty;");
+
+        r3 = (org.codehaus.jackson.annotate.JsonProperty) $r2;
+
+        if r3 == null goto label1;
+
+        $r4 = interfaceinvoke r3.<org.codehaus.jackson.annotate.JsonProperty: java.lang.String value()>();
+
+        return $r4;
+
+     label1:
+        $z0 = virtualinvoke $r1.<org.codehaus.jackson.map.introspect.AnnotatedField: boolean hasAnnotation(java.lang.Class)>(class "Lorg/codehaus/jackson/map/annotate/JsonSerialize;");
+
+        if $z0 != 0 goto label2;
+
+        $z0 = virtualinvoke $r1.<org.codehaus.jackson.map.introspect.AnnotatedField: boolean hasAnnotation(java.lang.Class)>(class "Lorg/codehaus/jackson/map/annotate/JsonView;");
+
+        if $z0 == 0 goto label3;
+
+     label2:
+        return "";
+
+     label3:
+        return null;
+    }
+
+    public org.codehaus.jackson.map.annotate.JsonSerialize$Inclusion findSerializationInclusion(org.codehaus.jackson.map.introspect.Annotated, org.codehaus.jackson.map.annotate.JsonSerialize$Inclusion)
+    {
+        org.codehaus.jackson.map.introspect.JacksonAnnotationIntrospector r0;
+        org.codehaus.jackson.map.introspect.Annotated $r1;
+        org.codehaus.jackson.map.annotate.JsonSerialize$Inclusion $r2;
+        java.lang.'annotation'.Annotation $r3;
+        org.codehaus.jackson.map.annotate.JsonSerialize r4;
+        org.codehaus.jackson.annotate.JsonWriteNullProperties r5;
+        boolean $z0;
+
+        r0 := @this: org.codehaus.jackson.map.introspect.JacksonAnnotationIntrospector;
+
+        $r1 := @parameter0: org.codehaus.jackson.map.introspect.Annotated;
+
+        $r2 := @parameter1: org.codehaus.jackson.map.annotate.JsonSerialize$Inclusion;
+
+        $r3 = virtualinvoke $r1.<org.codehaus.jackson.map.introspect.Annotated: java.lang.'annotation'.Annotation getAnnotation(java.lang.Class)>(class "Lorg/codehaus/jackson/map/annotate/JsonSerialize;");
+
+        r4 = (org.codehaus.jackson.map.annotate.JsonSerialize) $r3;
+
+        if r4 == null goto label1;
+
+        $r2 = interfaceinvoke r4.<org.codehaus.jackson.map.annotate.JsonSerialize: org.codehaus.jackson.map.annotate.JsonSerialize$Inclusion include()>();
+
+        return $r2;
+
+     label1:
+        $r3 = virtualinvoke $r1.<org.codehaus.jackson.map.introspect.Annotated: java.lang.'annotation'.Annotation getAnnotation(java.lang.Class)>(class "Lorg/codehaus/jackson/annotate/JsonWriteNullProperties;");
+
+        r5 = (org.codehaus.jackson.annotate.JsonWriteNullProperties) $r3;
+
+        if r5 == null goto label3;
+
+        $z0 = interfaceinvoke r5.<org.codehaus.jackson.annotate.JsonWriteNullProperties: boolean value()>();
+
+        if $z0 == 0 goto label2;
+
+        $r2 = <org.codehaus.jackson.map.annotate.JsonSerialize$Inclusion: org.codehaus.jackson.map.annotate.JsonSerialize$Inclusion ALWAYS>;
+
+        return $r2;
+
+     label2:
+        $r2 = <org.codehaus.jackson.map.annotate.JsonSerialize$Inclusion: org.codehaus.jackson.map.annotate.JsonSerialize$Inclusion NON_NULL>;
+
+     label3:
+        return $r2;
+    }
+
+    public java.lang.String[] findSerializationPropertyOrder(org.codehaus.jackson.map.introspect.AnnotatedClass)
+    {
+        org.codehaus.jackson.map.introspect.JacksonAnnotationIntrospector r0;
+        org.codehaus.jackson.map.introspect.AnnotatedClass $r1;
+        java.lang.'annotation'.Annotation $r2;
+        org.codehaus.jackson.annotate.JsonPropertyOrder r3;
+        java.lang.String[] $r4;
+
+        r0 := @this: org.codehaus.jackson.map.introspect.JacksonAnnotationIntrospector;
+
+        $r1 := @parameter0: org.codehaus.jackson.map.introspect.AnnotatedClass;
+
+        $r2 = virtualinvoke $r1.<org.codehaus.jackson.map.introspect.AnnotatedClass: java.lang.'annotation'.Annotation getAnnotation(java.lang.Class)>(class "Lorg/codehaus/jackson/annotate/JsonPropertyOrder;");
+
+        r3 = (org.codehaus.jackson.annotate.JsonPropertyOrder) $r2;
+
+        if r3 != null goto label1;
+
+        return null;
+
+     label1:
+        $r4 = interfaceinvoke r3.<org.codehaus.jackson.annotate.JsonPropertyOrder: java.lang.String[] value()>();
+
+        return $r4;
+    }
+
+    public java.lang.Boolean findSerializationSortAlphabetically(org.codehaus.jackson.map.introspect.AnnotatedClass)
+    {
+        org.codehaus.jackson.map.introspect.JacksonAnnotationIntrospector r0;
+        org.codehaus.jackson.map.introspect.AnnotatedClass $r1;
+        java.lang.'annotation'.Annotation $r2;
+        org.codehaus.jackson.annotate.JsonPropertyOrder r3;
+        boolean $z0;
+        java.lang.Boolean $r4;
+
+        r0 := @this: org.codehaus.jackson.map.introspect.JacksonAnnotationIntrospector;
+
+        $r1 := @parameter0: org.codehaus.jackson.map.introspect.AnnotatedClass;
+
+        $r2 = virtualinvoke $r1.<org.codehaus.jackson.map.introspect.AnnotatedClass: java.lang.'annotation'.Annotation getAnnotation(java.lang.Class)>(class "Lorg/codehaus/jackson/annotate/JsonPropertyOrder;");
+
+        r3 = (org.codehaus.jackson.annotate.JsonPropertyOrder) $r2;
+
+        if r3 != null goto label1;
+
+        return null;
+
+     label1:
+        $z0 = interfaceinvoke r3.<org.codehaus.jackson.annotate.JsonPropertyOrder: boolean alphabetic()>();
+
+        $r4 = staticinvoke <java.lang.Boolean: java.lang.Boolean valueOf(boolean)>($z0);
+
+        return $r4;
+    }
+
+    public java.lang.Class findSerializationType(org.codehaus.jackson.map.introspect.Annotated)
+    {
+        org.codehaus.jackson.map.introspect.JacksonAnnotationIntrospector r0;
+        org.codehaus.jackson.map.introspect.Annotated $r1;
+        java.lang.'annotation'.Annotation $r2;
+        org.codehaus.jackson.map.annotate.JsonSerialize r3;
+        java.lang.Class $r4;
+
+        r0 := @this: org.codehaus.jackson.map.introspect.JacksonAnnotationIntrospector;
+
+        $r1 := @parameter0: org.codehaus.jackson.map.introspect.Annotated;
+
+        $r2 = virtualinvoke $r1.<org.codehaus.jackson.map.introspect.Annotated: java.lang.'annotation'.Annotation getAnnotation(java.lang.Class)>(class "Lorg/codehaus/jackson/map/annotate/JsonSerialize;");
+
+        r3 = (org.codehaus.jackson.map.annotate.JsonSerialize) $r2;
+
+        if r3 == null goto label1;
+
+        $r4 = interfaceinvoke r3.<org.codehaus.jackson.map.annotate.JsonSerialize: java.lang.Class as()>();
+
+        if $r4 == class "Lorg/codehaus/jackson/map/annotate/NoClass;" goto label1;
+
+        return $r4;
+
+     label1:
+        return null;
+    }
+
+    public org.codehaus.jackson.map.annotate.JsonSerialize$Typing findSerializationTyping(org.codehaus.jackson.map.introspect.Annotated)
+    {
+        org.codehaus.jackson.map.introspect.JacksonAnnotationIntrospector r0;
+        org.codehaus.jackson.map.introspect.Annotated $r1;
+        java.lang.'annotation'.Annotation $r2;
+        org.codehaus.jackson.map.annotate.JsonSerialize r3;
+        org.codehaus.jackson.map.annotate.JsonSerialize$Typing $r4;
+
+        r0 := @this: org.codehaus.jackson.map.introspect.JacksonAnnotationIntrospector;
+
+        $r1 := @parameter0: org.codehaus.jackson.map.introspect.Annotated;
+
+        $r2 = virtualinvoke $r1.<org.codehaus.jackson.map.introspect.Annotated: java.lang.'annotation'.Annotation getAnnotation(java.lang.Class)>(class "Lorg/codehaus/jackson/map/annotate/JsonSerialize;");
+
+        r3 = (org.codehaus.jackson.map.annotate.JsonSerialize) $r2;
+
+        if r3 != null goto label1;
+
+        return null;
+
+     label1:
+        $r4 = interfaceinvoke r3.<org.codehaus.jackson.map.annotate.JsonSerialize: org.codehaus.jackson.map.annotate.JsonSerialize$Typing typing()>();
+
+        return $r4;
+    }
+
+    public java.lang.Class[] findSerializationViews(org.codehaus.jackson.map.introspect.Annotated)
+    {
+        org.codehaus.jackson.map.introspect.JacksonAnnotationIntrospector r0;
+        org.codehaus.jackson.map.introspect.Annotated $r1;
+        java.lang.'annotation'.Annotation $r2;
+        org.codehaus.jackson.map.annotate.JsonView r3;
+        java.lang.Class[] $r4;
+
+        r0 := @this: org.codehaus.jackson.map.introspect.JacksonAnnotationIntrospector;
+
+        $r1 := @parameter0: org.codehaus.jackson.map.introspect.Annotated;
+
+        $r2 = virtualinvoke $r1.<org.codehaus.jackson.map.introspect.Annotated: java.lang.'annotation'.Annotation getAnnotation(java.lang.Class)>(class "Lorg/codehaus/jackson/map/annotate/JsonView;");
+
+        r3 = (org.codehaus.jackson.map.annotate.JsonView) $r2;
+
+        if r3 != null goto label1;
+
+        return null;
+
+     label1:
+        $r4 = interfaceinvoke r3.<org.codehaus.jackson.map.annotate.JsonView: java.lang.Class[] value()>();
+
+        return $r4;
+    }
+
+    public java.lang.Object findSerializer(org.codehaus.jackson.map.introspect.Annotated, org.codehaus.jackson.map.BeanProperty)
+    {
+        org.codehaus.jackson.map.introspect.JacksonAnnotationIntrospector r0;
+        org.codehaus.jackson.map.introspect.Annotated $r1;
+        org.codehaus.jackson.map.BeanProperty $r2;
+        java.lang.'annotation'.Annotation $r3;
+        org.codehaus.jackson.map.annotate.JsonSerialize r4;
+        java.lang.Class $r5;
+        org.codehaus.jackson.annotate.JsonRawValue r6;
+        boolean $z0;
+        org.codehaus.jackson.map.ser.impl.RawSerializer $r7;
+
+        r0 := @this: org.codehaus.jackson.map.introspect.JacksonAnnotationIntrospector;
+
+        $r1 := @parameter0: org.codehaus.jackson.map.introspect.Annotated;
+
+        $r2 := @parameter1: org.codehaus.jackson.map.BeanProperty;
+
+        $r3 = virtualinvoke $r1.<org.codehaus.jackson.map.introspect.Annotated: java.lang.'annotation'.Annotation getAnnotation(java.lang.Class)>(class "Lorg/codehaus/jackson/map/annotate/JsonSerialize;");
+
+        r4 = (org.codehaus.jackson.map.annotate.JsonSerialize) $r3;
+
+        if r4 == null goto label1;
+
+        $r5 = interfaceinvoke r4.<org.codehaus.jackson.map.annotate.JsonSerialize: java.lang.Class using()>();
+
+        if $r5 == class "Lorg/codehaus/jackson/map/JsonSerializer$None;" goto label1;
+
+        return $r5;
+
+     label1:
+        $r3 = virtualinvoke $r1.<org.codehaus.jackson.map.introspect.Annotated: java.lang.'annotation'.Annotation getAnnotation(java.lang.Class)>(class "Lorg/codehaus/jackson/annotate/JsonRawValue;");
+
+        r6 = (org.codehaus.jackson.annotate.JsonRawValue) $r3;
+
+        if r6 == null goto label2;
+
+        $z0 = interfaceinvoke r6.<org.codehaus.jackson.annotate.JsonRawValue: boolean value()>();
+
+        if $z0 == 0 goto label2;
+
+        $r5 = virtualinvoke $r1.<org.codehaus.jackson.map.introspect.Annotated: java.lang.Class getRawType()>();
+
+        $r7 = new org.codehaus.jackson.map.ser.impl.RawSerializer;
+
+        specialinvoke $r7.<org.codehaus.jackson.map.ser.impl.RawSerializer: void <init>(java.lang.Class)>($r5);
+
+        return $r7;
+
+     label2:
+        return null;
+    }
+
+    public java.lang.String findSettablePropertyName(org.codehaus.jackson.map.introspect.AnnotatedMethod)
+    {
+        org.codehaus.jackson.map.introspect.JacksonAnnotationIntrospector r0;
+        org.codehaus.jackson.map.introspect.AnnotatedMethod $r1;
+        java.lang.'annotation'.Annotation $r2;
+        org.codehaus.jackson.annotate.JsonProperty r3;
+        java.lang.String $r4;
+        org.codehaus.jackson.annotate.JsonSetter r5;
+        boolean $z0;
+
+        r0 := @this: org.codehaus.jackson.map.introspect.JacksonAnnotationIntrospector;
+
+        $r1 := @parameter0: org.codehaus.jackson.map.introspect.AnnotatedMethod;
+
+        $r2 = virtualinvoke $r1.<org.codehaus.jackson.map.introspect.AnnotatedMethod: java.lang.'annotation'.Annotation getAnnotation(java.lang.Class)>(class "Lorg/codehaus/jackson/annotate/JsonProperty;");
+
+        r3 = (org.codehaus.jackson.annotate.JsonProperty) $r2;
+
+        if r3 == null goto label1;
+
+        $r4 = interfaceinvoke r3.<org.codehaus.jackson.annotate.JsonProperty: java.lang.String value()>();
+
+        return $r4;
+
+     label1:
+        $r2 = virtualinvoke $r1.<org.codehaus.jackson.map.introspect.AnnotatedMethod: java.lang.'annotation'.Annotation getAnnotation(java.lang.Class)>(class "Lorg/codehaus/jackson/annotate/JsonSetter;");
+
+        r5 = (org.codehaus.jackson.annotate.JsonSetter) $r2;
+
+        if r5 == null goto label2;
+
+        $r4 = interfaceinvoke r5.<org.codehaus.jackson.annotate.JsonSetter: java.lang.String value()>();
+
+        return $r4;
+
+     label2:
+        $z0 = virtualinvoke $r1.<org.codehaus.jackson.map.introspect.AnnotatedMethod: boolean hasAnnotation(java.lang.Class)>(class "Lorg/codehaus/jackson/map/annotate/JsonDeserialize;");
+
+        if $z0 != 0 goto label3;
+
+        $z0 = virtualinvoke $r1.<org.codehaus.jackson.map.introspect.AnnotatedMethod: boolean hasAnnotation(java.lang.Class)>(class "Lorg/codehaus/jackson/map/annotate/JsonView;");
+
+        if $z0 == 0 goto label4;
+
+     label3:
+        return "";
+
+     label4:
+        return null;
+    }
+
+    public java.util.List findSubtypes(org.codehaus.jackson.map.introspect.Annotated)
+    {
+        org.codehaus.jackson.map.introspect.JacksonAnnotationIntrospector r0;
+        org.codehaus.jackson.map.introspect.Annotated $r1;
+        int i0, i1;
+        java.util.ArrayList r2;
+        org.codehaus.jackson.annotate.JsonSubTypes$Type r3;
+        java.lang.'annotation'.Annotation $r4;
+        org.codehaus.jackson.annotate.JsonSubTypes r5;
+        org.codehaus.jackson.annotate.JsonSubTypes$Type[] $r6;
+        org.codehaus.jackson.map.jsontype.NamedType $r7;
+        java.lang.Class $r8;
+        java.lang.String $r9;
+
+        r0 := @this: org.codehaus.jackson.map.introspect.JacksonAnnotationIntrospector;
+
+        $r1 := @parameter0: org.codehaus.jackson.map.introspect.Annotated;
+
+        $r4 = virtualinvoke $r1.<org.codehaus.jackson.map.introspect.Annotated: java.lang.'annotation'.Annotation getAnnotation(java.lang.Class)>(class "Lorg/codehaus/jackson/annotate/JsonSubTypes;");
+
+        r5 = (org.codehaus.jackson.annotate.JsonSubTypes) $r4;
+
+        if r5 != null goto label1;
+
+        return null;
+
+     label1:
+        $r6 = interfaceinvoke r5.<org.codehaus.jackson.annotate.JsonSubTypes: org.codehaus.jackson.annotate.JsonSubTypes$Type[] value()>();
+
+        r2 = new java.util.ArrayList;
+
+        i0 = lengthof $r6;
+
+        specialinvoke r2.<java.util.ArrayList: void <init>(int)>(i0);
+
+        i0 = lengthof $r6;
+
+        i1 = 0;
+
+     label2:
+        if i1 >= i0 goto label3;
+
+        r3 = $r6[i1];
+
+        $r7 = new org.codehaus.jackson.map.jsontype.NamedType;
+
+        $r8 = interfaceinvoke r3.<org.codehaus.jackson.annotate.JsonSubTypes$Type: java.lang.Class value()>();
+
+        $r9 = interfaceinvoke r3.<org.codehaus.jackson.annotate.JsonSubTypes$Type: java.lang.String name()>();
+
+        specialinvoke $r7.<org.codehaus.jackson.map.jsontype.NamedType: void <init>(java.lang.Class,java.lang.String)>($r8, $r9);
+
+        virtualinvoke r2.<java.util.ArrayList: boolean add(java.lang.Object)>($r7);
+
+        i1 = i1 + 1;
+
+        goto label2;
+
+     label3:
+        return r2;
+    }
+
+    public java.lang.String findTypeName(org.codehaus.jackson.map.introspect.AnnotatedClass)
+    {
+        org.codehaus.jackson.map.introspect.JacksonAnnotationIntrospector r0;
+        org.codehaus.jackson.map.introspect.AnnotatedClass $r1;
+        java.lang.'annotation'.Annotation $r2;
+        org.codehaus.jackson.annotate.JsonTypeName r3;
+        java.lang.String $r4;
+
+        r0 := @this: org.codehaus.jackson.map.introspect.JacksonAnnotationIntrospector;
+
+        $r1 := @parameter0: org.codehaus.jackson.map.introspect.AnnotatedClass;
+
+        $r2 = virtualinvoke $r1.<org.codehaus.jackson.map.introspect.AnnotatedClass: java.lang.'annotation'.Annotation getAnnotation(java.lang.Class)>(class "Lorg/codehaus/jackson/annotate/JsonTypeName;");
+
+        r3 = (org.codehaus.jackson.annotate.JsonTypeName) $r2;
+
+        if r3 != null goto label1;
+
+        return null;
+
+     label1:
+        $r4 = interfaceinvoke r3.<org.codehaus.jackson.annotate.JsonTypeName: java.lang.String value()>();
+
+        return $r4;
+    }
+
+    public org.codehaus.jackson.map.jsontype.TypeResolverBuilder findTypeResolver(org.codehaus.jackson.map.introspect.AnnotatedClass, org.codehaus.jackson.type.JavaType)
+    {
+        org.codehaus.jackson.map.introspect.JacksonAnnotationIntrospector r0;
+        org.codehaus.jackson.map.introspect.AnnotatedClass $r1;
+        org.codehaus.jackson.type.JavaType $r2;
+        org.codehaus.jackson.map.jsontype.TypeResolverBuilder $r3;
+
+        r0 := @this: org.codehaus.jackson.map.introspect.JacksonAnnotationIntrospector;
+
+        $r1 := @parameter0: org.codehaus.jackson.map.introspect.AnnotatedClass;
+
+        $r2 := @parameter1: org.codehaus.jackson.type.JavaType;
+
+        $r3 = virtualinvoke r0.<org.codehaus.jackson.map.introspect.JacksonAnnotationIntrospector: org.codehaus.jackson.map.jsontype.TypeResolverBuilder _findTypeResolver(org.codehaus.jackson.map.introspect.Annotated,org.codehaus.jackson.type.JavaType)>($r1, $r2);
+
+        return $r3;
+    }
+
+    public boolean hasAnyGetterAnnotation(org.codehaus.jackson.map.introspect.AnnotatedMethod)
+    {
+        org.codehaus.jackson.map.introspect.JacksonAnnotationIntrospector r0;
+        org.codehaus.jackson.map.introspect.AnnotatedMethod $r1;
+        boolean $z0;
+
+        r0 := @this: org.codehaus.jackson.map.introspect.JacksonAnnotationIntrospector;
+
+        $r1 := @parameter0: org.codehaus.jackson.map.introspect.AnnotatedMethod;
+
+        $z0 = virtualinvoke $r1.<org.codehaus.jackson.map.introspect.AnnotatedMethod: boolean hasAnnotation(java.lang.Class)>(class "Lorg/codehaus/jackson/annotate/JsonAnyGetter;");
+
+        return $z0;
+    }
+
+    public boolean hasAnySetterAnnotation(org.codehaus.jackson.map.introspect.AnnotatedMethod)
+    {
+        org.codehaus.jackson.map.introspect.JacksonAnnotationIntrospector r0;
+        org.codehaus.jackson.map.introspect.AnnotatedMethod $r1;
+        boolean $z0;
+
+        r0 := @this: org.codehaus.jackson.map.introspect.JacksonAnnotationIntrospector;
+
+        $r1 := @parameter0: org.codehaus.jackson.map.introspect.AnnotatedMethod;
+
+        $z0 = virtualinvoke $r1.<org.codehaus.jackson.map.introspect.AnnotatedMethod: boolean hasAnnotation(java.lang.Class)>(class "Lorg/codehaus/jackson/annotate/JsonAnySetter;");
+
+        return $z0;
+    }
+
+    public boolean hasAsValueAnnotation(org.codehaus.jackson.map.introspect.AnnotatedMethod)
+    {
+        org.codehaus.jackson.map.introspect.JacksonAnnotationIntrospector r0;
+        org.codehaus.jackson.map.introspect.AnnotatedMethod $r1;
+        java.lang.'annotation'.Annotation $r2;
+        org.codehaus.jackson.annotate.JsonValue r3;
+        boolean $z0;
+
+        r0 := @this: org.codehaus.jackson.map.introspect.JacksonAnnotationIntrospector;
+
+        $r1 := @parameter0: org.codehaus.jackson.map.introspect.AnnotatedMethod;
+
+        $r2 = virtualinvoke $r1.<org.codehaus.jackson.map.introspect.AnnotatedMethod: java.lang.'annotation'.Annotation getAnnotation(java.lang.Class)>(class "Lorg/codehaus/jackson/annotate/JsonValue;");
+
+        r3 = (org.codehaus.jackson.annotate.JsonValue) $r2;
+
+        if r3 == null goto label1;
+
+        $z0 = interfaceinvoke r3.<org.codehaus.jackson.annotate.JsonValue: boolean value()>();
+
+        if $z0 == 0 goto label1;
+
+        return 1;
+
+     label1:
+        return 0;
+    }
+
+    public boolean hasCreatorAnnotation(org.codehaus.jackson.map.introspect.Annotated)
+    {
+        org.codehaus.jackson.map.introspect.JacksonAnnotationIntrospector r0;
+        org.codehaus.jackson.map.introspect.Annotated $r1;
+        boolean $z0;
+
+        r0 := @this: org.codehaus.jackson.map.introspect.JacksonAnnotationIntrospector;
+
+        $r1 := @parameter0: org.codehaus.jackson.map.introspect.Annotated;
+
+        $z0 = virtualinvoke $r1.<org.codehaus.jackson.map.introspect.Annotated: boolean hasAnnotation(java.lang.Class)>(class "Lorg/codehaus/jackson/annotate/JsonCreator;");
+
+        return $z0;
+    }
+
+    public boolean isHandled(java.lang.'annotation'.Annotation)
+    {
+        org.codehaus.jackson.map.introspect.JacksonAnnotationIntrospector r0;
+        java.lang.'annotation'.Annotation $r1;
+        java.lang.Class $r2;
+
+        r0 := @this: org.codehaus.jackson.map.introspect.JacksonAnnotationIntrospector;
+
+        $r1 := @parameter0: java.lang.'annotation'.Annotation;
+
+        $r2 = interfaceinvoke $r1.<java.lang.'annotation'.Annotation: java.lang.Class annotationType()>();
+
+        $r1 = virtualinvoke $r2.<java.lang.Class: java.lang.'annotation'.Annotation getAnnotation(java.lang.Class)>(class "Lorg/codehaus/jackson/annotate/JacksonAnnotation;");
+
+        if $r1 == null goto label1;
+
+        return 1;
+
+     label1:
+        return 0;
+    }
+
+    public boolean isIgnorableConstructor(org.codehaus.jackson.map.introspect.AnnotatedConstructor)
+    {
+        org.codehaus.jackson.map.introspect.JacksonAnnotationIntrospector r0;
+        org.codehaus.jackson.map.introspect.AnnotatedConstructor $r1;
+        boolean $z0;
+
+        r0 := @this: org.codehaus.jackson.map.introspect.JacksonAnnotationIntrospector;
+
+        $r1 := @parameter0: org.codehaus.jackson.map.introspect.AnnotatedConstructor;
+
+        $z0 = virtualinvoke r0.<org.codehaus.jackson.map.introspect.JacksonAnnotationIntrospector: boolean _isIgnorable(org.codehaus.jackson.map.introspect.Annotated)>($r1);
+
+        return $z0;
+    }
+
+    public boolean isIgnorableField(org.codehaus.jackson.map.introspect.AnnotatedField)
+    {
+        org.codehaus.jackson.map.introspect.JacksonAnnotationIntrospector r0;
+        org.codehaus.jackson.map.introspect.AnnotatedField $r1;
+        boolean $z0;
+
+        r0 := @this: org.codehaus.jackson.map.introspect.JacksonAnnotationIntrospector;
+
+        $r1 := @parameter0: org.codehaus.jackson.map.introspect.AnnotatedField;
+
+        $z0 = virtualinvoke r0.<org.codehaus.jackson.map.introspect.JacksonAnnotationIntrospector: boolean _isIgnorable(org.codehaus.jackson.map.introspect.Annotated)>($r1);
+
+        return $z0;
+    }
+
+    public boolean isIgnorableMethod(org.codehaus.jackson.map.introspect.AnnotatedMethod)
+    {
+        org.codehaus.jackson.map.introspect.JacksonAnnotationIntrospector r0;
+        org.codehaus.jackson.map.introspect.AnnotatedMethod $r1;
+        boolean $z0;
+
+        r0 := @this: org.codehaus.jackson.map.introspect.JacksonAnnotationIntrospector;
+
+        $r1 := @parameter0: org.codehaus.jackson.map.introspect.AnnotatedMethod;
+
+        $z0 = virtualinvoke r0.<org.codehaus.jackson.map.introspect.JacksonAnnotationIntrospector: boolean _isIgnorable(org.codehaus.jackson.map.introspect.Annotated)>($r1);
+
+        return $z0;
+    }
+
+    public java.lang.Boolean isIgnorableType(org.codehaus.jackson.map.introspect.AnnotatedClass)
+    {
+        org.codehaus.jackson.map.introspect.JacksonAnnotationIntrospector r0;
+        org.codehaus.jackson.map.introspect.AnnotatedClass $r1;
+        java.lang.'annotation'.Annotation $r2;
+        org.codehaus.jackson.annotate.JsonIgnoreType r3;
+        boolean $z0;
+        java.lang.Boolean $r4;
+
+        r0 := @this: org.codehaus.jackson.map.introspect.JacksonAnnotationIntrospector;
+
+        $r1 := @parameter0: org.codehaus.jackson.map.introspect.AnnotatedClass;
+
+        $r2 = virtualinvoke $r1.<org.codehaus.jackson.map.introspect.AnnotatedClass: java.lang.'annotation'.Annotation getAnnotation(java.lang.Class)>(class "Lorg/codehaus/jackson/annotate/JsonIgnoreType;");
+
+        r3 = (org.codehaus.jackson.annotate.JsonIgnoreType) $r2;
+
+        if r3 != null goto label1;
+
+        return null;
+
+     label1:
+        $z0 = interfaceinvoke r3.<org.codehaus.jackson.annotate.JsonIgnoreType: boolean value()>();
+
+        $r4 = staticinvoke <java.lang.Boolean: java.lang.Boolean valueOf(boolean)>($z0);
+
+        return $r4;
+    }
+}

@@ -1,0 +1,528 @@
+public class com.heyzap.sdk.HeyzapLib extends java.lang.Object
+{
+    private static final java.lang.String HEYZAP_INTENT_CLASS;
+    public static final java.lang.String HEYZAP_PACKAGE;
+    private static int NO_NOTIFICATION_FLAG;
+    private static int SUBTLE_NOTIFICATION_FLAG;
+    private static int flags;
+    private static java.lang.String packageName;
+
+    static void <clinit>()
+    {
+        <com.heyzap.sdk.HeyzapLib: java.lang.String HEYZAP_PACKAGE> = "com.heyzap.android";
+
+        <com.heyzap.sdk.HeyzapLib: java.lang.String HEYZAP_INTENT_CLASS> = ".CheckinForm";
+
+        <com.heyzap.sdk.HeyzapLib: int flags> = 0;
+
+        <com.heyzap.sdk.HeyzapLib: int NO_NOTIFICATION_FLAG> = 8388608;
+
+        <com.heyzap.sdk.HeyzapLib: int SUBTLE_NOTIFICATION_FLAG> = 16777216;
+
+        return;
+    }
+
+    public void <init>()
+    {
+        com.heyzap.sdk.HeyzapLib r0;
+
+        r0 := @this: com.heyzap.sdk.HeyzapLib;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    static void broadcastEnableSDK(android.content.Context)
+    {
+        android.content.Context $r0;
+        android.content.Intent $r1;
+        java.lang.String $r2;
+
+        $r0 := @parameter0: android.content.Context;
+
+        $r1 = new android.content.Intent;
+
+        specialinvoke $r1.<android.content.Intent: void <init>(java.lang.String)>("com.heyzap.android.enableSDK");
+
+        $r2 = virtualinvoke $r0.<android.content.Context: java.lang.String getPackageName()>();
+
+        virtualinvoke $r1.<android.content.Intent: android.content.Intent putExtra(java.lang.String,java.lang.String)>("packageName", $r2);
+
+        virtualinvoke $r0.<android.content.Context: void sendBroadcast(android.content.Intent)>($r1);
+
+        return;
+    }
+
+    public static void checkin(android.content.Context)
+    {
+        android.content.Context $r0;
+        com.heyzap.sdk.HeyzapLib$2 $r1;
+        android.app.Activity $r2;
+
+        $r0 := @parameter0: android.content.Context;
+
+        $r2 = (android.app.Activity) $r0;
+
+        $r1 = new com.heyzap.sdk.HeyzapLib$2;
+
+        specialinvoke $r1.<com.heyzap.sdk.HeyzapLib$2: void <init>(android.content.Context)>($r0);
+
+        virtualinvoke $r2.<android.app.Activity: void runOnUiThread(java.lang.Runnable)>($r1);
+
+        return;
+    }
+
+    public static void checkin(android.content.Context, java.lang.String)
+    {
+        android.content.Context $r0;
+        java.lang.String $r1;
+        com.heyzap.sdk.HeyzapLib$3 $r2;
+        android.app.Activity $r3;
+
+        $r0 := @parameter0: android.content.Context;
+
+        $r1 := @parameter1: java.lang.String;
+
+        $r3 = (android.app.Activity) $r0;
+
+        $r2 = new com.heyzap.sdk.HeyzapLib$3;
+
+        specialinvoke $r2.<com.heyzap.sdk.HeyzapLib$3: void <init>(android.content.Context,java.lang.String)>($r0, $r1);
+
+        virtualinvoke $r3.<android.app.Activity: void runOnUiThread(java.lang.Runnable)>($r2);
+
+        return;
+    }
+
+    public static boolean isSupported(android.content.Context)
+    {
+        android.content.Context $r0;
+        boolean $z0;
+
+        $r0 := @parameter0: android.content.Context;
+
+        $z0 = staticinvoke <com.heyzap.sdk.Utils: boolean marketInstalled(android.content.Context)>($r0);
+
+        if $z0 == 0 goto label1;
+
+        $z0 = staticinvoke <com.heyzap.sdk.Utils: boolean androidVersionSupported()>();
+
+        if $z0 == 0 goto label1;
+
+        return 1;
+
+     label1:
+        return 0;
+    }
+
+    static void launchCheckinForm(android.content.Context, java.lang.String)
+    {
+        android.content.Context $r0;
+        java.lang.String $r1;
+        android.content.Intent $r2;
+        android.content.ComponentName $r3;
+
+        $r0 := @parameter0: android.content.Context;
+
+        $r1 := @parameter1: java.lang.String;
+
+        $r2 = new android.content.Intent;
+
+        specialinvoke $r2.<android.content.Intent: void <init>(java.lang.String)>("android.intent.action.MAIN");
+
+        virtualinvoke $r2.<android.content.Intent: android.content.Intent putExtra(java.lang.String,java.lang.String)>("message", $r1);
+
+        virtualinvoke $r2.<android.content.Intent: android.content.Intent setAction(java.lang.String)>("com.heyzap.android");
+
+        virtualinvoke $r2.<android.content.Intent: android.content.Intent addCategory(java.lang.String)>("android.intent.category.LAUNCHER");
+
+        $r1 = virtualinvoke $r0.<android.content.Context: java.lang.String getPackageName()>();
+
+        virtualinvoke $r2.<android.content.Intent: android.content.Intent putExtra(java.lang.String,java.lang.String)>("packageName", $r1);
+
+        virtualinvoke $r2.<android.content.Intent: android.content.Intent addFlags(int)>(402653184);
+
+        $r3 = new android.content.ComponentName;
+
+        specialinvoke $r3.<android.content.ComponentName: void <init>(java.lang.String,java.lang.String)>("com.heyzap.android", "com.heyzap.android.CheckinForm");
+
+        virtualinvoke $r2.<android.content.Intent: android.content.Intent setComponent(android.content.ComponentName)>($r3);
+
+        virtualinvoke $r0.<android.content.Context: void startActivity(android.content.Intent)>($r2);
+
+        return;
+    }
+
+    public static void load(android.content.Context)
+    {
+        android.content.Context $r0;
+
+        $r0 := @parameter0: android.content.Context;
+
+        staticinvoke <com.heyzap.sdk.HeyzapLib: void load(android.content.Context,boolean)>($r0, 1);
+
+        return;
+    }
+
+    public static void load(android.content.Context, boolean)
+    {
+        android.content.Context $r0;
+        boolean $z0, $z1;
+        com.heyzap.sdk.HeyzapLib$1 $r1;
+        java.lang.String $r2;
+        android.app.Activity $r3;
+
+        $r0 := @parameter0: android.content.Context;
+
+        $z0 := @parameter1: boolean;
+
+        staticinvoke <com.heyzap.sdk.HeyzapLib: void sendNotification(android.content.Context)>($r0);
+
+        $r2 = staticinvoke <com.heyzap.sdk.Utils: java.lang.String getAppLabel(android.content.Context)>($r0);
+
+        if $r2 != null goto label1;
+
+        return;
+
+     label1:
+        $z1 = staticinvoke <com.heyzap.sdk.HeyzapLib: boolean packageIsInstalled(java.lang.String,android.content.Context)>("com.heyzap.android", $r0);
+
+        if $z1 != 0 goto label2;
+
+        $z1 = staticinvoke <com.heyzap.sdk.Utils: boolean androidVersionSupported()>();
+
+        if $z1 == 0 goto label2;
+
+        if $z0 == 0 goto label2;
+
+        $r3 = (android.app.Activity) $r0;
+
+        $r1 = new com.heyzap.sdk.HeyzapLib$1;
+
+        specialinvoke $r1.<com.heyzap.sdk.HeyzapLib$1: void <init>(android.content.Context,java.lang.String)>($r0, $r2);
+
+        virtualinvoke $r3.<android.app.Activity: void runOnUiThread(java.lang.Runnable)>($r1);
+
+     label2:
+        return;
+    }
+
+    static boolean packageIsInstalled(java.lang.String, android.content.Context)
+    {
+        java.lang.String $r0;
+        android.content.Context $r1;
+        android.content.pm.PackageManager $r2;
+        android.content.Intent $r3;
+        java.util.List $r4;
+        int $i0;
+        java.lang.Exception $r5;
+
+        $r0 := @parameter0: java.lang.String;
+
+        $r1 := @parameter1: android.content.Context;
+
+     label1:
+        $r2 = virtualinvoke $r1.<android.content.Context: android.content.pm.PackageManager getPackageManager()>();
+
+        $r3 = virtualinvoke $r2.<android.content.pm.PackageManager: android.content.Intent getLaunchIntentForPackage(java.lang.String)>($r0);
+
+     label2:
+        if $r3 == null goto label6;
+
+     label3:
+        $r4 = virtualinvoke $r2.<android.content.pm.PackageManager: java.util.List queryIntentActivities(android.content.Intent,int)>($r3, 65536);
+
+        $i0 = interfaceinvoke $r4.<java.util.List: int size()>();
+
+     label4:
+        if $i0 <= 0 goto label6;
+
+        return 1;
+
+     label5:
+        $r5 := @caughtexception;
+
+     label6:
+        return 0;
+
+        catch java.lang.Exception from label1 to label2 with label5;
+        catch java.lang.Exception from label3 to label4 with label5;
+    }
+
+    static void rawCheckin(android.content.Context, java.lang.String)
+    {
+        android.content.Context $r0;
+        java.lang.String $r1, $r2;
+        boolean $z0;
+        com.heyzap.sdk.PreMarketDialog $r3;
+        android.content.ActivityNotFoundException $r4;
+
+        $r0 := @parameter0: android.content.Context;
+
+        $r1 := @parameter1: java.lang.String;
+
+        $r2 = virtualinvoke $r0.<android.content.Context: java.lang.String getPackageName()>();
+
+        <com.heyzap.sdk.HeyzapLib: java.lang.String packageName> = $r2;
+
+        staticinvoke <android.util.Log: int v(java.lang.String,java.lang.String)>("HeyzapSDK", "checkin-called");
+
+        $z0 = staticinvoke <com.heyzap.sdk.HeyzapLib: boolean packageIsInstalled(java.lang.String,android.content.Context)>("com.heyzap.android", $r0);
+
+        if $z0 == 0 goto label1;
+
+        staticinvoke <com.heyzap.sdk.HeyzapLib: void launchCheckinForm(android.content.Context,java.lang.String)>($r0, $r1);
+
+        return;
+
+     label1:
+        staticinvoke <com.heyzap.sdk.HeyzapAnalytics: void trackEvent(android.content.Context,java.lang.String)>($r0, "checkin-button-clicked");
+
+     label2:
+        $r3 = new com.heyzap.sdk.PreMarketDialog;
+
+     label3:
+        $r0 = virtualinvoke $r0.<android.content.Context: android.content.Context getApplicationContext()>();
+
+     label4:
+        $r1 = <com.heyzap.sdk.HeyzapLib: java.lang.String packageName>;
+
+     label5:
+        specialinvoke $r3.<com.heyzap.sdk.PreMarketDialog: void <init>(android.content.Context,java.lang.String)>($r0, $r1);
+
+        virtualinvoke $r3.<com.heyzap.sdk.PreMarketDialog: void show()>();
+
+     label6:
+        return;
+
+     label7:
+        $r4 := @caughtexception;
+
+        return;
+
+        catch android.content.ActivityNotFoundException from label1 to label2 with label7;
+        catch android.content.ActivityNotFoundException from label3 to label4 with label7;
+        catch android.content.ActivityNotFoundException from label5 to label6 with label7;
+    }
+
+    static void sendNotification(android.content.Context)
+    {
+        android.content.Context $r0;
+        int $i0, $i1;
+        java.lang.String $r1;
+        boolean $z0;
+        java.util.Date $r2, $r6;
+        android.content.SharedPreferences $r3;
+        long $l2;
+        byte $b3;
+        android.content.SharedPreferences$Editor $r4;
+        java.lang.Exception $r5;
+
+        $r0 := @parameter0: android.content.Context;
+
+        $i0 = <com.heyzap.sdk.HeyzapLib: int NO_NOTIFICATION_FLAG>;
+
+        $i1 = <com.heyzap.sdk.HeyzapLib: int flags>;
+
+        $i0 = $i0 & $i1;
+
+        if $i0 <= 0 goto label01;
+
+        return;
+
+     label01:
+        $r1 = staticinvoke <com.heyzap.sdk.Utils: java.lang.String getAppLabel(android.content.Context)>($r0);
+
+        if $r1 == null goto label29;
+
+        $z0 = staticinvoke <com.heyzap.sdk.HeyzapLib: boolean packageIsInstalled(java.lang.String,android.content.Context)>("com.heyzap.android", $r0);
+
+        if $z0 != 0 goto label29;
+
+        $z0 = staticinvoke <com.heyzap.sdk.Utils: boolean marketInstalled(android.content.Context)>($r0);
+
+        if $z0 == 0 goto label29;
+
+        $z0 = staticinvoke <com.heyzap.sdk.Utils: boolean androidVersionSupported()>();
+
+        if $z0 == 0 goto label29;
+
+        $r2 = new java.util.Date;
+
+     label02:
+        specialinvoke $r2.<java.util.Date: void <init>()>();
+
+     label03:
+        $i0 = <com.heyzap.sdk.HeyzapLib: int SUBTLE_NOTIFICATION_FLAG>;
+
+        $i1 = <com.heyzap.sdk.HeyzapLib: int flags>;
+
+        $i0 = $i0 & $i1;
+
+        if $i0 <= 0 goto label12;
+
+     label04:
+        $r3 = virtualinvoke $r0.<android.content.Context: android.content.SharedPreferences getSharedPreferences(java.lang.String,int)>("HeyzapFirstRun", 0);
+
+        $l2 = interfaceinvoke $r3.<android.content.SharedPreferences: long getLong(java.lang.String,long)>("firstRunAt", 0L);
+
+     label05:
+        $b3 = $l2 cmp 0L;
+
+        if $b3 != 0 goto label09;
+
+     label06:
+        $r4 = interfaceinvoke $r3.<android.content.SharedPreferences: android.content.SharedPreferences$Editor edit()>();
+
+        $l2 = virtualinvoke $r2.<java.util.Date: long getTime()>();
+
+        interfaceinvoke $r4.<android.content.SharedPreferences$Editor: android.content.SharedPreferences$Editor putLong(java.lang.String,long)>("firstRunAt", $l2);
+
+        interfaceinvoke $r4.<android.content.SharedPreferences$Editor: boolean commit()>();
+
+     label07:
+        return;
+
+     label08:
+        $r5 := @caughtexception;
+
+        staticinvoke <android.util.Log: int d(java.lang.String,java.lang.String)>("HeyzapSDK", "Exception while sending notification");
+
+        virtualinvoke $r5.<java.lang.Exception: void printStackTrace()>();
+
+        return;
+
+     label09:
+        $r6 = new java.util.Date;
+
+     label10:
+        specialinvoke $r6.<java.util.Date: void <init>(long)>($l2);
+
+        $i0 = staticinvoke <com.heyzap.sdk.Utils: int daysBetween(java.util.Date,java.util.Date)>($r2, $r6);
+
+     label11:
+        if $i0 < 1 goto label29;
+
+     label12:
+        $r6 = new java.util.Date;
+
+     label13:
+        $r3 = virtualinvoke $r0.<android.content.Context: android.content.SharedPreferences getSharedPreferences(java.lang.String,int)>("HeyzapFirstRun", 0);
+
+        $l2 = interfaceinvoke $r3.<android.content.SharedPreferences: long getLong(java.lang.String,long)>("notificationLastShown", 0L);
+
+        specialinvoke $r6.<java.util.Date: void <init>(long)>($l2);
+
+        $r3 = virtualinvoke $r0.<android.content.Context: android.content.SharedPreferences getSharedPreferences(java.lang.String,int)>("HeyzapFirstRun", 0);
+
+        $i0 = interfaceinvoke $r3.<android.content.SharedPreferences: int getInt(java.lang.String,int)>("numberNotificationsShown", 0);
+
+     label14:
+        lookupswitch($i0)
+        {
+            case 0: goto label16;
+            case 1: goto label21;
+            case 2: goto label25;
+            default: goto label15;
+        };
+
+     label15:
+        return;
+
+     label16:
+        staticinvoke <com.heyzap.sdk.HeyzapNotification: void send(android.content.Context,java.lang.String)>($r0, $r1);
+
+     label17:
+        $r3 = virtualinvoke $r0.<android.content.Context: android.content.SharedPreferences getSharedPreferences(java.lang.String,int)>("HeyzapFirstRun", 0);
+
+        $r4 = interfaceinvoke $r3.<android.content.SharedPreferences: android.content.SharedPreferences$Editor edit()>();
+
+     label18:
+        $i0 = $i0 + 1;
+
+     label19:
+        interfaceinvoke $r4.<android.content.SharedPreferences$Editor: android.content.SharedPreferences$Editor putInt(java.lang.String,int)>("numberNotificationsShown", $i0);
+
+        $l2 = virtualinvoke $r2.<java.util.Date: long getTime()>();
+
+        interfaceinvoke $r4.<android.content.SharedPreferences$Editor: android.content.SharedPreferences$Editor putLong(java.lang.String,long)>("notificationLastShown", $l2);
+
+        interfaceinvoke $r4.<android.content.SharedPreferences$Editor: boolean commit()>();
+
+     label20:
+        return;
+
+     label21:
+        $i1 = staticinvoke <com.heyzap.sdk.Utils: int daysBetween(java.util.Date,java.util.Date)>($r6, $r2);
+
+     label22:
+        if $i1 < 5 goto label17;
+
+     label23:
+        staticinvoke <com.heyzap.sdk.HeyzapNotification: void send(android.content.Context,java.lang.String)>($r0, $r1);
+
+     label24:
+        goto label17;
+
+     label25:
+        $i1 = staticinvoke <com.heyzap.sdk.Utils: int daysBetween(java.util.Date,java.util.Date)>($r6, $r2);
+
+     label26:
+        if $i1 < 14 goto label17;
+
+     label27:
+        staticinvoke <com.heyzap.sdk.HeyzapNotification: void send(android.content.Context,java.lang.String)>($r0, $r1);
+
+     label28:
+        goto label17;
+
+     label29:
+        return;
+
+        catch java.lang.Exception from label02 to label03 with label08;
+        catch java.lang.Exception from label04 to label05 with label08;
+        catch java.lang.Exception from label06 to label07 with label08;
+        catch java.lang.Exception from label10 to label11 with label08;
+        catch java.lang.Exception from label13 to label14 with label08;
+        catch java.lang.Exception from label16 to label18 with label08;
+        catch java.lang.Exception from label19 to label20 with label08;
+        catch java.lang.Exception from label21 to label22 with label08;
+        catch java.lang.Exception from label23 to label24 with label08;
+        catch java.lang.Exception from label25 to label26 with label08;
+        catch java.lang.Exception from label27 to label28 with label08;
+    }
+
+    public static void setFlags(int)
+    {
+        int $i0, $i1;
+
+        $i0 := @parameter0: int;
+
+        $i1 = <com.heyzap.sdk.HeyzapLib: int flags>;
+
+        $i0 = $i1 | $i0;
+
+        <com.heyzap.sdk.HeyzapLib: int flags> = $i0;
+
+        return;
+    }
+
+    static boolean subtleNotifications()
+    {
+        int $i0, $i1;
+
+        $i1 = <com.heyzap.sdk.HeyzapLib: int SUBTLE_NOTIFICATION_FLAG>;
+
+        $i0 = <com.heyzap.sdk.HeyzapLib: int flags>;
+
+        $i0 = $i1 & $i0;
+
+        if $i0 <= 0 goto label1;
+
+        return 1;
+
+     label1:
+        return 0;
+    }
+}

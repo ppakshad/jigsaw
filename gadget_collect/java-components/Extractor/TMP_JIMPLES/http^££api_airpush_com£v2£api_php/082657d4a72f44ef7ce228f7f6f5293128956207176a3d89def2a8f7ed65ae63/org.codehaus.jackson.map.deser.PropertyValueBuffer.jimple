@@ -1,0 +1,206 @@
+public final class org.codehaus.jackson.map.deser.PropertyValueBuffer extends java.lang.Object
+{
+    private org.codehaus.jackson.map.deser.PropertyValue _buffered;
+    final org.codehaus.jackson.map.DeserializationContext _context;
+    final java.lang.Object[] _creatorParameters;
+    private int _paramsNeeded;
+    final org.codehaus.jackson.JsonParser _parser;
+
+    public void <init>(org.codehaus.jackson.JsonParser, org.codehaus.jackson.map.DeserializationContext, int)
+    {
+        org.codehaus.jackson.map.deser.PropertyValueBuffer r0;
+        org.codehaus.jackson.JsonParser $r1;
+        org.codehaus.jackson.map.DeserializationContext $r2;
+        int $i0;
+        java.lang.Object[] $r3;
+
+        r0 := @this: org.codehaus.jackson.map.deser.PropertyValueBuffer;
+
+        $r1 := @parameter0: org.codehaus.jackson.JsonParser;
+
+        $r2 := @parameter1: org.codehaus.jackson.map.DeserializationContext;
+
+        $i0 := @parameter2: int;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        r0.<org.codehaus.jackson.map.deser.PropertyValueBuffer: org.codehaus.jackson.JsonParser _parser> = $r1;
+
+        r0.<org.codehaus.jackson.map.deser.PropertyValueBuffer: org.codehaus.jackson.map.DeserializationContext _context> = $r2;
+
+        r0.<org.codehaus.jackson.map.deser.PropertyValueBuffer: int _paramsNeeded> = $i0;
+
+        $r3 = newarray (java.lang.Object)[$i0];
+
+        r0.<org.codehaus.jackson.map.deser.PropertyValueBuffer: java.lang.Object[] _creatorParameters> = $r3;
+
+        return;
+    }
+
+    public boolean assignParameter(int, java.lang.Object)
+    {
+        org.codehaus.jackson.map.deser.PropertyValueBuffer r0;
+        int $i0;
+        java.lang.Object $r1;
+        java.lang.Object[] $r2;
+
+        r0 := @this: org.codehaus.jackson.map.deser.PropertyValueBuffer;
+
+        $i0 := @parameter0: int;
+
+        $r1 := @parameter1: java.lang.Object;
+
+        $r2 = r0.<org.codehaus.jackson.map.deser.PropertyValueBuffer: java.lang.Object[] _creatorParameters>;
+
+        $r2[$i0] = $r1;
+
+        $i0 = r0.<org.codehaus.jackson.map.deser.PropertyValueBuffer: int _paramsNeeded>;
+
+        $i0 = $i0 - 1;
+
+        r0.<org.codehaus.jackson.map.deser.PropertyValueBuffer: int _paramsNeeded> = $i0;
+
+        if $i0 > 0 goto label1;
+
+        return 1;
+
+     label1:
+        return 0;
+    }
+
+    public void bufferAnyProperty(org.codehaus.jackson.map.deser.SettableAnyProperty, java.lang.String, java.lang.Object)
+    {
+        org.codehaus.jackson.map.deser.PropertyValueBuffer r0;
+        org.codehaus.jackson.map.deser.SettableAnyProperty $r1;
+        java.lang.String $r2;
+        java.lang.Object $r3;
+        org.codehaus.jackson.map.deser.PropertyValue$Any $r4;
+        org.codehaus.jackson.map.deser.PropertyValue $r5;
+
+        r0 := @this: org.codehaus.jackson.map.deser.PropertyValueBuffer;
+
+        $r1 := @parameter0: org.codehaus.jackson.map.deser.SettableAnyProperty;
+
+        $r2 := @parameter1: java.lang.String;
+
+        $r3 := @parameter2: java.lang.Object;
+
+        $r4 = new org.codehaus.jackson.map.deser.PropertyValue$Any;
+
+        $r5 = r0.<org.codehaus.jackson.map.deser.PropertyValueBuffer: org.codehaus.jackson.map.deser.PropertyValue _buffered>;
+
+        specialinvoke $r4.<org.codehaus.jackson.map.deser.PropertyValue$Any: void <init>(org.codehaus.jackson.map.deser.PropertyValue,java.lang.Object,org.codehaus.jackson.map.deser.SettableAnyProperty,java.lang.String)>($r5, $r3, $r1, $r2);
+
+        r0.<org.codehaus.jackson.map.deser.PropertyValueBuffer: org.codehaus.jackson.map.deser.PropertyValue _buffered> = $r4;
+
+        return;
+    }
+
+    public void bufferMapProperty(java.lang.Object, java.lang.Object)
+    {
+        org.codehaus.jackson.map.deser.PropertyValueBuffer r0;
+        java.lang.Object $r1, $r2;
+        org.codehaus.jackson.map.deser.PropertyValue$Map $r3;
+        org.codehaus.jackson.map.deser.PropertyValue $r4;
+
+        r0 := @this: org.codehaus.jackson.map.deser.PropertyValueBuffer;
+
+        $r1 := @parameter0: java.lang.Object;
+
+        $r2 := @parameter1: java.lang.Object;
+
+        $r3 = new org.codehaus.jackson.map.deser.PropertyValue$Map;
+
+        $r4 = r0.<org.codehaus.jackson.map.deser.PropertyValueBuffer: org.codehaus.jackson.map.deser.PropertyValue _buffered>;
+
+        specialinvoke $r3.<org.codehaus.jackson.map.deser.PropertyValue$Map: void <init>(org.codehaus.jackson.map.deser.PropertyValue,java.lang.Object,java.lang.Object)>($r4, $r2, $r1);
+
+        r0.<org.codehaus.jackson.map.deser.PropertyValueBuffer: org.codehaus.jackson.map.deser.PropertyValue _buffered> = $r3;
+
+        return;
+    }
+
+    public void bufferProperty(org.codehaus.jackson.map.deser.SettableBeanProperty, java.lang.Object)
+    {
+        org.codehaus.jackson.map.deser.PropertyValueBuffer r0;
+        org.codehaus.jackson.map.deser.SettableBeanProperty $r1;
+        java.lang.Object $r2;
+        org.codehaus.jackson.map.deser.PropertyValue$Regular $r3;
+        org.codehaus.jackson.map.deser.PropertyValue $r4;
+
+        r0 := @this: org.codehaus.jackson.map.deser.PropertyValueBuffer;
+
+        $r1 := @parameter0: org.codehaus.jackson.map.deser.SettableBeanProperty;
+
+        $r2 := @parameter1: java.lang.Object;
+
+        $r3 = new org.codehaus.jackson.map.deser.PropertyValue$Regular;
+
+        $r4 = r0.<org.codehaus.jackson.map.deser.PropertyValueBuffer: org.codehaus.jackson.map.deser.PropertyValue _buffered>;
+
+        specialinvoke $r3.<org.codehaus.jackson.map.deser.PropertyValue$Regular: void <init>(org.codehaus.jackson.map.deser.PropertyValue,java.lang.Object,org.codehaus.jackson.map.deser.SettableBeanProperty)>($r4, $r2, $r1);
+
+        r0.<org.codehaus.jackson.map.deser.PropertyValueBuffer: org.codehaus.jackson.map.deser.PropertyValue _buffered> = $r3;
+
+        return;
+    }
+
+    protected org.codehaus.jackson.map.deser.PropertyValue buffered()
+    {
+        org.codehaus.jackson.map.deser.PropertyValueBuffer r0;
+        org.codehaus.jackson.map.deser.PropertyValue r1;
+
+        r0 := @this: org.codehaus.jackson.map.deser.PropertyValueBuffer;
+
+        r1 = r0.<org.codehaus.jackson.map.deser.PropertyValueBuffer: org.codehaus.jackson.map.deser.PropertyValue _buffered>;
+
+        return r1;
+    }
+
+    protected final java.lang.Object[] getParameters(java.lang.Object[])
+    {
+        org.codehaus.jackson.map.deser.PropertyValueBuffer r0;
+        java.lang.Object[] $r1, $r3;
+        int i0, i1;
+        java.lang.Object r2;
+
+        r0 := @this: org.codehaus.jackson.map.deser.PropertyValueBuffer;
+
+        $r1 := @parameter0: java.lang.Object[];
+
+        if $r1 == null goto label3;
+
+        i1 = 0;
+
+        $r3 = r0.<org.codehaus.jackson.map.deser.PropertyValueBuffer: java.lang.Object[] _creatorParameters>;
+
+        i0 = lengthof $r3;
+
+     label1:
+        if i1 >= i0 goto label3;
+
+        $r3 = r0.<org.codehaus.jackson.map.deser.PropertyValueBuffer: java.lang.Object[] _creatorParameters>;
+
+        r2 = $r3[i1];
+
+        if r2 != null goto label2;
+
+        r2 = $r1[i1];
+
+        if r2 == null goto label2;
+
+        $r3 = r0.<org.codehaus.jackson.map.deser.PropertyValueBuffer: java.lang.Object[] _creatorParameters>;
+
+        $r3[i1] = r2;
+
+     label2:
+        i1 = i1 + 1;
+
+        goto label1;
+
+     label3:
+        $r1 = r0.<org.codehaus.jackson.map.deser.PropertyValueBuffer: java.lang.Object[] _creatorParameters>;
+
+        return $r1;
+    }
+}

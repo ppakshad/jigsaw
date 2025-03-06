@@ -1,0 +1,139 @@
+class com.startapp.android.publish.b.a$4 extends java.lang.Object implements java.lang.Runnable
+{
+    final android.content.Context a;
+    final com.startapp.android.publish.b.a b;
+
+    void <init>(com.startapp.android.publish.b.a, android.content.Context)
+    {
+        com.startapp.android.publish.b.a$4 r0;
+        com.startapp.android.publish.b.a $r1;
+        android.content.Context $r2;
+
+        r0 := @this: com.startapp.android.publish.b.a$4;
+
+        $r1 := @parameter0: com.startapp.android.publish.b.a;
+
+        $r2 := @parameter1: android.content.Context;
+
+        r0.<com.startapp.android.publish.b.a$4: com.startapp.android.publish.b.a b> = $r1;
+
+        r0.<com.startapp.android.publish.b.a$4: android.content.Context a> = $r2;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public void run()
+    {
+        com.startapp.android.publish.b.a$4 r0;
+        com.startapp.android.publish.b.a $r1;
+        java.util.Map $r2;
+        java.util.Set $r3;
+        java.util.Iterator $r4;
+        boolean $z0;
+        java.lang.Object $r5;
+        java.util.Map$Entry $r6;
+        com.startapp.android.publish.b.c $r7;
+        com.startapp.android.publish.b.f $r8;
+        java.lang.StringBuilder $r9;
+        java.lang.String $r10;
+        android.content.Context $r11;
+        com.startapp.android.publish.model.AdPreferences$Placement $r12;
+        com.startapp.android.publish.model.AdPreferences $r13;
+        com.startapp.android.publish.model.SodaPreferences $r14;
+        java.lang.Exception $r15;
+        com.startapp.android.publish.d.b$a $r16;
+
+        r0 := @this: com.startapp.android.publish.b.a$4;
+
+     label1:
+        $r1 = r0.<com.startapp.android.publish.b.a$4: com.startapp.android.publish.b.a b>;
+
+        $r2 = staticinvoke <com.startapp.android.publish.b.a: java.util.Map a(com.startapp.android.publish.b.a)>($r1);
+
+        $r3 = interfaceinvoke $r2.<java.util.Map: java.util.Set entrySet()>();
+
+        $r4 = interfaceinvoke $r3.<java.util.Set: java.util.Iterator iterator()>();
+
+     label2:
+        $z0 = interfaceinvoke $r4.<java.util.Iterator: boolean hasNext()>();
+
+     label3:
+        if $z0 == 0 goto label9;
+
+     label4:
+        $r5 = interfaceinvoke $r4.<java.util.Iterator: java.lang.Object next()>();
+
+        $r6 = (java.util.Map$Entry) $r5;
+
+        $r5 = interfaceinvoke $r6.<java.util.Map$Entry: java.lang.Object getKey()>();
+
+        $r7 = (com.startapp.android.publish.b.c) $r5;
+
+        $r5 = interfaceinvoke $r6.<java.util.Map$Entry: java.lang.Object getValue()>();
+
+        $r8 = (com.startapp.android.publish.b.f) $r5;
+
+     label5:
+        $r9 = new java.lang.StringBuilder;
+
+     label6:
+        specialinvoke $r9.<java.lang.StringBuilder: void <init>()>();
+
+        $r9 = virtualinvoke $r9.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Saving to disk: ");
+
+        $r10 = virtualinvoke $r7.<com.startapp.android.publish.b.c: java.lang.String toString()>();
+
+        $r9 = virtualinvoke $r9.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r10);
+
+        $r10 = virtualinvoke $r9.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <com.startapp.android.publish.i.n: void a(java.lang.String,int,java.lang.String)>("AdCacheManager", 3, $r10);
+
+        $r11 = r0.<com.startapp.android.publish.b.a$4: android.content.Context a>;
+
+        $r12 = virtualinvoke $r7.<com.startapp.android.publish.b.c: com.startapp.android.publish.model.AdPreferences$Placement a()>();
+
+        $r13 = virtualinvoke $r8.<com.startapp.android.publish.b.f: com.startapp.android.publish.model.AdPreferences a()>();
+
+        $r1 = r0.<com.startapp.android.publish.b.a$4: com.startapp.android.publish.b.a b>;
+
+        $r10 = staticinvoke <com.startapp.android.publish.b.a: java.lang.String a(com.startapp.android.publish.b.a,com.startapp.android.publish.b.c)>($r1, $r7);
+
+        $r14 = virtualinvoke $r8.<com.startapp.android.publish.b.f: com.startapp.android.publish.model.SodaPreferences b()>();
+
+        staticinvoke <com.startapp.android.publish.b.h: void a(android.content.Context,com.startapp.android.publish.model.AdPreferences$Placement,com.startapp.android.publish.model.AdPreferences,java.lang.String,com.startapp.android.publish.model.SodaPreferences)>($r11, $r12, $r13, $r10, $r14);
+
+        $r11 = r0.<com.startapp.android.publish.b.a$4: android.content.Context a>;
+
+        $r1 = r0.<com.startapp.android.publish.b.a$4: com.startapp.android.publish.b.a b>;
+
+        $r10 = staticinvoke <com.startapp.android.publish.b.a: java.lang.String a(com.startapp.android.publish.b.a,com.startapp.android.publish.b.c)>($r1, $r7);
+
+        staticinvoke <com.startapp.android.publish.b.h: void a(android.content.Context,com.startapp.android.publish.b.f,java.lang.String)>($r11, $r8, $r10);
+
+     label7:
+        goto label2;
+
+     label8:
+        $r15 := @caughtexception;
+
+        staticinvoke <com.startapp.android.publish.i.n: void a(java.lang.String,int,java.lang.String)>("AdCacheManager", 3, "Saving to disk: exception caught");
+
+        $r11 = r0.<com.startapp.android.publish.b.a$4: android.content.Context a>;
+
+        $r16 = <com.startapp.android.publish.d.b$a: com.startapp.android.publish.d.b$a b>;
+
+        $r10 = virtualinvoke $r15.<java.lang.Exception: java.lang.String getMessage()>();
+
+        staticinvoke <com.startapp.android.publish.d.d: void a(android.content.Context,com.startapp.android.publish.d.b$a,java.lang.String,java.lang.String,java.lang.String)>($r11, $r16, "AdCacheManager.saveToDisk - Unexpected Thread Exception", $r10, "");
+
+     label9:
+        return;
+
+        catch java.lang.Exception from label1 to label3 with label8;
+        catch java.lang.Exception from label4 to label5 with label8;
+        catch java.lang.Exception from label6 to label7 with label8;
+    }
+}

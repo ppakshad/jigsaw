@@ -1,0 +1,341 @@
+public class org.codehaus.jackson.map.module.SimpleDeserializers extends java.lang.Object implements org.codehaus.jackson.map.Deserializers
+{
+    protected java.util.HashMap _classMappings;
+
+    public void <init>()
+    {
+        org.codehaus.jackson.map.module.SimpleDeserializers r0;
+
+        r0 := @this: org.codehaus.jackson.map.module.SimpleDeserializers;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        r0.<org.codehaus.jackson.map.module.SimpleDeserializers: java.util.HashMap _classMappings> = null;
+
+        return;
+    }
+
+    public void addDeserializer(java.lang.Class, org.codehaus.jackson.map.JsonDeserializer)
+    {
+        org.codehaus.jackson.map.module.SimpleDeserializers r0;
+        java.lang.Class r1;
+        org.codehaus.jackson.map.JsonDeserializer r2;
+        org.codehaus.jackson.map.type.ClassKey r3;
+        java.util.HashMap $r4;
+
+        r0 := @this: org.codehaus.jackson.map.module.SimpleDeserializers;
+
+        r1 := @parameter0: java.lang.Class;
+
+        r2 := @parameter1: org.codehaus.jackson.map.JsonDeserializer;
+
+        r3 = new org.codehaus.jackson.map.type.ClassKey;
+
+        specialinvoke r3.<org.codehaus.jackson.map.type.ClassKey: void <init>(java.lang.Class)>(r1);
+
+        $r4 = r0.<org.codehaus.jackson.map.module.SimpleDeserializers: java.util.HashMap _classMappings>;
+
+        if $r4 != null goto label1;
+
+        $r4 = new java.util.HashMap;
+
+        specialinvoke $r4.<java.util.HashMap: void <init>()>();
+
+        r0.<org.codehaus.jackson.map.module.SimpleDeserializers: java.util.HashMap _classMappings> = $r4;
+
+     label1:
+        $r4 = r0.<org.codehaus.jackson.map.module.SimpleDeserializers: java.util.HashMap _classMappings>;
+
+        virtualinvoke $r4.<java.util.HashMap: java.lang.Object put(java.lang.Object,java.lang.Object)>(r3, r2);
+
+        return;
+    }
+
+    public org.codehaus.jackson.map.JsonDeserializer findArrayDeserializer(org.codehaus.jackson.map.type.ArrayType, org.codehaus.jackson.map.DeserializationConfig, org.codehaus.jackson.map.DeserializerProvider, org.codehaus.jackson.map.BeanProperty, org.codehaus.jackson.map.TypeDeserializer, org.codehaus.jackson.map.JsonDeserializer)
+    {
+        org.codehaus.jackson.map.type.ArrayType $r0;
+        org.codehaus.jackson.map.DeserializationConfig $r1;
+        org.codehaus.jackson.map.DeserializerProvider $r2;
+        org.codehaus.jackson.map.BeanProperty $r3;
+        org.codehaus.jackson.map.TypeDeserializer $r4;
+        org.codehaus.jackson.map.JsonDeserializer r5;
+        org.codehaus.jackson.map.type.ClassKey $r6;
+        org.codehaus.jackson.map.module.SimpleDeserializers r7;
+        java.util.HashMap $r8;
+        java.lang.Class $r9;
+        java.lang.Object $r10;
+
+        r7 := @this: org.codehaus.jackson.map.module.SimpleDeserializers;
+
+        $r0 := @parameter0: org.codehaus.jackson.map.type.ArrayType;
+
+        $r1 := @parameter1: org.codehaus.jackson.map.DeserializationConfig;
+
+        $r2 := @parameter2: org.codehaus.jackson.map.DeserializerProvider;
+
+        $r3 := @parameter3: org.codehaus.jackson.map.BeanProperty;
+
+        $r4 := @parameter4: org.codehaus.jackson.map.TypeDeserializer;
+
+        r5 := @parameter5: org.codehaus.jackson.map.JsonDeserializer;
+
+        $r8 = r7.<org.codehaus.jackson.map.module.SimpleDeserializers: java.util.HashMap _classMappings>;
+
+        if $r8 != null goto label1;
+
+        return null;
+
+     label1:
+        $r8 = r7.<org.codehaus.jackson.map.module.SimpleDeserializers: java.util.HashMap _classMappings>;
+
+        $r6 = new org.codehaus.jackson.map.type.ClassKey;
+
+        $r9 = virtualinvoke $r0.<org.codehaus.jackson.map.type.ArrayType: java.lang.Class getRawClass()>();
+
+        specialinvoke $r6.<org.codehaus.jackson.map.type.ClassKey: void <init>(java.lang.Class)>($r9);
+
+        $r10 = virtualinvoke $r8.<java.util.HashMap: java.lang.Object get(java.lang.Object)>($r6);
+
+        r5 = (org.codehaus.jackson.map.JsonDeserializer) $r10;
+
+        return r5;
+    }
+
+    public org.codehaus.jackson.map.JsonDeserializer findBeanDeserializer(org.codehaus.jackson.type.JavaType, org.codehaus.jackson.map.DeserializationConfig, org.codehaus.jackson.map.DeserializerProvider, org.codehaus.jackson.map.BeanDescription, org.codehaus.jackson.map.BeanProperty)
+    {
+        org.codehaus.jackson.type.JavaType $r0;
+        org.codehaus.jackson.map.DeserializationConfig $r1;
+        org.codehaus.jackson.map.DeserializerProvider $r2;
+        org.codehaus.jackson.map.BeanDescription $r3;
+        org.codehaus.jackson.map.BeanProperty $r4;
+        org.codehaus.jackson.map.type.ClassKey $r5;
+        org.codehaus.jackson.map.module.SimpleDeserializers r6;
+        java.util.HashMap $r7;
+        java.lang.Class $r8;
+        java.lang.Object $r9;
+        org.codehaus.jackson.map.JsonDeserializer r10;
+
+        r6 := @this: org.codehaus.jackson.map.module.SimpleDeserializers;
+
+        $r0 := @parameter0: org.codehaus.jackson.type.JavaType;
+
+        $r1 := @parameter1: org.codehaus.jackson.map.DeserializationConfig;
+
+        $r2 := @parameter2: org.codehaus.jackson.map.DeserializerProvider;
+
+        $r3 := @parameter3: org.codehaus.jackson.map.BeanDescription;
+
+        $r4 := @parameter4: org.codehaus.jackson.map.BeanProperty;
+
+        $r7 = r6.<org.codehaus.jackson.map.module.SimpleDeserializers: java.util.HashMap _classMappings>;
+
+        if $r7 != null goto label1;
+
+        return null;
+
+     label1:
+        $r7 = r6.<org.codehaus.jackson.map.module.SimpleDeserializers: java.util.HashMap _classMappings>;
+
+        $r5 = new org.codehaus.jackson.map.type.ClassKey;
+
+        $r8 = virtualinvoke $r0.<org.codehaus.jackson.type.JavaType: java.lang.Class getRawClass()>();
+
+        specialinvoke $r5.<org.codehaus.jackson.map.type.ClassKey: void <init>(java.lang.Class)>($r8);
+
+        $r9 = virtualinvoke $r7.<java.util.HashMap: java.lang.Object get(java.lang.Object)>($r5);
+
+        r10 = (org.codehaus.jackson.map.JsonDeserializer) $r9;
+
+        return r10;
+    }
+
+    public org.codehaus.jackson.map.JsonDeserializer findCollectionDeserializer(org.codehaus.jackson.map.type.CollectionType, org.codehaus.jackson.map.DeserializationConfig, org.codehaus.jackson.map.DeserializerProvider, org.codehaus.jackson.map.BeanDescription, org.codehaus.jackson.map.BeanProperty, org.codehaus.jackson.map.TypeDeserializer, org.codehaus.jackson.map.JsonDeserializer)
+    {
+        org.codehaus.jackson.map.type.CollectionType $r0;
+        org.codehaus.jackson.map.DeserializationConfig $r1;
+        org.codehaus.jackson.map.DeserializerProvider $r2;
+        org.codehaus.jackson.map.BeanDescription $r3;
+        org.codehaus.jackson.map.BeanProperty $r4;
+        org.codehaus.jackson.map.TypeDeserializer $r5;
+        org.codehaus.jackson.map.JsonDeserializer r6;
+        org.codehaus.jackson.map.type.ClassKey $r7;
+        org.codehaus.jackson.map.module.SimpleDeserializers r8;
+        java.util.HashMap $r9;
+        java.lang.Class $r10;
+        java.lang.Object $r11;
+
+        r8 := @this: org.codehaus.jackson.map.module.SimpleDeserializers;
+
+        $r0 := @parameter0: org.codehaus.jackson.map.type.CollectionType;
+
+        $r1 := @parameter1: org.codehaus.jackson.map.DeserializationConfig;
+
+        $r2 := @parameter2: org.codehaus.jackson.map.DeserializerProvider;
+
+        $r3 := @parameter3: org.codehaus.jackson.map.BeanDescription;
+
+        $r4 := @parameter4: org.codehaus.jackson.map.BeanProperty;
+
+        $r5 := @parameter5: org.codehaus.jackson.map.TypeDeserializer;
+
+        r6 := @parameter6: org.codehaus.jackson.map.JsonDeserializer;
+
+        $r9 = r8.<org.codehaus.jackson.map.module.SimpleDeserializers: java.util.HashMap _classMappings>;
+
+        if $r9 != null goto label1;
+
+        return null;
+
+     label1:
+        $r9 = r8.<org.codehaus.jackson.map.module.SimpleDeserializers: java.util.HashMap _classMappings>;
+
+        $r7 = new org.codehaus.jackson.map.type.ClassKey;
+
+        $r10 = virtualinvoke $r0.<org.codehaus.jackson.map.type.CollectionType: java.lang.Class getRawClass()>();
+
+        specialinvoke $r7.<org.codehaus.jackson.map.type.ClassKey: void <init>(java.lang.Class)>($r10);
+
+        $r11 = virtualinvoke $r9.<java.util.HashMap: java.lang.Object get(java.lang.Object)>($r7);
+
+        r6 = (org.codehaus.jackson.map.JsonDeserializer) $r11;
+
+        return r6;
+    }
+
+    public org.codehaus.jackson.map.JsonDeserializer findEnumDeserializer(java.lang.Class, org.codehaus.jackson.map.DeserializationConfig, org.codehaus.jackson.map.BeanDescription, org.codehaus.jackson.map.BeanProperty)
+    {
+        java.lang.Class r0;
+        org.codehaus.jackson.map.DeserializationConfig $r1;
+        org.codehaus.jackson.map.BeanDescription $r2;
+        org.codehaus.jackson.map.BeanProperty $r3;
+        org.codehaus.jackson.map.type.ClassKey $r4;
+        java.lang.Object $r5;
+        org.codehaus.jackson.map.module.SimpleDeserializers r6;
+        java.util.HashMap $r7;
+        org.codehaus.jackson.map.JsonDeserializer r8;
+
+        r6 := @this: org.codehaus.jackson.map.module.SimpleDeserializers;
+
+        r0 := @parameter0: java.lang.Class;
+
+        $r1 := @parameter1: org.codehaus.jackson.map.DeserializationConfig;
+
+        $r2 := @parameter2: org.codehaus.jackson.map.BeanDescription;
+
+        $r3 := @parameter3: org.codehaus.jackson.map.BeanProperty;
+
+        $r7 = r6.<org.codehaus.jackson.map.module.SimpleDeserializers: java.util.HashMap _classMappings>;
+
+        if $r7 != null goto label1;
+
+        return null;
+
+     label1:
+        $r7 = r6.<org.codehaus.jackson.map.module.SimpleDeserializers: java.util.HashMap _classMappings>;
+
+        $r4 = new org.codehaus.jackson.map.type.ClassKey;
+
+        specialinvoke $r4.<org.codehaus.jackson.map.type.ClassKey: void <init>(java.lang.Class)>(r0);
+
+        $r5 = virtualinvoke $r7.<java.util.HashMap: java.lang.Object get(java.lang.Object)>($r4);
+
+        r8 = (org.codehaus.jackson.map.JsonDeserializer) $r5;
+
+        return r8;
+    }
+
+    public org.codehaus.jackson.map.JsonDeserializer findMapDeserializer(org.codehaus.jackson.map.type.MapType, org.codehaus.jackson.map.DeserializationConfig, org.codehaus.jackson.map.DeserializerProvider, org.codehaus.jackson.map.BeanDescription, org.codehaus.jackson.map.BeanProperty, org.codehaus.jackson.map.KeyDeserializer, org.codehaus.jackson.map.TypeDeserializer, org.codehaus.jackson.map.JsonDeserializer)
+    {
+        org.codehaus.jackson.map.type.MapType $r0;
+        org.codehaus.jackson.map.DeserializationConfig $r1;
+        org.codehaus.jackson.map.DeserializerProvider $r2;
+        org.codehaus.jackson.map.BeanDescription $r3;
+        org.codehaus.jackson.map.BeanProperty $r4;
+        org.codehaus.jackson.map.KeyDeserializer $r5;
+        org.codehaus.jackson.map.TypeDeserializer $r6;
+        org.codehaus.jackson.map.JsonDeserializer r7;
+        org.codehaus.jackson.map.type.ClassKey $r8;
+        org.codehaus.jackson.map.module.SimpleDeserializers r9;
+        java.util.HashMap $r10;
+        java.lang.Class $r11;
+        java.lang.Object $r12;
+
+        r9 := @this: org.codehaus.jackson.map.module.SimpleDeserializers;
+
+        $r0 := @parameter0: org.codehaus.jackson.map.type.MapType;
+
+        $r1 := @parameter1: org.codehaus.jackson.map.DeserializationConfig;
+
+        $r2 := @parameter2: org.codehaus.jackson.map.DeserializerProvider;
+
+        $r3 := @parameter3: org.codehaus.jackson.map.BeanDescription;
+
+        $r4 := @parameter4: org.codehaus.jackson.map.BeanProperty;
+
+        $r5 := @parameter5: org.codehaus.jackson.map.KeyDeserializer;
+
+        $r6 := @parameter6: org.codehaus.jackson.map.TypeDeserializer;
+
+        r7 := @parameter7: org.codehaus.jackson.map.JsonDeserializer;
+
+        $r10 = r9.<org.codehaus.jackson.map.module.SimpleDeserializers: java.util.HashMap _classMappings>;
+
+        if $r10 != null goto label1;
+
+        return null;
+
+     label1:
+        $r10 = r9.<org.codehaus.jackson.map.module.SimpleDeserializers: java.util.HashMap _classMappings>;
+
+        $r8 = new org.codehaus.jackson.map.type.ClassKey;
+
+        $r11 = virtualinvoke $r0.<org.codehaus.jackson.map.type.MapType: java.lang.Class getRawClass()>();
+
+        specialinvoke $r8.<org.codehaus.jackson.map.type.ClassKey: void <init>(java.lang.Class)>($r11);
+
+        $r12 = virtualinvoke $r10.<java.util.HashMap: java.lang.Object get(java.lang.Object)>($r8);
+
+        r7 = (org.codehaus.jackson.map.JsonDeserializer) $r12;
+
+        return r7;
+    }
+
+    public org.codehaus.jackson.map.JsonDeserializer findTreeNodeDeserializer(java.lang.Class, org.codehaus.jackson.map.DeserializationConfig, org.codehaus.jackson.map.BeanProperty)
+    {
+        java.lang.Class r0;
+        org.codehaus.jackson.map.DeserializationConfig $r1;
+        org.codehaus.jackson.map.BeanProperty $r2;
+        org.codehaus.jackson.map.type.ClassKey $r3;
+        java.lang.Object $r4;
+        org.codehaus.jackson.map.module.SimpleDeserializers r5;
+        java.util.HashMap $r6;
+        org.codehaus.jackson.map.JsonDeserializer r7;
+
+        r5 := @this: org.codehaus.jackson.map.module.SimpleDeserializers;
+
+        r0 := @parameter0: java.lang.Class;
+
+        $r1 := @parameter1: org.codehaus.jackson.map.DeserializationConfig;
+
+        $r2 := @parameter2: org.codehaus.jackson.map.BeanProperty;
+
+        $r6 = r5.<org.codehaus.jackson.map.module.SimpleDeserializers: java.util.HashMap _classMappings>;
+
+        if $r6 != null goto label1;
+
+        return null;
+
+     label1:
+        $r6 = r5.<org.codehaus.jackson.map.module.SimpleDeserializers: java.util.HashMap _classMappings>;
+
+        $r3 = new org.codehaus.jackson.map.type.ClassKey;
+
+        specialinvoke $r3.<org.codehaus.jackson.map.type.ClassKey: void <init>(java.lang.Class)>(r0);
+
+        $r4 = virtualinvoke $r6.<java.util.HashMap: java.lang.Object get(java.lang.Object)>($r3);
+
+        r7 = (org.codehaus.jackson.map.JsonDeserializer) $r4;
+
+        return r7;
+    }
+}

@@ -1,0 +1,132 @@
+class com.heyzap.sdk.HeyzapNotification extends java.lang.Object
+{
+    private static final int NOTIFICATION_ID;
+
+    void <init>()
+    {
+        com.heyzap.sdk.HeyzapNotification r0;
+
+        r0 := @this: com.heyzap.sdk.HeyzapNotification;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public static void send(android.content.Context, java.lang.String)
+    {
+        android.content.Context $r0, $r3;
+        java.lang.String $r1, $r6;
+        android.app.Notification $r2;
+        java.lang.StringBuilder $r4;
+        boolean $z0;
+        int $i0;
+        android.content.pm.ApplicationInfo $r5;
+        long $l1;
+        android.content.Intent $r7;
+        android.net.Uri $r8;
+        android.app.PendingIntent $r9;
+        java.lang.Object $r10;
+        android.app.NotificationManager $r11;
+
+        $r0 := @parameter0: android.content.Context;
+
+        $r1 := @parameter1: java.lang.String;
+
+        $r3 = virtualinvoke $r0.<android.content.Context: android.content.Context getApplicationContext()>();
+
+        $r4 = new java.lang.StringBuilder;
+
+        specialinvoke $r4.<java.lang.StringBuilder: void <init>()>();
+
+        $r4 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Get more from ");
+
+        $z0 = staticinvoke <com.heyzap.sdk.HeyzapLib: boolean subtleNotifications()>();
+
+        if $z0 == 0 goto label3;
+
+        $r1 = "your games";
+
+     label1:
+        $r4 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r1);
+
+        $r1 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        $i0 = 17301516;
+
+        $z0 = staticinvoke <com.heyzap.sdk.HeyzapLib: boolean subtleNotifications()>();
+
+        if $z0 != 0 goto label2;
+
+        $r5 = virtualinvoke $r0.<android.content.Context: android.content.pm.ApplicationInfo getApplicationInfo()>();
+
+        $i0 = $r5.<android.content.pm.ApplicationInfo: int icon>;
+
+     label2:
+        $r4 = new java.lang.StringBuilder;
+
+        specialinvoke $r4.<java.lang.StringBuilder: void <init>()>();
+
+        $r4 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r1);
+
+        $r4 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("\n");
+
+        $r4 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Install Heyzap to share with your friends!");
+
+        $r6 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        $l1 = staticinvoke <java.lang.System: long currentTimeMillis()>();
+
+        $r2 = new android.app.Notification;
+
+        specialinvoke $r2.<android.app.Notification: void <init>(int,java.lang.CharSequence,long)>($i0, $r6, $l1);
+
+        $i0 = $r2.<android.app.Notification: int flags>;
+
+        $i0 = $i0 | 16;
+
+        $r2.<android.app.Notification: int flags> = $i0;
+
+        $r4 = new java.lang.StringBuilder;
+
+        specialinvoke $r4.<java.lang.StringBuilder: void <init>()>();
+
+        $r4 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("market://details?id=com.heyzap.android&referrer=");
+
+        $r6 = staticinvoke <com.heyzap.sdk.HeyzapAnalytics: java.lang.String getAnalyticsReferrer(android.content.Context,java.lang.String)>($r0, "notification=true");
+
+        $r4 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r6);
+
+        $r6 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        $r7 = new android.content.Intent;
+
+        $r8 = staticinvoke <android.net.Uri: android.net.Uri parse(java.lang.String)>($r6);
+
+        specialinvoke $r7.<android.content.Intent: void <init>(java.lang.String,android.net.Uri)>("android.intent.action.VIEW", $r8);
+
+        $r9 = staticinvoke <android.app.PendingIntent: android.app.PendingIntent getActivity(android.content.Context,int,android.content.Intent,int)>($r0, 0, $r7, 0);
+
+        virtualinvoke $r2.<android.app.Notification: void setLatestEventInfo(android.content.Context,java.lang.CharSequence,java.lang.CharSequence,android.app.PendingIntent)>($r3, $r1, "Install Heyzap to share with your friends!", $r9);
+
+        $r10 = virtualinvoke $r0.<android.content.Context: java.lang.Object getSystemService(java.lang.String)>("notification");
+
+        $r11 = (android.app.NotificationManager) $r10;
+
+        virtualinvoke $r11.<android.app.NotificationManager: void notify(int,android.app.Notification)>(100101001, $r2);
+
+        staticinvoke <com.heyzap.sdk.HeyzapAnalytics: void trackEvent(android.content.Context,java.lang.String)>($r0, "notification-sent");
+
+        return;
+
+     label3:
+        goto label1;
+    }
+
+    public static void <clinit>()
+    {
+        <com.heyzap.sdk.HeyzapNotification: int NOTIFICATION_ID> = 100101001;
+
+        return;
+    }
+}

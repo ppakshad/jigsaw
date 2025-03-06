@@ -1,0 +1,150 @@
+class AnalyticsMarmalade extends java.lang.Object
+{
+
+    void <init>()
+    {
+        AnalyticsMarmalade r0;
+
+        r0 := @this: AnalyticsMarmalade;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public void analytics_Dispatch()
+    {
+        AnalyticsMarmalade r0;
+        com.google.android.apps.analytics.GoogleAnalyticsTracker $r1;
+
+        r0 := @this: AnalyticsMarmalade;
+
+        $r1 = staticinvoke <com.google.android.apps.analytics.GoogleAnalyticsTracker: com.google.android.apps.analytics.GoogleAnalyticsTracker getInstance()>();
+
+        virtualinvoke $r1.<com.google.android.apps.analytics.GoogleAnalyticsTracker: boolean dispatch()>();
+
+        return;
+    }
+
+    public void analytics_StartSession(java.lang.String)
+    {
+        AnalyticsMarmalade r0;
+        java.lang.String $r1;
+        com.ideaworks3d.marmalade.LoaderActivity $r2;
+        com.google.android.apps.analytics.GoogleAnalyticsTracker $r3;
+
+        r0 := @this: AnalyticsMarmalade;
+
+        $r1 := @parameter0: java.lang.String;
+
+        $r3 = staticinvoke <com.google.android.apps.analytics.GoogleAnalyticsTracker: com.google.android.apps.analytics.GoogleAnalyticsTracker getInstance()>();
+
+        $r2 = <com.ideaworks3d.marmalade.LoaderActivity: com.ideaworks3d.marmalade.LoaderActivity m_Activity>;
+
+        virtualinvoke $r3.<com.google.android.apps.analytics.GoogleAnalyticsTracker: void startNewSession(java.lang.String,android.content.Context)>($r1, $r2);
+
+        return;
+    }
+
+    public void analytics_StartSessionInterval(java.lang.String, int)
+    {
+        AnalyticsMarmalade r0;
+        java.lang.String $r1;
+        int $i0;
+        com.ideaworks3d.marmalade.LoaderActivity $r2;
+        com.google.android.apps.analytics.GoogleAnalyticsTracker $r3;
+
+        r0 := @this: AnalyticsMarmalade;
+
+        $r1 := @parameter0: java.lang.String;
+
+        $i0 := @parameter1: int;
+
+        $r3 = staticinvoke <com.google.android.apps.analytics.GoogleAnalyticsTracker: com.google.android.apps.analytics.GoogleAnalyticsTracker getInstance()>();
+
+        $r2 = <com.ideaworks3d.marmalade.LoaderActivity: com.ideaworks3d.marmalade.LoaderActivity m_Activity>;
+
+        virtualinvoke $r3.<com.google.android.apps.analytics.GoogleAnalyticsTracker: void startNewSession(java.lang.String,int,android.content.Context)>($r1, $i0, $r2);
+
+        return;
+    }
+
+    public void analytics_StopTracker()
+    {
+        AnalyticsMarmalade r0;
+        com.google.android.apps.analytics.GoogleAnalyticsTracker $r1;
+
+        r0 := @this: AnalyticsMarmalade;
+
+        $r1 = staticinvoke <com.google.android.apps.analytics.GoogleAnalyticsTracker: com.google.android.apps.analytics.GoogleAnalyticsTracker getInstance()>();
+
+        virtualinvoke $r1.<com.google.android.apps.analytics.GoogleAnalyticsTracker: void stopSession()>();
+
+        return;
+    }
+
+    public void analytics_setCustomVar(int, java.lang.String, java.lang.String, int)
+    {
+        AnalyticsMarmalade r0;
+        int $i0, $i1;
+        java.lang.String $r1, $r2;
+        com.google.android.apps.analytics.GoogleAnalyticsTracker $r3;
+
+        r0 := @this: AnalyticsMarmalade;
+
+        $i0 := @parameter0: int;
+
+        $r1 := @parameter1: java.lang.String;
+
+        $r2 := @parameter2: java.lang.String;
+
+        $i1 := @parameter3: int;
+
+        $r3 = staticinvoke <com.google.android.apps.analytics.GoogleAnalyticsTracker: com.google.android.apps.analytics.GoogleAnalyticsTracker getInstance()>();
+
+        virtualinvoke $r3.<com.google.android.apps.analytics.GoogleAnalyticsTracker: boolean setCustomVar(int,java.lang.String,java.lang.String,int)>($i0, $r1, $r2, $i1);
+
+        return;
+    }
+
+    public void analytics_trackEvent(java.lang.String, java.lang.String, java.lang.String, int)
+    {
+        AnalyticsMarmalade r0;
+        java.lang.String $r1, $r2, $r3;
+        int $i0;
+        com.google.android.apps.analytics.GoogleAnalyticsTracker $r4;
+
+        r0 := @this: AnalyticsMarmalade;
+
+        $r1 := @parameter0: java.lang.String;
+
+        $r2 := @parameter1: java.lang.String;
+
+        $r3 := @parameter2: java.lang.String;
+
+        $i0 := @parameter3: int;
+
+        $r4 = staticinvoke <com.google.android.apps.analytics.GoogleAnalyticsTracker: com.google.android.apps.analytics.GoogleAnalyticsTracker getInstance()>();
+
+        virtualinvoke $r4.<com.google.android.apps.analytics.GoogleAnalyticsTracker: void trackEvent(java.lang.String,java.lang.String,java.lang.String,int)>($r1, $r2, $r3, $i0);
+
+        return;
+    }
+
+    public void analytics_trackPageView(java.lang.String)
+    {
+        AnalyticsMarmalade r0;
+        java.lang.String $r1;
+        com.google.android.apps.analytics.GoogleAnalyticsTracker $r2;
+
+        r0 := @this: AnalyticsMarmalade;
+
+        $r1 := @parameter0: java.lang.String;
+
+        $r2 = staticinvoke <com.google.android.apps.analytics.GoogleAnalyticsTracker: com.google.android.apps.analytics.GoogleAnalyticsTracker getInstance()>();
+
+        virtualinvoke $r2.<com.google.android.apps.analytics.GoogleAnalyticsTracker: void trackPageView(java.lang.String)>($r1);
+
+        return;
+    }
+}

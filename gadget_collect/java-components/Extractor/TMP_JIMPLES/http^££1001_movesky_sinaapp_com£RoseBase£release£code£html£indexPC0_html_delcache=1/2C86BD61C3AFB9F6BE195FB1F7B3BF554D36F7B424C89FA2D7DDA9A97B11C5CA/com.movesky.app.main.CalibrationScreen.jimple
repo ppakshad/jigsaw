@@ -1,0 +1,354 @@
+public class com.movesky.app.main.CalibrationScreen extends com.movesky.app.engine.ui.UIView implements com.movesky.app.engine.sound.MusicPlayer$OnCompletionListener
+{
+    private static final int Y_OFFSET;
+    private com.movesky.app.main.BeatTrack _beatTrack;
+    private int _calibration;
+    private com.movesky.app.engine.ui.UILabel _calibrationLabel;
+    private com.movesky.app.engine.ui.UISlider _calibrationSlider;
+    private android.content.SharedPreferences$Editor _editor;
+    private com.movesky.app.engine.ui.UILabel _explanationLabel;
+    private android.content.SharedPreferences _settings;
+    private com.movesky.app.engine.ui.UILabel _title;
+
+    public void <init>(com.movesky.app.engine.ui.UINavigationController)
+    {
+        com.movesky.app.main.CalibrationScreen r0;
+        com.movesky.app.engine.ui.UINavigationController $r1;
+        com.movesky.app.engine.core.GameActivity $r2;
+        android.content.SharedPreferences $r3;
+        android.content.SharedPreferences$Editor $r4;
+        com.movesky.app.engine.ui.UILabel $r5;
+        com.movesky.app.engine.ui.Anchor $r6;
+        com.movesky.app.engine.ui.UISlider $r7;
+        int $i0;
+        float $f0;
+        com.movesky.app.main.BeatTrack $r8;
+        com.movesky.app.main.Song $r9;
+
+        r0 := @this: com.movesky.app.main.CalibrationScreen;
+
+        $r1 := @parameter0: com.movesky.app.engine.ui.UINavigationController;
+
+        specialinvoke r0.<com.movesky.app.engine.ui.UIView: void <init>()>();
+
+        $r2 = <com.movesky.app.main.YSActivity: com.movesky.app.engine.core.GameActivity instance>;
+
+        $r3 = virtualinvoke $r2.<com.movesky.app.engine.core.GameActivity: android.content.SharedPreferences getSharedPreferences(java.lang.String,int)>("game_settings", 0);
+
+        r0.<com.movesky.app.main.CalibrationScreen: android.content.SharedPreferences _settings> = $r3;
+
+        $r3 = r0.<com.movesky.app.main.CalibrationScreen: android.content.SharedPreferences _settings>;
+
+        $r4 = interfaceinvoke $r3.<android.content.SharedPreferences: android.content.SharedPreferences$Editor edit()>();
+
+        r0.<com.movesky.app.main.CalibrationScreen: android.content.SharedPreferences$Editor _editor> = $r4;
+
+        virtualinvoke r0.<com.movesky.app.main.CalibrationScreen: void setSize(float,float)>(320.0F, 530.0F);
+
+        $r5 = new com.movesky.app.engine.ui.UILabel;
+
+        specialinvoke $r5.<com.movesky.app.engine.ui.UILabel: void <init>(java.lang.String)>("GameActivity.instance.getString(R.string.calibratesound)");
+
+        r0.<com.movesky.app.main.CalibrationScreen: com.movesky.app.engine.ui.UILabel _title> = $r5;
+
+        $r5 = r0.<com.movesky.app.main.CalibrationScreen: com.movesky.app.engine.ui.UILabel _title>;
+
+        $r6 = <com.movesky.app.engine.ui.Anchor: com.movesky.app.engine.ui.Anchor TOP_CENTER>;
+
+        virtualinvoke $r5.<com.movesky.app.engine.ui.UILabel: void setAnchor(com.movesky.app.engine.ui.Anchor)>($r6);
+
+        $r5 = r0.<com.movesky.app.main.CalibrationScreen: com.movesky.app.engine.ui.UILabel _title>;
+
+        virtualinvoke $r5.<com.movesky.app.engine.ui.UILabel: void setTextSize(float)>(30.0F);
+
+        $r5 = r0.<com.movesky.app.main.CalibrationScreen: com.movesky.app.engine.ui.UILabel _title>;
+
+        virtualinvoke $r5.<com.movesky.app.engine.ui.UILabel: void sizeToFit()>();
+
+        $r5 = r0.<com.movesky.app.main.CalibrationScreen: com.movesky.app.engine.ui.UILabel _title>;
+
+        virtualinvoke $r5.<com.movesky.app.engine.ui.UILabel: void setPosition(float,float)>(160.0F, 40.0F);
+
+        $r5 = new com.movesky.app.engine.ui.UILabel;
+
+        specialinvoke $r5.<com.movesky.app.engine.ui.UILabel: void <init>(java.lang.String)>("GameActivity.instance.getString(R.string.calibrationexplanation)");
+
+        r0.<com.movesky.app.main.CalibrationScreen: com.movesky.app.engine.ui.UILabel _explanationLabel> = $r5;
+
+        $r5 = r0.<com.movesky.app.main.CalibrationScreen: com.movesky.app.engine.ui.UILabel _explanationLabel>;
+
+        $r6 = <com.movesky.app.engine.ui.Anchor: com.movesky.app.engine.ui.Anchor CENTER_CENTER>;
+
+        virtualinvoke $r5.<com.movesky.app.engine.ui.UILabel: void setAnchor(com.movesky.app.engine.ui.Anchor)>($r6);
+
+        $r5 = r0.<com.movesky.app.main.CalibrationScreen: com.movesky.app.engine.ui.UILabel _explanationLabel>;
+
+        virtualinvoke $r5.<com.movesky.app.engine.ui.UILabel: void setTextSize(float)>(16.0F);
+
+        $r5 = r0.<com.movesky.app.main.CalibrationScreen: com.movesky.app.engine.ui.UILabel _explanationLabel>;
+
+        virtualinvoke $r5.<com.movesky.app.engine.ui.UILabel: void sizeToFit()>();
+
+        $r5 = r0.<com.movesky.app.main.CalibrationScreen: com.movesky.app.engine.ui.UILabel _explanationLabel>;
+
+        virtualinvoke $r5.<com.movesky.app.engine.ui.UILabel: void setPosition(float,float)>(160.0F, 118.0F);
+
+        $r7 = new com.movesky.app.engine.ui.UISlider;
+
+        specialinvoke $r7.<com.movesky.app.engine.ui.UISlider: void <init>(float,float,float)>(-400.0F, 400.0F, 0.0F);
+
+        r0.<com.movesky.app.main.CalibrationScreen: com.movesky.app.engine.ui.UISlider _calibrationSlider> = $r7;
+
+        $r7 = r0.<com.movesky.app.main.CalibrationScreen: com.movesky.app.engine.ui.UISlider _calibrationSlider>;
+
+        $r6 = <com.movesky.app.engine.ui.Anchor: com.movesky.app.engine.ui.Anchor CENTER_CENTER>;
+
+        virtualinvoke $r7.<com.movesky.app.engine.ui.UISlider: void setAnchor(com.movesky.app.engine.ui.Anchor)>($r6);
+
+        $r7 = r0.<com.movesky.app.main.CalibrationScreen: com.movesky.app.engine.ui.UISlider _calibrationSlider>;
+
+        virtualinvoke $r7.<com.movesky.app.engine.ui.UISlider: void setSize(float,float)>(200.0F, 24.0F);
+
+        $r7 = r0.<com.movesky.app.main.CalibrationScreen: com.movesky.app.engine.ui.UISlider _calibrationSlider>;
+
+        virtualinvoke $r7.<com.movesky.app.engine.ui.UISlider: void setPosition(float,float)>(180.0F, 248.0F);
+
+        $r7 = r0.<com.movesky.app.main.CalibrationScreen: com.movesky.app.engine.ui.UISlider _calibrationSlider>;
+
+        $i0 = <com.movesky.app.main.YSGame: int SOUND_CALIBRATION>;
+
+        $f0 = (float) $i0;
+
+        virtualinvoke $r7.<com.movesky.app.engine.ui.UISlider: void setValue(float)>($f0);
+
+        $r7 = r0.<com.movesky.app.main.CalibrationScreen: com.movesky.app.engine.ui.UISlider _calibrationSlider>;
+
+        $f0 = virtualinvoke $r7.<com.movesky.app.engine.ui.UISlider: float getValue()>();
+
+        $i0 = (int) $f0;
+
+        r0.<com.movesky.app.main.CalibrationScreen: int _calibration> = $i0;
+
+        $r8 = new com.movesky.app.main.BeatTrack;
+
+        specialinvoke $r8.<com.movesky.app.main.BeatTrack: void <init>(com.movesky.app.engine.sound.MusicPlayer$OnCompletionListener)>(r0);
+
+        r0.<com.movesky.app.main.CalibrationScreen: com.movesky.app.main.BeatTrack _beatTrack> = $r8;
+
+        $r8 = r0.<com.movesky.app.main.CalibrationScreen: com.movesky.app.main.BeatTrack _beatTrack>;
+
+        $r9 = <com.movesky.app.main.Song: com.movesky.app.main.Song MISTAKE_THE_GETAWAY>;
+
+        virtualinvoke $r8.<com.movesky.app.main.BeatTrack: void setSong(com.movesky.app.main.Song)>($r9);
+
+        $r8 = r0.<com.movesky.app.main.CalibrationScreen: com.movesky.app.main.BeatTrack _beatTrack>;
+
+        virtualinvoke $r8.<com.movesky.app.main.BeatTrack: void setStartDelay(int)>(1000);
+
+        $r5 = r0.<com.movesky.app.main.CalibrationScreen: com.movesky.app.engine.ui.UILabel _title>;
+
+        virtualinvoke r0.<com.movesky.app.main.CalibrationScreen: void addSubview(com.movesky.app.engine.ui.UIView)>($r5);
+
+        $r5 = r0.<com.movesky.app.main.CalibrationScreen: com.movesky.app.engine.ui.UILabel _explanationLabel>;
+
+        virtualinvoke r0.<com.movesky.app.main.CalibrationScreen: void addSubview(com.movesky.app.engine.ui.UIView)>($r5);
+
+        $r7 = r0.<com.movesky.app.main.CalibrationScreen: com.movesky.app.engine.ui.UISlider _calibrationSlider>;
+
+        virtualinvoke r0.<com.movesky.app.main.CalibrationScreen: void addSubview(com.movesky.app.engine.ui.UIView)>($r7);
+
+        return;
+    }
+
+    public void onCompletion(com.movesky.app.engine.sound.MusicPlayer)
+    {
+        com.movesky.app.main.CalibrationScreen r0;
+        com.movesky.app.engine.sound.MusicPlayer $r1;
+
+        r0 := @this: com.movesky.app.main.CalibrationScreen;
+
+        $r1 := @parameter0: com.movesky.app.engine.sound.MusicPlayer;
+
+        virtualinvoke $r1.<com.movesky.app.engine.sound.MusicPlayer: void stop()>();
+
+        virtualinvoke $r1.<com.movesky.app.engine.sound.MusicPlayer: void release()>();
+
+        return;
+    }
+
+    public void onDraw(android.graphics.Canvas)
+    {
+        com.movesky.app.main.CalibrationScreen r0;
+        android.graphics.Canvas $r1;
+        com.movesky.app.main.BeatTrack $r2;
+
+        r0 := @this: com.movesky.app.main.CalibrationScreen;
+
+        $r1 := @parameter0: android.graphics.Canvas;
+
+        $r2 = r0.<com.movesky.app.main.CalibrationScreen: com.movesky.app.main.BeatTrack _beatTrack>;
+
+        virtualinvoke $r2.<com.movesky.app.main.BeatTrack: void draw(android.graphics.Canvas)>($r1);
+
+        specialinvoke r0.<com.movesky.app.engine.ui.UIView: void onDraw(android.graphics.Canvas)>($r1);
+
+        return;
+    }
+
+    public void onStop()
+    {
+        com.movesky.app.main.CalibrationScreen r0;
+        com.movesky.app.main.BeatTrack $r1;
+
+        r0 := @this: com.movesky.app.main.CalibrationScreen;
+
+        $r1 = r0.<com.movesky.app.main.CalibrationScreen: com.movesky.app.main.BeatTrack _beatTrack>;
+
+        virtualinvoke $r1.<com.movesky.app.main.BeatTrack: void stopMusic()>();
+
+        return;
+    }
+
+    public void onTouchDown(float, float)
+    {
+        com.movesky.app.main.CalibrationScreen r0;
+        float $f0, $f1;
+        com.movesky.app.main.BeatTrack $r1;
+
+        r0 := @this: com.movesky.app.main.CalibrationScreen;
+
+        $f0 := @parameter0: float;
+
+        $f1 := @parameter1: float;
+
+        specialinvoke r0.<com.movesky.app.engine.ui.UIView: void onTouchDown(float,float)>($f0, $f1);
+
+        $r1 = r0.<com.movesky.app.main.CalibrationScreen: com.movesky.app.main.BeatTrack _beatTrack>;
+
+        virtualinvoke $r1.<com.movesky.app.main.BeatTrack: com.movesky.app.engine.sound.Beat$BeatType onTouchDown(float,float)>($f0, $f1);
+
+        return;
+    }
+
+    public void onTouchUp(float, float)
+    {
+        com.movesky.app.main.CalibrationScreen r0;
+        float $f0, $f1;
+        com.movesky.app.main.BeatTrack $r1;
+
+        r0 := @this: com.movesky.app.main.CalibrationScreen;
+
+        $f0 := @parameter0: float;
+
+        $f1 := @parameter1: float;
+
+        specialinvoke r0.<com.movesky.app.engine.ui.UIView: void onTouchUp(float,float)>($f0, $f1);
+
+        $r1 = r0.<com.movesky.app.main.CalibrationScreen: com.movesky.app.main.BeatTrack _beatTrack>;
+
+        virtualinvoke $r1.<com.movesky.app.main.BeatTrack: void onTouchUp(float,float)>($f0, $f1);
+
+        return;
+    }
+
+    public void onUpdate(float)
+    {
+        com.movesky.app.main.CalibrationScreen r0;
+        float $f0;
+        int $i0, $i1;
+        com.movesky.app.main.BeatTrack $r1;
+        com.movesky.app.engine.ui.UISlider $r2;
+        android.content.SharedPreferences$Editor $r3;
+
+        r0 := @this: com.movesky.app.main.CalibrationScreen;
+
+        $f0 := @parameter0: float;
+
+        specialinvoke r0.<com.movesky.app.engine.ui.UIView: void onUpdate(float)>($f0);
+
+        $r1 = r0.<com.movesky.app.main.CalibrationScreen: com.movesky.app.main.BeatTrack _beatTrack>;
+
+        virtualinvoke $r1.<com.movesky.app.main.BeatTrack: void refreshBeats()>();
+
+        $r1 = r0.<com.movesky.app.main.CalibrationScreen: com.movesky.app.main.BeatTrack _beatTrack>;
+
+        $i0 = virtualinvoke $r1.<com.movesky.app.main.BeatTrack: int getCurrPosition()>();
+
+        if $i0 < 0 goto label1;
+
+        $r1 = r0.<com.movesky.app.main.CalibrationScreen: com.movesky.app.main.BeatTrack _beatTrack>;
+
+        virtualinvoke $r1.<com.movesky.app.main.BeatTrack: void startMusic()>();
+
+     label1:
+        $i0 = r0.<com.movesky.app.main.CalibrationScreen: int _calibration>;
+
+        $r2 = r0.<com.movesky.app.main.CalibrationScreen: com.movesky.app.engine.ui.UISlider _calibrationSlider>;
+
+        $f0 = virtualinvoke $r2.<com.movesky.app.engine.ui.UISlider: float getValue()>();
+
+        $i1 = (int) $f0;
+
+        if $i0 == $i1 goto label2;
+
+        $r2 = r0.<com.movesky.app.main.CalibrationScreen: com.movesky.app.engine.ui.UISlider _calibrationSlider>;
+
+        $f0 = virtualinvoke $r2.<com.movesky.app.engine.ui.UISlider: float getValue()>();
+
+        $i0 = (int) $f0;
+
+        r0.<com.movesky.app.main.CalibrationScreen: int _calibration> = $i0;
+
+        $r3 = r0.<com.movesky.app.main.CalibrationScreen: android.content.SharedPreferences$Editor _editor>;
+
+        $i0 = r0.<com.movesky.app.main.CalibrationScreen: int _calibration>;
+
+        interfaceinvoke $r3.<android.content.SharedPreferences$Editor: android.content.SharedPreferences$Editor putInt(java.lang.String,int)>("soundCalibration", $i0);
+
+        $i0 = r0.<com.movesky.app.main.CalibrationScreen: int _calibration>;
+
+        <com.movesky.app.main.YSGame: int SOUND_CALIBRATION> = $i0;
+
+        $r3 = r0.<com.movesky.app.main.CalibrationScreen: android.content.SharedPreferences$Editor _editor>;
+
+        interfaceinvoke $r3.<android.content.SharedPreferences$Editor: boolean commit()>();
+
+     label2:
+        return;
+    }
+
+    public boolean shouldPlayMenuMusic()
+    {
+        com.movesky.app.main.CalibrationScreen r0;
+
+        r0 := @this: com.movesky.app.main.CalibrationScreen;
+
+        return 0;
+    }
+
+    public void willHide(boolean)
+    {
+        com.movesky.app.main.CalibrationScreen r0;
+        boolean $z0;
+        com.movesky.app.main.BeatTrack $r1;
+
+        r0 := @this: com.movesky.app.main.CalibrationScreen;
+
+        $z0 := @parameter0: boolean;
+
+        specialinvoke r0.<com.movesky.app.engine.ui.UIView: void willHide(boolean)>($z0);
+
+        $r1 = r0.<com.movesky.app.main.CalibrationScreen: com.movesky.app.main.BeatTrack _beatTrack>;
+
+        virtualinvoke $r1.<com.movesky.app.main.BeatTrack: void stopMusic()>();
+
+        return;
+    }
+
+    public static void <clinit>()
+    {
+        <com.movesky.app.main.CalibrationScreen: int Y_OFFSET> = 65;
+
+        return;
+    }
+}

@@ -1,0 +1,192 @@
+public class org.codehaus.jackson.io.SerializedString extends java.lang.Object implements org.codehaus.jackson.SerializableString
+{
+    protected char[] _quotedChars;
+    protected byte[] _quotedUTF8Ref;
+    protected byte[] _unquotedUTF8Ref;
+    protected final java.lang.String _value;
+
+    public void <init>(java.lang.String)
+    {
+        org.codehaus.jackson.io.SerializedString r0;
+        java.lang.String $r1;
+
+        r0 := @this: org.codehaus.jackson.io.SerializedString;
+
+        $r1 := @parameter0: java.lang.String;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        r0.<org.codehaus.jackson.io.SerializedString: java.lang.String _value> = $r1;
+
+        return;
+    }
+
+    public final char[] asQuotedChars()
+    {
+        org.codehaus.jackson.io.SerializedString r0;
+        java.lang.String $r1;
+        char[] r2;
+        org.codehaus.jackson.io.JsonStringEncoder $r3;
+
+        r0 := @this: org.codehaus.jackson.io.SerializedString;
+
+        r2 = r0.<org.codehaus.jackson.io.SerializedString: char[] _quotedChars>;
+
+        if r2 != null goto label1;
+
+        $r3 = staticinvoke <org.codehaus.jackson.io.JsonStringEncoder: org.codehaus.jackson.io.JsonStringEncoder getInstance()>();
+
+        $r1 = r0.<org.codehaus.jackson.io.SerializedString: java.lang.String _value>;
+
+        r2 = virtualinvoke $r3.<org.codehaus.jackson.io.JsonStringEncoder: char[] quoteAsString(java.lang.String)>($r1);
+
+        r0.<org.codehaus.jackson.io.SerializedString: char[] _quotedChars> = r2;
+
+     label1:
+        return r2;
+    }
+
+    public final byte[] asQuotedUTF8()
+    {
+        org.codehaus.jackson.io.SerializedString r0;
+        java.lang.String $r1;
+        byte[] r2;
+        org.codehaus.jackson.io.JsonStringEncoder $r3;
+
+        r0 := @this: org.codehaus.jackson.io.SerializedString;
+
+        r2 = r0.<org.codehaus.jackson.io.SerializedString: byte[] _quotedUTF8Ref>;
+
+        if r2 != null goto label1;
+
+        $r3 = staticinvoke <org.codehaus.jackson.io.JsonStringEncoder: org.codehaus.jackson.io.JsonStringEncoder getInstance()>();
+
+        $r1 = r0.<org.codehaus.jackson.io.SerializedString: java.lang.String _value>;
+
+        r2 = virtualinvoke $r3.<org.codehaus.jackson.io.JsonStringEncoder: byte[] quoteAsUTF8(java.lang.String)>($r1);
+
+        r0.<org.codehaus.jackson.io.SerializedString: byte[] _quotedUTF8Ref> = r2;
+
+     label1:
+        return r2;
+    }
+
+    public final byte[] asUnquotedUTF8()
+    {
+        org.codehaus.jackson.io.SerializedString r0;
+        java.lang.String $r1;
+        byte[] r2;
+        org.codehaus.jackson.io.JsonStringEncoder $r3;
+
+        r0 := @this: org.codehaus.jackson.io.SerializedString;
+
+        r2 = r0.<org.codehaus.jackson.io.SerializedString: byte[] _unquotedUTF8Ref>;
+
+        if r2 != null goto label1;
+
+        $r3 = staticinvoke <org.codehaus.jackson.io.JsonStringEncoder: org.codehaus.jackson.io.JsonStringEncoder getInstance()>();
+
+        $r1 = r0.<org.codehaus.jackson.io.SerializedString: java.lang.String _value>;
+
+        r2 = virtualinvoke $r3.<org.codehaus.jackson.io.JsonStringEncoder: byte[] encodeAsUTF8(java.lang.String)>($r1);
+
+        r0.<org.codehaus.jackson.io.SerializedString: byte[] _unquotedUTF8Ref> = r2;
+
+     label1:
+        return r2;
+    }
+
+    public final int charLength()
+    {
+        org.codehaus.jackson.io.SerializedString r0;
+        int $i0;
+        java.lang.String $r1;
+
+        r0 := @this: org.codehaus.jackson.io.SerializedString;
+
+        $r1 = r0.<org.codehaus.jackson.io.SerializedString: java.lang.String _value>;
+
+        $i0 = virtualinvoke $r1.<java.lang.String: int length()>();
+
+        return $i0;
+    }
+
+    public final boolean equals(java.lang.Object)
+    {
+        org.codehaus.jackson.io.SerializedString r0, $r4;
+        java.lang.Object $r1;
+        java.lang.Class $r2, $r3;
+        java.lang.String $r5, $r6;
+        boolean $z0;
+
+        r0 := @this: org.codehaus.jackson.io.SerializedString;
+
+        $r1 := @parameter0: java.lang.Object;
+
+        if $r1 != r0 goto label1;
+
+        return 1;
+
+     label1:
+        if $r1 == null goto label2;
+
+        $r2 = virtualinvoke $r1.<java.lang.Object: java.lang.Class getClass()>();
+
+        $r3 = virtualinvoke r0.<java.lang.Object: java.lang.Class getClass()>();
+
+        if $r2 == $r3 goto label3;
+
+     label2:
+        return 0;
+
+     label3:
+        $r4 = (org.codehaus.jackson.io.SerializedString) $r1;
+
+        $r5 = r0.<org.codehaus.jackson.io.SerializedString: java.lang.String _value>;
+
+        $r6 = $r4.<org.codehaus.jackson.io.SerializedString: java.lang.String _value>;
+
+        $z0 = virtualinvoke $r5.<java.lang.String: boolean equals(java.lang.Object)>($r6);
+
+        return $z0;
+    }
+
+    public final java.lang.String getValue()
+    {
+        org.codehaus.jackson.io.SerializedString r0;
+        java.lang.String r1;
+
+        r0 := @this: org.codehaus.jackson.io.SerializedString;
+
+        r1 = r0.<org.codehaus.jackson.io.SerializedString: java.lang.String _value>;
+
+        return r1;
+    }
+
+    public final int hashCode()
+    {
+        org.codehaus.jackson.io.SerializedString r0;
+        int $i0;
+        java.lang.String $r1;
+
+        r0 := @this: org.codehaus.jackson.io.SerializedString;
+
+        $r1 = r0.<org.codehaus.jackson.io.SerializedString: java.lang.String _value>;
+
+        $i0 = virtualinvoke $r1.<java.lang.String: int hashCode()>();
+
+        return $i0;
+    }
+
+    public final java.lang.String toString()
+    {
+        org.codehaus.jackson.io.SerializedString r0;
+        java.lang.String r1;
+
+        r0 := @this: org.codehaus.jackson.io.SerializedString;
+
+        r1 = r0.<org.codehaus.jackson.io.SerializedString: java.lang.String _value>;
+
+        return r1;
+    }
+}

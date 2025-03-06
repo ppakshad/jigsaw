@@ -1,0 +1,242 @@
+public class org.codehaus.jackson.util.VersionUtil extends java.lang.Object
+{
+    public static final java.lang.String VERSION_FILE;
+    private static final java.util.regex.Pattern VERSION_SEPARATOR;
+
+    static void <clinit>()
+    {
+        java.util.regex.Pattern $r0;
+
+        <org.codehaus.jackson.util.VersionUtil: java.lang.String VERSION_FILE> = "VERSION.txt";
+
+        $r0 = staticinvoke <java.util.regex.Pattern: java.util.regex.Pattern compile(java.lang.String)>("[-_./;:]");
+
+        <org.codehaus.jackson.util.VersionUtil: java.util.regex.Pattern VERSION_SEPARATOR> = $r0;
+
+        return;
+    }
+
+    public void <init>()
+    {
+        org.codehaus.jackson.util.VersionUtil r0;
+
+        r0 := @this: org.codehaus.jackson.util.VersionUtil;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public static org.codehaus.jackson.Version parseVersion(java.lang.String)
+    {
+        java.lang.String $r0;
+        int $i0, $i1, $i2, $i3;
+        java.util.regex.Pattern $r1;
+        java.lang.String[] $r2;
+        org.codehaus.jackson.Version $r3;
+
+        $r0 := @parameter0: java.lang.String;
+
+        if $r0 != null goto label1;
+
+        return null;
+
+     label1:
+        $r0 = virtualinvoke $r0.<java.lang.String: java.lang.String trim()>();
+
+        $i0 = virtualinvoke $r0.<java.lang.String: int length()>();
+
+        if $i0 != 0 goto label2;
+
+        return null;
+
+     label2:
+        $r1 = <org.codehaus.jackson.util.VersionUtil: java.util.regex.Pattern VERSION_SEPARATOR>;
+
+        $r2 = virtualinvoke $r1.<java.util.regex.Pattern: java.lang.String[] split(java.lang.CharSequence)>($r0);
+
+        $i0 = lengthof $r2;
+
+        if $i0 >= 2 goto label3;
+
+        return null;
+
+     label3:
+        $r0 = $r2[0];
+
+        $i0 = staticinvoke <org.codehaus.jackson.util.VersionUtil: int parseVersionPart(java.lang.String)>($r0);
+
+        $r0 = $r2[1];
+
+        $i1 = staticinvoke <org.codehaus.jackson.util.VersionUtil: int parseVersionPart(java.lang.String)>($r0);
+
+        $i2 = lengthof $r2;
+
+        if $i2 <= 2 goto label6;
+
+        $r0 = $r2[2];
+
+        $i2 = staticinvoke <org.codehaus.jackson.util.VersionUtil: int parseVersionPart(java.lang.String)>($r0);
+
+     label4:
+        $i3 = lengthof $r2;
+
+        if $i3 <= 3 goto label7;
+
+        $r0 = $r2[3];
+
+     label5:
+        $r3 = new org.codehaus.jackson.Version;
+
+        specialinvoke $r3.<org.codehaus.jackson.Version: void <init>(int,int,int,java.lang.String)>($i0, $i1, $i2, $r0);
+
+        return $r3;
+
+     label6:
+        $i2 = 0;
+
+        goto label4;
+
+     label7:
+        $r0 = null;
+
+        goto label5;
+    }
+
+    protected static int parseVersionPart(java.lang.String)
+    {
+        int $i0, $i1, i2, $i4;
+        java.lang.String $r0;
+        char $c3;
+
+        $r0 := @parameter0: java.lang.String;
+
+        $r0 = virtualinvoke $r0.<java.lang.String: java.lang.String toString()>();
+
+        $i1 = virtualinvoke $r0.<java.lang.String: int length()>();
+
+        $i0 = 0;
+
+        i2 = 0;
+
+     label1:
+        if i2 >= $i1 goto label3;
+
+        $c3 = virtualinvoke $r0.<java.lang.String: char charAt(int)>(i2);
+
+        if $c3 > 57 goto label3;
+
+        if $c3 >= 48 goto label2;
+
+        return $i0;
+
+     label2:
+        $i4 = $i0 * 10;
+
+        $i0 = $c3 - 48;
+
+        $i0 = $i4 + $i0;
+
+        i2 = i2 + 1;
+
+        goto label1;
+
+     label3:
+        return $i0;
+    }
+
+    public static org.codehaus.jackson.Version versionFor(java.lang.Class)
+    {
+        java.lang.Class r0;
+        java.io.BufferedReader r1;
+        org.codehaus.jackson.Version r2, $r6;
+        java.io.InputStream $r3;
+        java.io.InputStreamReader $r4;
+        java.lang.String $r5;
+        java.lang.Throwable r7, $r9, $r10, r11;
+        java.lang.RuntimeException $r8;
+
+        r0 := @parameter0: java.lang.Class;
+
+        r2 = null;
+
+     label01:
+        $r3 = virtualinvoke r0.<java.lang.Class: java.io.InputStream getResourceAsStream(java.lang.String)>("VERSION.txt");
+
+     label02:
+        if $r3 == null goto label06;
+
+     label03:
+        r1 = new java.io.BufferedReader;
+
+        $r4 = new java.io.InputStreamReader;
+
+        specialinvoke $r4.<java.io.InputStreamReader: void <init>(java.io.InputStream,java.lang.String)>($r3, "UTF-8");
+
+        specialinvoke r1.<java.io.BufferedReader: void <init>(java.io.Reader)>($r4);
+
+        $r5 = virtualinvoke r1.<java.io.BufferedReader: java.lang.String readLine()>();
+
+        $r6 = staticinvoke <org.codehaus.jackson.util.VersionUtil: org.codehaus.jackson.Version parseVersion(java.lang.String)>($r5);
+
+     label04:
+        r2 = $r6;
+
+     label05:
+        virtualinvoke $r3.<java.io.InputStream: void close()>();
+
+     label06:
+        if r2 != null goto label17;
+
+        r2 = staticinvoke <org.codehaus.jackson.Version: org.codehaus.jackson.Version unknownVersion()>();
+
+        return r2;
+
+     label07:
+        r7 := @caughtexception;
+
+        $r8 = new java.lang.RuntimeException;
+
+     label08:
+        specialinvoke $r8.<java.lang.RuntimeException: void <init>(java.lang.Throwable)>(r7);
+
+     label09:
+        throw $r8;
+
+     label10:
+        $r9 := @caughtexception;
+
+        goto label06;
+
+     label11:
+        $r10 := @caughtexception;
+
+     label12:
+        virtualinvoke $r3.<java.io.InputStream: void close()>();
+
+     label13:
+        throw $r10;
+
+     label14:
+        r11 := @caughtexception;
+
+        $r8 = new java.lang.RuntimeException;
+
+     label15:
+        specialinvoke $r8.<java.lang.RuntimeException: void <init>(java.lang.Throwable)>(r11);
+
+     label16:
+        throw $r8;
+
+     label17:
+        return r2;
+
+        catch java.io.IOException from label01 to label02 with label10;
+        catch java.lang.Throwable from label03 to label04 with label11;
+        catch java.io.IOException from label05 to label06 with label07;
+        catch java.io.IOException from label08 to label09 with label10;
+        catch java.io.IOException from label12 to label13 with label14;
+        catch java.io.IOException from label13 to label14 with label10;
+        catch java.io.IOException from label15 to label16 with label10;
+    }
+}

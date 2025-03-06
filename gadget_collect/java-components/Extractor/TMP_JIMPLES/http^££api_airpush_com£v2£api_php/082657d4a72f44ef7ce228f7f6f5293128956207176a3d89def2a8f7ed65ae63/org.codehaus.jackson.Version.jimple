@@ -1,0 +1,309 @@
+public class org.codehaus.jackson.Version extends java.lang.Object implements java.lang.Comparable
+{
+    private static final org.codehaus.jackson.Version UNKNOWN_VERSION;
+    protected final int _majorVersion;
+    protected final int _minorVersion;
+    protected final int _patchLevel;
+    protected final java.lang.String _snapshotInfo;
+
+    static void <clinit>()
+    {
+        org.codehaus.jackson.Version $r0;
+
+        $r0 = new org.codehaus.jackson.Version;
+
+        specialinvoke $r0.<org.codehaus.jackson.Version: void <init>(int,int,int,java.lang.String)>(0, 0, 0, null);
+
+        <org.codehaus.jackson.Version: org.codehaus.jackson.Version UNKNOWN_VERSION> = $r0;
+
+        return;
+    }
+
+    public void <init>(int, int, int, java.lang.String)
+    {
+        org.codehaus.jackson.Version r0;
+        int $i0, $i1, $i2;
+        java.lang.String $r1;
+
+        r0 := @this: org.codehaus.jackson.Version;
+
+        $i0 := @parameter0: int;
+
+        $i1 := @parameter1: int;
+
+        $i2 := @parameter2: int;
+
+        $r1 := @parameter3: java.lang.String;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        r0.<org.codehaus.jackson.Version: int _majorVersion> = $i0;
+
+        r0.<org.codehaus.jackson.Version: int _minorVersion> = $i1;
+
+        r0.<org.codehaus.jackson.Version: int _patchLevel> = $i2;
+
+        r0.<org.codehaus.jackson.Version: java.lang.String _snapshotInfo> = $r1;
+
+        return;
+    }
+
+    public static org.codehaus.jackson.Version unknownVersion()
+    {
+        org.codehaus.jackson.Version r0;
+
+        r0 = <org.codehaus.jackson.Version: org.codehaus.jackson.Version UNKNOWN_VERSION>;
+
+        return r0;
+    }
+
+    public volatile int compareTo(java.lang.Object)
+    {
+        org.codehaus.jackson.Version r0, $r2;
+        int $i0;
+        java.lang.Object $r1;
+
+        r0 := @this: org.codehaus.jackson.Version;
+
+        $r1 := @parameter0: java.lang.Object;
+
+        $r2 = (org.codehaus.jackson.Version) $r1;
+
+        $i0 = virtualinvoke r0.<org.codehaus.jackson.Version: int compareTo(org.codehaus.jackson.Version)>($r2);
+
+        return $i0;
+    }
+
+    public int compareTo(org.codehaus.jackson.Version)
+    {
+        org.codehaus.jackson.Version r0, $r1;
+        int $i0, $i1;
+
+        r0 := @this: org.codehaus.jackson.Version;
+
+        $r1 := @parameter0: org.codehaus.jackson.Version;
+
+        $i0 = r0.<org.codehaus.jackson.Version: int _majorVersion>;
+
+        $i1 = $r1.<org.codehaus.jackson.Version: int _majorVersion>;
+
+        $i0 = $i0 - $i1;
+
+        if $i0 != 0 goto label1;
+
+        $i0 = r0.<org.codehaus.jackson.Version: int _minorVersion>;
+
+        $i1 = $r1.<org.codehaus.jackson.Version: int _minorVersion>;
+
+        $i0 = $i0 - $i1;
+
+        if $i0 != 0 goto label1;
+
+        $i0 = r0.<org.codehaus.jackson.Version: int _patchLevel>;
+
+        $i1 = $r1.<org.codehaus.jackson.Version: int _patchLevel>;
+
+        $i0 = $i0 - $i1;
+
+     label1:
+        return $i0;
+    }
+
+    public boolean equals(java.lang.Object)
+    {
+        org.codehaus.jackson.Version r0, $r4;
+        java.lang.Object $r1;
+        java.lang.Class $r2, $r3;
+        int $i0, $i1;
+
+        r0 := @this: org.codehaus.jackson.Version;
+
+        $r1 := @parameter0: java.lang.Object;
+
+        if $r1 != r0 goto label1;
+
+        return 1;
+
+     label1:
+        if $r1 != null goto label2;
+
+        return 0;
+
+     label2:
+        $r2 = virtualinvoke $r1.<java.lang.Object: java.lang.Class getClass()>();
+
+        $r3 = virtualinvoke r0.<java.lang.Object: java.lang.Class getClass()>();
+
+        if $r2 == $r3 goto label3;
+
+        return 0;
+
+     label3:
+        $r4 = (org.codehaus.jackson.Version) $r1;
+
+        $i0 = $r4.<org.codehaus.jackson.Version: int _majorVersion>;
+
+        $i1 = r0.<org.codehaus.jackson.Version: int _majorVersion>;
+
+        if $i0 != $i1 goto label4;
+
+        $i0 = $r4.<org.codehaus.jackson.Version: int _minorVersion>;
+
+        $i1 = r0.<org.codehaus.jackson.Version: int _minorVersion>;
+
+        if $i0 != $i1 goto label4;
+
+        $i0 = $r4.<org.codehaus.jackson.Version: int _patchLevel>;
+
+        $i1 = r0.<org.codehaus.jackson.Version: int _patchLevel>;
+
+        if $i0 != $i1 goto label4;
+
+        return 1;
+
+     label4:
+        return 0;
+    }
+
+    public int getMajorVersion()
+    {
+        org.codehaus.jackson.Version r0;
+        int i0;
+
+        r0 := @this: org.codehaus.jackson.Version;
+
+        i0 = r0.<org.codehaus.jackson.Version: int _majorVersion>;
+
+        return i0;
+    }
+
+    public int getMinorVersion()
+    {
+        org.codehaus.jackson.Version r0;
+        int i0;
+
+        r0 := @this: org.codehaus.jackson.Version;
+
+        i0 = r0.<org.codehaus.jackson.Version: int _minorVersion>;
+
+        return i0;
+    }
+
+    public int getPatchLevel()
+    {
+        org.codehaus.jackson.Version r0;
+        int i0;
+
+        r0 := @this: org.codehaus.jackson.Version;
+
+        i0 = r0.<org.codehaus.jackson.Version: int _patchLevel>;
+
+        return i0;
+    }
+
+    public int hashCode()
+    {
+        org.codehaus.jackson.Version r0;
+        int $i0, $i1;
+
+        r0 := @this: org.codehaus.jackson.Version;
+
+        $i0 = r0.<org.codehaus.jackson.Version: int _majorVersion>;
+
+        $i1 = r0.<org.codehaus.jackson.Version: int _minorVersion>;
+
+        $i0 = $i0 + $i1;
+
+        $i1 = r0.<org.codehaus.jackson.Version: int _patchLevel>;
+
+        $i0 = $i0 + $i1;
+
+        return $i0;
+    }
+
+    public boolean isSnapshot()
+    {
+        org.codehaus.jackson.Version r0;
+        int $i0;
+        java.lang.String $r1;
+
+        r0 := @this: org.codehaus.jackson.Version;
+
+        $r1 = r0.<org.codehaus.jackson.Version: java.lang.String _snapshotInfo>;
+
+        if $r1 == null goto label1;
+
+        $r1 = r0.<org.codehaus.jackson.Version: java.lang.String _snapshotInfo>;
+
+        $i0 = virtualinvoke $r1.<java.lang.String: int length()>();
+
+        if $i0 <= 0 goto label1;
+
+        return 1;
+
+     label1:
+        return 0;
+    }
+
+    public boolean isUknownVersion()
+    {
+        org.codehaus.jackson.Version r0, $r1;
+
+        r0 := @this: org.codehaus.jackson.Version;
+
+        $r1 = <org.codehaus.jackson.Version: org.codehaus.jackson.Version UNKNOWN_VERSION>;
+
+        if r0 != $r1 goto label1;
+
+        return 1;
+
+     label1:
+        return 0;
+    }
+
+    public java.lang.String toString()
+    {
+        org.codehaus.jackson.Version r0;
+        java.lang.StringBuilder r1, $r2;
+        int $i0;
+        boolean $z0;
+        java.lang.String $r3;
+
+        r0 := @this: org.codehaus.jackson.Version;
+
+        r1 = new java.lang.StringBuilder;
+
+        specialinvoke r1.<java.lang.StringBuilder: void <init>()>();
+
+        $i0 = r0.<org.codehaus.jackson.Version: int _majorVersion>;
+
+        $r2 = virtualinvoke r1.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>($i0);
+
+        virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(char)>(46);
+
+        $i0 = r0.<org.codehaus.jackson.Version: int _minorVersion>;
+
+        $r2 = virtualinvoke r1.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>($i0);
+
+        virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(char)>(46);
+
+        $i0 = r0.<org.codehaus.jackson.Version: int _patchLevel>;
+
+        virtualinvoke r1.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>($i0);
+
+        $z0 = virtualinvoke r0.<org.codehaus.jackson.Version: boolean isSnapshot()>();
+
+        if $z0 == 0 goto label1;
+
+        $r2 = virtualinvoke r1.<java.lang.StringBuilder: java.lang.StringBuilder append(char)>(45);
+
+        $r3 = r0.<org.codehaus.jackson.Version: java.lang.String _snapshotInfo>;
+
+        virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r3);
+
+     label1:
+        $r3 = virtualinvoke r1.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        return $r3;
+    }
+}

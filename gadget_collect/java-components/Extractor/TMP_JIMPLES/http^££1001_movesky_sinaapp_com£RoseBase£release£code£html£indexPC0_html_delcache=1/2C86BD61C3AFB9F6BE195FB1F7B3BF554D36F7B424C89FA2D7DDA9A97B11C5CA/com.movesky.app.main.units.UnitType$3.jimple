@@ -1,0 +1,46 @@
+final enum class com.movesky.app.main.units.UnitType$3 extends com.movesky.app.main.units.UnitType
+{
+
+    void <init>(java.lang.String, int)
+    {
+        com.movesky.app.main.units.UnitType$3 r0;
+        java.lang.String $r1;
+        int $i0;
+
+        r0 := @this: com.movesky.app.main.units.UnitType$3;
+
+        $r1 := @parameter0: java.lang.String;
+
+        $i0 := @parameter1: int;
+
+        specialinvoke r0.<com.movesky.app.main.units.UnitType: void <init>(java.lang.String,int,com.movesky.app.main.units.UnitType$1)>("UBER", 2, null);
+
+        return;
+    }
+
+    public com.movesky.app.main.units.Unit createUnit(com.movesky.app.main.units.UnitManager, com.movesky.app.main.Team, android.graphics.Paint, com.movesky.app.engine.particles.ParticleSystem)
+    {
+        com.movesky.app.main.units.UnitType$3 r0;
+        com.movesky.app.main.units.UnitManager $r1;
+        com.movesky.app.main.Team $r2;
+        android.graphics.Paint $r3;
+        com.movesky.app.engine.particles.ParticleSystem $r4;
+        com.movesky.app.main.units.UberUnit $r5;
+
+        r0 := @this: com.movesky.app.main.units.UnitType$3;
+
+        $r1 := @parameter0: com.movesky.app.main.units.UnitManager;
+
+        $r2 := @parameter1: com.movesky.app.main.Team;
+
+        $r3 := @parameter2: android.graphics.Paint;
+
+        $r4 := @parameter3: com.movesky.app.engine.particles.ParticleSystem;
+
+        $r5 = new com.movesky.app.main.units.UberUnit;
+
+        specialinvoke $r5.<com.movesky.app.main.units.UberUnit: void <init>(com.movesky.app.main.units.UnitManager,com.movesky.app.main.Team,android.graphics.Paint,com.movesky.app.engine.particles.ParticleSystem)>($r1, $r2, $r3, $r4);
+
+        return $r5;
+    }
+}

@@ -1,0 +1,209 @@
+public class org.codehaus.jackson.map.deser.BeanDeserializerFactory$ConfigImpl extends org.codehaus.jackson.map.DeserializerFactory$Config
+{
+    protected static final org.codehaus.jackson.map.deser.BeanDeserializerModifier[] NO_MODIFIERS;
+    protected final org.codehaus.jackson.map.Deserializers[] _additionalDeserializers;
+    protected final org.codehaus.jackson.map.deser.BeanDeserializerModifier[] _modifiers;
+
+    static void <clinit>()
+    {
+        org.codehaus.jackson.map.deser.BeanDeserializerModifier[] $r0;
+
+        $r0 = newarray (org.codehaus.jackson.map.deser.BeanDeserializerModifier)[0];
+
+        <org.codehaus.jackson.map.deser.BeanDeserializerFactory$ConfigImpl: org.codehaus.jackson.map.deser.BeanDeserializerModifier[] NO_MODIFIERS> = $r0;
+
+        return;
+    }
+
+    public void <init>()
+    {
+        org.codehaus.jackson.map.deser.BeanDeserializerFactory$ConfigImpl r0;
+
+        r0 := @this: org.codehaus.jackson.map.deser.BeanDeserializerFactory$ConfigImpl;
+
+        specialinvoke r0.<org.codehaus.jackson.map.deser.BeanDeserializerFactory$ConfigImpl: void <init>(org.codehaus.jackson.map.Deserializers[],org.codehaus.jackson.map.deser.BeanDeserializerModifier[])>(null, null);
+
+        return;
+    }
+
+    protected void <init>(org.codehaus.jackson.map.Deserializers[], org.codehaus.jackson.map.deser.BeanDeserializerModifier[])
+    {
+        org.codehaus.jackson.map.deser.BeanDeserializerFactory$ConfigImpl r0;
+        org.codehaus.jackson.map.Deserializers[] $r1;
+        org.codehaus.jackson.map.deser.BeanDeserializerModifier[] $r2;
+
+        r0 := @this: org.codehaus.jackson.map.deser.BeanDeserializerFactory$ConfigImpl;
+
+        $r1 := @parameter0: org.codehaus.jackson.map.Deserializers[];
+
+        $r2 := @parameter1: org.codehaus.jackson.map.deser.BeanDeserializerModifier[];
+
+        specialinvoke r0.<org.codehaus.jackson.map.DeserializerFactory$Config: void <init>()>();
+
+        if $r1 != null goto label3;
+
+        $r1 = staticinvoke <org.codehaus.jackson.map.deser.BeanDeserializerFactory: org.codehaus.jackson.map.Deserializers[] access$000()>();
+
+     label1:
+        r0.<org.codehaus.jackson.map.deser.BeanDeserializerFactory$ConfigImpl: org.codehaus.jackson.map.Deserializers[] _additionalDeserializers> = $r1;
+
+        if $r2 != null goto label4;
+
+        $r2 = <org.codehaus.jackson.map.deser.BeanDeserializerFactory$ConfigImpl: org.codehaus.jackson.map.deser.BeanDeserializerModifier[] NO_MODIFIERS>;
+
+     label2:
+        r0.<org.codehaus.jackson.map.deser.BeanDeserializerFactory$ConfigImpl: org.codehaus.jackson.map.deser.BeanDeserializerModifier[] _modifiers> = $r2;
+
+        return;
+
+     label3:
+        goto label1;
+
+     label4:
+        goto label2;
+    }
+
+    public java.lang.Iterable deserializerModifiers()
+    {
+        org.codehaus.jackson.map.deser.BeanDeserializerFactory$ConfigImpl r0;
+        java.lang.Iterable $r1;
+        org.codehaus.jackson.map.deser.BeanDeserializerModifier[] $r2;
+
+        r0 := @this: org.codehaus.jackson.map.deser.BeanDeserializerFactory$ConfigImpl;
+
+        $r2 = r0.<org.codehaus.jackson.map.deser.BeanDeserializerFactory$ConfigImpl: org.codehaus.jackson.map.deser.BeanDeserializerModifier[] _modifiers>;
+
+        $r1 = staticinvoke <org.codehaus.jackson.map.util.ArrayBuilders: java.lang.Iterable arrayAsIterable(java.lang.Object[])>($r2);
+
+        return $r1;
+    }
+
+    public java.lang.Iterable deserializers()
+    {
+        org.codehaus.jackson.map.deser.BeanDeserializerFactory$ConfigImpl r0;
+        java.lang.Iterable $r1;
+        org.codehaus.jackson.map.Deserializers[] $r2;
+
+        r0 := @this: org.codehaus.jackson.map.deser.BeanDeserializerFactory$ConfigImpl;
+
+        $r2 = r0.<org.codehaus.jackson.map.deser.BeanDeserializerFactory$ConfigImpl: org.codehaus.jackson.map.Deserializers[] _additionalDeserializers>;
+
+        $r1 = staticinvoke <org.codehaus.jackson.map.util.ArrayBuilders: java.lang.Iterable arrayAsIterable(java.lang.Object[])>($r2);
+
+        return $r1;
+    }
+
+    public boolean hasDeserializerModifiers()
+    {
+        org.codehaus.jackson.map.deser.BeanDeserializerFactory$ConfigImpl r0;
+        org.codehaus.jackson.map.deser.BeanDeserializerModifier[] $r1;
+        int $i0;
+
+        r0 := @this: org.codehaus.jackson.map.deser.BeanDeserializerFactory$ConfigImpl;
+
+        $r1 = r0.<org.codehaus.jackson.map.deser.BeanDeserializerFactory$ConfigImpl: org.codehaus.jackson.map.deser.BeanDeserializerModifier[] _modifiers>;
+
+        $i0 = lengthof $r1;
+
+        if $i0 <= 0 goto label1;
+
+        return 1;
+
+     label1:
+        return 0;
+    }
+
+    public boolean hasDeserializers()
+    {
+        org.codehaus.jackson.map.deser.BeanDeserializerFactory$ConfigImpl r0;
+        org.codehaus.jackson.map.Deserializers[] $r1;
+        int $i0;
+
+        r0 := @this: org.codehaus.jackson.map.deser.BeanDeserializerFactory$ConfigImpl;
+
+        $r1 = r0.<org.codehaus.jackson.map.deser.BeanDeserializerFactory$ConfigImpl: org.codehaus.jackson.map.Deserializers[] _additionalDeserializers>;
+
+        $i0 = lengthof $r1;
+
+        if $i0 <= 0 goto label1;
+
+        return 1;
+
+     label1:
+        return 0;
+    }
+
+    public org.codehaus.jackson.map.DeserializerFactory$Config withAdditionalDeserializers(org.codehaus.jackson.map.Deserializers)
+    {
+        org.codehaus.jackson.map.deser.BeanDeserializerFactory$ConfigImpl r0, $r5;
+        org.codehaus.jackson.map.Deserializers $r1;
+        java.lang.Object[] $r2;
+        java.lang.IllegalArgumentException $r3;
+        org.codehaus.jackson.map.Deserializers[] $r4;
+        org.codehaus.jackson.map.deser.BeanDeserializerModifier[] $r6;
+
+        r0 := @this: org.codehaus.jackson.map.deser.BeanDeserializerFactory$ConfigImpl;
+
+        $r1 := @parameter0: org.codehaus.jackson.map.Deserializers;
+
+        if $r1 != null goto label1;
+
+        $r3 = new java.lang.IllegalArgumentException;
+
+        specialinvoke $r3.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>("Can not pass null Deserializers");
+
+        throw $r3;
+
+     label1:
+        $r4 = r0.<org.codehaus.jackson.map.deser.BeanDeserializerFactory$ConfigImpl: org.codehaus.jackson.map.Deserializers[] _additionalDeserializers>;
+
+        $r2 = staticinvoke <org.codehaus.jackson.map.util.ArrayBuilders: java.lang.Object[] insertInList(java.lang.Object[],java.lang.Object)>($r4, $r1);
+
+        $r4 = (org.codehaus.jackson.map.Deserializers[]) $r2;
+
+        $r5 = new org.codehaus.jackson.map.deser.BeanDeserializerFactory$ConfigImpl;
+
+        $r6 = r0.<org.codehaus.jackson.map.deser.BeanDeserializerFactory$ConfigImpl: org.codehaus.jackson.map.deser.BeanDeserializerModifier[] _modifiers>;
+
+        specialinvoke $r5.<org.codehaus.jackson.map.deser.BeanDeserializerFactory$ConfigImpl: void <init>(org.codehaus.jackson.map.Deserializers[],org.codehaus.jackson.map.deser.BeanDeserializerModifier[])>($r4, $r6);
+
+        return $r5;
+    }
+
+    public org.codehaus.jackson.map.DeserializerFactory$Config withDeserializerModifier(org.codehaus.jackson.map.deser.BeanDeserializerModifier)
+    {
+        org.codehaus.jackson.map.deser.BeanDeserializerFactory$ConfigImpl r0, $r5;
+        org.codehaus.jackson.map.deser.BeanDeserializerModifier $r1;
+        java.lang.Object[] $r2;
+        java.lang.IllegalArgumentException $r3;
+        org.codehaus.jackson.map.deser.BeanDeserializerModifier[] $r4;
+        org.codehaus.jackson.map.Deserializers[] $r6;
+
+        r0 := @this: org.codehaus.jackson.map.deser.BeanDeserializerFactory$ConfigImpl;
+
+        $r1 := @parameter0: org.codehaus.jackson.map.deser.BeanDeserializerModifier;
+
+        if $r1 != null goto label1;
+
+        $r3 = new java.lang.IllegalArgumentException;
+
+        specialinvoke $r3.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>("Can not pass null modifier");
+
+        throw $r3;
+
+     label1:
+        $r4 = r0.<org.codehaus.jackson.map.deser.BeanDeserializerFactory$ConfigImpl: org.codehaus.jackson.map.deser.BeanDeserializerModifier[] _modifiers>;
+
+        $r2 = staticinvoke <org.codehaus.jackson.map.util.ArrayBuilders: java.lang.Object[] insertInList(java.lang.Object[],java.lang.Object)>($r4, $r1);
+
+        $r4 = (org.codehaus.jackson.map.deser.BeanDeserializerModifier[]) $r2;
+
+        $r5 = new org.codehaus.jackson.map.deser.BeanDeserializerFactory$ConfigImpl;
+
+        $r6 = r0.<org.codehaus.jackson.map.deser.BeanDeserializerFactory$ConfigImpl: org.codehaus.jackson.map.Deserializers[] _additionalDeserializers>;
+
+        specialinvoke $r5.<org.codehaus.jackson.map.deser.BeanDeserializerFactory$ConfigImpl: void <init>(org.codehaus.jackson.map.Deserializers[],org.codehaus.jackson.map.deser.BeanDeserializerModifier[])>($r6, $r4);
+
+        return $r5;
+    }
+}

@@ -1,0 +1,118 @@
+class com.startapp.android.publish.c.d$a extends android.webkit.WebViewClient
+{
+    final com.startapp.android.publish.c.d a;
+
+    private void <init>(com.startapp.android.publish.c.d)
+    {
+        com.startapp.android.publish.c.d$a r0;
+        com.startapp.android.publish.c.d $r1;
+
+        r0 := @this: com.startapp.android.publish.c.d$a;
+
+        $r1 := @parameter0: com.startapp.android.publish.c.d;
+
+        r0.<com.startapp.android.publish.c.d$a: com.startapp.android.publish.c.d a> = $r1;
+
+        specialinvoke r0.<android.webkit.WebViewClient: void <init>()>();
+
+        return;
+    }
+
+    void <init>(com.startapp.android.publish.c.d, com.startapp.android.publish.c.d$1)
+    {
+        com.startapp.android.publish.c.d$a r0;
+        com.startapp.android.publish.c.d $r1;
+        com.startapp.android.publish.c.d$1 $r2;
+
+        r0 := @this: com.startapp.android.publish.c.d$a;
+
+        $r1 := @parameter0: com.startapp.android.publish.c.d;
+
+        $r2 := @parameter1: com.startapp.android.publish.c.d$1;
+
+        specialinvoke r0.<com.startapp.android.publish.c.d$a: void <init>(com.startapp.android.publish.c.d)>($r1);
+
+        return;
+    }
+
+    public void onPageFinished(android.webkit.WebView, java.lang.String)
+    {
+        com.startapp.android.publish.c.d$a r0;
+        android.webkit.WebView $r1;
+        java.lang.String $r2;
+        com.startapp.android.publish.c.d $r3, $r5;
+        java.lang.Object[] $r4;
+
+        r0 := @this: com.startapp.android.publish.c.d$a;
+
+        $r1 := @parameter0: android.webkit.WebView;
+
+        $r2 := @parameter1: java.lang.String;
+
+        $r3 = r0.<com.startapp.android.publish.c.d$a: com.startapp.android.publish.c.d a>;
+
+        virtualinvoke $r3.<com.startapp.android.publish.c.d: void c(android.webkit.WebView)>($r1);
+
+        $r3 = r0.<com.startapp.android.publish.c.d$a: com.startapp.android.publish.c.d a>;
+
+        $r4 = newarray (java.lang.Object)[1];
+
+        $r5 = r0.<com.startapp.android.publish.c.d$a: com.startapp.android.publish.c.d a>;
+
+        $r2 = virtualinvoke $r5.<com.startapp.android.publish.c.d: java.lang.String g()>();
+
+        $r4[0] = $r2;
+
+        virtualinvoke $r3.<com.startapp.android.publish.c.d: void a(java.lang.String,java.lang.Object[])>("gClientInterface.setMode", $r4);
+
+        $r3 = r0.<com.startapp.android.publish.c.d$a: com.startapp.android.publish.c.d a>;
+
+        $r4 = newarray (java.lang.Object)[1];
+
+        $r4[0] = "externalLinks";
+
+        virtualinvoke $r3.<com.startapp.android.publish.c.d: void a(java.lang.String,java.lang.Object[])>("enableScheme", $r4);
+
+        $r3 = r0.<com.startapp.android.publish.c.d$a: com.startapp.android.publish.c.d a>;
+
+        virtualinvoke $r3.<com.startapp.android.publish.c.d: void z()>();
+
+        return;
+    }
+
+    public boolean shouldOverrideUrlLoading(android.webkit.WebView, java.lang.String)
+    {
+        com.startapp.android.publish.c.d$a r0;
+        android.webkit.WebView $r1;
+        java.lang.String $r2, $r4;
+        java.lang.StringBuilder $r3;
+        com.startapp.android.publish.c.d $r5;
+        boolean $z0;
+
+        r0 := @this: com.startapp.android.publish.c.d$a;
+
+        $r1 := @parameter0: android.webkit.WebView;
+
+        $r2 := @parameter1: java.lang.String;
+
+        $r3 = new java.lang.StringBuilder;
+
+        specialinvoke $r3.<java.lang.StringBuilder: void <init>()>();
+
+        $r3 = virtualinvoke $r3.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("MyWebViewClient::shouldOverrideUrlLoading - [");
+
+        $r3 = virtualinvoke $r3.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r2);
+
+        $r3 = virtualinvoke $r3.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("]");
+
+        $r4 = virtualinvoke $r3.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <com.startapp.android.publish.i.n: void a(int,java.lang.String)>(2, $r4);
+
+        $r5 = r0.<com.startapp.android.publish.c.d$a: com.startapp.android.publish.c.d a>;
+
+        $z0 = virtualinvoke $r5.<com.startapp.android.publish.c.d: boolean b(java.lang.String)>($r2);
+
+        return $z0;
+    }
+}

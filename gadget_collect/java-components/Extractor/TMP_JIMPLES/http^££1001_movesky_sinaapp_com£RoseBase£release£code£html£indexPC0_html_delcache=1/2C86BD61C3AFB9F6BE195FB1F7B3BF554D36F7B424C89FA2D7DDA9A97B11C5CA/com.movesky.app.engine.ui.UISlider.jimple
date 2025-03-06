@@ -1,0 +1,668 @@
+public class com.movesky.app.engine.ui.UISlider extends com.movesky.app.engine.ui.UIControl
+{
+    private float barHeight;
+    private android.graphics.RectF barRect;
+    private com.movesky.app.engine.util.Point circleLocation;
+    private float circleRadius;
+    private float cornerRadius;
+    private float currValue;
+    private android.graphics.Shader downCircleShader;
+    private android.graphics.RectF emptyBarRect;
+    private android.graphics.Shader emptyShader;
+    private int fillColor;
+    private android.graphics.RectF filledBarRect;
+    private android.graphics.Shader filledShader;
+    private boolean isDepressed;
+    private float maxValue;
+    private float minValue;
+    private android.graphics.Paint paint;
+    private float range;
+    private android.graphics.Shader upCircleShader;
+
+    public void <init>()
+    {
+        com.movesky.app.engine.ui.UISlider r0;
+
+        r0 := @this: com.movesky.app.engine.ui.UISlider;
+
+        specialinvoke r0.<com.movesky.app.engine.ui.UISlider: void <init>(float,float,float)>(0.0F, 1.0F, 0.0F);
+
+        return;
+    }
+
+    public void <init>(float)
+    {
+        com.movesky.app.engine.ui.UISlider r0;
+        float $f0;
+
+        r0 := @this: com.movesky.app.engine.ui.UISlider;
+
+        $f0 := @parameter0: float;
+
+        specialinvoke r0.<com.movesky.app.engine.ui.UISlider: void <init>(float,float,float)>(0.0F, 1.0F, $f0);
+
+        return;
+    }
+
+    public void <init>(float, float, float)
+    {
+        com.movesky.app.engine.ui.UISlider r0;
+        float $f0, $f1, $f2;
+        android.graphics.Paint $r1;
+        android.graphics.RectF $r2;
+        com.movesky.app.engine.util.Point $r3;
+        int $i0;
+
+        r0 := @this: com.movesky.app.engine.ui.UISlider;
+
+        $f0 := @parameter0: float;
+
+        $f1 := @parameter1: float;
+
+        $f2 := @parameter2: float;
+
+        specialinvoke r0.<com.movesky.app.engine.ui.UIControl: void <init>()>();
+
+        $r1 = new android.graphics.Paint;
+
+        specialinvoke $r1.<android.graphics.Paint: void <init>(int)>(1);
+
+        r0.<com.movesky.app.engine.ui.UISlider: android.graphics.Paint paint> = $r1;
+
+        $r1 = r0.<com.movesky.app.engine.ui.UISlider: android.graphics.Paint paint>;
+
+        virtualinvoke $r1.<android.graphics.Paint: void setStrokeWidth(float)>(1.0F);
+
+        $r2 = new android.graphics.RectF;
+
+        specialinvoke $r2.<android.graphics.RectF: void <init>()>();
+
+        r0.<com.movesky.app.engine.ui.UISlider: android.graphics.RectF barRect> = $r2;
+
+        $r2 = new android.graphics.RectF;
+
+        specialinvoke $r2.<android.graphics.RectF: void <init>()>();
+
+        r0.<com.movesky.app.engine.ui.UISlider: android.graphics.RectF filledBarRect> = $r2;
+
+        $r2 = new android.graphics.RectF;
+
+        specialinvoke $r2.<android.graphics.RectF: void <init>()>();
+
+        r0.<com.movesky.app.engine.ui.UISlider: android.graphics.RectF emptyBarRect> = $r2;
+
+        $r3 = new com.movesky.app.engine.util.Point;
+
+        specialinvoke $r3.<com.movesky.app.engine.util.Point: void <init>()>();
+
+        r0.<com.movesky.app.engine.ui.UISlider: com.movesky.app.engine.util.Point circleLocation> = $r3;
+
+        r0.<com.movesky.app.engine.ui.UISlider: float cornerRadius> = 6.0F;
+
+        r0.<com.movesky.app.engine.ui.UISlider: float barHeight> = 5.0F;
+
+        r0.<com.movesky.app.engine.ui.UISlider: float circleRadius> = 12.0F;
+
+        r0.<com.movesky.app.engine.ui.UISlider: boolean isDepressed> = 0;
+
+        $i0 = <com.movesky.app.engine.ui.UIDefaultConstants: int ACTIVE_COLOR>;
+
+        r0.<com.movesky.app.engine.ui.UISlider: int fillColor> = $i0;
+
+        virtualinvoke r0.<com.movesky.app.engine.ui.UISlider: void setRange(float,float)>($f0, $f1);
+
+        virtualinvoke r0.<com.movesky.app.engine.ui.UISlider: void setValue(float)>($f2);
+
+        return;
+    }
+
+    private void recomputeDrawingLocations()
+    {
+        com.movesky.app.engine.ui.UISlider r0;
+        float $f0, $f1, $f2, $f3, $f4, $f5;
+        android.graphics.RectF $r1, $r3;
+        com.movesky.app.engine.util.Point $r2;
+        android.graphics.LinearGradient $r4;
+        int $i0;
+
+        r0 := @this: com.movesky.app.engine.ui.UISlider;
+
+        $f0 = r0.<com.movesky.app.engine.ui.UISlider: float _h_height>;
+
+        r0.<com.movesky.app.engine.ui.UISlider: float circleRadius> = $f0;
+
+        $r1 = r0.<com.movesky.app.engine.ui.UISlider: android.graphics.RectF _rect>;
+
+        $f0 = virtualinvoke $r1.<android.graphics.RectF: float height()>();
+
+        $f0 = $f0 / 2.0F;
+
+        r0.<com.movesky.app.engine.ui.UISlider: float barHeight> = $f0;
+
+        $f0 = r0.<com.movesky.app.engine.ui.UISlider: float barHeight>;
+
+        $f0 = $f0 / 2.0F;
+
+        $r2 = r0.<com.movesky.app.engine.ui.UISlider: com.movesky.app.engine.util.Point center>;
+
+        $f1 = $r2.<com.movesky.app.engine.util.Point: float y>;
+
+        $r1 = r0.<com.movesky.app.engine.ui.UISlider: android.graphics.RectF emptyBarRect>;
+
+        $r3 = r0.<com.movesky.app.engine.ui.UISlider: android.graphics.RectF _rect>;
+
+        $f2 = $r3.<android.graphics.RectF: float left>;
+
+        $f3 = $f1 - $f0;
+
+        $r3 = r0.<com.movesky.app.engine.ui.UISlider: android.graphics.RectF _rect>;
+
+        $f4 = $r3.<android.graphics.RectF: float right>;
+
+        $f5 = $f1 + $f0;
+
+        virtualinvoke $r1.<android.graphics.RectF: void set(float,float,float,float)>($f2, $f3, $f4, $f5);
+
+        $r1 = r0.<com.movesky.app.engine.ui.UISlider: android.graphics.RectF barRect>;
+
+        $r3 = r0.<com.movesky.app.engine.ui.UISlider: android.graphics.RectF _rect>;
+
+        $f2 = $r3.<android.graphics.RectF: float left>;
+
+        $f3 = r0.<com.movesky.app.engine.ui.UISlider: float circleRadius>;
+
+        $f2 = $f2 + $f3;
+
+        $f3 = $f1 - $f0;
+
+        $r3 = r0.<com.movesky.app.engine.ui.UISlider: android.graphics.RectF _rect>;
+
+        $f4 = $r3.<android.graphics.RectF: float right>;
+
+        $f5 = r0.<com.movesky.app.engine.ui.UISlider: float circleRadius>;
+
+        $f4 = $f4 - $f5;
+
+        $f0 = $f0 + $f1;
+
+        virtualinvoke $r1.<android.graphics.RectF: void set(float,float,float,float)>($f2, $f3, $f4, $f0);
+
+        $r2 = r0.<com.movesky.app.engine.ui.UISlider: com.movesky.app.engine.util.Point circleLocation>;
+
+        $r1 = r0.<com.movesky.app.engine.ui.UISlider: android.graphics.RectF barRect>;
+
+        $f0 = $r1.<android.graphics.RectF: float left>;
+
+        $f1 = r0.<com.movesky.app.engine.ui.UISlider: float currValue>;
+
+        $f2 = r0.<com.movesky.app.engine.ui.UISlider: float minValue>;
+
+        $f1 = $f1 - $f2;
+
+        $f2 = r0.<com.movesky.app.engine.ui.UISlider: float range>;
+
+        $f1 = $f1 / $f2;
+
+        $r1 = r0.<com.movesky.app.engine.ui.UISlider: android.graphics.RectF barRect>;
+
+        $f2 = virtualinvoke $r1.<android.graphics.RectF: float width()>();
+
+        $f1 = $f1 * $f2;
+
+        $f0 = $f0 + $f1;
+
+        $r1 = r0.<com.movesky.app.engine.ui.UISlider: android.graphics.RectF _rect>;
+
+        $f1 = virtualinvoke $r1.<android.graphics.RectF: float centerY()>();
+
+        virtualinvoke $r2.<com.movesky.app.engine.util.Point: void set(float,float)>($f0, $f1);
+
+        $r1 = r0.<com.movesky.app.engine.ui.UISlider: android.graphics.RectF filledBarRect>;
+
+        $r3 = r0.<com.movesky.app.engine.ui.UISlider: android.graphics.RectF emptyBarRect>;
+
+        $f0 = $r3.<android.graphics.RectF: float left>;
+
+        $r3 = r0.<com.movesky.app.engine.ui.UISlider: android.graphics.RectF emptyBarRect>;
+
+        $f1 = $r3.<android.graphics.RectF: float top>;
+
+        $r2 = r0.<com.movesky.app.engine.ui.UISlider: com.movesky.app.engine.util.Point circleLocation>;
+
+        $f2 = $r2.<com.movesky.app.engine.util.Point: float x>;
+
+        $r3 = r0.<com.movesky.app.engine.ui.UISlider: android.graphics.RectF emptyBarRect>;
+
+        $f3 = $r3.<android.graphics.RectF: float bottom>;
+
+        virtualinvoke $r1.<android.graphics.RectF: void set(float,float,float,float)>($f0, $f1, $f2, $f3);
+
+        $r1 = r0.<com.movesky.app.engine.ui.UISlider: android.graphics.RectF _rect>;
+
+        $r4 = staticinvoke <com.movesky.app.engine.ui.UIDefaultConstants: android.graphics.LinearGradient generateD2LVerticalLinearGradient(android.graphics.RectF,int)>($r1, -3355444);
+
+        r0.<com.movesky.app.engine.ui.UISlider: android.graphics.Shader upCircleShader> = $r4;
+
+        $r1 = r0.<com.movesky.app.engine.ui.UISlider: android.graphics.RectF _rect>;
+
+        $r4 = staticinvoke <com.movesky.app.engine.ui.UIDefaultConstants: android.graphics.LinearGradient generateD2LVerticalLinearGradient(android.graphics.RectF,int)>($r1, -7829368);
+
+        r0.<com.movesky.app.engine.ui.UISlider: android.graphics.Shader downCircleShader> = $r4;
+
+        $r1 = r0.<com.movesky.app.engine.ui.UISlider: android.graphics.RectF filledBarRect>;
+
+        $i0 = r0.<com.movesky.app.engine.ui.UISlider: int fillColor>;
+
+        $r4 = staticinvoke <com.movesky.app.engine.ui.UIDefaultConstants: android.graphics.LinearGradient generateD2LVerticalLinearGradient(android.graphics.RectF,int)>($r1, $i0);
+
+        r0.<com.movesky.app.engine.ui.UISlider: android.graphics.Shader filledShader> = $r4;
+
+        $r1 = r0.<com.movesky.app.engine.ui.UISlider: android.graphics.RectF emptyBarRect>;
+
+        $r4 = staticinvoke <com.movesky.app.engine.ui.UIDefaultConstants: android.graphics.LinearGradient generateD2LVerticalLinearGradient(android.graphics.RectF,int)>($r1, -3355444);
+
+        r0.<com.movesky.app.engine.ui.UISlider: android.graphics.Shader emptyShader> = $r4;
+
+        return;
+    }
+
+    private void recomputeValueWithTouch(float)
+    {
+        com.movesky.app.engine.ui.UISlider r0;
+        float $f0, $f1, $f2;
+        android.graphics.RectF $r1;
+
+        r0 := @this: com.movesky.app.engine.ui.UISlider;
+
+        $f0 := @parameter0: float;
+
+        $f1 = r0.<com.movesky.app.engine.ui.UISlider: float minValue>;
+
+        $r1 = r0.<com.movesky.app.engine.ui.UISlider: android.graphics.RectF _rect>;
+
+        $f2 = $r1.<android.graphics.RectF: float left>;
+
+        $f2 = $f0 - $f2;
+
+        $r1 = r0.<com.movesky.app.engine.ui.UISlider: android.graphics.RectF _rect>;
+
+        $f0 = virtualinvoke $r1.<android.graphics.RectF: float width()>();
+
+        $f0 = $f2 / $f0;
+
+        $f2 = r0.<com.movesky.app.engine.ui.UISlider: float range>;
+
+        $f0 = $f0 * $f2;
+
+        $f0 = $f1 + $f0;
+
+        virtualinvoke r0.<com.movesky.app.engine.ui.UISlider: void setValue(float)>($f0);
+
+        return;
+    }
+
+    public boolean containsPoint(float, float)
+    {
+        com.movesky.app.engine.ui.UISlider r0;
+        float $f0, $f1, $f2, $f3;
+        boolean $z0, $z1, $z2;
+        com.movesky.app.engine.util.Point $r1;
+        byte $b0;
+
+        r0 := @this: com.movesky.app.engine.ui.UISlider;
+
+        $f0 := @parameter0: float;
+
+        $f1 := @parameter1: float;
+
+        $z0 = 0;
+
+        $z1 = r0.<com.movesky.app.engine.ui.UISlider: boolean isDepressed>;
+
+        if $z1 == 0 goto label1;
+
+        return 1;
+
+     label1:
+        $z1 = specialinvoke r0.<com.movesky.app.engine.ui.UIControl: boolean containsPoint(float,float)>($f0, $f1);
+
+        $r1 = r0.<com.movesky.app.engine.ui.UISlider: com.movesky.app.engine.util.Point circleLocation>;
+
+        $f2 = $r1.<com.movesky.app.engine.util.Point: float x>;
+
+        $r1 = r0.<com.movesky.app.engine.ui.UISlider: com.movesky.app.engine.util.Point circleLocation>;
+
+        $f3 = $r1.<com.movesky.app.engine.util.Point: float y>;
+
+        $f0 = staticinvoke <com.movesky.app.engine.util.MathUtils: float getDistSqr(float,float,float,float)>($f0, $f1, $f2, $f3);
+
+        $f1 = r0.<com.movesky.app.engine.ui.UISlider: float circleRadius>;
+
+        $f2 = r0.<com.movesky.app.engine.ui.UISlider: float circleRadius>;
+
+        $f1 = $f1 * $f2;
+
+        $f1 = $f1 * 9.0F;
+
+        $b0 = $f0 cmpg $f1;
+
+        if $b0 >= 0 goto label5;
+
+        $z2 = 1;
+
+     label2:
+        if $z1 != 0 goto label3;
+
+        if $z2 == 0 goto label4;
+
+     label3:
+        $z0 = 1;
+
+     label4:
+        return $z0;
+
+     label5:
+        $z2 = 0;
+
+        goto label2;
+    }
+
+    public float getValue()
+    {
+        com.movesky.app.engine.ui.UISlider r0;
+        float f0;
+
+        r0 := @this: com.movesky.app.engine.ui.UISlider;
+
+        f0 = r0.<com.movesky.app.engine.ui.UISlider: float currValue>;
+
+        return f0;
+    }
+
+    public void onDraw(android.graphics.Canvas)
+    {
+        com.movesky.app.engine.ui.UISlider r0;
+        android.graphics.Canvas $r1;
+        android.graphics.Paint $r2;
+        android.graphics.Shader $r3;
+        android.graphics.RectF $r4;
+        float $f0, $f1, $f2;
+        android.graphics.Paint$Style $r5;
+        com.movesky.app.engine.util.Point $r6;
+        boolean $z0;
+
+        r0 := @this: com.movesky.app.engine.ui.UISlider;
+
+        $r1 := @parameter0: android.graphics.Canvas;
+
+        specialinvoke r0.<com.movesky.app.engine.ui.UIControl: void onDraw(android.graphics.Canvas)>($r1);
+
+        $r2 = r0.<com.movesky.app.engine.ui.UISlider: android.graphics.Paint paint>;
+
+        $r3 = r0.<com.movesky.app.engine.ui.UISlider: android.graphics.Shader emptyShader>;
+
+        virtualinvoke $r2.<android.graphics.Paint: android.graphics.Shader setShader(android.graphics.Shader)>($r3);
+
+        $r4 = r0.<com.movesky.app.engine.ui.UISlider: android.graphics.RectF emptyBarRect>;
+
+        $f0 = r0.<com.movesky.app.engine.ui.UISlider: float cornerRadius>;
+
+        $f1 = r0.<com.movesky.app.engine.ui.UISlider: float cornerRadius>;
+
+        $r2 = r0.<com.movesky.app.engine.ui.UISlider: android.graphics.Paint paint>;
+
+        virtualinvoke $r1.<android.graphics.Canvas: void drawRoundRect(android.graphics.RectF,float,float,android.graphics.Paint)>($r4, $f0, $f1, $r2);
+
+        $r2 = r0.<com.movesky.app.engine.ui.UISlider: android.graphics.Paint paint>;
+
+        $r3 = r0.<com.movesky.app.engine.ui.UISlider: android.graphics.Shader filledShader>;
+
+        virtualinvoke $r2.<android.graphics.Paint: android.graphics.Shader setShader(android.graphics.Shader)>($r3);
+
+        $r4 = r0.<com.movesky.app.engine.ui.UISlider: android.graphics.RectF filledBarRect>;
+
+        $f0 = r0.<com.movesky.app.engine.ui.UISlider: float cornerRadius>;
+
+        $f1 = r0.<com.movesky.app.engine.ui.UISlider: float cornerRadius>;
+
+        $r2 = r0.<com.movesky.app.engine.ui.UISlider: android.graphics.Paint paint>;
+
+        virtualinvoke $r1.<android.graphics.Canvas: void drawRoundRect(android.graphics.RectF,float,float,android.graphics.Paint)>($r4, $f0, $f1, $r2);
+
+        $r2 = r0.<com.movesky.app.engine.ui.UISlider: android.graphics.Paint paint>;
+
+        virtualinvoke $r2.<android.graphics.Paint: android.graphics.Shader setShader(android.graphics.Shader)>(null);
+
+        $r2 = r0.<com.movesky.app.engine.ui.UISlider: android.graphics.Paint paint>;
+
+        virtualinvoke $r2.<android.graphics.Paint: void setColor(int)>(-7829368);
+
+        $r2 = r0.<com.movesky.app.engine.ui.UISlider: android.graphics.Paint paint>;
+
+        $r5 = <android.graphics.Paint$Style: android.graphics.Paint$Style STROKE>;
+
+        virtualinvoke $r2.<android.graphics.Paint: void setStyle(android.graphics.Paint$Style)>($r5);
+
+        $r6 = r0.<com.movesky.app.engine.ui.UISlider: com.movesky.app.engine.util.Point circleLocation>;
+
+        $f0 = $r6.<com.movesky.app.engine.util.Point: float x>;
+
+        $r6 = r0.<com.movesky.app.engine.ui.UISlider: com.movesky.app.engine.util.Point circleLocation>;
+
+        $f1 = $r6.<com.movesky.app.engine.util.Point: float y>;
+
+        $f2 = r0.<com.movesky.app.engine.ui.UISlider: float circleRadius>;
+
+        $r2 = r0.<com.movesky.app.engine.ui.UISlider: android.graphics.Paint paint>;
+
+        virtualinvoke $r1.<android.graphics.Canvas: void drawCircle(float,float,float,android.graphics.Paint)>($f0, $f1, $f2, $r2);
+
+        $r2 = r0.<com.movesky.app.engine.ui.UISlider: android.graphics.Paint paint>;
+
+        $r5 = <android.graphics.Paint$Style: android.graphics.Paint$Style FILL>;
+
+        virtualinvoke $r2.<android.graphics.Paint: void setStyle(android.graphics.Paint$Style)>($r5);
+
+        $z0 = r0.<com.movesky.app.engine.ui.UISlider: boolean isDepressed>;
+
+        if $z0 == 0 goto label2;
+
+        $r2 = r0.<com.movesky.app.engine.ui.UISlider: android.graphics.Paint paint>;
+
+        $r3 = r0.<com.movesky.app.engine.ui.UISlider: android.graphics.Shader downCircleShader>;
+
+        virtualinvoke $r2.<android.graphics.Paint: android.graphics.Shader setShader(android.graphics.Shader)>($r3);
+
+     label1:
+        $r6 = r0.<com.movesky.app.engine.ui.UISlider: com.movesky.app.engine.util.Point circleLocation>;
+
+        $f0 = $r6.<com.movesky.app.engine.util.Point: float x>;
+
+        $r6 = r0.<com.movesky.app.engine.ui.UISlider: com.movesky.app.engine.util.Point circleLocation>;
+
+        $f1 = $r6.<com.movesky.app.engine.util.Point: float y>;
+
+        $f2 = r0.<com.movesky.app.engine.ui.UISlider: float circleRadius>;
+
+        $r2 = r0.<com.movesky.app.engine.ui.UISlider: android.graphics.Paint paint>;
+
+        virtualinvoke $r1.<android.graphics.Canvas: void drawCircle(float,float,float,android.graphics.Paint)>($f0, $f1, $f2, $r2);
+
+        $r2 = r0.<com.movesky.app.engine.ui.UISlider: android.graphics.Paint paint>;
+
+        virtualinvoke $r2.<android.graphics.Paint: android.graphics.Shader setShader(android.graphics.Shader)>(null);
+
+        return;
+
+     label2:
+        $r2 = r0.<com.movesky.app.engine.ui.UISlider: android.graphics.Paint paint>;
+
+        $r3 = r0.<com.movesky.app.engine.ui.UISlider: android.graphics.Shader upCircleShader>;
+
+        virtualinvoke $r2.<android.graphics.Paint: android.graphics.Shader setShader(android.graphics.Shader)>($r3);
+
+        goto label1;
+    }
+
+    public void onTouchDown(float, float)
+    {
+        com.movesky.app.engine.ui.UISlider r0;
+        float $f0, $f1;
+
+        r0 := @this: com.movesky.app.engine.ui.UISlider;
+
+        $f0 := @parameter0: float;
+
+        $f1 := @parameter1: float;
+
+        specialinvoke r0.<com.movesky.app.engine.ui.UIControl: void onTouchDown(float,float)>($f0, $f1);
+
+        r0.<com.movesky.app.engine.ui.UISlider: boolean isDepressed> = 1;
+
+        specialinvoke r0.<com.movesky.app.engine.ui.UISlider: void recomputeValueWithTouch(float)>($f0);
+
+        return;
+    }
+
+    public void onTouchMove(float, float)
+    {
+        com.movesky.app.engine.ui.UISlider r0;
+        float $f0, $f1;
+        boolean $z0;
+
+        r0 := @this: com.movesky.app.engine.ui.UISlider;
+
+        $f0 := @parameter0: float;
+
+        $f1 := @parameter1: float;
+
+        specialinvoke r0.<com.movesky.app.engine.ui.UIControl: void onTouchMove(float,float)>($f0, $f1);
+
+        $z0 = r0.<com.movesky.app.engine.ui.UISlider: boolean isDepressed>;
+
+        if $z0 == 0 goto label1;
+
+        specialinvoke r0.<com.movesky.app.engine.ui.UISlider: void recomputeValueWithTouch(float)>($f0);
+
+     label1:
+        return;
+    }
+
+    public void onTouchUp(float, float)
+    {
+        com.movesky.app.engine.ui.UISlider r0;
+        float $f0, $f1;
+        boolean $z0;
+
+        r0 := @this: com.movesky.app.engine.ui.UISlider;
+
+        $f0 := @parameter0: float;
+
+        $f1 := @parameter1: float;
+
+        specialinvoke r0.<com.movesky.app.engine.ui.UIControl: void onTouchUp(float,float)>($f0, $f1);
+
+        $z0 = r0.<com.movesky.app.engine.ui.UISlider: boolean isDepressed>;
+
+        if $z0 == 0 goto label1;
+
+        r0.<com.movesky.app.engine.ui.UISlider: boolean isDepressed> = 0;
+
+        specialinvoke r0.<com.movesky.app.engine.ui.UISlider: void recomputeValueWithTouch(float)>($f0);
+
+     label1:
+        return;
+    }
+
+    protected void setBounds(float, float, float, float)
+    {
+        com.movesky.app.engine.ui.UISlider r0;
+        float $f0, $f1, $f2, $f3;
+
+        r0 := @this: com.movesky.app.engine.ui.UISlider;
+
+        $f0 := @parameter0: float;
+
+        $f1 := @parameter1: float;
+
+        $f2 := @parameter2: float;
+
+        $f3 := @parameter3: float;
+
+        specialinvoke r0.<com.movesky.app.engine.ui.UIControl: void setBounds(float,float,float,float)>($f0, $f1, $f2, $f3);
+
+        specialinvoke r0.<com.movesky.app.engine.ui.UISlider: void recomputeDrawingLocations()>();
+
+        return;
+    }
+
+    public void setFillColor(int)
+    {
+        com.movesky.app.engine.ui.UISlider r0;
+        int $i0;
+        android.graphics.LinearGradient $r1;
+        android.graphics.RectF $r2;
+
+        r0 := @this: com.movesky.app.engine.ui.UISlider;
+
+        $i0 := @parameter0: int;
+
+        r0.<com.movesky.app.engine.ui.UISlider: int fillColor> = $i0;
+
+        $r2 = r0.<com.movesky.app.engine.ui.UISlider: android.graphics.RectF filledBarRect>;
+
+        $i0 = r0.<com.movesky.app.engine.ui.UISlider: int fillColor>;
+
+        $r1 = staticinvoke <com.movesky.app.engine.ui.UIDefaultConstants: android.graphics.LinearGradient generateD2LVerticalLinearGradient(android.graphics.RectF,int)>($r2, $i0);
+
+        r0.<com.movesky.app.engine.ui.UISlider: android.graphics.Shader filledShader> = $r1;
+
+        return;
+    }
+
+    public void setRange(float, float)
+    {
+        com.movesky.app.engine.ui.UISlider r0;
+        float $f0, $f1;
+
+        r0 := @this: com.movesky.app.engine.ui.UISlider;
+
+        $f0 := @parameter0: float;
+
+        $f1 := @parameter1: float;
+
+        r0.<com.movesky.app.engine.ui.UISlider: float minValue> = $f0;
+
+        r0.<com.movesky.app.engine.ui.UISlider: float maxValue> = $f1;
+
+        $f0 = $f1 - $f0;
+
+        r0.<com.movesky.app.engine.ui.UISlider: float range> = $f0;
+
+        specialinvoke r0.<com.movesky.app.engine.ui.UISlider: void recomputeDrawingLocations()>();
+
+        return;
+    }
+
+    public void setValue(float)
+    {
+        com.movesky.app.engine.ui.UISlider r0;
+        float $f0, $f1, $f2;
+
+        r0 := @this: com.movesky.app.engine.ui.UISlider;
+
+        $f0 := @parameter0: float;
+
+        $f2 = r0.<com.movesky.app.engine.ui.UISlider: float minValue>;
+
+        $f1 = r0.<com.movesky.app.engine.ui.UISlider: float maxValue>;
+
+        $f0 = staticinvoke <com.movesky.app.engine.util.MathUtils: float clamp(float,float,float)>($f2, $f1, $f0);
+
+        r0.<com.movesky.app.engine.ui.UISlider: float currValue> = $f0;
+
+        specialinvoke r0.<com.movesky.app.engine.ui.UISlider: void recomputeDrawingLocations()>();
+
+        return;
+    }
+}

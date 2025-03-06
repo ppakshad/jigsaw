@@ -1,0 +1,66 @@
+public class com.movesky.app.main.achievements.impls.SongAchievement extends com.movesky.app.main.achievements.BBTHAchievement
+{
+    com.movesky.app.main.Song song;
+
+    public void <init>(com.movesky.app.engine.achievements.AchievementInfo, com.movesky.app.main.Song)
+    {
+        com.movesky.app.main.achievements.impls.SongAchievement r0;
+        com.movesky.app.engine.achievements.AchievementInfo $r1;
+        com.movesky.app.main.Song $r2;
+
+        r0 := @this: com.movesky.app.main.achievements.impls.SongAchievement;
+
+        $r1 := @parameter0: com.movesky.app.engine.achievements.AchievementInfo;
+
+        $r2 := @parameter1: com.movesky.app.main.Song;
+
+        specialinvoke r0.<com.movesky.app.main.achievements.BBTHAchievement: void <init>(com.movesky.app.engine.achievements.AchievementInfo)>($r1);
+
+        r0.<com.movesky.app.main.achievements.impls.SongAchievement: com.movesky.app.main.Song song> = $r2;
+
+        return;
+    }
+
+    public void gameEnded(com.movesky.app.main.achievements.events.GameEndedEvent)
+    {
+        com.movesky.app.main.achievements.impls.SongAchievement r0;
+        com.movesky.app.main.achievements.events.GameEndedEvent $r1;
+        com.movesky.app.main.Song $r2, $r3;
+        boolean $z0;
+        com.movesky.app.main.Player $r4;
+
+        r0 := @this: com.movesky.app.main.achievements.impls.SongAchievement;
+
+        $r1 := @parameter0: com.movesky.app.main.achievements.events.GameEndedEvent;
+
+        $r3 = virtualinvoke $r1.<com.movesky.app.main.achievements.events.GameEndedEvent: com.movesky.app.main.Song getSong()>();
+
+        $r2 = r0.<com.movesky.app.main.achievements.impls.SongAchievement: com.movesky.app.main.Song song>;
+
+        if $r3 != $r2 goto label1;
+
+        $z0 = virtualinvoke $r1.<com.movesky.app.main.achievements.events.GameEndedEvent: boolean isTie()>();
+
+        if $z0 != 0 goto label1;
+
+        $r4 = virtualinvoke $r1.<com.movesky.app.main.achievements.events.GameEndedEvent: com.movesky.app.main.Player getWinningPlayer()>();
+
+        $z0 = virtualinvoke $r4.<com.movesky.app.main.Player: boolean isLocal()>();
+
+        if $z0 == 0 goto label1;
+
+        virtualinvoke r0.<com.movesky.app.main.achievements.impls.SongAchievement: void increment()>();
+
+     label1:
+        return;
+    }
+
+    public boolean usesGameEnded()
+    {
+        com.movesky.app.main.achievements.impls.SongAchievement r0;
+
+        r0 := @this: com.movesky.app.main.achievements.impls.SongAchievement;
+
+        return 1;
+    }
+}

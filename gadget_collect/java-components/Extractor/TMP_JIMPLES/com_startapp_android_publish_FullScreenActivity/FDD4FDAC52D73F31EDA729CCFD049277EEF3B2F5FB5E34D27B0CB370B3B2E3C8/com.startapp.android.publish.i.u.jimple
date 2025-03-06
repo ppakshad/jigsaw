@@ -1,0 +1,78 @@
+public class com.startapp.android.publish.i.u extends java.lang.Object
+{
+    private static com.startapp.android.publish.i.u a;
+    private android.widget.Toast b;
+
+    static void <clinit>()
+    {
+        com.startapp.android.publish.i.u $r0;
+
+        $r0 = new com.startapp.android.publish.i.u;
+
+        specialinvoke $r0.<com.startapp.android.publish.i.u: void <init>()>();
+
+        <com.startapp.android.publish.i.u: com.startapp.android.publish.i.u a> = $r0;
+
+        return;
+    }
+
+    private void <init>()
+    {
+        com.startapp.android.publish.i.u r0;
+
+        r0 := @this: com.startapp.android.publish.i.u;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public static com.startapp.android.publish.i.u a()
+    {
+        com.startapp.android.publish.i.u r0;
+
+        r0 = <com.startapp.android.publish.i.u: com.startapp.android.publish.i.u a>;
+
+        return r0;
+    }
+
+    public void a(android.content.Context, java.lang.String)
+    {
+        com.startapp.android.publish.i.u r0;
+        android.content.Context $r1;
+        java.lang.String $r2;
+        android.widget.Toast $r3;
+
+        r0 := @this: com.startapp.android.publish.i.u;
+
+        $r1 := @parameter0: android.content.Context;
+
+        $r2 := @parameter1: java.lang.String;
+
+        $r3 = r0.<com.startapp.android.publish.i.u: android.widget.Toast b>;
+
+        if $r3 != null goto label2;
+
+        $r3 = staticinvoke <android.widget.Toast: android.widget.Toast makeText(android.content.Context,java.lang.CharSequence,int)>($r1, $r2, 0);
+
+        r0.<com.startapp.android.publish.i.u: android.widget.Toast b> = $r3;
+
+     label1:
+        $r3 = r0.<com.startapp.android.publish.i.u: android.widget.Toast b>;
+
+        virtualinvoke $r3.<android.widget.Toast: void show()>();
+
+        return;
+
+     label2:
+        $r3 = r0.<com.startapp.android.publish.i.u: android.widget.Toast b>;
+
+        virtualinvoke $r3.<android.widget.Toast: void setText(java.lang.CharSequence)>($r2);
+
+        $r3 = r0.<com.startapp.android.publish.i.u: android.widget.Toast b>;
+
+        virtualinvoke $r3.<android.widget.Toast: void setDuration(int)>(0);
+
+        goto label1;
+    }
+}

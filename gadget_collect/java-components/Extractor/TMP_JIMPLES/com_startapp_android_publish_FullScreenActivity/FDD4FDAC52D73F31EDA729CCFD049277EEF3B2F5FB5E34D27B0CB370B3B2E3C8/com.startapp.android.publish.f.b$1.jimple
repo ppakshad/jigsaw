@@ -1,0 +1,145 @@
+class com.startapp.android.publish.f.b$1 extends java.lang.Object implements com.startapp.android.publish.video.b$a
+{
+    final java.lang.Boolean a;
+    final com.startapp.android.publish.f.b b;
+
+    void <init>(com.startapp.android.publish.f.b, java.lang.Boolean)
+    {
+        com.startapp.android.publish.f.b$1 r0;
+        com.startapp.android.publish.f.b $r1;
+        java.lang.Boolean $r2;
+
+        r0 := @this: com.startapp.android.publish.f.b$1;
+
+        $r1 := @parameter0: com.startapp.android.publish.f.b;
+
+        $r2 := @parameter1: java.lang.Boolean;
+
+        r0.<com.startapp.android.publish.f.b$1: com.startapp.android.publish.f.b b> = $r1;
+
+        r0.<com.startapp.android.publish.f.b$1: java.lang.Boolean a> = $r2;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    private void a()
+    {
+        com.startapp.android.publish.f.b$1 r0;
+        com.startapp.android.publish.f.b $r1;
+        com.startapp.android.publish.video.VideoAdDetails $r2;
+        com.startapp.android.publish.video.tracking.VideoTrackingDetails $r3;
+        com.startapp.android.publish.video.tracking.ActionTrackingLink[] $r4;
+        com.startapp.android.publish.video.tracking.VideoTrackingParams $r5;
+        com.startapp.android.publish.video.a.b $r6;
+        java.lang.String $r7;
+        com.startapp.android.publish.video.a.b$a $r8;
+        com.startapp.android.publish.video.a.a $r9;
+        android.content.Context $r10;
+
+        r0 := @this: com.startapp.android.publish.f.b$1;
+
+        $r1 = r0.<com.startapp.android.publish.f.b$1: com.startapp.android.publish.f.b b>;
+
+        $r2 = staticinvoke <com.startapp.android.publish.f.b: com.startapp.android.publish.video.VideoAdDetails a(com.startapp.android.publish.f.b)>($r1);
+
+        $r3 = virtualinvoke $r2.<com.startapp.android.publish.video.VideoAdDetails: com.startapp.android.publish.video.tracking.VideoTrackingDetails getVideoTrackingDetails()>();
+
+        $r4 = virtualinvoke $r3.<com.startapp.android.publish.video.tracking.VideoTrackingDetails: com.startapp.android.publish.video.tracking.ActionTrackingLink[] getInlineErrorTrackingUrls()>();
+
+        $r5 = new com.startapp.android.publish.video.tracking.VideoTrackingParams;
+
+        specialinvoke $r5.<com.startapp.android.publish.video.tracking.VideoTrackingParams: void <init>(java.lang.String,int,int,java.lang.String)>("", 0, 0, "1");
+
+        $r6 = new com.startapp.android.publish.video.a.b;
+
+        $r1 = r0.<com.startapp.android.publish.f.b$1: com.startapp.android.publish.f.b b>;
+
+        $r2 = staticinvoke <com.startapp.android.publish.f.b: com.startapp.android.publish.video.VideoAdDetails a(com.startapp.android.publish.f.b)>($r1);
+
+        $r7 = virtualinvoke $r2.<com.startapp.android.publish.video.VideoAdDetails: java.lang.String getVideoUrl()>();
+
+        specialinvoke $r6.<com.startapp.android.publish.video.a.b: void <init>(com.startapp.android.publish.video.tracking.VideoTrackingLink[],com.startapp.android.publish.video.tracking.VideoTrackingParams,java.lang.String,int)>($r4, $r5, $r7, 0);
+
+        $r6 = virtualinvoke $r6.<com.startapp.android.publish.video.a.b: com.startapp.android.publish.video.a.b a(java.lang.String)>("error");
+
+        $r8 = <com.startapp.android.publish.video.a.b$a: com.startapp.android.publish.video.a.b$a b>;
+
+        $r6 = virtualinvoke $r6.<com.startapp.android.publish.video.a.b: com.startapp.android.publish.video.a.b a(com.startapp.android.publish.video.a.b$a)>($r8);
+
+        $r9 = virtualinvoke $r6.<com.startapp.android.publish.video.a.b: com.startapp.android.publish.video.a.a a()>();
+
+        $r1 = r0.<com.startapp.android.publish.f.b$1: com.startapp.android.publish.f.b b>;
+
+        $r10 = $r1.<com.startapp.android.publish.f.b: android.content.Context a>;
+
+        staticinvoke <com.startapp.android.publish.video.c: void a(android.content.Context,com.startapp.android.publish.video.a.a)>($r10, $r9);
+
+        return;
+    }
+
+    public void a(java.lang.String)
+    {
+        com.startapp.android.publish.f.b$1 r0;
+        java.lang.String $r1;
+        boolean $z0;
+        com.startapp.android.publish.f.b $r2;
+        java.lang.Boolean $r3;
+        com.startapp.android.publish.video.VideoAdDetails $r4;
+        com.startapp.android.publish.AdEventListener $r5;
+        com.startapp.android.publish.Ad $r6;
+
+        r0 := @this: com.startapp.android.publish.f.b$1;
+
+        $r1 := @parameter0: java.lang.String;
+
+        if $r1 == null goto label2;
+
+        $z0 = virtualinvoke $r1.<java.lang.String: boolean equals(java.lang.Object)>("downloadInterrupted");
+
+        if $z0 != 0 goto label1;
+
+        $r2 = r0.<com.startapp.android.publish.f.b$1: com.startapp.android.publish.f.b b>;
+
+        $r3 = r0.<com.startapp.android.publish.f.b$1: java.lang.Boolean a>;
+
+        staticinvoke <com.startapp.android.publish.f.b: void b(com.startapp.android.publish.f.b,java.lang.Boolean)>($r2, $r3);
+
+        $r2 = r0.<com.startapp.android.publish.f.b$1: com.startapp.android.publish.f.b b>;
+
+        $r4 = staticinvoke <com.startapp.android.publish.f.b: com.startapp.android.publish.video.VideoAdDetails a(com.startapp.android.publish.f.b)>($r2);
+
+        virtualinvoke $r4.<com.startapp.android.publish.video.VideoAdDetails: void setLocalVideoPath(java.lang.String)>($r1);
+
+     label1:
+        $r2 = r0.<com.startapp.android.publish.f.b$1: com.startapp.android.publish.f.b b>;
+
+        $r3 = r0.<com.startapp.android.publish.f.b$1: java.lang.Boolean a>;
+
+        $z0 = virtualinvoke $r3.<java.lang.Boolean: boolean booleanValue()>();
+
+        virtualinvoke $r2.<com.startapp.android.publish.f.b: void a(boolean)>($z0);
+
+        return;
+
+     label2:
+        $r2 = r0.<com.startapp.android.publish.f.b$1: com.startapp.android.publish.f.b b>;
+
+        virtualinvoke $r2.<com.startapp.android.publish.f.b: void a(boolean)>(0);
+
+        $r2 = r0.<com.startapp.android.publish.f.b$1: com.startapp.android.publish.f.b b>;
+
+        $r5 = $r2.<com.startapp.android.publish.f.b: com.startapp.android.publish.AdEventListener e>;
+
+        $r2 = r0.<com.startapp.android.publish.f.b$1: com.startapp.android.publish.f.b b>;
+
+        $r6 = $r2.<com.startapp.android.publish.f.b: com.startapp.android.publish.Ad b>;
+
+        interfaceinvoke $r5.<com.startapp.android.publish.AdEventListener: void onFailedToReceiveAd(com.startapp.android.publish.Ad)>($r6);
+
+        specialinvoke r0.<com.startapp.android.publish.f.b$1: void a()>();
+
+        return;
+    }
+}

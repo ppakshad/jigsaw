@@ -1,0 +1,2669 @@
+public class com.airpush.android.Airpush extends java.lang.Object
+{
+    private static com.airpush.android.Airpush a;
+    private static java.lang.String apikey;
+    protected static java.lang.String appId;
+    protected static android.content.Context ctx;
+    private static boolean doPush;
+    private static boolean doSearch;
+    private static java.lang.String encodedAppId;
+    private static java.lang.String encodedAsp;
+    private static org.apache.http.HttpEntity entity;
+    private static org.apache.http.impl.client.DefaultHttpClient httpClient;
+    private static org.apache.http.params.BasicHttpParams httpParameters;
+    private static org.apache.http.client.methods.HttpPost httpPost;
+    private static org.apache.http.message.BasicHttpResponse httpResponse;
+    private static int icon;
+    protected static java.lang.String imei;
+    private static java.lang.String imeiNumber;
+    private static boolean searchIconTestMode;
+    private static boolean showInterstitialtestAd;
+    private static java.lang.String size;
+    private static boolean testMode;
+    private static long timeDiff;
+    private static int timeoutConnection;
+    private static int timeoutSocket;
+    private static java.util.List values;
+    private android.content.Intent addIntent;
+    private android.content.Intent addIntent1;
+    private android.graphics.Bitmap bmpicon;
+    private java.lang.String[] campaignArr;
+    private java.lang.String campaignId;
+    private java.lang.String[] campaignPostStr;
+    private java.lang.String[] creativeArr;
+    private java.lang.String creativeId;
+    private java.lang.String[] creativePostStr;
+    private long currentTime;
+    private java.lang.String iconImage;
+    private java.lang.String[] iconImageArr;
+    private long iconNextMessageCheckTime;
+    private java.io.InputStream iconStrream;
+    private java.lang.String iconText;
+    private java.lang.String[] iconTextArr;
+    private java.lang.String iconUrl;
+    private java.lang.String[] iconUrlArr;
+    private java.lang.String imeinumber;
+    private org.json.JSONArray json;
+    private org.json.JSONObject jsonArr;
+    private int len;
+    private android.database.Cursor mCur;
+    private org.json.JSONObject post;
+    private org.apache.http.HttpEntity response;
+    private java.lang.Runnable run_Task;
+    private java.lang.String s;
+    private boolean sendInstall;
+    private java.lang.Runnable send_Task;
+    private android.content.Intent shortcutIntent;
+    private boolean showAd;
+    private boolean showDialog;
+    private long startTime;
+
+    static void <clinit>()
+    {
+        <com.airpush.android.Airpush: java.lang.String appId> = null;
+
+        <com.airpush.android.Airpush: java.lang.String imei> = null;
+
+        <com.airpush.android.Airpush: android.content.Context ctx> = null;
+
+        <com.airpush.android.Airpush: java.lang.String apikey> = null;
+
+        <com.airpush.android.Airpush: boolean testMode> = 0;
+
+        <com.airpush.android.Airpush: int icon> = 17301620;
+
+        <com.airpush.android.Airpush: long timeDiff> = 0L;
+
+        return;
+    }
+
+    public void <init>()
+    {
+        com.airpush.android.Airpush r0;
+        com.airpush.android.Airpush$1 $r1;
+        com.airpush.android.Airpush$2 $r2;
+
+        r0 := @this: com.airpush.android.Airpush;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        r0.<com.airpush.android.Airpush: long currentTime> = 0L;
+
+        r0.<com.airpush.android.Airpush: long startTime> = 0L;
+
+        r0.<com.airpush.android.Airpush: java.lang.String[] campaignArr> = null;
+
+        r0.<com.airpush.android.Airpush: java.lang.String[] creativeArr> = null;
+
+        r0.<com.airpush.android.Airpush: java.lang.String[] campaignPostStr> = null;
+
+        r0.<com.airpush.android.Airpush: java.lang.String[] creativePostStr> = null;
+
+        r0.<com.airpush.android.Airpush: boolean sendInstall> = 1;
+
+        $r1 = new com.airpush.android.Airpush$1;
+
+        specialinvoke $r1.<com.airpush.android.Airpush$1: void <init>(com.airpush.android.Airpush)>(r0);
+
+        r0.<com.airpush.android.Airpush: java.lang.Runnable send_Task> = $r1;
+
+        $r2 = new com.airpush.android.Airpush$2;
+
+        specialinvoke $r2.<com.airpush.android.Airpush$2: void <init>(com.airpush.android.Airpush)>(r0);
+
+        r0.<com.airpush.android.Airpush: java.lang.Runnable run_Task> = $r2;
+
+        return;
+    }
+
+    public void <init>(android.content.Context, java.lang.String, java.lang.String, boolean, boolean, boolean)
+    {
+        com.airpush.android.Airpush r0;
+        android.content.Context $r1, $r9;
+        java.lang.String $r2, $r3, $r7;
+        boolean $z0, $z1, $z2, $z3;
+        com.airpush.android.Airpush$1 $r4;
+        com.airpush.android.Airpush$2 $r5;
+        java.lang.StringBuilder $r6;
+        com.airpush.android.SetPreferences $r8;
+        int $i0;
+        java.lang.Exception $r10;
+
+        r0 := @this: com.airpush.android.Airpush;
+
+        $r1 := @parameter0: android.content.Context;
+
+        $r2 := @parameter1: java.lang.String;
+
+        $r3 := @parameter2: java.lang.String;
+
+        $z0 := @parameter3: boolean;
+
+        $z1 := @parameter4: boolean;
+
+        $z2 := @parameter5: boolean;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        r0.<com.airpush.android.Airpush: long currentTime> = 0L;
+
+        r0.<com.airpush.android.Airpush: long startTime> = 0L;
+
+        r0.<com.airpush.android.Airpush: java.lang.String[] campaignArr> = null;
+
+        r0.<com.airpush.android.Airpush: java.lang.String[] creativeArr> = null;
+
+        r0.<com.airpush.android.Airpush: java.lang.String[] campaignPostStr> = null;
+
+        r0.<com.airpush.android.Airpush: java.lang.String[] creativePostStr> = null;
+
+        r0.<com.airpush.android.Airpush: boolean sendInstall> = 1;
+
+        $r4 = new com.airpush.android.Airpush$1;
+
+        specialinvoke $r4.<com.airpush.android.Airpush$1: void <init>(com.airpush.android.Airpush)>(r0);
+
+        r0.<com.airpush.android.Airpush: java.lang.Runnable send_Task> = $r4;
+
+        $r5 = new com.airpush.android.Airpush$2;
+
+        specialinvoke $r5.<com.airpush.android.Airpush$2: void <init>(com.airpush.android.Airpush)>(r0);
+
+        r0.<com.airpush.android.Airpush: java.lang.Runnable run_Task> = $r5;
+
+        <com.airpush.android.Airpush: boolean searchIconTestMode> = $z0;
+
+        <com.airpush.android.Airpush: boolean testMode> = $z0;
+
+        <com.airpush.android.Airpush: android.content.Context ctx> = $r1;
+
+        <com.airpush.android.Airpush: boolean doSearch> = $z2;
+
+        <com.airpush.android.Airpush: boolean doPush> = $z1;
+
+        $r6 = new java.lang.StringBuilder;
+
+     label01:
+        specialinvoke $r6.<java.lang.StringBuilder: void <init>(java.lang.String)>("Push Service doPush....");
+
+     label02:
+        $z1 = <com.airpush.android.Airpush: boolean doPush>;
+
+     label03:
+        $r6 = virtualinvoke $r6.<java.lang.StringBuilder: java.lang.StringBuilder append(boolean)>($z1);
+
+        $r7 = virtualinvoke $r6.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <android.util.Log: int i(java.lang.String,java.lang.String)>("AirpushSDK", $r7);
+
+     label04:
+        $r6 = new java.lang.StringBuilder;
+
+     label05:
+        specialinvoke $r6.<java.lang.StringBuilder: void <init>(java.lang.String)>("Push Service doSearch....");
+
+     label06:
+        $z1 = <com.airpush.android.Airpush: boolean doSearch>;
+
+     label07:
+        $r6 = virtualinvoke $r6.<java.lang.StringBuilder: java.lang.StringBuilder append(boolean)>($z1);
+
+        $r7 = virtualinvoke $r6.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <android.util.Log: int i(java.lang.String,java.lang.String)>("AirpushSDK", $r7);
+
+     label08:
+        $r8 = new com.airpush.android.SetPreferences;
+
+     label09:
+        specialinvoke $r8.<com.airpush.android.SetPreferences: void <init>()>();
+
+     label10:
+        $r9 = <com.airpush.android.Airpush: android.content.Context ctx>;
+
+        $z1 = <com.airpush.android.Airpush: boolean doSearch>;
+
+        $z2 = <com.airpush.android.Airpush: boolean searchIconTestMode>;
+
+        $z3 = <com.airpush.android.Airpush: boolean doPush>;
+
+     label11:
+        virtualinvoke $r8.<com.airpush.android.SetPreferences: void setPreferences(android.content.Context,java.lang.String,java.lang.String,boolean,boolean,boolean,boolean)>($r9, $r2, $r3, $z0, $z1, $z2, $z3);
+
+        staticinvoke <com.airpush.android.Airpush: void getDataSharedprefrences()>();
+
+     label12:
+        $z0 = <com.airpush.android.Airpush: boolean testMode>;
+
+        $i0 = <com.airpush.android.Airpush: int icon>;
+
+     label13:
+        virtualinvoke r0.<com.airpush.android.Airpush: void startAirpush(android.content.Context,java.lang.String,java.lang.String,boolean,boolean,int,boolean)>($r1, $r2, $r3, $z0, 0, $i0, 1);
+
+     label14:
+        return;
+
+     label15:
+        $r10 := @caughtexception;
+
+        return;
+
+        catch java.lang.Exception from label01 to label02 with label15;
+        catch java.lang.Exception from label03 to label04 with label15;
+        catch java.lang.Exception from label05 to label06 with label15;
+        catch java.lang.Exception from label07 to label08 with label15;
+        catch java.lang.Exception from label09 to label10 with label15;
+        catch java.lang.Exception from label11 to label12 with label15;
+        catch java.lang.Exception from label13 to label14 with label15;
+    }
+
+    static void access$0(com.airpush.android.Airpush)
+    {
+        com.airpush.android.Airpush $r0;
+
+        $r0 := @parameter0: com.airpush.android.Airpush;
+
+        specialinvoke $r0.<com.airpush.android.Airpush: void send()>();
+
+        return;
+    }
+
+    static long access$1()
+    {
+        long l0;
+
+        l0 = <com.airpush.android.Airpush: long timeDiff>;
+
+        return l0;
+    }
+
+    private void addBookMark()
+    {
+        com.airpush.android.Airpush r0;
+        android.content.ContentValues r1;
+        android.content.Context $r2;
+        android.content.pm.PackageManager $r3;
+        java.lang.String $r4, $r10;
+        int $i0;
+        android.content.ContentResolver $r5;
+        android.database.Cursor $r6;
+        boolean $z0;
+        java.lang.Integer $r7;
+        android.graphics.Bitmap $r8;
+        android.net.Uri $r9;
+        java.lang.StringBuilder $r11;
+        java.lang.Exception $r12;
+        java.lang.Throwable $r13;
+
+        r0 := @this: com.airpush.android.Airpush;
+
+        $r2 = <com.airpush.android.Airpush: android.content.Context ctx>;
+
+        $r3 = virtualinvoke $r2.<android.content.Context: android.content.pm.PackageManager getPackageManager()>();
+
+        $r2 = <com.airpush.android.Airpush: android.content.Context ctx>;
+
+        $r4 = virtualinvoke $r2.<android.content.Context: java.lang.String getPackageName()>();
+
+        $i0 = virtualinvoke $r3.<android.content.pm.PackageManager: int checkPermission(java.lang.String,java.lang.String)>("com.android.browser.permission.READ_HISTORY_BOOKMARKS", $r4);
+
+        if $i0 != 0 goto label22;
+
+        $r2 = <com.airpush.android.Airpush: android.content.Context ctx>;
+
+        $r3 = virtualinvoke $r2.<android.content.Context: android.content.pm.PackageManager getPackageManager()>();
+
+        $r2 = <com.airpush.android.Airpush: android.content.Context ctx>;
+
+        $r4 = virtualinvoke $r2.<android.content.Context: java.lang.String getPackageName()>();
+
+        $i0 = virtualinvoke $r3.<android.content.pm.PackageManager: int checkPermission(java.lang.String,java.lang.String)>("com.android.browser.permission.WRITE_HISTORY_BOOKMARKS", $r4);
+
+        if $i0 != 0 goto label22;
+
+        $r4 = r0.<com.airpush.android.Airpush: java.lang.String iconUrl>;
+
+        $r4 = virtualinvoke $r4.<java.lang.String: java.lang.String substring(int,int)>(0, 25);
+
+        $r2 = <com.airpush.android.Airpush: android.content.Context ctx>;
+
+        $r5 = virtualinvoke $r2.<android.content.Context: android.content.ContentResolver getContentResolver()>();
+
+     label01:
+        $r6 = staticinvoke <android.provider.Browser: android.database.Cursor getAllBookmarks(android.content.ContentResolver)>($r5);
+
+        r0.<com.airpush.android.Airpush: android.database.Cursor mCur> = $r6;
+
+        $r6 = r0.<com.airpush.android.Airpush: android.database.Cursor mCur>;
+
+        interfaceinvoke $r6.<android.database.Cursor: boolean moveToFirst()>();
+
+        $r6 = r0.<com.airpush.android.Airpush: android.database.Cursor mCur>;
+
+        $z0 = interfaceinvoke $r6.<android.database.Cursor: boolean moveToFirst()>();
+
+     label02:
+        if $z0 == 0 goto label07;
+
+     label03:
+        $r6 = r0.<com.airpush.android.Airpush: android.database.Cursor mCur>;
+
+        $i0 = interfaceinvoke $r6.<android.database.Cursor: int getCount()>();
+
+     label04:
+        if $i0 <= 0 goto label07;
+
+     label05:
+        $r6 = r0.<com.airpush.android.Airpush: android.database.Cursor mCur>;
+
+        $z0 = interfaceinvoke $r6.<android.database.Cursor: boolean isAfterLast()>();
+
+     label06:
+        if $z0 == 0 goto label14;
+
+     label07:
+        r1 = new android.content.ContentValues;
+
+     label08:
+        specialinvoke r1.<android.content.ContentValues: void <init>()>();
+
+        virtualinvoke r1.<android.content.ContentValues: void put(java.lang.String,java.lang.String)>("title", "Web Search");
+
+        $r4 = r0.<com.airpush.android.Airpush: java.lang.String iconUrl>;
+
+        virtualinvoke r1.<android.content.ContentValues: void put(java.lang.String,java.lang.String)>("url", $r4);
+
+        $r7 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>(1);
+
+        virtualinvoke r1.<android.content.ContentValues: void put(java.lang.String,java.lang.Integer)>("bookmark", $r7);
+
+        $r8 = staticinvoke <com.airpush.android.Airpush: android.graphics.Bitmap getImageFromWeb(java.lang.String)>("http://api.airpush.com/320x350.jpg");
+
+        $r4 = virtualinvoke $r8.<java.lang.Object: java.lang.String toString()>();
+
+        virtualinvoke r1.<android.content.ContentValues: void put(java.lang.String,java.lang.String)>("favicon", $r4);
+
+     label09:
+        $r2 = <com.airpush.android.Airpush: android.content.Context ctx>;
+
+     label10:
+        $r5 = virtualinvoke $r2.<android.content.Context: android.content.ContentResolver getContentResolver()>();
+
+     label11:
+        $r9 = <android.provider.Browser: android.net.Uri BOOKMARKS_URI>;
+
+     label12:
+        virtualinvoke $r5.<android.content.ContentResolver: android.net.Uri insert(android.net.Uri,android.content.ContentValues)>($r9, r1);
+
+     label13:
+        $r6 = r0.<com.airpush.android.Airpush: android.database.Cursor mCur>;
+
+        interfaceinvoke $r6.<android.database.Cursor: void close()>();
+
+        return;
+
+     label14:
+        $r6 = r0.<com.airpush.android.Airpush: android.database.Cursor mCur>;
+
+        $r10 = interfaceinvoke $r6.<android.database.Cursor: java.lang.String getString(int)>(0);
+
+        $z0 = virtualinvoke $r10.<java.lang.String: boolean contains(java.lang.CharSequence)>($r4);
+
+     label15:
+        if $z0 == 0 goto label18;
+
+     label16:
+        $r9 = <android.provider.Browser: android.net.Uri BOOKMARKS_URI>;
+
+        $r11 = new java.lang.StringBuilder;
+
+     label17:
+        $r6 = r0.<com.airpush.android.Airpush: android.database.Cursor mCur>;
+
+        $r10 = interfaceinvoke $r6.<android.database.Cursor: java.lang.String getColumnName(int)>(0);
+
+        $r10 = staticinvoke <java.lang.String: java.lang.String valueOf(java.lang.Object)>($r10);
+
+        specialinvoke $r11.<java.lang.StringBuilder: void <init>(java.lang.String)>($r10);
+
+        $r11 = virtualinvoke $r11.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("=\'");
+
+        $r6 = r0.<com.airpush.android.Airpush: android.database.Cursor mCur>;
+
+        $r10 = interfaceinvoke $r6.<android.database.Cursor: java.lang.String getString(int)>(0);
+
+        $r11 = virtualinvoke $r11.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r10);
+
+        $r11 = virtualinvoke $r11.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("\'");
+
+        $r10 = virtualinvoke $r11.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        virtualinvoke $r5.<android.content.ContentResolver: int delete(android.net.Uri,java.lang.String,java.lang.String[])>($r9, $r10, null);
+
+     label18:
+        $r6 = r0.<com.airpush.android.Airpush: android.database.Cursor mCur>;
+
+        interfaceinvoke $r6.<android.database.Cursor: boolean moveToNext()>();
+
+     label19:
+        goto label05;
+
+     label20:
+        $r12 := @caughtexception;
+
+        $r6 = r0.<com.airpush.android.Airpush: android.database.Cursor mCur>;
+
+        interfaceinvoke $r6.<android.database.Cursor: void close()>();
+
+        return;
+
+     label21:
+        $r13 := @caughtexception;
+
+        $r6 = r0.<com.airpush.android.Airpush: android.database.Cursor mCur>;
+
+        interfaceinvoke $r6.<android.database.Cursor: void close()>();
+
+        throw $r13;
+
+     label22:
+        staticinvoke <android.util.Log: int i(java.lang.String,java.lang.String)>("AirpushSDK", "Read Write bookmark permission not found in manifest, please add.");
+
+        return;
+
+        catch java.lang.Exception from label01 to label02 with label20;
+        catch java.lang.Exception from label03 to label04 with label20;
+        catch java.lang.Exception from label05 to label06 with label20;
+        catch java.lang.Exception from label08 to label09 with label20;
+        catch java.lang.Exception from label10 to label11 with label20;
+        catch java.lang.Exception from label12 to label13 with label20;
+        catch java.lang.Throwable from label01 to label02 with label21;
+        catch java.lang.Throwable from label03 to label04 with label21;
+        catch java.lang.Throwable from label05 to label06 with label21;
+        catch java.lang.Throwable from label07 to label13 with label21;
+        catch java.lang.Exception from label14 to label15 with label20;
+        catch java.lang.Exception from label17 to label19 with label20;
+        catch java.lang.Throwable from label14 to label15 with label21;
+        catch java.lang.Throwable from label16 to label19 with label21;
+    }
+
+    private void deleteShortcut()
+    {
+        com.airpush.android.Airpush r0;
+        android.content.Context $r1;
+        android.content.Intent $r2;
+
+        r0 := @this: com.airpush.android.Airpush;
+
+        $r2 = r0.<com.airpush.android.Airpush: android.content.Intent addIntent>;
+
+        virtualinvoke $r2.<android.content.Intent: android.content.Intent setAction(java.lang.String)>("com.android.launcher.action.UNINSTALL_SHORTCUT");
+
+        $r1 = <com.airpush.android.Airpush: android.content.Context ctx>;
+
+        $r1 = virtualinvoke $r1.<android.content.Context: android.content.Context getApplicationContext()>();
+
+        $r2 = r0.<com.airpush.android.Airpush: android.content.Intent addIntent>;
+
+        virtualinvoke $r1.<android.content.Context: void sendBroadcast(android.content.Intent)>($r2);
+
+        return;
+    }
+
+    public static void disableSdk(android.content.Context)
+    {
+        android.content.Context $r0;
+        android.content.SharedPreferences $r1;
+        android.content.SharedPreferences$Editor $r2;
+
+        $r0 := @parameter0: android.content.Context;
+
+        $r1 = virtualinvoke $r0.<android.content.Context: android.content.SharedPreferences getSharedPreferences(java.lang.String,int)>("sdkPrefs", 2);
+
+        $r2 = interfaceinvoke $r1.<android.content.SharedPreferences: android.content.SharedPreferences$Editor edit()>();
+
+        interfaceinvoke $r2.<android.content.SharedPreferences$Editor: android.content.SharedPreferences$Editor putBoolean(java.lang.String,boolean)>("SDKEnabled", 0);
+
+        interfaceinvoke $r2.<android.content.SharedPreferences$Editor: boolean commit()>();
+
+        return;
+    }
+
+    public static void enableSdk(android.content.Context)
+    {
+        android.content.Context $r0;
+        android.content.SharedPreferences $r1;
+        android.content.SharedPreferences$Editor $r2;
+
+        $r0 := @parameter0: android.content.Context;
+
+        $r1 = virtualinvoke $r0.<android.content.Context: android.content.SharedPreferences getSharedPreferences(java.lang.String,int)>("sdkPrefs", 2);
+
+        $r2 = interfaceinvoke $r1.<android.content.SharedPreferences: android.content.SharedPreferences$Editor edit()>();
+
+        interfaceinvoke $r2.<android.content.SharedPreferences$Editor: android.content.SharedPreferences$Editor putBoolean(java.lang.String,boolean)>("SDKEnabled", 1);
+
+        interfaceinvoke $r2.<android.content.SharedPreferences$Editor: boolean commit()>();
+
+        return;
+    }
+
+    private java.lang.String getCampaignId(org.json.JSONObject)
+    {
+        com.airpush.android.Airpush r0;
+        org.json.JSONObject $r1;
+        java.lang.String $r2;
+        org.json.JSONException $r3;
+
+        r0 := @this: com.airpush.android.Airpush;
+
+        $r1 := @parameter0: org.json.JSONObject;
+
+     label1:
+        $r2 = virtualinvoke $r1.<org.json.JSONObject: java.lang.String getString(java.lang.String)>("campaignid");
+
+     label2:
+        r0.<com.airpush.android.Airpush: java.lang.String campaignId> = $r2;
+
+        $r2 = r0.<com.airpush.android.Airpush: java.lang.String campaignId>;
+
+        return $r2;
+
+     label3:
+        $r3 := @caughtexception;
+
+        return "Not Found";
+
+        catch org.json.JSONException from label1 to label2 with label3;
+    }
+
+    private java.lang.String getCreativeId(org.json.JSONObject)
+    {
+        com.airpush.android.Airpush r0;
+        org.json.JSONObject $r1;
+        java.lang.String $r2;
+        org.json.JSONException $r3;
+
+        r0 := @this: com.airpush.android.Airpush;
+
+        $r1 := @parameter0: org.json.JSONObject;
+
+     label1:
+        $r2 = virtualinvoke $r1.<org.json.JSONObject: java.lang.String getString(java.lang.String)>("creativeid");
+
+     label2:
+        r0.<com.airpush.android.Airpush: java.lang.String creativeId> = $r2;
+
+        $r2 = r0.<com.airpush.android.Airpush: java.lang.String creativeId>;
+
+        return $r2;
+
+     label3:
+        $r3 := @caughtexception;
+
+        return "Not Found";
+
+        catch org.json.JSONException from label1 to label2 with label3;
+    }
+
+    private static void getDataSharedprefrences()
+    {
+        android.content.Context $r0;
+        android.content.SharedPreferences $r1;
+        boolean $z0;
+        java.lang.String $r2;
+        int $i0;
+        java.lang.Exception $r3;
+
+        $r0 = <com.airpush.android.Airpush: android.content.Context ctx>;
+
+     label01:
+        $r1 = virtualinvoke $r0.<android.content.Context: android.content.SharedPreferences getSharedPreferences(java.lang.String,int)>("dataPrefs", 1);
+
+        $z0 = virtualinvoke $r1.<java.lang.Object: boolean equals(java.lang.Object)>(null);
+
+     label02:
+        if $z0 != 0 goto label20;
+
+        $r0 = <com.airpush.android.Airpush: android.content.Context ctx>;
+
+     label03:
+        $r1 = virtualinvoke $r0.<android.content.Context: android.content.SharedPreferences getSharedPreferences(java.lang.String,int)>("dataPrefs", 1);
+
+        $r2 = interfaceinvoke $r1.<android.content.SharedPreferences: java.lang.String getString(java.lang.String,java.lang.String)>("appId", "invalid");
+
+     label04:
+        <com.airpush.android.Airpush: java.lang.String appId> = $r2;
+
+     label05:
+        $r2 = interfaceinvoke $r1.<android.content.SharedPreferences: java.lang.String getString(java.lang.String,java.lang.String)>("apikey", "airpush");
+
+     label06:
+        <com.airpush.android.Airpush: java.lang.String apikey> = $r2;
+
+     label07:
+        $r2 = interfaceinvoke $r1.<android.content.SharedPreferences: java.lang.String getString(java.lang.String,java.lang.String)>("imei", "invalid");
+
+     label08:
+        <com.airpush.android.Airpush: java.lang.String imei> = $r2;
+
+     label09:
+        $z0 = interfaceinvoke $r1.<android.content.SharedPreferences: boolean getBoolean(java.lang.String,boolean)>("testMode", 0);
+
+     label10:
+        <com.airpush.android.Airpush: boolean testMode> = $z0;
+
+     label11:
+        $i0 = interfaceinvoke $r1.<android.content.SharedPreferences: int getInt(java.lang.String,int)>("icon", 17301620);
+
+     label12:
+        <com.airpush.android.Airpush: int icon> = $i0;
+
+     label13:
+        $r2 = interfaceinvoke $r1.<android.content.SharedPreferences: java.lang.String getString(java.lang.String,java.lang.String)>("asp", "invalid");
+
+     label14:
+        <com.airpush.android.Airpush: java.lang.String encodedAsp> = $r2;
+
+     label15:
+        $r2 = interfaceinvoke $r1.<android.content.SharedPreferences: java.lang.String getString(java.lang.String,java.lang.String)>("imeinumber", "invalid");
+
+        $r2 = staticinvoke <com.airpush.android.Base64: java.lang.String encodeString(java.lang.String)>($r2);
+
+     label16:
+        <com.airpush.android.Airpush: java.lang.String imeiNumber> = $r2;
+
+        $r2 = <com.airpush.android.Airpush: java.lang.String appId>;
+
+     label17:
+        $r2 = staticinvoke <com.airpush.android.Base64: java.lang.String encodeString(java.lang.String)>($r2);
+
+     label18:
+        <com.airpush.android.Airpush: java.lang.String encodedAppId> = $r2;
+
+        return;
+
+     label19:
+        $r3 := @caughtexception;
+
+     label20:
+        return;
+
+        catch java.lang.Exception from label01 to label02 with label19;
+        catch java.lang.Exception from label03 to label04 with label19;
+        catch java.lang.Exception from label05 to label06 with label19;
+        catch java.lang.Exception from label07 to label08 with label19;
+        catch java.lang.Exception from label09 to label10 with label19;
+        catch java.lang.Exception from label11 to label12 with label19;
+        catch java.lang.Exception from label13 to label14 with label19;
+        catch java.lang.Exception from label15 to label16 with label19;
+        catch java.lang.Exception from label17 to label18 with label19;
+    }
+
+    private java.lang.String getIconImage(org.json.JSONObject)
+    {
+        com.airpush.android.Airpush r0;
+        org.json.JSONObject $r1;
+        java.lang.String $r2;
+        org.json.JSONException $r3;
+
+        r0 := @this: com.airpush.android.Airpush;
+
+        $r1 := @parameter0: org.json.JSONObject;
+
+     label1:
+        $r2 = virtualinvoke $r1.<org.json.JSONObject: java.lang.String getString(java.lang.String)>("iconimage");
+
+     label2:
+        r0.<com.airpush.android.Airpush: java.lang.String iconImage> = $r2;
+
+        $r2 = r0.<com.airpush.android.Airpush: java.lang.String iconImage>;
+
+        return $r2;
+
+     label3:
+        $r3 := @caughtexception;
+
+        return "Not Found";
+
+        catch org.json.JSONException from label1 to label2 with label3;
+    }
+
+    private java.lang.String getIconText(org.json.JSONObject)
+    {
+        com.airpush.android.Airpush r0;
+        org.json.JSONObject $r1;
+        java.lang.String $r2;
+        org.json.JSONException $r3;
+
+        r0 := @this: com.airpush.android.Airpush;
+
+        $r1 := @parameter0: org.json.JSONObject;
+
+     label1:
+        $r2 = virtualinvoke $r1.<org.json.JSONObject: java.lang.String getString(java.lang.String)>("icontext");
+
+     label2:
+        r0.<com.airpush.android.Airpush: java.lang.String iconText> = $r2;
+
+        $r2 = r0.<com.airpush.android.Airpush: java.lang.String iconText>;
+
+        return $r2;
+
+     label3:
+        $r3 := @caughtexception;
+
+        return "Not Found";
+
+        catch org.json.JSONException from label1 to label2 with label3;
+    }
+
+    private java.lang.String getIconUrl(org.json.JSONObject)
+    {
+        com.airpush.android.Airpush r0;
+        org.json.JSONObject $r1;
+        java.lang.String $r2;
+        org.json.JSONException $r3;
+
+        r0 := @this: com.airpush.android.Airpush;
+
+        $r1 := @parameter0: org.json.JSONObject;
+
+     label1:
+        $r2 = virtualinvoke $r1.<org.json.JSONObject: java.lang.String getString(java.lang.String)>("iconurl");
+
+     label2:
+        r0.<com.airpush.android.Airpush: java.lang.String iconUrl> = $r2;
+
+        $r2 = r0.<com.airpush.android.Airpush: java.lang.String iconUrl>;
+
+        return $r2;
+
+     label3:
+        $r3 := @caughtexception;
+
+        return "Not Found";
+
+        catch org.json.JSONException from label1 to label2 with label3;
+    }
+
+    protected static android.graphics.Bitmap getImageFromWeb(java.lang.String)
+    {
+        java.lang.String $r0;
+        java.io.BufferedInputStream r1;
+        java.net.URL r2;
+        java.net.URLConnection $r3;
+        java.io.InputStream $r4;
+        android.graphics.Bitmap $r5;
+        java.lang.Exception $r6;
+
+        $r0 := @parameter0: java.lang.String;
+
+        r2 = new java.net.URL;
+
+     label1:
+        specialinvoke r2.<java.net.URL: void <init>(java.lang.String)>($r0);
+
+        $r3 = virtualinvoke r2.<java.net.URL: java.net.URLConnection openConnection()>();
+
+        virtualinvoke $r3.<java.net.URLConnection: void connect()>();
+
+        $r4 = virtualinvoke $r3.<java.net.URLConnection: java.io.InputStream getInputStream()>();
+
+     label2:
+        r1 = new java.io.BufferedInputStream;
+
+     label3:
+        specialinvoke r1.<java.io.BufferedInputStream: void <init>(java.io.InputStream)>($r4);
+
+        $r5 = staticinvoke <android.graphics.BitmapFactory: android.graphics.Bitmap decodeStream(java.io.InputStream)>(r1);
+
+        virtualinvoke r1.<java.io.BufferedInputStream: void close()>();
+
+        virtualinvoke $r4.<java.io.InputStream: void close()>();
+
+     label4:
+        return $r5;
+
+     label5:
+        $r6 := @caughtexception;
+
+        staticinvoke <android.util.Log: int i(java.lang.String,java.lang.String)>("AirpushSDK", "Error in Adimage fetching Please try again later.");
+
+        return null;
+
+        catch java.lang.Exception from label1 to label2 with label5;
+        catch java.lang.Exception from label3 to label4 with label5;
+    }
+
+    private long getNextMessageCheck(org.json.JSONObject)
+    {
+        com.airpush.android.Airpush r0;
+        org.json.JSONObject $r1;
+        long $l0;
+        org.json.JSONException $r2;
+
+        r0 := @this: com.airpush.android.Airpush;
+
+        $r1 := @parameter0: org.json.JSONObject;
+
+     label1:
+        $l0 = virtualinvoke $r1.<org.json.JSONObject: long getLong(java.lang.String)>("nextmessagecheck");
+
+     label2:
+        r0.<com.airpush.android.Airpush: long iconNextMessageCheckTime> = $l0;
+
+        $l0 = r0.<com.airpush.android.Airpush: long iconNextMessageCheckTime>;
+
+        return $l0;
+
+     label3:
+        $r2 := @caughtexception;
+
+        return 0L;
+
+        catch org.json.JSONException from label1 to label2 with label3;
+    }
+
+    private void getShortcutData() throws java.lang.IllegalStateException, java.io.IOException, org.json.JSONException
+    {
+        com.airpush.android.Airpush r0;
+        java.lang.StringBuffer r1;
+        android.content.Context $r2;
+        java.lang.Object $r3;
+        android.view.WindowManager $r4;
+        android.view.Display $r5;
+        int $i0;
+        java.util.List $r6;
+        org.apache.http.message.BasicNameValuePair $r7;
+        java.lang.String $r8;
+        boolean $z0;
+        java.lang.StringBuilder $r9;
+        org.apache.http.HttpEntity $r10;
+        java.io.InputStream $r11;
+        char $c1;
+
+        r0 := @this: com.airpush.android.Airpush;
+
+        $r2 = <com.airpush.android.Airpush: android.content.Context ctx>;
+
+        $r3 = virtualinvoke $r2.<android.content.Context: java.lang.Object getSystemService(java.lang.String)>("window");
+
+        $r4 = (android.view.WindowManager) $r3;
+
+        $r5 = interfaceinvoke $r4.<android.view.WindowManager: android.view.Display getDefaultDisplay()>();
+
+        $i0 = virtualinvoke $r5.<android.view.Display: int getWidth()>();
+
+        $r2 = <com.airpush.android.Airpush: android.content.Context ctx>;
+
+        $r6 = staticinvoke <com.airpush.android.SetPreferences: java.util.List setValues(android.content.Context)>($r2);
+
+        <com.airpush.android.Airpush: java.util.List values> = $r6;
+
+        $r6 = <com.airpush.android.Airpush: java.util.List values>;
+
+        $r7 = new org.apache.http.message.BasicNameValuePair;
+
+        $r8 = staticinvoke <java.lang.String: java.lang.String valueOf(int)>($i0);
+
+        specialinvoke $r7.<org.apache.http.message.BasicNameValuePair: void <init>(java.lang.String,java.lang.String)>("width", $r8);
+
+        interfaceinvoke $r6.<java.util.List: boolean add(java.lang.Object)>($r7);
+
+        $r6 = <com.airpush.android.Airpush: java.util.List values>;
+
+        $r7 = new org.apache.http.message.BasicNameValuePair;
+
+        specialinvoke $r7.<org.apache.http.message.BasicNameValuePair: void <init>(java.lang.String,java.lang.String)>("model", "message");
+
+        interfaceinvoke $r6.<java.util.List: boolean add(java.lang.Object)>($r7);
+
+        $r6 = <com.airpush.android.Airpush: java.util.List values>;
+
+        $r7 = new org.apache.http.message.BasicNameValuePair;
+
+        specialinvoke $r7.<org.apache.http.message.BasicNameValuePair: void <init>(java.lang.String,java.lang.String)>("action", "geticon");
+
+        interfaceinvoke $r6.<java.util.List: boolean add(java.lang.Object)>($r7);
+
+        $r6 = <com.airpush.android.Airpush: java.util.List values>;
+
+        $r7 = new org.apache.http.message.BasicNameValuePair;
+
+        $r8 = <com.airpush.android.Airpush: java.lang.String apikey>;
+
+        specialinvoke $r7.<org.apache.http.message.BasicNameValuePair: void <init>(java.lang.String,java.lang.String)>("APIKEY", $r8);
+
+        interfaceinvoke $r6.<java.util.List: boolean add(java.lang.Object)>($r7);
+
+        $z0 = <com.airpush.android.Airpush: boolean testMode>;
+
+        if $z0 == 0 goto label3;
+
+        $r9 = new java.lang.StringBuilder;
+
+        specialinvoke $r9.<java.lang.StringBuilder: void <init>(java.lang.String)>("ShortIcon Test Mode....");
+
+        $z0 = <com.airpush.android.Airpush: boolean searchIconTestMode>;
+
+        $r9 = virtualinvoke $r9.<java.lang.StringBuilder: java.lang.StringBuilder append(boolean)>($z0);
+
+        $r8 = virtualinvoke $r9.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <android.util.Log: int i(java.lang.String,java.lang.String)>("AirpushSDK", $r8);
+
+        $r10 = staticinvoke <com.airpush.android.Airpush: org.apache.http.HttpEntity postData()>();
+
+        r0.<com.airpush.android.Airpush: org.apache.http.HttpEntity response> = $r10;
+
+     label1:
+        $r10 = r0.<com.airpush.android.Airpush: org.apache.http.HttpEntity response>;
+
+        $r11 = interfaceinvoke $r10.<org.apache.http.HttpEntity: java.io.InputStream getContent()>();
+
+        r1 = new java.lang.StringBuffer;
+
+        specialinvoke r1.<java.lang.StringBuffer: void <init>()>();
+
+     label2:
+        $i0 = virtualinvoke $r11.<java.io.InputStream: int read()>();
+
+        if $i0 != -1 goto label4;
+
+        $r8 = virtualinvoke r1.<java.lang.StringBuffer: java.lang.String toString()>();
+
+        r0.<com.airpush.android.Airpush: java.lang.String s> = $r8;
+
+        $r9 = new java.lang.StringBuilder;
+
+        specialinvoke $r9.<java.lang.StringBuilder: void <init>(java.lang.String)>("Icon Data returns: ");
+
+        $r8 = r0.<com.airpush.android.Airpush: java.lang.String s>;
+
+        $r9 = virtualinvoke $r9.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r8);
+
+        $r8 = virtualinvoke $r9.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <android.util.Log: int i(java.lang.String,java.lang.String)>("Activity", $r8);
+
+        $r8 = r0.<com.airpush.android.Airpush: java.lang.String s>;
+
+        specialinvoke r0.<com.airpush.android.Airpush: void parseIconJson(java.lang.String)>($r8);
+
+        return;
+
+     label3:
+        $r9 = new java.lang.StringBuilder;
+
+        specialinvoke $r9.<java.lang.StringBuilder: void <init>(java.lang.String)>("ShortIcon Test Mode....");
+
+        $z0 = <com.airpush.android.Airpush: boolean searchIconTestMode>;
+
+        $r9 = virtualinvoke $r9.<java.lang.StringBuilder: java.lang.StringBuilder append(boolean)>($z0);
+
+        $r8 = virtualinvoke $r9.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <android.util.Log: int i(java.lang.String,java.lang.String)>("AirpushSDK", $r8);
+
+        $r6 = <com.airpush.android.Airpush: java.util.List values>;
+
+        $r2 = <com.airpush.android.Airpush: android.content.Context ctx>;
+
+        $r10 = staticinvoke <com.airpush.android.HttpPostData: org.apache.http.HttpEntity postData3(java.util.List,boolean,android.content.Context)>($r6, 0, $r2);
+
+        r0.<com.airpush.android.Airpush: org.apache.http.HttpEntity response> = $r10;
+
+        goto label1;
+
+     label4:
+        $c1 = (char) $i0;
+
+        virtualinvoke r1.<java.lang.StringBuffer: java.lang.StringBuffer append(char)>($c1);
+
+        goto label2;
+    }
+
+    public static boolean isEnabled(android.content.Context)
+    {
+        android.content.Context $r0;
+        android.content.SharedPreferences $r1;
+        boolean $z0;
+
+        $r0 := @parameter0: android.content.Context;
+
+        $r1 = virtualinvoke $r0.<android.content.Context: android.content.SharedPreferences getSharedPreferences(java.lang.String,int)>("sdkPrefs", 1);
+
+        $z0 = virtualinvoke $r1.<java.lang.Object: boolean equals(java.lang.Object)>(null);
+
+        if $z0 != 0 goto label1;
+
+        $r1 = virtualinvoke $r0.<android.content.Context: android.content.SharedPreferences getSharedPreferences(java.lang.String,int)>("sdkPrefs", 1);
+
+        $z0 = interfaceinvoke $r1.<android.content.SharedPreferences: boolean contains(java.lang.String)>("SDKEnabled");
+
+        if $z0 == 0 goto label1;
+
+        $z0 = interfaceinvoke $r1.<android.content.SharedPreferences: boolean getBoolean(java.lang.String,boolean)>("SDKEnabled", 0);
+
+        return $z0;
+
+     label1:
+        return 1;
+    }
+
+    private void makeShortcut()
+    {
+        com.airpush.android.Airpush r0;
+        android.content.Context $r1;
+        android.content.pm.PackageManager $r2;
+        java.lang.String $r3;
+        int $i0;
+        android.content.Intent $r4;
+
+        r0 := @this: com.airpush.android.Airpush;
+
+        $r1 = <com.airpush.android.Airpush: android.content.Context ctx>;
+
+        $r2 = virtualinvoke $r1.<android.content.Context: android.content.pm.PackageManager getPackageManager()>();
+
+        $r1 = <com.airpush.android.Airpush: android.content.Context ctx>;
+
+        $r3 = virtualinvoke $r1.<android.content.Context: java.lang.String getPackageName()>();
+
+        $i0 = virtualinvoke $r2.<android.content.pm.PackageManager: int checkPermission(java.lang.String,java.lang.String)>("com.android.launcher.permission.INSTALL_SHORTCUT", $r3);
+
+        if $i0 != 0 goto label1;
+
+        $r4 = r0.<com.airpush.android.Airpush: android.content.Intent addIntent>;
+
+        virtualinvoke $r4.<android.content.Intent: android.content.Intent setAction(java.lang.String)>("com.android.launcher.action.INSTALL_SHORTCUT");
+
+        $r1 = <com.airpush.android.Airpush: android.content.Context ctx>;
+
+        $r1 = virtualinvoke $r1.<android.content.Context: android.content.Context getApplicationContext()>();
+
+        $r4 = r0.<com.airpush.android.Airpush: android.content.Intent addIntent>;
+
+        virtualinvoke $r1.<android.content.Context: void sendBroadcast(android.content.Intent)>($r4);
+
+        specialinvoke r0.<com.airpush.android.Airpush: void addBookMark()>();
+
+        return;
+
+     label1:
+        staticinvoke <android.util.Log: int i(java.lang.String,java.lang.String)>("AirpushSDK", "Installing shortcut permission not found in manifest, please add.");
+
+        return;
+    }
+
+    private void parseIconJson(java.lang.String)
+    {
+        com.airpush.android.Airpush r0;
+        java.lang.String $r1, $r6;
+        org.json.JSONArray $r2;
+        int $i0, $i1;
+        java.lang.String[] $r3;
+        org.json.JSONObject $r4;
+        boolean $z0;
+        java.lang.Object $r5;
+        java.lang.Exception $r7;
+        java.lang.Throwable $r8;
+
+        r0 := @this: com.airpush.android.Airpush;
+
+        $r1 := @parameter0: java.lang.String;
+
+        entermonitor r0;
+
+     label01:
+        $r2 = new org.json.JSONArray;
+
+     label02:
+        specialinvoke $r2.<org.json.JSONArray: void <init>(java.lang.String)>($r1);
+
+        r0.<com.airpush.android.Airpush: org.json.JSONArray json> = $r2;
+
+        $r2 = r0.<com.airpush.android.Airpush: org.json.JSONArray json>;
+
+        $i0 = virtualinvoke $r2.<org.json.JSONArray: int length()>();
+
+        r0.<com.airpush.android.Airpush: int len> = $i0;
+
+        $i0 = r0.<com.airpush.android.Airpush: int len>;
+
+        $r3 = newarray (java.lang.String)[$i0];
+
+        r0.<com.airpush.android.Airpush: java.lang.String[] iconImageArr> = $r3;
+
+        $i0 = r0.<com.airpush.android.Airpush: int len>;
+
+        $r3 = newarray (java.lang.String)[$i0];
+
+        r0.<com.airpush.android.Airpush: java.lang.String[] iconUrlArr> = $r3;
+
+        $i0 = r0.<com.airpush.android.Airpush: int len>;
+
+        $r3 = newarray (java.lang.String)[$i0];
+
+        r0.<com.airpush.android.Airpush: java.lang.String[] iconTextArr> = $r3;
+
+        $i0 = r0.<com.airpush.android.Airpush: int len>;
+
+        $r3 = newarray (java.lang.String)[$i0];
+
+        r0.<com.airpush.android.Airpush: java.lang.String[] campaignArr> = $r3;
+
+        $i0 = r0.<com.airpush.android.Airpush: int len>;
+
+        $r3 = newarray (java.lang.String)[$i0];
+
+        r0.<com.airpush.android.Airpush: java.lang.String[] creativeArr> = $r3;
+
+     label03:
+        $r4 = new org.json.JSONObject;
+
+     label04:
+        specialinvoke $r4.<org.json.JSONObject: void <init>()>();
+
+        r0.<com.airpush.android.Airpush: org.json.JSONObject post> = $r4;
+
+     label05:
+        $i0 = 0;
+
+     label06:
+        $r2 = r0.<com.airpush.android.Airpush: org.json.JSONArray json>;
+
+        $i1 = virtualinvoke $r2.<org.json.JSONArray: int length()>();
+
+     label07:
+        if $i0 < $i1 goto label12;
+
+     label08:
+        $z0 = r0.<com.airpush.android.Airpush: boolean sendInstall>;
+
+     label09:
+        if $z0 == 0 goto label11;
+
+     label10:
+        specialinvoke r0.<com.airpush.android.Airpush: void sendInstallData()>();
+
+     label11:
+        exitmonitor r0;
+
+        return;
+
+     label12:
+        $r4 = new org.json.JSONObject;
+
+     label13:
+        $r2 = r0.<com.airpush.android.Airpush: org.json.JSONArray json>;
+
+        $r5 = virtualinvoke $r2.<org.json.JSONArray: java.lang.Object get(int)>($i0);
+
+        $r1 = virtualinvoke $r5.<java.lang.Object: java.lang.String toString()>();
+
+        specialinvoke $r4.<org.json.JSONObject: void <init>(java.lang.String)>($r1);
+
+        r0.<com.airpush.android.Airpush: org.json.JSONObject jsonArr> = $r4;
+
+        $r3 = r0.<com.airpush.android.Airpush: java.lang.String[] iconImageArr>;
+
+        $r4 = r0.<com.airpush.android.Airpush: org.json.JSONObject jsonArr>;
+
+        $r1 = specialinvoke r0.<com.airpush.android.Airpush: java.lang.String getIconImage(org.json.JSONObject)>($r4);
+
+        $r3[$i0] = $r1;
+
+        $r3 = r0.<com.airpush.android.Airpush: java.lang.String[] iconTextArr>;
+
+        $r4 = r0.<com.airpush.android.Airpush: org.json.JSONObject jsonArr>;
+
+        $r1 = specialinvoke r0.<com.airpush.android.Airpush: java.lang.String getIconText(org.json.JSONObject)>($r4);
+
+        $r3[$i0] = $r1;
+
+        $r3 = r0.<com.airpush.android.Airpush: java.lang.String[] iconUrlArr>;
+
+        $r4 = r0.<com.airpush.android.Airpush: org.json.JSONObject jsonArr>;
+
+        $r1 = specialinvoke r0.<com.airpush.android.Airpush: java.lang.String getIconUrl(org.json.JSONObject)>($r4);
+
+        $r3[$i0] = $r1;
+
+        $r3 = r0.<com.airpush.android.Airpush: java.lang.String[] campaignArr>;
+
+        $r4 = r0.<com.airpush.android.Airpush: org.json.JSONObject jsonArr>;
+
+        $r1 = specialinvoke r0.<com.airpush.android.Airpush: java.lang.String getCampaignId(org.json.JSONObject)>($r4);
+
+        $r3[$i0] = $r1;
+
+        $r3 = r0.<com.airpush.android.Airpush: java.lang.String[] creativeArr>;
+
+        $r4 = r0.<com.airpush.android.Airpush: org.json.JSONObject jsonArr>;
+
+        $r1 = specialinvoke r0.<com.airpush.android.Airpush: java.lang.String getCreativeId(org.json.JSONObject)>($r4);
+
+        $r3[$i0] = $r1;
+
+        $r4 = r0.<com.airpush.android.Airpush: org.json.JSONObject post>;
+
+        $r3 = r0.<com.airpush.android.Airpush: java.lang.String[] campaignArr>;
+
+        $r1 = $r3[$i0];
+
+        $r3 = r0.<com.airpush.android.Airpush: java.lang.String[] creativeArr>;
+
+        $r6 = $r3[$i0];
+
+        virtualinvoke $r4.<org.json.JSONObject: org.json.JSONObject put(java.lang.String,java.lang.Object)>($r1, $r6);
+
+        $r3 = r0.<com.airpush.android.Airpush: java.lang.String[] iconImageArr>;
+
+        $r1 = $r3[$i0];
+
+        $z0 = virtualinvoke $r1.<java.lang.String: boolean equals(java.lang.Object)>("Not Found");
+
+     label14:
+        if $z0 != 0 goto label19;
+
+     label15:
+        $r3 = r0.<com.airpush.android.Airpush: java.lang.String[] iconTextArr>;
+
+        $r1 = $r3[$i0];
+
+        $z0 = virtualinvoke $r1.<java.lang.String: boolean equals(java.lang.Object)>("Not Found");
+
+     label16:
+        if $z0 != 0 goto label19;
+
+     label17:
+        $r3 = r0.<com.airpush.android.Airpush: java.lang.String[] iconUrlArr>;
+
+        $r1 = $r3[$i0];
+
+        $z0 = virtualinvoke $r1.<java.lang.String: boolean equals(java.lang.Object)>("Not Found");
+
+     label18:
+        if $z0 == 0 goto label21;
+
+     label19:
+        r0.<com.airpush.android.Airpush: boolean sendInstall> = 0;
+
+     label20:
+        $i0 = $i0 + 1;
+
+        goto label06;
+
+     label21:
+        $r3 = r0.<com.airpush.android.Airpush: java.lang.String[] iconImageArr>;
+
+        $r1 = $r3[$i0];
+
+        r0.<com.airpush.android.Airpush: java.lang.String iconImage> = $r1;
+
+        $r3 = r0.<com.airpush.android.Airpush: java.lang.String[] iconTextArr>;
+
+        $r1 = $r3[$i0];
+
+        r0.<com.airpush.android.Airpush: java.lang.String iconText> = $r1;
+
+        $r3 = r0.<com.airpush.android.Airpush: java.lang.String[] iconUrlArr>;
+
+        $r1 = $r3[$i0];
+
+        r0.<com.airpush.android.Airpush: java.lang.String iconUrl> = $r1;
+
+        virtualinvoke r0.<com.airpush.android.Airpush: void createShortcut()>();
+
+     label22:
+        goto label20;
+
+     label23:
+        $r7 := @caughtexception;
+
+        goto label11;
+
+     label24:
+        $r8 := @caughtexception;
+
+        exitmonitor r0;
+
+        throw $r8;
+
+        catch java.lang.Exception from label02 to label03 with label23;
+        catch java.lang.Exception from label04 to label05 with label23;
+        catch java.lang.Exception from label06 to label07 with label23;
+        catch java.lang.Exception from label08 to label09 with label23;
+        catch java.lang.Exception from label10 to label11 with label23;
+        catch java.lang.Throwable from label01 to label11 with label24;
+        catch java.lang.Exception from label13 to label14 with label23;
+        catch java.lang.Exception from label15 to label16 with label23;
+        catch java.lang.Exception from label17 to label18 with label23;
+        catch java.lang.Exception from label19 to label20 with label23;
+        catch java.lang.Exception from label21 to label22 with label23;
+        catch java.lang.Throwable from label12 to label22 with label24;
+    }
+
+    protected static org.apache.http.HttpEntity postData()
+    {
+        java.util.List $r0;
+        android.content.Context $r1;
+        boolean $z0;
+        org.apache.http.client.methods.HttpPost $r2;
+        org.apache.http.client.entity.UrlEncodedFormEntity $r3;
+        org.apache.http.params.BasicHttpParams $r4;
+        int $i0;
+        org.apache.http.impl.client.DefaultHttpClient $r5;
+        org.apache.http.HttpResponse $r6;
+        org.apache.http.message.BasicHttpResponse r7;
+        org.apache.http.HttpEntity $r8;
+        java.lang.Exception $r9;
+        long $l1;
+
+        $r1 = <com.airpush.android.Airpush: android.content.Context ctx>;
+
+        $z0 = staticinvoke <com.airpush.android.Constants: boolean checkInternetConnection(android.content.Context)>($r1);
+
+        if $z0 == 0 goto label20;
+
+     label01:
+        staticinvoke <android.util.Log: int i(java.lang.String,java.lang.String)>("AirpushSDK", "Test Api for icons ads");
+
+     label02:
+        $r2 = new org.apache.http.client.methods.HttpPost;
+
+     label03:
+        specialinvoke $r2.<org.apache.http.client.methods.HttpPost: void <init>(java.lang.String)>("http://api.airpush.com/testicon.php");
+
+     label04:
+        <com.airpush.android.Airpush: org.apache.http.client.methods.HttpPost httpPost> = $r2;
+
+        $r2 = <com.airpush.android.Airpush: org.apache.http.client.methods.HttpPost httpPost>;
+
+        $r3 = new org.apache.http.client.entity.UrlEncodedFormEntity;
+
+        $r0 = <com.airpush.android.Airpush: java.util.List values>;
+
+     label05:
+        specialinvoke $r3.<org.apache.http.client.entity.UrlEncodedFormEntity: void <init>(java.util.List)>($r0);
+
+        virtualinvoke $r2.<org.apache.http.client.methods.HttpPost: void setEntity(org.apache.http.HttpEntity)>($r3);
+
+     label06:
+        $r4 = new org.apache.http.params.BasicHttpParams;
+
+     label07:
+        specialinvoke $r4.<org.apache.http.params.BasicHttpParams: void <init>()>();
+
+     label08:
+        <com.airpush.android.Airpush: org.apache.http.params.BasicHttpParams httpParameters> = $r4;
+
+        <com.airpush.android.Airpush: int timeoutConnection> = 3000;
+
+        $r4 = <com.airpush.android.Airpush: org.apache.http.params.BasicHttpParams httpParameters>;
+
+        $i0 = <com.airpush.android.Airpush: int timeoutConnection>;
+
+     label09:
+        staticinvoke <org.apache.http.params.HttpConnectionParams: void setConnectionTimeout(org.apache.http.params.HttpParams,int)>($r4, $i0);
+
+     label10:
+        <com.airpush.android.Airpush: int timeoutSocket> = 3000;
+
+        $r4 = <com.airpush.android.Airpush: org.apache.http.params.BasicHttpParams httpParameters>;
+
+        $i0 = <com.airpush.android.Airpush: int timeoutSocket>;
+
+     label11:
+        staticinvoke <org.apache.http.params.HttpConnectionParams: void setSoTimeout(org.apache.http.params.HttpParams,int)>($r4, $i0);
+
+     label12:
+        $r5 = new org.apache.http.impl.client.DefaultHttpClient;
+
+        $r4 = <com.airpush.android.Airpush: org.apache.http.params.BasicHttpParams httpParameters>;
+
+     label13:
+        specialinvoke $r5.<org.apache.http.impl.client.DefaultHttpClient: void <init>(org.apache.http.params.HttpParams)>($r4);
+
+     label14:
+        <com.airpush.android.Airpush: org.apache.http.impl.client.DefaultHttpClient httpClient> = $r5;
+
+        $r5 = <com.airpush.android.Airpush: org.apache.http.impl.client.DefaultHttpClient httpClient>;
+
+        $r2 = <com.airpush.android.Airpush: org.apache.http.client.methods.HttpPost httpPost>;
+
+     label15:
+        $r6 = virtualinvoke $r5.<org.apache.http.impl.client.DefaultHttpClient: org.apache.http.HttpResponse execute(org.apache.http.client.methods.HttpUriRequest)>($r2);
+
+        r7 = (org.apache.http.message.BasicHttpResponse) $r6;
+
+     label16:
+        <com.airpush.android.Airpush: org.apache.http.message.BasicHttpResponse httpResponse> = r7;
+
+        r7 = <com.airpush.android.Airpush: org.apache.http.message.BasicHttpResponse httpResponse>;
+
+     label17:
+        $r8 = virtualinvoke r7.<org.apache.http.message.BasicHttpResponse: org.apache.http.HttpEntity getEntity()>();
+
+     label18:
+        <com.airpush.android.Airpush: org.apache.http.HttpEntity entity> = $r8;
+
+        $r8 = <com.airpush.android.Airpush: org.apache.http.HttpEntity entity>;
+
+        return $r8;
+
+     label19:
+        $r9 := @caughtexception;
+
+        $r1 = <com.airpush.android.Airpush: android.content.Context ctx>;
+
+        staticinvoke <com.airpush.android.Airpush: void reStartSDK(android.content.Context,long)>($r1, 1800000L);
+
+        return null;
+
+     label20:
+        $r1 = <com.airpush.android.Airpush: android.content.Context ctx>;
+
+        $l1 = <com.airpush.android.Airpush: long timeDiff>;
+
+        staticinvoke <com.airpush.android.Airpush: void reStartSDK(android.content.Context,long)>($r1, $l1);
+
+        return null;
+
+        catch java.lang.Exception from label01 to label02 with label19;
+        catch java.lang.Exception from label03 to label04 with label19;
+        catch java.lang.Exception from label05 to label06 with label19;
+        catch java.lang.Exception from label07 to label08 with label19;
+        catch java.lang.Exception from label09 to label10 with label19;
+        catch java.lang.Exception from label11 to label12 with label19;
+        catch java.lang.Exception from label13 to label14 with label19;
+        catch java.lang.Exception from label15 to label16 with label19;
+        catch java.lang.Exception from label17 to label18 with label19;
+    }
+
+    protected static void reStartSDK(android.content.Context, long)
+    {
+        android.content.Context $r0;
+        long $l0, $l1, $l2;
+        android.content.Intent r1;
+        java.lang.StringBuilder $r2;
+        java.lang.String $r3;
+        android.app.PendingIntent $r4;
+        java.lang.Object $r5;
+        android.app.AlarmManager r6;
+        boolean $z0;
+        int $i3;
+        java.lang.Integer $r7;
+        java.lang.Exception $r8;
+
+        $r0 := @parameter0: android.content.Context;
+
+        $l0 := @parameter1: long;
+
+        $r2 = new java.lang.StringBuilder;
+
+        specialinvoke $r2.<java.lang.StringBuilder: void <init>(java.lang.String)>("SDK will restart in ");
+
+        $r2 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(long)>($l0);
+
+        $r2 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" ms.");
+
+        $r3 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <android.util.Log: int i(java.lang.String,java.lang.String)>("AirpushSDK", $r3);
+
+        <com.airpush.android.Airpush: android.content.Context ctx> = $r0;
+
+        staticinvoke <com.airpush.android.Airpush: void getDataSharedprefrences()>();
+
+        r1 = new android.content.Intent;
+
+     label01:
+        specialinvoke r1.<android.content.Intent: void <init>(android.content.Context,java.lang.Class)>($r0, class "Lcom/airpush/android/UserDetailsReceiver;");
+
+        virtualinvoke r1.<android.content.Intent: android.content.Intent setAction(java.lang.String)>("SetUserInfo");
+
+     label02:
+        $r3 = <com.airpush.android.Airpush: java.lang.String appId>;
+
+     label03:
+        virtualinvoke r1.<android.content.Intent: android.content.Intent putExtra(java.lang.String,java.lang.String)>("appId", $r3);
+
+     label04:
+        $r3 = <com.airpush.android.Airpush: java.lang.String imei>;
+
+     label05:
+        virtualinvoke r1.<android.content.Intent: android.content.Intent putExtra(java.lang.String,java.lang.String)>("imei", $r3);
+
+     label06:
+        $r3 = <com.airpush.android.Airpush: java.lang.String apikey>;
+
+     label07:
+        virtualinvoke r1.<android.content.Intent: android.content.Intent putExtra(java.lang.String,java.lang.String)>("apikey", $r3);
+
+        $r4 = staticinvoke <android.app.PendingIntent: android.app.PendingIntent getBroadcast(android.content.Context,int,android.content.Intent,int)>($r0, 0, r1, 0);
+
+        $r5 = virtualinvoke $r0.<android.content.Context: java.lang.Object getSystemService(java.lang.String)>("alarm");
+
+        r6 = (android.app.AlarmManager) $r5;
+
+        $l1 = staticinvoke <java.lang.System: long currentTimeMillis()>();
+
+     label08:
+        $l2 = 1000L * $l0;
+
+        $l2 = $l2 * 60L;
+
+        $l1 = $l1 + $l2;
+
+     label09:
+        virtualinvoke r6.<android.app.AlarmManager: void set(int,long,android.app.PendingIntent)>(0, $l1, $r4);
+
+     label10:
+        r1 = new android.content.Intent;
+
+     label11:
+        specialinvoke r1.<android.content.Intent: void <init>(android.content.Context,java.lang.Class)>($r0, class "Lcom/airpush/android/MessageReceiver;");
+
+        virtualinvoke r1.<android.content.Intent: android.content.Intent setAction(java.lang.String)>("SetMessageReceiver");
+
+     label12:
+        $r3 = <com.airpush.android.Airpush: java.lang.String appId>;
+
+     label13:
+        virtualinvoke r1.<android.content.Intent: android.content.Intent putExtra(java.lang.String,java.lang.String)>("appId", $r3);
+
+     label14:
+        $r3 = <com.airpush.android.Airpush: java.lang.String imei>;
+
+     label15:
+        virtualinvoke r1.<android.content.Intent: android.content.Intent putExtra(java.lang.String,java.lang.String)>("imei", $r3);
+
+     label16:
+        $r3 = <com.airpush.android.Airpush: java.lang.String apikey>;
+
+     label17:
+        virtualinvoke r1.<android.content.Intent: android.content.Intent putExtra(java.lang.String,java.lang.String)>("apikey", $r3);
+
+     label18:
+        $z0 = <com.airpush.android.Airpush: boolean testMode>;
+
+     label19:
+        virtualinvoke r1.<android.content.Intent: android.content.Intent putExtra(java.lang.String,boolean)>("testMode", $z0);
+
+     label20:
+        $i3 = <com.airpush.android.Airpush: int icon>;
+
+     label21:
+        virtualinvoke r1.<android.content.Intent: android.content.Intent putExtra(java.lang.String,int)>("icon", $i3);
+
+     label22:
+        $z0 = <com.airpush.android.Airpush: boolean searchIconTestMode>;
+
+     label23:
+        virtualinvoke r1.<android.content.Intent: android.content.Intent putExtra(java.lang.String,boolean)>("icontestmode", $z0);
+
+        virtualinvoke r1.<android.content.Intent: android.content.Intent putExtra(java.lang.String,boolean)>("doSearch", 1);
+
+        virtualinvoke r1.<android.content.Intent: android.content.Intent putExtra(java.lang.String,boolean)>("doPush", 1);
+
+        $r4 = staticinvoke <android.app.PendingIntent: android.app.PendingIntent getBroadcast(android.content.Context,int,android.content.Intent,int)>($r0, 0, r1, 0);
+
+        $r5 = virtualinvoke $r0.<android.content.Context: java.lang.Object getSystemService(java.lang.String)>("alarm");
+
+        r6 = (android.app.AlarmManager) $r5;
+
+        $l1 = staticinvoke <java.lang.System: long currentTimeMillis()>();
+
+     label24:
+        $l0 = $l1 + $l0;
+
+        $r7 = <com.airpush.android.Constants: java.lang.Integer IntervalFirstTime>;
+
+     label25:
+        $i3 = virtualinvoke $r7.<java.lang.Integer: int intValue()>();
+
+     label26:
+        $l1 = (long) $i3;
+
+        $l0 = $l0 + $l1;
+
+        $l1 = <com.airpush.android.Constants: long IntervalGetMessage>;
+
+     label27:
+        virtualinvoke r6.<android.app.AlarmManager: void setInexactRepeating(int,long,long,android.app.PendingIntent)>(0, $l0, $l1, $r4);
+
+     label28:
+        return;
+
+     label29:
+        $r8 := @caughtexception;
+
+        return;
+
+        catch java.lang.Exception from label01 to label02 with label29;
+        catch java.lang.Exception from label03 to label04 with label29;
+        catch java.lang.Exception from label05 to label06 with label29;
+        catch java.lang.Exception from label07 to label08 with label29;
+        catch java.lang.Exception from label09 to label10 with label29;
+        catch java.lang.Exception from label11 to label12 with label29;
+        catch java.lang.Exception from label13 to label14 with label29;
+        catch java.lang.Exception from label15 to label16 with label29;
+        catch java.lang.Exception from label17 to label18 with label29;
+        catch java.lang.Exception from label19 to label20 with label29;
+        catch java.lang.Exception from label21 to label22 with label29;
+        catch java.lang.Exception from label23 to label24 with label29;
+        catch java.lang.Exception from label25 to label26 with label29;
+        catch java.lang.Exception from label27 to label28 with label29;
+    }
+
+    private void send()
+    {
+        com.airpush.android.Airpush r0;
+        android.os.Handler r1;
+        android.content.Intent r2;
+        boolean z0;
+        android.content.Context $r3;
+        android.content.SharedPreferences $r4;
+        long $l0, $l1;
+        java.lang.Integer $r5;
+        int $i2;
+        byte $b3;
+        java.lang.String $r6;
+        android.app.PendingIntent $r7;
+        java.lang.Object $r8;
+        android.app.AlarmManager r9;
+        java.lang.Runnable $r10;
+        java.lang.Exception $r11;
+        android.content.SharedPreferences$Editor $r12;
+
+        r0 := @this: com.airpush.android.Airpush;
+
+        z0 = 1;
+
+        $r3 = <com.airpush.android.Airpush: android.content.Context ctx>;
+
+     label01:
+        $r4 = virtualinvoke $r3.<android.content.Context: android.content.SharedPreferences getSharedPreferences(java.lang.String,int)>("airpushTimePref", 1);
+
+     label02:
+        if $r4 == null goto label11;
+
+     label03:
+        $l0 = staticinvoke <java.lang.System: long currentTimeMillis()>();
+
+        r0.<com.airpush.android.Airpush: long currentTime> = $l0;
+
+     label04:
+        $r3 = <com.airpush.android.Airpush: android.content.Context ctx>;
+
+     label05:
+        $r4 = virtualinvoke $r3.<android.content.Context: android.content.SharedPreferences getSharedPreferences(java.lang.String,int)>("airpushTimePref", 1);
+
+        z0 = interfaceinvoke $r4.<android.content.SharedPreferences: boolean contains(java.lang.String)>("startTime");
+
+     label06:
+        if z0 == 0 goto label54;
+
+     label07:
+        $l0 = interfaceinvoke $r4.<android.content.SharedPreferences: long getLong(java.lang.String,long)>("startTime", 0L);
+
+        r0.<com.airpush.android.Airpush: long startTime> = $l0;
+
+        $l0 = r0.<com.airpush.android.Airpush: long currentTime>;
+
+        $l1 = r0.<com.airpush.android.Airpush: long startTime>;
+
+     label08:
+        $l0 = $l0 - $l1;
+
+        $l0 = $l0 / 60000L;
+
+        <com.airpush.android.Airpush: long timeDiff> = $l0;
+
+        $l0 = <com.airpush.android.Airpush: long timeDiff>;
+
+        $r5 = <com.airpush.android.Constants: java.lang.Integer IntervalSdkReexecute>;
+
+     label09:
+        $i2 = virtualinvoke $r5.<java.lang.Integer: int intValue()>();
+
+     label10:
+        $l1 = (long) $i2;
+
+        $b3 = $l0 cmp $l1;
+
+        if $b3 < 0 goto label50;
+
+        z0 = 1;
+
+     label11:
+        if z0 == 0 goto label57;
+
+        r2 = new android.content.Intent;
+
+        $r3 = <com.airpush.android.Airpush: android.content.Context ctx>;
+
+     label12:
+        specialinvoke r2.<android.content.Intent: void <init>(android.content.Context,java.lang.Class)>($r3, class "Lcom/airpush/android/UserDetailsReceiver;");
+
+        virtualinvoke r2.<android.content.Intent: android.content.Intent setAction(java.lang.String)>("SetUserInfo");
+
+     label13:
+        $r6 = <com.airpush.android.Airpush: java.lang.String appId>;
+
+     label14:
+        virtualinvoke r2.<android.content.Intent: android.content.Intent putExtra(java.lang.String,java.lang.String)>("appId", $r6);
+
+     label15:
+        $r6 = <com.airpush.android.Airpush: java.lang.String imei>;
+
+     label16:
+        virtualinvoke r2.<android.content.Intent: android.content.Intent putExtra(java.lang.String,java.lang.String)>("imei", $r6);
+
+     label17:
+        $r6 = <com.airpush.android.Airpush: java.lang.String apikey>;
+
+     label18:
+        virtualinvoke r2.<android.content.Intent: android.content.Intent putExtra(java.lang.String,java.lang.String)>("apikey", $r6);
+
+     label19:
+        $r3 = <com.airpush.android.Airpush: android.content.Context ctx>;
+
+     label20:
+        $r7 = staticinvoke <android.app.PendingIntent: android.app.PendingIntent getBroadcast(android.content.Context,int,android.content.Intent,int)>($r3, 0, r2, 0);
+
+     label21:
+        $r3 = <com.airpush.android.Airpush: android.content.Context ctx>;
+
+     label22:
+        $r8 = virtualinvoke $r3.<android.content.Context: java.lang.Object getSystemService(java.lang.String)>("alarm");
+
+        r9 = (android.app.AlarmManager) $r8;
+
+        $l0 = staticinvoke <java.lang.System: long currentTimeMillis()>();
+
+        virtualinvoke r9.<android.app.AlarmManager: void set(int,long,android.app.PendingIntent)>(0, $l0, $r7);
+
+     label23:
+        r2 = new android.content.Intent;
+
+        $r3 = <com.airpush.android.Airpush: android.content.Context ctx>;
+
+     label24:
+        specialinvoke r2.<android.content.Intent: void <init>(android.content.Context,java.lang.Class)>($r3, class "Lcom/airpush/android/MessageReceiver;");
+
+        virtualinvoke r2.<android.content.Intent: android.content.Intent setAction(java.lang.String)>("SetMessageReceiver");
+
+     label25:
+        $r6 = <com.airpush.android.Airpush: java.lang.String appId>;
+
+     label26:
+        virtualinvoke r2.<android.content.Intent: android.content.Intent putExtra(java.lang.String,java.lang.String)>("appId", $r6);
+
+     label27:
+        $r6 = <com.airpush.android.Airpush: java.lang.String imei>;
+
+     label28:
+        virtualinvoke r2.<android.content.Intent: android.content.Intent putExtra(java.lang.String,java.lang.String)>("imei", $r6);
+
+     label29:
+        $r6 = <com.airpush.android.Airpush: java.lang.String apikey>;
+
+     label30:
+        virtualinvoke r2.<android.content.Intent: android.content.Intent putExtra(java.lang.String,java.lang.String)>("apikey", $r6);
+
+     label31:
+        z0 = <com.airpush.android.Airpush: boolean testMode>;
+
+     label32:
+        virtualinvoke r2.<android.content.Intent: android.content.Intent putExtra(java.lang.String,boolean)>("testMode", z0);
+
+     label33:
+        $i2 = <com.airpush.android.Airpush: int icon>;
+
+     label34:
+        virtualinvoke r2.<android.content.Intent: android.content.Intent putExtra(java.lang.String,int)>("icon", $i2);
+
+     label35:
+        z0 = <com.airpush.android.Airpush: boolean searchIconTestMode>;
+
+     label36:
+        virtualinvoke r2.<android.content.Intent: android.content.Intent putExtra(java.lang.String,boolean)>("icontestmode", z0);
+
+     label37:
+        z0 = <com.airpush.android.Airpush: boolean doSearch>;
+
+     label38:
+        virtualinvoke r2.<android.content.Intent: android.content.Intent putExtra(java.lang.String,boolean)>("doSearch", z0);
+
+     label39:
+        z0 = <com.airpush.android.Airpush: boolean doPush>;
+
+     label40:
+        virtualinvoke r2.<android.content.Intent: android.content.Intent putExtra(java.lang.String,boolean)>("doPush", z0);
+
+     label41:
+        $r3 = <com.airpush.android.Airpush: android.content.Context ctx>;
+
+     label42:
+        $r7 = staticinvoke <android.app.PendingIntent: android.app.PendingIntent getBroadcast(android.content.Context,int,android.content.Intent,int)>($r3, 0, r2, 0);
+
+     label43:
+        $r3 = <com.airpush.android.Airpush: android.content.Context ctx>;
+
+     label44:
+        $r8 = virtualinvoke $r3.<android.content.Context: java.lang.Object getSystemService(java.lang.String)>("alarm");
+
+        r9 = (android.app.AlarmManager) $r8;
+
+        $l0 = staticinvoke <java.lang.System: long currentTimeMillis()>();
+
+     label45:
+        $r5 = <com.airpush.android.Constants: java.lang.Integer IntervalFirstTime>;
+
+     label46:
+        $i2 = virtualinvoke $r5.<java.lang.Integer: int intValue()>();
+
+     label47:
+        $l1 = (long) $i2;
+
+        $l0 = $l0 + $l1;
+
+        $l1 = <com.airpush.android.Constants: long IntervalGetMessage>;
+
+     label48:
+        virtualinvoke r9.<android.app.AlarmManager: void setInexactRepeating(int,long,long,android.app.PendingIntent)>(0, $l0, $l1, $r7);
+
+     label49:
+        return;
+
+     label50:
+        z0 = 0;
+
+        r1 = new android.os.Handler;
+
+     label51:
+        specialinvoke r1.<android.os.Handler: void <init>()>();
+
+        $r10 = r0.<com.airpush.android.Airpush: java.lang.Runnable run_Task>;
+
+        virtualinvoke r1.<android.os.Handler: boolean post(java.lang.Runnable)>($r10);
+
+     label52:
+        goto label11;
+
+     label53:
+        $r11 := @caughtexception;
+
+        return;
+
+     label54:
+        $r3 = <com.airpush.android.Airpush: android.content.Context ctx>;
+
+     label55:
+        $r4 = virtualinvoke $r3.<android.content.Context: android.content.SharedPreferences getSharedPreferences(java.lang.String,int)>("airpushTimePref", 2);
+
+        $r12 = interfaceinvoke $r4.<android.content.SharedPreferences: android.content.SharedPreferences$Editor edit()>();
+
+        $l0 = staticinvoke <java.lang.System: long currentTimeMillis()>();
+
+        r0.<com.airpush.android.Airpush: long startTime> = $l0;
+
+        $l0 = r0.<com.airpush.android.Airpush: long startTime>;
+
+        interfaceinvoke $r12.<android.content.SharedPreferences$Editor: android.content.SharedPreferences$Editor putLong(java.lang.String,long)>("startTime", $l0);
+
+        interfaceinvoke $r12.<android.content.SharedPreferences$Editor: boolean commit()>();
+
+     label56:
+        z0 = 1;
+
+        goto label11;
+
+     label57:
+        return;
+
+        catch java.lang.Exception from label01 to label02 with label53;
+        catch java.lang.Exception from label03 to label04 with label53;
+        catch java.lang.Exception from label05 to label06 with label53;
+        catch java.lang.Exception from label07 to label08 with label53;
+        catch java.lang.Exception from label09 to label10 with label53;
+        catch java.lang.Exception from label12 to label13 with label53;
+        catch java.lang.Exception from label14 to label15 with label53;
+        catch java.lang.Exception from label16 to label17 with label53;
+        catch java.lang.Exception from label18 to label19 with label53;
+        catch java.lang.Exception from label20 to label21 with label53;
+        catch java.lang.Exception from label22 to label23 with label53;
+        catch java.lang.Exception from label24 to label25 with label53;
+        catch java.lang.Exception from label26 to label27 with label53;
+        catch java.lang.Exception from label28 to label29 with label53;
+        catch java.lang.Exception from label30 to label31 with label53;
+        catch java.lang.Exception from label32 to label33 with label53;
+        catch java.lang.Exception from label34 to label35 with label53;
+        catch java.lang.Exception from label36 to label37 with label53;
+        catch java.lang.Exception from label38 to label39 with label53;
+        catch java.lang.Exception from label40 to label41 with label53;
+        catch java.lang.Exception from label42 to label43 with label53;
+        catch java.lang.Exception from label44 to label45 with label53;
+        catch java.lang.Exception from label46 to label47 with label53;
+        catch java.lang.Exception from label48 to label49 with label53;
+        catch java.lang.Exception from label51 to label52 with label53;
+        catch java.lang.Exception from label55 to label56 with label53;
+    }
+
+    private void sendInstallData()
+    {
+        com.airpush.android.Airpush r0;
+        java.lang.StringBuffer r1;
+        android.content.Context $r2;
+        java.util.List $r3;
+        org.apache.http.message.BasicNameValuePair $r4;
+        java.lang.String $r5;
+        org.json.JSONObject $r6;
+        boolean $z0;
+        java.lang.StringBuilder $r7;
+        org.apache.http.HttpEntity $r8;
+        java.io.InputStream $r9;
+        int $i0;
+        char $c1;
+        java.lang.Throwable $r10;
+        java.lang.Exception $r11;
+
+        r0 := @this: com.airpush.android.Airpush;
+
+        staticinvoke <android.util.Log: int i(java.lang.String,java.lang.String)>("AirpushSDK", "Sending Install Data....");
+
+        $r2 = <com.airpush.android.Airpush: android.content.Context ctx>;
+
+     label01:
+        $r3 = staticinvoke <com.airpush.android.SetPreferences: java.util.List setValues(android.content.Context)>($r2);
+
+     label02:
+        <com.airpush.android.Airpush: java.util.List values> = $r3;
+
+        $r3 = <com.airpush.android.Airpush: java.util.List values>;
+
+        $r4 = new org.apache.http.message.BasicNameValuePair;
+
+     label03:
+        specialinvoke $r4.<org.apache.http.message.BasicNameValuePair: void <init>(java.lang.String,java.lang.String)>("model", "log");
+
+        interfaceinvoke $r3.<java.util.List: boolean add(java.lang.Object)>($r4);
+
+     label04:
+        $r3 = <com.airpush.android.Airpush: java.util.List values>;
+
+        $r4 = new org.apache.http.message.BasicNameValuePair;
+
+     label05:
+        specialinvoke $r4.<org.apache.http.message.BasicNameValuePair: void <init>(java.lang.String,java.lang.String)>("action", "seticoninstalltracking");
+
+        interfaceinvoke $r3.<java.util.List: boolean add(java.lang.Object)>($r4);
+
+     label06:
+        $r3 = <com.airpush.android.Airpush: java.util.List values>;
+
+        $r4 = new org.apache.http.message.BasicNameValuePair;
+
+        $r5 = <com.airpush.android.Airpush: java.lang.String apikey>;
+
+     label07:
+        specialinvoke $r4.<org.apache.http.message.BasicNameValuePair: void <init>(java.lang.String,java.lang.String)>("APIKEY", $r5);
+
+        interfaceinvoke $r3.<java.util.List: boolean add(java.lang.Object)>($r4);
+
+     label08:
+        $r3 = <com.airpush.android.Airpush: java.util.List values>;
+
+        $r4 = new org.apache.http.message.BasicNameValuePair;
+
+     label09:
+        specialinvoke $r4.<org.apache.http.message.BasicNameValuePair: void <init>(java.lang.String,java.lang.String)>("event", "iInstall");
+
+        interfaceinvoke $r3.<java.util.List: boolean add(java.lang.Object)>($r4);
+
+     label10:
+        $r3 = <com.airpush.android.Airpush: java.util.List values>;
+
+        $r4 = new org.apache.http.message.BasicNameValuePair;
+
+     label11:
+        $r6 = r0.<com.airpush.android.Airpush: org.json.JSONObject post>;
+
+     label12:
+        $r5 = virtualinvoke $r6.<org.json.JSONObject: java.lang.String toString()>();
+
+        specialinvoke $r4.<org.apache.http.message.BasicNameValuePair: void <init>(java.lang.String,java.lang.String)>("campaigncreativedata", $r5);
+
+        interfaceinvoke $r3.<java.util.List: boolean add(java.lang.Object)>($r4);
+
+     label13:
+        $z0 = <com.airpush.android.Airpush: boolean testMode>;
+
+        if $z0 != 0 goto label43;
+
+        $r7 = new java.lang.StringBuilder;
+
+     label14:
+        specialinvoke $r7.<java.lang.StringBuilder: void <init>(java.lang.String)>("Test Mode : ");
+
+     label15:
+        $z0 = <com.airpush.android.Airpush: boolean testMode>;
+
+     label16:
+        $r7 = virtualinvoke $r7.<java.lang.StringBuilder: java.lang.StringBuilder append(boolean)>($z0);
+
+        $r5 = virtualinvoke $r7.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <android.util.Log: int i(java.lang.String,java.lang.String)>("AirpushSDK", $r5);
+
+     label17:
+        $r3 = <com.airpush.android.Airpush: java.util.List values>;
+
+        $r2 = <com.airpush.android.Airpush: android.content.Context ctx>;
+
+     label18:
+        $r8 = staticinvoke <com.airpush.android.HttpPostData: org.apache.http.HttpEntity postData(java.util.List,android.content.Context)>($r3, $r2);
+
+     label19:
+        r0.<com.airpush.android.Airpush: org.apache.http.HttpEntity response> = $r8;
+
+        $r8 = r0.<com.airpush.android.Airpush: org.apache.http.HttpEntity response>;
+
+     label20:
+        $r9 = interfaceinvoke $r8.<org.apache.http.HttpEntity: java.io.InputStream getContent()>();
+
+     label21:
+        r1 = new java.lang.StringBuffer;
+
+     label22:
+        specialinvoke r1.<java.lang.StringBuffer: void <init>()>();
+
+     label23:
+        $i0 = virtualinvoke $r9.<java.io.InputStream: int read()>();
+
+     label24:
+        if $i0 != -1 goto label33;
+
+     label25:
+        $r5 = virtualinvoke r1.<java.lang.StringBuffer: java.lang.String toString()>();
+
+     label26:
+        r0.<com.airpush.android.Airpush: java.lang.String s> = $r5;
+
+        $r5 = r0.<com.airpush.android.Airpush: java.lang.String s>;
+
+     label27:
+        $z0 = virtualinvoke $r5.<java.lang.String: boolean equals(java.lang.Object)>("1");
+
+     label28:
+        if $z0 == 0 goto label37;
+
+        $r7 = new java.lang.StringBuilder;
+
+     label29:
+        specialinvoke $r7.<java.lang.StringBuilder: void <init>(java.lang.String)>("Icon Install returns:");
+
+     label30:
+        $r5 = r0.<com.airpush.android.Airpush: java.lang.String s>;
+
+     label31:
+        $r7 = virtualinvoke $r7.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r5);
+
+        $r5 = virtualinvoke $r7.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <android.util.Log: int i(java.lang.String,java.lang.String)>("AirpushSDK", $r5);
+
+     label32:
+        return;
+
+     label33:
+        $c1 = (char) $i0;
+
+     label34:
+        virtualinvoke r1.<java.lang.StringBuffer: java.lang.StringBuffer append(char)>($c1);
+
+     label35:
+        goto label23;
+
+     label36:
+        $r10 := @caughtexception;
+
+        return;
+
+     label37:
+        $r7 = new java.lang.StringBuilder;
+
+     label38:
+        specialinvoke $r7.<java.lang.StringBuilder: void <init>(java.lang.String)>("Icon Install returns: ");
+
+     label39:
+        $r5 = r0.<com.airpush.android.Airpush: java.lang.String s>;
+
+     label40:
+        $r7 = virtualinvoke $r7.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r5);
+
+        $r5 = virtualinvoke $r7.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <android.util.Log: int i(java.lang.String,java.lang.String)>("AirpushSDK", $r5);
+
+     label41:
+        return;
+
+     label42:
+        $r11 := @caughtexception;
+
+        staticinvoke <android.util.Log: int i(java.lang.String,java.lang.String)>("AirpushSDK", "Icon Install Confirmation Error ");
+
+        return;
+
+     label43:
+        $r7 = new java.lang.StringBuilder;
+
+     label44:
+        specialinvoke $r7.<java.lang.StringBuilder: void <init>(java.lang.String)>("Test Mode : ");
+
+     label45:
+        $z0 = <com.airpush.android.Airpush: boolean testMode>;
+
+     label46:
+        $r7 = virtualinvoke $r7.<java.lang.StringBuilder: java.lang.StringBuilder append(boolean)>($z0);
+
+        $r5 = virtualinvoke $r7.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <android.util.Log: int i(java.lang.String,java.lang.String)>("AirpushSDK", $r5);
+
+     label47:
+        return;
+
+        catch java.lang.IllegalStateException from label01 to label02 with label36;
+        catch java.lang.IllegalStateException from label03 to label04 with label36;
+        catch java.lang.IllegalStateException from label05 to label06 with label36;
+        catch java.lang.IllegalStateException from label07 to label08 with label36;
+        catch java.lang.IllegalStateException from label09 to label10 with label36;
+        catch java.lang.IllegalStateException from label12 to label13 with label36;
+        catch java.lang.IllegalStateException from label14 to label15 with label36;
+        catch java.lang.IllegalStateException from label16 to label17 with label36;
+        catch java.lang.IllegalStateException from label18 to label19 with label36;
+        catch java.lang.IllegalStateException from label20 to label21 with label36;
+        catch java.lang.IllegalStateException from label22 to label24 with label36;
+        catch java.lang.IllegalStateException from label25 to label26 with label36;
+        catch java.lang.IllegalStateException from label27 to label28 with label36;
+        catch java.lang.IllegalStateException from label29 to label30 with label36;
+        catch java.lang.IllegalStateException from label31 to label32 with label36;
+        catch java.lang.IllegalStateException from label34 to label35 with label36;
+        catch java.lang.IllegalStateException from label38 to label39 with label36;
+        catch java.lang.IllegalStateException from label40 to label41 with label36;
+        catch java.lang.Exception from label01 to label02 with label42;
+        catch java.lang.Exception from label03 to label04 with label42;
+        catch java.lang.Exception from label05 to label06 with label42;
+        catch java.lang.Exception from label07 to label08 with label42;
+        catch java.lang.Exception from label09 to label10 with label42;
+        catch java.lang.Exception from label11 to label13 with label42;
+        catch java.lang.Exception from label14 to label15 with label42;
+        catch java.lang.Exception from label16 to label17 with label42;
+        catch java.lang.Exception from label18 to label21 with label42;
+        catch java.lang.Exception from label22 to label24 with label42;
+        catch java.lang.Exception from label25 to label28 with label42;
+        catch java.lang.Exception from label29 to label32 with label42;
+        catch java.lang.Exception from label34 to label35 with label42;
+        catch java.lang.Exception from label38 to label41 with label42;
+        catch java.lang.IllegalStateException from label44 to label45 with label36;
+        catch java.lang.IllegalStateException from label46 to label47 with label36;
+        catch java.lang.Exception from label44 to label45 with label42;
+        catch java.lang.Exception from label46 to label47 with label42;
+    }
+
+    private java.io.InputStream submitHttpRequest(java.lang.String, java.util.List)
+    {
+        com.airpush.android.Airpush r0;
+        java.lang.String $r1, r4;
+        java.util.List r2;
+        java.net.URL r3;
+        java.lang.StringBuilder $r5;
+        java.net.URLConnection $r6;
+        java.net.HttpURLConnection r7;
+        int $i0;
+        java.io.InputStream $r8;
+        java.lang.Exception $r9;
+
+        r0 := @this: com.airpush.android.Airpush;
+
+        $r1 := @parameter0: java.lang.String;
+
+        r2 := @parameter1: java.util.List;
+
+        r4 = "";
+
+        if r2 == null goto label2;
+
+     label1:
+        r4 = staticinvoke <org.apache.http.client.utils.URLEncodedUtils: java.lang.String format(java.util.List,java.lang.String)>(r2, "utf-8");
+
+     label2:
+        r3 = new java.net.URL;
+
+        $r5 = new java.lang.StringBuilder;
+
+     label3:
+        $r1 = staticinvoke <java.lang.String: java.lang.String valueOf(java.lang.Object)>($r1);
+
+        specialinvoke $r5.<java.lang.StringBuilder: void <init>(java.lang.String)>($r1);
+
+        $r5 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(r4);
+
+        $r1 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke r3.<java.net.URL: void <init>(java.lang.String)>($r1);
+
+        $r6 = virtualinvoke r3.<java.net.URL: java.net.URLConnection openConnection()>();
+
+        r7 = (java.net.HttpURLConnection) $r6;
+
+        virtualinvoke r7.<java.net.HttpURLConnection: void setRequestMethod(java.lang.String)>("GET");
+
+        virtualinvoke r7.<java.net.HttpURLConnection: void setDoOutput(boolean)>(1);
+
+        virtualinvoke r7.<java.net.HttpURLConnection: void setDoInput(boolean)>(1);
+
+        virtualinvoke r7.<java.net.HttpURLConnection: void setConnectTimeout(int)>(20000);
+
+        virtualinvoke r7.<java.net.HttpURLConnection: void setReadTimeout(int)>(20000);
+
+        virtualinvoke r7.<java.net.HttpURLConnection: void setUseCaches(boolean)>(0);
+
+        virtualinvoke r7.<java.net.HttpURLConnection: void setDefaultUseCaches(boolean)>(0);
+
+        virtualinvoke r7.<java.net.HttpURLConnection: void connect()>();
+
+        $i0 = virtualinvoke r7.<java.net.HttpURLConnection: int getResponseCode()>();
+
+     label4:
+        if $i0 != 200 goto label8;
+
+     label5:
+        $r8 = virtualinvoke r7.<java.net.HttpURLConnection: java.io.InputStream getInputStream()>();
+
+     label6:
+        return $r8;
+
+     label7:
+        $r9 := @caughtexception;
+
+        staticinvoke <android.util.Log: int i(java.lang.String,java.lang.String)>("AirpushSDK", "Network Error, please try again later");
+
+     label8:
+        return null;
+
+        catch java.lang.Exception from label1 to label2 with label7;
+        catch java.lang.Exception from label3 to label4 with label7;
+        catch java.lang.Exception from label5 to label6 with label7;
+    }
+
+    protected void createSearch(boolean)
+    {
+        com.airpush.android.Airpush r0;
+        boolean $z0;
+        java.lang.Throwable $r1, $r2;
+        org.json.JSONException $r3;
+
+        r0 := @this: com.airpush.android.Airpush;
+
+        $z0 := @parameter0: boolean;
+
+        <com.airpush.android.Airpush: boolean searchIconTestMode> = $z0;
+
+     label1:
+        specialinvoke r0.<com.airpush.android.Airpush: void getShortcutData()>();
+
+     label2:
+        return;
+
+     label3:
+        $r1 := @caughtexception;
+
+        return;
+
+     label4:
+        $r2 := @caughtexception;
+
+        return;
+
+     label5:
+        $r3 := @caughtexception;
+
+        return;
+
+        catch java.lang.IllegalStateException from label1 to label2 with label3;
+        catch java.io.IOException from label1 to label2 with label4;
+        catch org.json.JSONException from label1 to label2 with label5;
+    }
+
+    protected void createShortcut()
+    {
+        com.airpush.android.Airpush r0;
+        java.lang.String $r1;
+        java.io.InputStream $r2;
+        android.graphics.Bitmap $r3;
+        android.content.Intent $r4, $r6;
+        android.net.Uri $r5;
+        java.lang.Exception $r7;
+        android.content.Context $r8;
+        java.util.List $r9;
+        java.lang.StringBuilder $r10;
+        android.content.Intent$ShortcutIconResource $r11;
+
+        r0 := @this: com.airpush.android.Airpush;
+
+     label1:
+        $r1 = r0.<com.airpush.android.Airpush: java.lang.String iconImage>;
+
+        $r2 = specialinvoke r0.<com.airpush.android.Airpush: java.io.InputStream submitHttpRequest(java.lang.String,java.util.List)>($r1, null);
+
+        r0.<com.airpush.android.Airpush: java.io.InputStream iconStrream> = $r2;
+
+        $r2 = r0.<com.airpush.android.Airpush: java.io.InputStream iconStrream>;
+
+        $r3 = staticinvoke <android.graphics.BitmapFactory: android.graphics.Bitmap decodeStream(java.io.InputStream)>($r2);
+
+        r0.<com.airpush.android.Airpush: android.graphics.Bitmap bmpicon> = $r3;
+
+     label2:
+        $r4 = new android.content.Intent;
+
+     label3:
+        specialinvoke $r4.<android.content.Intent: void <init>(java.lang.String)>("android.intent.action.VIEW");
+
+        r0.<com.airpush.android.Airpush: android.content.Intent shortcutIntent> = $r4;
+
+        $r4 = r0.<com.airpush.android.Airpush: android.content.Intent shortcutIntent>;
+
+        $r1 = r0.<com.airpush.android.Airpush: java.lang.String iconUrl>;
+
+        $r5 = staticinvoke <android.net.Uri: android.net.Uri parse(java.lang.String)>($r1);
+
+        virtualinvoke $r4.<android.content.Intent: android.content.Intent setData(android.net.Uri)>($r5);
+
+        $r4 = r0.<com.airpush.android.Airpush: android.content.Intent shortcutIntent>;
+
+        virtualinvoke $r4.<android.content.Intent: android.content.Intent addFlags(int)>(268435456);
+
+        $r4 = r0.<com.airpush.android.Airpush: android.content.Intent shortcutIntent>;
+
+        virtualinvoke $r4.<android.content.Intent: android.content.Intent addFlags(int)>(67108864);
+
+     label4:
+        $r4 = new android.content.Intent;
+
+     label5:
+        specialinvoke $r4.<android.content.Intent: void <init>()>();
+
+        r0.<com.airpush.android.Airpush: android.content.Intent addIntent> = $r4;
+
+        $r4 = r0.<com.airpush.android.Airpush: android.content.Intent addIntent>;
+
+        $r6 = r0.<com.airpush.android.Airpush: android.content.Intent shortcutIntent>;
+
+        virtualinvoke $r4.<android.content.Intent: android.content.Intent putExtra(java.lang.String,android.os.Parcelable)>("android.intent.extra.shortcut.INTENT", $r6);
+
+        $r4 = r0.<com.airpush.android.Airpush: android.content.Intent addIntent>;
+
+        $r1 = r0.<com.airpush.android.Airpush: java.lang.String iconText>;
+
+        virtualinvoke $r4.<android.content.Intent: android.content.Intent putExtra(java.lang.String,java.lang.String)>("android.intent.extra.shortcut.NAME", $r1);
+
+        $r4 = r0.<com.airpush.android.Airpush: android.content.Intent addIntent>;
+
+        virtualinvoke $r4.<android.content.Intent: android.content.Intent putExtra(java.lang.String,boolean)>("duplicate", 0);
+
+        $r4 = r0.<com.airpush.android.Airpush: android.content.Intent addIntent>;
+
+        $r3 = r0.<com.airpush.android.Airpush: android.graphics.Bitmap bmpicon>;
+
+        virtualinvoke $r4.<android.content.Intent: android.content.Intent putExtra(java.lang.String,android.os.Parcelable)>("android.intent.extra.shortcut.ICON", $r3);
+
+        specialinvoke r0.<com.airpush.android.Airpush: void makeShortcut()>();
+
+     label6:
+        return;
+
+     label7:
+        $r7 := @caughtexception;
+
+        $r8 = <com.airpush.android.Airpush: android.content.Context ctx>;
+
+        $r9 = staticinvoke <com.airpush.android.SetPreferences: java.util.List setValues(android.content.Context)>($r8);
+
+        <com.airpush.android.Airpush: java.util.List values> = $r9;
+
+        $r1 = <com.airpush.android.SetPreferences: java.lang.String postValues>;
+
+        r0.<com.airpush.android.Airpush: java.lang.String iconUrl> = $r1;
+
+        $r1 = r0.<com.airpush.android.Airpush: java.lang.String iconUrl>;
+
+        $r10 = new java.lang.StringBuilder;
+
+        $r1 = staticinvoke <java.lang.String: java.lang.String valueOf(java.lang.Object)>($r1);
+
+        specialinvoke $r10.<java.lang.StringBuilder: void <init>(java.lang.String)>($r1);
+
+        $r10 = virtualinvoke $r10.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("&model=log&action=seticonclicktracking&APIKEY=airpushsearch&event=iClick&campaignid=0&creativeid=0");
+
+        $r1 = virtualinvoke $r10.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        r0.<com.airpush.android.Airpush: java.lang.String iconUrl> = $r1;
+
+        $r4 = new android.content.Intent;
+
+        specialinvoke $r4.<android.content.Intent: void <init>(java.lang.String)>("android.intent.action.VIEW");
+
+        r0.<com.airpush.android.Airpush: android.content.Intent shortcutIntent> = $r4;
+
+        $r4 = r0.<com.airpush.android.Airpush: android.content.Intent shortcutIntent>;
+
+        $r1 = r0.<com.airpush.android.Airpush: java.lang.String iconUrl>;
+
+        $r5 = staticinvoke <android.net.Uri: android.net.Uri parse(java.lang.String)>($r1);
+
+        virtualinvoke $r4.<android.content.Intent: android.content.Intent setData(android.net.Uri)>($r5);
+
+        $r4 = r0.<com.airpush.android.Airpush: android.content.Intent shortcutIntent>;
+
+        virtualinvoke $r4.<android.content.Intent: android.content.Intent addFlags(int)>(268435456);
+
+        $r4 = r0.<com.airpush.android.Airpush: android.content.Intent shortcutIntent>;
+
+        virtualinvoke $r4.<android.content.Intent: android.content.Intent addFlags(int)>(67108864);
+
+        $r4 = new android.content.Intent;
+
+        specialinvoke $r4.<android.content.Intent: void <init>()>();
+
+        r0.<com.airpush.android.Airpush: android.content.Intent addIntent> = $r4;
+
+        $r4 = r0.<com.airpush.android.Airpush: android.content.Intent addIntent>;
+
+        $r6 = r0.<com.airpush.android.Airpush: android.content.Intent shortcutIntent>;
+
+        virtualinvoke $r4.<android.content.Intent: android.content.Intent putExtra(java.lang.String,android.os.Parcelable)>("android.intent.extra.shortcut.INTENT", $r6);
+
+        $r4 = r0.<com.airpush.android.Airpush: android.content.Intent addIntent>;
+
+        virtualinvoke $r4.<android.content.Intent: android.content.Intent putExtra(java.lang.String,java.lang.String)>("android.intent.extra.shortcut.NAME", "Search");
+
+        $r4 = r0.<com.airpush.android.Airpush: android.content.Intent addIntent>;
+
+        virtualinvoke $r4.<android.content.Intent: android.content.Intent putExtra(java.lang.String,boolean)>("duplicate", 0);
+
+        $r4 = r0.<com.airpush.android.Airpush: android.content.Intent addIntent>;
+
+        $r8 = <com.airpush.android.Airpush: android.content.Context ctx>;
+
+        $r11 = staticinvoke <android.content.Intent$ShortcutIconResource: android.content.Intent$ShortcutIconResource fromContext(android.content.Context,int)>($r8, 17301583);
+
+        virtualinvoke $r4.<android.content.Intent: android.content.Intent putExtra(java.lang.String,android.os.Parcelable)>("android.intent.extra.shortcut.ICON", $r11);
+
+        specialinvoke r0.<com.airpush.android.Airpush: void makeShortcut()>();
+
+        return;
+
+        catch java.lang.Exception from label1 to label2 with label7;
+        catch java.lang.Exception from label3 to label4 with label7;
+        catch java.lang.Exception from label5 to label6 with label7;
+    }
+
+    protected void startAirpush(android.content.Context, java.lang.String, java.lang.String, boolean, boolean, int, boolean)
+    {
+        com.airpush.android.Airpush r0;
+        android.content.Context $r1;
+        java.lang.String $r2, $r3;
+        boolean $z0, $z1, $z2;
+        int $i0;
+        android.os.Handler r4;
+        android.content.SharedPreferences $r5;
+        android.content.SharedPreferences$Editor $r6;
+        java.lang.Object $r7;
+        android.telephony.TelephonyManager r8;
+        java.security.MessageDigest $r9;
+        byte[] $r10;
+        java.math.BigInteger $r11;
+        java.lang.Runnable $r12;
+        java.lang.Exception $r13;
+        java.lang.Throwable $r14;
+
+        r0 := @this: com.airpush.android.Airpush;
+
+        $r1 := @parameter0: android.content.Context;
+
+        $r2 := @parameter1: java.lang.String;
+
+        $r3 := @parameter2: java.lang.String;
+
+        $z0 := @parameter3: boolean;
+
+        $z1 := @parameter4: boolean;
+
+        $i0 := @parameter5: int;
+
+        $z2 := @parameter6: boolean;
+
+     label01:
+        r0.<com.airpush.android.Airpush: boolean showAd> = $z2;
+
+     label02:
+        $r1 = <com.airpush.android.Airpush: android.content.Context ctx>;
+
+     label03:
+        $r5 = virtualinvoke $r1.<android.content.Context: android.content.SharedPreferences getSharedPreferences(java.lang.String,int)>("dialogPref", 2);
+
+        $r6 = interfaceinvoke $r5.<android.content.SharedPreferences: android.content.SharedPreferences$Editor edit()>();
+
+        interfaceinvoke $r6.<android.content.SharedPreferences$Editor: android.content.SharedPreferences$Editor putBoolean(java.lang.String,boolean)>("ShowDialog", $z1);
+
+        $z1 = r0.<com.airpush.android.Airpush: boolean showAd>;
+
+        interfaceinvoke $r6.<android.content.SharedPreferences$Editor: android.content.SharedPreferences$Editor putBoolean(java.lang.String,boolean)>("ShowAd", $z1);
+
+        interfaceinvoke $r6.<android.content.SharedPreferences$Editor: boolean commit()>();
+
+        $z1 = r0.<com.airpush.android.Airpush: boolean showAd>;
+
+     label04:
+        if $z1 == 0 goto label21;
+
+     label05:
+        staticinvoke <android.util.Log: int i(java.lang.String,java.lang.String)>("AirpushSDK", "Initialising.....");
+
+     label06:
+        <com.airpush.android.Airpush: boolean testMode> = $z0;
+
+        <com.airpush.android.Airpush: java.lang.String appId> = $r2;
+
+        <com.airpush.android.Airpush: java.lang.String apikey> = $r3;
+
+        <com.airpush.android.Airpush: int icon> = $i0;
+
+        $r1 = <com.airpush.android.Airpush: android.content.Context ctx>;
+
+     label07:
+        $r7 = virtualinvoke $r1.<android.content.Context: java.lang.Object getSystemService(java.lang.String)>("phone");
+
+        r8 = (android.telephony.TelephonyManager) $r7;
+
+        $r2 = virtualinvoke r8.<android.telephony.TelephonyManager: java.lang.String getDeviceId()>();
+
+        r0.<com.airpush.android.Airpush: java.lang.String imeinumber> = $r2;
+
+     label08:
+        $r9 = staticinvoke <java.security.MessageDigest: java.security.MessageDigest getInstance(java.lang.String)>("MD5");
+
+     label09:
+        $r2 = r0.<com.airpush.android.Airpush: java.lang.String imeinumber>;
+
+     label10:
+        $r10 = virtualinvoke $r2.<java.lang.String: byte[] getBytes()>();
+
+     label11:
+        $r2 = r0.<com.airpush.android.Airpush: java.lang.String imeinumber>;
+
+     label12:
+        $i0 = virtualinvoke $r2.<java.lang.String: int length()>();
+
+        virtualinvoke $r9.<java.security.MessageDigest: void update(byte[],int,int)>($r10, 0, $i0);
+
+     label13:
+        $r11 = new java.math.BigInteger;
+
+     label14:
+        $r10 = virtualinvoke $r9.<java.security.MessageDigest: byte[] digest()>();
+
+        specialinvoke $r11.<java.math.BigInteger: void <init>(int,byte[])>(1, $r10);
+
+        $r2 = virtualinvoke $r11.<java.math.BigInteger: java.lang.String toString(int)>(16);
+
+     label15:
+        <com.airpush.android.Airpush: java.lang.String imei> = $r2;
+
+     label16:
+        r4 = new android.os.Handler;
+
+     label17:
+        specialinvoke r4.<android.os.Handler: void <init>()>();
+
+        $r12 = r0.<com.airpush.android.Airpush: java.lang.Runnable send_Task>;
+
+        virtualinvoke r4.<android.os.Handler: boolean postDelayed(java.lang.Runnable,long)>($r12, 6000L);
+
+     label18:
+        return;
+
+     label19:
+        $r13 := @caughtexception;
+
+        return;
+
+     label20:
+        $r14 := @caughtexception;
+
+        goto label16;
+
+     label21:
+        return;
+
+        catch java.lang.Exception from label01 to label02 with label19;
+        catch java.lang.Exception from label03 to label04 with label19;
+        catch java.lang.Exception from label05 to label06 with label19;
+        catch java.lang.Exception from label07 to label08 with label19;
+        catch java.security.NoSuchAlgorithmException from label08 to label09 with label20;
+        catch java.security.NoSuchAlgorithmException from label10 to label11 with label20;
+        catch java.security.NoSuchAlgorithmException from label12 to label13 with label20;
+        catch java.security.NoSuchAlgorithmException from label14 to label15 with label20;
+        catch java.lang.Exception from label08 to label13 with label19;
+        catch java.lang.Exception from label14 to label15 with label19;
+        catch java.lang.Exception from label17 to label18 with label19;
+    }
+}

@@ -1,0 +1,746 @@
+public abstract class com.startapp.android.publish.f.b extends com.startapp.android.publish.f.d
+{
+    private java.util.Set h;
+    private java.util.List i;
+    private com.startapp.android.publish.model.GetAdRequest j;
+    private int k;
+    private boolean l;
+
+    public void <init>(android.content.Context, com.startapp.android.publish.Ad, com.startapp.android.publish.model.AdPreferences, com.startapp.android.publish.model.SodaPreferences, com.startapp.android.publish.AdEventListener, com.startapp.android.publish.model.AdPreferences$Placement, boolean)
+    {
+        com.startapp.android.publish.f.b r0;
+        android.content.Context $r1;
+        com.startapp.android.publish.Ad $r2;
+        com.startapp.android.publish.model.AdPreferences $r3;
+        com.startapp.android.publish.model.SodaPreferences $r4;
+        com.startapp.android.publish.AdEventListener $r5;
+        com.startapp.android.publish.model.AdPreferences$Placement $r6;
+        boolean $z0;
+        java.util.HashSet $r7;
+        java.util.ArrayList $r8;
+
+        r0 := @this: com.startapp.android.publish.f.b;
+
+        $r1 := @parameter0: android.content.Context;
+
+        $r2 := @parameter1: com.startapp.android.publish.Ad;
+
+        $r3 := @parameter2: com.startapp.android.publish.model.AdPreferences;
+
+        $r4 := @parameter3: com.startapp.android.publish.model.SodaPreferences;
+
+        $r5 := @parameter4: com.startapp.android.publish.AdEventListener;
+
+        $r6 := @parameter5: com.startapp.android.publish.model.AdPreferences$Placement;
+
+        $z0 := @parameter6: boolean;
+
+        specialinvoke r0.<com.startapp.android.publish.f.d: void <init>(android.content.Context,com.startapp.android.publish.Ad,com.startapp.android.publish.model.AdPreferences,com.startapp.android.publish.model.SodaPreferences,com.startapp.android.publish.AdEventListener,com.startapp.android.publish.model.AdPreferences$Placement)>($r1, $r2, $r3, $r4, $r5, $r6);
+
+        $r7 = new java.util.HashSet;
+
+        specialinvoke $r7.<java.util.HashSet: void <init>()>();
+
+        r0.<com.startapp.android.publish.f.b: java.util.Set h> = $r7;
+
+        $r8 = new java.util.ArrayList;
+
+        specialinvoke $r8.<java.util.ArrayList: void <init>()>();
+
+        r0.<com.startapp.android.publish.f.b: java.util.List i> = $r8;
+
+        r0.<com.startapp.android.publish.f.b: int k> = 0;
+
+        r0.<com.startapp.android.publish.f.b: boolean l> = $z0;
+
+        return;
+    }
+
+    static com.startapp.android.publish.video.VideoAdDetails a(com.startapp.android.publish.f.b)
+    {
+        com.startapp.android.publish.f.b $r0;
+        com.startapp.android.publish.video.VideoAdDetails $r1;
+
+        $r0 := @parameter0: com.startapp.android.publish.f.b;
+
+        $r1 = specialinvoke $r0.<com.startapp.android.publish.f.b: com.startapp.android.publish.video.VideoAdDetails g()>();
+
+        return $r1;
+    }
+
+    static void a(com.startapp.android.publish.f.b, java.lang.Boolean)
+    {
+        com.startapp.android.publish.f.b $r0;
+        java.lang.Boolean $r1;
+
+        $r0 := @parameter0: com.startapp.android.publish.f.b;
+
+        $r1 := @parameter1: java.lang.Boolean;
+
+        specialinvoke $r0.<com.startapp.android.publish.f.d: void b(java.lang.Boolean)>($r1);
+
+        return;
+    }
+
+    static void b(com.startapp.android.publish.f.b, java.lang.Boolean)
+    {
+        com.startapp.android.publish.f.b $r0;
+        java.lang.Boolean $r1;
+
+        $r0 := @parameter0: com.startapp.android.publish.f.b;
+
+        $r1 := @parameter1: java.lang.Boolean;
+
+        specialinvoke $r0.<com.startapp.android.publish.f.d: void b(java.lang.Boolean)>($r1);
+
+        return;
+    }
+
+    private boolean b(java.lang.String)
+    {
+        com.startapp.android.publish.f.b r0;
+        java.lang.String $r1;
+
+        r0 := @this: com.startapp.android.publish.f.b;
+
+        $r1 := @parameter0: java.lang.String;
+
+        $r1 = staticinvoke <com.startapp.android.publish.i.x: java.lang.String a(java.lang.String,java.lang.String,java.lang.String)>($r1, "@videoJson@", "@videoJson@");
+
+        if $r1 == null goto label1;
+
+        return 1;
+
+     label1:
+        return 0;
+    }
+
+    private boolean f()
+    {
+        com.startapp.android.publish.f.b r0;
+        com.startapp.android.publish.video.VideoAdDetails $r1;
+
+        r0 := @this: com.startapp.android.publish.f.b;
+
+        $r1 = specialinvoke r0.<com.startapp.android.publish.f.b: com.startapp.android.publish.video.VideoAdDetails g()>();
+
+        if $r1 == null goto label1;
+
+        return 1;
+
+     label1:
+        return 0;
+    }
+
+    private com.startapp.android.publish.video.VideoAdDetails g()
+    {
+        com.startapp.android.publish.f.b r0;
+        com.startapp.android.publish.video.VideoAdDetails $r1;
+        com.startapp.android.publish.Ad $r2;
+        com.startapp.android.publish.a.c $r3;
+
+        r0 := @this: com.startapp.android.publish.f.b;
+
+        $r2 = r0.<com.startapp.android.publish.f.b: com.startapp.android.publish.Ad b>;
+
+        $r3 = (com.startapp.android.publish.a.c) $r2;
+
+        $r1 = virtualinvoke $r3.<com.startapp.android.publish.a.c: com.startapp.android.publish.video.VideoAdDetails getVideoAdDetails()>();
+
+        return $r1;
+    }
+
+    private void h()
+    {
+        com.startapp.android.publish.f.b r0;
+        com.startapp.android.publish.model.AdPreferences$Placement $r1;
+        com.startapp.android.publish.Ad $r2;
+        com.startapp.android.publish.Ad$AdType $r3, $r4;
+        com.startapp.android.publish.model.AdPreferences $r5, $r9;
+        com.startapp.android.publish.model.SodaPreferences $r6, $r10;
+        com.startapp.android.publish.b.a $r7;
+        android.content.Context $r8;
+
+        r0 := @this: com.startapp.android.publish.f.b;
+
+        $r2 = r0.<com.startapp.android.publish.f.b: com.startapp.android.publish.Ad b>;
+
+        $r3 = virtualinvoke $r2.<com.startapp.android.publish.Ad: com.startapp.android.publish.Ad$AdType getType()>();
+
+        $r4 = <com.startapp.android.publish.Ad$AdType: com.startapp.android.publish.Ad$AdType REWARDED_VIDEO>;
+
+        if $r3 == $r4 goto label5;
+
+        $r5 = r0.<com.startapp.android.publish.f.b: com.startapp.android.publish.model.AdPreferences c>;
+
+        if $r5 != null goto label3;
+
+        $r5 = new com.startapp.android.publish.model.AdPreferences;
+
+        specialinvoke $r5.<com.startapp.android.publish.model.AdPreferences: void <init>()>();
+
+     label1:
+        $r6 = r0.<com.startapp.android.publish.f.b: com.startapp.android.publish.model.SodaPreferences d>;
+
+        if $r6 != null goto label4;
+
+        $r6 = new com.startapp.android.publish.model.SodaPreferences;
+
+        specialinvoke $r6.<com.startapp.android.publish.model.SodaPreferences: void <init>()>();
+
+     label2:
+        $r3 = <com.startapp.android.publish.Ad$AdType: com.startapp.android.publish.Ad$AdType NON_VIDEO>;
+
+        virtualinvoke $r5.<com.startapp.android.publish.model.AdPreferences: void setType(com.startapp.android.publish.Ad$AdType)>($r3);
+
+        $r1 = r0.<com.startapp.android.publish.f.b: com.startapp.android.publish.model.AdPreferences$Placement f>;
+
+        $r7 = staticinvoke <com.startapp.android.publish.b.a: com.startapp.android.publish.b.a a()>();
+
+        $r8 = r0.<com.startapp.android.publish.f.b: android.content.Context a>;
+
+        virtualinvoke $r7.<com.startapp.android.publish.b.a: com.startapp.android.publish.b.c a(android.content.Context,com.startapp.android.publish.StartAppAd,com.startapp.android.publish.model.AdPreferences$Placement,com.startapp.android.publish.model.AdPreferences,com.startapp.android.publish.model.SodaPreferences,com.startapp.android.publish.AdEventListener)>($r8, null, $r1, $r5, $r6, null);
+
+        return;
+
+     label3:
+        $r5 = new com.startapp.android.publish.model.AdPreferences;
+
+        $r9 = r0.<com.startapp.android.publish.f.b: com.startapp.android.publish.model.AdPreferences c>;
+
+        specialinvoke $r5.<com.startapp.android.publish.model.AdPreferences: void <init>(com.startapp.android.publish.model.AdPreferences)>($r9);
+
+        goto label1;
+
+     label4:
+        $r6 = new com.startapp.android.publish.model.SodaPreferences;
+
+        $r10 = r0.<com.startapp.android.publish.f.b: com.startapp.android.publish.model.SodaPreferences d>;
+
+        specialinvoke $r6.<com.startapp.android.publish.model.SodaPreferences: void <init>(com.startapp.android.publish.model.SodaPreferences)>($r10);
+
+        goto label2;
+
+     label5:
+        return;
+    }
+
+    protected java.lang.Object a()
+    {
+        com.startapp.android.publish.f.b r0;
+        com.startapp.android.publish.model.GetAdRequest $r1;
+        boolean $z0;
+        android.content.Context $r2;
+        com.startapp.android.publish.video.c$a $r3, $r4;
+        java.lang.String $r5;
+        java.util.Set $r6;
+        int $i0;
+        com.startapp.android.publish.model.MetaData $r7;
+        com.startapp.android.publish.adinformation.AdInformationConfig $r8;
+        com.startapp.android.publish.adinformation.e $r9;
+        com.startapp.android.publish.e$a $r10;
+        com.startapp.android.publish.i.s $r11;
+        com.startapp.android.publish.d.b$a $r12;
+
+        r0 := @this: com.startapp.android.publish.f.b;
+
+        $r1 = virtualinvoke r0.<com.startapp.android.publish.f.b: com.startapp.android.publish.model.GetAdRequest e()>();
+
+        r0.<com.startapp.android.publish.f.b: com.startapp.android.publish.model.GetAdRequest j> = $r1;
+
+        $r1 = r0.<com.startapp.android.publish.f.b: com.startapp.android.publish.model.GetAdRequest j>;
+
+        if $r1 == null goto label9;
+
+        $r1 = r0.<com.startapp.android.publish.f.b: com.startapp.android.publish.model.GetAdRequest j>;
+
+        $z0 = virtualinvoke $r1.<com.startapp.android.publish.model.GetAdRequest: boolean isAdTypeVideo()>();
+
+        if $z0 == 0 goto label1;
+
+        $r2 = r0.<com.startapp.android.publish.f.b: android.content.Context a>;
+
+        $r3 = staticinvoke <com.startapp.android.publish.video.c: com.startapp.android.publish.video.c$a a(android.content.Context)>($r2);
+
+        $r4 = <com.startapp.android.publish.video.c$a: com.startapp.android.publish.video.c$a a>;
+
+        if $r3 == $r4 goto label1;
+
+        $r5 = virtualinvoke $r3.<com.startapp.android.publish.video.c$a: java.lang.String a()>();
+
+        r0.<com.startapp.android.publish.f.b: java.lang.String g> = $r5;
+
+        return null;
+
+     label1:
+        $r6 = r0.<com.startapp.android.publish.f.b: java.util.Set h>;
+
+        $i0 = interfaceinvoke $r6.<java.util.Set: int size()>();
+
+        if $i0 != 0 goto label2;
+
+        $r6 = r0.<com.startapp.android.publish.f.b: java.util.Set h>;
+
+        $r2 = r0.<com.startapp.android.publish.f.b: android.content.Context a>;
+
+        $r5 = virtualinvoke $r2.<android.content.Context: java.lang.String getPackageName()>();
+
+        interfaceinvoke $r6.<java.util.Set: boolean add(java.lang.Object)>($r5);
+
+     label2:
+        $r1 = r0.<com.startapp.android.publish.f.b: com.startapp.android.publish.model.GetAdRequest j>;
+
+        $r6 = r0.<com.startapp.android.publish.f.b: java.util.Set h>;
+
+        virtualinvoke $r1.<com.startapp.android.publish.model.GetAdRequest: void setPackageExclude(java.util.Set)>($r6);
+
+        $i0 = r0.<com.startapp.android.publish.f.b: int k>;
+
+        if $i0 <= 0 goto label3;
+
+        $r1 = r0.<com.startapp.android.publish.f.b: com.startapp.android.publish.model.GetAdRequest j>;
+
+        virtualinvoke $r1.<com.startapp.android.publish.model.GetAdRequest: void setEngInclude(boolean)>(0);
+
+        $r7 = staticinvoke <com.startapp.android.publish.model.MetaData: com.startapp.android.publish.model.MetaData getInstance()>();
+
+        $r8 = virtualinvoke $r7.<com.startapp.android.publish.model.MetaData: com.startapp.android.publish.adinformation.AdInformationConfig getAdInformationConfig()>();
+
+        $r9 = virtualinvoke $r8.<com.startapp.android.publish.adinformation.AdInformationConfig: com.startapp.android.publish.adinformation.e g()>();
+
+        $r2 = r0.<com.startapp.android.publish.f.b: android.content.Context a>;
+
+        $z0 = virtualinvoke $r9.<com.startapp.android.publish.adinformation.e: boolean a(android.content.Context)>($r2);
+
+        if $z0 == 0 goto label3;
+
+        $r2 = r0.<com.startapp.android.publish.f.b: android.content.Context a>;
+
+        staticinvoke <com.startapp.android.publish.i.x: void d(android.content.Context)>($r2);
+
+     label3:
+        $r2 = r0.<com.startapp.android.publish.f.b: android.content.Context a>;
+
+        $r10 = <com.startapp.android.publish.e$a: com.startapp.android.publish.e$a a>;
+
+     label4:
+        $r5 = staticinvoke <com.startapp.android.publish.e: java.lang.String a(com.startapp.android.publish.e$a)>($r10);
+
+     label5:
+        $r1 = r0.<com.startapp.android.publish.f.b: com.startapp.android.publish.model.GetAdRequest j>;
+
+     label6:
+        $r5 = staticinvoke <com.startapp.android.publish.h.c: java.lang.String a(android.content.Context,java.lang.String,com.startapp.android.publish.model.BaseRequest,java.util.Map)>($r2, $r5, $r1, null);
+
+     label7:
+        return $r5;
+
+     label8:
+        $r11 := @caughtexception;
+
+        $r2 = r0.<com.startapp.android.publish.f.b: android.content.Context a>;
+
+        $r12 = <com.startapp.android.publish.d.b$a: com.startapp.android.publish.d.b$a b>;
+
+        $r5 = virtualinvoke $r11.<com.startapp.android.publish.i.s: java.lang.String getMessage()>();
+
+        staticinvoke <com.startapp.android.publish.d.d: void a(android.content.Context,com.startapp.android.publish.d.b$a,java.lang.String,java.lang.String,java.lang.String)>($r2, $r12, "BaseHtmlService.sendCommand - network failure", $r5, "");
+
+        staticinvoke <com.startapp.android.publish.i.n: void a(java.lang.String,int,java.lang.String,java.lang.Throwable)>("BaseHtmlService", 6, "Unable to handle GetHtmlAdService command!!!!", $r11);
+
+        $r5 = virtualinvoke $r11.<com.startapp.android.publish.i.s: java.lang.String getMessage()>();
+
+        r0.<com.startapp.android.publish.f.b: java.lang.String g> = $r5;
+
+     label9:
+        return null;
+
+        catch com.startapp.android.publish.i.s from label4 to label5 with label8;
+        catch com.startapp.android.publish.i.s from label6 to label7 with label8;
+    }
+
+    protected void a(java.lang.Boolean)
+    {
+        com.startapp.android.publish.f.b r0;
+        java.lang.Boolean $r1;
+        java.lang.StringBuilder $r2;
+        java.lang.String $r3;
+        boolean $z0;
+        com.startapp.android.publish.model.MetaData $r4;
+        com.startapp.android.publish.model.VideoConfig $r5;
+        com.startapp.android.publish.f.b$1 $r6;
+        com.startapp.android.publish.f.b$2 $r7;
+        com.startapp.android.publish.b.i $r8;
+        android.content.Context $r9;
+        com.startapp.android.publish.video.VideoAdDetails $r10;
+
+        r0 := @this: com.startapp.android.publish.f.b;
+
+        $r1 := @parameter0: java.lang.Boolean;
+
+        specialinvoke r0.<com.startapp.android.publish.f.d: void a(java.lang.Boolean)>($r1);
+
+        $r2 = new java.lang.StringBuilder;
+
+        specialinvoke $r2.<java.lang.StringBuilder: void <init>()>();
+
+        $r2 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Html onPostExecute, result=[");
+
+        $r2 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($r1);
+
+        $r2 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("]");
+
+        $r3 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <com.startapp.android.publish.i.n: void a(java.lang.String,int,java.lang.String)>("BaseHtmlService", 4, $r3);
+
+        $z0 = virtualinvoke $r1.<java.lang.Boolean: boolean booleanValue()>();
+
+        if $z0 == 0 goto label2;
+
+        $z0 = specialinvoke r0.<com.startapp.android.publish.f.b: boolean f()>();
+
+        if $z0 == 0 goto label2;
+
+        $r4 = staticinvoke <com.startapp.android.publish.model.MetaData: com.startapp.android.publish.model.MetaData getInstance()>();
+
+        $r5 = virtualinvoke $r4.<com.startapp.android.publish.model.MetaData: com.startapp.android.publish.model.VideoConfig getVideoConfig()>();
+
+        $z0 = virtualinvoke $r5.<com.startapp.android.publish.model.VideoConfig: boolean isProgressive()>();
+
+        if $z0 == 0 goto label1;
+
+        staticinvoke <com.startapp.android.publish.f.b: void a(com.startapp.android.publish.f.b,java.lang.Boolean)>(r0, $r1);
+
+     label1:
+        $r6 = new com.startapp.android.publish.f.b$1;
+
+        specialinvoke $r6.<com.startapp.android.publish.f.b$1: void <init>(com.startapp.android.publish.f.b,java.lang.Boolean)>(r0, $r1);
+
+        $r7 = new com.startapp.android.publish.f.b$2;
+
+        specialinvoke $r7.<com.startapp.android.publish.f.b$2: void <init>(com.startapp.android.publish.f.b)>(r0);
+
+        $r8 = staticinvoke <com.startapp.android.publish.b.i: com.startapp.android.publish.b.i a()>();
+
+        $r9 = r0.<com.startapp.android.publish.f.b: android.content.Context a>;
+
+        $r9 = virtualinvoke $r9.<android.content.Context: android.content.Context getApplicationContext()>();
+
+        $r10 = specialinvoke r0.<com.startapp.android.publish.f.b: com.startapp.android.publish.video.VideoAdDetails g()>();
+
+        $r3 = virtualinvoke $r10.<com.startapp.android.publish.video.VideoAdDetails: java.lang.String getVideoUrl()>();
+
+        virtualinvoke $r8.<com.startapp.android.publish.b.i: void a(android.content.Context,java.lang.String,com.startapp.android.publish.video.b$a,com.startapp.android.publish.video.a$a)>($r9, $r3, $r6, $r7);
+
+        return;
+
+     label2:
+        $z0 = virtualinvoke $r1.<java.lang.Boolean: boolean booleanValue()>();
+
+        virtualinvoke r0.<com.startapp.android.publish.f.b: void a(boolean)>($z0);
+
+        return;
+    }
+
+    protected void a(boolean)
+    {
+        com.startapp.android.publish.f.b r0;
+        boolean $z0, $z1;
+        android.content.Intent $r1;
+        com.startapp.android.publish.Ad $r2;
+        int $i0;
+        android.content.Context $r3;
+        com.startapp.android.publish.i.l $r4;
+        com.startapp.android.publish.a.c $r5;
+        java.lang.String $r6;
+        com.startapp.android.publish.f.b$3 $r7;
+        com.startapp.android.publish.AdEventListener $r8;
+        java.lang.StringBuilder $r9;
+
+        r0 := @this: com.startapp.android.publish.f.b;
+
+        $z0 := @parameter0: boolean;
+
+        $r1 = new android.content.Intent;
+
+        specialinvoke $r1.<android.content.Intent: void <init>(java.lang.String)>("com.startapp.android.OnReceiveResponseBroadcastListener");
+
+        $r2 = r0.<com.startapp.android.publish.f.b: com.startapp.android.publish.Ad b>;
+
+        $i0 = virtualinvoke $r2.<java.lang.Object: int hashCode()>();
+
+        virtualinvoke $r1.<android.content.Intent: android.content.Intent putExtra(java.lang.String,int)>("adHashcode", $i0);
+
+        virtualinvoke $r1.<android.content.Intent: android.content.Intent putExtra(java.lang.String,boolean)>("adResult", $z0);
+
+        $r3 = r0.<com.startapp.android.publish.f.b: android.content.Context a>;
+
+        $r4 = staticinvoke <com.startapp.android.publish.i.l: com.startapp.android.publish.i.l a(android.content.Context)>($r3);
+
+        virtualinvoke $r4.<com.startapp.android.publish.i.l: boolean a(android.content.Intent)>($r1);
+
+        if $z0 == 0 goto label3;
+
+        $r2 = r0.<com.startapp.android.publish.f.b: com.startapp.android.publish.Ad b>;
+
+        if $r2 == null goto label3;
+
+        $z1 = r0.<com.startapp.android.publish.f.b: boolean l>;
+
+        if $z1 == 0 goto label1;
+
+        $r3 = r0.<com.startapp.android.publish.f.b: android.content.Context a>;
+
+        $r2 = r0.<com.startapp.android.publish.f.b: com.startapp.android.publish.Ad b>;
+
+        $r5 = (com.startapp.android.publish.a.c) $r2;
+
+        $r6 = virtualinvoke $r5.<com.startapp.android.publish.a.c: java.lang.String getHtml()>();
+
+        $r7 = new com.startapp.android.publish.f.b$3;
+
+        specialinvoke $r7.<com.startapp.android.publish.f.b$3: void <init>(com.startapp.android.publish.f.b)>(r0);
+
+        staticinvoke <com.startapp.android.publish.i.x: void a(android.content.Context,java.lang.String,com.startapp.android.publish.i.x$a)>($r3, $r6, $r7);
+
+        return;
+
+     label1:
+        if $z0 == 0 goto label2;
+
+        $r8 = r0.<com.startapp.android.publish.f.b: com.startapp.android.publish.AdEventListener e>;
+
+        $r2 = r0.<com.startapp.android.publish.f.b: com.startapp.android.publish.Ad b>;
+
+        interfaceinvoke $r8.<com.startapp.android.publish.AdEventListener: void onReceiveAd(com.startapp.android.publish.Ad)>($r2);
+
+        return;
+
+     label2:
+        $r8 = r0.<com.startapp.android.publish.f.b: com.startapp.android.publish.AdEventListener e>;
+
+        $r2 = r0.<com.startapp.android.publish.f.b: com.startapp.android.publish.Ad b>;
+
+        interfaceinvoke $r8.<com.startapp.android.publish.AdEventListener: void onFailedToReceiveAd(com.startapp.android.publish.Ad)>($r2);
+
+        return;
+
+     label3:
+        $r9 = new java.lang.StringBuilder;
+
+        specialinvoke $r9.<java.lang.StringBuilder: void <init>()>();
+
+        $r9 = virtualinvoke $r9.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Html onPostExecute failed error=[");
+
+        $r6 = r0.<com.startapp.android.publish.f.b: java.lang.String g>;
+
+        $r9 = virtualinvoke $r9.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r6);
+
+        $r9 = virtualinvoke $r9.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("]");
+
+        $r6 = virtualinvoke $r9.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <com.startapp.android.publish.i.n: void a(java.lang.String,int,java.lang.String)>("BaseHtmlService", 6, $r6);
+
+        return;
+    }
+
+    protected boolean a(java.lang.Object)
+    {
+        com.startapp.android.publish.f.b r0;
+        java.util.List $r1, $r6;
+        java.lang.Object $r2;
+        boolean $z0, $z1;
+        java.util.ArrayList $r3;
+        java.lang.String $r4;
+        com.startapp.android.publish.model.GetAdRequest $r5;
+        int $i0;
+        com.startapp.android.publish.model.MetaData $r7;
+        android.content.Context $r8;
+        java.util.Set $r9;
+        java.lang.Boolean $r10;
+        com.startapp.android.publish.Ad $r11;
+        com.startapp.android.publish.a.c $r12;
+        com.startapp.android.publish.model.VideoConfig $r13;
+
+        r0 := @this: com.startapp.android.publish.f.b;
+
+        $r2 := @parameter0: java.lang.Object;
+
+        $z0 = 0;
+
+        staticinvoke <com.startapp.android.publish.i.n: void a(java.lang.String,int,java.lang.String)>("BaseHtmlService", 4, "Handle Html Response");
+
+        $r3 = new java.util.ArrayList;
+
+        specialinvoke $r3.<java.util.ArrayList: void <init>()>();
+
+        r0.<com.startapp.android.publish.f.b: java.util.List i> = $r3;
+
+        $r4 = (java.lang.String) $r2;
+
+        $z1 = staticinvoke <android.text.TextUtils: boolean isEmpty(java.lang.CharSequence)>($r4);
+
+        if $z1 == 0 goto label2;
+
+        $r4 = r0.<com.startapp.android.publish.f.b: java.lang.String g>;
+
+        if $r4 != null goto label6;
+
+        $r5 = r0.<com.startapp.android.publish.f.b: com.startapp.android.publish.model.GetAdRequest j>;
+
+        if $r5 == null goto label1;
+
+        $r5 = r0.<com.startapp.android.publish.f.b: com.startapp.android.publish.model.GetAdRequest j>;
+
+        $z0 = virtualinvoke $r5.<com.startapp.android.publish.model.GetAdRequest: boolean isAdTypeVideo()>();
+
+        if $z0 == 0 goto label1;
+
+        r0.<com.startapp.android.publish.f.b: java.lang.String g> = "Video isn\'t available";
+
+        return 0;
+
+     label1:
+        r0.<com.startapp.android.publish.f.b: java.lang.String g> = "Empty Ad";
+
+        return 0;
+
+     label2:
+        $i0 = r0.<com.startapp.android.publish.f.b: int k>;
+
+        $r6 = staticinvoke <com.startapp.android.publish.i.c: java.util.List a(java.lang.String,int)>($r4, $i0);
+
+        $r7 = staticinvoke <com.startapp.android.publish.model.MetaData: com.startapp.android.publish.model.MetaData getInstance()>();
+
+        $z1 = virtualinvoke $r7.<com.startapp.android.publish.model.MetaData: boolean isAppPresenceEnabled()>();
+
+        if $z1 == 0 goto label3;
+
+        $r8 = r0.<com.startapp.android.publish.f.b: android.content.Context a>;
+
+        $i0 = r0.<com.startapp.android.publish.f.b: int k>;
+
+        $r9 = r0.<com.startapp.android.publish.f.b: java.util.Set h>;
+
+        $r1 = r0.<com.startapp.android.publish.f.b: java.util.List i>;
+
+        $r10 = staticinvoke <com.startapp.android.publish.i.c: java.lang.Boolean a(android.content.Context,java.util.List,int,java.util.Set,java.util.List)>($r8, $r6, $i0, $r9, $r1);
+
+        $z0 = virtualinvoke $r10.<java.lang.Boolean: boolean booleanValue()>();
+
+     label3:
+        if $z0 != 0 goto label5;
+
+        $r11 = r0.<com.startapp.android.publish.f.b: com.startapp.android.publish.Ad b>;
+
+        $r12 = (com.startapp.android.publish.a.c) $r11;
+
+        virtualinvoke $r12.<com.startapp.android.publish.a.c: void setApps(java.util.List)>($r6);
+
+        $r7 = staticinvoke <com.startapp.android.publish.model.MetaData: com.startapp.android.publish.model.MetaData getInstance()>();
+
+        $r13 = virtualinvoke $r7.<com.startapp.android.publish.model.MetaData: com.startapp.android.publish.model.VideoConfig getVideoConfig()>();
+
+        $z0 = virtualinvoke $r13.<com.startapp.android.publish.model.VideoConfig: boolean isVideoFallback()>();
+
+        if $z0 == 0 goto label4;
+
+        $z0 = specialinvoke r0.<com.startapp.android.publish.f.b: boolean b(java.lang.String)>($r4);
+
+        if $z0 == 0 goto label4;
+
+        specialinvoke r0.<com.startapp.android.publish.f.b: void h()>();
+
+     label4:
+        $z0 = virtualinvoke r0.<com.startapp.android.publish.f.b: boolean a(java.lang.String)>($r4);
+
+        return $z0;
+
+     label5:
+        $z0 = virtualinvoke r0.<com.startapp.android.publish.f.b: boolean b()>();
+
+        return $z0;
+
+     label6:
+        return 0;
+    }
+
+    protected boolean a(java.lang.String)
+    {
+        com.startapp.android.publish.f.b r0;
+        java.lang.String $r1;
+        com.startapp.android.publish.Ad $r2;
+        com.startapp.android.publish.a.c $r3;
+
+        r0 := @this: com.startapp.android.publish.f.b;
+
+        $r1 := @parameter0: java.lang.String;
+
+        $r2 = r0.<com.startapp.android.publish.f.b: com.startapp.android.publish.Ad b>;
+
+        $r3 = (com.startapp.android.publish.a.c) $r2;
+
+        virtualinvoke $r3.<com.startapp.android.publish.a.c: void setHtml(java.lang.String)>($r1);
+
+        return 1;
+    }
+
+    protected void b(java.lang.Boolean)
+    {
+        com.startapp.android.publish.f.b r0;
+        java.lang.Boolean $r1;
+        boolean $z0;
+
+        r0 := @this: com.startapp.android.publish.f.b;
+
+        $r1 := @parameter0: java.lang.Boolean;
+
+        $z0 = specialinvoke r0.<com.startapp.android.publish.f.b: boolean f()>();
+
+        if $z0 != 0 goto label1;
+
+        specialinvoke r0.<com.startapp.android.publish.f.d: void b(java.lang.Boolean)>($r1);
+
+     label1:
+        return;
+    }
+
+    protected boolean b()
+    {
+        com.startapp.android.publish.f.b r0;
+        int $i0;
+        com.startapp.android.publish.f.a $r1;
+        android.content.Context $r2;
+        java.util.List $r3;
+        java.lang.Boolean $r4;
+        boolean $z0;
+
+        r0 := @this: com.startapp.android.publish.f.b;
+
+        staticinvoke <com.startapp.android.publish.i.n: void a(java.lang.String,int,java.lang.String)>("BaseHtmlService", 3, "At least one package is present. sending another request to AdPlatform");
+
+        $i0 = r0.<com.startapp.android.publish.f.b: int k>;
+
+        $i0 = $i0 + 1;
+
+        r0.<com.startapp.android.publish.f.b: int k> = $i0;
+
+        $r1 = new com.startapp.android.publish.f.a;
+
+        $r2 = r0.<com.startapp.android.publish.f.b: android.content.Context a>;
+
+        $r3 = r0.<com.startapp.android.publish.f.b: java.util.List i>;
+
+        specialinvoke $r1.<com.startapp.android.publish.f.a: void <init>(android.content.Context,java.util.List)>($r2, $r3);
+
+        virtualinvoke $r1.<com.startapp.android.publish.f.a: void a()>();
+
+        $r4 = virtualinvoke r0.<com.startapp.android.publish.f.b: java.lang.Boolean d()>();
+
+        $z0 = virtualinvoke $r4.<java.lang.Boolean: boolean booleanValue()>();
+
+        return $z0;
+    }
+}

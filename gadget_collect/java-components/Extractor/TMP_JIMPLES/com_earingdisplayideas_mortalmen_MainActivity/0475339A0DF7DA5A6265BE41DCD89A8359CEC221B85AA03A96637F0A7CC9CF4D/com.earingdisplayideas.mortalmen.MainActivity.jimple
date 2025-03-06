@@ -1,0 +1,786 @@
+public class com.earingdisplayideas.mortalmen.MainActivity extends android.app.Activity
+{
+    private static final java.lang.String i;
+    android.webkit.WebView a;
+    android.widget.ImageView b;
+    java.lang.String c;
+    android.widget.ProgressBar d;
+    com.google.android.gms.ads.f e;
+    android.os.Handler f;
+    java.lang.Runnable g;
+    public boolean h;
+    private android.webkit.ValueCallback j;
+    private android.webkit.ValueCallback k;
+    private java.lang.String l;
+
+    static void <clinit>()
+    {
+        java.lang.String $r0;
+        java.lang.Class $r1;
+
+        $r1 = class "Lcom/earingdisplayideas/mortalmen/MainActivity;";
+
+        $r0 = virtualinvoke $r1.<java.lang.Class: java.lang.String getSimpleName()>();
+
+        <com.earingdisplayideas.mortalmen.MainActivity: java.lang.String i> = $r0;
+
+        return;
+    }
+
+    public void <init>()
+    {
+        com.earingdisplayideas.mortalmen.MainActivity r0;
+        android.os.Handler $r1;
+        com.earingdisplayideas.mortalmen.a $r2;
+
+        r0 := @this: com.earingdisplayideas.mortalmen.MainActivity;
+
+        specialinvoke r0.<android.app.Activity: void <init>()>();
+
+        $r1 = new android.os.Handler;
+
+        specialinvoke $r1.<android.os.Handler: void <init>()>();
+
+        r0.<com.earingdisplayideas.mortalmen.MainActivity: android.os.Handler f> = $r1;
+
+        $r2 = new com.earingdisplayideas.mortalmen.a;
+
+        specialinvoke $r2.<com.earingdisplayideas.mortalmen.a: void <init>(com.earingdisplayideas.mortalmen.MainActivity)>(r0);
+
+        r0.<com.earingdisplayideas.mortalmen.MainActivity: java.lang.Runnable g> = $r2;
+
+        r0.<com.earingdisplayideas.mortalmen.MainActivity: boolean h> = 0;
+
+        return;
+    }
+
+    static android.webkit.ValueCallback a(com.earingdisplayideas.mortalmen.MainActivity)
+    {
+        com.earingdisplayideas.mortalmen.MainActivity $r0;
+        android.webkit.ValueCallback r1;
+
+        $r0 := @parameter0: com.earingdisplayideas.mortalmen.MainActivity;
+
+        r1 = $r0.<com.earingdisplayideas.mortalmen.MainActivity: android.webkit.ValueCallback k>;
+
+        return r1;
+    }
+
+    static android.webkit.ValueCallback a(com.earingdisplayideas.mortalmen.MainActivity, android.webkit.ValueCallback)
+    {
+        com.earingdisplayideas.mortalmen.MainActivity $r0;
+        android.webkit.ValueCallback $r1;
+
+        $r0 := @parameter0: com.earingdisplayideas.mortalmen.MainActivity;
+
+        $r1 := @parameter1: android.webkit.ValueCallback;
+
+        $r0.<com.earingdisplayideas.mortalmen.MainActivity: android.webkit.ValueCallback k> = $r1;
+
+        return $r1;
+    }
+
+    static java.lang.String a()
+    {
+        java.lang.String r0;
+
+        r0 = <com.earingdisplayideas.mortalmen.MainActivity: java.lang.String i>;
+
+        return r0;
+    }
+
+    static java.lang.String a(com.earingdisplayideas.mortalmen.MainActivity, java.lang.String)
+    {
+        com.earingdisplayideas.mortalmen.MainActivity $r0;
+        java.lang.String $r1;
+
+        $r0 := @parameter0: com.earingdisplayideas.mortalmen.MainActivity;
+
+        $r1 := @parameter1: java.lang.String;
+
+        $r0.<com.earingdisplayideas.mortalmen.MainActivity: java.lang.String l> = $r1;
+
+        return $r1;
+    }
+
+    static java.lang.String b(com.earingdisplayideas.mortalmen.MainActivity)
+    {
+        com.earingdisplayideas.mortalmen.MainActivity $r0;
+        java.lang.String r1;
+
+        $r0 := @parameter0: com.earingdisplayideas.mortalmen.MainActivity;
+
+        r1 = $r0.<com.earingdisplayideas.mortalmen.MainActivity: java.lang.String l>;
+
+        return r1;
+    }
+
+    public void onActivityResult(int, int, android.content.Intent)
+    {
+        com.earingdisplayideas.mortalmen.MainActivity r0;
+        int $i0, $i1;
+        android.content.Intent $r1;
+        android.webkit.ValueCallback $r2;
+        java.lang.String $r3;
+        android.net.Uri[] $r4;
+        android.net.Uri $r5;
+
+        r0 := @this: com.earingdisplayideas.mortalmen.MainActivity;
+
+        $i0 := @parameter0: int;
+
+        $i1 := @parameter1: int;
+
+        $r1 := @parameter2: android.content.Intent;
+
+        if $i0 != 1 goto label1;
+
+        $r2 = r0.<com.earingdisplayideas.mortalmen.MainActivity: android.webkit.ValueCallback k>;
+
+        if $r2 != null goto label2;
+
+     label1:
+        specialinvoke r0.<android.app.Activity: void onActivityResult(int,int,android.content.Intent)>($i0, $i1, $r1);
+
+        return;
+
+     label2:
+        if $i1 != -1 goto label8;
+
+        if $r1 != null goto label6;
+
+        $r3 = r0.<com.earingdisplayideas.mortalmen.MainActivity: java.lang.String l>;
+
+        if $r3 == null goto label8;
+
+        $r4 = newarray (android.net.Uri)[1];
+
+        $r3 = r0.<com.earingdisplayideas.mortalmen.MainActivity: java.lang.String l>;
+
+        $r5 = staticinvoke <android.net.Uri: android.net.Uri parse(java.lang.String)>($r3);
+
+        $r4[0] = $r5;
+
+     label3:
+        $r2 = r0.<com.earingdisplayideas.mortalmen.MainActivity: android.webkit.ValueCallback k>;
+
+        interfaceinvoke $r2.<android.webkit.ValueCallback: void onReceiveValue(java.lang.Object)>($r4);
+
+        r0.<com.earingdisplayideas.mortalmen.MainActivity: android.webkit.ValueCallback k> = null;
+
+        if $i0 != 1 goto label9;
+
+        $r2 = r0.<com.earingdisplayideas.mortalmen.MainActivity: android.webkit.ValueCallback j>;
+
+        if $r2 == null goto label9;
+
+        if $r1 == null goto label4;
+
+        if $i1 == -1 goto label7;
+
+     label4:
+        $r5 = null;
+
+     label5:
+        $r2 = r0.<com.earingdisplayideas.mortalmen.MainActivity: android.webkit.ValueCallback j>;
+
+        interfaceinvoke $r2.<android.webkit.ValueCallback: void onReceiveValue(java.lang.Object)>($r5);
+
+        r0.<com.earingdisplayideas.mortalmen.MainActivity: android.webkit.ValueCallback j> = null;
+
+        return;
+
+     label6:
+        $r3 = virtualinvoke $r1.<android.content.Intent: java.lang.String getDataString()>();
+
+        if $r3 == null goto label8;
+
+        $r4 = newarray (android.net.Uri)[1];
+
+        $r5 = staticinvoke <android.net.Uri: android.net.Uri parse(java.lang.String)>($r3);
+
+        $r4[0] = $r5;
+
+        goto label3;
+
+     label7:
+        $r5 = virtualinvoke $r1.<android.content.Intent: android.net.Uri getData()>();
+
+        goto label5;
+
+     label8:
+        $r4 = null;
+
+        goto label3;
+
+     label9:
+        return;
+    }
+
+    public void onBackPressed()
+    {
+        com.earingdisplayideas.mortalmen.MainActivity r0;
+        boolean $z0;
+        android.content.res.Resources $r1;
+        android.os.Handler $r2;
+        com.earingdisplayideas.mortalmen.h $r3;
+        android.webkit.WebView $r4;
+
+        r0 := @this: com.earingdisplayideas.mortalmen.MainActivity;
+
+        $z0 = r0.<com.earingdisplayideas.mortalmen.MainActivity: boolean h>;
+
+        if $z0 == 0 goto label2;
+
+        $r1 = virtualinvoke r0.<com.earingdisplayideas.mortalmen.MainActivity: android.content.res.Resources getResources()>();
+
+        $z0 = virtualinvoke $r1.<android.content.res.Resources: boolean getBoolean(int)>(2131230728);
+
+        if $z0 == 0 goto label2;
+
+        virtualinvoke r0.<com.earingdisplayideas.mortalmen.MainActivity: void finish()>();
+
+     label1:
+        $r2 = new android.os.Handler;
+
+        specialinvoke $r2.<android.os.Handler: void <init>()>();
+
+        $r3 = new com.earingdisplayideas.mortalmen.h;
+
+        specialinvoke $r3.<com.earingdisplayideas.mortalmen.h: void <init>(com.earingdisplayideas.mortalmen.MainActivity)>(r0);
+
+        virtualinvoke $r2.<android.os.Handler: boolean postDelayed(java.lang.Runnable,long)>($r3, 200L);
+
+        return;
+
+     label2:
+        $r4 = r0.<com.earingdisplayideas.mortalmen.MainActivity: android.webkit.WebView a>;
+
+        $z0 = virtualinvoke $r4.<android.webkit.WebView: boolean canGoBack()>();
+
+        if $z0 == 0 goto label3;
+
+        $r4 = r0.<com.earingdisplayideas.mortalmen.MainActivity: android.webkit.WebView a>;
+
+        virtualinvoke $r4.<android.webkit.WebView: void goBack()>();
+
+        r0.<com.earingdisplayideas.mortalmen.MainActivity: boolean h> = 1;
+
+        goto label1;
+
+     label3:
+        virtualinvoke r0.<com.earingdisplayideas.mortalmen.MainActivity: void finish()>();
+
+        staticinvoke <java.lang.System: void exit(int)>(0);
+
+        goto label1;
+    }
+
+    public void onConfigurationChanged(android.content.res.Configuration)
+    {
+        com.earingdisplayideas.mortalmen.MainActivity r0;
+        android.content.res.Configuration $r1;
+
+        r0 := @this: com.earingdisplayideas.mortalmen.MainActivity;
+
+        $r1 := @parameter0: android.content.res.Configuration;
+
+        specialinvoke r0.<android.app.Activity: void onConfigurationChanged(android.content.res.Configuration)>($r1);
+
+        return;
+    }
+
+    public void onCreate(android.os.Bundle)
+    {
+        com.earingdisplayideas.mortalmen.MainActivity r0;
+        android.os.Bundle $r1;
+        android.view.View $r2;
+        android.widget.ImageView $r3;
+        android.os.Handler $r4;
+        java.lang.Runnable $r5;
+        android.content.res.Resources $r6;
+        int $i0;
+        long $l1;
+        com.google.android.gms.ads.f $r7;
+        java.lang.String $r8;
+        com.google.android.gms.ads.d $r9;
+        com.google.android.gms.ads.b $r10;
+        com.earingdisplayideas.mortalmen.b $r11;
+        com.google.android.gms.ads.AdView $r12;
+        android.webkit.WebView $r13;
+        com.earingdisplayideas.mortalmen.c $r14;
+        android.webkit.WebSettings $r15;
+        boolean $z0;
+        java.lang.StringBuilder $r16;
+        android.webkit.WebSettings$PluginState $r17;
+        com.earingdisplayideas.mortalmen.d $r18;
+        android.webkit.WebViewClient $r19;
+        android.widget.ProgressBar $r20;
+        android.webkit.CookieManager $r21;
+        com.earingdisplayideas.mortalmen.e $r22;
+        com.earingdisplayideas.mortalmen.f $r23;
+        com.earingdisplayideas.mortalmen.g $r24;
+
+        r0 := @this: com.earingdisplayideas.mortalmen.MainActivity;
+
+        $r1 := @parameter0: android.os.Bundle;
+
+        specialinvoke r0.<android.app.Activity: void onCreate(android.os.Bundle)>($r1);
+
+        virtualinvoke r0.<com.earingdisplayideas.mortalmen.MainActivity: void setContentView(int)>(2130903040);
+
+        $r2 = virtualinvoke r0.<com.earingdisplayideas.mortalmen.MainActivity: android.view.View findViewById(int)>(2131492870);
+
+        $r3 = (android.widget.ImageView) $r2;
+
+        r0.<com.earingdisplayideas.mortalmen.MainActivity: android.widget.ImageView b> = $r3;
+
+        $r4 = r0.<com.earingdisplayideas.mortalmen.MainActivity: android.os.Handler f>;
+
+        $r5 = r0.<com.earingdisplayideas.mortalmen.MainActivity: java.lang.Runnable g>;
+
+        $r6 = virtualinvoke r0.<com.earingdisplayideas.mortalmen.MainActivity: android.content.res.Resources getResources()>();
+
+        $i0 = virtualinvoke $r6.<android.content.res.Resources: int getInteger(int)>(2131361792);
+
+        $l1 = (long) $i0;
+
+        virtualinvoke $r4.<android.os.Handler: boolean postDelayed(java.lang.Runnable,long)>($r5, $l1);
+
+        $r7 = new com.google.android.gms.ads.f;
+
+        specialinvoke $r7.<com.google.android.gms.ads.f: void <init>(android.content.Context)>(r0);
+
+        r0.<com.earingdisplayideas.mortalmen.MainActivity: com.google.android.gms.ads.f e> = $r7;
+
+        $r7 = r0.<com.earingdisplayideas.mortalmen.MainActivity: com.google.android.gms.ads.f e>;
+
+        $r6 = virtualinvoke r0.<com.earingdisplayideas.mortalmen.MainActivity: android.content.res.Resources getResources()>();
+
+        $r8 = virtualinvoke $r6.<android.content.res.Resources: java.lang.String getString(int)>(2131034156);
+
+        virtualinvoke $r7.<com.google.android.gms.ads.f: void a(java.lang.String)>($r8);
+
+        $r9 = new com.google.android.gms.ads.d;
+
+        specialinvoke $r9.<com.google.android.gms.ads.d: void <init>()>();
+
+        $r10 = virtualinvoke $r9.<com.google.android.gms.ads.d: com.google.android.gms.ads.b a()>();
+
+        $r7 = r0.<com.earingdisplayideas.mortalmen.MainActivity: com.google.android.gms.ads.f e>;
+
+        virtualinvoke $r7.<com.google.android.gms.ads.f: void a(com.google.android.gms.ads.b)>($r10);
+
+        $r7 = r0.<com.earingdisplayideas.mortalmen.MainActivity: com.google.android.gms.ads.f e>;
+
+        $r11 = new com.earingdisplayideas.mortalmen.b;
+
+        specialinvoke $r11.<com.earingdisplayideas.mortalmen.b: void <init>(com.earingdisplayideas.mortalmen.MainActivity,com.google.android.gms.ads.b)>(r0, $r10);
+
+        virtualinvoke $r7.<com.google.android.gms.ads.f: void a(com.google.android.gms.ads.a)>($r11);
+
+        r0.<com.earingdisplayideas.mortalmen.MainActivity: java.lang.String c> = "file:///android_asset/index.html";
+
+        $r2 = virtualinvoke r0.<com.earingdisplayideas.mortalmen.MainActivity: android.view.View findViewById(int)>(2131492868);
+
+        $r12 = (com.google.android.gms.ads.AdView) $r2;
+
+        $r9 = new com.google.android.gms.ads.d;
+
+        specialinvoke $r9.<com.google.android.gms.ads.d: void <init>()>();
+
+        $r10 = virtualinvoke $r9.<com.google.android.gms.ads.d: com.google.android.gms.ads.b a()>();
+
+        virtualinvoke $r12.<com.google.android.gms.ads.AdView: void a(com.google.android.gms.ads.b)>($r10);
+
+        $r2 = virtualinvoke r0.<com.earingdisplayideas.mortalmen.MainActivity: android.view.View findViewById(int)>(2131492867);
+
+        $r13 = (android.webkit.WebView) $r2;
+
+        r0.<com.earingdisplayideas.mortalmen.MainActivity: android.webkit.WebView a> = $r13;
+
+        $r13 = r0.<com.earingdisplayideas.mortalmen.MainActivity: android.webkit.WebView a>;
+
+        virtualinvoke $r13.<android.webkit.WebView: void setVisibility(int)>(8);
+
+        $r3 = r0.<com.earingdisplayideas.mortalmen.MainActivity: android.widget.ImageView b>;
+
+        virtualinvoke $r3.<android.widget.ImageView: void setVisibility(int)>(0);
+
+        $r4 = new android.os.Handler;
+
+        specialinvoke $r4.<android.os.Handler: void <init>()>();
+
+        $r14 = new com.earingdisplayideas.mortalmen.c;
+
+        specialinvoke $r14.<com.earingdisplayideas.mortalmen.c: void <init>(com.earingdisplayideas.mortalmen.MainActivity)>(r0);
+
+        $r6 = virtualinvoke r0.<com.earingdisplayideas.mortalmen.MainActivity: android.content.res.Resources getResources()>();
+
+        $i0 = virtualinvoke $r6.<android.content.res.Resources: int getInteger(int)>(2131361793);
+
+        $l1 = (long) $i0;
+
+        virtualinvoke $r4.<android.os.Handler: boolean postDelayed(java.lang.Runnable,long)>($r14, $l1);
+
+        $r13 = r0.<com.earingdisplayideas.mortalmen.MainActivity: android.webkit.WebView a>;
+
+        $r15 = virtualinvoke $r13.<android.webkit.WebView: android.webkit.WebSettings getSettings()>();
+
+        virtualinvoke $r15.<android.webkit.WebSettings: void setDatabaseEnabled(boolean)>(1);
+
+        $r13 = r0.<com.earingdisplayideas.mortalmen.MainActivity: android.webkit.WebView a>;
+
+        $r15 = virtualinvoke $r13.<android.webkit.WebView: android.webkit.WebSettings getSettings()>();
+
+        virtualinvoke $r15.<android.webkit.WebSettings: void setDomStorageEnabled(boolean)>(1);
+
+        $r13 = r0.<com.earingdisplayideas.mortalmen.MainActivity: android.webkit.WebView a>;
+
+        $r15 = virtualinvoke $r13.<android.webkit.WebView: android.webkit.WebSettings getSettings()>();
+
+        $r6 = virtualinvoke r0.<com.earingdisplayideas.mortalmen.MainActivity: android.content.res.Resources getResources()>();
+
+        $z0 = virtualinvoke $r6.<android.content.res.Resources: boolean getBoolean(int)>(2131230720);
+
+        virtualinvoke $r15.<android.webkit.WebSettings: void setAppCacheEnabled(boolean)>($z0);
+
+        $r6 = virtualinvoke r0.<com.earingdisplayideas.mortalmen.MainActivity: android.content.res.Resources getResources()>();
+
+        $r8 = virtualinvoke $r6.<android.content.res.Resources: java.lang.String getString(int)>(2131034143);
+
+        if $r8 != "NoCache" goto label3;
+
+        $r13 = r0.<com.earingdisplayideas.mortalmen.MainActivity: android.webkit.WebView a>;
+
+        $r15 = virtualinvoke $r13.<android.webkit.WebView: android.webkit.WebSettings getSettings()>();
+
+        virtualinvoke $r15.<android.webkit.WebSettings: void setCacheMode(int)>(2);
+
+     label1:
+        $r13 = r0.<com.earingdisplayideas.mortalmen.MainActivity: android.webkit.WebView a>;
+
+        $r15 = virtualinvoke $r13.<android.webkit.WebView: android.webkit.WebSettings getSettings()>();
+
+        $r16 = new java.lang.StringBuilder;
+
+        specialinvoke $r16.<java.lang.StringBuilder: void <init>()>();
+
+        $r16 = virtualinvoke $r16.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("/data/data");
+
+        $r8 = virtualinvoke r0.<com.earingdisplayideas.mortalmen.MainActivity: java.lang.String getPackageName()>();
+
+        $r16 = virtualinvoke $r16.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r8);
+
+        $r16 = virtualinvoke $r16.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("/cache");
+
+        $r8 = virtualinvoke $r16.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        virtualinvoke $r15.<android.webkit.WebSettings: void setAppCachePath(java.lang.String)>($r8);
+
+        $r13 = r0.<com.earingdisplayideas.mortalmen.MainActivity: android.webkit.WebView a>;
+
+        $r15 = virtualinvoke $r13.<android.webkit.WebView: android.webkit.WebSettings getSettings()>();
+
+        virtualinvoke $r15.<android.webkit.WebSettings: void setAllowFileAccess(boolean)>(1);
+
+        $r13 = r0.<com.earingdisplayideas.mortalmen.MainActivity: android.webkit.WebView a>;
+
+        virtualinvoke $r13.<android.webkit.WebView: void setScrollBarStyle(int)>(33554432);
+
+        $r13 = r0.<com.earingdisplayideas.mortalmen.MainActivity: android.webkit.WebView a>;
+
+        $r15 = virtualinvoke $r13.<android.webkit.WebView: android.webkit.WebSettings getSettings()>();
+
+        $r6 = virtualinvoke r0.<com.earingdisplayideas.mortalmen.MainActivity: android.content.res.Resources getResources()>();
+
+        $z0 = virtualinvoke $r6.<android.content.res.Resources: boolean getBoolean(int)>(2131230723);
+
+        virtualinvoke $r15.<android.webkit.WebSettings: void setSaveFormData(boolean)>($z0);
+
+        $r13 = r0.<com.earingdisplayideas.mortalmen.MainActivity: android.webkit.WebView a>;
+
+        $r15 = virtualinvoke $r13.<android.webkit.WebView: android.webkit.WebSettings getSettings()>();
+
+        $r6 = virtualinvoke r0.<com.earingdisplayideas.mortalmen.MainActivity: android.content.res.Resources getResources()>();
+
+        $z0 = virtualinvoke $r6.<android.content.res.Resources: boolean getBoolean(int)>(2131230726);
+
+        virtualinvoke $r15.<android.webkit.WebSettings: void setUseWideViewPort(boolean)>($z0);
+
+        $r13 = r0.<com.earingdisplayideas.mortalmen.MainActivity: android.webkit.WebView a>;
+
+        $r15 = virtualinvoke $r13.<android.webkit.WebView: android.webkit.WebSettings getSettings()>();
+
+        virtualinvoke $r15.<android.webkit.WebSettings: void setJavaScriptEnabled(boolean)>(1);
+
+        $r13 = r0.<com.earingdisplayideas.mortalmen.MainActivity: android.webkit.WebView a>;
+
+        $r15 = virtualinvoke $r13.<android.webkit.WebView: android.webkit.WebSettings getSettings()>();
+
+        $r17 = <android.webkit.WebSettings$PluginState: android.webkit.WebSettings$PluginState ON>;
+
+        virtualinvoke $r15.<android.webkit.WebSettings: void setPluginState(android.webkit.WebSettings$PluginState)>($r17);
+
+        $r13 = r0.<com.earingdisplayideas.mortalmen.MainActivity: android.webkit.WebView a>;
+
+        $r6 = virtualinvoke r0.<com.earingdisplayideas.mortalmen.MainActivity: android.content.res.Resources getResources()>();
+
+        $z0 = virtualinvoke $r6.<android.content.res.Resources: boolean getBoolean(int)>(2131230724);
+
+        virtualinvoke $r13.<android.webkit.WebView: void setHorizontalScrollBarEnabled(boolean)>($z0);
+
+        $r13 = r0.<com.earingdisplayideas.mortalmen.MainActivity: android.webkit.WebView a>;
+
+        $r6 = virtualinvoke r0.<com.earingdisplayideas.mortalmen.MainActivity: android.content.res.Resources getResources()>();
+
+        $z0 = virtualinvoke $r6.<android.content.res.Resources: boolean getBoolean(int)>(2131230724);
+
+        virtualinvoke $r13.<android.webkit.WebView: void setVerticalScrollBarEnabled(boolean)>($z0);
+
+        $r13 = r0.<com.earingdisplayideas.mortalmen.MainActivity: android.webkit.WebView a>;
+
+        $r6 = virtualinvoke r0.<com.earingdisplayideas.mortalmen.MainActivity: android.content.res.Resources getResources()>();
+
+        $z0 = virtualinvoke $r6.<android.content.res.Resources: boolean getBoolean(int)>(2131230721);
+
+        virtualinvoke $r13.<android.webkit.WebView: void setLongClickable(boolean)>($z0);
+
+        $r13 = r0.<com.earingdisplayideas.mortalmen.MainActivity: android.webkit.WebView a>;
+
+        $r15 = virtualinvoke $r13.<android.webkit.WebView: android.webkit.WebSettings getSettings()>();
+
+        virtualinvoke $r15.<android.webkit.WebSettings: void setGeolocationEnabled(boolean)>(1);
+
+        $r13 = r0.<com.earingdisplayideas.mortalmen.MainActivity: android.webkit.WebView a>;
+
+        $r18 = new com.earingdisplayideas.mortalmen.d;
+
+        specialinvoke $r18.<com.earingdisplayideas.mortalmen.d: void <init>(com.earingdisplayideas.mortalmen.MainActivity)>(r0);
+
+        virtualinvoke $r13.<android.webkit.WebView: void setOnLongClickListener(android.view.View$OnLongClickListener)>($r18);
+
+        $r13 = r0.<com.earingdisplayideas.mortalmen.MainActivity: android.webkit.WebView a>;
+
+        $r15 = virtualinvoke $r13.<android.webkit.WebView: android.webkit.WebSettings getSettings()>();
+
+        virtualinvoke $r15.<android.webkit.WebSettings: void setGeolocationEnabled(boolean)>(1);
+
+        $r13 = r0.<com.earingdisplayideas.mortalmen.MainActivity: android.webkit.WebView a>;
+
+        $r8 = r0.<com.earingdisplayideas.mortalmen.MainActivity: java.lang.String c>;
+
+        virtualinvoke $r13.<android.webkit.WebView: void loadUrl(java.lang.String)>($r8);
+
+        $r13 = r0.<com.earingdisplayideas.mortalmen.MainActivity: android.webkit.WebView a>;
+
+        $r19 = new android.webkit.WebViewClient;
+
+        specialinvoke $r19.<android.webkit.WebViewClient: void <init>()>();
+
+        virtualinvoke $r13.<android.webkit.WebView: void setWebViewClient(android.webkit.WebViewClient)>($r19);
+
+        $r13 = r0.<com.earingdisplayideas.mortalmen.MainActivity: android.webkit.WebView a>;
+
+        virtualinvoke $r13.<android.webkit.WebView: void setScrollBarStyle(int)>(33554432);
+
+        $r13 = r0.<com.earingdisplayideas.mortalmen.MainActivity: android.webkit.WebView a>;
+
+        $r15 = virtualinvoke $r13.<android.webkit.WebView: android.webkit.WebSettings getSettings()>();
+
+        $r6 = virtualinvoke r0.<com.earingdisplayideas.mortalmen.MainActivity: android.content.res.Resources getResources()>();
+
+        $z0 = virtualinvoke $r6.<android.content.res.Resources: boolean getBoolean(int)>(2131230727);
+
+        virtualinvoke $r15.<android.webkit.WebSettings: void setSupportZoom(boolean)>($z0);
+
+        $r13 = r0.<com.earingdisplayideas.mortalmen.MainActivity: android.webkit.WebView a>;
+
+        $r15 = virtualinvoke $r13.<android.webkit.WebView: android.webkit.WebSettings getSettings()>();
+
+        $r6 = virtualinvoke r0.<com.earingdisplayideas.mortalmen.MainActivity: android.content.res.Resources getResources()>();
+
+        $z0 = virtualinvoke $r6.<android.content.res.Resources: boolean getBoolean(int)>(2131230727);
+
+        virtualinvoke $r15.<android.webkit.WebSettings: void setBuiltInZoomControls(boolean)>($z0);
+
+        $r2 = virtualinvoke r0.<com.earingdisplayideas.mortalmen.MainActivity: android.view.View findViewById(int)>(2131492869);
+
+        $r20 = (android.widget.ProgressBar) $r2;
+
+        r0.<com.earingdisplayideas.mortalmen.MainActivity: android.widget.ProgressBar d> = $r20;
+
+        $r21 = staticinvoke <android.webkit.CookieManager: android.webkit.CookieManager getInstance()>();
+
+        virtualinvoke $r21.<android.webkit.CookieManager: boolean acceptCookie()>();
+
+        if $r1 == null goto label2;
+
+        $r13 = r0.<com.earingdisplayideas.mortalmen.MainActivity: android.webkit.WebView a>;
+
+        virtualinvoke $r13.<android.webkit.WebView: android.webkit.WebBackForwardList restoreState(android.os.Bundle)>($r1);
+
+     label2:
+        $r13 = r0.<com.earingdisplayideas.mortalmen.MainActivity: android.webkit.WebView a>;
+
+        $r22 = new com.earingdisplayideas.mortalmen.e;
+
+        specialinvoke $r22.<com.earingdisplayideas.mortalmen.e: void <init>(com.earingdisplayideas.mortalmen.MainActivity)>(r0);
+
+        virtualinvoke $r13.<android.webkit.WebView: void setWebChromeClient(android.webkit.WebChromeClient)>($r22);
+
+        $r13 = r0.<com.earingdisplayideas.mortalmen.MainActivity: android.webkit.WebView a>;
+
+        $r23 = new com.earingdisplayideas.mortalmen.f;
+
+        specialinvoke $r23.<com.earingdisplayideas.mortalmen.f: void <init>(com.earingdisplayideas.mortalmen.MainActivity)>(r0);
+
+        virtualinvoke $r13.<android.webkit.WebView: void setWebViewClient(android.webkit.WebViewClient)>($r23);
+
+        $r13 = r0.<com.earingdisplayideas.mortalmen.MainActivity: android.webkit.WebView a>;
+
+        $r24 = new com.earingdisplayideas.mortalmen.g;
+
+        specialinvoke $r24.<com.earingdisplayideas.mortalmen.g: void <init>(com.earingdisplayideas.mortalmen.MainActivity)>(r0);
+
+        virtualinvoke $r13.<android.webkit.WebView: void setDownloadListener(android.webkit.DownloadListener)>($r24);
+
+        return;
+
+     label3:
+        $r6 = virtualinvoke r0.<com.earingdisplayideas.mortalmen.MainActivity: android.content.res.Resources getResources()>();
+
+        $r8 = virtualinvoke $r6.<android.content.res.Resources: java.lang.String getString(int)>(2131034143);
+
+        if $r8 != "HighCache" goto label4;
+
+        $r13 = r0.<com.earingdisplayideas.mortalmen.MainActivity: android.webkit.WebView a>;
+
+        $r15 = virtualinvoke $r13.<android.webkit.WebView: android.webkit.WebSettings getSettings()>();
+
+        virtualinvoke $r15.<android.webkit.WebSettings: void setCacheMode(int)>(1);
+
+        goto label1;
+
+     label4:
+        $r13 = r0.<com.earingdisplayideas.mortalmen.MainActivity: android.webkit.WebView a>;
+
+        $r15 = virtualinvoke $r13.<android.webkit.WebView: android.webkit.WebSettings getSettings()>();
+
+        virtualinvoke $r15.<android.webkit.WebSettings: void setCacheMode(int)>(-1);
+
+        goto label1;
+    }
+
+    public boolean onCreateOptionsMenu(android.view.Menu)
+    {
+        com.earingdisplayideas.mortalmen.MainActivity r0;
+        android.view.Menu $r1;
+        android.view.MenuInflater $r2;
+
+        r0 := @this: com.earingdisplayideas.mortalmen.MainActivity;
+
+        $r1 := @parameter0: android.view.Menu;
+
+        $r2 = virtualinvoke r0.<com.earingdisplayideas.mortalmen.MainActivity: android.view.MenuInflater getMenuInflater()>();
+
+        virtualinvoke $r2.<android.view.MenuInflater: void inflate(int,android.view.Menu)>(2131427328, $r1);
+
+        return 1;
+    }
+
+    public boolean onOptionsItemSelected(android.view.MenuItem)
+    {
+        com.earingdisplayideas.mortalmen.MainActivity r0;
+        android.view.MenuItem $r1;
+        android.app.AlertDialog$Builder $r2;
+        int $i0;
+        android.app.AlertDialog $r3;
+        boolean $z0;
+
+        r0 := @this: com.earingdisplayideas.mortalmen.MainActivity;
+
+        $r1 := @parameter0: android.view.MenuItem;
+
+        $i0 = interfaceinvoke $r1.<android.view.MenuItem: int getItemId()>();
+
+        $r2 = new android.app.AlertDialog$Builder;
+
+        specialinvoke $r2.<android.app.AlertDialog$Builder: void <init>(android.content.Context)>(r0);
+
+        virtualinvoke $r2.<android.app.AlertDialog$Builder: android.app.AlertDialog$Builder setMessage(int)>(2131034162);
+
+        virtualinvoke $r2.<android.app.AlertDialog$Builder: android.app.AlertDialog$Builder setTitle(java.lang.CharSequence)>("About");
+
+        virtualinvoke $r2.<android.app.AlertDialog$Builder: android.app.AlertDialog$Builder setPositiveButton(java.lang.CharSequence,android.content.DialogInterface$OnClickListener)>("OK", null);
+
+        virtualinvoke $r2.<android.app.AlertDialog$Builder: android.app.AlertDialog$Builder setCancelable(boolean)>(1);
+
+        if $i0 != 2131492872 goto label1;
+
+        virtualinvoke r0.<com.earingdisplayideas.mortalmen.MainActivity: void finish()>();
+
+        return 1;
+
+     label1:
+        if $i0 != 2131492871 goto label2;
+
+        $r3 = virtualinvoke $r2.<android.app.AlertDialog$Builder: android.app.AlertDialog create()>();
+
+        virtualinvoke $r3.<android.app.AlertDialog: void show()>();
+
+        return 1;
+
+     label2:
+        $z0 = specialinvoke r0.<android.app.Activity: boolean onOptionsItemSelected(android.view.MenuItem)>($r1);
+
+        return $z0;
+    }
+
+    protected void onPause()
+    {
+        com.earingdisplayideas.mortalmen.MainActivity r0;
+        android.os.Handler $r1;
+        java.lang.Runnable $r2;
+
+        r0 := @this: com.earingdisplayideas.mortalmen.MainActivity;
+
+        $r1 = r0.<com.earingdisplayideas.mortalmen.MainActivity: android.os.Handler f>;
+
+        $r2 = r0.<com.earingdisplayideas.mortalmen.MainActivity: java.lang.Runnable g>;
+
+        virtualinvoke $r1.<android.os.Handler: void removeCallbacks(java.lang.Runnable)>($r2);
+
+        specialinvoke r0.<android.app.Activity: void onPause()>();
+
+        return;
+    }
+
+    protected void onResume()
+    {
+        com.earingdisplayideas.mortalmen.MainActivity r0;
+        android.os.Handler $r1;
+        java.lang.Runnable $r2;
+        android.content.res.Resources $r3;
+        int $i0;
+        long $l1;
+
+        r0 := @this: com.earingdisplayideas.mortalmen.MainActivity;
+
+        $r1 = r0.<com.earingdisplayideas.mortalmen.MainActivity: android.os.Handler f>;
+
+        $r2 = r0.<com.earingdisplayideas.mortalmen.MainActivity: java.lang.Runnable g>;
+
+        $r3 = virtualinvoke r0.<com.earingdisplayideas.mortalmen.MainActivity: android.content.res.Resources getResources()>();
+
+        $i0 = virtualinvoke $r3.<android.content.res.Resources: int getInteger(int)>(2131361792);
+
+        $l1 = (long) $i0;
+
+        virtualinvoke $r1.<android.os.Handler: boolean postDelayed(java.lang.Runnable,long)>($r2, $l1);
+
+        specialinvoke r0.<android.app.Activity: void onResume()>();
+
+        return;
+    }
+}

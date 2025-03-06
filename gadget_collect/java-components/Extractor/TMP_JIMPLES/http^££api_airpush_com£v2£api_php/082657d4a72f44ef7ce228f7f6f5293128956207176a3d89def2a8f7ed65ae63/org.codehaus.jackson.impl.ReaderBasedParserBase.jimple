@@ -1,0 +1,244 @@
+public abstract class org.codehaus.jackson.impl.ReaderBasedParserBase extends org.codehaus.jackson.impl.JsonNumericParserBase
+{
+    protected char[] _inputBuffer;
+    protected java.io.Reader _reader;
+
+    protected void <init>(org.codehaus.jackson.io.IOContext, int, java.io.Reader)
+    {
+        org.codehaus.jackson.impl.ReaderBasedParserBase r0;
+        org.codehaus.jackson.io.IOContext $r1;
+        int $i0;
+        java.io.Reader $r2;
+        char[] $r3;
+
+        r0 := @this: org.codehaus.jackson.impl.ReaderBasedParserBase;
+
+        $r1 := @parameter0: org.codehaus.jackson.io.IOContext;
+
+        $i0 := @parameter1: int;
+
+        $r2 := @parameter2: java.io.Reader;
+
+        specialinvoke r0.<org.codehaus.jackson.impl.JsonNumericParserBase: void <init>(org.codehaus.jackson.io.IOContext,int)>($r1, $i0);
+
+        r0.<org.codehaus.jackson.impl.ReaderBasedParserBase: java.io.Reader _reader> = $r2;
+
+        $r3 = virtualinvoke $r1.<org.codehaus.jackson.io.IOContext: char[] allocTokenBuffer()>();
+
+        r0.<org.codehaus.jackson.impl.ReaderBasedParserBase: char[] _inputBuffer> = $r3;
+
+        return;
+    }
+
+    protected void _closeInput() throws java.io.IOException
+    {
+        org.codehaus.jackson.impl.ReaderBasedParserBase r0;
+        java.io.Reader $r1;
+        org.codehaus.jackson.io.IOContext $r2;
+        boolean $z0;
+        org.codehaus.jackson.JsonParser$Feature $r3;
+
+        r0 := @this: org.codehaus.jackson.impl.ReaderBasedParserBase;
+
+        $r1 = r0.<org.codehaus.jackson.impl.ReaderBasedParserBase: java.io.Reader _reader>;
+
+        if $r1 == null goto label3;
+
+        $r2 = r0.<org.codehaus.jackson.impl.ReaderBasedParserBase: org.codehaus.jackson.io.IOContext _ioContext>;
+
+        $z0 = virtualinvoke $r2.<org.codehaus.jackson.io.IOContext: boolean isResourceManaged()>();
+
+        if $z0 != 0 goto label1;
+
+        $r3 = <org.codehaus.jackson.JsonParser$Feature: org.codehaus.jackson.JsonParser$Feature AUTO_CLOSE_SOURCE>;
+
+        $z0 = virtualinvoke r0.<org.codehaus.jackson.impl.ReaderBasedParserBase: boolean isEnabled(org.codehaus.jackson.JsonParser$Feature)>($r3);
+
+        if $z0 == 0 goto label2;
+
+     label1:
+        $r1 = r0.<org.codehaus.jackson.impl.ReaderBasedParserBase: java.io.Reader _reader>;
+
+        virtualinvoke $r1.<java.io.Reader: void close()>();
+
+     label2:
+        r0.<org.codehaus.jackson.impl.ReaderBasedParserBase: java.io.Reader _reader> = null;
+
+     label3:
+        return;
+    }
+
+    protected void _releaseBuffers() throws java.io.IOException
+    {
+        org.codehaus.jackson.impl.ReaderBasedParserBase r0;
+        char[] r1;
+        org.codehaus.jackson.io.IOContext $r2;
+
+        r0 := @this: org.codehaus.jackson.impl.ReaderBasedParserBase;
+
+        specialinvoke r0.<org.codehaus.jackson.impl.JsonNumericParserBase: void _releaseBuffers()>();
+
+        r1 = r0.<org.codehaus.jackson.impl.ReaderBasedParserBase: char[] _inputBuffer>;
+
+        if r1 == null goto label1;
+
+        r0.<org.codehaus.jackson.impl.ReaderBasedParserBase: char[] _inputBuffer> = null;
+
+        $r2 = r0.<org.codehaus.jackson.impl.ReaderBasedParserBase: org.codehaus.jackson.io.IOContext _ioContext>;
+
+        virtualinvoke $r2.<org.codehaus.jackson.io.IOContext: void releaseTokenBuffer(char[])>(r1);
+
+     label1:
+        return;
+    }
+
+    protected char getNextChar(java.lang.String) throws java.io.IOException, org.codehaus.jackson.JsonParseException
+    {
+        org.codehaus.jackson.impl.ReaderBasedParserBase r0;
+        java.lang.String $r1;
+        int $i0, $i1;
+        boolean $z0;
+        char[] $r2;
+        char $c2;
+
+        r0 := @this: org.codehaus.jackson.impl.ReaderBasedParserBase;
+
+        $r1 := @parameter0: java.lang.String;
+
+        $i0 = r0.<org.codehaus.jackson.impl.ReaderBasedParserBase: int _inputPtr>;
+
+        $i1 = r0.<org.codehaus.jackson.impl.ReaderBasedParserBase: int _inputEnd>;
+
+        if $i0 < $i1 goto label1;
+
+        $z0 = virtualinvoke r0.<org.codehaus.jackson.impl.ReaderBasedParserBase: boolean loadMore()>();
+
+        if $z0 != 0 goto label1;
+
+        virtualinvoke r0.<org.codehaus.jackson.impl.ReaderBasedParserBase: void _reportInvalidEOF(java.lang.String)>($r1);
+
+     label1:
+        $r2 = r0.<org.codehaus.jackson.impl.ReaderBasedParserBase: char[] _inputBuffer>;
+
+        $i1 = r0.<org.codehaus.jackson.impl.ReaderBasedParserBase: int _inputPtr>;
+
+        $i0 = $i1 + 1;
+
+        r0.<org.codehaus.jackson.impl.ReaderBasedParserBase: int _inputPtr> = $i0;
+
+        $c2 = $r2[$i1];
+
+        return $c2;
+    }
+
+    protected final boolean loadMore() throws java.io.IOException
+    {
+        org.codehaus.jackson.impl.ReaderBasedParserBase r0;
+        long $l0, $l2;
+        int $i1, $i3;
+        java.io.Reader $r1;
+        char[] $r2, $r3;
+        java.io.IOException $r4;
+        java.lang.StringBuilder $r5;
+        java.lang.String $r6;
+
+        r0 := @this: org.codehaus.jackson.impl.ReaderBasedParserBase;
+
+        $l0 = r0.<org.codehaus.jackson.impl.ReaderBasedParserBase: long _currInputProcessed>;
+
+        $i1 = r0.<org.codehaus.jackson.impl.ReaderBasedParserBase: int _inputEnd>;
+
+        $l2 = (long) $i1;
+
+        $l0 = $l0 + $l2;
+
+        r0.<org.codehaus.jackson.impl.ReaderBasedParserBase: long _currInputProcessed> = $l0;
+
+        $i1 = r0.<org.codehaus.jackson.impl.ReaderBasedParserBase: int _currInputRowStart>;
+
+        $i3 = r0.<org.codehaus.jackson.impl.ReaderBasedParserBase: int _inputEnd>;
+
+        $i1 = $i1 - $i3;
+
+        r0.<org.codehaus.jackson.impl.ReaderBasedParserBase: int _currInputRowStart> = $i1;
+
+        $r1 = r0.<org.codehaus.jackson.impl.ReaderBasedParserBase: java.io.Reader _reader>;
+
+        if $r1 == null goto label2;
+
+        $r1 = r0.<org.codehaus.jackson.impl.ReaderBasedParserBase: java.io.Reader _reader>;
+
+        $r2 = r0.<org.codehaus.jackson.impl.ReaderBasedParserBase: char[] _inputBuffer>;
+
+        $r3 = r0.<org.codehaus.jackson.impl.ReaderBasedParserBase: char[] _inputBuffer>;
+
+        $i1 = lengthof $r3;
+
+        $i1 = virtualinvoke $r1.<java.io.Reader: int read(char[],int,int)>($r2, 0, $i1);
+
+        if $i1 <= 0 goto label1;
+
+        r0.<org.codehaus.jackson.impl.ReaderBasedParserBase: int _inputPtr> = 0;
+
+        r0.<org.codehaus.jackson.impl.ReaderBasedParserBase: int _inputEnd> = $i1;
+
+        return 1;
+
+     label1:
+        virtualinvoke r0.<org.codehaus.jackson.impl.ReaderBasedParserBase: void _closeInput()>();
+
+        if $i1 != 0 goto label2;
+
+        $r4 = new java.io.IOException;
+
+        $r5 = new java.lang.StringBuilder;
+
+        specialinvoke $r5.<java.lang.StringBuilder: void <init>()>();
+
+        $r5 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Reader returned 0 characters when trying to read ");
+
+        $i1 = r0.<org.codehaus.jackson.impl.ReaderBasedParserBase: int _inputEnd>;
+
+        $r5 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>($i1);
+
+        $r6 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke $r4.<java.io.IOException: void <init>(java.lang.String)>($r6);
+
+        throw $r4;
+
+     label2:
+        return 0;
+    }
+
+    public int releaseBuffered(java.io.Writer) throws java.io.IOException
+    {
+        org.codehaus.jackson.impl.ReaderBasedParserBase r0;
+        java.io.Writer $r1;
+        int i0, i1;
+        char[] $r2;
+
+        r0 := @this: org.codehaus.jackson.impl.ReaderBasedParserBase;
+
+        $r1 := @parameter0: java.io.Writer;
+
+        i1 = r0.<org.codehaus.jackson.impl.ReaderBasedParserBase: int _inputEnd>;
+
+        i0 = r0.<org.codehaus.jackson.impl.ReaderBasedParserBase: int _inputPtr>;
+
+        i0 = i1 - i0;
+
+        if i0 >= 1 goto label1;
+
+        return 0;
+
+     label1:
+        i1 = r0.<org.codehaus.jackson.impl.ReaderBasedParserBase: int _inputPtr>;
+
+        $r2 = r0.<org.codehaus.jackson.impl.ReaderBasedParserBase: char[] _inputBuffer>;
+
+        virtualinvoke $r1.<java.io.Writer: void write(char[],int,int)>($r2, i1, i0);
+
+        return i0;
+    }
+}

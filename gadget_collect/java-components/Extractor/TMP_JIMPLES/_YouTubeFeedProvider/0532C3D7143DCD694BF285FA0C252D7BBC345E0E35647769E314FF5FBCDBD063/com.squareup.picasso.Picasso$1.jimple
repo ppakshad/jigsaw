@@ -1,0 +1,142 @@
+final class com.squareup.picasso.Picasso$1 extends android.os.Handler
+{
+
+    void <init>(android.os.Looper)
+    {
+        com.squareup.picasso.Picasso$1 r0;
+        android.os.Looper $r1;
+
+        r0 := @this: com.squareup.picasso.Picasso$1;
+
+        $r1 := @parameter0: android.os.Looper;
+
+        specialinvoke r0.<android.os.Handler: void <init>(android.os.Looper)>($r1);
+
+        return;
+    }
+
+    public final void handleMessage(android.os.Message)
+    {
+        com.squareup.picasso.Picasso$1 r0;
+        android.os.Message $r1;
+        int $i0, $i1;
+        java.lang.AssertionError $r2;
+        java.lang.StringBuilder $r3;
+        java.lang.String $r4;
+        java.lang.Object $r5;
+        java.util.List $r6;
+        com.squareup.picasso.BitmapHunter $r7;
+        com.squareup.picasso.Picasso $r8;
+        com.squareup.picasso.Action $r9;
+        boolean $z0;
+        com.squareup.picasso.Request $r10;
+
+        r0 := @this: com.squareup.picasso.Picasso$1;
+
+        $r1 := @parameter0: android.os.Message;
+
+        $i0 = $r1.<android.os.Message: int what>;
+
+        lookupswitch($i0)
+        {
+            case 3: goto label4;
+            case 8: goto label2;
+            case 13: goto label6;
+            default: goto label1;
+        };
+
+     label1:
+        $r2 = new java.lang.AssertionError;
+
+        $r3 = new java.lang.StringBuilder;
+
+        specialinvoke $r3.<java.lang.StringBuilder: void <init>(java.lang.String)>("Unknown handler message received: ");
+
+        $i0 = $r1.<android.os.Message: int what>;
+
+        $r3 = virtualinvoke $r3.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>($i0);
+
+        $r4 = virtualinvoke $r3.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke $r2.<java.lang.AssertionError: void <init>(java.lang.Object)>($r4);
+
+        throw $r2;
+
+     label2:
+        $r5 = $r1.<android.os.Message: java.lang.Object obj>;
+
+        $r6 = (java.util.List) $r5;
+
+        $i0 = interfaceinvoke $r6.<java.util.List: int size()>();
+
+        $i1 = 0;
+
+     label3:
+        if $i1 >= $i0 goto label8;
+
+        $r5 = interfaceinvoke $r6.<java.util.List: java.lang.Object get(int)>($i1);
+
+        $r7 = (com.squareup.picasso.BitmapHunter) $r5;
+
+        $r8 = $r7.<com.squareup.picasso.BitmapHunter: com.squareup.picasso.Picasso picasso>;
+
+        virtualinvoke $r8.<com.squareup.picasso.Picasso: void complete(com.squareup.picasso.BitmapHunter)>($r7);
+
+        $i1 = $i1 + 1;
+
+        goto label3;
+
+     label4:
+        $r5 = $r1.<android.os.Message: java.lang.Object obj>;
+
+        $r9 = (com.squareup.picasso.Action) $r5;
+
+        $r8 = virtualinvoke $r9.<com.squareup.picasso.Action: com.squareup.picasso.Picasso getPicasso()>();
+
+        $z0 = $r8.<com.squareup.picasso.Picasso: boolean loggingEnabled>;
+
+        if $z0 == 0 goto label5;
+
+        $r10 = $r9.<com.squareup.picasso.Action: com.squareup.picasso.Request request>;
+
+        $r4 = virtualinvoke $r10.<com.squareup.picasso.Request: java.lang.String logId()>();
+
+        staticinvoke <com.squareup.picasso.Utils: void log(java.lang.String,java.lang.String,java.lang.String,java.lang.String)>("Main", "canceled", $r4, "target got garbage collected");
+
+     label5:
+        $r8 = $r9.<com.squareup.picasso.Action: com.squareup.picasso.Picasso picasso>;
+
+        $r5 = virtualinvoke $r9.<com.squareup.picasso.Action: java.lang.Object getTarget()>();
+
+        staticinvoke <com.squareup.picasso.Picasso: void access$000(com.squareup.picasso.Picasso,java.lang.Object)>($r8, $r5);
+
+        return;
+
+     label6:
+        $r5 = $r1.<android.os.Message: java.lang.Object obj>;
+
+        $r6 = (java.util.List) $r5;
+
+        $i0 = interfaceinvoke $r6.<java.util.List: int size()>();
+
+        $i1 = 0;
+
+     label7:
+        if $i1 >= $i0 goto label8;
+
+        $r5 = interfaceinvoke $r6.<java.util.List: java.lang.Object get(int)>($i1);
+
+        $r9 = (com.squareup.picasso.Action) $r5;
+
+        $r8 = $r9.<com.squareup.picasso.Action: com.squareup.picasso.Picasso picasso>;
+
+        virtualinvoke $r8.<com.squareup.picasso.Picasso: void resumeAction(com.squareup.picasso.Action)>($r9);
+
+        $i1 = $i1 + 1;
+
+        goto label7;
+
+     label8:
+        return;
+    }
+}

@@ -1,0 +1,385 @@
+public class com.iconosys.dancestrobe.Light extends java.lang.Object
+{
+    private static final java.lang.String TAG;
+    private android.hardware.Camera camera;
+    private com.iconosys.dancestrobe.Preview mPreview;
+
+    public void <init>(android.content.Context)
+    {
+        com.iconosys.dancestrobe.Light r0;
+        android.content.Context $r1;
+        boolean $z0;
+        com.iconosys.dancestrobe.Preview $r2;
+        android.hardware.Camera $r3;
+        java.lang.StringBuilder $r4;
+        java.lang.String $r5;
+
+        r0 := @this: com.iconosys.dancestrobe.Light;
+
+        $r1 := @parameter0: android.content.Context;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        $z0 = staticinvoke <com.iconosys.dancestrobe.Utilities: boolean IsAndroid22OrHigher()>();
+
+        if $z0 == 0 goto label3;
+
+        $z0 = staticinvoke <com.iconosys.dancestrobe.Utilities: boolean IsDROID()>();
+
+        if $z0 != 0 goto label3;
+
+        staticinvoke <android.util.Log: int d(java.lang.String,java.lang.String)>("MotoTorch LED - Light", "Android version is 2.2 or higher");
+
+        $r2 = new com.iconosys.dancestrobe.Preview;
+
+        specialinvoke $r2.<com.iconosys.dancestrobe.Preview: void <init>(android.content.Context)>($r1);
+
+        r0.<com.iconosys.dancestrobe.Light: com.iconosys.dancestrobe.Preview mPreview> = $r2;
+
+        $r2 = r0.<com.iconosys.dancestrobe.Light: com.iconosys.dancestrobe.Preview mPreview>;
+
+        $r3 = virtualinvoke $r2.<com.iconosys.dancestrobe.Preview: android.hardware.Camera GetCameraObject()>();
+
+        r0.<com.iconosys.dancestrobe.Light: android.hardware.Camera camera> = $r3;
+
+        $r3 = r0.<com.iconosys.dancestrobe.Light: android.hardware.Camera camera>;
+
+        if $r3 != null goto label2;
+
+        $z0 = 1;
+
+     label1:
+        $r4 = new java.lang.StringBuilder;
+
+        specialinvoke $r4.<java.lang.StringBuilder: void <init>(java.lang.String)>("Is Camera Null? ");
+
+        $r4 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.StringBuilder append(boolean)>($z0);
+
+        $r5 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <android.util.Log: int d(java.lang.String,java.lang.String)>("MotoTorch LED - Light", $r5);
+
+        return;
+
+     label2:
+        $z0 = 0;
+
+        goto label1;
+
+     label3:
+        staticinvoke <android.util.Log: int d(java.lang.String,java.lang.String)>("MotoTorch LED - Light", "Android version is 2.1 or lower");
+
+        return;
+    }
+
+    public void ChangeScreenBrightness(int)
+    {
+        com.iconosys.dancestrobe.Light r0;
+        int $i0;
+        android.os.IBinder $r1;
+        android.os.IHardwareService $r2;
+        java.lang.Exception $r3;
+
+        r0 := @this: com.iconosys.dancestrobe.Light;
+
+        $i0 := @parameter0: int;
+
+     label1:
+        $r1 = staticinvoke <android.os.ServiceManager: android.os.IBinder getService(java.lang.String)>("hardware");
+
+        $r2 = staticinvoke <android.os.IHardwareService$Stub: android.os.IHardwareService asInterface(android.os.IBinder)>($r1);
+
+        interfaceinvoke $r2.<android.os.IHardwareService: void setScreenBacklight(int)>($i0);
+
+     label2:
+        return;
+
+     label3:
+        $r3 := @caughtexception;
+
+        virtualinvoke $r3.<java.lang.Exception: void printStackTrace()>();
+
+        return;
+
+        catch java.lang.Exception from label1 to label2 with label3;
+    }
+
+    public boolean IsFlashOn()
+    {
+        com.iconosys.dancestrobe.Light r0;
+        boolean z0, $z1;
+        android.os.IBinder $r1;
+        android.os.IHardwareService $r2;
+        android.os.RemoteException $r3;
+        android.hardware.Camera $r4;
+        android.hardware.Camera$Parameters $r5;
+        java.lang.String $r6;
+        java.lang.Exception $r7;
+
+        r0 := @this: com.iconosys.dancestrobe.Light;
+
+        staticinvoke <android.util.Log: int d(java.lang.String,java.lang.String)>("MotoTorch LED - Light", "Determining if LEDs are on");
+
+        z0 = 0;
+
+        $z1 = staticinvoke <com.iconosys.dancestrobe.Utilities: boolean IsAndroid22OrHigher()>();
+
+        if $z1 == 0 goto label01;
+
+        $z1 = staticinvoke <com.iconosys.dancestrobe.Utilities: boolean IsDROID()>();
+
+        if $z1 == 0 goto label06;
+
+     label01:
+        $r1 = staticinvoke <android.os.ServiceManager: android.os.IBinder getService(java.lang.String)>("hardware");
+
+        $r2 = staticinvoke <android.os.IHardwareService$Stub: android.os.IHardwareService asInterface(android.os.IBinder)>($r1);
+
+        $z1 = interfaceinvoke $r2.<android.os.IHardwareService: boolean getFlashlightEnabled()>();
+
+     label02:
+        z0 = $z1;
+
+     label03:
+        if z0 == 0 goto label10;
+
+        staticinvoke <android.util.Log: int d(java.lang.String,java.lang.String)>("MotoTorch LED - Light", "LEDs are on.");
+
+     label04:
+        return z0;
+
+     label05:
+        $r3 := @caughtexception;
+
+        virtualinvoke $r3.<android.os.RemoteException: void printStackTrace()>();
+
+        goto label03;
+
+     label06:
+        $r4 = r0.<com.iconosys.dancestrobe.Light: android.hardware.Camera camera>;
+
+        if $r4 != null goto label07;
+
+        return 0;
+
+     label07:
+        $r4 = r0.<com.iconosys.dancestrobe.Light: android.hardware.Camera camera>;
+
+        $r5 = virtualinvoke $r4.<android.hardware.Camera: android.hardware.Camera$Parameters getParameters()>();
+
+        $r6 = virtualinvoke $r5.<android.hardware.Camera$Parameters: java.lang.String getFlashMode()>();
+
+        $z1 = virtualinvoke $r6.<java.lang.String: boolean equals(java.lang.Object)>("torch");
+
+     label08:
+        if $z1 == 0 goto label03;
+
+        z0 = 1;
+
+        goto label03;
+
+     label09:
+        $r7 := @caughtexception;
+
+        virtualinvoke $r7.<java.lang.Exception: void printStackTrace()>();
+
+        goto label03;
+
+     label10:
+        staticinvoke <android.util.Log: int d(java.lang.String,java.lang.String)>("MotoTorch LED - Light", "LEDs are off.");
+
+        goto label04;
+
+        catch android.os.RemoteException from label01 to label02 with label05;
+        catch java.lang.Exception from label07 to label08 with label09;
+    }
+
+    public void ReleaseCamera()
+    {
+        com.iconosys.dancestrobe.Light r0;
+        android.hardware.Camera $r1;
+        java.lang.Exception $r2;
+
+        r0 := @this: com.iconosys.dancestrobe.Light;
+
+        staticinvoke <android.util.Log: int d(java.lang.String,java.lang.String)>("MotoTorch LED - Light", "Releasing camera.");
+
+     label1:
+        $r1 = r0.<com.iconosys.dancestrobe.Light: android.hardware.Camera camera>;
+
+        virtualinvoke $r1.<android.hardware.Camera: void unlock()>();
+
+        $r1 = r0.<com.iconosys.dancestrobe.Light: android.hardware.Camera camera>;
+
+        virtualinvoke $r1.<android.hardware.Camera: void release()>();
+
+     label2:
+        staticinvoke <android.util.Log: int d(java.lang.String,java.lang.String)>("MotoTorch LED - Light", "Camera released.");
+
+        return;
+
+     label3:
+        $r2 := @caughtexception;
+
+        virtualinvoke $r2.<java.lang.Exception: void printStackTrace()>();
+
+        goto label2;
+
+        catch java.lang.Exception from label1 to label2 with label3;
+    }
+
+    public void TurnOffTheLight()
+    {
+        com.iconosys.dancestrobe.Light r0;
+        boolean $z0;
+        android.os.IBinder $r1;
+        android.os.IHardwareService $r2;
+        java.lang.Exception $r3, $r6;
+        android.hardware.Camera $r4;
+        android.hardware.Camera$Parameters $r5;
+
+        r0 := @this: com.iconosys.dancestrobe.Light;
+
+        staticinvoke <android.util.Log: int d(java.lang.String,java.lang.String)>("MotoTorch LED - Light", "Turning LEDs off.");
+
+        $z0 = staticinvoke <com.iconosys.dancestrobe.Utilities: boolean IsAndroid22OrHigher()>();
+
+        if $z0 == 0 goto label1;
+
+        $z0 = staticinvoke <com.iconosys.dancestrobe.Utilities: boolean IsDROID()>();
+
+        if $z0 == 0 goto label4;
+
+     label1:
+        $r1 = staticinvoke <android.os.ServiceManager: android.os.IBinder getService(java.lang.String)>("hardware");
+
+        $r2 = staticinvoke <android.os.IHardwareService$Stub: android.os.IHardwareService asInterface(android.os.IBinder)>($r1);
+
+        interfaceinvoke $r2.<android.os.IHardwareService: void setFlashlightEnabled(boolean)>(0);
+
+     label2:
+        staticinvoke <android.util.Log: int d(java.lang.String,java.lang.String)>("MotoTorch LED - Light", "LEDs are now off.");
+
+        return;
+
+     label3:
+        $r3 := @caughtexception;
+
+        virtualinvoke $r3.<java.lang.Exception: void printStackTrace()>();
+
+        goto label2;
+
+     label4:
+        $r4 = r0.<com.iconosys.dancestrobe.Light: android.hardware.Camera camera>;
+
+        if $r4 == null goto label8;
+
+     label5:
+        $r4 = r0.<com.iconosys.dancestrobe.Light: android.hardware.Camera camera>;
+
+        $r5 = virtualinvoke $r4.<android.hardware.Camera: android.hardware.Camera$Parameters getParameters()>();
+
+        virtualinvoke $r5.<android.hardware.Camera$Parameters: void setFlashMode(java.lang.String)>("auto");
+
+        $r4 = r0.<com.iconosys.dancestrobe.Light: android.hardware.Camera camera>;
+
+        virtualinvoke $r4.<android.hardware.Camera: void setParameters(android.hardware.Camera$Parameters)>($r5);
+
+     label6:
+        goto label2;
+
+     label7:
+        $r6 := @caughtexception;
+
+        virtualinvoke $r6.<java.lang.Exception: void printStackTrace()>();
+
+        goto label2;
+
+     label8:
+        return;
+
+        catch java.lang.Exception from label1 to label2 with label3;
+        catch java.lang.Exception from label5 to label6 with label7;
+    }
+
+    public void TurnOnTheLight()
+    {
+        com.iconosys.dancestrobe.Light r0;
+        boolean $z0;
+        android.os.IBinder $r1;
+        android.os.IHardwareService $r2;
+        java.lang.Exception $r3, $r6;
+        android.hardware.Camera $r4;
+        android.hardware.Camera$Parameters $r5;
+
+        r0 := @this: com.iconosys.dancestrobe.Light;
+
+        staticinvoke <android.util.Log: int d(java.lang.String,java.lang.String)>("MotoTorch LED - Light", "Turning on the LEDs.");
+
+        $z0 = staticinvoke <com.iconosys.dancestrobe.Utilities: boolean IsAndroid22OrHigher()>();
+
+        if $z0 == 0 goto label1;
+
+        $z0 = staticinvoke <com.iconosys.dancestrobe.Utilities: boolean IsDROID()>();
+
+        if $z0 == 0 goto label4;
+
+     label1:
+        $r1 = staticinvoke <android.os.ServiceManager: android.os.IBinder getService(java.lang.String)>("hardware");
+
+        $r2 = staticinvoke <android.os.IHardwareService$Stub: android.os.IHardwareService asInterface(android.os.IBinder)>($r1);
+
+        interfaceinvoke $r2.<android.os.IHardwareService: void setFlashlightEnabled(boolean)>(1);
+
+     label2:
+        staticinvoke <android.util.Log: int d(java.lang.String,java.lang.String)>("MotoTorch LED - Light", "LEDs are now on.");
+
+        return;
+
+     label3:
+        $r3 := @caughtexception;
+
+        virtualinvoke $r3.<java.lang.Exception: void printStackTrace()>();
+
+        goto label2;
+
+     label4:
+        $r4 = r0.<com.iconosys.dancestrobe.Light: android.hardware.Camera camera>;
+
+        if $r4 == null goto label8;
+
+     label5:
+        $r4 = r0.<com.iconosys.dancestrobe.Light: android.hardware.Camera camera>;
+
+        $r5 = virtualinvoke $r4.<android.hardware.Camera: android.hardware.Camera$Parameters getParameters()>();
+
+        virtualinvoke $r5.<android.hardware.Camera$Parameters: void setFlashMode(java.lang.String)>("torch");
+
+        $r4 = r0.<com.iconosys.dancestrobe.Light: android.hardware.Camera camera>;
+
+        virtualinvoke $r4.<android.hardware.Camera: void setParameters(android.hardware.Camera$Parameters)>($r5);
+
+     label6:
+        goto label2;
+
+     label7:
+        $r6 := @caughtexception;
+
+        virtualinvoke $r6.<java.lang.Exception: void printStackTrace()>();
+
+        goto label2;
+
+     label8:
+        return;
+
+        catch java.lang.Exception from label1 to label2 with label3;
+        catch java.lang.Exception from label5 to label6 with label7;
+    }
+
+    public static void <clinit>()
+    {
+        <com.iconosys.dancestrobe.Light: java.lang.String TAG> = "MotoTorch LED - Light";
+
+        return;
+    }
+}

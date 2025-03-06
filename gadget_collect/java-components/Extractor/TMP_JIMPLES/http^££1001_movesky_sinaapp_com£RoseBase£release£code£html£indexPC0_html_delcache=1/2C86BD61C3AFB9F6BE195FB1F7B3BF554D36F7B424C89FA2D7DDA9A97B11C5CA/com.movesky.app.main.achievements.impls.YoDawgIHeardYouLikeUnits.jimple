@@ -1,0 +1,84 @@
+public class com.movesky.app.main.achievements.impls.YoDawgIHeardYouLikeUnits extends com.movesky.app.main.achievements.BBTHAchievement
+{
+
+    public void <init>(com.movesky.app.engine.achievements.AchievementInfo)
+    {
+        com.movesky.app.main.achievements.impls.YoDawgIHeardYouLikeUnits r0;
+        com.movesky.app.engine.achievements.AchievementInfo $r1;
+
+        r0 := @this: com.movesky.app.main.achievements.impls.YoDawgIHeardYouLikeUnits;
+
+        $r1 := @parameter0: com.movesky.app.engine.achievements.AchievementInfo;
+
+        specialinvoke r0.<com.movesky.app.main.achievements.BBTHAchievement: void <init>(com.movesky.app.engine.achievements.AchievementInfo)>($r1);
+
+        return;
+    }
+
+    public void unitCreated(com.movesky.app.main.achievements.events.UnitCreatedEvent)
+    {
+        com.movesky.app.main.achievements.impls.YoDawgIHeardYouLikeUnits r0;
+        com.movesky.app.main.achievements.events.UnitCreatedEvent $r1;
+        com.movesky.app.main.units.Unit $r2;
+        com.movesky.app.main.Player $r3;
+        com.movesky.app.main.Team $r4, $r5;
+        float $f0, $f1, $f2;
+        com.movesky.app.engine.util.Bag $r6;
+        java.util.Iterator $r7;
+        boolean $z0;
+        java.lang.Object $r8;
+
+        r0 := @this: com.movesky.app.main.achievements.impls.YoDawgIHeardYouLikeUnits;
+
+        $r1 := @parameter0: com.movesky.app.main.achievements.events.UnitCreatedEvent;
+
+        $r2 = virtualinvoke $r1.<com.movesky.app.main.achievements.events.UnitCreatedEvent: com.movesky.app.main.units.Unit getUnit()>();
+
+        $r3 = virtualinvoke $r1.<com.movesky.app.main.achievements.events.UnitCreatedEvent: com.movesky.app.main.Player getLocalPlayer()>();
+
+        $r4 = virtualinvoke $r3.<com.movesky.app.main.Player: com.movesky.app.main.Team getTeam()>();
+
+        $r5 = virtualinvoke $r2.<com.movesky.app.main.units.Unit: com.movesky.app.main.Team getTeam()>();
+
+        if $r4 != $r5 goto label2;
+
+        $f0 = virtualinvoke $r2.<com.movesky.app.main.units.Unit: float getX()>();
+
+        $f1 = virtualinvoke $r2.<com.movesky.app.main.units.Unit: float getY()>();
+
+        $f2 = virtualinvoke $r2.<com.movesky.app.main.units.Unit: float getRadius()>();
+
+        $r6 = virtualinvoke $r1.<com.movesky.app.main.achievements.events.UnitCreatedEvent: com.movesky.app.engine.util.Bag getUnitsInCircle(float,float,float)>($f0, $f1, $f2);
+
+        $r7 = virtualinvoke $r6.<com.movesky.app.engine.util.Bag: java.util.Iterator iterator()>();
+
+     label1:
+        $z0 = interfaceinvoke $r7.<java.util.Iterator: boolean hasNext()>();
+
+        if $z0 == 0 goto label2;
+
+        $r8 = interfaceinvoke $r7.<java.util.Iterator: java.lang.Object next()>();
+
+        $r2 = (com.movesky.app.main.units.Unit) $r8;
+
+        $r5 = virtualinvoke $r2.<com.movesky.app.main.units.Unit: com.movesky.app.main.Team getTeam()>();
+
+        $z0 = virtualinvoke $r4.<com.movesky.app.main.Team: boolean isEnemy(com.movesky.app.main.Team)>($r5);
+
+        if $z0 == 0 goto label1;
+
+        virtualinvoke r0.<com.movesky.app.main.achievements.impls.YoDawgIHeardYouLikeUnits: void increment()>();
+
+     label2:
+        return;
+    }
+
+    public boolean usesUnitCreated()
+    {
+        com.movesky.app.main.achievements.impls.YoDawgIHeardYouLikeUnits r0;
+
+        r0 := @this: com.movesky.app.main.achievements.impls.YoDawgIHeardYouLikeUnits;
+
+        return 1;
+    }
+}

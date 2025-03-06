@@ -1,0 +1,442 @@
+public class com.movesky.app.main.ai.OffensiveAI extends com.movesky.app.main.ai.UnitAI
+{
+    private static final float WALL_EPS;
+    com.movesky.app.engine.util.Point end_point;
+    private com.movesky.app.engine.util.Point m_flock_dir;
+    private java.util.HashMap m_fsm_conditions;
+    com.movesky.app.engine.util.Point start_point;
+
+    public void <init>()
+    {
+        com.movesky.app.main.ai.OffensiveAI r0;
+        com.movesky.app.engine.util.Point $r1;
+        java.util.HashMap $r2;
+
+        r0 := @this: com.movesky.app.main.ai.OffensiveAI;
+
+        specialinvoke r0.<com.movesky.app.main.ai.UnitAI: void <init>()>();
+
+        $r1 = new com.movesky.app.engine.util.Point;
+
+        specialinvoke $r1.<com.movesky.app.engine.util.Point: void <init>()>();
+
+        r0.<com.movesky.app.main.ai.OffensiveAI: com.movesky.app.engine.util.Point m_flock_dir> = $r1;
+
+        $r1 = new com.movesky.app.engine.util.Point;
+
+        specialinvoke $r1.<com.movesky.app.engine.util.Point: void <init>()>();
+
+        r0.<com.movesky.app.main.ai.OffensiveAI: com.movesky.app.engine.util.Point start_point> = $r1;
+
+        $r1 = new com.movesky.app.engine.util.Point;
+
+        specialinvoke $r1.<com.movesky.app.engine.util.Point: void <init>()>();
+
+        r0.<com.movesky.app.main.ai.OffensiveAI: com.movesky.app.engine.util.Point end_point> = $r1;
+
+        $r2 = new java.util.HashMap;
+
+        specialinvoke $r2.<java.util.HashMap: void <init>()>();
+
+        r0.<com.movesky.app.main.ai.OffensiveAI: java.util.HashMap m_fsm_conditions> = $r2;
+
+        return;
+    }
+
+    private void check_state_transition(com.movesky.app.main.units.Unit, com.movesky.app.main.ai.AIController, com.movesky.app.engine.ai.fsm.FiniteStateMachine)
+    {
+        com.movesky.app.main.ai.OffensiveAI r0;
+        com.movesky.app.main.units.Unit $r1, $r4;
+        com.movesky.app.main.ai.AIController $r2;
+        com.movesky.app.engine.ai.fsm.FiniteStateMachine $r3;
+        java.util.HashMap $r5;
+        float $f0, $f1, $f2, $f3;
+        java.lang.Float $r6;
+
+        r0 := @this: com.movesky.app.main.ai.OffensiveAI;
+
+        $r1 := @parameter0: com.movesky.app.main.units.Unit;
+
+        $r2 := @parameter1: com.movesky.app.main.ai.AIController;
+
+        $r3 := @parameter2: com.movesky.app.engine.ai.fsm.FiniteStateMachine;
+
+        $r4 = virtualinvoke $r1.<com.movesky.app.main.units.Unit: com.movesky.app.main.units.Unit getTarget()>();
+
+        $r5 = r0.<com.movesky.app.main.ai.OffensiveAI: java.util.HashMap m_fsm_conditions>;
+
+        virtualinvoke $r5.<java.util.HashMap: void clear()>();
+
+        $f0 = 3.4028235E38F;
+
+        if $r4 == null goto label1;
+
+        $f0 = virtualinvoke $r1.<com.movesky.app.main.units.Unit: float getX()>();
+
+        $f1 = virtualinvoke $r1.<com.movesky.app.main.units.Unit: float getY()>();
+
+        $f2 = virtualinvoke $r4.<com.movesky.app.main.units.Unit: float getX()>();
+
+        $f3 = virtualinvoke $r4.<com.movesky.app.main.units.Unit: float getY()>();
+
+        $f0 = staticinvoke <com.movesky.app.engine.util.MathUtils: float getDistSqr(float,float,float,float)>($f0, $f1, $f2, $f3);
+
+     label1:
+        $r5 = r0.<com.movesky.app.main.ai.OffensiveAI: java.util.HashMap m_fsm_conditions>;
+
+        $r6 = staticinvoke <java.lang.Float: java.lang.Float valueOf(float)>($f0);
+
+        virtualinvoke $r5.<java.util.HashMap: java.lang.Object put(java.lang.Object,java.lang.Object)>("targetdist", $r6);
+
+        $r5 = r0.<com.movesky.app.main.ai.OffensiveAI: java.util.HashMap m_fsm_conditions>;
+
+        virtualinvoke $r3.<com.movesky.app.engine.ai.fsm.FiniteStateMachine: boolean update(java.util.HashMap)>($r5);
+
+        return;
+    }
+
+    private void do_movement(com.movesky.app.main.units.Unit, com.movesky.app.main.ai.AIController, com.movesky.app.engine.ai.FlockRulesCalculator)
+    {
+        com.movesky.app.main.ai.OffensiveAI r0;
+        com.movesky.app.main.units.Unit $r1, $r8;
+        com.movesky.app.main.ai.AIController $r2;
+        com.movesky.app.engine.ai.FlockRulesCalculator $r3;
+        float $f0, $f1, $f2, $f3, $f4, $f5;
+        com.movesky.app.engine.util.Point $r4, $r10, $r15;
+        com.movesky.app.main.Team $r5, $r6;
+        java.lang.String $r7;
+        boolean $z0;
+        com.movesky.app.engine.fastgraph.LineOfSightTester $r9;
+        com.movesky.app.engine.fastgraph.Wall $r11;
+        com.movesky.app.engine.ai.Pathfinder $r12;
+        java.util.ArrayList $r13;
+        int $i0;
+        java.lang.Object $r14;
+        byte $b1;
+
+        r0 := @this: com.movesky.app.main.ai.OffensiveAI;
+
+        $r1 := @parameter0: com.movesky.app.main.units.Unit;
+
+        $r2 := @parameter1: com.movesky.app.main.ai.AIController;
+
+        $r3 := @parameter2: com.movesky.app.engine.ai.FlockRulesCalculator;
+
+        $f2 = virtualinvoke $r1.<com.movesky.app.main.units.Unit: float getX()>();
+
+        $f3 = virtualinvoke $r1.<com.movesky.app.main.units.Unit: float getY()>();
+
+        $r4 = r0.<com.movesky.app.main.ai.OffensiveAI: com.movesky.app.engine.util.Point m_flock_dir>;
+
+        virtualinvoke r0.<com.movesky.app.main.ai.OffensiveAI: void calculateFlocking(com.movesky.app.main.units.Unit,com.movesky.app.main.ai.AIController,com.movesky.app.engine.ai.FlockRulesCalculator,com.movesky.app.engine.util.Point)>($r1, $r2, $r3, $r4);
+
+        $r4 = r0.<com.movesky.app.main.ai.OffensiveAI: com.movesky.app.engine.util.Point m_flock_dir>;
+
+        $f0 = $r4.<com.movesky.app.engine.util.Point: float x>;
+
+        $r4 = r0.<com.movesky.app.main.ai.OffensiveAI: com.movesky.app.engine.util.Point m_flock_dir>;
+
+        $f1 = $r4.<com.movesky.app.engine.util.Point: float y>;
+
+        $f4 = 135.0F;
+
+        $f5 = 5.0F;
+
+        $r5 = virtualinvoke $r1.<com.movesky.app.main.units.Unit: com.movesky.app.main.Team getTeam()>();
+
+        $r6 = <com.movesky.app.main.Team: com.movesky.app.main.Team SERVER>;
+
+        if $r5 != $r6 goto label1;
+
+        $f5 = 525.0F;
+
+     label1:
+        $r7 = virtualinvoke $r1.<com.movesky.app.main.units.Unit: java.lang.String getStateName()>();
+
+        $z0 = virtualinvoke $r7.<java.lang.String: boolean equals(java.lang.Object)>("attacking");
+
+        if $z0 == 0 goto label2;
+
+        $r8 = virtualinvoke $r1.<com.movesky.app.main.units.Unit: com.movesky.app.main.units.Unit getTarget()>();
+
+        if $r8 == null goto label2;
+
+        $f4 = virtualinvoke $r8.<com.movesky.app.main.units.Unit: float getX()>();
+
+        $f5 = virtualinvoke $r8.<com.movesky.app.main.units.Unit: float getY()>();
+
+     label2:
+        $r4 = r0.<com.movesky.app.main.ai.OffensiveAI: com.movesky.app.engine.util.Point start_point>;
+
+        virtualinvoke $r4.<com.movesky.app.engine.util.Point: void set(float,float)>($f2, $f3);
+
+        $r4 = r0.<com.movesky.app.main.ai.OffensiveAI: com.movesky.app.engine.util.Point end_point>;
+
+        virtualinvoke $r4.<com.movesky.app.engine.util.Point: void set(float,float)>($f4, $f5);
+
+        $r9 = r0.<com.movesky.app.main.ai.OffensiveAI: com.movesky.app.engine.fastgraph.LineOfSightTester m_tester>;
+
+        if $r9 == null goto label5;
+
+        $r9 = r0.<com.movesky.app.main.ai.OffensiveAI: com.movesky.app.engine.fastgraph.LineOfSightTester m_tester>;
+
+        $r4 = r0.<com.movesky.app.main.ai.OffensiveAI: com.movesky.app.engine.util.Point start_point>;
+
+        $r10 = r0.<com.movesky.app.main.ai.OffensiveAI: com.movesky.app.engine.util.Point end_point>;
+
+        $r11 = virtualinvoke $r9.<com.movesky.app.engine.fastgraph.LineOfSightTester: com.movesky.app.engine.fastgraph.Wall isLineOfSightClear(com.movesky.app.engine.util.Point,com.movesky.app.engine.util.Point)>($r4, $r10);
+
+        if $r11 == null goto label5;
+
+        $r4 = r0.<com.movesky.app.main.ai.OffensiveAI: com.movesky.app.engine.util.Point start_point>;
+
+        $r4 = virtualinvoke r0.<com.movesky.app.main.ai.OffensiveAI: com.movesky.app.engine.util.Point getClosestNode(com.movesky.app.engine.util.Point)>($r4);
+
+        $r10 = r0.<com.movesky.app.main.ai.OffensiveAI: com.movesky.app.engine.util.Point end_point>;
+
+        $r10 = virtualinvoke r0.<com.movesky.app.main.ai.OffensiveAI: com.movesky.app.engine.util.Point getClosestNode(com.movesky.app.engine.util.Point)>($r10);
+
+        if $r4 == null goto label3;
+
+        if $r10 == null goto label3;
+
+        $r12 = r0.<com.movesky.app.main.ai.OffensiveAI: com.movesky.app.engine.ai.Pathfinder m_pathfinder>;
+
+        virtualinvoke $r12.<com.movesky.app.engine.ai.Pathfinder: void clearPath()>();
+
+        $r12 = r0.<com.movesky.app.main.ai.OffensiveAI: com.movesky.app.engine.ai.Pathfinder m_pathfinder>;
+
+        virtualinvoke $r12.<com.movesky.app.engine.ai.Pathfinder: boolean findPath(com.movesky.app.engine.util.Point,com.movesky.app.engine.util.Point)>($r4, $r10);
+
+     label3:
+        $r12 = r0.<com.movesky.app.main.ai.OffensiveAI: com.movesky.app.engine.ai.Pathfinder m_pathfinder>;
+
+        $r13 = virtualinvoke $r12.<com.movesky.app.engine.ai.Pathfinder: java.util.ArrayList getPath()>();
+
+        $r4 = r0.<com.movesky.app.main.ai.OffensiveAI: com.movesky.app.engine.util.Point end_point>;
+
+        virtualinvoke $r13.<java.util.ArrayList: boolean add(java.lang.Object)>($r4);
+
+        $i0 = virtualinvoke $r13.<java.util.ArrayList: int size()>();
+
+        if $i0 <= 1 goto label5;
+
+        $r14 = virtualinvoke $r13.<java.util.ArrayList: java.lang.Object get(int)>(0);
+
+        $r4 = (com.movesky.app.engine.util.Point) $r14;
+
+        $i0 = virtualinvoke $r13.<java.util.ArrayList: int size()>();
+
+        if $i0 <= 1 goto label4;
+
+        $r9 = r0.<com.movesky.app.main.ai.OffensiveAI: com.movesky.app.engine.fastgraph.LineOfSightTester m_tester>;
+
+        $r10 = r0.<com.movesky.app.main.ai.OffensiveAI: com.movesky.app.engine.util.Point start_point>;
+
+        $r14 = virtualinvoke $r13.<java.util.ArrayList: java.lang.Object get(int)>(1);
+
+        $r15 = (com.movesky.app.engine.util.Point) $r14;
+
+        $r11 = virtualinvoke $r9.<com.movesky.app.engine.fastgraph.LineOfSightTester: com.movesky.app.engine.fastgraph.Wall isLineOfSightClear(com.movesky.app.engine.util.Point,com.movesky.app.engine.util.Point)>($r10, $r15);
+
+        if $r11 != null goto label4;
+
+        $r14 = virtualinvoke $r13.<java.util.ArrayList: java.lang.Object get(int)>(1);
+
+        $r4 = (com.movesky.app.engine.util.Point) $r14;
+
+     label4:
+        $f4 = $r4.<com.movesky.app.engine.util.Point: float x>;
+
+        $f5 = $r4.<com.movesky.app.engine.util.Point: float y>;
+
+     label5:
+        $f2 = virtualinvoke $r1.<com.movesky.app.main.units.Unit: float getX()>();
+
+        $f3 = virtualinvoke $r1.<com.movesky.app.main.units.Unit: float getY()>();
+
+        $f2 = staticinvoke <com.movesky.app.engine.util.MathUtils: float getAngle(float,float,float,float)>($f2, $f3, $f4, $f5);
+
+        $f4 = virtualinvoke r0.<com.movesky.app.main.ai.OffensiveAI: float getObjectiveWeighting()>();
+
+        $f3 = staticinvoke <android.util.FloatMath: float cos(float)>($f2);
+
+        $f3 = $f3 * $f4;
+
+        $f0 = $f3 + $f0;
+
+        $f2 = staticinvoke <android.util.FloatMath: float sin(float)>($f2);
+
+        $f4 = $f2 * $f4;
+
+        $f1 = $f4 + $f1;
+
+        $f1 = staticinvoke <com.movesky.app.engine.util.MathUtils: float getAngle(float,float,float,float)>(0.0F, 0.0F, $f0, $f1);
+
+        $f0 = virtualinvoke $r1.<com.movesky.app.main.units.Unit: float getHeading()>();
+
+        $f1 = staticinvoke <com.movesky.app.engine.util.MathUtils: float normalizeAngle(float,float)>($f1, $f0);
+
+        $f0 = virtualinvoke $r1.<com.movesky.app.main.units.Unit: float getHeading()>();
+
+        $f1 = $f1 - $f0;
+
+        $f0 = virtualinvoke r0.<com.movesky.app.main.ai.OffensiveAI: float getMaxVelChange()>();
+
+        $b1 = $f1 cmpl $f0;
+
+        if $b1 <= 0 goto label6;
+
+        $f1 = $f0;
+
+     label6:
+        $f4 = -1.0F * $f0;
+
+        $b1 = $f1 cmpg $f4;
+
+        if $b1 >= 0 goto label7;
+
+        $f1 = -1.0F * $f0;
+
+     label7:
+        $f0 = virtualinvoke $r1.<com.movesky.app.main.units.Unit: float getHeading()>();
+
+        $f1 = $f1 + $f0;
+
+        $f0 = virtualinvoke r0.<com.movesky.app.main.ai.OffensiveAI: float getMaxVel()>();
+
+        virtualinvoke $r1.<com.movesky.app.main.units.Unit: void setVelocity(float,float)>($f0, $f1);
+
+        return;
+    }
+
+    private void initialize_fsm(com.movesky.app.main.units.Unit)
+    {
+        com.movesky.app.main.ai.OffensiveAI r0;
+        com.movesky.app.main.units.Unit $r1;
+        com.movesky.app.engine.ai.fsm.FiniteStateMachine $r2;
+        com.movesky.app.engine.ai.fsm.FiniteState $r3, $r4;
+        com.movesky.app.engine.ai.fsm.SimpleLessTransition $r5;
+        com.movesky.app.engine.ai.fsm.SimpleGreaterTransition $r6;
+
+        r0 := @this: com.movesky.app.main.ai.OffensiveAI;
+
+        $r1 := @parameter0: com.movesky.app.main.units.Unit;
+
+        $r3 = new com.movesky.app.engine.ai.fsm.FiniteState;
+
+        specialinvoke $r3.<com.movesky.app.engine.ai.fsm.FiniteState: void <init>(java.lang.String)>("moving");
+
+        $r4 = new com.movesky.app.engine.ai.fsm.FiniteState;
+
+        specialinvoke $r4.<com.movesky.app.engine.ai.fsm.FiniteState: void <init>(java.lang.String)>("attacking");
+
+        $r5 = new com.movesky.app.engine.ai.fsm.SimpleLessTransition;
+
+        specialinvoke $r5.<com.movesky.app.engine.ai.fsm.SimpleLessTransition: void <init>(com.movesky.app.engine.ai.fsm.FiniteState,com.movesky.app.engine.ai.fsm.FiniteState)>($r3, $r4);
+
+        virtualinvoke $r5.<com.movesky.app.engine.ai.fsm.SimpleLessTransition: void setInputName(java.lang.String)>("targetdist");
+
+        virtualinvoke $r5.<com.movesky.app.engine.ai.fsm.SimpleLessTransition: void setVal(float)>(900.0F);
+
+        $r6 = new com.movesky.app.engine.ai.fsm.SimpleGreaterTransition;
+
+        specialinvoke $r6.<com.movesky.app.engine.ai.fsm.SimpleGreaterTransition: void <init>(com.movesky.app.engine.ai.fsm.FiniteState,com.movesky.app.engine.ai.fsm.FiniteState)>($r4, $r3);
+
+        virtualinvoke $r6.<com.movesky.app.engine.ai.fsm.SimpleGreaterTransition: void setInputName(java.lang.String)>("targetdist");
+
+        virtualinvoke $r6.<com.movesky.app.engine.ai.fsm.SimpleGreaterTransition: void setVal(float)>(900.0F);
+
+        virtualinvoke $r3.<com.movesky.app.engine.ai.fsm.FiniteState: void addTransition(com.movesky.app.engine.ai.fsm.StateTransition)>($r5);
+
+        virtualinvoke $r4.<com.movesky.app.engine.ai.fsm.FiniteState: void addTransition(com.movesky.app.engine.ai.fsm.StateTransition)>($r6);
+
+        $r2 = virtualinvoke $r1.<com.movesky.app.main.units.Unit: com.movesky.app.engine.ai.fsm.FiniteStateMachine getFSM()>();
+
+        virtualinvoke $r2.<com.movesky.app.engine.ai.fsm.FiniteStateMachine: void addState(java.lang.String,com.movesky.app.engine.ai.fsm.FiniteState)>("moving", $r3);
+
+        virtualinvoke $r2.<com.movesky.app.engine.ai.fsm.FiniteStateMachine: void addState(java.lang.String,com.movesky.app.engine.ai.fsm.FiniteState)>("attacking", $r4);
+
+        return;
+    }
+
+    public void update(com.movesky.app.main.units.Unit, com.movesky.app.main.ai.AIController, com.movesky.app.engine.ai.FlockRulesCalculator)
+    {
+        com.movesky.app.main.ai.OffensiveAI r0;
+        com.movesky.app.main.units.Unit $r1, $r6;
+        com.movesky.app.main.ai.AIController $r2;
+        com.movesky.app.engine.ai.FlockRulesCalculator $r3;
+        com.movesky.app.engine.ai.fsm.FiniteState $r4, $r5;
+        java.lang.String $r7;
+        com.movesky.app.engine.ai.fsm.FiniteStateMachine $r8;
+        java.io.PrintStream $r9;
+        java.lang.StringBuilder $r10;
+
+        r0 := @this: com.movesky.app.main.ai.OffensiveAI;
+
+        $r1 := @parameter0: com.movesky.app.main.units.Unit;
+
+        $r2 := @parameter1: com.movesky.app.main.ai.AIController;
+
+        $r3 := @parameter2: com.movesky.app.engine.ai.FlockRulesCalculator;
+
+        $r4 = virtualinvoke $r1.<com.movesky.app.main.units.Unit: com.movesky.app.engine.ai.fsm.FiniteState getState()>();
+
+        $r5 = $r4;
+
+        if $r4 != null goto label1;
+
+        specialinvoke r0.<com.movesky.app.main.ai.OffensiveAI: void initialize_fsm(com.movesky.app.main.units.Unit)>($r1);
+
+        $r5 = virtualinvoke $r1.<com.movesky.app.main.units.Unit: com.movesky.app.engine.ai.fsm.FiniteState getState()>();
+
+     label1:
+        $r6 = virtualinvoke r0.<com.movesky.app.main.ai.OffensiveAI: com.movesky.app.main.units.Unit getClosestEnemy(com.movesky.app.main.units.Unit)>($r1);
+
+        virtualinvoke $r1.<com.movesky.app.main.units.Unit: void setTarget(com.movesky.app.main.units.Unit)>($r6);
+
+        $r7 = virtualinvoke $r5.<com.movesky.app.engine.ai.fsm.FiniteState: java.lang.String getName()>();
+
+        if $r7 != "moving" goto label3;
+
+        specialinvoke r0.<com.movesky.app.main.ai.OffensiveAI: void do_movement(com.movesky.app.main.units.Unit,com.movesky.app.main.ai.AIController,com.movesky.app.engine.ai.FlockRulesCalculator)>($r1, $r2, $r3);
+
+     label2:
+        $r8 = virtualinvoke $r1.<com.movesky.app.main.units.Unit: com.movesky.app.engine.ai.fsm.FiniteStateMachine getFSM()>();
+
+        specialinvoke r0.<com.movesky.app.main.ai.OffensiveAI: void check_state_transition(com.movesky.app.main.units.Unit,com.movesky.app.main.ai.AIController,com.movesky.app.engine.ai.fsm.FiniteStateMachine)>($r1, $r2, $r8);
+
+        return;
+
+     label3:
+        if $r7 != "attacking" goto label4;
+
+        specialinvoke r0.<com.movesky.app.main.ai.OffensiveAI: void do_movement(com.movesky.app.main.units.Unit,com.movesky.app.main.ai.AIController,com.movesky.app.engine.ai.FlockRulesCalculator)>($r1, $r2, $r3);
+
+        goto label2;
+
+     label4:
+        $r9 = <java.lang.System: java.io.PrintStream err>;
+
+        $r10 = new java.lang.StringBuilder;
+
+        specialinvoke $r10.<java.lang.StringBuilder: void <init>()>();
+
+        $r10 = virtualinvoke $r10.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Error: entity in unknown state: ");
+
+        $r10 = virtualinvoke $r10.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r7);
+
+        $r7 = virtualinvoke $r10.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        virtualinvoke $r9.<java.io.PrintStream: void println(java.lang.String)>($r7);
+
+        goto label2;
+    }
+
+    public static void <clinit>()
+    {
+        <com.movesky.app.main.ai.OffensiveAI: float WALL_EPS> = 5.0F;
+
+        return;
+    }
+}

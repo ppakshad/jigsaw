@@ -1,0 +1,453 @@
+public class com.go108.lic.free.util.PersonDB extends android.database.sqlite.SQLiteOpenHelper
+{
+    private static final java.lang.String DATABASE_NAME;
+    private static final int DATABASE_VERSION;
+    private static final java.lang.String INFO_TABLENAME;
+
+    public void <init>(android.content.Context)
+    {
+        android.content.Context $r1;
+        com.go108.lic.free.util.PersonDB r0;
+
+        r0 := @this: com.go108.lic.free.util.PersonDB;
+
+        $r1 := @parameter0: android.content.Context;
+
+        specialinvoke r0.<android.database.sqlite.SQLiteOpenHelper: void <init>(android.content.Context,java.lang.String,android.database.sqlite.SQLiteDatabase$CursorFactory,int)>($r1, "lic.db", null, 1);
+
+        return;
+    }
+
+    public void delete(int)
+    {
+        android.database.sqlite.SQLiteDatabase $r2;
+        int $i0;
+        java.lang.String[] r1;
+        java.lang.String $r3;
+        com.go108.lic.free.util.PersonDB r0;
+
+        r0 := @this: com.go108.lic.free.util.PersonDB;
+
+        $i0 := @parameter0: int;
+
+        $r2 = virtualinvoke r0.<com.go108.lic.free.util.PersonDB: android.database.sqlite.SQLiteDatabase getReadableDatabase()>();
+
+        r1 = newarray (java.lang.String)[1];
+
+        $r3 = staticinvoke <java.lang.Integer: java.lang.String toString(int)>($i0);
+
+        r1[0] = $r3;
+
+        virtualinvoke $r2.<android.database.sqlite.SQLiteDatabase: int delete(java.lang.String,java.lang.String,java.lang.String[])>("person", "id = ?", r1);
+
+        return;
+    }
+
+    public long insert(com.go108.lic.free.util.PersonBean)
+    {
+        com.go108.lic.free.util.PersonBean $r1;
+        long $l2;
+        java.lang.Integer $r6;
+        android.database.sqlite.SQLiteDatabase $r3;
+        byte $b0;
+        int $i1;
+        android.content.ContentValues r2, $r7;
+        java.lang.String $r4;
+        java.lang.Byte $r5;
+        com.go108.lic.free.util.PersonDB r0;
+
+        r0 := @this: com.go108.lic.free.util.PersonDB;
+
+        $r1 := @parameter0: com.go108.lic.free.util.PersonBean;
+
+        $r3 = virtualinvoke r0.<com.go108.lic.free.util.PersonDB: android.database.sqlite.SQLiteDatabase getReadableDatabase()>();
+
+        $r7 = new android.content.ContentValues;
+
+        r2 = $r7;
+
+        specialinvoke $r7.<android.content.ContentValues: void <init>()>();
+
+        $r4 = virtualinvoke $r1.<com.go108.lic.free.util.PersonBean: java.lang.String getName()>();
+
+        virtualinvoke r2.<android.content.ContentValues: void put(java.lang.String,java.lang.String)>("name", $r4);
+
+        $b0 = virtualinvoke $r1.<com.go108.lic.free.util.PersonBean: byte getGender()>();
+
+        $r5 = staticinvoke <java.lang.Byte: java.lang.Byte valueOf(byte)>($b0);
+
+        virtualinvoke r2.<android.content.ContentValues: void put(java.lang.String,java.lang.Byte)>("gender", $r5);
+
+        $i1 = virtualinvoke $r1.<com.go108.lic.free.util.PersonBean: int getYear()>();
+
+        $r6 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>($i1);
+
+        virtualinvoke r2.<android.content.ContentValues: void put(java.lang.String,java.lang.Integer)>("year", $r6);
+
+        $i1 = virtualinvoke $r1.<com.go108.lic.free.util.PersonBean: int getMonth()>();
+
+        $r6 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>($i1);
+
+        virtualinvoke r2.<android.content.ContentValues: void put(java.lang.String,java.lang.Integer)>("month", $r6);
+
+        $i1 = virtualinvoke $r1.<com.go108.lic.free.util.PersonBean: int getDay()>();
+
+        $r6 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>($i1);
+
+        virtualinvoke r2.<android.content.ContentValues: void put(java.lang.String,java.lang.Integer)>("day", $r6);
+
+        $i1 = virtualinvoke $r1.<com.go108.lic.free.util.PersonBean: int getTime()>();
+
+        $r6 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>($i1);
+
+        virtualinvoke r2.<android.content.ContentValues: void put(java.lang.String,java.lang.Integer)>("time", $r6);
+
+        $b0 = virtualinvoke $r1.<com.go108.lic.free.util.PersonBean: byte getType()>();
+
+        $r5 = staticinvoke <java.lang.Byte: java.lang.Byte valueOf(byte)>($b0);
+
+        virtualinvoke r2.<android.content.ContentValues: void put(java.lang.String,java.lang.Byte)>("type", $r5);
+
+        $b0 = virtualinvoke $r1.<com.go108.lic.free.util.PersonBean: byte getLoveState()>();
+
+        $r5 = staticinvoke <java.lang.Byte: java.lang.Byte valueOf(byte)>($b0);
+
+        virtualinvoke r2.<android.content.ContentValues: void put(java.lang.String,java.lang.Byte)>("love_state", $r5);
+
+        $b0 = virtualinvoke $r1.<com.go108.lic.free.util.PersonBean: byte getUsing()>();
+
+        $r5 = staticinvoke <java.lang.Byte: java.lang.Byte valueOf(byte)>($b0);
+
+        virtualinvoke r2.<android.content.ContentValues: void put(java.lang.String,java.lang.Byte)>("is_using", $r5);
+
+        virtualinvoke r2.<android.content.ContentValues: void put(java.lang.String,java.lang.String)>("pay_today", "0000-00-00");
+
+        virtualinvoke r2.<android.content.ContentValues: void put(java.lang.String,java.lang.String)>("pay_weekly", "0000-00-00");
+
+        $r6 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>(-1);
+
+        virtualinvoke r2.<android.content.ContentValues: void put(java.lang.String,java.lang.Integer)>("ta_astro", $r6);
+
+        $r6 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>(-1);
+
+        virtualinvoke r2.<android.content.ContentValues: void put(java.lang.String,java.lang.Integer)>("ta_gender", $r6);
+
+        $l2 = virtualinvoke $r3.<android.database.sqlite.SQLiteDatabase: long insert(java.lang.String,java.lang.String,android.content.ContentValues)>("person", null, r2);
+
+        return $l2;
+    }
+
+    public void modify(int, com.go108.lic.free.util.PersonBean)
+    {
+        com.go108.lic.free.util.PersonBean $r1;
+        java.lang.String[] r3;
+        java.lang.Integer $r7;
+        android.database.sqlite.SQLiteDatabase $r4;
+        byte $b1;
+        int $i0;
+        android.content.ContentValues r2;
+        java.lang.String $r5;
+        java.lang.Byte $r6;
+        com.go108.lic.free.util.PersonDB r0;
+
+        r0 := @this: com.go108.lic.free.util.PersonDB;
+
+        $i0 := @parameter0: int;
+
+        $r1 := @parameter1: com.go108.lic.free.util.PersonBean;
+
+        $r4 = virtualinvoke r0.<com.go108.lic.free.util.PersonDB: android.database.sqlite.SQLiteDatabase getReadableDatabase()>();
+
+        r3 = newarray (java.lang.String)[1];
+
+        $r5 = staticinvoke <java.lang.Integer: java.lang.String toString(int)>($i0);
+
+        r3[0] = $r5;
+
+        r2 = new android.content.ContentValues;
+
+        specialinvoke r2.<android.content.ContentValues: void <init>()>();
+
+        $r5 = virtualinvoke $r1.<com.go108.lic.free.util.PersonBean: java.lang.String getName()>();
+
+        virtualinvoke r2.<android.content.ContentValues: void put(java.lang.String,java.lang.String)>("name", $r5);
+
+        $b1 = virtualinvoke $r1.<com.go108.lic.free.util.PersonBean: byte getGender()>();
+
+        $r6 = staticinvoke <java.lang.Byte: java.lang.Byte valueOf(byte)>($b1);
+
+        virtualinvoke r2.<android.content.ContentValues: void put(java.lang.String,java.lang.Byte)>("gender", $r6);
+
+        $i0 = virtualinvoke $r1.<com.go108.lic.free.util.PersonBean: int getYear()>();
+
+        $r7 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>($i0);
+
+        virtualinvoke r2.<android.content.ContentValues: void put(java.lang.String,java.lang.Integer)>("year", $r7);
+
+        $i0 = virtualinvoke $r1.<com.go108.lic.free.util.PersonBean: int getMonth()>();
+
+        $r7 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>($i0);
+
+        virtualinvoke r2.<android.content.ContentValues: void put(java.lang.String,java.lang.Integer)>("month", $r7);
+
+        $i0 = virtualinvoke $r1.<com.go108.lic.free.util.PersonBean: int getDay()>();
+
+        $r7 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>($i0);
+
+        virtualinvoke r2.<android.content.ContentValues: void put(java.lang.String,java.lang.Integer)>("day", $r7);
+
+        $i0 = virtualinvoke $r1.<com.go108.lic.free.util.PersonBean: int getTime()>();
+
+        $r7 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>($i0);
+
+        virtualinvoke r2.<android.content.ContentValues: void put(java.lang.String,java.lang.Integer)>("time", $r7);
+
+        $b1 = virtualinvoke $r1.<com.go108.lic.free.util.PersonBean: byte getLoveState()>();
+
+        $r6 = staticinvoke <java.lang.Byte: java.lang.Byte valueOf(byte)>($b1);
+
+        virtualinvoke r2.<android.content.ContentValues: void put(java.lang.String,java.lang.Byte)>("love_state", $r6);
+
+        $b1 = virtualinvoke $r1.<com.go108.lic.free.util.PersonBean: byte getUsing()>();
+
+        $r6 = staticinvoke <java.lang.Byte: java.lang.Byte valueOf(byte)>($b1);
+
+        virtualinvoke r2.<android.content.ContentValues: void put(java.lang.String,java.lang.Byte)>("is_using", $r6);
+
+        virtualinvoke $r4.<android.database.sqlite.SQLiteDatabase: int update(java.lang.String,android.content.ContentValues,java.lang.String,java.lang.String[])>("person", r2, "id = ?", r3);
+
+        return;
+    }
+
+    public void onCreate(android.database.sqlite.SQLiteDatabase)
+    {
+        android.database.sqlite.SQLiteDatabase $r1;
+        com.go108.lic.free.util.PersonDB r0;
+
+        r0 := @this: com.go108.lic.free.util.PersonDB;
+
+        $r1 := @parameter0: android.database.sqlite.SQLiteDatabase;
+
+        staticinvoke <android.util.Log: int d(java.lang.String,java.lang.String)>("debug", "person is created");
+
+        virtualinvoke $r1.<android.database.sqlite.SQLiteDatabase: void execSQL(java.lang.String)>("CREATE TABLE person (id INTEGER PRIMARY KEY AUTOINCREMENT,name TEXT,gender INTEGER,year INTEGER,month INTEGER,day INTEGER,time INTEGER,type INTEGER,love_state INTEGER,is_using INTEGER,pay_today DATE,pay_weekly DATE,ta_astro INTEGER,ta_gender);");
+
+        return;
+    }
+
+    public void onUpgrade(android.database.sqlite.SQLiteDatabase, int, int)
+    {
+        android.database.sqlite.SQLiteDatabase $r1;
+        int $i0, $i1;
+        com.go108.lic.free.util.PersonDB r0;
+
+        r0 := @this: com.go108.lic.free.util.PersonDB;
+
+        $r1 := @parameter0: android.database.sqlite.SQLiteDatabase;
+
+        $i0 := @parameter1: int;
+
+        $i1 := @parameter2: int;
+
+        virtualinvoke $r1.<android.database.sqlite.SQLiteDatabase: void execSQL(java.lang.String)>("DROP TABLE IF EXISTS person");
+
+        virtualinvoke r0.<com.go108.lic.free.util.PersonDB: void onCreate(android.database.sqlite.SQLiteDatabase)>($r1);
+
+        return;
+    }
+
+    public void payToday(int)
+    {
+        android.database.sqlite.SQLiteDatabase $r1;
+        java.util.Calendar $r2;
+        int $i0, i1, $i2, $i3;
+        java.lang.StringBuilder $r3;
+        java.lang.String $r4;
+        com.go108.lic.free.util.PersonDB r0;
+
+        r0 := @this: com.go108.lic.free.util.PersonDB;
+
+        $i0 := @parameter0: int;
+
+        $r1 = virtualinvoke r0.<com.go108.lic.free.util.PersonDB: android.database.sqlite.SQLiteDatabase getReadableDatabase()>();
+
+        $r2 = staticinvoke <java.util.Calendar: java.util.Calendar getInstance()>();
+
+        $i2 = virtualinvoke $r2.<java.util.Calendar: int get(int)>(1);
+
+        i1 = virtualinvoke $r2.<java.util.Calendar: int get(int)>(2);
+
+        i1 = i1 + 1;
+
+        $i3 = virtualinvoke $r2.<java.util.Calendar: int get(int)>(5);
+
+        $r3 = new java.lang.StringBuilder;
+
+        $r4 = staticinvoke <com.go108.lic.free.menu.SystemShare: java.lang.String formateInt(int)>($i2);
+
+        $r4 = staticinvoke <java.lang.String: java.lang.String valueOf(java.lang.Object)>($r4);
+
+        specialinvoke $r3.<java.lang.StringBuilder: void <init>(java.lang.String)>($r4);
+
+        $r3 = virtualinvoke $r3.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("-");
+
+        $r4 = staticinvoke <com.go108.lic.free.menu.SystemShare: java.lang.String formateInt(int)>(i1);
+
+        $r3 = virtualinvoke $r3.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r4);
+
+        $r3 = virtualinvoke $r3.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("-");
+
+        $r4 = staticinvoke <com.go108.lic.free.menu.SystemShare: java.lang.String formateInt(int)>($i3);
+
+        $r3 = virtualinvoke $r3.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r4);
+
+        $r4 = virtualinvoke $r3.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        $r3 = new java.lang.StringBuilder;
+
+        specialinvoke $r3.<java.lang.StringBuilder: void <init>(java.lang.String)>("update person set pay_today =\'");
+
+        $r3 = virtualinvoke $r3.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r4);
+
+        $r3 = virtualinvoke $r3.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("\' where id = ");
+
+        $r3 = virtualinvoke $r3.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>($i0);
+
+        $r4 = virtualinvoke $r3.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        virtualinvoke $r1.<android.database.sqlite.SQLiteDatabase: void execSQL(java.lang.String)>($r4);
+
+        return;
+    }
+
+    public void payWeekly(int, int, int)
+    {
+        android.database.sqlite.SQLiteDatabase $r1;
+        java.util.Calendar $r2;
+        int $i0, $i1, $i2, i3, $i4, $i5;
+        java.lang.StringBuilder $r3;
+        java.lang.String $r4;
+        com.go108.lic.free.util.PersonDB r0;
+
+        r0 := @this: com.go108.lic.free.util.PersonDB;
+
+        $i0 := @parameter0: int;
+
+        $i1 := @parameter1: int;
+
+        $i2 := @parameter2: int;
+
+        $r1 = virtualinvoke r0.<com.go108.lic.free.util.PersonDB: android.database.sqlite.SQLiteDatabase getReadableDatabase()>();
+
+        $r2 = staticinvoke <java.util.Calendar: java.util.Calendar getInstance()>();
+
+        $i4 = virtualinvoke $r2.<java.util.Calendar: int get(int)>(7);
+
+        if $i4 == 1 goto label1;
+
+        $i4 = 8 - $i4;
+
+        virtualinvoke $r2.<java.util.Calendar: void add(int,int)>(5, $i4);
+
+     label1:
+        $i4 = virtualinvoke $r2.<java.util.Calendar: int get(int)>(1);
+
+        i3 = virtualinvoke $r2.<java.util.Calendar: int get(int)>(2);
+
+        i3 = i3 + 1;
+
+        $i5 = virtualinvoke $r2.<java.util.Calendar: int get(int)>(5);
+
+        $r3 = new java.lang.StringBuilder;
+
+        $r4 = staticinvoke <com.go108.lic.free.menu.SystemShare: java.lang.String formateInt(int)>($i4);
+
+        $r4 = staticinvoke <java.lang.String: java.lang.String valueOf(java.lang.Object)>($r4);
+
+        specialinvoke $r3.<java.lang.StringBuilder: void <init>(java.lang.String)>($r4);
+
+        $r3 = virtualinvoke $r3.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("-");
+
+        $r4 = staticinvoke <com.go108.lic.free.menu.SystemShare: java.lang.String formateInt(int)>(i3);
+
+        $r3 = virtualinvoke $r3.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r4);
+
+        $r3 = virtualinvoke $r3.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("-");
+
+        $r4 = staticinvoke <com.go108.lic.free.menu.SystemShare: java.lang.String formateInt(int)>($i5);
+
+        $r3 = virtualinvoke $r3.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r4);
+
+        $r4 = virtualinvoke $r3.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        $r3 = new java.lang.StringBuilder;
+
+        specialinvoke $r3.<java.lang.StringBuilder: void <init>(java.lang.String)>("update person set pay_weekly =\'");
+
+        $r3 = virtualinvoke $r3.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r4);
+
+        $r3 = virtualinvoke $r3.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("\',ta_astro = \'");
+
+        $r3 = virtualinvoke $r3.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>($i1);
+
+        $r3 = virtualinvoke $r3.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("\',ta_gender = \'");
+
+        $r3 = virtualinvoke $r3.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>($i2);
+
+        $r3 = virtualinvoke $r3.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("\' where id = ");
+
+        $r3 = virtualinvoke $r3.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>($i0);
+
+        $r4 = virtualinvoke $r3.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        virtualinvoke $r1.<android.database.sqlite.SQLiteDatabase: void execSQL(java.lang.String)>($r4);
+
+        return;
+    }
+
+    public android.database.Cursor query(java.lang.String, java.lang.String[])
+    {
+        android.database.sqlite.SQLiteDatabase $r3;
+        java.lang.String[] $r2;
+        java.lang.String $r1;
+        com.go108.lic.free.util.PersonDB r0;
+        android.database.Cursor $r4;
+
+        r0 := @this: com.go108.lic.free.util.PersonDB;
+
+        $r1 := @parameter0: java.lang.String;
+
+        $r2 := @parameter1: java.lang.String[];
+
+        $r3 = virtualinvoke r0.<com.go108.lic.free.util.PersonDB: android.database.sqlite.SQLiteDatabase getReadableDatabase()>();
+
+        $r4 = virtualinvoke $r3.<android.database.sqlite.SQLiteDatabase: android.database.Cursor query(java.lang.String,java.lang.String[],java.lang.String,java.lang.String[],java.lang.String,java.lang.String,java.lang.String)>("person", null, $r1, $r2, null, null, null);
+
+        return $r4;
+    }
+
+    public void setNotUsing()
+    {
+        android.database.sqlite.SQLiteDatabase $r1;
+        com.go108.lic.free.util.PersonDB r0;
+
+        r0 := @this: com.go108.lic.free.util.PersonDB;
+
+        $r1 = virtualinvoke r0.<com.go108.lic.free.util.PersonDB: android.database.sqlite.SQLiteDatabase getReadableDatabase()>();
+
+        virtualinvoke $r1.<android.database.sqlite.SQLiteDatabase: void execSQL(java.lang.String)>("update person set is_using =\'0\' where type = \'0\'");
+
+        return;
+    }
+
+    public static void <clinit>()
+    {
+        <com.go108.lic.free.util.PersonDB: java.lang.String INFO_TABLENAME> = "person";
+
+        <com.go108.lic.free.util.PersonDB: int DATABASE_VERSION> = 1;
+
+        <com.go108.lic.free.util.PersonDB: java.lang.String DATABASE_NAME> = "lic.db";
+
+        return;
+    }
+}

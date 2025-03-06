@@ -1,0 +1,80 @@
+public class com.movesky.app.engine.util.Timer extends java.lang.Object
+{
+    private long start;
+    private float time;
+
+    public void <init>()
+    {
+        com.movesky.app.engine.util.Timer r0;
+
+        r0 := @this: com.movesky.app.engine.util.Timer;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public int getMilliseconds()
+    {
+        com.movesky.app.engine.util.Timer r0;
+        float $f0;
+        int $i0;
+
+        r0 := @this: com.movesky.app.engine.util.Timer;
+
+        $f0 = r0.<com.movesky.app.engine.util.Timer: float time>;
+
+        $f0 = $f0 * 1000.0F;
+
+        $i0 = (int) $f0;
+
+        return $i0;
+    }
+
+    public void start()
+    {
+        com.movesky.app.engine.util.Timer r0;
+        long $l0;
+
+        r0 := @this: com.movesky.app.engine.util.Timer;
+
+        $l0 = staticinvoke <java.lang.System: long nanoTime()>();
+
+        r0.<com.movesky.app.engine.util.Timer: long start> = $l0;
+
+        return;
+    }
+
+    public void stop()
+    {
+        com.movesky.app.engine.util.Timer r0;
+        long $l0, $l1;
+        float $f0, $f1, $f2;
+
+        r0 := @this: com.movesky.app.engine.util.Timer;
+
+        $f0 = r0.<com.movesky.app.engine.util.Timer: float time>;
+
+        $l1 = staticinvoke <java.lang.System: long nanoTime()>();
+
+        $l0 = r0.<com.movesky.app.engine.util.Timer: long start>;
+
+        $l0 = $l1 - $l0;
+
+        $f1 = (float) $l0;
+
+        $f1 = $f1 / 1.0E9F;
+
+        $f2 = r0.<com.movesky.app.engine.util.Timer: float time>;
+
+        $f1 = $f1 - $f2;
+
+        $f1 = $f1 * 0.05F;
+
+        $f0 = $f0 + $f1;
+
+        r0.<com.movesky.app.engine.util.Timer: float time> = $f0;
+
+        return;
+    }
+}

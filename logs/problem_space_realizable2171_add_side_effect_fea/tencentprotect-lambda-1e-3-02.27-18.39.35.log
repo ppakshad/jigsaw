@@ -1,0 +1,62 @@
+Using TensorFlow backend.
+WARNING:root:Running with configuration:
+{'alter_retrain_full_training': 0,
+ 'attack_succ_threshold': 0.85,
+ 'benign_poison_ratio': 0.001,
+ 'classifier': 'mlp',
+ 'clean_ratio': 0.02,
+ 'convert_mask_to_binary': 0,
+ 'dataset': 'apg',
+ 'debug': True,
+ 'delta_size': 30,
+ 'device': '5',
+ 'lambda_1': 0.001,
+ 'limited_data': 1.0,
+ 'mask_expand_type': 0,
+ 'mask_optim_step': 30,
+ 'mask_size_upperbound': 0,
+ 'max_iter': 40,
+ 'mlp_batch_size': 128,
+ 'mlp_dropout': 0.2,
+ 'mlp_epochs': 30,
+ 'mlp_hidden': '1024',
+ 'mlp_lr': 0.001,
+ 'mntd_half_training': 0,
+ 'num_of_train_batches': 5,
+ 'num_triggers': 1,
+ 'param_v': 1.0,
+ 'poison_mal_benign_rate': 0.0,
+ 'random_state': 42,
+ 'realizable_only': 0,
+ 'remain_benign_rate': 1.0,
+ 'setting': '',
+ 'subset_benign_rate': 5.0,
+ 'subset_family': 'tencentprotect',
+ 'use_last_weight': 1}
+2025-02-27 18:39:45.988228: E tensorflow/stream_executor/cuda/cuda_driver.cc:300] failed call to cuInit: CUDA_ERROR_NO_DEVICE: no CUDA-capable device is detected
+DEBUG: 02-27 18:39:46: models.py:242 * 123734336812864 Loading model from models/apg/mlp/mlp_10000-1024-1_lr0.001_b128_e30_d0.2_r42.p...
+INFO: 02-27 18:39:48: subset_backdoor_main.py:450 * 123734336812864 X_train: (100187, 10000), X_test: (49347, 10000)
+INFO: 02-27 18:39:48: subset_backdoor_main.py:451 * 123734336812864 y_train: (100187,), y_test: (49347,)
+INFO: 02-27 18:39:48: subset_backdoor_main.py:452 * 123734336812864 y_train: Counter({0: 90288, 1: 9899}), y_test: Counter({0: 44471, 1: 4876})
+INFO: 02-27 18:39:49: subset_backdoor_main.py:335 * 123734336812864 subset size: 157
+DEBUG: 02-27 18:39:49: subset_backdoor_main.py:336 * 123734336812864 subset_idx_array first 20: [  372  1432  3638  6377  6829  8044  9770 11089 11426 12088 12727 13870
+ 16413 16483 16990 17529 17767 21465 23595 23999]
+DEBUG: 02-27 18:40:03: subset_backdoor_main.py:356 * 123734336812864 subset_train_idxs first 20 (maybe < 20): [53973, 54495, 84749, 26311, 85697, 94322, 2399, 82118, 13103, 59348, 38972, 80998, 35729, 6734, 9728, 1909, 82639, 77026, 63386, 25379]
+DEBUG: 02-27 18:40:03: subset_backdoor_main.py:357 * 123734336812864 subset_test_idxs first 20 (maybe < 20): [48837, 18453, 9164, 29728, 16726, 40662, 48583, 8906, 10490, 14140, 13191, 27895, 32410, 26299, 29958, 30057, 36653, 42656, 18970, 24529]
+INFO: 02-27 18:40:03: subset_backdoor_main.py:361 * 123734336812864 X_subset: (157, 10000), type: <class 'scipy.sparse.csr.csr_matrix'>
+DEBUG: 02-27 18:40:03: subset_backdoor_main.py:364 * 123734336812864 no. of samples of subset in training: 101, from testing: 56
+DEBUG: 02-27 18:40:03: attrs.py:77 * 123734336812864 Creating converter from 3 to 5
+Traceback (most recent call last):
+  File "problem_space_with_side_effect_fea.py", line 251, in <module>
+    main()
+  File "problem_space_with_side_effect_fea.py", line 83, in main
+    random_state, subset_family)
+  File "/home/puya/Desktop/jigsawpuzzle/subset_backdoor_main.py", line 367, in separate_subset_malware
+    clean_model = load_model(CLEAN_MODEL_PATH)
+  File "/home/puya/anaconda3/envs/backdoor/lib/python3.6/site-packages/keras/engine/saving.py", line 458, in load_wrapper
+    return load_function(*args, **kwargs)
+  File "/home/puya/anaconda3/envs/backdoor/lib/python3.6/site-packages/keras/engine/saving.py", line 550, in load_model
+    model = _deserialize_model(h5dict, custom_objects, compile)
+  File "/home/puya/anaconda3/envs/backdoor/lib/python3.6/site-packages/keras/engine/saving.py", line 242, in _deserialize_model
+    model_config = json.loads(model_config.decode('utf-8'))
+AttributeError: 'str' object has no attribute 'decode'

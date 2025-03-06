@@ -1,0 +1,1247 @@
+public class com.metrictrade.and.fy extends java.lang.Object
+{
+    public static final int[] A;
+    public static final int[] B;
+    private static double[] H;
+    private static final double I;
+    public static final int[] z;
+    private double C;
+    private double D;
+    private int E;
+    private double F;
+    private boolean G;
+    public com.metrictrade.and.fy a;
+    public double b;
+    public double c;
+    public double d;
+    public double e;
+    public int f;
+    public boolean g;
+    public double h;
+    protected boolean i;
+    public boolean j;
+    protected int k;
+    protected int l;
+    public double m;
+    protected int n;
+    protected double[] o;
+    protected boolean p;
+    public int q;
+    public int r;
+    public int s;
+    public int t;
+    public int u;
+    public int v;
+    public int w;
+    public int x;
+    public int y;
+
+    static void <clinit>()
+    {
+        double[] $r0;
+        int[] $r1;
+        double $d0;
+
+        $r0 = newarray (double)[6];
+
+        $r0[0] = 0.5;
+
+        $r0[1] = 1.0;
+
+        $r0[2] = 2.0;
+
+        $r0[3] = 2.5;
+
+        $r0[4] = 5.0;
+
+        $r0[5] = 10.0;
+
+        <com.metrictrade.and.fy: double[] H> = $r0;
+
+        $r1 = newarray (int)[8];
+
+        $r1[0] = 4;
+
+        $r1[1] = 5;
+
+        $r1[2] = 10;
+
+        $r1[3] = 15;
+
+        $r1[4] = 30;
+
+        $r1[5] = 60;
+
+        $r1[6] = 62;
+
+        $r1[7] = 64;
+
+        <com.metrictrade.and.fy: int[] z> = $r1;
+
+        $r1 = newarray (int)[3];
+
+        $r1[0] = 1;
+
+        $r1[1] = 7;
+
+        $r1[2] = 8;
+
+        <com.metrictrade.and.fy: int[] A> = $r1;
+
+        $r1 = newarray (int)[11];
+
+        $r1[0] = 4;
+
+        $r1[1] = 5;
+
+        $r1[2] = 10;
+
+        $r1[3] = 15;
+
+        $r1[4] = 30;
+
+        $r1[5] = 60;
+
+        $r1[6] = 62;
+
+        $r1[7] = 64;
+
+        $r1[8] = 1;
+
+        $r1[9] = 7;
+
+        $r1[10] = 8;
+
+        <com.metrictrade.and.fy: int[] B> = $r1;
+
+        $d0 = staticinvoke <com.metrictrade.and.dc: double b(double)>(10.0);
+
+        $d0 = 1.0 / $d0;
+
+        <com.metrictrade.and.fy: double I> = $d0;
+
+        return;
+    }
+
+    public void <init>()
+    {
+        com.metrictrade.and.fy r0;
+
+        r0 := @this: com.metrictrade.and.fy;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        r0.<com.metrictrade.and.fy: int n> = 32;
+
+        r0.<com.metrictrade.and.fy: double F> = 1.0E-4;
+
+        r0.<com.metrictrade.and.fy: int y> = -1;
+
+        r0.<com.metrictrade.and.fy: double m> = 1.0;
+
+        r0.<com.metrictrade.and.fy: boolean G> = 1;
+
+        r0.<com.metrictrade.and.fy: double D> = 1.0E-5;
+
+        return;
+    }
+
+    private double d(double)
+    {
+        byte $b0;
+        int $i1;
+        com.metrictrade.and.fy r0;
+        double $d0, $d1, $d2;
+
+        r0 := @this: com.metrictrade.and.fy;
+
+        $d0 := @parameter0: double;
+
+        $d1 = 1.0;
+
+        $b0 = $d0 cmpg 0.0;
+
+        $i1 = (int) $b0;
+
+        if $i1 >= 0 goto label2;
+
+        $d0 = neg $d0;
+
+        $d2 = r0.<com.metrictrade.and.fy: double D>;
+
+        $d0 = $d0 / $d2;
+
+        $d0 = staticinvoke <com.metrictrade.and.dc: double b(double)>($d0);
+
+        $d0 = neg $d0;
+
+        $b0 = $d0 cmpl 1.0;
+
+        $i1 = (int) $b0;
+
+        if $i1 <= 0 goto label3;
+
+     label1:
+        $d0 = <com.metrictrade.and.fy: double I>;
+
+        $d0 = $d1 * $d0;
+
+        return $d0;
+
+     label2:
+        $b0 = $d0 cmpl 0.0;
+
+        $i1 = (int) $b0;
+
+        if $i1 <= 0 goto label4;
+
+        $d2 = r0.<com.metrictrade.and.fy: double D>;
+
+        $d0 = $d0 / $d2;
+
+        $d2 = staticinvoke <com.metrictrade.and.dc: double b(double)>($d0);
+
+        $d0 = $d2;
+
+        $b0 = $d2 cmpg 1.0;
+
+        $i1 = (int) $b0;
+
+        if $i1 < 0 goto label1;
+
+     label3:
+        $d1 = $d0;
+
+        goto label1;
+
+     label4:
+        $d1 = 0.0;
+
+        goto label1;
+    }
+
+    public static double d(double, double)
+    {
+        byte $b0;
+        double $d0, $d1;
+
+        $d1 := @parameter0: double;
+
+        $d0 := @parameter1: double;
+
+        $b0 = $d0 cmpl $d0;
+
+        if $b0 == 0 goto label1;
+
+        return $d1;
+
+     label1:
+        $b0 = $d1 cmpl $d1;
+
+        if $b0 == 0 goto label2;
+
+        return $d0;
+
+     label2:
+        $d1 = staticinvoke <com.metrictrade.and.dc: double b(double,double)>($d1, $d0);
+
+        return $d1;
+    }
+
+    public static double e(double, double)
+    {
+        byte $b0;
+        double $d0, $d1;
+
+        $d1 := @parameter0: double;
+
+        $d0 := @parameter1: double;
+
+        $b0 = $d0 cmpl $d0;
+
+        if $b0 == 0 goto label1;
+
+        return $d1;
+
+     label1:
+        $b0 = $d1 cmpl $d1;
+
+        if $b0 == 0 goto label2;
+
+        return $d0;
+
+     label2:
+        $d1 = staticinvoke <com.metrictrade.and.dc: double c(double,double)>($d1, $d0);
+
+        return $d1;
+    }
+
+    public double a(double, double)
+    {
+        com.metrictrade.and.fy r0;
+        double $d0, $d1;
+
+        r0 := @this: com.metrictrade.and.fy;
+
+        $d0 := @parameter0: double;
+
+        $d1 := @parameter1: double;
+
+        $d1 = 100.0 * $d1;
+
+        $d0 = $d0 / $d1;
+
+        $d1 = staticinvoke <com.metrictrade.and.dc: double b(double)>($d0);
+
+        $d0 = <com.metrictrade.and.fy: double I>;
+
+        $d0 = $d1 * $d0;
+
+        $d0 = staticinvoke <com.metrictrade.and.dc: double e(double)>($d0);
+
+        $d0 = staticinvoke <com.metrictrade.and.dc: double a(double,double)>(10.0, $d0);
+
+        return $d0;
+    }
+
+    public double a(double, int)
+    {
+        int $i0;
+        com.metrictrade.and.fy r0;
+        double $d0, $d1;
+
+        r0 := @this: com.metrictrade.and.fy;
+
+        $d0 := @parameter0: double;
+
+        $i0 := @parameter1: int;
+
+        $d1 = (double) $i0;
+
+        $d0 = $d1 + $d0;
+
+        return $d0;
+    }
+
+    public int a(double)
+    {
+        byte $b1;
+        int $i0, $i2;
+        com.metrictrade.and.fy r0;
+        double $d0, $d1;
+        boolean $z0;
+
+        r0 := @this: com.metrictrade.and.fy;
+
+        $d0 := @parameter0: double;
+
+        $b1 = $d0 cmpl $d0;
+
+        if $b1 == 0 goto label1;
+
+        return -1;
+
+     label1:
+        $z0 = r0.<com.metrictrade.and.fy: boolean j>;
+
+        if $z0 == 0 goto label6;
+
+        $b1 = $d0 cmpg 0.0;
+
+        $i0 = (int) $b1;
+
+        if $i0 >= 0 goto label5;
+
+        $d1 = neg $d0;
+
+     label2:
+        $b1 = $d1 cmpg 1.0E-5;
+
+        $i0 = (int) $b1;
+
+        if $i0 >= 0 goto label3;
+
+        $d1 = r0.<com.metrictrade.and.fy: double b>;
+
+        specialinvoke r0.<com.metrictrade.and.fy: double d(double)>($d1);
+
+     label3:
+        $d0 = specialinvoke r0.<com.metrictrade.and.fy: double d(double)>($d0);
+
+        $d1 = r0.<com.metrictrade.and.fy: double b>;
+
+        $d1 = specialinvoke r0.<com.metrictrade.and.fy: double d(double)>($d1);
+
+        $d0 = $d0 - $d1;
+
+     label4:
+        $d1 = r0.<com.metrictrade.and.fy: double d>;
+
+        $b1 = $d1 cmpl 0.0;
+
+        if $b1 != 0 goto label7;
+
+        $i0 = r0.<com.metrictrade.and.fy: int l>;
+
+        return $i0;
+
+     label5:
+        $d1 = $d0;
+
+        goto label2;
+
+     label6:
+        $d1 = r0.<com.metrictrade.and.fy: double b>;
+
+        $d0 = $d0 - $d1;
+
+        goto label4;
+
+     label7:
+        $i0 = r0.<com.metrictrade.and.fy: int k>;
+
+        $d1 = (double) $i0;
+
+        $d0 = $d0 * $d1;
+
+        $d1 = r0.<com.metrictrade.and.fy: double d>;
+
+        $d0 = $d0 / $d1;
+
+        $i2 = (int) $d0;
+
+        $i0 = r0.<com.metrictrade.and.fy: int l>;
+
+        $i0 = $i2 + $i0;
+
+        return $i0;
+    }
+
+    public int a(double[], int, double)
+    {
+        double[] $r1;
+        int $i0;
+        com.metrictrade.and.fy r0;
+        double $d0;
+
+        r0 := @this: com.metrictrade.and.fy;
+
+        $r1 := @parameter0: double[];
+
+        $i0 := @parameter1: int;
+
+        $d0 := @parameter2: double;
+
+        return -1;
+    }
+
+    java.lang.String a(double, double, int)
+    {
+        int $i0;
+        java.lang.String $r1;
+        com.metrictrade.and.fy r0;
+        double $d0, $d1;
+
+        r0 := @this: com.metrictrade.and.fy;
+
+        $d0 := @parameter0: double;
+
+        $d1 := @parameter1: double;
+
+        $i0 := @parameter2: int;
+
+        $r1 = staticinvoke <java.lang.Double: java.lang.String toString(double)>($d0);
+
+        return $r1;
+    }
+
+    public java.lang.String a(double, boolean)
+    {
+        com.metrictrade.and.fy r0;
+        double $d0;
+        boolean $z0;
+
+        r0 := @this: com.metrictrade.and.fy;
+
+        $d0 := @parameter0: double;
+
+        $z0 := @parameter1: boolean;
+
+        return null;
+    }
+
+    public final void a(double, double, double)
+    {
+        com.metrictrade.and.fy r0;
+        byte $b0;
+        int $i1;
+        double $d0, $d1, $d2, $d3, $d4;
+        boolean $z0;
+
+        r0 := @this: com.metrictrade.and.fy;
+
+        $d0 := @parameter0: double;
+
+        $d2 := @parameter1: double;
+
+        $d1 := @parameter2: double;
+
+        $d3 = 1.0E-4;
+
+        $b0 = $d0 cmpl $d2;
+
+        $i1 = (int) $b0;
+
+        if $i1 < 0 goto label1;
+
+        $d2 = $d0 + 1.0;
+
+     label1:
+        $d4 = r0.<com.metrictrade.and.fy: double b>;
+
+        $b0 = $d4 cmpl $d0;
+
+        if $b0 != 0 goto label2;
+
+        $d4 = r0.<com.metrictrade.and.fy: double c>;
+
+        $b0 = $d4 cmpl $d2;
+
+        if $b0 != 0 goto label2;
+
+        $d4 = r0.<com.metrictrade.and.fy: double C>;
+
+        $b0 = $d4 cmpl $d1;
+
+        if $b0 == 0 goto label9;
+
+     label2:
+        $d4 = r0.<com.metrictrade.and.fy: double C>;
+
+        $b0 = $d4 cmpl $d1;
+
+        if $b0 == 0 goto label5;
+
+        $z0 = r0.<com.metrictrade.and.fy: boolean j>;
+
+        if $z0 == 0 goto label4;
+
+        $d4 = staticinvoke <com.metrictrade.and.dc: double g(double)>($d1);
+
+        $d4 = $d4 / 10.0;
+
+        $b0 = $d4 cmpg 1.0E-4;
+
+        $i1 = (int) $b0;
+
+        if $i1 >= 0 goto label8;
+
+     label3:
+        r0.<com.metrictrade.and.fy: double D> = $d3;
+
+     label4:
+        r0.<com.metrictrade.and.fy: double C> = $d1;
+
+     label5:
+        r0.<com.metrictrade.and.fy: double b> = $d0;
+
+        r0.<com.metrictrade.and.fy: double c> = $d2;
+
+        $z0 = r0.<com.metrictrade.and.fy: boolean j>;
+
+        if $z0 == 0 goto label7;
+
+        $d2 = specialinvoke r0.<com.metrictrade.and.fy: double d(double)>($d2);
+
+        $d0 = specialinvoke r0.<com.metrictrade.and.fy: double d(double)>($d0);
+
+        $d0 = $d2 - $d0;
+
+        r0.<com.metrictrade.and.fy: double d> = $d0;
+
+     label6:
+        r0.<com.metrictrade.and.fy: boolean p> = 0;
+
+        return;
+
+     label7:
+        $d0 = $d2 - $d0;
+
+        r0.<com.metrictrade.and.fy: double d> = $d0;
+
+        goto label6;
+
+     label8:
+        $d3 = $d4;
+
+        goto label3;
+
+     label9:
+        return;
+    }
+
+    public void a(double, double, int, boolean, boolean, boolean)
+    {
+        int $i0;
+        com.metrictrade.and.fy r0;
+        double $d0, $d1;
+        boolean $z0, $z1, $z2;
+
+        r0 := @this: com.metrictrade.and.fy;
+
+        $d0 := @parameter0: double;
+
+        $d1 := @parameter1: double;
+
+        $i0 := @parameter2: int;
+
+        $z0 := @parameter3: boolean;
+
+        $z1 := @parameter4: boolean;
+
+        $z2 := @parameter5: boolean;
+
+        return;
+    }
+
+    public void a(int)
+    {
+        int $i0;
+        com.metrictrade.and.fy r0;
+
+        r0 := @this: com.metrictrade.and.fy;
+
+        $i0 := @parameter0: int;
+
+        return;
+    }
+
+    public final void a(int, int)
+    {
+        int $i0, $i1, $i2;
+        com.metrictrade.and.fy r0;
+
+        r0 := @this: com.metrictrade.and.fy;
+
+        $i0 := @parameter0: int;
+
+        $i1 := @parameter1: int;
+
+        $i2 = r0.<com.metrictrade.and.fy: int l>;
+
+        if $i2 != $i0 goto label1;
+
+        $i2 = r0.<com.metrictrade.and.fy: int E>;
+
+        if $i2 == $i1 goto label2;
+
+     label1:
+        r0.<com.metrictrade.and.fy: int l> = $i0;
+
+        r0.<com.metrictrade.and.fy: int E> = $i1;
+
+        $i0 = $i1 - $i0;
+
+        r0.<com.metrictrade.and.fy: int k> = $i0;
+
+        r0.<com.metrictrade.and.fy: boolean p> = 0;
+
+     label2:
+        return;
+    }
+
+    public void a(int, int, int)
+    {
+        int $i0, $i1, $i2;
+        com.metrictrade.and.fy r0;
+
+        r0 := @this: com.metrictrade.and.fy;
+
+        $i0 := @parameter0: int;
+
+        $i1 := @parameter1: int;
+
+        $i2 := @parameter2: int;
+
+        return;
+    }
+
+    public final void a(int, boolean)
+    {
+        int $i0, $i1;
+        com.metrictrade.and.fy r0;
+        boolean $z0;
+
+        r0 := @this: com.metrictrade.and.fy;
+
+        $i0 := @parameter0: int;
+
+        $z0 := @parameter1: boolean;
+
+        if $z0 != 0 goto label4;
+
+        if $i0 <= 0 goto label1;
+
+        $i1 = r0.<com.metrictrade.and.fy: int n>;
+
+        if $i1 != $i0 goto label4;
+
+     label1:
+        $z0 = 0;
+
+     label2:
+        if $i0 <= 0 goto label3;
+
+        r0.<com.metrictrade.and.fy: int n> = $i0;
+
+     label3:
+        if $z0 == 0 goto label5;
+
+        r0.<com.metrictrade.and.fy: boolean p> = 0;
+
+        return;
+
+     label4:
+        $z0 = 1;
+
+        goto label2;
+
+     label5:
+        return;
+    }
+
+    public void a(com.metrictrade.and.fs)
+    {
+        com.metrictrade.and.fs $r1;
+        com.metrictrade.and.fy r0;
+
+        r0 := @this: com.metrictrade.and.fy;
+
+        $r1 := @parameter0: com.metrictrade.and.fs;
+
+        return;
+    }
+
+    public void a(boolean)
+    {
+        byte $b0;
+        int $i1;
+        com.metrictrade.and.fy r0;
+        boolean $z0, $z1;
+        double $d0, $d1;
+
+        r0 := @this: com.metrictrade.and.fy;
+
+        $z0 := @parameter0: boolean;
+
+        $d0 = 1.0E-4;
+
+        $z1 = r0.<com.metrictrade.and.fy: boolean j>;
+
+        if $z0 == $z1 goto label5;
+
+        if $z0 == 0 goto label3;
+
+        $d1 = r0.<com.metrictrade.and.fy: double C>;
+
+        $d1 = staticinvoke <com.metrictrade.and.dc: double g(double)>($d1);
+
+        $d1 = $d1 / 10.0;
+
+        $b0 = $d1 cmpg 1.0E-4;
+
+        $i1 = (int) $b0;
+
+        if $i1 >= 0 goto label4;
+
+     label1:
+        r0.<com.metrictrade.and.fy: double D> = $d0;
+
+        $d0 = r0.<com.metrictrade.and.fy: double c>;
+
+        $d0 = specialinvoke r0.<com.metrictrade.and.fy: double d(double)>($d0);
+
+        $d1 = r0.<com.metrictrade.and.fy: double b>;
+
+        $d1 = specialinvoke r0.<com.metrictrade.and.fy: double d(double)>($d1);
+
+        $d0 = $d0 - $d1;
+
+        r0.<com.metrictrade.and.fy: double d> = $d0;
+
+     label2:
+        r0.<com.metrictrade.and.fy: boolean j> = $z0;
+
+        r0.<com.metrictrade.and.fy: boolean p> = 0;
+
+        return;
+
+     label3:
+        $d0 = r0.<com.metrictrade.and.fy: double c>;
+
+        $d1 = r0.<com.metrictrade.and.fy: double b>;
+
+        $d0 = $d0 - $d1;
+
+        r0.<com.metrictrade.and.fy: double d> = $d0;
+
+        goto label2;
+
+     label4:
+        $d0 = $d1;
+
+        goto label1;
+
+     label5:
+        return;
+    }
+
+    public boolean a(double, double, int, boolean)
+    {
+        int $i0;
+        com.metrictrade.and.fy r0;
+        double $d0, $d1;
+        boolean $z0;
+
+        r0 := @this: com.metrictrade.and.fy;
+
+        $d0 := @parameter0: double;
+
+        $d1 := @parameter1: double;
+
+        $i0 := @parameter2: int;
+
+        $z0 := @parameter3: boolean;
+
+        return 0;
+    }
+
+    public final double[] a()
+    {
+        double[] $r1;
+        com.metrictrade.and.fy r0;
+        byte $b2;
+        int $i0, $i1;
+        double $d0, $d1, $d2, $d3, $d4, $d5, $d6;
+        boolean $z0;
+
+        r0 := @this: com.metrictrade.and.fy;
+
+        $z0 = r0.<com.metrictrade.and.fy: boolean p>;
+
+        if $z0 == 0 goto label1;
+
+        $r1 = r0.<com.metrictrade.and.fy: double[] o>;
+
+        return $r1;
+
+     label1:
+        $z0 = r0.<com.metrictrade.and.fy: boolean j>;
+
+        if $z0 == 0 goto label4;
+
+        $d0 = r0.<com.metrictrade.and.fy: double c>;
+
+        $d3 = r0.<com.metrictrade.and.fy: double b>;
+
+        $d3 = $d0 - $d3;
+
+     label2:
+        $i0 = r0.<com.metrictrade.and.fy: int k>;
+
+        $i0 = staticinvoke <com.metrictrade.and.dc: int a(int)>($i0);
+
+        $i1 = r0.<com.metrictrade.and.fy: int n>;
+
+        $i0 = staticinvoke <com.metrictrade.and.dc: int a(int,int)>($i0, $i1);
+
+        $d0 = (double) $i0;
+
+        $r1 = virtualinvoke r0.<com.metrictrade.and.fy: double[] b()>();
+
+        $i0 = r0.<com.metrictrade.and.fy: int n>;
+
+        $d4 = (double) $i0;
+
+        $d4 = $d0 / $d4;
+
+        $d5 = virtualinvoke r0.<com.metrictrade.and.fy: double a(double,double)>($d3, $d4);
+
+        $d4 = $d5;
+
+        $i0 = 0;
+
+     label3:
+        $i1 = r0.<com.metrictrade.and.fy: int n>;
+
+        $d1 = (double) $i1;
+
+        $d6 = $d0 * $d4;
+
+        $d2 = $d3 + $d4;
+
+        $d2 = $d6 / $d2;
+
+        $b2 = $d1 cmpl $d2;
+
+        $i1 = (int) $b2;
+
+        if $i1 > 0 goto label5;
+
+        $d0 = r0.<com.metrictrade.and.fy: double F>;
+
+        $d0 = staticinvoke <com.metrictrade.and.dc: double b(double,double)>($d4, $d0);
+
+        $r1 = virtualinvoke r0.<com.metrictrade.and.fy: double[] b(double)>($d0);
+
+        $r1 = virtualinvoke r0.<com.metrictrade.and.fy: double[] a(double[])>($r1);
+
+        return $r1;
+
+     label4:
+        $d0 = r0.<com.metrictrade.and.fy: double b>;
+
+        $d3 = r0.<com.metrictrade.and.fy: double c>;
+
+        $d3 = virtualinvoke r0.<com.metrictrade.and.fy: double b(double,double)>($d0, $d3);
+
+        goto label2;
+
+     label5:
+        $i1 = lengthof $r1;
+
+        if $i0 < $i1 goto label7;
+
+        $i1 = lengthof $r1;
+
+        $i0 = $i0 - $i1;
+
+        $z0 = r0.<com.metrictrade.and.fy: boolean G>;
+
+        if $z0 == 0 goto label8;
+
+        $b2 = 10;
+
+     label6:
+        $d4 = (double) $b2;
+
+        $d5 = $d5 * $d4;
+
+     label7:
+        $d4 = $r1[$i0];
+
+        $d4 = $d4 * $d5;
+
+        $i0 = $i0 + 1;
+
+        goto label3;
+
+     label8:
+        $b2 = 2;
+
+        goto label6;
+    }
+
+    public double[] a(double[])
+    {
+        double[] $r1;
+        com.metrictrade.and.fy r0;
+        boolean $z0;
+
+        r0 := @this: com.metrictrade.and.fy;
+
+        $r1 := @parameter0: double[];
+
+        r0.<com.metrictrade.and.fy: double[] o> = $r1;
+
+        if $r1 == null goto label2;
+
+        $z0 = 1;
+
+     label1:
+        r0.<com.metrictrade.and.fy: boolean p> = $z0;
+
+        return $r1;
+
+     label2:
+        $z0 = 0;
+
+        goto label1;
+    }
+
+    public double b(double, double)
+    {
+        com.metrictrade.and.fy r0;
+        double $d0, $d1;
+        boolean $z0;
+
+        r0 := @this: com.metrictrade.and.fy;
+
+        $d0 := @parameter0: double;
+
+        $d1 := @parameter1: double;
+
+        $z0 = r0.<com.metrictrade.and.fy: boolean j>;
+
+        if $z0 == 0 goto label1;
+
+        $d1 = specialinvoke r0.<com.metrictrade.and.fy: double d(double)>($d1);
+
+        $d0 = specialinvoke r0.<com.metrictrade.and.fy: double d(double)>($d0);
+
+        $d0 = $d1 - $d0;
+
+        return $d0;
+
+     label1:
+        $d0 = $d1 - $d0;
+
+        return $d0;
+    }
+
+    public double b(int)
+    {
+        byte $b2;
+        int $i0, $i1;
+        com.metrictrade.and.fy r0;
+        double $d0, $d1;
+        boolean $z0;
+
+        r0 := @this: com.metrictrade.and.fy;
+
+        $i0 := @parameter0: int;
+
+        $i1 = r0.<com.metrictrade.and.fy: int l>;
+
+        $i0 = $i0 - $i1;
+
+        $d0 = (double) $i0;
+
+        $d1 = r0.<com.metrictrade.and.fy: double d>;
+
+        $d0 = $d0 * $d1;
+
+        $i0 = r0.<com.metrictrade.and.fy: int k>;
+
+        $d1 = (double) $i0;
+
+        $d0 = $d0 / $d1;
+
+        $z0 = r0.<com.metrictrade.and.fy: boolean j>;
+
+        if $z0 == 0 goto label2;
+
+        $d1 = r0.<com.metrictrade.and.fy: double b>;
+
+        $b2 = $d1 cmpg 0.0;
+
+        $i0 = (int) $b2;
+
+        if $i0 >= 0 goto label1;
+
+        return #NaN;
+
+     label1:
+        $d1 = <com.metrictrade.and.fy: double I>;
+
+        $d0 = $d0 / $d1;
+
+        $d0 = staticinvoke <com.metrictrade.and.dc: double a(double)>($d0);
+
+        $d0 = $d0 * 10.0;
+
+        $d1 = r0.<com.metrictrade.and.fy: double D>;
+
+        $d0 = $d0 * $d1;
+
+        return $d0;
+
+     label2:
+        $d1 = r0.<com.metrictrade.and.fy: double b>;
+
+        $d0 = $d0 + $d1;
+
+        return $d0;
+    }
+
+    public int b(int, int)
+    {
+        int $i0, $i1;
+        com.metrictrade.and.fy r0;
+
+        r0 := @this: com.metrictrade.and.fy;
+
+        $i0 := @parameter0: int;
+
+        $i1 := @parameter1: int;
+
+        return 0;
+    }
+
+    public final void b(boolean)
+    {
+        com.metrictrade.and.fy r0, $r1;
+        boolean $z0, $z1;
+
+        r0 := @this: com.metrictrade.and.fy;
+
+        $z0 := @parameter0: boolean;
+
+        if $z0 == 0 goto label1;
+
+        $z1 = r0.<com.metrictrade.and.fy: boolean i>;
+
+        if $z1 != 0 goto label1;
+
+        $z0 = 1;
+
+     label1:
+        $r1 = r0.<com.metrictrade.and.fy: com.metrictrade.and.fy a>;
+
+        if $r1 == null goto label2;
+
+        $r1 = r0.<com.metrictrade.and.fy: com.metrictrade.and.fy a>;
+
+        $r1.<com.metrictrade.and.fy: boolean i> = $z0;
+
+     label2:
+        r0.<com.metrictrade.and.fy: boolean i> = $z0;
+
+        return;
+    }
+
+    public double[] b()
+    {
+        double[] r1;
+        com.metrictrade.and.fy r0;
+
+        r0 := @this: com.metrictrade.and.fy;
+
+        r1 = <com.metrictrade.and.fy: double[] H>;
+
+        return r1;
+    }
+
+    public double[] b(double)
+    {
+        double[] $r1;
+        com.metrictrade.and.fy r0;
+        int $i0, $i1, $i2, $i3;
+        double $d0, $d1;
+
+        r0 := @this: com.metrictrade.and.fy;
+
+        $d0 := @parameter0: double;
+
+        $d1 = r0.<com.metrictrade.and.fy: double b>;
+
+        $d1 = $d1 / $d0;
+
+        $d1 = staticinvoke <com.metrictrade.and.dc: double f(double)>($d1);
+
+        $i0 = (int) $d1;
+
+        $d1 = r0.<com.metrictrade.and.fy: double c>;
+
+        $d1 = $d1 / $d0;
+
+        $d1 = staticinvoke <com.metrictrade.and.dc: double e(double)>($d1);
+
+        $i1 = (int) $d1;
+
+        $i1 = $i1 - $i0;
+
+        $i1 = $i1 + 1;
+
+        $i1 = staticinvoke <com.metrictrade.and.dc: int a(int,int)>($i1, 1);
+
+        $r1 = newarray (double)[$i1];
+
+        $i2 = 0;
+
+     label1:
+        if $i2 < $i1 goto label2;
+
+        return $r1;
+
+     label2:
+        $i3 = $i2 + $i0;
+
+        $d1 = (double) $i3;
+
+        $d1 = $d1 * $d0;
+
+        $r1[$i2] = $d1;
+
+        $i2 = $i2 + 1;
+
+        goto label1;
+    }
+
+    public double c(double)
+    {
+        com.metrictrade.and.fy r0;
+        double $d0;
+
+        r0 := @this: com.metrictrade.and.fy;
+
+        $d0 := @parameter0: double;
+
+        return $d0;
+    }
+
+    public int c(double, double)
+    {
+        com.metrictrade.and.fy r0;
+        double $d0, $d1;
+
+        r0 := @this: com.metrictrade.and.fy;
+
+        $d0 := @parameter0: double;
+
+        $d1 := @parameter1: double;
+
+        return 0;
+    }
+
+    public boolean c()
+    {
+        com.metrictrade.and.fy r0;
+
+        r0 := @this: com.metrictrade.and.fy;
+
+        return 0;
+    }
+
+    public double[] d()
+    {
+        com.metrictrade.and.fy r0;
+
+        r0 := @this: com.metrictrade.and.fy;
+
+        return null;
+    }
+
+    public final boolean e()
+    {
+        com.metrictrade.and.fy r0, $r1;
+        boolean z0;
+
+        r0 := @this: com.metrictrade.and.fy;
+
+        $r1 = r0.<com.metrictrade.and.fy: com.metrictrade.and.fy a>;
+
+        if $r1 == null goto label1;
+
+        r0 = r0.<com.metrictrade.and.fy: com.metrictrade.and.fy a>;
+
+        z0 = r0.<com.metrictrade.and.fy: boolean i>;
+
+        return z0;
+
+     label1:
+        z0 = r0.<com.metrictrade.and.fy: boolean i>;
+
+        return z0;
+    }
+}

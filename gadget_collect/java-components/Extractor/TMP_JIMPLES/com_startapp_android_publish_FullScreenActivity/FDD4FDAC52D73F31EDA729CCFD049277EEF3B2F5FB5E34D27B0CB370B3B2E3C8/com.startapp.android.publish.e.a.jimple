@@ -1,0 +1,1802 @@
+public class com.startapp.android.publish.e.a extends java.io.InputStream
+{
+    public static java.util.Map a;
+    private java.io.InputStream b;
+    private java.lang.String c;
+
+    static void <clinit>()
+    {
+        java.util.HashMap $r0;
+        java.util.Map $r1;
+
+        $r0 = new java.util.HashMap;
+
+        specialinvoke $r0.<java.util.HashMap: void <init>()>();
+
+        <com.startapp.android.publish.e.a: java.util.Map a> = $r0;
+
+        $r1 = <com.startapp.android.publish.e.a: java.util.Map a>;
+
+        interfaceinvoke $r1.<java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>("int[]", class "Ljava/lang/Integer;");
+
+        $r1 = <com.startapp.android.publish.e.a: java.util.Map a>;
+
+        interfaceinvoke $r1.<java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>("long[]", class "Ljava/lang/Long;");
+
+        $r1 = <com.startapp.android.publish.e.a: java.util.Map a>;
+
+        interfaceinvoke $r1.<java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>("double[]", class "Ljava/lang/Double;");
+
+        $r1 = <com.startapp.android.publish.e.a: java.util.Map a>;
+
+        interfaceinvoke $r1.<java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>("float[]", class "Ljava/lang/Float;");
+
+        $r1 = <com.startapp.android.publish.e.a: java.util.Map a>;
+
+        interfaceinvoke $r1.<java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>("bool[]", class "Ljava/lang/Boolean;");
+
+        $r1 = <com.startapp.android.publish.e.a: java.util.Map a>;
+
+        interfaceinvoke $r1.<java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>("char[]", class "Ljava/lang/Character;");
+
+        $r1 = <com.startapp.android.publish.e.a: java.util.Map a>;
+
+        interfaceinvoke $r1.<java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>("byte[]", class "Ljava/lang/Byte;");
+
+        $r1 = <com.startapp.android.publish.e.a: java.util.Map a>;
+
+        interfaceinvoke $r1.<java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>("void[]", class "Ljava/lang/Void;");
+
+        $r1 = <com.startapp.android.publish.e.a: java.util.Map a>;
+
+        interfaceinvoke $r1.<java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>("short[]", class "Ljava/lang/Short;");
+
+        return;
+    }
+
+    public void <init>(java.lang.String)
+    {
+        com.startapp.android.publish.e.a r0;
+        java.lang.String $r1;
+
+        r0 := @this: com.startapp.android.publish.e.a;
+
+        $r1 := @parameter0: java.lang.String;
+
+        specialinvoke r0.<java.io.InputStream: void <init>()>();
+
+        r0.<com.startapp.android.publish.e.a: java.lang.String c> = $r1;
+
+        r0.<com.startapp.android.publish.e.a: java.io.InputStream b> = null;
+
+        return;
+    }
+
+    private java.lang.Enum a(java.lang.String, java.lang.Class)
+    {
+        com.startapp.android.publish.e.a r0;
+        java.lang.String $r1;
+        java.lang.Class $r2;
+        java.lang.Enum $r3;
+
+        r0 := @this: com.startapp.android.publish.e.a;
+
+        $r1 := @parameter0: java.lang.String;
+
+        $r2 := @parameter1: java.lang.Class;
+
+        $r3 = staticinvoke <java.lang.Enum: java.lang.Enum valueOf(java.lang.Class,java.lang.String)>($r2, $r1);
+
+        return $r3;
+    }
+
+    private static java.lang.Object a(java.lang.Object, java.lang.Class)
+    {
+        java.lang.Class $r0, $r2;
+        java.lang.Object $r1;
+        boolean $z0;
+        java.lang.Double $r3;
+        int $i0;
+        java.lang.Integer $r4;
+        java.lang.Long $r5;
+        long $l1;
+
+        $r1 := @parameter0: java.lang.Object;
+
+        $r0 := @parameter1: java.lang.Class;
+
+        $r2 = virtualinvoke $r1.<java.lang.Object: java.lang.Class getClass()>();
+
+        $z0 = virtualinvoke $r2.<java.lang.Object: boolean equals(java.lang.Object)>($r0);
+
+        if $z0 == 0 goto label1;
+
+        return $r1;
+
+     label1:
+        $z0 = virtualinvoke $r0.<java.lang.Object: boolean equals(java.lang.Object)>(class "Ljava/lang/Integer;");
+
+        if $z0 == 0 goto label3;
+
+        $r0 = virtualinvoke $r1.<java.lang.Object: java.lang.Class getClass()>();
+
+        $z0 = virtualinvoke $r0.<java.lang.Object: boolean equals(java.lang.Object)>(class "Ljava/lang/Double;");
+
+        if $z0 == 0 goto label2;
+
+        $r3 = (java.lang.Double) $r1;
+
+        $i0 = virtualinvoke $r3.<java.lang.Double: int intValue()>();
+
+        $r4 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>($i0);
+
+        $i0 = virtualinvoke $r4.<java.lang.Integer: int intValue()>();
+
+        $r4 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>($i0);
+
+        return $r4;
+
+     label2:
+        $r0 = virtualinvoke $r1.<java.lang.Object: java.lang.Class getClass()>();
+
+        $z0 = virtualinvoke $r0.<java.lang.Object: boolean equals(java.lang.Object)>(class "Ljava/lang/Long;");
+
+        if $z0 == 0 goto label4;
+
+        $r5 = (java.lang.Long) $r1;
+
+        $i0 = virtualinvoke $r5.<java.lang.Long: int intValue()>();
+
+        $r4 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>($i0);
+
+        $i0 = virtualinvoke $r4.<java.lang.Integer: int intValue()>();
+
+        $r4 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>($i0);
+
+        return $r4;
+
+     label3:
+        $z0 = virtualinvoke $r0.<java.lang.Object: boolean equals(java.lang.Object)>(class "Ljava/lang/Long;");
+
+        if $z0 == 0 goto label4;
+
+        $r0 = virtualinvoke $r1.<java.lang.Object: java.lang.Class getClass()>();
+
+        $z0 = virtualinvoke $r0.<java.lang.Object: boolean equals(java.lang.Object)>(class "Ljava/lang/Integer;");
+
+        if $z0 == 0 goto label4;
+
+        $r4 = (java.lang.Integer) $r1;
+
+        $l1 = virtualinvoke $r4.<java.lang.Integer: long longValue()>();
+
+        $r5 = staticinvoke <java.lang.Long: java.lang.Long valueOf(long)>($l1);
+
+        $l1 = virtualinvoke $r5.<java.lang.Long: long longValue()>();
+
+        $r5 = staticinvoke <java.lang.Long: java.lang.Long valueOf(long)>($l1);
+
+        return $r5;
+
+     label4:
+        return $r1;
+    }
+
+    private java.lang.Object a(org.json.JSONObject, java.lang.Class, java.lang.reflect.Field)
+    {
+        com.startapp.android.publish.e.a r0;
+        org.json.JSONObject $r1;
+        java.lang.Class $r2;
+        java.lang.reflect.Field $r3;
+        java.lang.Object[] $r4;
+        java.lang.Object $r5;
+
+        r0 := @this: com.startapp.android.publish.e.a;
+
+        $r1 := @parameter0: org.json.JSONObject;
+
+        $r2 := @parameter1: java.lang.Class;
+
+        $r3 := @parameter2: java.lang.reflect.Field;
+
+        if $r2 == null goto label1;
+
+        $r4 = specialinvoke r0.<com.startapp.android.publish.e.a: java.lang.Object[] b(org.json.JSONObject,java.lang.Class,java.lang.reflect.Field)>($r1, $r2, $r3);
+
+        return $r4;
+
+     label1:
+        $r5 = specialinvoke r0.<com.startapp.android.publish.e.a: java.lang.Object a(org.json.JSONObject,java.lang.reflect.Field)>($r1, $r3);
+
+        return $r5;
+    }
+
+    private java.lang.Object a(org.json.JSONObject, java.lang.reflect.Field)
+    {
+        com.startapp.android.publish.e.a r0;
+        org.json.JSONObject $r1;
+        java.lang.reflect.Field $r2;
+        java.lang.String $r3;
+        org.json.JSONArray $r4;
+        int $i0, $i1;
+        java.lang.Class $r5, $r8;
+        java.util.Map $r6;
+        java.lang.Object $r7, $r13;
+        boolean $z0;
+        java.lang.Class[] $r9;
+        java.lang.reflect.Constructor $r10;
+        java.lang.Object[] $r11;
+        char $c2;
+        java.lang.Character $r12;
+
+        r0 := @this: com.startapp.android.publish.e.a;
+
+        $r1 := @parameter0: org.json.JSONObject;
+
+        $r2 := @parameter1: java.lang.reflect.Field;
+
+        $r3 = virtualinvoke $r2.<java.lang.reflect.Field: java.lang.String getName()>();
+
+        $r4 = virtualinvoke $r1.<org.json.JSONObject: org.json.JSONArray getJSONArray(java.lang.String)>($r3);
+
+        $i0 = virtualinvoke $r4.<org.json.JSONArray: int length()>();
+
+        $r5 = virtualinvoke $r2.<java.lang.reflect.Field: java.lang.Class getType()>();
+
+        $r6 = <com.startapp.android.publish.e.a: java.util.Map a>;
+
+        $r3 = virtualinvoke $r5.<java.lang.Class: java.lang.String getSimpleName()>();
+
+        $r7 = interfaceinvoke $r6.<java.util.Map: java.lang.Object get(java.lang.Object)>($r3);
+
+        $r5 = (java.lang.Class) $r7;
+
+        $r2 = virtualinvoke $r5.<java.lang.Class: java.lang.reflect.Field getField(java.lang.String)>("TYPE");
+
+        $r7 = virtualinvoke $r2.<java.lang.reflect.Field: java.lang.Object get(java.lang.Object)>(null);
+
+        $r8 = (java.lang.Class) $r7;
+
+        $r7 = staticinvoke <java.lang.reflect.Array: java.lang.Object newInstance(java.lang.Class,int)>($r8, $i0);
+
+        $i1 = 0;
+
+     label1:
+        if $i1 >= $i0 goto label5;
+
+        $r3 = virtualinvoke $r4.<org.json.JSONArray: java.lang.String getString(int)>($i1);
+
+        $r8 = class "Ljava/lang/String;";
+
+        $z0 = virtualinvoke $r5.<java.lang.Object: boolean equals(java.lang.Object)>(class "Ljava/lang/Character;");
+
+        if $z0 == 0 goto label2;
+
+        $r8 = <java.lang.Character: java.lang.Class TYPE>;
+
+     label2:
+        $r9 = newarray (java.lang.Class)[1];
+
+        $r9[0] = $r8;
+
+        $r10 = virtualinvoke $r5.<java.lang.Class: java.lang.reflect.Constructor getConstructor(java.lang.Class[])>($r9);
+
+        $z0 = virtualinvoke $r5.<java.lang.Object: boolean equals(java.lang.Object)>(class "Ljava/lang/Character;");
+
+        if $z0 == 0 goto label4;
+
+        $r11 = newarray (java.lang.Object)[1];
+
+        $c2 = virtualinvoke $r3.<java.lang.String: char charAt(int)>(0);
+
+        $r12 = staticinvoke <java.lang.Character: java.lang.Character valueOf(char)>($c2);
+
+        $r11[0] = $r12;
+
+        $r13 = virtualinvoke $r10.<java.lang.reflect.Constructor: java.lang.Object newInstance(java.lang.Object[])>($r11);
+
+     label3:
+        staticinvoke <java.lang.reflect.Array: void set(java.lang.Object,int,java.lang.Object)>($r7, $i1, $r13);
+
+        $i1 = $i1 + 1;
+
+        goto label1;
+
+     label4:
+        $r11 = newarray (java.lang.Object)[1];
+
+        $r11[0] = $r3;
+
+        $r13 = virtualinvoke $r10.<java.lang.reflect.Constructor: java.lang.Object newInstance(java.lang.Object[])>($r11);
+
+        goto label3;
+
+     label5:
+        return $r7;
+    }
+
+    private static java.lang.Object a(org.json.JSONObject, java.lang.reflect.Field, java.lang.Object, java.lang.Class)
+    {
+        org.json.JSONObject $r0;
+        java.lang.reflect.Field $r1;
+        java.lang.Class $r2, $r4;
+        java.lang.Object $r3;
+        boolean $z0;
+        java.lang.String $r5;
+        int $i0;
+        java.lang.Integer $r6;
+        java.lang.Number $r7;
+        float $f0;
+        java.lang.Float $r8;
+        long $l1;
+        java.lang.Long $r9;
+        double $d0;
+        java.lang.Double $r10;
+
+        $r0 := @parameter0: org.json.JSONObject;
+
+        $r1 := @parameter1: java.lang.reflect.Field;
+
+        $r3 := @parameter2: java.lang.Object;
+
+        $r2 := @parameter3: java.lang.Class;
+
+        $r4 = virtualinvoke $r3.<java.lang.Object: java.lang.Class getClass()>();
+
+        $z0 = virtualinvoke $r4.<java.lang.Object: boolean equals(java.lang.Object)>($r2);
+
+        if $z0 == 0 goto label1;
+
+        return $r3;
+
+     label1:
+        $r4 = virtualinvoke $r3.<java.lang.Object: java.lang.Class getClass()>();
+
+        $z0 = virtualinvoke $r4.<java.lang.Object: boolean equals(java.lang.Object)>(class "Ljava/lang/String;");
+
+        if $z0 == 0 goto label2;
+
+        $r4 = <java.lang.Integer: java.lang.Class TYPE>;
+
+        $z0 = virtualinvoke $r2.<java.lang.Object: boolean equals(java.lang.Object)>($r4);
+
+        if $z0 == 0 goto label6;
+
+        $r5 = virtualinvoke $r1.<java.lang.reflect.Field: java.lang.String getName()>();
+
+        $i0 = virtualinvoke $r0.<org.json.JSONObject: int getInt(java.lang.String)>($r5);
+
+        $r6 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>($i0);
+
+        return $r6;
+
+     label2:
+        $r4 = <java.lang.Integer: java.lang.Class TYPE>;
+
+        $z0 = virtualinvoke $r2.<java.lang.Object: boolean equals(java.lang.Object)>($r4);
+
+        if $z0 == 0 goto label3;
+
+        $r7 = (java.lang.Number) $r3;
+
+        $i0 = virtualinvoke $r7.<java.lang.Number: int intValue()>();
+
+        $r6 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>($i0);
+
+        return $r6;
+
+     label3:
+        $r4 = <java.lang.Float: java.lang.Class TYPE>;
+
+        $z0 = virtualinvoke $r2.<java.lang.Object: boolean equals(java.lang.Object)>($r4);
+
+        if $z0 == 0 goto label4;
+
+        $r7 = (java.lang.Number) $r3;
+
+        $f0 = virtualinvoke $r7.<java.lang.Number: float floatValue()>();
+
+        $r8 = staticinvoke <java.lang.Float: java.lang.Float valueOf(float)>($f0);
+
+        return $r8;
+
+     label4:
+        $r4 = <java.lang.Long: java.lang.Class TYPE>;
+
+        $z0 = virtualinvoke $r2.<java.lang.Object: boolean equals(java.lang.Object)>($r4);
+
+        if $z0 == 0 goto label5;
+
+        $r7 = (java.lang.Number) $r3;
+
+        $l1 = virtualinvoke $r7.<java.lang.Number: long longValue()>();
+
+        $r9 = staticinvoke <java.lang.Long: java.lang.Long valueOf(long)>($l1);
+
+        return $r9;
+
+     label5:
+        $r4 = <java.lang.Double: java.lang.Class TYPE>;
+
+        $z0 = virtualinvoke $r2.<java.lang.Object: boolean equals(java.lang.Object)>($r4);
+
+        if $z0 == 0 goto label6;
+
+        $r7 = (java.lang.Number) $r3;
+
+        $d0 = virtualinvoke $r7.<java.lang.Number: double doubleValue()>();
+
+        $r10 = staticinvoke <java.lang.Double: java.lang.Double valueOf(double)>($d0);
+
+        return $r10;
+
+     label6:
+        return $r3;
+    }
+
+    private static java.lang.String a(java.io.InputStream, java.lang.String)
+    {
+        java.io.InputStream $r0;
+        java.lang.String $r1;
+        java.io.BufferedReader $r3, $r10;
+        java.lang.Throwable $r5;
+        java.lang.Object[] $r6;
+        java.lang.Exception $r7;
+        java.lang.StringBuilder $r8;
+        java.io.InputStreamReader $r9;
+        java.io.IOException $r11;
+
+        $r0 := @parameter0: java.io.InputStream;
+
+        $r1 := @parameter1: java.lang.String;
+
+        $r8 = new java.lang.StringBuilder;
+
+        specialinvoke $r8.<java.lang.StringBuilder: void <init>()>();
+
+        if $r1 == null goto label07;
+
+        $r10 = new java.io.BufferedReader;
+
+        $r3 = $r10;
+
+        $r9 = new java.io.InputStreamReader;
+
+     label01:
+        specialinvoke $r9.<java.io.InputStreamReader: void <init>(java.io.InputStream,java.lang.String)>($r0, $r1);
+
+        specialinvoke $r10.<java.io.BufferedReader: void <init>(java.io.Reader)>($r9);
+
+     label02:
+        $r1 = virtualinvoke $r3.<java.io.BufferedReader: java.lang.String readLine()>();
+
+     label03:
+        if $r1 == null goto label11;
+
+     label04:
+        virtualinvoke $r8.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r1);
+
+     label05:
+        goto label02;
+
+     label06:
+        $r5 := @caughtexception;
+
+        $r6 = newarray (java.lang.Object)[1];
+
+        $r11 = (java.io.IOException) $r5;
+
+        $r1 = virtualinvoke $r11.<java.io.IOException: java.lang.String toString()>();
+
+        $r6[0] = $r1;
+
+        $r1 = staticinvoke <java.lang.String: java.lang.String format(java.lang.String,java.lang.Object[])>("Can\'t Can\'t read input stream [%s]", $r6);
+
+        staticinvoke <com.startapp.android.publish.i.n: void a(java.lang.String,int,java.lang.String)>("JSONInputStream", 6, $r1);
+
+        throw $r5;
+
+     label07:
+        $r10 = new java.io.BufferedReader;
+
+        $r3 = $r10;
+
+        $r9 = new java.io.InputStreamReader;
+
+     label08:
+        specialinvoke $r9.<java.io.InputStreamReader: void <init>(java.io.InputStream)>($r0);
+
+        specialinvoke $r10.<java.io.BufferedReader: void <init>(java.io.Reader)>($r9);
+
+     label09:
+        goto label02;
+
+     label10:
+        $r7 := @caughtexception;
+
+        $r6 = newarray (java.lang.Object)[1];
+
+        $r1 = virtualinvoke $r7.<java.lang.Exception: java.lang.String toString()>();
+
+        $r6[0] = $r1;
+
+        $r1 = staticinvoke <java.lang.String: java.lang.String format(java.lang.String,java.lang.Object[])>("Can\'t create BufferedReader [%s]", $r6);
+
+        staticinvoke <com.startapp.android.publish.i.n: void a(java.lang.String,int,java.lang.String)>("JSONInputStream", 6, $r1);
+
+        throw $r7;
+
+     label11:
+        $r1 = virtualinvoke $r8.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        return $r1;
+
+        catch java.lang.Exception from label01 to label02 with label10;
+        catch java.io.IOException from label02 to label03 with label06;
+        catch java.io.IOException from label04 to label05 with label06;
+        catch java.lang.Exception from label08 to label09 with label10;
+    }
+
+    private java.util.Map a(java.lang.Class, java.lang.Class, java.lang.reflect.Field, org.json.JSONObject, java.util.Iterator)
+    {
+        com.startapp.android.publish.e.a r0;
+        java.lang.Class $r1, $r2;
+        java.lang.reflect.Field $r3;
+        org.json.JSONObject $r4, $r11;
+        java.util.Iterator $r5;
+        java.util.HashMap $r6;
+        boolean $z0;
+        java.lang.Object $r7, $r10;
+        java.lang.String $r8;
+        int $i0;
+        java.lang.Integer $r9;
+
+        r0 := @this: com.startapp.android.publish.e.a;
+
+        $r1 := @parameter0: java.lang.Class;
+
+        $r2 := @parameter1: java.lang.Class;
+
+        $r3 := @parameter2: java.lang.reflect.Field;
+
+        $r4 := @parameter3: org.json.JSONObject;
+
+        $r5 := @parameter4: java.util.Iterator;
+
+        $r6 = new java.util.HashMap;
+
+        specialinvoke $r6.<java.util.HashMap: void <init>()>();
+
+     label1:
+        $z0 = interfaceinvoke $r5.<java.util.Iterator: boolean hasNext()>();
+
+        if $z0 == 0 goto label4;
+
+        $r7 = interfaceinvoke $r5.<java.util.Iterator: java.lang.Object next()>();
+
+        $z0 = virtualinvoke $r1.<java.lang.Object: boolean equals(java.lang.Object)>(class "Ljava/lang/Integer;");
+
+        if $z0 == 0 goto label5;
+
+        $r8 = (java.lang.String) $r7;
+
+        $i0 = staticinvoke <java.lang.Integer: int parseInt(java.lang.String)>($r8);
+
+        $r9 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>($i0);
+
+        $r10 = virtualinvoke $r1.<java.lang.Class: java.lang.Object cast(java.lang.Object)>($r9);
+
+     label2:
+        $r8 = (java.lang.String) $r7;
+
+        $r11 = virtualinvoke $r4.<org.json.JSONObject: org.json.JSONObject optJSONObject(java.lang.String)>($r8);
+
+        if $r11 != null goto label3;
+
+        $r8 = (java.lang.String) $r7;
+
+        $r7 = virtualinvoke $r4.<org.json.JSONObject: java.lang.Object get(java.lang.String)>($r8);
+
+        interfaceinvoke $r6.<java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>($r10, $r7);
+
+        goto label1;
+
+     label3:
+        $r7 = specialinvoke r0.<com.startapp.android.publish.e.a: java.lang.Object b(java.lang.Class,org.json.JSONObject)>($r2, $r11);
+
+        interfaceinvoke $r6.<java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>($r10, $r7);
+
+        goto label1;
+
+     label4:
+        return $r6;
+
+     label5:
+        $r10 = $r7;
+
+        goto label2;
+    }
+
+    private java.util.Set a(java.lang.Class, java.lang.reflect.Field, org.json.JSONArray)
+    {
+        com.startapp.android.publish.e.a r0;
+        java.lang.Class $r1;
+        java.lang.reflect.Field $r2;
+        org.json.JSONArray $r3;
+        java.util.HashSet $r4;
+        int $i0, $i1;
+        org.json.JSONObject $r5;
+        java.lang.Object $r6;
+
+        r0 := @this: com.startapp.android.publish.e.a;
+
+        $r1 := @parameter0: java.lang.Class;
+
+        $r2 := @parameter1: java.lang.reflect.Field;
+
+        $r3 := @parameter2: org.json.JSONArray;
+
+        $r4 = new java.util.HashSet;
+
+        specialinvoke $r4.<java.util.HashSet: void <init>()>();
+
+        $i0 = 0;
+
+     label1:
+        $i1 = virtualinvoke $r3.<org.json.JSONArray: int length()>();
+
+        if $i0 >= $i1 goto label4;
+
+        $r5 = virtualinvoke $r3.<org.json.JSONArray: org.json.JSONObject optJSONObject(int)>($i0);
+
+        if $r5 != null goto label3;
+
+        $r6 = virtualinvoke $r3.<org.json.JSONArray: java.lang.Object get(int)>($i0);
+
+        interfaceinvoke $r4.<java.util.Set: boolean add(java.lang.Object)>($r6);
+
+     label2:
+        $i0 = $i0 + 1;
+
+        goto label1;
+
+     label3:
+        $r6 = specialinvoke r0.<com.startapp.android.publish.e.a: java.lang.Object b(java.lang.Class,org.json.JSONObject)>($r1, $r5);
+
+        interfaceinvoke $r4.<java.util.Set: boolean add(java.lang.Object)>($r6);
+
+        goto label2;
+
+     label4:
+        return $r4;
+    }
+
+    private java.lang.reflect.Field[] a(java.lang.Class, java.lang.reflect.Field[])
+    {
+        com.startapp.android.publish.e.a r0;
+        java.lang.Class $r1;
+        java.lang.reflect.Field[] $r2, $r3, $r4;
+        int $i0, $i1, $i2;
+
+        r0 := @this: com.startapp.android.publish.e.a;
+
+        $r1 := @parameter0: java.lang.Class;
+
+        $r2 := @parameter1: java.lang.reflect.Field[];
+
+        $i0 = lengthof $r2;
+
+        $r1 = virtualinvoke $r1.<java.lang.Class: java.lang.Class getSuperclass()>();
+
+        $r3 = virtualinvoke $r1.<java.lang.Class: java.lang.reflect.Field[] getDeclaredFields()>();
+
+        $i1 = lengthof $r3;
+
+        $i2 = $i0 + $i1;
+
+        $r4 = newarray (java.lang.reflect.Field)[$i2];
+
+        staticinvoke <java.lang.System: void arraycopy(java.lang.Object,int,java.lang.Object,int,int)>($r2, 0, $r4, 0, $i0);
+
+        staticinvoke <java.lang.System: void arraycopy(java.lang.Object,int,java.lang.Object,int,int)>($r3, 0, $r4, $i0, $i1);
+
+        return $r4;
+    }
+
+    private final java.lang.Object b(java.lang.Class, org.json.JSONObject)
+    {
+        com.startapp.android.publish.e.a r0;
+        java.lang.Class $r1, $r11, $r13, $r29;
+        int $i0, $i1, $i2;
+        org.json.JSONObject $r2, $r31;
+        java.io.InputStream $r3;
+        java.lang.String $r4, $r19;
+        com.startapp.android.publish.e.c $r5;
+        boolean $z0, $z1, $z2;
+        java.lang.reflect.Constructor[] $r6;
+        java.lang.reflect.Constructor $r7;
+        java.lang.Object[] $r8;
+        java.lang.Object $r9, $r32;
+        java.lang.reflect.Field[] $r10;
+        java.lang.reflect.Field $r12;
+        java.lang.Exception $r14, $r33;
+        org.json.JSONException $r15, $r23;
+        java.lang.'annotation'.Annotation $r16;
+        java.lang.Class[] $r17;
+        com.startapp.android.publish.e.d $r18;
+        java.lang.StringBuilder $r20;
+        java.lang.ClassNotFoundException $r21;
+        java.lang.Throwable $r22, $r24, $r25, $r26, $r27;
+        java.lang.'annotation'.Annotation[] $r28;
+        com.startapp.android.publish.e.e $r30;
+        org.json.JSONArray $r34;
+        java.util.Set $r35;
+        java.util.Iterator $r36;
+        java.util.Map $r37;
+        java.util.List $r38;
+        java.lang.Enum $r39;
+
+        r0 := @this: com.startapp.android.publish.e.a;
+
+        $r1 := @parameter0: java.lang.Class;
+
+        $r2 := @parameter1: org.json.JSONObject;
+
+        $r3 = r0.<com.startapp.android.publish.e.a: java.io.InputStream b>;
+
+        if $r3 != null goto label001;
+
+        $r4 = r0.<com.startapp.android.publish.e.a: java.lang.String c>;
+
+        if $r4 != null goto label001;
+
+        $r5 = new com.startapp.android.publish.e.c;
+
+        specialinvoke $r5.<com.startapp.android.publish.e.c: void <init>(java.lang.String)>("Can\'t read object, the input is null.");
+
+        throw $r5;
+
+     label001:
+        $r4 = r0.<com.startapp.android.publish.e.a: java.lang.String c>;
+
+        if $r4 != null goto label003;
+
+     label002:
+        $r3 = r0.<com.startapp.android.publish.e.a: java.io.InputStream b>;
+
+        $r4 = staticinvoke <com.startapp.android.publish.e.a: java.lang.String a(java.io.InputStream,java.lang.String)>($r3, null);
+
+        r0.<com.startapp.android.publish.e.a: java.lang.String c> = $r4;
+
+     label003:
+        if $r2 != null goto label005;
+
+        $r2 = new org.json.JSONObject;
+
+        $r4 = r0.<com.startapp.android.publish.e.a: java.lang.String c>;
+
+     label004:
+        specialinvoke $r2.<org.json.JSONObject: void <init>(java.lang.String)>($r4);
+
+     label005:
+        $i0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $i0 < 9 goto label019;
+
+     label006:
+        $z0 = virtualinvoke $r1.<java.lang.Object: boolean equals(java.lang.Object)>(class "Ljava/net/HttpCookie;");
+
+     label007:
+        if $z0 == 0 goto label019;
+
+     label008:
+        $r6 = virtualinvoke $r1.<java.lang.Class: java.lang.reflect.Constructor[] getDeclaredConstructors()>();
+
+     label009:
+        $r7 = $r6[0];
+
+     label010:
+        virtualinvoke $r7.<java.lang.reflect.Constructor: void setAccessible(boolean)>(1);
+
+     label011:
+        $r8 = newarray (java.lang.Object)[2];
+
+        $r8[0] = "name";
+
+        $r8[1] = "value";
+
+     label012:
+        $r9 = virtualinvoke $r7.<java.lang.reflect.Constructor: java.lang.Object newInstance(java.lang.Object[])>($r8);
+
+     label013:
+        $r10 = virtualinvoke $r1.<java.lang.Class: java.lang.reflect.Field[] getDeclaredFields()>();
+
+        $r11 = virtualinvoke $r1.<java.lang.Class: java.lang.Class getSuperclass()>();
+
+        $z0 = virtualinvoke $r11.<java.lang.Object: boolean equals(java.lang.Object)>(class "Lcom/startapp/android/publish/video/tracking/VideoTrackingLink;");
+
+        if $z0 == 0 goto label119;
+
+        $r10 = specialinvoke r0.<com.startapp.android.publish.e.a: java.lang.reflect.Field[] a(java.lang.Class,java.lang.reflect.Field[])>($r1, $r10);
+
+     label014:
+        $i0 = lengthof $r10;
+
+        $i1 = 0;
+
+     label015:
+        if $i1 >= $i0 goto label120;
+
+        $r12 = $r10[$i1];
+
+        $i2 = virtualinvoke $r12.<java.lang.reflect.Field: int getModifiers()>();
+
+        $r1 = null;
+
+        $r11 = null;
+
+        $r13 = null;
+
+        $z0 = staticinvoke <java.lang.reflect.Modifier: boolean isStatic(int)>($i2);
+
+        if $z0 != 0 goto label016;
+
+        $z0 = staticinvoke <java.lang.reflect.Modifier: boolean isTransient(int)>($i2);
+
+        if $z0 == 0 goto label046;
+
+     label016:
+        $i1 = $i1 + 1;
+
+        goto label015;
+
+     label017:
+        $r14 := @caughtexception;
+
+        $r5 = new com.startapp.android.publish.e.c;
+
+        specialinvoke $r5.<com.startapp.android.publish.e.c: void <init>(java.lang.String,java.lang.Throwable)>("Can\'t read input stream.", $r14);
+
+        throw $r5;
+
+     label018:
+        $r15 := @caughtexception;
+
+        $r5 = new com.startapp.android.publish.e.c;
+
+        specialinvoke $r5.<com.startapp.android.publish.e.c: void <init>(java.lang.String,java.lang.Throwable)>("Can\'t deserialize the object. Failed to create JSON object.", $r15);
+
+        throw $r5;
+
+     label019:
+        $z0 = virtualinvoke $r1.<java.lang.Class: boolean isPrimitive()>();
+
+     label020:
+        if $z0 == 0 goto label023;
+
+     label021:
+        $r9 = virtualinvoke $r1.<java.lang.Class: java.lang.Object newInstance()>();
+
+     label022:
+        return $r9;
+
+     label023:
+        $r16 = virtualinvoke $r1.<java.lang.Class: java.lang.'annotation'.Annotation getAnnotation(java.lang.Class)>(class "Lcom/startapp/android/publish/e/d;");
+
+     label024:
+        if $r16 != null goto label029;
+
+        $r17 = newarray (java.lang.Class)[0];
+
+     label025:
+        $r7 = virtualinvoke $r1.<java.lang.Class: java.lang.reflect.Constructor getDeclaredConstructor(java.lang.Class[])>($r17);
+
+        virtualinvoke $r7.<java.lang.reflect.Constructor: void setAccessible(boolean)>(1);
+
+     label026:
+        $r8 = newarray (java.lang.Object)[0];
+
+     label027:
+        $r9 = virtualinvoke $r7.<java.lang.reflect.Constructor: java.lang.Object newInstance(java.lang.Object[])>($r8);
+
+     label028:
+        goto label013;
+
+     label029:
+        $r16 = virtualinvoke $r1.<java.lang.Class: java.lang.'annotation'.Annotation getAnnotation(java.lang.Class)>(class "Lcom/startapp/android/publish/e/d;");
+
+     label030:
+        $r18 = (com.startapp.android.publish.e.d) $r16;
+
+     label031:
+        $r4 = interfaceinvoke $r18.<com.startapp.android.publish.e.d: java.lang.String a()>();
+
+        $r4 = virtualinvoke $r2.<org.json.JSONObject: java.lang.String getString(java.lang.String)>($r4);
+
+        $r19 = interfaceinvoke $r18.<com.startapp.android.publish.e.d: java.lang.String b()>();
+
+     label032:
+        $r20 = new java.lang.StringBuilder;
+
+     label033:
+        specialinvoke $r20.<java.lang.StringBuilder: void <init>()>();
+
+        $r20 = virtualinvoke $r20.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r19);
+
+        $r20 = virtualinvoke $r20.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(".");
+
+        $r20 = virtualinvoke $r20.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r4);
+
+        $r4 = virtualinvoke $r20.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        $r1 = staticinvoke <java.lang.Class: java.lang.Class forName(java.lang.String)>($r4);
+
+        $r9 = specialinvoke r0.<com.startapp.android.publish.e.a: java.lang.Object b(java.lang.Class,org.json.JSONObject)>($r1, $r2);
+
+     label034:
+        return $r9;
+
+     label035:
+        $r21 := @caughtexception;
+
+        $r5 = new com.startapp.android.publish.e.c;
+
+     label036:
+        specialinvoke $r5.<com.startapp.android.publish.e.c: void <init>(java.lang.String,java.lang.Throwable)>("Problem instantiating object class ", $r21);
+
+     label037:
+        throw $r5;
+
+     label038:
+        $r22 := @caughtexception;
+
+        $r5 = new com.startapp.android.publish.e.c;
+
+        specialinvoke $r5.<com.startapp.android.publish.e.c: void <init>(java.lang.String,java.lang.Throwable)>("Can\'t deserialize the object. Failed to instantiate object.", $r22);
+
+        throw $r5;
+
+     label039:
+        $r23 := @caughtexception;
+
+        $r5 = new com.startapp.android.publish.e.c;
+
+     label040:
+        specialinvoke $r5.<com.startapp.android.publish.e.c: void <init>(java.lang.String,java.lang.Throwable)>("Problem instantiating object class ", $r23);
+
+     label041:
+        throw $r5;
+
+     label042:
+        $r24 := @caughtexception;
+
+        $r5 = new com.startapp.android.publish.e.c;
+
+        specialinvoke $r5.<com.startapp.android.publish.e.c: void <init>(java.lang.String,java.lang.Throwable)>("Can\'t deserialize the object. Failed to instantiate object.", $r24);
+
+        throw $r5;
+
+     label043:
+        $r25 := @caughtexception;
+
+        $r5 = new com.startapp.android.publish.e.c;
+
+        specialinvoke $r5.<com.startapp.android.publish.e.c: void <init>(java.lang.String,java.lang.Throwable)>("Can\'t deserialize the object. Failed to instantiate object.", $r25);
+
+        throw $r5;
+
+     label044:
+        $r26 := @caughtexception;
+
+        $r5 = new com.startapp.android.publish.e.c;
+
+        specialinvoke $r5.<com.startapp.android.publish.e.c: void <init>(java.lang.String,java.lang.Throwable)>("Can\'t deserialize the object. Failed to instantiate object.", $r26);
+
+        throw $r5;
+
+     label045:
+        $r27 := @caughtexception;
+
+        $r5 = new com.startapp.android.publish.e.c;
+
+        specialinvoke $r5.<com.startapp.android.publish.e.c: void <init>(java.lang.String,java.lang.Throwable)>("Can\'t deserialize the object. Failed to instantiate object.", $r27);
+
+        throw $r5;
+
+     label046:
+        $r4 = virtualinvoke $r12.<java.lang.reflect.Field: java.lang.String getName()>();
+
+        $z0 = virtualinvoke $r2.<org.json.JSONObject: boolean has(java.lang.String)>($r4);
+
+     label047:
+        if $z0 == 0 goto label116;
+
+     label048:
+        virtualinvoke $r12.<java.lang.reflect.Field: void setAccessible(boolean)>(1);
+
+        $r28 = virtualinvoke $r12.<java.lang.reflect.Field: java.lang.'annotation'.Annotation[] getDeclaredAnnotations()>();
+
+        $i2 = lengthof $r28;
+
+     label049:
+        if $i2 <= 0 goto label118;
+
+     label050:
+        $r28 = virtualinvoke $r12.<java.lang.reflect.Field: java.lang.'annotation'.Annotation[] getDeclaredAnnotations()>();
+
+        $r16 = $r28[0];
+
+        $r29 = interfaceinvoke $r16.<java.lang.'annotation'.Annotation: java.lang.Class annotationType()>();
+
+        $z0 = virtualinvoke $r29.<java.lang.Object: boolean equals(java.lang.Object)>(class "Lcom/startapp/android/publish/e/e;");
+
+     label051:
+        if $z0 == 0 goto label118;
+
+     label052:
+        $r30 = (com.startapp.android.publish.e.e) $r16;
+
+        $r1 = interfaceinvoke $r30.<com.startapp.android.publish.e.e: java.lang.Class b()>();
+
+     label053:
+        $r11 = interfaceinvoke $r30.<com.startapp.android.publish.e.e: java.lang.Class d()>();
+
+     label054:
+        $r13 = interfaceinvoke $r30.<com.startapp.android.publish.e.e: java.lang.Class c()>();
+
+     label055:
+        $z0 = interfaceinvoke $r30.<com.startapp.android.publish.e.e: boolean a()>();
+
+     label056:
+        $z1 = 1;
+
+     label057:
+        $r29 = virtualinvoke $r12.<java.lang.reflect.Field: java.lang.Class getType()>();
+
+        $r16 = virtualinvoke $r29.<java.lang.Class: java.lang.'annotation'.Annotation getAnnotation(java.lang.Class)>(class "Lcom/startapp/android/publish/e/d;");
+
+     label058:
+        if $r16 == null goto label064;
+
+     label059:
+        $r1 = virtualinvoke $r12.<java.lang.reflect.Field: java.lang.Class getType()>();
+
+        $r16 = virtualinvoke $r1.<java.lang.Class: java.lang.'annotation'.Annotation getAnnotation(java.lang.Class)>(class "Lcom/startapp/android/publish/e/d;");
+
+        $r18 = (com.startapp.android.publish.e.d) $r16;
+
+        $r4 = virtualinvoke $r12.<java.lang.reflect.Field: java.lang.String getName()>();
+
+        $r31 = virtualinvoke $r2.<org.json.JSONObject: org.json.JSONObject getJSONObject(java.lang.String)>($r4);
+
+        $r4 = interfaceinvoke $r18.<com.startapp.android.publish.e.d: java.lang.String a()>();
+
+        $r4 = virtualinvoke $r31.<org.json.JSONObject: java.lang.String getString(java.lang.String)>($r4);
+
+        $r19 = interfaceinvoke $r18.<com.startapp.android.publish.e.d: java.lang.String b()>();
+
+     label060:
+        $r20 = new java.lang.StringBuilder;
+
+     label061:
+        specialinvoke $r20.<java.lang.StringBuilder: void <init>()>();
+
+        $r20 = virtualinvoke $r20.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r19);
+
+        $r20 = virtualinvoke $r20.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(".");
+
+        $r20 = virtualinvoke $r20.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r4);
+
+        $r4 = virtualinvoke $r20.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        $r1 = staticinvoke <java.lang.Class: java.lang.Class forName(java.lang.String)>($r4);
+
+        $r4 = virtualinvoke $r12.<java.lang.reflect.Field: java.lang.String getName()>();
+
+        $r31 = virtualinvoke $r2.<org.json.JSONObject: org.json.JSONObject getJSONObject(java.lang.String)>($r4);
+
+        $r32 = specialinvoke r0.<com.startapp.android.publish.e.a: java.lang.Object b(java.lang.Class,org.json.JSONObject)>($r1, $r31);
+
+        virtualinvoke $r12.<java.lang.reflect.Field: void set(java.lang.Object,java.lang.Object)>($r9, $r32);
+
+     label062:
+        goto label016;
+
+     label063:
+        $r33 := @caughtexception;
+
+        $r8 = newarray (java.lang.Object)[2];
+
+        $r4 = virtualinvoke $r12.<java.lang.reflect.Field: java.lang.String getName()>();
+
+        $r8[0] = $r4;
+
+        $r4 = virtualinvoke $r33.<java.lang.Exception: java.lang.String toString()>();
+
+        $r8[1] = $r4;
+
+        $r4 = staticinvoke <java.lang.String: java.lang.String format(java.lang.String,java.lang.Object[])>("Failed to get field [%s] %s", $r8);
+
+        staticinvoke <com.startapp.android.publish.i.n: void a(java.lang.String,int,java.lang.String)>("JSONInputStream", 6, $r4);
+
+        goto label016;
+
+     label064:
+        $r4 = virtualinvoke $r12.<java.lang.reflect.Field: java.lang.String getName()>();
+
+        $z2 = virtualinvoke $r4.<java.lang.String: boolean equals(java.lang.Object)>("autoLoad");
+
+     label065:
+        if $z2 == 0 goto label068;
+
+     label066:
+        $r4 = virtualinvoke $r12.<java.lang.reflect.Field: java.lang.String getName()>();
+
+        $r34 = virtualinvoke $r2.<org.json.JSONObject: org.json.JSONArray getJSONArray(java.lang.String)>($r4);
+
+        $r35 = specialinvoke r0.<com.startapp.android.publish.e.a: java.util.Set b(java.lang.Class,java.lang.reflect.Field,org.json.JSONArray)>(class "Lcom/startapp/android/publish/StartAppAd$AdMode;", $r12, $r34);
+
+        virtualinvoke $r12.<java.lang.reflect.Field: void set(java.lang.Object,java.lang.Object)>($r9, $r35);
+
+     label067:
+        goto label016;
+
+     label068:
+        if $z0 == 0 goto label071;
+
+     label069:
+        $r1 = virtualinvoke $r12.<java.lang.reflect.Field: java.lang.Class getType()>();
+
+        $r4 = virtualinvoke $r12.<java.lang.reflect.Field: java.lang.String getName()>();
+
+        $r31 = virtualinvoke $r2.<org.json.JSONObject: org.json.JSONObject getJSONObject(java.lang.String)>($r4);
+
+        $r32 = specialinvoke r0.<com.startapp.android.publish.e.a: java.lang.Object b(java.lang.Class,org.json.JSONObject)>($r1, $r31);
+
+        virtualinvoke $r12.<java.lang.reflect.Field: void set(java.lang.Object,java.lang.Object)>($r9, $r32);
+
+     label070:
+        goto label016;
+
+     label071:
+        if $z1 == 0 goto label098;
+
+        $r29 = class "Ljava/util/Map;";
+
+     label072:
+        $z0 = virtualinvoke $r29.<java.lang.Class: boolean isAssignableFrom(java.lang.Class)>($r1);
+
+     label073:
+        if $z0 != 0 goto label076;
+
+        $r29 = class "Ljava/util/Collection;";
+
+     label074:
+        $z0 = virtualinvoke $r29.<java.lang.Class: boolean isAssignableFrom(java.lang.Class)>($r1);
+
+     label075:
+        if $z0 == 0 goto label098;
+
+     label076:
+        $z0 = virtualinvoke $r1.<java.lang.Object: boolean equals(java.lang.Object)>(class "Ljava/util/HashMap;");
+
+     label077:
+        if $z0 == 0 goto label086;
+
+     label078:
+        $r4 = virtualinvoke $r12.<java.lang.reflect.Field: java.lang.String getName()>();
+
+        $r31 = virtualinvoke $r2.<org.json.JSONObject: org.json.JSONObject getJSONObject(java.lang.String)>($r4);
+
+        $r36 = virtualinvoke $r31.<org.json.JSONObject: java.util.Iterator keys()>();
+
+        $r4 = virtualinvoke $r12.<java.lang.reflect.Field: java.lang.String getName()>();
+
+        $z0 = virtualinvoke $r4.<java.lang.String: boolean equals(java.lang.Object)>("tags");
+
+     label079:
+        if $z0 != 0 goto label082;
+
+     label080:
+        $r4 = virtualinvoke $r12.<java.lang.reflect.Field: java.lang.String getName()>();
+
+        $z0 = virtualinvoke $r4.<java.lang.String: boolean equals(java.lang.Object)>("placements");
+
+     label081:
+        if $z0 == 0 goto label084;
+
+     label082:
+        $r37 = specialinvoke r0.<com.startapp.android.publish.e.a: java.util.Map b(java.lang.Class,java.lang.Class,java.lang.reflect.Field,org.json.JSONObject,java.util.Iterator)>($r11, $r13, $r12, $r31, $r36);
+
+        virtualinvoke $r12.<java.lang.reflect.Field: void set(java.lang.Object,java.lang.Object)>($r9, $r37);
+
+     label083:
+        goto label016;
+
+     label084:
+        $r37 = specialinvoke r0.<com.startapp.android.publish.e.a: java.util.Map a(java.lang.Class,java.lang.Class,java.lang.reflect.Field,org.json.JSONObject,java.util.Iterator)>($r11, $r13, $r12, $r31, $r36);
+
+        virtualinvoke $r12.<java.lang.reflect.Field: void set(java.lang.Object,java.lang.Object)>($r9, $r37);
+
+     label085:
+        goto label016;
+
+     label086:
+        $z0 = virtualinvoke $r1.<java.lang.Object: boolean equals(java.lang.Object)>(class "Ljava/util/ArrayList;");
+
+     label087:
+        if $z0 == 0 goto label090;
+
+     label088:
+        $r4 = virtualinvoke $r12.<java.lang.reflect.Field: java.lang.String getName()>();
+
+        $r34 = virtualinvoke $r2.<org.json.JSONObject: org.json.JSONArray getJSONArray(java.lang.String)>($r4);
+
+        $r38 = specialinvoke r0.<com.startapp.android.publish.e.a: java.util.List c(java.lang.Class,java.lang.reflect.Field,org.json.JSONArray)>($r13, $r12, $r34);
+
+        virtualinvoke $r12.<java.lang.reflect.Field: void set(java.lang.Object,java.lang.Object)>($r9, $r38);
+
+     label089:
+        goto label016;
+
+     label090:
+        $z0 = virtualinvoke $r1.<java.lang.Object: boolean equals(java.lang.Object)>(class "Ljava/util/HashSet;");
+
+     label091:
+        if $z0 == 0 goto label094;
+
+     label092:
+        $r4 = virtualinvoke $r12.<java.lang.reflect.Field: java.lang.String getName()>();
+
+        $r34 = virtualinvoke $r2.<org.json.JSONObject: org.json.JSONArray getJSONArray(java.lang.String)>($r4);
+
+        $r35 = specialinvoke r0.<com.startapp.android.publish.e.a: java.util.Set a(java.lang.Class,java.lang.reflect.Field,org.json.JSONArray)>($r13, $r12, $r34);
+
+        virtualinvoke $r12.<java.lang.reflect.Field: void set(java.lang.Object,java.lang.Object)>($r9, $r35);
+
+     label093:
+        goto label016;
+
+     label094:
+        $z0 = virtualinvoke $r1.<java.lang.Object: boolean equals(java.lang.Object)>(class "Ljava/util/EnumSet;");
+
+     label095:
+        if $z0 == 0 goto label016;
+
+     label096:
+        $r4 = virtualinvoke $r12.<java.lang.reflect.Field: java.lang.String getName()>();
+
+        $r34 = virtualinvoke $r2.<org.json.JSONObject: org.json.JSONArray getJSONArray(java.lang.String)>($r4);
+
+        $r35 = specialinvoke r0.<com.startapp.android.publish.e.a: java.util.Set b(java.lang.Class,java.lang.reflect.Field,org.json.JSONArray)>($r13, $r12, $r34);
+
+        virtualinvoke $r12.<java.lang.reflect.Field: void set(java.lang.Object,java.lang.Object)>($r9, $r35);
+
+     label097:
+        goto label016;
+
+     label098:
+        $r11 = virtualinvoke $r12.<java.lang.reflect.Field: java.lang.Class getType()>();
+
+        $z0 = virtualinvoke $r11.<java.lang.Class: boolean isEnum()>();
+
+     label099:
+        if $z0 == 0 goto label102;
+
+     label100:
+        $r4 = virtualinvoke $r12.<java.lang.reflect.Field: java.lang.String getName()>();
+
+        $r32 = virtualinvoke $r2.<org.json.JSONObject: java.lang.Object get(java.lang.String)>($r4);
+
+        $r4 = (java.lang.String) $r32;
+
+        $r39 = specialinvoke r0.<com.startapp.android.publish.e.a: java.lang.Enum a(java.lang.String,java.lang.Class)>($r4, $r1);
+
+        virtualinvoke $r12.<java.lang.reflect.Field: void set(java.lang.Object,java.lang.Object)>($r9, $r39);
+
+     label101:
+        goto label016;
+
+     label102:
+        $r11 = virtualinvoke $r12.<java.lang.reflect.Field: java.lang.Class getType()>();
+
+        $z0 = virtualinvoke $r11.<java.lang.Class: boolean isPrimitive()>();
+
+     label103:
+        if $z0 == 0 goto label106;
+
+     label104:
+        $r4 = virtualinvoke $r12.<java.lang.reflect.Field: java.lang.String getName()>();
+
+        $r32 = virtualinvoke $r2.<org.json.JSONObject: java.lang.Object get(java.lang.String)>($r4);
+
+        $r1 = virtualinvoke $r12.<java.lang.reflect.Field: java.lang.Class getType()>();
+
+        $r32 = staticinvoke <com.startapp.android.publish.e.a: java.lang.Object a(org.json.JSONObject,java.lang.reflect.Field,java.lang.Object,java.lang.Class)>($r2, $r12, $r32, $r1);
+
+        virtualinvoke $r12.<java.lang.reflect.Field: void set(java.lang.Object,java.lang.Object)>($r9, $r32);
+
+     label105:
+        goto label016;
+
+     label106:
+        $r11 = virtualinvoke $r12.<java.lang.reflect.Field: java.lang.Class getType()>();
+
+        $z0 = virtualinvoke $r11.<java.lang.Class: boolean isArray()>();
+
+     label107:
+        if $z0 == 0 goto label110;
+
+     label108:
+        $r32 = specialinvoke r0.<com.startapp.android.publish.e.a: java.lang.Object a(org.json.JSONObject,java.lang.Class,java.lang.reflect.Field)>($r2, $r1, $r12);
+
+        virtualinvoke $r12.<java.lang.reflect.Field: void set(java.lang.Object,java.lang.Object)>($r9, $r32);
+
+     label109:
+        goto label016;
+
+     label110:
+        $r4 = virtualinvoke $r12.<java.lang.reflect.Field: java.lang.String getName()>();
+
+        $r32 = virtualinvoke $r2.<org.json.JSONObject: java.lang.Object get(java.lang.String)>($r4);
+
+        $r1 = virtualinvoke $r12.<java.lang.reflect.Field: java.lang.Class getType()>();
+
+        $r32 = staticinvoke <com.startapp.android.publish.e.a: java.lang.Object a(java.lang.Object,java.lang.Class)>($r32, $r1);
+
+        $z0 = virtualinvoke $r32.<java.lang.Object: boolean equals(java.lang.Object)>(null);
+
+     label111:
+        if $z0 == 0 goto label114;
+
+     label112:
+        virtualinvoke $r12.<java.lang.reflect.Field: void set(java.lang.Object,java.lang.Object)>($r9, null);
+
+     label113:
+        goto label016;
+
+     label114:
+        $r4 = virtualinvoke $r12.<java.lang.reflect.Field: java.lang.String getName()>();
+
+        $r32 = virtualinvoke $r2.<org.json.JSONObject: java.lang.Object get(java.lang.String)>($r4);
+
+        $r1 = virtualinvoke $r12.<java.lang.reflect.Field: java.lang.Class getType()>();
+
+        $r32 = staticinvoke <com.startapp.android.publish.e.a: java.lang.Object a(java.lang.Object,java.lang.Class)>($r32, $r1);
+
+        virtualinvoke $r12.<java.lang.reflect.Field: void set(java.lang.Object,java.lang.Object)>($r9, $r32);
+
+     label115:
+        goto label016;
+
+     label116:
+        $r8 = newarray (java.lang.Object)[1];
+
+        $r4 = virtualinvoke $r12.<java.lang.reflect.Field: java.lang.String getName()>();
+
+        $r8[0] = $r4;
+
+        $r4 = staticinvoke <java.lang.String: java.lang.String format(java.lang.String,java.lang.Object[])>("Field [%s] doesn\'t exist. Keeping default value.", $r8);
+
+        staticinvoke <com.startapp.android.publish.i.n: void a(java.lang.String,int,java.lang.String)>("JSONInputStream", 4, $r4);
+
+     label117:
+        goto label016;
+
+     label118:
+        $z1 = 0;
+
+        $z0 = 0;
+
+        goto label057;
+
+     label119:
+        goto label014;
+
+     label120:
+        return $r9;
+
+        catch java.lang.Exception from label002 to label003 with label017;
+        catch org.json.JSONException from label004 to label005 with label018;
+        catch java.lang.InstantiationException from label006 to label007 with label038;
+        catch java.lang.InstantiationException from label008 to label009 with label038;
+        catch java.lang.InstantiationException from label010 to label011 with label038;
+        catch java.lang.InstantiationException from label012 to label013 with label038;
+        catch java.lang.IllegalAccessException from label006 to label007 with label042;
+        catch java.lang.IllegalAccessException from label008 to label009 with label042;
+        catch java.lang.IllegalAccessException from label010 to label011 with label042;
+        catch java.lang.IllegalAccessException from label012 to label013 with label042;
+        catch java.lang.IllegalArgumentException from label006 to label007 with label043;
+        catch java.lang.IllegalArgumentException from label008 to label009 with label043;
+        catch java.lang.IllegalArgumentException from label010 to label011 with label043;
+        catch java.lang.IllegalArgumentException from label012 to label013 with label043;
+        catch java.lang.reflect.InvocationTargetException from label006 to label007 with label044;
+        catch java.lang.reflect.InvocationTargetException from label008 to label009 with label044;
+        catch java.lang.reflect.InvocationTargetException from label010 to label011 with label044;
+        catch java.lang.reflect.InvocationTargetException from label012 to label013 with label044;
+        catch java.lang.NoSuchMethodException from label006 to label007 with label045;
+        catch java.lang.NoSuchMethodException from label008 to label009 with label045;
+        catch java.lang.NoSuchMethodException from label010 to label011 with label045;
+        catch java.lang.NoSuchMethodException from label012 to label013 with label045;
+        catch java.lang.InstantiationException from label019 to label020 with label038;
+        catch java.lang.InstantiationException from label021 to label022 with label038;
+        catch java.lang.InstantiationException from label023 to label024 with label038;
+        catch java.lang.InstantiationException from label025 to label026 with label038;
+        catch java.lang.InstantiationException from label027 to label028 with label038;
+        catch java.lang.InstantiationException from label029 to label030 with label038;
+        catch java.lang.IllegalAccessException from label019 to label020 with label042;
+        catch java.lang.IllegalAccessException from label021 to label022 with label042;
+        catch java.lang.IllegalAccessException from label023 to label024 with label042;
+        catch java.lang.IllegalAccessException from label025 to label026 with label042;
+        catch java.lang.IllegalAccessException from label027 to label028 with label042;
+        catch java.lang.IllegalAccessException from label029 to label030 with label042;
+        catch java.lang.IllegalArgumentException from label019 to label020 with label043;
+        catch java.lang.IllegalArgumentException from label021 to label022 with label043;
+        catch java.lang.IllegalArgumentException from label023 to label024 with label043;
+        catch java.lang.IllegalArgumentException from label025 to label026 with label043;
+        catch java.lang.IllegalArgumentException from label027 to label028 with label043;
+        catch java.lang.IllegalArgumentException from label029 to label030 with label043;
+        catch java.lang.reflect.InvocationTargetException from label019 to label020 with label044;
+        catch java.lang.reflect.InvocationTargetException from label021 to label022 with label044;
+        catch java.lang.reflect.InvocationTargetException from label023 to label024 with label044;
+        catch java.lang.reflect.InvocationTargetException from label025 to label026 with label044;
+        catch java.lang.reflect.InvocationTargetException from label027 to label028 with label044;
+        catch java.lang.reflect.InvocationTargetException from label029 to label030 with label044;
+        catch java.lang.NoSuchMethodException from label019 to label020 with label045;
+        catch java.lang.NoSuchMethodException from label021 to label022 with label045;
+        catch java.lang.NoSuchMethodException from label023 to label024 with label045;
+        catch java.lang.NoSuchMethodException from label025 to label026 with label045;
+        catch java.lang.NoSuchMethodException from label027 to label028 with label045;
+        catch java.lang.NoSuchMethodException from label029 to label030 with label045;
+        catch java.lang.ClassNotFoundException from label031 to label032 with label035;
+        catch java.lang.ClassNotFoundException from label033 to label034 with label035;
+        catch org.json.JSONException from label031 to label032 with label039;
+        catch org.json.JSONException from label033 to label034 with label039;
+        catch java.lang.InstantiationException from label031 to label032 with label038;
+        catch java.lang.InstantiationException from label033 to label034 with label038;
+        catch java.lang.IllegalAccessException from label031 to label032 with label042;
+        catch java.lang.IllegalAccessException from label033 to label034 with label042;
+        catch java.lang.IllegalArgumentException from label031 to label032 with label043;
+        catch java.lang.IllegalArgumentException from label033 to label034 with label043;
+        catch java.lang.reflect.InvocationTargetException from label031 to label032 with label044;
+        catch java.lang.reflect.InvocationTargetException from label033 to label034 with label044;
+        catch java.lang.NoSuchMethodException from label031 to label032 with label045;
+        catch java.lang.NoSuchMethodException from label033 to label034 with label045;
+        catch java.lang.InstantiationException from label036 to label037 with label038;
+        catch java.lang.IllegalAccessException from label036 to label037 with label042;
+        catch java.lang.IllegalArgumentException from label036 to label037 with label043;
+        catch java.lang.reflect.InvocationTargetException from label036 to label037 with label044;
+        catch java.lang.NoSuchMethodException from label036 to label037 with label045;
+        catch java.lang.InstantiationException from label040 to label041 with label038;
+        catch java.lang.IllegalAccessException from label040 to label041 with label042;
+        catch java.lang.IllegalArgumentException from label040 to label041 with label043;
+        catch java.lang.reflect.InvocationTargetException from label040 to label041 with label044;
+        catch java.lang.NoSuchMethodException from label040 to label041 with label045;
+        catch java.lang.Exception from label046 to label047 with label063;
+        catch java.lang.Exception from label048 to label049 with label063;
+        catch java.lang.Exception from label050 to label051 with label063;
+        catch java.lang.Exception from label052 to label053 with label063;
+        catch java.lang.Exception from label053 to label054 with label063;
+        catch java.lang.Exception from label054 to label055 with label063;
+        catch java.lang.Exception from label055 to label056 with label063;
+        catch java.lang.Exception from label057 to label058 with label063;
+        catch java.lang.Exception from label059 to label060 with label063;
+        catch java.lang.Exception from label061 to label062 with label063;
+        catch java.lang.Exception from label064 to label065 with label063;
+        catch java.lang.Exception from label066 to label067 with label063;
+        catch java.lang.Exception from label069 to label070 with label063;
+        catch java.lang.Exception from label072 to label073 with label063;
+        catch java.lang.Exception from label074 to label075 with label063;
+        catch java.lang.Exception from label076 to label077 with label063;
+        catch java.lang.Exception from label078 to label079 with label063;
+        catch java.lang.Exception from label080 to label081 with label063;
+        catch java.lang.Exception from label082 to label083 with label063;
+        catch java.lang.Exception from label084 to label085 with label063;
+        catch java.lang.Exception from label086 to label087 with label063;
+        catch java.lang.Exception from label088 to label089 with label063;
+        catch java.lang.Exception from label090 to label091 with label063;
+        catch java.lang.Exception from label092 to label093 with label063;
+        catch java.lang.Exception from label094 to label095 with label063;
+        catch java.lang.Exception from label096 to label097 with label063;
+        catch java.lang.Exception from label098 to label099 with label063;
+        catch java.lang.Exception from label100 to label101 with label063;
+        catch java.lang.Exception from label102 to label103 with label063;
+        catch java.lang.Exception from label104 to label105 with label063;
+        catch java.lang.Exception from label106 to label107 with label063;
+        catch java.lang.Exception from label108 to label109 with label063;
+        catch java.lang.Exception from label110 to label111 with label063;
+        catch java.lang.Exception from label112 to label113 with label063;
+        catch java.lang.Exception from label114 to label115 with label063;
+        catch java.lang.Exception from label116 to label117 with label063;
+    }
+
+    private java.util.Map b(java.lang.Class, java.lang.Class, java.lang.reflect.Field, org.json.JSONObject, java.util.Iterator)
+    {
+        com.startapp.android.publish.e.a r0;
+        java.lang.Class $r1, $r2;
+        java.lang.reflect.Field $r3;
+        org.json.JSONObject $r4;
+        java.util.Iterator $r5;
+        java.util.HashMap $r6;
+        boolean $z0;
+        java.lang.Object $r7;
+        java.lang.String $r8;
+        org.json.JSONArray $r9;
+        java.lang.Enum $r10;
+        java.util.List $r11;
+
+        r0 := @this: com.startapp.android.publish.e.a;
+
+        $r1 := @parameter0: java.lang.Class;
+
+        $r2 := @parameter1: java.lang.Class;
+
+        $r3 := @parameter2: java.lang.reflect.Field;
+
+        $r4 := @parameter3: org.json.JSONObject;
+
+        $r5 := @parameter4: java.util.Iterator;
+
+        $r6 = new java.util.HashMap;
+
+        specialinvoke $r6.<java.util.HashMap: void <init>()>();
+
+     label1:
+        $z0 = interfaceinvoke $r5.<java.util.Iterator: boolean hasNext()>();
+
+        if $z0 == 0 goto label3;
+
+        $r7 = interfaceinvoke $r5.<java.util.Iterator: java.lang.Object next()>();
+
+        $r8 = virtualinvoke $r7.<java.lang.Object: java.lang.String toString()>();
+
+        $r9 = virtualinvoke $r4.<org.json.JSONObject: org.json.JSONArray getJSONArray(java.lang.String)>($r8);
+
+        virtualinvoke $r9.<org.json.JSONArray: org.json.JSONObject getJSONObject(int)>(0);
+
+        $z0 = virtualinvoke $r1.<java.lang.Class: boolean isEnum()>();
+
+        if $z0 == 0 goto label2;
+
+        $r8 = virtualinvoke $r7.<java.lang.Object: java.lang.String toString()>();
+
+        $r10 = specialinvoke r0.<com.startapp.android.publish.e.a: java.lang.Enum a(java.lang.String,java.lang.Class)>($r8, $r1);
+
+        $r11 = specialinvoke r0.<com.startapp.android.publish.e.a: java.util.List c(java.lang.Class,java.lang.reflect.Field,org.json.JSONArray)>(class "Lcom/startapp/android/publish/model/adrules/AdRule;", $r3, $r9);
+
+        interfaceinvoke $r6.<java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>($r10, $r11);
+
+        goto label1;
+
+     label2:
+        $r11 = specialinvoke r0.<com.startapp.android.publish.e.a: java.util.List c(java.lang.Class,java.lang.reflect.Field,org.json.JSONArray)>(class "Lcom/startapp/android/publish/model/adrules/AdRule;", $r3, $r9);
+
+        interfaceinvoke $r6.<java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>($r7, $r11);
+
+        goto label1;
+
+     label3:
+        return $r6;
+    }
+
+    private java.util.Set b(java.lang.Class, java.lang.reflect.Field, org.json.JSONArray)
+    {
+        com.startapp.android.publish.e.a r0;
+        java.lang.Class $r1;
+        java.lang.reflect.Field $r2;
+        org.json.JSONArray $r3;
+        java.util.HashSet $r4;
+        int $i0, $i1;
+        java.lang.String $r5;
+        java.lang.Enum $r6;
+
+        r0 := @this: com.startapp.android.publish.e.a;
+
+        $r1 := @parameter0: java.lang.Class;
+
+        $r2 := @parameter1: java.lang.reflect.Field;
+
+        $r3 := @parameter2: org.json.JSONArray;
+
+        $r4 = new java.util.HashSet;
+
+        specialinvoke $r4.<java.util.HashSet: void <init>()>();
+
+        $i0 = 0;
+
+     label1:
+        $i1 = virtualinvoke $r3.<org.json.JSONArray: int length()>();
+
+        if $i0 >= $i1 goto label2;
+
+        $r5 = virtualinvoke $r3.<org.json.JSONArray: java.lang.String getString(int)>($i0);
+
+        $r6 = specialinvoke r0.<com.startapp.android.publish.e.a: java.lang.Enum a(java.lang.String,java.lang.Class)>($r5, $r1);
+
+        interfaceinvoke $r4.<java.util.Set: boolean add(java.lang.Object)>($r6);
+
+        $i0 = $i0 + 1;
+
+        goto label1;
+
+     label2:
+        return $r4;
+    }
+
+    private java.lang.Object[] b(org.json.JSONObject, java.lang.Class, java.lang.reflect.Field)
+    {
+        com.startapp.android.publish.e.a r0;
+        org.json.JSONObject $r1;
+        java.lang.Class $r2;
+        java.lang.reflect.Field $r3;
+        java.lang.String $r4;
+        org.json.JSONArray $r5;
+        int $i0, $i1;
+        java.lang.Object $r6, $r7;
+        java.lang.Object[] $r8;
+
+        r0 := @this: com.startapp.android.publish.e.a;
+
+        $r1 := @parameter0: org.json.JSONObject;
+
+        $r2 := @parameter1: java.lang.Class;
+
+        $r3 := @parameter2: java.lang.reflect.Field;
+
+        $r4 = virtualinvoke $r3.<java.lang.reflect.Field: java.lang.String getName()>();
+
+        $r5 = virtualinvoke $r1.<org.json.JSONObject: org.json.JSONArray getJSONArray(java.lang.String)>($r4);
+
+        $i0 = virtualinvoke $r5.<org.json.JSONArray: int length()>();
+
+        $r6 = staticinvoke <java.lang.reflect.Array: java.lang.Object newInstance(java.lang.Class,int)>($r2, $i0);
+
+        $i1 = 0;
+
+     label1:
+        if $i1 >= $i0 goto label2;
+
+        $r1 = virtualinvoke $r5.<org.json.JSONArray: org.json.JSONObject getJSONObject(int)>($i1);
+
+        $r7 = specialinvoke r0.<com.startapp.android.publish.e.a: java.lang.Object b(java.lang.Class,org.json.JSONObject)>($r2, $r1);
+
+        staticinvoke <java.lang.reflect.Array: void set(java.lang.Object,int,java.lang.Object)>($r6, $i1, $r7);
+
+        $i1 = $i1 + 1;
+
+        goto label1;
+
+     label2:
+        $r8 = (java.lang.Object[]) $r6;
+
+        return $r8;
+    }
+
+    private java.util.List c(java.lang.Class, java.lang.reflect.Field, org.json.JSONArray)
+    {
+        com.startapp.android.publish.e.a r0;
+        java.lang.Class $r1;
+        java.lang.reflect.Field $r2;
+        org.json.JSONArray $r3;
+        java.util.ArrayList $r4;
+        int $i0, $i1;
+        org.json.JSONObject $r5;
+        java.lang.Object $r6;
+
+        r0 := @this: com.startapp.android.publish.e.a;
+
+        $r1 := @parameter0: java.lang.Class;
+
+        $r2 := @parameter1: java.lang.reflect.Field;
+
+        $r3 := @parameter2: org.json.JSONArray;
+
+        $r4 = new java.util.ArrayList;
+
+        specialinvoke $r4.<java.util.ArrayList: void <init>()>();
+
+        $i0 = 0;
+
+     label1:
+        $i1 = virtualinvoke $r3.<org.json.JSONArray: int length()>();
+
+        if $i0 >= $i1 goto label4;
+
+        $r5 = virtualinvoke $r3.<org.json.JSONArray: org.json.JSONObject optJSONObject(int)>($i0);
+
+        if $r5 != null goto label3;
+
+        $r6 = virtualinvoke $r3.<org.json.JSONArray: java.lang.Object get(int)>($i0);
+
+        interfaceinvoke $r4.<java.util.List: boolean add(java.lang.Object)>($r6);
+
+     label2:
+        $i0 = $i0 + 1;
+
+        goto label1;
+
+     label3:
+        $r6 = specialinvoke r0.<com.startapp.android.publish.e.a: java.lang.Object b(java.lang.Class,org.json.JSONObject)>($r1, $r5);
+
+        interfaceinvoke $r4.<java.util.List: boolean add(java.lang.Object)>($r6);
+
+        goto label2;
+
+     label4:
+        return $r4;
+    }
+
+    public final java.lang.Object a(java.lang.Class, org.json.JSONObject)
+    {
+        com.startapp.android.publish.e.a r0;
+        java.lang.Class $r1;
+        org.json.JSONObject $r2;
+        com.startapp.android.publish.e.c $r3;
+        java.lang.Object $r4;
+        java.lang.StringBuilder $r5;
+        java.lang.String $r6;
+
+        r0 := @this: com.startapp.android.publish.e.a;
+
+        $r1 := @parameter0: java.lang.Class;
+
+        $r2 := @parameter1: org.json.JSONObject;
+
+     label1:
+        $r4 = specialinvoke r0.<com.startapp.android.publish.e.a: java.lang.Object b(java.lang.Class,org.json.JSONObject)>($r1, $r2);
+
+     label2:
+        return $r4;
+
+     label3:
+        $r3 := @caughtexception;
+
+        $r5 = new java.lang.StringBuilder;
+
+        specialinvoke $r5.<java.lang.StringBuilder: void <init>()>();
+
+        $r5 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Error while trying to parse object ");
+
+        $r6 = virtualinvoke $r1.<java.lang.Class: java.lang.String toString()>();
+
+        $r5 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r6);
+
+        $r6 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <com.startapp.android.publish.i.n: void a(java.lang.String,int,java.lang.String,java.lang.Throwable)>("JSONInputStream", 6, $r6, $r3);
+
+        return null;
+
+        catch com.startapp.android.publish.e.c from label1 to label2 with label3;
+    }
+
+    public void close()
+    {
+        com.startapp.android.publish.e.a r0;
+        java.io.InputStream $r1;
+
+        r0 := @this: com.startapp.android.publish.e.a;
+
+        specialinvoke r0.<java.io.InputStream: void close()>();
+
+        $r1 = r0.<com.startapp.android.publish.e.a: java.io.InputStream b>;
+
+        if $r1 == null goto label1;
+
+        $r1 = r0.<com.startapp.android.publish.e.a: java.io.InputStream b>;
+
+        virtualinvoke $r1.<java.io.InputStream: void close()>();
+
+     label1:
+        return;
+    }
+
+    public final int read()
+    {
+        com.startapp.android.publish.e.a r0;
+
+        r0 := @this: com.startapp.android.publish.e.a;
+
+        return 0;
+    }
+}

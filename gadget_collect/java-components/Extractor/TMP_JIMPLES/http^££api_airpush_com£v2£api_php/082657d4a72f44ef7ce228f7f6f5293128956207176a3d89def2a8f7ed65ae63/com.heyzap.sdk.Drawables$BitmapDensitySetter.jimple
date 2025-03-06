@@ -1,0 +1,41 @@
+public class com.heyzap.sdk.Drawables$BitmapDensitySetter extends java.lang.Object
+{
+
+    public void <init>()
+    {
+        com.heyzap.sdk.Drawables$BitmapDensitySetter r0;
+
+        r0 := @this: com.heyzap.sdk.Drawables$BitmapDensitySetter;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public android.graphics.drawable.BitmapDrawable setDensity(android.graphics.drawable.BitmapDrawable, int, android.content.res.Resources)
+    {
+        com.heyzap.sdk.Drawables$BitmapDensitySetter r0;
+        android.graphics.drawable.BitmapDrawable $r1;
+        int $i0;
+        android.content.res.Resources $r2;
+        android.graphics.Bitmap $r3;
+
+        r0 := @this: com.heyzap.sdk.Drawables$BitmapDensitySetter;
+
+        $r1 := @parameter0: android.graphics.drawable.BitmapDrawable;
+
+        $i0 := @parameter1: int;
+
+        $r2 := @parameter2: android.content.res.Resources;
+
+        $r3 = virtualinvoke $r1.<android.graphics.drawable.BitmapDrawable: android.graphics.Bitmap getBitmap()>();
+
+        virtualinvoke $r3.<android.graphics.Bitmap: void setDensity(int)>($i0);
+
+        $r1 = new android.graphics.drawable.BitmapDrawable;
+
+        specialinvoke $r1.<android.graphics.drawable.BitmapDrawable: void <init>(android.content.res.Resources,android.graphics.Bitmap)>($r2, $r3);
+
+        return $r1;
+    }
+}

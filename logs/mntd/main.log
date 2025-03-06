@@ -1,0 +1,352 @@
+WARNING: 02-27 18:40:37: mntd_run_meta.py:88 * 130419635865408 Running with configuration:
+{'backdoor_target_model_type': 'pytorch',
+ 'benign_target_model_type': 'pytorch',
+ 'clf': 'MLP',
+ 'debug_mode': 'queryset-100-most-0-few-1-target-y-all-0-pattern-all-1',
+ 'half_training': 1,
+ 'jumbo_max_troj_size': 100,
+ 'load_exist': True,
+ 'method': 'optimization-subset-expand-type0',
+ 'no_qt': True,
+ 'subset_family': 'leadbolt',
+ 'target_max_troj_size': 0,
+ 'task': 'apg',
+ 'train_num': 2048,
+ 'troj_type': 'Subset-problem-space',
+ 'trojan_part': None,
+ 'trojan_size': None}
+CRITICAL: 02-27 18:40:37: mntd_run_meta.py:91 * 130419635865408 debug_setting: queryset-100-most-0-few-1-target-y-all-0-pattern-all-1
+INFO: 02-27 18:40:37: mntd_run_meta.py:106 * 130419635865408 args.no_qt: True
+INFO: 02-27 18:40:37: mntd_run_meta.py:275 * 130419635865408 clean_shadow_path: ./models/mntd/shadow_model_ckpt/apg_MLP/models/shadow_benign
+INFO: 02-27 18:40:37: mntd_run_meta.py:276 * 130419635865408 jumbo_shadow_path: ./models/mntd/shadow_model_ckpt/apg_MLP/models/random_size_5_100
+INFO: 02-27 18:40:37: mntd_run_meta.py:277 * 130419635865408 meta_model_save_path: ./models/mntd/meta_classifier_ckpt_2048/MLP/apg_size_5_100_no_qt.model
+INFO: 02-27 18:40:37: mntd_run_meta.py:115 * 130419635865408 Task: apg; Trojan type: Subset-problem-space; input size: (10000,); class num: 1
+INFO: 02-27 18:40:37: mntd_run_meta.py:296 * 130419635865408 len(train_dataset): 4096
+INFO: 02-27 18:40:37: mntd_run_meta.py:297 * 130419635865408 len(val_dataset): 512
+INFO: 02-27 18:40:37: mntd_run_meta.py:298 * 130419635865408 train_dataset[0]: ('./models/mntd/shadow_model_ckpt/apg_MLP/models/random_size_5_100/shadow_jumbo_0.model', 1)
+INFO: 02-27 18:40:37: mntd_run_meta.py:299 * 130419635865408 train_dataset[1]: ('./models/mntd/shadow_model_ckpt/apg_MLP/models/shadow_benign/shadow_benign_0.model', 0)
+INFO: 02-27 18:40:37: mntd_run_meta.py:300 * 130419635865408 val_dataset[0]: ('./models/mntd/shadow_model_ckpt/apg_MLP/models/random_size_5_100/shadow_jumbo_2048.model', 1)
+INFO: 02-27 18:40:37: mntd_run_meta.py:301 * 130419635865408 val_dataset[1]: ('./models/mntd/shadow_model_ckpt/apg_MLP/models/shadow_benign/shadow_benign_2048.model', 0)
+INFO: 02-27 18:40:37: mntd_run_meta.py:335 * 130419635865408 test_dataset[0]: ('models/mntd/target_model_ckpt/leadbolt/apg/models/target_trojSubset-problem-space_0.model', 1)
+INFO: 02-27 18:40:37: mntd_run_meta.py:336 * 130419635865408 test_dataset[1]: ('./models/mntd/shadow_model_ckpt/apg_MLP/models/256_target_benign_remove_leadbolt/target_benign_0.model', 0)
+INFO: 02-27 18:40:37: mntd_run_meta.py:348 * 130419635865408 REPORT_FOLDER: report/mntd/MLP_shadow_2048/optimization-subset-expand-type0_leadbolt/pytorch
+INFO: 02-27 18:40:37: mntd_run_meta.py:364 * 130419635865408 experiment_name: apg_no_qt_size_100_trainnum_2048_typeSubset-problem-space
+INFO: 02-27 18:40:37: mntd_run_meta.py:365 * 130419635865408 report_path: report/mntd/MLP_shadow_2048/optimization-subset-expand-type0_leadbolt/pytorch/apg_no_qt_size_100_trainnum_2048_typeSubset-problem-space.txt
+DEBUG: 02-27 18:40:38: models.py:242 * 129447867049792 Loading model from ./models/apg/SVM/svm-f10000.p...
+DEBUG: 02-27 18:40:39: pyplot.py:225 * 124559131285312 Loaded backend qt5agg version unknown.
+DEBUG: 02-27 18:40:39: pyplot.py:225 * 124559131285312 Loaded backend tkagg version unknown.
+DEBUG: 02-27 18:40:39: pyplot.py:225 * 124559131285312 Loaded backend TkAgg version unknown.
+DEBUG: 02-27 18:40:39: models.py:242 * 136635860182848 Loading model from ./models/apg/SVM/svm-f10000.p...
+DEBUG: 02-27 18:40:39: models.py:242 * 124421878994752 Loading model from ./models/apg/SVM/svm-f10000.p...
+WARNING: 02-27 18:40:39: mntd_run_meta.py:88 * 126350828881728 Running with configuration:
+{'backdoor_target_model_type': 'pytorch',
+ 'benign_target_model_type': 'pytorch',
+ 'clf': 'MLP',
+ 'debug_mode': 'queryset-100-most-0-few-1-target-y-all-0-pattern-all-1',
+ 'half_training': 1,
+ 'jumbo_max_troj_size': 100,
+ 'load_exist': True,
+ 'method': 'optimization-subset-expand-type0',
+ 'no_qt': False,
+ 'subset_family': 'leadbolt',
+ 'target_max_troj_size': 0,
+ 'task': 'apg',
+ 'train_num': 2048,
+ 'troj_type': 'Subset',
+ 'trojan_part': None,
+ 'trojan_size': None}
+CRITICAL: 02-27 18:40:39: mntd_run_meta.py:91 * 126350828881728 debug_setting: queryset-100-most-0-few-1-target-y-all-0-pattern-all-1
+INFO: 02-27 18:40:39: mntd_run_meta.py:106 * 126350828881728 args.no_qt: False
+INFO: 02-27 18:40:39: mntd_run_meta.py:275 * 126350828881728 clean_shadow_path: ./models/mntd/shadow_model_ckpt/apg_MLP/models/shadow_benign
+INFO: 02-27 18:40:39: mntd_run_meta.py:276 * 126350828881728 jumbo_shadow_path: ./models/mntd/shadow_model_ckpt/apg_MLP/models/random_size_5_100
+INFO: 02-27 18:40:39: mntd_run_meta.py:277 * 126350828881728 meta_model_save_path: ./models/mntd/meta_classifier_ckpt_2048/MLP/apg_size_5_100_with_qt.model
+INFO: 02-27 18:40:39: mntd_run_meta.py:115 * 126350828881728 Task: apg; Trojan type: Subset; input size: (10000,); class num: 1
+INFO: 02-27 18:40:39: mntd_run_meta.py:296 * 126350828881728 len(train_dataset): 4096
+INFO: 02-27 18:40:39: mntd_run_meta.py:297 * 126350828881728 len(val_dataset): 512
+INFO: 02-27 18:40:39: mntd_run_meta.py:298 * 126350828881728 train_dataset[0]: ('./models/mntd/shadow_model_ckpt/apg_MLP/models/random_size_5_100/shadow_jumbo_0.model', 1)
+INFO: 02-27 18:40:39: mntd_run_meta.py:299 * 126350828881728 train_dataset[1]: ('./models/mntd/shadow_model_ckpt/apg_MLP/models/shadow_benign/shadow_benign_0.model', 0)
+INFO: 02-27 18:40:39: mntd_run_meta.py:300 * 126350828881728 val_dataset[0]: ('./models/mntd/shadow_model_ckpt/apg_MLP/models/random_size_5_100/shadow_jumbo_2048.model', 1)
+INFO: 02-27 18:40:39: mntd_run_meta.py:301 * 126350828881728 val_dataset[1]: ('./models/mntd/shadow_model_ckpt/apg_MLP/models/shadow_benign/shadow_benign_2048.model', 0)
+INFO: 02-27 18:40:39: mntd_run_meta.py:335 * 126350828881728 test_dataset[0]: ('models/mntd/target_model_ckpt/leadbolt/apg/models/target_trojSubset_0.model', 1)
+INFO: 02-27 18:40:39: mntd_run_meta.py:336 * 126350828881728 test_dataset[1]: ('./models/mntd/shadow_model_ckpt/apg_MLP/models/256_target_benign_remove_leadbolt/target_benign_0.model', 0)
+INFO: 02-27 18:40:39: mntd_run_meta.py:348 * 126350828881728 REPORT_FOLDER: report/mntd/MLP_shadow_2048/optimization-subset-expand-type0_leadbolt/pytorch
+INFO: 02-27 18:40:39: mntd_run_meta.py:364 * 126350828881728 experiment_name: apg_with_qt_size_100_trainnum_2048_typeSubset
+INFO: 02-27 18:40:39: mntd_run_meta.py:365 * 126350828881728 report_path: report/mntd/MLP_shadow_2048/optimization-subset-expand-type0_leadbolt/pytorch/apg_with_qt_size_100_trainnum_2048_typeSubset.txt
+DEBUG: 02-27 18:40:39: models.py:242 * 124559131285312 Loading model from ./models/apg/SVM/svm-f10000.p...
+WARNING: 02-27 18:40:40: mntd_run_meta.py:88 * 126849584256832 Running with configuration:
+{'backdoor_target_model_type': 'pytorch',
+ 'benign_target_model_type': 'pytorch',
+ 'clf': 'MLP',
+ 'debug_mode': 'queryset-100-most-0-few-1-target-y-all-0-pattern-all-1',
+ 'half_training': 1,
+ 'jumbo_max_troj_size': 100,
+ 'load_exist': True,
+ 'method': 'optimization-subset-expand-type0',
+ 'no_qt': False,
+ 'subset_family': 'leadbolt',
+ 'target_max_troj_size': 0,
+ 'task': 'apg',
+ 'train_num': 2048,
+ 'troj_type': 'Subset-problem-space',
+ 'trojan_part': None,
+ 'trojan_size': None}
+CRITICAL: 02-27 18:40:40: mntd_run_meta.py:91 * 126849584256832 debug_setting: queryset-100-most-0-few-1-target-y-all-0-pattern-all-1
+INFO: 02-27 18:40:40: mntd_run_meta.py:106 * 126849584256832 args.no_qt: False
+INFO: 02-27 18:40:40: mntd_run_meta.py:275 * 126849584256832 clean_shadow_path: ./models/mntd/shadow_model_ckpt/apg_MLP/models/shadow_benign
+INFO: 02-27 18:40:40: mntd_run_meta.py:276 * 126849584256832 jumbo_shadow_path: ./models/mntd/shadow_model_ckpt/apg_MLP/models/random_size_5_100
+INFO: 02-27 18:40:40: mntd_run_meta.py:277 * 126849584256832 meta_model_save_path: ./models/mntd/meta_classifier_ckpt_2048/MLP/apg_size_5_100_with_qt.model
+INFO: 02-27 18:40:40: mntd_run_meta.py:115 * 126849584256832 Task: apg; Trojan type: Subset-problem-space; input size: (10000,); class num: 1
+INFO: 02-27 18:40:40: mntd_run_meta.py:296 * 126849584256832 len(train_dataset): 4096
+INFO: 02-27 18:40:40: mntd_run_meta.py:297 * 126849584256832 len(val_dataset): 512
+INFO: 02-27 18:40:40: mntd_run_meta.py:298 * 126849584256832 train_dataset[0]: ('./models/mntd/shadow_model_ckpt/apg_MLP/models/random_size_5_100/shadow_jumbo_0.model', 1)
+INFO: 02-27 18:40:40: mntd_run_meta.py:299 * 126849584256832 train_dataset[1]: ('./models/mntd/shadow_model_ckpt/apg_MLP/models/shadow_benign/shadow_benign_0.model', 0)
+INFO: 02-27 18:40:40: mntd_run_meta.py:300 * 126849584256832 val_dataset[0]: ('./models/mntd/shadow_model_ckpt/apg_MLP/models/random_size_5_100/shadow_jumbo_2048.model', 1)
+INFO: 02-27 18:40:40: mntd_run_meta.py:301 * 126849584256832 val_dataset[1]: ('./models/mntd/shadow_model_ckpt/apg_MLP/models/shadow_benign/shadow_benign_2048.model', 0)
+INFO: 02-27 18:40:40: mntd_run_meta.py:335 * 126849584256832 test_dataset[0]: ('models/mntd/target_model_ckpt/leadbolt/apg/models/target_trojSubset-problem-space_0.model', 1)
+INFO: 02-27 18:40:40: mntd_run_meta.py:336 * 126849584256832 test_dataset[1]: ('./models/mntd/shadow_model_ckpt/apg_MLP/models/256_target_benign_remove_leadbolt/target_benign_0.model', 0)
+INFO: 02-27 18:40:40: mntd_run_meta.py:348 * 126849584256832 REPORT_FOLDER: report/mntd/MLP_shadow_2048/optimization-subset-expand-type0_leadbolt/pytorch
+INFO: 02-27 18:40:40: mntd_run_meta.py:364 * 126849584256832 experiment_name: apg_with_qt_size_100_trainnum_2048_typeSubset-problem-space
+INFO: 02-27 18:40:40: mntd_run_meta.py:365 * 126849584256832 report_path: report/mntd/MLP_shadow_2048/optimization-subset-expand-type0_leadbolt/pytorch/apg_with_qt_size_100_trainnum_2048_typeSubset-problem-space.txt
+WARNING: 02-27 18:40:40: mntd_run_meta.py:88 * 138193614182208 Running with configuration:
+{'backdoor_target_model_type': 'pytorch',
+ 'benign_target_model_type': 'pytorch',
+ 'clf': 'MLP',
+ 'debug_mode': 'queryset-100-most-0-few-1-target-y-all-0-pattern-all-1',
+ 'half_training': 1,
+ 'jumbo_max_troj_size': 100,
+ 'load_exist': True,
+ 'method': 'optimization-subset-expand-type0',
+ 'no_qt': False,
+ 'subset_family': 'mobisec',
+ 'target_max_troj_size': 0,
+ 'task': 'apg',
+ 'train_num': 2048,
+ 'troj_type': 'Subset-problem-space',
+ 'trojan_part': None,
+ 'trojan_size': None}
+CRITICAL: 02-27 18:40:40: mntd_run_meta.py:91 * 138193614182208 debug_setting: queryset-100-most-0-few-1-target-y-all-0-pattern-all-1
+INFO: 02-27 18:40:40: mntd_run_meta.py:106 * 138193614182208 args.no_qt: False
+INFO: 02-27 18:40:40: mntd_run_meta.py:275 * 138193614182208 clean_shadow_path: ./models/mntd/shadow_model_ckpt/apg_MLP/models/shadow_benign
+INFO: 02-27 18:40:40: mntd_run_meta.py:276 * 138193614182208 jumbo_shadow_path: ./models/mntd/shadow_model_ckpt/apg_MLP/models/random_size_5_100
+INFO: 02-27 18:40:40: mntd_run_meta.py:277 * 138193614182208 meta_model_save_path: ./models/mntd/meta_classifier_ckpt_2048/MLP/apg_size_5_100_with_qt.model
+INFO: 02-27 18:40:40: mntd_run_meta.py:115 * 138193614182208 Task: apg; Trojan type: Subset-problem-space; input size: (10000,); class num: 1
+INFO: 02-27 18:40:40: mntd_run_meta.py:296 * 138193614182208 len(train_dataset): 4096
+INFO: 02-27 18:40:40: mntd_run_meta.py:297 * 138193614182208 len(val_dataset): 512
+INFO: 02-27 18:40:40: mntd_run_meta.py:298 * 138193614182208 train_dataset[0]: ('./models/mntd/shadow_model_ckpt/apg_MLP/models/random_size_5_100/shadow_jumbo_0.model', 1)
+INFO: 02-27 18:40:40: mntd_run_meta.py:299 * 138193614182208 train_dataset[1]: ('./models/mntd/shadow_model_ckpt/apg_MLP/models/shadow_benign/shadow_benign_0.model', 0)
+INFO: 02-27 18:40:40: mntd_run_meta.py:300 * 138193614182208 val_dataset[0]: ('./models/mntd/shadow_model_ckpt/apg_MLP/models/random_size_5_100/shadow_jumbo_2048.model', 1)
+INFO: 02-27 18:40:40: mntd_run_meta.py:301 * 138193614182208 val_dataset[1]: ('./models/mntd/shadow_model_ckpt/apg_MLP/models/shadow_benign/shadow_benign_2048.model', 0)
+INFO: 02-27 18:40:40: mntd_run_meta.py:335 * 138193614182208 test_dataset[0]: ('models/mntd/target_model_ckpt/mobisec/apg/models/target_trojSubset-problem-space_0.model', 1)
+INFO: 02-27 18:40:40: mntd_run_meta.py:336 * 138193614182208 test_dataset[1]: ('./models/mntd/shadow_model_ckpt/apg_MLP/models/256_target_benign_remove_mobisec/target_benign_0.model', 0)
+INFO: 02-27 18:40:40: mntd_run_meta.py:348 * 138193614182208 REPORT_FOLDER: report/mntd/MLP_shadow_2048/optimization-subset-expand-type0_mobisec/pytorch
+INFO: 02-27 18:40:40: mntd_run_meta.py:364 * 138193614182208 experiment_name: apg_with_qt_size_100_trainnum_2048_typeSubset-problem-space
+INFO: 02-27 18:40:40: mntd_run_meta.py:365 * 138193614182208 report_path: report/mntd/MLP_shadow_2048/optimization-subset-expand-type0_mobisec/pytorch/apg_with_qt_size_100_trainnum_2048_typeSubset-problem-space.txt
+WARNING: 02-27 18:40:41: mntd_run_meta.py:88 * 125467116386112 Running with configuration:
+{'backdoor_target_model_type': 'pytorch',
+ 'benign_target_model_type': 'pytorch',
+ 'clf': 'MLP',
+ 'debug_mode': 'queryset-100-most-0-few-1',
+ 'half_training': 1,
+ 'jumbo_max_troj_size': 100,
+ 'load_exist': True,
+ 'method': 'baseline-pytorch',
+ 'no_qt': False,
+ 'subset_family': None,
+ 'target_max_troj_size': 20,
+ 'task': 'apg',
+ 'train_num': 2048,
+ 'troj_type': 'Top-benign',
+ 'trojan_part': None,
+ 'trojan_size': None}
+CRITICAL: 02-27 18:40:41: mntd_run_meta.py:91 * 125467116386112 debug_setting: queryset-100-most-0-few-1
+INFO: 02-27 18:40:41: mntd_run_meta.py:106 * 125467116386112 args.no_qt: False
+INFO: 02-27 18:40:41: mntd_run_meta.py:275 * 125467116386112 clean_shadow_path: ./models/mntd/shadow_model_ckpt/apg_MLP/models/shadow_benign
+INFO: 02-27 18:40:41: mntd_run_meta.py:276 * 125467116386112 jumbo_shadow_path: ./models/mntd/shadow_model_ckpt/apg_MLP_top_benign/models/random_size_5_100
+INFO: 02-27 18:40:41: mntd_run_meta.py:277 * 125467116386112 meta_model_save_path: ./models/mntd/meta_classifier_ckpt_2048/MLP_Top-benign/apg_with_qt.model
+INFO: 02-27 18:40:41: mntd_run_meta.py:115 * 125467116386112 Task: apg; Trojan type: Top-benign; input size: (10000,); class num: 1
+INFO: 02-27 18:40:41: mntd_run_meta.py:296 * 125467116386112 len(train_dataset): 4096
+INFO: 02-27 18:40:41: mntd_run_meta.py:297 * 125467116386112 len(val_dataset): 512
+INFO: 02-27 18:40:41: mntd_run_meta.py:298 * 125467116386112 train_dataset[0]: ('./models/mntd/shadow_model_ckpt/apg_MLP_top_benign/models/random_size_5_100/shadow_jumbo_0.model', 1)
+INFO: 02-27 18:40:41: mntd_run_meta.py:299 * 125467116386112 train_dataset[1]: ('./models/mntd/shadow_model_ckpt/apg_MLP/models/shadow_benign/shadow_benign_0.model', 0)
+INFO: 02-27 18:40:41: mntd_run_meta.py:300 * 125467116386112 val_dataset[0]: ('./models/mntd/shadow_model_ckpt/apg_MLP_top_benign/models/random_size_5_100/shadow_jumbo_2048.model', 1)
+INFO: 02-27 18:40:41: mntd_run_meta.py:301 * 125467116386112 val_dataset[1]: ('./models/mntd/shadow_model_ckpt/apg_MLP/models/shadow_benign/shadow_benign_2048.model', 0)
+INFO: 02-27 18:40:41: mntd_run_meta.py:335 * 125467116386112 test_dataset[0]: ('models/mntd/target_model_ckpt/apg_min_10_max_20/models/target_trojTop-benign-target_0.model', 1)
+INFO: 02-27 18:40:41: mntd_run_meta.py:336 * 125467116386112 test_dataset[1]: ('./models/mntd/shadow_model_ckpt/apg_MLP/models/256_target_benign/target_benign_0.model', 0)
+INFO: 02-27 18:40:41: mntd_run_meta.py:348 * 125467116386112 REPORT_FOLDER: report/mntd/MLP_shadow_2048/baseline-pytorch/pytorch/queryset-100-most-0-few-1
+INFO: 02-27 18:40:41: mntd_run_meta.py:364 * 125467116386112 experiment_name: apg_with_qt_top_benign_jumbo_100_target_20
+INFO: 02-27 18:40:41: mntd_run_meta.py:365 * 125467116386112 report_path: report/mntd/MLP_shadow_2048/baseline-pytorch/pytorch/queryset-100-most-0-few-1/apg_with_qt_top_benign_jumbo_100_target_20.txt
+WARNING: 02-27 18:40:41: mntd_run_meta.py:88 * 135823696418624 Running with configuration:
+{'backdoor_target_model_type': 'pytorch',
+ 'benign_target_model_type': 'pytorch',
+ 'clf': 'MLP',
+ 'debug_mode': 'queryset-100-most-0-few-1-target-y-all-0-pattern-all-1',
+ 'half_training': 1,
+ 'jumbo_max_troj_size': 100,
+ 'load_exist': True,
+ 'method': 'optimization-subset-expand-type0',
+ 'no_qt': False,
+ 'subset_family': 'tencentprotect',
+ 'target_max_troj_size': 0,
+ 'task': 'apg',
+ 'train_num': 2048,
+ 'troj_type': 'Subset-problem-space',
+ 'trojan_part': None,
+ 'trojan_size': None}
+CRITICAL: 02-27 18:40:41: mntd_run_meta.py:91 * 135823696418624 debug_setting: queryset-100-most-0-few-1-target-y-all-0-pattern-all-1
+INFO: 02-27 18:40:41: mntd_run_meta.py:106 * 135823696418624 args.no_qt: False
+INFO: 02-27 18:40:41: mntd_run_meta.py:275 * 135823696418624 clean_shadow_path: ./models/mntd/shadow_model_ckpt/apg_MLP/models/shadow_benign
+INFO: 02-27 18:40:41: mntd_run_meta.py:276 * 135823696418624 jumbo_shadow_path: ./models/mntd/shadow_model_ckpt/apg_MLP/models/random_size_5_100
+INFO: 02-27 18:40:41: mntd_run_meta.py:277 * 135823696418624 meta_model_save_path: ./models/mntd/meta_classifier_ckpt_2048/MLP/apg_size_5_100_with_qt.model
+INFO: 02-27 18:40:41: mntd_run_meta.py:115 * 135823696418624 Task: apg; Trojan type: Subset-problem-space; input size: (10000,); class num: 1
+INFO: 02-27 18:40:41: mntd_run_meta.py:296 * 135823696418624 len(train_dataset): 4096
+INFO: 02-27 18:40:41: mntd_run_meta.py:297 * 135823696418624 len(val_dataset): 512
+INFO: 02-27 18:40:41: mntd_run_meta.py:298 * 135823696418624 train_dataset[0]: ('./models/mntd/shadow_model_ckpt/apg_MLP/models/random_size_5_100/shadow_jumbo_0.model', 1)
+INFO: 02-27 18:40:41: mntd_run_meta.py:299 * 135823696418624 train_dataset[1]: ('./models/mntd/shadow_model_ckpt/apg_MLP/models/shadow_benign/shadow_benign_0.model', 0)
+INFO: 02-27 18:40:41: mntd_run_meta.py:300 * 135823696418624 val_dataset[0]: ('./models/mntd/shadow_model_ckpt/apg_MLP/models/random_size_5_100/shadow_jumbo_2048.model', 1)
+INFO: 02-27 18:40:41: mntd_run_meta.py:301 * 135823696418624 val_dataset[1]: ('./models/mntd/shadow_model_ckpt/apg_MLP/models/shadow_benign/shadow_benign_2048.model', 0)
+INFO: 02-27 18:40:41: mntd_run_meta.py:335 * 135823696418624 test_dataset[0]: ('models/mntd/target_model_ckpt/tencentprotect/apg/models/target_trojSubset-problem-space_0.model', 1)
+INFO: 02-27 18:40:41: mntd_run_meta.py:336 * 135823696418624 test_dataset[1]: ('./models/mntd/shadow_model_ckpt/apg_MLP/models/256_target_benign_remove_tencentprotect/target_benign_0.model', 0)
+INFO: 02-27 18:40:41: mntd_run_meta.py:348 * 135823696418624 REPORT_FOLDER: report/mntd/MLP_shadow_2048/optimization-subset-expand-type0_tencentprotect/pytorch
+INFO: 02-27 18:40:41: mntd_run_meta.py:364 * 135823696418624 experiment_name: apg_with_qt_size_100_trainnum_2048_typeSubset-problem-space
+INFO: 02-27 18:40:41: mntd_run_meta.py:365 * 135823696418624 report_path: report/mntd/MLP_shadow_2048/optimization-subset-expand-type0_tencentprotect/pytorch/apg_with_qt_size_100_trainnum_2048_typeSubset-problem-space.txt
+DEBUG: 02-27 18:40:42: pyplot.py:225 * 125764623005504 Loaded backend qt5agg version unknown.
+DEBUG: 02-27 18:40:42: pyplot.py:225 * 138865596491584 Loaded backend qt5agg version unknown.
+DEBUG: 02-27 18:40:42: pyplot.py:225 * 123918504499008 Loaded backend qt5agg version unknown.
+DEBUG: 02-27 18:40:42: pyplot.py:225 * 138865596491584 Loaded backend tkagg version unknown.
+DEBUG: 02-27 18:40:42: pyplot.py:225 * 138865596491584 Loaded backend TkAgg version unknown.
+DEBUG: 02-27 18:40:42: pyplot.py:225 * 123918504499008 Loaded backend tkagg version unknown.
+DEBUG: 02-27 18:40:42: pyplot.py:225 * 123918504499008 Loaded backend TkAgg version unknown.
+DEBUG: 02-27 18:40:42: pyplot.py:225 * 125764623005504 Loaded backend tkagg version unknown.
+DEBUG: 02-27 18:40:42: pyplot.py:225 * 125764623005504 Loaded backend TkAgg version unknown.
+DEBUG: 02-27 18:40:43: models.py:242 * 123918504499008 Loading model from ./models/apg/SVM/svm-f10000.p...
+DEBUG: 02-27 18:40:43: models.py:242 * 125764623005504 Loading model from ./models/apg/SVM/svm-f10000.p...
+DEBUG: 02-27 18:40:43: models.py:242 * 138973356463936 Loading model from ./models/apg/SVM/svm-f10000.p...
+WARNING: 02-27 18:40:43: mntd_run_meta.py:88 * 123690431989568 Running with configuration:
+{'backdoor_target_model_type': 'pytorch',
+ 'benign_target_model_type': 'pytorch',
+ 'clf': 'MLP',
+ 'debug_mode': 'queryset-100-most-0-few-1',
+ 'half_training': 1,
+ 'jumbo_max_troj_size': 100,
+ 'load_exist': True,
+ 'method': 'baseline-pytorch',
+ 'no_qt': True,
+ 'subset_family': None,
+ 'target_max_troj_size': 20,
+ 'task': 'apg',
+ 'train_num': 128,
+ 'troj_type': 'Top-benign',
+ 'trojan_part': None,
+ 'trojan_size': None}
+CRITICAL: 02-27 18:40:43: mntd_run_meta.py:91 * 123690431989568 debug_setting: queryset-100-most-0-few-1
+INFO: 02-27 18:40:43: mntd_run_meta.py:106 * 123690431989568 args.no_qt: True
+WARNING: 02-27 18:40:43: mntd_run_meta.py:88 * 136240849049408 Running with configuration:
+{'backdoor_target_model_type': 'pytorch',
+ 'benign_target_model_type': 'pytorch',
+ 'clf': 'MLP',
+ 'debug_mode': 'queryset-100-most-0-few-1-target-y-all-0-pattern-all-1',
+ 'half_training': 1,
+ 'jumbo_max_troj_size': 100,
+ 'load_exist': True,
+ 'method': 'optimization-subset-expand-type0',
+ 'no_qt': True,
+ 'subset_family': 'tencentprotect',
+ 'target_max_troj_size': 0,
+ 'task': 'apg',
+ 'train_num': 2048,
+ 'troj_type': 'Subset-problem-space',
+ 'trojan_part': None,
+ 'trojan_size': None}
+CRITICAL: 02-27 18:40:43: mntd_run_meta.py:91 * 136240849049408 debug_setting: queryset-100-most-0-few-1-target-y-all-0-pattern-all-1
+INFO: 02-27 18:40:43: mntd_run_meta.py:106 * 136240849049408 args.no_qt: True
+INFO: 02-27 18:40:43: mntd_run_meta.py:275 * 136240849049408 clean_shadow_path: ./models/mntd/shadow_model_ckpt/apg_MLP/models/shadow_benign
+INFO: 02-27 18:40:43: mntd_run_meta.py:276 * 136240849049408 jumbo_shadow_path: ./models/mntd/shadow_model_ckpt/apg_MLP/models/random_size_5_100
+INFO: 02-27 18:40:43: mntd_run_meta.py:277 * 136240849049408 meta_model_save_path: ./models/mntd/meta_classifier_ckpt_2048/MLP/apg_size_5_100_no_qt.model
+INFO: 02-27 18:40:43: mntd_run_meta.py:115 * 136240849049408 Task: apg; Trojan type: Subset-problem-space; input size: (10000,); class num: 1
+INFO: 02-27 18:40:43: mntd_run_meta.py:296 * 136240849049408 len(train_dataset): 4096
+INFO: 02-27 18:40:43: mntd_run_meta.py:297 * 136240849049408 len(val_dataset): 512
+INFO: 02-27 18:40:43: mntd_run_meta.py:298 * 136240849049408 train_dataset[0]: ('./models/mntd/shadow_model_ckpt/apg_MLP/models/random_size_5_100/shadow_jumbo_0.model', 1)
+INFO: 02-27 18:40:43: mntd_run_meta.py:299 * 136240849049408 train_dataset[1]: ('./models/mntd/shadow_model_ckpt/apg_MLP/models/shadow_benign/shadow_benign_0.model', 0)
+INFO: 02-27 18:40:43: mntd_run_meta.py:300 * 136240849049408 val_dataset[0]: ('./models/mntd/shadow_model_ckpt/apg_MLP/models/random_size_5_100/shadow_jumbo_2048.model', 1)
+INFO: 02-27 18:40:43: mntd_run_meta.py:301 * 136240849049408 val_dataset[1]: ('./models/mntd/shadow_model_ckpt/apg_MLP/models/shadow_benign/shadow_benign_2048.model', 0)
+DEBUG: 02-27 18:40:45: models.py:242 * 138865596491584 Loading model from ./models/apg/SVM/svm-f10000.p...
+INFO: 02-27 18:40:45: mntd_run_meta.py:335 * 136240849049408 test_dataset[0]: ('models/mntd/target_model_ckpt/tencentprotect/apg/models/target_trojSubset-problem-space_0.model', 1)
+INFO: 02-27 18:40:45: mntd_run_meta.py:336 * 136240849049408 test_dataset[1]: ('./models/mntd/shadow_model_ckpt/apg_MLP/models/256_target_benign_remove_tencentprotect/target_benign_0.model', 0)
+INFO: 02-27 18:40:45: mntd_run_meta.py:348 * 136240849049408 REPORT_FOLDER: report/mntd/MLP_shadow_2048/optimization-subset-expand-type0_tencentprotect/pytorch
+INFO: 02-27 18:40:45: mntd_run_meta.py:364 * 136240849049408 experiment_name: apg_no_qt_size_100_trainnum_2048_typeSubset-problem-space
+INFO: 02-27 18:40:45: mntd_run_meta.py:365 * 136240849049408 report_path: report/mntd/MLP_shadow_2048/optimization-subset-expand-type0_tencentprotect/pytorch/apg_no_qt_size_100_trainnum_2048_typeSubset-problem-space.txt
+WARNING: 02-27 18:40:45: mntd_run_meta.py:88 * 130113182533440 Running with configuration:
+{'backdoor_target_model_type': 'pytorch',
+ 'benign_target_model_type': 'pytorch',
+ 'clf': 'MLP',
+ 'debug_mode': 'queryset-100-most-0-few-1-target-y-all-0-pattern-all-1',
+ 'half_training': 1,
+ 'jumbo_max_troj_size': 100,
+ 'load_exist': True,
+ 'method': 'optimization-subset-expand-type0',
+ 'no_qt': True,
+ 'subset_family': 'mobisec',
+ 'target_max_troj_size': 0,
+ 'task': 'apg',
+ 'train_num': 2048,
+ 'troj_type': 'Subset-problem-space',
+ 'trojan_part': None,
+ 'trojan_size': None}
+CRITICAL: 02-27 18:40:45: mntd_run_meta.py:91 * 130113182533440 debug_setting: queryset-100-most-0-few-1-target-y-all-0-pattern-all-1
+INFO: 02-27 18:40:45: mntd_run_meta.py:106 * 130113182533440 args.no_qt: True
+INFO: 02-27 18:40:45: mntd_run_meta.py:275 * 130113182533440 clean_shadow_path: ./models/mntd/shadow_model_ckpt/apg_MLP/models/shadow_benign
+INFO: 02-27 18:40:45: mntd_run_meta.py:276 * 130113182533440 jumbo_shadow_path: ./models/mntd/shadow_model_ckpt/apg_MLP/models/random_size_5_100
+INFO: 02-27 18:40:45: mntd_run_meta.py:277 * 130113182533440 meta_model_save_path: ./models/mntd/meta_classifier_ckpt_2048/MLP/apg_size_5_100_no_qt.model
+INFO: 02-27 18:40:45: mntd_run_meta.py:115 * 130113182533440 Task: apg; Trojan type: Subset-problem-space; input size: (10000,); class num: 1
+INFO: 02-27 18:40:45: mntd_run_meta.py:296 * 130113182533440 len(train_dataset): 4096
+INFO: 02-27 18:40:45: mntd_run_meta.py:297 * 130113182533440 len(val_dataset): 512
+INFO: 02-27 18:40:45: mntd_run_meta.py:298 * 130113182533440 train_dataset[0]: ('./models/mntd/shadow_model_ckpt/apg_MLP/models/random_size_5_100/shadow_jumbo_0.model', 1)
+INFO: 02-27 18:40:45: mntd_run_meta.py:299 * 130113182533440 train_dataset[1]: ('./models/mntd/shadow_model_ckpt/apg_MLP/models/shadow_benign/shadow_benign_0.model', 0)
+INFO: 02-27 18:40:45: mntd_run_meta.py:300 * 130113182533440 val_dataset[0]: ('./models/mntd/shadow_model_ckpt/apg_MLP/models/random_size_5_100/shadow_jumbo_2048.model', 1)
+INFO: 02-27 18:40:45: mntd_run_meta.py:301 * 130113182533440 val_dataset[1]: ('./models/mntd/shadow_model_ckpt/apg_MLP/models/shadow_benign/shadow_benign_2048.model', 0)
+INFO: 02-27 18:40:45: mntd_run_meta.py:335 * 130113182533440 test_dataset[0]: ('models/mntd/target_model_ckpt/mobisec/apg/models/target_trojSubset-problem-space_0.model', 1)
+INFO: 02-27 18:40:45: mntd_run_meta.py:336 * 130113182533440 test_dataset[1]: ('./models/mntd/shadow_model_ckpt/apg_MLP/models/256_target_benign_remove_mobisec/target_benign_0.model', 0)
+INFO: 02-27 18:40:45: mntd_run_meta.py:348 * 130113182533440 REPORT_FOLDER: report/mntd/MLP_shadow_2048/optimization-subset-expand-type0_mobisec/pytorch
+INFO: 02-27 18:40:45: mntd_run_meta.py:364 * 130113182533440 experiment_name: apg_no_qt_size_100_trainnum_2048_typeSubset-problem-space
+INFO: 02-27 18:40:45: mntd_run_meta.py:365 * 130113182533440 report_path: report/mntd/MLP_shadow_2048/optimization-subset-expand-type0_mobisec/pytorch/apg_no_qt_size_100_trainnum_2048_typeSubset-problem-space.txt
+DEBUG: 02-27 18:40:45: models.py:242 * 130573685647168 Loading model from ./models/apg/SVM/svm-f10000.p...
+DEBUG: 02-27 18:40:45: models.py:242 * 134094965516096 Loading model from ./models/apg/SVM/svm-f10000.p...
+WARNING: 02-27 18:40:45: mntd_run_meta.py:88 * 125371264005952 Running with configuration:
+{'backdoor_target_model_type': 'pytorch',
+ 'benign_target_model_type': 'pytorch',
+ 'clf': 'MLP',
+ 'debug_mode': 'queryset-100-most-0-few-1-target-y-all-0-pattern-all-1',
+ 'half_training': 1,
+ 'jumbo_max_troj_size': 100,
+ 'load_exist': True,
+ 'method': 'optimization-subset-expand-type0',
+ 'no_qt': True,
+ 'subset_family': 'leadbolt',
+ 'target_max_troj_size': 0,
+ 'task': 'apg',
+ 'train_num': 2048,
+ 'troj_type': 'Subset',
+ 'trojan_part': None,
+ 'trojan_size': None}
+CRITICAL: 02-27 18:40:45: mntd_run_meta.py:91 * 125371264005952 debug_setting: queryset-100-most-0-few-1-target-y-all-0-pattern-all-1
+INFO: 02-27 18:40:45: mntd_run_meta.py:106 * 125371264005952 args.no_qt: True
+INFO: 02-27 18:40:45: mntd_run_meta.py:275 * 125371264005952 clean_shadow_path: ./models/mntd/shadow_model_ckpt/apg_MLP/models/shadow_benign
+INFO: 02-27 18:40:45: mntd_run_meta.py:276 * 125371264005952 jumbo_shadow_path: ./models/mntd/shadow_model_ckpt/apg_MLP/models/random_size_5_100
+INFO: 02-27 18:40:45: mntd_run_meta.py:277 * 125371264005952 meta_model_save_path: ./models/mntd/meta_classifier_ckpt_2048/MLP/apg_size_5_100_no_qt.model
+INFO: 02-27 18:40:45: mntd_run_meta.py:115 * 125371264005952 Task: apg; Trojan type: Subset; input size: (10000,); class num: 1
+DEBUG: 02-27 18:40:45: models.py:242 * 123527349196608 Loading model from ./models/apg/SVM/svm-f10000.p...
+INFO: 02-27 18:40:45: mntd_run_meta.py:296 * 125371264005952 len(train_dataset): 4096
+INFO: 02-27 18:40:45: mntd_run_meta.py:297 * 125371264005952 len(val_dataset): 512
+INFO: 02-27 18:40:45: mntd_run_meta.py:298 * 125371264005952 train_dataset[0]: ('./models/mntd/shadow_model_ckpt/apg_MLP/models/random_size_5_100/shadow_jumbo_0.model', 1)
+INFO: 02-27 18:40:45: mntd_run_meta.py:299 * 125371264005952 train_dataset[1]: ('./models/mntd/shadow_model_ckpt/apg_MLP/models/shadow_benign/shadow_benign_0.model', 0)
+INFO: 02-27 18:40:45: mntd_run_meta.py:300 * 125371264005952 val_dataset[0]: ('./models/mntd/shadow_model_ckpt/apg_MLP/models/random_size_5_100/shadow_jumbo_2048.model', 1)
+INFO: 02-27 18:40:45: mntd_run_meta.py:301 * 125371264005952 val_dataset[1]: ('./models/mntd/shadow_model_ckpt/apg_MLP/models/shadow_benign/shadow_benign_2048.model', 0)
+INFO: 02-27 18:40:45: mntd_run_meta.py:335 * 125371264005952 test_dataset[0]: ('models/mntd/target_model_ckpt/leadbolt/apg/models/target_trojSubset_0.model', 1)
+INFO: 02-27 18:40:45: mntd_run_meta.py:336 * 125371264005952 test_dataset[1]: ('./models/mntd/shadow_model_ckpt/apg_MLP/models/256_target_benign_remove_leadbolt/target_benign_0.model', 0)
+INFO: 02-27 18:40:45: mntd_run_meta.py:348 * 125371264005952 REPORT_FOLDER: report/mntd/MLP_shadow_2048/optimization-subset-expand-type0_leadbolt/pytorch
+INFO: 02-27 18:40:45: mntd_run_meta.py:364 * 125371264005952 experiment_name: apg_no_qt_size_100_trainnum_2048_typeSubset
+INFO: 02-27 18:40:45: mntd_run_meta.py:365 * 125371264005952 report_path: report/mntd/MLP_shadow_2048/optimization-subset-expand-type0_leadbolt/pytorch/apg_no_qt_size_100_trainnum_2048_typeSubset.txt
+DEBUG: 02-27 18:40:50: pyplot.py:225 * 127625209419584 Loaded backend qt5agg version unknown.
+DEBUG: 02-27 18:40:50: pyplot.py:225 * 127625209419584 Loaded backend tkagg version unknown.
+DEBUG: 02-27 18:40:50: pyplot.py:225 * 127625209419584 Loaded backend TkAgg version unknown.
+DEBUG: 02-27 18:40:50: models.py:242 * 127625209419584 Loading model from ./models/apg/SVM/svm-f10000.p...

@@ -1,0 +1,161 @@
+class com.squareup.picasso.PicassoExecutorService extends java.util.concurrent.ThreadPoolExecutor
+{
+    private static final int DEFAULT_THREAD_COUNT;
+
+    void <init>()
+    {
+        com.squareup.picasso.PicassoExecutorService r0;
+        java.util.concurrent.TimeUnit $r1;
+        java.util.concurrent.PriorityBlockingQueue $r2;
+        com.squareup.picasso.Utils$PicassoThreadFactory $r3;
+
+        r0 := @this: com.squareup.picasso.PicassoExecutorService;
+
+        $r1 = <java.util.concurrent.TimeUnit: java.util.concurrent.TimeUnit MILLISECONDS>;
+
+        $r2 = new java.util.concurrent.PriorityBlockingQueue;
+
+        specialinvoke $r2.<java.util.concurrent.PriorityBlockingQueue: void <init>()>();
+
+        $r3 = new com.squareup.picasso.Utils$PicassoThreadFactory;
+
+        specialinvoke $r3.<com.squareup.picasso.Utils$PicassoThreadFactory: void <init>()>();
+
+        specialinvoke r0.<java.util.concurrent.ThreadPoolExecutor: void <init>(int,int,long,java.util.concurrent.TimeUnit,java.util.concurrent.BlockingQueue,java.util.concurrent.ThreadFactory)>(3, 3, 0L, $r1, $r2, $r3);
+
+        return;
+    }
+
+    private void setThreadCount(int)
+    {
+        com.squareup.picasso.PicassoExecutorService r0;
+        int $i0;
+
+        r0 := @this: com.squareup.picasso.PicassoExecutorService;
+
+        $i0 := @parameter0: int;
+
+        virtualinvoke r0.<com.squareup.picasso.PicassoExecutorService: void setCorePoolSize(int)>($i0);
+
+        virtualinvoke r0.<com.squareup.picasso.PicassoExecutorService: void setMaximumPoolSize(int)>($i0);
+
+        return;
+    }
+
+    void adjustThreadCount(android.net.NetworkInfo)
+    {
+        com.squareup.picasso.PicassoExecutorService r0;
+        android.net.NetworkInfo $r1;
+        boolean $z0;
+        int $i0;
+
+        r0 := @this: com.squareup.picasso.PicassoExecutorService;
+
+        $r1 := @parameter0: android.net.NetworkInfo;
+
+        if $r1 == null goto label1;
+
+        $z0 = virtualinvoke $r1.<android.net.NetworkInfo: boolean isConnectedOrConnecting()>();
+
+        if $z0 != 0 goto label2;
+
+     label1:
+        specialinvoke r0.<com.squareup.picasso.PicassoExecutorService: void setThreadCount(int)>(3);
+
+        return;
+
+     label2:
+        $i0 = virtualinvoke $r1.<android.net.NetworkInfo: int getType()>();
+
+        lookupswitch($i0)
+        {
+            case 0: goto label5;
+            case 1: goto label4;
+            case 6: goto label4;
+            case 9: goto label4;
+            default: goto label3;
+        };
+
+     label3:
+        specialinvoke r0.<com.squareup.picasso.PicassoExecutorService: void setThreadCount(int)>(3);
+
+        return;
+
+     label4:
+        specialinvoke r0.<com.squareup.picasso.PicassoExecutorService: void setThreadCount(int)>(4);
+
+        return;
+
+     label5:
+        $i0 = virtualinvoke $r1.<android.net.NetworkInfo: int getSubtype()>();
+
+        lookupswitch($i0)
+        {
+            case 1: goto label9;
+            case 2: goto label9;
+            case 3: goto label8;
+            case 4: goto label8;
+            case 5: goto label8;
+            case 6: goto label8;
+            case 7: goto label6;
+            case 8: goto label6;
+            case 9: goto label6;
+            case 10: goto label6;
+            case 11: goto label6;
+            case 12: goto label8;
+            case 13: goto label7;
+            case 14: goto label7;
+            case 15: goto label7;
+            default: goto label6;
+        };
+
+     label6:
+        specialinvoke r0.<com.squareup.picasso.PicassoExecutorService: void setThreadCount(int)>(3);
+
+        return;
+
+     label7:
+        specialinvoke r0.<com.squareup.picasso.PicassoExecutorService: void setThreadCount(int)>(3);
+
+        return;
+
+     label8:
+        specialinvoke r0.<com.squareup.picasso.PicassoExecutorService: void setThreadCount(int)>(2);
+
+        return;
+
+     label9:
+        specialinvoke r0.<com.squareup.picasso.PicassoExecutorService: void setThreadCount(int)>(1);
+
+        return;
+    }
+
+    public java.util.concurrent.Future submit(java.lang.Runnable)
+    {
+        com.squareup.picasso.PicassoExecutorService r0;
+        com.squareup.picasso.PicassoExecutorService$PicassoFutureTask $r1;
+        java.lang.Runnable $r2;
+        com.squareup.picasso.BitmapHunter $r3;
+
+        r0 := @this: com.squareup.picasso.PicassoExecutorService;
+
+        $r2 := @parameter0: java.lang.Runnable;
+
+        $r1 = new com.squareup.picasso.PicassoExecutorService$PicassoFutureTask;
+
+        $r3 = (com.squareup.picasso.BitmapHunter) $r2;
+
+        specialinvoke $r1.<com.squareup.picasso.PicassoExecutorService$PicassoFutureTask: void <init>(com.squareup.picasso.BitmapHunter)>($r3);
+
+        virtualinvoke r0.<com.squareup.picasso.PicassoExecutorService: void execute(java.lang.Runnable)>($r1);
+
+        return $r1;
+    }
+
+    public static void <clinit>()
+    {
+        <com.squareup.picasso.PicassoExecutorService: int DEFAULT_THREAD_COUNT> = 3;
+
+        return;
+    }
+}

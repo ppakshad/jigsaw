@@ -1,0 +1,70 @@
+public class com.movesky.app.engine.ai.AStarEntry extends java.lang.Object implements java.lang.Comparable
+{
+    int m_f_score;
+    int m_g_score;
+    int m_h_score;
+    com.movesky.app.engine.util.Point m_point;
+
+    public void <init>(com.movesky.app.engine.util.Point)
+    {
+        com.movesky.app.engine.ai.AStarEntry r0;
+        com.movesky.app.engine.util.Point $r1;
+
+        r0 := @this: com.movesky.app.engine.ai.AStarEntry;
+
+        $r1 := @parameter0: com.movesky.app.engine.util.Point;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        r0.<com.movesky.app.engine.ai.AStarEntry: com.movesky.app.engine.util.Point m_point> = $r1;
+
+        return;
+    }
+
+    public int compareTo(com.movesky.app.engine.ai.AStarEntry)
+    {
+        com.movesky.app.engine.ai.AStarEntry r0, $r1;
+        int $i0, $i1;
+
+        r0 := @this: com.movesky.app.engine.ai.AStarEntry;
+
+        $r1 := @parameter0: com.movesky.app.engine.ai.AStarEntry;
+
+        $i0 = r0.<com.movesky.app.engine.ai.AStarEntry: int m_f_score>;
+
+        $i1 = $r1.<com.movesky.app.engine.ai.AStarEntry: int m_f_score>;
+
+        if $i0 != $i1 goto label1;
+
+        return 0;
+
+     label1:
+        $i0 = r0.<com.movesky.app.engine.ai.AStarEntry: int m_f_score>;
+
+        $i1 = $r1.<com.movesky.app.engine.ai.AStarEntry: int m_f_score>;
+
+        if $i0 >= $i1 goto label2;
+
+        return -1;
+
+     label2:
+        return 1;
+    }
+
+    public volatile int compareTo(java.lang.Object)
+    {
+        com.movesky.app.engine.ai.AStarEntry r0, $r2;
+        int $i0;
+        java.lang.Object $r1;
+
+        r0 := @this: com.movesky.app.engine.ai.AStarEntry;
+
+        $r1 := @parameter0: java.lang.Object;
+
+        $r2 = (com.movesky.app.engine.ai.AStarEntry) $r1;
+
+        $i0 = virtualinvoke r0.<com.movesky.app.engine.ai.AStarEntry: int compareTo(com.movesky.app.engine.ai.AStarEntry)>($r2);
+
+        return $i0;
+    }
+}

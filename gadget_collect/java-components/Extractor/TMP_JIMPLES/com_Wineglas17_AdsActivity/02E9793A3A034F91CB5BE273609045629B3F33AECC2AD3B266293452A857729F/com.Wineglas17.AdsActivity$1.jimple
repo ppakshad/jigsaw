@@ -1,0 +1,82 @@
+class com.Wineglas17.AdsActivity$1 extends com.google.android.gms.ads.a
+{
+    final com.Wineglas17.AdsActivity this$0;
+
+    void <init>(com.Wineglas17.AdsActivity)
+    {
+        com.Wineglas17.AdsActivity$1 r0;
+        com.Wineglas17.AdsActivity $r1;
+
+        r0 := @this: com.Wineglas17.AdsActivity$1;
+
+        $r1 := @parameter0: com.Wineglas17.AdsActivity;
+
+        r0.<com.Wineglas17.AdsActivity$1: com.Wineglas17.AdsActivity this$0> = $r1;
+
+        specialinvoke r0.<com.google.android.gms.ads.a: void <init>()>();
+
+        return;
+    }
+
+    public void onAdClosed()
+    {
+        com.Wineglas17.AdsActivity$1 r0;
+        com.Wineglas17.AdsActivity $r1;
+
+        r0 := @this: com.Wineglas17.AdsActivity$1;
+
+        $r1 = r0.<com.Wineglas17.AdsActivity$1: com.Wineglas17.AdsActivity this$0>;
+
+        virtualinvoke $r1.<com.Wineglas17.AdsActivity: void finish()>();
+
+        return;
+    }
+
+    public void onAdFailedToLoad(int)
+    {
+        com.Wineglas17.AdsActivity$1 r0;
+        int $i0;
+        com.Wineglas17.AdsActivity $r1;
+
+        r0 := @this: com.Wineglas17.AdsActivity$1;
+
+        $i0 := @parameter0: int;
+
+        $r1 = r0.<com.Wineglas17.AdsActivity$1: com.Wineglas17.AdsActivity this$0>;
+
+        virtualinvoke $r1.<com.Wineglas17.AdsActivity: void finish()>();
+
+        return;
+    }
+
+    public void onAdLoaded()
+    {
+        com.Wineglas17.AdsActivity$1 r0;
+        com.Wineglas17.AdsActivity $r1;
+        com.google.android.gms.ads.f $r2;
+        boolean $z0;
+
+        r0 := @this: com.Wineglas17.AdsActivity$1;
+
+        $r1 = r0.<com.Wineglas17.AdsActivity$1: com.Wineglas17.AdsActivity this$0>;
+
+        $r2 = staticinvoke <com.Wineglas17.AdsActivity: com.google.android.gms.ads.f access$000(com.Wineglas17.AdsActivity)>($r1);
+
+        $z0 = virtualinvoke $r2.<com.google.android.gms.ads.f: boolean a()>();
+
+        if $z0 == 0 goto label1;
+
+        $r1 = r0.<com.Wineglas17.AdsActivity$1: com.Wineglas17.AdsActivity this$0>;
+
+        $r2 = staticinvoke <com.Wineglas17.AdsActivity: com.google.android.gms.ads.f access$000(com.Wineglas17.AdsActivity)>($r1);
+
+        virtualinvoke $r2.<com.google.android.gms.ads.f: void b()>();
+
+        return;
+
+     label1:
+        staticinvoke <android.util.Log: int d(java.lang.String,java.lang.String)>("Andaired App", "Interstitial ad was not ready to be shown.");
+
+        return;
+    }
+}

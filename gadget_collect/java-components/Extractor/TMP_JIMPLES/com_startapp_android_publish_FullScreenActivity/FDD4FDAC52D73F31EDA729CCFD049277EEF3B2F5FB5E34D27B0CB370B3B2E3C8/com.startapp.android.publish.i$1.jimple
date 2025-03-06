@@ -1,0 +1,101 @@
+class com.startapp.android.publish.i$1 extends java.lang.Object implements java.lang.Runnable
+{
+    final android.content.Context a;
+    final com.startapp.android.publish.i b;
+
+    void <init>(com.startapp.android.publish.i, android.content.Context)
+    {
+        com.startapp.android.publish.i$1 r0;
+        com.startapp.android.publish.i $r1;
+        android.content.Context $r2;
+
+        r0 := @this: com.startapp.android.publish.i$1;
+
+        $r1 := @parameter0: com.startapp.android.publish.i;
+
+        $r2 := @parameter1: android.content.Context;
+
+        r0.<com.startapp.android.publish.i$1: com.startapp.android.publish.i b> = $r1;
+
+        r0.<com.startapp.android.publish.i$1: android.content.Context a> = $r2;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public void run()
+    {
+        com.startapp.android.publish.i$1 r0;
+        com.startapp.android.publish.model.MetaData $r1;
+        com.startapp.android.publish.model.SdkDownloadRequest $r2;
+        com.startapp.android.publish.model.AdPreferences $r3;
+        android.content.Context $r4;
+        com.startapp.android.publish.e$a $r5;
+        java.lang.String $r6;
+        java.lang.Exception $r7;
+        com.startapp.android.publish.d.b$a $r8;
+
+        r0 := @this: com.startapp.android.publish.i$1;
+
+        staticinvoke <android.os.Process: void setThreadPriority(int)>(10);
+
+     label1:
+        $r1 = staticinvoke <com.startapp.android.publish.model.MetaData: com.startapp.android.publish.model.MetaData getInstance()>();
+
+        virtualinvoke $r1.<com.startapp.android.publish.model.MetaData: void applyAdPlatformProtocolToHosts()>();
+
+     label2:
+        $r2 = new com.startapp.android.publish.model.SdkDownloadRequest;
+
+     label3:
+        specialinvoke $r2.<com.startapp.android.publish.model.SdkDownloadRequest: void <init>()>();
+
+     label4:
+        $r3 = new com.startapp.android.publish.model.AdPreferences;
+
+     label5:
+        specialinvoke $r3.<com.startapp.android.publish.model.AdPreferences: void <init>()>();
+
+        $r4 = r0.<com.startapp.android.publish.i$1: android.content.Context a>;
+
+        staticinvoke <com.startapp.android.publish.i.x: void a(android.content.Context,com.startapp.android.publish.model.AdPreferences)>($r4, $r3);
+
+        $r4 = r0.<com.startapp.android.publish.i$1: android.content.Context a>;
+
+        virtualinvoke $r2.<com.startapp.android.publish.model.SdkDownloadRequest: void fillApplicationDetails(android.content.Context,com.startapp.android.publish.model.AdPreferences)>($r4, $r3);
+
+        $r4 = r0.<com.startapp.android.publish.i$1: android.content.Context a>;
+
+     label6:
+        $r5 = <com.startapp.android.publish.e$a: com.startapp.android.publish.e$a d>;
+
+     label7:
+        $r6 = staticinvoke <com.startapp.android.publish.e: java.lang.String a(com.startapp.android.publish.e$a)>($r5);
+
+        staticinvoke <com.startapp.android.publish.h.c: java.lang.String a(android.content.Context,java.lang.String,com.startapp.android.publish.model.BaseRequest,java.util.Map)>($r4, $r6, $r2, null);
+
+     label8:
+        return;
+
+     label9:
+        $r7 := @caughtexception;
+
+        staticinvoke <com.startapp.android.publish.i.n: void a(int,java.lang.String,java.lang.Throwable)>(6, "Error occured while sending download event", $r7);
+
+        $r4 = r0.<com.startapp.android.publish.i$1: android.content.Context a>;
+
+        $r8 = <com.startapp.android.publish.d.b$a: com.startapp.android.publish.d.b$a b>;
+
+        $r6 = virtualinvoke $r7.<java.lang.Exception: java.lang.String getMessage()>();
+
+        staticinvoke <com.startapp.android.publish.d.d: void a(android.content.Context,com.startapp.android.publish.d.b$a,java.lang.String,java.lang.String,java.lang.String)>($r4, $r8, "StartAppSDKInternal.sendDownladEvent", $r6, "");
+
+        return;
+
+        catch java.lang.Exception from label1 to label2 with label9;
+        catch java.lang.Exception from label3 to label4 with label9;
+        catch java.lang.Exception from label5 to label6 with label9;
+        catch java.lang.Exception from label7 to label8 with label9;
+    }
+}

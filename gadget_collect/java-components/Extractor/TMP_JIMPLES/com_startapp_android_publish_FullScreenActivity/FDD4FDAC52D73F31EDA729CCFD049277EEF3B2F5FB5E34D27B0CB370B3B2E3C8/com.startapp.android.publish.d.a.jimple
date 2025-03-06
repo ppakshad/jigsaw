@@ -1,0 +1,220 @@
+public class com.startapp.android.publish.d.a extends java.lang.Object implements java.io.Serializable
+{
+    private static final java.lang.String a;
+    private static final long serialVersionUID;
+    private boolean dns;
+    private java.lang.String host;
+    private int retryNum;
+    private int retryTime;
+    private float succeededSmartRedirectInfoProbability;
+
+    static void <clinit>()
+    {
+        java.lang.String $r0;
+        byte[] $r1;
+
+        <com.startapp.android.publish.d.a: long serialVersionUID> = 1L;
+
+        $r0 = new java.lang.String;
+
+        $r1 = newarray (byte)[50];
+
+        $r1[0] = 104;
+
+        $r1[1] = 116;
+
+        $r1[2] = 116;
+
+        $r1[3] = 112;
+
+        $r1[4] = 58;
+
+        $r1[5] = 47;
+
+        $r1[6] = 47;
+
+        $r1[7] = 119;
+
+        $r1[8] = 119;
+
+        $r1[9] = 119;
+
+        $r1[10] = 46;
+
+        $r1[11] = 115;
+
+        $r1[12] = 116;
+
+        $r1[13] = 97;
+
+        $r1[14] = 114;
+
+        $r1[15] = 116;
+
+        $r1[16] = 97;
+
+        $r1[17] = 112;
+
+        $r1[18] = 112;
+
+        $r1[19] = 101;
+
+        $r1[20] = 120;
+
+        $r1[21] = 99;
+
+        $r1[22] = 104;
+
+        $r1[23] = 97;
+
+        $r1[24] = 110;
+
+        $r1[25] = 103;
+
+        $r1[26] = 101;
+
+        $r1[27] = 46;
+
+        $r1[28] = 99;
+
+        $r1[29] = 111;
+
+        $r1[30] = 109;
+
+        $r1[31] = 47;
+
+        $r1[32] = 116;
+
+        $r1[33] = 114;
+
+        $r1[34] = 97;
+
+        $r1[35] = 99;
+
+        $r1[36] = 107;
+
+        $r1[37] = 105;
+
+        $r1[38] = 110;
+
+        $r1[39] = 103;
+
+        $r1[40] = 47;
+
+        $r1[41] = 105;
+
+        $r1[42] = 110;
+
+        $r1[43] = 102;
+
+        $r1[44] = 111;
+
+        $r1[45] = 69;
+
+        $r1[46] = 118;
+
+        $r1[47] = 101;
+
+        $r1[48] = 110;
+
+        $r1[49] = 116;
+
+        specialinvoke $r0.<java.lang.String: void <init>(byte[])>($r1);
+
+        <com.startapp.android.publish.d.a: java.lang.String a> = $r0;
+
+        return;
+    }
+
+    public void <init>()
+    {
+        com.startapp.android.publish.d.a r0;
+        java.lang.String $r1;
+
+        r0 := @this: com.startapp.android.publish.d.a;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        $r1 = <com.startapp.android.publish.d.a: java.lang.String a>;
+
+        r0.<com.startapp.android.publish.d.a: java.lang.String host> = $r1;
+
+        r0.<com.startapp.android.publish.d.a: boolean dns> = 0;
+
+        r0.<com.startapp.android.publish.d.a: int retryNum> = 3;
+
+        r0.<com.startapp.android.publish.d.a: int retryTime> = 10;
+
+        r0.<com.startapp.android.publish.d.a: float succeededSmartRedirectInfoProbability> = 0.01F;
+
+        return;
+    }
+
+    public java.lang.String a()
+    {
+        com.startapp.android.publish.d.a r0;
+        java.lang.String r1;
+
+        r0 := @this: com.startapp.android.publish.d.a;
+
+        r1 = r0.<com.startapp.android.publish.d.a: java.lang.String host>;
+
+        return r1;
+    }
+
+    public boolean b()
+    {
+        com.startapp.android.publish.d.a r0;
+        boolean z0;
+
+        r0 := @this: com.startapp.android.publish.d.a;
+
+        z0 = r0.<com.startapp.android.publish.d.a: boolean dns>;
+
+        return z0;
+    }
+
+    public int c()
+    {
+        com.startapp.android.publish.d.a r0;
+        int i0;
+
+        r0 := @this: com.startapp.android.publish.d.a;
+
+        i0 = r0.<com.startapp.android.publish.d.a: int retryNum>;
+
+        return i0;
+    }
+
+    public long d()
+    {
+        com.startapp.android.publish.d.a r0;
+        long $l0;
+        java.util.concurrent.TimeUnit $r1;
+        int $i1;
+
+        r0 := @this: com.startapp.android.publish.d.a;
+
+        $r1 = <java.util.concurrent.TimeUnit: java.util.concurrent.TimeUnit SECONDS>;
+
+        $i1 = r0.<com.startapp.android.publish.d.a: int retryTime>;
+
+        $l0 = (long) $i1;
+
+        $l0 = virtualinvoke $r1.<java.util.concurrent.TimeUnit: long toMillis(long)>($l0);
+
+        return $l0;
+    }
+
+    public float e()
+    {
+        com.startapp.android.publish.d.a r0;
+        float f0;
+
+        r0 := @this: com.startapp.android.publish.d.a;
+
+        f0 = r0.<com.startapp.android.publish.d.a: float succeededSmartRedirectInfoProbability>;
+
+        return f0;
+    }
+}

@@ -1,0 +1,133 @@
+public class com.startapp.android.publish.model.ACMConfig extends java.lang.Object implements java.io.Serializable
+{
+    private static final long serialVersionUID;
+    private long adCacheTTL;
+    private java.util.Set autoLoad;
+    private com.startapp.android.publish.model.FailuresHandler failuresHandler;
+    private boolean localCache;
+    private long returnAdCacheTTL;
+    private boolean returnAdShouldLoadInBg;
+
+    public void <init>()
+    {
+        com.startapp.android.publish.model.ACMConfig r0;
+        java.util.EnumSet $r1;
+        com.startapp.android.publish.StartAppAd$AdMode $r2;
+        com.startapp.android.publish.model.FailuresHandler $r3;
+
+        r0 := @this: com.startapp.android.publish.model.ACMConfig;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        r0.<com.startapp.android.publish.model.ACMConfig: long adCacheTTL> = 3600L;
+
+        r0.<com.startapp.android.publish.model.ACMConfig: long returnAdCacheTTL> = 3600L;
+
+        $r2 = <com.startapp.android.publish.StartAppAd$AdMode: com.startapp.android.publish.StartAppAd$AdMode FULLPAGE>;
+
+        $r1 = staticinvoke <java.util.EnumSet: java.util.EnumSet of(java.lang.Enum)>($r2);
+
+        r0.<com.startapp.android.publish.model.ACMConfig: java.util.Set autoLoad> = $r1;
+
+        r0.<com.startapp.android.publish.model.ACMConfig: boolean localCache> = 1;
+
+        r0.<com.startapp.android.publish.model.ACMConfig: boolean returnAdShouldLoadInBg> = 1;
+
+        $r3 = new com.startapp.android.publish.model.FailuresHandler;
+
+        specialinvoke $r3.<com.startapp.android.publish.model.FailuresHandler: void <init>()>();
+
+        r0.<com.startapp.android.publish.model.ACMConfig: com.startapp.android.publish.model.FailuresHandler failuresHandler> = $r3;
+
+        return;
+    }
+
+    public long getAdCacheTtl()
+    {
+        com.startapp.android.publish.model.ACMConfig r0;
+        long $l0;
+        java.util.concurrent.TimeUnit $r1;
+
+        r0 := @this: com.startapp.android.publish.model.ACMConfig;
+
+        $r1 = <java.util.concurrent.TimeUnit: java.util.concurrent.TimeUnit SECONDS>;
+
+        $l0 = r0.<com.startapp.android.publish.model.ACMConfig: long adCacheTTL>;
+
+        $l0 = virtualinvoke $r1.<java.util.concurrent.TimeUnit: long toMillis(long)>($l0);
+
+        return $l0;
+    }
+
+    public java.util.Set getAutoLoad()
+    {
+        com.startapp.android.publish.model.ACMConfig r0;
+        java.util.Set r1;
+
+        r0 := @this: com.startapp.android.publish.model.ACMConfig;
+
+        r1 = r0.<com.startapp.android.publish.model.ACMConfig: java.util.Set autoLoad>;
+
+        return r1;
+    }
+
+    public com.startapp.android.publish.model.FailuresHandler getFailuresHandler()
+    {
+        com.startapp.android.publish.model.ACMConfig r0;
+        com.startapp.android.publish.model.FailuresHandler r1;
+
+        r0 := @this: com.startapp.android.publish.model.ACMConfig;
+
+        r1 = r0.<com.startapp.android.publish.model.ACMConfig: com.startapp.android.publish.model.FailuresHandler failuresHandler>;
+
+        return r1;
+    }
+
+    public long getReturnAdCacheTTL()
+    {
+        com.startapp.android.publish.model.ACMConfig r0;
+        long $l0;
+        java.util.concurrent.TimeUnit $r1;
+
+        r0 := @this: com.startapp.android.publish.model.ACMConfig;
+
+        $r1 = <java.util.concurrent.TimeUnit: java.util.concurrent.TimeUnit SECONDS>;
+
+        $l0 = r0.<com.startapp.android.publish.model.ACMConfig: long returnAdCacheTTL>;
+
+        $l0 = virtualinvoke $r1.<java.util.concurrent.TimeUnit: long toMillis(long)>($l0);
+
+        return $l0;
+    }
+
+    public boolean isLocalCache()
+    {
+        com.startapp.android.publish.model.ACMConfig r0;
+        boolean z0;
+
+        r0 := @this: com.startapp.android.publish.model.ACMConfig;
+
+        z0 = r0.<com.startapp.android.publish.model.ACMConfig: boolean localCache>;
+
+        return z0;
+    }
+
+    public boolean shouldReturnAdLoadInBg()
+    {
+        com.startapp.android.publish.model.ACMConfig r0;
+        boolean z0;
+
+        r0 := @this: com.startapp.android.publish.model.ACMConfig;
+
+        z0 = r0.<com.startapp.android.publish.model.ACMConfig: boolean returnAdShouldLoadInBg>;
+
+        return z0;
+    }
+
+    public static void <clinit>()
+    {
+        <com.startapp.android.publish.model.ACMConfig: long serialVersionUID> = 1L;
+
+        return;
+    }
+}

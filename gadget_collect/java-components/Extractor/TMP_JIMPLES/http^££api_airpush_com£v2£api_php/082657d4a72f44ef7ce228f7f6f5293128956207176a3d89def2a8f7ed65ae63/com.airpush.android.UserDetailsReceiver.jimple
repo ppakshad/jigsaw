@@ -1,0 +1,426 @@
+public class com.airpush.android.UserDetailsReceiver extends android.content.BroadcastReceiver
+{
+    protected static android.content.Context ctx;
+    private static java.lang.String imei;
+    private java.lang.String apikey;
+    private java.lang.String appId;
+    private int icon;
+    private org.json.JSONObject json;
+    private java.lang.String jsonstr;
+    private java.lang.String packageName;
+    private boolean testMode;
+    java.util.List values;
+
+    static void <clinit>()
+    {
+        <com.airpush.android.UserDetailsReceiver: java.lang.String imei> = "invalid";
+
+        <com.airpush.android.UserDetailsReceiver: android.content.Context ctx> = null;
+
+        return;
+    }
+
+    public void <init>()
+    {
+        com.airpush.android.UserDetailsReceiver r0;
+
+        r0 := @this: com.airpush.android.UserDetailsReceiver;
+
+        specialinvoke r0.<android.content.BroadcastReceiver: void <init>()>();
+
+        r0.<com.airpush.android.UserDetailsReceiver: java.lang.String appId> = "Invalid";
+
+        r0.<com.airpush.android.UserDetailsReceiver: java.util.List values> = null;
+
+        r0.<com.airpush.android.UserDetailsReceiver: java.lang.String apikey> = "airpush";
+
+        return;
+    }
+
+    private java.lang.String getApiKey(java.lang.String)
+    {
+        com.airpush.android.UserDetailsReceiver r0;
+        java.lang.String $r1;
+        org.json.JSONObject $r2;
+        org.json.JSONException $r3;
+
+        r0 := @this: com.airpush.android.UserDetailsReceiver;
+
+        $r1 := @parameter0: java.lang.String;
+
+        $r2 = new org.json.JSONObject;
+
+     label1:
+        specialinvoke $r2.<org.json.JSONObject: void <init>(java.lang.String)>($r1);
+
+     label2:
+        r0.<com.airpush.android.UserDetailsReceiver: org.json.JSONObject json> = $r2;
+
+        $r2 = r0.<com.airpush.android.UserDetailsReceiver: org.json.JSONObject json>;
+
+     label3:
+        $r1 = virtualinvoke $r2.<org.json.JSONObject: java.lang.String getString(java.lang.String)>("authkey");
+
+     label4:
+        return $r1;
+
+     label5:
+        $r3 := @caughtexception;
+
+        return "invalid key";
+
+        catch org.json.JSONException from label1 to label2 with label5;
+        catch org.json.JSONException from label3 to label4 with label5;
+    }
+
+    private java.lang.String getAppId(java.lang.String)
+    {
+        com.airpush.android.UserDetailsReceiver r0;
+        java.lang.String $r1;
+        org.json.JSONObject $r2;
+        org.json.JSONException $r3;
+
+        r0 := @this: com.airpush.android.UserDetailsReceiver;
+
+        $r1 := @parameter0: java.lang.String;
+
+        $r2 = new org.json.JSONObject;
+
+     label1:
+        specialinvoke $r2.<org.json.JSONObject: void <init>(java.lang.String)>($r1);
+
+     label2:
+        r0.<com.airpush.android.UserDetailsReceiver: org.json.JSONObject json> = $r2;
+
+        $r2 = r0.<com.airpush.android.UserDetailsReceiver: org.json.JSONObject json>;
+
+     label3:
+        $r1 = virtualinvoke $r2.<org.json.JSONObject: java.lang.String getString(java.lang.String)>("appid");
+
+     label4:
+        return $r1;
+
+     label5:
+        $r3 := @caughtexception;
+
+        return "invalid Id";
+
+        catch org.json.JSONException from label1 to label2 with label5;
+        catch org.json.JSONException from label3 to label4 with label5;
+    }
+
+    private void getDataSharedprefrences()
+    {
+        com.airpush.android.UserDetailsReceiver r0;
+        android.content.Context $r1;
+        android.content.SharedPreferences $r2;
+        boolean $z0;
+        java.lang.String $r3;
+        int $i0;
+        java.lang.StringBuilder $r4;
+        java.lang.Exception $r5;
+        com.airpush.android.Airpush $r6;
+
+        r0 := @this: com.airpush.android.UserDetailsReceiver;
+
+        $r1 = <com.airpush.android.UserDetailsReceiver: android.content.Context ctx>;
+
+     label01:
+        $r2 = virtualinvoke $r1.<android.content.Context: android.content.SharedPreferences getSharedPreferences(java.lang.String,int)>("dataPrefs", 1);
+
+        $z0 = virtualinvoke $r2.<java.lang.Object: boolean equals(java.lang.Object)>(null);
+
+     label02:
+        if $z0 != 0 goto label07;
+
+        $r1 = <com.airpush.android.UserDetailsReceiver: android.content.Context ctx>;
+
+     label03:
+        $r2 = virtualinvoke $r1.<android.content.Context: android.content.SharedPreferences getSharedPreferences(java.lang.String,int)>("dataPrefs", 1);
+
+        $r3 = interfaceinvoke $r2.<android.content.SharedPreferences: java.lang.String getString(java.lang.String,java.lang.String)>("appId", "invalid");
+
+        r0.<com.airpush.android.UserDetailsReceiver: java.lang.String appId> = $r3;
+
+        $r3 = interfaceinvoke $r2.<android.content.SharedPreferences: java.lang.String getString(java.lang.String,java.lang.String)>("apikey", "airpush");
+
+        r0.<com.airpush.android.UserDetailsReceiver: java.lang.String apikey> = $r3;
+
+        $r3 = interfaceinvoke $r2.<android.content.SharedPreferences: java.lang.String getString(java.lang.String,java.lang.String)>("imei", "invalid");
+
+     label04:
+        <com.airpush.android.UserDetailsReceiver: java.lang.String imei> = $r3;
+
+     label05:
+        $z0 = interfaceinvoke $r2.<android.content.SharedPreferences: boolean getBoolean(java.lang.String,boolean)>("testMode", 0);
+
+        r0.<com.airpush.android.UserDetailsReceiver: boolean testMode> = $z0;
+
+        $i0 = interfaceinvoke $r2.<android.content.SharedPreferences: int getInt(java.lang.String,int)>("icon", 17301620);
+
+        r0.<com.airpush.android.UserDetailsReceiver: int icon> = $i0;
+
+     label06:
+        return;
+
+     label07:
+        $r1 = <com.airpush.android.UserDetailsReceiver: android.content.Context ctx>;
+
+     label08:
+        $r3 = virtualinvoke $r1.<android.content.Context: java.lang.String getPackageName()>();
+
+        r0.<com.airpush.android.UserDetailsReceiver: java.lang.String packageName> = $r3;
+
+     label09:
+        $r4 = new java.lang.StringBuilder;
+
+     label10:
+        specialinvoke $r4.<java.lang.StringBuilder: void <init>(java.lang.String)>("http://api.airpush.com/model/user/getappinfo.php?packageName=");
+
+        $r3 = r0.<com.airpush.android.UserDetailsReceiver: java.lang.String packageName>;
+
+        $r4 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r3);
+
+        $r3 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.String toString()>();
+
+     label11:
+        $r1 = <com.airpush.android.UserDetailsReceiver: android.content.Context ctx>;
+
+     label12:
+        $r3 = staticinvoke <com.airpush.android.HttpPostData: java.lang.String postData2(java.lang.String,java.lang.String,java.lang.String,android.content.Context)>($r3, "default", "default", $r1);
+
+        r0.<com.airpush.android.UserDetailsReceiver: java.lang.String jsonstr> = $r3;
+
+        $r3 = r0.<com.airpush.android.UserDetailsReceiver: java.lang.String jsonstr>;
+
+        $r3 = specialinvoke r0.<com.airpush.android.UserDetailsReceiver: java.lang.String getAppId(java.lang.String)>($r3);
+
+        r0.<com.airpush.android.UserDetailsReceiver: java.lang.String appId> = $r3;
+
+        $r3 = r0.<com.airpush.android.UserDetailsReceiver: java.lang.String jsonstr>;
+
+        $r3 = specialinvoke r0.<com.airpush.android.UserDetailsReceiver: java.lang.String getApiKey(java.lang.String)>($r3);
+
+        r0.<com.airpush.android.UserDetailsReceiver: java.lang.String apikey> = $r3;
+
+     label13:
+        return;
+
+     label14:
+        $r5 := @caughtexception;
+
+        $r1 = <com.airpush.android.UserDetailsReceiver: android.content.Context ctx>;
+
+        $r3 = virtualinvoke $r1.<android.content.Context: java.lang.String getPackageName()>();
+
+        r0.<com.airpush.android.UserDetailsReceiver: java.lang.String packageName> = $r3;
+
+        $r4 = new java.lang.StringBuilder;
+
+        specialinvoke $r4.<java.lang.StringBuilder: void <init>(java.lang.String)>("http://api.airpush.com/model/user/getappinfo.php?packageName=");
+
+        $r3 = r0.<com.airpush.android.UserDetailsReceiver: java.lang.String packageName>;
+
+        $r4 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r3);
+
+        $r3 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        $r1 = <com.airpush.android.UserDetailsReceiver: android.content.Context ctx>;
+
+        $r3 = staticinvoke <com.airpush.android.HttpPostData: java.lang.String postData2(java.lang.String,java.lang.String,java.lang.String,android.content.Context)>($r3, "default", "default", $r1);
+
+        r0.<com.airpush.android.UserDetailsReceiver: java.lang.String jsonstr> = $r3;
+
+        $r3 = r0.<com.airpush.android.UserDetailsReceiver: java.lang.String jsonstr>;
+
+        $r3 = specialinvoke r0.<com.airpush.android.UserDetailsReceiver: java.lang.String getAppId(java.lang.String)>($r3);
+
+        r0.<com.airpush.android.UserDetailsReceiver: java.lang.String appId> = $r3;
+
+        $r3 = r0.<com.airpush.android.UserDetailsReceiver: java.lang.String jsonstr>;
+
+        $r3 = specialinvoke r0.<com.airpush.android.UserDetailsReceiver: java.lang.String getApiKey(java.lang.String)>($r3);
+
+        r0.<com.airpush.android.UserDetailsReceiver: java.lang.String apikey> = $r3;
+
+        $r6 = new com.airpush.android.Airpush;
+
+        $r1 = <com.airpush.android.UserDetailsReceiver: android.content.Context ctx>;
+
+        $r3 = r0.<com.airpush.android.UserDetailsReceiver: java.lang.String appId>;
+
+        specialinvoke $r6.<com.airpush.android.Airpush: void <init>(android.content.Context,java.lang.String,java.lang.String,boolean,boolean,boolean)>($r1, $r3, "airpush", 0, 1, 1);
+
+        return;
+
+        catch java.lang.Exception from label01 to label02 with label14;
+        catch java.lang.Exception from label03 to label04 with label14;
+        catch java.lang.Exception from label05 to label06 with label14;
+        catch java.lang.Exception from label08 to label09 with label14;
+        catch java.lang.Exception from label10 to label11 with label14;
+        catch java.lang.Exception from label12 to label13 with label14;
+    }
+
+    public void onReceive(android.content.Context, android.content.Intent)
+    {
+        com.airpush.android.UserDetailsReceiver r0;
+        android.content.Context $r1, $r3;
+        android.content.Intent $r2;
+        boolean $z0;
+        java.lang.String $r4;
+        java.lang.StringBuilder $r5;
+        com.airpush.android.Airpush $r6;
+        java.lang.Exception $r7;
+
+        r0 := @this: com.airpush.android.UserDetailsReceiver;
+
+        $r1 := @parameter0: android.content.Context;
+
+        $r2 := @parameter1: android.content.Intent;
+
+        <com.airpush.android.UserDetailsReceiver: android.content.Context ctx> = $r1;
+
+        $r3 = <com.airpush.android.UserDetailsReceiver: android.content.Context ctx>;
+
+        $z0 = staticinvoke <com.airpush.android.SetPreferences: boolean isEnabled(android.content.Context)>($r3);
+
+        if $z0 == 0 goto label24;
+
+        $r3 = <com.airpush.android.UserDetailsReceiver: android.content.Context ctx>;
+
+     label01:
+        $z0 = staticinvoke <com.airpush.android.Constants: boolean checkInternetConnection(android.content.Context)>($r3);
+
+     label02:
+        if $z0 == 0 goto label21;
+
+     label03:
+        $r4 = virtualinvoke $r2.<android.content.Intent: java.lang.String getAction()>();
+
+        $z0 = virtualinvoke $r4.<java.lang.String: boolean equals(java.lang.Object)>("SetUserInfo");
+
+     label04:
+        if $z0 == 0 goto label06;
+
+     label05:
+        specialinvoke r0.<com.airpush.android.UserDetailsReceiver: void getDataSharedprefrences()>();
+
+     label06:
+        staticinvoke <android.util.Log: int i(java.lang.String,java.lang.String)>("AirpushSDK", "Sending User Info....");
+
+     label07:
+        $r5 = new java.lang.StringBuilder;
+
+     label08:
+        specialinvoke $r5.<java.lang.StringBuilder: void <init>(java.lang.String)>("airpushAppid ");
+
+        $r4 = r0.<com.airpush.android.UserDetailsReceiver: java.lang.String appId>;
+
+        $r5 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r4);
+
+        $r4 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <com.airpush.android.Constants: void doToast(android.content.Context,java.lang.String)>($r1, $r4);
+
+     label09:
+        $r2 = new android.content.Intent;
+
+     label10:
+        specialinvoke $r2.<android.content.Intent: void <init>()>();
+
+     label11:
+        $r5 = new java.lang.StringBuilder;
+
+     label12:
+        specialinvoke $r5.<java.lang.StringBuilder: void <init>(java.lang.String)>("com.airpush.android.PushServiceStart");
+
+        $r4 = r0.<com.airpush.android.UserDetailsReceiver: java.lang.String appId>;
+
+        $r5 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r4);
+
+        $r4 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        virtualinvoke $r2.<android.content.Intent: android.content.Intent setAction(java.lang.String)>($r4);
+
+        $r4 = r0.<com.airpush.android.UserDetailsReceiver: java.lang.String appId>;
+
+        virtualinvoke $r2.<android.content.Intent: android.content.Intent putExtra(java.lang.String,java.lang.String)>("appId", $r4);
+
+        virtualinvoke $r2.<android.content.Intent: android.content.Intent putExtra(java.lang.String,java.lang.String)>("type", "userInfo");
+
+        $r4 = r0.<com.airpush.android.UserDetailsReceiver: java.lang.String apikey>;
+
+        virtualinvoke $r2.<android.content.Intent: android.content.Intent putExtra(java.lang.String,java.lang.String)>("apikey", $r4);
+
+        $z0 = virtualinvoke $r2.<java.lang.Object: boolean equals(java.lang.Object)>(null);
+
+     label13:
+        if $z0 != 0 goto label16;
+
+        $r1 = <com.airpush.android.UserDetailsReceiver: android.content.Context ctx>;
+
+     label14:
+        virtualinvoke $r1.<android.content.Context: android.content.ComponentName startService(android.content.Intent)>($r2);
+
+     label15:
+        return;
+
+     label16:
+        specialinvoke r0.<com.airpush.android.UserDetailsReceiver: void getDataSharedprefrences()>();
+
+     label17:
+        $r6 = new com.airpush.android.Airpush;
+
+        $r1 = <com.airpush.android.UserDetailsReceiver: android.content.Context ctx>;
+
+     label18:
+        $r4 = r0.<com.airpush.android.UserDetailsReceiver: java.lang.String appId>;
+
+        specialinvoke $r6.<com.airpush.android.Airpush: void <init>(android.content.Context,java.lang.String,java.lang.String,boolean,boolean,boolean)>($r1, $r4, "airpush", 0, 1, 1);
+
+     label19:
+        return;
+
+     label20:
+        $r7 := @caughtexception;
+
+        specialinvoke r0.<com.airpush.android.UserDetailsReceiver: void getDataSharedprefrences()>();
+
+        $r6 = new com.airpush.android.Airpush;
+
+        $r1 = <com.airpush.android.UserDetailsReceiver: android.content.Context ctx>;
+
+        $r4 = r0.<com.airpush.android.UserDetailsReceiver: java.lang.String appId>;
+
+        specialinvoke $r6.<com.airpush.android.Airpush: void <init>(android.content.Context,java.lang.String,java.lang.String,boolean,boolean,boolean)>($r1, $r4, "airpush", 0, 1, 1);
+
+        staticinvoke <android.util.Log: int i(java.lang.String,java.lang.String)>("AirpushSDK", "Sending User Info failed");
+
+        return;
+
+     label21:
+        $r1 = <com.airpush.android.UserDetailsReceiver: android.content.Context ctx>;
+
+     label22:
+        staticinvoke <com.airpush.android.Airpush: void reStartSDK(android.content.Context,long)>($r1, 1800000L);
+
+     label23:
+        return;
+
+     label24:
+        staticinvoke <android.util.Log: int i(java.lang.String,java.lang.String)>("AirpushSDK", "SDK is disabled, please enable to receive Ads !");
+
+        return;
+
+        catch java.lang.Exception from label01 to label02 with label20;
+        catch java.lang.Exception from label03 to label04 with label20;
+        catch java.lang.Exception from label05 to label07 with label20;
+        catch java.lang.Exception from label08 to label09 with label20;
+        catch java.lang.Exception from label10 to label11 with label20;
+        catch java.lang.Exception from label12 to label13 with label20;
+        catch java.lang.Exception from label14 to label15 with label20;
+        catch java.lang.Exception from label16 to label17 with label20;
+        catch java.lang.Exception from label18 to label19 with label20;
+        catch java.lang.Exception from label22 to label23 with label20;
+    }
+}

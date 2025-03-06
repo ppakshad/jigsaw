@@ -1,0 +1,1231 @@
+public class com.startapp.android.publish.list3d.List3DActivity extends android.app.Activity implements com.startapp.android.publish.list3d.g
+{
+    private com.startapp.android.publish.list3d.c a;
+    private android.app.ProgressDialog b;
+    private android.webkit.WebView c;
+    private java.util.List d;
+    private int e;
+    private java.lang.String f;
+    private com.startapp.android.publish.adinformation.a g;
+    private java.lang.Long h;
+    private java.lang.Long i;
+    private java.lang.String j;
+    private java.lang.String k;
+    private long l;
+    private long m;
+    private android.content.BroadcastReceiver n;
+
+    public void <init>()
+    {
+        com.startapp.android.publish.list3d.List3DActivity r0;
+        com.startapp.android.publish.list3d.List3DActivity$1 $r1;
+
+        r0 := @this: com.startapp.android.publish.list3d.List3DActivity;
+
+        specialinvoke r0.<android.app.Activity: void <init>()>();
+
+        r0.<com.startapp.android.publish.list3d.List3DActivity: android.app.ProgressDialog b> = null;
+
+        r0.<com.startapp.android.publish.list3d.List3DActivity: android.webkit.WebView c> = null;
+
+        r0.<com.startapp.android.publish.list3d.List3DActivity: long l> = 0L;
+
+        r0.<com.startapp.android.publish.list3d.List3DActivity: long m> = 0L;
+
+        $r1 = new com.startapp.android.publish.list3d.List3DActivity$1;
+
+        specialinvoke $r1.<com.startapp.android.publish.list3d.List3DActivity$1: void <init>(com.startapp.android.publish.list3d.List3DActivity)>(r0);
+
+        r0.<com.startapp.android.publish.list3d.List3DActivity: android.content.BroadcastReceiver n> = $r1;
+
+        return;
+    }
+
+    static java.util.List a(com.startapp.android.publish.list3d.List3DActivity)
+    {
+        com.startapp.android.publish.list3d.List3DActivity $r0;
+        java.util.List r1;
+
+        $r0 := @parameter0: com.startapp.android.publish.list3d.List3DActivity;
+
+        r1 = $r0.<com.startapp.android.publish.list3d.List3DActivity: java.util.List d>;
+
+        return r1;
+    }
+
+    static java.lang.String b(com.startapp.android.publish.list3d.List3DActivity)
+    {
+        com.startapp.android.publish.list3d.List3DActivity $r0;
+        java.lang.String r1;
+
+        $r0 := @parameter0: com.startapp.android.publish.list3d.List3DActivity;
+
+        r1 = $r0.<com.startapp.android.publish.list3d.List3DActivity: java.lang.String k>;
+
+        return r1;
+    }
+
+    static java.lang.String c(com.startapp.android.publish.list3d.List3DActivity)
+    {
+        com.startapp.android.publish.list3d.List3DActivity $r0;
+        java.lang.String r1;
+
+        $r0 := @parameter0: com.startapp.android.publish.list3d.List3DActivity;
+
+        r1 = $r0.<com.startapp.android.publish.list3d.List3DActivity: java.lang.String f>;
+
+        return r1;
+    }
+
+    private void c()
+    {
+        com.startapp.android.publish.list3d.List3DActivity r0;
+        int $i0, $i1;
+        android.content.res.Resources $r1;
+        android.content.res.Configuration $r2;
+        android.content.Intent $r3;
+        com.startapp.android.publish.i.l $r4;
+
+        r0 := @this: com.startapp.android.publish.list3d.List3DActivity;
+
+        $i0 = r0.<com.startapp.android.publish.list3d.List3DActivity: int e>;
+
+        $r1 = virtualinvoke r0.<com.startapp.android.publish.list3d.List3DActivity: android.content.res.Resources getResources()>();
+
+        $r2 = virtualinvoke $r1.<android.content.res.Resources: android.content.res.Configuration getConfiguration()>();
+
+        $i1 = $r2.<android.content.res.Configuration: int orientation>;
+
+        if $i0 != $i1 goto label1;
+
+        $r3 = new android.content.Intent;
+
+        specialinvoke $r3.<android.content.Intent: void <init>(java.lang.String)>("com.startapp.android.HideDisplayBroadcastListener");
+
+        $r4 = staticinvoke <com.startapp.android.publish.i.l: com.startapp.android.publish.i.l a(android.content.Context)>(r0);
+
+        virtualinvoke $r4.<com.startapp.android.publish.i.l: boolean a(android.content.Intent)>($r3);
+
+     label1:
+        return;
+    }
+
+    private boolean d()
+    {
+        com.startapp.android.publish.list3d.List3DActivity r0;
+        java.lang.Long $r1;
+        long $l0, $l1;
+        byte $b2;
+
+        r0 := @this: com.startapp.android.publish.list3d.List3DActivity;
+
+        $r1 = r0.<com.startapp.android.publish.list3d.List3DActivity: java.lang.Long h>;
+
+        if $r1 == null goto label2;
+
+        $r1 = r0.<com.startapp.android.publish.list3d.List3DActivity: java.lang.Long i>;
+
+        if $r1 != null goto label1;
+
+        return 0;
+
+     label1:
+        $l0 = staticinvoke <java.lang.System: long currentTimeMillis()>();
+
+        $r1 = r0.<com.startapp.android.publish.list3d.List3DActivity: java.lang.Long h>;
+
+        $l1 = virtualinvoke $r1.<java.lang.Long: long longValue()>();
+
+        $l0 = $l0 - $l1;
+
+        $r1 = r0.<com.startapp.android.publish.list3d.List3DActivity: java.lang.Long i>;
+
+        $l1 = virtualinvoke $r1.<java.lang.Long: long longValue()>();
+
+        $b2 = $l0 cmp $l1;
+
+        if $b2 <= 0 goto label2;
+
+        return 1;
+
+     label2:
+        return 0;
+    }
+
+    protected com.startapp.android.publish.i.v a()
+    {
+        com.startapp.android.publish.list3d.List3DActivity r0;
+        java.lang.String $r1, $r3;
+        long $l0, $l1;
+        com.startapp.android.publish.i.i $r2;
+        double $d0;
+
+        r0 := @this: com.startapp.android.publish.list3d.List3DActivity;
+
+        $l0 = staticinvoke <java.lang.System: long currentTimeMillis()>();
+
+        r0.<com.startapp.android.publish.list3d.List3DActivity: long l> = $l0;
+
+        $r2 = new com.startapp.android.publish.i.i;
+
+        $l0 = r0.<com.startapp.android.publish.list3d.List3DActivity: long l>;
+
+        $l1 = r0.<com.startapp.android.publish.list3d.List3DActivity: long m>;
+
+        $l0 = $l0 - $l1;
+
+        $d0 = (double) $l0;
+
+        $d0 = $d0 / 1000.0;
+
+        $r3 = staticinvoke <java.lang.String: java.lang.String valueOf(double)>($d0);
+
+        $r1 = r0.<com.startapp.android.publish.list3d.List3DActivity: java.lang.String f>;
+
+        specialinvoke $r2.<com.startapp.android.publish.i.i: void <init>(java.lang.String,java.lang.String)>($r3, $r1);
+
+        return $r2;
+    }
+
+    public void a(int)
+    {
+        com.startapp.android.publish.list3d.List3DActivity r0;
+        int $i0, $i1;
+        com.startapp.android.publish.list3d.c $r1;
+        android.view.View $r2;
+        java.lang.Object $r3;
+        com.startapp.android.publish.list3d.d $r4;
+        com.startapp.android.publish.list3d.f $r5;
+        java.lang.String $r6, $r10;
+        com.startapp.android.publish.list3d.e $r7;
+        java.util.List $r8;
+        com.startapp.android.publish.list3d.ListItem $r9;
+        android.graphics.Bitmap $r11;
+        android.widget.ImageView $r12;
+        boolean $z0;
+
+        r0 := @this: com.startapp.android.publish.list3d.List3DActivity;
+
+        $i0 := @parameter0: int;
+
+        $r1 = r0.<com.startapp.android.publish.list3d.List3DActivity: com.startapp.android.publish.list3d.c a>;
+
+        $i1 = virtualinvoke $r1.<com.startapp.android.publish.list3d.c: int getFirstItemPosition()>();
+
+        $r1 = r0.<com.startapp.android.publish.list3d.List3DActivity: com.startapp.android.publish.list3d.c a>;
+
+        $i1 = $i0 - $i1;
+
+        $r2 = virtualinvoke $r1.<com.startapp.android.publish.list3d.c: android.view.View getChildAt(int)>($i1);
+
+        if $r2 != null goto label1;
+
+        return;
+
+     label1:
+        $r3 = virtualinvoke $r2.<android.view.View: java.lang.Object getTag()>();
+
+        $r4 = (com.startapp.android.publish.list3d.d) $r3;
+
+        $r5 = staticinvoke <com.startapp.android.publish.list3d.f: com.startapp.android.publish.list3d.f a()>();
+
+        $r6 = r0.<com.startapp.android.publish.list3d.List3DActivity: java.lang.String k>;
+
+        $r7 = virtualinvoke $r5.<com.startapp.android.publish.list3d.f: com.startapp.android.publish.list3d.e a(java.lang.String)>($r6);
+
+        if $r7 == null goto label2;
+
+        $r8 = virtualinvoke $r7.<com.startapp.android.publish.list3d.e: java.util.List e()>();
+
+        if $r8 == null goto label2;
+
+        $r8 = virtualinvoke $r7.<com.startapp.android.publish.list3d.e: java.util.List e()>();
+
+        $i1 = interfaceinvoke $r8.<java.util.List: int size()>();
+
+        if $i0 >= $i1 goto label2;
+
+        $r8 = virtualinvoke $r7.<com.startapp.android.publish.list3d.e: java.util.List e()>();
+
+        $r3 = interfaceinvoke $r8.<java.util.List: java.lang.Object get(int)>($i0);
+
+        $r9 = (com.startapp.android.publish.list3d.ListItem) $r3;
+
+        $r6 = virtualinvoke $r9.<com.startapp.android.publish.list3d.ListItem: java.lang.String a()>();
+
+        $r10 = virtualinvoke $r9.<com.startapp.android.publish.list3d.ListItem: java.lang.String i()>();
+
+        $r11 = virtualinvoke $r7.<com.startapp.android.publish.list3d.e: android.graphics.Bitmap a(int,java.lang.String,java.lang.String)>($i0, $r6, $r10);
+
+        $r12 = virtualinvoke $r4.<com.startapp.android.publish.list3d.d: android.widget.ImageView b()>();
+
+        virtualinvoke $r12.<android.widget.ImageView: void setImageBitmap(android.graphics.Bitmap)>($r11);
+
+        $r12 = virtualinvoke $r4.<com.startapp.android.publish.list3d.d: android.widget.ImageView b()>();
+
+        virtualinvoke $r12.<android.widget.ImageView: void requestLayout()>();
+
+        $z0 = virtualinvoke $r9.<com.startapp.android.publish.list3d.ListItem: boolean q()>();
+
+        virtualinvoke $r4.<com.startapp.android.publish.list3d.d: void a(boolean)>($z0);
+
+     label2:
+        return;
+    }
+
+    protected java.lang.String b()
+    {
+        com.startapp.android.publish.list3d.List3DActivity r0;
+        java.util.List $r1;
+        boolean $z0;
+        java.lang.Object $r2;
+        com.startapp.android.publish.list3d.ListItem $r3;
+        java.lang.String $r4;
+
+        r0 := @this: com.startapp.android.publish.list3d.List3DActivity;
+
+        $r1 = r0.<com.startapp.android.publish.list3d.List3DActivity: java.util.List d>;
+
+        if $r1 == null goto label2;
+
+        $r1 = r0.<com.startapp.android.publish.list3d.List3DActivity: java.util.List d>;
+
+        $z0 = interfaceinvoke $r1.<java.util.List: boolean isEmpty()>();
+
+        if $z0 != 0 goto label2;
+
+        $r1 = r0.<com.startapp.android.publish.list3d.List3DActivity: java.util.List d>;
+
+        $r2 = interfaceinvoke $r1.<java.util.List: java.lang.Object get(int)>(0);
+
+        $r3 = (com.startapp.android.publish.list3d.ListItem) $r2;
+
+        $r4 = virtualinvoke $r3.<com.startapp.android.publish.list3d.ListItem: java.lang.String d()>();
+
+        if $r4 == null goto label1;
+
+        $r1 = r0.<com.startapp.android.publish.list3d.List3DActivity: java.util.List d>;
+
+        $r2 = interfaceinvoke $r1.<java.util.List: java.lang.Object get(int)>(0);
+
+        $r3 = (com.startapp.android.publish.list3d.ListItem) $r2;
+
+        $r4 = virtualinvoke $r3.<com.startapp.android.publish.list3d.ListItem: java.lang.String d()>();
+
+        return $r4;
+
+     label1:
+        return "";
+
+     label2:
+        return "";
+    }
+
+    public void finish()
+    {
+        com.startapp.android.publish.list3d.List3DActivity r0;
+        long $l0;
+        java.lang.String $r1;
+        com.startapp.android.publish.i.v $r2;
+        com.startapp.android.publish.i $r3;
+        android.content.BroadcastReceiver $r4;
+        com.startapp.android.publish.i.l $r5;
+        com.startapp.android.publish.list3d.f $r6;
+        com.startapp.android.publish.list3d.e $r7;
+        java.lang.Boolean $r8;
+        boolean $z0;
+        java.lang.Throwable $r9;
+
+        r0 := @this: com.startapp.android.publish.list3d.List3DActivity;
+
+        staticinvoke <com.startapp.android.publish.i.n: void a(java.lang.String,int,java.lang.String)>("List3DActivity", 2, "Finishing activity.");
+
+        $l0 = staticinvoke <java.lang.System: long currentTimeMillis()>();
+
+        r0.<com.startapp.android.publish.list3d.List3DActivity: long l> = $l0;
+
+        $r1 = virtualinvoke r0.<com.startapp.android.publish.list3d.List3DActivity: java.lang.String b()>();
+
+        $r2 = virtualinvoke r0.<com.startapp.android.publish.list3d.List3DActivity: com.startapp.android.publish.i.v a()>();
+
+        staticinvoke <com.startapp.android.publish.i.x: void b(android.content.Context,java.lang.String,com.startapp.android.publish.i.v)>(r0, $r1, $r2);
+
+        $r3 = staticinvoke <com.startapp.android.publish.i: com.startapp.android.publish.i a()>();
+
+        virtualinvoke $r3.<com.startapp.android.publish.i: void a(boolean)>(0);
+
+        specialinvoke r0.<com.startapp.android.publish.list3d.List3DActivity: void c()>();
+
+        entermonitor r0;
+
+     label1:
+        $r4 = r0.<com.startapp.android.publish.list3d.List3DActivity: android.content.BroadcastReceiver n>;
+
+        if $r4 == null goto label2;
+
+        $r5 = staticinvoke <com.startapp.android.publish.i.l: com.startapp.android.publish.i.l a(android.content.Context)>(r0);
+
+        $r4 = r0.<com.startapp.android.publish.list3d.List3DActivity: android.content.BroadcastReceiver n>;
+
+        virtualinvoke $r5.<com.startapp.android.publish.i.l: void a(android.content.BroadcastReceiver)>($r4);
+
+        r0.<com.startapp.android.publish.list3d.List3DActivity: android.content.BroadcastReceiver n> = null;
+
+     label2:
+        exitmonitor r0;
+
+     label3:
+        $r6 = staticinvoke <com.startapp.android.publish.list3d.f: com.startapp.android.publish.list3d.f a()>();
+
+        $r1 = r0.<com.startapp.android.publish.list3d.List3DActivity: java.lang.String k>;
+
+        $r7 = virtualinvoke $r6.<com.startapp.android.publish.list3d.f: com.startapp.android.publish.list3d.e a(java.lang.String)>($r1);
+
+        virtualinvoke $r7.<com.startapp.android.publish.list3d.e: void d()>();
+
+        $r8 = <com.startapp.android.publish.e: java.lang.Boolean OVERRIDE_NETWORK>;
+
+        $z0 = virtualinvoke $r8.<java.lang.Boolean: boolean booleanValue()>();
+
+        if $z0 != 0 goto label4;
+
+        $r6 = staticinvoke <com.startapp.android.publish.list3d.f: com.startapp.android.publish.list3d.f a()>();
+
+        $r1 = r0.<com.startapp.android.publish.list3d.List3DActivity: java.lang.String k>;
+
+        virtualinvoke $r6.<com.startapp.android.publish.list3d.f: void b(java.lang.String)>($r1);
+
+     label4:
+        specialinvoke r0.<android.app.Activity: void finish()>();
+
+        return;
+
+     label5:
+        $r9 := @caughtexception;
+
+     label6:
+        exitmonitor r0;
+
+     label7:
+        throw $r9;
+
+        catch java.lang.Throwable from label1 to label3 with label5;
+        catch java.lang.Throwable from label6 to label7 with label5;
+    }
+
+    public void onBackPressed()
+    {
+        com.startapp.android.publish.list3d.List3DActivity r0;
+        java.lang.String $r1;
+        com.startapp.android.publish.list3d.f $r2;
+        com.startapp.android.publish.list3d.e $r3;
+
+        r0 := @this: com.startapp.android.publish.list3d.List3DActivity;
+
+        $r2 = staticinvoke <com.startapp.android.publish.list3d.f: com.startapp.android.publish.list3d.f a()>();
+
+        $r1 = r0.<com.startapp.android.publish.list3d.List3DActivity: java.lang.String k>;
+
+        $r3 = virtualinvoke $r2.<com.startapp.android.publish.list3d.f: com.startapp.android.publish.list3d.e a(java.lang.String)>($r1);
+
+        virtualinvoke $r3.<com.startapp.android.publish.list3d.e: void d()>();
+
+        specialinvoke r0.<android.app.Activity: void onBackPressed()>();
+
+        return;
+    }
+
+    public void onCreate(android.os.Bundle)
+    {
+        com.startapp.android.publish.list3d.List3DActivity r0;
+        android.os.Bundle $r1;
+        android.content.Intent $r2, $r40;
+        boolean $z0;
+        android.view.Window $r3;
+        com.startapp.android.publish.i.l $r4;
+        java.io.Serializable $r5;
+        java.lang.Long $r6;
+        java.lang.String $r7, $r13, $r20;
+        android.content.BroadcastReceiver $r8;
+        android.content.res.Resources $r9;
+        android.content.res.Configuration $r10;
+        int $i0, $i1;
+        com.startapp.android.publish.model.MetaData $r11;
+        com.startapp.android.publish.list3d.c $r12, $r42;
+        android.graphics.drawable.GradientDrawable$Orientation $r14;
+        int[] $r15;
+        com.startapp.android.publish.list3d.f $r16;
+        com.startapp.android.publish.list3d.e $r17;
+        java.util.List $r18;
+        android.widget.RelativeLayout $r21, $r25, $r49;
+        android.widget.RelativeLayout$LayoutParams $r23, $r48;
+        android.widget.LinearLayout $r24, $r34, $r54;
+        java.lang.Integer $r26;
+        android.widget.TextView $r27, $r50;
+        float $f0;
+        android.text.TextUtils$TruncateAt $r28;
+        java.util.Set $r29;
+        android.graphics.Bitmap $r30;
+        android.view.View $r31, $r52;
+        android.widget.ImageButton $r32;
+        com.startapp.android.publish.adinformation.b $r36;
+        com.startapp.android.publish.adinformation.a $r37, $r56;
+        com.startapp.android.publish.adinformation.a$b $r38;
+        com.startapp.android.publish.model.AdPreferences$Placement $r39;
+        android.content.IntentFilter $r41;
+        android.graphics.drawable.GradientDrawable $r43;
+        com.startapp.android.publish.list3d.b $r44;
+        com.startapp.android.publish.list3d.SimpleDynamics $r45;
+        com.startapp.android.publish.list3d.List3DActivity$2 $r46;
+        android.widget.FrameLayout$LayoutParams $r47;
+        com.startapp.android.publish.list3d.List3DActivity$3 $r51;
+        android.widget.LinearLayout$LayoutParams $r53;
+        android.widget.ImageView $r55;
+        android.os.Handler $r57;
+        com.startapp.android.publish.list3d.List3DActivity$4 $r58;
+
+        r0 := @this: com.startapp.android.publish.list3d.List3DActivity;
+
+        $r1 := @parameter0: android.os.Bundle;
+
+        virtualinvoke r0.<com.startapp.android.publish.list3d.List3DActivity: void overridePendingTransition(int,int)>(0, 0);
+
+        specialinvoke r0.<android.app.Activity: void onCreate(android.os.Bundle)>($r1);
+
+        $r2 = virtualinvoke r0.<com.startapp.android.publish.list3d.List3DActivity: android.content.Intent getIntent()>();
+
+        $z0 = virtualinvoke $r2.<android.content.Intent: boolean getBooleanExtra(java.lang.String,boolean)>("fullscreen", 0);
+
+        if $z0 == 0 goto label01;
+
+        virtualinvoke r0.<com.startapp.android.publish.list3d.List3DActivity: boolean requestWindowFeature(int)>(1);
+
+        $r3 = virtualinvoke r0.<com.startapp.android.publish.list3d.List3DActivity: android.view.Window getWindow()>();
+
+        virtualinvoke $r3.<android.view.Window: void setFlags(int,int)>(1024, 1024);
+
+     label01:
+        if $r1 != null goto label03;
+
+        $r4 = staticinvoke <com.startapp.android.publish.i.l: com.startapp.android.publish.i.l a(android.content.Context)>(r0);
+
+        $r40 = new android.content.Intent;
+
+        specialinvoke $r40.<android.content.Intent: void <init>(java.lang.String)>("com.startapp.android.ShowDisplayBroadcastListener");
+
+        virtualinvoke $r4.<com.startapp.android.publish.i.l: boolean a(android.content.Intent)>($r40);
+
+        $r2 = virtualinvoke r0.<com.startapp.android.publish.list3d.List3DActivity: android.content.Intent getIntent()>();
+
+        $r5 = virtualinvoke $r2.<android.content.Intent: java.io.Serializable getSerializableExtra(java.lang.String)>("lastLoadTime");
+
+        $r6 = (java.lang.Long) $r5;
+
+        r0.<com.startapp.android.publish.list3d.List3DActivity: java.lang.Long h> = $r6;
+
+        $r2 = virtualinvoke r0.<com.startapp.android.publish.list3d.List3DActivity: android.content.Intent getIntent()>();
+
+        $r5 = virtualinvoke $r2.<android.content.Intent: java.io.Serializable getSerializableExtra(java.lang.String)>("adCacheTtl");
+
+        $r6 = (java.lang.Long) $r5;
+
+        r0.<com.startapp.android.publish.list3d.List3DActivity: java.lang.Long i> = $r6;
+
+     label02:
+        $r2 = virtualinvoke r0.<com.startapp.android.publish.list3d.List3DActivity: android.content.Intent getIntent()>();
+
+        $r7 = virtualinvoke $r2.<android.content.Intent: java.lang.String getStringExtra(java.lang.String)>("position");
+
+        r0.<com.startapp.android.publish.list3d.List3DActivity: java.lang.String j> = $r7;
+
+        $r2 = virtualinvoke r0.<com.startapp.android.publish.list3d.List3DActivity: android.content.Intent getIntent()>();
+
+        $r7 = virtualinvoke $r2.<android.content.Intent: java.lang.String getStringExtra(java.lang.String)>("listModelUuid");
+
+        r0.<com.startapp.android.publish.list3d.List3DActivity: java.lang.String k> = $r7;
+
+        $r4 = staticinvoke <com.startapp.android.publish.i.l: com.startapp.android.publish.i.l a(android.content.Context)>(r0);
+
+        $r8 = r0.<com.startapp.android.publish.list3d.List3DActivity: android.content.BroadcastReceiver n>;
+
+        $r41 = new android.content.IntentFilter;
+
+        specialinvoke $r41.<android.content.IntentFilter: void <init>(java.lang.String)>("com.startapp.android.CloseAdActivity");
+
+        virtualinvoke $r4.<com.startapp.android.publish.i.l: void a(android.content.BroadcastReceiver,android.content.IntentFilter)>($r8, $r41);
+
+        $r9 = virtualinvoke r0.<com.startapp.android.publish.list3d.List3DActivity: android.content.res.Resources getResources()>();
+
+        $r10 = virtualinvoke $r9.<android.content.res.Resources: android.content.res.Configuration getConfiguration()>();
+
+        $i0 = $r10.<android.content.res.Configuration: int orientation>;
+
+        r0.<com.startapp.android.publish.list3d.List3DActivity: int e> = $i0;
+
+        staticinvoke <com.startapp.android.publish.i.x: void a(android.app.Activity,boolean)>(r0, 1);
+
+        $r2 = virtualinvoke r0.<com.startapp.android.publish.list3d.List3DActivity: android.content.Intent getIntent()>();
+
+        $z0 = virtualinvoke $r2.<android.content.Intent: boolean getBooleanExtra(java.lang.String,boolean)>("overlay", 0);
+
+        virtualinvoke r0.<com.startapp.android.publish.list3d.List3DActivity: boolean requestWindowFeature(int)>(1);
+
+        $r2 = virtualinvoke r0.<com.startapp.android.publish.list3d.List3DActivity: android.content.Intent getIntent()>();
+
+        $r7 = virtualinvoke $r2.<android.content.Intent: java.lang.String getStringExtra(java.lang.String)>("adTag");
+
+        r0.<com.startapp.android.publish.list3d.List3DActivity: java.lang.String f> = $r7;
+
+        $r11 = staticinvoke <com.startapp.android.publish.model.MetaData: com.startapp.android.publish.model.MetaData getInstance()>();
+
+        $i0 = virtualinvoke $r11.<com.startapp.android.publish.model.MetaData: int getBackgroundGradientTop()>();
+
+        $r11 = staticinvoke <com.startapp.android.publish.model.MetaData: com.startapp.android.publish.model.MetaData getInstance()>();
+
+        $i1 = virtualinvoke $r11.<com.startapp.android.publish.model.MetaData: int getBackgroundGradientBottom()>();
+
+        $r42 = new com.startapp.android.publish.list3d.c;
+
+        $r7 = r0.<com.startapp.android.publish.list3d.List3DActivity: java.lang.String f>;
+
+        $r13 = r0.<com.startapp.android.publish.list3d.List3DActivity: java.lang.String k>;
+
+        specialinvoke $r42.<com.startapp.android.publish.list3d.c: void <init>(android.content.Context,android.util.AttributeSet,java.lang.String,java.lang.String)>(r0, null, $r7, $r13);
+
+        r0.<com.startapp.android.publish.list3d.List3DActivity: com.startapp.android.publish.list3d.c a> = $r42;
+
+        $r43 = new android.graphics.drawable.GradientDrawable;
+
+        $r14 = <android.graphics.drawable.GradientDrawable$Orientation: android.graphics.drawable.GradientDrawable$Orientation TOP_BOTTOM>;
+
+        $r15 = newarray (int)[2];
+
+        $r15[0] = $i0;
+
+        $r15[1] = $i1;
+
+        specialinvoke $r43.<android.graphics.drawable.GradientDrawable: void <init>(android.graphics.drawable.GradientDrawable$Orientation,int[])>($r14, $r15);
+
+        $r12 = r0.<com.startapp.android.publish.list3d.List3DActivity: com.startapp.android.publish.list3d.c a>;
+
+        virtualinvoke $r12.<com.startapp.android.publish.list3d.c: void setBackgroundDrawable(android.graphics.drawable.Drawable)>($r43);
+
+        $r16 = staticinvoke <com.startapp.android.publish.list3d.f: com.startapp.android.publish.list3d.f a()>();
+
+        $r7 = r0.<com.startapp.android.publish.list3d.List3DActivity: java.lang.String k>;
+
+        $r17 = virtualinvoke $r16.<com.startapp.android.publish.list3d.f: com.startapp.android.publish.list3d.e a(java.lang.String)>($r7);
+
+        $r18 = virtualinvoke $r17.<com.startapp.android.publish.list3d.e: java.util.List e()>();
+
+        r0.<com.startapp.android.publish.list3d.List3DActivity: java.util.List d> = $r18;
+
+        $r18 = r0.<com.startapp.android.publish.list3d.List3DActivity: java.util.List d>;
+
+        if $r18 != null goto label05;
+
+        virtualinvoke r0.<com.startapp.android.publish.list3d.List3DActivity: void finish()>();
+
+        return;
+
+     label03:
+        $z0 = virtualinvoke $r1.<android.os.Bundle: boolean containsKey(java.lang.String)>("lastLoadTime");
+
+        if $z0 == 0 goto label04;
+
+        $r5 = virtualinvoke $r1.<android.os.Bundle: java.io.Serializable getSerializable(java.lang.String)>("lastLoadTime");
+
+        $r6 = (java.lang.Long) $r5;
+
+        r0.<com.startapp.android.publish.list3d.List3DActivity: java.lang.Long h> = $r6;
+
+     label04:
+        $z0 = virtualinvoke $r1.<android.os.Bundle: boolean containsKey(java.lang.String)>("adCacheTtl");
+
+        if $z0 == 0 goto label02;
+
+        $r5 = virtualinvoke $r1.<android.os.Bundle: java.io.Serializable getSerializable(java.lang.String)>("adCacheTtl");
+
+        $r6 = (java.lang.Long) $r5;
+
+        r0.<com.startapp.android.publish.list3d.List3DActivity: java.lang.Long i> = $r6;
+
+        goto label02;
+
+     label05:
+        $r7 = "";
+
+        if $z0 == 0 goto label09;
+
+        $r4 = staticinvoke <com.startapp.android.publish.i.l: com.startapp.android.publish.i.l a(android.content.Context)>(r0);
+
+        $r12 = r0.<com.startapp.android.publish.list3d.List3DActivity: com.startapp.android.publish.list3d.c a>;
+
+        $r8 = $r12.<com.startapp.android.publish.list3d.c: android.content.BroadcastReceiver a>;
+
+        $r41 = new android.content.IntentFilter;
+
+        specialinvoke $r41.<android.content.IntentFilter: void <init>(java.lang.String)>("com.startapp.android.Activity3DGetValues");
+
+        virtualinvoke $r4.<com.startapp.android.publish.i.l: void a(android.content.BroadcastReceiver,android.content.IntentFilter)>($r8, $r41);
+
+     label06:
+        $r44 = new com.startapp.android.publish.list3d.b;
+
+        $r18 = r0.<com.startapp.android.publish.list3d.List3DActivity: java.util.List d>;
+
+        $r13 = r0.<com.startapp.android.publish.list3d.List3DActivity: java.lang.String f>;
+
+        $r20 = r0.<com.startapp.android.publish.list3d.List3DActivity: java.lang.String k>;
+
+        specialinvoke $r44.<com.startapp.android.publish.list3d.b: void <init>(android.content.Context,java.util.List,java.lang.String,java.lang.String,java.lang.String)>(r0, $r18, $r7, $r13, $r20);
+
+        $r16 = staticinvoke <com.startapp.android.publish.list3d.f: com.startapp.android.publish.list3d.f a()>();
+
+        $r7 = r0.<com.startapp.android.publish.list3d.List3DActivity: java.lang.String k>;
+
+        $r17 = virtualinvoke $r16.<com.startapp.android.publish.list3d.f: com.startapp.android.publish.list3d.e a(java.lang.String)>($r7);
+
+        if $z0 != 0 goto label10;
+
+        $z0 = 1;
+
+     label07:
+        virtualinvoke $r17.<com.startapp.android.publish.list3d.e: void a(com.startapp.android.publish.list3d.g,boolean)>(r0, $z0);
+
+        $r12 = r0.<com.startapp.android.publish.list3d.List3DActivity: com.startapp.android.publish.list3d.c a>;
+
+        virtualinvoke $r12.<com.startapp.android.publish.list3d.c: void setAdapter(android.widget.Adapter)>($r44);
+
+        $r12 = r0.<com.startapp.android.publish.list3d.List3DActivity: com.startapp.android.publish.list3d.c a>;
+
+        $r45 = new com.startapp.android.publish.list3d.SimpleDynamics;
+
+        specialinvoke $r45.<com.startapp.android.publish.list3d.SimpleDynamics: void <init>(float,float)>(0.9F, 0.6F);
+
+        virtualinvoke $r12.<com.startapp.android.publish.list3d.c: void setDynamics(com.startapp.android.publish.list3d.Dynamics)>($r45);
+
+        $r12 = r0.<com.startapp.android.publish.list3d.List3DActivity: com.startapp.android.publish.list3d.c a>;
+
+        $r46 = new com.startapp.android.publish.list3d.List3DActivity$2;
+
+        specialinvoke $r46.<com.startapp.android.publish.list3d.List3DActivity$2: void <init>(com.startapp.android.publish.list3d.List3DActivity)>(r0);
+
+        virtualinvoke $r12.<com.startapp.android.publish.list3d.c: void setOnItemClickListener(android.widget.AdapterView$OnItemClickListener)>($r46);
+
+        $r25 = new android.widget.RelativeLayout;
+
+        $r21 = $r25;
+
+        specialinvoke $r25.<android.widget.RelativeLayout: void <init>(android.content.Context)>(r0);
+
+        virtualinvoke $r25.<android.widget.RelativeLayout: void setContentDescription(java.lang.CharSequence)>("StartApp Ad");
+
+        virtualinvoke $r25.<android.widget.RelativeLayout: void setId(int)>(1475346432);
+
+        $r47 = new android.widget.FrameLayout$LayoutParams;
+
+        specialinvoke $r47.<android.widget.FrameLayout$LayoutParams: void <init>(int,int)>(-1, -1);
+
+        $r48 = new android.widget.RelativeLayout$LayoutParams;
+
+        specialinvoke $r48.<android.widget.RelativeLayout$LayoutParams: void <init>(int,int)>(-1, -1);
+
+        $r34 = new android.widget.LinearLayout;
+
+        $r24 = $r34;
+
+        specialinvoke $r34.<android.widget.LinearLayout: void <init>(android.content.Context)>(r0);
+
+        virtualinvoke $r34.<android.widget.LinearLayout: void setOrientation(int)>(1);
+
+        virtualinvoke $r25.<android.widget.RelativeLayout: void addView(android.view.View,android.view.ViewGroup$LayoutParams)>($r34, $r48);
+
+        $r49 = new android.widget.RelativeLayout;
+
+        specialinvoke $r49.<android.widget.RelativeLayout: void <init>(android.content.Context)>(r0);
+
+        $r48 = new android.widget.RelativeLayout$LayoutParams;
+
+        specialinvoke $r48.<android.widget.RelativeLayout$LayoutParams: void <init>(int,int)>(-1, -2);
+
+        virtualinvoke $r49.<android.widget.RelativeLayout: void setLayoutParams(android.view.ViewGroup$LayoutParams)>($r48);
+
+        $r11 = staticinvoke <com.startapp.android.publish.model.MetaData: com.startapp.android.publish.model.MetaData getInstance()>();
+
+        $r26 = virtualinvoke $r11.<com.startapp.android.publish.model.MetaData: java.lang.Integer getTitleBackgroundColor()>();
+
+        $i0 = virtualinvoke $r26.<java.lang.Integer: int intValue()>();
+
+        virtualinvoke $r49.<android.widget.RelativeLayout: void setBackgroundColor(int)>($i0);
+
+        virtualinvoke $r34.<android.widget.LinearLayout: void addView(android.view.View)>($r49);
+
+        $r50 = new android.widget.TextView;
+
+        specialinvoke $r50.<android.widget.TextView: void <init>(android.content.Context)>(r0);
+
+        $r48 = new android.widget.RelativeLayout$LayoutParams;
+
+        specialinvoke $r48.<android.widget.RelativeLayout$LayoutParams: void <init>(int,int)>(-2, -2);
+
+        virtualinvoke $r48.<android.widget.RelativeLayout$LayoutParams: void addRule(int)>(13);
+
+        virtualinvoke $r50.<android.widget.TextView: void setLayoutParams(android.view.ViewGroup$LayoutParams)>($r48);
+
+        $i0 = staticinvoke <com.startapp.android.publish.i.w: int a(android.content.Context,int)>(r0, 2);
+
+        $i1 = staticinvoke <com.startapp.android.publish.i.w: int a(android.content.Context,int)>(r0, 5);
+
+        virtualinvoke $r50.<android.widget.TextView: void setPadding(int,int,int,int)>(0, $i0, 0, $i1);
+
+        $r11 = staticinvoke <com.startapp.android.publish.model.MetaData: com.startapp.android.publish.model.MetaData getInstance()>();
+
+        $r26 = virtualinvoke $r11.<com.startapp.android.publish.model.MetaData: java.lang.Integer getTitleTextColor()>();
+
+        $i0 = virtualinvoke $r26.<java.lang.Integer: int intValue()>();
+
+        virtualinvoke $r50.<android.widget.TextView: void setTextColor(int)>($i0);
+
+        $r11 = staticinvoke <com.startapp.android.publish.model.MetaData: com.startapp.android.publish.model.MetaData getInstance()>();
+
+        $r26 = virtualinvoke $r11.<com.startapp.android.publish.model.MetaData: java.lang.Integer getTitleTextSize()>();
+
+        $i0 = virtualinvoke $r26.<java.lang.Integer: int intValue()>();
+
+        $f0 = (float) $i0;
+
+        virtualinvoke $r50.<android.widget.TextView: void setTextSize(float)>($f0);
+
+        virtualinvoke $r50.<android.widget.TextView: void setSingleLine(boolean)>(1);
+
+        $r28 = <android.text.TextUtils$TruncateAt: android.text.TextUtils$TruncateAt END>;
+
+        virtualinvoke $r50.<android.widget.TextView: void setEllipsize(android.text.TextUtils$TruncateAt)>($r28);
+
+        $r11 = staticinvoke <com.startapp.android.publish.model.MetaData: com.startapp.android.publish.model.MetaData getInstance()>();
+
+        $r7 = virtualinvoke $r11.<com.startapp.android.publish.model.MetaData: java.lang.String getTitleContent()>();
+
+        virtualinvoke $r50.<android.widget.TextView: void setText(java.lang.CharSequence)>($r7);
+
+        virtualinvoke $r50.<android.widget.TextView: void setShadowLayer(float,float,float,int)>(2.5F, -2.0F, 2.0F, -11513776);
+
+        $r11 = staticinvoke <com.startapp.android.publish.model.MetaData: com.startapp.android.publish.model.MetaData getInstance()>();
+
+        $r29 = virtualinvoke $r11.<com.startapp.android.publish.model.MetaData: java.util.Set getTitleTextDecoration()>();
+
+        staticinvoke <com.startapp.android.publish.i.w: void a(android.widget.TextView,java.util.Set)>($r50, $r29);
+
+        virtualinvoke $r49.<android.widget.RelativeLayout: void addView(android.view.View)>($r50);
+
+        $r48 = new android.widget.RelativeLayout$LayoutParams;
+
+        $r23 = $r48;
+
+        specialinvoke $r48.<android.widget.RelativeLayout$LayoutParams: void <init>(int,int)>(-2, -2);
+
+        virtualinvoke $r48.<android.widget.RelativeLayout$LayoutParams: void addRule(int)>(11);
+
+        virtualinvoke $r48.<android.widget.RelativeLayout$LayoutParams: void addRule(int)>(15);
+
+        $r30 = staticinvoke <com.startapp.android.publish.i.f: android.graphics.Bitmap a(android.content.Context,java.lang.String)>(r0, "close_button.png");
+
+        if $r30 == null goto label11;
+
+        $r32 = new android.widget.ImageButton;
+
+        $r31 = $r32;
+
+        specialinvoke $r32.<android.widget.ImageButton: void <init>(android.content.Context,android.util.AttributeSet,int)>(r0, null, 16973839);
+
+        $r32 = (android.widget.ImageButton) $r32;
+
+        $i0 = staticinvoke <com.startapp.android.publish.i.w: int a(android.content.Context,int)>(r0, 36);
+
+        $i1 = staticinvoke <com.startapp.android.publish.i.w: int a(android.content.Context,int)>(r0, 36);
+
+        $r30 = staticinvoke <android.graphics.Bitmap: android.graphics.Bitmap createScaledBitmap(android.graphics.Bitmap,int,int,boolean)>($r30, $i0, $i1, 1);
+
+        virtualinvoke $r32.<android.widget.ImageButton: void setImageBitmap(android.graphics.Bitmap)>($r30);
+
+     label08:
+        virtualinvoke $r31.<android.view.View: void setLayoutParams(android.view.ViewGroup$LayoutParams)>($r23);
+
+        $r51 = new com.startapp.android.publish.list3d.List3DActivity$3;
+
+        specialinvoke $r51.<com.startapp.android.publish.list3d.List3DActivity$3: void <init>(com.startapp.android.publish.list3d.List3DActivity)>(r0);
+
+        virtualinvoke $r31.<android.view.View: void setOnClickListener(android.view.View$OnClickListener)>($r51);
+
+        virtualinvoke $r31.<android.view.View: void setContentDescription(java.lang.CharSequence)>("x");
+
+        virtualinvoke $r31.<android.view.View: void setId(int)>(1475346435);
+
+        virtualinvoke $r49.<android.widget.RelativeLayout: void addView(android.view.View)>($r31);
+
+        $r52 = new android.view.View;
+
+        specialinvoke $r52.<android.view.View: void <init>(android.content.Context)>(r0);
+
+        $r53 = new android.widget.LinearLayout$LayoutParams;
+
+        $i0 = staticinvoke <com.startapp.android.publish.i.w: int a(android.content.Context,int)>(r0, 2);
+
+        specialinvoke $r53.<android.widget.LinearLayout$LayoutParams: void <init>(int,int)>(-1, $i0);
+
+        virtualinvoke $r52.<android.view.View: void setLayoutParams(android.view.ViewGroup$LayoutParams)>($r53);
+
+        $r11 = staticinvoke <com.startapp.android.publish.model.MetaData: com.startapp.android.publish.model.MetaData getInstance()>();
+
+        $r26 = virtualinvoke $r11.<com.startapp.android.publish.model.MetaData: java.lang.Integer getTitleLineColor()>();
+
+        $i0 = virtualinvoke $r26.<java.lang.Integer: int intValue()>();
+
+        virtualinvoke $r52.<android.view.View: void setBackgroundColor(int)>($i0);
+
+        virtualinvoke $r24.<android.widget.LinearLayout: void addView(android.view.View)>($r52);
+
+        $r53 = new android.widget.LinearLayout$LayoutParams;
+
+        specialinvoke $r53.<android.widget.LinearLayout$LayoutParams: void <init>(int,int)>(-1, 0);
+
+        $r53.<android.widget.LinearLayout$LayoutParams: float weight> = 1.0F;
+
+        $r12 = r0.<com.startapp.android.publish.list3d.List3DActivity: com.startapp.android.publish.list3d.c a>;
+
+        virtualinvoke $r12.<com.startapp.android.publish.list3d.c: void setLayoutParams(android.view.ViewGroup$LayoutParams)>($r53);
+
+        $r12 = r0.<com.startapp.android.publish.list3d.List3DActivity: com.startapp.android.publish.list3d.c a>;
+
+        virtualinvoke $r24.<android.widget.LinearLayout: void addView(android.view.View)>($r12);
+
+        $r54 = new android.widget.LinearLayout;
+
+        specialinvoke $r54.<android.widget.LinearLayout: void <init>(android.content.Context)>(r0);
+
+        $r53 = new android.widget.LinearLayout$LayoutParams;
+
+        specialinvoke $r53.<android.widget.LinearLayout$LayoutParams: void <init>(int,int)>(-1, -2);
+
+        $r53.<android.widget.LinearLayout$LayoutParams: int gravity> = 80;
+
+        virtualinvoke $r54.<android.widget.LinearLayout: void setLayoutParams(android.view.ViewGroup$LayoutParams)>($r53);
+
+        $r11 = staticinvoke <com.startapp.android.publish.model.MetaData: com.startapp.android.publish.model.MetaData getInstance()>();
+
+        $r26 = virtualinvoke $r11.<com.startapp.android.publish.model.MetaData: java.lang.Integer getPoweredByBackgroundColor()>();
+
+        $i0 = virtualinvoke $r26.<java.lang.Integer: int intValue()>();
+
+        virtualinvoke $r54.<android.widget.LinearLayout: void setBackgroundColor(int)>($i0);
+
+        virtualinvoke $r54.<android.widget.LinearLayout: void setGravity(int)>(17);
+
+        virtualinvoke $r24.<android.widget.LinearLayout: void addView(android.view.View)>($r54);
+
+        $r50 = new android.widget.TextView;
+
+        specialinvoke $r50.<android.widget.TextView: void <init>(android.content.Context)>(r0);
+
+        $r11 = staticinvoke <com.startapp.android.publish.model.MetaData: com.startapp.android.publish.model.MetaData getInstance()>();
+
+        $r26 = virtualinvoke $r11.<com.startapp.android.publish.model.MetaData: java.lang.Integer getPoweredByTextColor()>();
+
+        $i0 = virtualinvoke $r26.<java.lang.Integer: int intValue()>();
+
+        virtualinvoke $r50.<android.widget.TextView: void setTextColor(int)>($i0);
+
+        $i0 = staticinvoke <com.startapp.android.publish.i.w: int a(android.content.Context,int)>(r0, 2);
+
+        $i1 = staticinvoke <com.startapp.android.publish.i.w: int a(android.content.Context,int)>(r0, 3);
+
+        virtualinvoke $r50.<android.widget.TextView: void setPadding(int,int,int,int)>(0, $i0, 0, $i1);
+
+        virtualinvoke $r50.<android.widget.TextView: void setText(java.lang.CharSequence)>("Powered By ");
+
+        virtualinvoke $r50.<android.widget.TextView: void setTextSize(float)>(16.0F);
+
+        virtualinvoke $r54.<android.widget.LinearLayout: void addView(android.view.View)>($r50);
+
+        $r55 = new android.widget.ImageView;
+
+        specialinvoke $r55.<android.widget.ImageView: void <init>(android.content.Context)>(r0);
+
+        $r30 = staticinvoke <com.startapp.android.publish.i.f: android.graphics.Bitmap a(android.content.Context,java.lang.String)>(r0, "logo.png");
+
+        $i0 = staticinvoke <com.startapp.android.publish.i.w: int a(android.content.Context,int)>(r0, 56);
+
+        $i1 = staticinvoke <com.startapp.android.publish.i.w: int a(android.content.Context,int)>(r0, 12);
+
+        $r30 = staticinvoke <android.graphics.Bitmap: android.graphics.Bitmap createScaledBitmap(android.graphics.Bitmap,int,int,boolean)>($r30, $i0, $i1, 1);
+
+        virtualinvoke $r55.<android.widget.ImageView: void setImageBitmap(android.graphics.Bitmap)>($r30);
+
+        virtualinvoke $r54.<android.widget.LinearLayout: void addView(android.view.View)>($r55);
+
+        $r2 = virtualinvoke r0.<com.startapp.android.publish.list3d.List3DActivity: android.content.Intent getIntent()>();
+
+        $r5 = virtualinvoke $r2.<android.content.Intent: java.io.Serializable getSerializableExtra(java.lang.String)>("adInfoOverride");
+
+        $r36 = (com.startapp.android.publish.adinformation.b) $r5;
+
+        $r56 = new com.startapp.android.publish.adinformation.a;
+
+        $r38 = <com.startapp.android.publish.adinformation.a$b: com.startapp.android.publish.adinformation.a$b b>;
+
+        $r39 = <com.startapp.android.publish.model.AdPreferences$Placement: com.startapp.android.publish.model.AdPreferences$Placement INAPP_OFFER_WALL>;
+
+        specialinvoke $r56.<com.startapp.android.publish.adinformation.a: void <init>(android.content.Context,com.startapp.android.publish.adinformation.a$b,com.startapp.android.publish.model.AdPreferences$Placement,com.startapp.android.publish.adinformation.b)>(r0, $r38, $r39, $r36);
+
+        r0.<com.startapp.android.publish.list3d.List3DActivity: com.startapp.android.publish.adinformation.a g> = $r56;
+
+        $r37 = r0.<com.startapp.android.publish.list3d.List3DActivity: com.startapp.android.publish.adinformation.a g>;
+
+        virtualinvoke $r37.<com.startapp.android.publish.adinformation.a: void a(android.widget.RelativeLayout)>($r21);
+
+        virtualinvoke r0.<com.startapp.android.publish.list3d.List3DActivity: void setContentView(android.view.View,android.view.ViewGroup$LayoutParams)>($r21, $r47);
+
+        $r57 = new android.os.Handler;
+
+        specialinvoke $r57.<android.os.Handler: void <init>()>();
+
+        $r58 = new com.startapp.android.publish.list3d.List3DActivity$4;
+
+        specialinvoke $r58.<com.startapp.android.publish.list3d.List3DActivity$4: void <init>(com.startapp.android.publish.list3d.List3DActivity)>(r0);
+
+        virtualinvoke $r57.<android.os.Handler: boolean postDelayed(java.lang.Runnable,long)>($r58, 500L);
+
+        return;
+
+     label09:
+        $r12 = r0.<com.startapp.android.publish.list3d.List3DActivity: com.startapp.android.publish.list3d.c a>;
+
+        virtualinvoke $r12.<com.startapp.android.publish.list3d.c: void a()>();
+
+        $r12 = r0.<com.startapp.android.publish.list3d.List3DActivity: com.startapp.android.publish.list3d.c a>;
+
+        virtualinvoke $r12.<com.startapp.android.publish.list3d.c: void setHint(boolean)>(1);
+
+        $r12 = r0.<com.startapp.android.publish.list3d.List3DActivity: com.startapp.android.publish.list3d.c a>;
+
+        virtualinvoke $r12.<com.startapp.android.publish.list3d.c: void setFade(boolean)>(1);
+
+        $r7 = "back";
+
+        goto label06;
+
+     label10:
+        $z0 = 0;
+
+        goto label07;
+
+     label11:
+        $r27 = new android.widget.TextView;
+
+        $r31 = $r27;
+
+        specialinvoke $r27.<android.widget.TextView: void <init>(android.content.Context)>(r0);
+
+        $r27 = (android.widget.TextView) $r27;
+
+        virtualinvoke $r27.<android.widget.TextView: void setText(java.lang.CharSequence)>("   x   ");
+
+        $r27 = (android.widget.TextView) $r31;
+
+        virtualinvoke $r27.<android.widget.TextView: void setTextSize(float)>(20.0F);
+
+        goto label08;
+    }
+
+    protected void onDestroy()
+    {
+        com.startapp.android.publish.list3d.List3DActivity r0;
+        android.app.ProgressDialog $r1, $r2;
+        android.webkit.WebView $r3;
+        java.lang.Throwable $r4;
+
+        r0 := @this: com.startapp.android.publish.list3d.List3DActivity;
+
+        $r1 = r0.<com.startapp.android.publish.list3d.List3DActivity: android.app.ProgressDialog b>;
+
+        if $r1 == null goto label3;
+
+        $r1 = r0.<com.startapp.android.publish.list3d.List3DActivity: android.app.ProgressDialog b>;
+
+        entermonitor $r1;
+
+     label1:
+        $r2 = r0.<com.startapp.android.publish.list3d.List3DActivity: android.app.ProgressDialog b>;
+
+        if $r2 == null goto label2;
+
+        $r2 = r0.<com.startapp.android.publish.list3d.List3DActivity: android.app.ProgressDialog b>;
+
+        virtualinvoke $r2.<android.app.ProgressDialog: void dismiss()>();
+
+        r0.<com.startapp.android.publish.list3d.List3DActivity: android.app.ProgressDialog b> = null;
+
+     label2:
+        exitmonitor $r1;
+
+     label3:
+        $r3 = r0.<com.startapp.android.publish.list3d.List3DActivity: android.webkit.WebView c>;
+
+        if $r3 == null goto label4;
+
+        $r3 = r0.<com.startapp.android.publish.list3d.List3DActivity: android.webkit.WebView c>;
+
+        virtualinvoke $r3.<android.webkit.WebView: void stopLoading()>();
+
+     label4:
+        staticinvoke <com.startapp.android.publish.i.x: void a(android.app.Activity,boolean)>(r0, 0);
+
+        specialinvoke r0.<android.app.Activity: void onDestroy()>();
+
+        return;
+
+     label5:
+        $r4 := @caughtexception;
+
+     label6:
+        exitmonitor $r1;
+
+     label7:
+        throw $r4;
+
+        catch java.lang.Throwable from label1 to label3 with label5;
+        catch java.lang.Throwable from label6 to label7 with label5;
+    }
+
+    protected void onPause()
+    {
+        com.startapp.android.publish.list3d.List3DActivity r0;
+        com.startapp.android.publish.list3d.f $r1;
+        java.lang.String $r2;
+        com.startapp.android.publish.list3d.e $r3;
+        com.startapp.android.publish.adinformation.a $r4;
+        boolean $z0;
+
+        r0 := @this: com.startapp.android.publish.list3d.List3DActivity;
+
+        specialinvoke r0.<android.app.Activity: void onPause()>();
+
+        $r1 = staticinvoke <com.startapp.android.publish.list3d.f: com.startapp.android.publish.list3d.f a()>();
+
+        $r2 = r0.<com.startapp.android.publish.list3d.List3DActivity: java.lang.String k>;
+
+        $r3 = virtualinvoke $r1.<com.startapp.android.publish.list3d.f: com.startapp.android.publish.list3d.e a(java.lang.String)>($r2);
+
+        virtualinvoke $r3.<com.startapp.android.publish.list3d.e: void b()>();
+
+        $r4 = r0.<com.startapp.android.publish.list3d.List3DActivity: com.startapp.android.publish.adinformation.a g>;
+
+        if $r4 == null goto label1;
+
+        $r4 = r0.<com.startapp.android.publish.list3d.List3DActivity: com.startapp.android.publish.adinformation.a g>;
+
+        $z0 = virtualinvoke $r4.<com.startapp.android.publish.adinformation.a: boolean b()>();
+
+        if $z0 == 0 goto label1;
+
+        $r4 = r0.<com.startapp.android.publish.list3d.List3DActivity: com.startapp.android.publish.adinformation.a g>;
+
+        virtualinvoke $r4.<com.startapp.android.publish.adinformation.a: void c()>();
+
+     label1:
+        virtualinvoke r0.<com.startapp.android.publish.list3d.List3DActivity: void overridePendingTransition(int,int)>(0, 0);
+
+        $r2 = r0.<com.startapp.android.publish.list3d.List3DActivity: java.lang.String j>;
+
+        if $r2 == null goto label2;
+
+        $r2 = r0.<com.startapp.android.publish.list3d.List3DActivity: java.lang.String j>;
+
+        $z0 = virtualinvoke $r2.<java.lang.String: boolean equals(java.lang.Object)>("back");
+
+        if $z0 == 0 goto label2;
+
+        virtualinvoke r0.<com.startapp.android.publish.list3d.List3DActivity: void finish()>();
+
+     label2:
+        return;
+    }
+
+    protected void onResume()
+    {
+        com.startapp.android.publish.list3d.List3DActivity r0;
+        boolean $z0;
+        com.startapp.android.publish.i $r1;
+        long $l0;
+        com.startapp.android.publish.list3d.f $r2;
+        java.lang.String $r3;
+        com.startapp.android.publish.list3d.e $r4;
+
+        r0 := @this: com.startapp.android.publish.list3d.List3DActivity;
+
+        specialinvoke r0.<android.app.Activity: void onResume()>();
+
+        $z0 = specialinvoke r0.<com.startapp.android.publish.list3d.List3DActivity: boolean d()>();
+
+        if $z0 == 0 goto label1;
+
+        staticinvoke <com.startapp.android.publish.i.n: void a(java.lang.String,int,java.lang.String)>("List3DActivity", 3, "Cache TTL passed, finishing");
+
+        virtualinvoke r0.<com.startapp.android.publish.list3d.List3DActivity: void finish()>();
+
+        return;
+
+     label1:
+        $r1 = staticinvoke <com.startapp.android.publish.i: com.startapp.android.publish.i a()>();
+
+        virtualinvoke $r1.<com.startapp.android.publish.i: void a(boolean)>(1);
+
+        $l0 = staticinvoke <java.lang.System: long currentTimeMillis()>();
+
+        r0.<com.startapp.android.publish.list3d.List3DActivity: long m> = $l0;
+
+        $r2 = staticinvoke <com.startapp.android.publish.list3d.f: com.startapp.android.publish.list3d.f a()>();
+
+        $r3 = r0.<com.startapp.android.publish.list3d.List3DActivity: java.lang.String k>;
+
+        $r4 = virtualinvoke $r2.<com.startapp.android.publish.list3d.f: com.startapp.android.publish.list3d.e a(java.lang.String)>($r3);
+
+        virtualinvoke $r4.<com.startapp.android.publish.list3d.e: void c()>();
+
+        return;
+    }
+
+    protected void onSaveInstanceState(android.os.Bundle)
+    {
+        com.startapp.android.publish.list3d.List3DActivity r0;
+        android.os.Bundle $r1;
+        java.lang.Long $r2;
+
+        r0 := @this: com.startapp.android.publish.list3d.List3DActivity;
+
+        $r1 := @parameter0: android.os.Bundle;
+
+        specialinvoke r0.<android.app.Activity: void onSaveInstanceState(android.os.Bundle)>($r1);
+
+        $r2 = r0.<com.startapp.android.publish.list3d.List3DActivity: java.lang.Long h>;
+
+        if $r2 == null goto label1;
+
+        $r2 = r0.<com.startapp.android.publish.list3d.List3DActivity: java.lang.Long h>;
+
+        virtualinvoke $r1.<android.os.Bundle: void putSerializable(java.lang.String,java.io.Serializable)>("lastLoadTime", $r2);
+
+     label1:
+        $r2 = r0.<com.startapp.android.publish.list3d.List3DActivity: java.lang.Long i>;
+
+        if $r2 == null goto label2;
+
+        $r2 = r0.<com.startapp.android.publish.list3d.List3DActivity: java.lang.Long i>;
+
+        virtualinvoke $r1.<android.os.Bundle: void putSerializable(java.lang.String,java.io.Serializable)>("adCacheTtl", $r2);
+
+     label2:
+        return;
+    }
+}

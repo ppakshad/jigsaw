@@ -1,0 +1,148 @@
+class com.startapp.android.publish.b.a$3 extends java.lang.Object implements com.startapp.android.publish.f.o
+{
+    final android.content.Context a;
+    final com.startapp.android.publish.b.a b;
+
+    void <init>(com.startapp.android.publish.b.a, android.content.Context)
+    {
+        com.startapp.android.publish.b.a$3 r0;
+        com.startapp.android.publish.b.a $r1;
+        android.content.Context $r2;
+
+        r0 := @this: com.startapp.android.publish.b.a$3;
+
+        $r1 := @parameter0: com.startapp.android.publish.b.a;
+
+        $r2 := @parameter1: android.content.Context;
+
+        r0.<com.startapp.android.publish.b.a$3: com.startapp.android.publish.b.a b> = $r1;
+
+        r0.<com.startapp.android.publish.b.a$3: android.content.Context a> = $r2;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public void onFailedLoadingMeta()
+    {
+        com.startapp.android.publish.b.a$3 r0;
+
+        r0 := @this: com.startapp.android.publish.b.a$3;
+
+        staticinvoke <com.startapp.android.publish.i.n: void a(java.lang.String,int,java.lang.String)>("AdCacheManager", 3, "Failed loading metadata, unable to pre-cache.");
+
+        return;
+    }
+
+    public void onFinishLoadingMeta()
+    {
+        com.startapp.android.publish.b.a$3 r0;
+        com.startapp.android.publish.model.MetaData $r1;
+        com.startapp.android.publish.model.ACMConfig $r2;
+        java.util.Set $r3;
+        java.util.Iterator $r4;
+        boolean $z0;
+        java.lang.Object $r5;
+        com.startapp.android.publish.StartAppAd$AdMode $r6, $r7;
+        int $i0;
+        com.startapp.android.publish.b.a $r8;
+        android.content.Context $r9;
+        com.startapp.android.publish.model.AdPreferences $r10;
+        com.startapp.android.publish.model.SodaPreferences $r11;
+
+        r0 := @this: com.startapp.android.publish.b.a$3;
+
+        $r1 = staticinvoke <com.startapp.android.publish.model.MetaData: com.startapp.android.publish.model.MetaData getInstance()>();
+
+        $r2 = virtualinvoke $r1.<com.startapp.android.publish.model.MetaData: com.startapp.android.publish.model.ACMConfig getACMConfig()>();
+
+        $r3 = virtualinvoke $r2.<com.startapp.android.publish.model.ACMConfig: java.util.Set getAutoLoad()>();
+
+        if $r3 == null goto label4;
+
+        $r4 = interfaceinvoke $r3.<java.util.Set: java.util.Iterator iterator()>();
+
+     label1:
+        $z0 = interfaceinvoke $r4.<java.util.Iterator: boolean hasNext()>();
+
+        if $z0 == 0 goto label4;
+
+        $r5 = interfaceinvoke $r4.<java.util.Iterator: java.lang.Object next()>();
+
+        $r6 = (com.startapp.android.publish.StartAppAd$AdMode) $r5;
+
+        $r1 = staticinvoke <com.startapp.android.publish.model.MetaData: com.startapp.android.publish.model.MetaData getInstance()>();
+
+        $i0 = virtualinvoke $r1.<com.startapp.android.publish.model.MetaData: int getFullpageOfferwallProbability()>();
+
+        $r7 = <com.startapp.android.publish.StartAppAd$AdMode: com.startapp.android.publish.StartAppAd$AdMode FULLPAGE>;
+
+        if $r6 != $r7 goto label2;
+
+        if $i0 <= 0 goto label1;
+
+        $r8 = r0.<com.startapp.android.publish.b.a$3: com.startapp.android.publish.b.a b>;
+
+        $r9 = r0.<com.startapp.android.publish.b.a$3: android.content.Context a>;
+
+        $r6 = <com.startapp.android.publish.StartAppAd$AdMode: com.startapp.android.publish.StartAppAd$AdMode FULLPAGE>;
+
+        $r10 = new com.startapp.android.publish.model.AdPreferences;
+
+        specialinvoke $r10.<com.startapp.android.publish.model.AdPreferences: void <init>()>();
+
+        $r11 = new com.startapp.android.publish.model.SodaPreferences;
+
+        specialinvoke $r11.<com.startapp.android.publish.model.SodaPreferences: void <init>()>();
+
+        virtualinvoke $r8.<com.startapp.android.publish.b.a: com.startapp.android.publish.b.c a(android.content.Context,com.startapp.android.publish.StartAppAd,com.startapp.android.publish.StartAppAd$AdMode,com.startapp.android.publish.model.AdPreferences,com.startapp.android.publish.model.SodaPreferences,com.startapp.android.publish.AdEventListener)>($r9, null, $r6, $r10, $r11, null);
+
+        goto label1;
+
+     label2:
+        $r7 = <com.startapp.android.publish.StartAppAd$AdMode: com.startapp.android.publish.StartAppAd$AdMode OFFERWALL>;
+
+        if $r6 != $r7 goto label3;
+
+        if $i0 >= 100 goto label1;
+
+        $r8 = r0.<com.startapp.android.publish.b.a$3: com.startapp.android.publish.b.a b>;
+
+        $r9 = r0.<com.startapp.android.publish.b.a$3: android.content.Context a>;
+
+        $r6 = <com.startapp.android.publish.StartAppAd$AdMode: com.startapp.android.publish.StartAppAd$AdMode OFFERWALL>;
+
+        $r10 = new com.startapp.android.publish.model.AdPreferences;
+
+        specialinvoke $r10.<com.startapp.android.publish.model.AdPreferences: void <init>()>();
+
+        $r11 = new com.startapp.android.publish.model.SodaPreferences;
+
+        specialinvoke $r11.<com.startapp.android.publish.model.SodaPreferences: void <init>()>();
+
+        virtualinvoke $r8.<com.startapp.android.publish.b.a: com.startapp.android.publish.b.c a(android.content.Context,com.startapp.android.publish.StartAppAd,com.startapp.android.publish.StartAppAd$AdMode,com.startapp.android.publish.model.AdPreferences,com.startapp.android.publish.model.SodaPreferences,com.startapp.android.publish.AdEventListener)>($r9, null, $r6, $r10, $r11, null);
+
+        goto label1;
+
+     label3:
+        $r8 = r0.<com.startapp.android.publish.b.a$3: com.startapp.android.publish.b.a b>;
+
+        $r9 = r0.<com.startapp.android.publish.b.a$3: android.content.Context a>;
+
+        $r10 = new com.startapp.android.publish.model.AdPreferences;
+
+        specialinvoke $r10.<com.startapp.android.publish.model.AdPreferences: void <init>()>();
+
+        $r11 = new com.startapp.android.publish.model.SodaPreferences;
+
+        specialinvoke $r11.<com.startapp.android.publish.model.SodaPreferences: void <init>()>();
+
+        virtualinvoke $r8.<com.startapp.android.publish.b.a: com.startapp.android.publish.b.c a(android.content.Context,com.startapp.android.publish.StartAppAd,com.startapp.android.publish.StartAppAd$AdMode,com.startapp.android.publish.model.AdPreferences,com.startapp.android.publish.model.SodaPreferences,com.startapp.android.publish.AdEventListener)>($r9, null, $r6, $r10, $r11, null);
+
+        goto label1;
+
+     label4:
+        return;
+    }
+}

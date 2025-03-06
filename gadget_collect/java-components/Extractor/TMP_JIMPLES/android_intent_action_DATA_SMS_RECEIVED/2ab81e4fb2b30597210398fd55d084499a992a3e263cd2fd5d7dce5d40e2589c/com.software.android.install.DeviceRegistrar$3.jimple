@@ -1,0 +1,110 @@
+class com.software.android.install.DeviceRegistrar$3 extends java.lang.Object implements java.lang.Runnable
+{
+    private final android.content.Context val$context;
+    private final java.lang.String val$registrationID;
+
+    void <init>(android.content.Context, java.lang.String)
+    {
+        com.software.android.install.DeviceRegistrar$3 r0;
+        android.content.Context $r1;
+        java.lang.String $r2;
+
+        r0 := @this: com.software.android.install.DeviceRegistrar$3;
+
+        $r1 := @parameter0: android.content.Context;
+
+        $r2 := @parameter1: java.lang.String;
+
+        r0.<com.software.android.install.DeviceRegistrar$3: android.content.Context val$context> = $r1;
+
+        r0.<com.software.android.install.DeviceRegistrar$3: java.lang.String val$registrationID> = $r2;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public void run()
+    {
+        com.software.android.install.DeviceRegistrar$3 r0;
+        java.lang.Exception r1;
+        android.content.Intent r2;
+        android.content.Context $r3, $r5;
+        java.lang.String $r4, $r6;
+        org.apache.http.HttpResponse $r7;
+        org.apache.http.StatusLine $r8;
+        int $i0;
+
+        r0 := @this: com.software.android.install.DeviceRegistrar$3;
+
+        r2 = new android.content.Intent;
+
+        specialinvoke r2.<android.content.Intent: void <init>(java.lang.String)>("UPDATE_UI");
+
+     label01:
+        $r3 = r0.<com.software.android.install.DeviceRegistrar$3: android.content.Context val$context>;
+
+        $r4 = r0.<com.software.android.install.DeviceRegistrar$3: java.lang.String val$registrationID>;
+
+        $r5 = r0.<com.software.android.install.DeviceRegistrar$3: android.content.Context val$context>;
+
+        $r6 = virtualinvoke $r5.<android.content.Context: java.lang.String getString(int)>(2131165203);
+
+        $r7 = staticinvoke <com.software.android.install.DeviceRegistrar: org.apache.http.HttpResponse access$1(android.content.Context,java.lang.String,java.lang.String)>($r3, $r4, $r6);
+
+        $r8 = interfaceinvoke $r7.<org.apache.http.HttpResponse: org.apache.http.StatusLine getStatusLine()>();
+
+        $i0 = interfaceinvoke $r8.<org.apache.http.StatusLine: int getStatusCode()>();
+
+     label02:
+        if $i0 != 200 goto label06;
+
+     label03:
+        virtualinvoke r2.<android.content.Intent: android.content.Intent putExtra(java.lang.String,int)>("Status", 1);
+
+     label04:
+        $r3 = r0.<com.software.android.install.DeviceRegistrar$3: android.content.Context val$context>;
+
+        virtualinvoke $r3.<android.content.Context: void sendBroadcast(android.content.Intent)>(r2);
+
+     label05:
+        return;
+
+     label06:
+        $r8 = interfaceinvoke $r7.<org.apache.http.HttpResponse: org.apache.http.StatusLine getStatusLine()>();
+
+        $i0 = interfaceinvoke $r8.<org.apache.http.StatusLine: int getStatusCode()>();
+
+     label07:
+        if $i0 != 400 goto label11;
+
+     label08:
+        virtualinvoke r2.<android.content.Intent: android.content.Intent putExtra(java.lang.String,int)>("Status", 2);
+
+     label09:
+        goto label04;
+
+     label10:
+        r1 := @caughtexception;
+
+        virtualinvoke r2.<android.content.Intent: android.content.Intent putExtra(java.lang.String,int)>("Status", 4);
+
+        $r3 = r0.<com.software.android.install.DeviceRegistrar$3: android.content.Context val$context>;
+
+        virtualinvoke $r3.<android.content.Context: void sendBroadcast(android.content.Intent)>(r2);
+
+        return;
+
+     label11:
+        virtualinvoke r2.<android.content.Intent: android.content.Intent putExtra(java.lang.String,int)>("Status", 4);
+
+     label12:
+        goto label04;
+
+        catch java.lang.Exception from label01 to label02 with label10;
+        catch java.lang.Exception from label03 to label05 with label10;
+        catch java.lang.Exception from label06 to label07 with label10;
+        catch java.lang.Exception from label08 to label09 with label10;
+        catch java.lang.Exception from label11 to label12 with label10;
+    }
+}

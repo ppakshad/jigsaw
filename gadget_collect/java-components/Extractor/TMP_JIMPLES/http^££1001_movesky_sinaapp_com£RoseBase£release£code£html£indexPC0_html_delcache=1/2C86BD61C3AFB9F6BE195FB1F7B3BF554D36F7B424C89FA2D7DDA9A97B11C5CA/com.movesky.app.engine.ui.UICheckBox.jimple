@@ -1,0 +1,767 @@
+public class com.movesky.app.engine.ui.UICheckBox extends com.movesky.app.engine.ui.UIControl
+{
+    private int _bg_color;
+    private android.graphics.LinearGradient _bg_gradient;
+    private android.graphics.RectF _button_rect;
+    private android.graphics.Path _checkPath;
+    private int _disabled_color;
+    private android.graphics.LinearGradient _disabled_gradient;
+    private int _down_color;
+    private android.graphics.LinearGradient _down_gradient;
+    private int _fg_color;
+    private com.movesky.app.engine.ui.UILabel _label;
+    private android.graphics.Paint _paint;
+    private boolean _selected;
+    private int bg_end_color;
+    public boolean isDisabled;
+    private boolean isDown;
+
+    public void <init>(java.lang.String)
+    {
+        com.movesky.app.engine.ui.UICheckBox r0;
+        java.lang.String $r1;
+        boolean $z0;
+        android.graphics.Paint $r2;
+        android.graphics.Path $r3;
+        android.graphics.RectF $r4;
+        com.movesky.app.engine.ui.UILabel $r5;
+        float $f0;
+        int $i0;
+
+        r0 := @this: com.movesky.app.engine.ui.UICheckBox;
+
+        $r1 := @parameter0: java.lang.String;
+
+        specialinvoke r0.<com.movesky.app.engine.ui.UIControl: void <init>()>();
+
+        $r2 = new android.graphics.Paint;
+
+        specialinvoke $r2.<android.graphics.Paint: void <init>(int)>(1);
+
+        r0.<com.movesky.app.engine.ui.UICheckBox: android.graphics.Paint _paint> = $r2;
+
+        $r2 = r0.<com.movesky.app.engine.ui.UICheckBox: android.graphics.Paint _paint>;
+
+        virtualinvoke $r2.<android.graphics.Paint: void setStrokeWidth(float)>(3.0F);
+
+        $r3 = new android.graphics.Path;
+
+        specialinvoke $r3.<android.graphics.Path: void <init>()>();
+
+        r0.<com.movesky.app.engine.ui.UICheckBox: android.graphics.Path _checkPath> = $r3;
+
+        r0.<com.movesky.app.engine.ui.UICheckBox: boolean _selected> = 0;
+
+        $r4 = new android.graphics.RectF;
+
+        specialinvoke $r4.<android.graphics.RectF: void <init>()>();
+
+        r0.<com.movesky.app.engine.ui.UICheckBox: android.graphics.RectF _button_rect> = $r4;
+
+        if $r1 == null goto label2;
+
+        $z0 = virtualinvoke $r1.<java.lang.String: boolean equals(java.lang.Object)>("");
+
+        if $z0 != 0 goto label2;
+
+        $r5 = new com.movesky.app.engine.ui.UILabel;
+
+        specialinvoke $r5.<com.movesky.app.engine.ui.UILabel: void <init>(java.lang.String,java.lang.Object)>($r1, null);
+
+        r0.<com.movesky.app.engine.ui.UICheckBox: com.movesky.app.engine.ui.UILabel _label> = $r5;
+
+        $r5 = r0.<com.movesky.app.engine.ui.UICheckBox: com.movesky.app.engine.ui.UILabel _label>;
+
+        virtualinvoke $r5.<com.movesky.app.engine.ui.UILabel: void setPosition(float,float)>(30.0F, 0.0F);
+
+        $r5 = r0.<com.movesky.app.engine.ui.UICheckBox: com.movesky.app.engine.ui.UILabel _label>;
+
+        virtualinvoke $r5.<com.movesky.app.engine.ui.UILabel: void setSize(float,float)>(0.0F, 20.0F);
+
+        $r5 = r0.<com.movesky.app.engine.ui.UICheckBox: com.movesky.app.engine.ui.UILabel _label>;
+
+        virtualinvoke $r5.<com.movesky.app.engine.ui.UILabel: void setTextSize(float)>(20.0F);
+
+        $r5 = r0.<com.movesky.app.engine.ui.UICheckBox: com.movesky.app.engine.ui.UILabel _label>;
+
+        virtualinvoke $r5.<com.movesky.app.engine.ui.UILabel: void sizeToFit()>();
+
+        $r5 = r0.<com.movesky.app.engine.ui.UICheckBox: com.movesky.app.engine.ui.UILabel _label>;
+
+        virtualinvoke r0.<com.movesky.app.engine.ui.UICheckBox: void addSubview(com.movesky.app.engine.ui.UIView)>($r5);
+
+        $r5 = r0.<com.movesky.app.engine.ui.UICheckBox: com.movesky.app.engine.ui.UILabel _label>;
+
+        $f0 = $r5.<com.movesky.app.engine.ui.UILabel: float _width>;
+
+        $f0 = $f0 + 30.0F;
+
+        virtualinvoke r0.<com.movesky.app.engine.ui.UICheckBox: void setSize(float,float)>($f0, 20.0F);
+
+     label1:
+        virtualinvoke r0.<com.movesky.app.engine.ui.UICheckBox: void setBackgroundColor(int)>(-7829368);
+
+        virtualinvoke r0.<com.movesky.app.engine.ui.UICheckBox: void setForegroundColor(int)>(-1);
+
+        virtualinvoke r0.<com.movesky.app.engine.ui.UICheckBox: void setDisabledColor(int)>(-12303292);
+
+        $i0 = r0.<com.movesky.app.engine.ui.UICheckBox: int bg_end_color>;
+
+        virtualinvoke r0.<com.movesky.app.engine.ui.UICheckBox: void setButtonDownColor(int)>($i0);
+
+        return;
+
+     label2:
+        virtualinvoke r0.<com.movesky.app.engine.ui.UICheckBox: void setSize(float,float)>(20.0F, 20.0F);
+
+        goto label1;
+    }
+
+    private void generatePath()
+    {
+        com.movesky.app.engine.ui.UICheckBox r0;
+        android.graphics.Path $r1;
+        android.graphics.RectF $r2;
+        float $f0, $f1;
+
+        r0 := @this: com.movesky.app.engine.ui.UICheckBox;
+
+        $r1 = r0.<com.movesky.app.engine.ui.UICheckBox: android.graphics.Path _checkPath>;
+
+        virtualinvoke $r1.<android.graphics.Path: void reset()>();
+
+        $r1 = r0.<com.movesky.app.engine.ui.UICheckBox: android.graphics.Path _checkPath>;
+
+        $r2 = r0.<com.movesky.app.engine.ui.UICheckBox: android.graphics.RectF _button_rect>;
+
+        $f0 = $r2.<android.graphics.RectF: float left>;
+
+        $f0 = $f0 + 3.0F;
+
+        $r2 = r0.<com.movesky.app.engine.ui.UICheckBox: android.graphics.RectF _button_rect>;
+
+        $f1 = $r2.<android.graphics.RectF: float top>;
+
+        $f1 = $f1 + 5.0F;
+
+        virtualinvoke $r1.<android.graphics.Path: void moveTo(float,float)>($f0, $f1);
+
+        $r1 = r0.<com.movesky.app.engine.ui.UICheckBox: android.graphics.Path _checkPath>;
+
+        $r2 = r0.<com.movesky.app.engine.ui.UICheckBox: android.graphics.RectF _button_rect>;
+
+        $f0 = virtualinvoke $r2.<android.graphics.RectF: float centerX()>();
+
+        $r2 = r0.<com.movesky.app.engine.ui.UICheckBox: android.graphics.RectF _button_rect>;
+
+        $f1 = virtualinvoke $r2.<android.graphics.RectF: float centerY()>();
+
+        virtualinvoke $r1.<android.graphics.Path: void lineTo(float,float)>($f0, $f1);
+
+        $r1 = r0.<com.movesky.app.engine.ui.UICheckBox: android.graphics.Path _checkPath>;
+
+        $r2 = r0.<com.movesky.app.engine.ui.UICheckBox: android.graphics.RectF _button_rect>;
+
+        $f0 = virtualinvoke $r2.<android.graphics.RectF: float centerX()>();
+
+        $f0 = $f0 + 20.0F;
+
+        $f0 = $f0 - 2.0F;
+
+        $r2 = r0.<com.movesky.app.engine.ui.UICheckBox: android.graphics.RectF _button_rect>;
+
+        $f1 = $r2.<android.graphics.RectF: float top>;
+
+        $f1 = $f1 - 5.0F;
+
+        virtualinvoke $r1.<android.graphics.Path: void lineTo(float,float)>($f0, $f1);
+
+        $r1 = r0.<com.movesky.app.engine.ui.UICheckBox: android.graphics.Path _checkPath>;
+
+        $r2 = r0.<com.movesky.app.engine.ui.UICheckBox: android.graphics.RectF _button_rect>;
+
+        $f0 = virtualinvoke $r2.<android.graphics.RectF: float centerX()>();
+
+        $r2 = r0.<com.movesky.app.engine.ui.UICheckBox: android.graphics.RectF _button_rect>;
+
+        $f1 = virtualinvoke $r2.<android.graphics.RectF: float centerY()>();
+
+        $f1 = $f1 + 5.0F;
+
+        virtualinvoke $r1.<android.graphics.Path: void lineTo(float,float)>($f0, $f1);
+
+        $r1 = r0.<com.movesky.app.engine.ui.UICheckBox: android.graphics.Path _checkPath>;
+
+        $r2 = r0.<com.movesky.app.engine.ui.UICheckBox: android.graphics.RectF _button_rect>;
+
+        $f0 = $r2.<android.graphics.RectF: float left>;
+
+        $f0 = $f0 + 3.0F;
+
+        $r2 = r0.<com.movesky.app.engine.ui.UICheckBox: android.graphics.RectF _button_rect>;
+
+        $f1 = $r2.<android.graphics.RectF: float top>;
+
+        $f1 = $f1 + 5.0F;
+
+        virtualinvoke $r1.<android.graphics.Path: void lineTo(float,float)>($f0, $f1);
+
+        return;
+    }
+
+    public boolean containsPoint(float, float)
+    {
+        com.movesky.app.engine.ui.UICheckBox r0;
+        float $f0, $f1, $f2, $f3;
+        android.graphics.RectF $r1;
+        boolean $z0, $z1;
+        byte $b0;
+
+        r0 := @this: com.movesky.app.engine.ui.UICheckBox;
+
+        $f0 := @parameter0: float;
+
+        $f1 := @parameter1: float;
+
+        $r1 = r0.<com.movesky.app.engine.ui.UICheckBox: android.graphics.RectF _button_rect>;
+
+        $f2 = virtualinvoke $r1.<android.graphics.RectF: float height()>();
+
+        $f2 = $f2 * 0.7F;
+
+        $z0 = specialinvoke r0.<com.movesky.app.engine.ui.UIControl: boolean containsPoint(float,float)>($f0, $f1);
+
+        $r1 = r0.<com.movesky.app.engine.ui.UICheckBox: android.graphics.RectF _button_rect>;
+
+        $f3 = $r1.<android.graphics.RectF: float left>;
+
+        $f3 = $f3 - $f2;
+
+        $b0 = $f0 cmpl $f3;
+
+        if $b0 <= 0 goto label3;
+
+        $r1 = r0.<com.movesky.app.engine.ui.UICheckBox: android.graphics.RectF _button_rect>;
+
+        $f3 = $r1.<android.graphics.RectF: float right>;
+
+        $f3 = $f3 + $f2;
+
+        $b0 = $f0 cmpg $f3;
+
+        if $b0 >= 0 goto label3;
+
+        $r1 = r0.<com.movesky.app.engine.ui.UICheckBox: android.graphics.RectF _button_rect>;
+
+        $f0 = $r1.<android.graphics.RectF: float top>;
+
+        $f0 = $f0 - $f2;
+
+        $b0 = $f1 cmpl $f0;
+
+        if $b0 <= 0 goto label3;
+
+        $r1 = r0.<com.movesky.app.engine.ui.UICheckBox: android.graphics.RectF _button_rect>;
+
+        $f0 = $r1.<android.graphics.RectF: float bottom>;
+
+        $f0 = $f2 + $f0;
+
+        $b0 = $f1 cmpg $f0;
+
+        if $b0 >= 0 goto label3;
+
+        $z1 = 1;
+
+     label1:
+        if $z1 != 0 goto label2;
+
+        if $z0 == 0 goto label4;
+
+     label2:
+        return 1;
+
+     label3:
+        $z1 = 0;
+
+        goto label1;
+
+     label4:
+        return 0;
+    }
+
+    public boolean isSelected()
+    {
+        com.movesky.app.engine.ui.UICheckBox r0;
+        boolean z0;
+
+        r0 := @this: com.movesky.app.engine.ui.UICheckBox;
+
+        z0 = r0.<com.movesky.app.engine.ui.UICheckBox: boolean _selected>;
+
+        return z0;
+    }
+
+    protected void layoutSubviews(boolean)
+    {
+        com.movesky.app.engine.ui.UICheckBox r0;
+        boolean $z0;
+
+        r0 := @this: com.movesky.app.engine.ui.UICheckBox;
+
+        $z0 := @parameter0: boolean;
+
+        return;
+    }
+
+    public void onDraw(android.graphics.Canvas)
+    {
+        com.movesky.app.engine.ui.UICheckBox r0;
+        android.graphics.Canvas $r1;
+        android.graphics.Paint $r2;
+        android.graphics.Paint$Style $r3;
+        int $i0;
+        android.graphics.RectF $r4;
+        boolean $z0;
+        android.graphics.LinearGradient $r5;
+        android.graphics.Path $r6;
+
+        r0 := @this: com.movesky.app.engine.ui.UICheckBox;
+
+        $r1 := @parameter0: android.graphics.Canvas;
+
+        specialinvoke r0.<com.movesky.app.engine.ui.UIControl: void onDraw(android.graphics.Canvas)>($r1);
+
+        $r2 = r0.<com.movesky.app.engine.ui.UICheckBox: android.graphics.Paint _paint>;
+
+        $r3 = <android.graphics.Paint$Style: android.graphics.Paint$Style STROKE>;
+
+        virtualinvoke $r2.<android.graphics.Paint: void setStyle(android.graphics.Paint$Style)>($r3);
+
+        $r2 = r0.<com.movesky.app.engine.ui.UICheckBox: android.graphics.Paint _paint>;
+
+        $i0 = r0.<com.movesky.app.engine.ui.UICheckBox: int _bg_color>;
+
+        virtualinvoke $r2.<android.graphics.Paint: void setColor(int)>($i0);
+
+        $r4 = r0.<com.movesky.app.engine.ui.UICheckBox: android.graphics.RectF _button_rect>;
+
+        $r2 = r0.<com.movesky.app.engine.ui.UICheckBox: android.graphics.Paint _paint>;
+
+        virtualinvoke $r1.<android.graphics.Canvas: void drawRect(android.graphics.RectF,android.graphics.Paint)>($r4, $r2);
+
+        $r2 = r0.<com.movesky.app.engine.ui.UICheckBox: android.graphics.Paint _paint>;
+
+        $r3 = <android.graphics.Paint$Style: android.graphics.Paint$Style FILL>;
+
+        virtualinvoke $r2.<android.graphics.Paint: void setStyle(android.graphics.Paint$Style)>($r3);
+
+        $r2 = r0.<com.movesky.app.engine.ui.UICheckBox: android.graphics.Paint _paint>;
+
+        $z0 = r0.<com.movesky.app.engine.ui.UICheckBox: boolean isDisabled>;
+
+        if $z0 == 0 goto label2;
+
+        $r5 = r0.<com.movesky.app.engine.ui.UICheckBox: android.graphics.LinearGradient _disabled_gradient>;
+
+     label1:
+        virtualinvoke $r2.<android.graphics.Paint: android.graphics.Shader setShader(android.graphics.Shader)>($r5);
+
+        $r4 = r0.<com.movesky.app.engine.ui.UICheckBox: android.graphics.RectF _button_rect>;
+
+        $r2 = r0.<com.movesky.app.engine.ui.UICheckBox: android.graphics.Paint _paint>;
+
+        virtualinvoke $r1.<android.graphics.Canvas: void drawRect(android.graphics.RectF,android.graphics.Paint)>($r4, $r2);
+
+        $r2 = r0.<com.movesky.app.engine.ui.UICheckBox: android.graphics.Paint _paint>;
+
+        virtualinvoke $r2.<android.graphics.Paint: android.graphics.Shader setShader(android.graphics.Shader)>(null);
+
+        $z0 = r0.<com.movesky.app.engine.ui.UICheckBox: boolean _selected>;
+
+        if $z0 == 0 goto label4;
+
+        $r2 = r0.<com.movesky.app.engine.ui.UICheckBox: android.graphics.Paint _paint>;
+
+        $r3 = <android.graphics.Paint$Style: android.graphics.Paint$Style FILL_AND_STROKE>;
+
+        virtualinvoke $r2.<android.graphics.Paint: void setStyle(android.graphics.Paint$Style)>($r3);
+
+        $r2 = r0.<com.movesky.app.engine.ui.UICheckBox: android.graphics.Paint _paint>;
+
+        $i0 = r0.<com.movesky.app.engine.ui.UICheckBox: int _fg_color>;
+
+        virtualinvoke $r2.<android.graphics.Paint: void setColor(int)>($i0);
+
+        $r6 = r0.<com.movesky.app.engine.ui.UICheckBox: android.graphics.Path _checkPath>;
+
+        $r2 = r0.<com.movesky.app.engine.ui.UICheckBox: android.graphics.Paint _paint>;
+
+        virtualinvoke $r1.<android.graphics.Canvas: void drawPath(android.graphics.Path,android.graphics.Paint)>($r6, $r2);
+
+        return;
+
+     label2:
+        $z0 = r0.<com.movesky.app.engine.ui.UICheckBox: boolean isDown>;
+
+        if $z0 == 0 goto label3;
+
+        $r5 = r0.<com.movesky.app.engine.ui.UICheckBox: android.graphics.LinearGradient _down_gradient>;
+
+        goto label1;
+
+     label3:
+        $r5 = r0.<com.movesky.app.engine.ui.UICheckBox: android.graphics.LinearGradient _bg_gradient>;
+
+        goto label1;
+
+     label4:
+        return;
+    }
+
+    public void onTouchDown(float, float)
+    {
+        com.movesky.app.engine.ui.UICheckBox r0;
+        float $f0, $f1;
+        boolean $z0;
+
+        r0 := @this: com.movesky.app.engine.ui.UICheckBox;
+
+        $f0 := @parameter0: float;
+
+        $f1 := @parameter1: float;
+
+        $z0 = r0.<com.movesky.app.engine.ui.UICheckBox: boolean isDisabled>;
+
+        if $z0 == 0 goto label1;
+
+        return;
+
+     label1:
+        r0.<com.movesky.app.engine.ui.UICheckBox: boolean isDown> = 1;
+
+        return;
+    }
+
+    public void onTouchMove(float, float)
+    {
+        com.movesky.app.engine.ui.UICheckBox r0;
+        float $f0, $f1;
+        boolean $z0;
+
+        r0 := @this: com.movesky.app.engine.ui.UICheckBox;
+
+        $f0 := @parameter0: float;
+
+        $f1 := @parameter1: float;
+
+        $z0 = r0.<com.movesky.app.engine.ui.UICheckBox: boolean isDisabled>;
+
+        if $z0 == 0 goto label1;
+
+        return;
+
+     label1:
+        $z0 = virtualinvoke r0.<com.movesky.app.engine.ui.UICheckBox: boolean containsPoint(float,float)>($f0, $f1);
+
+        if $z0 != 0 goto label2;
+
+        r0.<com.movesky.app.engine.ui.UICheckBox: boolean isDown> = 0;
+
+     label2:
+        return;
+    }
+
+    public void onTouchUp(float, float)
+    {
+        com.movesky.app.engine.ui.UICheckBox r0;
+        float $f0, $f1;
+        boolean $z0;
+
+        r0 := @this: com.movesky.app.engine.ui.UICheckBox;
+
+        $f0 := @parameter0: float;
+
+        $f1 := @parameter1: float;
+
+        $z0 = r0.<com.movesky.app.engine.ui.UICheckBox: boolean _selected>;
+
+        if $z0 != 0 goto label2;
+
+        $z0 = 1;
+
+     label1:
+        r0.<com.movesky.app.engine.ui.UICheckBox: boolean _selected> = $z0;
+
+        r0.<com.movesky.app.engine.ui.UICheckBox: boolean isDown> = 0;
+
+        return;
+
+     label2:
+        $z0 = 0;
+
+        goto label1;
+    }
+
+    public void setBackgroundColor(int)
+    {
+        com.movesky.app.engine.ui.UICheckBox r0;
+        int $i0, $i1;
+        android.graphics.Shader$TileMode $r1;
+        float[] $r2;
+        float $f0, $f1, $f2, $f3;
+        android.graphics.LinearGradient $r3;
+        android.graphics.RectF $r4;
+
+        r0 := @this: com.movesky.app.engine.ui.UICheckBox;
+
+        $i0 := @parameter0: int;
+
+        r0.<com.movesky.app.engine.ui.UICheckBox: int _bg_color> = $i0;
+
+        $r2 = newarray (float)[3];
+
+        staticinvoke <android.graphics.Color: void colorToHSV(int,float[])>($i0, $r2);
+
+        $f0 = $r2[2];
+
+        $f0 = $f0 * 0.8F;
+
+        $r2[2] = $f0;
+
+        $i1 = staticinvoke <android.graphics.Color: int HSVToColor(float[])>($r2);
+
+        r0.<com.movesky.app.engine.ui.UICheckBox: int bg_end_color> = $i1;
+
+        $r3 = new android.graphics.LinearGradient;
+
+        $r4 = r0.<com.movesky.app.engine.ui.UICheckBox: android.graphics.RectF _button_rect>;
+
+        $f0 = $r4.<android.graphics.RectF: float left>;
+
+        $r4 = r0.<com.movesky.app.engine.ui.UICheckBox: android.graphics.RectF _button_rect>;
+
+        $f1 = $r4.<android.graphics.RectF: float top>;
+
+        $r4 = r0.<com.movesky.app.engine.ui.UICheckBox: android.graphics.RectF _button_rect>;
+
+        $f2 = $r4.<android.graphics.RectF: float left>;
+
+        $r4 = r0.<com.movesky.app.engine.ui.UICheckBox: android.graphics.RectF _button_rect>;
+
+        $f3 = $r4.<android.graphics.RectF: float bottom>;
+
+        $i1 = r0.<com.movesky.app.engine.ui.UICheckBox: int bg_end_color>;
+
+        $r1 = <android.graphics.Shader$TileMode: android.graphics.Shader$TileMode MIRROR>;
+
+        specialinvoke $r3.<android.graphics.LinearGradient: void <init>(float,float,float,float,int,int,android.graphics.Shader$TileMode)>($f0, $f1, $f2, $f3, $i0, $i1, $r1);
+
+        r0.<com.movesky.app.engine.ui.UICheckBox: android.graphics.LinearGradient _bg_gradient> = $r3;
+
+        return;
+    }
+
+    public void setBounds(float, float, float, float)
+    {
+        com.movesky.app.engine.ui.UICheckBox r0;
+        float $f0, $f1, $f2, $f3;
+        android.graphics.RectF $r1;
+        com.movesky.app.engine.ui.UILabel $r2;
+        int $i0;
+
+        r0 := @this: com.movesky.app.engine.ui.UICheckBox;
+
+        $f0 := @parameter0: float;
+
+        $f1 := @parameter1: float;
+
+        $f2 := @parameter2: float;
+
+        $f3 := @parameter3: float;
+
+        specialinvoke r0.<com.movesky.app.engine.ui.UIControl: void setBounds(float,float,float,float)>($f0, $f1, $f2, $f3);
+
+        $r1 = r0.<com.movesky.app.engine.ui.UICheckBox: android.graphics.RectF _button_rect>;
+
+        $r1.<android.graphics.RectF: float left> = $f0;
+
+        $r1 = r0.<com.movesky.app.engine.ui.UICheckBox: android.graphics.RectF _button_rect>;
+
+        $r1.<android.graphics.RectF: float top> = $f1;
+
+        $r1 = r0.<com.movesky.app.engine.ui.UICheckBox: android.graphics.RectF _button_rect>;
+
+        $f2 = $f0 + 20.0F;
+
+        $r1.<android.graphics.RectF: float right> = $f2;
+
+        $r1 = r0.<com.movesky.app.engine.ui.UICheckBox: android.graphics.RectF _button_rect>;
+
+        $f2 = $f1 + 20.0F;
+
+        $r1.<android.graphics.RectF: float bottom> = $f2;
+
+        $r2 = r0.<com.movesky.app.engine.ui.UICheckBox: com.movesky.app.engine.ui.UILabel _label>;
+
+        $f0 = 30.0F + $f0;
+
+        virtualinvoke $r2.<com.movesky.app.engine.ui.UILabel: void setPosition(float,float)>($f0, $f1);
+
+        $i0 = r0.<com.movesky.app.engine.ui.UICheckBox: int _bg_color>;
+
+        virtualinvoke r0.<com.movesky.app.engine.ui.UICheckBox: void setBackgroundColor(int)>($i0);
+
+        $i0 = r0.<com.movesky.app.engine.ui.UICheckBox: int _disabled_color>;
+
+        virtualinvoke r0.<com.movesky.app.engine.ui.UICheckBox: void setDisabledColor(int)>($i0);
+
+        $i0 = r0.<com.movesky.app.engine.ui.UICheckBox: int _down_color>;
+
+        virtualinvoke r0.<com.movesky.app.engine.ui.UICheckBox: void setButtonDownColor(int)>($i0);
+
+        specialinvoke r0.<com.movesky.app.engine.ui.UICheckBox: void generatePath()>();
+
+        return;
+    }
+
+    public void setButtonDownColor(int)
+    {
+        com.movesky.app.engine.ui.UICheckBox r0;
+        int $i0, $i1;
+        android.graphics.Shader$TileMode $r1;
+        float[] $r2;
+        float $f0, $f1, $f2, $f3;
+        android.graphics.LinearGradient $r3;
+        android.graphics.RectF $r4;
+
+        r0 := @this: com.movesky.app.engine.ui.UICheckBox;
+
+        $i0 := @parameter0: int;
+
+        r0.<com.movesky.app.engine.ui.UICheckBox: int _down_color> = $i0;
+
+        $r2 = newarray (float)[3];
+
+        staticinvoke <android.graphics.Color: void colorToHSV(int,float[])>($i0, $r2);
+
+        $f0 = $r2[2];
+
+        $f0 = $f0 * 0.8F;
+
+        $r2[2] = $f0;
+
+        $i1 = staticinvoke <android.graphics.Color: int HSVToColor(float[])>($r2);
+
+        $r3 = new android.graphics.LinearGradient;
+
+        $r4 = r0.<com.movesky.app.engine.ui.UICheckBox: android.graphics.RectF _button_rect>;
+
+        $f0 = $r4.<android.graphics.RectF: float left>;
+
+        $r4 = r0.<com.movesky.app.engine.ui.UICheckBox: android.graphics.RectF _button_rect>;
+
+        $f1 = $r4.<android.graphics.RectF: float top>;
+
+        $r4 = r0.<com.movesky.app.engine.ui.UICheckBox: android.graphics.RectF _button_rect>;
+
+        $f2 = $r4.<android.graphics.RectF: float left>;
+
+        $r4 = r0.<com.movesky.app.engine.ui.UICheckBox: android.graphics.RectF _button_rect>;
+
+        $f3 = $r4.<android.graphics.RectF: float bottom>;
+
+        $i0 = r0.<com.movesky.app.engine.ui.UICheckBox: int _down_color>;
+
+        $r1 = <android.graphics.Shader$TileMode: android.graphics.Shader$TileMode MIRROR>;
+
+        specialinvoke $r3.<android.graphics.LinearGradient: void <init>(float,float,float,float,int,int,android.graphics.Shader$TileMode)>($f0, $f1, $f2, $f3, $i0, $i1, $r1);
+
+        r0.<com.movesky.app.engine.ui.UICheckBox: android.graphics.LinearGradient _down_gradient> = $r3;
+
+        return;
+    }
+
+    public void setDisabledColor(int)
+    {
+        com.movesky.app.engine.ui.UICheckBox r0;
+        int $i0, $i1;
+        android.graphics.Shader$TileMode $r1;
+        float[] $r2;
+        float $f0, $f1, $f2, $f3;
+        android.graphics.LinearGradient $r3;
+        android.graphics.RectF $r4;
+
+        r0 := @this: com.movesky.app.engine.ui.UICheckBox;
+
+        $i0 := @parameter0: int;
+
+        r0.<com.movesky.app.engine.ui.UICheckBox: int _disabled_color> = $i0;
+
+        $r2 = newarray (float)[3];
+
+        staticinvoke <android.graphics.Color: void colorToHSV(int,float[])>($i0, $r2);
+
+        $f0 = $r2[2];
+
+        $f0 = $f0 * 1.1F;
+
+        $r2[2] = $f0;
+
+        $i1 = staticinvoke <android.graphics.Color: int HSVToColor(float[])>($r2);
+
+        $r3 = new android.graphics.LinearGradient;
+
+        $r4 = r0.<com.movesky.app.engine.ui.UICheckBox: android.graphics.RectF _button_rect>;
+
+        $f0 = $r4.<android.graphics.RectF: float left>;
+
+        $r4 = r0.<com.movesky.app.engine.ui.UICheckBox: android.graphics.RectF _button_rect>;
+
+        $f1 = $r4.<android.graphics.RectF: float top>;
+
+        $r4 = r0.<com.movesky.app.engine.ui.UICheckBox: android.graphics.RectF _button_rect>;
+
+        $f2 = $r4.<android.graphics.RectF: float left>;
+
+        $r4 = r0.<com.movesky.app.engine.ui.UICheckBox: android.graphics.RectF _button_rect>;
+
+        $f3 = $r4.<android.graphics.RectF: float bottom>;
+
+        $r1 = <android.graphics.Shader$TileMode: android.graphics.Shader$TileMode MIRROR>;
+
+        specialinvoke $r3.<android.graphics.LinearGradient: void <init>(float,float,float,float,int,int,android.graphics.Shader$TileMode)>($f0, $f1, $f2, $f3, $i1, $i0, $r1);
+
+        r0.<com.movesky.app.engine.ui.UICheckBox: android.graphics.LinearGradient _disabled_gradient> = $r3;
+
+        return;
+    }
+
+    public void setForegroundColor(int)
+    {
+        com.movesky.app.engine.ui.UICheckBox r0;
+        int $i0;
+
+        r0 := @this: com.movesky.app.engine.ui.UICheckBox;
+
+        $i0 := @parameter0: int;
+
+        r0.<com.movesky.app.engine.ui.UICheckBox: int _fg_color> = $i0;
+
+        return;
+    }
+
+    public void setSelected(boolean)
+    {
+        com.movesky.app.engine.ui.UICheckBox r0;
+        boolean $z0;
+
+        r0 := @this: com.movesky.app.engine.ui.UICheckBox;
+
+        $z0 := @parameter0: boolean;
+
+        r0.<com.movesky.app.engine.ui.UICheckBox: boolean _selected> = $z0;
+
+        return;
+    }
+}

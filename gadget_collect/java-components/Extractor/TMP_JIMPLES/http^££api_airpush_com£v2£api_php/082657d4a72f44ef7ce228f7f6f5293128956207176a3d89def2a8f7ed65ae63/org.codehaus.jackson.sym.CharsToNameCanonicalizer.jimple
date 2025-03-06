@@ -1,0 +1,815 @@
+public final class org.codehaus.jackson.sym.CharsToNameCanonicalizer extends java.lang.Object
+{
+    protected static final int DEFAULT_TABLE_SIZE;
+    static final int MAX_ENTRIES_FOR_REUSE;
+    protected static final int MAX_TABLE_SIZE;
+    static final org.codehaus.jackson.sym.CharsToNameCanonicalizer sBootstrapSymbolTable;
+    protected org.codehaus.jackson.sym.CharsToNameCanonicalizer$Bucket[] _buckets;
+    protected final boolean _canonicalize;
+    protected boolean _dirty;
+    protected int _indexMask;
+    protected final boolean _intern;
+    protected org.codehaus.jackson.sym.CharsToNameCanonicalizer _parent;
+    protected int _size;
+    protected int _sizeThreshold;
+    protected java.lang.String[] _symbols;
+
+    static void <clinit>()
+    {
+        org.codehaus.jackson.sym.CharsToNameCanonicalizer $r0;
+
+        <org.codehaus.jackson.sym.CharsToNameCanonicalizer: int MAX_TABLE_SIZE> = 65536;
+
+        <org.codehaus.jackson.sym.CharsToNameCanonicalizer: int MAX_ENTRIES_FOR_REUSE> = 12000;
+
+        <org.codehaus.jackson.sym.CharsToNameCanonicalizer: int DEFAULT_TABLE_SIZE> = 64;
+
+        $r0 = new org.codehaus.jackson.sym.CharsToNameCanonicalizer;
+
+        specialinvoke $r0.<org.codehaus.jackson.sym.CharsToNameCanonicalizer: void <init>()>();
+
+        <org.codehaus.jackson.sym.CharsToNameCanonicalizer: org.codehaus.jackson.sym.CharsToNameCanonicalizer sBootstrapSymbolTable> = $r0;
+
+        return;
+    }
+
+    private void <init>()
+    {
+        org.codehaus.jackson.sym.CharsToNameCanonicalizer r0;
+
+        r0 := @this: org.codehaus.jackson.sym.CharsToNameCanonicalizer;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        r0.<org.codehaus.jackson.sym.CharsToNameCanonicalizer: boolean _canonicalize> = 1;
+
+        r0.<org.codehaus.jackson.sym.CharsToNameCanonicalizer: boolean _intern> = 1;
+
+        r0.<org.codehaus.jackson.sym.CharsToNameCanonicalizer: boolean _dirty> = 1;
+
+        specialinvoke r0.<org.codehaus.jackson.sym.CharsToNameCanonicalizer: void initTables(int)>(64);
+
+        return;
+    }
+
+    private void <init>(org.codehaus.jackson.sym.CharsToNameCanonicalizer, boolean, boolean, java.lang.String[], org.codehaus.jackson.sym.CharsToNameCanonicalizer$Bucket[], int)
+    {
+        org.codehaus.jackson.sym.CharsToNameCanonicalizer r0, $r1;
+        boolean $z0, $z1;
+        java.lang.String[] $r2;
+        org.codehaus.jackson.sym.CharsToNameCanonicalizer$Bucket[] $r3;
+        int $i0, $i1;
+
+        r0 := @this: org.codehaus.jackson.sym.CharsToNameCanonicalizer;
+
+        $r1 := @parameter0: org.codehaus.jackson.sym.CharsToNameCanonicalizer;
+
+        $z0 := @parameter1: boolean;
+
+        $z1 := @parameter2: boolean;
+
+        $r2 := @parameter3: java.lang.String[];
+
+        $r3 := @parameter4: org.codehaus.jackson.sym.CharsToNameCanonicalizer$Bucket[];
+
+        $i0 := @parameter5: int;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        r0.<org.codehaus.jackson.sym.CharsToNameCanonicalizer: org.codehaus.jackson.sym.CharsToNameCanonicalizer _parent> = $r1;
+
+        r0.<org.codehaus.jackson.sym.CharsToNameCanonicalizer: boolean _canonicalize> = $z0;
+
+        r0.<org.codehaus.jackson.sym.CharsToNameCanonicalizer: boolean _intern> = $z1;
+
+        r0.<org.codehaus.jackson.sym.CharsToNameCanonicalizer: java.lang.String[] _symbols> = $r2;
+
+        r0.<org.codehaus.jackson.sym.CharsToNameCanonicalizer: org.codehaus.jackson.sym.CharsToNameCanonicalizer$Bucket[] _buckets> = $r3;
+
+        r0.<org.codehaus.jackson.sym.CharsToNameCanonicalizer: int _size> = $i0;
+
+        $i0 = lengthof $r2;
+
+        $i1 = $i0 >> 2;
+
+        $i1 = $i0 - $i1;
+
+        r0.<org.codehaus.jackson.sym.CharsToNameCanonicalizer: int _sizeThreshold> = $i1;
+
+        $i0 = $i0 - 1;
+
+        r0.<org.codehaus.jackson.sym.CharsToNameCanonicalizer: int _indexMask> = $i0;
+
+        r0.<org.codehaus.jackson.sym.CharsToNameCanonicalizer: boolean _dirty> = 0;
+
+        return;
+    }
+
+    public static int calcHash(java.lang.String)
+    {
+        java.lang.String $r0;
+        char $c0;
+        int i1, i2, $i3;
+
+        $r0 := @parameter0: java.lang.String;
+
+        i1 = virtualinvoke $r0.<java.lang.String: char charAt(int)>(0);
+
+        i2 = 1;
+
+        $i3 = virtualinvoke $r0.<java.lang.String: int length()>();
+
+     label1:
+        if i2 >= $i3 goto label2;
+
+        i1 = i1 * 31;
+
+        $c0 = virtualinvoke $r0.<java.lang.String: char charAt(int)>(i2);
+
+        i1 = i1 + $c0;
+
+        i2 = i2 + 1;
+
+        goto label1;
+
+     label2:
+        return i1;
+    }
+
+    public static int calcHash(char[], int, int)
+    {
+        char[] $r0;
+        int $i0, $i1, i3;
+        char $c2;
+
+        $r0 := @parameter0: char[];
+
+        $i0 := @parameter1: int;
+
+        $i1 := @parameter2: int;
+
+        i3 = $r0[0];
+
+        $i0 = 1;
+
+     label1:
+        if $i0 >= $i1 goto label2;
+
+        i3 = i3 * 31;
+
+        $c2 = $r0[$i0];
+
+        i3 = i3 + $c2;
+
+        $i0 = $i0 + 1;
+
+        goto label1;
+
+     label2:
+        return i3;
+    }
+
+    private void copyArrays()
+    {
+        org.codehaus.jackson.sym.CharsToNameCanonicalizer r0;
+        org.codehaus.jackson.sym.CharsToNameCanonicalizer$Bucket[] r1, $r4;
+        java.lang.String[] r2, $r3;
+        int i0;
+
+        r0 := @this: org.codehaus.jackson.sym.CharsToNameCanonicalizer;
+
+        r2 = r0.<org.codehaus.jackson.sym.CharsToNameCanonicalizer: java.lang.String[] _symbols>;
+
+        i0 = lengthof r2;
+
+        $r3 = newarray (java.lang.String)[i0];
+
+        r0.<org.codehaus.jackson.sym.CharsToNameCanonicalizer: java.lang.String[] _symbols> = $r3;
+
+        $r3 = r0.<org.codehaus.jackson.sym.CharsToNameCanonicalizer: java.lang.String[] _symbols>;
+
+        staticinvoke <java.lang.System: void arraycopy(java.lang.Object,int,java.lang.Object,int,int)>(r2, 0, $r3, 0, i0);
+
+        r1 = r0.<org.codehaus.jackson.sym.CharsToNameCanonicalizer: org.codehaus.jackson.sym.CharsToNameCanonicalizer$Bucket[] _buckets>;
+
+        i0 = lengthof r1;
+
+        $r4 = newarray (org.codehaus.jackson.sym.CharsToNameCanonicalizer$Bucket)[i0];
+
+        r0.<org.codehaus.jackson.sym.CharsToNameCanonicalizer: org.codehaus.jackson.sym.CharsToNameCanonicalizer$Bucket[] _buckets> = $r4;
+
+        $r4 = r0.<org.codehaus.jackson.sym.CharsToNameCanonicalizer: org.codehaus.jackson.sym.CharsToNameCanonicalizer$Bucket[] _buckets>;
+
+        staticinvoke <java.lang.System: void arraycopy(java.lang.Object,int,java.lang.Object,int,int)>(r1, 0, $r4, 0, i0);
+
+        return;
+    }
+
+    public static org.codehaus.jackson.sym.CharsToNameCanonicalizer createRoot()
+    {
+        org.codehaus.jackson.sym.CharsToNameCanonicalizer $r0;
+
+        $r0 = <org.codehaus.jackson.sym.CharsToNameCanonicalizer: org.codehaus.jackson.sym.CharsToNameCanonicalizer sBootstrapSymbolTable>;
+
+        $r0 = specialinvoke $r0.<org.codehaus.jackson.sym.CharsToNameCanonicalizer: org.codehaus.jackson.sym.CharsToNameCanonicalizer makeOrphan()>();
+
+        return $r0;
+    }
+
+    private void initTables(int)
+    {
+        org.codehaus.jackson.sym.CharsToNameCanonicalizer r0;
+        int $i0, $i1;
+        java.lang.String[] $r1;
+        org.codehaus.jackson.sym.CharsToNameCanonicalizer$Bucket[] $r2;
+
+        r0 := @this: org.codehaus.jackson.sym.CharsToNameCanonicalizer;
+
+        $i0 := @parameter0: int;
+
+        $r1 = newarray (java.lang.String)[$i0];
+
+        r0.<org.codehaus.jackson.sym.CharsToNameCanonicalizer: java.lang.String[] _symbols> = $r1;
+
+        $i1 = $i0 >> 1;
+
+        $r2 = newarray (org.codehaus.jackson.sym.CharsToNameCanonicalizer$Bucket)[$i1];
+
+        r0.<org.codehaus.jackson.sym.CharsToNameCanonicalizer: org.codehaus.jackson.sym.CharsToNameCanonicalizer$Bucket[] _buckets> = $r2;
+
+        $i1 = $i0 - 1;
+
+        r0.<org.codehaus.jackson.sym.CharsToNameCanonicalizer: int _indexMask> = $i1;
+
+        r0.<org.codehaus.jackson.sym.CharsToNameCanonicalizer: int _size> = 0;
+
+        $i1 = $i0 >> 2;
+
+        $i0 = $i0 - $i1;
+
+        r0.<org.codehaus.jackson.sym.CharsToNameCanonicalizer: int _sizeThreshold> = $i0;
+
+        return;
+    }
+
+    private org.codehaus.jackson.sym.CharsToNameCanonicalizer makeOrphan()
+    {
+        org.codehaus.jackson.sym.CharsToNameCanonicalizer r0, $r1;
+        java.lang.String[] $r2;
+        org.codehaus.jackson.sym.CharsToNameCanonicalizer$Bucket[] $r3;
+        int $i0;
+
+        r0 := @this: org.codehaus.jackson.sym.CharsToNameCanonicalizer;
+
+        $r1 = new org.codehaus.jackson.sym.CharsToNameCanonicalizer;
+
+        $r2 = r0.<org.codehaus.jackson.sym.CharsToNameCanonicalizer: java.lang.String[] _symbols>;
+
+        $r3 = r0.<org.codehaus.jackson.sym.CharsToNameCanonicalizer: org.codehaus.jackson.sym.CharsToNameCanonicalizer$Bucket[] _buckets>;
+
+        $i0 = r0.<org.codehaus.jackson.sym.CharsToNameCanonicalizer: int _size>;
+
+        specialinvoke $r1.<org.codehaus.jackson.sym.CharsToNameCanonicalizer: void <init>(org.codehaus.jackson.sym.CharsToNameCanonicalizer,boolean,boolean,java.lang.String[],org.codehaus.jackson.sym.CharsToNameCanonicalizer$Bucket[],int)>(null, 1, 1, $r2, $r3, $i0);
+
+        return $r1;
+    }
+
+    private void mergeChild(org.codehaus.jackson.sym.CharsToNameCanonicalizer)
+    {
+        org.codehaus.jackson.sym.CharsToNameCanonicalizer r0, $r1;
+        int $i0, $i1;
+        java.lang.String[] $r2;
+        org.codehaus.jackson.sym.CharsToNameCanonicalizer$Bucket[] $r3;
+        java.lang.Throwable $r4;
+
+        r0 := @this: org.codehaus.jackson.sym.CharsToNameCanonicalizer;
+
+        $r1 := @parameter0: org.codehaus.jackson.sym.CharsToNameCanonicalizer;
+
+        entermonitor r0;
+
+     label1:
+        $i0 = virtualinvoke $r1.<org.codehaus.jackson.sym.CharsToNameCanonicalizer: int size()>();
+
+        if $i0 <= 12000 goto label4;
+
+        specialinvoke r0.<org.codehaus.jackson.sym.CharsToNameCanonicalizer: void initTables(int)>(64);
+
+     label2:
+        r0.<org.codehaus.jackson.sym.CharsToNameCanonicalizer: boolean _dirty> = 0;
+
+     label3:
+        exitmonitor r0;
+
+        return;
+
+     label4:
+        $i0 = virtualinvoke $r1.<org.codehaus.jackson.sym.CharsToNameCanonicalizer: int size()>();
+
+        $i1 = virtualinvoke r0.<org.codehaus.jackson.sym.CharsToNameCanonicalizer: int size()>();
+
+        if $i0 <= $i1 goto label3;
+
+        $r2 = $r1.<org.codehaus.jackson.sym.CharsToNameCanonicalizer: java.lang.String[] _symbols>;
+
+        r0.<org.codehaus.jackson.sym.CharsToNameCanonicalizer: java.lang.String[] _symbols> = $r2;
+
+        $r3 = $r1.<org.codehaus.jackson.sym.CharsToNameCanonicalizer: org.codehaus.jackson.sym.CharsToNameCanonicalizer$Bucket[] _buckets>;
+
+        r0.<org.codehaus.jackson.sym.CharsToNameCanonicalizer: org.codehaus.jackson.sym.CharsToNameCanonicalizer$Bucket[] _buckets> = $r3;
+
+        $i0 = $r1.<org.codehaus.jackson.sym.CharsToNameCanonicalizer: int _size>;
+
+        r0.<org.codehaus.jackson.sym.CharsToNameCanonicalizer: int _size> = $i0;
+
+        $i0 = $r1.<org.codehaus.jackson.sym.CharsToNameCanonicalizer: int _sizeThreshold>;
+
+        r0.<org.codehaus.jackson.sym.CharsToNameCanonicalizer: int _sizeThreshold> = $i0;
+
+        $i0 = $r1.<org.codehaus.jackson.sym.CharsToNameCanonicalizer: int _indexMask>;
+
+        r0.<org.codehaus.jackson.sym.CharsToNameCanonicalizer: int _indexMask> = $i0;
+
+     label5:
+        goto label2;
+
+     label6:
+        $r4 := @caughtexception;
+
+        exitmonitor r0;
+
+        throw $r4;
+
+        catch java.lang.Throwable from label1 to label3 with label6;
+        catch java.lang.Throwable from label4 to label5 with label6;
+    }
+
+    private void rehash()
+    {
+        org.codehaus.jackson.sym.CharsToNameCanonicalizer r0;
+        int i0, i1, $i2, $i3, $i4;
+        org.codehaus.jackson.sym.CharsToNameCanonicalizer$Bucket[] r1, $r4, $r8;
+        java.lang.String[] r2, $r3;
+        java.lang.String r5, $r6;
+        org.codehaus.jackson.sym.CharsToNameCanonicalizer$Bucket $r7, $r9, $r10;
+        java.lang.Error $r11;
+        java.lang.StringBuilder $r12;
+
+        r0 := @this: org.codehaus.jackson.sym.CharsToNameCanonicalizer;
+
+        r2 = r0.<org.codehaus.jackson.sym.CharsToNameCanonicalizer: java.lang.String[] _symbols>;
+
+        i1 = lengthof r2;
+
+        i0 = i1 + i1;
+
+        if i0 <= 65536 goto label01;
+
+        r0.<org.codehaus.jackson.sym.CharsToNameCanonicalizer: int _size> = 0;
+
+        r2 = r0.<org.codehaus.jackson.sym.CharsToNameCanonicalizer: java.lang.String[] _symbols>;
+
+        staticinvoke <java.util.Arrays: void fill(java.lang.Object[],java.lang.Object)>(r2, null);
+
+        r1 = r0.<org.codehaus.jackson.sym.CharsToNameCanonicalizer: org.codehaus.jackson.sym.CharsToNameCanonicalizer$Bucket[] _buckets>;
+
+        staticinvoke <java.util.Arrays: void fill(java.lang.Object[],java.lang.Object)>(r1, null);
+
+        r0.<org.codehaus.jackson.sym.CharsToNameCanonicalizer: boolean _dirty> = 1;
+
+        return;
+
+     label01:
+        r2 = r0.<org.codehaus.jackson.sym.CharsToNameCanonicalizer: java.lang.String[] _symbols>;
+
+        r1 = r0.<org.codehaus.jackson.sym.CharsToNameCanonicalizer: org.codehaus.jackson.sym.CharsToNameCanonicalizer$Bucket[] _buckets>;
+
+        $r3 = newarray (java.lang.String)[i0];
+
+        r0.<org.codehaus.jackson.sym.CharsToNameCanonicalizer: java.lang.String[] _symbols> = $r3;
+
+        $i2 = i0 >> 1;
+
+        $r4 = newarray (org.codehaus.jackson.sym.CharsToNameCanonicalizer$Bucket)[$i2];
+
+        r0.<org.codehaus.jackson.sym.CharsToNameCanonicalizer: org.codehaus.jackson.sym.CharsToNameCanonicalizer$Bucket[] _buckets> = $r4;
+
+        i0 = i0 - 1;
+
+        r0.<org.codehaus.jackson.sym.CharsToNameCanonicalizer: int _indexMask> = i0;
+
+        i0 = r0.<org.codehaus.jackson.sym.CharsToNameCanonicalizer: int _sizeThreshold>;
+
+        $i2 = r0.<org.codehaus.jackson.sym.CharsToNameCanonicalizer: int _sizeThreshold>;
+
+        i0 = i0 + $i2;
+
+        r0.<org.codehaus.jackson.sym.CharsToNameCanonicalizer: int _sizeThreshold> = i0;
+
+        i0 = 0;
+
+        $i2 = 0;
+
+     label02:
+        if $i2 >= i1 goto label05;
+
+        r5 = r2[$i2];
+
+        if r5 == null goto label03;
+
+        i0 = i0 + 1;
+
+        $i3 = staticinvoke <org.codehaus.jackson.sym.CharsToNameCanonicalizer: int calcHash(java.lang.String)>(r5);
+
+        $i4 = r0.<org.codehaus.jackson.sym.CharsToNameCanonicalizer: int _indexMask>;
+
+        $i3 = $i3 & $i4;
+
+        $r3 = r0.<org.codehaus.jackson.sym.CharsToNameCanonicalizer: java.lang.String[] _symbols>;
+
+        $r6 = $r3[$i3];
+
+        if $r6 != null goto label04;
+
+        $r3 = r0.<org.codehaus.jackson.sym.CharsToNameCanonicalizer: java.lang.String[] _symbols>;
+
+        $r3[$i3] = r5;
+
+     label03:
+        $i2 = $i2 + 1;
+
+        goto label02;
+
+     label04:
+        $i3 = $i3 >> 1;
+
+        $r4 = r0.<org.codehaus.jackson.sym.CharsToNameCanonicalizer: org.codehaus.jackson.sym.CharsToNameCanonicalizer$Bucket[] _buckets>;
+
+        $r7 = new org.codehaus.jackson.sym.CharsToNameCanonicalizer$Bucket;
+
+        $r8 = r0.<org.codehaus.jackson.sym.CharsToNameCanonicalizer: org.codehaus.jackson.sym.CharsToNameCanonicalizer$Bucket[] _buckets>;
+
+        $r9 = $r8[$i3];
+
+        specialinvoke $r7.<org.codehaus.jackson.sym.CharsToNameCanonicalizer$Bucket: void <init>(java.lang.String,org.codehaus.jackson.sym.CharsToNameCanonicalizer$Bucket)>(r5, $r9);
+
+        $r4[$i3] = $r7;
+
+        goto label03;
+
+     label05:
+        i1 = i1 >> 1;
+
+        $i2 = 0;
+
+     label06:
+        if $i2 >= i1 goto label11;
+
+        $r7 = r1[$i2];
+
+     label07:
+        if $r7 == null goto label10;
+
+        i0 = i0 + 1;
+
+        r5 = virtualinvoke $r7.<org.codehaus.jackson.sym.CharsToNameCanonicalizer$Bucket: java.lang.String getSymbol()>();
+
+        $i3 = staticinvoke <org.codehaus.jackson.sym.CharsToNameCanonicalizer: int calcHash(java.lang.String)>(r5);
+
+        $i4 = r0.<org.codehaus.jackson.sym.CharsToNameCanonicalizer: int _indexMask>;
+
+        $i3 = $i3 & $i4;
+
+        r2 = r0.<org.codehaus.jackson.sym.CharsToNameCanonicalizer: java.lang.String[] _symbols>;
+
+        $r6 = r2[$i3];
+
+        if $r6 != null goto label09;
+
+        r2 = r0.<org.codehaus.jackson.sym.CharsToNameCanonicalizer: java.lang.String[] _symbols>;
+
+        r2[$i3] = r5;
+
+     label08:
+        $r7 = virtualinvoke $r7.<org.codehaus.jackson.sym.CharsToNameCanonicalizer$Bucket: org.codehaus.jackson.sym.CharsToNameCanonicalizer$Bucket getNext()>();
+
+        goto label07;
+
+     label09:
+        $i3 = $i3 >> 1;
+
+        $r4 = r0.<org.codehaus.jackson.sym.CharsToNameCanonicalizer: org.codehaus.jackson.sym.CharsToNameCanonicalizer$Bucket[] _buckets>;
+
+        $r9 = new org.codehaus.jackson.sym.CharsToNameCanonicalizer$Bucket;
+
+        $r8 = r0.<org.codehaus.jackson.sym.CharsToNameCanonicalizer: org.codehaus.jackson.sym.CharsToNameCanonicalizer$Bucket[] _buckets>;
+
+        $r10 = $r8[$i3];
+
+        specialinvoke $r9.<org.codehaus.jackson.sym.CharsToNameCanonicalizer$Bucket: void <init>(java.lang.String,org.codehaus.jackson.sym.CharsToNameCanonicalizer$Bucket)>(r5, $r10);
+
+        $r4[$i3] = $r9;
+
+        goto label08;
+
+     label10:
+        $i2 = $i2 + 1;
+
+        goto label06;
+
+     label11:
+        i1 = r0.<org.codehaus.jackson.sym.CharsToNameCanonicalizer: int _size>;
+
+        if i0 == i1 goto label12;
+
+        $r11 = new java.lang.Error;
+
+        $r12 = new java.lang.StringBuilder;
+
+        specialinvoke $r12.<java.lang.StringBuilder: void <init>()>();
+
+        $r12 = virtualinvoke $r12.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Internal error on SymbolTable.rehash(): had ");
+
+        i1 = r0.<org.codehaus.jackson.sym.CharsToNameCanonicalizer: int _size>;
+
+        $r12 = virtualinvoke $r12.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>(i1);
+
+        $r12 = virtualinvoke $r12.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" entries; now have ");
+
+        $r12 = virtualinvoke $r12.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>(i0);
+
+        $r12 = virtualinvoke $r12.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(".");
+
+        r5 = virtualinvoke $r12.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke $r11.<java.lang.Error: void <init>(java.lang.String)>(r5);
+
+        throw $r11;
+
+     label12:
+        return;
+    }
+
+    public java.lang.String findSymbol(char[], int, int, int)
+    {
+        org.codehaus.jackson.sym.CharsToNameCanonicalizer r0;
+        char[] $r1;
+        int $i0, $i1, $i2, $i3, $i5;
+        org.codehaus.jackson.sym.CharsToNameCanonicalizer$Bucket r2, $r9;
+        boolean $z0;
+        java.lang.String $r3, $r7;
+        java.lang.String[] $r4;
+        char $c4, $c6;
+        org.codehaus.jackson.sym.CharsToNameCanonicalizer$Bucket[] $r5, $r8;
+        org.codehaus.jackson.util.InternCache $r6;
+
+        r0 := @this: org.codehaus.jackson.sym.CharsToNameCanonicalizer;
+
+        $r1 := @parameter0: char[];
+
+        $i0 := @parameter1: int;
+
+        $i1 := @parameter2: int;
+
+        $i2 := @parameter3: int;
+
+        if $i1 >= 1 goto label01;
+
+        return "";
+
+     label01:
+        $z0 = r0.<org.codehaus.jackson.sym.CharsToNameCanonicalizer: boolean _canonicalize>;
+
+        if $z0 != 0 goto label02;
+
+        $r3 = new java.lang.String;
+
+        specialinvoke $r3.<java.lang.String: void <init>(char[],int,int)>($r1, $i0, $i1);
+
+        return $r3;
+
+     label02:
+        $i3 = r0.<org.codehaus.jackson.sym.CharsToNameCanonicalizer: int _indexMask>;
+
+        $i2 = $i2 & $i3;
+
+        $r4 = r0.<org.codehaus.jackson.sym.CharsToNameCanonicalizer: java.lang.String[] _symbols>;
+
+        $r3 = $r4[$i2];
+
+        if $r3 == null goto label07;
+
+        $i3 = virtualinvoke $r3.<java.lang.String: int length()>();
+
+        if $i3 != $i1 goto label06;
+
+        $i3 = 0;
+
+     label03:
+        $c4 = virtualinvoke $r3.<java.lang.String: char charAt(int)>($i3);
+
+        $i5 = $i0 + $i3;
+
+        $c6 = $r1[$i5];
+
+        if $c4 == $c6 goto label05;
+
+     label04:
+        if $i3 != $i1 goto label06;
+
+        return $r3;
+
+     label05:
+        $i3 = $i3 + 1;
+
+        if $i3 < $i1 goto label03;
+
+        goto label04;
+
+     label06:
+        $r5 = r0.<org.codehaus.jackson.sym.CharsToNameCanonicalizer: org.codehaus.jackson.sym.CharsToNameCanonicalizer$Bucket[] _buckets>;
+
+        $i3 = $i2 >> 1;
+
+        r2 = $r5[$i3];
+
+        if r2 == null goto label07;
+
+        $r3 = virtualinvoke r2.<org.codehaus.jackson.sym.CharsToNameCanonicalizer$Bucket: java.lang.String find(char[],int,int)>($r1, $i0, $i1);
+
+        if $r3 == null goto label07;
+
+        return $r3;
+
+     label07:
+        $z0 = r0.<org.codehaus.jackson.sym.CharsToNameCanonicalizer: boolean _dirty>;
+
+        if $z0 != 0 goto label11;
+
+        specialinvoke r0.<org.codehaus.jackson.sym.CharsToNameCanonicalizer: void copyArrays()>();
+
+        r0.<org.codehaus.jackson.sym.CharsToNameCanonicalizer: boolean _dirty> = 1;
+
+     label08:
+        $i3 = r0.<org.codehaus.jackson.sym.CharsToNameCanonicalizer: int _size>;
+
+        $i3 = $i3 + 1;
+
+        r0.<org.codehaus.jackson.sym.CharsToNameCanonicalizer: int _size> = $i3;
+
+        $r3 = new java.lang.String;
+
+        specialinvoke $r3.<java.lang.String: void <init>(char[],int,int)>($r1, $i0, $i1);
+
+        $z0 = r0.<org.codehaus.jackson.sym.CharsToNameCanonicalizer: boolean _intern>;
+
+        if $z0 == 0 goto label09;
+
+        $r6 = <org.codehaus.jackson.util.InternCache: org.codehaus.jackson.util.InternCache instance>;
+
+        $r3 = virtualinvoke $r6.<org.codehaus.jackson.util.InternCache: java.lang.String intern(java.lang.String)>($r3);
+
+     label09:
+        $r4 = r0.<org.codehaus.jackson.sym.CharsToNameCanonicalizer: java.lang.String[] _symbols>;
+
+        $r7 = $r4[$i2];
+
+        if $r7 != null goto label12;
+
+        $r4 = r0.<org.codehaus.jackson.sym.CharsToNameCanonicalizer: java.lang.String[] _symbols>;
+
+        $r4[$i2] = $r3;
+
+     label10:
+        return $r3;
+
+     label11:
+        $i3 = r0.<org.codehaus.jackson.sym.CharsToNameCanonicalizer: int _size>;
+
+        $i5 = r0.<org.codehaus.jackson.sym.CharsToNameCanonicalizer: int _sizeThreshold>;
+
+        if $i3 < $i5 goto label08;
+
+        specialinvoke r0.<org.codehaus.jackson.sym.CharsToNameCanonicalizer: void rehash()>();
+
+        $i2 = staticinvoke <org.codehaus.jackson.sym.CharsToNameCanonicalizer: int calcHash(char[],int,int)>($r1, $i0, $i1);
+
+        $i3 = r0.<org.codehaus.jackson.sym.CharsToNameCanonicalizer: int _indexMask>;
+
+        $i2 = $i2 & $i3;
+
+        goto label08;
+
+     label12:
+        $i0 = $i2 >> 1;
+
+        $r5 = r0.<org.codehaus.jackson.sym.CharsToNameCanonicalizer: org.codehaus.jackson.sym.CharsToNameCanonicalizer$Bucket[] _buckets>;
+
+        r2 = new org.codehaus.jackson.sym.CharsToNameCanonicalizer$Bucket;
+
+        $r8 = r0.<org.codehaus.jackson.sym.CharsToNameCanonicalizer: org.codehaus.jackson.sym.CharsToNameCanonicalizer$Bucket[] _buckets>;
+
+        $r9 = $r8[$i0];
+
+        specialinvoke r2.<org.codehaus.jackson.sym.CharsToNameCanonicalizer$Bucket: void <init>(java.lang.String,org.codehaus.jackson.sym.CharsToNameCanonicalizer$Bucket)>($r3, $r9);
+
+        $r5[$i0] = r2;
+
+        goto label10;
+    }
+
+    public org.codehaus.jackson.sym.CharsToNameCanonicalizer makeChild(boolean, boolean)
+    {
+        org.codehaus.jackson.sym.CharsToNameCanonicalizer r0, $r3;
+        boolean $z0, $z1;
+        java.lang.String[] $r1;
+        org.codehaus.jackson.sym.CharsToNameCanonicalizer$Bucket[] $r2;
+        int $i0;
+        java.lang.Throwable $r4;
+
+        r0 := @this: org.codehaus.jackson.sym.CharsToNameCanonicalizer;
+
+        $z0 := @parameter0: boolean;
+
+        $z1 := @parameter1: boolean;
+
+        entermonitor r0;
+
+     label1:
+        $r3 = new org.codehaus.jackson.sym.CharsToNameCanonicalizer;
+
+        $r1 = r0.<org.codehaus.jackson.sym.CharsToNameCanonicalizer: java.lang.String[] _symbols>;
+
+        $r2 = r0.<org.codehaus.jackson.sym.CharsToNameCanonicalizer: org.codehaus.jackson.sym.CharsToNameCanonicalizer$Bucket[] _buckets>;
+
+        $i0 = r0.<org.codehaus.jackson.sym.CharsToNameCanonicalizer: int _size>;
+
+        specialinvoke $r3.<org.codehaus.jackson.sym.CharsToNameCanonicalizer: void <init>(org.codehaus.jackson.sym.CharsToNameCanonicalizer,boolean,boolean,java.lang.String[],org.codehaus.jackson.sym.CharsToNameCanonicalizer$Bucket[],int)>(r0, $z0, $z1, $r1, $r2, $i0);
+
+     label2:
+        exitmonitor r0;
+
+        return $r3;
+
+     label3:
+        $r4 := @caughtexception;
+
+        exitmonitor r0;
+
+        throw $r4;
+
+        catch java.lang.Throwable from label1 to label2 with label3;
+    }
+
+    public boolean maybeDirty()
+    {
+        org.codehaus.jackson.sym.CharsToNameCanonicalizer r0;
+        boolean z0;
+
+        r0 := @this: org.codehaus.jackson.sym.CharsToNameCanonicalizer;
+
+        z0 = r0.<org.codehaus.jackson.sym.CharsToNameCanonicalizer: boolean _dirty>;
+
+        return z0;
+    }
+
+    public void release()
+    {
+        org.codehaus.jackson.sym.CharsToNameCanonicalizer r0, $r1;
+        boolean $z0;
+
+        r0 := @this: org.codehaus.jackson.sym.CharsToNameCanonicalizer;
+
+        $z0 = virtualinvoke r0.<org.codehaus.jackson.sym.CharsToNameCanonicalizer: boolean maybeDirty()>();
+
+        if $z0 != 0 goto label1;
+
+        return;
+
+     label1:
+        $r1 = r0.<org.codehaus.jackson.sym.CharsToNameCanonicalizer: org.codehaus.jackson.sym.CharsToNameCanonicalizer _parent>;
+
+        if $r1 == null goto label2;
+
+        $r1 = r0.<org.codehaus.jackson.sym.CharsToNameCanonicalizer: org.codehaus.jackson.sym.CharsToNameCanonicalizer _parent>;
+
+        specialinvoke $r1.<org.codehaus.jackson.sym.CharsToNameCanonicalizer: void mergeChild(org.codehaus.jackson.sym.CharsToNameCanonicalizer)>(r0);
+
+        r0.<org.codehaus.jackson.sym.CharsToNameCanonicalizer: boolean _dirty> = 0;
+
+     label2:
+        return;
+    }
+
+    public int size()
+    {
+        org.codehaus.jackson.sym.CharsToNameCanonicalizer r0;
+        int i0;
+
+        r0 := @this: org.codehaus.jackson.sym.CharsToNameCanonicalizer;
+
+        i0 = r0.<org.codehaus.jackson.sym.CharsToNameCanonicalizer: int _size>;
+
+        return i0;
+    }
+}

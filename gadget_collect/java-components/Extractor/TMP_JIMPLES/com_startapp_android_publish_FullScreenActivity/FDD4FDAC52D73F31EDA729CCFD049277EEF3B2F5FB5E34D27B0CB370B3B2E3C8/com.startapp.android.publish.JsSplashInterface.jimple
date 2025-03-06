@@ -1,0 +1,55 @@
+public class com.startapp.android.publish.JsSplashInterface extends java.lang.Object
+{
+    private java.lang.Runnable closeCallback;
+    protected android.content.Context mContext;
+    private boolean processed;
+
+    public void <init>(android.content.Context, java.lang.Runnable)
+    {
+        com.startapp.android.publish.JsSplashInterface r0;
+        android.content.Context $r1;
+        java.lang.Runnable $r2;
+
+        r0 := @this: com.startapp.android.publish.JsSplashInterface;
+
+        $r1 := @parameter0: android.content.Context;
+
+        $r2 := @parameter1: java.lang.Runnable;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        r0.<com.startapp.android.publish.JsSplashInterface: boolean processed> = 0;
+
+        r0.<com.startapp.android.publish.JsSplashInterface: java.lang.Runnable closeCallback> = null;
+
+        r0.<com.startapp.android.publish.JsSplashInterface: java.lang.Runnable closeCallback> = $r2;
+
+        r0.<com.startapp.android.publish.JsSplashInterface: android.content.Context mContext> = $r1;
+
+        return;
+    }
+
+    public void closeSplash()
+    {
+        com.startapp.android.publish.JsSplashInterface r0;
+        boolean $z0;
+        java.lang.Runnable $r1;
+
+        r0 := @this: com.startapp.android.publish.JsSplashInterface;
+
+        $z0 = r0.<com.startapp.android.publish.JsSplashInterface: boolean processed>;
+
+        if $z0 == 0 goto label1;
+
+        return;
+
+     label1:
+        r0.<com.startapp.android.publish.JsSplashInterface: boolean processed> = 1;
+
+        $r1 = r0.<com.startapp.android.publish.JsSplashInterface: java.lang.Runnable closeCallback>;
+
+        interfaceinvoke $r1.<java.lang.Runnable: void run()>();
+
+        return;
+    }
+}

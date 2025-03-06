@@ -1,0 +1,79 @@
+public class com.apperhand.common.dto.protocol.CommandStatusRequest extends com.apperhand.common.dto.protocol.BaseRequest
+{
+    private static final long serialVersionUID;
+    private java.util.List statuses;
+
+    public void <init>()
+    {
+        com.apperhand.common.dto.protocol.CommandStatusRequest r0;
+
+        r0 := @this: com.apperhand.common.dto.protocol.CommandStatusRequest;
+
+        specialinvoke r0.<com.apperhand.common.dto.protocol.BaseRequest: void <init>()>();
+
+        return;
+    }
+
+    public java.util.List getStatuses()
+    {
+        com.apperhand.common.dto.protocol.CommandStatusRequest r0;
+        java.util.List r1;
+
+        r0 := @this: com.apperhand.common.dto.protocol.CommandStatusRequest;
+
+        r1 = r0.<com.apperhand.common.dto.protocol.CommandStatusRequest: java.util.List statuses>;
+
+        return r1;
+    }
+
+    public void setStatuses(java.util.List)
+    {
+        com.apperhand.common.dto.protocol.CommandStatusRequest r0;
+        java.util.List r1;
+
+        r0 := @this: com.apperhand.common.dto.protocol.CommandStatusRequest;
+
+        r1 := @parameter0: java.util.List;
+
+        r0.<com.apperhand.common.dto.protocol.CommandStatusRequest: java.util.List statuses> = r1;
+
+        return;
+    }
+
+    public java.lang.String toString()
+    {
+        com.apperhand.common.dto.protocol.CommandStatusRequest r0;
+        java.lang.StringBuilder $r1;
+        java.util.List $r2;
+        java.lang.String $r3;
+
+        r0 := @this: com.apperhand.common.dto.protocol.CommandStatusRequest;
+
+        $r1 = new java.lang.StringBuilder;
+
+        specialinvoke $r1.<java.lang.StringBuilder: void <init>(java.lang.String)>("CommandStatusRequest [statuses=");
+
+        $r2 = r0.<com.apperhand.common.dto.protocol.CommandStatusRequest: java.util.List statuses>;
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($r2);
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(", toString()=");
+
+        $r3 = specialinvoke r0.<com.apperhand.common.dto.protocol.BaseRequest: java.lang.String toString()>();
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r3);
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("]");
+
+        $r3 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        return $r3;
+    }
+
+    public static void <clinit>()
+    {
+        <com.apperhand.common.dto.protocol.CommandStatusRequest: long serialVersionUID> = 5346676359806508659L;
+
+        return;
+    }
+}

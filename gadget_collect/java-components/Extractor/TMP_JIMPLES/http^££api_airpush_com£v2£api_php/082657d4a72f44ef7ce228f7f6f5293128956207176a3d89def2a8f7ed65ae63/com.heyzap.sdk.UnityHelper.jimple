@@ -1,0 +1,64 @@
+public class com.heyzap.sdk.UnityHelper extends java.lang.Object
+{
+
+    public void <init>()
+    {
+        com.heyzap.sdk.UnityHelper r0;
+
+        r0 := @this: com.heyzap.sdk.UnityHelper;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public static void checkin(java.lang.String)
+    {
+        java.lang.String $r0;
+        android.app.Activity $r1;
+        com.heyzap.sdk.UnityHelper$2 $r2;
+
+        $r0 := @parameter0: java.lang.String;
+
+        $r1 = <com.unity3d.player.UnityPlayer: android.app.Activity currentActivity>;
+
+        $r2 = new com.heyzap.sdk.UnityHelper$2;
+
+        specialinvoke $r2.<com.heyzap.sdk.UnityHelper$2: void <init>(java.lang.String)>($r0);
+
+        virtualinvoke $r1.<android.app.Activity: void runOnUiThread(java.lang.Runnable)>($r2);
+
+        return;
+    }
+
+    public static boolean isSupported()
+    {
+        boolean $z0;
+        android.app.Activity $r0;
+
+        $r0 = <com.unity3d.player.UnityPlayer: android.app.Activity currentActivity>;
+
+        $z0 = staticinvoke <com.heyzap.sdk.HeyzapLib: boolean isSupported(android.content.Context)>($r0);
+
+        return $z0;
+    }
+
+    public static void load(boolean)
+    {
+        boolean $z0;
+        android.app.Activity $r0;
+        com.heyzap.sdk.UnityHelper$1 $r1;
+
+        $z0 := @parameter0: boolean;
+
+        $r0 = <com.unity3d.player.UnityPlayer: android.app.Activity currentActivity>;
+
+        $r1 = new com.heyzap.sdk.UnityHelper$1;
+
+        specialinvoke $r1.<com.heyzap.sdk.UnityHelper$1: void <init>(boolean)>($z0);
+
+        virtualinvoke $r0.<android.app.Activity: void runOnUiThread(java.lang.Runnable)>($r1);
+
+        return;
+    }
+}

@@ -1,0 +1,168 @@
+public final class com.squareup.picasso.RequestHandler$Result extends java.lang.Object
+{
+    private final android.graphics.Bitmap bitmap;
+    private final int exifOrientation;
+    private final com.squareup.picasso.Picasso$LoadedFrom loadedFrom;
+    private final java.io.InputStream stream;
+
+    public void <init>(android.graphics.Bitmap, com.squareup.picasso.Picasso$LoadedFrom)
+    {
+        com.squareup.picasso.RequestHandler$Result r0;
+        android.graphics.Bitmap $r1;
+        com.squareup.picasso.Picasso$LoadedFrom $r2;
+        java.lang.Object $r3;
+
+        r0 := @this: com.squareup.picasso.RequestHandler$Result;
+
+        $r1 := @parameter0: android.graphics.Bitmap;
+
+        $r2 := @parameter1: com.squareup.picasso.Picasso$LoadedFrom;
+
+        $r3 = staticinvoke <com.squareup.picasso.Utils: java.lang.Object checkNotNull(java.lang.Object,java.lang.String)>($r1, "bitmap == null");
+
+        $r1 = (android.graphics.Bitmap) $r3;
+
+        specialinvoke r0.<com.squareup.picasso.RequestHandler$Result: void <init>(android.graphics.Bitmap,java.io.InputStream,com.squareup.picasso.Picasso$LoadedFrom,int)>($r1, null, $r2, 0);
+
+        return;
+    }
+
+    void <init>(android.graphics.Bitmap, java.io.InputStream, com.squareup.picasso.Picasso$LoadedFrom, int)
+    {
+        com.squareup.picasso.RequestHandler$Result r0;
+        android.graphics.Bitmap $r1;
+        java.io.InputStream $r2;
+        com.squareup.picasso.Picasso$LoadedFrom $r3;
+        int $i0, $i3;
+        java.lang.Object $r4;
+        byte $b1, $b2;
+        java.lang.AssertionError $r5;
+
+        r0 := @this: com.squareup.picasso.RequestHandler$Result;
+
+        $r1 := @parameter0: android.graphics.Bitmap;
+
+        $r2 := @parameter1: java.io.InputStream;
+
+        $r3 := @parameter2: com.squareup.picasso.Picasso$LoadedFrom;
+
+        $i0 := @parameter3: int;
+
+        $b1 = 1;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        if $r1 == null goto label3;
+
+        $b2 = 1;
+
+     label1:
+        if $r2 == null goto label4;
+
+     label2:
+        $i3 = $b1 ^ $b2;
+
+        if $i3 != 0 goto label5;
+
+        $r5 = new java.lang.AssertionError;
+
+        specialinvoke $r5.<java.lang.AssertionError: void <init>()>();
+
+        throw $r5;
+
+     label3:
+        $b2 = 0;
+
+        goto label1;
+
+     label4:
+        $b1 = 0;
+
+        goto label2;
+
+     label5:
+        r0.<com.squareup.picasso.RequestHandler$Result: android.graphics.Bitmap bitmap> = $r1;
+
+        r0.<com.squareup.picasso.RequestHandler$Result: java.io.InputStream stream> = $r2;
+
+        $r4 = staticinvoke <com.squareup.picasso.Utils: java.lang.Object checkNotNull(java.lang.Object,java.lang.String)>($r3, "loadedFrom == null");
+
+        $r3 = (com.squareup.picasso.Picasso$LoadedFrom) $r4;
+
+        r0.<com.squareup.picasso.RequestHandler$Result: com.squareup.picasso.Picasso$LoadedFrom loadedFrom> = $r3;
+
+        r0.<com.squareup.picasso.RequestHandler$Result: int exifOrientation> = $i0;
+
+        return;
+    }
+
+    public void <init>(java.io.InputStream, com.squareup.picasso.Picasso$LoadedFrom)
+    {
+        com.squareup.picasso.RequestHandler$Result r0;
+        java.io.InputStream $r1;
+        com.squareup.picasso.Picasso$LoadedFrom $r2;
+        java.lang.Object $r3;
+
+        r0 := @this: com.squareup.picasso.RequestHandler$Result;
+
+        $r1 := @parameter0: java.io.InputStream;
+
+        $r2 := @parameter1: com.squareup.picasso.Picasso$LoadedFrom;
+
+        $r3 = staticinvoke <com.squareup.picasso.Utils: java.lang.Object checkNotNull(java.lang.Object,java.lang.String)>($r1, "stream == null");
+
+        $r1 = (java.io.InputStream) $r3;
+
+        specialinvoke r0.<com.squareup.picasso.RequestHandler$Result: void <init>(android.graphics.Bitmap,java.io.InputStream,com.squareup.picasso.Picasso$LoadedFrom,int)>(null, $r1, $r2, 0);
+
+        return;
+    }
+
+    public final android.graphics.Bitmap getBitmap()
+    {
+        com.squareup.picasso.RequestHandler$Result r0;
+        android.graphics.Bitmap r1;
+
+        r0 := @this: com.squareup.picasso.RequestHandler$Result;
+
+        r1 = r0.<com.squareup.picasso.RequestHandler$Result: android.graphics.Bitmap bitmap>;
+
+        return r1;
+    }
+
+    final int getExifOrientation()
+    {
+        com.squareup.picasso.RequestHandler$Result r0;
+        int i0;
+
+        r0 := @this: com.squareup.picasso.RequestHandler$Result;
+
+        i0 = r0.<com.squareup.picasso.RequestHandler$Result: int exifOrientation>;
+
+        return i0;
+    }
+
+    public final com.squareup.picasso.Picasso$LoadedFrom getLoadedFrom()
+    {
+        com.squareup.picasso.RequestHandler$Result r0;
+        com.squareup.picasso.Picasso$LoadedFrom r1;
+
+        r0 := @this: com.squareup.picasso.RequestHandler$Result;
+
+        r1 = r0.<com.squareup.picasso.RequestHandler$Result: com.squareup.picasso.Picasso$LoadedFrom loadedFrom>;
+
+        return r1;
+    }
+
+    public final java.io.InputStream getStream()
+    {
+        com.squareup.picasso.RequestHandler$Result r0;
+        java.io.InputStream r1;
+
+        r0 := @this: com.squareup.picasso.RequestHandler$Result;
+
+        r1 = r0.<com.squareup.picasso.RequestHandler$Result: java.io.InputStream stream>;
+
+        return r1;
+    }
+}

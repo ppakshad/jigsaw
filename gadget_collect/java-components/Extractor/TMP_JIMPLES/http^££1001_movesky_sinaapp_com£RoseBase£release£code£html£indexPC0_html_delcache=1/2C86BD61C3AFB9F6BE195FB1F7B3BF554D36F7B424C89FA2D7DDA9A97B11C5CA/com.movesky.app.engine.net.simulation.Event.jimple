@@ -1,0 +1,156 @@
+public class com.movesky.app.engine.net.simulation.Event extends java.lang.Object implements java.lang.Comparable
+{
+    public static final int CUSTOM;
+    public static final int IS_HOLD;
+    public static final int IS_ON_BEAT;
+    public static final int IS_SERVER;
+    public static final int SIZE_IN_BYTES;
+    public static final int TAP_DOWN;
+    public static final int TAP_MOVE;
+    public static final int TAP_UP;
+    public int code;
+    public int fineTime;
+    public int flags;
+    public int id;
+    public int type;
+    public float x;
+    public float y;
+
+    public void <init>()
+    {
+        com.movesky.app.engine.net.simulation.Event r0;
+
+        r0 := @this: com.movesky.app.engine.net.simulation.Event;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public int compareTo(com.movesky.app.engine.net.simulation.Event)
+    {
+        com.movesky.app.engine.net.simulation.Event r0, $r1;
+        int $i0, $i1;
+        boolean $z0, $z1;
+
+        r0 := @this: com.movesky.app.engine.net.simulation.Event;
+
+        $r1 := @parameter0: com.movesky.app.engine.net.simulation.Event;
+
+        $i0 = r0.<com.movesky.app.engine.net.simulation.Event: int fineTime>;
+
+        $i1 = $r1.<com.movesky.app.engine.net.simulation.Event: int fineTime>;
+
+        if $i0 <= $i1 goto label01;
+
+        return 1;
+
+     label01:
+        $i0 = r0.<com.movesky.app.engine.net.simulation.Event: int fineTime>;
+
+        $i1 = $r1.<com.movesky.app.engine.net.simulation.Event: int fineTime>;
+
+        if $i0 >= $i1 goto label02;
+
+        return -1;
+
+     label02:
+        $i0 = r0.<com.movesky.app.engine.net.simulation.Event: int id>;
+
+        $i1 = $r1.<com.movesky.app.engine.net.simulation.Event: int id>;
+
+        if $i0 > $i1 goto label10;
+
+        $i0 = r0.<com.movesky.app.engine.net.simulation.Event: int id>;
+
+        $i1 = $r1.<com.movesky.app.engine.net.simulation.Event: int id>;
+
+        if $i0 >= $i1 goto label03;
+
+        return -1;
+
+     label03:
+        $i0 = r0.<com.movesky.app.engine.net.simulation.Event: int flags>;
+
+        $i0 = $i0 & 128;
+
+        if $i0 == 0 goto label07;
+
+        $z0 = 1;
+
+     label04:
+        $i0 = $r1.<com.movesky.app.engine.net.simulation.Event: int flags>;
+
+        $i0 = $i0 & 128;
+
+        if $i0 == 0 goto label08;
+
+        $z1 = 1;
+
+     label05:
+        if $z0 == 0 goto label06;
+
+        if $z1 == 0 goto label10;
+
+     label06:
+        if $z0 != 0 goto label09;
+
+        if $z1 == 0 goto label09;
+
+        return -1;
+
+     label07:
+        $z0 = 0;
+
+        goto label04;
+
+     label08:
+        $z1 = 0;
+
+        goto label05;
+
+     label09:
+        return 0;
+
+     label10:
+        return 1;
+    }
+
+    public volatile int compareTo(java.lang.Object)
+    {
+        com.movesky.app.engine.net.simulation.Event r0, $r2;
+        int $i0;
+        java.lang.Object $r1;
+
+        r0 := @this: com.movesky.app.engine.net.simulation.Event;
+
+        $r1 := @parameter0: java.lang.Object;
+
+        $r2 = (com.movesky.app.engine.net.simulation.Event) $r1;
+
+        $i0 = virtualinvoke r0.<com.movesky.app.engine.net.simulation.Event: int compareTo(com.movesky.app.engine.net.simulation.Event)>($r2);
+
+        return $i0;
+    }
+
+    public static void <clinit>()
+    {
+        <com.movesky.app.engine.net.simulation.Event: int TAP_UP> = 2;
+
+        <com.movesky.app.engine.net.simulation.Event: int TAP_MOVE> = 1;
+
+        <com.movesky.app.engine.net.simulation.Event: int TAP_DOWN> = 0;
+
+        <com.movesky.app.engine.net.simulation.Event: int SIZE_IN_BYTES> = 9;
+
+        <com.movesky.app.engine.net.simulation.Event: int IS_SERVER> = 128;
+
+        <com.movesky.app.engine.net.simulation.Event: int IS_ON_BEAT> = 64;
+
+        <com.movesky.app.engine.net.simulation.Event: int IS_HOLD> = 32;
+
+        <com.movesky.app.engine.net.simulation.Event: int CUSTOM> = 3;
+
+        return;
+    }
+}

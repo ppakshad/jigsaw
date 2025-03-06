@@ -1,0 +1,94 @@
+public class org.codehaus.jackson.map.jsontype.impl.AsPropertyTypeSerializer extends org.codehaus.jackson.map.jsontype.impl.AsArrayTypeSerializer
+{
+    protected final java.lang.String _typePropertyName;
+
+    public void <init>(org.codehaus.jackson.map.jsontype.TypeIdResolver, org.codehaus.jackson.map.BeanProperty, java.lang.String)
+    {
+        org.codehaus.jackson.map.jsontype.impl.AsPropertyTypeSerializer r0;
+        org.codehaus.jackson.map.jsontype.TypeIdResolver $r1;
+        org.codehaus.jackson.map.BeanProperty $r2;
+        java.lang.String $r3;
+
+        r0 := @this: org.codehaus.jackson.map.jsontype.impl.AsPropertyTypeSerializer;
+
+        $r1 := @parameter0: org.codehaus.jackson.map.jsontype.TypeIdResolver;
+
+        $r2 := @parameter1: org.codehaus.jackson.map.BeanProperty;
+
+        $r3 := @parameter2: java.lang.String;
+
+        specialinvoke r0.<org.codehaus.jackson.map.jsontype.impl.AsArrayTypeSerializer: void <init>(org.codehaus.jackson.map.jsontype.TypeIdResolver,org.codehaus.jackson.map.BeanProperty)>($r1, $r2);
+
+        r0.<org.codehaus.jackson.map.jsontype.impl.AsPropertyTypeSerializer: java.lang.String _typePropertyName> = $r3;
+
+        return;
+    }
+
+    public java.lang.String getPropertyName()
+    {
+        org.codehaus.jackson.map.jsontype.impl.AsPropertyTypeSerializer r0;
+        java.lang.String r1;
+
+        r0 := @this: org.codehaus.jackson.map.jsontype.impl.AsPropertyTypeSerializer;
+
+        r1 = r0.<org.codehaus.jackson.map.jsontype.impl.AsPropertyTypeSerializer: java.lang.String _typePropertyName>;
+
+        return r1;
+    }
+
+    public org.codehaus.jackson.annotate.JsonTypeInfo$As getTypeInclusion()
+    {
+        org.codehaus.jackson.map.jsontype.impl.AsPropertyTypeSerializer r0;
+        org.codehaus.jackson.annotate.JsonTypeInfo$As r1;
+
+        r0 := @this: org.codehaus.jackson.map.jsontype.impl.AsPropertyTypeSerializer;
+
+        r1 = <org.codehaus.jackson.annotate.JsonTypeInfo$As: org.codehaus.jackson.annotate.JsonTypeInfo$As PROPERTY>;
+
+        return r1;
+    }
+
+    public void writeTypePrefixForObject(java.lang.Object, org.codehaus.jackson.JsonGenerator) throws java.io.IOException, org.codehaus.jackson.JsonProcessingException
+    {
+        org.codehaus.jackson.map.jsontype.impl.AsPropertyTypeSerializer r0;
+        java.lang.Object $r1;
+        org.codehaus.jackson.JsonGenerator $r2;
+        java.lang.String $r3, $r4;
+        org.codehaus.jackson.map.jsontype.TypeIdResolver $r5;
+
+        r0 := @this: org.codehaus.jackson.map.jsontype.impl.AsPropertyTypeSerializer;
+
+        $r1 := @parameter0: java.lang.Object;
+
+        $r2 := @parameter1: org.codehaus.jackson.JsonGenerator;
+
+        virtualinvoke $r2.<org.codehaus.jackson.JsonGenerator: void writeStartObject()>();
+
+        $r3 = r0.<org.codehaus.jackson.map.jsontype.impl.AsPropertyTypeSerializer: java.lang.String _typePropertyName>;
+
+        $r5 = r0.<org.codehaus.jackson.map.jsontype.impl.AsPropertyTypeSerializer: org.codehaus.jackson.map.jsontype.TypeIdResolver _idResolver>;
+
+        $r4 = interfaceinvoke $r5.<org.codehaus.jackson.map.jsontype.TypeIdResolver: java.lang.String idFromValue(java.lang.Object)>($r1);
+
+        virtualinvoke $r2.<org.codehaus.jackson.JsonGenerator: void writeStringField(java.lang.String,java.lang.String)>($r3, $r4);
+
+        return;
+    }
+
+    public void writeTypeSuffixForObject(java.lang.Object, org.codehaus.jackson.JsonGenerator) throws java.io.IOException, org.codehaus.jackson.JsonProcessingException
+    {
+        org.codehaus.jackson.map.jsontype.impl.AsPropertyTypeSerializer r0;
+        java.lang.Object $r1;
+        org.codehaus.jackson.JsonGenerator $r2;
+
+        r0 := @this: org.codehaus.jackson.map.jsontype.impl.AsPropertyTypeSerializer;
+
+        $r1 := @parameter0: java.lang.Object;
+
+        $r2 := @parameter1: org.codehaus.jackson.JsonGenerator;
+
+        virtualinvoke $r2.<org.codehaus.jackson.JsonGenerator: void writeEndObject()>();
+
+        return;
+    }
+}

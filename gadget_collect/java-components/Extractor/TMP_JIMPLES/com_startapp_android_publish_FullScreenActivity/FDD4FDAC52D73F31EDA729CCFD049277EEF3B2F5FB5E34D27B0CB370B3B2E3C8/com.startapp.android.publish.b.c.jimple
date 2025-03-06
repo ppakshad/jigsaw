@@ -1,0 +1,769 @@
+public class com.startapp.android.publish.b.c extends java.lang.Object implements java.io.Serializable
+{
+    private static final long serialVersionUID;
+    private java.lang.String advertiserId;
+    private java.util.Set categories;
+    private java.util.Set categoriesExclude;
+    private java.lang.String country;
+    private boolean forceFullpage;
+    private boolean forceOfferWall2D;
+    private boolean forceOfferWall3D;
+    private boolean forceOverlay;
+    private java.util.Set participants;
+    private com.startapp.android.publish.model.AdPreferences$Placement placement;
+    private com.startapp.android.publish.model.SodaPreferences$SocialContext socialContext;
+    private java.lang.String template;
+    private boolean testMode;
+    private com.startapp.android.publish.Ad$AdType type;
+
+    public void <init>(com.startapp.android.publish.model.AdPreferences$Placement, com.startapp.android.publish.model.AdPreferences, com.startapp.android.publish.model.SodaPreferences)
+    {
+        com.startapp.android.publish.b.c r0;
+        com.startapp.android.publish.model.AdPreferences$Placement $r1;
+        com.startapp.android.publish.model.AdPreferences $r2;
+        com.startapp.android.publish.model.SodaPreferences $r3;
+        java.util.Set $r4;
+        boolean $z0;
+        java.lang.String $r5;
+        com.startapp.android.publish.Ad$AdType $r6;
+        com.startapp.android.publish.model.SodaPreferences$SocialContext $r7;
+
+        r0 := @this: com.startapp.android.publish.b.c;
+
+        $r1 := @parameter0: com.startapp.android.publish.model.AdPreferences$Placement;
+
+        $r2 := @parameter1: com.startapp.android.publish.model.AdPreferences;
+
+        $r3 := @parameter2: com.startapp.android.publish.model.SodaPreferences;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        r0.<com.startapp.android.publish.b.c: boolean forceOfferWall3D> = 0;
+
+        r0.<com.startapp.android.publish.b.c: boolean forceOfferWall2D> = 0;
+
+        r0.<com.startapp.android.publish.b.c: boolean forceFullpage> = 0;
+
+        r0.<com.startapp.android.publish.b.c: boolean forceOverlay> = 0;
+
+        r0.<com.startapp.android.publish.b.c: boolean testMode> = 0;
+
+        r0.<com.startapp.android.publish.b.c: java.lang.String country> = null;
+
+        r0.<com.startapp.android.publish.b.c: java.lang.String advertiserId> = null;
+
+        r0.<com.startapp.android.publish.b.c: java.lang.String template> = null;
+
+        r0.<com.startapp.android.publish.b.c: com.startapp.android.publish.Ad$AdType type> = null;
+
+        r0.<com.startapp.android.publish.b.c: com.startapp.android.publish.model.AdPreferences$Placement placement> = $r1;
+
+        $r4 = virtualinvoke $r2.<com.startapp.android.publish.model.AdPreferences: java.util.Set getCategories()>();
+
+        r0.<com.startapp.android.publish.b.c: java.util.Set categories> = $r4;
+
+        $r4 = virtualinvoke $r2.<com.startapp.android.publish.model.AdPreferences: java.util.Set getCategoriesExclude()>();
+
+        r0.<com.startapp.android.publish.b.c: java.util.Set categoriesExclude> = $r4;
+
+        $z0 = staticinvoke <com.startapp.android.publish.i.x: boolean a(com.startapp.android.publish.model.AdPreferences,java.lang.String)>($r2, "forceOfferWall3D");
+
+        r0.<com.startapp.android.publish.b.c: boolean forceOfferWall3D> = $z0;
+
+        $z0 = staticinvoke <com.startapp.android.publish.i.x: boolean a(com.startapp.android.publish.model.AdPreferences,java.lang.String)>($r2, "forceOfferWall2D");
+
+        r0.<com.startapp.android.publish.b.c: boolean forceOfferWall2D> = $z0;
+
+        $z0 = staticinvoke <com.startapp.android.publish.i.x: boolean a(com.startapp.android.publish.model.AdPreferences,java.lang.String)>($r2, "forceFullpage");
+
+        r0.<com.startapp.android.publish.b.c: boolean forceFullpage> = $z0;
+
+        $z0 = staticinvoke <com.startapp.android.publish.i.x: boolean a(com.startapp.android.publish.model.AdPreferences,java.lang.String)>($r2, "forceOverlay");
+
+        r0.<com.startapp.android.publish.b.c: boolean forceOverlay> = $z0;
+
+        $z0 = staticinvoke <com.startapp.android.publish.i.x: boolean a(com.startapp.android.publish.model.AdPreferences,java.lang.String)>($r2, "testMode");
+
+        r0.<com.startapp.android.publish.b.c: boolean testMode> = $z0;
+
+        $r5 = staticinvoke <com.startapp.android.publish.i.x: java.lang.String b(com.startapp.android.publish.model.AdPreferences,java.lang.String)>($r2, "country");
+
+        r0.<com.startapp.android.publish.b.c: java.lang.String country> = $r5;
+
+        $r5 = staticinvoke <com.startapp.android.publish.i.x: java.lang.String b(com.startapp.android.publish.model.AdPreferences,java.lang.String)>($r2, "advertiserId");
+
+        r0.<com.startapp.android.publish.b.c: java.lang.String advertiserId> = $r5;
+
+        $r5 = staticinvoke <com.startapp.android.publish.i.x: java.lang.String b(com.startapp.android.publish.model.AdPreferences,java.lang.String)>($r2, "template");
+
+        r0.<com.startapp.android.publish.b.c: java.lang.String template> = $r5;
+
+        $r6 = staticinvoke <com.startapp.android.publish.i.x: com.startapp.android.publish.Ad$AdType c(com.startapp.android.publish.model.AdPreferences,java.lang.String)>($r2, "type");
+
+        r0.<com.startapp.android.publish.b.c: com.startapp.android.publish.Ad$AdType type> = $r6;
+
+        $r7 = virtualinvoke $r3.<com.startapp.android.publish.model.SodaPreferences: com.startapp.android.publish.model.SodaPreferences$SocialContext getSocialContext()>();
+
+        r0.<com.startapp.android.publish.b.c: com.startapp.android.publish.model.SodaPreferences$SocialContext socialContext> = $r7;
+
+        $r4 = virtualinvoke $r3.<com.startapp.android.publish.model.SodaPreferences: java.util.Set getParticipants()>();
+
+        r0.<com.startapp.android.publish.b.c: java.util.Set participants> = $r4;
+
+        return;
+    }
+
+    public com.startapp.android.publish.model.AdPreferences$Placement a()
+    {
+        com.startapp.android.publish.b.c r0;
+        com.startapp.android.publish.model.AdPreferences$Placement r1;
+
+        r0 := @this: com.startapp.android.publish.b.c;
+
+        r1 = r0.<com.startapp.android.publish.b.c: com.startapp.android.publish.model.AdPreferences$Placement placement>;
+
+        return r1;
+    }
+
+    public boolean equals(java.lang.Object)
+    {
+        com.startapp.android.publish.b.c r0, r4;
+        java.lang.Object r1;
+        java.lang.Class $r2, $r3;
+        java.lang.String $r5, $r6;
+        boolean $z0, $z1;
+        java.util.Set $r7, $r8;
+        com.startapp.android.publish.model.AdPreferences$Placement $r9, $r10;
+        com.startapp.android.publish.Ad$AdType $r11, $r12;
+        com.startapp.android.publish.model.SodaPreferences$SocialContext $r13, $r14;
+
+        r0 := @this: com.startapp.android.publish.b.c;
+
+        r1 := @parameter0: java.lang.Object;
+
+        if r0 != r1 goto label01;
+
+        return 1;
+
+     label01:
+        if r1 != null goto label02;
+
+        return 0;
+
+     label02:
+        $r2 = virtualinvoke r0.<java.lang.Object: java.lang.Class getClass()>();
+
+        $r3 = virtualinvoke r1.<java.lang.Object: java.lang.Class getClass()>();
+
+        if $r2 == $r3 goto label03;
+
+        return 0;
+
+     label03:
+        r4 = (com.startapp.android.publish.b.c) r1;
+
+        $r5 = r0.<com.startapp.android.publish.b.c: java.lang.String advertiserId>;
+
+        if $r5 != null goto label04;
+
+        $r5 = r4.<com.startapp.android.publish.b.c: java.lang.String advertiserId>;
+
+        if $r5 == null goto label05;
+
+        return 0;
+
+     label04:
+        $r5 = r0.<com.startapp.android.publish.b.c: java.lang.String advertiserId>;
+
+        $r6 = r4.<com.startapp.android.publish.b.c: java.lang.String advertiserId>;
+
+        $z0 = virtualinvoke $r5.<java.lang.String: boolean equals(java.lang.Object)>($r6);
+
+        if $z0 != 0 goto label05;
+
+        return 0;
+
+     label05:
+        $r7 = r0.<com.startapp.android.publish.b.c: java.util.Set categories>;
+
+        if $r7 != null goto label06;
+
+        $r7 = r4.<com.startapp.android.publish.b.c: java.util.Set categories>;
+
+        if $r7 == null goto label07;
+
+        return 0;
+
+     label06:
+        $r7 = r0.<com.startapp.android.publish.b.c: java.util.Set categories>;
+
+        $r8 = r4.<com.startapp.android.publish.b.c: java.util.Set categories>;
+
+        $z0 = interfaceinvoke $r7.<java.util.Set: boolean equals(java.lang.Object)>($r8);
+
+        if $z0 != 0 goto label07;
+
+        return 0;
+
+     label07:
+        $r7 = r0.<com.startapp.android.publish.b.c: java.util.Set categoriesExclude>;
+
+        if $r7 != null goto label08;
+
+        $r7 = r4.<com.startapp.android.publish.b.c: java.util.Set categoriesExclude>;
+
+        if $r7 == null goto label09;
+
+        return 0;
+
+     label08:
+        $r7 = r0.<com.startapp.android.publish.b.c: java.util.Set categoriesExclude>;
+
+        $r8 = r4.<com.startapp.android.publish.b.c: java.util.Set categoriesExclude>;
+
+        $z0 = interfaceinvoke $r7.<java.util.Set: boolean equals(java.lang.Object)>($r8);
+
+        if $z0 != 0 goto label09;
+
+        return 0;
+
+     label09:
+        $r5 = r0.<com.startapp.android.publish.b.c: java.lang.String country>;
+
+        if $r5 != null goto label10;
+
+        $r5 = r4.<com.startapp.android.publish.b.c: java.lang.String country>;
+
+        if $r5 == null goto label11;
+
+        return 0;
+
+     label10:
+        $r5 = r0.<com.startapp.android.publish.b.c: java.lang.String country>;
+
+        $r6 = r4.<com.startapp.android.publish.b.c: java.lang.String country>;
+
+        $z0 = virtualinvoke $r5.<java.lang.String: boolean equals(java.lang.Object)>($r6);
+
+        if $z0 != 0 goto label11;
+
+        return 0;
+
+     label11:
+        $z0 = r0.<com.startapp.android.publish.b.c: boolean forceFullpage>;
+
+        $z1 = r4.<com.startapp.android.publish.b.c: boolean forceFullpage>;
+
+        if $z0 == $z1 goto label12;
+
+        return 0;
+
+     label12:
+        $z0 = r0.<com.startapp.android.publish.b.c: boolean forceOfferWall2D>;
+
+        $z1 = r4.<com.startapp.android.publish.b.c: boolean forceOfferWall2D>;
+
+        if $z0 == $z1 goto label13;
+
+        return 0;
+
+     label13:
+        $z0 = r0.<com.startapp.android.publish.b.c: boolean forceOfferWall3D>;
+
+        $z1 = r4.<com.startapp.android.publish.b.c: boolean forceOfferWall3D>;
+
+        if $z0 == $z1 goto label14;
+
+        return 0;
+
+     label14:
+        $z0 = r0.<com.startapp.android.publish.b.c: boolean forceOverlay>;
+
+        $z1 = r4.<com.startapp.android.publish.b.c: boolean forceOverlay>;
+
+        if $z0 == $z1 goto label15;
+
+        return 0;
+
+     label15:
+        $r9 = r0.<com.startapp.android.publish.b.c: com.startapp.android.publish.model.AdPreferences$Placement placement>;
+
+        $r10 = r4.<com.startapp.android.publish.b.c: com.startapp.android.publish.model.AdPreferences$Placement placement>;
+
+        if $r9 == $r10 goto label16;
+
+        return 0;
+
+     label16:
+        $r5 = r0.<com.startapp.android.publish.b.c: java.lang.String template>;
+
+        if $r5 != null goto label17;
+
+        $r5 = r4.<com.startapp.android.publish.b.c: java.lang.String template>;
+
+        if $r5 == null goto label18;
+
+        return 0;
+
+     label17:
+        $r5 = r0.<com.startapp.android.publish.b.c: java.lang.String template>;
+
+        $r6 = r4.<com.startapp.android.publish.b.c: java.lang.String template>;
+
+        $z0 = virtualinvoke $r5.<java.lang.String: boolean equals(java.lang.Object)>($r6);
+
+        if $z0 != 0 goto label18;
+
+        return 0;
+
+     label18:
+        $z0 = r0.<com.startapp.android.publish.b.c: boolean testMode>;
+
+        $z1 = r4.<com.startapp.android.publish.b.c: boolean testMode>;
+
+        if $z0 == $z1 goto label19;
+
+        return 0;
+
+     label19:
+        $r11 = r0.<com.startapp.android.publish.b.c: com.startapp.android.publish.Ad$AdType type>;
+
+        if $r11 != null goto label20;
+
+        $r11 = r4.<com.startapp.android.publish.b.c: com.startapp.android.publish.Ad$AdType type>;
+
+        if $r11 == null goto label21;
+
+        return 0;
+
+     label20:
+        $r11 = r0.<com.startapp.android.publish.b.c: com.startapp.android.publish.Ad$AdType type>;
+
+        $r12 = r4.<com.startapp.android.publish.b.c: com.startapp.android.publish.Ad$AdType type>;
+
+        $z0 = virtualinvoke $r11.<com.startapp.android.publish.Ad$AdType: boolean equals(java.lang.Object)>($r12);
+
+        if $z0 != 0 goto label21;
+
+        return 0;
+
+     label21:
+        $r13 = r0.<com.startapp.android.publish.b.c: com.startapp.android.publish.model.SodaPreferences$SocialContext socialContext>;
+
+        if $r13 != null goto label22;
+
+        $r13 = r4.<com.startapp.android.publish.b.c: com.startapp.android.publish.model.SodaPreferences$SocialContext socialContext>;
+
+        if $r13 == null goto label23;
+
+        return 0;
+
+     label22:
+        $r13 = r0.<com.startapp.android.publish.b.c: com.startapp.android.publish.model.SodaPreferences$SocialContext socialContext>;
+
+        $r14 = r4.<com.startapp.android.publish.b.c: com.startapp.android.publish.model.SodaPreferences$SocialContext socialContext>;
+
+        $z0 = virtualinvoke $r13.<com.startapp.android.publish.model.SodaPreferences$SocialContext: boolean equals(java.lang.Object)>($r14);
+
+        if $z0 != 0 goto label23;
+
+        return 0;
+
+     label23:
+        $r7 = r0.<com.startapp.android.publish.b.c: java.util.Set participants>;
+
+        if $r7 != null goto label24;
+
+        $r7 = r4.<com.startapp.android.publish.b.c: java.util.Set participants>;
+
+        if $r7 == null goto label25;
+
+        return 0;
+
+     label24:
+        $r7 = r0.<com.startapp.android.publish.b.c: java.util.Set participants>;
+
+        $r8 = r4.<com.startapp.android.publish.b.c: java.util.Set participants>;
+
+        $z0 = interfaceinvoke $r7.<java.util.Set: boolean equals(java.lang.Object)>($r8);
+
+        if $z0 != 0 goto label25;
+
+        return 0;
+
+     label25:
+        return 1;
+    }
+
+    public int hashCode()
+    {
+        com.startapp.android.publish.b.c r0;
+        short $s0, $s4;
+        int $i1, $i2, $i3;
+        java.lang.String $r1;
+        java.util.Set $r2;
+        boolean $z0;
+        com.startapp.android.publish.model.AdPreferences$Placement $r3;
+        com.startapp.android.publish.model.SodaPreferences$SocialContext $r4;
+        com.startapp.android.publish.Ad$AdType $r5;
+
+        r0 := @this: com.startapp.android.publish.b.c;
+
+        $s0 = 1231;
+
+        $i1 = 0;
+
+        $r1 = r0.<com.startapp.android.publish.b.c: java.lang.String advertiserId>;
+
+        if $r1 != null goto label15;
+
+        $i2 = 0;
+
+     label01:
+        $i2 = $i2 + 31;
+
+        $i2 = $i2 * 31;
+
+        $r2 = r0.<com.startapp.android.publish.b.c: java.util.Set categories>;
+
+        if $r2 != null goto label16;
+
+        $i3 = 0;
+
+     label02:
+        $i2 = $i3 + $i2;
+
+        $i2 = $i2 * 31;
+
+        $r2 = r0.<com.startapp.android.publish.b.c: java.util.Set categoriesExclude>;
+
+        if $r2 != null goto label17;
+
+        $i3 = 0;
+
+     label03:
+        $i2 = $i3 + $i2;
+
+        $i2 = $i2 * 31;
+
+        $r1 = r0.<com.startapp.android.publish.b.c: java.lang.String country>;
+
+        if $r1 != null goto label18;
+
+        $i3 = 0;
+
+     label04:
+        $i2 = $i3 + $i2;
+
+        $i2 = $i2 * 31;
+
+        $z0 = r0.<com.startapp.android.publish.b.c: boolean forceFullpage>;
+
+        if $z0 == 0 goto label19;
+
+        $s4 = 1231;
+
+     label05:
+        $i2 = $s4 + $i2;
+
+        $i2 = $i2 * 31;
+
+        $z0 = r0.<com.startapp.android.publish.b.c: boolean forceOfferWall2D>;
+
+        if $z0 == 0 goto label20;
+
+        $s4 = 1231;
+
+     label06:
+        $i2 = $s4 + $i2;
+
+        $i2 = $i2 * 31;
+
+        $z0 = r0.<com.startapp.android.publish.b.c: boolean forceOfferWall3D>;
+
+        if $z0 == 0 goto label21;
+
+        $s4 = 1231;
+
+     label07:
+        $i2 = $s4 + $i2;
+
+        $i2 = $i2 * 31;
+
+        $z0 = r0.<com.startapp.android.publish.b.c: boolean forceOverlay>;
+
+        if $z0 == 0 goto label22;
+
+        $s4 = 1231;
+
+     label08:
+        $i2 = $s4 + $i2;
+
+        $i2 = $i2 * 31;
+
+        $r2 = r0.<com.startapp.android.publish.b.c: java.util.Set participants>;
+
+        if $r2 != null goto label23;
+
+        $i3 = 0;
+
+     label09:
+        $i2 = $i3 + $i2;
+
+        $i2 = $i2 * 31;
+
+        $r3 = r0.<com.startapp.android.publish.b.c: com.startapp.android.publish.model.AdPreferences$Placement placement>;
+
+        if $r3 != null goto label24;
+
+        $i3 = 0;
+
+     label10:
+        $i2 = $i3 + $i2;
+
+        $i2 = $i2 * 31;
+
+        $r4 = r0.<com.startapp.android.publish.b.c: com.startapp.android.publish.model.SodaPreferences$SocialContext socialContext>;
+
+        if $r4 != null goto label25;
+
+        $i3 = 0;
+
+     label11:
+        $i2 = $i3 + $i2;
+
+        $i2 = $i2 * 31;
+
+        $r1 = r0.<com.startapp.android.publish.b.c: java.lang.String template>;
+
+        if $r1 != null goto label26;
+
+        $i3 = 0;
+
+     label12:
+        $i2 = $i3 + $i2;
+
+        $i2 = $i2 * 31;
+
+        $z0 = r0.<com.startapp.android.publish.b.c: boolean testMode>;
+
+        if $z0 == 0 goto label27;
+
+     label13:
+        $i2 = $i2 + $s0;
+
+        $i2 = $i2 * 31;
+
+        $r5 = r0.<com.startapp.android.publish.b.c: com.startapp.android.publish.Ad$AdType type>;
+
+        if $r5 != null goto label28;
+
+     label14:
+        $i1 = $i2 + $i1;
+
+        return $i1;
+
+     label15:
+        $r1 = r0.<com.startapp.android.publish.b.c: java.lang.String advertiserId>;
+
+        $i2 = virtualinvoke $r1.<java.lang.String: int hashCode()>();
+
+        goto label01;
+
+     label16:
+        $r2 = r0.<com.startapp.android.publish.b.c: java.util.Set categories>;
+
+        $i3 = interfaceinvoke $r2.<java.util.Set: int hashCode()>();
+
+        goto label02;
+
+     label17:
+        $r2 = r0.<com.startapp.android.publish.b.c: java.util.Set categoriesExclude>;
+
+        $i3 = interfaceinvoke $r2.<java.util.Set: int hashCode()>();
+
+        goto label03;
+
+     label18:
+        $r1 = r0.<com.startapp.android.publish.b.c: java.lang.String country>;
+
+        $i3 = virtualinvoke $r1.<java.lang.String: int hashCode()>();
+
+        goto label04;
+
+     label19:
+        $s4 = 1237;
+
+        goto label05;
+
+     label20:
+        $s4 = 1237;
+
+        goto label06;
+
+     label21:
+        $s4 = 1237;
+
+        goto label07;
+
+     label22:
+        $s4 = 1237;
+
+        goto label08;
+
+     label23:
+        $r2 = r0.<com.startapp.android.publish.b.c: java.util.Set participants>;
+
+        $i3 = interfaceinvoke $r2.<java.util.Set: int hashCode()>();
+
+        goto label09;
+
+     label24:
+        $r3 = r0.<com.startapp.android.publish.b.c: com.startapp.android.publish.model.AdPreferences$Placement placement>;
+
+        $i3 = virtualinvoke $r3.<com.startapp.android.publish.model.AdPreferences$Placement: int hashCode()>();
+
+        goto label10;
+
+     label25:
+        $r4 = r0.<com.startapp.android.publish.b.c: com.startapp.android.publish.model.SodaPreferences$SocialContext socialContext>;
+
+        $i3 = virtualinvoke $r4.<com.startapp.android.publish.model.SodaPreferences$SocialContext: int hashCode()>();
+
+        goto label11;
+
+     label26:
+        $r1 = r0.<com.startapp.android.publish.b.c: java.lang.String template>;
+
+        $i3 = virtualinvoke $r1.<java.lang.String: int hashCode()>();
+
+        goto label12;
+
+     label27:
+        $s0 = 1237;
+
+        goto label13;
+
+     label28:
+        $r5 = r0.<com.startapp.android.publish.b.c: com.startapp.android.publish.Ad$AdType type>;
+
+        $i1 = virtualinvoke $r5.<com.startapp.android.publish.Ad$AdType: int hashCode()>();
+
+        goto label14;
+    }
+
+    public java.lang.String toString()
+    {
+        com.startapp.android.publish.b.c r0;
+        java.lang.StringBuilder $r1;
+        com.startapp.android.publish.model.AdPreferences$Placement $r2;
+        java.util.Set $r3;
+        boolean $z0;
+        java.lang.String $r4;
+        com.startapp.android.publish.Ad$AdType $r5;
+        com.startapp.android.publish.model.SodaPreferences$SocialContext $r6;
+
+        r0 := @this: com.startapp.android.publish.b.c;
+
+        $r1 = new java.lang.StringBuilder;
+
+        specialinvoke $r1.<java.lang.StringBuilder: void <init>()>();
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("CacheKey [placement=");
+
+        $r2 = r0.<com.startapp.android.publish.b.c: com.startapp.android.publish.model.AdPreferences$Placement placement>;
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($r2);
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(", categories=");
+
+        $r3 = r0.<com.startapp.android.publish.b.c: java.util.Set categories>;
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($r3);
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(", categoriesExclude=");
+
+        $r3 = r0.<com.startapp.android.publish.b.c: java.util.Set categoriesExclude>;
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($r3);
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(", forceOfferWall3D=");
+
+        $z0 = r0.<com.startapp.android.publish.b.c: boolean forceOfferWall3D>;
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(boolean)>($z0);
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(", forceOfferWall2D=");
+
+        $z0 = r0.<com.startapp.android.publish.b.c: boolean forceOfferWall2D>;
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(boolean)>($z0);
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(", forceFullpage=");
+
+        $z0 = r0.<com.startapp.android.publish.b.c: boolean forceFullpage>;
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(boolean)>($z0);
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(", forceOverlay=");
+
+        $z0 = r0.<com.startapp.android.publish.b.c: boolean forceOverlay>;
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(boolean)>($z0);
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(", testMode=");
+
+        $z0 = r0.<com.startapp.android.publish.b.c: boolean testMode>;
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(boolean)>($z0);
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(", country=");
+
+        $r4 = r0.<com.startapp.android.publish.b.c: java.lang.String country>;
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r4);
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(", advertiserId=");
+
+        $r4 = r0.<com.startapp.android.publish.b.c: java.lang.String advertiserId>;
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r4);
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(", template=");
+
+        $r4 = r0.<com.startapp.android.publish.b.c: java.lang.String template>;
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r4);
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(", type=");
+
+        $r5 = r0.<com.startapp.android.publish.b.c: com.startapp.android.publish.Ad$AdType type>;
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($r5);
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(", socialContext=");
+
+        $r6 = r0.<com.startapp.android.publish.b.c: com.startapp.android.publish.model.SodaPreferences$SocialContext socialContext>;
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($r6);
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(", participants=");
+
+        $r3 = r0.<com.startapp.android.publish.b.c: java.util.Set participants>;
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($r3);
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("]");
+
+        $r4 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        return $r4;
+    }
+
+    public static void <clinit>()
+    {
+        <com.startapp.android.publish.b.c: long serialVersionUID> = 1L;
+
+        return;
+    }
+}

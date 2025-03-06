@@ -1,0 +1,2003 @@
+public class com.airpush.android.PushAds extends android.app.Activity implements android.view.View$OnClickListener
+{
+    private static android.content.Context context;
+    private static org.apache.http.HttpEntity entity;
+    private static org.apache.http.impl.client.DefaultHttpClient httpClient;
+    private static org.apache.http.params.BasicHttpParams httpParameters;
+    private static org.apache.http.client.methods.HttpPost httpPost;
+    private static org.apache.http.message.BasicHttpResponse httpResponse;
+    private static java.lang.String size;
+    private static int timeoutConnection;
+    private static int timeoutSocket;
+    private static java.lang.String url;
+    private static java.util.List values;
+    private java.lang.String action;
+    private android.view.View$OnClickListener adOnClickListener;
+    private java.lang.String adSize;
+    private java.lang.String adType;
+    private java.lang.String apikey;
+    private java.lang.String appId;
+    private android.graphics.drawable.BitmapDrawable bd;
+    private int btn1Height;
+    private float btn1Padding;
+    private int btn2Height;
+    private float btn2Padding;
+    private int buttonMargin;
+    private java.lang.String campId;
+    private java.lang.String campaignId;
+    private java.lang.String clickUrl;
+    private java.lang.String creativeId;
+    private int h;
+    private java.lang.String header;
+    private int icon;
+    private float imagePadding;
+    private java.lang.String imageUrl;
+    private android.content.Intent intent;
+    private boolean more;
+    private java.lang.String moreButtonColor;
+    private java.lang.String moreButtonText;
+    private java.lang.String moreButtonTextColor;
+    private java.lang.String moreInfoClickUrl;
+    private android.view.View$OnClickListener moreOnClickListener;
+    private java.lang.String phoneNumber;
+    private java.lang.Runnable postData;
+    private org.apache.http.HttpEntity response;
+    private java.lang.Runnable sendAdValues_Task;
+    private java.lang.Runnable sendImpression_Task;
+    private boolean showAd;
+    private boolean showDialog;
+    private boolean showInterstitialtestAd;
+    private java.lang.String skipButtonColor;
+    private java.lang.String skipButtonText;
+    private java.lang.String skipButtonTextColor;
+    private android.view.View$OnClickListener skipOnClickListener;
+    private java.lang.String smsText;
+    private java.lang.String smsToNumber;
+    private boolean test;
+    private int textSize;
+    java.lang.String url2;
+    private int w;
+
+    static void <clinit>()
+    {
+        <com.airpush.android.PushAds: java.lang.String url> = null;
+
+        <com.airpush.android.PushAds: java.util.List values> = null;
+
+        <com.airpush.android.PushAds: java.lang.String size> = "1";
+
+        return;
+    }
+
+    public void <init>()
+    {
+        com.airpush.android.PushAds r0;
+        com.airpush.android.PushAds$1 $r1;
+        com.airpush.android.PushAds$2 $r2;
+        com.airpush.android.PushAds$3 $r3;
+        com.airpush.android.PushAds$4 $r4;
+        com.airpush.android.PushAds$5 $r5;
+        com.airpush.android.PushAds$6 $r6;
+
+        r0 := @this: com.airpush.android.PushAds;
+
+        specialinvoke r0.<android.app.Activity: void <init>()>();
+
+        r0.<com.airpush.android.PushAds: java.lang.String campId> = null;
+
+        r0.<com.airpush.android.PushAds: java.lang.String creativeId> = null;
+
+        r0.<com.airpush.android.PushAds: java.lang.String appId> = null;
+
+        r0.<com.airpush.android.PushAds: java.lang.String url2> = "http://api.airpush.com/api.php";
+
+        r0.<com.airpush.android.PushAds: java.lang.String apikey> = null;
+
+        r0.<com.airpush.android.PushAds: boolean showDialog> = 1;
+
+        r0.<com.airpush.android.PushAds: boolean test> = 0;
+
+        r0.<com.airpush.android.PushAds: int icon> = 17301620;
+
+        r0.<com.airpush.android.PushAds: boolean showAd> = 1;
+
+        r0.<com.airpush.android.PushAds: boolean more> = 1;
+
+        r0.<com.airpush.android.PushAds: java.lang.String moreButtonColor> = "#000000";
+
+        r0.<com.airpush.android.PushAds: java.lang.String skipButtonColor> = "#000000";
+
+        r0.<com.airpush.android.PushAds: java.lang.String skipButtonTextColor> = "#FFFFFF";
+
+        r0.<com.airpush.android.PushAds: java.lang.String moreButtonTextColor> = "#FFFFFF";
+
+        $r1 = new com.airpush.android.PushAds$1;
+
+        specialinvoke $r1.<com.airpush.android.PushAds$1: void <init>(com.airpush.android.PushAds)>(r0);
+
+        r0.<com.airpush.android.PushAds: java.lang.Runnable postData> = $r1;
+
+        $r2 = new com.airpush.android.PushAds$2;
+
+        specialinvoke $r2.<com.airpush.android.PushAds$2: void <init>(com.airpush.android.PushAds)>(r0);
+
+        r0.<com.airpush.android.PushAds: android.view.View$OnClickListener moreOnClickListener> = $r2;
+
+        $r3 = new com.airpush.android.PushAds$3;
+
+        specialinvoke $r3.<com.airpush.android.PushAds$3: void <init>(com.airpush.android.PushAds)>(r0);
+
+        r0.<com.airpush.android.PushAds: android.view.View$OnClickListener adOnClickListener> = $r3;
+
+        $r4 = new com.airpush.android.PushAds$4;
+
+        specialinvoke $r4.<com.airpush.android.PushAds$4: void <init>(com.airpush.android.PushAds)>(r0);
+
+        r0.<com.airpush.android.PushAds: java.lang.Runnable sendImpression_Task> = $r4;
+
+        $r5 = new com.airpush.android.PushAds$5;
+
+        specialinvoke $r5.<com.airpush.android.PushAds$5: void <init>(com.airpush.android.PushAds)>(r0);
+
+        r0.<com.airpush.android.PushAds: java.lang.Runnable sendAdValues_Task> = $r5;
+
+        $r6 = new com.airpush.android.PushAds$6;
+
+        specialinvoke $r6.<com.airpush.android.PushAds$6: void <init>(com.airpush.android.PushAds)>(r0);
+
+        r0.<com.airpush.android.PushAds: android.view.View$OnClickListener skipOnClickListener> = $r6;
+
+        return;
+    }
+
+    static void access$0(com.airpush.android.PushAds)
+    {
+        com.airpush.android.PushAds $r0;
+
+        $r0 := @parameter0: com.airpush.android.PushAds;
+
+        specialinvoke $r0.<com.airpush.android.PushAds: void postValues()>();
+
+        return;
+    }
+
+    static java.lang.String access$1(com.airpush.android.PushAds)
+    {
+        com.airpush.android.PushAds $r0;
+        java.lang.String r1;
+
+        $r0 := @parameter0: com.airpush.android.PushAds;
+
+        r1 = $r0.<com.airpush.android.PushAds: java.lang.String clickUrl>;
+
+        return r1;
+    }
+
+    static void access$10(com.airpush.android.PushAds)
+    {
+        com.airpush.android.PushAds $r0;
+
+        $r0 := @parameter0: com.airpush.android.PushAds;
+
+        specialinvoke $r0.<com.airpush.android.PushAds: void sendImpressionData()>();
+
+        return;
+    }
+
+    static void access$11(com.airpush.android.PushAds)
+    {
+        com.airpush.android.PushAds $r0;
+
+        $r0 := @parameter0: com.airpush.android.PushAds;
+
+        specialinvoke $r0.<com.airpush.android.PushAds: void sendClickData()>();
+
+        return;
+    }
+
+    static void access$12(com.airpush.android.PushAds, boolean)
+    {
+        com.airpush.android.PushAds $r0;
+        boolean $z0;
+
+        $r0 := @parameter0: com.airpush.android.PushAds;
+
+        $z0 := @parameter1: boolean;
+
+        $r0.<com.airpush.android.PushAds: boolean showDialog> = $z0;
+
+        return;
+    }
+
+    static void access$13(com.airpush.android.PushAds, boolean)
+    {
+        com.airpush.android.PushAds $r0;
+        boolean $z0;
+
+        $r0 := @parameter0: com.airpush.android.PushAds;
+
+        $z0 := @parameter1: boolean;
+
+        $r0.<com.airpush.android.PushAds: boolean showAd> = $z0;
+
+        return;
+    }
+
+    static void access$14(com.airpush.android.PushAds)
+    {
+        com.airpush.android.PushAds $r0;
+
+        $r0 := @parameter0: com.airpush.android.PushAds;
+
+        specialinvoke $r0.<com.airpush.android.PushAds: void startAirpush()>();
+
+        return;
+    }
+
+    static void access$2(com.airpush.android.PushAds, java.lang.String)
+    {
+        com.airpush.android.PushAds $r0;
+        java.lang.String $r1;
+
+        $r0 := @parameter0: com.airpush.android.PushAds;
+
+        $r1 := @parameter1: java.lang.String;
+
+        specialinvoke $r0.<com.airpush.android.PushAds: void displayAd(java.lang.String)>($r1);
+
+        return;
+    }
+
+    static void access$3(java.util.List)
+    {
+        java.util.List $r0;
+
+        $r0 := @parameter0: java.util.List;
+
+        <com.airpush.android.PushAds: java.util.List values> = $r0;
+
+        return;
+    }
+
+    static java.util.List access$4()
+    {
+        java.util.List r0;
+
+        r0 = <com.airpush.android.PushAds: java.util.List values>;
+
+        return r0;
+    }
+
+    static java.lang.String access$5(com.airpush.android.PushAds)
+    {
+        com.airpush.android.PushAds $r0;
+        java.lang.String r1;
+
+        $r0 := @parameter0: com.airpush.android.PushAds;
+
+        r1 = $r0.<com.airpush.android.PushAds: java.lang.String apikey>;
+
+        return r1;
+    }
+
+    static java.lang.String access$6(com.airpush.android.PushAds)
+    {
+        com.airpush.android.PushAds $r0;
+        java.lang.String r1;
+
+        $r0 := @parameter0: com.airpush.android.PushAds;
+
+        r1 = $r0.<com.airpush.android.PushAds: java.lang.String campaignId>;
+
+        return r1;
+    }
+
+    static java.lang.String access$7(com.airpush.android.PushAds)
+    {
+        com.airpush.android.PushAds $r0;
+        java.lang.String r1;
+
+        $r0 := @parameter0: com.airpush.android.PushAds;
+
+        r1 = $r0.<com.airpush.android.PushAds: java.lang.String creativeId>;
+
+        return r1;
+    }
+
+    static java.lang.Runnable access$8(com.airpush.android.PushAds)
+    {
+        com.airpush.android.PushAds $r0;
+        java.lang.Runnable r1;
+
+        $r0 := @parameter0: com.airpush.android.PushAds;
+
+        r1 = $r0.<com.airpush.android.PushAds: java.lang.Runnable sendAdValues_Task>;
+
+        return r1;
+    }
+
+    static boolean access$9(com.airpush.android.PushAds)
+    {
+        com.airpush.android.PushAds $r0;
+        boolean z0;
+
+        $r0 := @parameter0: com.airpush.android.PushAds;
+
+        z0 = $r0.<com.airpush.android.PushAds: boolean showInterstitialtestAd>;
+
+        return z0;
+    }
+
+    private void callNumber()
+    {
+        com.airpush.android.PushAds r0;
+        android.content.Intent r1;
+        java.lang.StringBuilder $r2;
+        java.lang.String $r3;
+        android.net.Uri $r4;
+
+        r0 := @this: com.airpush.android.PushAds;
+
+        staticinvoke <android.util.Log: int i(java.lang.String,java.lang.String)>("AirpushSDK", "Pushing CC Ads.....");
+
+        $r2 = new java.lang.StringBuilder;
+
+        specialinvoke $r2.<java.lang.StringBuilder: void <init>(java.lang.String)>("tel:");
+
+        $r3 = r0.<com.airpush.android.PushAds: java.lang.String phoneNumber>;
+
+        $r2 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r3);
+
+        $r3 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        $r4 = staticinvoke <android.net.Uri: android.net.Uri parse(java.lang.String)>($r3);
+
+        r1 = new android.content.Intent;
+
+        specialinvoke r1.<android.content.Intent: void <init>(java.lang.String,android.net.Uri)>("android.intent.action.DIAL", $r4);
+
+        virtualinvoke r0.<com.airpush.android.PushAds: void startActivity(android.content.Intent)>(r1);
+
+        return;
+    }
+
+    private void display(java.lang.String)
+    {
+        com.airpush.android.PushAds r0;
+        java.lang.String $r1;
+        com.airpush.android.CustomWebView r2;
+
+        r0 := @this: com.airpush.android.PushAds;
+
+        $r1 := @parameter0: java.lang.String;
+
+        staticinvoke <android.util.Log: int i(java.lang.String,java.lang.String)>("AirpushSDK", "Pushing Web and App Ads.....");
+
+        r2 = new com.airpush.android.CustomWebView;
+
+        specialinvoke r2.<com.airpush.android.CustomWebView: void <init>(android.content.Context)>(r0);
+
+        virtualinvoke r2.<com.airpush.android.CustomWebView: void loadUrl(java.lang.String)>($r1);
+
+        virtualinvoke r0.<com.airpush.android.PushAds: void setContentView(android.view.View)>(r2);
+
+        return;
+    }
+
+    private void displayAd(java.lang.String)
+    {
+        com.airpush.android.PushAds r0;
+        java.lang.String $r1;
+        com.airpush.android.CustomWebView r2;
+
+        r0 := @this: com.airpush.android.PushAds;
+
+        $r1 := @parameter0: java.lang.String;
+
+        staticinvoke <android.util.Log: int i(java.lang.String,java.lang.String)>("AirpushSDK", "Displaying Ad.");
+
+        r2 = new com.airpush.android.CustomWebView;
+
+        specialinvoke r2.<com.airpush.android.CustomWebView: void <init>(android.content.Context)>(r0);
+
+        virtualinvoke r2.<com.airpush.android.CustomWebView: void loadUrl(java.lang.String)>($r1);
+
+        virtualinvoke r0.<com.airpush.android.PushAds: void setContentView(android.view.View)>(r2);
+
+        return;
+    }
+
+    private void displayAds()
+    {
+        com.airpush.android.PushAds r0;
+        android.widget.LinearLayout$LayoutParams r1, r2, r3, r13;
+        android.widget.Button r4, r17;
+        float f0, $f1;
+        android.os.Handler r5;
+        android.view.Window $r6;
+        java.lang.Runnable $r7;
+        android.content.res.Resources $r8;
+        android.util.DisplayMetrics $r9;
+        boolean $z0;
+        android.widget.LinearLayout r10;
+        android.widget.RelativeLayout $r11, $r21;
+        int $i0, $i1;
+        android.widget.ImageView r12;
+        java.lang.String $r14;
+        java.lang.StringBuilder $r15;
+        android.graphics.drawable.BitmapDrawable $r16;
+        android.graphics.Typeface $r18;
+        android.view.View$OnClickListener $r19;
+        java.lang.Exception $r20;
+        android.widget.RelativeLayout$LayoutParams r22;
+
+        r0 := @this: com.airpush.android.PushAds;
+
+        virtualinvoke r0.<com.airpush.android.PushAds: boolean requestWindowFeature(int)>(1);
+
+        $r6 = virtualinvoke r0.<com.airpush.android.PushAds: android.view.Window getWindow()>();
+
+        virtualinvoke $r6.<android.view.Window: void setFlags(int,int)>(1024, 1024);
+
+        r5 = new android.os.Handler;
+
+        specialinvoke r5.<android.os.Handler: void <init>()>();
+
+        $r7 = r0.<com.airpush.android.PushAds: java.lang.Runnable sendImpression_Task>;
+
+        virtualinvoke r5.<android.os.Handler: boolean postDelayed(java.lang.Runnable,long)>($r7, 5000L);
+
+     label01:
+        $r8 = virtualinvoke r0.<com.airpush.android.PushAds: android.content.res.Resources getResources()>();
+
+        $r9 = virtualinvoke $r8.<android.content.res.Resources: android.util.DisplayMetrics getDisplayMetrics()>();
+
+        f0 = $r9.<android.util.DisplayMetrics: float density>;
+
+        $z0 = r0.<com.airpush.android.PushAds: boolean more>;
+
+     label02:
+        if $z0 == 0 goto label64;
+
+        r10 = new android.widget.LinearLayout;
+
+     label03:
+        specialinvoke r10.<android.widget.LinearLayout: void <init>(android.content.Context)>(r0);
+
+        virtualinvoke r10.<android.widget.LinearLayout: void setOrientation(int)>(1);
+
+     label04:
+        $r11 = new android.widget.RelativeLayout;
+
+     label05:
+        specialinvoke $r11.<android.widget.RelativeLayout: void <init>(android.content.Context)>(r0);
+
+        $i0 = r0.<com.airpush.android.PushAds: int h>;
+
+     label06:
+        $f1 = (float) $i0;
+
+        $f1 = $f1 * f0;
+
+        $i0 = (int) $f1;
+
+     label07:
+        r0.<com.airpush.android.PushAds: int h> = $i0;
+
+        $i0 = r0.<com.airpush.android.PushAds: int w>;
+
+     label08:
+        $f1 = (float) $i0;
+
+        $f1 = $f1 * f0;
+
+        $i0 = (int) $f1;
+
+     label09:
+        r0.<com.airpush.android.PushAds: int w> = $i0;
+
+     label10:
+        $f1 = 10.0F * f0;
+
+     label11:
+        r0.<com.airpush.android.PushAds: float imagePadding> = $f1;
+
+     label12:
+        $f1 = 10.0F * f0;
+
+     label13:
+        r0.<com.airpush.android.PushAds: float btn1Padding> = $f1;
+
+     label14:
+        $f1 = 5.0F * f0;
+
+     label15:
+        r0.<com.airpush.android.PushAds: float btn2Padding> = $f1;
+
+     label16:
+        $f1 = 50.0F * f0;
+
+        $i0 = (int) $f1;
+
+     label17:
+        r0.<com.airpush.android.PushAds: int btn1Height> = $i0;
+
+     label18:
+        $f1 = 50.0F * f0;
+
+        $i0 = (int) $f1;
+
+     label19:
+        r0.<com.airpush.android.PushAds: int btn2Height> = $i0;
+
+     label20:
+        r12 = new android.widget.ImageView;
+
+     label21:
+        specialinvoke r12.<android.widget.ImageView: void <init>(android.content.Context)>(r0);
+
+     label22:
+        r13 = new android.widget.LinearLayout$LayoutParams;
+
+     label23:
+        specialinvoke r13.<android.widget.LinearLayout$LayoutParams: void <init>(int,int)>(70, 70);
+
+     label24:
+        $f1 = 320.0F * f0;
+
+        $i0 = (int) $f1;
+
+     label25:
+        r13.<android.widget.LinearLayout$LayoutParams: int width> = $i0;
+
+        r13.<android.widget.LinearLayout$LayoutParams: int gravity> = 1;
+
+     label26:
+        r3 = new android.widget.LinearLayout$LayoutParams;
+
+     label27:
+        specialinvoke r3.<android.widget.LinearLayout$LayoutParams: void <init>(int,int)>(70, 70);
+
+        r3.<android.widget.LinearLayout$LayoutParams: int gravity> = 17;
+
+     label28:
+        $f1 = 5.0F * f0;
+
+        $i0 = (int) $f1;
+
+     label29:
+        r3.<android.widget.LinearLayout$LayoutParams: int topMargin> = $i0;
+
+     label30:
+        r1 = new android.widget.LinearLayout$LayoutParams;
+
+     label31:
+        specialinvoke r1.<android.widget.LinearLayout$LayoutParams: void <init>(int,int)>(70, 70);
+
+        $f1 = r0.<com.airpush.android.PushAds: float btn1Padding>;
+
+     label32:
+        $i0 = (int) $f1;
+
+     label33:
+        r1.<android.widget.LinearLayout$LayoutParams: int topMargin> = $i0;
+
+     label34:
+        $f1 = 320.0F * f0;
+
+        $i0 = (int) $f1;
+
+     label35:
+        r1.<android.widget.LinearLayout$LayoutParams: int width> = $i0;
+
+        r1.<android.widget.LinearLayout$LayoutParams: int gravity> = 1;
+
+     label36:
+        r2 = new android.widget.LinearLayout$LayoutParams;
+
+     label37:
+        specialinvoke r2.<android.widget.LinearLayout$LayoutParams: void <init>(int,int)>(70, 70);
+
+        $f1 = r0.<com.airpush.android.PushAds: float btn2Padding>;
+
+     label38:
+        $i0 = (int) $f1;
+
+     label39:
+        r2.<android.widget.LinearLayout$LayoutParams: int topMargin> = $i0;
+
+     label40:
+        $f1 = 320.0F * f0;
+
+        $i0 = (int) $f1;
+
+     label41:
+        r2.<android.widget.LinearLayout$LayoutParams: int width> = $i0;
+
+        r2.<android.widget.LinearLayout$LayoutParams: int gravity> = 1;
+
+        $i0 = r0.<com.airpush.android.PushAds: int h>;
+
+        r3.<android.widget.LinearLayout$LayoutParams: int height> = $i0;
+
+        $i0 = r0.<com.airpush.android.PushAds: int w>;
+
+        r3.<android.widget.LinearLayout$LayoutParams: int width> = $i0;
+
+        $r14 = r0.<com.airpush.android.PushAds: java.lang.String adSize>;
+
+        $i0 = staticinvoke <java.lang.Integer: int parseInt(java.lang.String)>($r14);
+
+     label42:
+        $f1 = (float) $i0;
+
+        f0 = $f1 * f0;
+
+        $i0 = (int) f0;
+
+     label43:
+        r13.<android.widget.LinearLayout$LayoutParams: int height> = $i0;
+
+     label44:
+        $r15 = new java.lang.StringBuilder;
+
+     label45:
+        specialinvoke $r15.<java.lang.StringBuilder: void <init>(java.lang.String)>("height : ");
+
+        $i0 = r13.<android.widget.LinearLayout$LayoutParams: int height>;
+
+        $r15 = virtualinvoke $r15.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>($i0);
+
+        $r14 = virtualinvoke $r15.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <android.util.Log: int i(java.lang.String,java.lang.String)>("AirpushSDK", $r14);
+
+        $r16 = r0.<com.airpush.android.PushAds: android.graphics.drawable.BitmapDrawable bd>;
+
+     label46:
+        if $r16 == null goto label61;
+
+     label47:
+        $r16 = r0.<com.airpush.android.PushAds: android.graphics.drawable.BitmapDrawable bd>;
+
+        virtualinvoke r12.<android.widget.ImageView: void setBackgroundDrawable(android.graphics.drawable.Drawable)>($r16);
+
+     label48:
+        r17 = new android.widget.Button;
+
+     label49:
+        specialinvoke r17.<android.widget.Button: void <init>(android.content.Context)>(r0);
+
+        $r14 = r0.<com.airpush.android.PushAds: java.lang.String skipButtonText>;
+
+        virtualinvoke r17.<android.widget.Button: void setText(java.lang.CharSequence)>($r14);
+
+        $i0 = r0.<com.airpush.android.PushAds: int btn1Height>;
+
+        virtualinvoke r17.<android.widget.Button: void setHeight(int)>($i0);
+
+        $r14 = r0.<com.airpush.android.PushAds: java.lang.String skipButtonColor>;
+
+        $i0 = staticinvoke <android.graphics.Color: int parseColor(java.lang.String)>($r14);
+
+        virtualinvoke r17.<android.widget.Button: void setBackgroundColor(int)>($i0);
+
+        $r14 = r0.<com.airpush.android.PushAds: java.lang.String skipButtonTextColor>;
+
+        $i0 = staticinvoke <android.graphics.Color: int parseColor(java.lang.String)>($r14);
+
+        virtualinvoke r17.<android.widget.Button: void setTextColor(int)>($i0);
+
+        $i0 = r0.<com.airpush.android.PushAds: int textSize>;
+
+     label50:
+        f0 = (float) $i0;
+
+     label51:
+        virtualinvoke r17.<android.widget.Button: void setTextSize(float)>(f0);
+
+     label52:
+        $r18 = <android.graphics.Typeface: android.graphics.Typeface DEFAULT_BOLD>;
+
+     label53:
+        virtualinvoke r17.<android.widget.Button: void setTypeface(android.graphics.Typeface)>($r18);
+
+        $i0 = r0.<com.airpush.android.PushAds: int buttonMargin>;
+
+        r13.<android.widget.LinearLayout$LayoutParams: int topMargin> = $i0;
+
+     label54:
+        r4 = new android.widget.Button;
+
+     label55:
+        specialinvoke r4.<android.widget.Button: void <init>(android.content.Context)>(r0);
+
+        $r14 = r0.<com.airpush.android.PushAds: java.lang.String moreButtonColor>;
+
+        $i0 = staticinvoke <android.graphics.Color: int parseColor(java.lang.String)>($r14);
+
+        virtualinvoke r4.<android.widget.Button: void setBackgroundColor(int)>($i0);
+
+        $r14 = r0.<com.airpush.android.PushAds: java.lang.String moreButtonTextColor>;
+
+        $i0 = staticinvoke <android.graphics.Color: int parseColor(java.lang.String)>($r14);
+
+        virtualinvoke r4.<android.widget.Button: void setTextColor(int)>($i0);
+
+        $i0 = r0.<com.airpush.android.PushAds: int textSize>;
+
+     label56:
+        f0 = (float) $i0;
+
+     label57:
+        virtualinvoke r4.<android.widget.Button: void setTextSize(float)>(f0);
+
+     label58:
+        $r18 = <android.graphics.Typeface: android.graphics.Typeface DEFAULT_BOLD>;
+
+     label59:
+        virtualinvoke r4.<android.widget.Button: void setTypeface(android.graphics.Typeface)>($r18);
+
+        $r14 = r0.<com.airpush.android.PushAds: java.lang.String moreButtonText>;
+
+        virtualinvoke r4.<android.widget.Button: void setText(java.lang.CharSequence)>($r14);
+
+        $i0 = r0.<com.airpush.android.PushAds: int btn2Height>;
+
+        virtualinvoke r4.<android.widget.Button: void setHeight(int)>($i0);
+
+        virtualinvoke r10.<android.widget.LinearLayout: void addView(android.view.View,android.view.ViewGroup$LayoutParams)>(r12, r3);
+
+        virtualinvoke r10.<android.widget.LinearLayout: void addView(android.view.View,android.view.ViewGroup$LayoutParams)>(r4, r2);
+
+        $r19 = r0.<com.airpush.android.PushAds: android.view.View$OnClickListener moreOnClickListener>;
+
+        virtualinvoke r4.<android.widget.Button: void setOnClickListener(android.view.View$OnClickListener)>($r19);
+
+        virtualinvoke r10.<android.widget.LinearLayout: void addView(android.view.View,android.view.ViewGroup$LayoutParams)>(r17, r1);
+
+        $r19 = r0.<com.airpush.android.PushAds: android.view.View$OnClickListener adOnClickListener>;
+
+        virtualinvoke r12.<android.widget.ImageView: void setOnClickListener(android.view.View$OnClickListener)>($r19);
+
+        $r19 = r0.<com.airpush.android.PushAds: android.view.View$OnClickListener skipOnClickListener>;
+
+        virtualinvoke r17.<android.widget.Button: void setOnClickListener(android.view.View$OnClickListener)>($r19);
+
+        virtualinvoke r0.<com.airpush.android.PushAds: void setContentView(android.view.View)>(r10);
+
+     label60:
+        return;
+
+     label61:
+        staticinvoke <android.util.Log: int i(java.lang.String,java.lang.String)>("AirpushSDK", "Image Fetching error, please try again later.");
+
+     label62:
+        return;
+
+     label63:
+        $r20 := @caughtexception;
+
+        staticinvoke <android.util.Log: int i(java.lang.String,java.lang.String)>("AirpushSDK", "Network Error, please try again later.");
+
+        return;
+
+     label64:
+        $r11 = new android.widget.RelativeLayout;
+
+     label65:
+        specialinvoke $r11.<android.widget.RelativeLayout: void <init>(android.content.Context)>(r0);
+
+     label66:
+        $r21 = new android.widget.RelativeLayout;
+
+     label67:
+        specialinvoke $r21.<android.widget.RelativeLayout: void <init>(android.content.Context)>(r0);
+
+        $i0 = r0.<com.airpush.android.PushAds: int h>;
+
+     label68:
+        $f1 = (float) $i0;
+
+        $f1 = $f1 * f0;
+
+        $i0 = (int) $f1;
+
+     label69:
+        r0.<com.airpush.android.PushAds: int h> = $i0;
+
+        $i0 = r0.<com.airpush.android.PushAds: int w>;
+
+     label70:
+        $f1 = (float) $i0;
+
+        $f1 = $f1 * f0;
+
+        $i0 = (int) $f1;
+
+     label71:
+        r0.<com.airpush.android.PushAds: int w> = $i0;
+
+     label72:
+        r12 = new android.widget.ImageView;
+
+     label73:
+        specialinvoke r12.<android.widget.ImageView: void <init>(android.content.Context)>(r0);
+
+     label74:
+        r22 = new android.widget.RelativeLayout$LayoutParams;
+
+     label75:
+        specialinvoke r22.<android.widget.RelativeLayout$LayoutParams: void <init>(int,int)>(70, 70);
+
+     label76:
+        f0 = 320.0F * f0;
+
+        $i0 = (int) f0;
+
+     label77:
+        r22.<android.widget.RelativeLayout$LayoutParams: int width> = $i0;
+
+        virtualinvoke r22.<android.widget.RelativeLayout$LayoutParams: void addRule(int)>(12);
+
+        $r16 = r0.<com.airpush.android.PushAds: android.graphics.drawable.BitmapDrawable bd>;
+
+     label78:
+        if $r16 == null goto label87;
+
+     label79:
+        $r16 = r0.<com.airpush.android.PushAds: android.graphics.drawable.BitmapDrawable bd>;
+
+        virtualinvoke r12.<android.widget.ImageView: void setBackgroundDrawable(android.graphics.drawable.Drawable)>($r16);
+
+     label80:
+        r4 = new android.widget.Button;
+
+     label81:
+        specialinvoke r4.<android.widget.Button: void <init>(android.content.Context)>(r0);
+
+        $r14 = r0.<com.airpush.android.PushAds: java.lang.String skipButtonText>;
+
+        virtualinvoke r4.<android.widget.Button: void setText(java.lang.CharSequence)>($r14);
+
+        $r14 = r0.<com.airpush.android.PushAds: java.lang.String skipButtonColor>;
+
+        $i0 = staticinvoke <android.graphics.Color: int parseColor(java.lang.String)>($r14);
+
+        virtualinvoke r4.<android.widget.Button: void setBackgroundColor(int)>($i0);
+
+        $r14 = r0.<com.airpush.android.PushAds: java.lang.String skipButtonTextColor>;
+
+        $i0 = staticinvoke <android.graphics.Color: int parseColor(java.lang.String)>($r14);
+
+        virtualinvoke r4.<android.widget.Button: void setTextColor(int)>($i0);
+
+        $i0 = r0.<com.airpush.android.PushAds: int textSize>;
+
+     label82:
+        f0 = (float) $i0;
+
+     label83:
+        virtualinvoke r4.<android.widget.Button: void setTextSize(float)>(f0);
+
+     label84:
+        $r18 = <android.graphics.Typeface: android.graphics.Typeface DEFAULT_BOLD>;
+
+     label85:
+        virtualinvoke r4.<android.widget.Button: void setTypeface(android.graphics.Typeface)>($r18);
+
+        $r19 = r0.<com.airpush.android.PushAds: android.view.View$OnClickListener adOnClickListener>;
+
+        virtualinvoke r12.<android.widget.ImageView: void setOnClickListener(android.view.View$OnClickListener)>($r19);
+
+        $i0 = r0.<com.airpush.android.PushAds: int w>;
+
+        $i1 = r0.<com.airpush.android.PushAds: int h>;
+
+        virtualinvoke $r11.<android.widget.RelativeLayout: void addView(android.view.View,int,int)>(r12, $i0, $i1);
+
+        virtualinvoke $r11.<android.widget.RelativeLayout: void addView(android.view.View,android.view.ViewGroup$LayoutParams)>(r4, r22);
+
+        $r19 = r0.<com.airpush.android.PushAds: android.view.View$OnClickListener skipOnClickListener>;
+
+        virtualinvoke r4.<android.widget.Button: void setOnClickListener(android.view.View$OnClickListener)>($r19);
+
+        virtualinvoke r0.<com.airpush.android.PushAds: void setContentView(android.view.View)>($r11);
+
+     label86:
+        return;
+
+     label87:
+        staticinvoke <android.util.Log: int i(java.lang.String,java.lang.String)>("AirpushSDK", "Image Fetching error, please try again later.");
+
+     label88:
+        return;
+
+        catch java.lang.Exception from label01 to label02 with label63;
+        catch java.lang.Exception from label03 to label04 with label63;
+        catch java.lang.Exception from label05 to label06 with label63;
+        catch java.lang.Exception from label07 to label08 with label63;
+        catch java.lang.Exception from label09 to label10 with label63;
+        catch java.lang.Exception from label11 to label12 with label63;
+        catch java.lang.Exception from label13 to label14 with label63;
+        catch java.lang.Exception from label15 to label16 with label63;
+        catch java.lang.Exception from label17 to label18 with label63;
+        catch java.lang.Exception from label19 to label20 with label63;
+        catch java.lang.Exception from label21 to label22 with label63;
+        catch java.lang.Exception from label23 to label24 with label63;
+        catch java.lang.Exception from label25 to label26 with label63;
+        catch java.lang.Exception from label27 to label28 with label63;
+        catch java.lang.Exception from label29 to label30 with label63;
+        catch java.lang.Exception from label31 to label32 with label63;
+        catch java.lang.Exception from label33 to label34 with label63;
+        catch java.lang.Exception from label35 to label36 with label63;
+        catch java.lang.Exception from label37 to label38 with label63;
+        catch java.lang.Exception from label39 to label40 with label63;
+        catch java.lang.Exception from label41 to label42 with label63;
+        catch java.lang.Exception from label43 to label44 with label63;
+        catch java.lang.Exception from label45 to label46 with label63;
+        catch java.lang.Exception from label47 to label48 with label63;
+        catch java.lang.Exception from label49 to label50 with label63;
+        catch java.lang.Exception from label51 to label52 with label63;
+        catch java.lang.Exception from label53 to label54 with label63;
+        catch java.lang.Exception from label55 to label56 with label63;
+        catch java.lang.Exception from label57 to label58 with label63;
+        catch java.lang.Exception from label59 to label60 with label63;
+        catch java.lang.Exception from label61 to label62 with label63;
+        catch java.lang.Exception from label65 to label66 with label63;
+        catch java.lang.Exception from label67 to label68 with label63;
+        catch java.lang.Exception from label69 to label70 with label63;
+        catch java.lang.Exception from label71 to label72 with label63;
+        catch java.lang.Exception from label73 to label74 with label63;
+        catch java.lang.Exception from label75 to label76 with label63;
+        catch java.lang.Exception from label77 to label78 with label63;
+        catch java.lang.Exception from label79 to label80 with label63;
+        catch java.lang.Exception from label81 to label82 with label63;
+        catch java.lang.Exception from label83 to label84 with label63;
+        catch java.lang.Exception from label85 to label86 with label63;
+        catch java.lang.Exception from label87 to label88 with label63;
+    }
+
+    protected static org.apache.http.HttpEntity postData(java.util.List, android.content.Context)
+    {
+        android.content.Context $r0;
+        java.util.List r1;
+        boolean $z0;
+        org.apache.http.client.methods.HttpPost $r2;
+        org.apache.http.client.entity.UrlEncodedFormEntity $r3;
+        org.apache.http.params.BasicHttpParams $r4;
+        int $i0;
+        org.apache.http.impl.client.DefaultHttpClient $r5;
+        org.apache.http.HttpResponse $r6;
+        org.apache.http.message.BasicHttpResponse r7;
+        org.apache.http.HttpEntity $r8;
+        java.lang.Exception $r9;
+
+        r1 := @parameter0: java.util.List;
+
+        $r0 := @parameter1: android.content.Context;
+
+        $z0 = staticinvoke <com.airpush.android.Constants: boolean checkInternetConnection(android.content.Context)>($r0);
+
+        if $z0 == 0 goto label18;
+
+        $r2 = new org.apache.http.client.methods.HttpPost;
+
+     label01:
+        specialinvoke $r2.<org.apache.http.client.methods.HttpPost: void <init>(java.lang.String)>("http://api.airpush.com/v2/api.php");
+
+     label02:
+        <com.airpush.android.PushAds: org.apache.http.client.methods.HttpPost httpPost> = $r2;
+
+        $r2 = <com.airpush.android.PushAds: org.apache.http.client.methods.HttpPost httpPost>;
+
+        $r3 = new org.apache.http.client.entity.UrlEncodedFormEntity;
+
+     label03:
+        specialinvoke $r3.<org.apache.http.client.entity.UrlEncodedFormEntity: void <init>(java.util.List)>(r1);
+
+        virtualinvoke $r2.<org.apache.http.client.methods.HttpPost: void setEntity(org.apache.http.HttpEntity)>($r3);
+
+     label04:
+        $r4 = new org.apache.http.params.BasicHttpParams;
+
+     label05:
+        specialinvoke $r4.<org.apache.http.params.BasicHttpParams: void <init>()>();
+
+     label06:
+        <com.airpush.android.PushAds: org.apache.http.params.BasicHttpParams httpParameters> = $r4;
+
+        <com.airpush.android.PushAds: int timeoutConnection> = 3000;
+
+        $r4 = <com.airpush.android.PushAds: org.apache.http.params.BasicHttpParams httpParameters>;
+
+        $i0 = <com.airpush.android.PushAds: int timeoutConnection>;
+
+     label07:
+        staticinvoke <org.apache.http.params.HttpConnectionParams: void setConnectionTimeout(org.apache.http.params.HttpParams,int)>($r4, $i0);
+
+     label08:
+        <com.airpush.android.PushAds: int timeoutSocket> = 3000;
+
+        $r4 = <com.airpush.android.PushAds: org.apache.http.params.BasicHttpParams httpParameters>;
+
+        $i0 = <com.airpush.android.PushAds: int timeoutSocket>;
+
+     label09:
+        staticinvoke <org.apache.http.params.HttpConnectionParams: void setSoTimeout(org.apache.http.params.HttpParams,int)>($r4, $i0);
+
+     label10:
+        $r5 = new org.apache.http.impl.client.DefaultHttpClient;
+
+        $r4 = <com.airpush.android.PushAds: org.apache.http.params.BasicHttpParams httpParameters>;
+
+     label11:
+        specialinvoke $r5.<org.apache.http.impl.client.DefaultHttpClient: void <init>(org.apache.http.params.HttpParams)>($r4);
+
+     label12:
+        <com.airpush.android.PushAds: org.apache.http.impl.client.DefaultHttpClient httpClient> = $r5;
+
+        $r5 = <com.airpush.android.PushAds: org.apache.http.impl.client.DefaultHttpClient httpClient>;
+
+        $r2 = <com.airpush.android.PushAds: org.apache.http.client.methods.HttpPost httpPost>;
+
+     label13:
+        $r6 = virtualinvoke $r5.<org.apache.http.impl.client.DefaultHttpClient: org.apache.http.HttpResponse execute(org.apache.http.client.methods.HttpUriRequest)>($r2);
+
+        r7 = (org.apache.http.message.BasicHttpResponse) $r6;
+
+     label14:
+        <com.airpush.android.PushAds: org.apache.http.message.BasicHttpResponse httpResponse> = r7;
+
+        r7 = <com.airpush.android.PushAds: org.apache.http.message.BasicHttpResponse httpResponse>;
+
+     label15:
+        $r8 = virtualinvoke r7.<org.apache.http.message.BasicHttpResponse: org.apache.http.HttpEntity getEntity()>();
+
+     label16:
+        <com.airpush.android.PushAds: org.apache.http.HttpEntity entity> = $r8;
+
+        $r8 = <com.airpush.android.PushAds: org.apache.http.HttpEntity entity>;
+
+        return $r8;
+
+     label17:
+        $r9 := @caughtexception;
+
+        staticinvoke <com.airpush.android.Airpush: void reStartSDK(android.content.Context,long)>($r0, 1800000L);
+
+        return null;
+
+     label18:
+        staticinvoke <com.airpush.android.Airpush: void reStartSDK(android.content.Context,long)>($r0, 3600000L);
+
+        return null;
+
+        catch java.lang.Exception from label01 to label02 with label17;
+        catch java.lang.Exception from label03 to label04 with label17;
+        catch java.lang.Exception from label05 to label06 with label17;
+        catch java.lang.Exception from label07 to label08 with label17;
+        catch java.lang.Exception from label09 to label10 with label17;
+        catch java.lang.Exception from label11 to label12 with label17;
+        catch java.lang.Exception from label13 to label14 with label17;
+        catch java.lang.Exception from label15 to label16 with label17;
+    }
+
+    private void postValues()
+    {
+        com.airpush.android.PushAds r0;
+        java.util.List $r1;
+        android.content.Context $r2;
+        org.apache.http.HttpEntity $r3;
+
+        r0 := @this: com.airpush.android.PushAds;
+
+        $r1 = <com.airpush.android.PushAds: java.util.List values>;
+
+        $r2 = virtualinvoke r0.<com.airpush.android.PushAds: android.content.Context getApplicationContext()>();
+
+        $r3 = staticinvoke <com.airpush.android.HttpPostData: org.apache.http.HttpEntity postData(java.util.List,android.content.Context)>($r1, $r2);
+
+        r0.<com.airpush.android.PushAds: org.apache.http.HttpEntity response> = $r3;
+
+        return;
+    }
+
+    private void sendClickData()
+    {
+        com.airpush.android.PushAds r0;
+        java.lang.StringBuffer r1;
+        java.util.List $r2;
+        android.content.Context $r3;
+        org.apache.http.HttpEntity $r4;
+        java.io.InputStream $r5;
+        int $i0;
+        char $c1;
+        java.lang.Exception $r6;
+
+        r0 := @this: com.airpush.android.PushAds;
+
+        $r2 = <com.airpush.android.PushAds: java.util.List values>;
+
+        $r3 = virtualinvoke r0.<com.airpush.android.PushAds: android.content.Context getApplicationContext()>();
+
+        $r4 = staticinvoke <com.airpush.android.HttpPostData: org.apache.http.HttpEntity postData(java.util.List,android.content.Context)>($r2, $r3);
+
+        r0.<com.airpush.android.PushAds: org.apache.http.HttpEntity response> = $r4;
+
+        r1 = new java.lang.StringBuffer;
+
+        specialinvoke r1.<java.lang.StringBuffer: void <init>()>();
+
+     label1:
+        $r4 = r0.<com.airpush.android.PushAds: org.apache.http.HttpEntity response>;
+
+        $r5 = interfaceinvoke $r4.<org.apache.http.HttpEntity: java.io.InputStream getContent()>();
+
+     label2:
+        $i0 = virtualinvoke $r5.<java.io.InputStream: int read()>();
+
+     label3:
+        if $i0 != -1 goto label5;
+
+     label4:
+        virtualinvoke r1.<java.lang.StringBuffer: java.lang.String toString()>();
+
+        return;
+
+     label5:
+        $c1 = (char) $i0;
+
+     label6:
+        virtualinvoke r1.<java.lang.StringBuffer: java.lang.StringBuffer append(char)>($c1);
+
+     label7:
+        goto label2;
+
+     label8:
+        $r6 := @caughtexception;
+
+        goto label4;
+
+        catch java.lang.Exception from label1 to label3 with label8;
+        catch java.lang.Exception from label6 to label7 with label8;
+    }
+
+    private void sendImpressionData()
+    {
+        com.airpush.android.PushAds r0;
+        java.lang.StringBuffer r1;
+        android.content.Context $r2;
+        java.util.List $r3;
+        org.apache.http.message.BasicNameValuePair $r4;
+        java.lang.String $r5;
+        org.apache.http.HttpEntity $r6;
+        java.io.InputStream $r7;
+        int $i0;
+        char $c1;
+        java.lang.Exception $r8;
+
+        r0 := @this: com.airpush.android.PushAds;
+
+        $r2 = <com.airpush.android.PushAds: android.content.Context context>;
+
+        $r3 = staticinvoke <com.airpush.android.SetPreferences: java.util.List setValues(android.content.Context)>($r2);
+
+        <com.airpush.android.PushAds: java.util.List values> = $r3;
+
+        $r3 = <com.airpush.android.PushAds: java.util.List values>;
+
+        $r4 = new org.apache.http.message.BasicNameValuePair;
+
+        specialinvoke $r4.<org.apache.http.message.BasicNameValuePair: void <init>(java.lang.String,java.lang.String)>("model", "log");
+
+        interfaceinvoke $r3.<java.util.List: boolean add(java.lang.Object)>($r4);
+
+        $r3 = <com.airpush.android.PushAds: java.util.List values>;
+
+        $r4 = new org.apache.http.message.BasicNameValuePair;
+
+        specialinvoke $r4.<org.apache.http.message.BasicNameValuePair: void <init>(java.lang.String,java.lang.String)>("action", "settexttracking");
+
+        interfaceinvoke $r3.<java.util.List: boolean add(java.lang.Object)>($r4);
+
+        $r3 = <com.airpush.android.PushAds: java.util.List values>;
+
+        $r4 = new org.apache.http.message.BasicNameValuePair;
+
+        $r5 = r0.<com.airpush.android.PushAds: java.lang.String apikey>;
+
+        specialinvoke $r4.<org.apache.http.message.BasicNameValuePair: void <init>(java.lang.String,java.lang.String)>("APIKEY", $r5);
+
+        interfaceinvoke $r3.<java.util.List: boolean add(java.lang.Object)>($r4);
+
+        $r3 = <com.airpush.android.PushAds: java.util.List values>;
+
+        $r4 = new org.apache.http.message.BasicNameValuePair;
+
+        specialinvoke $r4.<org.apache.http.message.BasicNameValuePair: void <init>(java.lang.String,java.lang.String)>("event", "trayDelivered");
+
+        interfaceinvoke $r3.<java.util.List: boolean add(java.lang.Object)>($r4);
+
+        $r3 = <com.airpush.android.PushAds: java.util.List values>;
+
+        $r4 = new org.apache.http.message.BasicNameValuePair;
+
+        $r5 = r0.<com.airpush.android.PushAds: java.lang.String campId>;
+
+        specialinvoke $r4.<org.apache.http.message.BasicNameValuePair: void <init>(java.lang.String,java.lang.String)>("campId", $r5);
+
+        interfaceinvoke $r3.<java.util.List: boolean add(java.lang.Object)>($r4);
+
+        $r3 = <com.airpush.android.PushAds: java.util.List values>;
+
+        $r4 = new org.apache.http.message.BasicNameValuePair;
+
+        $r5 = r0.<com.airpush.android.PushAds: java.lang.String creativeId>;
+
+        specialinvoke $r4.<org.apache.http.message.BasicNameValuePair: void <init>(java.lang.String,java.lang.String)>("creativeId", $r5);
+
+        interfaceinvoke $r3.<java.util.List: boolean add(java.lang.Object)>($r4);
+
+        $r3 = <com.airpush.android.PushAds: java.util.List values>;
+
+        $r2 = virtualinvoke r0.<com.airpush.android.PushAds: android.content.Context getApplicationContext()>();
+
+        $r6 = staticinvoke <com.airpush.android.PushAds: org.apache.http.HttpEntity postData(java.util.List,android.content.Context)>($r3, $r2);
+
+        r0.<com.airpush.android.PushAds: org.apache.http.HttpEntity response> = $r6;
+
+        r1 = new java.lang.StringBuffer;
+
+        specialinvoke r1.<java.lang.StringBuffer: void <init>()>();
+
+     label1:
+        $r6 = r0.<com.airpush.android.PushAds: org.apache.http.HttpEntity response>;
+
+        $r7 = interfaceinvoke $r6.<org.apache.http.HttpEntity: java.io.InputStream getContent()>();
+
+     label2:
+        $i0 = virtualinvoke $r7.<java.io.InputStream: int read()>();
+
+     label3:
+        if $i0 != -1 goto label5;
+
+     label4:
+        virtualinvoke r1.<java.lang.StringBuffer: java.lang.String toString()>();
+
+        return;
+
+     label5:
+        $c1 = (char) $i0;
+
+     label6:
+        virtualinvoke r1.<java.lang.StringBuffer: java.lang.StringBuffer append(char)>($c1);
+
+     label7:
+        goto label2;
+
+     label8:
+        $r8 := @caughtexception;
+
+        goto label4;
+
+        catch java.lang.Exception from label1 to label3 with label8;
+        catch java.lang.Exception from label6 to label7 with label8;
+    }
+
+    private void sendSms()
+    {
+        com.airpush.android.PushAds r0;
+        android.content.Intent r1;
+        java.lang.StringBuilder $r2;
+        java.lang.String $r3;
+        android.net.Uri $r4;
+
+        r0 := @this: com.airpush.android.PushAds;
+
+        staticinvoke <android.util.Log: int i(java.lang.String,java.lang.String)>("AirpushSDK", "Pushing CM Ads.....");
+
+        $r2 = new java.lang.StringBuilder;
+
+        specialinvoke $r2.<java.lang.StringBuilder: void <init>(java.lang.String)>("smsto:");
+
+        $r3 = r0.<com.airpush.android.PushAds: java.lang.String smsToNumber>;
+
+        $r2 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r3);
+
+        $r3 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        $r4 = staticinvoke <android.net.Uri: android.net.Uri parse(java.lang.String)>($r3);
+
+        r1 = new android.content.Intent;
+
+        specialinvoke r1.<android.content.Intent: void <init>(java.lang.String,android.net.Uri)>("android.intent.action.SENDTO", $r4);
+
+        $r3 = r0.<com.airpush.android.PushAds: java.lang.String smsText>;
+
+        virtualinvoke r1.<android.content.Intent: android.content.Intent putExtra(java.lang.String,java.lang.String)>("sms_body", $r3);
+
+        virtualinvoke r0.<com.airpush.android.PushAds: void startActivity(android.content.Intent)>(r1);
+
+        return;
+    }
+
+    private void startAirpush()
+    {
+        com.airpush.android.PushAds r0;
+        com.airpush.android.Airpush $r1;
+        android.content.Context $r2;
+        java.lang.String $r3, $r4;
+        boolean $z0, $z1, $z2;
+        int $i0;
+
+        r0 := @this: com.airpush.android.PushAds;
+
+        $r1 = new com.airpush.android.Airpush;
+
+        specialinvoke $r1.<com.airpush.android.Airpush: void <init>()>();
+
+        $r2 = <com.airpush.android.PushAds: android.content.Context context>;
+
+        $r3 = r0.<com.airpush.android.PushAds: java.lang.String appId>;
+
+        $r4 = r0.<com.airpush.android.PushAds: java.lang.String apikey>;
+
+        $z0 = r0.<com.airpush.android.PushAds: boolean test>;
+
+        $z1 = r0.<com.airpush.android.PushAds: boolean showDialog>;
+
+        $i0 = r0.<com.airpush.android.PushAds: int icon>;
+
+        $z2 = r0.<com.airpush.android.PushAds: boolean showAd>;
+
+        virtualinvoke $r1.<com.airpush.android.Airpush: void startAirpush(android.content.Context,java.lang.String,java.lang.String,boolean,boolean,int,boolean)>($r2, $r3, $r4, $z0, $z1, $i0, $z2);
+
+        return;
+    }
+
+    public void onClick(android.view.View)
+    {
+        com.airpush.android.PushAds r0;
+        android.view.View $r1;
+
+        r0 := @this: com.airpush.android.PushAds;
+
+        $r1 := @parameter0: android.view.View;
+
+        return;
+    }
+
+    protected void onCreate(android.os.Bundle)
+    {
+        com.airpush.android.PushAds r0;
+        android.os.Bundle $r1;
+        android.content.Context $r2;
+        android.content.Intent $r3, $r8;
+        java.lang.String $r4;
+        android.view.WindowManager $r5;
+        boolean $z0;
+        int $i0;
+        android.content.SharedPreferences $r6;
+        java.lang.StringBuilder $r7;
+
+        r0 := @this: com.airpush.android.PushAds;
+
+        $r1 := @parameter0: android.os.Bundle;
+
+        specialinvoke r0.<android.app.Activity: void onCreate(android.os.Bundle)>($r1);
+
+        $r2 = virtualinvoke r0.<com.airpush.android.PushAds: android.content.Context getApplicationContext()>();
+
+        <com.airpush.android.PushAds: android.content.Context context> = $r2;
+
+        $r3 = virtualinvoke r0.<com.airpush.android.PushAds: android.content.Intent getIntent()>();
+
+        r0.<com.airpush.android.PushAds: android.content.Intent intent> = $r3;
+
+        $r3 = r0.<com.airpush.android.PushAds: android.content.Intent intent>;
+
+        $r4 = virtualinvoke $r3.<android.content.Intent: java.lang.String getAction()>();
+
+        r0.<com.airpush.android.PushAds: java.lang.String action> = $r4;
+
+        $r5 = virtualinvoke r0.<com.airpush.android.PushAds: android.view.WindowManager getWindowManager()>();
+
+        interfaceinvoke $r5.<android.view.WindowManager: android.view.Display getDefaultDisplay()>();
+
+        r0.<com.airpush.android.PushAds: int h> = 320;
+
+        r0.<com.airpush.android.PushAds: int w> = 350;
+
+        $r3 = r0.<com.airpush.android.PushAds: android.content.Intent intent>;
+
+        $r4 = virtualinvoke $r3.<android.content.Intent: java.lang.String getStringExtra(java.lang.String)>("adType");
+
+        r0.<com.airpush.android.PushAds: java.lang.String adType> = $r4;
+
+        $r4 = r0.<com.airpush.android.PushAds: java.lang.String adType>;
+
+        $z0 = virtualinvoke $r4.<java.lang.String: boolean equals(java.lang.Object)>("searchad");
+
+        if $z0 == 0 goto label01;
+
+        staticinvoke <android.util.Log: int i(java.lang.String,java.lang.String)>("AirpushSDK", "Search Clicked");
+
+        return;
+
+     label01:
+        $r4 = r0.<com.airpush.android.PushAds: java.lang.String adType>;
+
+        $z0 = virtualinvoke $r4.<java.lang.String: boolean equals(java.lang.Object)>("ShoWDialog");
+
+        if $z0 == 0 goto label02;
+
+        $r3 = r0.<com.airpush.android.PushAds: android.content.Intent intent>;
+
+        $r4 = virtualinvoke $r3.<android.content.Intent: java.lang.String getStringExtra(java.lang.String)>("appId");
+
+        r0.<com.airpush.android.PushAds: java.lang.String appId> = $r4;
+
+        $r3 = r0.<com.airpush.android.PushAds: android.content.Intent intent>;
+
+        $r4 = virtualinvoke $r3.<android.content.Intent: java.lang.String getStringExtra(java.lang.String)>("apikey");
+
+        r0.<com.airpush.android.PushAds: java.lang.String apikey> = $r4;
+
+        $r3 = r0.<com.airpush.android.PushAds: android.content.Intent intent>;
+
+        $z0 = virtualinvoke $r3.<android.content.Intent: boolean getBooleanExtra(java.lang.String,boolean)>("test", 0);
+
+        r0.<com.airpush.android.PushAds: boolean test> = $z0;
+
+        $r3 = r0.<com.airpush.android.PushAds: android.content.Intent intent>;
+
+        $i0 = virtualinvoke $r3.<android.content.Intent: int getIntExtra(java.lang.String,int)>("icon", 17301620);
+
+        r0.<com.airpush.android.PushAds: int icon> = $i0;
+
+        virtualinvoke r0.<com.airpush.android.PushAds: void showDialog()>();
+
+     label02:
+        $r4 = r0.<com.airpush.android.PushAds: java.lang.String action>;
+
+        $z0 = virtualinvoke $r4.<java.lang.String: boolean equals(java.lang.Object)>("CC");
+
+        if $z0 == 0 goto label05;
+
+        $r4 = r0.<com.airpush.android.PushAds: java.lang.String adType>;
+
+        $z0 = virtualinvoke $r4.<java.lang.String: boolean equals(java.lang.Object)>("CC");
+
+        if $z0 == 0 goto label12;
+
+        staticinvoke <android.util.Log: int i(java.lang.String,java.lang.String)>("AirpushSDK", "Pushing Ads.....");
+
+        $r2 = <com.airpush.android.PushAds: android.content.Context context>;
+
+        $r6 = virtualinvoke $r2.<android.content.Context: android.content.SharedPreferences getSharedPreferences(java.lang.String,int)>("airpushNotificationPref", 1);
+
+        if $r6 == null goto label04;
+
+        $r2 = <com.airpush.android.PushAds: android.content.Context context>;
+
+        $r6 = virtualinvoke $r2.<android.content.Context: android.content.SharedPreferences getSharedPreferences(java.lang.String,int)>("airpushNotificationPref", 1);
+
+        $r3 = r0.<com.airpush.android.PushAds: android.content.Intent intent>;
+
+        $r4 = virtualinvoke $r3.<android.content.Intent: java.lang.String getStringExtra(java.lang.String)>("appId");
+
+        $r4 = interfaceinvoke $r6.<android.content.SharedPreferences: java.lang.String getString(java.lang.String,java.lang.String)>("appId", $r4);
+
+        r0.<com.airpush.android.PushAds: java.lang.String appId> = $r4;
+
+        $r3 = r0.<com.airpush.android.PushAds: android.content.Intent intent>;
+
+        $r4 = virtualinvoke $r3.<android.content.Intent: java.lang.String getStringExtra(java.lang.String)>("apikey");
+
+        $r4 = interfaceinvoke $r6.<android.content.SharedPreferences: java.lang.String getString(java.lang.String,java.lang.String)>("apikey", $r4);
+
+        r0.<com.airpush.android.PushAds: java.lang.String apikey> = $r4;
+
+        $r3 = r0.<com.airpush.android.PushAds: android.content.Intent intent>;
+
+        $r4 = virtualinvoke $r3.<android.content.Intent: java.lang.String getStringExtra(java.lang.String)>("number");
+
+        $r4 = interfaceinvoke $r6.<android.content.SharedPreferences: java.lang.String getString(java.lang.String,java.lang.String)>("number", $r4);
+
+        r0.<com.airpush.android.PushAds: java.lang.String phoneNumber> = $r4;
+
+        $r3 = r0.<com.airpush.android.PushAds: android.content.Intent intent>;
+
+        $r4 = virtualinvoke $r3.<android.content.Intent: java.lang.String getStringExtra(java.lang.String)>("campId");
+
+        $r4 = interfaceinvoke $r6.<android.content.SharedPreferences: java.lang.String getString(java.lang.String,java.lang.String)>("campId", $r4);
+
+        r0.<com.airpush.android.PushAds: java.lang.String campId> = $r4;
+
+        $r3 = r0.<com.airpush.android.PushAds: android.content.Intent intent>;
+
+        $r4 = virtualinvoke $r3.<android.content.Intent: java.lang.String getStringExtra(java.lang.String)>("creativeId");
+
+        $r4 = interfaceinvoke $r6.<android.content.SharedPreferences: java.lang.String getString(java.lang.String,java.lang.String)>("creativeId", $r4);
+
+        r0.<com.airpush.android.PushAds: java.lang.String creativeId> = $r4;
+
+     label03:
+        $r3 = new android.content.Intent;
+
+        specialinvoke $r3.<android.content.Intent: void <init>()>();
+
+        $r7 = new java.lang.StringBuilder;
+
+        specialinvoke $r7.<java.lang.StringBuilder: void <init>(java.lang.String)>("com.airpush.android.PushServiceStart");
+
+        $r4 = r0.<com.airpush.android.PushAds: java.lang.String appId>;
+
+        $r7 = virtualinvoke $r7.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r4);
+
+        $r4 = virtualinvoke $r7.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        virtualinvoke $r3.<android.content.Intent: android.content.Intent setAction(java.lang.String)>($r4);
+
+        virtualinvoke $r3.<android.content.Intent: android.content.Intent putExtra(java.lang.String,java.lang.String)>("type", "PostAdValues");
+
+        $r8 = r0.<com.airpush.android.PushAds: android.content.Intent intent>;
+
+        virtualinvoke $r3.<android.content.Intent: android.content.Intent putExtras(android.content.Intent)>($r8);
+
+        virtualinvoke r0.<com.airpush.android.PushAds: android.content.ComponentName startService(android.content.Intent)>($r3);
+
+        specialinvoke r0.<com.airpush.android.PushAds: void callNumber()>();
+
+        return;
+
+     label04:
+        $r3 = r0.<com.airpush.android.PushAds: android.content.Intent intent>;
+
+        $r4 = virtualinvoke $r3.<android.content.Intent: java.lang.String getStringExtra(java.lang.String)>("appId");
+
+        r0.<com.airpush.android.PushAds: java.lang.String appId> = $r4;
+
+        $r3 = r0.<com.airpush.android.PushAds: android.content.Intent intent>;
+
+        $r4 = virtualinvoke $r3.<android.content.Intent: java.lang.String getStringExtra(java.lang.String)>("apikey");
+
+        r0.<com.airpush.android.PushAds: java.lang.String apikey> = $r4;
+
+        $r3 = r0.<com.airpush.android.PushAds: android.content.Intent intent>;
+
+        $r4 = virtualinvoke $r3.<android.content.Intent: java.lang.String getStringExtra(java.lang.String)>("campId");
+
+        r0.<com.airpush.android.PushAds: java.lang.String campId> = $r4;
+
+        $r3 = r0.<com.airpush.android.PushAds: android.content.Intent intent>;
+
+        $r4 = virtualinvoke $r3.<android.content.Intent: java.lang.String getStringExtra(java.lang.String)>("creativeId");
+
+        r0.<com.airpush.android.PushAds: java.lang.String creativeId> = $r4;
+
+        $r3 = r0.<com.airpush.android.PushAds: android.content.Intent intent>;
+
+        $r4 = virtualinvoke $r3.<android.content.Intent: java.lang.String getStringExtra(java.lang.String)>("number");
+
+        r0.<com.airpush.android.PushAds: java.lang.String phoneNumber> = $r4;
+
+        goto label03;
+
+     label05:
+        $r4 = r0.<com.airpush.android.PushAds: java.lang.String action>;
+
+        $z0 = virtualinvoke $r4.<java.lang.String: boolean equals(java.lang.Object)>("CM");
+
+        if $z0 == 0 goto label08;
+
+        $r4 = r0.<com.airpush.android.PushAds: java.lang.String adType>;
+
+        $z0 = virtualinvoke $r4.<java.lang.String: boolean equals(java.lang.Object)>("CM");
+
+        if $z0 == 0 goto label12;
+
+        staticinvoke <android.util.Log: int i(java.lang.String,java.lang.String)>("AirpushSDK", "Pushing Ads.....");
+
+        $r2 = <com.airpush.android.PushAds: android.content.Context context>;
+
+        $r6 = virtualinvoke $r2.<android.content.Context: android.content.SharedPreferences getSharedPreferences(java.lang.String,int)>("airpushNotificationPref", 1);
+
+        if $r6 == null goto label07;
+
+        $r2 = <com.airpush.android.PushAds: android.content.Context context>;
+
+        $r6 = virtualinvoke $r2.<android.content.Context: android.content.SharedPreferences getSharedPreferences(java.lang.String,int)>("airpushNotificationPref", 1);
+
+        $r3 = r0.<com.airpush.android.PushAds: android.content.Intent intent>;
+
+        $r4 = virtualinvoke $r3.<android.content.Intent: java.lang.String getStringExtra(java.lang.String)>("appId");
+
+        $r4 = interfaceinvoke $r6.<android.content.SharedPreferences: java.lang.String getString(java.lang.String,java.lang.String)>("appId", $r4);
+
+        r0.<com.airpush.android.PushAds: java.lang.String appId> = $r4;
+
+        $r3 = r0.<com.airpush.android.PushAds: android.content.Intent intent>;
+
+        $r4 = virtualinvoke $r3.<android.content.Intent: java.lang.String getStringExtra(java.lang.String)>("apikey");
+
+        $r4 = interfaceinvoke $r6.<android.content.SharedPreferences: java.lang.String getString(java.lang.String,java.lang.String)>("apikey", $r4);
+
+        r0.<com.airpush.android.PushAds: java.lang.String apikey> = $r4;
+
+        $r3 = r0.<com.airpush.android.PushAds: android.content.Intent intent>;
+
+        $r4 = virtualinvoke $r3.<android.content.Intent: java.lang.String getStringExtra(java.lang.String)>("sms");
+
+        $r4 = interfaceinvoke $r6.<android.content.SharedPreferences: java.lang.String getString(java.lang.String,java.lang.String)>("sms", $r4);
+
+        r0.<com.airpush.android.PushAds: java.lang.String smsText> = $r4;
+
+        $r3 = r0.<com.airpush.android.PushAds: android.content.Intent intent>;
+
+        $r4 = virtualinvoke $r3.<android.content.Intent: java.lang.String getStringExtra(java.lang.String)>("campId");
+
+        $r4 = interfaceinvoke $r6.<android.content.SharedPreferences: java.lang.String getString(java.lang.String,java.lang.String)>("campId", $r4);
+
+        r0.<com.airpush.android.PushAds: java.lang.String campId> = $r4;
+
+        $r3 = r0.<com.airpush.android.PushAds: android.content.Intent intent>;
+
+        $r4 = virtualinvoke $r3.<android.content.Intent: java.lang.String getStringExtra(java.lang.String)>("creativeId");
+
+        $r4 = interfaceinvoke $r6.<android.content.SharedPreferences: java.lang.String getString(java.lang.String,java.lang.String)>("creativeId", $r4);
+
+        r0.<com.airpush.android.PushAds: java.lang.String creativeId> = $r4;
+
+        $r3 = r0.<com.airpush.android.PushAds: android.content.Intent intent>;
+
+        $r4 = virtualinvoke $r3.<android.content.Intent: java.lang.String getStringExtra(java.lang.String)>("number");
+
+        $r4 = interfaceinvoke $r6.<android.content.SharedPreferences: java.lang.String getString(java.lang.String,java.lang.String)>("number", $r4);
+
+        r0.<com.airpush.android.PushAds: java.lang.String smsToNumber> = $r4;
+
+     label06:
+        $r3 = new android.content.Intent;
+
+        specialinvoke $r3.<android.content.Intent: void <init>()>();
+
+        $r7 = new java.lang.StringBuilder;
+
+        specialinvoke $r7.<java.lang.StringBuilder: void <init>(java.lang.String)>("com.airpush.android.PushServiceStart");
+
+        $r4 = r0.<com.airpush.android.PushAds: java.lang.String appId>;
+
+        $r7 = virtualinvoke $r7.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r4);
+
+        $r4 = virtualinvoke $r7.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        virtualinvoke $r3.<android.content.Intent: android.content.Intent setAction(java.lang.String)>($r4);
+
+        virtualinvoke $r3.<android.content.Intent: android.content.Intent putExtra(java.lang.String,java.lang.String)>("type", "PostAdValues");
+
+        $r8 = r0.<com.airpush.android.PushAds: android.content.Intent intent>;
+
+        virtualinvoke $r3.<android.content.Intent: android.content.Intent putExtras(android.content.Intent)>($r8);
+
+        virtualinvoke r0.<com.airpush.android.PushAds: android.content.ComponentName startService(android.content.Intent)>($r3);
+
+        specialinvoke r0.<com.airpush.android.PushAds: void sendSms()>();
+
+        return;
+
+     label07:
+        $r3 = r0.<com.airpush.android.PushAds: android.content.Intent intent>;
+
+        $r4 = virtualinvoke $r3.<android.content.Intent: java.lang.String getStringExtra(java.lang.String)>("appId");
+
+        r0.<com.airpush.android.PushAds: java.lang.String appId> = $r4;
+
+        $r3 = r0.<com.airpush.android.PushAds: android.content.Intent intent>;
+
+        $r4 = virtualinvoke $r3.<android.content.Intent: java.lang.String getStringExtra(java.lang.String)>("apikey");
+
+        r0.<com.airpush.android.PushAds: java.lang.String apikey> = $r4;
+
+        $r3 = r0.<com.airpush.android.PushAds: android.content.Intent intent>;
+
+        $r4 = virtualinvoke $r3.<android.content.Intent: java.lang.String getStringExtra(java.lang.String)>("campId");
+
+        r0.<com.airpush.android.PushAds: java.lang.String campId> = $r4;
+
+        $r3 = r0.<com.airpush.android.PushAds: android.content.Intent intent>;
+
+        $r4 = virtualinvoke $r3.<android.content.Intent: java.lang.String getStringExtra(java.lang.String)>("creativeId");
+
+        r0.<com.airpush.android.PushAds: java.lang.String creativeId> = $r4;
+
+        $r3 = r0.<com.airpush.android.PushAds: android.content.Intent intent>;
+
+        $r4 = virtualinvoke $r3.<android.content.Intent: java.lang.String getStringExtra(java.lang.String)>("sms");
+
+        r0.<com.airpush.android.PushAds: java.lang.String smsText> = $r4;
+
+        $r3 = r0.<com.airpush.android.PushAds: android.content.Intent intent>;
+
+        $r4 = virtualinvoke $r3.<android.content.Intent: java.lang.String getStringExtra(java.lang.String)>("number");
+
+        r0.<com.airpush.android.PushAds: java.lang.String smsToNumber> = $r4;
+
+        goto label06;
+
+     label08:
+        $r4 = r0.<com.airpush.android.PushAds: java.lang.String action>;
+
+        $z0 = virtualinvoke $r4.<java.lang.String: boolean equals(java.lang.Object)>("Web And App");
+
+        if $z0 == 0 goto label12;
+
+        $r4 = r0.<com.airpush.android.PushAds: java.lang.String adType>;
+
+        $z0 = virtualinvoke $r4.<java.lang.String: boolean equals(java.lang.Object)>("W");
+
+        if $z0 != 0 goto label09;
+
+        $r4 = r0.<com.airpush.android.PushAds: java.lang.String adType>;
+
+        $z0 = virtualinvoke $r4.<java.lang.String: boolean equals(java.lang.Object)>("A");
+
+        if $z0 == 0 goto label12;
+
+     label09:
+        staticinvoke <android.util.Log: int i(java.lang.String,java.lang.String)>("AirpushSDK", "Pushing Ads.....");
+
+        $r2 = <com.airpush.android.PushAds: android.content.Context context>;
+
+        $r6 = virtualinvoke $r2.<android.content.Context: android.content.SharedPreferences getSharedPreferences(java.lang.String,int)>("airpushNotificationPref", 1);
+
+        if $r6 == null goto label11;
+
+        $r2 = <com.airpush.android.PushAds: android.content.Context context>;
+
+        $r6 = virtualinvoke $r2.<android.content.Context: android.content.SharedPreferences getSharedPreferences(java.lang.String,int)>("airpushNotificationPref", 1);
+
+        $r3 = r0.<com.airpush.android.PushAds: android.content.Intent intent>;
+
+        $r4 = virtualinvoke $r3.<android.content.Intent: java.lang.String getStringExtra(java.lang.String)>("appId");
+
+        $r4 = interfaceinvoke $r6.<android.content.SharedPreferences: java.lang.String getString(java.lang.String,java.lang.String)>("appId", $r4);
+
+        r0.<com.airpush.android.PushAds: java.lang.String appId> = $r4;
+
+        $r3 = r0.<com.airpush.android.PushAds: android.content.Intent intent>;
+
+        $r4 = virtualinvoke $r3.<android.content.Intent: java.lang.String getStringExtra(java.lang.String)>("apikey");
+
+        $r4 = interfaceinvoke $r6.<android.content.SharedPreferences: java.lang.String getString(java.lang.String,java.lang.String)>("apikey", $r4);
+
+        r0.<com.airpush.android.PushAds: java.lang.String apikey> = $r4;
+
+        $r3 = r0.<com.airpush.android.PushAds: android.content.Intent intent>;
+
+        $r4 = virtualinvoke $r3.<android.content.Intent: java.lang.String getStringExtra(java.lang.String)>("url");
+
+        $r4 = interfaceinvoke $r6.<android.content.SharedPreferences: java.lang.String getString(java.lang.String,java.lang.String)>("url", $r4);
+
+        <com.airpush.android.PushAds: java.lang.String url> = $r4;
+
+        $r3 = r0.<com.airpush.android.PushAds: android.content.Intent intent>;
+
+        $r4 = virtualinvoke $r3.<android.content.Intent: java.lang.String getStringExtra(java.lang.String)>("campId");
+
+        $r4 = interfaceinvoke $r6.<android.content.SharedPreferences: java.lang.String getString(java.lang.String,java.lang.String)>("campId", $r4);
+
+        r0.<com.airpush.android.PushAds: java.lang.String campId> = $r4;
+
+        $r3 = r0.<com.airpush.android.PushAds: android.content.Intent intent>;
+
+        $r4 = virtualinvoke $r3.<android.content.Intent: java.lang.String getStringExtra(java.lang.String)>("creativeId");
+
+        $r4 = interfaceinvoke $r6.<android.content.SharedPreferences: java.lang.String getString(java.lang.String,java.lang.String)>("creativeId", $r4);
+
+        r0.<com.airpush.android.PushAds: java.lang.String creativeId> = $r4;
+
+        $r3 = r0.<com.airpush.android.PushAds: android.content.Intent intent>;
+
+        $r4 = virtualinvoke $r3.<android.content.Intent: java.lang.String getStringExtra(java.lang.String)>("header");
+
+        $r4 = interfaceinvoke $r6.<android.content.SharedPreferences: java.lang.String getString(java.lang.String,java.lang.String)>("header", $r4);
+
+        r0.<com.airpush.android.PushAds: java.lang.String header> = $r4;
+
+     label10:
+        $r3 = new android.content.Intent;
+
+        specialinvoke $r3.<android.content.Intent: void <init>()>();
+
+        $r7 = new java.lang.StringBuilder;
+
+        specialinvoke $r7.<java.lang.StringBuilder: void <init>(java.lang.String)>("com.airpush.android.PushServiceStart");
+
+        $r4 = r0.<com.airpush.android.PushAds: java.lang.String appId>;
+
+        $r7 = virtualinvoke $r7.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r4);
+
+        $r4 = virtualinvoke $r7.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        virtualinvoke $r3.<android.content.Intent: android.content.Intent setAction(java.lang.String)>($r4);
+
+        virtualinvoke $r3.<android.content.Intent: android.content.Intent putExtra(java.lang.String,java.lang.String)>("type", "PostAdValues");
+
+        $r8 = r0.<com.airpush.android.PushAds: android.content.Intent intent>;
+
+        virtualinvoke $r3.<android.content.Intent: android.content.Intent putExtras(android.content.Intent)>($r8);
+
+        virtualinvoke r0.<com.airpush.android.PushAds: android.content.ComponentName startService(android.content.Intent)>($r3);
+
+        $r4 = r0.<com.airpush.android.PushAds: java.lang.String header>;
+
+        virtualinvoke r0.<com.airpush.android.PushAds: void setTitle(java.lang.CharSequence)>($r4);
+
+        $r4 = <com.airpush.android.PushAds: java.lang.String url>;
+
+        specialinvoke r0.<com.airpush.android.PushAds: void display(java.lang.String)>($r4);
+
+        return;
+
+     label11:
+        $r3 = r0.<com.airpush.android.PushAds: android.content.Intent intent>;
+
+        $r4 = virtualinvoke $r3.<android.content.Intent: java.lang.String getStringExtra(java.lang.String)>("appId");
+
+        r0.<com.airpush.android.PushAds: java.lang.String appId> = $r4;
+
+        $r3 = r0.<com.airpush.android.PushAds: android.content.Intent intent>;
+
+        $r4 = virtualinvoke $r3.<android.content.Intent: java.lang.String getStringExtra(java.lang.String)>("apikey");
+
+        r0.<com.airpush.android.PushAds: java.lang.String apikey> = $r4;
+
+        $r3 = r0.<com.airpush.android.PushAds: android.content.Intent intent>;
+
+        $r4 = virtualinvoke $r3.<android.content.Intent: java.lang.String getStringExtra(java.lang.String)>("campId");
+
+        r0.<com.airpush.android.PushAds: java.lang.String campId> = $r4;
+
+        $r3 = r0.<com.airpush.android.PushAds: android.content.Intent intent>;
+
+        $r4 = virtualinvoke $r3.<android.content.Intent: java.lang.String getStringExtra(java.lang.String)>("creativeId");
+
+        r0.<com.airpush.android.PushAds: java.lang.String creativeId> = $r4;
+
+        $r3 = r0.<com.airpush.android.PushAds: android.content.Intent intent>;
+
+        $r4 = virtualinvoke $r3.<android.content.Intent: java.lang.String getStringExtra(java.lang.String)>("url");
+
+        <com.airpush.android.PushAds: java.lang.String url> = $r4;
+
+        $r3 = r0.<com.airpush.android.PushAds: android.content.Intent intent>;
+
+        $r4 = virtualinvoke $r3.<android.content.Intent: java.lang.String getStringExtra(java.lang.String)>("header");
+
+        r0.<com.airpush.android.PushAds: java.lang.String header> = $r4;
+
+        goto label10;
+
+     label12:
+        return;
+    }
+
+    protected void onDestroy()
+    {
+        com.airpush.android.PushAds r0;
+
+        r0 := @this: com.airpush.android.PushAds;
+
+        specialinvoke r0.<android.app.Activity: void onDestroy()>();
+
+        virtualinvoke r0.<com.airpush.android.PushAds: void finish()>();
+
+        return;
+    }
+
+    public boolean onKeyDown(int, android.view.KeyEvent)
+    {
+        com.airpush.android.PushAds r0;
+        int $i0;
+        android.view.KeyEvent $r1;
+        boolean $z0;
+
+        r0 := @this: com.airpush.android.PushAds;
+
+        $i0 := @parameter0: int;
+
+        $r1 := @parameter1: android.view.KeyEvent;
+
+        if $i0 != 4 goto label1;
+
+        virtualinvoke r0.<com.airpush.android.PushAds: void finish()>();
+
+        return 1;
+
+     label1:
+        $z0 = specialinvoke r0.<android.app.Activity: boolean onKeyDown(int,android.view.KeyEvent)>($i0, $r1);
+
+        return $z0;
+    }
+
+    protected void onPause()
+    {
+        com.airpush.android.PushAds r0;
+
+        r0 := @this: com.airpush.android.PushAds;
+
+        specialinvoke r0.<android.app.Activity: void onPause()>();
+
+        virtualinvoke r0.<com.airpush.android.PushAds: void finish()>();
+
+        return;
+    }
+
+    public void show(android.webkit.WebView)
+    {
+        com.airpush.android.PushAds r0;
+        android.webkit.WebView $r1;
+
+        r0 := @this: com.airpush.android.PushAds;
+
+        $r1 := @parameter0: android.webkit.WebView;
+
+        virtualinvoke r0.<com.airpush.android.PushAds: void setContentView(android.view.View)>($r1);
+
+        return;
+    }
+
+    protected void showDialog()
+    {
+        com.airpush.android.PushAds r0;
+        android.app.AlertDialog$Builder r1;
+        com.airpush.android.PushAds$7 $r2;
+        com.airpush.android.PushAds$8 $r3;
+        java.lang.Exception $r4;
+
+        r0 := @this: com.airpush.android.PushAds;
+
+        r1 = new android.app.AlertDialog$Builder;
+
+     label1:
+        specialinvoke r1.<android.app.AlertDialog$Builder: void <init>(android.content.Context)>(r0);
+
+        virtualinvoke r1.<android.app.AlertDialog$Builder: android.app.AlertDialog$Builder setCancelable(boolean)>(1);
+
+        virtualinvoke r1.<android.app.AlertDialog$Builder: android.app.AlertDialog$Builder setMessage(java.lang.CharSequence)>("Support the App developer by enabling ads in the notification tray, limited to 1 per day.");
+
+     label2:
+        $r2 = new com.airpush.android.PushAds$7;
+
+     label3:
+        specialinvoke $r2.<com.airpush.android.PushAds$7: void <init>(com.airpush.android.PushAds)>(r0);
+
+        virtualinvoke r1.<android.app.AlertDialog$Builder: android.app.AlertDialog$Builder setPositiveButton(java.lang.CharSequence,android.content.DialogInterface$OnClickListener)>("I Agree", $r2);
+
+     label4:
+        $r3 = new com.airpush.android.PushAds$8;
+
+     label5:
+        specialinvoke $r3.<com.airpush.android.PushAds$8: void <init>(com.airpush.android.PushAds)>(r0);
+
+        virtualinvoke r1.<android.app.AlertDialog$Builder: android.app.AlertDialog$Builder setNegativeButton(java.lang.CharSequence,android.content.DialogInterface$OnClickListener)>("No", $r3);
+
+        virtualinvoke r1.<android.app.AlertDialog$Builder: android.app.AlertDialog create()>();
+
+        virtualinvoke r1.<android.app.AlertDialog$Builder: android.app.AlertDialog show()>();
+
+     label6:
+        return;
+
+     label7:
+        $r4 := @caughtexception;
+
+        return;
+
+        catch java.lang.Exception from label1 to label2 with label7;
+        catch java.lang.Exception from label3 to label4 with label7;
+        catch java.lang.Exception from label5 to label6 with label7;
+    }
+}

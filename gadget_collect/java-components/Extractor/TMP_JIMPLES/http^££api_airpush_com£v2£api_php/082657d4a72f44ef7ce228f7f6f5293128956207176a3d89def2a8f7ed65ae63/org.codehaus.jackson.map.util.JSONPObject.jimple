@@ -1,0 +1,205 @@
+public class org.codehaus.jackson.map.util.JSONPObject extends java.lang.Object implements org.codehaus.jackson.map.JsonSerializableWithType
+{
+    protected final java.lang.String _function;
+    protected final org.codehaus.jackson.type.JavaType _serializationType;
+    protected final java.lang.Object _value;
+
+    public void <init>(java.lang.String, java.lang.Object)
+    {
+        org.codehaus.jackson.map.util.JSONPObject r0;
+        java.lang.String $r1;
+        java.lang.Object $r2;
+
+        r0 := @this: org.codehaus.jackson.map.util.JSONPObject;
+
+        $r1 := @parameter0: java.lang.String;
+
+        $r2 := @parameter1: java.lang.Object;
+
+        specialinvoke r0.<org.codehaus.jackson.map.util.JSONPObject: void <init>(java.lang.String,java.lang.Object,org.codehaus.jackson.type.JavaType)>($r1, $r2, null);
+
+        return;
+    }
+
+    public void <init>(java.lang.String, java.lang.Object, java.lang.Class)
+    {
+        org.codehaus.jackson.map.util.JSONPObject r0;
+        java.lang.String $r1;
+        java.lang.Object $r2;
+        java.lang.Class r3;
+        org.codehaus.jackson.type.JavaType $r4;
+
+        r0 := @this: org.codehaus.jackson.map.util.JSONPObject;
+
+        $r1 := @parameter0: java.lang.String;
+
+        $r2 := @parameter1: java.lang.Object;
+
+        r3 := @parameter2: java.lang.Class;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        r0.<org.codehaus.jackson.map.util.JSONPObject: java.lang.String _function> = $r1;
+
+        r0.<org.codehaus.jackson.map.util.JSONPObject: java.lang.Object _value> = $r2;
+
+        if r3 != null goto label2;
+
+        $r4 = null;
+
+     label1:
+        r0.<org.codehaus.jackson.map.util.JSONPObject: org.codehaus.jackson.type.JavaType _serializationType> = $r4;
+
+        return;
+
+     label2:
+        $r4 = staticinvoke <org.codehaus.jackson.map.type.TypeFactory: org.codehaus.jackson.type.JavaType type(java.lang.reflect.Type)>(r3);
+
+        goto label1;
+    }
+
+    public void <init>(java.lang.String, java.lang.Object, org.codehaus.jackson.type.JavaType)
+    {
+        org.codehaus.jackson.map.util.JSONPObject r0;
+        java.lang.String $r1;
+        java.lang.Object $r2;
+        org.codehaus.jackson.type.JavaType $r3;
+
+        r0 := @this: org.codehaus.jackson.map.util.JSONPObject;
+
+        $r1 := @parameter0: java.lang.String;
+
+        $r2 := @parameter1: java.lang.Object;
+
+        $r3 := @parameter2: org.codehaus.jackson.type.JavaType;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        r0.<org.codehaus.jackson.map.util.JSONPObject: java.lang.String _function> = $r1;
+
+        r0.<org.codehaus.jackson.map.util.JSONPObject: java.lang.Object _value> = $r2;
+
+        r0.<org.codehaus.jackson.map.util.JSONPObject: org.codehaus.jackson.type.JavaType _serializationType> = $r3;
+
+        return;
+    }
+
+    public java.lang.String getFunction()
+    {
+        org.codehaus.jackson.map.util.JSONPObject r0;
+        java.lang.String r1;
+
+        r0 := @this: org.codehaus.jackson.map.util.JSONPObject;
+
+        r1 = r0.<org.codehaus.jackson.map.util.JSONPObject: java.lang.String _function>;
+
+        return r1;
+    }
+
+    public org.codehaus.jackson.type.JavaType getSerializationType()
+    {
+        org.codehaus.jackson.map.util.JSONPObject r0;
+        org.codehaus.jackson.type.JavaType r1;
+
+        r0 := @this: org.codehaus.jackson.map.util.JSONPObject;
+
+        r1 = r0.<org.codehaus.jackson.map.util.JSONPObject: org.codehaus.jackson.type.JavaType _serializationType>;
+
+        return r1;
+    }
+
+    public java.lang.Object getValue()
+    {
+        org.codehaus.jackson.map.util.JSONPObject r0;
+        java.lang.Object r1;
+
+        r0 := @this: org.codehaus.jackson.map.util.JSONPObject;
+
+        r1 = r0.<org.codehaus.jackson.map.util.JSONPObject: java.lang.Object _value>;
+
+        return r1;
+    }
+
+    public void serialize(org.codehaus.jackson.JsonGenerator, org.codehaus.jackson.map.SerializerProvider) throws java.io.IOException, org.codehaus.jackson.JsonProcessingException
+    {
+        org.codehaus.jackson.map.util.JSONPObject r0;
+        org.codehaus.jackson.JsonGenerator $r1;
+        org.codehaus.jackson.map.SerializerProvider $r2;
+        java.lang.String $r3;
+        java.lang.Object $r4;
+        org.codehaus.jackson.type.JavaType $r5;
+        org.codehaus.jackson.map.JsonSerializer $r6;
+        java.lang.Class $r7;
+
+        r0 := @this: org.codehaus.jackson.map.util.JSONPObject;
+
+        $r1 := @parameter0: org.codehaus.jackson.JsonGenerator;
+
+        $r2 := @parameter1: org.codehaus.jackson.map.SerializerProvider;
+
+        $r3 = r0.<org.codehaus.jackson.map.util.JSONPObject: java.lang.String _function>;
+
+        virtualinvoke $r1.<org.codehaus.jackson.JsonGenerator: void writeRaw(java.lang.String)>($r3);
+
+        virtualinvoke $r1.<org.codehaus.jackson.JsonGenerator: void writeRaw(char)>(40);
+
+        $r4 = r0.<org.codehaus.jackson.map.util.JSONPObject: java.lang.Object _value>;
+
+        if $r4 != null goto label2;
+
+        virtualinvoke $r2.<org.codehaus.jackson.map.SerializerProvider: void defaultSerializeNull(org.codehaus.jackson.JsonGenerator)>($r1);
+
+     label1:
+        virtualinvoke $r1.<org.codehaus.jackson.JsonGenerator: void writeRaw(char)>(41);
+
+        return;
+
+     label2:
+        $r5 = r0.<org.codehaus.jackson.map.util.JSONPObject: org.codehaus.jackson.type.JavaType _serializationType>;
+
+        if $r5 == null goto label3;
+
+        $r5 = r0.<org.codehaus.jackson.map.util.JSONPObject: org.codehaus.jackson.type.JavaType _serializationType>;
+
+        $r6 = virtualinvoke $r2.<org.codehaus.jackson.map.SerializerProvider: org.codehaus.jackson.map.JsonSerializer findTypedValueSerializer(org.codehaus.jackson.type.JavaType,boolean,org.codehaus.jackson.map.BeanProperty)>($r5, 1, null);
+
+        $r4 = r0.<org.codehaus.jackson.map.util.JSONPObject: java.lang.Object _value>;
+
+        virtualinvoke $r6.<org.codehaus.jackson.map.JsonSerializer: void serialize(java.lang.Object,org.codehaus.jackson.JsonGenerator,org.codehaus.jackson.map.SerializerProvider)>($r4, $r1, $r2);
+
+        goto label1;
+
+     label3:
+        $r4 = r0.<org.codehaus.jackson.map.util.JSONPObject: java.lang.Object _value>;
+
+        $r7 = virtualinvoke $r4.<java.lang.Object: java.lang.Class getClass()>();
+
+        $r6 = virtualinvoke $r2.<org.codehaus.jackson.map.SerializerProvider: org.codehaus.jackson.map.JsonSerializer findTypedValueSerializer(java.lang.Class,boolean,org.codehaus.jackson.map.BeanProperty)>($r7, 1, null);
+
+        $r4 = r0.<org.codehaus.jackson.map.util.JSONPObject: java.lang.Object _value>;
+
+        virtualinvoke $r6.<org.codehaus.jackson.map.JsonSerializer: void serialize(java.lang.Object,org.codehaus.jackson.JsonGenerator,org.codehaus.jackson.map.SerializerProvider)>($r4, $r1, $r2);
+
+        goto label1;
+    }
+
+    public void serializeWithType(org.codehaus.jackson.JsonGenerator, org.codehaus.jackson.map.SerializerProvider, org.codehaus.jackson.map.TypeSerializer) throws java.io.IOException, org.codehaus.jackson.JsonProcessingException
+    {
+        org.codehaus.jackson.map.util.JSONPObject r0;
+        org.codehaus.jackson.JsonGenerator $r1;
+        org.codehaus.jackson.map.SerializerProvider $r2;
+        org.codehaus.jackson.map.TypeSerializer $r3;
+
+        r0 := @this: org.codehaus.jackson.map.util.JSONPObject;
+
+        $r1 := @parameter0: org.codehaus.jackson.JsonGenerator;
+
+        $r2 := @parameter1: org.codehaus.jackson.map.SerializerProvider;
+
+        $r3 := @parameter2: org.codehaus.jackson.map.TypeSerializer;
+
+        virtualinvoke r0.<org.codehaus.jackson.map.util.JSONPObject: void serialize(org.codehaus.jackson.JsonGenerator,org.codehaus.jackson.map.SerializerProvider)>($r1, $r2);
+
+        return;
+    }
+}

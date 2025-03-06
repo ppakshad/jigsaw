@@ -1,0 +1,324 @@
+public class com.movesky.app.main.Base extends com.movesky.app.engine.ui.UIView
+{
+    public static final float BASE_HEIGHT;
+    int cachedHealth;
+    private java.util.HashSet cachedUnits;
+    public boolean drawFill;
+    int health;
+    java.lang.String healthText;
+    private android.graphics.Paint paint;
+    private com.movesky.app.main.Player player;
+    private com.movesky.app.main.Team team;
+
+    public void <init>(com.movesky.app.main.Player)
+    {
+        com.movesky.app.main.Base r0;
+        com.movesky.app.main.Player $r1;
+        com.movesky.app.main.Team $r2;
+        java.util.HashSet $r3;
+        android.graphics.Paint $r4;
+        android.graphics.Paint$Align $r5;
+
+        r0 := @this: com.movesky.app.main.Base;
+
+        $r1 := @parameter0: com.movesky.app.main.Player;
+
+        specialinvoke r0.<com.movesky.app.engine.ui.UIView: void <init>()>();
+
+        r0.<com.movesky.app.main.Base: boolean drawFill> = 1;
+
+        $r3 = new java.util.HashSet;
+
+        specialinvoke $r3.<java.util.HashSet: void <init>()>();
+
+        r0.<com.movesky.app.main.Base: java.util.HashSet cachedUnits> = $r3;
+
+        r0.<com.movesky.app.main.Base: java.lang.String healthText> = "h9g0-w-0rt5mvk00w5rt0";
+
+        r0.<com.movesky.app.main.Base: int cachedHealth> = -1;
+
+        r0.<com.movesky.app.main.Base: int health> = -1;
+
+        virtualinvoke r0.<com.movesky.app.main.Base: void setSize(float,float)>(270.0F, 20.0F);
+
+        r0.<com.movesky.app.main.Base: com.movesky.app.main.Player player> = $r1;
+
+        $r2 = virtualinvoke $r1.<com.movesky.app.main.Player: com.movesky.app.main.Team getTeam()>();
+
+        r0.<com.movesky.app.main.Base: com.movesky.app.main.Team team> = $r2;
+
+        $r4 = new android.graphics.Paint;
+
+        specialinvoke $r4.<android.graphics.Paint: void <init>(int)>(1);
+
+        r0.<com.movesky.app.main.Base: android.graphics.Paint paint> = $r4;
+
+        $r4 = r0.<com.movesky.app.main.Base: android.graphics.Paint paint>;
+
+        $r5 = <android.graphics.Paint$Align: android.graphics.Paint$Align CENTER>;
+
+        virtualinvoke $r4.<android.graphics.Paint: void setTextAlign(android.graphics.Paint$Align)>($r5);
+
+        return;
+    }
+
+    public void damageUnits(com.movesky.app.main.GridAcceleration)
+    {
+        com.movesky.app.main.Base r0;
+        com.movesky.app.main.GridAcceleration $r1;
+        java.util.HashSet $r2;
+        android.graphics.RectF $r3;
+        float $f0, $f1, $f2, $f3;
+        java.util.Iterator $r4;
+        boolean $z0;
+        java.lang.Object $r5;
+        com.movesky.app.main.units.Unit $r6;
+        com.movesky.app.main.Team $r7, $r8;
+        com.movesky.app.main.units.UnitType $r9, $r10;
+        com.movesky.app.main.Player $r11;
+        int $i0, $i1;
+
+        r0 := @this: com.movesky.app.main.Base;
+
+        $r1 := @parameter0: com.movesky.app.main.GridAcceleration;
+
+        $r3 = r0.<com.movesky.app.main.Base: android.graphics.RectF _rect>;
+
+        $f0 = $r3.<android.graphics.RectF: float left>;
+
+        $r3 = r0.<com.movesky.app.main.Base: android.graphics.RectF _rect>;
+
+        $f1 = $r3.<android.graphics.RectF: float top>;
+
+        $r3 = r0.<com.movesky.app.main.Base: android.graphics.RectF _rect>;
+
+        $f2 = $r3.<android.graphics.RectF: float right>;
+
+        $r3 = r0.<com.movesky.app.main.Base: android.graphics.RectF _rect>;
+
+        $f3 = $r3.<android.graphics.RectF: float bottom>;
+
+        $r2 = r0.<com.movesky.app.main.Base: java.util.HashSet cachedUnits>;
+
+        virtualinvoke $r1.<com.movesky.app.main.GridAcceleration: void getUnitsInAABB(float,float,float,float,java.util.HashSet)>($f0, $f1, $f2, $f3, $r2);
+
+        $r2 = r0.<com.movesky.app.main.Base: java.util.HashSet cachedUnits>;
+
+        $r4 = virtualinvoke $r2.<java.util.HashSet: java.util.Iterator iterator()>();
+
+     label1:
+        $z0 = interfaceinvoke $r4.<java.util.Iterator: boolean hasNext()>();
+
+        if $z0 == 0 goto label4;
+
+        $r5 = interfaceinvoke $r4.<java.util.Iterator: java.lang.Object next()>();
+
+        $r6 = (com.movesky.app.main.units.Unit) $r5;
+
+        $r7 = virtualinvoke $r6.<com.movesky.app.main.units.Unit: com.movesky.app.main.Team getTeam()>();
+
+        $r8 = r0.<com.movesky.app.main.Base: com.movesky.app.main.Team team>;
+
+        $r8 = virtualinvoke $r8.<com.movesky.app.main.Team: com.movesky.app.main.Team getOppositeTeam()>();
+
+        if $r7 != $r8 goto label1;
+
+        $r3 = r0.<com.movesky.app.main.Base: android.graphics.RectF _rect>;
+
+        $f0 = virtualinvoke $r6.<com.movesky.app.main.units.Unit: float getX()>();
+
+        $f1 = virtualinvoke $r6.<com.movesky.app.main.units.Unit: float getY()>();
+
+        $z0 = virtualinvoke $r3.<android.graphics.RectF: boolean contains(float,float)>($f0, $f1);
+
+        if $z0 == 0 goto label1;
+
+        $r9 = virtualinvoke $r6.<com.movesky.app.main.units.Unit: com.movesky.app.main.units.UnitType getType()>();
+
+        $r10 = <com.movesky.app.main.units.UnitType: com.movesky.app.main.units.UnitType UBER>;
+
+        if $r9 != $r10 goto label3;
+
+        $r11 = r0.<com.movesky.app.main.Base: com.movesky.app.main.Player player>;
+
+        $i0 = virtualinvoke $r6.<com.movesky.app.main.units.Unit: int getHealth()>();
+
+        $i0 = $i0 * -10;
+
+        $i1 = virtualinvoke $r6.<com.movesky.app.main.units.Unit: int getStartingHealth()>();
+
+        $i0 = $i0 / $i1;
+
+        virtualinvoke $r11.<com.movesky.app.main.Player: void adjustHealth(int)>($i0);
+
+     label2:
+        $i0 = virtualinvoke $r6.<com.movesky.app.main.units.Unit: int getHealth()>();
+
+        $f0 = (float) $i0;
+
+        virtualinvoke $r6.<com.movesky.app.main.units.Unit: void takeDamage(float,com.movesky.app.main.units.Unit)>($f0, null);
+
+        goto label1;
+
+     label3:
+        $r11 = r0.<com.movesky.app.main.Base: com.movesky.app.main.Player player>;
+
+        $i0 = virtualinvoke $r6.<com.movesky.app.main.units.Unit: int getHealth()>();
+
+        $i0 = $i0 * -5;
+
+        $i1 = virtualinvoke $r6.<com.movesky.app.main.units.Unit: int getStartingHealth()>();
+
+        $i0 = $i0 / $i1;
+
+        virtualinvoke $r11.<com.movesky.app.main.Player: void adjustHealth(int)>($i0);
+
+        goto label2;
+
+     label4:
+        return;
+    }
+
+    public void draw(android.graphics.Canvas, boolean)
+    {
+        com.movesky.app.main.Base r0;
+        android.graphics.Canvas $r1;
+        boolean $z0, $z1;
+        android.graphics.Paint $r2;
+        com.movesky.app.main.Team $r3;
+        int $i0, $i1;
+        android.graphics.RectF $r4;
+        float $f0, $f1;
+        java.lang.String $r5;
+
+        r0 := @this: com.movesky.app.main.Base;
+
+        $r1 := @parameter0: android.graphics.Canvas;
+
+        $z0 := @parameter1: boolean;
+
+        $z1 = r0.<com.movesky.app.main.Base: boolean drawFill>;
+
+        if $z1 == 0 goto label1;
+
+        $r2 = r0.<com.movesky.app.main.Base: android.graphics.Paint paint>;
+
+        $r3 = r0.<com.movesky.app.main.Base: com.movesky.app.main.Team team>;
+
+        $i0 = virtualinvoke $r3.<com.movesky.app.main.Team: int getBaseColor()>();
+
+        virtualinvoke $r2.<android.graphics.Paint: void setColor(int)>($i0);
+
+        $r4 = r0.<com.movesky.app.main.Base: android.graphics.RectF _rect>;
+
+        $r2 = r0.<com.movesky.app.main.Base: android.graphics.Paint paint>;
+
+        virtualinvoke $r1.<android.graphics.Canvas: void drawRect(android.graphics.RectF,android.graphics.Paint)>($r4, $r2);
+
+     label1:
+        $r2 = r0.<com.movesky.app.main.Base: android.graphics.Paint paint>;
+
+        virtualinvoke $r2.<android.graphics.Paint: void setColor(int)>(-1);
+
+        virtualinvoke $r1.<android.graphics.Canvas: int save()>();
+
+        $r4 = r0.<com.movesky.app.main.Base: android.graphics.RectF _rect>;
+
+        $f0 = $r4.<android.graphics.RectF: float left>;
+
+        $r4 = r0.<com.movesky.app.main.Base: android.graphics.RectF _rect>;
+
+        $f1 = $r4.<android.graphics.RectF: float right>;
+
+        $f0 = $f0 + $f1;
+
+        $f0 = $f0 / 2.0F;
+
+        $r4 = r0.<com.movesky.app.main.Base: android.graphics.RectF _rect>;
+
+        $f1 = $r4.<android.graphics.RectF: float top>;
+
+        $f1 = $f1 + 13.0F;
+
+        virtualinvoke $r1.<android.graphics.Canvas: void translate(float,float)>($f0, $f1);
+
+        if $z0 == 0 goto label2;
+
+        virtualinvoke $r1.<android.graphics.Canvas: void scale(float,float)>(1.0F, -1.0F);
+
+        $r2 = r0.<com.movesky.app.main.Base: android.graphics.Paint paint>;
+
+        $f0 = virtualinvoke $r2.<android.graphics.Paint: float getTextSize()>();
+
+        $f0 = $f0 / 2.0F;
+
+        virtualinvoke $r1.<android.graphics.Canvas: void translate(float,float)>(0.0F, $f0);
+
+     label2:
+        $i0 = r0.<com.movesky.app.main.Base: int health>;
+
+        $i1 = r0.<com.movesky.app.main.Base: int cachedHealth>;
+
+        if $i0 == $i1 goto label3;
+
+        virtualinvoke r0.<com.movesky.app.main.Base: void regenHealthText()>();
+
+     label3:
+        $r5 = r0.<com.movesky.app.main.Base: java.lang.String healthText>;
+
+        $r2 = r0.<com.movesky.app.main.Base: android.graphics.Paint paint>;
+
+        virtualinvoke $r1.<android.graphics.Canvas: void drawText(java.lang.String,float,float,android.graphics.Paint)>($r5, 0.0F, 0.0F, $r2);
+
+        virtualinvoke $r1.<android.graphics.Canvas: void restore()>();
+
+        return;
+    }
+
+    public android.graphics.RectF getRect()
+    {
+        com.movesky.app.main.Base r0;
+        android.graphics.RectF r1;
+
+        r0 := @this: com.movesky.app.main.Base;
+
+        r1 = r0.<com.movesky.app.main.Base: android.graphics.RectF _rect>;
+
+        return r1;
+    }
+
+    protected void regenHealthText()
+    {
+        com.movesky.app.main.Base r0;
+        int $i0;
+
+        r0 := @this: com.movesky.app.main.Base;
+
+        $i0 = r0.<com.movesky.app.main.Base: int health>;
+
+        r0.<com.movesky.app.main.Base: int cachedHealth> = $i0;
+
+        return;
+    }
+
+    public void setHealth(int)
+    {
+        com.movesky.app.main.Base r0;
+        int $i0;
+
+        r0 := @this: com.movesky.app.main.Base;
+
+        $i0 := @parameter0: int;
+
+        r0.<com.movesky.app.main.Base: int health> = $i0;
+
+        return;
+    }
+
+    public static void <clinit>()
+    {
+        <com.movesky.app.main.Base: float BASE_HEIGHT> = 20.0F;
+
+        return;
+    }
+}

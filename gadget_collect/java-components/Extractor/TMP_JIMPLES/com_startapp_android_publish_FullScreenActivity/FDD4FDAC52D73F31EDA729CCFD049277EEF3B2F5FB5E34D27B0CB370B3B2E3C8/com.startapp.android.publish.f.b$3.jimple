@@ -1,0 +1,73 @@
+class com.startapp.android.publish.f.b$3 extends java.lang.Object implements com.startapp.android.publish.i.x$a
+{
+    final com.startapp.android.publish.f.b a;
+
+    void <init>(com.startapp.android.publish.f.b)
+    {
+        com.startapp.android.publish.f.b$3 r0;
+        com.startapp.android.publish.f.b $r1;
+
+        r0 := @this: com.startapp.android.publish.f.b$3;
+
+        $r1 := @parameter0: com.startapp.android.publish.f.b;
+
+        r0.<com.startapp.android.publish.f.b$3: com.startapp.android.publish.f.b a> = $r1;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public void a()
+    {
+        com.startapp.android.publish.f.b$3 r0;
+        com.startapp.android.publish.f.b $r1;
+        com.startapp.android.publish.AdEventListener $r2;
+        com.startapp.android.publish.Ad $r3;
+
+        r0 := @this: com.startapp.android.publish.f.b$3;
+
+        $r1 = r0.<com.startapp.android.publish.f.b$3: com.startapp.android.publish.f.b a>;
+
+        $r2 = $r1.<com.startapp.android.publish.f.b: com.startapp.android.publish.AdEventListener e>;
+
+        $r1 = r0.<com.startapp.android.publish.f.b$3: com.startapp.android.publish.f.b a>;
+
+        $r3 = $r1.<com.startapp.android.publish.f.b: com.startapp.android.publish.Ad b>;
+
+        interfaceinvoke $r2.<com.startapp.android.publish.AdEventListener: void onReceiveAd(com.startapp.android.publish.Ad)>($r3);
+
+        return;
+    }
+
+    public void a(java.lang.String)
+    {
+        com.startapp.android.publish.f.b$3 r0;
+        java.lang.String $r1;
+        com.startapp.android.publish.f.b $r2;
+        com.startapp.android.publish.Ad $r3;
+        com.startapp.android.publish.AdEventListener $r4;
+
+        r0 := @this: com.startapp.android.publish.f.b$3;
+
+        $r1 := @parameter0: java.lang.String;
+
+        $r2 = r0.<com.startapp.android.publish.f.b$3: com.startapp.android.publish.f.b a>;
+
+        $r3 = $r2.<com.startapp.android.publish.f.b: com.startapp.android.publish.Ad b>;
+
+        virtualinvoke $r3.<com.startapp.android.publish.Ad: void setErrorMessage(java.lang.String)>($r1);
+
+        $r2 = r0.<com.startapp.android.publish.f.b$3: com.startapp.android.publish.f.b a>;
+
+        $r4 = $r2.<com.startapp.android.publish.f.b: com.startapp.android.publish.AdEventListener e>;
+
+        $r2 = r0.<com.startapp.android.publish.f.b$3: com.startapp.android.publish.f.b a>;
+
+        $r3 = $r2.<com.startapp.android.publish.f.b: com.startapp.android.publish.Ad b>;
+
+        interfaceinvoke $r4.<com.startapp.android.publish.AdEventListener: void onFailedToReceiveAd(com.startapp.android.publish.Ad)>($r3);
+
+        return;
+    }
+}

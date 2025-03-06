@@ -1,0 +1,1957 @@
+public class org.codehaus.jackson.map.deser.BeanDeserializer extends org.codehaus.jackson.map.deser.StdDeserializer implements org.codehaus.jackson.map.ResolvableDeserializer
+{
+    protected final org.codehaus.jackson.map.deser.SettableAnyProperty _anySetter;
+    protected final java.util.Map _backRefs;
+    protected final org.codehaus.jackson.map.deser.impl.BeanPropertyMap _beanProperties;
+    protected final org.codehaus.jackson.type.JavaType _beanType;
+    protected final java.lang.reflect.Constructor _defaultConstructor;
+    protected final org.codehaus.jackson.map.deser.Creator$Delegating _delegatingCreator;
+    protected final org.codehaus.jackson.map.introspect.AnnotatedClass _forClass;
+    protected final java.util.HashSet _ignorableProps;
+    protected final boolean _ignoreAllUnknown;
+    protected final org.codehaus.jackson.map.deser.Creator$NumberBased _numberCreator;
+    protected final org.codehaus.jackson.map.BeanProperty _property;
+    protected final org.codehaus.jackson.map.deser.Creator$PropertyBased _propertyBasedCreator;
+    protected final org.codehaus.jackson.map.deser.Creator$StringBased _stringCreator;
+    protected java.util.HashMap _subDeserializers;
+
+    protected void <init>(org.codehaus.jackson.map.deser.BeanDeserializer)
+    {
+        org.codehaus.jackson.map.deser.BeanDeserializer r0, $r1;
+        org.codehaus.jackson.type.JavaType $r2;
+        org.codehaus.jackson.map.introspect.AnnotatedClass $r3;
+        org.codehaus.jackson.map.BeanProperty $r4;
+        org.codehaus.jackson.map.deser.impl.BeanPropertyMap $r5;
+        java.util.Map $r6;
+        java.util.HashSet $r7;
+        boolean $z0;
+        org.codehaus.jackson.map.deser.SettableAnyProperty $r8;
+        java.lang.reflect.Constructor $r9;
+        org.codehaus.jackson.map.deser.Creator$StringBased $r10;
+        org.codehaus.jackson.map.deser.Creator$NumberBased $r11;
+        org.codehaus.jackson.map.deser.Creator$Delegating $r12;
+        org.codehaus.jackson.map.deser.Creator$PropertyBased $r13;
+
+        r0 := @this: org.codehaus.jackson.map.deser.BeanDeserializer;
+
+        $r1 := @parameter0: org.codehaus.jackson.map.deser.BeanDeserializer;
+
+        $r2 = $r1.<org.codehaus.jackson.map.deser.BeanDeserializer: org.codehaus.jackson.type.JavaType _beanType>;
+
+        specialinvoke r0.<org.codehaus.jackson.map.deser.StdDeserializer: void <init>(org.codehaus.jackson.type.JavaType)>($r2);
+
+        $r3 = $r1.<org.codehaus.jackson.map.deser.BeanDeserializer: org.codehaus.jackson.map.introspect.AnnotatedClass _forClass>;
+
+        r0.<org.codehaus.jackson.map.deser.BeanDeserializer: org.codehaus.jackson.map.introspect.AnnotatedClass _forClass> = $r3;
+
+        $r2 = $r1.<org.codehaus.jackson.map.deser.BeanDeserializer: org.codehaus.jackson.type.JavaType _beanType>;
+
+        r0.<org.codehaus.jackson.map.deser.BeanDeserializer: org.codehaus.jackson.type.JavaType _beanType> = $r2;
+
+        $r4 = $r1.<org.codehaus.jackson.map.deser.BeanDeserializer: org.codehaus.jackson.map.BeanProperty _property>;
+
+        r0.<org.codehaus.jackson.map.deser.BeanDeserializer: org.codehaus.jackson.map.BeanProperty _property> = $r4;
+
+        $r5 = $r1.<org.codehaus.jackson.map.deser.BeanDeserializer: org.codehaus.jackson.map.deser.impl.BeanPropertyMap _beanProperties>;
+
+        r0.<org.codehaus.jackson.map.deser.BeanDeserializer: org.codehaus.jackson.map.deser.impl.BeanPropertyMap _beanProperties> = $r5;
+
+        $r6 = $r1.<org.codehaus.jackson.map.deser.BeanDeserializer: java.util.Map _backRefs>;
+
+        r0.<org.codehaus.jackson.map.deser.BeanDeserializer: java.util.Map _backRefs> = $r6;
+
+        $r7 = $r1.<org.codehaus.jackson.map.deser.BeanDeserializer: java.util.HashSet _ignorableProps>;
+
+        r0.<org.codehaus.jackson.map.deser.BeanDeserializer: java.util.HashSet _ignorableProps> = $r7;
+
+        $z0 = $r1.<org.codehaus.jackson.map.deser.BeanDeserializer: boolean _ignoreAllUnknown>;
+
+        r0.<org.codehaus.jackson.map.deser.BeanDeserializer: boolean _ignoreAllUnknown> = $z0;
+
+        $r8 = $r1.<org.codehaus.jackson.map.deser.BeanDeserializer: org.codehaus.jackson.map.deser.SettableAnyProperty _anySetter>;
+
+        r0.<org.codehaus.jackson.map.deser.BeanDeserializer: org.codehaus.jackson.map.deser.SettableAnyProperty _anySetter> = $r8;
+
+        $r9 = $r1.<org.codehaus.jackson.map.deser.BeanDeserializer: java.lang.reflect.Constructor _defaultConstructor>;
+
+        r0.<org.codehaus.jackson.map.deser.BeanDeserializer: java.lang.reflect.Constructor _defaultConstructor> = $r9;
+
+        $r10 = $r1.<org.codehaus.jackson.map.deser.BeanDeserializer: org.codehaus.jackson.map.deser.Creator$StringBased _stringCreator>;
+
+        r0.<org.codehaus.jackson.map.deser.BeanDeserializer: org.codehaus.jackson.map.deser.Creator$StringBased _stringCreator> = $r10;
+
+        $r11 = $r1.<org.codehaus.jackson.map.deser.BeanDeserializer: org.codehaus.jackson.map.deser.Creator$NumberBased _numberCreator>;
+
+        r0.<org.codehaus.jackson.map.deser.BeanDeserializer: org.codehaus.jackson.map.deser.Creator$NumberBased _numberCreator> = $r11;
+
+        $r12 = $r1.<org.codehaus.jackson.map.deser.BeanDeserializer: org.codehaus.jackson.map.deser.Creator$Delegating _delegatingCreator>;
+
+        r0.<org.codehaus.jackson.map.deser.BeanDeserializer: org.codehaus.jackson.map.deser.Creator$Delegating _delegatingCreator> = $r12;
+
+        $r13 = $r1.<org.codehaus.jackson.map.deser.BeanDeserializer: org.codehaus.jackson.map.deser.Creator$PropertyBased _propertyBasedCreator>;
+
+        r0.<org.codehaus.jackson.map.deser.BeanDeserializer: org.codehaus.jackson.map.deser.Creator$PropertyBased _propertyBasedCreator> = $r13;
+
+        return;
+    }
+
+    public void <init>(org.codehaus.jackson.map.introspect.AnnotatedClass, org.codehaus.jackson.type.JavaType, org.codehaus.jackson.map.BeanProperty, org.codehaus.jackson.map.deser.CreatorContainer, org.codehaus.jackson.map.deser.impl.BeanPropertyMap, java.util.Map, java.util.HashSet, boolean, org.codehaus.jackson.map.deser.SettableAnyProperty)
+    {
+        org.codehaus.jackson.map.deser.BeanDeserializer r0;
+        org.codehaus.jackson.map.introspect.AnnotatedClass $r1;
+        org.codehaus.jackson.type.JavaType $r2;
+        org.codehaus.jackson.map.BeanProperty $r3;
+        org.codehaus.jackson.map.deser.CreatorContainer $r4;
+        org.codehaus.jackson.map.deser.impl.BeanPropertyMap $r5;
+        java.util.Map r6;
+        java.util.HashSet r7;
+        boolean $z0;
+        org.codehaus.jackson.map.deser.SettableAnyProperty $r8;
+        org.codehaus.jackson.map.deser.Creator$StringBased $r9;
+        org.codehaus.jackson.map.deser.Creator$NumberBased $r10;
+        org.codehaus.jackson.map.deser.Creator$Delegating $r11;
+        org.codehaus.jackson.map.deser.Creator$PropertyBased $r12;
+        java.lang.reflect.Constructor $r13;
+
+        r0 := @this: org.codehaus.jackson.map.deser.BeanDeserializer;
+
+        $r1 := @parameter0: org.codehaus.jackson.map.introspect.AnnotatedClass;
+
+        $r2 := @parameter1: org.codehaus.jackson.type.JavaType;
+
+        $r3 := @parameter2: org.codehaus.jackson.map.BeanProperty;
+
+        $r4 := @parameter3: org.codehaus.jackson.map.deser.CreatorContainer;
+
+        $r5 := @parameter4: org.codehaus.jackson.map.deser.impl.BeanPropertyMap;
+
+        r6 := @parameter5: java.util.Map;
+
+        r7 := @parameter6: java.util.HashSet;
+
+        $z0 := @parameter7: boolean;
+
+        $r8 := @parameter8: org.codehaus.jackson.map.deser.SettableAnyProperty;
+
+        specialinvoke r0.<org.codehaus.jackson.map.deser.StdDeserializer: void <init>(org.codehaus.jackson.type.JavaType)>($r2);
+
+        r0.<org.codehaus.jackson.map.deser.BeanDeserializer: org.codehaus.jackson.map.introspect.AnnotatedClass _forClass> = $r1;
+
+        r0.<org.codehaus.jackson.map.deser.BeanDeserializer: org.codehaus.jackson.type.JavaType _beanType> = $r2;
+
+        r0.<org.codehaus.jackson.map.deser.BeanDeserializer: org.codehaus.jackson.map.BeanProperty _property> = $r3;
+
+        r0.<org.codehaus.jackson.map.deser.BeanDeserializer: org.codehaus.jackson.map.deser.impl.BeanPropertyMap _beanProperties> = $r5;
+
+        r0.<org.codehaus.jackson.map.deser.BeanDeserializer: java.util.Map _backRefs> = r6;
+
+        r0.<org.codehaus.jackson.map.deser.BeanDeserializer: java.util.HashSet _ignorableProps> = r7;
+
+        r0.<org.codehaus.jackson.map.deser.BeanDeserializer: boolean _ignoreAllUnknown> = $z0;
+
+        r0.<org.codehaus.jackson.map.deser.BeanDeserializer: org.codehaus.jackson.map.deser.SettableAnyProperty _anySetter> = $r8;
+
+        $r9 = virtualinvoke $r4.<org.codehaus.jackson.map.deser.CreatorContainer: org.codehaus.jackson.map.deser.Creator$StringBased stringCreator()>();
+
+        r0.<org.codehaus.jackson.map.deser.BeanDeserializer: org.codehaus.jackson.map.deser.Creator$StringBased _stringCreator> = $r9;
+
+        $r10 = virtualinvoke $r4.<org.codehaus.jackson.map.deser.CreatorContainer: org.codehaus.jackson.map.deser.Creator$NumberBased numberCreator()>();
+
+        r0.<org.codehaus.jackson.map.deser.BeanDeserializer: org.codehaus.jackson.map.deser.Creator$NumberBased _numberCreator> = $r10;
+
+        $r11 = virtualinvoke $r4.<org.codehaus.jackson.map.deser.CreatorContainer: org.codehaus.jackson.map.deser.Creator$Delegating delegatingCreator()>();
+
+        r0.<org.codehaus.jackson.map.deser.BeanDeserializer: org.codehaus.jackson.map.deser.Creator$Delegating _delegatingCreator> = $r11;
+
+        $r12 = virtualinvoke $r4.<org.codehaus.jackson.map.deser.CreatorContainer: org.codehaus.jackson.map.deser.Creator$PropertyBased propertyBasedCreator()>();
+
+        r0.<org.codehaus.jackson.map.deser.BeanDeserializer: org.codehaus.jackson.map.deser.Creator$PropertyBased _propertyBasedCreator> = $r12;
+
+        $r11 = r0.<org.codehaus.jackson.map.deser.BeanDeserializer: org.codehaus.jackson.map.deser.Creator$Delegating _delegatingCreator>;
+
+        if $r11 != null goto label1;
+
+        $r12 = r0.<org.codehaus.jackson.map.deser.BeanDeserializer: org.codehaus.jackson.map.deser.Creator$PropertyBased _propertyBasedCreator>;
+
+        if $r12 == null goto label2;
+
+     label1:
+        r0.<org.codehaus.jackson.map.deser.BeanDeserializer: java.lang.reflect.Constructor _defaultConstructor> = null;
+
+        return;
+
+     label2:
+        $r13 = virtualinvoke $r4.<org.codehaus.jackson.map.deser.CreatorContainer: java.lang.reflect.Constructor getDefaultConstructor()>();
+
+        r0.<org.codehaus.jackson.map.deser.BeanDeserializer: java.lang.reflect.Constructor _defaultConstructor> = $r13;
+
+        return;
+    }
+
+    protected final java.lang.Object _deserializeUsingPropertyBased(org.codehaus.jackson.JsonParser, org.codehaus.jackson.map.DeserializationContext) throws java.io.IOException, org.codehaus.jackson.JsonProcessingException
+    {
+        org.codehaus.jackson.map.deser.BeanDeserializer r0;
+        org.codehaus.jackson.JsonParser $r1;
+        org.codehaus.jackson.map.DeserializationContext $r2;
+        org.codehaus.jackson.map.deser.Creator$PropertyBased r3;
+        org.codehaus.jackson.map.deser.PropertyValueBuffer $r4;
+        org.codehaus.jackson.util.TokenBuffer r5;
+        org.codehaus.jackson.JsonToken $r6, $r7;
+        java.lang.String $r8;
+        org.codehaus.jackson.map.deser.SettableBeanProperty $r9;
+        java.lang.Object $r10, r11;
+        int $i0;
+        boolean $z0;
+        java.lang.Class $r12, $r14;
+        org.codehaus.jackson.type.JavaType $r13;
+        java.lang.Exception r15, r21;
+        org.codehaus.jackson.map.deser.impl.BeanPropertyMap $r16;
+        java.util.HashSet $r17;
+        org.codehaus.jackson.map.deser.SettableAnyProperty $r18, $r19;
+        org.codehaus.jackson.ObjectCodec $r20;
+
+        r0 := @this: org.codehaus.jackson.map.deser.BeanDeserializer;
+
+        $r1 := @parameter0: org.codehaus.jackson.JsonParser;
+
+        $r2 := @parameter1: org.codehaus.jackson.map.DeserializationContext;
+
+        r3 = r0.<org.codehaus.jackson.map.deser.BeanDeserializer: org.codehaus.jackson.map.deser.Creator$PropertyBased _propertyBasedCreator>;
+
+        $r4 = virtualinvoke r3.<org.codehaus.jackson.map.deser.Creator$PropertyBased: org.codehaus.jackson.map.deser.PropertyValueBuffer startBuilding(org.codehaus.jackson.JsonParser,org.codehaus.jackson.map.DeserializationContext)>($r1, $r2);
+
+        r5 = null;
+
+        $r6 = virtualinvoke $r1.<org.codehaus.jackson.JsonParser: org.codehaus.jackson.JsonToken getCurrentToken()>();
+
+     label01:
+        $r7 = <org.codehaus.jackson.JsonToken: org.codehaus.jackson.JsonToken FIELD_NAME>;
+
+        if $r6 != $r7 goto label13;
+
+        $r8 = virtualinvoke $r1.<org.codehaus.jackson.JsonParser: java.lang.String getCurrentName()>();
+
+        virtualinvoke $r1.<org.codehaus.jackson.JsonParser: org.codehaus.jackson.JsonToken nextToken()>();
+
+        $r9 = virtualinvoke r3.<org.codehaus.jackson.map.deser.Creator$PropertyBased: org.codehaus.jackson.map.deser.SettableBeanProperty findCreatorProperty(java.lang.String)>($r8);
+
+        if $r9 == null goto label08;
+
+        $r10 = virtualinvoke $r9.<org.codehaus.jackson.map.deser.SettableBeanProperty: java.lang.Object deserialize(org.codehaus.jackson.JsonParser,org.codehaus.jackson.map.DeserializationContext)>($r1, $r2);
+
+        $i0 = virtualinvoke $r9.<org.codehaus.jackson.map.deser.SettableBeanProperty: int getCreatorIndex()>();
+
+        $z0 = virtualinvoke $r4.<org.codehaus.jackson.map.deser.PropertyValueBuffer: boolean assignParameter(int,java.lang.Object)>($i0, $r10);
+
+        if $z0 == 0 goto label05;
+
+        virtualinvoke $r1.<org.codehaus.jackson.JsonParser: org.codehaus.jackson.JsonToken nextToken()>();
+
+     label02:
+        $r10 = virtualinvoke r3.<org.codehaus.jackson.map.deser.Creator$PropertyBased: java.lang.Object build(org.codehaus.jackson.map.deser.PropertyValueBuffer)>($r4);
+
+     label03:
+        r11 = $r10;
+
+        $r12 = virtualinvoke $r10.<java.lang.Object: java.lang.Class getClass()>();
+
+        $r13 = r0.<org.codehaus.jackson.map.deser.BeanDeserializer: org.codehaus.jackson.type.JavaType _beanType>;
+
+        $r14 = virtualinvoke $r13.<org.codehaus.jackson.type.JavaType: java.lang.Class getRawClass()>();
+
+        if $r12 == $r14 goto label06;
+
+        $r10 = virtualinvoke r0.<org.codehaus.jackson.map.deser.BeanDeserializer: java.lang.Object handlePolymorphic(org.codehaus.jackson.JsonParser,org.codehaus.jackson.map.DeserializationContext,java.lang.Object,org.codehaus.jackson.util.TokenBuffer)>($r1, $r2, $r10, r5);
+
+        return $r10;
+
+     label04:
+        r15 := @caughtexception;
+
+        $r13 = r0.<org.codehaus.jackson.map.deser.BeanDeserializer: org.codehaus.jackson.type.JavaType _beanType>;
+
+        $r12 = virtualinvoke $r13.<org.codehaus.jackson.type.JavaType: java.lang.Class getRawClass()>();
+
+        virtualinvoke r0.<org.codehaus.jackson.map.deser.BeanDeserializer: void wrapAndThrow(java.lang.Throwable,java.lang.Object,java.lang.String,org.codehaus.jackson.map.DeserializationContext)>(r15, $r12, $r8, $r2);
+
+     label05:
+        $r6 = virtualinvoke $r1.<org.codehaus.jackson.JsonParser: org.codehaus.jackson.JsonToken nextToken()>();
+
+        goto label01;
+
+     label06:
+        if r5 == null goto label07;
+
+        r11 = virtualinvoke r0.<org.codehaus.jackson.map.deser.BeanDeserializer: java.lang.Object handleUnknownProperties(org.codehaus.jackson.map.DeserializationContext,java.lang.Object,org.codehaus.jackson.util.TokenBuffer)>($r2, $r10, r5);
+
+     label07:
+        $r10 = virtualinvoke r0.<org.codehaus.jackson.map.deser.BeanDeserializer: java.lang.Object deserialize(org.codehaus.jackson.JsonParser,org.codehaus.jackson.map.DeserializationContext,java.lang.Object)>($r1, $r2, r11);
+
+        return $r10;
+
+     label08:
+        $r16 = r0.<org.codehaus.jackson.map.deser.BeanDeserializer: org.codehaus.jackson.map.deser.impl.BeanPropertyMap _beanProperties>;
+
+        $r9 = virtualinvoke $r16.<org.codehaus.jackson.map.deser.impl.BeanPropertyMap: org.codehaus.jackson.map.deser.SettableBeanProperty find(java.lang.String)>($r8);
+
+        if $r9 == null goto label09;
+
+        $r10 = virtualinvoke $r9.<org.codehaus.jackson.map.deser.SettableBeanProperty: java.lang.Object deserialize(org.codehaus.jackson.JsonParser,org.codehaus.jackson.map.DeserializationContext)>($r1, $r2);
+
+        virtualinvoke $r4.<org.codehaus.jackson.map.deser.PropertyValueBuffer: void bufferProperty(org.codehaus.jackson.map.deser.SettableBeanProperty,java.lang.Object)>($r9, $r10);
+
+        goto label05;
+
+     label09:
+        $r17 = r0.<org.codehaus.jackson.map.deser.BeanDeserializer: java.util.HashSet _ignorableProps>;
+
+        if $r17 == null goto label10;
+
+        $r17 = r0.<org.codehaus.jackson.map.deser.BeanDeserializer: java.util.HashSet _ignorableProps>;
+
+        $z0 = virtualinvoke $r17.<java.util.HashSet: boolean contains(java.lang.Object)>($r8);
+
+        if $z0 == 0 goto label10;
+
+        virtualinvoke $r1.<org.codehaus.jackson.JsonParser: org.codehaus.jackson.JsonParser skipChildren()>();
+
+        goto label05;
+
+     label10:
+        $r18 = r0.<org.codehaus.jackson.map.deser.BeanDeserializer: org.codehaus.jackson.map.deser.SettableAnyProperty _anySetter>;
+
+        if $r18 == null goto label11;
+
+        $r18 = r0.<org.codehaus.jackson.map.deser.BeanDeserializer: org.codehaus.jackson.map.deser.SettableAnyProperty _anySetter>;
+
+        $r19 = r0.<org.codehaus.jackson.map.deser.BeanDeserializer: org.codehaus.jackson.map.deser.SettableAnyProperty _anySetter>;
+
+        $r10 = virtualinvoke $r19.<org.codehaus.jackson.map.deser.SettableAnyProperty: java.lang.Object deserialize(org.codehaus.jackson.JsonParser,org.codehaus.jackson.map.DeserializationContext)>($r1, $r2);
+
+        virtualinvoke $r4.<org.codehaus.jackson.map.deser.PropertyValueBuffer: void bufferAnyProperty(org.codehaus.jackson.map.deser.SettableAnyProperty,java.lang.String,java.lang.Object)>($r18, $r8, $r10);
+
+        goto label05;
+
+     label11:
+        if r5 != null goto label12;
+
+        r5 = new org.codehaus.jackson.util.TokenBuffer;
+
+        $r20 = virtualinvoke $r1.<org.codehaus.jackson.JsonParser: org.codehaus.jackson.ObjectCodec getCodec()>();
+
+        specialinvoke r5.<org.codehaus.jackson.util.TokenBuffer: void <init>(org.codehaus.jackson.ObjectCodec)>($r20);
+
+     label12:
+        virtualinvoke r5.<org.codehaus.jackson.util.TokenBuffer: void writeFieldName(java.lang.String)>($r8);
+
+        virtualinvoke r5.<org.codehaus.jackson.util.TokenBuffer: void copyCurrentStructure(org.codehaus.jackson.JsonParser)>($r1);
+
+        goto label05;
+
+     label13:
+        $r10 = virtualinvoke r3.<org.codehaus.jackson.map.deser.Creator$PropertyBased: java.lang.Object build(org.codehaus.jackson.map.deser.PropertyValueBuffer)>($r4);
+
+     label14:
+        if r5 == null goto label17;
+
+        $r12 = virtualinvoke $r10.<java.lang.Object: java.lang.Class getClass()>();
+
+        $r13 = r0.<org.codehaus.jackson.map.deser.BeanDeserializer: org.codehaus.jackson.type.JavaType _beanType>;
+
+        $r14 = virtualinvoke $r13.<org.codehaus.jackson.type.JavaType: java.lang.Class getRawClass()>();
+
+        if $r12 == $r14 goto label16;
+
+        $r10 = virtualinvoke r0.<org.codehaus.jackson.map.deser.BeanDeserializer: java.lang.Object handlePolymorphic(org.codehaus.jackson.JsonParser,org.codehaus.jackson.map.DeserializationContext,java.lang.Object,org.codehaus.jackson.util.TokenBuffer)>(null, $r2, $r10, r5);
+
+        return $r10;
+
+     label15:
+        r21 := @caughtexception;
+
+        $r13 = r0.<org.codehaus.jackson.map.deser.BeanDeserializer: org.codehaus.jackson.type.JavaType _beanType>;
+
+        $r12 = virtualinvoke $r13.<org.codehaus.jackson.type.JavaType: java.lang.Class getRawClass()>();
+
+        virtualinvoke r0.<org.codehaus.jackson.map.deser.BeanDeserializer: void wrapAndThrow(java.lang.Throwable,java.lang.Object,java.lang.String,org.codehaus.jackson.map.DeserializationContext)>(r21, $r12, null, $r2);
+
+        return null;
+
+     label16:
+        $r10 = virtualinvoke r0.<org.codehaus.jackson.map.deser.BeanDeserializer: java.lang.Object handleUnknownProperties(org.codehaus.jackson.map.DeserializationContext,java.lang.Object,org.codehaus.jackson.util.TokenBuffer)>($r2, $r10, r5);
+
+     label17:
+        return $r10;
+
+        catch java.lang.Exception from label02 to label03 with label04;
+        catch java.lang.Exception from label13 to label14 with label15;
+    }
+
+    protected org.codehaus.jackson.map.JsonDeserializer _findSubclassDeserializer(org.codehaus.jackson.map.DeserializationContext, java.lang.Object, org.codehaus.jackson.util.TokenBuffer) throws java.io.IOException, org.codehaus.jackson.JsonProcessingException
+    {
+        org.codehaus.jackson.map.deser.BeanDeserializer r0;
+        org.codehaus.jackson.map.DeserializationContext $r1;
+        java.lang.Object $r2, $r8;
+        org.codehaus.jackson.util.TokenBuffer $r3;
+        java.util.HashMap $r4;
+        org.codehaus.jackson.map.JsonDeserializer r5, $r14;
+        org.codehaus.jackson.map.type.ClassKey $r6;
+        java.lang.Class $r7;
+        java.lang.Throwable $r9, $r15;
+        org.codehaus.jackson.map.DeserializerProvider $r10;
+        org.codehaus.jackson.type.JavaType $r11;
+        org.codehaus.jackson.map.DeserializationConfig $r12;
+        org.codehaus.jackson.map.BeanProperty $r13;
+
+        r0 := @this: org.codehaus.jackson.map.deser.BeanDeserializer;
+
+        $r1 := @parameter0: org.codehaus.jackson.map.DeserializationContext;
+
+        $r2 := @parameter1: java.lang.Object;
+
+        $r3 := @parameter2: org.codehaus.jackson.util.TokenBuffer;
+
+        entermonitor r0;
+
+     label01:
+        $r4 = r0.<org.codehaus.jackson.map.deser.BeanDeserializer: java.util.HashMap _subDeserializers>;
+
+        if $r4 != null goto label04;
+
+        r5 = null;
+
+     label02:
+        exitmonitor r0;
+
+     label03:
+        if r5 == null goto label07;
+
+        return r5;
+
+     label04:
+        $r4 = r0.<org.codehaus.jackson.map.deser.BeanDeserializer: java.util.HashMap _subDeserializers>;
+
+        $r6 = new org.codehaus.jackson.map.type.ClassKey;
+
+        $r7 = virtualinvoke $r2.<java.lang.Object: java.lang.Class getClass()>();
+
+        specialinvoke $r6.<org.codehaus.jackson.map.type.ClassKey: void <init>(java.lang.Class)>($r7);
+
+        $r8 = virtualinvoke $r4.<java.util.HashMap: java.lang.Object get(java.lang.Object)>($r6);
+
+        r5 = (org.codehaus.jackson.map.JsonDeserializer) $r8;
+
+        goto label02;
+
+     label05:
+        $r9 := @caughtexception;
+
+        exitmonitor r0;
+
+     label06:
+        throw $r9;
+
+     label07:
+        $r10 = virtualinvoke $r1.<org.codehaus.jackson.map.DeserializationContext: org.codehaus.jackson.map.DeserializerProvider getDeserializerProvider()>();
+
+        if $r10 == null goto label10;
+
+        $r7 = virtualinvoke $r2.<java.lang.Object: java.lang.Class getClass()>();
+
+        $r11 = staticinvoke <org.codehaus.jackson.map.type.TypeFactory: org.codehaus.jackson.type.JavaType type(java.lang.reflect.Type)>($r7);
+
+        $r12 = virtualinvoke $r1.<org.codehaus.jackson.map.DeserializationContext: org.codehaus.jackson.map.DeserializationConfig getConfig()>();
+
+        $r13 = r0.<org.codehaus.jackson.map.deser.BeanDeserializer: org.codehaus.jackson.map.BeanProperty _property>;
+
+        $r14 = virtualinvoke $r10.<org.codehaus.jackson.map.DeserializerProvider: org.codehaus.jackson.map.JsonDeserializer findValueDeserializer(org.codehaus.jackson.map.DeserializationConfig,org.codehaus.jackson.type.JavaType,org.codehaus.jackson.map.BeanProperty)>($r12, $r11, $r13);
+
+        r5 = $r14;
+
+        if $r14 == null goto label10;
+
+        entermonitor r0;
+
+     label08:
+        $r4 = r0.<org.codehaus.jackson.map.deser.BeanDeserializer: java.util.HashMap _subDeserializers>;
+
+        if $r4 != null goto label09;
+
+        $r4 = new java.util.HashMap;
+
+        specialinvoke $r4.<java.util.HashMap: void <init>()>();
+
+        r0.<org.codehaus.jackson.map.deser.BeanDeserializer: java.util.HashMap _subDeserializers> = $r4;
+
+     label09:
+        $r4 = r0.<org.codehaus.jackson.map.deser.BeanDeserializer: java.util.HashMap _subDeserializers>;
+
+        $r6 = new org.codehaus.jackson.map.type.ClassKey;
+
+        $r7 = virtualinvoke $r2.<java.lang.Object: java.lang.Class getClass()>();
+
+        specialinvoke $r6.<org.codehaus.jackson.map.type.ClassKey: void <init>(java.lang.Class)>($r7);
+
+        virtualinvoke $r4.<java.util.HashMap: java.lang.Object put(java.lang.Object,java.lang.Object)>($r6, $r14);
+
+        exitmonitor r0;
+
+     label10:
+        return r5;
+
+     label11:
+        $r15 := @caughtexception;
+
+        exitmonitor r0;
+
+     label12:
+        throw $r15;
+
+        catch java.lang.Throwable from label01 to label03 with label05;
+        catch java.lang.Throwable from label04 to label06 with label05;
+        catch java.lang.Throwable from label08 to label10 with label11;
+        catch java.lang.Throwable from label11 to label12 with label11;
+    }
+
+    protected java.lang.Object constructDefaultInstance()
+    {
+        org.codehaus.jackson.map.deser.BeanDeserializer r0;
+        java.lang.Object $r1;
+        java.lang.reflect.Constructor $r2;
+        java.lang.Object[] $r3;
+        java.lang.Exception $r4;
+
+        r0 := @this: org.codehaus.jackson.map.deser.BeanDeserializer;
+
+     label1:
+        $r2 = r0.<org.codehaus.jackson.map.deser.BeanDeserializer: java.lang.reflect.Constructor _defaultConstructor>;
+
+        $r3 = newarray (java.lang.Object)[0];
+
+        $r1 = virtualinvoke $r2.<java.lang.reflect.Constructor: java.lang.Object newInstance(java.lang.Object[])>($r3);
+
+     label2:
+        return $r1;
+
+     label3:
+        $r4 := @caughtexception;
+
+        staticinvoke <org.codehaus.jackson.map.util.ClassUtil: void unwrapAndThrowAsIAE(java.lang.Throwable)>($r4);
+
+        return null;
+
+        catch java.lang.Exception from label1 to label2 with label3;
+    }
+
+    public final java.lang.Object deserialize(org.codehaus.jackson.JsonParser, org.codehaus.jackson.map.DeserializationContext) throws java.io.IOException, org.codehaus.jackson.JsonProcessingException
+    {
+        org.codehaus.jackson.map.deser.BeanDeserializer r0;
+        org.codehaus.jackson.JsonParser $r1;
+        org.codehaus.jackson.map.DeserializationContext $r2;
+        org.codehaus.jackson.JsonToken $r3, $r4;
+        java.lang.Object $r5;
+        int[] $r6;
+        int $i0;
+        java.lang.Class $r7;
+        org.codehaus.jackson.map.JsonMappingException $r8;
+
+        r0 := @this: org.codehaus.jackson.map.deser.BeanDeserializer;
+
+        $r1 := @parameter0: org.codehaus.jackson.JsonParser;
+
+        $r2 := @parameter1: org.codehaus.jackson.map.DeserializationContext;
+
+        $r3 = virtualinvoke $r1.<org.codehaus.jackson.JsonParser: org.codehaus.jackson.JsonToken getCurrentToken()>();
+
+        $r4 = <org.codehaus.jackson.JsonToken: org.codehaus.jackson.JsonToken START_OBJECT>;
+
+        if $r3 != $r4 goto label1;
+
+        virtualinvoke $r1.<org.codehaus.jackson.JsonParser: org.codehaus.jackson.JsonToken nextToken()>();
+
+        $r5 = virtualinvoke r0.<org.codehaus.jackson.map.deser.BeanDeserializer: java.lang.Object deserializeFromObject(org.codehaus.jackson.JsonParser,org.codehaus.jackson.map.DeserializationContext)>($r1, $r2);
+
+        return $r5;
+
+     label1:
+        $r6 = <org.codehaus.jackson.map.deser.BeanDeserializer$1: int[] $SwitchMap$org$codehaus$jackson$JsonToken>;
+
+        $i0 = virtualinvoke $r3.<org.codehaus.jackson.JsonToken: int ordinal()>();
+
+        $i0 = $r6[$i0];
+
+        lookupswitch($i0)
+        {
+            case 1: goto label3;
+            case 2: goto label4;
+            case 3: goto label4;
+            case 4: goto label5;
+            case 5: goto label6;
+            case 6: goto label6;
+            case 7: goto label6;
+            case 8: goto label7;
+            case 9: goto label7;
+            default: goto label2;
+        };
+
+     label2:
+        $r7 = virtualinvoke r0.<org.codehaus.jackson.map.deser.BeanDeserializer: java.lang.Class getBeanClass()>();
+
+        $r8 = virtualinvoke $r2.<org.codehaus.jackson.map.DeserializationContext: org.codehaus.jackson.map.JsonMappingException mappingException(java.lang.Class)>($r7);
+
+        throw $r8;
+
+     label3:
+        $r5 = virtualinvoke r0.<org.codehaus.jackson.map.deser.BeanDeserializer: java.lang.Object deserializeFromString(org.codehaus.jackson.JsonParser,org.codehaus.jackson.map.DeserializationContext)>($r1, $r2);
+
+        return $r5;
+
+     label4:
+        $r5 = virtualinvoke r0.<org.codehaus.jackson.map.deser.BeanDeserializer: java.lang.Object deserializeFromNumber(org.codehaus.jackson.JsonParser,org.codehaus.jackson.map.DeserializationContext)>($r1, $r2);
+
+        return $r5;
+
+     label5:
+        $r5 = virtualinvoke $r1.<org.codehaus.jackson.JsonParser: java.lang.Object getEmbeddedObject()>();
+
+        return $r5;
+
+     label6:
+        $r5 = virtualinvoke r0.<org.codehaus.jackson.map.deser.BeanDeserializer: java.lang.Object deserializeUsingCreator(org.codehaus.jackson.JsonParser,org.codehaus.jackson.map.DeserializationContext)>($r1, $r2);
+
+        return $r5;
+
+     label7:
+        $r5 = virtualinvoke r0.<org.codehaus.jackson.map.deser.BeanDeserializer: java.lang.Object deserializeFromObject(org.codehaus.jackson.JsonParser,org.codehaus.jackson.map.DeserializationContext)>($r1, $r2);
+
+        return $r5;
+    }
+
+    public java.lang.Object deserialize(org.codehaus.jackson.JsonParser, org.codehaus.jackson.map.DeserializationContext, java.lang.Object) throws java.io.IOException, org.codehaus.jackson.JsonProcessingException
+    {
+        org.codehaus.jackson.map.deser.BeanDeserializer r0;
+        org.codehaus.jackson.JsonParser $r1;
+        org.codehaus.jackson.map.DeserializationContext $r2;
+        java.lang.Object $r3;
+        java.lang.Exception r4;
+        org.codehaus.jackson.JsonToken $r5, r6, $r7;
+        java.lang.String $r8;
+        org.codehaus.jackson.map.deser.impl.BeanPropertyMap $r9;
+        org.codehaus.jackson.map.deser.SettableBeanProperty $r10;
+        java.util.HashSet $r11;
+        boolean $z0;
+        org.codehaus.jackson.map.deser.SettableAnyProperty $r12;
+
+        r0 := @this: org.codehaus.jackson.map.deser.BeanDeserializer;
+
+        $r1 := @parameter0: org.codehaus.jackson.JsonParser;
+
+        $r2 := @parameter1: org.codehaus.jackson.map.DeserializationContext;
+
+        $r3 := @parameter2: java.lang.Object;
+
+        $r5 = virtualinvoke $r1.<org.codehaus.jackson.JsonParser: org.codehaus.jackson.JsonToken getCurrentToken()>();
+
+        r6 = $r5;
+
+        $r7 = <org.codehaus.jackson.JsonToken: org.codehaus.jackson.JsonToken START_OBJECT>;
+
+        if $r5 != $r7 goto label1;
+
+        r6 = virtualinvoke $r1.<org.codehaus.jackson.JsonParser: org.codehaus.jackson.JsonToken nextToken()>();
+
+     label1:
+        $r5 = <org.codehaus.jackson.JsonToken: org.codehaus.jackson.JsonToken FIELD_NAME>;
+
+        if r6 != $r5 goto label8;
+
+        $r8 = virtualinvoke $r1.<org.codehaus.jackson.JsonParser: java.lang.String getCurrentName()>();
+
+        $r9 = r0.<org.codehaus.jackson.map.deser.BeanDeserializer: org.codehaus.jackson.map.deser.impl.BeanPropertyMap _beanProperties>;
+
+        $r10 = virtualinvoke $r9.<org.codehaus.jackson.map.deser.impl.BeanPropertyMap: org.codehaus.jackson.map.deser.SettableBeanProperty find(java.lang.String)>($r8);
+
+        virtualinvoke $r1.<org.codehaus.jackson.JsonParser: org.codehaus.jackson.JsonToken nextToken()>();
+
+        if $r10 == null goto label5;
+
+     label2:
+        virtualinvoke $r10.<org.codehaus.jackson.map.deser.SettableBeanProperty: void deserializeAndSet(org.codehaus.jackson.JsonParser,org.codehaus.jackson.map.DeserializationContext,java.lang.Object)>($r1, $r2, $r3);
+
+     label3:
+        r6 = virtualinvoke $r1.<org.codehaus.jackson.JsonParser: org.codehaus.jackson.JsonToken nextToken()>();
+
+        goto label1;
+
+     label4:
+        r4 := @caughtexception;
+
+        virtualinvoke r0.<org.codehaus.jackson.map.deser.BeanDeserializer: void wrapAndThrow(java.lang.Throwable,java.lang.Object,java.lang.String,org.codehaus.jackson.map.DeserializationContext)>(r4, $r3, $r8, $r2);
+
+        goto label3;
+
+     label5:
+        $r11 = r0.<org.codehaus.jackson.map.deser.BeanDeserializer: java.util.HashSet _ignorableProps>;
+
+        if $r11 == null goto label6;
+
+        $r11 = r0.<org.codehaus.jackson.map.deser.BeanDeserializer: java.util.HashSet _ignorableProps>;
+
+        $z0 = virtualinvoke $r11.<java.util.HashSet: boolean contains(java.lang.Object)>($r8);
+
+        if $z0 == 0 goto label6;
+
+        virtualinvoke $r1.<org.codehaus.jackson.JsonParser: org.codehaus.jackson.JsonParser skipChildren()>();
+
+        goto label3;
+
+     label6:
+        $r12 = r0.<org.codehaus.jackson.map.deser.BeanDeserializer: org.codehaus.jackson.map.deser.SettableAnyProperty _anySetter>;
+
+        if $r12 == null goto label7;
+
+        $r12 = r0.<org.codehaus.jackson.map.deser.BeanDeserializer: org.codehaus.jackson.map.deser.SettableAnyProperty _anySetter>;
+
+        virtualinvoke $r12.<org.codehaus.jackson.map.deser.SettableAnyProperty: void deserializeAndSet(org.codehaus.jackson.JsonParser,org.codehaus.jackson.map.DeserializationContext,java.lang.Object,java.lang.String)>($r1, $r2, $r3, $r8);
+
+        goto label3;
+
+     label7:
+        virtualinvoke r0.<org.codehaus.jackson.map.deser.BeanDeserializer: void handleUnknownProperty(org.codehaus.jackson.JsonParser,org.codehaus.jackson.map.DeserializationContext,java.lang.Object,java.lang.String)>($r1, $r2, $r3, $r8);
+
+        goto label3;
+
+     label8:
+        return $r3;
+
+        catch java.lang.Exception from label2 to label3 with label4;
+    }
+
+    public java.lang.Object deserializeFromNumber(org.codehaus.jackson.JsonParser, org.codehaus.jackson.map.DeserializationContext) throws java.io.IOException, org.codehaus.jackson.JsonProcessingException
+    {
+        org.codehaus.jackson.map.deser.BeanDeserializer r0;
+        org.codehaus.jackson.JsonParser $r1;
+        org.codehaus.jackson.map.DeserializationContext $r2;
+        org.codehaus.jackson.map.deser.Creator$NumberBased $r3;
+        int[] $r4;
+        org.codehaus.jackson.JsonParser$NumberType $r5;
+        int $i0;
+        org.codehaus.jackson.map.deser.Creator$Delegating $r6;
+        java.lang.Object $r7;
+        long $l1;
+        java.lang.Class $r8;
+        org.codehaus.jackson.map.JsonMappingException $r9;
+
+        r0 := @this: org.codehaus.jackson.map.deser.BeanDeserializer;
+
+        $r1 := @parameter0: org.codehaus.jackson.JsonParser;
+
+        $r2 := @parameter1: org.codehaus.jackson.map.DeserializationContext;
+
+        $r3 = r0.<org.codehaus.jackson.map.deser.BeanDeserializer: org.codehaus.jackson.map.deser.Creator$NumberBased _numberCreator>;
+
+        if $r3 == null goto label1;
+
+        $r4 = <org.codehaus.jackson.map.deser.BeanDeserializer$1: int[] $SwitchMap$org$codehaus$jackson$JsonParser$NumberType>;
+
+        $r5 = virtualinvoke $r1.<org.codehaus.jackson.JsonParser: org.codehaus.jackson.JsonParser$NumberType getNumberType()>();
+
+        $i0 = virtualinvoke $r5.<org.codehaus.jackson.JsonParser$NumberType: int ordinal()>();
+
+        $i0 = $r4[$i0];
+
+        lookupswitch($i0)
+        {
+            case 1: goto label2;
+            case 2: goto label3;
+            default: goto label1;
+        };
+
+     label1:
+        $r6 = r0.<org.codehaus.jackson.map.deser.BeanDeserializer: org.codehaus.jackson.map.deser.Creator$Delegating _delegatingCreator>;
+
+        if $r6 == null goto label4;
+
+        $r6 = r0.<org.codehaus.jackson.map.deser.BeanDeserializer: org.codehaus.jackson.map.deser.Creator$Delegating _delegatingCreator>;
+
+        $r7 = virtualinvoke $r6.<org.codehaus.jackson.map.deser.Creator$Delegating: java.lang.Object deserialize(org.codehaus.jackson.JsonParser,org.codehaus.jackson.map.DeserializationContext)>($r1, $r2);
+
+        return $r7;
+
+     label2:
+        $r3 = r0.<org.codehaus.jackson.map.deser.BeanDeserializer: org.codehaus.jackson.map.deser.Creator$NumberBased _numberCreator>;
+
+        $i0 = virtualinvoke $r1.<org.codehaus.jackson.JsonParser: int getIntValue()>();
+
+        $r7 = virtualinvoke $r3.<org.codehaus.jackson.map.deser.Creator$NumberBased: java.lang.Object construct(int)>($i0);
+
+        return $r7;
+
+     label3:
+        $r3 = r0.<org.codehaus.jackson.map.deser.BeanDeserializer: org.codehaus.jackson.map.deser.Creator$NumberBased _numberCreator>;
+
+        $l1 = virtualinvoke $r1.<org.codehaus.jackson.JsonParser: long getLongValue()>();
+
+        $r7 = virtualinvoke $r3.<org.codehaus.jackson.map.deser.Creator$NumberBased: java.lang.Object construct(long)>($l1);
+
+        return $r7;
+
+     label4:
+        $r8 = virtualinvoke r0.<org.codehaus.jackson.map.deser.BeanDeserializer: java.lang.Class getBeanClass()>();
+
+        $r9 = virtualinvoke $r2.<org.codehaus.jackson.map.DeserializationContext: org.codehaus.jackson.map.JsonMappingException instantiationException(java.lang.Class,java.lang.String)>($r8, "no suitable creator method found to deserialize from JSON Number");
+
+        throw $r9;
+    }
+
+    public java.lang.Object deserializeFromObject(org.codehaus.jackson.JsonParser, org.codehaus.jackson.map.DeserializationContext) throws java.io.IOException, org.codehaus.jackson.JsonProcessingException
+    {
+        org.codehaus.jackson.map.deser.BeanDeserializer r0;
+        org.codehaus.jackson.JsonParser $r1;
+        org.codehaus.jackson.map.DeserializationContext $r2;
+        java.lang.reflect.Constructor $r3;
+        org.codehaus.jackson.map.deser.Creator$PropertyBased $r4;
+        java.lang.Object $r5;
+        org.codehaus.jackson.map.deser.Creator$Delegating $r6;
+        org.codehaus.jackson.type.JavaType $r7;
+        boolean $z0;
+        java.lang.StringBuilder $r8;
+        java.lang.String $r9;
+        org.codehaus.jackson.map.JsonMappingException $r10;
+        org.codehaus.jackson.JsonToken $r11, $r12;
+        org.codehaus.jackson.map.deser.impl.BeanPropertyMap $r13;
+        org.codehaus.jackson.map.deser.SettableBeanProperty $r14;
+        java.lang.Exception r15, $r18;
+        java.util.HashSet $r16;
+        org.codehaus.jackson.map.deser.SettableAnyProperty $r17;
+
+        r0 := @this: org.codehaus.jackson.map.deser.BeanDeserializer;
+
+        $r1 := @parameter0: org.codehaus.jackson.JsonParser;
+
+        $r2 := @parameter1: org.codehaus.jackson.map.DeserializationContext;
+
+        $r3 = r0.<org.codehaus.jackson.map.deser.BeanDeserializer: java.lang.reflect.Constructor _defaultConstructor>;
+
+        if $r3 != null goto label04;
+
+        $r4 = r0.<org.codehaus.jackson.map.deser.BeanDeserializer: org.codehaus.jackson.map.deser.Creator$PropertyBased _propertyBasedCreator>;
+
+        if $r4 == null goto label01;
+
+        $r5 = virtualinvoke r0.<org.codehaus.jackson.map.deser.BeanDeserializer: java.lang.Object _deserializeUsingPropertyBased(org.codehaus.jackson.JsonParser,org.codehaus.jackson.map.DeserializationContext)>($r1, $r2);
+
+        return $r5;
+
+     label01:
+        $r6 = r0.<org.codehaus.jackson.map.deser.BeanDeserializer: org.codehaus.jackson.map.deser.Creator$Delegating _delegatingCreator>;
+
+        if $r6 == null goto label02;
+
+        $r6 = r0.<org.codehaus.jackson.map.deser.BeanDeserializer: org.codehaus.jackson.map.deser.Creator$Delegating _delegatingCreator>;
+
+        $r5 = virtualinvoke $r6.<org.codehaus.jackson.map.deser.Creator$Delegating: java.lang.Object deserialize(org.codehaus.jackson.JsonParser,org.codehaus.jackson.map.DeserializationContext)>($r1, $r2);
+
+        return $r5;
+
+     label02:
+        $r7 = r0.<org.codehaus.jackson.map.deser.BeanDeserializer: org.codehaus.jackson.type.JavaType _beanType>;
+
+        $z0 = virtualinvoke $r7.<org.codehaus.jackson.type.JavaType: boolean isAbstract()>();
+
+        if $z0 == 0 goto label03;
+
+        $r8 = new java.lang.StringBuilder;
+
+        specialinvoke $r8.<java.lang.StringBuilder: void <init>()>();
+
+        $r8 = virtualinvoke $r8.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Can not instantiate abstract type ");
+
+        $r7 = r0.<org.codehaus.jackson.map.deser.BeanDeserializer: org.codehaus.jackson.type.JavaType _beanType>;
+
+        $r8 = virtualinvoke $r8.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($r7);
+
+        $r8 = virtualinvoke $r8.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" (need to add/enable type information?)");
+
+        $r9 = virtualinvoke $r8.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        $r10 = staticinvoke <org.codehaus.jackson.map.JsonMappingException: org.codehaus.jackson.map.JsonMappingException 'from'(org.codehaus.jackson.JsonParser,java.lang.String)>($r1, $r9);
+
+        throw $r10;
+
+     label03:
+        $r8 = new java.lang.StringBuilder;
+
+        specialinvoke $r8.<java.lang.StringBuilder: void <init>()>();
+
+        $r8 = virtualinvoke $r8.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("No suitable constructor found for type ");
+
+        $r7 = r0.<org.codehaus.jackson.map.deser.BeanDeserializer: org.codehaus.jackson.type.JavaType _beanType>;
+
+        $r8 = virtualinvoke $r8.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($r7);
+
+        $r8 = virtualinvoke $r8.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(": can not instantiate from JSON object (need to add/enable type information?)");
+
+        $r9 = virtualinvoke $r8.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        $r10 = staticinvoke <org.codehaus.jackson.map.JsonMappingException: org.codehaus.jackson.map.JsonMappingException 'from'(org.codehaus.jackson.JsonParser,java.lang.String)>($r1, $r9);
+
+        throw $r10;
+
+     label04:
+        $r5 = virtualinvoke r0.<org.codehaus.jackson.map.deser.BeanDeserializer: java.lang.Object constructDefaultInstance()>();
+
+     label05:
+        $r11 = virtualinvoke $r1.<org.codehaus.jackson.JsonParser: org.codehaus.jackson.JsonToken getCurrentToken()>();
+
+        $r12 = <org.codehaus.jackson.JsonToken: org.codehaus.jackson.JsonToken END_OBJECT>;
+
+        if $r11 == $r12 goto label15;
+
+        $r9 = virtualinvoke $r1.<org.codehaus.jackson.JsonParser: java.lang.String getCurrentName()>();
+
+        virtualinvoke $r1.<org.codehaus.jackson.JsonParser: org.codehaus.jackson.JsonToken nextToken()>();
+
+        $r13 = r0.<org.codehaus.jackson.map.deser.BeanDeserializer: org.codehaus.jackson.map.deser.impl.BeanPropertyMap _beanProperties>;
+
+        $r14 = virtualinvoke $r13.<org.codehaus.jackson.map.deser.impl.BeanPropertyMap: org.codehaus.jackson.map.deser.SettableBeanProperty find(java.lang.String)>($r9);
+
+        if $r14 == null goto label09;
+
+     label06:
+        virtualinvoke $r14.<org.codehaus.jackson.map.deser.SettableBeanProperty: void deserializeAndSet(org.codehaus.jackson.JsonParser,org.codehaus.jackson.map.DeserializationContext,java.lang.Object)>($r1, $r2, $r5);
+
+     label07:
+        virtualinvoke $r1.<org.codehaus.jackson.JsonParser: org.codehaus.jackson.JsonToken nextToken()>();
+
+        goto label05;
+
+     label08:
+        r15 := @caughtexception;
+
+        virtualinvoke r0.<org.codehaus.jackson.map.deser.BeanDeserializer: void wrapAndThrow(java.lang.Throwable,java.lang.Object,java.lang.String,org.codehaus.jackson.map.DeserializationContext)>(r15, $r5, $r9, $r2);
+
+        goto label07;
+
+     label09:
+        $r16 = r0.<org.codehaus.jackson.map.deser.BeanDeserializer: java.util.HashSet _ignorableProps>;
+
+        if $r16 == null goto label10;
+
+        $r16 = r0.<org.codehaus.jackson.map.deser.BeanDeserializer: java.util.HashSet _ignorableProps>;
+
+        $z0 = virtualinvoke $r16.<java.util.HashSet: boolean contains(java.lang.Object)>($r9);
+
+        if $z0 == 0 goto label10;
+
+        virtualinvoke $r1.<org.codehaus.jackson.JsonParser: org.codehaus.jackson.JsonParser skipChildren()>();
+
+        goto label07;
+
+     label10:
+        $r17 = r0.<org.codehaus.jackson.map.deser.BeanDeserializer: org.codehaus.jackson.map.deser.SettableAnyProperty _anySetter>;
+
+        if $r17 == null goto label14;
+
+     label11:
+        $r17 = r0.<org.codehaus.jackson.map.deser.BeanDeserializer: org.codehaus.jackson.map.deser.SettableAnyProperty _anySetter>;
+
+        virtualinvoke $r17.<org.codehaus.jackson.map.deser.SettableAnyProperty: void deserializeAndSet(org.codehaus.jackson.JsonParser,org.codehaus.jackson.map.DeserializationContext,java.lang.Object,java.lang.String)>($r1, $r2, $r5, $r9);
+
+     label12:
+        goto label07;
+
+     label13:
+        $r18 := @caughtexception;
+
+        virtualinvoke r0.<org.codehaus.jackson.map.deser.BeanDeserializer: void wrapAndThrow(java.lang.Throwable,java.lang.Object,java.lang.String,org.codehaus.jackson.map.DeserializationContext)>($r18, $r5, $r9, $r2);
+
+        goto label07;
+
+     label14:
+        virtualinvoke r0.<org.codehaus.jackson.map.deser.BeanDeserializer: void handleUnknownProperty(org.codehaus.jackson.JsonParser,org.codehaus.jackson.map.DeserializationContext,java.lang.Object,java.lang.String)>($r1, $r2, $r5, $r9);
+
+        goto label07;
+
+     label15:
+        return $r5;
+
+        catch java.lang.Exception from label06 to label07 with label08;
+        catch java.lang.Exception from label11 to label12 with label13;
+    }
+
+    public java.lang.Object deserializeFromString(org.codehaus.jackson.JsonParser, org.codehaus.jackson.map.DeserializationContext) throws java.io.IOException, org.codehaus.jackson.JsonProcessingException
+    {
+        org.codehaus.jackson.map.deser.BeanDeserializer r0;
+        org.codehaus.jackson.JsonParser $r1;
+        org.codehaus.jackson.map.DeserializationContext $r2;
+        org.codehaus.jackson.map.deser.Creator$StringBased $r3;
+        java.lang.String $r4;
+        java.lang.Object $r5;
+        org.codehaus.jackson.map.deser.Creator$Delegating $r6;
+        java.lang.Class $r7;
+        org.codehaus.jackson.map.JsonMappingException $r8;
+
+        r0 := @this: org.codehaus.jackson.map.deser.BeanDeserializer;
+
+        $r1 := @parameter0: org.codehaus.jackson.JsonParser;
+
+        $r2 := @parameter1: org.codehaus.jackson.map.DeserializationContext;
+
+        $r3 = r0.<org.codehaus.jackson.map.deser.BeanDeserializer: org.codehaus.jackson.map.deser.Creator$StringBased _stringCreator>;
+
+        if $r3 == null goto label1;
+
+        $r3 = r0.<org.codehaus.jackson.map.deser.BeanDeserializer: org.codehaus.jackson.map.deser.Creator$StringBased _stringCreator>;
+
+        $r4 = virtualinvoke $r1.<org.codehaus.jackson.JsonParser: java.lang.String getText()>();
+
+        $r5 = virtualinvoke $r3.<org.codehaus.jackson.map.deser.Creator$StringBased: java.lang.Object construct(java.lang.String)>($r4);
+
+        return $r5;
+
+     label1:
+        $r6 = r0.<org.codehaus.jackson.map.deser.BeanDeserializer: org.codehaus.jackson.map.deser.Creator$Delegating _delegatingCreator>;
+
+        if $r6 == null goto label2;
+
+        $r6 = r0.<org.codehaus.jackson.map.deser.BeanDeserializer: org.codehaus.jackson.map.deser.Creator$Delegating _delegatingCreator>;
+
+        $r5 = virtualinvoke $r6.<org.codehaus.jackson.map.deser.Creator$Delegating: java.lang.Object deserialize(org.codehaus.jackson.JsonParser,org.codehaus.jackson.map.DeserializationContext)>($r1, $r2);
+
+        return $r5;
+
+     label2:
+        $r7 = virtualinvoke r0.<org.codehaus.jackson.map.deser.BeanDeserializer: java.lang.Class getBeanClass()>();
+
+        $r8 = virtualinvoke $r2.<org.codehaus.jackson.map.DeserializationContext: org.codehaus.jackson.map.JsonMappingException instantiationException(java.lang.Class,java.lang.String)>($r7, "no suitable creator method found to deserialize from JSON String");
+
+        throw $r8;
+    }
+
+    public java.lang.Object deserializeUsingCreator(org.codehaus.jackson.JsonParser, org.codehaus.jackson.map.DeserializationContext) throws java.io.IOException, org.codehaus.jackson.JsonProcessingException
+    {
+        org.codehaus.jackson.map.deser.BeanDeserializer r0;
+        org.codehaus.jackson.JsonParser $r1;
+        org.codehaus.jackson.map.DeserializationContext $r2;
+        org.codehaus.jackson.map.deser.Creator$Delegating $r3;
+        java.lang.Object $r4;
+        java.lang.Exception $r5;
+        org.codehaus.jackson.type.JavaType $r6;
+        java.lang.Class $r7;
+        org.codehaus.jackson.map.JsonMappingException $r8;
+
+        r0 := @this: org.codehaus.jackson.map.deser.BeanDeserializer;
+
+        $r1 := @parameter0: org.codehaus.jackson.JsonParser;
+
+        $r2 := @parameter1: org.codehaus.jackson.map.DeserializationContext;
+
+        $r3 = r0.<org.codehaus.jackson.map.deser.BeanDeserializer: org.codehaus.jackson.map.deser.Creator$Delegating _delegatingCreator>;
+
+        if $r3 == null goto label4;
+
+     label1:
+        $r3 = r0.<org.codehaus.jackson.map.deser.BeanDeserializer: org.codehaus.jackson.map.deser.Creator$Delegating _delegatingCreator>;
+
+        $r4 = virtualinvoke $r3.<org.codehaus.jackson.map.deser.Creator$Delegating: java.lang.Object deserialize(org.codehaus.jackson.JsonParser,org.codehaus.jackson.map.DeserializationContext)>($r1, $r2);
+
+     label2:
+        return $r4;
+
+     label3:
+        $r5 := @caughtexception;
+
+        $r6 = r0.<org.codehaus.jackson.map.deser.BeanDeserializer: org.codehaus.jackson.type.JavaType _beanType>;
+
+        $r7 = virtualinvoke $r6.<org.codehaus.jackson.type.JavaType: java.lang.Class getRawClass()>();
+
+        virtualinvoke r0.<org.codehaus.jackson.map.deser.BeanDeserializer: void wrapAndThrow(java.lang.Throwable,java.lang.Object,java.lang.String,org.codehaus.jackson.map.DeserializationContext)>($r5, $r7, null, $r2);
+
+     label4:
+        $r7 = virtualinvoke r0.<org.codehaus.jackson.map.deser.BeanDeserializer: java.lang.Class getBeanClass()>();
+
+        $r8 = virtualinvoke $r2.<org.codehaus.jackson.map.DeserializationContext: org.codehaus.jackson.map.JsonMappingException mappingException(java.lang.Class)>($r7);
+
+        throw $r8;
+
+        catch java.lang.Exception from label1 to label2 with label3;
+    }
+
+    public java.lang.Object deserializeWithType(org.codehaus.jackson.JsonParser, org.codehaus.jackson.map.DeserializationContext, org.codehaus.jackson.map.TypeDeserializer) throws java.io.IOException, org.codehaus.jackson.JsonProcessingException
+    {
+        org.codehaus.jackson.map.deser.BeanDeserializer r0;
+        org.codehaus.jackson.JsonParser $r1;
+        org.codehaus.jackson.map.DeserializationContext $r2;
+        org.codehaus.jackson.map.TypeDeserializer $r3;
+        java.lang.Object $r4;
+
+        r0 := @this: org.codehaus.jackson.map.deser.BeanDeserializer;
+
+        $r1 := @parameter0: org.codehaus.jackson.JsonParser;
+
+        $r2 := @parameter1: org.codehaus.jackson.map.DeserializationContext;
+
+        $r3 := @parameter2: org.codehaus.jackson.map.TypeDeserializer;
+
+        $r4 = virtualinvoke $r3.<org.codehaus.jackson.map.TypeDeserializer: java.lang.Object deserializeTypedFromObject(org.codehaus.jackson.JsonParser,org.codehaus.jackson.map.DeserializationContext)>($r1, $r2);
+
+        return $r4;
+    }
+
+    public org.codehaus.jackson.map.deser.SettableBeanProperty findBackReference(java.lang.String)
+    {
+        java.lang.String $r0;
+        java.lang.Object $r1;
+        org.codehaus.jackson.map.deser.BeanDeserializer r2;
+        java.util.Map $r3;
+        org.codehaus.jackson.map.deser.SettableBeanProperty r4;
+
+        r2 := @this: org.codehaus.jackson.map.deser.BeanDeserializer;
+
+        $r0 := @parameter0: java.lang.String;
+
+        $r3 = r2.<org.codehaus.jackson.map.deser.BeanDeserializer: java.util.Map _backRefs>;
+
+        if $r3 != null goto label1;
+
+        return null;
+
+     label1:
+        $r3 = r2.<org.codehaus.jackson.map.deser.BeanDeserializer: java.util.Map _backRefs>;
+
+        $r1 = interfaceinvoke $r3.<java.util.Map: java.lang.Object get(java.lang.Object)>($r0);
+
+        r4 = (org.codehaus.jackson.map.deser.SettableBeanProperty) $r1;
+
+        return r4;
+    }
+
+    public final java.lang.Class getBeanClass()
+    {
+        org.codehaus.jackson.map.deser.BeanDeserializer r0;
+        java.lang.Class $r1;
+        org.codehaus.jackson.type.JavaType $r2;
+
+        r0 := @this: org.codehaus.jackson.map.deser.BeanDeserializer;
+
+        $r2 = r0.<org.codehaus.jackson.map.deser.BeanDeserializer: org.codehaus.jackson.type.JavaType _beanType>;
+
+        $r1 = virtualinvoke $r2.<org.codehaus.jackson.type.JavaType: java.lang.Class getRawClass()>();
+
+        return $r1;
+    }
+
+    public int getPropertyCount()
+    {
+        org.codehaus.jackson.map.deser.BeanDeserializer r0;
+        int $i0;
+        org.codehaus.jackson.map.deser.impl.BeanPropertyMap $r1;
+
+        r0 := @this: org.codehaus.jackson.map.deser.BeanDeserializer;
+
+        $r1 = r0.<org.codehaus.jackson.map.deser.BeanDeserializer: org.codehaus.jackson.map.deser.impl.BeanPropertyMap _beanProperties>;
+
+        $i0 = virtualinvoke $r1.<org.codehaus.jackson.map.deser.impl.BeanPropertyMap: int size()>();
+
+        return $i0;
+    }
+
+    public org.codehaus.jackson.type.JavaType getValueType()
+    {
+        org.codehaus.jackson.map.deser.BeanDeserializer r0;
+        org.codehaus.jackson.type.JavaType r1;
+
+        r0 := @this: org.codehaus.jackson.map.deser.BeanDeserializer;
+
+        r1 = r0.<org.codehaus.jackson.map.deser.BeanDeserializer: org.codehaus.jackson.type.JavaType _beanType>;
+
+        return r1;
+    }
+
+    protected java.lang.Object handlePolymorphic(org.codehaus.jackson.JsonParser, org.codehaus.jackson.map.DeserializationContext, java.lang.Object, org.codehaus.jackson.util.TokenBuffer) throws java.io.IOException, org.codehaus.jackson.JsonProcessingException
+    {
+        org.codehaus.jackson.map.deser.BeanDeserializer r0;
+        org.codehaus.jackson.JsonParser $r1, $r6;
+        org.codehaus.jackson.map.DeserializationContext $r2;
+        org.codehaus.jackson.util.TokenBuffer $r3;
+        java.lang.Object r4;
+        org.codehaus.jackson.map.JsonDeserializer $r5;
+
+        r0 := @this: org.codehaus.jackson.map.deser.BeanDeserializer;
+
+        $r1 := @parameter0: org.codehaus.jackson.JsonParser;
+
+        $r2 := @parameter1: org.codehaus.jackson.map.DeserializationContext;
+
+        r4 := @parameter2: java.lang.Object;
+
+        $r3 := @parameter3: org.codehaus.jackson.util.TokenBuffer;
+
+        $r5 = virtualinvoke r0.<org.codehaus.jackson.map.deser.BeanDeserializer: org.codehaus.jackson.map.JsonDeserializer _findSubclassDeserializer(org.codehaus.jackson.map.DeserializationContext,java.lang.Object,org.codehaus.jackson.util.TokenBuffer)>($r2, r4, $r3);
+
+        if $r5 == null goto label3;
+
+        if $r3 == null goto label1;
+
+        virtualinvoke $r3.<org.codehaus.jackson.util.TokenBuffer: void writeEndObject()>();
+
+        $r6 = virtualinvoke $r3.<org.codehaus.jackson.util.TokenBuffer: org.codehaus.jackson.JsonParser asParser()>();
+
+        virtualinvoke $r6.<org.codehaus.jackson.JsonParser: org.codehaus.jackson.JsonToken nextToken()>();
+
+        r4 = virtualinvoke $r5.<org.codehaus.jackson.map.JsonDeserializer: java.lang.Object deserialize(org.codehaus.jackson.JsonParser,org.codehaus.jackson.map.DeserializationContext,java.lang.Object)>($r6, $r2, r4);
+
+     label1:
+        if $r1 == null goto label2;
+
+        r4 = virtualinvoke $r5.<org.codehaus.jackson.map.JsonDeserializer: java.lang.Object deserialize(org.codehaus.jackson.JsonParser,org.codehaus.jackson.map.DeserializationContext,java.lang.Object)>($r1, $r2, r4);
+
+     label2:
+        return r4;
+
+     label3:
+        if $r3 == null goto label4;
+
+        r4 = virtualinvoke r0.<org.codehaus.jackson.map.deser.BeanDeserializer: java.lang.Object handleUnknownProperties(org.codehaus.jackson.map.DeserializationContext,java.lang.Object,org.codehaus.jackson.util.TokenBuffer)>($r2, r4, $r3);
+
+     label4:
+        if $r1 == null goto label5;
+
+        r4 = virtualinvoke r0.<org.codehaus.jackson.map.deser.BeanDeserializer: java.lang.Object deserialize(org.codehaus.jackson.JsonParser,org.codehaus.jackson.map.DeserializationContext,java.lang.Object)>($r1, $r2, r4);
+
+     label5:
+        return r4;
+    }
+
+    protected java.lang.Object handleUnknownProperties(org.codehaus.jackson.map.DeserializationContext, java.lang.Object, org.codehaus.jackson.util.TokenBuffer) throws java.io.IOException, org.codehaus.jackson.JsonProcessingException
+    {
+        org.codehaus.jackson.map.deser.BeanDeserializer r0;
+        org.codehaus.jackson.map.DeserializationContext $r1;
+        java.lang.Object $r2;
+        org.codehaus.jackson.util.TokenBuffer $r3;
+        org.codehaus.jackson.JsonToken $r4, $r6;
+        org.codehaus.jackson.JsonParser $r5;
+        java.lang.String $r7;
+
+        r0 := @this: org.codehaus.jackson.map.deser.BeanDeserializer;
+
+        $r1 := @parameter0: org.codehaus.jackson.map.DeserializationContext;
+
+        $r2 := @parameter1: java.lang.Object;
+
+        $r3 := @parameter2: org.codehaus.jackson.util.TokenBuffer;
+
+        virtualinvoke $r3.<org.codehaus.jackson.util.TokenBuffer: void writeEndObject()>();
+
+        $r5 = virtualinvoke $r3.<org.codehaus.jackson.util.TokenBuffer: org.codehaus.jackson.JsonParser asParser()>();
+
+     label1:
+        $r6 = virtualinvoke $r5.<org.codehaus.jackson.JsonParser: org.codehaus.jackson.JsonToken nextToken()>();
+
+        $r4 = <org.codehaus.jackson.JsonToken: org.codehaus.jackson.JsonToken END_OBJECT>;
+
+        if $r6 == $r4 goto label2;
+
+        $r7 = virtualinvoke $r5.<org.codehaus.jackson.JsonParser: java.lang.String getCurrentName()>();
+
+        virtualinvoke $r5.<org.codehaus.jackson.JsonParser: org.codehaus.jackson.JsonToken nextToken()>();
+
+        virtualinvoke r0.<org.codehaus.jackson.map.deser.BeanDeserializer: void handleUnknownProperty(org.codehaus.jackson.JsonParser,org.codehaus.jackson.map.DeserializationContext,java.lang.Object,java.lang.String)>($r5, $r1, $r2, $r7);
+
+        goto label1;
+
+     label2:
+        return $r2;
+    }
+
+    protected void handleUnknownProperty(org.codehaus.jackson.JsonParser, org.codehaus.jackson.map.DeserializationContext, java.lang.Object, java.lang.String) throws java.io.IOException, org.codehaus.jackson.JsonProcessingException
+    {
+        org.codehaus.jackson.map.deser.BeanDeserializer r0;
+        org.codehaus.jackson.JsonParser $r1;
+        org.codehaus.jackson.map.DeserializationContext $r2;
+        java.lang.Object $r3;
+        java.lang.String $r4;
+        boolean $z0;
+        java.util.HashSet $r5;
+
+        r0 := @this: org.codehaus.jackson.map.deser.BeanDeserializer;
+
+        $r1 := @parameter0: org.codehaus.jackson.JsonParser;
+
+        $r2 := @parameter1: org.codehaus.jackson.map.DeserializationContext;
+
+        $r3 := @parameter2: java.lang.Object;
+
+        $r4 := @parameter3: java.lang.String;
+
+        $z0 = r0.<org.codehaus.jackson.map.deser.BeanDeserializer: boolean _ignoreAllUnknown>;
+
+        if $z0 != 0 goto label1;
+
+        $r5 = r0.<org.codehaus.jackson.map.deser.BeanDeserializer: java.util.HashSet _ignorableProps>;
+
+        if $r5 == null goto label2;
+
+        $r5 = r0.<org.codehaus.jackson.map.deser.BeanDeserializer: java.util.HashSet _ignorableProps>;
+
+        $z0 = virtualinvoke $r5.<java.util.HashSet: boolean contains(java.lang.Object)>($r4);
+
+        if $z0 == 0 goto label2;
+
+     label1:
+        virtualinvoke $r1.<org.codehaus.jackson.JsonParser: org.codehaus.jackson.JsonParser skipChildren()>();
+
+        return;
+
+     label2:
+        specialinvoke r0.<org.codehaus.jackson.map.deser.StdDeserializer: void handleUnknownProperty(org.codehaus.jackson.JsonParser,org.codehaus.jackson.map.DeserializationContext,java.lang.Object,java.lang.String)>($r1, $r2, $r3, $r4);
+
+        return;
+    }
+
+    public boolean hasProperty(java.lang.String)
+    {
+        org.codehaus.jackson.map.deser.BeanDeserializer r0;
+        java.lang.String $r1;
+        org.codehaus.jackson.map.deser.SettableBeanProperty $r2;
+        org.codehaus.jackson.map.deser.impl.BeanPropertyMap $r3;
+
+        r0 := @this: org.codehaus.jackson.map.deser.BeanDeserializer;
+
+        $r1 := @parameter0: java.lang.String;
+
+        $r3 = r0.<org.codehaus.jackson.map.deser.BeanDeserializer: org.codehaus.jackson.map.deser.impl.BeanPropertyMap _beanProperties>;
+
+        $r2 = virtualinvoke $r3.<org.codehaus.jackson.map.deser.impl.BeanPropertyMap: org.codehaus.jackson.map.deser.SettableBeanProperty find(java.lang.String)>($r1);
+
+        if $r2 == null goto label1;
+
+        return 1;
+
+     label1:
+        return 0;
+    }
+
+    public java.util.Iterator properties()
+    {
+        org.codehaus.jackson.map.deser.BeanDeserializer r0;
+        java.util.Iterator $r1;
+        org.codehaus.jackson.map.deser.impl.BeanPropertyMap $r2;
+        java.lang.IllegalStateException $r3;
+
+        r0 := @this: org.codehaus.jackson.map.deser.BeanDeserializer;
+
+        $r2 = r0.<org.codehaus.jackson.map.deser.BeanDeserializer: org.codehaus.jackson.map.deser.impl.BeanPropertyMap _beanProperties>;
+
+        if $r2 != null goto label1;
+
+        $r3 = new java.lang.IllegalStateException;
+
+        specialinvoke $r3.<java.lang.IllegalStateException: void <init>(java.lang.String)>("Can only call before BeanDeserializer has been resolved");
+
+        throw $r3;
+
+     label1:
+        $r2 = r0.<org.codehaus.jackson.map.deser.BeanDeserializer: org.codehaus.jackson.map.deser.impl.BeanPropertyMap _beanProperties>;
+
+        $r1 = virtualinvoke $r2.<org.codehaus.jackson.map.deser.impl.BeanPropertyMap: java.util.Iterator allProperties()>();
+
+        return $r1;
+    }
+
+    public void resolve(org.codehaus.jackson.map.DeserializationConfig, org.codehaus.jackson.map.DeserializerProvider) throws org.codehaus.jackson.map.JsonMappingException
+    {
+        org.codehaus.jackson.map.deser.BeanDeserializer r0, r11;
+        org.codehaus.jackson.map.DeserializationConfig $r1;
+        org.codehaus.jackson.map.DeserializerProvider $r2;
+        org.codehaus.jackson.map.BeanProperty$Std r3;
+        org.codehaus.jackson.map.deser.impl.BeanPropertyMap $r4;
+        java.util.Iterator $r5;
+        boolean $z0, $z1;
+        java.lang.Object $r6;
+        org.codehaus.jackson.map.deser.SettableBeanProperty r7, $r12;
+        org.codehaus.jackson.type.JavaType $r8, $r17;
+        org.codehaus.jackson.map.JsonDeserializer $r9;
+        java.lang.String $r10;
+        java.lang.IllegalArgumentException $r13;
+        java.lang.StringBuilder r14;
+        org.codehaus.jackson.map.deser.ContainerDeserializer r15;
+        java.lang.Class $r16, $r18;
+        org.codehaus.jackson.map.deser.SettableBeanProperty$ManagedReferenceProperty $r19;
+        org.codehaus.jackson.map.introspect.AnnotatedClass $r20;
+        org.codehaus.jackson.map.util.Annotations $r21;
+        org.codehaus.jackson.map.deser.SettableAnyProperty $r22, $r23;
+        org.codehaus.jackson.map.BeanProperty $r24;
+        org.codehaus.jackson.map.deser.Creator$Delegating $r25;
+        org.codehaus.jackson.map.introspect.AnnotatedMember $r26;
+        org.codehaus.jackson.map.deser.Creator$PropertyBased $r27;
+        java.util.Collection $r28;
+
+        r0 := @this: org.codehaus.jackson.map.deser.BeanDeserializer;
+
+        $r1 := @parameter0: org.codehaus.jackson.map.DeserializationConfig;
+
+        $r2 := @parameter1: org.codehaus.jackson.map.DeserializerProvider;
+
+        $r4 = r0.<org.codehaus.jackson.map.deser.BeanDeserializer: org.codehaus.jackson.map.deser.impl.BeanPropertyMap _beanProperties>;
+
+        $r5 = virtualinvoke $r4.<org.codehaus.jackson.map.deser.impl.BeanPropertyMap: java.util.Iterator allProperties()>();
+
+     label01:
+        $z0 = interfaceinvoke $r5.<java.util.Iterator: boolean hasNext()>();
+
+        if $z0 == 0 goto label10;
+
+        $r6 = interfaceinvoke $r5.<java.util.Iterator: java.lang.Object next()>();
+
+        r7 = (org.codehaus.jackson.map.deser.SettableBeanProperty) $r6;
+
+        $z0 = virtualinvoke r7.<org.codehaus.jackson.map.deser.SettableBeanProperty: boolean hasValueDeserializer()>();
+
+        if $z0 != 0 goto label02;
+
+        $r8 = virtualinvoke r7.<org.codehaus.jackson.map.deser.SettableBeanProperty: org.codehaus.jackson.type.JavaType getType()>();
+
+        $r9 = virtualinvoke r0.<org.codehaus.jackson.map.deser.BeanDeserializer: org.codehaus.jackson.map.JsonDeserializer findDeserializer(org.codehaus.jackson.map.DeserializationConfig,org.codehaus.jackson.map.DeserializerProvider,org.codehaus.jackson.type.JavaType,org.codehaus.jackson.map.BeanProperty)>($r1, $r2, $r8, r7);
+
+        virtualinvoke r7.<org.codehaus.jackson.map.deser.SettableBeanProperty: void setValueDeserializer(org.codehaus.jackson.map.JsonDeserializer)>($r9);
+
+     label02:
+        $r10 = virtualinvoke r7.<org.codehaus.jackson.map.deser.SettableBeanProperty: java.lang.String getManagedReferenceName()>();
+
+        if $r10 == null goto label01;
+
+        $r9 = r7.<org.codehaus.jackson.map.deser.SettableBeanProperty: org.codehaus.jackson.map.JsonDeserializer _valueDeserializer>;
+
+        $z0 = 0;
+
+        $z1 = $r9 instanceof org.codehaus.jackson.map.deser.BeanDeserializer;
+
+        if $z1 == 0 goto label04;
+
+        r11 = (org.codehaus.jackson.map.deser.BeanDeserializer) $r9;
+
+        $r12 = virtualinvoke r11.<org.codehaus.jackson.map.deser.BeanDeserializer: org.codehaus.jackson.map.deser.SettableBeanProperty findBackReference(java.lang.String)>($r10);
+
+     label03:
+        if $r12 != null goto label08;
+
+        $r13 = new java.lang.IllegalArgumentException;
+
+        r14 = new java.lang.StringBuilder;
+
+        specialinvoke r14.<java.lang.StringBuilder: void <init>()>();
+
+        r14 = virtualinvoke r14.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Can not handle managed/back reference \'");
+
+        r14 = virtualinvoke r14.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r10);
+
+        r14 = virtualinvoke r14.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("\': no back reference property found from type ");
+
+        $r8 = virtualinvoke r7.<org.codehaus.jackson.map.deser.SettableBeanProperty: org.codehaus.jackson.type.JavaType getType()>();
+
+        r14 = virtualinvoke r14.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($r8);
+
+        $r10 = virtualinvoke r14.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke $r13.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>($r10);
+
+        throw $r13;
+
+     label04:
+        $z0 = $r9 instanceof org.codehaus.jackson.map.deser.ContainerDeserializer;
+
+        if $z0 == 0 goto label06;
+
+        r15 = (org.codehaus.jackson.map.deser.ContainerDeserializer) $r9;
+
+        $r9 = virtualinvoke r15.<org.codehaus.jackson.map.deser.ContainerDeserializer: org.codehaus.jackson.map.JsonDeserializer getContentDeserializer()>();
+
+        $z0 = $r9 instanceof org.codehaus.jackson.map.deser.BeanDeserializer;
+
+        if $z0 != 0 goto label05;
+
+        $r13 = new java.lang.IllegalArgumentException;
+
+        r14 = new java.lang.StringBuilder;
+
+        specialinvoke r14.<java.lang.StringBuilder: void <init>()>();
+
+        r14 = virtualinvoke r14.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Can not handle managed/back reference \'");
+
+        r14 = virtualinvoke r14.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r10);
+
+        r14 = virtualinvoke r14.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("\': value deserializer is of type ContainerDeserializer, but content type is not handled by a BeanDeserializer ");
+
+        r14 = virtualinvoke r14.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" (instead it\'s of type ");
+
+        $r16 = virtualinvoke $r9.<java.lang.Object: java.lang.Class getClass()>();
+
+        $r10 = virtualinvoke $r16.<java.lang.Class: java.lang.String getName()>();
+
+        r14 = virtualinvoke r14.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r10);
+
+        r14 = virtualinvoke r14.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(")");
+
+        $r10 = virtualinvoke r14.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke $r13.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>($r10);
+
+        throw $r13;
+
+     label05:
+        r11 = (org.codehaus.jackson.map.deser.BeanDeserializer) $r9;
+
+        $r12 = virtualinvoke r11.<org.codehaus.jackson.map.deser.BeanDeserializer: org.codehaus.jackson.map.deser.SettableBeanProperty findBackReference(java.lang.String)>($r10);
+
+        $z0 = 1;
+
+        goto label03;
+
+     label06:
+        $z0 = $r9 instanceof org.codehaus.jackson.map.deser.AbstractDeserializer;
+
+        if $z0 == 0 goto label07;
+
+        $r13 = new java.lang.IllegalArgumentException;
+
+        r14 = new java.lang.StringBuilder;
+
+        specialinvoke r14.<java.lang.StringBuilder: void <init>()>();
+
+        r14 = virtualinvoke r14.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Can not handle managed/back reference for abstract types (property ");
+
+        $r8 = r0.<org.codehaus.jackson.map.deser.BeanDeserializer: org.codehaus.jackson.type.JavaType _beanType>;
+
+        $r16 = virtualinvoke $r8.<org.codehaus.jackson.type.JavaType: java.lang.Class getRawClass()>();
+
+        $r10 = virtualinvoke $r16.<java.lang.Class: java.lang.String getName()>();
+
+        r14 = virtualinvoke r14.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r10);
+
+        r14 = virtualinvoke r14.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(".");
+
+        $r10 = virtualinvoke r7.<org.codehaus.jackson.map.deser.SettableBeanProperty: java.lang.String getName()>();
+
+        r14 = virtualinvoke r14.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r10);
+
+        r14 = virtualinvoke r14.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(")");
+
+        $r10 = virtualinvoke r14.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke $r13.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>($r10);
+
+        throw $r13;
+
+     label07:
+        $r13 = new java.lang.IllegalArgumentException;
+
+        r14 = new java.lang.StringBuilder;
+
+        specialinvoke r14.<java.lang.StringBuilder: void <init>()>();
+
+        r14 = virtualinvoke r14.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Can not handle managed/back reference \'");
+
+        r14 = virtualinvoke r14.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r10);
+
+        r14 = virtualinvoke r14.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("\': type for value deserializer is not BeanDeserializer or ContainerDeserializer, but ");
+
+        $r16 = virtualinvoke $r9.<java.lang.Object: java.lang.Class getClass()>();
+
+        $r10 = virtualinvoke $r16.<java.lang.Class: java.lang.String getName()>();
+
+        r14 = virtualinvoke r14.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r10);
+
+        $r10 = virtualinvoke r14.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke $r13.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>($r10);
+
+        throw $r13;
+
+     label08:
+        $r8 = r0.<org.codehaus.jackson.map.deser.BeanDeserializer: org.codehaus.jackson.type.JavaType _beanType>;
+
+        $r17 = virtualinvoke $r12.<org.codehaus.jackson.map.deser.SettableBeanProperty: org.codehaus.jackson.type.JavaType getType()>();
+
+        $r16 = virtualinvoke $r17.<org.codehaus.jackson.type.JavaType: java.lang.Class getRawClass()>();
+
+        $r18 = virtualinvoke $r8.<org.codehaus.jackson.type.JavaType: java.lang.Class getRawClass()>();
+
+        $z1 = virtualinvoke $r16.<java.lang.Class: boolean isAssignableFrom(java.lang.Class)>($r18);
+
+        if $z1 != 0 goto label09;
+
+        $r13 = new java.lang.IllegalArgumentException;
+
+        r14 = new java.lang.StringBuilder;
+
+        specialinvoke r14.<java.lang.StringBuilder: void <init>()>();
+
+        r14 = virtualinvoke r14.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Can not handle managed/back reference \'");
+
+        r14 = virtualinvoke r14.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r10);
+
+        r14 = virtualinvoke r14.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("\': back reference type (");
+
+        $r16 = virtualinvoke $r17.<org.codehaus.jackson.type.JavaType: java.lang.Class getRawClass()>();
+
+        $r10 = virtualinvoke $r16.<java.lang.Class: java.lang.String getName()>();
+
+        r14 = virtualinvoke r14.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r10);
+
+        r14 = virtualinvoke r14.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(") not compatible with managed type (");
+
+        $r16 = virtualinvoke $r8.<org.codehaus.jackson.type.JavaType: java.lang.Class getRawClass()>();
+
+        $r10 = virtualinvoke $r16.<java.lang.Class: java.lang.String getName()>();
+
+        r14 = virtualinvoke r14.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r10);
+
+        r14 = virtualinvoke r14.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(")");
+
+        $r10 = virtualinvoke r14.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke $r13.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>($r10);
+
+        throw $r13;
+
+     label09:
+        $r4 = r0.<org.codehaus.jackson.map.deser.BeanDeserializer: org.codehaus.jackson.map.deser.impl.BeanPropertyMap _beanProperties>;
+
+        $r19 = new org.codehaus.jackson.map.deser.SettableBeanProperty$ManagedReferenceProperty;
+
+        $r20 = r0.<org.codehaus.jackson.map.deser.BeanDeserializer: org.codehaus.jackson.map.introspect.AnnotatedClass _forClass>;
+
+        $r21 = virtualinvoke $r20.<org.codehaus.jackson.map.introspect.AnnotatedClass: org.codehaus.jackson.map.util.Annotations getAnnotations()>();
+
+        specialinvoke $r19.<org.codehaus.jackson.map.deser.SettableBeanProperty$ManagedReferenceProperty: void <init>(java.lang.String,org.codehaus.jackson.map.deser.SettableBeanProperty,org.codehaus.jackson.map.deser.SettableBeanProperty,org.codehaus.jackson.map.util.Annotations,boolean)>($r10, r7, $r12, $r21, $z0);
+
+        virtualinvoke $r4.<org.codehaus.jackson.map.deser.impl.BeanPropertyMap: void replace(org.codehaus.jackson.map.deser.SettableBeanProperty)>($r19);
+
+        goto label01;
+
+     label10:
+        $r22 = r0.<org.codehaus.jackson.map.deser.BeanDeserializer: org.codehaus.jackson.map.deser.SettableAnyProperty _anySetter>;
+
+        if $r22 == null goto label11;
+
+        $r22 = r0.<org.codehaus.jackson.map.deser.BeanDeserializer: org.codehaus.jackson.map.deser.SettableAnyProperty _anySetter>;
+
+        $z0 = virtualinvoke $r22.<org.codehaus.jackson.map.deser.SettableAnyProperty: boolean hasValueDeserializer()>();
+
+        if $z0 != 0 goto label11;
+
+        $r22 = r0.<org.codehaus.jackson.map.deser.BeanDeserializer: org.codehaus.jackson.map.deser.SettableAnyProperty _anySetter>;
+
+        $r23 = r0.<org.codehaus.jackson.map.deser.BeanDeserializer: org.codehaus.jackson.map.deser.SettableAnyProperty _anySetter>;
+
+        $r8 = virtualinvoke $r23.<org.codehaus.jackson.map.deser.SettableAnyProperty: org.codehaus.jackson.type.JavaType getType()>();
+
+        $r23 = r0.<org.codehaus.jackson.map.deser.BeanDeserializer: org.codehaus.jackson.map.deser.SettableAnyProperty _anySetter>;
+
+        $r24 = virtualinvoke $r23.<org.codehaus.jackson.map.deser.SettableAnyProperty: org.codehaus.jackson.map.BeanProperty getProperty()>();
+
+        $r9 = virtualinvoke r0.<org.codehaus.jackson.map.deser.BeanDeserializer: org.codehaus.jackson.map.JsonDeserializer findDeserializer(org.codehaus.jackson.map.DeserializationConfig,org.codehaus.jackson.map.DeserializerProvider,org.codehaus.jackson.type.JavaType,org.codehaus.jackson.map.BeanProperty)>($r1, $r2, $r8, $r24);
+
+        virtualinvoke $r22.<org.codehaus.jackson.map.deser.SettableAnyProperty: void setValueDeserializer(org.codehaus.jackson.map.JsonDeserializer)>($r9);
+
+     label11:
+        $r25 = r0.<org.codehaus.jackson.map.deser.BeanDeserializer: org.codehaus.jackson.map.deser.Creator$Delegating _delegatingCreator>;
+
+        if $r25 == null goto label12;
+
+        r3 = new org.codehaus.jackson.map.BeanProperty$Std;
+
+        $r25 = r0.<org.codehaus.jackson.map.deser.BeanDeserializer: org.codehaus.jackson.map.deser.Creator$Delegating _delegatingCreator>;
+
+        $r8 = virtualinvoke $r25.<org.codehaus.jackson.map.deser.Creator$Delegating: org.codehaus.jackson.type.JavaType getValueType()>();
+
+        $r20 = r0.<org.codehaus.jackson.map.deser.BeanDeserializer: org.codehaus.jackson.map.introspect.AnnotatedClass _forClass>;
+
+        $r21 = virtualinvoke $r20.<org.codehaus.jackson.map.introspect.AnnotatedClass: org.codehaus.jackson.map.util.Annotations getAnnotations()>();
+
+        $r25 = r0.<org.codehaus.jackson.map.deser.BeanDeserializer: org.codehaus.jackson.map.deser.Creator$Delegating _delegatingCreator>;
+
+        $r26 = virtualinvoke $r25.<org.codehaus.jackson.map.deser.Creator$Delegating: org.codehaus.jackson.map.introspect.AnnotatedMember getCreator()>();
+
+        specialinvoke r3.<org.codehaus.jackson.map.BeanProperty$Std: void <init>(java.lang.String,org.codehaus.jackson.type.JavaType,org.codehaus.jackson.map.util.Annotations,org.codehaus.jackson.map.introspect.AnnotatedMember)>(null, $r8, $r21, $r26);
+
+        $r25 = r0.<org.codehaus.jackson.map.deser.BeanDeserializer: org.codehaus.jackson.map.deser.Creator$Delegating _delegatingCreator>;
+
+        $r8 = virtualinvoke $r25.<org.codehaus.jackson.map.deser.Creator$Delegating: org.codehaus.jackson.type.JavaType getValueType()>();
+
+        $r9 = virtualinvoke r0.<org.codehaus.jackson.map.deser.BeanDeserializer: org.codehaus.jackson.map.JsonDeserializer findDeserializer(org.codehaus.jackson.map.DeserializationConfig,org.codehaus.jackson.map.DeserializerProvider,org.codehaus.jackson.type.JavaType,org.codehaus.jackson.map.BeanProperty)>($r1, $r2, $r8, r3);
+
+        $r25 = r0.<org.codehaus.jackson.map.deser.BeanDeserializer: org.codehaus.jackson.map.deser.Creator$Delegating _delegatingCreator>;
+
+        virtualinvoke $r25.<org.codehaus.jackson.map.deser.Creator$Delegating: void setDeserializer(org.codehaus.jackson.map.JsonDeserializer)>($r9);
+
+     label12:
+        $r27 = r0.<org.codehaus.jackson.map.deser.BeanDeserializer: org.codehaus.jackson.map.deser.Creator$PropertyBased _propertyBasedCreator>;
+
+        if $r27 == null goto label14;
+
+        $r27 = r0.<org.codehaus.jackson.map.deser.BeanDeserializer: org.codehaus.jackson.map.deser.Creator$PropertyBased _propertyBasedCreator>;
+
+        $r28 = virtualinvoke $r27.<org.codehaus.jackson.map.deser.Creator$PropertyBased: java.util.Collection properties()>();
+
+        $r5 = interfaceinvoke $r28.<java.util.Collection: java.util.Iterator iterator()>();
+
+     label13:
+        $z0 = interfaceinvoke $r5.<java.util.Iterator: boolean hasNext()>();
+
+        if $z0 == 0 goto label14;
+
+        $r6 = interfaceinvoke $r5.<java.util.Iterator: java.lang.Object next()>();
+
+        r7 = (org.codehaus.jackson.map.deser.SettableBeanProperty) $r6;
+
+        $z0 = virtualinvoke r7.<org.codehaus.jackson.map.deser.SettableBeanProperty: boolean hasValueDeserializer()>();
+
+        if $z0 != 0 goto label13;
+
+        $r8 = virtualinvoke r7.<org.codehaus.jackson.map.deser.SettableBeanProperty: org.codehaus.jackson.type.JavaType getType()>();
+
+        $r9 = virtualinvoke r0.<org.codehaus.jackson.map.deser.BeanDeserializer: org.codehaus.jackson.map.JsonDeserializer findDeserializer(org.codehaus.jackson.map.DeserializationConfig,org.codehaus.jackson.map.DeserializerProvider,org.codehaus.jackson.type.JavaType,org.codehaus.jackson.map.BeanProperty)>($r1, $r2, $r8, r7);
+
+        virtualinvoke r7.<org.codehaus.jackson.map.deser.SettableBeanProperty: void setValueDeserializer(org.codehaus.jackson.map.JsonDeserializer)>($r9);
+
+        goto label13;
+
+     label14:
+        return;
+    }
+
+    public void wrapAndThrow(java.lang.Throwable, java.lang.Object, int) throws java.io.IOException
+    {
+        org.codehaus.jackson.map.deser.BeanDeserializer r0;
+        java.lang.Throwable $r1;
+        java.lang.Object $r2;
+        int $i0;
+
+        r0 := @this: org.codehaus.jackson.map.deser.BeanDeserializer;
+
+        $r1 := @parameter0: java.lang.Throwable;
+
+        $r2 := @parameter1: java.lang.Object;
+
+        $i0 := @parameter2: int;
+
+        virtualinvoke r0.<org.codehaus.jackson.map.deser.BeanDeserializer: void wrapAndThrow(java.lang.Throwable,java.lang.Object,int,org.codehaus.jackson.map.DeserializationContext)>($r1, $r2, $i0, null);
+
+        return;
+    }
+
+    public void wrapAndThrow(java.lang.Throwable, java.lang.Object, int, org.codehaus.jackson.map.DeserializationContext) throws java.io.IOException
+    {
+        org.codehaus.jackson.map.deser.BeanDeserializer r0;
+        java.lang.Object $r1;
+        int $i0;
+        org.codehaus.jackson.map.DeserializationContext $r2;
+        java.lang.Throwable r3, $r4;
+        boolean $z0, $z1;
+        java.lang.Error r5;
+        org.codehaus.jackson.map.DeserializationConfig$Feature $r6;
+        java.io.IOException r7;
+        java.lang.RuntimeException r8;
+        org.codehaus.jackson.map.JsonMappingException $r9;
+
+        r0 := @this: org.codehaus.jackson.map.deser.BeanDeserializer;
+
+        r3 := @parameter0: java.lang.Throwable;
+
+        $r1 := @parameter1: java.lang.Object;
+
+        $i0 := @parameter2: int;
+
+        $r2 := @parameter3: org.codehaus.jackson.map.DeserializationContext;
+
+     label1:
+        $z0 = r3 instanceof java.lang.reflect.InvocationTargetException;
+
+        if $z0 == 0 goto label2;
+
+        $r4 = virtualinvoke r3.<java.lang.Throwable: java.lang.Throwable getCause()>();
+
+        if $r4 == null goto label2;
+
+        r3 = virtualinvoke r3.<java.lang.Throwable: java.lang.Throwable getCause()>();
+
+        goto label1;
+
+     label2:
+        $z0 = r3 instanceof java.lang.Error;
+
+        if $z0 == 0 goto label3;
+
+        r5 = (java.lang.Error) r3;
+
+        throw r5;
+
+     label3:
+        if $r2 == null goto label4;
+
+        $r6 = <org.codehaus.jackson.map.DeserializationConfig$Feature: org.codehaus.jackson.map.DeserializationConfig$Feature WRAP_EXCEPTIONS>;
+
+        $z0 = virtualinvoke $r2.<org.codehaus.jackson.map.DeserializationContext: boolean isEnabled(org.codehaus.jackson.map.DeserializationConfig$Feature)>($r6);
+
+        if $z0 == 0 goto label7;
+
+     label4:
+        $z0 = 1;
+
+     label5:
+        $z1 = r3 instanceof java.io.IOException;
+
+        if $z1 == 0 goto label8;
+
+        if $z0 == 0 goto label6;
+
+        $z0 = r3 instanceof org.codehaus.jackson.map.JsonMappingException;
+
+        if $z0 != 0 goto label9;
+
+     label6:
+        r7 = (java.io.IOException) r3;
+
+        throw r7;
+
+     label7:
+        $z0 = 0;
+
+        goto label5;
+
+     label8:
+        if $z0 != 0 goto label9;
+
+        $z0 = r3 instanceof java.lang.RuntimeException;
+
+        if $z0 == 0 goto label9;
+
+        r8 = (java.lang.RuntimeException) r3;
+
+        throw r8;
+
+     label9:
+        $r9 = staticinvoke <org.codehaus.jackson.map.JsonMappingException: org.codehaus.jackson.map.JsonMappingException wrapWithPath(java.lang.Throwable,java.lang.Object,int)>(r3, $r1, $i0);
+
+        throw $r9;
+    }
+
+    public void wrapAndThrow(java.lang.Throwable, java.lang.Object, java.lang.String) throws java.io.IOException
+    {
+        org.codehaus.jackson.map.deser.BeanDeserializer r0;
+        java.lang.Throwable $r1;
+        java.lang.Object $r2;
+        java.lang.String $r3;
+
+        r0 := @this: org.codehaus.jackson.map.deser.BeanDeserializer;
+
+        $r1 := @parameter0: java.lang.Throwable;
+
+        $r2 := @parameter1: java.lang.Object;
+
+        $r3 := @parameter2: java.lang.String;
+
+        virtualinvoke r0.<org.codehaus.jackson.map.deser.BeanDeserializer: void wrapAndThrow(java.lang.Throwable,java.lang.Object,java.lang.String,org.codehaus.jackson.map.DeserializationContext)>($r1, $r2, $r3, null);
+
+        return;
+    }
+
+    public void wrapAndThrow(java.lang.Throwable, java.lang.Object, java.lang.String, org.codehaus.jackson.map.DeserializationContext) throws java.io.IOException
+    {
+        org.codehaus.jackson.map.deser.BeanDeserializer r0;
+        java.lang.Object $r1;
+        java.lang.String $r2;
+        org.codehaus.jackson.map.DeserializationContext $r3;
+        java.lang.Throwable r4, $r5;
+        boolean $z0, $z1;
+        java.lang.Error r6;
+        org.codehaus.jackson.map.DeserializationConfig$Feature $r7;
+        java.io.IOException r8;
+        java.lang.RuntimeException r9;
+        org.codehaus.jackson.map.JsonMappingException $r10;
+
+        r0 := @this: org.codehaus.jackson.map.deser.BeanDeserializer;
+
+        r4 := @parameter0: java.lang.Throwable;
+
+        $r1 := @parameter1: java.lang.Object;
+
+        $r2 := @parameter2: java.lang.String;
+
+        $r3 := @parameter3: org.codehaus.jackson.map.DeserializationContext;
+
+     label1:
+        $z0 = r4 instanceof java.lang.reflect.InvocationTargetException;
+
+        if $z0 == 0 goto label2;
+
+        $r5 = virtualinvoke r4.<java.lang.Throwable: java.lang.Throwable getCause()>();
+
+        if $r5 == null goto label2;
+
+        r4 = virtualinvoke r4.<java.lang.Throwable: java.lang.Throwable getCause()>();
+
+        goto label1;
+
+     label2:
+        $z0 = r4 instanceof java.lang.Error;
+
+        if $z0 == 0 goto label3;
+
+        r6 = (java.lang.Error) r4;
+
+        throw r6;
+
+     label3:
+        if $r3 == null goto label4;
+
+        $r7 = <org.codehaus.jackson.map.DeserializationConfig$Feature: org.codehaus.jackson.map.DeserializationConfig$Feature WRAP_EXCEPTIONS>;
+
+        $z0 = virtualinvoke $r3.<org.codehaus.jackson.map.DeserializationContext: boolean isEnabled(org.codehaus.jackson.map.DeserializationConfig$Feature)>($r7);
+
+        if $z0 == 0 goto label7;
+
+     label4:
+        $z0 = 1;
+
+     label5:
+        $z1 = r4 instanceof java.io.IOException;
+
+        if $z1 == 0 goto label8;
+
+        if $z0 == 0 goto label6;
+
+        $z0 = r4 instanceof org.codehaus.jackson.map.JsonMappingException;
+
+        if $z0 != 0 goto label9;
+
+     label6:
+        r8 = (java.io.IOException) r4;
+
+        throw r8;
+
+     label7:
+        $z0 = 0;
+
+        goto label5;
+
+     label8:
+        if $z0 != 0 goto label9;
+
+        $z0 = r4 instanceof java.lang.RuntimeException;
+
+        if $z0 == 0 goto label9;
+
+        r9 = (java.lang.RuntimeException) r4;
+
+        throw r9;
+
+     label9:
+        $r10 = staticinvoke <org.codehaus.jackson.map.JsonMappingException: org.codehaus.jackson.map.JsonMappingException wrapWithPath(java.lang.Throwable,java.lang.Object,java.lang.String)>(r4, $r1, $r2);
+
+        throw $r10;
+    }
+}

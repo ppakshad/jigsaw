@@ -1,0 +1,73 @@
+final class com.wiyun.ad.a$a extends android.webkit.WebViewClient
+{
+    final com.wiyun.ad.a a;
+    private android.view.View b;
+
+    public void <init>(com.wiyun.ad.a, android.view.View)
+    {
+        com.wiyun.ad.a$a r0;
+        com.wiyun.ad.a $r1;
+        android.view.View $r2;
+
+        r0 := @this: com.wiyun.ad.a$a;
+
+        $r1 := @parameter0: com.wiyun.ad.a;
+
+        $r2 := @parameter1: android.view.View;
+
+        r0.<com.wiyun.ad.a$a: com.wiyun.ad.a a> = $r1;
+
+        specialinvoke r0.<android.webkit.WebViewClient: void <init>()>();
+
+        r0.<com.wiyun.ad.a$a: android.view.View b> = $r2;
+
+        return;
+    }
+
+    public void onPageFinished(android.webkit.WebView, java.lang.String)
+    {
+        com.wiyun.ad.a$a r0;
+        android.webkit.WebView $r1;
+        java.lang.String $r2;
+        android.view.View $r3;
+
+        r0 := @this: com.wiyun.ad.a$a;
+
+        $r1 := @parameter0: android.webkit.WebView;
+
+        $r2 := @parameter1: java.lang.String;
+
+        specialinvoke r0.<android.webkit.WebViewClient: void onPageFinished(android.webkit.WebView,java.lang.String)>($r1, $r2);
+
+        $r3 = r0.<com.wiyun.ad.a$a: android.view.View b>;
+
+        virtualinvoke $r3.<android.view.View: void setVisibility(int)>(4);
+
+        return;
+    }
+
+    public void onPageStarted(android.webkit.WebView, java.lang.String, android.graphics.Bitmap)
+    {
+        com.wiyun.ad.a$a r0;
+        android.webkit.WebView $r1;
+        java.lang.String $r2;
+        android.graphics.Bitmap $r3;
+        android.view.View $r4;
+
+        r0 := @this: com.wiyun.ad.a$a;
+
+        $r1 := @parameter0: android.webkit.WebView;
+
+        $r2 := @parameter1: java.lang.String;
+
+        $r3 := @parameter2: android.graphics.Bitmap;
+
+        specialinvoke r0.<android.webkit.WebViewClient: void onPageStarted(android.webkit.WebView,java.lang.String,android.graphics.Bitmap)>($r1, $r2, $r3);
+
+        $r4 = r0.<com.wiyun.ad.a$a: android.view.View b>;
+
+        virtualinvoke $r4.<android.view.View: void setVisibility(int)>(0);
+
+        return;
+    }
+}

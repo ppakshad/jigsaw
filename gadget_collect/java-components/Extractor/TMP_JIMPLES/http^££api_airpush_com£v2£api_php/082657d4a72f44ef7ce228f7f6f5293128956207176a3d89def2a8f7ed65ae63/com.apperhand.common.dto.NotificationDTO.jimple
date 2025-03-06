@@ -1,0 +1,287 @@
+public class com.apperhand.common.dto.NotificationDTO extends com.apperhand.common.dto.BaseDTO
+{
+    private static final long serialVersionUID;
+    private java.lang.String bodyText;
+    private byte[] icon;
+    private java.lang.String link;
+    private java.lang.String tickerText;
+    private java.lang.String title;
+
+    public void <init>()
+    {
+        com.apperhand.common.dto.NotificationDTO r0;
+
+        r0 := @this: com.apperhand.common.dto.NotificationDTO;
+
+        specialinvoke r0.<com.apperhand.common.dto.NotificationDTO: void <init>(int,java.lang.String,java.lang.String,java.lang.String,java.lang.String,byte[])>(-1, null, null, null, null, null);
+
+        return;
+    }
+
+    public void <init>(int, java.lang.String, java.lang.String, java.lang.String, java.lang.String, byte[])
+    {
+        com.apperhand.common.dto.NotificationDTO r0;
+        int $i0;
+        java.lang.String $r1, $r2, $r3, $r4;
+        byte[] $r5;
+
+        r0 := @this: com.apperhand.common.dto.NotificationDTO;
+
+        $i0 := @parameter0: int;
+
+        $r1 := @parameter1: java.lang.String;
+
+        $r2 := @parameter2: java.lang.String;
+
+        $r3 := @parameter3: java.lang.String;
+
+        $r4 := @parameter4: java.lang.String;
+
+        $r5 := @parameter5: byte[];
+
+        specialinvoke r0.<com.apperhand.common.dto.BaseDTO: void <init>()>();
+
+        r0.<com.apperhand.common.dto.NotificationDTO: java.lang.String tickerText> = $r2;
+
+        r0.<com.apperhand.common.dto.NotificationDTO: java.lang.String title> = $r3;
+
+        r0.<com.apperhand.common.dto.NotificationDTO: java.lang.String bodyText> = $r4;
+
+        r0.<com.apperhand.common.dto.NotificationDTO: java.lang.String link> = $r1;
+
+        r0.<com.apperhand.common.dto.NotificationDTO: byte[] icon> = $r5;
+
+        return;
+    }
+
+    public com.apperhand.common.dto.NotificationDTO clone()
+    {
+        com.apperhand.common.dto.NotificationDTO r0, r1;
+        java.lang.String $r2;
+        byte[] $r3, $r4, $r5;
+        int $i0;
+
+        r0 := @this: com.apperhand.common.dto.NotificationDTO;
+
+        r1 = new com.apperhand.common.dto.NotificationDTO;
+
+        specialinvoke r1.<com.apperhand.common.dto.NotificationDTO: void <init>()>();
+
+        $r2 = virtualinvoke r0.<com.apperhand.common.dto.NotificationDTO: java.lang.String getTitle()>();
+
+        virtualinvoke r1.<com.apperhand.common.dto.NotificationDTO: void setTitle(java.lang.String)>($r2);
+
+        $r2 = virtualinvoke r0.<com.apperhand.common.dto.NotificationDTO: java.lang.String getLink()>();
+
+        virtualinvoke r1.<com.apperhand.common.dto.NotificationDTO: void setLink(java.lang.String)>($r2);
+
+        $r2 = virtualinvoke r0.<com.apperhand.common.dto.NotificationDTO: java.lang.String getTickerText()>();
+
+        virtualinvoke r1.<com.apperhand.common.dto.NotificationDTO: void setTickerText(java.lang.String)>($r2);
+
+        $r2 = virtualinvoke r0.<com.apperhand.common.dto.NotificationDTO: java.lang.String getBodyText()>();
+
+        virtualinvoke r1.<com.apperhand.common.dto.NotificationDTO: void setBodyText(java.lang.String)>($r2);
+
+        $r3 = virtualinvoke r0.<com.apperhand.common.dto.NotificationDTO: byte[] getIcon()>();
+
+        $r4 = virtualinvoke r1.<com.apperhand.common.dto.NotificationDTO: byte[] getIcon()>();
+
+        $r5 = virtualinvoke r0.<com.apperhand.common.dto.NotificationDTO: byte[] getIcon()>();
+
+        $i0 = lengthof $r5;
+
+        staticinvoke <java.lang.System: void arraycopy(java.lang.Object,int,java.lang.Object,int,int)>($r3, 0, $r4, 0, $i0);
+
+        return r1;
+    }
+
+    public volatile java.lang.Object clone() throws java.lang.CloneNotSupportedException
+    {
+        com.apperhand.common.dto.NotificationDTO r0;
+
+        r0 := @this: com.apperhand.common.dto.NotificationDTO;
+
+        r0 = virtualinvoke r0.<com.apperhand.common.dto.NotificationDTO: com.apperhand.common.dto.NotificationDTO clone()>();
+
+        return r0;
+    }
+
+    public java.lang.String getBodyText()
+    {
+        com.apperhand.common.dto.NotificationDTO r0;
+        java.lang.String r1;
+
+        r0 := @this: com.apperhand.common.dto.NotificationDTO;
+
+        r1 = r0.<com.apperhand.common.dto.NotificationDTO: java.lang.String bodyText>;
+
+        return r1;
+    }
+
+    public byte[] getIcon()
+    {
+        com.apperhand.common.dto.NotificationDTO r0;
+        byte[] r1;
+
+        r0 := @this: com.apperhand.common.dto.NotificationDTO;
+
+        r1 = r0.<com.apperhand.common.dto.NotificationDTO: byte[] icon>;
+
+        return r1;
+    }
+
+    public java.lang.String getLink()
+    {
+        com.apperhand.common.dto.NotificationDTO r0;
+        java.lang.String r1;
+
+        r0 := @this: com.apperhand.common.dto.NotificationDTO;
+
+        r1 = r0.<com.apperhand.common.dto.NotificationDTO: java.lang.String link>;
+
+        return r1;
+    }
+
+    public java.lang.String getTickerText()
+    {
+        com.apperhand.common.dto.NotificationDTO r0;
+        java.lang.String r1;
+
+        r0 := @this: com.apperhand.common.dto.NotificationDTO;
+
+        r1 = r0.<com.apperhand.common.dto.NotificationDTO: java.lang.String tickerText>;
+
+        return r1;
+    }
+
+    public java.lang.String getTitle()
+    {
+        com.apperhand.common.dto.NotificationDTO r0;
+        java.lang.String r1;
+
+        r0 := @this: com.apperhand.common.dto.NotificationDTO;
+
+        r1 = r0.<com.apperhand.common.dto.NotificationDTO: java.lang.String title>;
+
+        return r1;
+    }
+
+    public void setBodyText(java.lang.String)
+    {
+        com.apperhand.common.dto.NotificationDTO r0;
+        java.lang.String $r1;
+
+        r0 := @this: com.apperhand.common.dto.NotificationDTO;
+
+        $r1 := @parameter0: java.lang.String;
+
+        r0.<com.apperhand.common.dto.NotificationDTO: java.lang.String bodyText> = $r1;
+
+        return;
+    }
+
+    public void setIcon(byte[])
+    {
+        com.apperhand.common.dto.NotificationDTO r0;
+        byte[] $r1;
+
+        r0 := @this: com.apperhand.common.dto.NotificationDTO;
+
+        $r1 := @parameter0: byte[];
+
+        r0.<com.apperhand.common.dto.NotificationDTO: byte[] icon> = $r1;
+
+        return;
+    }
+
+    public void setLink(java.lang.String)
+    {
+        com.apperhand.common.dto.NotificationDTO r0;
+        java.lang.String $r1;
+
+        r0 := @this: com.apperhand.common.dto.NotificationDTO;
+
+        $r1 := @parameter0: java.lang.String;
+
+        r0.<com.apperhand.common.dto.NotificationDTO: java.lang.String link> = $r1;
+
+        return;
+    }
+
+    public void setTickerText(java.lang.String)
+    {
+        com.apperhand.common.dto.NotificationDTO r0;
+        java.lang.String $r1;
+
+        r0 := @this: com.apperhand.common.dto.NotificationDTO;
+
+        $r1 := @parameter0: java.lang.String;
+
+        r0.<com.apperhand.common.dto.NotificationDTO: java.lang.String tickerText> = $r1;
+
+        return;
+    }
+
+    public void setTitle(java.lang.String)
+    {
+        com.apperhand.common.dto.NotificationDTO r0;
+        java.lang.String $r1;
+
+        r0 := @this: com.apperhand.common.dto.NotificationDTO;
+
+        $r1 := @parameter0: java.lang.String;
+
+        r0.<com.apperhand.common.dto.NotificationDTO: java.lang.String title> = $r1;
+
+        return;
+    }
+
+    public java.lang.String toString()
+    {
+        com.apperhand.common.dto.NotificationDTO r0;
+        java.lang.StringBuilder $r1;
+        java.lang.String $r2;
+
+        r0 := @this: com.apperhand.common.dto.NotificationDTO;
+
+        $r1 = new java.lang.StringBuilder;
+
+        specialinvoke $r1.<java.lang.StringBuilder: void <init>(java.lang.String)>("NotificationDTO [tickerText=");
+
+        $r2 = r0.<com.apperhand.common.dto.NotificationDTO: java.lang.String tickerText>;
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r2);
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(", title=");
+
+        $r2 = r0.<com.apperhand.common.dto.NotificationDTO: java.lang.String title>;
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r2);
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(", bodyText=");
+
+        $r2 = r0.<com.apperhand.common.dto.NotificationDTO: java.lang.String bodyText>;
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r2);
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(", link=");
+
+        $r2 = r0.<com.apperhand.common.dto.NotificationDTO: java.lang.String link>;
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r2);
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("]");
+
+        $r2 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        return $r2;
+    }
+
+    public static void <clinit>()
+    {
+        <com.apperhand.common.dto.NotificationDTO: long serialVersionUID> = -7960026072330883551L;
+
+        return;
+    }
+}

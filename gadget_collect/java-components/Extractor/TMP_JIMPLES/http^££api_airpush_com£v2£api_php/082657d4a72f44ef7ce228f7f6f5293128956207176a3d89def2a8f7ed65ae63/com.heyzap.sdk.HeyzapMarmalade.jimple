@@ -1,0 +1,108 @@
+class com.heyzap.sdk.HeyzapMarmalade extends java.lang.Object
+{
+    private final java.lang.Runnable m_CheckinHeyzap;
+    private final com.heyzap.sdk.HeyzapMarmalade$CheckinWithMessageRunnable m_CheckinHeyzapWithMessage;
+    private final com.heyzap.sdk.HeyzapMarmalade$LoadRunnable m_LoadHeyzap;
+
+    void <init>()
+    {
+        com.heyzap.sdk.HeyzapMarmalade r0;
+        com.heyzap.sdk.HeyzapMarmalade$1 $r1;
+        com.heyzap.sdk.HeyzapMarmalade$CheckinWithMessageRunnable $r2;
+        com.heyzap.sdk.HeyzapMarmalade$LoadRunnable $r3;
+
+        r0 := @this: com.heyzap.sdk.HeyzapMarmalade;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        $r1 = new com.heyzap.sdk.HeyzapMarmalade$1;
+
+        specialinvoke $r1.<com.heyzap.sdk.HeyzapMarmalade$1: void <init>(com.heyzap.sdk.HeyzapMarmalade)>(r0);
+
+        r0.<com.heyzap.sdk.HeyzapMarmalade: java.lang.Runnable m_CheckinHeyzap> = $r1;
+
+        $r2 = new com.heyzap.sdk.HeyzapMarmalade$CheckinWithMessageRunnable;
+
+        specialinvoke $r2.<com.heyzap.sdk.HeyzapMarmalade$CheckinWithMessageRunnable: void <init>(com.heyzap.sdk.HeyzapMarmalade,com.heyzap.sdk.HeyzapMarmalade$1)>(r0, null);
+
+        r0.<com.heyzap.sdk.HeyzapMarmalade: com.heyzap.sdk.HeyzapMarmalade$CheckinWithMessageRunnable m_CheckinHeyzapWithMessage> = $r2;
+
+        $r3 = new com.heyzap.sdk.HeyzapMarmalade$LoadRunnable;
+
+        specialinvoke $r3.<com.heyzap.sdk.HeyzapMarmalade$LoadRunnable: void <init>(com.heyzap.sdk.HeyzapMarmalade,com.heyzap.sdk.HeyzapMarmalade$1)>(r0, null);
+
+        r0.<com.heyzap.sdk.HeyzapMarmalade: com.heyzap.sdk.HeyzapMarmalade$LoadRunnable m_LoadHeyzap> = $r3;
+
+        return;
+    }
+
+    public void checkinHeyzap()
+    {
+        com.heyzap.sdk.HeyzapMarmalade r0;
+        com.ideaworks3d.marmalade.LoaderActivity $r1;
+        java.lang.Runnable $r2;
+
+        r0 := @this: com.heyzap.sdk.HeyzapMarmalade;
+
+        $r1 = <com.ideaworks3d.marmalade.LoaderActivity: com.ideaworks3d.marmalade.LoaderActivity m_Activity>;
+
+        $r2 = r0.<com.heyzap.sdk.HeyzapMarmalade: java.lang.Runnable m_CheckinHeyzap>;
+
+        virtualinvoke $r1.<com.ideaworks3d.marmalade.LoaderActivity: void runOnUiThread(java.lang.Runnable)>($r2);
+
+        return;
+    }
+
+    public void checkinHeyzapWithMessage(java.lang.String)
+    {
+        com.heyzap.sdk.HeyzapMarmalade r0;
+        java.lang.String $r1;
+        com.heyzap.sdk.HeyzapMarmalade$CheckinWithMessageRunnable $r2;
+        com.ideaworks3d.marmalade.LoaderActivity $r3;
+
+        r0 := @this: com.heyzap.sdk.HeyzapMarmalade;
+
+        $r1 := @parameter0: java.lang.String;
+
+        $r2 = r0.<com.heyzap.sdk.HeyzapMarmalade: com.heyzap.sdk.HeyzapMarmalade$CheckinWithMessageRunnable m_CheckinHeyzapWithMessage>;
+
+        $r2.<com.heyzap.sdk.HeyzapMarmalade$CheckinWithMessageRunnable: java.lang.String m_Message> = $r1;
+
+        $r3 = <com.ideaworks3d.marmalade.LoaderActivity: com.ideaworks3d.marmalade.LoaderActivity m_Activity>;
+
+        $r2 = r0.<com.heyzap.sdk.HeyzapMarmalade: com.heyzap.sdk.HeyzapMarmalade$CheckinWithMessageRunnable m_CheckinHeyzapWithMessage>;
+
+        virtualinvoke $r3.<com.ideaworks3d.marmalade.LoaderActivity: void runOnUiThread(java.lang.Runnable)>($r2);
+
+        return;
+    }
+
+    public void loadHeyzap(java.lang.String, java.lang.String, boolean)
+    {
+        com.heyzap.sdk.HeyzapMarmalade r0;
+        java.lang.String $r1, $r2;
+        boolean $z0;
+        com.heyzap.sdk.HeyzapMarmalade$LoadRunnable $r3;
+        com.ideaworks3d.marmalade.LoaderActivity $r4;
+
+        r0 := @this: com.heyzap.sdk.HeyzapMarmalade;
+
+        $r1 := @parameter0: java.lang.String;
+
+        $r2 := @parameter1: java.lang.String;
+
+        $z0 := @parameter2: boolean;
+
+        $r3 = r0.<com.heyzap.sdk.HeyzapMarmalade: com.heyzap.sdk.HeyzapMarmalade$LoadRunnable m_LoadHeyzap>;
+
+        $r3.<com.heyzap.sdk.HeyzapMarmalade$LoadRunnable: boolean m_AndroidToast> = $z0;
+
+        $r4 = <com.ideaworks3d.marmalade.LoaderActivity: com.ideaworks3d.marmalade.LoaderActivity m_Activity>;
+
+        $r3 = r0.<com.heyzap.sdk.HeyzapMarmalade: com.heyzap.sdk.HeyzapMarmalade$LoadRunnable m_LoadHeyzap>;
+
+        virtualinvoke $r4.<com.ideaworks3d.marmalade.LoaderActivity: void runOnUiThread(java.lang.Runnable)>($r3);
+
+        return;
+    }
+}

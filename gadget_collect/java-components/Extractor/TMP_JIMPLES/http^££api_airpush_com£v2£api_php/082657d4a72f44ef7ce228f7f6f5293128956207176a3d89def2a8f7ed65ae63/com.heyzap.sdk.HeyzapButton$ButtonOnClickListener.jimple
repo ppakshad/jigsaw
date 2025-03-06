@@ -1,0 +1,64 @@
+final class com.heyzap.sdk.HeyzapButton$ButtonOnClickListener extends java.lang.Object implements android.view.View$OnClickListener
+{
+    final com.heyzap.sdk.HeyzapButton this$0;
+
+    private void <init>(com.heyzap.sdk.HeyzapButton)
+    {
+        com.heyzap.sdk.HeyzapButton$ButtonOnClickListener r0;
+        com.heyzap.sdk.HeyzapButton $r1;
+
+        r0 := @this: com.heyzap.sdk.HeyzapButton$ButtonOnClickListener;
+
+        $r1 := @parameter0: com.heyzap.sdk.HeyzapButton;
+
+        r0.<com.heyzap.sdk.HeyzapButton$ButtonOnClickListener: com.heyzap.sdk.HeyzapButton this$0> = $r1;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    void <init>(com.heyzap.sdk.HeyzapButton, com.heyzap.sdk.HeyzapButton$1)
+    {
+        com.heyzap.sdk.HeyzapButton$ButtonOnClickListener r0;
+        com.heyzap.sdk.HeyzapButton $r1;
+        com.heyzap.sdk.HeyzapButton$1 $r2;
+
+        r0 := @this: com.heyzap.sdk.HeyzapButton$ButtonOnClickListener;
+
+        $r1 := @parameter0: com.heyzap.sdk.HeyzapButton;
+
+        $r2 := @parameter1: com.heyzap.sdk.HeyzapButton$1;
+
+        specialinvoke r0.<com.heyzap.sdk.HeyzapButton$ButtonOnClickListener: void <init>(com.heyzap.sdk.HeyzapButton)>($r1);
+
+        return;
+    }
+
+    public void onClick(android.view.View)
+    {
+        com.heyzap.sdk.HeyzapButton$ButtonOnClickListener r0;
+        android.view.View $r1;
+        com.heyzap.sdk.HeyzapButton $r2;
+        android.content.Context $r3;
+        java.lang.String $r4;
+
+        r0 := @this: com.heyzap.sdk.HeyzapButton$ButtonOnClickListener;
+
+        $r1 := @parameter0: android.view.View;
+
+        $r2 = r0.<com.heyzap.sdk.HeyzapButton$ButtonOnClickListener: com.heyzap.sdk.HeyzapButton this$0>;
+
+        $r3 = virtualinvoke $r2.<com.heyzap.sdk.HeyzapButton: android.content.Context getContext()>();
+
+        $r3 = virtualinvoke $r3.<android.content.Context: android.content.Context getApplicationContext()>();
+
+        $r2 = r0.<com.heyzap.sdk.HeyzapButton$ButtonOnClickListener: com.heyzap.sdk.HeyzapButton this$0>;
+
+        $r4 = staticinvoke <com.heyzap.sdk.HeyzapButton: java.lang.String access$100(com.heyzap.sdk.HeyzapButton)>($r2);
+
+        staticinvoke <com.heyzap.sdk.HeyzapLib: void rawCheckin(android.content.Context,java.lang.String)>($r3, $r4);
+
+        return;
+    }
+}

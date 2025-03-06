@@ -1,0 +1,218 @@
+public class com.ideaworks3d.marmalade.SoundRecord extends java.lang.Object implements android.media.AudioRecord$OnRecordPositionUpdateListener
+{
+    private android.media.AudioRecord m_AudioRecord;
+    private int m_BufSize;
+    private short[] m_Buffer;
+    private int m_Frequency;
+    private int m_Period;
+
+    public void <init>()
+    {
+        com.ideaworks3d.marmalade.SoundRecord r0;
+
+        r0 := @this: com.ideaworks3d.marmalade.SoundRecord;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        r0.<com.ideaworks3d.marmalade.SoundRecord: android.media.AudioRecord m_AudioRecord> = null;
+
+        return;
+    }
+
+    private native void recordAudio(short[], int, int);
+
+    public void onMarkerReached(android.media.AudioRecord)
+    {
+        com.ideaworks3d.marmalade.SoundRecord r0;
+        android.media.AudioRecord $r1;
+
+        r0 := @this: com.ideaworks3d.marmalade.SoundRecord;
+
+        $r1 := @parameter0: android.media.AudioRecord;
+
+        return;
+    }
+
+    public void onPeriodicNotification(android.media.AudioRecord)
+    {
+        com.ideaworks3d.marmalade.SoundRecord r0;
+        android.media.AudioRecord $r1;
+        int $i0, $i1;
+        short[] $r2;
+
+        r0 := @this: com.ideaworks3d.marmalade.SoundRecord;
+
+        $r1 := @parameter0: android.media.AudioRecord;
+
+        $r1 = r0.<com.ideaworks3d.marmalade.SoundRecord: android.media.AudioRecord m_AudioRecord>;
+
+        $r2 = r0.<com.ideaworks3d.marmalade.SoundRecord: short[] m_Buffer>;
+
+        $i0 = r0.<com.ideaworks3d.marmalade.SoundRecord: int m_Period>;
+
+        $i0 = virtualinvoke $r1.<android.media.AudioRecord: int read(short[],int,int)>($r2, 0, $i0);
+
+        $r2 = r0.<com.ideaworks3d.marmalade.SoundRecord: short[] m_Buffer>;
+
+        $i1 = r0.<com.ideaworks3d.marmalade.SoundRecord: int m_Frequency>;
+
+        specialinvoke r0.<com.ideaworks3d.marmalade.SoundRecord: void recordAudio(short[],int,int)>($r2, $i0, $i1);
+
+        return;
+    }
+
+    public int start(int)
+    {
+        com.ideaworks3d.marmalade.SoundRecord r0;
+        int $i0, $i1;
+        android.media.AudioRecord $r1;
+        short[] $r2;
+        java.lang.Throwable $r3;
+
+        r0 := @this: com.ideaworks3d.marmalade.SoundRecord;
+
+        $i0 := @parameter0: int;
+
+        $r1 = r0.<com.ideaworks3d.marmalade.SoundRecord: android.media.AudioRecord m_AudioRecord>;
+
+        if $r1 == null goto label1;
+
+        return 0;
+
+     label1:
+        if $i0 == -1 goto label2;
+
+        r0.<com.ideaworks3d.marmalade.SoundRecord: int m_Frequency> = $i0;
+
+     label2:
+        $i0 = r0.<com.ideaworks3d.marmalade.SoundRecord: int m_Frequency>;
+
+        $i0 = staticinvoke <android.media.AudioRecord: int getMinBufferSize(int,int,int)>($i0, 2, 2);
+
+        r0.<com.ideaworks3d.marmalade.SoundRecord: int m_BufSize> = $i0;
+
+        $i0 = r0.<com.ideaworks3d.marmalade.SoundRecord: int m_BufSize>;
+
+        if $i0 != -2 goto label3;
+
+        r0.<com.ideaworks3d.marmalade.SoundRecord: int m_Frequency> = 8000;
+
+        $i0 = r0.<com.ideaworks3d.marmalade.SoundRecord: int m_Frequency>;
+
+        $i0 = staticinvoke <android.media.AudioRecord: int getMinBufferSize(int,int,int)>($i0, 2, 2);
+
+        r0.<com.ideaworks3d.marmalade.SoundRecord: int m_BufSize> = $i0;
+
+        $i0 = r0.<com.ideaworks3d.marmalade.SoundRecord: int m_BufSize>;
+
+        if $i0 != -2 goto label3;
+
+        return 0;
+
+     label3:
+        $i0 = r0.<com.ideaworks3d.marmalade.SoundRecord: int m_BufSize>;
+
+        if $i0 > 4096 goto label4;
+
+        $i0 = r0.<com.ideaworks3d.marmalade.SoundRecord: int m_BufSize>;
+
+        $i0 = $i0 * 2;
+
+        r0.<com.ideaworks3d.marmalade.SoundRecord: int m_BufSize> = $i0;
+
+     label4:
+        $i0 = r0.<com.ideaworks3d.marmalade.SoundRecord: int m_BufSize>;
+
+        $i0 = $i0 / 4;
+
+        r0.<com.ideaworks3d.marmalade.SoundRecord: int m_Period> = $i0;
+
+        $i0 = r0.<com.ideaworks3d.marmalade.SoundRecord: int m_BufSize>;
+
+        $r2 = newarray (short)[$i0];
+
+        r0.<com.ideaworks3d.marmalade.SoundRecord: short[] m_Buffer> = $r2;
+
+        $r1 = new android.media.AudioRecord;
+
+        $i1 = r0.<com.ideaworks3d.marmalade.SoundRecord: int m_Frequency>;
+
+        $i0 = r0.<com.ideaworks3d.marmalade.SoundRecord: int m_BufSize>;
+
+        specialinvoke $r1.<android.media.AudioRecord: void <init>(int,int,int,int,int)>(1, $i1, 2, 2, $i0);
+
+        r0.<com.ideaworks3d.marmalade.SoundRecord: android.media.AudioRecord m_AudioRecord> = $r1;
+
+        $r1 = r0.<com.ideaworks3d.marmalade.SoundRecord: android.media.AudioRecord m_AudioRecord>;
+
+        virtualinvoke $r1.<android.media.AudioRecord: void setRecordPositionUpdateListener(android.media.AudioRecord$OnRecordPositionUpdateListener)>(r0);
+
+        $r1 = r0.<com.ideaworks3d.marmalade.SoundRecord: android.media.AudioRecord m_AudioRecord>;
+
+        $i0 = r0.<com.ideaworks3d.marmalade.SoundRecord: int m_Period>;
+
+        virtualinvoke $r1.<android.media.AudioRecord: int setPositionNotificationPeriod(int)>($i0);
+
+        $r1 = r0.<com.ideaworks3d.marmalade.SoundRecord: android.media.AudioRecord m_AudioRecord>;
+
+     label5:
+        virtualinvoke $r1.<android.media.AudioRecord: void startRecording()>();
+
+     label6:
+        $r1 = r0.<com.ideaworks3d.marmalade.SoundRecord: android.media.AudioRecord m_AudioRecord>;
+
+        $r2 = r0.<com.ideaworks3d.marmalade.SoundRecord: short[] m_Buffer>;
+
+        $i0 = r0.<com.ideaworks3d.marmalade.SoundRecord: int m_Period>;
+
+        $i0 = virtualinvoke $r1.<android.media.AudioRecord: int read(short[],int,int)>($r2, 0, $i0);
+
+        $r2 = r0.<com.ideaworks3d.marmalade.SoundRecord: short[] m_Buffer>;
+
+        $i1 = r0.<com.ideaworks3d.marmalade.SoundRecord: int m_Frequency>;
+
+        specialinvoke r0.<com.ideaworks3d.marmalade.SoundRecord: void recordAudio(short[],int,int)>($r2, $i0, $i1);
+
+        $i0 = r0.<com.ideaworks3d.marmalade.SoundRecord: int m_Frequency>;
+
+        return $i0;
+
+     label7:
+        $r3 := @caughtexception;
+
+        return 0;
+
+        catch java.lang.IllegalStateException from label5 to label6 with label7;
+    }
+
+    public int stop()
+    {
+        com.ideaworks3d.marmalade.SoundRecord r0;
+        android.media.AudioRecord $r1;
+
+        r0 := @this: com.ideaworks3d.marmalade.SoundRecord;
+
+        $r1 = r0.<com.ideaworks3d.marmalade.SoundRecord: android.media.AudioRecord m_AudioRecord>;
+
+        if $r1 != null goto label1;
+
+        return 1;
+
+     label1:
+        $r1 = r0.<com.ideaworks3d.marmalade.SoundRecord: android.media.AudioRecord m_AudioRecord>;
+
+        virtualinvoke $r1.<android.media.AudioRecord: void setRecordPositionUpdateListener(android.media.AudioRecord$OnRecordPositionUpdateListener)>(null);
+
+        $r1 = r0.<com.ideaworks3d.marmalade.SoundRecord: android.media.AudioRecord m_AudioRecord>;
+
+        virtualinvoke $r1.<android.media.AudioRecord: void stop()>();
+
+        $r1 = r0.<com.ideaworks3d.marmalade.SoundRecord: android.media.AudioRecord m_AudioRecord>;
+
+        virtualinvoke $r1.<android.media.AudioRecord: void release()>();
+
+        r0.<com.ideaworks3d.marmalade.SoundRecord: android.media.AudioRecord m_AudioRecord> = null;
+
+        return 0;
+    }
+}

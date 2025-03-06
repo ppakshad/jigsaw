@@ -1,0 +1,137 @@
+public class org.codehaus.jackson.map.ext.DOMSerializer extends org.codehaus.jackson.map.ser.SerializerBase
+{
+    protected final org.w3c.dom.ls.DOMImplementationLS _domImpl;
+
+    public void <init>()
+    {
+        org.codehaus.jackson.map.ext.DOMSerializer r0;
+        java.lang.Exception r1;
+        org.w3c.dom.bootstrap.DOMImplementationRegistry $r2;
+        org.w3c.dom.DOMImplementation $r3;
+        org.w3c.dom.ls.DOMImplementationLS $r4;
+        java.lang.IllegalStateException $r5;
+        java.lang.StringBuilder $r6;
+        java.lang.String $r7;
+
+        r0 := @this: org.codehaus.jackson.map.ext.DOMSerializer;
+
+        specialinvoke r0.<org.codehaus.jackson.map.ser.SerializerBase: void <init>(java.lang.Class)>(class "Lorg/w3c/dom/Node;");
+
+     label1:
+        $r2 = staticinvoke <org.w3c.dom.bootstrap.DOMImplementationRegistry: org.w3c.dom.bootstrap.DOMImplementationRegistry newInstance()>();
+
+     label2:
+        $r3 = virtualinvoke $r2.<org.w3c.dom.bootstrap.DOMImplementationRegistry: org.w3c.dom.DOMImplementation getDOMImplementation(java.lang.String)>("LS");
+
+        $r4 = (org.w3c.dom.ls.DOMImplementationLS) $r3;
+
+        r0.<org.codehaus.jackson.map.ext.DOMSerializer: org.w3c.dom.ls.DOMImplementationLS _domImpl> = $r4;
+
+        return;
+
+     label3:
+        r1 := @caughtexception;
+
+        $r5 = new java.lang.IllegalStateException;
+
+        $r6 = new java.lang.StringBuilder;
+
+        specialinvoke $r6.<java.lang.StringBuilder: void <init>()>();
+
+        $r6 = virtualinvoke $r6.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Could not instantiate DOMImplementationRegistry: ");
+
+        $r7 = virtualinvoke r1.<java.lang.Exception: java.lang.String getMessage()>();
+
+        $r6 = virtualinvoke $r6.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r7);
+
+        $r7 = virtualinvoke $r6.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke $r5.<java.lang.IllegalStateException: void <init>(java.lang.String,java.lang.Throwable)>($r7, r1);
+
+        throw $r5;
+
+        catch java.lang.Exception from label1 to label2 with label3;
+    }
+
+    public org.codehaus.jackson.JsonNode getSchema(org.codehaus.jackson.map.SerializerProvider, java.lang.reflect.Type)
+    {
+        org.codehaus.jackson.map.ext.DOMSerializer r0;
+        org.codehaus.jackson.map.SerializerProvider $r1;
+        java.lang.reflect.Type $r2;
+        org.codehaus.jackson.node.ObjectNode $r3;
+
+        r0 := @this: org.codehaus.jackson.map.ext.DOMSerializer;
+
+        $r1 := @parameter0: org.codehaus.jackson.map.SerializerProvider;
+
+        $r2 := @parameter1: java.lang.reflect.Type;
+
+        $r3 = virtualinvoke r0.<org.codehaus.jackson.map.ext.DOMSerializer: org.codehaus.jackson.node.ObjectNode createSchemaNode(java.lang.String,boolean)>("string", 1);
+
+        return $r3;
+    }
+
+    public volatile void serialize(java.lang.Object, org.codehaus.jackson.JsonGenerator, org.codehaus.jackson.map.SerializerProvider) throws java.io.IOException, org.codehaus.jackson.JsonGenerationException
+    {
+        org.codehaus.jackson.map.ext.DOMSerializer r0;
+        org.codehaus.jackson.JsonGenerator $r1;
+        org.codehaus.jackson.map.SerializerProvider $r2;
+        java.lang.Object $r3;
+        org.w3c.dom.Node $r4;
+
+        r0 := @this: org.codehaus.jackson.map.ext.DOMSerializer;
+
+        $r3 := @parameter0: java.lang.Object;
+
+        $r1 := @parameter1: org.codehaus.jackson.JsonGenerator;
+
+        $r2 := @parameter2: org.codehaus.jackson.map.SerializerProvider;
+
+        $r4 = (org.w3c.dom.Node) $r3;
+
+        virtualinvoke r0.<org.codehaus.jackson.map.ext.DOMSerializer: void serialize(org.w3c.dom.Node,org.codehaus.jackson.JsonGenerator,org.codehaus.jackson.map.SerializerProvider)>($r4, $r1, $r2);
+
+        return;
+    }
+
+    public void serialize(org.w3c.dom.Node, org.codehaus.jackson.JsonGenerator, org.codehaus.jackson.map.SerializerProvider) throws java.io.IOException, org.codehaus.jackson.JsonGenerationException
+    {
+        org.codehaus.jackson.map.ext.DOMSerializer r0;
+        org.w3c.dom.Node $r1;
+        org.codehaus.jackson.JsonGenerator $r2;
+        org.codehaus.jackson.map.SerializerProvider $r3;
+        org.w3c.dom.ls.DOMImplementationLS $r4;
+        java.lang.IllegalStateException $r5;
+        org.w3c.dom.ls.LSSerializer $r6;
+        java.lang.String $r7;
+
+        r0 := @this: org.codehaus.jackson.map.ext.DOMSerializer;
+
+        $r1 := @parameter0: org.w3c.dom.Node;
+
+        $r2 := @parameter1: org.codehaus.jackson.JsonGenerator;
+
+        $r3 := @parameter2: org.codehaus.jackson.map.SerializerProvider;
+
+        $r4 = r0.<org.codehaus.jackson.map.ext.DOMSerializer: org.w3c.dom.ls.DOMImplementationLS _domImpl>;
+
+        if $r4 != null goto label1;
+
+        $r5 = new java.lang.IllegalStateException;
+
+        specialinvoke $r5.<java.lang.IllegalStateException: void <init>(java.lang.String)>("Could not find DOM LS");
+
+        throw $r5;
+
+     label1:
+        $r4 = r0.<org.codehaus.jackson.map.ext.DOMSerializer: org.w3c.dom.ls.DOMImplementationLS _domImpl>;
+
+        $r6 = interfaceinvoke $r4.<org.w3c.dom.ls.DOMImplementationLS: org.w3c.dom.ls.LSSerializer createLSSerializer()>();
+
+        $r7 = interfaceinvoke $r6.<org.w3c.dom.ls.LSSerializer: java.lang.String writeToString(org.w3c.dom.Node)>($r1);
+
+        virtualinvoke $r2.<org.codehaus.jackson.JsonGenerator: void writeString(java.lang.String)>($r7);
+
+        return;
+    }
+}

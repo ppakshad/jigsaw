@@ -1,0 +1,37 @@
+final class com.heyzap.sdk.UnityHelper$1 extends java.lang.Object implements java.lang.Runnable
+{
+    final boolean val$showToast;
+
+    void <init>(boolean)
+    {
+        com.heyzap.sdk.UnityHelper$1 r0;
+        boolean $z0;
+
+        r0 := @this: com.heyzap.sdk.UnityHelper$1;
+
+        $z0 := @parameter0: boolean;
+
+        r0.<com.heyzap.sdk.UnityHelper$1: boolean val$showToast> = $z0;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public void run()
+    {
+        com.heyzap.sdk.UnityHelper$1 r0;
+        android.app.Activity $r1;
+        boolean $z0;
+
+        r0 := @this: com.heyzap.sdk.UnityHelper$1;
+
+        $r1 = <com.unity3d.player.UnityPlayer: android.app.Activity currentActivity>;
+
+        $z0 = r0.<com.heyzap.sdk.UnityHelper$1: boolean val$showToast>;
+
+        staticinvoke <com.heyzap.sdk.HeyzapLib: void load(android.content.Context,boolean)>($r1, $z0);
+
+        return;
+    }
+}

@@ -1,0 +1,216 @@
+public class com.movesky.app.main.FastLineOfSightTester extends com.movesky.app.engine.fastgraph.LineOfSightTester
+{
+    private com.movesky.app.main.GridAcceleration m_accel;
+    private java.util.HashSet m_cachedWallSet;
+    public float radius;
+
+    public void <init>(float, com.movesky.app.main.GridAcceleration)
+    {
+        com.movesky.app.main.FastLineOfSightTester r0;
+        float $f0;
+        com.movesky.app.main.GridAcceleration $r1;
+        java.util.HashSet $r2;
+
+        r0 := @this: com.movesky.app.main.FastLineOfSightTester;
+
+        $f0 := @parameter0: float;
+
+        $r1 := @parameter1: com.movesky.app.main.GridAcceleration;
+
+        specialinvoke r0.<com.movesky.app.engine.fastgraph.LineOfSightTester: void <init>()>();
+
+        $r2 = new java.util.HashSet;
+
+        specialinvoke $r2.<java.util.HashSet: void <init>()>();
+
+        r0.<com.movesky.app.main.FastLineOfSightTester: java.util.HashSet m_cachedWallSet> = $r2;
+
+        r0.<com.movesky.app.main.FastLineOfSightTester: float radius> = $f0;
+
+        r0.<com.movesky.app.main.FastLineOfSightTester: com.movesky.app.main.GridAcceleration m_accel> = $r1;
+
+        return;
+    }
+
+    public com.movesky.app.engine.fastgraph.Wall isLineOfSightClear(float, float, float, float)
+    {
+        com.movesky.app.main.FastLineOfSightTester r0;
+        float $f0, $f1, $f2, $f3, $f4, $f5, $f6, $f7;
+        com.movesky.app.main.GridAcceleration $r1;
+        java.util.HashSet $r2;
+        java.util.Iterator $r3;
+        boolean $z0;
+        java.lang.Object $r4;
+        com.movesky.app.engine.fastgraph.Wall $r5;
+        com.movesky.app.engine.util.Point $r6;
+        byte $b0;
+
+        r0 := @this: com.movesky.app.main.FastLineOfSightTester;
+
+        $f0 := @parameter0: float;
+
+        $f1 := @parameter1: float;
+
+        $f2 := @parameter2: float;
+
+        $f3 := @parameter3: float;
+
+        $f4 = $f2 - $f0;
+
+        $f5 = $f3 - $f1;
+
+        $r1 = r0.<com.movesky.app.main.FastLineOfSightTester: com.movesky.app.main.GridAcceleration m_accel>;
+
+        $f6 = staticinvoke <java.lang.Math: float min(float,float)>($f0, $f2);
+
+        $f7 = staticinvoke <java.lang.Math: float min(float,float)>($f1, $f3);
+
+        $f2 = staticinvoke <java.lang.Math: float max(float,float)>($f0, $f2);
+
+        $f3 = staticinvoke <java.lang.Math: float max(float,float)>($f1, $f3);
+
+        $r2 = r0.<com.movesky.app.main.FastLineOfSightTester: java.util.HashSet m_cachedWallSet>;
+
+        virtualinvoke $r1.<com.movesky.app.main.GridAcceleration: void getWallsInAABB(float,float,float,float,java.util.HashSet)>($f6, $f7, $f2, $f3, $r2);
+
+        $r2 = r0.<com.movesky.app.main.FastLineOfSightTester: java.util.HashSet m_cachedWallSet>;
+
+        $r3 = virtualinvoke $r2.<java.util.HashSet: java.util.Iterator iterator()>();
+
+     label1:
+        $z0 = interfaceinvoke $r3.<java.util.Iterator: boolean hasNext()>();
+
+        if $z0 == 0 goto label2;
+
+        $r4 = interfaceinvoke $r3.<java.util.Iterator: java.lang.Object next()>();
+
+        $r5 = (com.movesky.app.engine.fastgraph.Wall) $r4;
+
+        $r6 = $r5.<com.movesky.app.engine.fastgraph.Wall: com.movesky.app.engine.util.Point b>;
+
+        $f2 = $r6.<com.movesky.app.engine.util.Point: float x>;
+
+        $r6 = $r5.<com.movesky.app.engine.fastgraph.Wall: com.movesky.app.engine.util.Point a>;
+
+        $f3 = $r6.<com.movesky.app.engine.util.Point: float x>;
+
+        $f3 = $f2 - $f3;
+
+        $r6 = $r5.<com.movesky.app.engine.fastgraph.Wall: com.movesky.app.engine.util.Point b>;
+
+        $f2 = $r6.<com.movesky.app.engine.util.Point: float y>;
+
+        $r6 = $r5.<com.movesky.app.engine.fastgraph.Wall: com.movesky.app.engine.util.Point a>;
+
+        $f6 = $r6.<com.movesky.app.engine.util.Point: float y>;
+
+        $f6 = $f2 - $f6;
+
+        $f2 = $f3 * $f5;
+
+        $f7 = $f6 * $f4;
+
+        $f2 = $f2 - $f7;
+
+        $r6 = $r5.<com.movesky.app.engine.fastgraph.Wall: com.movesky.app.engine.util.Point a>;
+
+        $f7 = $r6.<com.movesky.app.engine.util.Point: float x>;
+
+        $f7 = $f0 - $f7;
+
+        $f6 = $f6 * $f7;
+
+        $r6 = $r5.<com.movesky.app.engine.fastgraph.Wall: com.movesky.app.engine.util.Point a>;
+
+        $f7 = $r6.<com.movesky.app.engine.util.Point: float y>;
+
+        $f7 = $f1 - $f7;
+
+        $f3 = $f3 * $f7;
+
+        $f3 = $f6 - $f3;
+
+        $f3 = $f3 / $f2;
+
+        $r6 = $r5.<com.movesky.app.engine.fastgraph.Wall: com.movesky.app.engine.util.Point a>;
+
+        $f6 = $r6.<com.movesky.app.engine.util.Point: float x>;
+
+        $f6 = $f6 - $f0;
+
+        $f6 = $f6 * $f5;
+
+        $r6 = $r5.<com.movesky.app.engine.fastgraph.Wall: com.movesky.app.engine.util.Point a>;
+
+        $f7 = $r6.<com.movesky.app.engine.util.Point: float y>;
+
+        $f7 = $f7 - $f1;
+
+        $f7 = $f7 * $f4;
+
+        $f6 = $f6 - $f7;
+
+        $f2 = neg $f2;
+
+        $f2 = $f6 / $f2;
+
+        $f6 = r0.<com.movesky.app.main.FastLineOfSightTester: float radius>;
+
+        $f6 = $f6 * 0.95F;
+
+        $f7 = $r5.<com.movesky.app.engine.fastgraph.Wall: float length>;
+
+        $f6 = $f6 / $f7;
+
+        $b0 = $f3 cmpl 0.0F;
+
+        if $b0 < 0 goto label1;
+
+        $b0 = $f3 cmpg 1.0F;
+
+        if $b0 > 0 goto label1;
+
+        $f3 = 0.0F - $f6;
+
+        $b0 = $f2 cmpl $f3;
+
+        if $b0 < 0 goto label1;
+
+        $f3 = 1.0F + $f6;
+
+        $b0 = $f2 cmpg $f3;
+
+        if $b0 > 0 goto label1;
+
+        return $r5;
+
+     label2:
+        return null;
+    }
+
+    public com.movesky.app.engine.fastgraph.Wall isLineOfSightClear(com.movesky.app.engine.util.Point, com.movesky.app.engine.util.Point)
+    {
+        com.movesky.app.main.FastLineOfSightTester r0;
+        com.movesky.app.engine.util.Point $r1, $r2;
+        float $f0, $f1, $f2, $f3;
+        com.movesky.app.engine.fastgraph.Wall $r3;
+
+        r0 := @this: com.movesky.app.main.FastLineOfSightTester;
+
+        $r1 := @parameter0: com.movesky.app.engine.util.Point;
+
+        $r2 := @parameter1: com.movesky.app.engine.util.Point;
+
+        $f3 = $r1.<com.movesky.app.engine.util.Point: float x>;
+
+        $f0 = $r1.<com.movesky.app.engine.util.Point: float y>;
+
+        $f1 = $r2.<com.movesky.app.engine.util.Point: float x>;
+
+        $f2 = $r2.<com.movesky.app.engine.util.Point: float y>;
+
+        $r3 = virtualinvoke r0.<com.movesky.app.main.FastLineOfSightTester: com.movesky.app.engine.fastgraph.Wall isLineOfSightClear(float,float,float,float)>($f3, $f0, $f1, $f2);
+
+        return $r3;
+    }
+}

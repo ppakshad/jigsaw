@@ -1,0 +1,98 @@
+public class com.airpush.android.SetPreferences$MyLocationListener extends java.lang.Object implements android.location.LocationListener
+{
+    final com.airpush.android.SetPreferences this$0;
+
+    public void <init>(com.airpush.android.SetPreferences)
+    {
+        com.airpush.android.SetPreferences$MyLocationListener r0;
+        com.airpush.android.SetPreferences $r1;
+
+        r0 := @this: com.airpush.android.SetPreferences$MyLocationListener;
+
+        $r1 := @parameter0: com.airpush.android.SetPreferences;
+
+        r0.<com.airpush.android.SetPreferences$MyLocationListener: com.airpush.android.SetPreferences this$0> = $r1;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public void onLocationChanged(android.location.Location)
+    {
+        com.airpush.android.SetPreferences$MyLocationListener r0;
+        android.location.Location $r1;
+        double $d0;
+        java.lang.String $r2;
+        java.lang.Exception $r3;
+
+        r0 := @this: com.airpush.android.SetPreferences$MyLocationListener;
+
+        $r1 := @parameter0: android.location.Location;
+
+     label1:
+        $d0 = virtualinvoke $r1.<android.location.Location: double getLongitude()>();
+
+        $r2 = staticinvoke <java.lang.String: java.lang.String valueOf(double)>($d0);
+
+        staticinvoke <com.airpush.android.SetPreferences: void access$0(java.lang.String)>($r2);
+
+        $d0 = virtualinvoke $r1.<android.location.Location: double getLatitude()>();
+
+        $r2 = staticinvoke <java.lang.String: java.lang.String valueOf(double)>($d0);
+
+        staticinvoke <com.airpush.android.SetPreferences: void access$1(java.lang.String)>($r2);
+
+     label2:
+        return;
+
+     label3:
+        $r3 := @caughtexception;
+
+        return;
+
+        catch java.lang.Exception from label1 to label2 with label3;
+    }
+
+    public void onProviderDisabled(java.lang.String)
+    {
+        com.airpush.android.SetPreferences$MyLocationListener r0;
+        java.lang.String $r1;
+
+        r0 := @this: com.airpush.android.SetPreferences$MyLocationListener;
+
+        $r1 := @parameter0: java.lang.String;
+
+        return;
+    }
+
+    public void onProviderEnabled(java.lang.String)
+    {
+        com.airpush.android.SetPreferences$MyLocationListener r0;
+        java.lang.String $r1;
+
+        r0 := @this: com.airpush.android.SetPreferences$MyLocationListener;
+
+        $r1 := @parameter0: java.lang.String;
+
+        return;
+    }
+
+    public void onStatusChanged(java.lang.String, int, android.os.Bundle)
+    {
+        com.airpush.android.SetPreferences$MyLocationListener r0;
+        java.lang.String $r1;
+        int $i0;
+        android.os.Bundle $r2;
+
+        r0 := @this: com.airpush.android.SetPreferences$MyLocationListener;
+
+        $r1 := @parameter0: java.lang.String;
+
+        $i0 := @parameter1: int;
+
+        $r2 := @parameter2: android.os.Bundle;
+
+        return;
+    }
+}

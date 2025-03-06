@@ -1,0 +1,79 @@
+public class com.apperhand.common.dto.protocol.OptOutRequest extends com.apperhand.common.dto.protocol.BaseRequest
+{
+    private static final long serialVersionUID;
+    private com.apperhand.common.dto.OptOutDetails details;
+
+    public void <init>()
+    {
+        com.apperhand.common.dto.protocol.OptOutRequest r0;
+
+        r0 := @this: com.apperhand.common.dto.protocol.OptOutRequest;
+
+        specialinvoke r0.<com.apperhand.common.dto.protocol.BaseRequest: void <init>()>();
+
+        return;
+    }
+
+    public com.apperhand.common.dto.OptOutDetails getDetails()
+    {
+        com.apperhand.common.dto.protocol.OptOutRequest r0;
+        com.apperhand.common.dto.OptOutDetails r1;
+
+        r0 := @this: com.apperhand.common.dto.protocol.OptOutRequest;
+
+        r1 = r0.<com.apperhand.common.dto.protocol.OptOutRequest: com.apperhand.common.dto.OptOutDetails details>;
+
+        return r1;
+    }
+
+    public void setDetails(com.apperhand.common.dto.OptOutDetails)
+    {
+        com.apperhand.common.dto.protocol.OptOutRequest r0;
+        com.apperhand.common.dto.OptOutDetails $r1;
+
+        r0 := @this: com.apperhand.common.dto.protocol.OptOutRequest;
+
+        $r1 := @parameter0: com.apperhand.common.dto.OptOutDetails;
+
+        r0.<com.apperhand.common.dto.protocol.OptOutRequest: com.apperhand.common.dto.OptOutDetails details> = $r1;
+
+        return;
+    }
+
+    public java.lang.String toString()
+    {
+        com.apperhand.common.dto.protocol.OptOutRequest r0;
+        java.lang.StringBuilder $r1;
+        com.apperhand.common.dto.OptOutDetails $r2;
+        java.lang.String $r3;
+
+        r0 := @this: com.apperhand.common.dto.protocol.OptOutRequest;
+
+        $r1 = new java.lang.StringBuilder;
+
+        specialinvoke $r1.<java.lang.StringBuilder: void <init>(java.lang.String)>("OptOutRequest [details=");
+
+        $r2 = r0.<com.apperhand.common.dto.protocol.OptOutRequest: com.apperhand.common.dto.OptOutDetails details>;
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($r2);
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(", toString()=");
+
+        $r3 = specialinvoke r0.<com.apperhand.common.dto.protocol.BaseRequest: java.lang.String toString()>();
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r3);
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("]");
+
+        $r3 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        return $r3;
+    }
+
+    public static void <clinit>()
+    {
+        <com.apperhand.common.dto.protocol.OptOutRequest: long serialVersionUID> = -2767172802760161992L;
+
+        return;
+    }
+}

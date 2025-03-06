@@ -1,0 +1,1419 @@
+public abstract class com.metrictrade.and.ab extends java.lang.Object
+{
+    private char[] a;
+    private int b;
+    public com.metrictrade.and.aa c;
+    public int d;
+    public com.metrictrade.and.eo e;
+    protected int f;
+    protected int g;
+    public int[] h;
+    public int i;
+    public int j;
+    public int k;
+    public int l;
+    protected int m;
+
+    public void <init>()
+    {
+        com.metrictrade.and.ab r0;
+        int[] $r1;
+
+        r0 := @this: com.metrictrade.and.ab;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        $r1 = newarray (int)[64];
+
+        r0.<com.metrictrade.and.ab: int[] h> = $r1;
+
+        return;
+    }
+
+    private int a(com.metrictrade.and.aa, java.lang.String)
+    {
+        com.metrictrade.and.ab r0;
+        com.metrictrade.and.aa $r1;
+        int $i0;
+        char[] $r3;
+        java.lang.String $r2;
+
+        r0 := @this: com.metrictrade.and.ab;
+
+        $r1 := @parameter0: com.metrictrade.and.aa;
+
+        $r2 := @parameter1: java.lang.String;
+
+        $i0 = virtualinvoke $r2.<java.lang.String: int length()>();
+
+        $r3 = specialinvoke r0.<com.metrictrade.and.ab: char[] c(java.lang.String,int,int)>($r2, 0, $i0);
+
+        $i0 = virtualinvoke $r1.<com.metrictrade.and.aa: int b(char[],int,int)>($r3, 0, $i0);
+
+        return $i0;
+    }
+
+    private char[] b(com.metrictrade.and.am, int, int)
+    {
+        com.metrictrade.and.ab r0;
+        com.metrictrade.and.am $r1;
+        int $i0, $i1;
+        char[] $r2;
+
+        r0 := @this: com.metrictrade.and.ab;
+
+        $r1 := @parameter0: com.metrictrade.and.am;
+
+        $i0 := @parameter1: int;
+
+        $i1 := @parameter2: int;
+
+        $i0 = r0.<com.metrictrade.and.ab: int b>;
+
+        if $i1 <= $i0 goto label2;
+
+        $r2 = specialinvoke r0.<com.metrictrade.and.ab: char[] c(int)>($i1);
+
+     label1:
+        if $i1 <= 0 goto label3;
+
+        virtualinvoke $r1.<com.metrictrade.and.am: void a(int,int,char[],int)>(0, $i1, $r2, 0);
+
+        return $r2;
+
+     label2:
+        $r2 = r0.<com.metrictrade.and.ab: char[] a>;
+
+        goto label1;
+
+     label3:
+        return $r2;
+    }
+
+    private char[] c(int)
+    {
+        com.metrictrade.and.ab r0;
+        int $i0;
+        char[] $r1;
+
+        r0 := @this: com.metrictrade.and.ab;
+
+        $i0 := @parameter0: int;
+
+        $i0 = $i0 >> 8;
+
+        $i0 = $i0 + 1;
+
+        $i0 = $i0 << 8;
+
+        $r1 = newarray (char)[$i0];
+
+        r0.<com.metrictrade.and.ab: char[] a> = $r1;
+
+        r0.<com.metrictrade.and.ab: int b> = $i0;
+
+        return $r1;
+    }
+
+    private char[] c(java.lang.String, int, int)
+    {
+        com.metrictrade.and.ab r0;
+        int $i0, $i1, $i2;
+        char[] $r2;
+        java.lang.String $r1;
+
+        r0 := @this: com.metrictrade.and.ab;
+
+        $r1 := @parameter0: java.lang.String;
+
+        $i0 := @parameter1: int;
+
+        $i1 := @parameter2: int;
+
+        $i2 = r0.<com.metrictrade.and.ab: int b>;
+
+        if $i1 <= $i2 goto label2;
+
+        $r2 = specialinvoke r0.<com.metrictrade.and.ab: char[] c(int)>($i1);
+
+     label1:
+        if $i1 <= 0 goto label3;
+
+        $i1 = $i0 + $i1;
+
+        virtualinvoke $r1.<java.lang.String: void getChars(int,int,char[],int)>($i0, $i1, $r2, 0);
+
+        return $r2;
+
+     label2:
+        $r2 = r0.<com.metrictrade.and.ab: char[] a>;
+
+        goto label1;
+
+     label3:
+        return $r2;
+    }
+
+    public abstract int a();
+
+    public final int a(int, int, java.lang.String)
+    {
+        com.metrictrade.and.ab r0;
+        com.metrictrade.and.aa $r4;
+        com.metrictrade.and.aa[] $r3;
+        int $i0, $i1;
+        java.lang.String $r1;
+        com.metrictrade.and.aa[][] $r2;
+
+        r0 := @this: com.metrictrade.and.ab;
+
+        $i0 := @parameter0: int;
+
+        $i1 := @parameter1: int;
+
+        $r1 := @parameter2: java.lang.String;
+
+        if $r1 == null goto label2;
+
+        $r2 = <com.metrictrade.and.aa: com.metrictrade.and.aa[][] f>;
+
+        $r3 = $r2[$i0];
+
+        $r4 = $r3[$i1];
+
+        if $r4 != null goto label1;
+
+        $r4 = r0.<com.metrictrade.and.ab: com.metrictrade.and.aa c>;
+
+     label1:
+        $i0 = specialinvoke r0.<com.metrictrade.and.ab: int a(com.metrictrade.and.aa,java.lang.String)>($r4, $r1);
+
+        return $i0;
+
+     label2:
+        return 0;
+    }
+
+    public final int a(com.metrictrade.and.am, int)
+    {
+        com.metrictrade.and.ab r0;
+        com.metrictrade.and.aa $r2;
+        com.metrictrade.and.am $r1;
+        int $i0;
+        char[] $r3;
+
+        r0 := @this: com.metrictrade.and.ab;
+
+        $r1 := @parameter0: com.metrictrade.and.am;
+
+        $i0 := @parameter1: int;
+
+        if $r1 == null goto label1;
+
+        $r2 = r0.<com.metrictrade.and.ab: com.metrictrade.and.aa c>;
+
+        $r3 = specialinvoke r0.<com.metrictrade.and.ab: char[] b(com.metrictrade.and.am,int,int)>($r1, 0, $i0);
+
+        $i0 = virtualinvoke $r2.<com.metrictrade.and.aa: int b(char[],int,int)>($r3, 0, $i0);
+
+        return $i0;
+
+     label1:
+        return 0;
+    }
+
+    public final int a(java.lang.String)
+    {
+        com.metrictrade.and.ab r0;
+        com.metrictrade.and.aa $r2;
+        int $i0;
+        java.lang.String $r1;
+
+        r0 := @this: com.metrictrade.and.ab;
+
+        $r1 := @parameter0: java.lang.String;
+
+        if $r1 == null goto label1;
+
+        $r2 = r0.<com.metrictrade.and.ab: com.metrictrade.and.aa c>;
+
+        $i0 = specialinvoke r0.<com.metrictrade.and.ab: int a(com.metrictrade.and.aa,java.lang.String)>($r2, $r1);
+
+        return $i0;
+
+     label1:
+        return 0;
+    }
+
+    public abstract int a(boolean);
+
+    public abstract java.lang.Object a(java.lang.Object, float, float, float, float, boolean);
+
+    public abstract void a(int);
+
+    public abstract void a(int, int);
+
+    public abstract void a(int, int, int, int);
+
+    public abstract void a(int, int, int, int, int, int);
+
+    public abstract void a(int, int, int, int, int, int, int, int);
+
+    public abstract void a(int, int, int, int, int, int, boolean);
+
+    public final void a(com.metrictrade.and.aa)
+    {
+        com.metrictrade.and.ab r0;
+        com.metrictrade.and.aa $r1;
+
+        r0 := @this: com.metrictrade.and.ab;
+
+        $r1 := @parameter0: com.metrictrade.and.aa;
+
+        if $r1 == null goto label1;
+
+        r0.<com.metrictrade.and.ab: com.metrictrade.and.aa c> = $r1;
+
+     label1:
+        return;
+    }
+
+    public abstract void a(com.metrictrade.and.ad, int, int);
+
+    public final void a(com.metrictrade.and.am, int, int)
+    {
+        com.metrictrade.and.ab r0;
+        com.metrictrade.and.aa $r3;
+        com.metrictrade.and.am $r1;
+        int $i0, $i1, $i2, $i3;
+        char[] $r2;
+
+        r0 := @this: com.metrictrade.and.ab;
+
+        $r1 := @parameter0: com.metrictrade.and.am;
+
+        $i0 := @parameter1: int;
+
+        $i1 := @parameter2: int;
+
+        if $r1 == null goto label1;
+
+        $i2 = $r1.<com.metrictrade.and.am: int b>;
+
+        $r3 = r0.<com.metrictrade.and.ab: com.metrictrade.and.aa c>;
+
+        $i3 = r0.<com.metrictrade.and.ab: int d>;
+
+        $r3.<com.metrictrade.and.aa: int u> = $i3;
+
+        $r3 = r0.<com.metrictrade.and.ab: com.metrictrade.and.aa c>;
+
+        $r2 = specialinvoke r0.<com.metrictrade.and.ab: char[] b(com.metrictrade.and.am,int,int)>($r1, 0, $i2);
+
+        virtualinvoke $r3.<com.metrictrade.and.aa: void a(com.metrictrade.and.ab,char[],int,int,int,int)>(r0, $r2, 0, $i2, $i0, $i1);
+
+     label1:
+        return;
+    }
+
+    public void a(com.metrictrade.and.ej)
+    {
+        byte[] $r2;
+        byte $b6, $b17, $b21, $b28;
+        int[] $r3;
+        float $f0, $f1, $f2, $f3;
+        int $i0, $i1, $i2, $i3, $i4, $i5, $i7, $i8, $i9, $i10, $i11, $i12, $i13, $i14, $i15, $i16, $i18, $i19, $i20, $i22, $i23, $i24, $i25, $i26, $i27, $i29, $i30, $i31, $i32, $i33;
+        com.metrictrade.and.ej $r1;
+        com.metrictrade.and.ab r0;
+
+        r0 := @this: com.metrictrade.and.ab;
+
+        $r1 := @parameter0: com.metrictrade.and.ej;
+
+        $f0 = 0.0F;
+
+        $i4 = 0;
+
+        $i5 = 0;
+
+        $b6 = -1;
+
+        $i7 = 0;
+
+        $i8 = 0;
+
+        $f1 = $r1.<com.metrictrade.and.ej: float d>;
+
+        $i9 = r0.<com.metrictrade.and.ab: int d>;
+
+        $i10 = -1;
+
+        $i3 = staticinvoke <com.metrictrade.and.en: int a(int,int)>($i9, -7);
+
+        $i11 = $r1.<com.metrictrade.and.ej: int c>;
+
+        $r2 = $r1.<com.metrictrade.and.ej: byte[] b>;
+
+        $r3 = $r1.<com.metrictrade.and.ej: int[] a>;
+
+        $i12 = 0;
+
+        $i13 = -1;
+
+        $i14 = -1;
+
+        $i15 = -1;
+
+        $i16 = 0;
+
+     label01:
+        if $i12 < $i11 goto label02;
+
+        virtualinvoke r0.<com.metrictrade.and.ab: void a(int)>($i9);
+
+        if $i14 == -1 goto label26;
+
+        if $i10 == -1 goto label26;
+
+        virtualinvoke r0.<com.metrictrade.and.ab: void d(int,int,int,int)>($i15, $i14, $i13, $i10);
+
+        return;
+
+     label02:
+        $b17 = $r2[$i12];
+
+        $i19 = (int) $b17;
+
+        lookupswitch($i19)
+        {
+            case 0: goto label05;
+            case 1: goto label06;
+            default: goto label03;
+        };
+
+     label03:
+        $i18 = $i13;
+
+        $i19 = $i14;
+
+        $i14 = $i5;
+
+        $i13 = $i4;
+
+        $i0 = $i16;
+
+     label04:
+        $i12 = $i12 + 1;
+
+        $i5 = $i14;
+
+        $i4 = $i13;
+
+        $i14 = $i19;
+
+        $i13 = $i18;
+
+        $i16 = $i0;
+
+        goto label01;
+
+     label05:
+        $i19 = $i14;
+
+        $i14 = $i5;
+
+        $i0 = $i16 + 2;
+
+        $b6 = -1;
+
+        $i18 = $i13;
+
+        $i13 = $i4;
+
+        goto label04;
+
+     label06:
+        if $i16 <= 1 goto label03;
+
+        $i19 = $i16 + -2;
+
+        $i18 = $r3[$i19];
+
+        $i19 = $i16 + -1;
+
+        $i19 = $r3[$i19];
+
+        $i20 = $i16 + 1;
+
+        $i16 = $r3[$i16];
+
+        $i0 = $i20 + 1;
+
+        $i20 = $r3[$i20];
+
+        $b17 = $f1 cmpl 0.0F;
+
+        $i1 = (int) $b17;
+
+        if $i1 <= 0 goto label25;
+
+        $i1 = $i20 - $i19;
+
+        $i2 = $i16 - $i18;
+
+        if $i2 != 0 goto label15;
+
+        $f2 = 1.0F;
+
+     label07:
+        if $i1 >= 0 goto label16;
+
+        $i1 = neg $i1;
+
+        $b17 = -1;
+
+     label08:
+        if $i2 >= 0 goto label17;
+
+        $i2 = neg $i2;
+
+        $b21 = -1;
+
+     label09:
+        $i1 = $i1 << 1;
+
+        $i2 = $i2 << 1;
+
+        virtualinvoke r0.<com.metrictrade.and.ab: void a(int)>($i3);
+
+        if $i2 <= $i1 goto label20;
+
+        $i22 = $i2 >> 1;
+
+        $i23 = $i1 - $i22;
+
+        $i24 = 0;
+
+        $i25 = 0;
+
+        $i26 = 0;
+
+        $i27 = 0;
+
+        $i22 = 0;
+
+     label10:
+        $f3 = (float) $i25;
+
+        $b28 = $f3 cmpg $f1;
+
+        $i29 = (int) $b28;
+
+        if $i29 < 0 goto label18;
+
+        $i25 = $i27;
+
+     label11:
+        if $b6 == -1 goto label12;
+
+        $b6 = $f2 cmpg $f0;
+
+        $i1 = (int) $b6;
+
+        if $i1 >= 0 goto label24;
+
+        $i5 = $i18 + $i25;
+
+        $i4 = $i19 + $i26;
+
+        $i7 = $i18 + $i7;
+
+        $i8 = $i8 + $i19;
+
+        virtualinvoke r0.<com.metrictrade.and.ab: void a(int,int,int,int,int,int)>($i18, $i19, $i5, $i4, $i7, $i8);
+
+     label12:
+        $b6 = 0;
+
+        $i8 = $i26;
+
+        $i7 = $i25;
+
+        $i5 = $i24;
+
+        $i4 = $i22;
+
+        $f0 = $f2;
+
+     label13:
+        $b17 = $f1 cmpl 0.0F;
+
+        if $b17 != 0 goto label14;
+
+        if $i14 == -1 goto label14;
+
+        if $i10 == -1 goto label14;
+
+        virtualinvoke r0.<com.metrictrade.and.ab: void a(int)>($i9);
+
+        virtualinvoke r0.<com.metrictrade.and.ab: void d(int,int,int,int)>($i15, $i14, $i13, $i10);
+
+     label14:
+        $i13 = $i4;
+
+        $i10 = $i20;
+
+        $i14 = $i5;
+
+        $i15 = $i18;
+
+        $i18 = $i16;
+
+        goto label04;
+
+     label15:
+        $f2 = (float) $i1;
+
+        $f2 = -1.0F * $f2;
+
+        $f3 = (float) $i2;
+
+        $f2 = $f2 / $f3;
+
+        goto label07;
+
+     label16:
+        $b17 = 1;
+
+        goto label08;
+
+     label17:
+        $b21 = 1;
+
+        goto label09;
+
+     label18:
+        if $i23 < 0 goto label19;
+
+        $i22 = $i22 - $b17;
+
+        $i23 = $i23 - $i2;
+
+        $i27 = $i22 >> 1;
+
+        $i27 = neg $i27;
+
+     label19:
+        $i29 = $i18 + $i22;
+
+        $i29 = $i29 + $i27;
+
+        $i30 = $i19 + $i24;
+
+        $i30 = $i30 + $i26;
+
+        $i31 = $i16 + $i22;
+
+        $i31 = $i31 + $i27;
+
+        $i32 = $i20 + $i24;
+
+        $i32 = $i32 + $i26;
+
+        virtualinvoke r0.<com.metrictrade.and.ab: void d(int,int,int,int)>($i29, $i30, $i31, $i32);
+
+        $i29 = $i18 + $i27;
+
+        $i30 = $i19 + $i26;
+
+        $i31 = $i16 + $i27;
+
+        $i26 = $i26 + $i20;
+
+        virtualinvoke r0.<com.metrictrade.and.ab: void d(int,int,int,int)>($i29, $i30, $i31, $i26);
+
+        $i24 = $i24 + $b21;
+
+        $i26 = $i24 >> 1;
+
+        $i29 = neg $i26;
+
+        $i26 = $i29;
+
+        $i30 = $i18 + $i22;
+
+        $i30 = $i30 + $i27;
+
+        $i31 = $i19 + $i24;
+
+        $i31 = $i31 + $i29;
+
+        $i32 = $i16 + $i22;
+
+        $i32 = $i32 + $i27;
+
+        $i33 = $i20 + $i24;
+
+        $i33 = $i33 + $i29;
+
+        virtualinvoke r0.<com.metrictrade.and.ab: void d(int,int,int,int)>($i30, $i31, $i32, $i33);
+
+        $i30 = $i18 + $i27;
+
+        $i31 = $i19 + $i29;
+
+        $i32 = $i16 + $i27;
+
+        $i29 = $i20 + $i29;
+
+        virtualinvoke r0.<com.metrictrade.and.ab: void d(int,int,int,int)>($i30, $i31, $i32, $i29);
+
+        $i25 = $i25 + 1;
+
+        $i23 = $i23 + $i1;
+
+        goto label10;
+
+     label20:
+        $i22 = $i1 >> 1;
+
+        $i27 = $i2 - $i22;
+
+        $i25 = 0;
+
+        $i22 = 0;
+
+        $i26 = 0;
+
+        $i24 = 0;
+
+        $i23 = $i27;
+
+        $i27 = 0;
+
+     label21:
+        $f3 = (float) $i27;
+
+        $b28 = $f3 cmpg $f1;
+
+        $i29 = (int) $b28;
+
+        if $i29 < 0 goto label22;
+
+        goto label11;
+
+     label22:
+        if $i23 < 0 goto label23;
+
+        $i24 = $i24 + $b21;
+
+        $i23 = $i23 - $i1;
+
+        $i26 = $i24 >> 1;
+
+        $i26 = neg $i26;
+
+     label23:
+        $i29 = $i18 + $i22;
+
+        $i29 = $i29 + $i25;
+
+        $i30 = $i19 + $i24;
+
+        $i30 = $i30 + $i26;
+
+        $i31 = $i16 + $i22;
+
+        $i31 = $i31 + $i25;
+
+        $i32 = $i20 + $i24;
+
+        $i32 = $i32 + $i26;
+
+        virtualinvoke r0.<com.metrictrade.and.ab: void d(int,int,int,int)>($i29, $i30, $i31, $i32);
+
+        $i29 = $i18 + $i25;
+
+        $i30 = $i19 + $i26;
+
+        $i25 = $i25 + $i16;
+
+        $i31 = $i20 + $i26;
+
+        virtualinvoke r0.<com.metrictrade.and.ab: void d(int,int,int,int)>($i29, $i30, $i25, $i31);
+
+        $i22 = $i22 - $b17;
+
+        $i25 = $i22 >> 1;
+
+        $i29 = neg $i25;
+
+        $i25 = $i29;
+
+        $i30 = $i18 + $i22;
+
+        $i30 = $i30 + $i29;
+
+        $i31 = $i19 + $i24;
+
+        $i31 = $i31 + $i26;
+
+        $i32 = $i16 + $i22;
+
+        $i32 = $i32 + $i29;
+
+        $i33 = $i20 + $i24;
+
+        $i33 = $i33 + $i26;
+
+        virtualinvoke r0.<com.metrictrade.and.ab: void d(int,int,int,int)>($i30, $i31, $i32, $i33);
+
+        $i30 = $i18 + $i29;
+
+        $i31 = $i19 + $i26;
+
+        $i29 = $i16 + $i29;
+
+        $i32 = $i20 + $i26;
+
+        virtualinvoke r0.<com.metrictrade.and.ab: void d(int,int,int,int)>($i30, $i31, $i29, $i32);
+
+        $i27 = $i27 + 1;
+
+        $i23 = $i23 + $i2;
+
+        goto label21;
+
+     label24:
+        $i1 = $i18 + $i22;
+
+        $i1 = $i1 + $i25;
+
+        $i2 = $i19 + $i24;
+
+        $i2 = $i2 + $i26;
+
+        $i4 = $i18 + $i4;
+
+        $i7 = $i4 + $i7;
+
+        $i5 = $i19 + $i5;
+
+        $i5 = $i8 + $i5;
+
+        virtualinvoke r0.<com.metrictrade.and.ab: void a(int,int,int,int,int,int)>($i18, $i19, $i1, $i2, $i7, $i5);
+
+        goto label12;
+
+     label25:
+        goto label13;
+
+     label26:
+        return;
+    }
+
+    public abstract void a(java.lang.Object, boolean);
+
+    public final void a(java.lang.String, int, int)
+    {
+        com.metrictrade.and.ab r0;
+        com.metrictrade.and.aa $r2;
+        int $i0, $i1, $i2, $i3;
+        char[] $r3;
+        java.lang.String $r1;
+
+        r0 := @this: com.metrictrade.and.ab;
+
+        $r1 := @parameter0: java.lang.String;
+
+        $i0 := @parameter1: int;
+
+        $i1 := @parameter2: int;
+
+        if $r1 == null goto label1;
+
+        $i2 = virtualinvoke $r1.<java.lang.String: int length()>();
+
+        $r2 = r0.<com.metrictrade.and.ab: com.metrictrade.and.aa c>;
+
+        $i3 = r0.<com.metrictrade.and.ab: int d>;
+
+        $r2.<com.metrictrade.and.aa: int u> = $i3;
+
+        $r2 = r0.<com.metrictrade.and.ab: com.metrictrade.and.aa c>;
+
+        $r3 = specialinvoke r0.<com.metrictrade.and.ab: char[] c(java.lang.String,int,int)>($r1, 0, $i2);
+
+        virtualinvoke $r2.<com.metrictrade.and.aa: void a(com.metrictrade.and.ab,char[],int,int,int,int)>(r0, $r3, 0, $i2, $i0, $i1);
+
+     label1:
+        return;
+    }
+
+    public final void a(java.lang.String, int, int, int, int)
+    {
+        com.metrictrade.and.ab r0;
+        com.metrictrade.and.aa $r3;
+        int $i0, $i1, $i2, $i3, $i4;
+        char[] $r2;
+        java.lang.String $r1;
+
+        r0 := @this: com.metrictrade.and.ab;
+
+        $r1 := @parameter0: java.lang.String;
+
+        $i0 := @parameter1: int;
+
+        $i1 := @parameter2: int;
+
+        $i2 := @parameter3: int;
+
+        $i3 := @parameter4: int;
+
+        if $r1 == null goto label1;
+
+        $r3 = r0.<com.metrictrade.and.ab: com.metrictrade.and.aa c>;
+
+        $i4 = r0.<com.metrictrade.and.ab: int d>;
+
+        $r3.<com.metrictrade.and.aa: int u> = $i4;
+
+        $r3 = r0.<com.metrictrade.and.ab: com.metrictrade.and.aa c>;
+
+        $r2 = specialinvoke r0.<com.metrictrade.and.ab: char[] c(java.lang.String,int,int)>($r1, $i0, $i1);
+
+        virtualinvoke $r3.<com.metrictrade.and.aa: void a(com.metrictrade.and.ab,char[],int,int,int,int)>(r0, $r2, 0, $i1, $i2, $i3);
+
+     label1:
+        return;
+    }
+
+    public final void a(java.lang.String, int, int, int, int, int)
+    {
+        com.metrictrade.and.ab r0;
+        com.metrictrade.and.aa $r3;
+        int $i0, $i1, $i2, $i3, $i4, $i5;
+        char[] $r2;
+        java.lang.String $r1;
+
+        r0 := @this: com.metrictrade.and.ab;
+
+        $r1 := @parameter0: java.lang.String;
+
+        $i0 := @parameter1: int;
+
+        $i1 := @parameter2: int;
+
+        $i2 := @parameter3: int;
+
+        $i3 := @parameter4: int;
+
+        $i4 := @parameter5: int;
+
+        if $r1 == null goto label1;
+
+        $i5 = virtualinvoke $r1.<java.lang.String: int length()>();
+
+        virtualinvoke r0.<com.metrictrade.and.ab: void a(int)>($i3);
+
+        $r2 = specialinvoke r0.<com.metrictrade.and.ab: char[] c(java.lang.String,int,int)>($r1, 0, $i5);
+
+        $r3 = r0.<com.metrictrade.and.ab: com.metrictrade.and.aa c>;
+
+        $r3.<com.metrictrade.and.aa: int u> = $i3;
+
+        $r3 = r0.<com.metrictrade.and.ab: com.metrictrade.and.aa c>;
+
+        $i3 = $i0 - $i4;
+
+        $i4 = $i1 - $i4;
+
+        virtualinvoke $r3.<com.metrictrade.and.aa: void a(com.metrictrade.and.ab,char[],int,int,int,int)>(r0, $r2, 0, $i5, $i3, $i4);
+
+        virtualinvoke r0.<com.metrictrade.and.ab: void a(int)>($i2);
+
+        $r3 = r0.<com.metrictrade.and.ab: com.metrictrade.and.aa c>;
+
+        $r3.<com.metrictrade.and.aa: int u> = $i2;
+
+        $r3 = r0.<com.metrictrade.and.ab: com.metrictrade.and.aa c>;
+
+        virtualinvoke $r3.<com.metrictrade.and.aa: void a(com.metrictrade.and.ab,char[],int,int,int,int)>(r0, $r2, 0, $i5, $i0, $i1);
+
+     label1:
+        return;
+    }
+
+    public final void a(char[], int, int)
+    {
+        com.metrictrade.and.ab r0;
+        com.metrictrade.and.aa $r2;
+        char $c3;
+        int $i0, $i1, $i2, $i4;
+        char[] $r1;
+
+        r0 := @this: com.metrictrade.and.ab;
+
+        $r1 := @parameter0: char[];
+
+        $i0 := @parameter1: int;
+
+        $i1 := @parameter2: int;
+
+        $r2 = r0.<com.metrictrade.and.ab: com.metrictrade.and.aa c>;
+
+        $i2 = r0.<com.metrictrade.and.ab: int d>;
+
+        $r2.<com.metrictrade.and.aa: int u> = $i2;
+
+        $r2 = r0.<com.metrictrade.and.ab: com.metrictrade.and.aa c>;
+
+        if $r1 == null goto label5;
+
+        $c3 = $r1[0];
+
+        $i2 = (int) $c3;
+
+        if $i2 != 65535 goto label1;
+
+        return;
+
+     label1:
+        $i2 = lengthof $r1;
+
+        $i4 = 0;
+
+     label2:
+        if $i4 < $i2 goto label4;
+
+        $i4 = $i2;
+
+     label3:
+        if $i4 <= 0 goto label5;
+
+        virtualinvoke $r2.<com.metrictrade.and.aa: void a(com.metrictrade.and.ab,char[],int,int,int,int)>(r0, $r1, 0, $i4, $i0, $i1);
+
+        return;
+
+     label4:
+        $c3 = $r1[$i4];
+
+        if $c3 == 0 goto label3;
+
+        $i4 = $i4 + 1;
+
+        goto label2;
+
+     label5:
+        return;
+    }
+
+    public final void a(char[], int, int, int, int)
+    {
+        com.metrictrade.and.ab r0;
+        com.metrictrade.and.aa $r2;
+        int $i0, $i1, $i2, $i3, $i4;
+        char[] $r1;
+
+        r0 := @this: com.metrictrade.and.ab;
+
+        $r1 := @parameter0: char[];
+
+        $i0 := @parameter1: int;
+
+        $i1 := @parameter2: int;
+
+        $i2 := @parameter3: int;
+
+        $i3 := @parameter4: int;
+
+        $r2 = r0.<com.metrictrade.and.ab: com.metrictrade.and.aa c>;
+
+        $i4 = r0.<com.metrictrade.and.ab: int d>;
+
+        $r2.<com.metrictrade.and.aa: int u> = $i4;
+
+        $r2 = r0.<com.metrictrade.and.ab: com.metrictrade.and.aa c>;
+
+        virtualinvoke $r2.<com.metrictrade.and.aa: void a(com.metrictrade.and.ab,char[],int,int,int,int)>(r0, $r1, $i0, $i1, $i2, $i3);
+
+        return;
+    }
+
+    public abstract void a(int[], int[], int);
+
+    public final boolean a(int[])
+    {
+        com.metrictrade.and.ab r0;
+        int[] $r1;
+        int $i0, $i1, $i2, $i3, $i4, $i5, $i6;
+
+        r0 := @this: com.metrictrade.and.ab;
+
+        $r1 := @parameter0: int[];
+
+        $i2 = r0.<com.metrictrade.and.ab: int k>;
+
+        $i3 = r0.<com.metrictrade.and.ab: int l>;
+
+        $i4 = $r1[2];
+
+        $i5 = $r1[3];
+
+        if $i4 <= 0 goto label6;
+
+        if $i5 <= 0 goto label6;
+
+        if $i2 <= 0 goto label6;
+
+        if $i3 > 0 goto label1;
+
+        return 0;
+
+     label1:
+        $i0 = $r1[0];
+
+        $i1 = $r1[1];
+
+        $i4 = $i4 + $i0;
+
+        $i5 = $i5 + $i1;
+
+        $i6 = r0.<com.metrictrade.and.ab: int i>;
+
+        $i2 = $i2 + $i6;
+
+        $i6 = r0.<com.metrictrade.and.ab: int j>;
+
+        $i3 = $i3 + $i6;
+
+        if $i4 < $i0 goto label2;
+
+        $i6 = r0.<com.metrictrade.and.ab: int i>;
+
+        if $i4 <= $i6 goto label6;
+
+     label2:
+        if $i5 < $i1 goto label3;
+
+        $i4 = r0.<com.metrictrade.and.ab: int j>;
+
+        if $i5 <= $i4 goto label6;
+
+     label3:
+        $i4 = r0.<com.metrictrade.and.ab: int i>;
+
+        if $i2 < $i4 goto label4;
+
+        if $i2 <= $i0 goto label6;
+
+     label4:
+        $i0 = r0.<com.metrictrade.and.ab: int j>;
+
+        if $i3 < $i0 goto label5;
+
+        if $i3 <= $i1 goto label6;
+
+     label5:
+        return 1;
+
+     label6:
+        return 0;
+    }
+
+    public final int b(java.lang.String, int, int)
+    {
+        com.metrictrade.and.ab r0;
+        com.metrictrade.and.aa $r2;
+        int $i0, $i1;
+        char[] $r3;
+        java.lang.String $r1;
+
+        r0 := @this: com.metrictrade.and.ab;
+
+        $r1 := @parameter0: java.lang.String;
+
+        $i0 := @parameter1: int;
+
+        $i1 := @parameter2: int;
+
+        if $r1 == null goto label1;
+
+        $r2 = r0.<com.metrictrade.and.ab: com.metrictrade.and.aa c>;
+
+        $r3 = specialinvoke r0.<com.metrictrade.and.ab: char[] c(java.lang.String,int,int)>($r1, $i0, $i1);
+
+        $i0 = virtualinvoke $r2.<com.metrictrade.and.aa: int b(char[],int,int)>($r3, 0, $i1);
+
+        return $i0;
+
+     label1:
+        return 0;
+    }
+
+    public abstract void b();
+
+    public abstract void b(int);
+
+    public abstract void b(int, int, int, int);
+
+    public abstract void b(int, int, int, int, int, int);
+
+    public final void b(char[], int, int)
+    {
+        com.metrictrade.and.ab r0;
+        com.metrictrade.and.aa $r2;
+        char $c4;
+        byte $b2;
+        int $i0, $i1, $i3, $i5;
+        char[] $r1;
+
+        r0 := @this: com.metrictrade.and.ab;
+
+        $r1 := @parameter0: char[];
+
+        $i0 := @parameter1: int;
+
+        $i1 := @parameter2: int;
+
+        $b2 = 0;
+
+        $r2 = r0.<com.metrictrade.and.ab: com.metrictrade.and.aa c>;
+
+        $i3 = r0.<com.metrictrade.and.ab: int d>;
+
+        $r2.<com.metrictrade.and.aa: int u> = $i3;
+
+        $r2 = r0.<com.metrictrade.and.ab: com.metrictrade.and.aa c>;
+
+        if $r1 == null goto label6;
+
+        $c4 = $r1[0];
+
+        $i3 = (int) $c4;
+
+        if $i3 != 65535 goto label1;
+
+        return;
+
+     label1:
+        $i5 = lengthof $r1;
+
+        $i3 = 0;
+
+     label2:
+        if $i3 < $i5 goto label5;
+
+        $i3 = $i5;
+
+     label3:
+        if $i3 <= 0 goto label6;
+
+        if $i3 <= 5 goto label4;
+
+        $i5 = $i3 + -3;
+
+        $c4 = $r1[$i5];
+
+        $i5 = (int) $c4;
+
+        if $i5 != 46 goto label4;
+
+        $i5 = $i3 + -2;
+
+        $c4 = $r1[$i5];
+
+        $i5 = (int) $c4;
+
+        if $i5 != 48 goto label4;
+
+        $i5 = $i3 + -1;
+
+        $c4 = $r1[$i5];
+
+        $i5 = (int) $c4;
+
+        if $i5 != 48 goto label4;
+
+        $i3 = $i3 + -3;
+
+        $c4 = $r1[0];
+
+        $i5 = (int) $c4;
+
+        if $i5 != 43 goto label4;
+
+        $b2 = 1;
+
+        $i3 = $i3 + -1;
+
+     label4:
+        virtualinvoke $r2.<com.metrictrade.and.aa: void a(com.metrictrade.and.ab,char[],int,int,int,int)>(r0, $r1, $b2, $i3, $i0, $i1);
+
+        return;
+
+     label5:
+        $c4 = $r1[$i3];
+
+        if $c4 == 0 goto label3;
+
+        $i3 = $i3 + 1;
+
+        goto label2;
+
+     label6:
+        return;
+    }
+
+    public final char[] b(java.lang.String)
+    {
+        com.metrictrade.and.ab r0;
+        int $i0, $i1;
+        char[] $r2;
+        java.lang.String $r1;
+
+        r0 := @this: com.metrictrade.and.ab;
+
+        $r1 := @parameter0: java.lang.String;
+
+        $i0 = 0;
+
+        if $r1 != null goto label1;
+
+        return null;
+
+     label1:
+        $i1 = virtualinvoke $r1.<java.lang.String: int length()>();
+
+        $r2 = specialinvoke r0.<com.metrictrade.and.ab: char[] c(java.lang.String,int,int)>($r1, 0, $i1);
+
+     label2:
+        if $i0 >= $i1 goto label3;
+
+        $r2[$i0] = 42;
+
+        $i0 = $i0 + 1;
+
+        goto label2;
+
+     label3:
+        return $r2;
+    }
+
+    public final int c(char[], int, int)
+    {
+        com.metrictrade.and.ab r0;
+        com.metrictrade.and.aa $r2;
+        int $i0, $i1;
+        char[] $r1;
+
+        r0 := @this: com.metrictrade.and.ab;
+
+        $r1 := @parameter0: char[];
+
+        $i0 := @parameter1: int;
+
+        $i1 := @parameter2: int;
+
+        if $i1 > 0 goto label1;
+
+        return 0;
+
+     label1:
+        $r2 = r0.<com.metrictrade.and.ab: com.metrictrade.and.aa c>;
+
+        $i0 = virtualinvoke $r2.<com.metrictrade.and.aa: int b(char[],int,int)>($r1, $i0, $i1);
+
+        return $i0;
+    }
+
+    public abstract void c(int, int, int, int);
+
+    public abstract void c(int, int, int, int, int, int);
+
+    public abstract void d(int, int, int, int);
+
+    public abstract void d(int, int, int, int, int, int);
+
+    public abstract void e(int, int, int, int);
+
+    public abstract void e(int, int, int, int, int, int);
+
+    public abstract void f(int, int, int, int);
+
+    public final boolean g(int, int, int, int)
+    {
+        com.metrictrade.and.ab r0;
+        int $i0, $i1, $i2, $i3, $i4, $i5, $i6;
+
+        r0 := @this: com.metrictrade.and.ab;
+
+        $i0 := @parameter0: int;
+
+        $i1 := @parameter1: int;
+
+        $i2 := @parameter2: int;
+
+        $i3 := @parameter3: int;
+
+        $i4 = r0.<com.metrictrade.and.ab: int k>;
+
+        $i5 = r0.<com.metrictrade.and.ab: int l>;
+
+        if $i2 <= 0 goto label6;
+
+        if $i3 <= 0 goto label6;
+
+        if $i4 <= 0 goto label6;
+
+        if $i5 > 0 goto label1;
+
+        return 0;
+
+     label1:
+        $i6 = $i2 + $i0;
+
+        $i2 = $i3 + $i1;
+
+        $i3 = r0.<com.metrictrade.and.ab: int i>;
+
+        $i3 = $i4 + $i3;
+
+        $i4 = r0.<com.metrictrade.and.ab: int j>;
+
+        $i5 = $i5 + $i4;
+
+        if $i6 < $i0 goto label2;
+
+        $i4 = r0.<com.metrictrade.and.ab: int i>;
+
+        if $i6 <= $i4 goto label6;
+
+     label2:
+        if $i2 < $i1 goto label3;
+
+        $i6 = r0.<com.metrictrade.and.ab: int j>;
+
+        if $i2 <= $i6 goto label6;
+
+     label3:
+        $i2 = r0.<com.metrictrade.and.ab: int i>;
+
+        if $i3 < $i2 goto label4;
+
+        if $i3 <= $i0 goto label6;
+
+     label4:
+        $i0 = r0.<com.metrictrade.and.ab: int j>;
+
+        if $i5 < $i0 goto label5;
+
+        if $i5 <= $i1 goto label6;
+
+     label5:
+        return 1;
+
+     label6:
+        return 0;
+    }
+}

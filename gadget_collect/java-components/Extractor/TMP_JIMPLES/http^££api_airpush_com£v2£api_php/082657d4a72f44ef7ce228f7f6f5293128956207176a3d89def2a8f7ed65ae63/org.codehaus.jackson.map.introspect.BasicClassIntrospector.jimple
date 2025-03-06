@@ -1,0 +1,357 @@
+public class org.codehaus.jackson.map.introspect.BasicClassIntrospector extends org.codehaus.jackson.map.ClassIntrospector
+{
+    public static final org.codehaus.jackson.map.introspect.BasicClassIntrospector instance;
+
+    static void <clinit>()
+    {
+        org.codehaus.jackson.map.introspect.BasicClassIntrospector $r0;
+
+        $r0 = new org.codehaus.jackson.map.introspect.BasicClassIntrospector;
+
+        specialinvoke $r0.<org.codehaus.jackson.map.introspect.BasicClassIntrospector: void <init>()>();
+
+        <org.codehaus.jackson.map.introspect.BasicClassIntrospector: org.codehaus.jackson.map.introspect.BasicClassIntrospector instance> = $r0;
+
+        return;
+    }
+
+    public void <init>()
+    {
+        org.codehaus.jackson.map.introspect.BasicClassIntrospector r0;
+
+        r0 := @this: org.codehaus.jackson.map.introspect.BasicClassIntrospector;
+
+        specialinvoke r0.<org.codehaus.jackson.map.ClassIntrospector: void <init>()>();
+
+        return;
+    }
+
+    public volatile org.codehaus.jackson.map.BeanDescription forClassAnnotations(org.codehaus.jackson.map.MapperConfig, java.lang.Class, org.codehaus.jackson.map.ClassIntrospector$MixInResolver)
+    {
+        org.codehaus.jackson.map.introspect.BasicClassIntrospector r0;
+        org.codehaus.jackson.map.MapperConfig $r1;
+        java.lang.Class $r2;
+        org.codehaus.jackson.map.ClassIntrospector$MixInResolver $r3;
+        org.codehaus.jackson.map.introspect.BasicBeanDescription $r4;
+
+        r0 := @this: org.codehaus.jackson.map.introspect.BasicClassIntrospector;
+
+        $r1 := @parameter0: org.codehaus.jackson.map.MapperConfig;
+
+        $r2 := @parameter1: java.lang.Class;
+
+        $r3 := @parameter2: org.codehaus.jackson.map.ClassIntrospector$MixInResolver;
+
+        $r4 = virtualinvoke r0.<org.codehaus.jackson.map.introspect.BasicClassIntrospector: org.codehaus.jackson.map.introspect.BasicBeanDescription forClassAnnotations(org.codehaus.jackson.map.MapperConfig,java.lang.Class,org.codehaus.jackson.map.ClassIntrospector$MixInResolver)>($r1, $r2, $r3);
+
+        return $r4;
+    }
+
+    public org.codehaus.jackson.map.introspect.BasicBeanDescription forClassAnnotations(org.codehaus.jackson.map.MapperConfig, java.lang.Class, org.codehaus.jackson.map.ClassIntrospector$MixInResolver)
+    {
+        org.codehaus.jackson.map.introspect.BasicClassIntrospector r0;
+        org.codehaus.jackson.map.MapperConfig r1;
+        java.lang.Class r2;
+        org.codehaus.jackson.map.ClassIntrospector$MixInResolver $r3;
+        org.codehaus.jackson.map.introspect.BasicBeanDescription $r4;
+        org.codehaus.jackson.map.AnnotationIntrospector $r5;
+        org.codehaus.jackson.map.introspect.AnnotatedClass $r6;
+        org.codehaus.jackson.type.JavaType $r7;
+
+        r0 := @this: org.codehaus.jackson.map.introspect.BasicClassIntrospector;
+
+        r1 := @parameter0: org.codehaus.jackson.map.MapperConfig;
+
+        r2 := @parameter1: java.lang.Class;
+
+        $r3 := @parameter2: org.codehaus.jackson.map.ClassIntrospector$MixInResolver;
+
+        $r5 = interfaceinvoke r1.<org.codehaus.jackson.map.MapperConfig: org.codehaus.jackson.map.AnnotationIntrospector getAnnotationIntrospector()>();
+
+        $r6 = staticinvoke <org.codehaus.jackson.map.introspect.AnnotatedClass: org.codehaus.jackson.map.introspect.AnnotatedClass construct(java.lang.Class,org.codehaus.jackson.map.AnnotationIntrospector,org.codehaus.jackson.map.ClassIntrospector$MixInResolver)>(r2, $r5, $r3);
+
+        $r4 = new org.codehaus.jackson.map.introspect.BasicBeanDescription;
+
+        $r7 = staticinvoke <org.codehaus.jackson.map.type.TypeFactory: org.codehaus.jackson.type.JavaType type(java.lang.reflect.Type)>(r2);
+
+        specialinvoke $r4.<org.codehaus.jackson.map.introspect.BasicBeanDescription: void <init>(org.codehaus.jackson.type.JavaType,org.codehaus.jackson.map.introspect.AnnotatedClass,org.codehaus.jackson.map.AnnotationIntrospector)>($r7, $r6, $r5);
+
+        return $r4;
+    }
+
+    public volatile org.codehaus.jackson.map.BeanDescription forCreation(org.codehaus.jackson.map.DeserializationConfig, org.codehaus.jackson.type.JavaType, org.codehaus.jackson.map.ClassIntrospector$MixInResolver)
+    {
+        org.codehaus.jackson.map.introspect.BasicClassIntrospector r0;
+        org.codehaus.jackson.map.DeserializationConfig $r1;
+        org.codehaus.jackson.type.JavaType $r2;
+        org.codehaus.jackson.map.ClassIntrospector$MixInResolver $r3;
+        org.codehaus.jackson.map.introspect.BasicBeanDescription $r4;
+
+        r0 := @this: org.codehaus.jackson.map.introspect.BasicClassIntrospector;
+
+        $r1 := @parameter0: org.codehaus.jackson.map.DeserializationConfig;
+
+        $r2 := @parameter1: org.codehaus.jackson.type.JavaType;
+
+        $r3 := @parameter2: org.codehaus.jackson.map.ClassIntrospector$MixInResolver;
+
+        $r4 = virtualinvoke r0.<org.codehaus.jackson.map.introspect.BasicClassIntrospector: org.codehaus.jackson.map.introspect.BasicBeanDescription forCreation(org.codehaus.jackson.map.DeserializationConfig,org.codehaus.jackson.type.JavaType,org.codehaus.jackson.map.ClassIntrospector$MixInResolver)>($r1, $r2, $r3);
+
+        return $r4;
+    }
+
+    public org.codehaus.jackson.map.introspect.BasicBeanDescription forCreation(org.codehaus.jackson.map.DeserializationConfig, org.codehaus.jackson.type.JavaType, org.codehaus.jackson.map.ClassIntrospector$MixInResolver)
+    {
+        org.codehaus.jackson.map.introspect.BasicClassIntrospector r0;
+        org.codehaus.jackson.map.DeserializationConfig $r1;
+        org.codehaus.jackson.type.JavaType $r2;
+        org.codehaus.jackson.map.ClassIntrospector$MixInResolver $r3;
+        org.codehaus.jackson.map.AnnotationIntrospector $r4;
+        java.lang.Class $r5;
+        org.codehaus.jackson.map.introspect.AnnotatedClass $r6;
+        org.codehaus.jackson.map.introspect.BasicBeanDescription $r7;
+
+        r0 := @this: org.codehaus.jackson.map.introspect.BasicClassIntrospector;
+
+        $r1 := @parameter0: org.codehaus.jackson.map.DeserializationConfig;
+
+        $r2 := @parameter1: org.codehaus.jackson.type.JavaType;
+
+        $r3 := @parameter2: org.codehaus.jackson.map.ClassIntrospector$MixInResolver;
+
+        $r4 = virtualinvoke $r1.<org.codehaus.jackson.map.DeserializationConfig: org.codehaus.jackson.map.AnnotationIntrospector getAnnotationIntrospector()>();
+
+        $r5 = virtualinvoke $r2.<org.codehaus.jackson.type.JavaType: java.lang.Class getRawClass()>();
+
+        $r6 = staticinvoke <org.codehaus.jackson.map.introspect.AnnotatedClass: org.codehaus.jackson.map.introspect.AnnotatedClass construct(java.lang.Class,org.codehaus.jackson.map.AnnotationIntrospector,org.codehaus.jackson.map.ClassIntrospector$MixInResolver)>($r5, $r4, $r3);
+
+        virtualinvoke $r6.<org.codehaus.jackson.map.introspect.AnnotatedClass: void resolveCreators(boolean)>(1);
+
+        $r7 = new org.codehaus.jackson.map.introspect.BasicBeanDescription;
+
+        specialinvoke $r7.<org.codehaus.jackson.map.introspect.BasicBeanDescription: void <init>(org.codehaus.jackson.type.JavaType,org.codehaus.jackson.map.introspect.AnnotatedClass,org.codehaus.jackson.map.AnnotationIntrospector)>($r2, $r6, $r4);
+
+        return $r7;
+    }
+
+    public volatile org.codehaus.jackson.map.BeanDescription forDeserialization(org.codehaus.jackson.map.DeserializationConfig, org.codehaus.jackson.type.JavaType, org.codehaus.jackson.map.ClassIntrospector$MixInResolver)
+    {
+        org.codehaus.jackson.map.introspect.BasicClassIntrospector r0;
+        org.codehaus.jackson.map.DeserializationConfig $r1;
+        org.codehaus.jackson.type.JavaType $r2;
+        org.codehaus.jackson.map.ClassIntrospector$MixInResolver $r3;
+        org.codehaus.jackson.map.introspect.BasicBeanDescription $r4;
+
+        r0 := @this: org.codehaus.jackson.map.introspect.BasicClassIntrospector;
+
+        $r1 := @parameter0: org.codehaus.jackson.map.DeserializationConfig;
+
+        $r2 := @parameter1: org.codehaus.jackson.type.JavaType;
+
+        $r3 := @parameter2: org.codehaus.jackson.map.ClassIntrospector$MixInResolver;
+
+        $r4 = virtualinvoke r0.<org.codehaus.jackson.map.introspect.BasicClassIntrospector: org.codehaus.jackson.map.introspect.BasicBeanDescription forDeserialization(org.codehaus.jackson.map.DeserializationConfig,org.codehaus.jackson.type.JavaType,org.codehaus.jackson.map.ClassIntrospector$MixInResolver)>($r1, $r2, $r3);
+
+        return $r4;
+    }
+
+    public org.codehaus.jackson.map.introspect.BasicBeanDescription forDeserialization(org.codehaus.jackson.map.DeserializationConfig, org.codehaus.jackson.type.JavaType, org.codehaus.jackson.map.ClassIntrospector$MixInResolver)
+    {
+        org.codehaus.jackson.map.introspect.BasicClassIntrospector r0;
+        org.codehaus.jackson.map.DeserializationConfig $r1;
+        org.codehaus.jackson.type.JavaType $r2;
+        org.codehaus.jackson.map.ClassIntrospector$MixInResolver $r3;
+        org.codehaus.jackson.map.AnnotationIntrospector $r4;
+        java.lang.Class $r5;
+        org.codehaus.jackson.map.introspect.AnnotatedClass $r6;
+        org.codehaus.jackson.map.introspect.MethodFilter $r7;
+        org.codehaus.jackson.map.introspect.BasicBeanDescription $r8;
+
+        r0 := @this: org.codehaus.jackson.map.introspect.BasicClassIntrospector;
+
+        $r1 := @parameter0: org.codehaus.jackson.map.DeserializationConfig;
+
+        $r2 := @parameter1: org.codehaus.jackson.type.JavaType;
+
+        $r3 := @parameter2: org.codehaus.jackson.map.ClassIntrospector$MixInResolver;
+
+        $r4 = virtualinvoke $r1.<org.codehaus.jackson.map.DeserializationConfig: org.codehaus.jackson.map.AnnotationIntrospector getAnnotationIntrospector()>();
+
+        $r5 = virtualinvoke $r2.<org.codehaus.jackson.type.JavaType: java.lang.Class getRawClass()>();
+
+        $r6 = staticinvoke <org.codehaus.jackson.map.introspect.AnnotatedClass: org.codehaus.jackson.map.introspect.AnnotatedClass construct(java.lang.Class,org.codehaus.jackson.map.AnnotationIntrospector,org.codehaus.jackson.map.ClassIntrospector$MixInResolver)>($r5, $r4, $r3);
+
+        $r7 = virtualinvoke r0.<org.codehaus.jackson.map.introspect.BasicClassIntrospector: org.codehaus.jackson.map.introspect.MethodFilter getDeserializationMethodFilter(org.codehaus.jackson.map.DeserializationConfig)>($r1);
+
+        virtualinvoke $r6.<org.codehaus.jackson.map.introspect.AnnotatedClass: void resolveMemberMethods(org.codehaus.jackson.map.introspect.MethodFilter,boolean)>($r7, 1);
+
+        virtualinvoke $r6.<org.codehaus.jackson.map.introspect.AnnotatedClass: void resolveCreators(boolean)>(1);
+
+        virtualinvoke $r6.<org.codehaus.jackson.map.introspect.AnnotatedClass: void resolveFields(boolean)>(1);
+
+        $r8 = new org.codehaus.jackson.map.introspect.BasicBeanDescription;
+
+        specialinvoke $r8.<org.codehaus.jackson.map.introspect.BasicBeanDescription: void <init>(org.codehaus.jackson.type.JavaType,org.codehaus.jackson.map.introspect.AnnotatedClass,org.codehaus.jackson.map.AnnotationIntrospector)>($r2, $r6, $r4);
+
+        return $r8;
+    }
+
+    public volatile org.codehaus.jackson.map.BeanDescription forDirectClassAnnotations(org.codehaus.jackson.map.MapperConfig, java.lang.Class, org.codehaus.jackson.map.ClassIntrospector$MixInResolver)
+    {
+        org.codehaus.jackson.map.introspect.BasicClassIntrospector r0;
+        org.codehaus.jackson.map.MapperConfig $r1;
+        java.lang.Class $r2;
+        org.codehaus.jackson.map.ClassIntrospector$MixInResolver $r3;
+        org.codehaus.jackson.map.introspect.BasicBeanDescription $r4;
+
+        r0 := @this: org.codehaus.jackson.map.introspect.BasicClassIntrospector;
+
+        $r1 := @parameter0: org.codehaus.jackson.map.MapperConfig;
+
+        $r2 := @parameter1: java.lang.Class;
+
+        $r3 := @parameter2: org.codehaus.jackson.map.ClassIntrospector$MixInResolver;
+
+        $r4 = virtualinvoke r0.<org.codehaus.jackson.map.introspect.BasicClassIntrospector: org.codehaus.jackson.map.introspect.BasicBeanDescription forDirectClassAnnotations(org.codehaus.jackson.map.MapperConfig,java.lang.Class,org.codehaus.jackson.map.ClassIntrospector$MixInResolver)>($r1, $r2, $r3);
+
+        return $r4;
+    }
+
+    public org.codehaus.jackson.map.introspect.BasicBeanDescription forDirectClassAnnotations(org.codehaus.jackson.map.MapperConfig, java.lang.Class, org.codehaus.jackson.map.ClassIntrospector$MixInResolver)
+    {
+        org.codehaus.jackson.map.introspect.BasicClassIntrospector r0;
+        org.codehaus.jackson.map.MapperConfig r1;
+        java.lang.Class r2;
+        org.codehaus.jackson.map.ClassIntrospector$MixInResolver $r3;
+        org.codehaus.jackson.map.introspect.BasicBeanDescription $r4;
+        org.codehaus.jackson.map.AnnotationIntrospector $r5;
+        org.codehaus.jackson.map.introspect.AnnotatedClass $r6;
+        org.codehaus.jackson.type.JavaType $r7;
+
+        r0 := @this: org.codehaus.jackson.map.introspect.BasicClassIntrospector;
+
+        r1 := @parameter0: org.codehaus.jackson.map.MapperConfig;
+
+        r2 := @parameter1: java.lang.Class;
+
+        $r3 := @parameter2: org.codehaus.jackson.map.ClassIntrospector$MixInResolver;
+
+        $r5 = interfaceinvoke r1.<org.codehaus.jackson.map.MapperConfig: org.codehaus.jackson.map.AnnotationIntrospector getAnnotationIntrospector()>();
+
+        $r6 = staticinvoke <org.codehaus.jackson.map.introspect.AnnotatedClass: org.codehaus.jackson.map.introspect.AnnotatedClass constructWithoutSuperTypes(java.lang.Class,org.codehaus.jackson.map.AnnotationIntrospector,org.codehaus.jackson.map.ClassIntrospector$MixInResolver)>(r2, $r5, $r3);
+
+        $r4 = new org.codehaus.jackson.map.introspect.BasicBeanDescription;
+
+        $r7 = staticinvoke <org.codehaus.jackson.map.type.TypeFactory: org.codehaus.jackson.type.JavaType type(java.lang.reflect.Type)>(r2);
+
+        specialinvoke $r4.<org.codehaus.jackson.map.introspect.BasicBeanDescription: void <init>(org.codehaus.jackson.type.JavaType,org.codehaus.jackson.map.introspect.AnnotatedClass,org.codehaus.jackson.map.AnnotationIntrospector)>($r7, $r6, $r5);
+
+        return $r4;
+    }
+
+    public volatile org.codehaus.jackson.map.BeanDescription forSerialization(org.codehaus.jackson.map.SerializationConfig, org.codehaus.jackson.type.JavaType, org.codehaus.jackson.map.ClassIntrospector$MixInResolver)
+    {
+        org.codehaus.jackson.map.introspect.BasicClassIntrospector r0;
+        org.codehaus.jackson.map.SerializationConfig $r1;
+        org.codehaus.jackson.type.JavaType $r2;
+        org.codehaus.jackson.map.ClassIntrospector$MixInResolver $r3;
+        org.codehaus.jackson.map.introspect.BasicBeanDescription $r4;
+
+        r0 := @this: org.codehaus.jackson.map.introspect.BasicClassIntrospector;
+
+        $r1 := @parameter0: org.codehaus.jackson.map.SerializationConfig;
+
+        $r2 := @parameter1: org.codehaus.jackson.type.JavaType;
+
+        $r3 := @parameter2: org.codehaus.jackson.map.ClassIntrospector$MixInResolver;
+
+        $r4 = virtualinvoke r0.<org.codehaus.jackson.map.introspect.BasicClassIntrospector: org.codehaus.jackson.map.introspect.BasicBeanDescription forSerialization(org.codehaus.jackson.map.SerializationConfig,org.codehaus.jackson.type.JavaType,org.codehaus.jackson.map.ClassIntrospector$MixInResolver)>($r1, $r2, $r3);
+
+        return $r4;
+    }
+
+    public org.codehaus.jackson.map.introspect.BasicBeanDescription forSerialization(org.codehaus.jackson.map.SerializationConfig, org.codehaus.jackson.type.JavaType, org.codehaus.jackson.map.ClassIntrospector$MixInResolver)
+    {
+        org.codehaus.jackson.map.introspect.BasicClassIntrospector r0;
+        org.codehaus.jackson.map.SerializationConfig $r1;
+        org.codehaus.jackson.type.JavaType $r2;
+        org.codehaus.jackson.map.ClassIntrospector$MixInResolver $r3;
+        org.codehaus.jackson.map.AnnotationIntrospector $r4;
+        java.lang.Class $r5;
+        org.codehaus.jackson.map.introspect.AnnotatedClass $r6;
+        org.codehaus.jackson.map.introspect.MethodFilter $r7;
+        org.codehaus.jackson.map.introspect.BasicBeanDescription $r8;
+
+        r0 := @this: org.codehaus.jackson.map.introspect.BasicClassIntrospector;
+
+        $r1 := @parameter0: org.codehaus.jackson.map.SerializationConfig;
+
+        $r2 := @parameter1: org.codehaus.jackson.type.JavaType;
+
+        $r3 := @parameter2: org.codehaus.jackson.map.ClassIntrospector$MixInResolver;
+
+        $r4 = virtualinvoke $r1.<org.codehaus.jackson.map.SerializationConfig: org.codehaus.jackson.map.AnnotationIntrospector getAnnotationIntrospector()>();
+
+        $r5 = virtualinvoke $r2.<org.codehaus.jackson.type.JavaType: java.lang.Class getRawClass()>();
+
+        $r6 = staticinvoke <org.codehaus.jackson.map.introspect.AnnotatedClass: org.codehaus.jackson.map.introspect.AnnotatedClass construct(java.lang.Class,org.codehaus.jackson.map.AnnotationIntrospector,org.codehaus.jackson.map.ClassIntrospector$MixInResolver)>($r5, $r4, $r3);
+
+        $r7 = virtualinvoke r0.<org.codehaus.jackson.map.introspect.BasicClassIntrospector: org.codehaus.jackson.map.introspect.MethodFilter getSerializationMethodFilter(org.codehaus.jackson.map.SerializationConfig)>($r1);
+
+        virtualinvoke $r6.<org.codehaus.jackson.map.introspect.AnnotatedClass: void resolveMemberMethods(org.codehaus.jackson.map.introspect.MethodFilter,boolean)>($r7, 0);
+
+        virtualinvoke $r6.<org.codehaus.jackson.map.introspect.AnnotatedClass: void resolveCreators(boolean)>(1);
+
+        virtualinvoke $r6.<org.codehaus.jackson.map.introspect.AnnotatedClass: void resolveFields(boolean)>(0);
+
+        $r8 = new org.codehaus.jackson.map.introspect.BasicBeanDescription;
+
+        specialinvoke $r8.<org.codehaus.jackson.map.introspect.BasicBeanDescription: void <init>(org.codehaus.jackson.type.JavaType,org.codehaus.jackson.map.introspect.AnnotatedClass,org.codehaus.jackson.map.AnnotationIntrospector)>($r2, $r6, $r4);
+
+        return $r8;
+    }
+
+    protected org.codehaus.jackson.map.introspect.MethodFilter getDeserializationMethodFilter(org.codehaus.jackson.map.DeserializationConfig)
+    {
+        org.codehaus.jackson.map.introspect.BasicClassIntrospector r0;
+        org.codehaus.jackson.map.DeserializationConfig $r1;
+        boolean $z0;
+        org.codehaus.jackson.map.DeserializationConfig$Feature $r2;
+        org.codehaus.jackson.map.introspect.BasicClassIntrospector$SetterAndGetterMethodFilter r3;
+        org.codehaus.jackson.map.introspect.BasicClassIntrospector$SetterMethodFilter r4;
+
+        r0 := @this: org.codehaus.jackson.map.introspect.BasicClassIntrospector;
+
+        $r1 := @parameter0: org.codehaus.jackson.map.DeserializationConfig;
+
+        $r2 = <org.codehaus.jackson.map.DeserializationConfig$Feature: org.codehaus.jackson.map.DeserializationConfig$Feature USE_GETTERS_AS_SETTERS>;
+
+        $z0 = virtualinvoke $r1.<org.codehaus.jackson.map.DeserializationConfig: boolean isEnabled(org.codehaus.jackson.map.DeserializationConfig$Feature)>($r2);
+
+        if $z0 == 0 goto label1;
+
+        r3 = <org.codehaus.jackson.map.introspect.BasicClassIntrospector$SetterAndGetterMethodFilter: org.codehaus.jackson.map.introspect.BasicClassIntrospector$SetterAndGetterMethodFilter instance>;
+
+        return r3;
+
+     label1:
+        r4 = <org.codehaus.jackson.map.introspect.BasicClassIntrospector$SetterMethodFilter: org.codehaus.jackson.map.introspect.BasicClassIntrospector$SetterMethodFilter instance>;
+
+        return r4;
+    }
+
+    protected org.codehaus.jackson.map.introspect.MethodFilter getSerializationMethodFilter(org.codehaus.jackson.map.SerializationConfig)
+    {
+        org.codehaus.jackson.map.introspect.BasicClassIntrospector r0;
+        org.codehaus.jackson.map.SerializationConfig $r1;
+        org.codehaus.jackson.map.introspect.BasicClassIntrospector$GetterMethodFilter r2;
+
+        r0 := @this: org.codehaus.jackson.map.introspect.BasicClassIntrospector;
+
+        $r1 := @parameter0: org.codehaus.jackson.map.SerializationConfig;
+
+        r2 = <org.codehaus.jackson.map.introspect.BasicClassIntrospector$GetterMethodFilter: org.codehaus.jackson.map.introspect.BasicClassIntrospector$GetterMethodFilter instance>;
+
+        return r2;
+    }
+}

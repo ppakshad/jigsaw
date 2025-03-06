@@ -1,0 +1,409 @@
+public class com.movesky.app.engine.util.Envelope extends java.lang.Object
+{
+    public static final com.movesky.app.engine.util.Envelope ALWAYS_ONE;
+    public static final com.movesky.app.engine.util.Envelope ALWAYS_ZERO;
+    com.movesky.app.engine.util.Bag entrys;
+    float length;
+    com.movesky.app.engine.util.Envelope$OutOfBoundsHandler outOfBoundsHandler;
+
+    static void <clinit>()
+    {
+        com.movesky.app.engine.util.Envelope $r0;
+        com.movesky.app.engine.util.Envelope$OutOfBoundsHandler $r1;
+
+        $r0 = new com.movesky.app.engine.util.Envelope;
+
+        $r1 = <com.movesky.app.engine.util.Envelope$OutOfBoundsHandler: com.movesky.app.engine.util.Envelope$OutOfBoundsHandler RETURN_FIRST_OR_LAST>;
+
+        specialinvoke $r0.<com.movesky.app.engine.util.Envelope: void <init>(double,com.movesky.app.engine.util.Envelope$OutOfBoundsHandler)>(0.0, $r1);
+
+        <com.movesky.app.engine.util.Envelope: com.movesky.app.engine.util.Envelope ALWAYS_ZERO> = $r0;
+
+        $r0 = new com.movesky.app.engine.util.Envelope;
+
+        $r1 = <com.movesky.app.engine.util.Envelope$OutOfBoundsHandler: com.movesky.app.engine.util.Envelope$OutOfBoundsHandler RETURN_FIRST_OR_LAST>;
+
+        specialinvoke $r0.<com.movesky.app.engine.util.Envelope: void <init>(double,com.movesky.app.engine.util.Envelope$OutOfBoundsHandler)>(1.0, $r1);
+
+        <com.movesky.app.engine.util.Envelope: com.movesky.app.engine.util.Envelope ALWAYS_ONE> = $r0;
+
+        return;
+    }
+
+    public void <init>(double)
+    {
+        com.movesky.app.engine.util.Envelope r0;
+        double $d0;
+        com.movesky.app.engine.util.Envelope$OutOfBoundsHandler $r1;
+
+        r0 := @this: com.movesky.app.engine.util.Envelope;
+
+        $d0 := @parameter0: double;
+
+        $r1 = <com.movesky.app.engine.util.Envelope$OutOfBoundsHandler: com.movesky.app.engine.util.Envelope$OutOfBoundsHandler THROW_EXCEPTION>;
+
+        specialinvoke r0.<com.movesky.app.engine.util.Envelope: void <init>(double,com.movesky.app.engine.util.Envelope$OutOfBoundsHandler)>($d0, $r1);
+
+        return;
+    }
+
+    public void <init>(double, com.movesky.app.engine.util.Envelope$OutOfBoundsHandler)
+    {
+        com.movesky.app.engine.util.Envelope r0;
+        double $d0;
+        com.movesky.app.engine.util.Envelope$OutOfBoundsHandler $r1;
+        com.movesky.app.engine.util.Envelope$FlatEntry $r2;
+        com.movesky.app.engine.util.Bag $r3;
+
+        r0 := @this: com.movesky.app.engine.util.Envelope;
+
+        $d0 := @parameter0: double;
+
+        $r1 := @parameter1: com.movesky.app.engine.util.Envelope$OutOfBoundsHandler;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        $r3 = new com.movesky.app.engine.util.Bag;
+
+        specialinvoke $r3.<com.movesky.app.engine.util.Bag: void <init>()>();
+
+        r0.<com.movesky.app.engine.util.Envelope: com.movesky.app.engine.util.Bag entrys> = $r3;
+
+        r0.<com.movesky.app.engine.util.Envelope: com.movesky.app.engine.util.Envelope$OutOfBoundsHandler outOfBoundsHandler> = $r1;
+
+        $r3 = r0.<com.movesky.app.engine.util.Envelope: com.movesky.app.engine.util.Bag entrys>;
+
+        $r2 = new com.movesky.app.engine.util.Envelope$FlatEntry;
+
+        specialinvoke $r2.<com.movesky.app.engine.util.Envelope$FlatEntry: void <init>(float,float,double)>(0.0F, 0.0F, $d0);
+
+        virtualinvoke $r3.<com.movesky.app.engine.util.Bag: boolean add(java.lang.Object)>($r2);
+
+        return;
+    }
+
+    private void checkLengthOfTime(float)
+    {
+        com.movesky.app.engine.util.Envelope r0;
+        float $f0;
+        byte $b0;
+        java.lang.IllegalArgumentException $r1;
+
+        r0 := @this: com.movesky.app.engine.util.Envelope;
+
+        $f0 := @parameter0: float;
+
+        $b0 = $f0 cmpg 0.0F;
+
+        if $b0 > 0 goto label1;
+
+        $r1 = new java.lang.IllegalArgumentException;
+
+        specialinvoke $r1.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>("Length of time must be greater than 0");
+
+        throw $r1;
+
+     label1:
+        return;
+    }
+
+    private double getEndValue()
+    {
+        com.movesky.app.engine.util.Envelope r0;
+        float $f0;
+        com.movesky.app.engine.util.Bag $r1;
+        java.lang.Object $r2;
+        com.movesky.app.engine.util.Envelope$Entry $r3;
+        double $d0;
+
+        r0 := @this: com.movesky.app.engine.util.Envelope;
+
+        $r1 = r0.<com.movesky.app.engine.util.Envelope: com.movesky.app.engine.util.Bag entrys>;
+
+        $r2 = virtualinvoke $r1.<com.movesky.app.engine.util.Bag: java.lang.Object getLast()>();
+
+        $r3 = (com.movesky.app.engine.util.Envelope$Entry) $r2;
+
+        $f0 = r0.<com.movesky.app.engine.util.Envelope: float length>;
+
+        $d0 = virtualinvoke $r3.<com.movesky.app.engine.util.Envelope$Entry: double getValueAtTime(float)>($f0);
+
+        return $d0;
+    }
+
+    public void addFlatSegment(float)
+    {
+        com.movesky.app.engine.util.Envelope r0;
+        float $f0;
+        double $d0;
+
+        r0 := @this: com.movesky.app.engine.util.Envelope;
+
+        $f0 := @parameter0: float;
+
+        $d0 = specialinvoke r0.<com.movesky.app.engine.util.Envelope: double getEndValue()>();
+
+        virtualinvoke r0.<com.movesky.app.engine.util.Envelope: void addFlatSegment(float,double)>($f0, $d0);
+
+        return;
+    }
+
+    public void addFlatSegment(float, double)
+    {
+        com.movesky.app.engine.util.Envelope r0;
+        float $f0, $f1;
+        double $d0;
+        com.movesky.app.engine.util.Envelope$FlatEntry $r1;
+        com.movesky.app.engine.util.Bag $r2;
+
+        r0 := @this: com.movesky.app.engine.util.Envelope;
+
+        $f0 := @parameter0: float;
+
+        $d0 := @parameter1: double;
+
+        specialinvoke r0.<com.movesky.app.engine.util.Envelope: void checkLengthOfTime(float)>($f0);
+
+        $f1 = r0.<com.movesky.app.engine.util.Envelope: float length>;
+
+        $f1 = $f1 + $f0;
+
+        r0.<com.movesky.app.engine.util.Envelope: float length> = $f1;
+
+        $r2 = r0.<com.movesky.app.engine.util.Envelope: com.movesky.app.engine.util.Bag entrys>;
+
+        $r1 = new com.movesky.app.engine.util.Envelope$FlatEntry;
+
+        $f1 = r0.<com.movesky.app.engine.util.Envelope: float length>;
+
+        specialinvoke $r1.<com.movesky.app.engine.util.Envelope$FlatEntry: void <init>(float,float,double)>($f1, $f0, $d0);
+
+        virtualinvoke $r2.<com.movesky.app.engine.util.Bag: boolean add(java.lang.Object)>($r1);
+
+        return;
+    }
+
+    public void addLinearSegment(float, double)
+    {
+        com.movesky.app.engine.util.Envelope r0;
+        float $f0;
+        double $d0, $d1;
+
+        r0 := @this: com.movesky.app.engine.util.Envelope;
+
+        $f0 := @parameter0: float;
+
+        $d0 := @parameter1: double;
+
+        $d1 = specialinvoke r0.<com.movesky.app.engine.util.Envelope: double getEndValue()>();
+
+        virtualinvoke r0.<com.movesky.app.engine.util.Envelope: void addLinearSegment(float,double,double)>($f0, $d0, $d1);
+
+        return;
+    }
+
+    public void addLinearSegment(float, double, double)
+    {
+        com.movesky.app.engine.util.Envelope r0;
+        float $f0, $f1;
+        double $d0, $d1;
+        com.movesky.app.engine.util.Envelope$LinearEntry $r1;
+        com.movesky.app.engine.util.Bag $r2;
+
+        r0 := @this: com.movesky.app.engine.util.Envelope;
+
+        $f0 := @parameter0: float;
+
+        $d0 := @parameter1: double;
+
+        $d1 := @parameter2: double;
+
+        specialinvoke r0.<com.movesky.app.engine.util.Envelope: void checkLengthOfTime(float)>($f0);
+
+        $f1 = r0.<com.movesky.app.engine.util.Envelope: float length>;
+
+        $f1 = $f1 + $f0;
+
+        r0.<com.movesky.app.engine.util.Envelope: float length> = $f1;
+
+        $r2 = r0.<com.movesky.app.engine.util.Envelope: com.movesky.app.engine.util.Bag entrys>;
+
+        $r1 = new com.movesky.app.engine.util.Envelope$LinearEntry;
+
+        $f1 = r0.<com.movesky.app.engine.util.Envelope: float length>;
+
+        specialinvoke $r1.<com.movesky.app.engine.util.Envelope$LinearEntry: void <init>(float,float,double,double)>($f1, $f0, $d1, $d0);
+
+        virtualinvoke $r2.<com.movesky.app.engine.util.Bag: boolean add(java.lang.Object)>($r1);
+
+        return;
+    }
+
+    protected com.movesky.app.engine.util.Envelope$Entry getEntryAtTime(float)
+    {
+        com.movesky.app.engine.util.Envelope r0;
+        float $f0, $f1;
+        int $i0, $i1, $i2;
+        com.movesky.app.engine.util.Bag $r1;
+        java.lang.Object $r2;
+        com.movesky.app.engine.util.Envelope$Entry $r3;
+        boolean $z0;
+        byte $b3;
+        java.lang.IllegalStateException $r4;
+
+        r0 := @this: com.movesky.app.engine.util.Envelope;
+
+        $f0 := @parameter0: float;
+
+        $r1 = r0.<com.movesky.app.engine.util.Envelope: com.movesky.app.engine.util.Bag entrys>;
+
+        $i1 = virtualinvoke $r1.<com.movesky.app.engine.util.Bag: int size()>();
+
+        $i2 = $i1 + -1;
+
+        $i1 = 0;
+
+     label1:
+        if $i1 > $i2 goto label4;
+
+        $i0 = $i2 - $i1;
+
+        $i0 = $i0 / 2;
+
+        $i0 = $i1 + $i0;
+
+        $r1 = r0.<com.movesky.app.engine.util.Envelope: com.movesky.app.engine.util.Bag entrys>;
+
+        $r2 = virtualinvoke $r1.<com.movesky.app.engine.util.Bag: java.lang.Object get(int)>($i0);
+
+        $r3 = (com.movesky.app.engine.util.Envelope$Entry) $r2;
+
+        $z0 = virtualinvoke $r3.<com.movesky.app.engine.util.Envelope$Entry: boolean coversTime(float)>($f0);
+
+        if $z0 == 0 goto label2;
+
+        return $r3;
+
+     label2:
+        $f1 = $r3.<com.movesky.app.engine.util.Envelope$Entry: float endTime>;
+
+        $b3 = $f0 cmpl $f1;
+
+        if $b3 <= 0 goto label3;
+
+        $i1 = $i0 + 1;
+
+        goto label1;
+
+     label3:
+        $i2 = $i0 + -1;
+
+        goto label1;
+
+     label4:
+        $r4 = new java.lang.IllegalStateException;
+
+        specialinvoke $r4.<java.lang.IllegalStateException: void <init>(java.lang.String)>("Envelope.Entry not found");
+
+        throw $r4;
+    }
+
+    public float getTotalLength()
+    {
+        com.movesky.app.engine.util.Envelope r0;
+        float f0;
+
+        r0 := @this: com.movesky.app.engine.util.Envelope;
+
+        f0 = r0.<com.movesky.app.engine.util.Envelope: float length>;
+
+        return f0;
+    }
+
+    public double getValueAtFraction(double)
+    {
+        com.movesky.app.engine.util.Envelope r0;
+        double $d0, $d1;
+        float $f0;
+        int $i0;
+
+        r0 := @this: com.movesky.app.engine.util.Envelope;
+
+        $d0 := @parameter0: double;
+
+        $f0 = r0.<com.movesky.app.engine.util.Envelope: float length>;
+
+        $d1 = (double) $f0;
+
+        $d0 = $d1 * $d0;
+
+        $d0 = staticinvoke <java.lang.Math: double rint(double)>($d0);
+
+        $i0 = (int) $d0;
+
+        $f0 = (float) $i0;
+
+        $d0 = virtualinvoke r0.<com.movesky.app.engine.util.Envelope: double getValueAtTime(float)>($f0);
+
+        return $d0;
+    }
+
+    public double getValueAtTime(float)
+    {
+        com.movesky.app.engine.util.Envelope r0;
+        float $f0, $f1;
+        com.movesky.app.engine.util.Envelope$OutOfBoundsHandler $r1;
+        com.movesky.app.engine.util.Envelope$Entry $r2;
+        double $d0;
+
+        r0 := @this: com.movesky.app.engine.util.Envelope;
+
+        $f0 := @parameter0: float;
+
+        $r1 = r0.<com.movesky.app.engine.util.Envelope: com.movesky.app.engine.util.Envelope$OutOfBoundsHandler outOfBoundsHandler>;
+
+        $f1 = r0.<com.movesky.app.engine.util.Envelope: float length>;
+
+        $f0 = virtualinvoke $r1.<com.movesky.app.engine.util.Envelope$OutOfBoundsHandler: float translateTime(float,float)>($f0, $f1);
+
+        $r2 = virtualinvoke r0.<com.movesky.app.engine.util.Envelope: com.movesky.app.engine.util.Envelope$Entry getEntryAtTime(float)>($f0);
+
+        $d0 = virtualinvoke $r2.<com.movesky.app.engine.util.Envelope$Entry: double getValueAtTime(float)>($f0);
+
+        return $d0;
+    }
+
+    public void scaleTimes(double)
+    {
+        com.movesky.app.engine.util.Envelope r0;
+        double $d0;
+        java.lang.UnsupportedOperationException $r1;
+
+        r0 := @this: com.movesky.app.engine.util.Envelope;
+
+        $d0 := @parameter0: double;
+
+        $r1 = new java.lang.UnsupportedOperationException;
+
+        specialinvoke $r1.<java.lang.UnsupportedOperationException: void <init>(java.lang.String)>("Envelope.scaleTimes(): Not implemented yet");
+
+        throw $r1;
+    }
+
+    public void scaleTimesToTotalLength(float)
+    {
+        com.movesky.app.engine.util.Envelope r0;
+        float $f0;
+        java.lang.UnsupportedOperationException $r1;
+
+        r0 := @this: com.movesky.app.engine.util.Envelope;
+
+        $f0 := @parameter0: float;
+
+        $r1 = new java.lang.UnsupportedOperationException;
+
+        specialinvoke $r1.<java.lang.UnsupportedOperationException: void <init>(java.lang.String)>("Envelope.scaleTimesToTotalLength(): Not implemented yet");
+
+        throw $r1;
+    }
+}

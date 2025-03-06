@@ -1,0 +1,80 @@
+class com.startapp.android.publish.f$1 extends java.lang.Object implements com.startapp.android.publish.AdEventListener
+{
+    final com.startapp.android.publish.f a;
+
+    void <init>(com.startapp.android.publish.f)
+    {
+        com.startapp.android.publish.f$1 r0;
+        com.startapp.android.publish.f $r1;
+
+        r0 := @this: com.startapp.android.publish.f$1;
+
+        $r1 := @parameter0: com.startapp.android.publish.f;
+
+        r0.<com.startapp.android.publish.f$1: com.startapp.android.publish.f a> = $r1;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public void onFailedToReceiveAd(com.startapp.android.publish.Ad)
+    {
+        com.startapp.android.publish.f$1 r0;
+        com.startapp.android.publish.Ad $r1;
+        java.lang.StringBuilder $r2;
+        java.lang.String $r3;
+
+        r0 := @this: com.startapp.android.publish.f$1;
+
+        $r1 := @parameter0: com.startapp.android.publish.Ad;
+
+        $r2 = new java.lang.StringBuilder;
+
+        specialinvoke $r2.<java.lang.StringBuilder: void <init>()>();
+
+        $r2 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("FailedToShowInterActivityAd, error: [");
+
+        $r3 = $r1.<com.startapp.android.publish.Ad: java.lang.String errorMessage>;
+
+        $r2 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r3);
+
+        $r2 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("]");
+
+        $r3 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <com.startapp.android.publish.i.n: void a(java.lang.String,int,java.lang.String)>("InterActivityAdManager", 3, $r3);
+
+        return;
+    }
+
+    public void onReceiveAd(com.startapp.android.publish.Ad)
+    {
+        com.startapp.android.publish.f$1 r0;
+        com.startapp.android.publish.Ad $r1;
+        com.startapp.android.publish.f $r2;
+        com.startapp.android.publish.StartAppAd $r3;
+        boolean $z0;
+
+        r0 := @this: com.startapp.android.publish.f$1;
+
+        $r1 := @parameter0: com.startapp.android.publish.Ad;
+
+        $r2 = r0.<com.startapp.android.publish.f$1: com.startapp.android.publish.f a>;
+
+        $r3 = staticinvoke <com.startapp.android.publish.f: com.startapp.android.publish.StartAppAd a(com.startapp.android.publish.f)>($r2);
+
+        $z0 = virtualinvoke $r3.<com.startapp.android.publish.StartAppAd: boolean showAd()>();
+
+        if $z0 == 0 goto label1;
+
+        staticinvoke <com.startapp.android.publish.i.n: void a(java.lang.String,int,java.lang.String)>("InterActivityAdManager", 3, "ShowInterActivityAd");
+
+        $r2 = r0.<com.startapp.android.publish.f$1: com.startapp.android.publish.f a>;
+
+        staticinvoke <com.startapp.android.publish.f: void b(com.startapp.android.publish.f)>($r2);
+
+     label1:
+        return;
+    }
+}

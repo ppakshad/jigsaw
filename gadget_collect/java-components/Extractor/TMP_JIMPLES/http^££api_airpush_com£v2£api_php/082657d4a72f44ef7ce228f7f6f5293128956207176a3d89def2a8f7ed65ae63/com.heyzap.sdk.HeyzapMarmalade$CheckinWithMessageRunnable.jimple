@@ -1,0 +1,55 @@
+class com.heyzap.sdk.HeyzapMarmalade$CheckinWithMessageRunnable extends java.lang.Object implements java.lang.Runnable
+{
+    public java.lang.String m_Message;
+    final com.heyzap.sdk.HeyzapMarmalade this$0;
+
+    private void <init>(com.heyzap.sdk.HeyzapMarmalade)
+    {
+        com.heyzap.sdk.HeyzapMarmalade$CheckinWithMessageRunnable r0;
+        com.heyzap.sdk.HeyzapMarmalade $r1;
+
+        r0 := @this: com.heyzap.sdk.HeyzapMarmalade$CheckinWithMessageRunnable;
+
+        $r1 := @parameter0: com.heyzap.sdk.HeyzapMarmalade;
+
+        r0.<com.heyzap.sdk.HeyzapMarmalade$CheckinWithMessageRunnable: com.heyzap.sdk.HeyzapMarmalade this$0> = $r1;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    void <init>(com.heyzap.sdk.HeyzapMarmalade, com.heyzap.sdk.HeyzapMarmalade$1)
+    {
+        com.heyzap.sdk.HeyzapMarmalade$CheckinWithMessageRunnable r0;
+        com.heyzap.sdk.HeyzapMarmalade $r1;
+        com.heyzap.sdk.HeyzapMarmalade$1 $r2;
+
+        r0 := @this: com.heyzap.sdk.HeyzapMarmalade$CheckinWithMessageRunnable;
+
+        $r1 := @parameter0: com.heyzap.sdk.HeyzapMarmalade;
+
+        $r2 := @parameter1: com.heyzap.sdk.HeyzapMarmalade$1;
+
+        specialinvoke r0.<com.heyzap.sdk.HeyzapMarmalade$CheckinWithMessageRunnable: void <init>(com.heyzap.sdk.HeyzapMarmalade)>($r1);
+
+        return;
+    }
+
+    public void run()
+    {
+        com.heyzap.sdk.HeyzapMarmalade$CheckinWithMessageRunnable r0;
+        com.ideaworks3d.marmalade.LoaderActivity $r1;
+        java.lang.String $r2;
+
+        r0 := @this: com.heyzap.sdk.HeyzapMarmalade$CheckinWithMessageRunnable;
+
+        $r1 = <com.ideaworks3d.marmalade.LoaderActivity: com.ideaworks3d.marmalade.LoaderActivity m_Activity>;
+
+        $r2 = r0.<com.heyzap.sdk.HeyzapMarmalade$CheckinWithMessageRunnable: java.lang.String m_Message>;
+
+        staticinvoke <com.heyzap.sdk.HeyzapLib: void checkin(android.content.Context,java.lang.String)>($r1, $r2);
+
+        return;
+    }
+}

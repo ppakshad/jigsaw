@@ -1,0 +1,123 @@
+public class org.codehaus.jackson.map.ser.AnyGetterWriter extends java.lang.Object
+{
+    protected final java.lang.reflect.Method _anyGetter;
+    protected final org.codehaus.jackson.map.ser.MapSerializer _serializer;
+
+    public void <init>(org.codehaus.jackson.map.introspect.AnnotatedMethod, org.codehaus.jackson.map.ser.MapSerializer)
+    {
+        org.codehaus.jackson.map.ser.AnyGetterWriter r0;
+        org.codehaus.jackson.map.introspect.AnnotatedMethod $r1;
+        org.codehaus.jackson.map.ser.MapSerializer $r2;
+        java.lang.reflect.Method $r3;
+
+        r0 := @this: org.codehaus.jackson.map.ser.AnyGetterWriter;
+
+        $r1 := @parameter0: org.codehaus.jackson.map.introspect.AnnotatedMethod;
+
+        $r2 := @parameter1: org.codehaus.jackson.map.ser.MapSerializer;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        $r3 = virtualinvoke $r1.<org.codehaus.jackson.map.introspect.AnnotatedMethod: java.lang.reflect.Method getAnnotated()>();
+
+        r0.<org.codehaus.jackson.map.ser.AnyGetterWriter: java.lang.reflect.Method _anyGetter> = $r3;
+
+        r0.<org.codehaus.jackson.map.ser.AnyGetterWriter: org.codehaus.jackson.map.ser.MapSerializer _serializer> = $r2;
+
+        return;
+    }
+
+    public void getAndSerialize(java.lang.Object, org.codehaus.jackson.JsonGenerator, org.codehaus.jackson.map.SerializerProvider) throws java.lang.Exception
+    {
+        org.codehaus.jackson.map.ser.AnyGetterWriter r0;
+        java.lang.Object $r1;
+        org.codehaus.jackson.JsonGenerator $r2;
+        org.codehaus.jackson.map.SerializerProvider $r3;
+        java.lang.reflect.Method $r4;
+        java.lang.Object[] $r5;
+        boolean $z0;
+        org.codehaus.jackson.map.JsonMappingException $r6;
+        java.lang.StringBuilder $r7;
+        java.lang.String $r8;
+        java.lang.Class $r9;
+        org.codehaus.jackson.map.ser.MapSerializer $r10;
+        java.util.Map r11;
+
+        r0 := @this: org.codehaus.jackson.map.ser.AnyGetterWriter;
+
+        $r1 := @parameter0: java.lang.Object;
+
+        $r2 := @parameter1: org.codehaus.jackson.JsonGenerator;
+
+        $r3 := @parameter2: org.codehaus.jackson.map.SerializerProvider;
+
+        $r4 = r0.<org.codehaus.jackson.map.ser.AnyGetterWriter: java.lang.reflect.Method _anyGetter>;
+
+        $r5 = newarray (java.lang.Object)[0];
+
+        $r1 = virtualinvoke $r4.<java.lang.reflect.Method: java.lang.Object invoke(java.lang.Object,java.lang.Object[])>($r1, $r5);
+
+        if $r1 != null goto label1;
+
+        return;
+
+     label1:
+        $z0 = $r1 instanceof java.util.Map;
+
+        if $z0 != 0 goto label2;
+
+        $r6 = new org.codehaus.jackson.map.JsonMappingException;
+
+        $r7 = new java.lang.StringBuilder;
+
+        specialinvoke $r7.<java.lang.StringBuilder: void <init>()>();
+
+        $r7 = virtualinvoke $r7.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Value returned by \'any-getter\' (");
+
+        $r4 = r0.<org.codehaus.jackson.map.ser.AnyGetterWriter: java.lang.reflect.Method _anyGetter>;
+
+        $r8 = virtualinvoke $r4.<java.lang.reflect.Method: java.lang.String getName()>();
+
+        $r7 = virtualinvoke $r7.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r8);
+
+        $r7 = virtualinvoke $r7.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("()) not java.util.Map but ");
+
+        $r9 = virtualinvoke $r1.<java.lang.Object: java.lang.Class getClass()>();
+
+        $r8 = virtualinvoke $r9.<java.lang.Class: java.lang.String getName()>();
+
+        $r7 = virtualinvoke $r7.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r8);
+
+        $r8 = virtualinvoke $r7.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke $r6.<org.codehaus.jackson.map.JsonMappingException: void <init>(java.lang.String)>($r8);
+
+        throw $r6;
+
+     label2:
+        $r10 = r0.<org.codehaus.jackson.map.ser.AnyGetterWriter: org.codehaus.jackson.map.ser.MapSerializer _serializer>;
+
+        r11 = (java.util.Map) $r1;
+
+        virtualinvoke $r10.<org.codehaus.jackson.map.ser.MapSerializer: void serializeFields(java.util.Map,org.codehaus.jackson.JsonGenerator,org.codehaus.jackson.map.SerializerProvider)>(r11, $r2, $r3);
+
+        return;
+    }
+
+    public void resolve(org.codehaus.jackson.map.SerializerProvider) throws org.codehaus.jackson.map.JsonMappingException
+    {
+        org.codehaus.jackson.map.ser.AnyGetterWriter r0;
+        org.codehaus.jackson.map.SerializerProvider $r1;
+        org.codehaus.jackson.map.ser.MapSerializer $r2;
+
+        r0 := @this: org.codehaus.jackson.map.ser.AnyGetterWriter;
+
+        $r1 := @parameter0: org.codehaus.jackson.map.SerializerProvider;
+
+        $r2 = r0.<org.codehaus.jackson.map.ser.AnyGetterWriter: org.codehaus.jackson.map.ser.MapSerializer _serializer>;
+
+        virtualinvoke $r2.<org.codehaus.jackson.map.ser.MapSerializer: void resolve(org.codehaus.jackson.map.SerializerProvider)>($r1);
+
+        return;
+    }
+}

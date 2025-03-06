@@ -1,0 +1,100 @@
+public class com.apperhand.common.dto.Bookmark extends com.apperhand.common.dto.BaseBrowserItem
+{
+    private static final long serialVersionUID;
+
+    public void <init>()
+    {
+        com.apperhand.common.dto.Bookmark r0;
+
+        r0 := @this: com.apperhand.common.dto.Bookmark;
+
+        specialinvoke r0.<com.apperhand.common.dto.BaseBrowserItem: void <init>()>();
+
+        return;
+    }
+
+    public void <init>(long, java.lang.String, java.lang.String, byte[], com.apperhand.common.dto.Status)
+    {
+        com.apperhand.common.dto.Bookmark r0;
+        long $l0;
+        java.lang.String $r1, $r2;
+        byte[] $r3;
+        com.apperhand.common.dto.Status $r4;
+
+        r0 := @this: com.apperhand.common.dto.Bookmark;
+
+        $l0 := @parameter0: long;
+
+        $r1 := @parameter1: java.lang.String;
+
+        $r2 := @parameter2: java.lang.String;
+
+        $r3 := @parameter3: byte[];
+
+        $r4 := @parameter4: com.apperhand.common.dto.Status;
+
+        specialinvoke r0.<com.apperhand.common.dto.BaseBrowserItem: void <init>(long,java.lang.String,java.lang.String,byte[],com.apperhand.common.dto.Status)>($l0, $r1, $r2, $r3, $r4);
+
+        return;
+    }
+
+    public volatile com.apperhand.common.dto.BaseBrowserItem clone()
+    {
+        com.apperhand.common.dto.Bookmark r0;
+
+        r0 := @this: com.apperhand.common.dto.Bookmark;
+
+        r0 = virtualinvoke r0.<com.apperhand.common.dto.Bookmark: com.apperhand.common.dto.Bookmark clone()>();
+
+        return r0;
+    }
+
+    public com.apperhand.common.dto.Bookmark clone()
+    {
+        com.apperhand.common.dto.Bookmark r0;
+        com.apperhand.common.dto.BaseBrowserItem $r1;
+        long $l0;
+        java.lang.String $r2, $r3;
+        byte[] $r4;
+        com.apperhand.common.dto.Status $r5;
+
+        r0 := @this: com.apperhand.common.dto.Bookmark;
+
+        $r1 = specialinvoke r0.<com.apperhand.common.dto.BaseBrowserItem: com.apperhand.common.dto.BaseBrowserItem clone()>();
+
+        r0 = new com.apperhand.common.dto.Bookmark;
+
+        $l0 = virtualinvoke $r1.<com.apperhand.common.dto.BaseBrowserItem: long getId()>();
+
+        $r2 = virtualinvoke $r1.<com.apperhand.common.dto.BaseBrowserItem: java.lang.String getTitle()>();
+
+        $r3 = virtualinvoke $r1.<com.apperhand.common.dto.BaseBrowserItem: java.lang.String getUrl()>();
+
+        $r4 = virtualinvoke $r1.<com.apperhand.common.dto.BaseBrowserItem: byte[] getFavicon()>();
+
+        $r5 = virtualinvoke $r1.<com.apperhand.common.dto.BaseBrowserItem: com.apperhand.common.dto.Status getStatus()>();
+
+        specialinvoke r0.<com.apperhand.common.dto.Bookmark: void <init>(long,java.lang.String,java.lang.String,byte[],com.apperhand.common.dto.Status)>($l0, $r2, $r3, $r4, $r5);
+
+        return r0;
+    }
+
+    public java.lang.String toString()
+    {
+        com.apperhand.common.dto.Bookmark r0;
+        java.lang.String $r1;
+
+        r0 := @this: com.apperhand.common.dto.Bookmark;
+
+        $r1 = specialinvoke r0.<com.apperhand.common.dto.BaseBrowserItem: java.lang.String toString()>();
+
+        return $r1;
+    }
+
+    public static void <clinit>()
+    {
+        <com.apperhand.common.dto.Bookmark: long serialVersionUID> = -5295312317729930242L;
+
+        return;
+    }
+}

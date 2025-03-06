@@ -1,0 +1,299 @@
+public class org.codehaus.jackson.map.deser.CustomDeserializerFactory extends org.codehaus.jackson.map.deser.BeanDeserializerFactory
+{
+    protected java.util.HashMap _directClassMappings;
+    protected java.util.HashMap _mixInAnnotations;
+
+    public void <init>()
+    {
+        org.codehaus.jackson.map.deser.CustomDeserializerFactory r0;
+
+        r0 := @this: org.codehaus.jackson.map.deser.CustomDeserializerFactory;
+
+        specialinvoke r0.<org.codehaus.jackson.map.deser.CustomDeserializerFactory: void <init>(org.codehaus.jackson.map.DeserializerFactory$Config)>(null);
+
+        return;
+    }
+
+    protected void <init>(org.codehaus.jackson.map.DeserializerFactory$Config)
+    {
+        org.codehaus.jackson.map.deser.CustomDeserializerFactory r0;
+        org.codehaus.jackson.map.DeserializerFactory$Config $r1;
+
+        r0 := @this: org.codehaus.jackson.map.deser.CustomDeserializerFactory;
+
+        $r1 := @parameter0: org.codehaus.jackson.map.DeserializerFactory$Config;
+
+        specialinvoke r0.<org.codehaus.jackson.map.deser.BeanDeserializerFactory: void <init>(org.codehaus.jackson.map.DeserializerFactory$Config)>($r1);
+
+        r0.<org.codehaus.jackson.map.deser.CustomDeserializerFactory: java.util.HashMap _directClassMappings> = null;
+
+        return;
+    }
+
+    public void addMixInAnnotationMapping(java.lang.Class, java.lang.Class)
+    {
+        org.codehaus.jackson.map.deser.CustomDeserializerFactory r0;
+        java.lang.Class r1, r2;
+        org.codehaus.jackson.map.type.ClassKey $r3;
+        java.util.HashMap $r4;
+
+        r0 := @this: org.codehaus.jackson.map.deser.CustomDeserializerFactory;
+
+        r1 := @parameter0: java.lang.Class;
+
+        r2 := @parameter1: java.lang.Class;
+
+        $r4 = r0.<org.codehaus.jackson.map.deser.CustomDeserializerFactory: java.util.HashMap _mixInAnnotations>;
+
+        if $r4 != null goto label1;
+
+        $r4 = new java.util.HashMap;
+
+        specialinvoke $r4.<java.util.HashMap: void <init>()>();
+
+        r0.<org.codehaus.jackson.map.deser.CustomDeserializerFactory: java.util.HashMap _mixInAnnotations> = $r4;
+
+     label1:
+        $r4 = r0.<org.codehaus.jackson.map.deser.CustomDeserializerFactory: java.util.HashMap _mixInAnnotations>;
+
+        $r3 = new org.codehaus.jackson.map.type.ClassKey;
+
+        specialinvoke $r3.<org.codehaus.jackson.map.type.ClassKey: void <init>(java.lang.Class)>(r1);
+
+        virtualinvoke $r4.<java.util.HashMap: java.lang.Object put(java.lang.Object,java.lang.Object)>($r3, r2);
+
+        return;
+    }
+
+    public void addSpecificMapping(java.lang.Class, org.codehaus.jackson.map.JsonDeserializer)
+    {
+        org.codehaus.jackson.map.deser.CustomDeserializerFactory r0;
+        java.lang.Class r1;
+        org.codehaus.jackson.map.JsonDeserializer r2;
+        org.codehaus.jackson.map.type.ClassKey r3;
+        java.util.HashMap $r4;
+
+        r0 := @this: org.codehaus.jackson.map.deser.CustomDeserializerFactory;
+
+        r1 := @parameter0: java.lang.Class;
+
+        r2 := @parameter1: org.codehaus.jackson.map.JsonDeserializer;
+
+        r3 = new org.codehaus.jackson.map.type.ClassKey;
+
+        specialinvoke r3.<org.codehaus.jackson.map.type.ClassKey: void <init>(java.lang.Class)>(r1);
+
+        $r4 = r0.<org.codehaus.jackson.map.deser.CustomDeserializerFactory: java.util.HashMap _directClassMappings>;
+
+        if $r4 != null goto label1;
+
+        $r4 = new java.util.HashMap;
+
+        specialinvoke $r4.<java.util.HashMap: void <init>()>();
+
+        r0.<org.codehaus.jackson.map.deser.CustomDeserializerFactory: java.util.HashMap _directClassMappings> = $r4;
+
+     label1:
+        $r4 = r0.<org.codehaus.jackson.map.deser.CustomDeserializerFactory: java.util.HashMap _directClassMappings>;
+
+        virtualinvoke $r4.<java.util.HashMap: java.lang.Object put(java.lang.Object,java.lang.Object)>(r3, r2);
+
+        return;
+    }
+
+    public org.codehaus.jackson.map.JsonDeserializer createArrayDeserializer(org.codehaus.jackson.map.DeserializationConfig, org.codehaus.jackson.map.DeserializerProvider, org.codehaus.jackson.map.type.ArrayType, org.codehaus.jackson.map.BeanProperty) throws org.codehaus.jackson.map.JsonMappingException
+    {
+        org.codehaus.jackson.map.deser.CustomDeserializerFactory r0;
+        org.codehaus.jackson.map.DeserializationConfig $r1;
+        org.codehaus.jackson.map.DeserializerProvider $r2;
+        org.codehaus.jackson.map.type.ArrayType $r3;
+        org.codehaus.jackson.map.BeanProperty $r4;
+        org.codehaus.jackson.map.type.ClassKey r5;
+        java.lang.Class $r6;
+        java.util.HashMap $r7;
+        java.lang.Object $r8;
+        org.codehaus.jackson.map.JsonDeserializer r9;
+
+        r0 := @this: org.codehaus.jackson.map.deser.CustomDeserializerFactory;
+
+        $r1 := @parameter0: org.codehaus.jackson.map.DeserializationConfig;
+
+        $r2 := @parameter1: org.codehaus.jackson.map.DeserializerProvider;
+
+        $r3 := @parameter2: org.codehaus.jackson.map.type.ArrayType;
+
+        $r4 := @parameter3: org.codehaus.jackson.map.BeanProperty;
+
+        r5 = new org.codehaus.jackson.map.type.ClassKey;
+
+        $r6 = virtualinvoke $r3.<org.codehaus.jackson.map.type.ArrayType: java.lang.Class getRawClass()>();
+
+        specialinvoke r5.<org.codehaus.jackson.map.type.ClassKey: void <init>(java.lang.Class)>($r6);
+
+        $r7 = r0.<org.codehaus.jackson.map.deser.CustomDeserializerFactory: java.util.HashMap _directClassMappings>;
+
+        if $r7 == null goto label1;
+
+        $r7 = r0.<org.codehaus.jackson.map.deser.CustomDeserializerFactory: java.util.HashMap _directClassMappings>;
+
+        $r8 = virtualinvoke $r7.<java.util.HashMap: java.lang.Object get(java.lang.Object)>(r5);
+
+        r9 = (org.codehaus.jackson.map.JsonDeserializer) $r8;
+
+        if r9 == null goto label1;
+
+        return r9;
+
+     label1:
+        r9 = specialinvoke r0.<org.codehaus.jackson.map.deser.BeanDeserializerFactory: org.codehaus.jackson.map.JsonDeserializer createArrayDeserializer(org.codehaus.jackson.map.DeserializationConfig,org.codehaus.jackson.map.DeserializerProvider,org.codehaus.jackson.map.type.ArrayType,org.codehaus.jackson.map.BeanProperty)>($r1, $r2, $r3, $r4);
+
+        return r9;
+    }
+
+    public org.codehaus.jackson.map.JsonDeserializer createBeanDeserializer(org.codehaus.jackson.map.DeserializationConfig, org.codehaus.jackson.map.DeserializerProvider, org.codehaus.jackson.type.JavaType, org.codehaus.jackson.map.BeanProperty) throws org.codehaus.jackson.map.JsonMappingException
+    {
+        org.codehaus.jackson.map.deser.CustomDeserializerFactory r0;
+        org.codehaus.jackson.map.DeserializationConfig $r1;
+        org.codehaus.jackson.map.DeserializerProvider $r2;
+        org.codehaus.jackson.type.JavaType $r3;
+        org.codehaus.jackson.map.BeanProperty $r4;
+        org.codehaus.jackson.map.type.ClassKey r5;
+        java.lang.Class $r6;
+        java.util.HashMap $r7;
+        java.lang.Object $r8;
+        org.codehaus.jackson.map.JsonDeserializer r9;
+
+        r0 := @this: org.codehaus.jackson.map.deser.CustomDeserializerFactory;
+
+        $r1 := @parameter0: org.codehaus.jackson.map.DeserializationConfig;
+
+        $r2 := @parameter1: org.codehaus.jackson.map.DeserializerProvider;
+
+        $r3 := @parameter2: org.codehaus.jackson.type.JavaType;
+
+        $r4 := @parameter3: org.codehaus.jackson.map.BeanProperty;
+
+        $r6 = virtualinvoke $r3.<org.codehaus.jackson.type.JavaType: java.lang.Class getRawClass()>();
+
+        r5 = new org.codehaus.jackson.map.type.ClassKey;
+
+        specialinvoke r5.<org.codehaus.jackson.map.type.ClassKey: void <init>(java.lang.Class)>($r6);
+
+        $r7 = r0.<org.codehaus.jackson.map.deser.CustomDeserializerFactory: java.util.HashMap _directClassMappings>;
+
+        if $r7 == null goto label1;
+
+        $r7 = r0.<org.codehaus.jackson.map.deser.CustomDeserializerFactory: java.util.HashMap _directClassMappings>;
+
+        $r8 = virtualinvoke $r7.<java.util.HashMap: java.lang.Object get(java.lang.Object)>(r5);
+
+        r9 = (org.codehaus.jackson.map.JsonDeserializer) $r8;
+
+        if r9 == null goto label1;
+
+        return r9;
+
+     label1:
+        r9 = specialinvoke r0.<org.codehaus.jackson.map.deser.BeanDeserializerFactory: org.codehaus.jackson.map.JsonDeserializer createBeanDeserializer(org.codehaus.jackson.map.DeserializationConfig,org.codehaus.jackson.map.DeserializerProvider,org.codehaus.jackson.type.JavaType,org.codehaus.jackson.map.BeanProperty)>($r1, $r2, $r3, $r4);
+
+        return r9;
+    }
+
+    public org.codehaus.jackson.map.JsonDeserializer createEnumDeserializer(org.codehaus.jackson.map.DeserializationConfig, org.codehaus.jackson.map.DeserializerProvider, org.codehaus.jackson.type.JavaType, org.codehaus.jackson.map.BeanProperty) throws org.codehaus.jackson.map.JsonMappingException
+    {
+        org.codehaus.jackson.map.deser.CustomDeserializerFactory r0;
+        org.codehaus.jackson.map.DeserializationConfig $r1;
+        org.codehaus.jackson.map.DeserializerProvider $r2;
+        org.codehaus.jackson.type.JavaType $r3;
+        org.codehaus.jackson.map.BeanProperty $r4;
+        org.codehaus.jackson.map.type.ClassKey r5;
+        java.util.HashMap $r6;
+        java.lang.Class $r7;
+        java.lang.Object $r8;
+        org.codehaus.jackson.map.JsonDeserializer r9;
+
+        r0 := @this: org.codehaus.jackson.map.deser.CustomDeserializerFactory;
+
+        $r1 := @parameter0: org.codehaus.jackson.map.DeserializationConfig;
+
+        $r2 := @parameter1: org.codehaus.jackson.map.DeserializerProvider;
+
+        $r3 := @parameter2: org.codehaus.jackson.type.JavaType;
+
+        $r4 := @parameter3: org.codehaus.jackson.map.BeanProperty;
+
+        $r6 = r0.<org.codehaus.jackson.map.deser.CustomDeserializerFactory: java.util.HashMap _directClassMappings>;
+
+        if $r6 == null goto label1;
+
+        r5 = new org.codehaus.jackson.map.type.ClassKey;
+
+        $r7 = virtualinvoke $r3.<org.codehaus.jackson.type.JavaType: java.lang.Class getRawClass()>();
+
+        specialinvoke r5.<org.codehaus.jackson.map.type.ClassKey: void <init>(java.lang.Class)>($r7);
+
+        $r6 = r0.<org.codehaus.jackson.map.deser.CustomDeserializerFactory: java.util.HashMap _directClassMappings>;
+
+        $r8 = virtualinvoke $r6.<java.util.HashMap: java.lang.Object get(java.lang.Object)>(r5);
+
+        r9 = (org.codehaus.jackson.map.JsonDeserializer) $r8;
+
+        if r9 == null goto label1;
+
+        return r9;
+
+     label1:
+        r9 = specialinvoke r0.<org.codehaus.jackson.map.deser.BeanDeserializerFactory: org.codehaus.jackson.map.JsonDeserializer createEnumDeserializer(org.codehaus.jackson.map.DeserializationConfig,org.codehaus.jackson.map.DeserializerProvider,org.codehaus.jackson.type.JavaType,org.codehaus.jackson.map.BeanProperty)>($r1, $r2, $r3, $r4);
+
+        return r9;
+    }
+
+    public org.codehaus.jackson.map.DeserializerFactory withConfig(org.codehaus.jackson.map.DeserializerFactory$Config)
+    {
+        org.codehaus.jackson.map.deser.CustomDeserializerFactory r0;
+        org.codehaus.jackson.map.DeserializerFactory$Config $r1;
+        java.lang.Class $r2;
+        java.lang.IllegalStateException $r3;
+        java.lang.StringBuilder $r4;
+        java.lang.String $r5;
+
+        r0 := @this: org.codehaus.jackson.map.deser.CustomDeserializerFactory;
+
+        $r1 := @parameter0: org.codehaus.jackson.map.DeserializerFactory$Config;
+
+        $r2 = virtualinvoke r0.<java.lang.Object: java.lang.Class getClass()>();
+
+        if $r2 == class "Lorg/codehaus/jackson/map/deser/CustomDeserializerFactory;" goto label1;
+
+        $r3 = new java.lang.IllegalStateException;
+
+        $r4 = new java.lang.StringBuilder;
+
+        specialinvoke $r4.<java.lang.StringBuilder: void <init>()>();
+
+        $r4 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Subtype of CustomDeserializerFactory (");
+
+        $r2 = virtualinvoke r0.<java.lang.Object: java.lang.Class getClass()>();
+
+        $r5 = virtualinvoke $r2.<java.lang.Class: java.lang.String getName()>();
+
+        $r4 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r5);
+
+        $r4 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(") has not properly overridden method \'withAdditionalDeserializers\': can not instantiate subtype with ");
+
+        $r4 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("additional deserializer definitions");
+
+        $r5 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke $r3.<java.lang.IllegalStateException: void <init>(java.lang.String)>($r5);
+
+        throw $r3;
+
+     label1:
+        r0 = new org.codehaus.jackson.map.deser.CustomDeserializerFactory;
+
+        specialinvoke r0.<org.codehaus.jackson.map.deser.CustomDeserializerFactory: void <init>(org.codehaus.jackson.map.DeserializerFactory$Config)>($r1);
+
+        return r0;
+    }
+}

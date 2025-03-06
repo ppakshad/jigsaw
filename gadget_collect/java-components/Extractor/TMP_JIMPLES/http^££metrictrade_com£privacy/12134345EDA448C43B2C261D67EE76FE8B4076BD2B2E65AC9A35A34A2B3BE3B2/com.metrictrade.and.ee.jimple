@@ -1,0 +1,543 @@
+final class com.metrictrade.and.ee extends java.lang.Object
+{
+    static com.metrictrade.and.ee a;
+    static com.metrictrade.and.ee b;
+    private short[] c;
+
+    static void <clinit>()
+    {
+        byte[] $r0;
+        com.metrictrade.and.ee $r1;
+        int $i0, $i1;
+        java.lang.InternalError $r3;
+        com.metrictrade.and.dv $r2;
+
+        $i0 = 0;
+
+        $r0 = newarray (byte)[288];
+
+        $i1 = 0;
+
+     label01:
+        if $i1 < 144 goto label10;
+
+     label02:
+        if $i1 < 256 goto label11;
+
+     label03:
+        if $i1 < 280 goto label12;
+
+     label04:
+        if $i1 < 288 goto label13;
+
+        $r1 = new com.metrictrade.and.ee;
+
+     label05:
+        specialinvoke $r1.<com.metrictrade.and.ee: void <init>(byte[],int,int)>($r0, 0, 288);
+
+     label06:
+        <com.metrictrade.and.ee: com.metrictrade.and.ee a> = $r1;
+
+        $r0 = newarray (byte)[32];
+
+     label07:
+        if $i0 < 32 goto label14;
+
+        $r1 = new com.metrictrade.and.ee;
+
+     label08:
+        specialinvoke $r1.<com.metrictrade.and.ee: void <init>(byte[],int,int)>($r0, 0, 32);
+
+     label09:
+        <com.metrictrade.and.ee: com.metrictrade.and.ee b> = $r1;
+
+        return;
+
+     label10:
+        $r0[$i1] = 8;
+
+        $i1 = $i1 + 1;
+
+        goto label01;
+
+     label11:
+        $r0[$i1] = 9;
+
+        $i1 = $i1 + 1;
+
+        goto label02;
+
+     label12:
+        $r0[$i1] = 7;
+
+        $i1 = $i1 + 1;
+
+        goto label03;
+
+     label13:
+        $r0[$i1] = 8;
+
+        $i1 = $i1 + 1;
+
+        goto label04;
+
+     label14:
+        $r0[$i0] = 5;
+
+        $i0 = $i0 + 1;
+
+        goto label07;
+
+     label15:
+        $r2 := @caughtexception;
+
+        $r3 = new java.lang.InternalError;
+
+        specialinvoke $r3.<java.lang.InternalError: void <init>(java.lang.String)>("InflaterHuffmanTree: static tree length illegal");
+
+        throw $r3;
+
+        catch com.metrictrade.and.dv from label05 to label06 with label15;
+        catch com.metrictrade.and.dv from label08 to label09 with label15;
+    }
+
+    void <init>(byte[], int, int)
+    {
+        com.metrictrade.and.ee r0;
+        byte[] $r1;
+        int $i0, $i1;
+
+        r0 := @this: com.metrictrade.and.ee;
+
+        $r1 := @parameter0: byte[];
+
+        $i0 := @parameter1: int;
+
+        $i1 := @parameter2: int;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        specialinvoke r0.<com.metrictrade.and.ee: void a(byte[],int,int)>($r1, $i0, $i1);
+
+        return;
+    }
+
+    private void a(byte[], int, int)
+    {
+        byte[] $r1;
+        short $s9, $s10;
+        byte $b5;
+        int[] $r2, $r3;
+        int $i0, $i1, $i2, $i3, $i4, $i6, $i7, $i8, $i11, $i12;
+        com.metrictrade.and.ee r0;
+        com.metrictrade.and.dv $r5;
+        short[] $r4;
+
+        r0 := @this: com.metrictrade.and.ee;
+
+        $r1 := @parameter0: byte[];
+
+        $i0 := @parameter1: int;
+
+        $i1 := @parameter2: int;
+
+        $r3 = newarray (int)[16];
+
+        $r2 = newarray (int)[16];
+
+        $i2 = 0;
+
+     label01:
+        if $i2 < $i1 goto label03;
+
+        $i3 = 0;
+
+        $i2 = 512;
+
+        $i4 = 1;
+
+     label02:
+        if $i4 <= 15 goto label05;
+
+        if $i3 == 65536 goto label07;
+
+        $r5 = new com.metrictrade.and.dv;
+
+        specialinvoke $r5.<com.metrictrade.and.dv: void <init>(java.lang.String)>("Code lengths don\'t add up properly.");
+
+        throw $r5;
+
+     label03:
+        $i3 = $i0 + $i2;
+
+        $b5 = $r1[$i3];
+
+        $i3 = (int) $b5;
+
+        if $i3 <= 0 goto label04;
+
+        $i3 = (int) $b5;
+
+        $i3 = $r3[$i3];
+
+        $i3 = $i3 + 1;
+
+        $i4 = (int) $b5;
+
+        $r3[$i4] = $i3;
+
+     label04:
+        $i2 = $i2 + 1;
+
+        goto label01;
+
+     label05:
+        $r2[$i4] = $i3;
+
+        $i6 = $r3[$i4];
+
+        $i7 = 16 - $i4;
+
+        $i6 = $i6 << $i7;
+
+        $i3 = $i3 + $i6;
+
+        if $i4 < 10 goto label06;
+
+        $i6 = $r2[$i4];
+
+        $i6 = $i6 & 130944;
+
+        $i7 = 130944 & $i3;
+
+        $i6 = $i7 - $i6;
+
+        $i7 = 16 - $i4;
+
+        $i6 = $i6 >> $i7;
+
+        $i2 = $i2 + $i6;
+
+     label06:
+        $i4 = $i4 + 1;
+
+        goto label02;
+
+     label07:
+        $r4 = newarray (short)[$i2];
+
+        r0.<com.metrictrade.and.ee: short[] c> = $r4;
+
+        $i2 = 512;
+
+        $i6 = $i3;
+
+        $i3 = 15;
+
+     label08:
+        if $i3 >= 10 goto label10;
+
+        $i2 = 0;
+
+     label09:
+        if $i2 < $i1 goto label13;
+
+        return;
+
+     label10:
+        $i4 = $i6 & 130944;
+
+        $i7 = $r3[$i3];
+
+        $i8 = 16 - $i3;
+
+        $i7 = $i7 << $i8;
+
+        $i6 = $i6 - $i7;
+
+        $i7 = 130944 & $i6;
+
+     label11:
+        if $i7 < $i4 goto label12;
+
+        $i3 = $i3 + -1;
+
+        goto label08;
+
+     label12:
+        $r4 = r0.<com.metrictrade.and.ee: short[] c>;
+
+        $s9 = staticinvoke <com.metrictrade.and.dz: short a(int)>($i7);
+
+        $i8 = neg $i2;
+
+        $i8 = $i8 << 4;
+
+        $i8 = $i8 | $i3;
+
+        $s10 = (short) $i8;
+
+        $i8 = (int) $s9;
+
+        $r4[$i8] = $s10;
+
+        $i8 = $i3 + -9;
+
+        $i8 = 1 << $i8;
+
+        $i2 = $i2 + $i8;
+
+        $i7 = $i7 + 128;
+
+        goto label11;
+
+     label13:
+        $i3 = $i0 + $i2;
+
+        $b5 = $r1[$i3];
+
+        if $b5 == 0 goto label16;
+
+        $i3 = (int) $b5;
+
+        $i3 = $r2[$i3];
+
+        $s9 = staticinvoke <com.metrictrade.and.dz: short a(int)>($i3);
+
+        $i4 = (int) $s9;
+
+        $i6 = (int) $b5;
+
+        if $i6 > 9 goto label17;
+
+     label14:
+        $r4 = r0.<com.metrictrade.and.ee: short[] c>;
+
+        $i6 = $i2 << 4;
+
+        $i7 = (int) $b5;
+
+        $i6 = $i6 | $i7;
+
+        $s9 = (short) $i6;
+
+        $r4[$i4] = $s9;
+
+        $i6 = (int) $b5;
+
+        $i6 = 1 << $i6;
+
+        $i4 = $i4 + $i6;
+
+        if $i4 < 512 goto label14;
+
+     label15:
+        $i4 = (int) $b5;
+
+        $i4 = 16 - $i4;
+
+        $i4 = 1 << $i4;
+
+        $i3 = $i4 + $i3;
+
+        $i4 = (int) $b5;
+
+        $r2[$i4] = $i3;
+
+     label16:
+        $i2 = $i2 + 1;
+
+        goto label09;
+
+     label17:
+        $r4 = r0.<com.metrictrade.and.ee: short[] c>;
+
+        $s9 = $s9 & 511;
+
+        $i6 = (int) $s9;
+
+        $s9 = $r4[$i6];
+
+        $s10 = $s9 & 15;
+
+        $i6 = (int) $s10;
+
+        $i6 = 1 << $i6;
+
+        $i7 = (int) $s9;
+
+        $i7 = $i7 >> 4;
+
+        $i7 = neg $i7;
+
+     label18:
+        $r4 = r0.<com.metrictrade.and.ee: short[] c>;
+
+        $i8 = $i4 >> 9;
+
+        $i8 = $i8 | $i7;
+
+        $i11 = $i2 << 4;
+
+        $i12 = (int) $b5;
+
+        $i11 = $i11 | $i12;
+
+        $s9 = (short) $i11;
+
+        $r4[$i8] = $s9;
+
+        $i8 = (int) $b5;
+
+        $i8 = 1 << $i8;
+
+        $i4 = $i4 + $i8;
+
+        if $i4 < $i6 goto label18;
+
+        goto label15;
+    }
+
+    final int a(com.metrictrade.and.eh)
+    {
+        com.metrictrade.and.ee r0;
+        short $s1, $s2;
+        int $i0, $i3, $i4;
+        short[] $r2;
+        com.metrictrade.and.eh $r1;
+
+        r0 := @this: com.metrictrade.and.ee;
+
+        $r1 := @parameter0: com.metrictrade.and.eh;
+
+        $i0 = virtualinvoke $r1.<com.metrictrade.and.eh: int a(int)>(9);
+
+        if $i0 < 0 goto label3;
+
+        $r2 = r0.<com.metrictrade.and.ee: short[] c>;
+
+        $s1 = $r2[$i0];
+
+        $i0 = (int) $s1;
+
+        if $i0 < 0 goto label1;
+
+        $s2 = $s1 & 15;
+
+        $i0 = (int) $s2;
+
+        virtualinvoke $r1.<com.metrictrade.and.eh: void b(int)>($i0);
+
+        $i0 = (int) $s1;
+
+        $i0 = $i0 >> 4;
+
+        return $i0;
+
+     label1:
+        $i0 = (int) $s1;
+
+        $i0 = $i0 >> 4;
+
+        $i0 = neg $i0;
+
+        $s1 = $s1 & 15;
+
+        $i3 = (int) $s1;
+
+        $i3 = virtualinvoke $r1.<com.metrictrade.and.eh: int a(int)>($i3);
+
+        if $i3 < 0 goto label2;
+
+        $r2 = r0.<com.metrictrade.and.ee: short[] c>;
+
+        $i3 = $i3 >> 9;
+
+        $i0 = $i3 | $i0;
+
+        $s1 = $r2[$i0];
+
+        $s2 = $s1 & 15;
+
+        $i0 = (int) $s2;
+
+        virtualinvoke $r1.<com.metrictrade.and.eh: void b(int)>($i0);
+
+        $i0 = (int) $s1;
+
+        $i0 = $i0 >> 4;
+
+        return $i0;
+
+     label2:
+        $i3 = $r1.<com.metrictrade.and.eh: int e>;
+
+        $i4 = virtualinvoke $r1.<com.metrictrade.and.eh: int a(int)>($i3);
+
+        $r2 = r0.<com.metrictrade.and.ee: short[] c>;
+
+        $i4 = $i4 >> 9;
+
+        $i0 = $i0 | $i4;
+
+        $s1 = $r2[$i0];
+
+        $s2 = $s1 & 15;
+
+        $i0 = (int) $s2;
+
+        if $i0 > $i3 goto label4;
+
+        $s2 = $s1 & 15;
+
+        $i0 = (int) $s2;
+
+        virtualinvoke $r1.<com.metrictrade.and.eh: void b(int)>($i0);
+
+        $i0 = (int) $s1;
+
+        $i0 = $i0 >> 4;
+
+        return $i0;
+
+     label3:
+        $i0 = $r1.<com.metrictrade.and.eh: int e>;
+
+        $i3 = virtualinvoke $r1.<com.metrictrade.and.eh: int a(int)>($i0);
+
+        $r2 = r0.<com.metrictrade.and.ee: short[] c>;
+
+        $s1 = $r2[$i3];
+
+        $i3 = (int) $s1;
+
+        if $i3 < 0 goto label5;
+
+        $s2 = $s1 & 15;
+
+        $i3 = (int) $s2;
+
+        if $i3 > $i0 goto label6;
+
+        $s2 = $s1 & 15;
+
+        $i0 = (int) $s2;
+
+        virtualinvoke $r1.<com.metrictrade.and.eh: void b(int)>($i0);
+
+        $i0 = (int) $s1;
+
+        $i0 = $i0 >> 4;
+
+        return $i0;
+
+     label4:
+        return -1;
+
+     label5:
+        return -1;
+
+     label6:
+        return -1;
+    }
+}

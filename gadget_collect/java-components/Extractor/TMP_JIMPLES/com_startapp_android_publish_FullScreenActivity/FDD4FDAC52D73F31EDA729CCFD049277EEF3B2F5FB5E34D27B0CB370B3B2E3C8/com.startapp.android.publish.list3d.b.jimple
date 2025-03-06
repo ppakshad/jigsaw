@@ -1,0 +1,215 @@
+public class com.startapp.android.publish.list3d.b extends android.widget.ArrayAdapter
+{
+    private java.lang.String a;
+    private java.lang.String b;
+
+    public void <init>(android.content.Context, java.util.List, java.lang.String, java.lang.String, java.lang.String)
+    {
+        com.startapp.android.publish.list3d.b r0;
+        android.content.Context $r1;
+        java.util.List $r2;
+        java.lang.String $r3, $r4, $r5;
+
+        r0 := @this: com.startapp.android.publish.list3d.b;
+
+        $r1 := @parameter0: android.content.Context;
+
+        $r2 := @parameter1: java.util.List;
+
+        $r3 := @parameter2: java.lang.String;
+
+        $r4 := @parameter3: java.lang.String;
+
+        $r5 := @parameter4: java.lang.String;
+
+        specialinvoke r0.<android.widget.ArrayAdapter: void <init>(android.content.Context,int,java.util.List)>($r1, 0, $r2);
+
+        r0.<com.startapp.android.publish.list3d.b: java.lang.String a> = $r4;
+
+        r0.<com.startapp.android.publish.list3d.b: java.lang.String b> = $r5;
+
+        return;
+    }
+
+    private long a(com.startapp.android.publish.list3d.ListItem)
+    {
+        com.startapp.android.publish.list3d.b r0;
+        com.startapp.android.publish.list3d.ListItem $r1;
+        java.lang.Long $r2;
+        java.util.concurrent.TimeUnit $r3;
+        long $l0;
+        com.startapp.android.publish.model.MetaData $r4;
+
+        r0 := @this: com.startapp.android.publish.list3d.b;
+
+        $r1 := @parameter0: com.startapp.android.publish.list3d.ListItem;
+
+        $r2 = virtualinvoke $r1.<com.startapp.android.publish.list3d.ListItem: java.lang.Long r()>();
+
+        if $r2 == null goto label1;
+
+        $r3 = <java.util.concurrent.TimeUnit: java.util.concurrent.TimeUnit SECONDS>;
+
+        $r2 = virtualinvoke $r1.<com.startapp.android.publish.list3d.ListItem: java.lang.Long r()>();
+
+        $l0 = virtualinvoke $r2.<java.lang.Long: long longValue()>();
+
+        $l0 = virtualinvoke $r3.<java.util.concurrent.TimeUnit: long toMillis(long)>($l0);
+
+        return $l0;
+
+     label1:
+        $r3 = <java.util.concurrent.TimeUnit: java.util.concurrent.TimeUnit SECONDS>;
+
+        $r4 = staticinvoke <com.startapp.android.publish.model.MetaData: com.startapp.android.publish.model.MetaData getInstance()>();
+
+        $l0 = virtualinvoke $r4.<com.startapp.android.publish.model.MetaData: long getIABDisplayImpressionDelayInSeconds()>();
+
+        $l0 = virtualinvoke $r3.<java.util.concurrent.TimeUnit: long toMillis(long)>($l0);
+
+        return $l0;
+    }
+
+    public android.view.View getView(int, android.view.View, android.view.ViewGroup)
+    {
+        com.startapp.android.publish.list3d.b r0;
+        int $i0;
+        android.view.ViewGroup $r1;
+        com.startapp.android.publish.i.v $r2;
+        java.lang.String $r3, $r14, $r18;
+        android.view.View r4;
+        com.startapp.android.publish.list3d.d $r5;
+        android.content.Context $r6;
+        java.lang.Object $r7;
+        com.startapp.android.publish.list3d.ListItem $r8;
+        com.startapp.android.publish.model.MetaData $r9;
+        com.startapp.android.publish.model.MetaDataStyle $r10;
+        android.widget.TextView $r11;
+        com.startapp.android.publish.list3d.f $r12;
+        com.startapp.android.publish.list3d.e $r13;
+        android.graphics.Bitmap $r15;
+        android.widget.ImageView $r16;
+        com.startapp.android.publish.i.q $r17;
+        float $f0;
+        boolean $z0;
+        long $l1;
+
+        r0 := @this: com.startapp.android.publish.list3d.b;
+
+        $i0 := @parameter0: int;
+
+        r4 := @parameter1: android.view.View;
+
+        $r1 := @parameter2: android.view.ViewGroup;
+
+        if r4 != null goto label3;
+
+        $r5 = new com.startapp.android.publish.list3d.d;
+
+        $r6 = virtualinvoke r0.<com.startapp.android.publish.list3d.b: android.content.Context getContext()>();
+
+        specialinvoke $r5.<com.startapp.android.publish.list3d.d: void <init>(android.content.Context)>($r6);
+
+        r4 = virtualinvoke $r5.<com.startapp.android.publish.list3d.d: android.widget.RelativeLayout a()>();
+
+     label1:
+        $r7 = virtualinvoke r0.<com.startapp.android.publish.list3d.b: java.lang.Object getItem(int)>($i0);
+
+        $r8 = (com.startapp.android.publish.list3d.ListItem) $r7;
+
+        $r9 = staticinvoke <com.startapp.android.publish.model.MetaData: com.startapp.android.publish.model.MetaData getInstance()>();
+
+        $r3 = virtualinvoke $r8.<com.startapp.android.publish.list3d.ListItem: java.lang.String n()>();
+
+        $r10 = virtualinvoke $r9.<com.startapp.android.publish.model.MetaData: com.startapp.android.publish.model.MetaDataStyle getTemplate(java.lang.String)>($r3);
+
+        virtualinvoke $r5.<com.startapp.android.publish.list3d.d: void a(com.startapp.android.publish.model.MetaDataStyle)>($r10);
+
+        $r11 = virtualinvoke $r5.<com.startapp.android.publish.list3d.d: android.widget.TextView c()>();
+
+        $r3 = virtualinvoke $r8.<com.startapp.android.publish.list3d.ListItem: java.lang.String g()>();
+
+        virtualinvoke $r11.<android.widget.TextView: void setText(java.lang.CharSequence)>($r3);
+
+        $r11 = virtualinvoke $r5.<com.startapp.android.publish.list3d.d: android.widget.TextView d()>();
+
+        $r3 = virtualinvoke $r8.<com.startapp.android.publish.list3d.ListItem: java.lang.String h()>();
+
+        virtualinvoke $r11.<android.widget.TextView: void setText(java.lang.CharSequence)>($r3);
+
+        $r12 = staticinvoke <com.startapp.android.publish.list3d.f: com.startapp.android.publish.list3d.f a()>();
+
+        $r3 = r0.<com.startapp.android.publish.list3d.b: java.lang.String b>;
+
+        $r13 = virtualinvoke $r12.<com.startapp.android.publish.list3d.f: com.startapp.android.publish.list3d.e a(java.lang.String)>($r3);
+
+        $r3 = virtualinvoke $r8.<com.startapp.android.publish.list3d.ListItem: java.lang.String a()>();
+
+        $r14 = virtualinvoke $r8.<com.startapp.android.publish.list3d.ListItem: java.lang.String i()>();
+
+        $r15 = virtualinvoke $r13.<com.startapp.android.publish.list3d.e: android.graphics.Bitmap a(int,java.lang.String,java.lang.String)>($i0, $r3, $r14);
+
+        if $r15 != null goto label4;
+
+        $r16 = virtualinvoke $r5.<com.startapp.android.publish.list3d.d: android.widget.ImageView b()>();
+
+        virtualinvoke $r16.<android.widget.ImageView: void setImageResource(int)>(17301651);
+
+        $r16 = virtualinvoke $r5.<com.startapp.android.publish.list3d.d: android.widget.ImageView b()>();
+
+        virtualinvoke $r16.<android.widget.ImageView: void setTag(java.lang.Object)>("tag_error");
+
+     label2:
+        $r17 = virtualinvoke $r5.<com.startapp.android.publish.list3d.d: com.startapp.android.publish.i.q e()>();
+
+        $f0 = virtualinvoke $r8.<com.startapp.android.publish.list3d.ListItem: float k()>();
+
+        virtualinvoke $r17.<com.startapp.android.publish.i.q: void setRating(float)>($f0);
+
+        $z0 = virtualinvoke $r8.<com.startapp.android.publish.list3d.ListItem: boolean q()>();
+
+        virtualinvoke $r5.<com.startapp.android.publish.list3d.d: void a(boolean)>($z0);
+
+        $r12 = staticinvoke <com.startapp.android.publish.list3d.f: com.startapp.android.publish.list3d.f a()>();
+
+        $r3 = r0.<com.startapp.android.publish.list3d.b: java.lang.String b>;
+
+        $r13 = virtualinvoke $r12.<com.startapp.android.publish.list3d.f: com.startapp.android.publish.list3d.e a(java.lang.String)>($r3);
+
+        $r6 = virtualinvoke r0.<com.startapp.android.publish.list3d.b: android.content.Context getContext()>();
+
+        $r14 = virtualinvoke $r8.<com.startapp.android.publish.list3d.ListItem: java.lang.String a()>();
+
+        $r18 = virtualinvoke $r8.<com.startapp.android.publish.list3d.ListItem: java.lang.String c()>();
+
+        $r2 = new com.startapp.android.publish.i.v;
+
+        $r3 = r0.<com.startapp.android.publish.list3d.b: java.lang.String a>;
+
+        specialinvoke $r2.<com.startapp.android.publish.i.v: void <init>(java.lang.String)>($r3);
+
+        $l1 = specialinvoke r0.<com.startapp.android.publish.list3d.b: long a(com.startapp.android.publish.list3d.ListItem)>($r8);
+
+        virtualinvoke $r13.<com.startapp.android.publish.list3d.e: void a(android.content.Context,java.lang.String,java.lang.String,com.startapp.android.publish.i.v,long)>($r6, $r14, $r18, $r2, $l1);
+
+        return r4;
+
+     label3:
+        $r7 = virtualinvoke r4.<android.view.View: java.lang.Object getTag()>();
+
+        $r5 = (com.startapp.android.publish.list3d.d) $r7;
+
+        goto label1;
+
+     label4:
+        $r16 = virtualinvoke $r5.<com.startapp.android.publish.list3d.d: android.widget.ImageView b()>();
+
+        virtualinvoke $r16.<android.widget.ImageView: void setImageBitmap(android.graphics.Bitmap)>($r15);
+
+        $r16 = virtualinvoke $r5.<com.startapp.android.publish.list3d.d: android.widget.ImageView b()>();
+
+        virtualinvoke $r16.<android.widget.ImageView: void setTag(java.lang.Object)>("tag_ok");
+
+        goto label2;
+    }
+}

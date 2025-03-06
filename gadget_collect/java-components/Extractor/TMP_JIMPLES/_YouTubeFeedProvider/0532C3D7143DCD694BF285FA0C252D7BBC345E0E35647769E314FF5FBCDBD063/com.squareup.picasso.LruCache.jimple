@@ -1,0 +1,646 @@
+public class com.squareup.picasso.LruCache extends java.lang.Object implements com.squareup.picasso.Cache
+{
+    private int evictionCount;
+    private int hitCount;
+    final java.util.LinkedHashMap map;
+    private final int maxSize;
+    private int missCount;
+    private int putCount;
+    private int size;
+
+    public void <init>(int)
+    {
+        com.squareup.picasso.LruCache r0;
+        int $i0;
+        java.lang.IllegalArgumentException $r1;
+        java.util.LinkedHashMap $r2;
+
+        r0 := @this: com.squareup.picasso.LruCache;
+
+        $i0 := @parameter0: int;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        if $i0 > 0 goto label1;
+
+        $r1 = new java.lang.IllegalArgumentException;
+
+        specialinvoke $r1.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>("Max size must be positive.");
+
+        throw $r1;
+
+     label1:
+        r0.<com.squareup.picasso.LruCache: int maxSize> = $i0;
+
+        $r2 = new java.util.LinkedHashMap;
+
+        specialinvoke $r2.<java.util.LinkedHashMap: void <init>(int,float,boolean)>(0, 0.75F, 1);
+
+        r0.<com.squareup.picasso.LruCache: java.util.LinkedHashMap map> = $r2;
+
+        return;
+    }
+
+    public void <init>(android.content.Context)
+    {
+        com.squareup.picasso.LruCache r0;
+        android.content.Context $r1;
+        int $i0;
+
+        r0 := @this: com.squareup.picasso.LruCache;
+
+        $r1 := @parameter0: android.content.Context;
+
+        $i0 = staticinvoke <com.squareup.picasso.Utils: int calculateMemoryCacheSize(android.content.Context)>($r1);
+
+        specialinvoke r0.<com.squareup.picasso.LruCache: void <init>(int)>($i0);
+
+        return;
+    }
+
+    private void trimToSize(int)
+    {
+        com.squareup.picasso.LruCache r0;
+        int $i0, $i1, $i2;
+        java.util.LinkedHashMap $r1;
+        boolean $z0;
+        java.lang.IllegalStateException $r2;
+        java.lang.StringBuilder $r3;
+        java.lang.Class $r4;
+        java.lang.String $r5;
+        java.lang.Throwable $r6;
+        java.util.Set $r7;
+        java.util.Iterator $r8;
+        java.lang.Object $r9;
+        java.util.Map$Entry $r10;
+        android.graphics.Bitmap $r11;
+
+        r0 := @this: com.squareup.picasso.LruCache;
+
+        $i0 := @parameter0: int;
+
+     label1:
+        entermonitor r0;
+
+     label2:
+        $i1 = r0.<com.squareup.picasso.LruCache: int size>;
+
+        if $i1 < 0 goto label3;
+
+        $r1 = r0.<com.squareup.picasso.LruCache: java.util.LinkedHashMap map>;
+
+        $z0 = virtualinvoke $r1.<java.util.LinkedHashMap: boolean isEmpty()>();
+
+        if $z0 == 0 goto label5;
+
+        $i1 = r0.<com.squareup.picasso.LruCache: int size>;
+
+        if $i1 == 0 goto label5;
+
+     label3:
+        $r2 = new java.lang.IllegalStateException;
+
+        $r3 = new java.lang.StringBuilder;
+
+        specialinvoke $r3.<java.lang.StringBuilder: void <init>()>();
+
+        $r4 = virtualinvoke r0.<java.lang.Object: java.lang.Class getClass()>();
+
+        $r5 = virtualinvoke $r4.<java.lang.Class: java.lang.String getName()>();
+
+        $r3 = virtualinvoke $r3.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r5);
+
+        $r3 = virtualinvoke $r3.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(".sizeOf() is reporting inconsistent results!");
+
+        $r5 = virtualinvoke $r3.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke $r2.<java.lang.IllegalStateException: void <init>(java.lang.String)>($r5);
+
+        throw $r2;
+
+     label4:
+        $r6 := @caughtexception;
+
+        exitmonitor r0;
+
+        throw $r6;
+
+     label5:
+        $i1 = r0.<com.squareup.picasso.LruCache: int size>;
+
+        if $i1 <= $i0 goto label6;
+
+        $r1 = r0.<com.squareup.picasso.LruCache: java.util.LinkedHashMap map>;
+
+        $z0 = virtualinvoke $r1.<java.util.LinkedHashMap: boolean isEmpty()>();
+
+        if $z0 == 0 goto label8;
+
+     label6:
+        exitmonitor r0;
+
+     label7:
+        return;
+
+     label8:
+        $r1 = r0.<com.squareup.picasso.LruCache: java.util.LinkedHashMap map>;
+
+        $r7 = virtualinvoke $r1.<java.util.LinkedHashMap: java.util.Set entrySet()>();
+
+        $r8 = interfaceinvoke $r7.<java.util.Set: java.util.Iterator iterator()>();
+
+        $r9 = interfaceinvoke $r8.<java.util.Iterator: java.lang.Object next()>();
+
+        $r10 = (java.util.Map$Entry) $r9;
+
+        $r9 = interfaceinvoke $r10.<java.util.Map$Entry: java.lang.Object getKey()>();
+
+        $r5 = (java.lang.String) $r9;
+
+        $r9 = interfaceinvoke $r10.<java.util.Map$Entry: java.lang.Object getValue()>();
+
+        $r11 = (android.graphics.Bitmap) $r9;
+
+        $r1 = r0.<com.squareup.picasso.LruCache: java.util.LinkedHashMap map>;
+
+        virtualinvoke $r1.<java.util.LinkedHashMap: java.lang.Object remove(java.lang.Object)>($r5);
+
+        $i1 = r0.<com.squareup.picasso.LruCache: int size>;
+
+        $i2 = staticinvoke <com.squareup.picasso.Utils: int getBitmapBytes(android.graphics.Bitmap)>($r11);
+
+        $i1 = $i1 - $i2;
+
+        r0.<com.squareup.picasso.LruCache: int size> = $i1;
+
+        $i1 = r0.<com.squareup.picasso.LruCache: int evictionCount>;
+
+        $i1 = $i1 + 1;
+
+        r0.<com.squareup.picasso.LruCache: int evictionCount> = $i1;
+
+        exitmonitor r0;
+
+     label9:
+        goto label1;
+
+        catch java.lang.Throwable from label2 to label4 with label4;
+        catch java.lang.Throwable from label5 to label7 with label4;
+        catch java.lang.Throwable from label8 to label9 with label4;
+    }
+
+    public final void clear()
+    {
+        com.squareup.picasso.LruCache r0;
+        java.lang.Throwable $r1;
+
+        r0 := @this: com.squareup.picasso.LruCache;
+
+        entermonitor r0;
+
+     label1:
+        specialinvoke r0.<com.squareup.picasso.LruCache: void trimToSize(int)>(-1);
+
+     label2:
+        exitmonitor r0;
+
+        return;
+
+     label3:
+        $r1 := @caughtexception;
+
+        exitmonitor r0;
+
+        throw $r1;
+
+        catch java.lang.Throwable from label1 to label2 with label3;
+    }
+
+    public final void clearKeyUri(java.lang.String)
+    {
+        com.squareup.picasso.LruCache r0;
+        java.lang.String $r1, $r7;
+        boolean $z0, $z1;
+        int $i0, $i1, $i2;
+        java.util.LinkedHashMap $r2;
+        java.util.Set $r3;
+        java.util.Iterator $r4;
+        java.lang.Object $r5;
+        java.util.Map$Entry $r6;
+        android.graphics.Bitmap $r8;
+        java.lang.Throwable $r9;
+
+        r0 := @this: com.squareup.picasso.LruCache;
+
+        $r1 := @parameter0: java.lang.String;
+
+        $z0 = 0;
+
+        entermonitor r0;
+
+     label1:
+        $i0 = virtualinvoke $r1.<java.lang.String: int length()>();
+
+        $r2 = r0.<com.squareup.picasso.LruCache: java.util.LinkedHashMap map>;
+
+        $r3 = virtualinvoke $r2.<java.util.LinkedHashMap: java.util.Set entrySet()>();
+
+        $r4 = interfaceinvoke $r3.<java.util.Set: java.util.Iterator iterator()>();
+
+     label2:
+        $z1 = interfaceinvoke $r4.<java.util.Iterator: boolean hasNext()>();
+
+        if $z1 == 0 goto label4;
+
+        $r5 = interfaceinvoke $r4.<java.util.Iterator: java.lang.Object next()>();
+
+        $r6 = (java.util.Map$Entry) $r5;
+
+        $r5 = interfaceinvoke $r6.<java.util.Map$Entry: java.lang.Object getKey()>();
+
+        $r7 = (java.lang.String) $r5;
+
+        $r5 = interfaceinvoke $r6.<java.util.Map$Entry: java.lang.Object getValue()>();
+
+        $r8 = (android.graphics.Bitmap) $r5;
+
+        $i1 = virtualinvoke $r7.<java.lang.String: int indexOf(int)>(10);
+
+        if $i1 != $i0 goto label7;
+
+        $r7 = virtualinvoke $r7.<java.lang.String: java.lang.String substring(int,int)>(0, $i1);
+
+        $z1 = virtualinvoke $r7.<java.lang.String: boolean equals(java.lang.Object)>($r1);
+
+        if $z1 == 0 goto label7;
+
+        interfaceinvoke $r4.<java.util.Iterator: void remove()>();
+
+        $i1 = r0.<com.squareup.picasso.LruCache: int size>;
+
+        $i2 = staticinvoke <com.squareup.picasso.Utils: int getBitmapBytes(android.graphics.Bitmap)>($r8);
+
+        $i1 = $i1 - $i2;
+
+        r0.<com.squareup.picasso.LruCache: int size> = $i1;
+
+        $z0 = 1;
+
+     label3:
+        goto label2;
+
+     label4:
+        if $z0 == 0 goto label5;
+
+        $i0 = r0.<com.squareup.picasso.LruCache: int maxSize>;
+
+        specialinvoke r0.<com.squareup.picasso.LruCache: void trimToSize(int)>($i0);
+
+     label5:
+        exitmonitor r0;
+
+        return;
+
+     label6:
+        $r9 := @caughtexception;
+
+        exitmonitor r0;
+
+        throw $r9;
+
+     label7:
+        goto label3;
+
+        catch java.lang.Throwable from label1 to label5 with label6;
+    }
+
+    public final void evictAll()
+    {
+        com.squareup.picasso.LruCache r0;
+
+        r0 := @this: com.squareup.picasso.LruCache;
+
+        specialinvoke r0.<com.squareup.picasso.LruCache: void trimToSize(int)>(-1);
+
+        return;
+    }
+
+    public final int evictionCount()
+    {
+        com.squareup.picasso.LruCache r0;
+        java.lang.Throwable $r1;
+        int i0;
+
+        r0 := @this: com.squareup.picasso.LruCache;
+
+        entermonitor r0;
+
+     label1:
+        i0 = r0.<com.squareup.picasso.LruCache: int evictionCount>;
+
+     label2:
+        exitmonitor r0;
+
+        return i0;
+
+     label3:
+        $r1 := @caughtexception;
+
+        exitmonitor r0;
+
+        throw $r1;
+
+        catch java.lang.Throwable from label1 to label2 with label3;
+    }
+
+    public android.graphics.Bitmap get(java.lang.String)
+    {
+        com.squareup.picasso.LruCache r0;
+        java.lang.String $r1;
+        java.lang.Object $r2;
+        java.lang.NullPointerException $r3;
+        java.util.LinkedHashMap $r4;
+        android.graphics.Bitmap $r5;
+        int $i0;
+        java.lang.Throwable $r6;
+
+        r0 := @this: com.squareup.picasso.LruCache;
+
+        $r1 := @parameter0: java.lang.String;
+
+        if $r1 != null goto label1;
+
+        $r3 = new java.lang.NullPointerException;
+
+        specialinvoke $r3.<java.lang.NullPointerException: void <init>(java.lang.String)>("key == null");
+
+        throw $r3;
+
+     label1:
+        entermonitor r0;
+
+     label2:
+        $r4 = r0.<com.squareup.picasso.LruCache: java.util.LinkedHashMap map>;
+
+        $r2 = virtualinvoke $r4.<java.util.LinkedHashMap: java.lang.Object get(java.lang.Object)>($r1);
+
+        $r5 = (android.graphics.Bitmap) $r2;
+
+        if $r5 == null goto label4;
+
+        $i0 = r0.<com.squareup.picasso.LruCache: int hitCount>;
+
+        $i0 = $i0 + 1;
+
+        r0.<com.squareup.picasso.LruCache: int hitCount> = $i0;
+
+        exitmonitor r0;
+
+     label3:
+        return $r5;
+
+     label4:
+        $i0 = r0.<com.squareup.picasso.LruCache: int missCount>;
+
+        $i0 = $i0 + 1;
+
+        r0.<com.squareup.picasso.LruCache: int missCount> = $i0;
+
+        exitmonitor r0;
+
+     label5:
+        return null;
+
+     label6:
+        $r6 := @caughtexception;
+
+        exitmonitor r0;
+
+        throw $r6;
+
+        catch java.lang.Throwable from label2 to label3 with label6;
+        catch java.lang.Throwable from label4 to label5 with label6;
+    }
+
+    public final int hitCount()
+    {
+        com.squareup.picasso.LruCache r0;
+        java.lang.Throwable $r1;
+        int i0;
+
+        r0 := @this: com.squareup.picasso.LruCache;
+
+        entermonitor r0;
+
+     label1:
+        i0 = r0.<com.squareup.picasso.LruCache: int hitCount>;
+
+     label2:
+        exitmonitor r0;
+
+        return i0;
+
+     label3:
+        $r1 := @caughtexception;
+
+        exitmonitor r0;
+
+        throw $r1;
+
+        catch java.lang.Throwable from label1 to label2 with label3;
+    }
+
+    public final int maxSize()
+    {
+        com.squareup.picasso.LruCache r0;
+        java.lang.Throwable $r1;
+        int i0;
+
+        r0 := @this: com.squareup.picasso.LruCache;
+
+        entermonitor r0;
+
+     label1:
+        i0 = r0.<com.squareup.picasso.LruCache: int maxSize>;
+
+     label2:
+        exitmonitor r0;
+
+        return i0;
+
+     label3:
+        $r1 := @caughtexception;
+
+        exitmonitor r0;
+
+        throw $r1;
+
+        catch java.lang.Throwable from label1 to label2 with label3;
+    }
+
+    public final int missCount()
+    {
+        com.squareup.picasso.LruCache r0;
+        java.lang.Throwable $r1;
+        int i0;
+
+        r0 := @this: com.squareup.picasso.LruCache;
+
+        entermonitor r0;
+
+     label1:
+        i0 = r0.<com.squareup.picasso.LruCache: int missCount>;
+
+     label2:
+        exitmonitor r0;
+
+        return i0;
+
+     label3:
+        $r1 := @caughtexception;
+
+        exitmonitor r0;
+
+        throw $r1;
+
+        catch java.lang.Throwable from label1 to label2 with label3;
+    }
+
+    public final int putCount()
+    {
+        com.squareup.picasso.LruCache r0;
+        java.lang.Throwable $r1;
+        int i0;
+
+        r0 := @this: com.squareup.picasso.LruCache;
+
+        entermonitor r0;
+
+     label1:
+        i0 = r0.<com.squareup.picasso.LruCache: int putCount>;
+
+     label2:
+        exitmonitor r0;
+
+        return i0;
+
+     label3:
+        $r1 := @caughtexception;
+
+        exitmonitor r0;
+
+        throw $r1;
+
+        catch java.lang.Throwable from label1 to label2 with label3;
+    }
+
+    public void set(java.lang.String, android.graphics.Bitmap)
+    {
+        com.squareup.picasso.LruCache r0;
+        java.lang.String $r1;
+        android.graphics.Bitmap $r2;
+        java.lang.NullPointerException $r3;
+        int $i0, $i1;
+        java.util.LinkedHashMap $r4;
+        java.lang.Object $r5;
+        java.lang.Throwable $r6;
+
+        r0 := @this: com.squareup.picasso.LruCache;
+
+        $r1 := @parameter0: java.lang.String;
+
+        $r2 := @parameter1: android.graphics.Bitmap;
+
+        if $r1 == null goto label1;
+
+        if $r2 != null goto label2;
+
+     label1:
+        $r3 = new java.lang.NullPointerException;
+
+        specialinvoke $r3.<java.lang.NullPointerException: void <init>(java.lang.String)>("key == null || bitmap == null");
+
+        throw $r3;
+
+     label2:
+        entermonitor r0;
+
+     label3:
+        $i0 = r0.<com.squareup.picasso.LruCache: int putCount>;
+
+        $i0 = $i0 + 1;
+
+        r0.<com.squareup.picasso.LruCache: int putCount> = $i0;
+
+        $i0 = r0.<com.squareup.picasso.LruCache: int size>;
+
+        $i1 = staticinvoke <com.squareup.picasso.Utils: int getBitmapBytes(android.graphics.Bitmap)>($r2);
+
+        $i0 = $i0 + $i1;
+
+        r0.<com.squareup.picasso.LruCache: int size> = $i0;
+
+        $r4 = r0.<com.squareup.picasso.LruCache: java.util.LinkedHashMap map>;
+
+        $r5 = virtualinvoke $r4.<java.util.LinkedHashMap: java.lang.Object put(java.lang.Object,java.lang.Object)>($r1, $r2);
+
+        $r2 = (android.graphics.Bitmap) $r5;
+
+        if $r2 == null goto label4;
+
+        $i0 = r0.<com.squareup.picasso.LruCache: int size>;
+
+        $i1 = staticinvoke <com.squareup.picasso.Utils: int getBitmapBytes(android.graphics.Bitmap)>($r2);
+
+        $i0 = $i0 - $i1;
+
+        r0.<com.squareup.picasso.LruCache: int size> = $i0;
+
+     label4:
+        exitmonitor r0;
+
+     label5:
+        $i0 = r0.<com.squareup.picasso.LruCache: int maxSize>;
+
+        specialinvoke r0.<com.squareup.picasso.LruCache: void trimToSize(int)>($i0);
+
+        return;
+
+     label6:
+        $r6 := @caughtexception;
+
+        exitmonitor r0;
+
+        throw $r6;
+
+        catch java.lang.Throwable from label3 to label5 with label6;
+    }
+
+    public final int size()
+    {
+        com.squareup.picasso.LruCache r0;
+        java.lang.Throwable $r1;
+        int i0;
+
+        r0 := @this: com.squareup.picasso.LruCache;
+
+        entermonitor r0;
+
+     label1:
+        i0 = r0.<com.squareup.picasso.LruCache: int size>;
+
+     label2:
+        exitmonitor r0;
+
+        return i0;
+
+     label3:
+        $r1 := @caughtexception;
+
+        exitmonitor r0;
+
+        throw $r1;
+
+        catch java.lang.Throwable from label1 to label2 with label3;
+    }
+}

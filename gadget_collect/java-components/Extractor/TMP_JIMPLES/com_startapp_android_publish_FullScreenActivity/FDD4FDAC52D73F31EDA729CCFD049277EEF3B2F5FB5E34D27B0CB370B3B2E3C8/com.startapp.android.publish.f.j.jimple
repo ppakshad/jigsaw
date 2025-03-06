@@ -1,0 +1,57 @@
+public class com.startapp.android.publish.f.j extends com.startapp.android.publish.f.b
+{
+
+    public void <init>(android.content.Context, com.startapp.android.publish.a.h, com.startapp.android.publish.model.AdPreferences, com.startapp.android.publish.model.SodaPreferences, com.startapp.android.publish.AdEventListener)
+    {
+        com.startapp.android.publish.f.j r0;
+        android.content.Context $r1;
+        com.startapp.android.publish.a.h $r2;
+        com.startapp.android.publish.model.AdPreferences $r3;
+        com.startapp.android.publish.model.SodaPreferences $r4;
+        com.startapp.android.publish.AdEventListener $r5;
+        com.startapp.android.publish.model.AdPreferences$Placement $r6;
+
+        r0 := @this: com.startapp.android.publish.f.j;
+
+        $r1 := @parameter0: android.content.Context;
+
+        $r2 := @parameter1: com.startapp.android.publish.a.h;
+
+        $r3 := @parameter2: com.startapp.android.publish.model.AdPreferences;
+
+        $r4 := @parameter3: com.startapp.android.publish.model.SodaPreferences;
+
+        $r5 := @parameter4: com.startapp.android.publish.AdEventListener;
+
+        $r6 = <com.startapp.android.publish.model.AdPreferences$Placement: com.startapp.android.publish.model.AdPreferences$Placement INAPP_OFFER_WALL>;
+
+        specialinvoke r0.<com.startapp.android.publish.f.b: void <init>(android.content.Context,com.startapp.android.publish.Ad,com.startapp.android.publish.model.AdPreferences,com.startapp.android.publish.model.SodaPreferences,com.startapp.android.publish.AdEventListener,com.startapp.android.publish.model.AdPreferences$Placement,boolean)>($r1, $r2, $r3, $r4, $r5, $r6, 1);
+
+        return;
+    }
+
+    protected com.startapp.android.publish.model.GetAdRequest e()
+    {
+        com.startapp.android.publish.f.j r0;
+        com.startapp.android.publish.model.GetAdRequest $r1;
+        com.startapp.android.publish.model.MetaData $r2;
+        int $i0;
+
+        r0 := @this: com.startapp.android.publish.f.j;
+
+        $r1 = specialinvoke r0.<com.startapp.android.publish.f.b: com.startapp.android.publish.model.GetAdRequest e()>();
+
+        if $r1 != null goto label1;
+
+        return null;
+
+     label1:
+        $r2 = staticinvoke <com.startapp.android.publish.model.MetaData: com.startapp.android.publish.model.MetaData getInstance()>();
+
+        $i0 = virtualinvoke $r2.<com.startapp.android.publish.model.MetaData: int getMaxAds()>();
+
+        virtualinvoke $r1.<com.startapp.android.publish.model.GetAdRequest: void setAdsNumber(int)>($i0);
+
+        return $r1;
+    }
+}

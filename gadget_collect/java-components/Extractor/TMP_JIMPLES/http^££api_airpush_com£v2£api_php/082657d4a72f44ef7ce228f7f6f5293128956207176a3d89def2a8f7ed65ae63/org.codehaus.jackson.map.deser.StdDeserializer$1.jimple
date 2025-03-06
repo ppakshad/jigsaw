@@ -1,0 +1,116 @@
+class org.codehaus.jackson.map.deser.StdDeserializer$1 extends java.lang.Object
+{
+    static final int[] $SwitchMap$org$codehaus$jackson$JsonParser$NumberType;
+    static final int[] $SwitchMap$org$codehaus$jackson$JsonToken;
+
+    static void <clinit>()
+    {
+        org.codehaus.jackson.JsonParser$NumberType[] $r0;
+        int $i0;
+        int[] $r1;
+        org.codehaus.jackson.JsonParser$NumberType $r2;
+        org.codehaus.jackson.JsonToken[] $r3;
+        org.codehaus.jackson.JsonToken $r4;
+        java.lang.NoSuchFieldError $r5, $r6, $r7, $r8, $r9;
+
+        $r0 = staticinvoke <org.codehaus.jackson.JsonParser$NumberType: org.codehaus.jackson.JsonParser$NumberType[] values()>();
+
+        $i0 = lengthof $r0;
+
+        $r1 = newarray (int)[$i0];
+
+        <org.codehaus.jackson.map.deser.StdDeserializer$1: int[] $SwitchMap$org$codehaus$jackson$JsonParser$NumberType> = $r1;
+
+     label01:
+        $r1 = <org.codehaus.jackson.map.deser.StdDeserializer$1: int[] $SwitchMap$org$codehaus$jackson$JsonParser$NumberType>;
+
+        $r2 = <org.codehaus.jackson.JsonParser$NumberType: org.codehaus.jackson.JsonParser$NumberType INT>;
+
+        $i0 = virtualinvoke $r2.<org.codehaus.jackson.JsonParser$NumberType: int ordinal()>();
+
+     label02:
+        $r1[$i0] = 1;
+
+     label03:
+        $r1 = <org.codehaus.jackson.map.deser.StdDeserializer$1: int[] $SwitchMap$org$codehaus$jackson$JsonParser$NumberType>;
+
+        $r2 = <org.codehaus.jackson.JsonParser$NumberType: org.codehaus.jackson.JsonParser$NumberType LONG>;
+
+        $i0 = virtualinvoke $r2.<org.codehaus.jackson.JsonParser$NumberType: int ordinal()>();
+
+     label04:
+        $r1[$i0] = 2;
+
+     label05:
+        $r3 = staticinvoke <org.codehaus.jackson.JsonToken: org.codehaus.jackson.JsonToken[] values()>();
+
+        $i0 = lengthof $r3;
+
+        $r1 = newarray (int)[$i0];
+
+        <org.codehaus.jackson.map.deser.StdDeserializer$1: int[] $SwitchMap$org$codehaus$jackson$JsonToken> = $r1;
+
+     label06:
+        $r1 = <org.codehaus.jackson.map.deser.StdDeserializer$1: int[] $SwitchMap$org$codehaus$jackson$JsonToken>;
+
+        $r4 = <org.codehaus.jackson.JsonToken: org.codehaus.jackson.JsonToken VALUE_NUMBER_INT>;
+
+        $i0 = virtualinvoke $r4.<org.codehaus.jackson.JsonToken: int ordinal()>();
+
+     label07:
+        $r1[$i0] = 1;
+
+     label08:
+        $r1 = <org.codehaus.jackson.map.deser.StdDeserializer$1: int[] $SwitchMap$org$codehaus$jackson$JsonToken>;
+
+        $r4 = <org.codehaus.jackson.JsonToken: org.codehaus.jackson.JsonToken VALUE_NUMBER_FLOAT>;
+
+        $i0 = virtualinvoke $r4.<org.codehaus.jackson.JsonToken: int ordinal()>();
+
+     label09:
+        $r1[$i0] = 2;
+
+     label10:
+        $r1 = <org.codehaus.jackson.map.deser.StdDeserializer$1: int[] $SwitchMap$org$codehaus$jackson$JsonToken>;
+
+        $r4 = <org.codehaus.jackson.JsonToken: org.codehaus.jackson.JsonToken VALUE_STRING>;
+
+        $i0 = virtualinvoke $r4.<org.codehaus.jackson.JsonToken: int ordinal()>();
+
+     label11:
+        $r1[$i0] = 3;
+
+        return;
+
+     label12:
+        $r5 := @caughtexception;
+
+        return;
+
+     label13:
+        $r6 := @caughtexception;
+
+        goto label10;
+
+     label14:
+        $r7 := @caughtexception;
+
+        goto label08;
+
+     label15:
+        $r8 := @caughtexception;
+
+        goto label05;
+
+     label16:
+        $r9 := @caughtexception;
+
+        goto label03;
+
+        catch java.lang.NoSuchFieldError from label01 to label02 with label16;
+        catch java.lang.NoSuchFieldError from label03 to label04 with label15;
+        catch java.lang.NoSuchFieldError from label06 to label07 with label14;
+        catch java.lang.NoSuchFieldError from label08 to label09 with label13;
+        catch java.lang.NoSuchFieldError from label10 to label11 with label12;
+    }
+}

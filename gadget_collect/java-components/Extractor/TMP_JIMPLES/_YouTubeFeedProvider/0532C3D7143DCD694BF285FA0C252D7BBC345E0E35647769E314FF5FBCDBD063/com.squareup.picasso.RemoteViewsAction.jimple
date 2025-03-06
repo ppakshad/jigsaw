@@ -1,0 +1,153 @@
+abstract class com.squareup.picasso.RemoteViewsAction extends com.squareup.picasso.Action
+{
+    final android.widget.RemoteViews remoteViews;
+    private com.squareup.picasso.RemoteViewsAction$RemoteViewsTarget target;
+    final int viewId;
+
+    void <init>(com.squareup.picasso.Picasso, com.squareup.picasso.Request, android.widget.RemoteViews, int, int, int, int, java.lang.Object, java.lang.String)
+    {
+        com.squareup.picasso.RemoteViewsAction r0;
+        com.squareup.picasso.Picasso $r1;
+        com.squareup.picasso.Request $r2;
+        android.widget.RemoteViews $r3;
+        int $i0, $i1, $i2, $i3;
+        java.lang.Object $r4;
+        java.lang.String $r5;
+
+        r0 := @this: com.squareup.picasso.RemoteViewsAction;
+
+        $r1 := @parameter0: com.squareup.picasso.Picasso;
+
+        $r2 := @parameter1: com.squareup.picasso.Request;
+
+        $r3 := @parameter2: android.widget.RemoteViews;
+
+        $i0 := @parameter3: int;
+
+        $i1 := @parameter4: int;
+
+        $i2 := @parameter5: int;
+
+        $i3 := @parameter6: int;
+
+        $r4 := @parameter7: java.lang.Object;
+
+        $r5 := @parameter8: java.lang.String;
+
+        specialinvoke r0.<com.squareup.picasso.Action: void <init>(com.squareup.picasso.Picasso,java.lang.Object,com.squareup.picasso.Request,int,int,int,android.graphics.drawable.Drawable,java.lang.String,java.lang.Object,boolean)>($r1, null, $r2, $i2, $i3, $i1, null, $r5, $r4, 0);
+
+        r0.<com.squareup.picasso.RemoteViewsAction: android.widget.RemoteViews remoteViews> = $r3;
+
+        r0.<com.squareup.picasso.RemoteViewsAction: int viewId> = $i0;
+
+        return;
+    }
+
+    void complete(android.graphics.Bitmap, com.squareup.picasso.Picasso$LoadedFrom)
+    {
+        com.squareup.picasso.RemoteViewsAction r0;
+        android.graphics.Bitmap $r1;
+        com.squareup.picasso.Picasso$LoadedFrom $r2;
+        android.widget.RemoteViews $r3;
+        int $i0;
+
+        r0 := @this: com.squareup.picasso.RemoteViewsAction;
+
+        $r1 := @parameter0: android.graphics.Bitmap;
+
+        $r2 := @parameter1: com.squareup.picasso.Picasso$LoadedFrom;
+
+        $r3 = r0.<com.squareup.picasso.RemoteViewsAction: android.widget.RemoteViews remoteViews>;
+
+        $i0 = r0.<com.squareup.picasso.RemoteViewsAction: int viewId>;
+
+        virtualinvoke $r3.<android.widget.RemoteViews: void setImageViewBitmap(int,android.graphics.Bitmap)>($i0, $r1);
+
+        virtualinvoke r0.<com.squareup.picasso.RemoteViewsAction: void update()>();
+
+        return;
+    }
+
+    public void error()
+    {
+        com.squareup.picasso.RemoteViewsAction r0;
+        int $i0;
+
+        r0 := @this: com.squareup.picasso.RemoteViewsAction;
+
+        $i0 = r0.<com.squareup.picasso.RemoteViewsAction: int errorResId>;
+
+        if $i0 == 0 goto label1;
+
+        $i0 = r0.<com.squareup.picasso.RemoteViewsAction: int errorResId>;
+
+        virtualinvoke r0.<com.squareup.picasso.RemoteViewsAction: void setImageResource(int)>($i0);
+
+     label1:
+        return;
+    }
+
+    com.squareup.picasso.RemoteViewsAction$RemoteViewsTarget getTarget()
+    {
+        com.squareup.picasso.RemoteViewsAction r0;
+        android.widget.RemoteViews $r1;
+        int $i0;
+        com.squareup.picasso.RemoteViewsAction$RemoteViewsTarget $r2;
+
+        r0 := @this: com.squareup.picasso.RemoteViewsAction;
+
+        $r2 = r0.<com.squareup.picasso.RemoteViewsAction: com.squareup.picasso.RemoteViewsAction$RemoteViewsTarget target>;
+
+        if $r2 != null goto label1;
+
+        $r2 = new com.squareup.picasso.RemoteViewsAction$RemoteViewsTarget;
+
+        $r1 = r0.<com.squareup.picasso.RemoteViewsAction: android.widget.RemoteViews remoteViews>;
+
+        $i0 = r0.<com.squareup.picasso.RemoteViewsAction: int viewId>;
+
+        specialinvoke $r2.<com.squareup.picasso.RemoteViewsAction$RemoteViewsTarget: void <init>(android.widget.RemoteViews,int)>($r1, $i0);
+
+        r0.<com.squareup.picasso.RemoteViewsAction: com.squareup.picasso.RemoteViewsAction$RemoteViewsTarget target> = $r2;
+
+     label1:
+        $r2 = r0.<com.squareup.picasso.RemoteViewsAction: com.squareup.picasso.RemoteViewsAction$RemoteViewsTarget target>;
+
+        return $r2;
+    }
+
+    volatile java.lang.Object getTarget()
+    {
+        com.squareup.picasso.RemoteViewsAction r0;
+        com.squareup.picasso.RemoteViewsAction$RemoteViewsTarget $r1;
+
+        r0 := @this: com.squareup.picasso.RemoteViewsAction;
+
+        $r1 = virtualinvoke r0.<com.squareup.picasso.RemoteViewsAction: com.squareup.picasso.RemoteViewsAction$RemoteViewsTarget getTarget()>();
+
+        return $r1;
+    }
+
+    void setImageResource(int)
+    {
+        com.squareup.picasso.RemoteViewsAction r0;
+        int $i0, $i1;
+        android.widget.RemoteViews $r1;
+
+        r0 := @this: com.squareup.picasso.RemoteViewsAction;
+
+        $i0 := @parameter0: int;
+
+        $r1 = r0.<com.squareup.picasso.RemoteViewsAction: android.widget.RemoteViews remoteViews>;
+
+        $i1 = r0.<com.squareup.picasso.RemoteViewsAction: int viewId>;
+
+        virtualinvoke $r1.<android.widget.RemoteViews: void setImageViewResource(int,int)>($i1, $i0);
+
+        virtualinvoke r0.<com.squareup.picasso.RemoteViewsAction: void update()>();
+
+        return;
+    }
+
+    abstract void update();
+}

@@ -1,0 +1,459 @@
+class com.ideaworks3d.marmalade.LoaderView$VideoRunner extends java.lang.Object implements java.lang.Runnable
+{
+    public static final int PAUSE;
+    public static final int PLAY;
+    public static final int RESUME;
+    public static final int STOP;
+    public static final int VOLUME;
+    private int m_Action;
+    private java.lang.String m_File;
+    private boolean m_Fullscreen;
+    private int m_Height;
+    private long m_Offset;
+    private int m_Repeats;
+    private int m_Return;
+    private long m_Size;
+    private int m_Volume;
+    private int m_Width;
+    private int m_X;
+    private int m_Y;
+    final com.ideaworks3d.marmalade.LoaderView this$0;
+
+    private void <init>(com.ideaworks3d.marmalade.LoaderView)
+    {
+        com.ideaworks3d.marmalade.LoaderView$VideoRunner r0;
+        com.ideaworks3d.marmalade.LoaderView $r1;
+
+        r0 := @this: com.ideaworks3d.marmalade.LoaderView$VideoRunner;
+
+        $r1 := @parameter0: com.ideaworks3d.marmalade.LoaderView;
+
+        r0.<com.ideaworks3d.marmalade.LoaderView$VideoRunner: com.ideaworks3d.marmalade.LoaderView this$0> = $r1;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    void <init>(com.ideaworks3d.marmalade.LoaderView, com.ideaworks3d.marmalade.LoaderView$1)
+    {
+        com.ideaworks3d.marmalade.LoaderView$VideoRunner r0;
+        com.ideaworks3d.marmalade.LoaderView $r1;
+        com.ideaworks3d.marmalade.LoaderView$1 $r2;
+
+        r0 := @this: com.ideaworks3d.marmalade.LoaderView$VideoRunner;
+
+        $r1 := @parameter0: com.ideaworks3d.marmalade.LoaderView;
+
+        $r2 := @parameter1: com.ideaworks3d.marmalade.LoaderView$1;
+
+        specialinvoke r0.<com.ideaworks3d.marmalade.LoaderView$VideoRunner: void <init>(com.ideaworks3d.marmalade.LoaderView)>($r1);
+
+        return;
+    }
+
+    void play(java.lang.String, int, int, int, int, int, int, boolean, long, long)
+    {
+        com.ideaworks3d.marmalade.LoaderView$VideoRunner r0;
+        java.lang.String $r1;
+        int $i0, $i1, $i2, $i3, $i4, $i5;
+        boolean $z0;
+        long $l6, $l7;
+
+        r0 := @this: com.ideaworks3d.marmalade.LoaderView$VideoRunner;
+
+        $r1 := @parameter0: java.lang.String;
+
+        $i0 := @parameter1: int;
+
+        $i1 := @parameter2: int;
+
+        $i2 := @parameter3: int;
+
+        $i3 := @parameter4: int;
+
+        $i4 := @parameter5: int;
+
+        $i5 := @parameter6: int;
+
+        $z0 := @parameter7: boolean;
+
+        $l6 := @parameter8: long;
+
+        $l7 := @parameter9: long;
+
+        r0.<com.ideaworks3d.marmalade.LoaderView$VideoRunner: int m_Action> = 1;
+
+        r0.<com.ideaworks3d.marmalade.LoaderView$VideoRunner: java.lang.String m_File> = $r1;
+
+        r0.<com.ideaworks3d.marmalade.LoaderView$VideoRunner: int m_Volume> = $i0;
+
+        r0.<com.ideaworks3d.marmalade.LoaderView$VideoRunner: int m_Repeats> = $i1;
+
+        r0.<com.ideaworks3d.marmalade.LoaderView$VideoRunner: int m_X> = $i2;
+
+        r0.<com.ideaworks3d.marmalade.LoaderView$VideoRunner: int m_Y> = $i3;
+
+        r0.<com.ideaworks3d.marmalade.LoaderView$VideoRunner: int m_Width> = $i4;
+
+        r0.<com.ideaworks3d.marmalade.LoaderView$VideoRunner: int m_Height> = $i5;
+
+        r0.<com.ideaworks3d.marmalade.LoaderView$VideoRunner: boolean m_Fullscreen> = $z0;
+
+        r0.<com.ideaworks3d.marmalade.LoaderView$VideoRunner: long m_Offset> = $l6;
+
+        r0.<com.ideaworks3d.marmalade.LoaderView$VideoRunner: long m_Size> = $l7;
+
+        return;
+    }
+
+    public void run()
+    {
+        com.ideaworks3d.marmalade.LoaderView$VideoRunner r0;
+        int $i0, $i1, $i2, $i3;
+        com.ideaworks3d.marmalade.LoaderView $r1, $r3;
+        com.ideaworks3d.marmalade.S3EVideoView $r2;
+        com.ideaworks3d.marmalade.LoaderActivity $r4;
+        boolean $z0;
+        java.lang.String $r5;
+        long $l4, $l5;
+        java.lang.Throwable $r6;
+
+        r0 := @this: com.ideaworks3d.marmalade.LoaderView$VideoRunner;
+
+        entermonitor r0;
+
+     label01:
+        $i0 = r0.<com.ideaworks3d.marmalade.LoaderView$VideoRunner: int m_Action>;
+
+        if $i0 != 1 goto label05;
+
+        $r1 = r0.<com.ideaworks3d.marmalade.LoaderView$VideoRunner: com.ideaworks3d.marmalade.LoaderView this$0>;
+
+        $r2 = staticinvoke <com.ideaworks3d.marmalade.LoaderView: com.ideaworks3d.marmalade.S3EVideoView access$300(com.ideaworks3d.marmalade.LoaderView)>($r1);
+
+        if $r2 == null goto label02;
+
+        $r1 = r0.<com.ideaworks3d.marmalade.LoaderView$VideoRunner: com.ideaworks3d.marmalade.LoaderView this$0>;
+
+        $r2 = staticinvoke <com.ideaworks3d.marmalade.LoaderView: com.ideaworks3d.marmalade.S3EVideoView access$300(com.ideaworks3d.marmalade.LoaderView)>($r1);
+
+        virtualinvoke $r2.<com.ideaworks3d.marmalade.S3EVideoView: void videoStop()>();
+
+        $r1 = r0.<com.ideaworks3d.marmalade.LoaderView$VideoRunner: com.ideaworks3d.marmalade.LoaderView this$0>;
+
+        $r2 = staticinvoke <com.ideaworks3d.marmalade.LoaderView: com.ideaworks3d.marmalade.S3EVideoView access$300(com.ideaworks3d.marmalade.LoaderView)>($r1);
+
+        virtualinvoke $r2.<com.ideaworks3d.marmalade.S3EVideoView: void videoRemoveView()>();
+
+        $r1 = r0.<com.ideaworks3d.marmalade.LoaderView$VideoRunner: com.ideaworks3d.marmalade.LoaderView this$0>;
+
+        staticinvoke <com.ideaworks3d.marmalade.LoaderView: com.ideaworks3d.marmalade.S3EVideoView access$302(com.ideaworks3d.marmalade.LoaderView,com.ideaworks3d.marmalade.S3EVideoView)>($r1, null);
+
+     label02:
+        $r1 = r0.<com.ideaworks3d.marmalade.LoaderView$VideoRunner: com.ideaworks3d.marmalade.LoaderView this$0>;
+
+        $r2 = new com.ideaworks3d.marmalade.S3EVideoView;
+
+        $r3 = r0.<com.ideaworks3d.marmalade.LoaderView$VideoRunner: com.ideaworks3d.marmalade.LoaderView this$0>;
+
+        $r4 = $r3.<com.ideaworks3d.marmalade.LoaderView: com.ideaworks3d.marmalade.LoaderActivity m_LoaderActivity>;
+
+        specialinvoke $r2.<com.ideaworks3d.marmalade.S3EVideoView: void <init>(com.ideaworks3d.marmalade.LoaderActivity)>($r4);
+
+        staticinvoke <com.ideaworks3d.marmalade.LoaderView: com.ideaworks3d.marmalade.S3EVideoView access$302(com.ideaworks3d.marmalade.LoaderView,com.ideaworks3d.marmalade.S3EVideoView)>($r1, $r2);
+
+        $r1 = r0.<com.ideaworks3d.marmalade.LoaderView$VideoRunner: com.ideaworks3d.marmalade.LoaderView this$0>;
+
+        $r2 = staticinvoke <com.ideaworks3d.marmalade.LoaderView: com.ideaworks3d.marmalade.S3EVideoView access$300(com.ideaworks3d.marmalade.LoaderView)>($r1);
+
+        $z0 = r0.<com.ideaworks3d.marmalade.LoaderView$VideoRunner: boolean m_Fullscreen>;
+
+        $i1 = r0.<com.ideaworks3d.marmalade.LoaderView$VideoRunner: int m_X>;
+
+        $i2 = r0.<com.ideaworks3d.marmalade.LoaderView$VideoRunner: int m_Y>;
+
+        $i0 = r0.<com.ideaworks3d.marmalade.LoaderView$VideoRunner: int m_Width>;
+
+        $i3 = r0.<com.ideaworks3d.marmalade.LoaderView$VideoRunner: int m_Height>;
+
+        virtualinvoke $r2.<com.ideaworks3d.marmalade.S3EVideoView: void videoAddView(boolean,int,int,int,int)>($z0, $i1, $i2, $i0, $i3);
+
+        $r1 = r0.<com.ideaworks3d.marmalade.LoaderView$VideoRunner: com.ideaworks3d.marmalade.LoaderView this$0>;
+
+        $r2 = staticinvoke <com.ideaworks3d.marmalade.LoaderView: com.ideaworks3d.marmalade.S3EVideoView access$300(com.ideaworks3d.marmalade.LoaderView)>($r1);
+
+        $i0 = r0.<com.ideaworks3d.marmalade.LoaderView$VideoRunner: int m_Volume>;
+
+        virtualinvoke $r2.<com.ideaworks3d.marmalade.S3EVideoView: void videoSetVolume(int)>($i0);
+
+        $r1 = r0.<com.ideaworks3d.marmalade.LoaderView$VideoRunner: com.ideaworks3d.marmalade.LoaderView this$0>;
+
+        $r2 = staticinvoke <com.ideaworks3d.marmalade.LoaderView: com.ideaworks3d.marmalade.S3EVideoView access$300(com.ideaworks3d.marmalade.LoaderView)>($r1);
+
+        $r5 = r0.<com.ideaworks3d.marmalade.LoaderView$VideoRunner: java.lang.String m_File>;
+
+        $i0 = r0.<com.ideaworks3d.marmalade.LoaderView$VideoRunner: int m_Repeats>;
+
+        $l4 = r0.<com.ideaworks3d.marmalade.LoaderView$VideoRunner: long m_Offset>;
+
+        $l5 = r0.<com.ideaworks3d.marmalade.LoaderView$VideoRunner: long m_Size>;
+
+        $i0 = virtualinvoke $r2.<com.ideaworks3d.marmalade.S3EVideoView: int videoPlay(java.lang.String,int,long,long)>($r5, $i0, $l4, $l5);
+
+        r0.<com.ideaworks3d.marmalade.LoaderView$VideoRunner: int m_Return> = $i0;
+
+     label03:
+        virtualinvoke r0.<java.lang.Object: void notify()>();
+
+     label04:
+        exitmonitor r0;
+
+        return;
+
+     label05:
+        $r1 = r0.<com.ideaworks3d.marmalade.LoaderView$VideoRunner: com.ideaworks3d.marmalade.LoaderView this$0>;
+
+        $r2 = staticinvoke <com.ideaworks3d.marmalade.LoaderView: com.ideaworks3d.marmalade.S3EVideoView access$300(com.ideaworks3d.marmalade.LoaderView)>($r1);
+
+        if $r2 == null goto label03;
+
+        $i0 = r0.<com.ideaworks3d.marmalade.LoaderView$VideoRunner: int m_Action>;
+
+        lookupswitch($i0)
+        {
+            case 2: goto label09;
+            case 3: goto label10;
+            case 4: goto label11;
+            case 5: goto label12;
+            default: goto label06;
+        };
+
+     label06:
+        r0.<com.ideaworks3d.marmalade.LoaderView$VideoRunner: int m_Return> = 0;
+
+     label07:
+        goto label03;
+
+     label08:
+        $r6 := @caughtexception;
+
+        exitmonitor r0;
+
+        throw $r6;
+
+     label09:
+        $r1 = r0.<com.ideaworks3d.marmalade.LoaderView$VideoRunner: com.ideaworks3d.marmalade.LoaderView this$0>;
+
+        $r2 = staticinvoke <com.ideaworks3d.marmalade.LoaderView: com.ideaworks3d.marmalade.S3EVideoView access$300(com.ideaworks3d.marmalade.LoaderView)>($r1);
+
+        virtualinvoke $r2.<com.ideaworks3d.marmalade.S3EVideoView: void videoPause()>();
+
+        goto label06;
+
+     label10:
+        $r1 = r0.<com.ideaworks3d.marmalade.LoaderView$VideoRunner: com.ideaworks3d.marmalade.LoaderView this$0>;
+
+        $r2 = staticinvoke <com.ideaworks3d.marmalade.LoaderView: com.ideaworks3d.marmalade.S3EVideoView access$300(com.ideaworks3d.marmalade.LoaderView)>($r1);
+
+        virtualinvoke $r2.<com.ideaworks3d.marmalade.S3EVideoView: void videoResume()>();
+
+        goto label06;
+
+     label11:
+        $r1 = r0.<com.ideaworks3d.marmalade.LoaderView$VideoRunner: com.ideaworks3d.marmalade.LoaderView this$0>;
+
+        $r2 = staticinvoke <com.ideaworks3d.marmalade.LoaderView: com.ideaworks3d.marmalade.S3EVideoView access$300(com.ideaworks3d.marmalade.LoaderView)>($r1);
+
+        virtualinvoke $r2.<com.ideaworks3d.marmalade.S3EVideoView: void videoStop()>();
+
+        $r1 = r0.<com.ideaworks3d.marmalade.LoaderView$VideoRunner: com.ideaworks3d.marmalade.LoaderView this$0>;
+
+        $r2 = staticinvoke <com.ideaworks3d.marmalade.LoaderView: com.ideaworks3d.marmalade.S3EVideoView access$300(com.ideaworks3d.marmalade.LoaderView)>($r1);
+
+        virtualinvoke $r2.<com.ideaworks3d.marmalade.S3EVideoView: void videoRemoveView()>();
+
+        $r1 = r0.<com.ideaworks3d.marmalade.LoaderView$VideoRunner: com.ideaworks3d.marmalade.LoaderView this$0>;
+
+        staticinvoke <com.ideaworks3d.marmalade.LoaderView: com.ideaworks3d.marmalade.S3EVideoView access$302(com.ideaworks3d.marmalade.LoaderView,com.ideaworks3d.marmalade.S3EVideoView)>($r1, null);
+
+        goto label06;
+
+     label12:
+        $r1 = r0.<com.ideaworks3d.marmalade.LoaderView$VideoRunner: com.ideaworks3d.marmalade.LoaderView this$0>;
+
+        $r2 = staticinvoke <com.ideaworks3d.marmalade.LoaderView: com.ideaworks3d.marmalade.S3EVideoView access$300(com.ideaworks3d.marmalade.LoaderView)>($r1);
+
+        $i0 = r0.<com.ideaworks3d.marmalade.LoaderView$VideoRunner: int m_Volume>;
+
+        virtualinvoke $r2.<com.ideaworks3d.marmalade.S3EVideoView: void videoSetVolume(int)>($i0);
+
+     label13:
+        goto label06;
+
+        catch java.lang.Throwable from label01 to label04 with label08;
+        catch java.lang.Throwable from label05 to label07 with label08;
+        catch java.lang.Throwable from label09 to label13 with label08;
+    }
+
+    public int runOnUiThread(boolean)
+    {
+        com.ideaworks3d.marmalade.LoaderView$VideoRunner r0;
+        boolean $z0;
+        java.lang.Thread $r1, $r5;
+        com.ideaworks3d.marmalade.LoaderView $r2;
+        com.ideaworks3d.marmalade.LoaderActivity $r3;
+        android.os.Looper $r4;
+        int $i0;
+        android.os.Handler $r6;
+        java.lang.Throwable $r7, $r8;
+
+        r0 := @this: com.ideaworks3d.marmalade.LoaderView$VideoRunner;
+
+        $z0 := @parameter0: boolean;
+
+        entermonitor r0;
+
+     label01:
+        $r1 = staticinvoke <java.lang.Thread: java.lang.Thread currentThread()>();
+
+     label02:
+        $r2 = r0.<com.ideaworks3d.marmalade.LoaderView$VideoRunner: com.ideaworks3d.marmalade.LoaderView this$0>;
+
+        $r3 = $r2.<com.ideaworks3d.marmalade.LoaderView: com.ideaworks3d.marmalade.LoaderActivity m_LoaderActivity>;
+
+     label03:
+        $r4 = virtualinvoke $r3.<com.ideaworks3d.marmalade.LoaderActivity: android.os.Looper getMainLooper()>();
+
+        $r5 = virtualinvoke $r4.<android.os.Looper: java.lang.Thread getThread()>();
+
+     label04:
+        if $r1 != $r5 goto label09;
+
+     label05:
+        virtualinvoke r0.<com.ideaworks3d.marmalade.LoaderView$VideoRunner: void run()>();
+
+     label06:
+        if $z0 == 0 goto label15;
+
+     label07:
+        $i0 = r0.<com.ideaworks3d.marmalade.LoaderView$VideoRunner: int m_Return>;
+
+     label08:
+        exitmonitor r0;
+
+        return $i0;
+
+     label09:
+        $r2 = r0.<com.ideaworks3d.marmalade.LoaderView$VideoRunner: com.ideaworks3d.marmalade.LoaderView this$0>;
+
+        $r6 = $r2.<com.ideaworks3d.marmalade.LoaderView: android.os.Handler m_Handler>;
+
+     label10:
+        virtualinvoke $r6.<android.os.Handler: boolean post(java.lang.Runnable)>(r0);
+
+     label11:
+        if $z0 == 0 goto label06;
+
+     label12:
+        virtualinvoke r0.<java.lang.Object: void wait()>();
+
+     label13:
+        goto label06;
+
+     label14:
+        $r7 := @caughtexception;
+
+        $i0 = -1;
+
+        goto label08;
+
+     label15:
+        $i0 = 0;
+
+        goto label08;
+
+     label16:
+        $r8 := @caughtexception;
+
+        exitmonitor r0;
+
+        throw $r8;
+
+        catch java.lang.InterruptedException from label01 to label02 with label14;
+        catch java.lang.InterruptedException from label03 to label04 with label14;
+        catch java.lang.InterruptedException from label05 to label06 with label14;
+        catch java.lang.Throwable from label01 to label06 with label16;
+        catch java.lang.Throwable from label07 to label08 with label16;
+        catch java.lang.InterruptedException from label10 to label11 with label14;
+        catch java.lang.InterruptedException from label12 to label13 with label14;
+        catch java.lang.Throwable from label09 to label13 with label16;
+    }
+
+    void setState(int)
+    {
+        com.ideaworks3d.marmalade.LoaderView$VideoRunner r0;
+        int $i0;
+
+        r0 := @this: com.ideaworks3d.marmalade.LoaderView$VideoRunner;
+
+        $i0 := @parameter0: int;
+
+        lookupswitch($i0)
+        {
+            case 0: goto label4;
+            case 1: goto label3;
+            case 2: goto label2;
+            default: goto label1;
+        };
+
+     label1:
+        return;
+
+     label2:
+        r0.<com.ideaworks3d.marmalade.LoaderView$VideoRunner: int m_Action> = 2;
+
+        return;
+
+     label3:
+        r0.<com.ideaworks3d.marmalade.LoaderView$VideoRunner: int m_Action> = 3;
+
+        return;
+
+     label4:
+        r0.<com.ideaworks3d.marmalade.LoaderView$VideoRunner: int m_Action> = 4;
+
+        return;
+    }
+
+    void setVolume(int)
+    {
+        com.ideaworks3d.marmalade.LoaderView$VideoRunner r0;
+        int $i0;
+
+        r0 := @this: com.ideaworks3d.marmalade.LoaderView$VideoRunner;
+
+        $i0 := @parameter0: int;
+
+        r0.<com.ideaworks3d.marmalade.LoaderView$VideoRunner: int m_Action> = 5;
+
+        r0.<com.ideaworks3d.marmalade.LoaderView$VideoRunner: int m_Volume> = $i0;
+
+        return;
+    }
+
+    public static void <clinit>()
+    {
+        <com.ideaworks3d.marmalade.LoaderView$VideoRunner: int VOLUME> = 5;
+
+        <com.ideaworks3d.marmalade.LoaderView$VideoRunner: int STOP> = 4;
+
+        <com.ideaworks3d.marmalade.LoaderView$VideoRunner: int RESUME> = 3;
+
+        <com.ideaworks3d.marmalade.LoaderView$VideoRunner: int PLAY> = 1;
+
+        <com.ideaworks3d.marmalade.LoaderView$VideoRunner: int PAUSE> = 2;
+
+        return;
+    }
+}

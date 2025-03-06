@@ -1,0 +1,52 @@
+class com.movesky.app.main.SettingsScreen$1 extends java.lang.Object implements com.movesky.app.engine.ui.UIButtonDelegate
+{
+    final com.movesky.app.main.SettingsScreen this$0;
+
+    void <init>(com.movesky.app.main.SettingsScreen)
+    {
+        com.movesky.app.main.SettingsScreen$1 r0;
+        com.movesky.app.main.SettingsScreen $r1;
+
+        r0 := @this: com.movesky.app.main.SettingsScreen$1;
+
+        $r1 := @parameter0: com.movesky.app.main.SettingsScreen;
+
+        r0.<com.movesky.app.main.SettingsScreen$1: com.movesky.app.main.SettingsScreen this$0> = $r1;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public void onClick(com.movesky.app.engine.ui.UIButton)
+    {
+        com.movesky.app.main.SettingsScreen$1 r0;
+        com.movesky.app.engine.ui.UIButton $r1;
+        com.movesky.app.main.CalibrationScreen $r2;
+        com.movesky.app.main.SettingsScreen $r3;
+        com.movesky.app.engine.ui.UINavigationController $r4, $r5;
+        com.movesky.app.engine.ui.UISwipeTransition $r6;
+
+        r0 := @this: com.movesky.app.main.SettingsScreen$1;
+
+        $r1 := @parameter0: com.movesky.app.engine.ui.UIButton;
+
+        $r3 = r0.<com.movesky.app.main.SettingsScreen$1: com.movesky.app.main.SettingsScreen this$0>;
+
+        $r4 = staticinvoke <com.movesky.app.main.SettingsScreen: com.movesky.app.engine.ui.UINavigationController access$000(com.movesky.app.main.SettingsScreen)>($r3);
+
+        $r2 = new com.movesky.app.main.CalibrationScreen;
+
+        $r3 = r0.<com.movesky.app.main.SettingsScreen$1: com.movesky.app.main.SettingsScreen this$0>;
+
+        $r5 = staticinvoke <com.movesky.app.main.SettingsScreen: com.movesky.app.engine.ui.UINavigationController access$000(com.movesky.app.main.SettingsScreen)>($r3);
+
+        specialinvoke $r2.<com.movesky.app.main.CalibrationScreen: void <init>(com.movesky.app.engine.ui.UINavigationController)>($r5);
+
+        $r6 = <com.movesky.app.main.YSGame: com.movesky.app.engine.ui.UISwipeTransition FROM_RIGHT_TRANSITION>;
+
+        virtualinvoke $r4.<com.movesky.app.engine.ui.UINavigationController: void push(com.movesky.app.engine.ui.UIView,com.movesky.app.engine.ui.UISwipeTransition)>($r2, $r6);
+
+        return;
+    }
+}

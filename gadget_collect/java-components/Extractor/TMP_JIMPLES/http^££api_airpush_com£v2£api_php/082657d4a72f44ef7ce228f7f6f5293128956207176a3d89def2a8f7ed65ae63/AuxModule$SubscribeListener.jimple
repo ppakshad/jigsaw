@@ -1,0 +1,158 @@
+class AuxModule$SubscribeListener extends java.lang.Object implements android.content.DialogInterface$OnClickListener
+{
+    final AuxModule this$0;
+
+    void <init>(AuxModule)
+    {
+        AuxModule$SubscribeListener r0;
+        AuxModule $r1;
+
+        r0 := @this: AuxModule$SubscribeListener;
+
+        $r1 := @parameter0: AuxModule;
+
+        r0.<AuxModule$SubscribeListener: AuxModule this$0> = $r1;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public void onClick(android.content.DialogInterface, int)
+    {
+        AuxModule$SubscribeListener r0;
+        android.content.DialogInterface $r1;
+        int $i0, $i1;
+        com.ideaworks3d.marmalade.LoaderActivity $r2;
+        java.lang.String $r3, $r5;
+        java.lang.StringBuilder $r4;
+        java.net.URL $r6;
+        java.net.URLConnection $r7;
+        java.io.InputStream $r8;
+        java.io.BufferedInputStream $r9;
+        org.apache.http.util.ByteArrayBuffer $r10;
+        byte $b2;
+        java.lang.Exception $r11;
+        byte[] $r12;
+        android.content.SharedPreferences $r13;
+        android.content.SharedPreferences$Editor $r14;
+
+        r0 := @this: AuxModule$SubscribeListener;
+
+        $r1 := @parameter0: android.content.DialogInterface;
+
+        $i0 := @parameter1: int;
+
+        if $i0 != -1 goto label15;
+
+        $r2 = <com.ideaworks3d.marmalade.LoaderActivity: com.ideaworks3d.marmalade.LoaderActivity m_Activity>;
+
+        $r3 = staticinvoke <com.boxitsoft.UserEmailFetcher: java.lang.String getEmail(android.content.Context)>($r2);
+
+        if $r3 == null goto label15;
+
+        $r4 = new java.lang.StringBuilder;
+
+     label01:
+        specialinvoke $r4.<java.lang.StringBuilder: void <init>()>();
+
+        $r4 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("http://www.latinsoulstudio.com/googleplay/subscribe_email.asp?package=");
+
+     label02:
+        $r2 = <com.ideaworks3d.marmalade.LoaderActivity: com.ideaworks3d.marmalade.LoaderActivity m_Activity>;
+
+     label03:
+        $r5 = virtualinvoke $r2.<com.ideaworks3d.marmalade.LoaderActivity: java.lang.String getPackageName()>();
+
+        $r4 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r5);
+
+        $r4 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("&email=");
+
+        $r4 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r3);
+
+        $r3 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.String toString()>();
+
+     label04:
+        $r6 = new java.net.URL;
+
+     label05:
+        specialinvoke $r6.<java.net.URL: void <init>(java.lang.String)>($r3);
+
+        $r7 = virtualinvoke $r6.<java.net.URL: java.net.URLConnection openConnection()>();
+
+        $r8 = virtualinvoke $r7.<java.net.URLConnection: java.io.InputStream getInputStream()>();
+
+     label06:
+        $r9 = new java.io.BufferedInputStream;
+
+     label07:
+        specialinvoke $r9.<java.io.BufferedInputStream: void <init>(java.io.InputStream)>($r8);
+
+     label08:
+        $r10 = new org.apache.http.util.ByteArrayBuffer;
+
+     label09:
+        specialinvoke $r10.<org.apache.http.util.ByteArrayBuffer: void <init>(int)>(50);
+
+     label10:
+        $i1 = virtualinvoke $r9.<java.io.BufferedInputStream: int read()>();
+
+     label11:
+        if $i1 == -1 goto label17;
+
+        $b2 = (byte) $i1;
+
+     label12:
+        virtualinvoke $r10.<org.apache.http.util.ByteArrayBuffer: void append(int)>($b2);
+
+     label13:
+        goto label10;
+
+     label14:
+        $r11 := @caughtexception;
+
+     label15:
+        if $i0 != -2 goto label16;
+
+     label16:
+        interfaceinvoke $r1.<android.content.DialogInterface: void dismiss()>();
+
+        return;
+
+     label17:
+        $r3 = new java.lang.String;
+
+     label18:
+        $r12 = virtualinvoke $r10.<org.apache.http.util.ByteArrayBuffer: byte[] toByteArray()>();
+
+        specialinvoke $r3.<java.lang.String: void <init>(byte[])>($r12);
+
+        $i1 = virtualinvoke $r3.<java.lang.String: int compareToIgnoreCase(java.lang.String)>("EMAIL_SAVED");
+
+     label19:
+        if $i1 != 0 goto label15;
+
+        $r2 = <com.ideaworks3d.marmalade.LoaderActivity: com.ideaworks3d.marmalade.LoaderActivity m_Activity>;
+
+     label20:
+        $r13 = virtualinvoke $r2.<com.ideaworks3d.marmalade.LoaderActivity: android.content.SharedPreferences getPreferences(int)>(0);
+
+        $r14 = interfaceinvoke $r13.<android.content.SharedPreferences: android.content.SharedPreferences$Editor edit()>();
+
+        interfaceinvoke $r14.<android.content.SharedPreferences$Editor: android.content.SharedPreferences$Editor putInt(java.lang.String,int)>("HAS_SUBSCRIBED", 1);
+
+        interfaceinvoke $r14.<android.content.SharedPreferences$Editor: boolean commit()>();
+
+     label21:
+        goto label15;
+
+        catch java.lang.Exception from label01 to label02 with label14;
+        catch java.lang.Exception from label03 to label04 with label14;
+        catch java.lang.Exception from label05 to label06 with label14;
+        catch java.lang.Exception from label07 to label08 with label14;
+        catch java.lang.Exception from label09 to label11 with label14;
+        catch java.lang.Exception from label12 to label13 with label14;
+        catch java.lang.Exception from label18 to label19 with label14;
+        catch java.lang.Exception from label20 to label21 with label14;
+    }
+}

@@ -1,0 +1,384 @@
+public abstract class com.apperhand.device.a.b.b extends java.lang.Object
+{
+    protected final java.lang.String a;
+    protected final com.apperhand.device.a.d.c b;
+    protected final java.lang.String c;
+    protected final com.apperhand.common.dto.Command$Commands d;
+    protected com.apperhand.device.a.a e;
+    protected com.apperhand.device.a.b f;
+
+    public void <init>(com.apperhand.device.a.b, com.apperhand.device.a.a, java.lang.String, com.apperhand.common.dto.Command$Commands)
+    {
+        com.apperhand.device.a.b.b r0;
+        com.apperhand.device.a.b $r1;
+        com.apperhand.device.a.a $r2;
+        java.lang.String $r3, $r7;
+        com.apperhand.common.dto.Command$Commands $r4;
+        java.lang.StringBuilder $r5;
+        java.lang.Class $r6;
+        com.apperhand.device.a.d.c $r8;
+
+        r0 := @this: com.apperhand.device.a.b.b;
+
+        $r1 := @parameter0: com.apperhand.device.a.b;
+
+        $r2 := @parameter1: com.apperhand.device.a.a;
+
+        $r3 := @parameter2: java.lang.String;
+
+        $r4 := @parameter3: com.apperhand.common.dto.Command$Commands;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        r0.<com.apperhand.device.a.b.b: com.apperhand.device.a.b f> = $r1;
+
+        r0.<com.apperhand.device.a.b.b: com.apperhand.device.a.a e> = $r2;
+
+        $r5 = new java.lang.StringBuilder;
+
+        specialinvoke $r5.<java.lang.StringBuilder: void <init>()>();
+
+        $r5 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("FRM.");
+
+        $r6 = virtualinvoke r0.<java.lang.Object: java.lang.Class getClass()>();
+
+        $r7 = virtualinvoke $r6.<java.lang.Class: java.lang.String getSimpleName()>();
+
+        $r5 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r7);
+
+        $r7 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        r0.<com.apperhand.device.a.b.b: java.lang.String a> = $r7;
+
+        $r8 = interfaceinvoke $r2.<com.apperhand.device.a.a: com.apperhand.device.a.d.c a()>();
+
+        r0.<com.apperhand.device.a.b.b: com.apperhand.device.a.d.c b> = $r8;
+
+        r0.<com.apperhand.device.a.b.b: java.lang.String c> = $r3;
+
+        r0.<com.apperhand.device.a.b.b: com.apperhand.common.dto.Command$Commands d> = $r4;
+
+        return;
+    }
+
+    protected abstract com.apperhand.common.dto.protocol.BaseResponse a() throws com.apperhand.device.a.d.f;
+
+    protected final java.util.List a(com.apperhand.common.dto.Command$Commands, com.apperhand.common.dto.CommandStatus$Status, java.lang.String, java.util.Map)
+    {
+        com.apperhand.device.a.b.b r0;
+        com.apperhand.common.dto.Command$Commands $r1;
+        com.apperhand.common.dto.CommandStatus$Status $r2;
+        java.lang.String $r3, $r6;
+        java.util.Map $r4;
+        java.util.ArrayList $r5;
+        com.apperhand.common.dto.CommandStatus $r7;
+
+        r0 := @this: com.apperhand.device.a.b.b;
+
+        $r1 := @parameter0: com.apperhand.common.dto.Command$Commands;
+
+        $r2 := @parameter1: com.apperhand.common.dto.CommandStatus$Status;
+
+        $r3 := @parameter2: java.lang.String;
+
+        $r4 := @parameter3: java.util.Map;
+
+        $r5 = new java.util.ArrayList;
+
+        specialinvoke $r5.<java.util.ArrayList: void <init>(int)>(1);
+
+        $r7 = new com.apperhand.common.dto.CommandStatus;
+
+        specialinvoke $r7.<com.apperhand.common.dto.CommandStatus: void <init>()>();
+
+        virtualinvoke $r7.<com.apperhand.common.dto.CommandStatus: void setCommand(com.apperhand.common.dto.Command$Commands)>($r1);
+
+        $r6 = r0.<com.apperhand.device.a.b.b: java.lang.String c>;
+
+        virtualinvoke $r7.<com.apperhand.common.dto.CommandStatus: void setId(java.lang.String)>($r6);
+
+        virtualinvoke $r7.<com.apperhand.common.dto.CommandStatus: void setMessage(java.lang.String)>($r3);
+
+        virtualinvoke $r7.<com.apperhand.common.dto.CommandStatus: void setStatus(com.apperhand.common.dto.CommandStatus$Status)>($r2);
+
+        virtualinvoke $r7.<com.apperhand.common.dto.CommandStatus: void setParameters(java.util.Map)>($r4);
+
+        interfaceinvoke $r5.<java.util.List: boolean add(java.lang.Object)>($r7);
+
+        return $r5;
+    }
+
+    protected abstract java.util.Map a(com.apperhand.common.dto.protocol.BaseResponse) throws com.apperhand.device.a.d.f;
+
+    protected final void a(com.apperhand.common.dto.protocol.CommandStatusRequest) throws com.apperhand.device.a.d.f
+    {
+        com.apperhand.device.a.b.b r0;
+        com.apperhand.common.dto.protocol.CommandStatusRequest $r1;
+        com.apperhand.device.a.a $r2;
+        com.apperhand.device.a.c.a $r3;
+        com.apperhand.common.dto.Command$Commands $r4;
+        com.apperhand.common.dto.protocol.BaseResponse $r5;
+        com.apperhand.common.dto.protocol.CommandStatusResponse $r6;
+        com.apperhand.device.a.b $r7;
+        long $l0;
+        java.lang.String $r8, $r13;
+        com.apperhand.device.a.d.f $r9;
+        java.lang.Object[] $r10;
+        com.apperhand.device.a.d.c $r11;
+        com.apperhand.device.a.d.c$a $r12;
+
+        r0 := @this: com.apperhand.device.a.b.b;
+
+        $r1 := @parameter0: com.apperhand.common.dto.protocol.CommandStatusRequest;
+
+        $r2 = r0.<com.apperhand.device.a.b.b: com.apperhand.device.a.a e>;
+
+     label1:
+        $r3 = interfaceinvoke $r2.<com.apperhand.device.a.a: com.apperhand.device.a.c.a b()>();
+
+     label2:
+        $r4 = <com.apperhand.common.dto.Command$Commands: com.apperhand.common.dto.Command$Commands COMMANDS_STATUS>;
+
+     label3:
+        $r5 = interfaceinvoke $r3.<com.apperhand.device.a.c.a: com.apperhand.common.dto.protocol.BaseResponse a(java.lang.Object,com.apperhand.common.dto.Command$Commands,java.lang.Class)>($r1, $r4, class "Lcom/apperhand/common/dto/protocol/CommandStatusResponse;");
+
+     label4:
+        $r6 = (com.apperhand.common.dto.protocol.CommandStatusResponse) $r5;
+
+        $r7 = r0.<com.apperhand.device.a.b.b: com.apperhand.device.a.b f>;
+
+     label5:
+        $l0 = virtualinvoke $r6.<com.apperhand.common.dto.protocol.CommandStatusResponse: long getNextCommandInterval()>();
+
+        virtualinvoke $r7.<com.apperhand.device.a.b: void a(long)>($l0);
+
+     label6:
+        $r7 = r0.<com.apperhand.device.a.b.b: com.apperhand.device.a.b f>;
+
+     label7:
+        $r8 = staticinvoke <com.apperhand.device.a.d.e: java.lang.String a(com.apperhand.common.dto.protocol.BaseResponse)>($r6);
+
+        virtualinvoke $r7.<com.apperhand.device.a.b: void b(java.lang.String)>($r8);
+
+     label8:
+        return;
+
+     label9:
+        $r9 := @caughtexception;
+
+        $r10 = newarray (java.lang.Object)[1];
+
+        $r4 = r0.<com.apperhand.device.a.b.b: com.apperhand.common.dto.Command$Commands d>;
+
+        $r8 = virtualinvoke $r4.<com.apperhand.common.dto.Command$Commands: java.lang.String getString()>();
+
+        $r10[0] = $r8;
+
+        $r8 = staticinvoke <java.lang.String: java.lang.String format(java.lang.String,java.lang.Object[])>("Unable to send command status for command [%s]!!!!", $r10);
+
+        $r2 = r0.<com.apperhand.device.a.b.b: com.apperhand.device.a.a e>;
+
+        $r11 = interfaceinvoke $r2.<com.apperhand.device.a.a: com.apperhand.device.a.d.c a()>();
+
+        $r12 = <com.apperhand.device.a.d.c$a: com.apperhand.device.a.d.c$a b>;
+
+        $r13 = r0.<com.apperhand.device.a.b.b: java.lang.String a>;
+
+        interfaceinvoke $r11.<com.apperhand.device.a.d.c: void a(com.apperhand.device.a.d.c$a,java.lang.String,java.lang.String,java.lang.Throwable)>($r12, $r13, $r8, $r9);
+
+        return;
+
+        catch com.apperhand.device.a.d.f from label1 to label2 with label9;
+        catch com.apperhand.device.a.d.f from label3 to label4 with label9;
+        catch com.apperhand.device.a.d.f from label5 to label6 with label9;
+        catch com.apperhand.device.a.d.f from label7 to label8 with label9;
+    }
+
+    protected abstract void a(java.util.Map) throws com.apperhand.device.a.d.f;
+
+    protected com.apperhand.common.dto.protocol.CommandStatusRequest b() throws com.apperhand.device.a.d.f
+    {
+        com.apperhand.device.a.b.b r0;
+        com.apperhand.common.dto.protocol.CommandStatusRequest $r1;
+        com.apperhand.common.dto.ApplicationDetails $r2;
+        com.apperhand.device.a.a $r3;
+
+        r0 := @this: com.apperhand.device.a.b.b;
+
+        $r1 = new com.apperhand.common.dto.protocol.CommandStatusRequest;
+
+        specialinvoke $r1.<com.apperhand.common.dto.protocol.CommandStatusRequest: void <init>()>();
+
+        $r3 = r0.<com.apperhand.device.a.b.b: com.apperhand.device.a.a e>;
+
+        $r2 = interfaceinvoke $r3.<com.apperhand.device.a.a: com.apperhand.common.dto.ApplicationDetails j()>();
+
+        virtualinvoke $r1.<com.apperhand.common.dto.protocol.CommandStatusRequest: void setApplicationDetails(com.apperhand.common.dto.ApplicationDetails)>($r2);
+
+        return $r1;
+    }
+
+    public final void c()
+    {
+        com.apperhand.device.a.b.b r0;
+        com.apperhand.device.a.d.c $r1;
+        com.apperhand.device.a.d.c$a $r2;
+        java.lang.String $r3, $r7;
+        com.apperhand.common.dto.protocol.BaseResponse $r4;
+        boolean $z0;
+        java.lang.StringBuilder $r5;
+        com.apperhand.common.dto.Command$Commands $r6;
+        com.apperhand.common.dto.protocol.CommandStatusRequest $r8;
+        com.apperhand.common.dto.CommandStatus$Status $r9;
+        java.util.List $r10;
+        com.apperhand.device.a.b $r11;
+        java.util.Map $r12;
+        com.apperhand.device.a.d.f $r13, $r16;
+        com.apperhand.device.a.a $r14;
+        com.apperhand.common.dto.ApplicationDetails $r15;
+
+        r0 := @this: com.apperhand.device.a.b.b;
+
+        $r1 = r0.<com.apperhand.device.a.b.b: com.apperhand.device.a.d.c b>;
+
+        $r2 = <com.apperhand.device.a.d.c$a: com.apperhand.device.a.d.c$a a>;
+
+        $r3 = r0.<com.apperhand.device.a.b.b: java.lang.String a>;
+
+        interfaceinvoke $r1.<com.apperhand.device.a.d.c: void a(com.apperhand.device.a.d.c$a,java.lang.String,java.lang.String)>($r2, $r3, "Entering execute()");
+
+     label01:
+        $r4 = virtualinvoke r0.<com.apperhand.device.a.b.b: com.apperhand.common.dto.protocol.BaseResponse a()>();
+
+     label02:
+        if $r4 == null goto label05;
+
+     label03:
+        $z0 = virtualinvoke $r4.<com.apperhand.common.dto.protocol.BaseResponse: boolean isValidResponse()>();
+
+     label04:
+        if $z0 != 0 goto label12;
+
+     label05:
+        $r1 = r0.<com.apperhand.device.a.b.b: com.apperhand.device.a.d.c b>;
+
+        $r2 = <com.apperhand.device.a.d.c$a: com.apperhand.device.a.d.c$a a>;
+
+        $r3 = r0.<com.apperhand.device.a.b.b: java.lang.String a>;
+
+        $r5 = new java.lang.StringBuilder;
+
+     label06:
+        specialinvoke $r5.<java.lang.StringBuilder: void <init>()>();
+
+        $r5 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Server Error in ");
+
+     label07:
+        $r6 = r0.<com.apperhand.device.a.b.b: com.apperhand.common.dto.Command$Commands d>;
+
+     label08:
+        $r7 = virtualinvoke $r6.<com.apperhand.common.dto.Command$Commands: java.lang.String name()>();
+
+        $r5 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r7);
+
+        $r7 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        interfaceinvoke $r1.<com.apperhand.device.a.d.c: void a(com.apperhand.device.a.d.c$a,java.lang.String,java.lang.String)>($r2, $r3, $r7);
+
+        $r8 = virtualinvoke r0.<com.apperhand.device.a.b.b: com.apperhand.common.dto.protocol.CommandStatusRequest b()>();
+
+     label09:
+        $r6 = r0.<com.apperhand.device.a.b.b: com.apperhand.common.dto.Command$Commands d>;
+
+        $r9 = <com.apperhand.common.dto.CommandStatus$Status: com.apperhand.common.dto.CommandStatus$Status FAILURE>;
+
+     label10:
+        $r10 = virtualinvoke r0.<com.apperhand.device.a.b.b: java.util.List a(com.apperhand.common.dto.Command$Commands,com.apperhand.common.dto.CommandStatus$Status,java.lang.String,java.util.Map)>($r6, $r9, "Got server error", null);
+
+        virtualinvoke $r8.<com.apperhand.common.dto.protocol.CommandStatusRequest: void setStatuses(java.util.List)>($r10);
+
+        virtualinvoke r0.<com.apperhand.device.a.b.b: void a(com.apperhand.common.dto.protocol.CommandStatusRequest)>($r8);
+
+     label11:
+        return;
+
+     label12:
+        $r11 = r0.<com.apperhand.device.a.b.b: com.apperhand.device.a.b f>;
+
+     label13:
+        $r3 = staticinvoke <com.apperhand.device.a.d.e: java.lang.String a(com.apperhand.common.dto.protocol.BaseResponse)>($r4);
+
+        virtualinvoke $r11.<com.apperhand.device.a.b: void b(java.lang.String)>($r3);
+
+        $r12 = virtualinvoke r0.<com.apperhand.device.a.b.b: java.util.Map a(com.apperhand.common.dto.protocol.BaseResponse)>($r4);
+
+        virtualinvoke r0.<com.apperhand.device.a.b.b: void a(java.util.Map)>($r12);
+
+     label14:
+        return;
+
+     label15:
+        $r13 := @caughtexception;
+
+        $r1 = r0.<com.apperhand.device.a.b.b: com.apperhand.device.a.d.c b>;
+
+        $r2 = <com.apperhand.device.a.d.c$a: com.apperhand.device.a.d.c$a c>;
+
+        $r3 = r0.<com.apperhand.device.a.b.b: java.lang.String a>;
+
+        interfaceinvoke $r1.<com.apperhand.device.a.d.c: void a(com.apperhand.device.a.d.c$a,java.lang.String,java.lang.String,java.lang.Throwable)>($r2, $r3, "Unable to send command", $r13);
+
+        $r8 = new com.apperhand.common.dto.protocol.CommandStatusRequest;
+
+     label16:
+        specialinvoke $r8.<com.apperhand.common.dto.protocol.CommandStatusRequest: void <init>()>();
+
+     label17:
+        $r14 = r0.<com.apperhand.device.a.b.b: com.apperhand.device.a.a e>;
+
+     label18:
+        $r15 = interfaceinvoke $r14.<com.apperhand.device.a.a: com.apperhand.common.dto.ApplicationDetails j()>();
+
+        virtualinvoke $r8.<com.apperhand.common.dto.protocol.CommandStatusRequest: void setApplicationDetails(com.apperhand.common.dto.ApplicationDetails)>($r15);
+
+     label19:
+        $r6 = r0.<com.apperhand.device.a.b.b: com.apperhand.common.dto.Command$Commands d>;
+
+        $r9 = <com.apperhand.common.dto.CommandStatus$Status: com.apperhand.common.dto.CommandStatus$Status FAILURE>;
+
+     label20:
+        $r3 = virtualinvoke $r13.<com.apperhand.device.a.d.f: java.lang.String toString()>();
+
+        $r10 = virtualinvoke r0.<com.apperhand.device.a.b.b: java.util.List a(com.apperhand.common.dto.Command$Commands,com.apperhand.common.dto.CommandStatus$Status,java.lang.String,java.util.Map)>($r6, $r9, $r3, null);
+
+        virtualinvoke $r8.<com.apperhand.common.dto.protocol.CommandStatusRequest: void setStatuses(java.util.List)>($r10);
+
+        virtualinvoke r0.<com.apperhand.device.a.b.b: void a(com.apperhand.common.dto.protocol.CommandStatusRequest)>($r8);
+
+     label21:
+        return;
+
+     label22:
+        $r16 := @caughtexception;
+
+        $r1 = r0.<com.apperhand.device.a.b.b: com.apperhand.device.a.d.c b>;
+
+        $r2 = <com.apperhand.device.a.d.c$a: com.apperhand.device.a.d.c$a c>;
+
+        $r3 = r0.<com.apperhand.device.a.b.b: java.lang.String a>;
+
+        interfaceinvoke $r1.<com.apperhand.device.a.d.c: void a(com.apperhand.device.a.d.c$a,java.lang.String,java.lang.String,java.lang.Throwable)>($r2, $r3, "Unable to send exception status command", $r16);
+
+        return;
+
+        catch com.apperhand.device.a.d.f from label01 to label02 with label15;
+        catch com.apperhand.device.a.d.f from label03 to label04 with label15;
+        catch com.apperhand.device.a.d.f from label06 to label07 with label15;
+        catch com.apperhand.device.a.d.f from label08 to label09 with label15;
+        catch com.apperhand.device.a.d.f from label10 to label11 with label15;
+        catch com.apperhand.device.a.d.f from label13 to label14 with label15;
+        catch com.apperhand.device.a.d.f from label16 to label17 with label22;
+        catch com.apperhand.device.a.d.f from label18 to label19 with label22;
+        catch com.apperhand.device.a.d.f from label20 to label21 with label22;
+    }
+}

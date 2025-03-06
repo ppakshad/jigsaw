@@ -1,0 +1,801 @@
+public final class com.squareup.picasso.Request$Builder extends java.lang.Object
+{
+    private boolean centerCrop;
+    private boolean centerInside;
+    private android.graphics.Bitmap$Config config;
+    private boolean hasRotationPivot;
+    private boolean onlyScaleDown;
+    private com.squareup.picasso.Picasso$Priority priority;
+    private int resourceId;
+    private float rotationDegrees;
+    private float rotationPivotX;
+    private float rotationPivotY;
+    private java.lang.String stableKey;
+    private int targetHeight;
+    private int targetWidth;
+    private java.util.List transformations;
+    private android.net.Uri uri;
+
+    public void <init>(int)
+    {
+        com.squareup.picasso.Request$Builder r0;
+        int $i0;
+
+        r0 := @this: com.squareup.picasso.Request$Builder;
+
+        $i0 := @parameter0: int;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        virtualinvoke r0.<com.squareup.picasso.Request$Builder: com.squareup.picasso.Request$Builder setResourceId(int)>($i0);
+
+        return;
+    }
+
+    public void <init>(android.net.Uri)
+    {
+        com.squareup.picasso.Request$Builder r0;
+        android.net.Uri $r1;
+
+        r0 := @this: com.squareup.picasso.Request$Builder;
+
+        $r1 := @parameter0: android.net.Uri;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        virtualinvoke r0.<com.squareup.picasso.Request$Builder: com.squareup.picasso.Request$Builder setUri(android.net.Uri)>($r1);
+
+        return;
+    }
+
+    void <init>(android.net.Uri, int, android.graphics.Bitmap$Config)
+    {
+        com.squareup.picasso.Request$Builder r0;
+        android.net.Uri $r1;
+        int $i0;
+        android.graphics.Bitmap$Config $r2;
+
+        r0 := @this: com.squareup.picasso.Request$Builder;
+
+        $r1 := @parameter0: android.net.Uri;
+
+        $i0 := @parameter1: int;
+
+        $r2 := @parameter2: android.graphics.Bitmap$Config;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        r0.<com.squareup.picasso.Request$Builder: android.net.Uri uri> = $r1;
+
+        r0.<com.squareup.picasso.Request$Builder: int resourceId> = $i0;
+
+        r0.<com.squareup.picasso.Request$Builder: android.graphics.Bitmap$Config config> = $r2;
+
+        return;
+    }
+
+    private void <init>(com.squareup.picasso.Request)
+    {
+        com.squareup.picasso.Request$Builder r0;
+        com.squareup.picasso.Request $r1;
+        java.util.List $r2;
+        android.net.Uri $r3;
+        int $i0;
+        java.lang.String $r4;
+        boolean $z0;
+        float $f0;
+        java.util.ArrayList $r5;
+        android.graphics.Bitmap$Config $r6;
+        com.squareup.picasso.Picasso$Priority $r7;
+
+        r0 := @this: com.squareup.picasso.Request$Builder;
+
+        $r1 := @parameter0: com.squareup.picasso.Request;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        $r3 = $r1.<com.squareup.picasso.Request: android.net.Uri uri>;
+
+        r0.<com.squareup.picasso.Request$Builder: android.net.Uri uri> = $r3;
+
+        $i0 = $r1.<com.squareup.picasso.Request: int resourceId>;
+
+        r0.<com.squareup.picasso.Request$Builder: int resourceId> = $i0;
+
+        $r4 = $r1.<com.squareup.picasso.Request: java.lang.String stableKey>;
+
+        r0.<com.squareup.picasso.Request$Builder: java.lang.String stableKey> = $r4;
+
+        $i0 = $r1.<com.squareup.picasso.Request: int targetWidth>;
+
+        r0.<com.squareup.picasso.Request$Builder: int targetWidth> = $i0;
+
+        $i0 = $r1.<com.squareup.picasso.Request: int targetHeight>;
+
+        r0.<com.squareup.picasso.Request$Builder: int targetHeight> = $i0;
+
+        $z0 = $r1.<com.squareup.picasso.Request: boolean centerCrop>;
+
+        r0.<com.squareup.picasso.Request$Builder: boolean centerCrop> = $z0;
+
+        $z0 = $r1.<com.squareup.picasso.Request: boolean centerInside>;
+
+        r0.<com.squareup.picasso.Request$Builder: boolean centerInside> = $z0;
+
+        $f0 = $r1.<com.squareup.picasso.Request: float rotationDegrees>;
+
+        r0.<com.squareup.picasso.Request$Builder: float rotationDegrees> = $f0;
+
+        $f0 = $r1.<com.squareup.picasso.Request: float rotationPivotX>;
+
+        r0.<com.squareup.picasso.Request$Builder: float rotationPivotX> = $f0;
+
+        $f0 = $r1.<com.squareup.picasso.Request: float rotationPivotY>;
+
+        r0.<com.squareup.picasso.Request$Builder: float rotationPivotY> = $f0;
+
+        $z0 = $r1.<com.squareup.picasso.Request: boolean hasRotationPivot>;
+
+        r0.<com.squareup.picasso.Request$Builder: boolean hasRotationPivot> = $z0;
+
+        $z0 = $r1.<com.squareup.picasso.Request: boolean onlyScaleDown>;
+
+        r0.<com.squareup.picasso.Request$Builder: boolean onlyScaleDown> = $z0;
+
+        $r2 = $r1.<com.squareup.picasso.Request: java.util.List transformations>;
+
+        if $r2 == null goto label1;
+
+        $r5 = new java.util.ArrayList;
+
+        $r2 = $r1.<com.squareup.picasso.Request: java.util.List transformations>;
+
+        specialinvoke $r5.<java.util.ArrayList: void <init>(java.util.Collection)>($r2);
+
+        r0.<com.squareup.picasso.Request$Builder: java.util.List transformations> = $r5;
+
+     label1:
+        $r6 = $r1.<com.squareup.picasso.Request: android.graphics.Bitmap$Config config>;
+
+        r0.<com.squareup.picasso.Request$Builder: android.graphics.Bitmap$Config config> = $r6;
+
+        $r7 = $r1.<com.squareup.picasso.Request: com.squareup.picasso.Picasso$Priority priority>;
+
+        r0.<com.squareup.picasso.Request$Builder: com.squareup.picasso.Picasso$Priority priority> = $r7;
+
+        return;
+    }
+
+    void <init>(com.squareup.picasso.Request, com.squareup.picasso.Request$1)
+    {
+        com.squareup.picasso.Request$Builder r0;
+        com.squareup.picasso.Request $r1;
+        com.squareup.picasso.Request$1 $r2;
+
+        r0 := @this: com.squareup.picasso.Request$Builder;
+
+        $r1 := @parameter0: com.squareup.picasso.Request;
+
+        $r2 := @parameter1: com.squareup.picasso.Request$1;
+
+        specialinvoke r0.<com.squareup.picasso.Request$Builder: void <init>(com.squareup.picasso.Request)>($r1);
+
+        return;
+    }
+
+    public final com.squareup.picasso.Request build()
+    {
+        com.squareup.picasso.Request$Builder r0;
+        int $i0, $i1, $i2;
+        java.lang.String $r1;
+        java.util.List $r2;
+        boolean $z0, $z1, $z2, $z3;
+        float $f0, $f1, $f2;
+        android.graphics.Bitmap$Config $r3;
+        java.lang.IllegalStateException $r4;
+        com.squareup.picasso.Picasso$Priority $r5;
+        com.squareup.picasso.Request $r6;
+        android.net.Uri $r7;
+
+        r0 := @this: com.squareup.picasso.Request$Builder;
+
+        $z0 = r0.<com.squareup.picasso.Request$Builder: boolean centerInside>;
+
+        if $z0 == 0 goto label1;
+
+        $z0 = r0.<com.squareup.picasso.Request$Builder: boolean centerCrop>;
+
+        if $z0 == 0 goto label1;
+
+        $r4 = new java.lang.IllegalStateException;
+
+        specialinvoke $r4.<java.lang.IllegalStateException: void <init>(java.lang.String)>("Center crop and center inside can not be used together.");
+
+        throw $r4;
+
+     label1:
+        $z0 = r0.<com.squareup.picasso.Request$Builder: boolean centerCrop>;
+
+        if $z0 == 0 goto label2;
+
+        $i0 = r0.<com.squareup.picasso.Request$Builder: int targetWidth>;
+
+        if $i0 != 0 goto label2;
+
+        $i0 = r0.<com.squareup.picasso.Request$Builder: int targetHeight>;
+
+        if $i0 != 0 goto label2;
+
+        $r4 = new java.lang.IllegalStateException;
+
+        specialinvoke $r4.<java.lang.IllegalStateException: void <init>(java.lang.String)>("Center crop requires calling resize with positive width and height.");
+
+        throw $r4;
+
+     label2:
+        $z0 = r0.<com.squareup.picasso.Request$Builder: boolean centerInside>;
+
+        if $z0 == 0 goto label3;
+
+        $i0 = r0.<com.squareup.picasso.Request$Builder: int targetWidth>;
+
+        if $i0 != 0 goto label3;
+
+        $i0 = r0.<com.squareup.picasso.Request$Builder: int targetHeight>;
+
+        if $i0 != 0 goto label3;
+
+        $r4 = new java.lang.IllegalStateException;
+
+        specialinvoke $r4.<java.lang.IllegalStateException: void <init>(java.lang.String)>("Center inside requires calling resize with positive width and height.");
+
+        throw $r4;
+
+     label3:
+        $r5 = r0.<com.squareup.picasso.Request$Builder: com.squareup.picasso.Picasso$Priority priority>;
+
+        if $r5 != null goto label4;
+
+        $r5 = <com.squareup.picasso.Picasso$Priority: com.squareup.picasso.Picasso$Priority NORMAL>;
+
+        r0.<com.squareup.picasso.Request$Builder: com.squareup.picasso.Picasso$Priority priority> = $r5;
+
+     label4:
+        $r6 = new com.squareup.picasso.Request;
+
+        $r7 = r0.<com.squareup.picasso.Request$Builder: android.net.Uri uri>;
+
+        $i0 = r0.<com.squareup.picasso.Request$Builder: int resourceId>;
+
+        $r1 = r0.<com.squareup.picasso.Request$Builder: java.lang.String stableKey>;
+
+        $r2 = r0.<com.squareup.picasso.Request$Builder: java.util.List transformations>;
+
+        $i1 = r0.<com.squareup.picasso.Request$Builder: int targetWidth>;
+
+        $i2 = r0.<com.squareup.picasso.Request$Builder: int targetHeight>;
+
+        $z0 = r0.<com.squareup.picasso.Request$Builder: boolean centerCrop>;
+
+        $z1 = r0.<com.squareup.picasso.Request$Builder: boolean centerInside>;
+
+        $z2 = r0.<com.squareup.picasso.Request$Builder: boolean onlyScaleDown>;
+
+        $f0 = r0.<com.squareup.picasso.Request$Builder: float rotationDegrees>;
+
+        $f1 = r0.<com.squareup.picasso.Request$Builder: float rotationPivotX>;
+
+        $f2 = r0.<com.squareup.picasso.Request$Builder: float rotationPivotY>;
+
+        $z3 = r0.<com.squareup.picasso.Request$Builder: boolean hasRotationPivot>;
+
+        $r3 = r0.<com.squareup.picasso.Request$Builder: android.graphics.Bitmap$Config config>;
+
+        $r5 = r0.<com.squareup.picasso.Request$Builder: com.squareup.picasso.Picasso$Priority priority>;
+
+        specialinvoke $r6.<com.squareup.picasso.Request: void <init>(android.net.Uri,int,java.lang.String,java.util.List,int,int,boolean,boolean,boolean,float,float,float,boolean,android.graphics.Bitmap$Config,com.squareup.picasso.Picasso$Priority,com.squareup.picasso.Request$1)>($r7, $i0, $r1, $r2, $i1, $i2, $z0, $z1, $z2, $f0, $f1, $f2, $z3, $r3, $r5, null);
+
+        return $r6;
+    }
+
+    public final com.squareup.picasso.Request$Builder centerCrop()
+    {
+        com.squareup.picasso.Request$Builder r0;
+        boolean $z0;
+        java.lang.IllegalStateException $r1;
+
+        r0 := @this: com.squareup.picasso.Request$Builder;
+
+        $z0 = r0.<com.squareup.picasso.Request$Builder: boolean centerInside>;
+
+        if $z0 == 0 goto label1;
+
+        $r1 = new java.lang.IllegalStateException;
+
+        specialinvoke $r1.<java.lang.IllegalStateException: void <init>(java.lang.String)>("Center crop can not be used after calling centerInside");
+
+        throw $r1;
+
+     label1:
+        r0.<com.squareup.picasso.Request$Builder: boolean centerCrop> = 1;
+
+        return r0;
+    }
+
+    public final com.squareup.picasso.Request$Builder centerInside()
+    {
+        com.squareup.picasso.Request$Builder r0;
+        boolean $z0;
+        java.lang.IllegalStateException $r1;
+
+        r0 := @this: com.squareup.picasso.Request$Builder;
+
+        $z0 = r0.<com.squareup.picasso.Request$Builder: boolean centerCrop>;
+
+        if $z0 == 0 goto label1;
+
+        $r1 = new java.lang.IllegalStateException;
+
+        specialinvoke $r1.<java.lang.IllegalStateException: void <init>(java.lang.String)>("Center inside can not be used after calling centerCrop");
+
+        throw $r1;
+
+     label1:
+        r0.<com.squareup.picasso.Request$Builder: boolean centerInside> = 1;
+
+        return r0;
+    }
+
+    public final com.squareup.picasso.Request$Builder clearCenterCrop()
+    {
+        com.squareup.picasso.Request$Builder r0;
+
+        r0 := @this: com.squareup.picasso.Request$Builder;
+
+        r0.<com.squareup.picasso.Request$Builder: boolean centerCrop> = 0;
+
+        return r0;
+    }
+
+    public final com.squareup.picasso.Request$Builder clearCenterInside()
+    {
+        com.squareup.picasso.Request$Builder r0;
+
+        r0 := @this: com.squareup.picasso.Request$Builder;
+
+        r0.<com.squareup.picasso.Request$Builder: boolean centerInside> = 0;
+
+        return r0;
+    }
+
+    public final com.squareup.picasso.Request$Builder clearOnlyScaleDown()
+    {
+        com.squareup.picasso.Request$Builder r0;
+
+        r0 := @this: com.squareup.picasso.Request$Builder;
+
+        r0.<com.squareup.picasso.Request$Builder: boolean onlyScaleDown> = 0;
+
+        return r0;
+    }
+
+    public final com.squareup.picasso.Request$Builder clearResize()
+    {
+        com.squareup.picasso.Request$Builder r0;
+
+        r0 := @this: com.squareup.picasso.Request$Builder;
+
+        r0.<com.squareup.picasso.Request$Builder: int targetWidth> = 0;
+
+        r0.<com.squareup.picasso.Request$Builder: int targetHeight> = 0;
+
+        r0.<com.squareup.picasso.Request$Builder: boolean centerCrop> = 0;
+
+        r0.<com.squareup.picasso.Request$Builder: boolean centerInside> = 0;
+
+        return r0;
+    }
+
+    public final com.squareup.picasso.Request$Builder clearRotation()
+    {
+        com.squareup.picasso.Request$Builder r0;
+
+        r0 := @this: com.squareup.picasso.Request$Builder;
+
+        r0.<com.squareup.picasso.Request$Builder: float rotationDegrees> = 0.0F;
+
+        r0.<com.squareup.picasso.Request$Builder: float rotationPivotX> = 0.0F;
+
+        r0.<com.squareup.picasso.Request$Builder: float rotationPivotY> = 0.0F;
+
+        r0.<com.squareup.picasso.Request$Builder: boolean hasRotationPivot> = 0;
+
+        return r0;
+    }
+
+    public final com.squareup.picasso.Request$Builder config(android.graphics.Bitmap$Config)
+    {
+        com.squareup.picasso.Request$Builder r0;
+        android.graphics.Bitmap$Config $r1;
+
+        r0 := @this: com.squareup.picasso.Request$Builder;
+
+        $r1 := @parameter0: android.graphics.Bitmap$Config;
+
+        r0.<com.squareup.picasso.Request$Builder: android.graphics.Bitmap$Config config> = $r1;
+
+        return r0;
+    }
+
+    final boolean hasImage()
+    {
+        com.squareup.picasso.Request$Builder r0;
+        android.net.Uri $r1;
+        int $i0;
+
+        r0 := @this: com.squareup.picasso.Request$Builder;
+
+        $r1 = r0.<com.squareup.picasso.Request$Builder: android.net.Uri uri>;
+
+        if $r1 != null goto label1;
+
+        $i0 = r0.<com.squareup.picasso.Request$Builder: int resourceId>;
+
+        if $i0 == 0 goto label2;
+
+     label1:
+        return 1;
+
+     label2:
+        return 0;
+    }
+
+    final boolean hasPriority()
+    {
+        com.squareup.picasso.Request$Builder r0;
+        com.squareup.picasso.Picasso$Priority $r1;
+
+        r0 := @this: com.squareup.picasso.Request$Builder;
+
+        $r1 = r0.<com.squareup.picasso.Request$Builder: com.squareup.picasso.Picasso$Priority priority>;
+
+        if $r1 == null goto label1;
+
+        return 1;
+
+     label1:
+        return 0;
+    }
+
+    final boolean hasSize()
+    {
+        com.squareup.picasso.Request$Builder r0;
+        int $i0;
+
+        r0 := @this: com.squareup.picasso.Request$Builder;
+
+        $i0 = r0.<com.squareup.picasso.Request$Builder: int targetWidth>;
+
+        if $i0 != 0 goto label1;
+
+        $i0 = r0.<com.squareup.picasso.Request$Builder: int targetHeight>;
+
+        if $i0 == 0 goto label2;
+
+     label1:
+        return 1;
+
+     label2:
+        return 0;
+    }
+
+    public final com.squareup.picasso.Request$Builder onlyScaleDown()
+    {
+        com.squareup.picasso.Request$Builder r0;
+        int $i0;
+        java.lang.IllegalStateException $r1;
+
+        r0 := @this: com.squareup.picasso.Request$Builder;
+
+        $i0 = r0.<com.squareup.picasso.Request$Builder: int targetHeight>;
+
+        if $i0 != 0 goto label1;
+
+        $i0 = r0.<com.squareup.picasso.Request$Builder: int targetWidth>;
+
+        if $i0 != 0 goto label1;
+
+        $r1 = new java.lang.IllegalStateException;
+
+        specialinvoke $r1.<java.lang.IllegalStateException: void <init>(java.lang.String)>("onlyScaleDown can not be applied without resize");
+
+        throw $r1;
+
+     label1:
+        r0.<com.squareup.picasso.Request$Builder: boolean onlyScaleDown> = 1;
+
+        return r0;
+    }
+
+    public final com.squareup.picasso.Request$Builder priority(com.squareup.picasso.Picasso$Priority)
+    {
+        com.squareup.picasso.Request$Builder r0;
+        com.squareup.picasso.Picasso$Priority $r1, $r3;
+        java.lang.IllegalArgumentException $r2;
+        java.lang.IllegalStateException $r4;
+
+        r0 := @this: com.squareup.picasso.Request$Builder;
+
+        $r1 := @parameter0: com.squareup.picasso.Picasso$Priority;
+
+        if $r1 != null goto label1;
+
+        $r2 = new java.lang.IllegalArgumentException;
+
+        specialinvoke $r2.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>("Priority invalid.");
+
+        throw $r2;
+
+     label1:
+        $r3 = r0.<com.squareup.picasso.Request$Builder: com.squareup.picasso.Picasso$Priority priority>;
+
+        if $r3 == null goto label2;
+
+        $r4 = new java.lang.IllegalStateException;
+
+        specialinvoke $r4.<java.lang.IllegalStateException: void <init>(java.lang.String)>("Priority already set.");
+
+        throw $r4;
+
+     label2:
+        r0.<com.squareup.picasso.Request$Builder: com.squareup.picasso.Picasso$Priority priority> = $r1;
+
+        return r0;
+    }
+
+    public final com.squareup.picasso.Request$Builder resize(int, int)
+    {
+        com.squareup.picasso.Request$Builder r0;
+        int $i0, $i1;
+        java.lang.IllegalArgumentException $r1;
+
+        r0 := @this: com.squareup.picasso.Request$Builder;
+
+        $i0 := @parameter0: int;
+
+        $i1 := @parameter1: int;
+
+        if $i0 >= 0 goto label1;
+
+        $r1 = new java.lang.IllegalArgumentException;
+
+        specialinvoke $r1.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>("Width must be positive number or 0.");
+
+        throw $r1;
+
+     label1:
+        if $i1 >= 0 goto label2;
+
+        $r1 = new java.lang.IllegalArgumentException;
+
+        specialinvoke $r1.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>("Height must be positive number or 0.");
+
+        throw $r1;
+
+     label2:
+        if $i1 != 0 goto label3;
+
+        if $i0 != 0 goto label3;
+
+        $r1 = new java.lang.IllegalArgumentException;
+
+        specialinvoke $r1.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>("At least one dimension has to be positive number.");
+
+        throw $r1;
+
+     label3:
+        r0.<com.squareup.picasso.Request$Builder: int targetWidth> = $i0;
+
+        r0.<com.squareup.picasso.Request$Builder: int targetHeight> = $i1;
+
+        return r0;
+    }
+
+    public final com.squareup.picasso.Request$Builder rotate(float)
+    {
+        com.squareup.picasso.Request$Builder r0;
+        float $f0;
+
+        r0 := @this: com.squareup.picasso.Request$Builder;
+
+        $f0 := @parameter0: float;
+
+        r0.<com.squareup.picasso.Request$Builder: float rotationDegrees> = $f0;
+
+        return r0;
+    }
+
+    public final com.squareup.picasso.Request$Builder rotate(float, float, float)
+    {
+        com.squareup.picasso.Request$Builder r0;
+        float $f0, $f1, $f2;
+
+        r0 := @this: com.squareup.picasso.Request$Builder;
+
+        $f0 := @parameter0: float;
+
+        $f1 := @parameter1: float;
+
+        $f2 := @parameter2: float;
+
+        r0.<com.squareup.picasso.Request$Builder: float rotationDegrees> = $f0;
+
+        r0.<com.squareup.picasso.Request$Builder: float rotationPivotX> = $f1;
+
+        r0.<com.squareup.picasso.Request$Builder: float rotationPivotY> = $f2;
+
+        r0.<com.squareup.picasso.Request$Builder: boolean hasRotationPivot> = 1;
+
+        return r0;
+    }
+
+    public final com.squareup.picasso.Request$Builder setResourceId(int)
+    {
+        com.squareup.picasso.Request$Builder r0;
+        int $i0;
+        java.lang.IllegalArgumentException $r1;
+
+        r0 := @this: com.squareup.picasso.Request$Builder;
+
+        $i0 := @parameter0: int;
+
+        if $i0 != 0 goto label1;
+
+        $r1 = new java.lang.IllegalArgumentException;
+
+        specialinvoke $r1.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>("Image resource ID may not be 0.");
+
+        throw $r1;
+
+     label1:
+        r0.<com.squareup.picasso.Request$Builder: int resourceId> = $i0;
+
+        r0.<com.squareup.picasso.Request$Builder: android.net.Uri uri> = null;
+
+        return r0;
+    }
+
+    public final com.squareup.picasso.Request$Builder setUri(android.net.Uri)
+    {
+        com.squareup.picasso.Request$Builder r0;
+        android.net.Uri $r1;
+        java.lang.IllegalArgumentException $r2;
+
+        r0 := @this: com.squareup.picasso.Request$Builder;
+
+        $r1 := @parameter0: android.net.Uri;
+
+        if $r1 != null goto label1;
+
+        $r2 = new java.lang.IllegalArgumentException;
+
+        specialinvoke $r2.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>("Image URI may not be null.");
+
+        throw $r2;
+
+     label1:
+        r0.<com.squareup.picasso.Request$Builder: android.net.Uri uri> = $r1;
+
+        r0.<com.squareup.picasso.Request$Builder: int resourceId> = 0;
+
+        return r0;
+    }
+
+    public final com.squareup.picasso.Request$Builder stableKey(java.lang.String)
+    {
+        com.squareup.picasso.Request$Builder r0;
+        java.lang.String $r1;
+
+        r0 := @this: com.squareup.picasso.Request$Builder;
+
+        $r1 := @parameter0: java.lang.String;
+
+        r0.<com.squareup.picasso.Request$Builder: java.lang.String stableKey> = $r1;
+
+        return r0;
+    }
+
+    public final com.squareup.picasso.Request$Builder transform(com.squareup.picasso.Transformation)
+    {
+        com.squareup.picasso.Request$Builder r0;
+        com.squareup.picasso.Transformation $r1;
+        java.lang.String $r2;
+        java.lang.IllegalArgumentException $r3;
+        java.util.List $r4;
+        java.util.ArrayList $r5;
+
+        r0 := @this: com.squareup.picasso.Request$Builder;
+
+        $r1 := @parameter0: com.squareup.picasso.Transformation;
+
+        if $r1 != null goto label1;
+
+        $r3 = new java.lang.IllegalArgumentException;
+
+        specialinvoke $r3.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>("Transformation must not be null.");
+
+        throw $r3;
+
+     label1:
+        $r2 = interfaceinvoke $r1.<com.squareup.picasso.Transformation: java.lang.String key()>();
+
+        if $r2 != null goto label2;
+
+        $r3 = new java.lang.IllegalArgumentException;
+
+        specialinvoke $r3.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>("Transformation key must not be null.");
+
+        throw $r3;
+
+     label2:
+        $r4 = r0.<com.squareup.picasso.Request$Builder: java.util.List transformations>;
+
+        if $r4 != null goto label3;
+
+        $r5 = new java.util.ArrayList;
+
+        specialinvoke $r5.<java.util.ArrayList: void <init>(int)>(2);
+
+        r0.<com.squareup.picasso.Request$Builder: java.util.List transformations> = $r5;
+
+     label3:
+        $r4 = r0.<com.squareup.picasso.Request$Builder: java.util.List transformations>;
+
+        interfaceinvoke $r4.<java.util.List: boolean add(java.lang.Object)>($r1);
+
+        return r0;
+    }
+
+    public final com.squareup.picasso.Request$Builder transform(java.util.List)
+    {
+        com.squareup.picasso.Request$Builder r0;
+        java.util.List $r1;
+        java.lang.IllegalArgumentException $r2;
+        int $i0, $i1;
+        java.lang.Object $r3;
+        com.squareup.picasso.Transformation $r4;
+
+        r0 := @this: com.squareup.picasso.Request$Builder;
+
+        $r1 := @parameter0: java.util.List;
+
+        if $r1 != null goto label1;
+
+        $r2 = new java.lang.IllegalArgumentException;
+
+        specialinvoke $r2.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>("Transformation list must not be null.");
+
+        throw $r2;
+
+     label1:
+        $i0 = interfaceinvoke $r1.<java.util.List: int size()>();
+
+        $i1 = 0;
+
+     label2:
+        if $i1 >= $i0 goto label3;
+
+        $r3 = interfaceinvoke $r1.<java.util.List: java.lang.Object get(int)>($i1);
+
+        $r4 = (com.squareup.picasso.Transformation) $r3;
+
+        virtualinvoke r0.<com.squareup.picasso.Request$Builder: com.squareup.picasso.Request$Builder transform(com.squareup.picasso.Transformation)>($r4);
+
+        $i1 = $i1 + 1;
+
+        goto label2;
+
+     label3:
+        return r0;
+    }
+}

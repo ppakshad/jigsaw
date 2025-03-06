@@ -1,0 +1,80 @@
+public class com.startapp.android.publish.adinformation.AdInformationJsInterface extends java.lang.Object
+{
+    private java.lang.Runnable acceptCallback;
+    private java.lang.Runnable declineCallback;
+    private boolean processed;
+
+    public void <init>(java.lang.Runnable, java.lang.Runnable)
+    {
+        com.startapp.android.publish.adinformation.AdInformationJsInterface r0;
+        java.lang.Runnable $r1, $r2;
+
+        r0 := @this: com.startapp.android.publish.adinformation.AdInformationJsInterface;
+
+        $r1 := @parameter0: java.lang.Runnable;
+
+        $r2 := @parameter1: java.lang.Runnable;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        r0.<com.startapp.android.publish.adinformation.AdInformationJsInterface: boolean processed> = 0;
+
+        r0.<com.startapp.android.publish.adinformation.AdInformationJsInterface: java.lang.Runnable declineCallback> = null;
+
+        r0.<com.startapp.android.publish.adinformation.AdInformationJsInterface: java.lang.Runnable acceptCallback> = null;
+
+        r0.<com.startapp.android.publish.adinformation.AdInformationJsInterface: java.lang.Runnable acceptCallback> = $r1;
+
+        r0.<com.startapp.android.publish.adinformation.AdInformationJsInterface: java.lang.Runnable declineCallback> = $r2;
+
+        return;
+    }
+
+    public void accept()
+    {
+        com.startapp.android.publish.adinformation.AdInformationJsInterface r0;
+        boolean $z0;
+        java.lang.Runnable $r1;
+
+        r0 := @this: com.startapp.android.publish.adinformation.AdInformationJsInterface;
+
+        $z0 = r0.<com.startapp.android.publish.adinformation.AdInformationJsInterface: boolean processed>;
+
+        if $z0 == 0 goto label1;
+
+        return;
+
+     label1:
+        r0.<com.startapp.android.publish.adinformation.AdInformationJsInterface: boolean processed> = 1;
+
+        $r1 = r0.<com.startapp.android.publish.adinformation.AdInformationJsInterface: java.lang.Runnable acceptCallback>;
+
+        interfaceinvoke $r1.<java.lang.Runnable: void run()>();
+
+        return;
+    }
+
+    public void decline()
+    {
+        com.startapp.android.publish.adinformation.AdInformationJsInterface r0;
+        boolean $z0;
+        java.lang.Runnable $r1;
+
+        r0 := @this: com.startapp.android.publish.adinformation.AdInformationJsInterface;
+
+        $z0 = r0.<com.startapp.android.publish.adinformation.AdInformationJsInterface: boolean processed>;
+
+        if $z0 == 0 goto label1;
+
+        return;
+
+     label1:
+        r0.<com.startapp.android.publish.adinformation.AdInformationJsInterface: boolean processed> = 1;
+
+        $r1 = r0.<com.startapp.android.publish.adinformation.AdInformationJsInterface: java.lang.Runnable declineCallback>;
+
+        interfaceinvoke $r1.<java.lang.Runnable: void run()>();
+
+        return;
+    }
+}

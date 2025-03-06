@@ -1,0 +1,2357 @@
+public class com.movesky.webapp.Activity_WebView extends android.app.Activity
+{
+    private static final int FILECHOOSER_RESULTCODE;
+    public static final int INPUT_FILE_REQUEST_CODE;
+    private static java.util.Timer mTimer;
+    static java.util.TimerTask mTimerTask;
+    static android.widget.RelativeLayout m_LayoutExternWebView;
+    static android.widget.TextView m_TitleExtern;
+    static android.webkit.WebView m_WebView;
+    static android.webkit.WebView m_WebViewAdv;
+    static boolean m_WebViewAdvHasOpenTaobao;
+    static android.webkit.WebView m_WebViewExtern;
+    static android.webkit.WebView m_WebViewTaobaoKe;
+    static boolean m_bExternWebViewIsShow;
+    static android.content.Context m_ct;
+    private static android.os.Handler m_handle;
+    static long m_tmAppStart;
+    static long m_tmWebAdv;
+    static java.lang.String m_urlAdvert;
+    final java.lang.String f_urlBase;
+    private java.lang.String mCameraFilePath;
+    private android.webkit.ValueCallback mFilePathCallback;
+    private com.movesky.webapp.PermissionHelper mPermissionHelper;
+    private android.webkit.ValueCallback mUploadMessage;
+    org.json.JSONObject m_jsonMap;
+    android.app.ProgressDialog m_proDialog;
+    java.lang.String m_url;
+    public android.content.Intent ipcIntent;
+    public android.content.Intent ipcResultIntent;
+
+    static void <clinit>()
+    {
+        long $l0;
+        com.movesky.webapp.Activity_WebView$17 $r0;
+        java.util.Timer $r1;
+        com.movesky.webapp.Activity_WebView$18 $r2;
+
+        <com.movesky.webapp.Activity_WebView: int INPUT_FILE_REQUEST_CODE> = 1;
+
+        <com.movesky.webapp.Activity_WebView: int FILECHOOSER_RESULTCODE> = 2;
+
+        <com.movesky.webapp.Activity_WebView: android.content.Context m_ct> = null;
+
+        <com.movesky.webapp.Activity_WebView: android.webkit.WebView m_WebView> = null;
+
+        <com.movesky.webapp.Activity_WebView: android.webkit.WebView m_WebViewAdv> = null;
+
+        <com.movesky.webapp.Activity_WebView: android.webkit.WebView m_WebViewTaobaoKe> = null;
+
+        <com.movesky.webapp.Activity_WebView: boolean m_WebViewAdvHasOpenTaobao> = 0;
+
+        <com.movesky.webapp.Activity_WebView: long m_tmWebAdv> = 0L;
+
+        $l0 = staticinvoke <java.lang.System: long currentTimeMillis()>();
+
+        <com.movesky.webapp.Activity_WebView: long m_tmAppStart> = $l0;
+
+        <com.movesky.webapp.Activity_WebView: android.webkit.WebView m_WebViewExtern> = null;
+
+        <com.movesky.webapp.Activity_WebView: boolean m_bExternWebViewIsShow> = 0;
+
+        <com.movesky.webapp.Activity_WebView: android.widget.RelativeLayout m_LayoutExternWebView> = null;
+
+        <com.movesky.webapp.Activity_WebView: android.widget.TextView m_TitleExtern> = null;
+
+        <com.movesky.webapp.Activity_WebView: java.lang.String m_urlAdvert> = "";
+
+        $r0 = new com.movesky.webapp.Activity_WebView$17;
+
+        specialinvoke $r0.<com.movesky.webapp.Activity_WebView$17: void <init>()>();
+
+        <com.movesky.webapp.Activity_WebView: android.os.Handler m_handle> = $r0;
+
+        $r1 = new java.util.Timer;
+
+        specialinvoke $r1.<java.util.Timer: void <init>()>();
+
+        <com.movesky.webapp.Activity_WebView: java.util.Timer mTimer> = $r1;
+
+        $r2 = new com.movesky.webapp.Activity_WebView$18;
+
+        specialinvoke $r2.<com.movesky.webapp.Activity_WebView$18: void <init>()>();
+
+        <com.movesky.webapp.Activity_WebView: java.util.TimerTask mTimerTask> = $r2;
+
+        return;
+    }
+
+    public void <init>()
+    {
+        com.movesky.webapp.Activity_WebView r0;
+
+        r0 := @this: com.movesky.webapp.Activity_WebView;
+
+        specialinvoke r0.<android.app.Activity: void <init>()>();
+
+        r0.<com.movesky.webapp.Activity_WebView: java.lang.String f_urlBase> = "file:///android_asset/";
+
+        r0.<com.movesky.webapp.Activity_WebView: java.lang.String mCameraFilePath> = null;
+
+        return;
+    }
+
+    public static android.view.View GetAdvertWebView()
+    {
+        android.webkit.WebView r0;
+
+        r0 = <com.movesky.webapp.Activity_WebView: android.webkit.WebView m_WebViewAdv>;
+
+        return r0;
+    }
+
+    public static android.content.Context GetWebViewContext()
+    {
+        android.content.Context r0;
+
+        r0 = <com.movesky.webapp.Activity_WebView: android.content.Context m_ct>;
+
+        return r0;
+    }
+
+    public static void HideExternWebView(boolean)
+    {
+        boolean $z0;
+        android.webkit.WebView $r0;
+        android.widget.RelativeLayout $r1;
+
+        $z0 := @parameter0: boolean;
+
+        <com.movesky.webapp.Activity_WebView: boolean m_bExternWebViewIsShow> = 0;
+
+        $r0 = <com.movesky.webapp.Activity_WebView: android.webkit.WebView m_WebViewExtern>;
+
+        virtualinvoke $r0.<android.webkit.WebView: void loadUrl(java.lang.String)>("");
+
+        $r1 = <com.movesky.webapp.Activity_WebView: android.widget.RelativeLayout m_LayoutExternWebView>;
+
+        virtualinvoke $r1.<android.widget.RelativeLayout: void setVisibility(int)>(4);
+
+        return;
+    }
+
+    private void InitExternWebView()
+    {
+        com.movesky.webapp.Activity_WebView r0;
+        android.view.View $r1;
+        android.widget.RelativeLayout $r2, $r3;
+        android.widget.RelativeLayout$LayoutParams $r4;
+        android.view.WindowManager $r5;
+        android.view.Display $r6;
+        int $i0, $i1, $i2;
+        android.widget.LinearLayout $r7;
+        android.widget.ImageView $r8;
+        com.movesky.webapp.Activity_WebView$6 $r9;
+        android.widget.TextView $r10;
+        double $d0;
+        float $f0;
+        android.text.TextUtils$TruncateAt $r11;
+        android.webkit.WebView $r12;
+        long $l3;
+        android.webkit.WebSettings $r13;
+        android.content.Context $r14;
+        java.io.File $r15;
+        java.lang.String $r16;
+        java.lang.StringBuilder $r17;
+        android.webkit.WebSettings$RenderPriority $r18;
+        com.movesky.webapp.Activity_WebView$7 $r19;
+        com.movesky.webapp.Activity_WebView$8 $r20;
+        com.movesky.webapp.Activity_WebView$9 $r21;
+        com.movesky.webapp.Activity_WebView$10 $r22;
+
+        r0 := @this: com.movesky.webapp.Activity_WebView;
+
+        $r1 = virtualinvoke r0.<android.app.Activity: android.view.View findViewById(int)>(2131230749);
+
+        $r2 = (android.widget.RelativeLayout) $r1;
+
+        $r3 = new android.widget.RelativeLayout;
+
+        specialinvoke $r3.<android.widget.RelativeLayout: void <init>(android.content.Context)>(r0);
+
+        <com.movesky.webapp.Activity_WebView: android.widget.RelativeLayout m_LayoutExternWebView> = $r3;
+
+        $r4 = new android.widget.RelativeLayout$LayoutParams;
+
+        specialinvoke $r4.<android.widget.RelativeLayout$LayoutParams: void <init>(int,int)>(-1, -1);
+
+        $r3 = <com.movesky.webapp.Activity_WebView: android.widget.RelativeLayout m_LayoutExternWebView>;
+
+        virtualinvoke $r3.<android.widget.RelativeLayout: void setLayoutParams(android.view.ViewGroup$LayoutParams)>($r4);
+
+        $r3 = <com.movesky.webapp.Activity_WebView: android.widget.RelativeLayout m_LayoutExternWebView>;
+
+        virtualinvoke $r2.<android.widget.RelativeLayout: void addView(android.view.View)>($r3);
+
+        $r5 = virtualinvoke r0.<com.movesky.webapp.Activity_WebView: android.view.WindowManager getWindowManager()>();
+
+        $r6 = interfaceinvoke $r5.<android.view.WindowManager: android.view.Display getDefaultDisplay()>();
+
+        $i0 = virtualinvoke $r6.<android.view.Display: int getWidth()>();
+
+        $r5 = virtualinvoke r0.<com.movesky.webapp.Activity_WebView: android.view.WindowManager getWindowManager()>();
+
+        $r6 = interfaceinvoke $r5.<android.view.WindowManager: android.view.Display getDefaultDisplay()>();
+
+        $i1 = virtualinvoke $r6.<android.view.Display: int getHeight()>();
+
+        $i0 = $i0 / 6;
+
+        if $i0 >= 50 goto label1;
+
+        $i0 = 50;
+
+     label1:
+        $i2 = $i1 / 10;
+
+        if $i0 <= $i2 goto label2;
+
+        $i0 = $i1 / 10;
+
+     label2:
+        if $i0 <= 120 goto label3;
+
+        $i0 = 120;
+
+     label3:
+        $r7 = new android.widget.LinearLayout;
+
+        specialinvoke $r7.<android.widget.LinearLayout: void <init>(android.content.Context)>(r0);
+
+        $r4 = new android.widget.RelativeLayout$LayoutParams;
+
+        specialinvoke $r4.<android.widget.RelativeLayout$LayoutParams: void <init>(int,int)>(-1, $i0);
+
+        virtualinvoke $r4.<android.widget.RelativeLayout$LayoutParams: void addRule(int)>(10);
+
+        $r4.<android.widget.RelativeLayout$LayoutParams: int height> = $i0;
+
+        virtualinvoke $r7.<android.widget.LinearLayout: void setLayoutParams(android.view.ViewGroup$LayoutParams)>($r4);
+
+        virtualinvoke $r7.<android.widget.LinearLayout: void setOrientation(int)>(0);
+
+        virtualinvoke $r7.<android.widget.LinearLayout: void setBackgroundColor(int)>(-12303292);
+
+        virtualinvoke $r7.<android.widget.LinearLayout: void setId(int)>(12345);
+
+        $r2 = <com.movesky.webapp.Activity_WebView: android.widget.RelativeLayout m_LayoutExternWebView>;
+
+        virtualinvoke $r2.<android.widget.RelativeLayout: void addView(android.view.View)>($r7);
+
+        $r8 = new android.widget.ImageView;
+
+        specialinvoke $r8.<android.widget.ImageView: void <init>(android.content.Context)>(r0);
+
+        $r4 = new android.widget.RelativeLayout$LayoutParams;
+
+        specialinvoke $r4.<android.widget.RelativeLayout$LayoutParams: void <init>(int,int)>(-2, -1);
+
+        $r4.<android.widget.RelativeLayout$LayoutParams: int height> = $i0;
+
+        $r4.<android.widget.RelativeLayout$LayoutParams: int width> = $i0;
+
+        virtualinvoke $r8.<android.widget.ImageView: void setLayoutParams(android.view.ViewGroup$LayoutParams)>($r4);
+
+        virtualinvoke $r8.<android.widget.ImageView: void setImageResource(int)>(2130837515);
+
+        $i1 = $i0 / 5;
+
+        virtualinvoke $r8.<android.widget.ImageView: void setPadding(int,int,int,int)>($i1, $i1, $i1, $i1);
+
+        virtualinvoke $r7.<android.widget.LinearLayout: void addView(android.view.View)>($r8);
+
+        $r9 = new com.movesky.webapp.Activity_WebView$6;
+
+        specialinvoke $r9.<com.movesky.webapp.Activity_WebView$6: void <init>(com.movesky.webapp.Activity_WebView)>(r0);
+
+        virtualinvoke $r8.<android.widget.ImageView: void setOnClickListener(android.view.View$OnClickListener)>($r9);
+
+        $r10 = new android.widget.TextView;
+
+        specialinvoke $r10.<android.widget.TextView: void <init>(android.content.Context)>(r0);
+
+        <com.movesky.webapp.Activity_WebView: android.widget.TextView m_TitleExtern> = $r10;
+
+        $r4 = new android.widget.RelativeLayout$LayoutParams;
+
+        specialinvoke $r4.<android.widget.RelativeLayout$LayoutParams: void <init>(int,int)>(-1, -1);
+
+        $r4.<android.widget.RelativeLayout$LayoutParams: int height> = $i0;
+
+        $r10 = <com.movesky.webapp.Activity_WebView: android.widget.TextView m_TitleExtern>;
+
+        virtualinvoke $r10.<android.widget.TextView: void setLayoutParams(android.view.ViewGroup$LayoutParams)>($r4);
+
+        $r10 = <com.movesky.webapp.Activity_WebView: android.widget.TextView m_TitleExtern>;
+
+        virtualinvoke $r10.<android.widget.TextView: void setGravity(int)>(19);
+
+        $r10 = <com.movesky.webapp.Activity_WebView: android.widget.TextView m_TitleExtern>;
+
+        $d0 = (double) $i0;
+
+        $d0 = $d0 * 0.6;
+
+        $f0 = (float) $d0;
+
+        virtualinvoke $r10.<android.widget.TextView: void setTextSize(int,float)>(0, $f0);
+
+        $r10 = <com.movesky.webapp.Activity_WebView: android.widget.TextView m_TitleExtern>;
+
+        virtualinvoke $r10.<android.widget.TextView: void setTextSize(float)>(20.0F);
+
+        $r10 = <com.movesky.webapp.Activity_WebView: android.widget.TextView m_TitleExtern>;
+
+        virtualinvoke $r10.<android.widget.TextView: void setText(java.lang.CharSequence)>("\u8fd4\u56de");
+
+        $r10 = <com.movesky.webapp.Activity_WebView: android.widget.TextView m_TitleExtern>;
+
+        virtualinvoke $r10.<android.widget.TextView: void setMaxLines(int)>(1);
+
+        $r10 = <com.movesky.webapp.Activity_WebView: android.widget.TextView m_TitleExtern>;
+
+        $r11 = <android.text.TextUtils$TruncateAt: android.text.TextUtils$TruncateAt END>;
+
+        virtualinvoke $r10.<android.widget.TextView: void setEllipsize(android.text.TextUtils$TruncateAt)>($r11);
+
+        $r10 = <com.movesky.webapp.Activity_WebView: android.widget.TextView m_TitleExtern>;
+
+        virtualinvoke $r10.<android.widget.TextView: void setTextColor(int)>(-1);
+
+        $r10 = <com.movesky.webapp.Activity_WebView: android.widget.TextView m_TitleExtern>;
+
+        virtualinvoke $r7.<android.widget.LinearLayout: void addView(android.view.View)>($r10);
+
+        $r12 = new android.webkit.WebView;
+
+        specialinvoke $r12.<android.webkit.WebView: void <init>(android.content.Context)>(r0);
+
+        <com.movesky.webapp.Activity_WebView: android.webkit.WebView m_WebViewExtern> = $r12;
+
+        $r4 = new android.widget.RelativeLayout$LayoutParams;
+
+        specialinvoke $r4.<android.widget.RelativeLayout$LayoutParams: void <init>(int,int)>(-1, -1);
+
+        virtualinvoke $r4.<android.widget.RelativeLayout$LayoutParams: void addRule(int,int)>(3, 12345);
+
+        virtualinvoke $r4.<android.widget.RelativeLayout$LayoutParams: void addRule(int)>(12);
+
+        $r12 = <com.movesky.webapp.Activity_WebView: android.webkit.WebView m_WebViewExtern>;
+
+        virtualinvoke $r12.<android.webkit.WebView: void setLayoutParams(android.view.ViewGroup$LayoutParams)>($r4);
+
+        $r2 = <com.movesky.webapp.Activity_WebView: android.widget.RelativeLayout m_LayoutExternWebView>;
+
+        $r12 = <com.movesky.webapp.Activity_WebView: android.webkit.WebView m_WebViewExtern>;
+
+        virtualinvoke $r2.<android.widget.RelativeLayout: void addView(android.view.View)>($r12);
+
+        $r2 = <com.movesky.webapp.Activity_WebView: android.widget.RelativeLayout m_LayoutExternWebView>;
+
+        virtualinvoke $r2.<android.widget.RelativeLayout: void setVisibility(int)>(4);
+
+        $r12 = <com.movesky.webapp.Activity_WebView: android.webkit.WebView m_WebViewExtern>;
+
+        virtualinvoke $r12.<android.webkit.WebView: void loadUrl(java.lang.String)>("");
+
+        $l3 = staticinvoke <java.lang.System: long currentTimeMillis()>();
+
+        <com.movesky.webapp.Activity_WebView: long m_tmWebAdv> = $l3;
+
+        $r12 = <com.movesky.webapp.Activity_WebView: android.webkit.WebView m_WebViewExtern>;
+
+        virtualinvoke $r12.<android.webkit.WebView: void setVerticalScrollBarEnabled(boolean)>(0);
+
+        $r12 = <com.movesky.webapp.Activity_WebView: android.webkit.WebView m_WebViewExtern>;
+
+        virtualinvoke $r12.<android.webkit.WebView: void setHorizontalScrollBarEnabled(boolean)>(0);
+
+        $r12 = <com.movesky.webapp.Activity_WebView: android.webkit.WebView m_WebViewExtern>;
+
+        $r13 = virtualinvoke $r12.<android.webkit.WebView: android.webkit.WebSettings getSettings()>();
+
+        virtualinvoke $r13.<android.webkit.WebSettings: void setAppCacheMaxSize(long)>(8388608L);
+
+        $r14 = virtualinvoke r0.<com.movesky.webapp.Activity_WebView: android.content.Context getApplicationContext()>();
+
+        $r15 = virtualinvoke $r14.<android.content.Context: java.io.File getDir(java.lang.String,int)>("cache", 0);
+
+        $r16 = virtualinvoke $r15.<java.io.File: java.lang.String getPath()>();
+
+        virtualinvoke $r13.<android.webkit.WebSettings: void setAppCachePath(java.lang.String)>($r16);
+
+        $r17 = new java.lang.StringBuilder;
+
+        specialinvoke $r17.<java.lang.StringBuilder: void <init>()>();
+
+        $r17 = virtualinvoke $r17.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("AppCachePath:");
+
+        $r17 = virtualinvoke $r17.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r16);
+
+        $r16 = virtualinvoke $r17.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <com.zrd.common.ZrdCommon$ZrdLog: void Log(java.lang.String)>($r16);
+
+        virtualinvoke $r13.<android.webkit.WebSettings: void setJavaScriptCanOpenWindowsAutomatically(boolean)>(1);
+
+        virtualinvoke $r13.<android.webkit.WebSettings: void setJavaScriptEnabled(boolean)>(1);
+
+        virtualinvoke $r13.<android.webkit.WebSettings: void setBuiltInZoomControls(boolean)>(0);
+
+        virtualinvoke $r13.<android.webkit.WebSettings: void setAllowFileAccess(boolean)>(1);
+
+        virtualinvoke $r13.<android.webkit.WebSettings: void setGeolocationEnabled(boolean)>(1);
+
+        virtualinvoke $r13.<android.webkit.WebSettings: void setSavePassword(boolean)>(0);
+
+        virtualinvoke $r13.<android.webkit.WebSettings: void setDomStorageEnabled(boolean)>(1);
+
+        virtualinvoke $r13.<android.webkit.WebSettings: void setDatabaseEnabled(boolean)>(1);
+
+        virtualinvoke $r13.<android.webkit.WebSettings: void setCacheMode(int)>(-1);
+
+        $r17 = new java.lang.StringBuilder;
+
+        specialinvoke $r17.<java.lang.StringBuilder: void <init>()>();
+
+        $r17 = virtualinvoke $r17.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("/data/data/");
+
+        $r16 = virtualinvoke r0.<com.movesky.webapp.Activity_WebView: java.lang.String getPackageName()>();
+
+        $r17 = virtualinvoke $r17.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r16);
+
+        $r17 = virtualinvoke $r17.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("/databases/");
+
+        $r16 = virtualinvoke $r17.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        virtualinvoke $r13.<android.webkit.WebSettings: void setDatabasePath(java.lang.String)>($r16);
+
+        $r18 = <android.webkit.WebSettings$RenderPriority: android.webkit.WebSettings$RenderPriority HIGH>;
+
+        virtualinvoke $r13.<android.webkit.WebSettings: void setRenderPriority(android.webkit.WebSettings$RenderPriority)>($r18);
+
+        specialinvoke r0.<com.movesky.webapp.Activity_WebView: void SetWebViewFitScreen(android.webkit.WebSettings)>($r13);
+
+        $r12 = <com.movesky.webapp.Activity_WebView: android.webkit.WebView m_WebViewExtern>;
+
+        $r19 = new com.movesky.webapp.Activity_WebView$7;
+
+        specialinvoke $r19.<com.movesky.webapp.Activity_WebView$7: void <init>(com.movesky.webapp.Activity_WebView)>(r0);
+
+        virtualinvoke $r12.<android.webkit.WebView: void setWebViewClient(android.webkit.WebViewClient)>($r19);
+
+        $r12 = <com.movesky.webapp.Activity_WebView: android.webkit.WebView m_WebViewExtern>;
+
+        $r20 = new com.movesky.webapp.Activity_WebView$8;
+
+        specialinvoke $r20.<com.movesky.webapp.Activity_WebView$8: void <init>(com.movesky.webapp.Activity_WebView)>(r0);
+
+        virtualinvoke $r12.<android.webkit.WebView: void setWebChromeClient(android.webkit.WebChromeClient)>($r20);
+
+        $r12 = <com.movesky.webapp.Activity_WebView: android.webkit.WebView m_WebViewExtern>;
+
+        $r21 = new com.movesky.webapp.Activity_WebView$9;
+
+        specialinvoke $r21.<com.movesky.webapp.Activity_WebView$9: void <init>(com.movesky.webapp.Activity_WebView)>(r0);
+
+        virtualinvoke $r12.<android.webkit.WebView: void addJavascriptInterface(java.lang.Object,java.lang.String)>($r21, "android");
+
+        $r12 = <com.movesky.webapp.Activity_WebView: android.webkit.WebView m_WebViewExtern>;
+
+        $r22 = new com.movesky.webapp.Activity_WebView$10;
+
+        specialinvoke $r22.<com.movesky.webapp.Activity_WebView$10: void <init>(com.movesky.webapp.Activity_WebView)>(r0);
+
+        virtualinvoke $r12.<android.webkit.WebView: void setOnLongClickListener(android.view.View$OnLongClickListener)>($r22);
+
+        return;
+    }
+
+    private void InitTaobaKeWebView()
+    {
+        com.movesky.webapp.Activity_WebView r0;
+        android.view.View $r1;
+        android.widget.RelativeLayout $r2;
+        android.webkit.WebView $r3;
+        android.widget.RelativeLayout$LayoutParams $r4;
+        android.webkit.WebSettings $r5;
+        com.movesky.webapp.Activity_WebView$15 $r6;
+
+        r0 := @this: com.movesky.webapp.Activity_WebView;
+
+        $r1 = virtualinvoke r0.<android.app.Activity: android.view.View findViewById(int)>(2131230749);
+
+        $r2 = (android.widget.RelativeLayout) $r1;
+
+        $r3 = new android.webkit.WebView;
+
+        specialinvoke $r3.<android.webkit.WebView: void <init>(android.content.Context)>(r0);
+
+        <com.movesky.webapp.Activity_WebView: android.webkit.WebView m_WebViewTaobaoKe> = $r3;
+
+        $r4 = new android.widget.RelativeLayout$LayoutParams;
+
+        specialinvoke $r4.<android.widget.RelativeLayout$LayoutParams: void <init>(int,int)>(0, 0);
+
+        $r3 = <com.movesky.webapp.Activity_WebView: android.webkit.WebView m_WebViewTaobaoKe>;
+
+        virtualinvoke $r3.<android.webkit.WebView: void setLayoutParams(android.view.ViewGroup$LayoutParams)>($r4);
+
+        $r3 = <com.movesky.webapp.Activity_WebView: android.webkit.WebView m_WebViewTaobaoKe>;
+
+        virtualinvoke $r2.<android.widget.RelativeLayout: void addView(android.view.View)>($r3);
+
+        $r3 = <com.movesky.webapp.Activity_WebView: android.webkit.WebView m_WebViewTaobaoKe>;
+
+        $r5 = virtualinvoke $r3.<android.webkit.WebView: android.webkit.WebSettings getSettings()>();
+
+        virtualinvoke $r5.<android.webkit.WebSettings: void setCacheMode(int)>(-1);
+
+        $r3 = <com.movesky.webapp.Activity_WebView: android.webkit.WebView m_WebViewTaobaoKe>;
+
+        $r6 = new com.movesky.webapp.Activity_WebView$15;
+
+        specialinvoke $r6.<com.movesky.webapp.Activity_WebView$15: void <init>(com.movesky.webapp.Activity_WebView)>(r0);
+
+        virtualinvoke $r3.<android.webkit.WebView: void setWebViewClient(android.webkit.WebViewClient)>($r6);
+
+        return;
+    }
+
+    private void InitYSAdvertWebView()
+    {
+        com.movesky.webapp.Activity_WebView r0;
+        int $i0;
+        android.view.View $r1;
+        android.widget.RelativeLayout $r2;
+        android.webkit.WebView $r3;
+        android.widget.RelativeLayout$LayoutParams $r4;
+        org.json.JSONObject $r5;
+        java.lang.String $r6, $r7, $r8;
+        boolean $z0;
+        long $l1;
+        java.lang.StringBuilder $r9;
+        android.webkit.WebSettings $r10;
+        android.content.Context $r11;
+        java.io.File $r12;
+        android.webkit.WebSettings$RenderPriority $r13;
+        com.movesky.webapp.Activity_WebView$11 $r14;
+        com.movesky.webapp.Activity_WebView$12 $r15;
+        com.movesky.webapp.Activity_WebView$13 $r16;
+        com.movesky.webapp.Activity_WebView$14 $r17;
+        java.util.Timer $r18;
+        java.util.TimerTask $r19;
+        org.json.JSONException $r20, $r21;
+
+        r0 := @this: com.movesky.webapp.Activity_WebView;
+
+        $i0 = <com.movesky.app_package.R_App$config: int YSWelcomeAdv>;
+
+        if $i0 != 0 goto label01;
+
+        return;
+
+     label01:
+        $r1 = virtualinvoke r0.<android.app.Activity: android.view.View findViewById(int)>(2131230749);
+
+        $r2 = (android.widget.RelativeLayout) $r1;
+
+        $r3 = new android.webkit.WebView;
+
+        specialinvoke $r3.<android.webkit.WebView: void <init>(android.content.Context)>(r0);
+
+        <com.movesky.webapp.Activity_WebView: android.webkit.WebView m_WebViewAdv> = $r3;
+
+        $r4 = new android.widget.RelativeLayout$LayoutParams;
+
+        specialinvoke $r4.<android.widget.RelativeLayout$LayoutParams: void <init>(int,int)>(-1, -1);
+
+        virtualinvoke $r4.<android.widget.RelativeLayout$LayoutParams: void addRule(int)>(10);
+
+        $r3 = <com.movesky.webapp.Activity_WebView: android.webkit.WebView m_WebViewAdv>;
+
+        virtualinvoke $r3.<android.webkit.WebView: void setLayoutParams(android.view.ViewGroup$LayoutParams)>($r4);
+
+        $r3 = <com.movesky.webapp.Activity_WebView: android.webkit.WebView m_WebViewAdv>;
+
+        virtualinvoke $r2.<android.widget.RelativeLayout: void addView(android.view.View)>($r3);
+
+        $r5 = staticinvoke <com.movesky.webapp.YSHtml: org.json.JSONObject AppSystemInfoJSon(android.content.Context)>(r0);
+
+        $r6 = "";
+
+     label02:
+        $r7 = virtualinvoke $r5.<org.json.JSONObject: java.lang.String getString(java.lang.String)>("bundleId");
+
+     label03:
+        $r8 = virtualinvoke $r5.<org.json.JSONObject: java.lang.String getString(java.lang.String)>("devId");
+
+     label04:
+        $r6 = $r8;
+
+     label05:
+        $z0 = virtualinvoke $r7.<java.lang.String: boolean equals(java.lang.Object)>("com.zrd.yueyu");
+
+        if $z0 == 0 goto label09;
+
+        $r7 = "yueyu";
+
+     label06:
+        $l1 = staticinvoke <java.lang.System: long currentTimeMillis()>();
+
+        <com.movesky.webapp.Activity_WebView: long m_tmWebAdv> = $l1;
+
+        $r9 = new java.lang.StringBuilder;
+
+        specialinvoke $r9.<java.lang.StringBuilder: void <init>()>();
+
+        $r9 = virtualinvoke $r9.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("http://movesky-yueyuyunying.stor.sinaapp.com/YSAdvert/");
+
+        $r9 = virtualinvoke $r9.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r7);
+
+        $r9 = virtualinvoke $r9.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("/adv.html");
+
+        virtualinvoke $r9.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        $r9 = new java.lang.StringBuilder;
+
+        specialinvoke $r9.<java.lang.StringBuilder: void <init>()>();
+
+        $r9 = virtualinvoke $r9.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("http://1000.movesky.sinaapp.com/YSAdvert/Welcome/adv_20161216.php");
+
+        $r9 = virtualinvoke $r9.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("?bid=");
+
+        $r9 = virtualinvoke $r9.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r7);
+
+        $r9 = virtualinvoke $r9.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("&did=");
+
+        $r9 = virtualinvoke $r9.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r6);
+
+        $r6 = virtualinvoke $r9.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        $r3 = <com.movesky.webapp.Activity_WebView: android.webkit.WebView m_WebViewAdv>;
+
+        virtualinvoke $r3.<android.webkit.WebView: void setVerticalScrollBarEnabled(boolean)>(0);
+
+        $r3 = <com.movesky.webapp.Activity_WebView: android.webkit.WebView m_WebViewAdv>;
+
+        virtualinvoke $r3.<android.webkit.WebView: void setHorizontalScrollBarEnabled(boolean)>(0);
+
+        $r3 = <com.movesky.webapp.Activity_WebView: android.webkit.WebView m_WebViewAdv>;
+
+        $r10 = virtualinvoke $r3.<android.webkit.WebView: android.webkit.WebSettings getSettings()>();
+
+        virtualinvoke $r10.<android.webkit.WebSettings: void setAppCacheMaxSize(long)>(8388608L);
+
+        $r11 = virtualinvoke r0.<com.movesky.webapp.Activity_WebView: android.content.Context getApplicationContext()>();
+
+        $r12 = virtualinvoke $r11.<android.content.Context: java.io.File getDir(java.lang.String,int)>("cache", 0);
+
+        $r7 = virtualinvoke $r12.<java.io.File: java.lang.String getPath()>();
+
+        virtualinvoke $r10.<android.webkit.WebSettings: void setAppCachePath(java.lang.String)>($r7);
+
+        $r9 = new java.lang.StringBuilder;
+
+        specialinvoke $r9.<java.lang.StringBuilder: void <init>()>();
+
+        $r9 = virtualinvoke $r9.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("AppCachePath:");
+
+        $r9 = virtualinvoke $r9.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r7);
+
+        $r7 = virtualinvoke $r9.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <com.zrd.common.ZrdCommon$ZrdLog: void Log(java.lang.String)>($r7);
+
+        virtualinvoke $r10.<android.webkit.WebSettings: void setJavaScriptCanOpenWindowsAutomatically(boolean)>(1);
+
+        virtualinvoke $r10.<android.webkit.WebSettings: void setJavaScriptEnabled(boolean)>(1);
+
+        virtualinvoke $r10.<android.webkit.WebSettings: void setBuiltInZoomControls(boolean)>(0);
+
+        virtualinvoke $r10.<android.webkit.WebSettings: void setAllowFileAccess(boolean)>(1);
+
+        virtualinvoke $r10.<android.webkit.WebSettings: void setGeolocationEnabled(boolean)>(1);
+
+        virtualinvoke $r10.<android.webkit.WebSettings: void setSavePassword(boolean)>(0);
+
+        virtualinvoke $r10.<android.webkit.WebSettings: void setDomStorageEnabled(boolean)>(1);
+
+        virtualinvoke $r10.<android.webkit.WebSettings: void setDatabaseEnabled(boolean)>(1);
+
+        virtualinvoke $r10.<android.webkit.WebSettings: void setCacheMode(int)>(-1);
+
+        $r9 = new java.lang.StringBuilder;
+
+        specialinvoke $r9.<java.lang.StringBuilder: void <init>()>();
+
+        $r9 = virtualinvoke $r9.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("/data/data/");
+
+        $r7 = virtualinvoke r0.<com.movesky.webapp.Activity_WebView: java.lang.String getPackageName()>();
+
+        $r9 = virtualinvoke $r9.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r7);
+
+        $r9 = virtualinvoke $r9.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("/databases/");
+
+        $r7 = virtualinvoke $r9.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        virtualinvoke $r10.<android.webkit.WebSettings: void setDatabasePath(java.lang.String)>($r7);
+
+        $r13 = <android.webkit.WebSettings$RenderPriority: android.webkit.WebSettings$RenderPriority HIGH>;
+
+        virtualinvoke $r10.<android.webkit.WebSettings: void setRenderPriority(android.webkit.WebSettings$RenderPriority)>($r13);
+
+        specialinvoke r0.<com.movesky.webapp.Activity_WebView: void SetWebViewFitScreen(android.webkit.WebSettings)>($r10);
+
+        $r3 = <com.movesky.webapp.Activity_WebView: android.webkit.WebView m_WebViewAdv>;
+
+        $r14 = new com.movesky.webapp.Activity_WebView$11;
+
+        specialinvoke $r14.<com.movesky.webapp.Activity_WebView$11: void <init>(com.movesky.webapp.Activity_WebView)>(r0);
+
+        virtualinvoke $r3.<android.webkit.WebView: void setWebViewClient(android.webkit.WebViewClient)>($r14);
+
+        $r3 = <com.movesky.webapp.Activity_WebView: android.webkit.WebView m_WebViewAdv>;
+
+        $r15 = new com.movesky.webapp.Activity_WebView$12;
+
+        specialinvoke $r15.<com.movesky.webapp.Activity_WebView$12: void <init>(com.movesky.webapp.Activity_WebView)>(r0);
+
+        virtualinvoke $r3.<android.webkit.WebView: void setWebChromeClient(android.webkit.WebChromeClient)>($r15);
+
+        $r3 = <com.movesky.webapp.Activity_WebView: android.webkit.WebView m_WebViewAdv>;
+
+        $r16 = new com.movesky.webapp.Activity_WebView$13;
+
+        specialinvoke $r16.<com.movesky.webapp.Activity_WebView$13: void <init>(com.movesky.webapp.Activity_WebView)>(r0);
+
+        virtualinvoke $r3.<android.webkit.WebView: void addJavascriptInterface(java.lang.Object,java.lang.String)>($r16, "android");
+
+        $r3 = <com.movesky.webapp.Activity_WebView: android.webkit.WebView m_WebViewAdv>;
+
+        $r17 = new com.movesky.webapp.Activity_WebView$14;
+
+        specialinvoke $r17.<com.movesky.webapp.Activity_WebView$14: void <init>(com.movesky.webapp.Activity_WebView)>(r0);
+
+        virtualinvoke $r3.<android.webkit.WebView: void setOnLongClickListener(android.view.View$OnLongClickListener)>($r17);
+
+        $r18 = <com.movesky.webapp.Activity_WebView: java.util.Timer mTimer>;
+
+        $r19 = <com.movesky.webapp.Activity_WebView: java.util.TimerTask mTimerTask>;
+
+        virtualinvoke $r18.<java.util.Timer: void schedule(java.util.TimerTask,long)>($r19, 5L);
+
+        <com.movesky.webapp.Activity_WebView: java.lang.String m_urlAdvert> = $r6;
+
+        return;
+
+     label07:
+        $r20 := @caughtexception;
+
+        $r7 = "";
+
+        $r21 = $r20;
+
+     label08:
+        virtualinvoke $r21.<org.json.JSONException: void printStackTrace()>();
+
+        goto label05;
+
+     label09:
+        $r7 = virtualinvoke $r7.<java.lang.String: java.lang.String replace(java.lang.CharSequence,java.lang.CharSequence)>("com.movesky.", "");
+
+        goto label06;
+
+     label10:
+        $r21 := @caughtexception;
+
+        goto label08;
+
+        catch org.json.JSONException from label02 to label03 with label07;
+        catch org.json.JSONException from label03 to label04 with label10;
+    }
+
+    public static boolean IsExternWebViewIsShow()
+    {
+        boolean z0;
+
+        z0 = <com.movesky.webapp.Activity_WebView: boolean m_bExternWebViewIsShow>;
+
+        return z0;
+    }
+
+    public static void LoadTaobaKeWebView(java.lang.String)
+    {
+        java.lang.String $r0;
+        long $l0, $l1;
+        byte $b2;
+        android.webkit.WebView $r1;
+
+        $r0 := @parameter0: java.lang.String;
+
+        $l0 = staticinvoke <java.lang.System: long currentTimeMillis()>();
+
+        $l1 = <com.movesky.webapp.Activity_WebView: long m_tmWebAdv>;
+
+        $l0 = $l0 - $l1;
+
+        $l1 = <com.movesky.webapp.YSHtml: long m_durWelcomeShow>;
+
+        $l0 = $l1 - $l0;
+
+        $b2 = $l0 cmp 2000L;
+
+        if $b2 > 0 goto label1;
+
+        $l0 = <com.movesky.webapp.YSHtml: long m_durWelcomeShow>;
+
+        $l0 = $l0 + 2000L;
+
+        <com.movesky.webapp.YSHtml: long m_durWelcomeShow> = $l0;
+
+     label1:
+        $r1 = <com.movesky.webapp.Activity_WebView: android.webkit.WebView m_WebViewTaobaoKe>;
+
+        virtualinvoke $r1.<android.webkit.WebView: void loadUrl(java.lang.String)>($r0);
+
+        return;
+    }
+
+    public static void RunWebViewCmd(java.lang.String)
+    {
+        java.lang.String $r0, $r3;
+        android.webkit.WebView $r1;
+        java.lang.Object[] $r2;
+        java.lang.StringBuilder $r4;
+
+        $r0 := @parameter0: java.lang.String;
+
+        $r1 = <com.movesky.webapp.Activity_WebView: android.webkit.WebView m_WebView>;
+
+        if $r1 != null goto label1;
+
+        return;
+
+     label1:
+        $r2 = newarray (java.lang.Object)[1];
+
+        $r2[0] = $r0;
+
+        $r3 = staticinvoke <java.lang.String: java.lang.String format(java.lang.String,java.lang.Object[])>("javascript:%s;g_callApp.onReturn();", $r2);
+
+        $r4 = new java.lang.StringBuilder;
+
+        specialinvoke $r4.<java.lang.StringBuilder: void <init>()>();
+
+        $r4 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("**RunWebViewCmd=");
+
+        $r4 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r0);
+
+        $r0 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <com.zrd.common.ZrdCommon$ZrdLog: void Log(java.lang.String)>($r0);
+
+        $r1 = <com.movesky.webapp.Activity_WebView: android.webkit.WebView m_WebView>;
+
+        virtualinvoke $r1.<android.webkit.WebView: void loadUrl(java.lang.String)>($r3);
+
+        return;
+    }
+
+    private void SetWebViewFitScreen(android.webkit.WebSettings)
+    {
+        com.movesky.webapp.Activity_WebView r0;
+        android.webkit.WebSettings $r1;
+        android.webkit.WebSettings$LayoutAlgorithm $r2;
+        android.util.DisplayMetrics $r3;
+        android.view.WindowManager $r4;
+        android.view.Display $r5;
+        int $i0;
+        java.lang.StringBuilder $r6;
+        java.lang.String $r7;
+        android.webkit.WebSettings$ZoomDensity $r8;
+
+        r0 := @this: com.movesky.webapp.Activity_WebView;
+
+        $r1 := @parameter0: android.webkit.WebSettings;
+
+        virtualinvoke $r1.<android.webkit.WebSettings: void setUseWideViewPort(boolean)>(1);
+
+        virtualinvoke $r1.<android.webkit.WebSettings: void setJavaScriptEnabled(boolean)>(1);
+
+        virtualinvoke $r1.<android.webkit.WebSettings: void setJavaScriptCanOpenWindowsAutomatically(boolean)>(1);
+
+        virtualinvoke $r1.<android.webkit.WebSettings: void setUseWideViewPort(boolean)>(1);
+
+        $r2 = <android.webkit.WebSettings$LayoutAlgorithm: android.webkit.WebSettings$LayoutAlgorithm SINGLE_COLUMN>;
+
+        virtualinvoke $r1.<android.webkit.WebSettings: void setLayoutAlgorithm(android.webkit.WebSettings$LayoutAlgorithm)>($r2);
+
+        virtualinvoke $r1.<android.webkit.WebSettings: void setBuiltInZoomControls(boolean)>(1);
+
+        virtualinvoke $r1.<android.webkit.WebSettings: void setJavaScriptEnabled(boolean)>(1);
+
+        virtualinvoke $r1.<android.webkit.WebSettings: void setAllowFileAccess(boolean)>(1);
+
+        virtualinvoke $r1.<android.webkit.WebSettings: void setBuiltInZoomControls(boolean)>(1);
+
+        virtualinvoke $r1.<android.webkit.WebSettings: void setSupportZoom(boolean)>(1);
+
+        virtualinvoke $r1.<android.webkit.WebSettings: void setLoadWithOverviewMode(boolean)>(1);
+
+        $r3 = new android.util.DisplayMetrics;
+
+        specialinvoke $r3.<android.util.DisplayMetrics: void <init>()>();
+
+        $r4 = virtualinvoke r0.<com.movesky.webapp.Activity_WebView: android.view.WindowManager getWindowManager()>();
+
+        $r5 = interfaceinvoke $r4.<android.view.WindowManager: android.view.Display getDefaultDisplay()>();
+
+        virtualinvoke $r5.<android.view.Display: void getMetrics(android.util.DisplayMetrics)>($r3);
+
+        $i0 = $r3.<android.util.DisplayMetrics: int densityDpi>;
+
+        $r6 = new java.lang.StringBuilder;
+
+        specialinvoke $r6.<java.lang.StringBuilder: void <init>()>();
+
+        $r6 = virtualinvoke $r6.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("densityDpi = ");
+
+        $r6 = virtualinvoke $r6.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>($i0);
+
+        $r7 = virtualinvoke $r6.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <android.util.Log: int d(java.lang.String,java.lang.String)>("maomao", $r7);
+
+        if $i0 != 240 goto label1;
+
+        $r8 = <android.webkit.WebSettings$ZoomDensity: android.webkit.WebSettings$ZoomDensity FAR>;
+
+        virtualinvoke $r1.<android.webkit.WebSettings: void setDefaultZoom(android.webkit.WebSettings$ZoomDensity)>($r8);
+
+        return;
+
+     label1:
+        if $i0 != 160 goto label2;
+
+        $r8 = <android.webkit.WebSettings$ZoomDensity: android.webkit.WebSettings$ZoomDensity MEDIUM>;
+
+        virtualinvoke $r1.<android.webkit.WebSettings: void setDefaultZoom(android.webkit.WebSettings$ZoomDensity)>($r8);
+
+        return;
+
+     label2:
+        if $i0 != 120 goto label3;
+
+        $r8 = <android.webkit.WebSettings$ZoomDensity: android.webkit.WebSettings$ZoomDensity CLOSE>;
+
+        virtualinvoke $r1.<android.webkit.WebSettings: void setDefaultZoom(android.webkit.WebSettings$ZoomDensity)>($r8);
+
+        return;
+
+     label3:
+        if $i0 != 320 goto label4;
+
+        $r8 = <android.webkit.WebSettings$ZoomDensity: android.webkit.WebSettings$ZoomDensity FAR>;
+
+        virtualinvoke $r1.<android.webkit.WebSettings: void setDefaultZoom(android.webkit.WebSettings$ZoomDensity)>($r8);
+
+        return;
+
+     label4:
+        if $i0 != 240 goto label5;
+
+        $r8 = <android.webkit.WebSettings$ZoomDensity: android.webkit.WebSettings$ZoomDensity FAR>;
+
+        virtualinvoke $r1.<android.webkit.WebSettings: void setDefaultZoom(android.webkit.WebSettings$ZoomDensity)>($r8);
+
+        return;
+
+     label5:
+        $r8 = <android.webkit.WebSettings$ZoomDensity: android.webkit.WebSettings$ZoomDensity MEDIUM>;
+
+        virtualinvoke $r1.<android.webkit.WebSettings: void setDefaultZoom(android.webkit.WebSettings$ZoomDensity)>($r8);
+
+        return;
+    }
+
+    public static void ShowExternWebView(java.lang.String, java.lang.String)
+    {
+        java.lang.String $r0, $r1;
+        android.widget.TextView $r2;
+        android.webkit.WebView $r3;
+        android.widget.RelativeLayout $r4;
+
+        $r0 := @parameter0: java.lang.String;
+
+        $r1 := @parameter1: java.lang.String;
+
+        <com.movesky.webapp.Activity_WebView: boolean m_bExternWebViewIsShow> = 1;
+
+        $r2 = <com.movesky.webapp.Activity_WebView: android.widget.TextView m_TitleExtern>;
+
+        virtualinvoke $r2.<android.widget.TextView: void setText(java.lang.CharSequence)>($r1);
+
+        $r3 = <com.movesky.webapp.Activity_WebView: android.webkit.WebView m_WebViewExtern>;
+
+        virtualinvoke $r3.<android.webkit.WebView: void loadUrl(java.lang.String)>($r0);
+
+        $r4 = <com.movesky.webapp.Activity_WebView: android.widget.RelativeLayout m_LayoutExternWebView>;
+
+        virtualinvoke $r4.<android.widget.RelativeLayout: void setVisibility(int)>(0);
+
+        return;
+    }
+
+    static void access$000(com.movesky.webapp.Activity_WebView)
+    {
+        com.movesky.webapp.Activity_WebView $r0;
+
+        $r0 := @parameter0: com.movesky.webapp.Activity_WebView;
+
+        specialinvoke $r0.<com.movesky.webapp.Activity_WebView: void runApp()>();
+
+        return;
+    }
+
+    static android.webkit.ValueCallback access$202(com.movesky.webapp.Activity_WebView, android.webkit.ValueCallback)
+    {
+        com.movesky.webapp.Activity_WebView $r0;
+        android.webkit.ValueCallback $r1;
+
+        $r0 := @parameter0: com.movesky.webapp.Activity_WebView;
+
+        $r1 := @parameter1: android.webkit.ValueCallback;
+
+        $r0.<com.movesky.webapp.Activity_WebView: android.webkit.ValueCallback mUploadMessage> = $r1;
+
+        return $r1;
+    }
+
+    static java.lang.String access$300(com.movesky.webapp.Activity_WebView)
+    {
+        com.movesky.webapp.Activity_WebView $r0;
+        java.lang.String r1;
+
+        $r0 := @parameter0: com.movesky.webapp.Activity_WebView;
+
+        r1 = $r0.<com.movesky.webapp.Activity_WebView: java.lang.String mCameraFilePath>;
+
+        return r1;
+    }
+
+    static java.lang.String access$302(com.movesky.webapp.Activity_WebView, java.lang.String)
+    {
+        com.movesky.webapp.Activity_WebView $r0;
+        java.lang.String $r1;
+
+        $r0 := @parameter0: com.movesky.webapp.Activity_WebView;
+
+        $r1 := @parameter1: java.lang.String;
+
+        $r0.<com.movesky.webapp.Activity_WebView: java.lang.String mCameraFilePath> = $r1;
+
+        return $r1;
+    }
+
+    static java.util.Timer access$400()
+    {
+        java.util.Timer r0;
+
+        r0 = <com.movesky.webapp.Activity_WebView: java.util.Timer mTimer>;
+
+        return r0;
+    }
+
+    static java.util.Timer access$402(java.util.Timer)
+    {
+        java.util.Timer $r0;
+
+        $r0 := @parameter0: java.util.Timer;
+
+        <com.movesky.webapp.Activity_WebView: java.util.Timer mTimer> = null;
+
+        return null;
+    }
+
+    static android.os.Handler access$500()
+    {
+        android.os.Handler r0;
+
+        r0 = <com.movesky.webapp.Activity_WebView: android.os.Handler m_handle>;
+
+        return r0;
+    }
+
+    public static void onAdvAction(java.lang.String, java.lang.String, java.lang.String)
+    {
+        java.lang.String $r0, $r1, $r2;
+        android.webkit.WebView $r3;
+
+        $r0 := @parameter0: java.lang.String;
+
+        $r1 := @parameter1: java.lang.String;
+
+        $r2 := @parameter2: java.lang.String;
+
+        $r3 = <com.movesky.webapp.Activity_WebView: android.webkit.WebView m_WebView>;
+
+        staticinvoke <com.movesky.webapp.YSHtml: void CallHtmlOnAdv(android.webkit.WebView,java.lang.String,java.lang.String,java.lang.String)>($r3, $r0, $r1, $r2);
+
+        return;
+    }
+
+    private void runApp()
+    {
+        com.movesky.webapp.Activity_WebView r0;
+
+        r0 := @this: com.movesky.webapp.Activity_WebView;
+
+        return;
+    }
+
+    public void DeletePath(java.io.File)
+    {
+        com.movesky.webapp.Activity_WebView r0;
+        java.io.File $r1;
+        int $i0, $i1;
+        boolean $z0;
+        java.io.File[] $r2;
+
+        r0 := @this: com.movesky.webapp.Activity_WebView;
+
+        $r1 := @parameter0: java.io.File;
+
+        if $r1 == null goto label4;
+
+        $z0 = virtualinvoke $r1.<java.io.File: boolean exists()>();
+
+        if $z0 == 0 goto label4;
+
+        $z0 = virtualinvoke $r1.<java.io.File: boolean isDirectory()>();
+
+        if $z0 == 0 goto label4;
+
+        $r2 = virtualinvoke $r1.<java.io.File: java.io.File[] listFiles()>();
+
+        $i0 = lengthof $r2;
+
+        $i1 = 0;
+
+     label1:
+        if $i1 >= $i0 goto label4;
+
+        $r1 = $r2[$i1];
+
+        $z0 = virtualinvoke $r1.<java.io.File: boolean isFile()>();
+
+        if $z0 == 0 goto label3;
+
+        virtualinvoke $r1.<java.io.File: boolean delete()>();
+
+     label2:
+        $i1 = $i1 + 1;
+
+        goto label1;
+
+     label3:
+        virtualinvoke r0.<com.movesky.webapp.Activity_WebView: void DeletePath(java.io.File)>($r1);
+
+        goto label2;
+
+     label4:
+        return;
+    }
+
+    public void SendActiveNewVersion()
+    {
+        com.movesky.webapp.Activity_WebView r0;
+        android.content.SharedPreferences $r1;
+        java.lang.String $r2, $r5, $r7;
+        android.content.Context $r3;
+        org.json.JSONObject $r4;
+        java.lang.StringBuilder $r6;
+        boolean $z0;
+        com.movesky.webapp.Activity_WebView$16 $r8;
+        org.json.JSONException $r9;
+
+        r0 := @this: com.movesky.webapp.Activity_WebView;
+
+        $r1 = virtualinvoke r0.<com.movesky.webapp.Activity_WebView: android.content.SharedPreferences getSharedPreferences(java.lang.String,int)>("AppInfo", 0);
+
+        $r2 = interfaceinvoke $r1.<android.content.SharedPreferences: java.lang.String getString(java.lang.String,java.lang.String)>("bundleVer", "");
+
+        $r3 = <com.movesky.webapp.Activity_WebView: android.content.Context m_ct>;
+
+        $r4 = staticinvoke <com.movesky.webapp.YSHtml: org.json.JSONObject AppSystemInfoJSon(android.content.Context)>($r3);
+
+     label01:
+        $r5 = virtualinvoke $r4.<org.json.JSONObject: java.lang.String getString(java.lang.String)>("bundleVer");
+
+     label02:
+        $r6 = new java.lang.StringBuilder;
+
+     label03:
+        specialinvoke $r6.<java.lang.StringBuilder: void <init>()>();
+
+        $r6 = virtualinvoke $r6.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("pre ver = ");
+
+        $r6 = virtualinvoke $r6.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r2);
+
+        $r7 = virtualinvoke $r6.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <com.zrd.common.ZrdCommon$ZrdLog: void Log(java.lang.String)>($r7);
+
+     label04:
+        $r6 = new java.lang.StringBuilder;
+
+     label05:
+        specialinvoke $r6.<java.lang.StringBuilder: void <init>()>();
+
+        $r6 = virtualinvoke $r6.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("cur ver = ");
+
+        $r6 = virtualinvoke $r6.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r5);
+
+        $r7 = virtualinvoke $r6.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <com.zrd.common.ZrdCommon$ZrdLog: void Log(java.lang.String)>($r7);
+
+        $z0 = virtualinvoke $r2.<java.lang.String: boolean equals(java.lang.Object)>($r5);
+
+     label06:
+        if $z0 == 0 goto label07;
+
+        return;
+
+     label07:
+        $r6 = new java.lang.StringBuilder;
+
+     label08:
+        specialinvoke $r6.<java.lang.StringBuilder: void <init>()>();
+
+        $r6 = virtualinvoke $r6.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("http://1000.moveskylog.sinaapp.com/web_uploadinfo.php?Platform=");
+
+        $r2 = virtualinvoke $r4.<org.json.JSONObject: java.lang.String getString(java.lang.String)>("platform");
+
+        $r6 = virtualinvoke $r6.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r2);
+
+        $r6 = virtualinvoke $r6.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("&");
+
+        $r6 = virtualinvoke $r6.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("BundleId=");
+
+        $r2 = virtualinvoke $r4.<org.json.JSONObject: java.lang.String getString(java.lang.String)>("bundleId");
+
+        $r6 = virtualinvoke $r6.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r2);
+
+        $r6 = virtualinvoke $r6.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("&");
+
+        $r6 = virtualinvoke $r6.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("BundleVer=");
+
+        $r6 = virtualinvoke $r6.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r5);
+
+        $r6 = virtualinvoke $r6.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("&");
+
+        $r6 = virtualinvoke $r6.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("ChannelId=");
+
+        $r2 = virtualinvoke $r4.<org.json.JSONObject: java.lang.String getString(java.lang.String)>("channelId");
+
+        $r6 = virtualinvoke $r6.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r2);
+
+        $r6 = virtualinvoke $r6.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("&");
+
+        $r6 = virtualinvoke $r6.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("DevId=");
+
+        $r2 = virtualinvoke $r4.<org.json.JSONObject: java.lang.String getString(java.lang.String)>("devId");
+
+        $r6 = virtualinvoke $r6.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r2);
+
+        $r2 = virtualinvoke $r6.<java.lang.StringBuilder: java.lang.String toString()>();
+
+     label09:
+        $r8 = new com.movesky.webapp.Activity_WebView$16;
+
+     label10:
+        specialinvoke $r8.<com.movesky.webapp.Activity_WebView$16: void <init>(com.movesky.webapp.Activity_WebView,android.content.SharedPreferences,java.lang.String)>(r0, $r1, $r5);
+
+     label11:
+        $r3 = <com.movesky.webapp.Activity_WebView: android.content.Context m_ct>;
+
+     label12:
+        staticinvoke <com.movesky.webapp.YSHtml: void GetDataByUrl_Run(android.content.Context,java.lang.String,java.lang.String,android.os.Handler)>($r3, $r2, null, $r8);
+
+     label13:
+        return;
+
+     label14:
+        $r9 := @caughtexception;
+
+        virtualinvoke $r9.<org.json.JSONException: void printStackTrace()>();
+
+        return;
+
+        catch org.json.JSONException from label01 to label02 with label14;
+        catch org.json.JSONException from label03 to label04 with label14;
+        catch org.json.JSONException from label05 to label06 with label14;
+        catch org.json.JSONException from label08 to label09 with label14;
+        catch org.json.JSONException from label10 to label11 with label14;
+        catch org.json.JSONException from label12 to label13 with label14;
+    }
+
+    public void ShowPath(java.io.File)
+    {
+        com.movesky.webapp.Activity_WebView r0;
+        java.io.File $r1;
+        int $i0, $i1;
+        java.lang.StringBuilder $r2;
+        java.lang.String $r3;
+        boolean $z0;
+        java.io.File[] $r4;
+
+        r0 := @this: com.movesky.webapp.Activity_WebView;
+
+        $r1 := @parameter0: java.io.File;
+
+        $r2 = new java.lang.StringBuilder;
+
+        specialinvoke $r2.<java.lang.StringBuilder: void <init>()>();
+
+        $r2 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("ShowPath=");
+
+        $r2 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($r1);
+
+        $r3 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <com.zrd.common.ZrdCommon$ZrdLog: void Log(java.lang.String)>($r3);
+
+        if $r1 == null goto label4;
+
+        $z0 = virtualinvoke $r1.<java.io.File: boolean exists()>();
+
+        if $z0 == 0 goto label4;
+
+        $z0 = virtualinvoke $r1.<java.io.File: boolean isDirectory()>();
+
+        if $z0 == 0 goto label4;
+
+        $r4 = virtualinvoke $r1.<java.io.File: java.io.File[] listFiles()>();
+
+        $i0 = lengthof $r4;
+
+        $i1 = 0;
+
+     label1:
+        if $i1 >= $i0 goto label4;
+
+        $r1 = $r4[$i1];
+
+        $z0 = virtualinvoke $r1.<java.io.File: boolean isFile()>();
+
+        if $z0 == 0 goto label3;
+
+        $r2 = new java.lang.StringBuilder;
+
+        specialinvoke $r2.<java.lang.StringBuilder: void <init>()>();
+
+        $r2 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("File=");
+
+        $r2 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($r1);
+
+        $r3 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <com.zrd.common.ZrdCommon$ZrdLog: void Log(java.lang.String)>($r3);
+
+     label2:
+        $i1 = $i1 + 1;
+
+        goto label1;
+
+     label3:
+        virtualinvoke r0.<com.movesky.webapp.Activity_WebView: void ShowPath(java.io.File)>($r1);
+
+        goto label2;
+
+     label4:
+        return;
+    }
+
+    protected void onActivityResult(int, int, android.content.Intent)
+    {
+        com.movesky.webapp.Activity_WebView r0;
+        int $i0, $i1;
+        android.content.Intent $r1;
+        java.lang.Object[] $r2;
+        java.lang.Integer $r3;
+        java.lang.String $r4;
+        android.webkit.ValueCallback $r5;
+        android.net.Uri $r6;
+        java.io.File $r7;
+        boolean $z0;
+        com.movesky.webapp.PermissionHelper $r8;
+
+        r0 := @this: com.movesky.webapp.Activity_WebView;
+
+        $i0 := @parameter0: int;
+
+        $i1 := @parameter1: int;
+
+        $r1 := @parameter2: android.content.Intent;
+
+        $r1 = virtualinvoke r0.<com.movesky.webapp.Activity_WebView: android.content.Intent getIntent()>();
+
+        specialinvoke r0.<android.app.Activity: void onActivityResult(int,int,android.content.Intent)>($i0, $i1, $r1);
+
+        $r2 = newarray (java.lang.Object)[2];
+
+        $r3 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>($i0);
+
+        $r2[0] = $r3;
+
+        $r3 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>($i1);
+
+        $r2[1] = $r3;
+
+        $r4 = staticinvoke <java.lang.String: java.lang.String format(java.lang.String,java.lang.Object[])>("onActivityResult,requestCode=%d,resultCode=%d", $r2);
+
+        staticinvoke <com.zrd.common.ZrdCommon$ZrdLog: void Log(java.lang.String)>($r4);
+
+        if $i0 != 2 goto label6;
+
+        $r5 = r0.<com.movesky.webapp.Activity_WebView: android.webkit.ValueCallback mUploadMessage>;
+
+        if $r5 != null goto label1;
+
+        return;
+
+     label1:
+        if $r1 == null goto label2;
+
+        if $i1 == -1 goto label5;
+
+     label2:
+        $r6 = null;
+
+     label3:
+        if $r6 != null goto label4;
+
+        if $r1 != null goto label4;
+
+        if $i1 != -1 goto label4;
+
+        $r7 = new java.io.File;
+
+        $r4 = r0.<com.movesky.webapp.Activity_WebView: java.lang.String mCameraFilePath>;
+
+        specialinvoke $r7.<java.io.File: void <init>(java.lang.String)>($r4);
+
+        $z0 = virtualinvoke $r7.<java.io.File: boolean exists()>();
+
+        if $z0 == 0 goto label4;
+
+        $r6 = staticinvoke <android.net.Uri: android.net.Uri fromFile(java.io.File)>($r7);
+
+     label4:
+        $r5 = r0.<com.movesky.webapp.Activity_WebView: android.webkit.ValueCallback mUploadMessage>;
+
+        interfaceinvoke $r5.<android.webkit.ValueCallback: void onReceiveValue(java.lang.Object)>($r6);
+
+        r0.<com.movesky.webapp.Activity_WebView: android.webkit.ValueCallback mUploadMessage> = null;
+
+        return;
+
+     label5:
+        $r6 = virtualinvoke $r1.<android.content.Intent: android.net.Uri getData()>();
+
+        goto label3;
+
+     label6:
+        $r8 = r0.<com.movesky.webapp.Activity_WebView: com.movesky.webapp.PermissionHelper mPermissionHelper>;
+
+        virtualinvoke $r8.<com.movesky.webapp.PermissionHelper: void onActivityResult(int,int,android.content.Intent)>($i0, $i1, $r1);
+
+        return;
+    }
+
+    protected void onCreate(android.os.Bundle)
+    {
+        com.movesky.webapp.Activity_WebView r0;
+        android.os.Bundle $r1;
+        android.content.Context $r2;
+        java.lang.String $r3, $r5, $r12, $r13;
+        android.content.Intent $r4;
+        java.lang.StringBuilder $r6;
+        com.movesky.webapp.PermissionHelper $r7;
+        com.movesky.webapp.Activity_WebView$1 $r8;
+        int $i0;
+        byte $b1;
+        android.os.StrictMode$ThreadPolicy$Builder $r10;
+        android.os.StrictMode$ThreadPolicy $r11;
+        boolean $z0;
+        android.view.View $r14;
+        android.webkit.WebView $r15;
+        android.webkit.WebSettings $r16;
+        java.io.File $r17, $r29;
+        android.util.DisplayMetrics $r18;
+        android.view.WindowManager $r19;
+        android.view.Display $r20;
+        android.webkit.WebSettings$ZoomDensity $r21;
+        android.webkit.WebSettings$RenderPriority $r22;
+        com.movesky.webapp.Activity_WebView$MyWebViewDownLoadListener $r23;
+        com.movesky.webapp.Activity_WebView$2 $r24;
+        com.movesky.webapp.Activity_WebView$3 $r25;
+        com.movesky.webapp.Activity_WebView$4 $r26;
+        com.movesky.webapp.Activity_WebView$5 $r27;
+        java.lang.Object[] $r28;
+        java.lang.Exception $r30;
+
+        r0 := @this: com.movesky.webapp.Activity_WebView;
+
+        $r1 := @parameter0: android.os.Bundle;
+
+        <com.movesky.webapp.Activity_WebView: android.content.Context m_ct> = r0;
+
+        $r2 = <com.movesky.webapp.Activity_WebView: android.content.Context m_ct>;
+
+        $r3 = virtualinvoke $r2.<android.content.Context: java.lang.String getPackageName()>();
+
+        staticinvoke <com.movesky.webapp.YSHtml: void SetWokdPath(java.lang.String)>($r3);
+
+        staticinvoke <com.zrd.common.ZrdCommon$ZrdLog: void SetLevel(int)>(1);
+
+        $r4 = virtualinvoke r0.<com.movesky.webapp.Activity_WebView: android.content.Intent getIntent()>();
+
+        if $r4 == null goto label26;
+
+        $r5 = virtualinvoke $r4.<android.content.Intent: java.lang.String getStringExtra(java.lang.String)>("RunParam");
+
+        $r3 = $r5;
+
+        if $r5 != null goto label01;
+
+        $r3 = "none";
+
+     label01:
+        $r6 = new java.lang.StringBuilder;
+
+        specialinvoke $r6.<java.lang.StringBuilder: void <init>()>();
+
+        $r6 = virtualinvoke $r6.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("RunParam=");
+
+        $r6 = virtualinvoke $r6.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r3);
+
+        $r5 = virtualinvoke $r6.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <com.zrd.common.ZrdCommon$ZrdLog: void Log(java.lang.String)>($r5);
+
+        <com.movesky.webapp.YSHtml: java.lang.String m_runParam> = $r3;
+
+     label02:
+        specialinvoke r0.<android.app.Activity: void onCreate(android.os.Bundle)>($r1);
+
+        staticinvoke <com.movesky.webapp.YSHtml: void GetPkgInfo(android.content.Context)>(r0);
+
+        staticinvoke <com.movesky.webapp.YSHtml: void ClearMapTmpPath()>();
+
+        $r2 = <com.movesky.webapp.Activity_WebView: android.content.Context m_ct>;
+
+        staticinvoke <com.movesky.ad.Advert: void AdvertInit0(android.content.Context,int)>($r2, 2131230750);
+
+        $r7 = new com.movesky.webapp.PermissionHelper;
+
+        specialinvoke $r7.<com.movesky.webapp.PermissionHelper: void <init>(android.app.Activity)>(r0);
+
+        r0.<com.movesky.webapp.Activity_WebView: com.movesky.webapp.PermissionHelper mPermissionHelper> = $r7;
+
+        $r7 = r0.<com.movesky.webapp.Activity_WebView: com.movesky.webapp.PermissionHelper mPermissionHelper>;
+
+        $r8 = new com.movesky.webapp.Activity_WebView$1;
+
+        specialinvoke $r8.<com.movesky.webapp.Activity_WebView$1: void <init>(com.movesky.webapp.Activity_WebView)>(r0);
+
+        virtualinvoke $r7.<com.movesky.webapp.PermissionHelper: void setOnApplyPermissionListener(com.movesky.webapp.PermissionHelper$OnApplyPermissionListener)>($r8);
+
+        $i0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $i0 >= 23 goto label27;
+
+        staticinvoke <com.zrd.common.ZrdCommon$ZrdLog: void Log(java.lang.String)>("The api level of system is lower than 23, so run app logic directly.");
+
+        specialinvoke r0.<com.movesky.webapp.Activity_WebView: void runApp()>();
+
+     label03:
+        staticinvoke <com.movesky.webapp.YSTest: void CheckWebContext(android.content.Context)>(r0);
+
+        goto label04;
+
+     label04:
+        staticinvoke <com.zrd.common.ZrdCommon$ZrdLog: void SetLevel(int)>(1);
+
+        staticinvoke <com.zrd.common.ZrdCommon$ZrdLog: void Log(java.lang.String)>("**************Start1**********************");
+
+        virtualinvoke r0.<com.movesky.webapp.Activity_WebView: void setContentView(int)>(2130903044);
+
+        $i0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $i0 <= 9 goto label05;
+
+        $r10 = new android.os.StrictMode$ThreadPolicy$Builder;
+
+        specialinvoke $r10.<android.os.StrictMode$ThreadPolicy$Builder: void <init>()>();
+
+        $r10 = virtualinvoke $r10.<android.os.StrictMode$ThreadPolicy$Builder: android.os.StrictMode$ThreadPolicy$Builder permitAll()>();
+
+        $r11 = virtualinvoke $r10.<android.os.StrictMode$ThreadPolicy$Builder: android.os.StrictMode$ThreadPolicy build()>();
+
+        staticinvoke <android.os.StrictMode: void setThreadPolicy(android.os.StrictMode$ThreadPolicy)>($r11);
+
+     label05:
+        staticinvoke <com.movesky.ad.Advert: int ShowSplash(android.content.Context)>(r0);
+
+        specialinvoke r0.<com.movesky.webapp.Activity_WebView: void InitTaobaKeWebView()>();
+
+        specialinvoke r0.<com.movesky.webapp.Activity_WebView: void InitYSAdvertWebView()>();
+
+        specialinvoke r0.<com.movesky.webapp.Activity_WebView: void InitExternWebView()>();
+
+        staticinvoke <com.movesky.webapp.YSWeChat: boolean regToWx(android.content.Context)>(r0);
+
+        staticinvoke <com.movesky.ad.ADScore: int GoogleCheck(android.content.Context)>(r0);
+
+        r0.<com.movesky.webapp.Activity_WebView: java.lang.String m_url> = "file:///android_asset/release/code/html/indexAndroid.html";
+
+        $r2 = <com.movesky.webapp.Activity_WebView: android.content.Context m_ct>;
+
+        $r3 = virtualinvoke $r2.<android.content.Context: java.lang.String getPackageName()>();
+
+        $r2 = <com.movesky.webapp.Activity_WebView: android.content.Context m_ct>;
+
+        $r5 = virtualinvoke $r2.<android.content.Context: java.lang.String getString(int)>(2131099662);
+
+        $r6 = new java.lang.StringBuilder;
+
+        specialinvoke $r6.<java.lang.StringBuilder: void <init>()>();
+
+        $r6 = virtualinvoke $r6.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("bid=");
+
+        $r6 = virtualinvoke $r6.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r3);
+
+        $r6 = virtualinvoke $r6.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(";cid=");
+
+        $r6 = virtualinvoke $r6.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r5);
+
+        $r12 = virtualinvoke $r6.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <com.zrd.common.ZrdCommon$ZrdLog: void Log(java.lang.String)>($r12);
+
+        $z0 = virtualinvoke $r5.<java.lang.String: boolean equals(java.lang.Object)>("102");
+
+        if $z0 == 0 goto label29;
+
+        staticinvoke <com.zrd.common.ZrdCommon$ZrdLog: void Log(java.lang.String)>("tagDebug=2");
+
+        $r5 = "192.168.2.55";
+
+        $b1 = 1;
+
+     label06:
+        if $b1 < 1 goto label08;
+
+        $z0 = virtualinvoke $r3.<java.lang.String: boolean equals(java.lang.Object)>("com.movesky.chengyu");
+
+        if $z0 == 0 goto label33;
+
+        $r12 = "ChengYuStudy";
+
+     label07:
+        $r13 = "http://~ip/~path/";
+
+        $r5 = virtualinvoke $r13.<java.lang.String: java.lang.String replace(java.lang.CharSequence,java.lang.CharSequence)>("~ip", $r5);
+
+        $r5 = virtualinvoke $r5.<java.lang.String: java.lang.String replace(java.lang.CharSequence,java.lang.CharSequence)>("~path", $r12);
+
+        $r6 = new java.lang.StringBuilder;
+
+        specialinvoke $r6.<java.lang.StringBuilder: void <init>()>();
+
+        $r6 = virtualinvoke $r6.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r5);
+
+        $r6 = virtualinvoke $r6.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("release/code/html/indexAndroid.html");
+
+        $r5 = virtualinvoke $r6.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        r0.<com.movesky.webapp.Activity_WebView: java.lang.String m_url> = $r5;
+
+     label08:
+        $z0 = virtualinvoke $r3.<java.lang.String: boolean equals(java.lang.Object)>("com.movesky.rosebase");
+
+        if $z0 == 0 goto label09;
+
+        r0.<com.movesky.webapp.Activity_WebView: java.lang.String m_url> = "http://1001.movesky.sinaapp.com/RoseBase/release/code/html/indexPC0.html?delcache=1";
+
+     label09:
+        $r2 = <com.movesky.webapp.Activity_WebView: android.content.Context m_ct>;
+
+        staticinvoke <com.movesky.ad.Advert: void SetAdvertLayoutHeight(android.content.Context,int)>($r2, 2131230750);
+
+        $r2 = <com.movesky.webapp.Activity_WebView: android.content.Context m_ct>;
+
+        staticinvoke <com.movesky.webapp.YSHtml: boolean AppDecodeFile(android.content.Context,java.lang.String)>($r2, "release/res/jsmap");
+
+        $r14 = virtualinvoke r0.<com.movesky.webapp.Activity_WebView: android.view.View findViewById(int)>(2131230751);
+
+        $r15 = (android.webkit.WebView) $r14;
+
+        <com.movesky.webapp.Activity_WebView: android.webkit.WebView m_WebView> = $r15;
+
+        $r15 = <com.movesky.webapp.Activity_WebView: android.webkit.WebView m_WebView>;
+
+        virtualinvoke $r15.<android.webkit.WebView: boolean requestFocusFromTouch()>();
+
+        $r15 = <com.movesky.webapp.Activity_WebView: android.webkit.WebView m_WebView>;
+
+        $r16 = virtualinvoke $r15.<android.webkit.WebView: android.webkit.WebSettings getSettings()>();
+
+        virtualinvoke $r16.<android.webkit.WebSettings: void setAppCacheMaxSize(long)>(8388608L);
+
+        $r2 = virtualinvoke r0.<com.movesky.webapp.Activity_WebView: android.content.Context getApplicationContext()>();
+
+        $r17 = virtualinvoke $r2.<android.content.Context: java.io.File getDir(java.lang.String,int)>("cache", 0);
+
+        $r3 = virtualinvoke $r17.<java.io.File: java.lang.String getPath()>();
+
+        virtualinvoke $r16.<android.webkit.WebSettings: void setAppCachePath(java.lang.String)>($r3);
+
+        $r6 = new java.lang.StringBuilder;
+
+        specialinvoke $r6.<java.lang.StringBuilder: void <init>()>();
+
+        $r6 = virtualinvoke $r6.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("AppCachePath:");
+
+        $r6 = virtualinvoke $r6.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r3);
+
+        $r3 = virtualinvoke $r6.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <com.zrd.common.ZrdCommon$ZrdLog: void Log(java.lang.String)>($r3);
+
+        virtualinvoke $r16.<android.webkit.WebSettings: void setJavaScriptCanOpenWindowsAutomatically(boolean)>(1);
+
+        virtualinvoke $r16.<android.webkit.WebSettings: void setJavaScriptEnabled(boolean)>(1);
+
+        virtualinvoke $r16.<android.webkit.WebSettings: void setBuiltInZoomControls(boolean)>(0);
+
+        virtualinvoke $r16.<android.webkit.WebSettings: void setAllowFileAccess(boolean)>(1);
+
+        virtualinvoke $r16.<android.webkit.WebSettings: void setGeolocationEnabled(boolean)>(1);
+
+        virtualinvoke $r16.<android.webkit.WebSettings: void setSavePassword(boolean)>(0);
+
+        virtualinvoke $r16.<android.webkit.WebSettings: void setDomStorageEnabled(boolean)>(1);
+
+        virtualinvoke $r16.<android.webkit.WebSettings: void setDatabaseEnabled(boolean)>(1);
+
+        virtualinvoke $r16.<android.webkit.WebSettings: void setCacheMode(int)>(2);
+
+        virtualinvoke $r16.<android.webkit.WebSettings: void setUseWideViewPort(boolean)>(1);
+
+        $r18 = new android.util.DisplayMetrics;
+
+        specialinvoke $r18.<android.util.DisplayMetrics: void <init>()>();
+
+        $r19 = virtualinvoke r0.<com.movesky.webapp.Activity_WebView: android.view.WindowManager getWindowManager()>();
+
+        $r20 = interfaceinvoke $r19.<android.view.WindowManager: android.view.Display getDefaultDisplay()>();
+
+        virtualinvoke $r20.<android.view.Display: void getMetrics(android.util.DisplayMetrics)>($r18);
+
+        $i0 = $r18.<android.util.DisplayMetrics: int densityDpi>;
+
+        $r6 = new java.lang.StringBuilder;
+
+        specialinvoke $r6.<java.lang.StringBuilder: void <init>()>();
+
+        $r6 = virtualinvoke $r6.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("densityDpi = ");
+
+        $r6 = virtualinvoke $r6.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>($i0);
+
+        $r3 = virtualinvoke $r6.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <android.util.Log: int d(java.lang.String,java.lang.String)>("maomao", $r3);
+
+        if $i0 != 240 goto label37;
+
+        $r21 = <android.webkit.WebSettings$ZoomDensity: android.webkit.WebSettings$ZoomDensity FAR>;
+
+        virtualinvoke $r16.<android.webkit.WebSettings: void setDefaultZoom(android.webkit.WebSettings$ZoomDensity)>($r21);
+
+     label10:
+        $r6 = new java.lang.StringBuilder;
+
+        specialinvoke $r6.<java.lang.StringBuilder: void <init>()>();
+
+        $r6 = virtualinvoke $r6.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("/data/data/");
+
+        $r3 = virtualinvoke r0.<com.movesky.webapp.Activity_WebView: java.lang.String getPackageName()>();
+
+        $r6 = virtualinvoke $r6.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r3);
+
+        $r6 = virtualinvoke $r6.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("/databases/");
+
+        $r3 = virtualinvoke $r6.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        virtualinvoke $r16.<android.webkit.WebSettings: void setDatabasePath(java.lang.String)>($r3);
+
+        $r22 = <android.webkit.WebSettings$RenderPriority: android.webkit.WebSettings$RenderPriority HIGH>;
+
+        virtualinvoke $r16.<android.webkit.WebSettings: void setRenderPriority(android.webkit.WebSettings$RenderPriority)>($r22);
+
+        $r15 = <com.movesky.webapp.Activity_WebView: android.webkit.WebView m_WebView>;
+
+        virtualinvoke $r15.<android.webkit.WebView: void setVerticalScrollBarEnabled(boolean)>(0);
+
+        $r15 = <com.movesky.webapp.Activity_WebView: android.webkit.WebView m_WebView>;
+
+        virtualinvoke $r15.<android.webkit.WebView: void setHorizontalScrollBarEnabled(boolean)>(0);
+
+        $r15 = <com.movesky.webapp.Activity_WebView: android.webkit.WebView m_WebView>;
+
+        $r23 = new com.movesky.webapp.Activity_WebView$MyWebViewDownLoadListener;
+
+        specialinvoke $r23.<com.movesky.webapp.Activity_WebView$MyWebViewDownLoadListener: void <init>(com.movesky.webapp.Activity_WebView,com.movesky.webapp.Activity_WebView$1)>(r0, null);
+
+        virtualinvoke $r15.<android.webkit.WebView: void setDownloadListener(android.webkit.DownloadListener)>($r23);
+
+        $r15 = <com.movesky.webapp.Activity_WebView: android.webkit.WebView m_WebView>;
+
+        virtualinvoke $r15.<android.webkit.WebView: void setScrollBarStyle(int)>(0);
+
+        $r15 = <com.movesky.webapp.Activity_WebView: android.webkit.WebView m_WebView>;
+
+        $r24 = new com.movesky.webapp.Activity_WebView$2;
+
+        specialinvoke $r24.<com.movesky.webapp.Activity_WebView$2: void <init>(com.movesky.webapp.Activity_WebView)>(r0);
+
+        virtualinvoke $r15.<android.webkit.WebView: void setWebViewClient(android.webkit.WebViewClient)>($r24);
+
+        $r15 = <com.movesky.webapp.Activity_WebView: android.webkit.WebView m_WebView>;
+
+        $r25 = new com.movesky.webapp.Activity_WebView$3;
+
+        specialinvoke $r25.<com.movesky.webapp.Activity_WebView$3: void <init>(com.movesky.webapp.Activity_WebView)>(r0);
+
+        virtualinvoke $r15.<android.webkit.WebView: void setWebChromeClient(android.webkit.WebChromeClient)>($r25);
+
+        $r15 = <com.movesky.webapp.Activity_WebView: android.webkit.WebView m_WebView>;
+
+        $r26 = new com.movesky.webapp.Activity_WebView$4;
+
+        specialinvoke $r26.<com.movesky.webapp.Activity_WebView$4: void <init>(com.movesky.webapp.Activity_WebView)>(r0);
+
+        virtualinvoke $r15.<android.webkit.WebView: void addJavascriptInterface(java.lang.Object,java.lang.String)>($r26, "android");
+
+        $r15 = <com.movesky.webapp.Activity_WebView: android.webkit.WebView m_WebView>;
+
+        $r27 = new com.movesky.webapp.Activity_WebView$5;
+
+        specialinvoke $r27.<com.movesky.webapp.Activity_WebView$5: void <init>(com.movesky.webapp.Activity_WebView)>(r0);
+
+        virtualinvoke $r15.<android.webkit.WebView: void setOnLongClickListener(android.view.View$OnLongClickListener)>($r27);
+
+     label11:
+        $r17 = virtualinvoke r0.<com.movesky.webapp.Activity_WebView: java.io.File getCacheDir()>();
+
+     label12:
+        if $r17 == null goto label20;
+
+     label13:
+        $z0 = virtualinvoke $r17.<java.io.File: boolean exists()>();
+
+     label14:
+        if $z0 == 0 goto label20;
+
+     label15:
+        $r28 = newarray (java.lang.Object)[1];
+
+        $r3 = virtualinvoke $r17.<java.io.File: java.lang.String getAbsolutePath()>();
+
+        $r28[0] = $r3;
+
+        $r3 = staticinvoke <java.lang.String: java.lang.String format(java.lang.String,java.lang.Object[])>("###[%s]", $r28);
+
+        staticinvoke <com.zrd.common.ZrdCommon$ZrdLog: void Log(java.lang.String)>($r3);
+
+     label16:
+        $r29 = new java.io.File;
+
+     label17:
+        $r3 = virtualinvoke $r17.<java.io.File: java.lang.String getParent()>();
+
+        specialinvoke $r29.<java.io.File: void <init>(java.lang.String)>($r3);
+
+        $r28 = newarray (java.lang.Object)[1];
+
+        $r3 = virtualinvoke $r29.<java.io.File: java.lang.String getAbsolutePath()>();
+
+        $r28[0] = $r3;
+
+        $r3 = staticinvoke <java.lang.String: java.lang.String format(java.lang.String,java.lang.Object[])>("###[%s]", $r28);
+
+        staticinvoke <com.zrd.common.ZrdCommon$ZrdLog: void Log(java.lang.String)>($r3);
+
+        virtualinvoke $r29.<java.io.File: boolean delete()>();
+
+        $z0 = virtualinvoke $r29.<java.io.File: boolean exists()>();
+
+     label18:
+        if $z0 != 0 goto label42;
+
+     label19:
+        staticinvoke <com.zrd.common.ZrdCommon$ZrdLog: void Log(java.lang.String)>("###delete ok");
+
+     label20:
+        $r28 = newarray (java.lang.Object)[1];
+
+        $r3 = r0.<com.movesky.webapp.Activity_WebView: java.lang.String m_url>;
+
+        $r28[0] = $r3;
+
+        $r3 = staticinvoke <java.lang.String: java.lang.String format(java.lang.String,java.lang.Object[])>("LoadUrl:[%s]", $r28);
+
+        staticinvoke <com.zrd.common.ZrdCommon$ZrdLog: void Log(java.lang.String)>($r3);
+
+     label21:
+        $r15 = <com.movesky.webapp.Activity_WebView: android.webkit.WebView m_WebView>;
+
+     label22:
+        $r3 = r0.<com.movesky.webapp.Activity_WebView: java.lang.String m_url>;
+
+        virtualinvoke $r15.<android.webkit.WebView: void loadUrl(java.lang.String)>($r3);
+
+     label23:
+        $r2 = <com.movesky.webapp.Activity_WebView: android.content.Context m_ct>;
+
+     label24:
+        $r3 = r0.<com.movesky.webapp.Activity_WebView: java.lang.String m_url>;
+
+        staticinvoke <com.movesky.webapp.YSHtml: void SendLog(android.content.Context,java.lang.String,java.lang.String)>($r2, "loadUrl", $r3);
+
+        virtualinvoke r0.<com.movesky.webapp.Activity_WebView: void SendActiveNewVersion()>();
+
+     label25:
+        return;
+
+     label26:
+        staticinvoke <com.zrd.common.ZrdCommon$ZrdLog: void Log(java.lang.String)>("RunIntent is null");
+
+        goto label02;
+
+     label27:
+        $r7 = r0.<com.movesky.webapp.Activity_WebView: com.movesky.webapp.PermissionHelper mPermissionHelper>;
+
+        $z0 = virtualinvoke $r7.<com.movesky.webapp.PermissionHelper: boolean isAllRequestedPermissionGranted()>();
+
+        if $z0 == 0 goto label28;
+
+        staticinvoke <com.zrd.common.ZrdCommon$ZrdLog: void Log(java.lang.String)>("All of requested permissions has been granted, so run app logic directly.");
+
+        specialinvoke r0.<com.movesky.webapp.Activity_WebView: void runApp()>();
+
+        goto label03;
+
+     label28:
+        staticinvoke <com.zrd.common.ZrdCommon$ZrdLog: void Log(java.lang.String)>("Some of requested permissions hasn\'t been granted, so apply permissions first.");
+
+        $r7 = r0.<com.movesky.webapp.Activity_WebView: com.movesky.webapp.PermissionHelper mPermissionHelper>;
+
+        virtualinvoke $r7.<com.movesky.webapp.PermissionHelper: void applyPermissions()>();
+
+        goto label03;
+
+     label29:
+        $z0 = virtualinvoke $r5.<java.lang.String: boolean equals(java.lang.Object)>("101");
+
+        if $z0 == 0 goto label30;
+
+        staticinvoke <com.zrd.common.ZrdCommon$ZrdLog: void Log(java.lang.String)>("tagDebug=2");
+
+        $r5 = "192.168.2.101";
+
+        $b1 = 1;
+
+        goto label06;
+
+     label30:
+        $z0 = virtualinvoke $r5.<java.lang.String: boolean equals(java.lang.Object)>("180");
+
+        if $z0 == 0 goto label31;
+
+        staticinvoke <com.zrd.common.ZrdCommon$ZrdLog: void Log(java.lang.String)>("tagDebug=2");
+
+        $r5 = "192.168.2.180";
+
+        $b1 = 1;
+
+        goto label06;
+
+     label31:
+        $z0 = virtualinvoke $r5.<java.lang.String: boolean equals(java.lang.Object)>("182");
+
+        if $z0 == 0 goto label32;
+
+        staticinvoke <com.zrd.common.ZrdCommon$ZrdLog: void Log(java.lang.String)>("tagDebug=2");
+
+        $r5 = "192.168.2.182";
+
+        $b1 = 1;
+
+        goto label06;
+
+     label32:
+        staticinvoke <com.zrd.common.ZrdCommon$ZrdLog: void Log(java.lang.String)>("tagDebug 108");
+
+        $r5 = "";
+
+        $b1 = 0;
+
+        goto label06;
+
+     label33:
+        $z0 = virtualinvoke $r3.<java.lang.String: boolean equals(java.lang.Object)>("com.zrd.yueyu");
+
+        if $z0 == 0 goto label34;
+
+        $r12 = "YueYuStudy";
+
+        goto label07;
+
+     label34:
+        $z0 = virtualinvoke $r3.<java.lang.String: boolean equals(java.lang.Object)>("com.movesky.chaoyu");
+
+        if $z0 == 0 goto label35;
+
+        $r12 = "ChaoYuStudy";
+
+        goto label07;
+
+     label35:
+        $z0 = virtualinvoke $r3.<java.lang.String: boolean equals(java.lang.Object)>("com.movesky.yueyusong");
+
+        if $z0 == 0 goto label36;
+
+        $r12 = "YSSong";
+
+        goto label07;
+
+     label36:
+        $r12 = virtualinvoke $r3.<java.lang.String: java.lang.String replace(java.lang.CharSequence,java.lang.CharSequence)>("com.movesky.", "");
+
+        goto label07;
+
+     label37:
+        if $i0 != 160 goto label38;
+
+        $r21 = <android.webkit.WebSettings$ZoomDensity: android.webkit.WebSettings$ZoomDensity MEDIUM>;
+
+        virtualinvoke $r16.<android.webkit.WebSettings: void setDefaultZoom(android.webkit.WebSettings$ZoomDensity)>($r21);
+
+        goto label10;
+
+     label38:
+        if $i0 != 120 goto label39;
+
+        $r21 = <android.webkit.WebSettings$ZoomDensity: android.webkit.WebSettings$ZoomDensity CLOSE>;
+
+        virtualinvoke $r16.<android.webkit.WebSettings: void setDefaultZoom(android.webkit.WebSettings$ZoomDensity)>($r21);
+
+        goto label10;
+
+     label39:
+        if $i0 != 320 goto label40;
+
+        $r21 = <android.webkit.WebSettings$ZoomDensity: android.webkit.WebSettings$ZoomDensity FAR>;
+
+        virtualinvoke $r16.<android.webkit.WebSettings: void setDefaultZoom(android.webkit.WebSettings$ZoomDensity)>($r21);
+
+        goto label10;
+
+     label40:
+        if $i0 != 240 goto label41;
+
+        $r21 = <android.webkit.WebSettings$ZoomDensity: android.webkit.WebSettings$ZoomDensity FAR>;
+
+        virtualinvoke $r16.<android.webkit.WebSettings: void setDefaultZoom(android.webkit.WebSettings$ZoomDensity)>($r21);
+
+        goto label10;
+
+     label41:
+        $r21 = <android.webkit.WebSettings$ZoomDensity: android.webkit.WebSettings$ZoomDensity MEDIUM>;
+
+        virtualinvoke $r16.<android.webkit.WebSettings: void setDefaultZoom(android.webkit.WebSettings$ZoomDensity)>($r21);
+
+        goto label10;
+
+     label42:
+        staticinvoke <com.zrd.common.ZrdCommon$ZrdLog: void Log(java.lang.String)>("###delete no ok");
+
+     label43:
+        goto label20;
+
+     label44:
+        $r30 := @caughtexception;
+
+        virtualinvoke $r30.<java.lang.Exception: void printStackTrace()>();
+
+        return;
+
+        catch java.lang.Exception from label11 to label12 with label44;
+        catch java.lang.Exception from label13 to label14 with label44;
+        catch java.lang.Exception from label15 to label16 with label44;
+        catch java.lang.Exception from label17 to label18 with label44;
+        catch java.lang.Exception from label19 to label21 with label44;
+        catch java.lang.Exception from label22 to label23 with label44;
+        catch java.lang.Exception from label24 to label25 with label44;
+        catch java.lang.Exception from label42 to label43 with label44;
+    }
+
+    protected void onDestroy()
+    {
+        com.movesky.webapp.Activity_WebView r0;
+
+        r0 := @this: com.movesky.webapp.Activity_WebView;
+
+        staticinvoke <com.movesky.ad.ADScore: void Destroy(android.content.Context)>(r0);
+
+        specialinvoke r0.<android.app.Activity: void onDestroy()>();
+
+        return;
+    }
+
+    public boolean onKeyDown(int, android.view.KeyEvent)
+    {
+        com.movesky.webapp.Activity_WebView r0;
+        int $i0;
+        android.view.KeyEvent $r1;
+        java.lang.Object $r2;
+        android.media.AudioManager $r3;
+        boolean $z0;
+        android.webkit.WebView $r4;
+
+        r0 := @this: com.movesky.webapp.Activity_WebView;
+
+        $i0 := @parameter0: int;
+
+        $r1 := @parameter1: android.view.KeyEvent;
+
+        if $i0 != 24 goto label1;
+
+        $r2 = virtualinvoke r0.<com.movesky.webapp.Activity_WebView: java.lang.Object getSystemService(java.lang.String)>("audio");
+
+        $r3 = (android.media.AudioManager) $r2;
+
+        virtualinvoke r0.<com.movesky.webapp.Activity_WebView: void setVolumeControlStream(int)>(3);
+
+        virtualinvoke $r3.<android.media.AudioManager: void adjustStreamVolume(int,int,int)>(3, 1, 1);
+
+     label1:
+        if $i0 != 25 goto label2;
+
+        $r2 = virtualinvoke r0.<com.movesky.webapp.Activity_WebView: java.lang.Object getSystemService(java.lang.String)>("audio");
+
+        $r3 = (android.media.AudioManager) $r2;
+
+        virtualinvoke r0.<com.movesky.webapp.Activity_WebView: void setVolumeControlStream(int)>(3);
+
+        virtualinvoke $r3.<android.media.AudioManager: void adjustStreamVolume(int,int,int)>(3, -1, 1);
+
+     label2:
+        if $i0 != 4 goto label4;
+
+        $i0 = virtualinvoke $r1.<android.view.KeyEvent: int getRepeatCount()>();
+
+        if $i0 != 0 goto label4;
+
+        $i0 = staticinvoke <com.movesky.webapp.YSHtml: int GetInitFinished()>();
+
+        if $i0 != 1 goto label4;
+
+        $z0 = staticinvoke <com.movesky.webapp.Activity_WebView: boolean IsExternWebViewIsShow()>();
+
+        if $z0 == 0 goto label3;
+
+        staticinvoke <com.movesky.webapp.Activity_WebView: void HideExternWebView(boolean)>(1);
+
+        return 1;
+
+     label3:
+        $r4 = <com.movesky.webapp.Activity_WebView: android.webkit.WebView m_WebView>;
+
+        staticinvoke <com.movesky.webapp.YSHtml: void CallHtmlGoBack(android.webkit.WebView)>($r4);
+
+     label4:
+        return 1;
+    }
+
+    public void onLowMemory()
+    {
+        com.movesky.webapp.Activity_WebView r0;
+        android.webkit.WebView $r1;
+
+        r0 := @this: com.movesky.webapp.Activity_WebView;
+
+        specialinvoke r0.<android.app.Activity: void onLowMemory()>();
+
+        $r1 = <com.movesky.webapp.Activity_WebView: android.webkit.WebView m_WebView>;
+
+        staticinvoke <com.movesky.webapp.YSHtml: void CallHtmlAppAction(android.webkit.WebView,int)>($r1, 6);
+
+        staticinvoke <android.util.Log: int i(java.lang.String,java.lang.String)>("ZRD", "###:onLowMemory");
+
+        return;
+    }
+
+    protected void onPause()
+    {
+        com.movesky.webapp.Activity_WebView r0;
+        android.webkit.WebView $r1;
+
+        r0 := @this: com.movesky.webapp.Activity_WebView;
+
+        specialinvoke r0.<android.app.Activity: void onPause()>();
+
+        staticinvoke <com.zrd.common.ZrdCommon$ZrdLog: void Log(java.lang.String)>("###:onPause");
+
+        $r1 = <com.movesky.webapp.Activity_WebView: android.webkit.WebView m_WebView>;
+
+        staticinvoke <com.movesky.webapp.YSHtml: void CallHtmlAppAction(android.webkit.WebView,int)>($r1, 3);
+
+        return;
+    }
+
+    protected void onRestart()
+    {
+        com.movesky.webapp.Activity_WebView r0;
+        android.webkit.WebView $r1;
+
+        r0 := @this: com.movesky.webapp.Activity_WebView;
+
+        specialinvoke r0.<android.app.Activity: void onRestart()>();
+
+        $r1 = <com.movesky.webapp.Activity_WebView: android.webkit.WebView m_WebView>;
+
+        staticinvoke <com.movesky.webapp.YSHtml: void CallHtmlAppAction(android.webkit.WebView,int)>($r1, 5);
+
+        staticinvoke <com.zrd.common.ZrdCommon$ZrdLog: void Log(java.lang.String)>("###:onRestart");
+
+        return;
+    }
+
+    protected void onResume()
+    {
+        com.movesky.webapp.Activity_WebView r0;
+        android.webkit.WebView $r1;
+
+        r0 := @this: com.movesky.webapp.Activity_WebView;
+
+        specialinvoke r0.<android.app.Activity: void onResume()>();
+
+        staticinvoke <com.zrd.common.ZrdCommon$ZrdLog: void Log(java.lang.String)>("###:onResume");
+
+        $r1 = <com.movesky.webapp.Activity_WebView: android.webkit.WebView m_WebView>;
+
+        staticinvoke <com.movesky.webapp.YSHtml: void CallHtmlAppAction(android.webkit.WebView,int)>($r1, 4);
+
+        staticinvoke <com.movesky.webapp.YSTest: void ClearWebContext()>();
+
+        return;
+    }
+
+    protected void onStart()
+    {
+        com.movesky.webapp.Activity_WebView r0;
+        android.webkit.WebView $r1;
+
+        r0 := @this: com.movesky.webapp.Activity_WebView;
+
+        specialinvoke r0.<android.app.Activity: void onStart()>();
+
+        staticinvoke <com.zrd.common.ZrdCommon$ZrdLog: void Log(java.lang.String)>("###:onStart");
+
+        $r1 = <com.movesky.webapp.Activity_WebView: android.webkit.WebView m_WebView>;
+
+        staticinvoke <com.movesky.webapp.YSHtml: void CallHtmlAppAction(android.webkit.WebView,int)>($r1, 1);
+
+        return;
+    }
+
+    protected void onStop()
+    {
+        com.movesky.webapp.Activity_WebView r0;
+        android.webkit.WebView $r1;
+        android.content.Context $r2;
+
+        r0 := @this: com.movesky.webapp.Activity_WebView;
+
+        specialinvoke r0.<android.app.Activity: void onStop()>();
+
+        $r1 = <com.movesky.webapp.Activity_WebView: android.webkit.WebView m_WebView>;
+
+        staticinvoke <com.movesky.webapp.YSHtml: void CallHtmlAppAction(android.webkit.WebView,int)>($r1, 2);
+
+        $r2 = <com.movesky.webapp.Activity_WebView: android.content.Context m_ct>;
+
+        staticinvoke <com.movesky.webapp.YSTest: boolean onWebViewStop(android.content.Context)>($r2);
+
+        return;
+    }
+
+    public android.content.Intent getIntent()
+    {
+        com.movesky.webapp.Activity_WebView this;
+        android.content.Intent $r0;
+
+        this := @this: com.movesky.webapp.Activity_WebView;
+
+        $r0 = this.<com.movesky.webapp.Activity_WebView: android.content.Intent ipcIntent>;
+
+        return $r0;
+    }
+
+    public void setIntent(android.content.Intent)
+    {
+        com.movesky.webapp.Activity_WebView this;
+        android.content.Intent parameter0;
+
+        this := @this: com.movesky.webapp.Activity_WebView;
+
+        parameter0 := @parameter0: android.content.Intent;
+
+        this.<com.movesky.webapp.Activity_WebView: android.content.Intent ipcIntent> = parameter0;
+
+        return;
+    }
+
+    public void setResult(int, android.content.Intent)
+    {
+        com.movesky.webapp.Activity_WebView this;
+        int parameter0;
+        android.content.Intent parameter1;
+
+        this := @this: com.movesky.webapp.Activity_WebView;
+
+        parameter0 := @parameter0: int;
+
+        parameter1 := @parameter1: android.content.Intent;
+
+        this.<com.movesky.webapp.Activity_WebView: android.content.Intent ipcResultIntent> = parameter1;
+
+        return;
+    }
+}

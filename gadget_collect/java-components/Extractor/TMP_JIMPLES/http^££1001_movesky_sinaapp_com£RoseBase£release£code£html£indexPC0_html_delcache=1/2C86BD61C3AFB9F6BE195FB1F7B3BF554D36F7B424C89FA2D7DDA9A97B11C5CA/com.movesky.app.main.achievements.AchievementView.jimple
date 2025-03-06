@@ -1,0 +1,443 @@
+public class com.movesky.app.main.achievements.AchievementView extends com.movesky.app.engine.ui.UIView
+{
+    public static final float DESCRIPTION_SIZE;
+    public static final float NAME_SIZE;
+    private static final float PADDING;
+    private static final float TOP_PADDING;
+    private com.movesky.app.engine.ui.UILabel _descriptionLabel;
+    private com.movesky.app.engine.ui.UIImageView _image;
+    private com.movesky.app.engine.ui.UILabel _nameLabel;
+    private android.graphics.Paint _paint;
+    private com.movesky.app.engine.ui.UIProgressBar _progressBar;
+    private com.movesky.app.engine.ui.UILabel _progressLabel;
+    private float _unlockProgress;
+
+    public void <init>(com.movesky.app.engine.achievements.AchievementInfo, int, android.graphics.Bitmap)
+    {
+        com.movesky.app.main.achievements.AchievementView r0;
+        com.movesky.app.engine.achievements.AchievementInfo $r1;
+        int $i0, $i1;
+        android.graphics.Bitmap $r2;
+        com.movesky.app.engine.ui.UILabel $r3;
+        java.lang.String $r4;
+        android.graphics.Paint$Align $r5;
+        com.movesky.app.engine.ui.UILabel$VAlign $r6;
+        com.movesky.app.engine.ui.UIImageView $r7;
+        com.movesky.app.engine.ui.Anchor $r8;
+        float $f0, $f1;
+        com.movesky.app.engine.ui.UIProgressBar $r9;
+        java.lang.StringBuilder $r10;
+        android.graphics.Paint $r11;
+        android.graphics.Paint$Style $r12;
+
+        r0 := @this: com.movesky.app.main.achievements.AchievementView;
+
+        $r1 := @parameter0: com.movesky.app.engine.achievements.AchievementInfo;
+
+        $i0 := @parameter1: int;
+
+        $r2 := @parameter2: android.graphics.Bitmap;
+
+        specialinvoke r0.<com.movesky.app.engine.ui.UIView: void <init>()>();
+
+        $r3 = new com.movesky.app.engine.ui.UILabel;
+
+        $r4 = $r1.<com.movesky.app.engine.achievements.AchievementInfo: java.lang.String name>;
+
+        specialinvoke $r3.<com.movesky.app.engine.ui.UILabel: void <init>(java.lang.String,java.lang.Object)>($r4, null);
+
+        r0.<com.movesky.app.main.achievements.AchievementView: com.movesky.app.engine.ui.UILabel _nameLabel> = $r3;
+
+        $r3 = r0.<com.movesky.app.main.achievements.AchievementView: com.movesky.app.engine.ui.UILabel _nameLabel>;
+
+        virtualinvoke $r3.<com.movesky.app.engine.ui.UILabel: void setTextSize(float)>(19.0F);
+
+        $r3 = r0.<com.movesky.app.main.achievements.AchievementView: com.movesky.app.engine.ui.UILabel _nameLabel>;
+
+        $r5 = <android.graphics.Paint$Align: android.graphics.Paint$Align LEFT>;
+
+        virtualinvoke $r3.<com.movesky.app.engine.ui.UILabel: void setTextAlign(android.graphics.Paint$Align)>($r5);
+
+        $r3 = r0.<com.movesky.app.main.achievements.AchievementView: com.movesky.app.engine.ui.UILabel _nameLabel>;
+
+        virtualinvoke $r3.<com.movesky.app.engine.ui.UILabel: void sizeToFit()>();
+
+        $r3 = r0.<com.movesky.app.main.achievements.AchievementView: com.movesky.app.engine.ui.UILabel _nameLabel>;
+
+        virtualinvoke r0.<com.movesky.app.main.achievements.AchievementView: void addSubview(com.movesky.app.engine.ui.UIView)>($r3);
+
+        $r3 = new com.movesky.app.engine.ui.UILabel;
+
+        $r4 = $r1.<com.movesky.app.engine.achievements.AchievementInfo: java.lang.String description>;
+
+        specialinvoke $r3.<com.movesky.app.engine.ui.UILabel: void <init>(java.lang.String,java.lang.Object)>($r4, null);
+
+        r0.<com.movesky.app.main.achievements.AchievementView: com.movesky.app.engine.ui.UILabel _descriptionLabel> = $r3;
+
+        $r3 = r0.<com.movesky.app.main.achievements.AchievementView: com.movesky.app.engine.ui.UILabel _descriptionLabel>;
+
+        virtualinvoke $r3.<com.movesky.app.engine.ui.UILabel: void setTextSize(float)>(13.0F);
+
+        $r3 = r0.<com.movesky.app.main.achievements.AchievementView: com.movesky.app.engine.ui.UILabel _descriptionLabel>;
+
+        $r5 = <android.graphics.Paint$Align: android.graphics.Paint$Align LEFT>;
+
+        virtualinvoke $r3.<com.movesky.app.engine.ui.UILabel: void setTextAlign(android.graphics.Paint$Align)>($r5);
+
+        $r3 = r0.<com.movesky.app.main.achievements.AchievementView: com.movesky.app.engine.ui.UILabel _descriptionLabel>;
+
+        virtualinvoke $r3.<com.movesky.app.engine.ui.UILabel: void setLineHeight(float)>(18.199999F);
+
+        $r3 = r0.<com.movesky.app.main.achievements.AchievementView: com.movesky.app.engine.ui.UILabel _descriptionLabel>;
+
+        virtualinvoke $r3.<com.movesky.app.engine.ui.UILabel: void setWrapText(boolean)>(1);
+
+        $r3 = r0.<com.movesky.app.main.achievements.AchievementView: com.movesky.app.engine.ui.UILabel _descriptionLabel>;
+
+        $r6 = <com.movesky.app.engine.ui.UILabel$VAlign: com.movesky.app.engine.ui.UILabel$VAlign MIDDLE>;
+
+        virtualinvoke $r3.<com.movesky.app.engine.ui.UILabel: void setVerticalAlign(com.movesky.app.engine.ui.UILabel$VAlign)>($r6);
+
+        $r3 = r0.<com.movesky.app.main.achievements.AchievementView: com.movesky.app.engine.ui.UILabel _descriptionLabel>;
+
+        virtualinvoke r0.<com.movesky.app.main.achievements.AchievementView: void addSubview(com.movesky.app.engine.ui.UIView)>($r3);
+
+        $r7 = new com.movesky.app.engine.ui.UIImageView;
+
+        specialinvoke $r7.<com.movesky.app.engine.ui.UIImageView: void <init>(android.graphics.Bitmap)>($r2);
+
+        r0.<com.movesky.app.main.achievements.AchievementView: com.movesky.app.engine.ui.UIImageView _image> = $r7;
+
+        $r7 = r0.<com.movesky.app.main.achievements.AchievementView: com.movesky.app.engine.ui.UIImageView _image>;
+
+        virtualinvoke $r7.<com.movesky.app.engine.ui.UIImageView: void setSize(float,float)>(32.0F, 32.0F);
+
+        $r7 = r0.<com.movesky.app.main.achievements.AchievementView: com.movesky.app.engine.ui.UIImageView _image>;
+
+        $r8 = <com.movesky.app.engine.ui.Anchor: com.movesky.app.engine.ui.Anchor CENTER_LEFT>;
+
+        virtualinvoke $r7.<com.movesky.app.engine.ui.UIImageView: void setAnchor(com.movesky.app.engine.ui.Anchor)>($r8);
+
+        $r7 = r0.<com.movesky.app.main.achievements.AchievementView: com.movesky.app.engine.ui.UIImageView _image>;
+
+        virtualinvoke r0.<com.movesky.app.main.achievements.AchievementView: void addSubview(com.movesky.app.engine.ui.UIView)>($r7);
+
+        $f0 = (float) $i0;
+
+        $i1 = $r1.<com.movesky.app.engine.achievements.AchievementInfo: int maxActivations>;
+
+        $f1 = (float) $i1;
+
+        $f0 = $f0 / $f1;
+
+        r0.<com.movesky.app.main.achievements.AchievementView: float _unlockProgress> = $f0;
+
+        $i1 = $r1.<com.movesky.app.engine.achievements.AchievementInfo: int maxActivations>;
+
+        if $i1 <= 1 goto label1;
+
+        $r9 = new com.movesky.app.engine.ui.UIProgressBar;
+
+        specialinvoke $r9.<com.movesky.app.engine.ui.UIProgressBar: void <init>()>();
+
+        r0.<com.movesky.app.main.achievements.AchievementView: com.movesky.app.engine.ui.UIProgressBar _progressBar> = $r9;
+
+        $r9 = r0.<com.movesky.app.main.achievements.AchievementView: com.movesky.app.engine.ui.UIProgressBar _progressBar>;
+
+        $f0 = r0.<com.movesky.app.main.achievements.AchievementView: float _unlockProgress>;
+
+        virtualinvoke $r9.<com.movesky.app.engine.ui.UIProgressBar: void setProgress(float)>($f0);
+
+        $r9 = r0.<com.movesky.app.main.achievements.AchievementView: com.movesky.app.engine.ui.UIProgressBar _progressBar>;
+
+        $i1 = staticinvoke <android.graphics.Color: int rgb(int,int,int)>(100, 100, 100);
+
+        virtualinvoke $r9.<com.movesky.app.engine.ui.UIProgressBar: void setBackgroundColor(int)>($i1);
+
+        $r9 = r0.<com.movesky.app.main.achievements.AchievementView: com.movesky.app.engine.ui.UIProgressBar _progressBar>;
+
+        virtualinvoke r0.<com.movesky.app.main.achievements.AchievementView: void addSubview(com.movesky.app.engine.ui.UIView)>($r9);
+
+        $r3 = new com.movesky.app.engine.ui.UILabel;
+
+        $r10 = new java.lang.StringBuilder;
+
+        specialinvoke $r10.<java.lang.StringBuilder: void <init>()>();
+
+        $r4 = staticinvoke <java.lang.String: java.lang.String valueOf(int)>($i0);
+
+        $r10 = virtualinvoke $r10.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r4);
+
+        $r10 = virtualinvoke $r10.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("/");
+
+        $i0 = $r1.<com.movesky.app.engine.achievements.AchievementInfo: int maxActivations>;
+
+        $r10 = virtualinvoke $r10.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>($i0);
+
+        $r4 = virtualinvoke $r10.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke $r3.<com.movesky.app.engine.ui.UILabel: void <init>(java.lang.String)>($r4);
+
+        r0.<com.movesky.app.main.achievements.AchievementView: com.movesky.app.engine.ui.UILabel _progressLabel> = $r3;
+
+        $r3 = r0.<com.movesky.app.main.achievements.AchievementView: com.movesky.app.engine.ui.UILabel _progressLabel>;
+
+        virtualinvoke $r3.<com.movesky.app.engine.ui.UILabel: void setTextSize(float)>(13.0F);
+
+        $r3 = r0.<com.movesky.app.main.achievements.AchievementView: com.movesky.app.engine.ui.UILabel _progressLabel>;
+
+        virtualinvoke $r3.<com.movesky.app.engine.ui.UILabel: void sizeToFit()>();
+
+        $r3 = r0.<com.movesky.app.main.achievements.AchievementView: com.movesky.app.engine.ui.UILabel _progressLabel>;
+
+        virtualinvoke r0.<com.movesky.app.main.achievements.AchievementView: void addSubview(com.movesky.app.engine.ui.UIView)>($r3);
+
+     label1:
+        $r11 = new android.graphics.Paint;
+
+        specialinvoke $r11.<android.graphics.Paint: void <init>(int)>(1);
+
+        r0.<com.movesky.app.main.achievements.AchievementView: android.graphics.Paint _paint> = $r11;
+
+        $r11 = r0.<com.movesky.app.main.achievements.AchievementView: android.graphics.Paint _paint>;
+
+        virtualinvoke $r11.<android.graphics.Paint: void setColor(int)>(-1);
+
+        $r11 = r0.<com.movesky.app.main.achievements.AchievementView: android.graphics.Paint _paint>;
+
+        $r12 = <android.graphics.Paint$Style: android.graphics.Paint$Style STROKE>;
+
+        virtualinvoke $r11.<android.graphics.Paint: void setStyle(android.graphics.Paint$Style)>($r12);
+
+        return;
+    }
+
+    public boolean isDraggable()
+    {
+        com.movesky.app.main.achievements.AchievementView r0;
+
+        r0 := @this: com.movesky.app.main.achievements.AchievementView;
+
+        return 1;
+    }
+
+    public void onDraw(android.graphics.Canvas)
+    {
+        com.movesky.app.main.achievements.AchievementView r0;
+        android.graphics.Canvas $r1;
+        int $i0;
+        float $f0, $f1, $f2, $f3;
+        byte $b1;
+        android.graphics.Paint $r2;
+        android.graphics.Paint$Style $r3;
+        android.graphics.RectF $r4;
+
+        r0 := @this: com.movesky.app.main.achievements.AchievementView;
+
+        $r1 := @parameter0: android.graphics.Canvas;
+
+        $f0 = r0.<com.movesky.app.main.achievements.AchievementView: float _unlockProgress>;
+
+        $b1 = $f0 cmpl 1.0F;
+
+        if $b1 != 0 goto label1;
+
+        $r2 = r0.<com.movesky.app.main.achievements.AchievementView: android.graphics.Paint _paint>;
+
+        $i0 = staticinvoke <android.graphics.Color: int rgb(int,int,int)>(20, 20, 25);
+
+        virtualinvoke $r2.<android.graphics.Paint: void setColor(int)>($i0);
+
+        $r2 = r0.<com.movesky.app.main.achievements.AchievementView: android.graphics.Paint _paint>;
+
+        $r3 = <android.graphics.Paint$Style: android.graphics.Paint$Style FILL>;
+
+        virtualinvoke $r2.<android.graphics.Paint: void setStyle(android.graphics.Paint$Style)>($r3);
+
+        $r4 = r0.<com.movesky.app.main.achievements.AchievementView: android.graphics.RectF _rect>;
+
+        $r2 = r0.<com.movesky.app.main.achievements.AchievementView: android.graphics.Paint _paint>;
+
+        virtualinvoke $r1.<android.graphics.Canvas: void drawRect(android.graphics.RectF,android.graphics.Paint)>($r4, $r2);
+
+        $r2 = r0.<com.movesky.app.main.achievements.AchievementView: android.graphics.Paint _paint>;
+
+        $r3 = <android.graphics.Paint$Style: android.graphics.Paint$Style STROKE>;
+
+        virtualinvoke $r2.<android.graphics.Paint: void setStyle(android.graphics.Paint$Style)>($r3);
+
+     label1:
+        specialinvoke r0.<com.movesky.app.engine.ui.UIView: void onDraw(android.graphics.Canvas)>($r1);
+
+        $r2 = r0.<com.movesky.app.main.achievements.AchievementView: android.graphics.Paint _paint>;
+
+        virtualinvoke $r2.<android.graphics.Paint: void setColor(int)>(-1);
+
+        $r4 = r0.<com.movesky.app.main.achievements.AchievementView: android.graphics.RectF _rect>;
+
+        $f0 = $r4.<android.graphics.RectF: float left>;
+
+        $r4 = r0.<com.movesky.app.main.achievements.AchievementView: android.graphics.RectF _rect>;
+
+        $f1 = $r4.<android.graphics.RectF: float top>;
+
+        $r4 = r0.<com.movesky.app.main.achievements.AchievementView: android.graphics.RectF _rect>;
+
+        $f2 = $r4.<android.graphics.RectF: float right>;
+
+        $r4 = r0.<com.movesky.app.main.achievements.AchievementView: android.graphics.RectF _rect>;
+
+        $f3 = $r4.<android.graphics.RectF: float top>;
+
+        $r2 = r0.<com.movesky.app.main.achievements.AchievementView: android.graphics.Paint _paint>;
+
+        virtualinvoke $r1.<android.graphics.Canvas: void drawLine(float,float,float,float,android.graphics.Paint)>($f0, $f1, $f2, $f3, $r2);
+
+        $r4 = r0.<com.movesky.app.main.achievements.AchievementView: android.graphics.RectF _rect>;
+
+        $f0 = $r4.<android.graphics.RectF: float left>;
+
+        $r4 = r0.<com.movesky.app.main.achievements.AchievementView: android.graphics.RectF _rect>;
+
+        $f1 = $r4.<android.graphics.RectF: float bottom>;
+
+        $r4 = r0.<com.movesky.app.main.achievements.AchievementView: android.graphics.RectF _rect>;
+
+        $f2 = $r4.<android.graphics.RectF: float right>;
+
+        $r4 = r0.<com.movesky.app.main.achievements.AchievementView: android.graphics.RectF _rect>;
+
+        $f3 = $r4.<android.graphics.RectF: float bottom>;
+
+        $r2 = r0.<com.movesky.app.main.achievements.AchievementView: android.graphics.Paint _paint>;
+
+        virtualinvoke $r1.<android.graphics.Canvas: void drawLine(float,float,float,float,android.graphics.Paint)>($f0, $f1, $f2, $f3, $r2);
+
+        return;
+    }
+
+    public void setBounds(float, float, float, float)
+    {
+        com.movesky.app.main.achievements.AchievementView r0;
+        float $f0, $f1, $f2, $f3, $f4;
+        com.movesky.app.engine.ui.UIImageView $r1;
+        com.movesky.app.engine.util.Point $r2;
+        android.graphics.RectF $r3;
+        com.movesky.app.engine.ui.UILabel $r4;
+        com.movesky.app.engine.ui.UIProgressBar $r5;
+
+        r0 := @this: com.movesky.app.main.achievements.AchievementView;
+
+        $f0 := @parameter0: float;
+
+        $f1 := @parameter1: float;
+
+        $f2 := @parameter2: float;
+
+        $f3 := @parameter3: float;
+
+        specialinvoke r0.<com.movesky.app.engine.ui.UIView: void setBounds(float,float,float,float)>($f0, $f1, $f2, $f3);
+
+        $r1 = r0.<com.movesky.app.main.achievements.AchievementView: com.movesky.app.engine.ui.UIImageView _image>;
+
+        $r2 = r0.<com.movesky.app.main.achievements.AchievementView: com.movesky.app.engine.util.Point center>;
+
+        $f2 = $r2.<com.movesky.app.engine.util.Point: float y>;
+
+        virtualinvoke $r1.<com.movesky.app.engine.ui.UIImageView: void setPosition(float,float)>($f0, $f2);
+
+        $r1 = r0.<com.movesky.app.main.achievements.AchievementView: com.movesky.app.engine.ui.UIImageView _image>;
+
+        $r3 = virtualinvoke $r1.<com.movesky.app.engine.ui.UIImageView: android.graphics.RectF getRect()>();
+
+        $f3 = $r3.<android.graphics.RectF: float right>;
+
+        $f2 = r0.<com.movesky.app.main.achievements.AchievementView: float _width>;
+
+        $r1 = r0.<com.movesky.app.main.achievements.AchievementView: com.movesky.app.engine.ui.UIImageView _image>;
+
+        $f4 = virtualinvoke $r1.<com.movesky.app.engine.ui.UIImageView: float getWidth()>();
+
+        $f2 = $f2 - $f4;
+
+        $f2 = $f2 - 5.0F;
+
+        $f0 = $f3 + $f0;
+
+        $f0 = $f0 + 5.0F;
+
+        $r4 = r0.<com.movesky.app.main.achievements.AchievementView: com.movesky.app.engine.ui.UILabel _nameLabel>;
+
+        $f3 = $f1 + 6.0F;
+
+        virtualinvoke $r4.<com.movesky.app.engine.ui.UILabel: void setPosition(float,float)>($f0, $f3);
+
+        $r4 = r0.<com.movesky.app.main.achievements.AchievementView: com.movesky.app.engine.ui.UILabel _nameLabel>;
+
+        virtualinvoke $r4.<com.movesky.app.engine.ui.UILabel: void setSize(float,float)>($f2, 19.0F);
+
+        $r4 = r0.<com.movesky.app.main.achievements.AchievementView: com.movesky.app.engine.ui.UILabel _descriptionLabel>;
+
+        $f3 = $f1 + 19.0F;
+
+        $f3 = $f3 + 6.0F;
+
+        $f3 = $f3 + 5.0F;
+
+        virtualinvoke $r4.<com.movesky.app.engine.ui.UILabel: void setPosition(float,float)>($f0, $f3);
+
+        $r4 = r0.<com.movesky.app.main.achievements.AchievementView: com.movesky.app.engine.ui.UILabel _descriptionLabel>;
+
+        virtualinvoke $r4.<com.movesky.app.engine.ui.UILabel: void setSize(float,float)>($f2, 13.0F);
+
+        $r5 = r0.<com.movesky.app.main.achievements.AchievementView: com.movesky.app.engine.ui.UIProgressBar _progressBar>;
+
+        if $r5 == null goto label1;
+
+        $r5 = r0.<com.movesky.app.main.achievements.AchievementView: com.movesky.app.engine.ui.UIProgressBar _progressBar>;
+
+        $f2 = $f1 + 19.0F;
+
+        $f2 = $f2 + 6.0F;
+
+        $f2 = $f2 + 13.0F;
+
+        $f2 = $f2 + 12.0F;
+
+        virtualinvoke $r5.<com.movesky.app.engine.ui.UIProgressBar: void setPosition(float,float)>($f0, $f2);
+
+        $r5 = r0.<com.movesky.app.main.achievements.AchievementView: com.movesky.app.engine.ui.UIProgressBar _progressBar>;
+
+        virtualinvoke $r5.<com.movesky.app.engine.ui.UIProgressBar: void setSize(float,float)>(175.0F, 11.0F);
+
+        $r4 = r0.<com.movesky.app.main.achievements.AchievementView: com.movesky.app.engine.ui.UILabel _progressLabel>;
+
+        $f0 = $f0 + 185.0F;
+
+        $f1 = $f1 + 19.0F;
+
+        $f1 = $f1 + 6.0F;
+
+        $f1 = $f1 + 13.0F;
+
+        $f1 = $f1 + 12.0F;
+
+        virtualinvoke $r4.<com.movesky.app.engine.ui.UILabel: void setPosition(float,float)>($f0, $f1);
+
+     label1:
+        return;
+    }
+
+    public static void <clinit>()
+    {
+        <com.movesky.app.main.achievements.AchievementView: float TOP_PADDING> = 6.0F;
+
+        <com.movesky.app.main.achievements.AchievementView: float PADDING> = 5.0F;
+
+        <com.movesky.app.main.achievements.AchievementView: float NAME_SIZE> = 19.0F;
+
+        <com.movesky.app.main.achievements.AchievementView: float DESCRIPTION_SIZE> = 13.0F;
+
+        return;
+    }
+}

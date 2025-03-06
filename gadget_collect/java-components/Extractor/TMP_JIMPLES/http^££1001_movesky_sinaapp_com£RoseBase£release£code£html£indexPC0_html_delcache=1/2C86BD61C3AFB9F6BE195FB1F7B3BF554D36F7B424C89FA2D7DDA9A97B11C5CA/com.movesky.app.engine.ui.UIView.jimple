@@ -1,0 +1,1299 @@
+public class com.movesky.app.engine.ui.UIView extends com.movesky.app.engine.core.GameScreen
+{
+    protected android.graphics.Rect _clip_rect;
+    protected float _h_height;
+    protected float _h_width;
+    protected boolean _hasAppeared;
+    protected float _height;
+    protected boolean _layedOut;
+    protected com.movesky.app.engine.util.Point _position;
+    protected android.graphics.RectF _rect;
+    protected float _width;
+    protected com.movesky.app.engine.ui.Anchor anchor;
+    protected com.movesky.app.engine.util.Point center;
+    protected com.movesky.app.engine.ui.UIDelegate delegate;
+    public boolean isAnimatingPosition;
+    float position_animation_duration;
+    float position_x_step;
+    float position_y_step;
+    protected int subviewCount;
+    protected com.movesky.app.engine.util.BlockingArrayList subviews;
+    public java.lang.Object tag;
+    protected float target_x;
+    protected float target_y;
+
+    public void <init>()
+    {
+        com.movesky.app.engine.ui.UIView r0;
+
+        r0 := @this: com.movesky.app.engine.ui.UIView;
+
+        specialinvoke r0.<com.movesky.app.engine.ui.UIView: void <init>(java.lang.Object)>(null);
+
+        return;
+    }
+
+    public void <init>(java.lang.Object)
+    {
+        com.movesky.app.engine.ui.UIView r0;
+        java.lang.Object $r1;
+        com.movesky.app.engine.util.BlockingArrayList $r2;
+        com.movesky.app.engine.ui.Anchor $r3;
+        android.graphics.RectF $r4;
+        android.graphics.Rect $r5;
+        com.movesky.app.engine.util.Point $r6;
+
+        r0 := @this: com.movesky.app.engine.ui.UIView;
+
+        $r1 := @parameter0: java.lang.Object;
+
+        specialinvoke r0.<com.movesky.app.engine.core.GameScreen: void <init>()>();
+
+        $r2 = new com.movesky.app.engine.util.BlockingArrayList;
+
+        specialinvoke $r2.<com.movesky.app.engine.util.BlockingArrayList: void <init>()>();
+
+        r0.<com.movesky.app.engine.ui.UIView: com.movesky.app.engine.util.BlockingArrayList subviews> = $r2;
+
+        $r3 = <com.movesky.app.engine.ui.Anchor: com.movesky.app.engine.ui.Anchor TOP_LEFT>;
+
+        r0.<com.movesky.app.engine.ui.UIView: com.movesky.app.engine.ui.Anchor anchor> = $r3;
+
+        $r4 = new android.graphics.RectF;
+
+        specialinvoke $r4.<android.graphics.RectF: void <init>(float,float,float,float)>(0.0F, 0.0F, 0.0F, 0.0F);
+
+        r0.<com.movesky.app.engine.ui.UIView: android.graphics.RectF _rect> = $r4;
+
+        $r5 = new android.graphics.Rect;
+
+        specialinvoke $r5.<android.graphics.Rect: void <init>(int,int,int,int)>(0, 0, 0, 0);
+
+        r0.<com.movesky.app.engine.ui.UIView: android.graphics.Rect _clip_rect> = $r5;
+
+        $r6 = new com.movesky.app.engine.util.Point;
+
+        specialinvoke $r6.<com.movesky.app.engine.util.Point: void <init>(float,float)>(0.0F, 0.0F);
+
+        r0.<com.movesky.app.engine.ui.UIView: com.movesky.app.engine.util.Point center> = $r6;
+
+        $r6 = new com.movesky.app.engine.util.Point;
+
+        specialinvoke $r6.<com.movesky.app.engine.util.Point: void <init>(float,float)>(0.0F, 0.0F);
+
+        r0.<com.movesky.app.engine.ui.UIView: com.movesky.app.engine.util.Point _position> = $r6;
+
+        r0.<com.movesky.app.engine.ui.UIView: java.lang.Object tag> = null;
+
+        return;
+    }
+
+    public void addSubview(com.movesky.app.engine.ui.UIView)
+    {
+        com.movesky.app.engine.ui.UIView r0, $r1;
+        com.movesky.app.engine.util.BlockingArrayList $r2;
+        boolean $z0;
+        int $i0;
+
+        r0 := @this: com.movesky.app.engine.ui.UIView;
+
+        $r1 := @parameter0: com.movesky.app.engine.ui.UIView;
+
+        $r2 = r0.<com.movesky.app.engine.ui.UIView: com.movesky.app.engine.util.BlockingArrayList subviews>;
+
+        $z0 = virtualinvoke $r2.<com.movesky.app.engine.util.BlockingArrayList: boolean contains(java.lang.Object)>($r1);
+
+        if $z0 != 0 goto label1;
+
+        $r2 = r0.<com.movesky.app.engine.ui.UIView: com.movesky.app.engine.util.BlockingArrayList subviews>;
+
+        virtualinvoke $r2.<com.movesky.app.engine.util.BlockingArrayList: void add(java.lang.Object)>($r1);
+
+        $r2 = r0.<com.movesky.app.engine.ui.UIView: com.movesky.app.engine.util.BlockingArrayList subviews>;
+
+        $i0 = virtualinvoke $r2.<com.movesky.app.engine.util.BlockingArrayList: int size()>();
+
+        r0.<com.movesky.app.engine.ui.UIView: int subviewCount> = $i0;
+
+     label1:
+        return;
+    }
+
+    public void animatePosition(float, float, float)
+    {
+        com.movesky.app.engine.ui.UIView r0;
+        float $f0, $f1, $f2, $f3;
+        com.movesky.app.engine.util.Point $r1;
+
+        r0 := @this: com.movesky.app.engine.ui.UIView;
+
+        $f0 := @parameter0: float;
+
+        $f1 := @parameter1: float;
+
+        $f2 := @parameter2: float;
+
+        r0.<com.movesky.app.engine.ui.UIView: float target_x> = 160.0F;
+
+        r0.<com.movesky.app.engine.ui.UIView: float target_y> = $f1;
+
+        $r1 = r0.<com.movesky.app.engine.ui.UIView: com.movesky.app.engine.util.Point _position>;
+
+        $f3 = $r1.<com.movesky.app.engine.util.Point: float x>;
+
+        $f0 = 160.0F - $f3;
+
+        $f0 = $f0 / $f2;
+
+        r0.<com.movesky.app.engine.ui.UIView: float position_x_step> = $f0;
+
+        $r1 = r0.<com.movesky.app.engine.ui.UIView: com.movesky.app.engine.util.Point _position>;
+
+        $f0 = $r1.<com.movesky.app.engine.util.Point: float y>;
+
+        $f0 = $f1 - $f0;
+
+        $f0 = $f0 / $f2;
+
+        r0.<com.movesky.app.engine.ui.UIView: float position_y_step> = $f0;
+
+        r0.<com.movesky.app.engine.ui.UIView: float position_animation_duration> = $f2;
+
+        r0.<com.movesky.app.engine.ui.UIView: boolean isAnimatingPosition> = 1;
+
+        return;
+    }
+
+    public boolean containsPoint(float, float)
+    {
+        com.movesky.app.engine.ui.UIView r0;
+        float $f0, $f1;
+        boolean $z0;
+        android.graphics.RectF $r1;
+
+        r0 := @this: com.movesky.app.engine.ui.UIView;
+
+        $f0 := @parameter0: float;
+
+        $f1 := @parameter1: float;
+
+        $r1 = r0.<com.movesky.app.engine.ui.UIView: android.graphics.RectF _rect>;
+
+        $z0 = virtualinvoke $r1.<android.graphics.RectF: boolean contains(float,float)>($f0, $f1);
+
+        return $z0;
+    }
+
+    public float getHeight()
+    {
+        com.movesky.app.engine.ui.UIView r0;
+        float f0;
+
+        r0 := @this: com.movesky.app.engine.ui.UIView;
+
+        f0 = r0.<com.movesky.app.engine.ui.UIView: float _height>;
+
+        return f0;
+    }
+
+    public com.movesky.app.engine.util.Point getPosition()
+    {
+        com.movesky.app.engine.ui.UIView r0;
+        com.movesky.app.engine.util.Point r1;
+
+        r0 := @this: com.movesky.app.engine.ui.UIView;
+
+        r1 = r0.<com.movesky.app.engine.ui.UIView: com.movesky.app.engine.util.Point _position>;
+
+        return r1;
+    }
+
+    public android.graphics.RectF getRect()
+    {
+        com.movesky.app.engine.ui.UIView r0;
+        android.graphics.RectF r1;
+
+        r0 := @this: com.movesky.app.engine.ui.UIView;
+
+        r1 = r0.<com.movesky.app.engine.ui.UIView: android.graphics.RectF _rect>;
+
+        return r1;
+    }
+
+    public float getWidth()
+    {
+        com.movesky.app.engine.ui.UIView r0;
+        float f0;
+
+        r0 := @this: com.movesky.app.engine.ui.UIView;
+
+        f0 = r0.<com.movesky.app.engine.ui.UIView: float _width>;
+
+        return f0;
+    }
+
+    public boolean isDraggable()
+    {
+        com.movesky.app.engine.ui.UIView r0;
+
+        r0 := @this: com.movesky.app.engine.ui.UIView;
+
+        return 0;
+    }
+
+    protected void layoutSubviews(boolean)
+    {
+        com.movesky.app.engine.ui.UIView r0;
+        boolean $z0;
+
+        r0 := @this: com.movesky.app.engine.ui.UIView;
+
+        $z0 := @parameter0: boolean;
+
+        return;
+    }
+
+    public void linearInterpolatePosition(float)
+    {
+        com.movesky.app.engine.ui.UIView r0;
+        float $f0, $f1, $f2, $f3;
+        boolean $z0;
+        com.movesky.app.engine.util.Point $r1;
+        byte $b0;
+
+        r0 := @this: com.movesky.app.engine.ui.UIView;
+
+        $f0 := @parameter0: float;
+
+        $z0 = r0.<com.movesky.app.engine.ui.UIView: boolean isAnimatingPosition>;
+
+        if $z0 == 0 goto label1;
+
+        $r1 = r0.<com.movesky.app.engine.ui.UIView: com.movesky.app.engine.util.Point _position>;
+
+        $f1 = $r1.<com.movesky.app.engine.util.Point: float x>;
+
+        $f2 = r0.<com.movesky.app.engine.ui.UIView: float position_x_step>;
+
+        $f2 = $f2 * $f0;
+
+        $f1 = $f1 + $f2;
+
+        $r1 = r0.<com.movesky.app.engine.ui.UIView: com.movesky.app.engine.util.Point _position>;
+
+        $f2 = $r1.<com.movesky.app.engine.util.Point: float y>;
+
+        $f3 = r0.<com.movesky.app.engine.ui.UIView: float position_y_step>;
+
+        $f3 = $f3 * $f0;
+
+        $f2 = $f2 + $f3;
+
+        virtualinvoke r0.<com.movesky.app.engine.ui.UIView: void setPosition(float,float)>($f1, $f2);
+
+        $f1 = r0.<com.movesky.app.engine.ui.UIView: float position_animation_duration>;
+
+        $f0 = $f1 - $f0;
+
+        r0.<com.movesky.app.engine.ui.UIView: float position_animation_duration> = $f0;
+
+        $f0 = r0.<com.movesky.app.engine.ui.UIView: float position_animation_duration>;
+
+        $b0 = $f0 cmpg 0.0F;
+
+        if $b0 > 0 goto label1;
+
+        r0.<com.movesky.app.engine.ui.UIView: boolean isAnimatingPosition> = 0;
+
+        $f0 = r0.<com.movesky.app.engine.ui.UIView: float target_x>;
+
+        $f1 = r0.<com.movesky.app.engine.ui.UIView: float target_y>;
+
+        virtualinvoke r0.<com.movesky.app.engine.ui.UIView: void setPosition(float,float)>($f0, $f1);
+
+     label1:
+        return;
+    }
+
+    public void onDraw(android.graphics.Canvas)
+    {
+        com.movesky.app.engine.ui.UIView r0, $r4;
+        android.graphics.Canvas $r1;
+        int $i0, $i1;
+        java.lang.Object $r2;
+        boolean $z0;
+        com.movesky.app.engine.util.BlockingArrayList $r3;
+
+        r0 := @this: com.movesky.app.engine.ui.UIView;
+
+        $r1 := @parameter0: android.graphics.Canvas;
+
+        $z0 = r0.<com.movesky.app.engine.ui.UIView: boolean _hasAppeared>;
+
+        if $z0 != 0 goto label1;
+
+        virtualinvoke r0.<com.movesky.app.engine.ui.UIView: void willAppear(boolean)>(1);
+
+     label1:
+        $i1 = r0.<com.movesky.app.engine.ui.UIView: int subviewCount>;
+
+     label2:
+        $i0 = $i1 + -1;
+
+        if $i1 <= 0 goto label3;
+
+        $r3 = r0.<com.movesky.app.engine.ui.UIView: com.movesky.app.engine.util.BlockingArrayList subviews>;
+
+        $r2 = virtualinvoke $r3.<com.movesky.app.engine.util.BlockingArrayList: java.lang.Object get(int)>($i0);
+
+        $r4 = (com.movesky.app.engine.ui.UIView) $r2;
+
+        virtualinvoke $r4.<com.movesky.app.engine.ui.UIView: void onDraw(android.graphics.Canvas)>($r1);
+
+        $i1 = $i0;
+
+        goto label2;
+
+     label3:
+        return;
+    }
+
+    public void onStop()
+    {
+        com.movesky.app.engine.ui.UIView r0, $r3;
+        int $i0, $i1;
+        java.lang.Object $r1;
+        com.movesky.app.engine.util.BlockingArrayList $r2;
+
+        r0 := @this: com.movesky.app.engine.ui.UIView;
+
+        $i1 = r0.<com.movesky.app.engine.ui.UIView: int subviewCount>;
+
+     label1:
+        $i0 = $i1 + -1;
+
+        if $i1 <= 0 goto label2;
+
+        $r2 = r0.<com.movesky.app.engine.ui.UIView: com.movesky.app.engine.util.BlockingArrayList subviews>;
+
+        $r1 = virtualinvoke $r2.<com.movesky.app.engine.util.BlockingArrayList: java.lang.Object get(int)>($i0);
+
+        $r3 = (com.movesky.app.engine.ui.UIView) $r1;
+
+        virtualinvoke $r3.<com.movesky.app.engine.ui.UIView: void onStop()>();
+
+        $i1 = $i0;
+
+        goto label1;
+
+     label2:
+        return;
+    }
+
+    public void onTouchDown(float, float)
+    {
+        com.movesky.app.engine.ui.UIView r0, $r3;
+        float $f0, $f1;
+        int $i0, $i1;
+        com.movesky.app.engine.util.BlockingArrayList $r1;
+        java.lang.Object $r2;
+        boolean $z0;
+
+        r0 := @this: com.movesky.app.engine.ui.UIView;
+
+        $f0 := @parameter0: float;
+
+        $f1 := @parameter1: float;
+
+        $i1 = r0.<com.movesky.app.engine.ui.UIView: int subviewCount>;
+
+     label1:
+        $i0 = $i1 + -1;
+
+        if $i1 <= 0 goto label3;
+
+        $r1 = r0.<com.movesky.app.engine.ui.UIView: com.movesky.app.engine.util.BlockingArrayList subviews>;
+
+        $r2 = virtualinvoke $r1.<com.movesky.app.engine.util.BlockingArrayList: java.lang.Object get(int)>($i0);
+
+        $r3 = (com.movesky.app.engine.ui.UIView) $r2;
+
+        $z0 = virtualinvoke $r3.<com.movesky.app.engine.ui.UIView: boolean containsPoint(float,float)>($f0, $f1);
+
+        if $z0 == 0 goto label2;
+
+        virtualinvoke $r3.<com.movesky.app.engine.ui.UIView: void onTouchDown(float,float)>($f0, $f1);
+
+     label2:
+        $i1 = $i0;
+
+        goto label1;
+
+     label3:
+        return;
+    }
+
+    public void onTouchMove(float, float)
+    {
+        com.movesky.app.engine.ui.UIView r0, $r3;
+        float $f0, $f1;
+        int $i0, $i1;
+        java.lang.Object $r1;
+        com.movesky.app.engine.util.BlockingArrayList $r2;
+
+        r0 := @this: com.movesky.app.engine.ui.UIView;
+
+        $f0 := @parameter0: float;
+
+        $f1 := @parameter1: float;
+
+        $i1 = r0.<com.movesky.app.engine.ui.UIView: int subviewCount>;
+
+     label1:
+        $i0 = $i1 + -1;
+
+        if $i1 <= 0 goto label2;
+
+        $r2 = r0.<com.movesky.app.engine.ui.UIView: com.movesky.app.engine.util.BlockingArrayList subviews>;
+
+        $r1 = virtualinvoke $r2.<com.movesky.app.engine.util.BlockingArrayList: java.lang.Object get(int)>($i0);
+
+        $r3 = (com.movesky.app.engine.ui.UIView) $r1;
+
+        virtualinvoke $r3.<com.movesky.app.engine.ui.UIView: void onTouchMove(float,float)>($f0, $f1);
+
+        $i1 = $i0;
+
+        goto label1;
+
+     label2:
+        return;
+    }
+
+    public void onTouchUp(float, float)
+    {
+        com.movesky.app.engine.ui.UIView r0, $r3;
+        float $f0, $f1;
+        int $i0, $i1;
+        com.movesky.app.engine.util.BlockingArrayList $r1;
+        java.lang.Object $r2;
+        boolean $z0;
+
+        r0 := @this: com.movesky.app.engine.ui.UIView;
+
+        $f0 := @parameter0: float;
+
+        $f1 := @parameter1: float;
+
+        $i1 = r0.<com.movesky.app.engine.ui.UIView: int subviewCount>;
+
+     label1:
+        $i0 = $i1 + -1;
+
+        if $i1 <= 0 goto label3;
+
+        $r1 = r0.<com.movesky.app.engine.ui.UIView: com.movesky.app.engine.util.BlockingArrayList subviews>;
+
+        $r2 = virtualinvoke $r1.<com.movesky.app.engine.util.BlockingArrayList: java.lang.Object get(int)>($i0);
+
+        $r3 = (com.movesky.app.engine.ui.UIView) $r2;
+
+        $z0 = virtualinvoke $r3.<com.movesky.app.engine.ui.UIView: boolean containsPoint(float,float)>($f0, $f1);
+
+        if $z0 == 0 goto label2;
+
+        virtualinvoke $r3.<com.movesky.app.engine.ui.UIView: void onTouchUp(float,float)>($f0, $f1);
+
+     label2:
+        $i1 = $i0;
+
+        goto label1;
+
+     label3:
+        return;
+    }
+
+    public void onUpdate(float)
+    {
+        com.movesky.app.engine.ui.UIView r0, $r3;
+        float $f0;
+        int $i0, $i1;
+        java.lang.Object $r1;
+        com.movesky.app.engine.util.BlockingArrayList $r2;
+
+        r0 := @this: com.movesky.app.engine.ui.UIView;
+
+        $f0 := @parameter0: float;
+
+        $i1 = r0.<com.movesky.app.engine.ui.UIView: int subviewCount>;
+
+     label1:
+        $i0 = $i1 + -1;
+
+        if $i1 <= 0 goto label2;
+
+        $r2 = r0.<com.movesky.app.engine.ui.UIView: com.movesky.app.engine.util.BlockingArrayList subviews>;
+
+        $r1 = virtualinvoke $r2.<com.movesky.app.engine.util.BlockingArrayList: java.lang.Object get(int)>($i0);
+
+        $r3 = (com.movesky.app.engine.ui.UIView) $r1;
+
+        virtualinvoke $r3.<com.movesky.app.engine.ui.UIView: void onUpdate(float)>($f0);
+
+        $i1 = $i0;
+
+        goto label1;
+
+     label2:
+        virtualinvoke r0.<com.movesky.app.engine.ui.UIView: void linearInterpolatePosition(float)>($f0);
+
+        return;
+    }
+
+    public void removeSubview(com.movesky.app.engine.ui.UIView)
+    {
+        com.movesky.app.engine.ui.UIView r0, $r1;
+        int $i0;
+        com.movesky.app.engine.util.BlockingArrayList $r2;
+
+        r0 := @this: com.movesky.app.engine.ui.UIView;
+
+        $r1 := @parameter0: com.movesky.app.engine.ui.UIView;
+
+        virtualinvoke $r1.<com.movesky.app.engine.ui.UIView: void willHide(boolean)>(1);
+
+        $r2 = r0.<com.movesky.app.engine.ui.UIView: com.movesky.app.engine.util.BlockingArrayList subviews>;
+
+        virtualinvoke $r2.<com.movesky.app.engine.util.BlockingArrayList: boolean remove(java.lang.Object)>($r1);
+
+        $r2 = r0.<com.movesky.app.engine.ui.UIView: com.movesky.app.engine.util.BlockingArrayList subviews>;
+
+        $i0 = virtualinvoke $r2.<com.movesky.app.engine.util.BlockingArrayList: int size()>();
+
+        r0.<com.movesky.app.engine.ui.UIView: int subviewCount> = $i0;
+
+        return;
+    }
+
+    public void removeSubviews(java.util.Collection)
+    {
+        com.movesky.app.engine.ui.UIView r0;
+        java.util.Collection $r1;
+
+        r0 := @this: com.movesky.app.engine.ui.UIView;
+
+        $r1 := @parameter0: java.util.Collection;
+
+        return;
+    }
+
+    public void setAnchor(com.movesky.app.engine.ui.Anchor)
+    {
+        com.movesky.app.engine.ui.UIView r0;
+        com.movesky.app.engine.ui.Anchor $r1;
+
+        r0 := @this: com.movesky.app.engine.ui.UIView;
+
+        $r1 := @parameter0: com.movesky.app.engine.ui.Anchor;
+
+        r0.<com.movesky.app.engine.ui.UIView: com.movesky.app.engine.ui.Anchor anchor> = $r1;
+
+        return;
+    }
+
+    protected void setBounds(float, float, float, float)
+    {
+        com.movesky.app.engine.ui.UIView r0;
+        float $f0, $f1, $f2, $f3;
+        android.graphics.RectF $r1;
+        com.movesky.app.engine.util.Point $r2;
+
+        r0 := @this: com.movesky.app.engine.ui.UIView;
+
+        $f0 := @parameter0: float;
+
+        $f1 := @parameter1: float;
+
+        $f2 := @parameter2: float;
+
+        $f3 := @parameter3: float;
+
+        $r1 = r0.<com.movesky.app.engine.ui.UIView: android.graphics.RectF _rect>;
+
+        $r1.<android.graphics.RectF: float left> = $f0;
+
+        $r1 = r0.<com.movesky.app.engine.ui.UIView: android.graphics.RectF _rect>;
+
+        $r1.<android.graphics.RectF: float top> = $f1;
+
+        $r1 = r0.<com.movesky.app.engine.ui.UIView: android.graphics.RectF _rect>;
+
+        $r1.<android.graphics.RectF: float right> = $f2;
+
+        $r1 = r0.<com.movesky.app.engine.ui.UIView: android.graphics.RectF _rect>;
+
+        $r1.<android.graphics.RectF: float bottom> = $f3;
+
+        $r2 = r0.<com.movesky.app.engine.ui.UIView: com.movesky.app.engine.util.Point center>;
+
+        $r1 = r0.<com.movesky.app.engine.ui.UIView: android.graphics.RectF _rect>;
+
+        $f0 = $r1.<android.graphics.RectF: float left>;
+
+        $f1 = r0.<com.movesky.app.engine.ui.UIView: float _h_width>;
+
+        $f0 = $f0 + $f1;
+
+        $r2.<com.movesky.app.engine.util.Point: float x> = $f0;
+
+        $r2 = r0.<com.movesky.app.engine.ui.UIView: com.movesky.app.engine.util.Point center>;
+
+        $r1 = r0.<com.movesky.app.engine.ui.UIView: android.graphics.RectF _rect>;
+
+        $f0 = $r1.<android.graphics.RectF: float top>;
+
+        $f1 = r0.<com.movesky.app.engine.ui.UIView: float _h_height>;
+
+        $f0 = $f0 + $f1;
+
+        $r2.<com.movesky.app.engine.util.Point: float y> = $f0;
+
+        return;
+    }
+
+    public void setDelegate(com.movesky.app.engine.ui.UIDelegate)
+    {
+        com.movesky.app.engine.ui.UIView r0;
+        com.movesky.app.engine.ui.UIDelegate $r1;
+
+        r0 := @this: com.movesky.app.engine.ui.UIView;
+
+        $r1 := @parameter0: com.movesky.app.engine.ui.UIDelegate;
+
+        r0.<com.movesky.app.engine.ui.UIView: com.movesky.app.engine.ui.UIDelegate delegate> = $r1;
+
+        return;
+    }
+
+    public void setPosition(float, float)
+    {
+        com.movesky.app.engine.ui.UIView r0;
+        float $f0, $f1, $f2, $f3, $f4, $f5;
+        int $i0;
+        int[] $r1;
+        com.movesky.app.engine.ui.Anchor $r2;
+        com.movesky.app.engine.util.Point $r3;
+
+        r0 := @this: com.movesky.app.engine.ui.UIView;
+
+        $f0 := @parameter0: float;
+
+        $f1 := @parameter1: float;
+
+        $r1 = <com.movesky.app.engine.ui.UIView$1: int[] $SwitchMap$com$movesky$app$engine$ui$Anchor>;
+
+        $r2 = r0.<com.movesky.app.engine.ui.UIView: com.movesky.app.engine.ui.Anchor anchor>;
+
+        $i0 = virtualinvoke $r2.<com.movesky.app.engine.ui.Anchor: int ordinal()>();
+
+        $i0 = $r1[$i0];
+
+        lookupswitch($i0)
+        {
+            case 1: goto label02;
+            case 2: goto label03;
+            case 3: goto label04;
+            case 4: goto label05;
+            case 5: goto label06;
+            case 6: goto label07;
+            case 7: goto label08;
+            case 8: goto label09;
+            case 9: goto label10;
+            default: goto label01;
+        };
+
+     label01:
+        $r3 = r0.<com.movesky.app.engine.ui.UIView: com.movesky.app.engine.util.Point _position>;
+
+        $r3.<com.movesky.app.engine.util.Point: float x> = $f0;
+
+        $r3 = r0.<com.movesky.app.engine.ui.UIView: com.movesky.app.engine.util.Point _position>;
+
+        $r3.<com.movesky.app.engine.util.Point: float y> = $f1;
+
+        return;
+
+     label02:
+        $f2 = r0.<com.movesky.app.engine.ui.UIView: float _width>;
+
+        $f2 = $f2 + $f0;
+
+        $f3 = r0.<com.movesky.app.engine.ui.UIView: float _height>;
+
+        $f3 = $f3 + $f1;
+
+        virtualinvoke r0.<com.movesky.app.engine.ui.UIView: void setBounds(float,float,float,float)>($f0, $f1, $f2, $f3);
+
+        goto label01;
+
+     label03:
+        $f2 = r0.<com.movesky.app.engine.ui.UIView: float _h_width>;
+
+        $f2 = $f0 - $f2;
+
+        $f3 = r0.<com.movesky.app.engine.ui.UIView: float _h_width>;
+
+        $f3 = $f3 + $f0;
+
+        $f4 = r0.<com.movesky.app.engine.ui.UIView: float _height>;
+
+        $f4 = $f4 + $f1;
+
+        virtualinvoke r0.<com.movesky.app.engine.ui.UIView: void setBounds(float,float,float,float)>($f2, $f1, $f3, $f4);
+
+        goto label01;
+
+     label04:
+        $f2 = r0.<com.movesky.app.engine.ui.UIView: float _width>;
+
+        $f2 = $f0 - $f2;
+
+        $f3 = r0.<com.movesky.app.engine.ui.UIView: float _height>;
+
+        $f3 = $f3 + $f1;
+
+        virtualinvoke r0.<com.movesky.app.engine.ui.UIView: void setBounds(float,float,float,float)>($f2, $f1, $f0, $f3);
+
+        goto label01;
+
+     label05:
+        $f2 = r0.<com.movesky.app.engine.ui.UIView: float _h_height>;
+
+        $f2 = $f1 - $f2;
+
+        $f3 = r0.<com.movesky.app.engine.ui.UIView: float _width>;
+
+        $f3 = $f3 + $f0;
+
+        $f4 = r0.<com.movesky.app.engine.ui.UIView: float _height>;
+
+        $f4 = $f4 / 2.0F;
+
+        $f4 = $f4 + $f1;
+
+        virtualinvoke r0.<com.movesky.app.engine.ui.UIView: void setBounds(float,float,float,float)>($f0, $f2, $f3, $f4);
+
+        goto label01;
+
+     label06:
+        $f2 = r0.<com.movesky.app.engine.ui.UIView: float _h_width>;
+
+        $f2 = $f0 - $f2;
+
+        $f3 = r0.<com.movesky.app.engine.ui.UIView: float _h_height>;
+
+        $f3 = $f1 - $f3;
+
+        $f4 = r0.<com.movesky.app.engine.ui.UIView: float _h_width>;
+
+        $f4 = $f4 + $f0;
+
+        $f5 = r0.<com.movesky.app.engine.ui.UIView: float _height>;
+
+        $f5 = $f5 / 2.0F;
+
+        $f5 = $f5 + $f1;
+
+        virtualinvoke r0.<com.movesky.app.engine.ui.UIView: void setBounds(float,float,float,float)>($f2, $f3, $f4, $f5);
+
+        goto label01;
+
+     label07:
+        $f2 = r0.<com.movesky.app.engine.ui.UIView: float _width>;
+
+        $f2 = $f0 - $f2;
+
+        $f3 = r0.<com.movesky.app.engine.ui.UIView: float _h_height>;
+
+        $f3 = $f1 - $f3;
+
+        $f4 = r0.<com.movesky.app.engine.ui.UIView: float _height>;
+
+        $f4 = $f4 / 2.0F;
+
+        $f4 = $f4 + $f1;
+
+        virtualinvoke r0.<com.movesky.app.engine.ui.UIView: void setBounds(float,float,float,float)>($f2, $f3, $f0, $f4);
+
+        goto label01;
+
+     label08:
+        $f2 = r0.<com.movesky.app.engine.ui.UIView: float _height>;
+
+        $f2 = $f1 - $f2;
+
+        $f3 = r0.<com.movesky.app.engine.ui.UIView: float _width>;
+
+        $f3 = $f3 + $f0;
+
+        virtualinvoke r0.<com.movesky.app.engine.ui.UIView: void setBounds(float,float,float,float)>($f0, $f2, $f3, $f1);
+
+        goto label01;
+
+     label09:
+        $f2 = r0.<com.movesky.app.engine.ui.UIView: float _h_width>;
+
+        $f2 = $f0 - $f2;
+
+        $f3 = r0.<com.movesky.app.engine.ui.UIView: float _height>;
+
+        $f3 = $f1 - $f3;
+
+        $f4 = r0.<com.movesky.app.engine.ui.UIView: float _h_width>;
+
+        $f4 = $f4 + $f0;
+
+        virtualinvoke r0.<com.movesky.app.engine.ui.UIView: void setBounds(float,float,float,float)>($f2, $f3, $f4, $f1);
+
+        goto label01;
+
+     label10:
+        $f2 = r0.<com.movesky.app.engine.ui.UIView: float _width>;
+
+        $f2 = $f0 - $f2;
+
+        $f3 = r0.<com.movesky.app.engine.ui.UIView: float _height>;
+
+        $f3 = $f1 - $f3;
+
+        virtualinvoke r0.<com.movesky.app.engine.ui.UIView: void setBounds(float,float,float,float)>($f2, $f3, $f0, $f1);
+
+        goto label01;
+    }
+
+    public void setSize(float, float)
+    {
+        com.movesky.app.engine.ui.UIView r0;
+        float $f0, $f1, $f2, $f3, $f4;
+        int $i0;
+        int[] $r1;
+        com.movesky.app.engine.ui.Anchor $r2;
+        android.graphics.RectF $r3;
+        com.movesky.app.engine.util.Point $r4;
+
+        r0 := @this: com.movesky.app.engine.ui.UIView;
+
+        $f0 := @parameter0: float;
+
+        $f1 := @parameter1: float;
+
+        r0.<com.movesky.app.engine.ui.UIView: float _width> = $f0;
+
+        r0.<com.movesky.app.engine.ui.UIView: float _height> = $f1;
+
+        $f0 = r0.<com.movesky.app.engine.ui.UIView: float _width>;
+
+        $f0 = $f0 / 2.0F;
+
+        r0.<com.movesky.app.engine.ui.UIView: float _h_width> = $f0;
+
+        $f0 = r0.<com.movesky.app.engine.ui.UIView: float _height>;
+
+        $f0 = $f0 / 2.0F;
+
+        r0.<com.movesky.app.engine.ui.UIView: float _h_height> = $f0;
+
+        $r1 = <com.movesky.app.engine.ui.UIView$1: int[] $SwitchMap$com$movesky$app$engine$ui$Anchor>;
+
+        $r2 = r0.<com.movesky.app.engine.ui.UIView: com.movesky.app.engine.ui.Anchor anchor>;
+
+        $i0 = virtualinvoke $r2.<com.movesky.app.engine.ui.Anchor: int ordinal()>();
+
+        $i0 = $r1[$i0];
+
+        lookupswitch($i0)
+        {
+            case 1: goto label02;
+            case 2: goto label03;
+            case 3: goto label04;
+            case 4: goto label05;
+            case 5: goto label06;
+            case 6: goto label07;
+            case 7: goto label08;
+            case 8: goto label09;
+            case 9: goto label10;
+            default: goto label01;
+        };
+
+     label01:
+        return;
+
+     label02:
+        $r3 = r0.<com.movesky.app.engine.ui.UIView: android.graphics.RectF _rect>;
+
+        $f0 = $r3.<android.graphics.RectF: float left>;
+
+        $r3 = r0.<com.movesky.app.engine.ui.UIView: android.graphics.RectF _rect>;
+
+        $f1 = $r3.<android.graphics.RectF: float top>;
+
+        $r3 = r0.<com.movesky.app.engine.ui.UIView: android.graphics.RectF _rect>;
+
+        $f2 = $r3.<android.graphics.RectF: float left>;
+
+        $f3 = r0.<com.movesky.app.engine.ui.UIView: float _width>;
+
+        $f2 = $f2 + $f3;
+
+        $r3 = r0.<com.movesky.app.engine.ui.UIView: android.graphics.RectF _rect>;
+
+        $f3 = $r3.<android.graphics.RectF: float top>;
+
+        $f4 = r0.<com.movesky.app.engine.ui.UIView: float _height>;
+
+        $f3 = $f3 + $f4;
+
+        virtualinvoke r0.<com.movesky.app.engine.ui.UIView: void setBounds(float,float,float,float)>($f0, $f1, $f2, $f3);
+
+        return;
+
+     label03:
+        $r4 = r0.<com.movesky.app.engine.ui.UIView: com.movesky.app.engine.util.Point center>;
+
+        $f0 = $r4.<com.movesky.app.engine.util.Point: float x>;
+
+        $f1 = r0.<com.movesky.app.engine.ui.UIView: float _h_width>;
+
+        $f0 = $f0 - $f1;
+
+        $r3 = r0.<com.movesky.app.engine.ui.UIView: android.graphics.RectF _rect>;
+
+        $f1 = $r3.<android.graphics.RectF: float top>;
+
+        $r4 = r0.<com.movesky.app.engine.ui.UIView: com.movesky.app.engine.util.Point center>;
+
+        $f2 = $r4.<com.movesky.app.engine.util.Point: float x>;
+
+        $f3 = r0.<com.movesky.app.engine.ui.UIView: float _h_width>;
+
+        $f2 = $f2 + $f3;
+
+        $r3 = r0.<com.movesky.app.engine.ui.UIView: android.graphics.RectF _rect>;
+
+        $f3 = $r3.<android.graphics.RectF: float top>;
+
+        $f4 = r0.<com.movesky.app.engine.ui.UIView: float _height>;
+
+        $f3 = $f3 + $f4;
+
+        virtualinvoke r0.<com.movesky.app.engine.ui.UIView: void setBounds(float,float,float,float)>($f0, $f1, $f2, $f3);
+
+        return;
+
+     label04:
+        $r3 = r0.<com.movesky.app.engine.ui.UIView: android.graphics.RectF _rect>;
+
+        $f0 = $r3.<android.graphics.RectF: float right>;
+
+        $f1 = r0.<com.movesky.app.engine.ui.UIView: float _width>;
+
+        $f0 = $f0 - $f1;
+
+        $r3 = r0.<com.movesky.app.engine.ui.UIView: android.graphics.RectF _rect>;
+
+        $f1 = $r3.<android.graphics.RectF: float top>;
+
+        $r3 = r0.<com.movesky.app.engine.ui.UIView: android.graphics.RectF _rect>;
+
+        $f2 = $r3.<android.graphics.RectF: float right>;
+
+        $r3 = r0.<com.movesky.app.engine.ui.UIView: android.graphics.RectF _rect>;
+
+        $f3 = $r3.<android.graphics.RectF: float top>;
+
+        $f4 = r0.<com.movesky.app.engine.ui.UIView: float _height>;
+
+        $f3 = $f3 + $f4;
+
+        virtualinvoke r0.<com.movesky.app.engine.ui.UIView: void setBounds(float,float,float,float)>($f0, $f1, $f2, $f3);
+
+        return;
+
+     label05:
+        $r3 = r0.<com.movesky.app.engine.ui.UIView: android.graphics.RectF _rect>;
+
+        $f0 = $r3.<android.graphics.RectF: float left>;
+
+        $r4 = r0.<com.movesky.app.engine.ui.UIView: com.movesky.app.engine.util.Point center>;
+
+        $f1 = $r4.<com.movesky.app.engine.util.Point: float y>;
+
+        $f2 = r0.<com.movesky.app.engine.ui.UIView: float _h_height>;
+
+        $f1 = $f1 - $f2;
+
+        $r3 = r0.<com.movesky.app.engine.ui.UIView: android.graphics.RectF _rect>;
+
+        $f2 = $r3.<android.graphics.RectF: float left>;
+
+        $f3 = r0.<com.movesky.app.engine.ui.UIView: float _width>;
+
+        $f2 = $f2 + $f3;
+
+        $r4 = r0.<com.movesky.app.engine.ui.UIView: com.movesky.app.engine.util.Point center>;
+
+        $f3 = $r4.<com.movesky.app.engine.util.Point: float y>;
+
+        $f4 = r0.<com.movesky.app.engine.ui.UIView: float _h_height>;
+
+        $f3 = $f3 + $f4;
+
+        virtualinvoke r0.<com.movesky.app.engine.ui.UIView: void setBounds(float,float,float,float)>($f0, $f1, $f2, $f3);
+
+        return;
+
+     label06:
+        $r4 = r0.<com.movesky.app.engine.ui.UIView: com.movesky.app.engine.util.Point center>;
+
+        $f0 = $r4.<com.movesky.app.engine.util.Point: float x>;
+
+        $f1 = r0.<com.movesky.app.engine.ui.UIView: float _h_width>;
+
+        $f0 = $f0 - $f1;
+
+        $r4 = r0.<com.movesky.app.engine.ui.UIView: com.movesky.app.engine.util.Point center>;
+
+        $f1 = $r4.<com.movesky.app.engine.util.Point: float y>;
+
+        $f2 = r0.<com.movesky.app.engine.ui.UIView: float _h_height>;
+
+        $f1 = $f1 - $f2;
+
+        $r4 = r0.<com.movesky.app.engine.ui.UIView: com.movesky.app.engine.util.Point center>;
+
+        $f2 = $r4.<com.movesky.app.engine.util.Point: float x>;
+
+        $f3 = r0.<com.movesky.app.engine.ui.UIView: float _h_width>;
+
+        $f2 = $f2 + $f3;
+
+        $r4 = r0.<com.movesky.app.engine.ui.UIView: com.movesky.app.engine.util.Point center>;
+
+        $f3 = $r4.<com.movesky.app.engine.util.Point: float y>;
+
+        $f4 = r0.<com.movesky.app.engine.ui.UIView: float _h_height>;
+
+        $f3 = $f3 + $f4;
+
+        virtualinvoke r0.<com.movesky.app.engine.ui.UIView: void setBounds(float,float,float,float)>($f0, $f1, $f2, $f3);
+
+        return;
+
+     label07:
+        $r3 = r0.<com.movesky.app.engine.ui.UIView: android.graphics.RectF _rect>;
+
+        $f0 = $r3.<android.graphics.RectF: float right>;
+
+        $f1 = r0.<com.movesky.app.engine.ui.UIView: float _width>;
+
+        $f0 = $f0 - $f1;
+
+        $r4 = r0.<com.movesky.app.engine.ui.UIView: com.movesky.app.engine.util.Point center>;
+
+        $f1 = $r4.<com.movesky.app.engine.util.Point: float y>;
+
+        $f2 = r0.<com.movesky.app.engine.ui.UIView: float _h_height>;
+
+        $f1 = $f1 - $f2;
+
+        $r3 = r0.<com.movesky.app.engine.ui.UIView: android.graphics.RectF _rect>;
+
+        $f2 = $r3.<android.graphics.RectF: float right>;
+
+        $r4 = r0.<com.movesky.app.engine.ui.UIView: com.movesky.app.engine.util.Point center>;
+
+        $f3 = $r4.<com.movesky.app.engine.util.Point: float y>;
+
+        $f4 = r0.<com.movesky.app.engine.ui.UIView: float _h_height>;
+
+        $f3 = $f3 + $f4;
+
+        virtualinvoke r0.<com.movesky.app.engine.ui.UIView: void setBounds(float,float,float,float)>($f0, $f1, $f2, $f3);
+
+        return;
+
+     label08:
+        $r3 = r0.<com.movesky.app.engine.ui.UIView: android.graphics.RectF _rect>;
+
+        $f0 = $r3.<android.graphics.RectF: float left>;
+
+        $r3 = r0.<com.movesky.app.engine.ui.UIView: android.graphics.RectF _rect>;
+
+        $f1 = $r3.<android.graphics.RectF: float bottom>;
+
+        $f2 = r0.<com.movesky.app.engine.ui.UIView: float _height>;
+
+        $f1 = $f1 - $f2;
+
+        $r3 = r0.<com.movesky.app.engine.ui.UIView: android.graphics.RectF _rect>;
+
+        $f2 = $r3.<android.graphics.RectF: float left>;
+
+        $f3 = r0.<com.movesky.app.engine.ui.UIView: float _width>;
+
+        $f2 = $f2 + $f3;
+
+        $r3 = r0.<com.movesky.app.engine.ui.UIView: android.graphics.RectF _rect>;
+
+        $f3 = $r3.<android.graphics.RectF: float bottom>;
+
+        virtualinvoke r0.<com.movesky.app.engine.ui.UIView: void setBounds(float,float,float,float)>($f0, $f1, $f2, $f3);
+
+        return;
+
+     label09:
+        $r4 = r0.<com.movesky.app.engine.ui.UIView: com.movesky.app.engine.util.Point center>;
+
+        $f0 = $r4.<com.movesky.app.engine.util.Point: float x>;
+
+        $f1 = r0.<com.movesky.app.engine.ui.UIView: float _h_width>;
+
+        $f0 = $f0 - $f1;
+
+        $r3 = r0.<com.movesky.app.engine.ui.UIView: android.graphics.RectF _rect>;
+
+        $f1 = $r3.<android.graphics.RectF: float bottom>;
+
+        $f2 = r0.<com.movesky.app.engine.ui.UIView: float _height>;
+
+        $f1 = $f1 - $f2;
+
+        $r4 = r0.<com.movesky.app.engine.ui.UIView: com.movesky.app.engine.util.Point center>;
+
+        $f2 = $r4.<com.movesky.app.engine.util.Point: float x>;
+
+        $f3 = r0.<com.movesky.app.engine.ui.UIView: float _h_width>;
+
+        $f2 = $f2 + $f3;
+
+        $r3 = r0.<com.movesky.app.engine.ui.UIView: android.graphics.RectF _rect>;
+
+        $f3 = $r3.<android.graphics.RectF: float bottom>;
+
+        virtualinvoke r0.<com.movesky.app.engine.ui.UIView: void setBounds(float,float,float,float)>($f0, $f1, $f2, $f3);
+
+        return;
+
+     label10:
+        $r3 = r0.<com.movesky.app.engine.ui.UIView: android.graphics.RectF _rect>;
+
+        $f0 = $r3.<android.graphics.RectF: float right>;
+
+        $f1 = r0.<com.movesky.app.engine.ui.UIView: float _width>;
+
+        $f0 = $f0 - $f1;
+
+        $r3 = r0.<com.movesky.app.engine.ui.UIView: android.graphics.RectF _rect>;
+
+        $f1 = $r3.<android.graphics.RectF: float bottom>;
+
+        $f2 = r0.<com.movesky.app.engine.ui.UIView: float _height>;
+
+        $f1 = $f1 - $f2;
+
+        $r3 = r0.<com.movesky.app.engine.ui.UIView: android.graphics.RectF _rect>;
+
+        $f2 = $r3.<android.graphics.RectF: float right>;
+
+        $r3 = r0.<com.movesky.app.engine.ui.UIView: android.graphics.RectF _rect>;
+
+        $f3 = $r3.<android.graphics.RectF: float bottom>;
+
+        virtualinvoke r0.<com.movesky.app.engine.ui.UIView: void setBounds(float,float,float,float)>($f0, $f1, $f2, $f3);
+
+        return;
+    }
+
+    public boolean shouldPlayMenuMusic()
+    {
+        com.movesky.app.engine.ui.UIView r0;
+
+        r0 := @this: com.movesky.app.engine.ui.UIView;
+
+        return 1;
+    }
+
+    public void willAppear(boolean)
+    {
+        com.movesky.app.engine.ui.UIView r0, $r3;
+        boolean $z0;
+        int $i0, $i1;
+        java.lang.Object $r1;
+        com.movesky.app.engine.util.BlockingArrayList $r2;
+
+        r0 := @this: com.movesky.app.engine.ui.UIView;
+
+        $z0 := @parameter0: boolean;
+
+        r0.<com.movesky.app.engine.ui.UIView: boolean _hasAppeared> = 1;
+
+        virtualinvoke r0.<com.movesky.app.engine.ui.UIView: void layoutSubviews(boolean)>(0);
+
+        $i1 = r0.<com.movesky.app.engine.ui.UIView: int subviewCount>;
+
+     label1:
+        $i0 = $i1 + -1;
+
+        if $i1 <= 0 goto label2;
+
+        $r2 = r0.<com.movesky.app.engine.ui.UIView: com.movesky.app.engine.util.BlockingArrayList subviews>;
+
+        $r1 = virtualinvoke $r2.<com.movesky.app.engine.util.BlockingArrayList: java.lang.Object get(int)>($i0);
+
+        $r3 = (com.movesky.app.engine.ui.UIView) $r1;
+
+        virtualinvoke $r3.<com.movesky.app.engine.ui.UIView: void willAppear(boolean)>(1);
+
+        $i1 = $i0;
+
+        goto label1;
+
+     label2:
+        return;
+    }
+
+    public void willHide(boolean)
+    {
+        com.movesky.app.engine.ui.UIView r0, $r3;
+        boolean $z0;
+        int $i0, $i1;
+        java.lang.Object $r1;
+        com.movesky.app.engine.util.BlockingArrayList $r2;
+
+        r0 := @this: com.movesky.app.engine.ui.UIView;
+
+        $z0 := @parameter0: boolean;
+
+        $i1 = r0.<com.movesky.app.engine.ui.UIView: int subviewCount>;
+
+     label1:
+        $i0 = $i1 + -1;
+
+        if $i1 <= 0 goto label2;
+
+        $r2 = r0.<com.movesky.app.engine.ui.UIView: com.movesky.app.engine.util.BlockingArrayList subviews>;
+
+        $r1 = virtualinvoke $r2.<com.movesky.app.engine.util.BlockingArrayList: java.lang.Object get(int)>($i0);
+
+        $r3 = (com.movesky.app.engine.ui.UIView) $r1;
+
+        virtualinvoke $r3.<com.movesky.app.engine.ui.UIView: void willHide(boolean)>($z0);
+
+        $i1 = $i0;
+
+        goto label1;
+
+     label2:
+        return;
+    }
+}

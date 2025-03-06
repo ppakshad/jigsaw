@@ -1,0 +1,101 @@
+class com.movesky.app.engine.net.bluetooth.Bluetooth$EnableBluetoothState extends com.movesky.app.engine.net.bluetooth.Bluetooth$StateBase
+{
+    public com.movesky.app.engine.net.bluetooth.Bluetooth$StateBase nextState;
+    final com.movesky.app.engine.net.bluetooth.Bluetooth this$0;
+
+    private void <init>(com.movesky.app.engine.net.bluetooth.Bluetooth)
+    {
+        com.movesky.app.engine.net.bluetooth.Bluetooth$EnableBluetoothState r0;
+        com.movesky.app.engine.net.bluetooth.Bluetooth $r1;
+
+        r0 := @this: com.movesky.app.engine.net.bluetooth.Bluetooth$EnableBluetoothState;
+
+        $r1 := @parameter0: com.movesky.app.engine.net.bluetooth.Bluetooth;
+
+        r0.<com.movesky.app.engine.net.bluetooth.Bluetooth$EnableBluetoothState: com.movesky.app.engine.net.bluetooth.Bluetooth this$0> = $r1;
+
+        specialinvoke r0.<com.movesky.app.engine.net.bluetooth.Bluetooth$StateBase: void <init>(com.movesky.app.engine.net.bluetooth.Bluetooth$1)>(null);
+
+        return;
+    }
+
+    void <init>(com.movesky.app.engine.net.bluetooth.Bluetooth, com.movesky.app.engine.net.bluetooth.Bluetooth$1)
+    {
+        com.movesky.app.engine.net.bluetooth.Bluetooth$EnableBluetoothState r0;
+        com.movesky.app.engine.net.bluetooth.Bluetooth $r1;
+        com.movesky.app.engine.net.bluetooth.Bluetooth$1 $r2;
+
+        r0 := @this: com.movesky.app.engine.net.bluetooth.Bluetooth$EnableBluetoothState;
+
+        $r1 := @parameter0: com.movesky.app.engine.net.bluetooth.Bluetooth;
+
+        $r2 := @parameter1: com.movesky.app.engine.net.bluetooth.Bluetooth$1;
+
+        specialinvoke r0.<com.movesky.app.engine.net.bluetooth.Bluetooth$EnableBluetoothState: void <init>(com.movesky.app.engine.net.bluetooth.Bluetooth)>($r1);
+
+        return;
+    }
+
+    public com.movesky.app.engine.net.bluetooth.State getState()
+    {
+        com.movesky.app.engine.net.bluetooth.Bluetooth$EnableBluetoothState r0;
+        com.movesky.app.engine.net.bluetooth.State r1;
+
+        r0 := @this: com.movesky.app.engine.net.bluetooth.Bluetooth$EnableBluetoothState;
+
+        r1 = <com.movesky.app.engine.net.bluetooth.State: com.movesky.app.engine.net.bluetooth.State ENABLE_BLUETOOTH>;
+
+        return r1;
+    }
+
+    public void run() throws java.lang.InterruptedException
+    {
+        com.movesky.app.engine.net.bluetooth.Bluetooth$EnableBluetoothState r0;
+        com.movesky.app.engine.net.bluetooth.Bluetooth $r1;
+        android.bluetooth.BluetoothAdapter $r2;
+        boolean $z0;
+        com.movesky.app.engine.core.GameActivity $r3;
+        android.content.Intent $r4;
+        com.movesky.app.engine.net.bluetooth.Bluetooth$StateBase $r5;
+
+        r0 := @this: com.movesky.app.engine.net.bluetooth.Bluetooth$EnableBluetoothState;
+
+        $r1 = r0.<com.movesky.app.engine.net.bluetooth.Bluetooth$EnableBluetoothState: com.movesky.app.engine.net.bluetooth.Bluetooth this$0>;
+
+        $r2 = staticinvoke <com.movesky.app.engine.net.bluetooth.Bluetooth: android.bluetooth.BluetoothAdapter access$800(com.movesky.app.engine.net.bluetooth.Bluetooth)>($r1);
+
+        if $r2 == null goto label2;
+
+        $r1 = r0.<com.movesky.app.engine.net.bluetooth.Bluetooth$EnableBluetoothState: com.movesky.app.engine.net.bluetooth.Bluetooth this$0>;
+
+        $r2 = staticinvoke <com.movesky.app.engine.net.bluetooth.Bluetooth: android.bluetooth.BluetoothAdapter access$800(com.movesky.app.engine.net.bluetooth.Bluetooth)>($r1);
+
+        $z0 = virtualinvoke $r2.<android.bluetooth.BluetoothAdapter: boolean isEnabled()>();
+
+        if $z0 != 0 goto label1;
+
+        $r1 = r0.<com.movesky.app.engine.net.bluetooth.Bluetooth$EnableBluetoothState: com.movesky.app.engine.net.bluetooth.Bluetooth this$0>;
+
+        $r3 = staticinvoke <com.movesky.app.engine.net.bluetooth.Bluetooth: com.movesky.app.engine.core.GameActivity access$900(com.movesky.app.engine.net.bluetooth.Bluetooth)>($r1);
+
+        $r4 = new android.content.Intent;
+
+        specialinvoke $r4.<android.content.Intent: void <init>(java.lang.String)>("android.bluetooth.adapter.action.REQUEST_ENABLE");
+
+        virtualinvoke $r3.<com.movesky.app.engine.core.GameActivity: void startActivityForResult(android.content.Intent,int)>($r4, 1);
+
+        staticinvoke <java.lang.Thread: void sleep(long)>(60000L);
+
+        return;
+
+     label1:
+        $r1 = r0.<com.movesky.app.engine.net.bluetooth.Bluetooth$EnableBluetoothState: com.movesky.app.engine.net.bluetooth.Bluetooth this$0>;
+
+        $r5 = r0.<com.movesky.app.engine.net.bluetooth.Bluetooth$EnableBluetoothState: com.movesky.app.engine.net.bluetooth.Bluetooth$StateBase nextState>;
+
+        virtualinvoke $r1.<com.movesky.app.engine.net.bluetooth.Bluetooth: void transition(com.movesky.app.engine.net.bluetooth.Bluetooth$StateBase)>($r5);
+
+     label2:
+        return;
+    }
+}

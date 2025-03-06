@@ -1,0 +1,138 @@
+public class com.startapp.android.publish.model.AutoInterstitialPreferences extends java.lang.Object implements java.io.Serializable
+{
+    private static final long serialVersionUID;
+    private int activitiesBetweenAds;
+    private int secondsBetweenAds;
+
+    public void <init>()
+    {
+        com.startapp.android.publish.model.AutoInterstitialPreferences r0;
+        com.startapp.android.publish.model.MetaData $r1;
+        int $i0;
+
+        r0 := @this: com.startapp.android.publish.model.AutoInterstitialPreferences;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        $r1 = staticinvoke <com.startapp.android.publish.model.MetaData: com.startapp.android.publish.model.MetaData getInstance()>();
+
+        $i0 = virtualinvoke $r1.<com.startapp.android.publish.model.MetaData: int getDefaultActivitiesBetweenAds()>();
+
+        virtualinvoke r0.<com.startapp.android.publish.model.AutoInterstitialPreferences: com.startapp.android.publish.model.AutoInterstitialPreferences setActivitiesBetweenAds(int)>($i0);
+
+        $r1 = staticinvoke <com.startapp.android.publish.model.MetaData: com.startapp.android.publish.model.MetaData getInstance()>();
+
+        $i0 = virtualinvoke $r1.<com.startapp.android.publish.model.MetaData: int getDefaultSecondsBetweenAds()>();
+
+        virtualinvoke r0.<com.startapp.android.publish.model.AutoInterstitialPreferences: com.startapp.android.publish.model.AutoInterstitialPreferences setSecondsBetweenAds(int)>($i0);
+
+        return;
+    }
+
+    public int getActivitiesBetweenAds()
+    {
+        com.startapp.android.publish.model.AutoInterstitialPreferences r0;
+        int i0;
+
+        r0 := @this: com.startapp.android.publish.model.AutoInterstitialPreferences;
+
+        i0 = r0.<com.startapp.android.publish.model.AutoInterstitialPreferences: int activitiesBetweenAds>;
+
+        return i0;
+    }
+
+    public int getSecondsBetweenAds()
+    {
+        com.startapp.android.publish.model.AutoInterstitialPreferences r0;
+        int i0;
+
+        r0 := @this: com.startapp.android.publish.model.AutoInterstitialPreferences;
+
+        i0 = r0.<com.startapp.android.publish.model.AutoInterstitialPreferences: int secondsBetweenAds>;
+
+        return i0;
+    }
+
+    public com.startapp.android.publish.model.AutoInterstitialPreferences setActivitiesBetweenAds(int)
+    {
+        com.startapp.android.publish.model.AutoInterstitialPreferences r0;
+        int i0;
+
+        r0 := @this: com.startapp.android.publish.model.AutoInterstitialPreferences;
+
+        i0 := @parameter0: int;
+
+        if i0 < 1 goto label2;
+
+     label1:
+        r0.<com.startapp.android.publish.model.AutoInterstitialPreferences: int activitiesBetweenAds> = i0;
+
+        return r0;
+
+     label2:
+        i0 = 1;
+
+        goto label1;
+    }
+
+    public com.startapp.android.publish.model.AutoInterstitialPreferences setSecondsBetweenAds(int)
+    {
+        com.startapp.android.publish.model.AutoInterstitialPreferences r0;
+        int i0;
+
+        r0 := @this: com.startapp.android.publish.model.AutoInterstitialPreferences;
+
+        i0 := @parameter0: int;
+
+        if i0 < 0 goto label2;
+
+     label1:
+        r0.<com.startapp.android.publish.model.AutoInterstitialPreferences: int secondsBetweenAds> = i0;
+
+        return r0;
+
+     label2:
+        i0 = 0;
+
+        goto label1;
+    }
+
+    public java.lang.String toString()
+    {
+        com.startapp.android.publish.model.AutoInterstitialPreferences r0;
+        java.lang.StringBuilder $r1;
+        int $i0;
+        java.lang.String $r2;
+
+        r0 := @this: com.startapp.android.publish.model.AutoInterstitialPreferences;
+
+        $r1 = new java.lang.StringBuilder;
+
+        specialinvoke $r1.<java.lang.StringBuilder: void <init>()>();
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("AutoInterstitialPreferences [activitiesBetweenAds=");
+
+        $i0 = r0.<com.startapp.android.publish.model.AutoInterstitialPreferences: int activitiesBetweenAds>;
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>($i0);
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(", secondsBetweenAds=");
+
+        $i0 = r0.<com.startapp.android.publish.model.AutoInterstitialPreferences: int secondsBetweenAds>;
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>($i0);
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("]");
+
+        $r2 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        return $r2;
+    }
+
+    public static void <clinit>()
+    {
+        <com.startapp.android.publish.model.AutoInterstitialPreferences: long serialVersionUID> = 1L;
+
+        return;
+    }
+}

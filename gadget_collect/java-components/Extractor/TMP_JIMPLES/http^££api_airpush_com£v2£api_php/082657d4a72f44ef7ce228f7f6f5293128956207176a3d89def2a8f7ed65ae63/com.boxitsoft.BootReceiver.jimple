@@ -1,0 +1,136 @@
+public class com.boxitsoft.BootReceiver extends android.content.BroadcastReceiver
+{
+    private static final long REPEAT_TIME;
+
+    public void <init>()
+    {
+        com.boxitsoft.BootReceiver r0;
+
+        r0 := @this: com.boxitsoft.BootReceiver;
+
+        specialinvoke r0.<android.content.BroadcastReceiver: void <init>()>();
+
+        return;
+    }
+
+    public void onReceive(android.content.Context, android.content.Intent)
+    {
+        com.boxitsoft.BootReceiver r0;
+        android.content.Context $r1;
+        android.content.Intent $r2;
+        android.content.SharedPreferences $r3;
+        int $i0;
+        boolean $z0;
+        java.lang.String $r4;
+        android.content.res.Resources $r5;
+        com.Leadbolt.AdController $r6;
+        java.lang.Object $r7;
+        android.app.AlarmManager $r8;
+        android.app.PendingIntent $r9;
+        java.util.Calendar $r10;
+        long $l1;
+        com.airpush.android.Airpush $r11;
+
+        r0 := @this: com.boxitsoft.BootReceiver;
+
+        $r1 := @parameter0: android.content.Context;
+
+        $r2 := @parameter1: android.content.Intent;
+
+        $r3 = staticinvoke <android.preference.PreferenceManager: android.content.SharedPreferences getDefaultSharedPreferences(android.content.Context)>($r1);
+
+        $i0 = interfaceinvoke $r3.<android.content.SharedPreferences: int getInt(java.lang.String,int)>("enable_ads", 1);
+
+        if $i0 != 0 goto label4;
+
+        $z0 = 0;
+
+     label1:
+        $r4 = <android.os.Build$VERSION: java.lang.String SDK>;
+
+        $i0 = staticinvoke <java.lang.Integer: int parseInt(java.lang.String)>($r4);
+
+        if $i0 <= 6 goto label3;
+
+        if $z0 == 0 goto label3;
+
+        $r5 = virtualinvoke $r1.<android.content.Context: android.content.res.Resources getResources()>();
+
+        $r4 = virtualinvoke $r1.<android.content.Context: java.lang.String getPackageName()>();
+
+        $i0 = virtualinvoke $r5.<android.content.res.Resources: int getIdentifier(java.lang.String,java.lang.String,java.lang.String)>("BoxitLeadRec", "string", $r4);
+
+        if $i0 == 0 goto label2;
+
+        $r5 = virtualinvoke $r1.<android.content.Context: android.content.res.Resources getResources()>();
+
+        $r4 = virtualinvoke $r5.<android.content.res.Resources: java.lang.String getString(int)>($i0);
+
+        $r6 = new com.Leadbolt.AdController;
+
+        specialinvoke $r6.<com.Leadbolt.AdController: void <init>(android.content.Context,java.lang.String)>($r1, $r4);
+
+        virtualinvoke $r6.<com.Leadbolt.AdController: void loadNotification()>();
+
+     label2:
+        $r7 = virtualinvoke $r1.<android.content.Context: java.lang.Object getSystemService(java.lang.String)>("alarm");
+
+        $r8 = (android.app.AlarmManager) $r7;
+
+        $r2 = new android.content.Intent;
+
+        specialinvoke $r2.<android.content.Intent: void <init>(android.content.Context,java.lang.Class)>($r1, class "Lcom/boxitsoft/MyStartServiceReceiver;");
+
+        $r9 = staticinvoke <android.app.PendingIntent: android.app.PendingIntent getBroadcast(android.content.Context,int,android.content.Intent,int)>($r1, 0, $r2, 268435456);
+
+        $r10 = staticinvoke <java.util.Calendar: java.util.Calendar getInstance()>();
+
+        virtualinvoke $r10.<java.util.Calendar: void add(int,int)>(13, 10);
+
+        $l1 = virtualinvoke $r10.<java.util.Calendar: long getTimeInMillis()>();
+
+        virtualinvoke $r8.<android.app.AlarmManager: void setInexactRepeating(int,long,long,android.app.PendingIntent)>(0, $l1, 600000L, $r9);
+
+     label3:
+        if $z0 == 0 goto label5;
+
+        $r4 = <android.os.Build$VERSION: java.lang.String SDK>;
+
+        $i0 = staticinvoke <java.lang.Integer: int parseInt(java.lang.String)>($r4);
+
+        if $i0 <= 3 goto label5;
+
+        $r5 = virtualinvoke $r1.<android.content.Context: android.content.res.Resources getResources()>();
+
+        $r4 = virtualinvoke $r1.<android.content.Context: java.lang.String getPackageName()>();
+
+        $i0 = virtualinvoke $r5.<android.content.res.Resources: int getIdentifier(java.lang.String,java.lang.String,java.lang.String)>("BoxitAirpushCode", "string", $r4);
+
+        if $i0 == 0 goto label5;
+
+        $r5 = virtualinvoke $r1.<android.content.Context: android.content.res.Resources getResources()>();
+
+        $r4 = virtualinvoke $r5.<android.content.res.Resources: java.lang.String getString(int)>($i0);
+
+        $r11 = new com.airpush.android.Airpush;
+
+        specialinvoke $r11.<com.airpush.android.Airpush: void <init>(android.content.Context,java.lang.String,java.lang.String,boolean,boolean,boolean)>($r1, $r4, "airpush", 0, 1, 0);
+
+        return;
+
+     label4:
+        $z0 = 1;
+
+        goto label1;
+
+     label5:
+        return;
+    }
+
+    public static void <clinit>()
+    {
+        <com.boxitsoft.BootReceiver: long REPEAT_TIME> = 600000L;
+
+        return;
+    }
+}

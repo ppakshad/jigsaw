@@ -1,0 +1,43 @@
+final class com.heyzap.sdk.HeyzapLib$3 extends java.lang.Object implements java.lang.Runnable
+{
+    final android.content.Context val$context;
+    final java.lang.String val$prefillMessage;
+
+    void <init>(android.content.Context, java.lang.String)
+    {
+        com.heyzap.sdk.HeyzapLib$3 r0;
+        android.content.Context $r1;
+        java.lang.String $r2;
+
+        r0 := @this: com.heyzap.sdk.HeyzapLib$3;
+
+        $r1 := @parameter0: android.content.Context;
+
+        $r2 := @parameter1: java.lang.String;
+
+        r0.<com.heyzap.sdk.HeyzapLib$3: android.content.Context val$context> = $r1;
+
+        r0.<com.heyzap.sdk.HeyzapLib$3: java.lang.String val$prefillMessage> = $r2;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public void run()
+    {
+        com.heyzap.sdk.HeyzapLib$3 r0;
+        android.content.Context $r1;
+        java.lang.String $r2;
+
+        r0 := @this: com.heyzap.sdk.HeyzapLib$3;
+
+        $r1 = r0.<com.heyzap.sdk.HeyzapLib$3: android.content.Context val$context>;
+
+        $r2 = r0.<com.heyzap.sdk.HeyzapLib$3: java.lang.String val$prefillMessage>;
+
+        staticinvoke <com.heyzap.sdk.HeyzapLib: void rawCheckin(android.content.Context,java.lang.String)>($r1, $r2);
+
+        return;
+    }
+}

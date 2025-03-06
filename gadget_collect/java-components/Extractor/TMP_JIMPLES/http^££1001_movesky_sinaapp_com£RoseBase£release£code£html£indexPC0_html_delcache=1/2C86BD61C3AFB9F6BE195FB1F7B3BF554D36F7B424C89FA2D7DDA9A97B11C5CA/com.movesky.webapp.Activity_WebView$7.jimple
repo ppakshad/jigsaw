@@ -1,0 +1,117 @@
+class com.movesky.webapp.Activity_WebView$7 extends android.webkit.WebViewClient
+{
+    final com.movesky.webapp.Activity_WebView this$0;
+
+    void <init>(com.movesky.webapp.Activity_WebView)
+    {
+        com.movesky.webapp.Activity_WebView$7 r0;
+        com.movesky.webapp.Activity_WebView $r1;
+
+        r0 := @this: com.movesky.webapp.Activity_WebView$7;
+
+        $r1 := @parameter0: com.movesky.webapp.Activity_WebView;
+
+        r0.<com.movesky.webapp.Activity_WebView$7: com.movesky.webapp.Activity_WebView this$0> = $r1;
+
+        specialinvoke r0.<android.webkit.WebViewClient: void <init>()>();
+
+        return;
+    }
+
+    public void onPageFinished(android.webkit.WebView, java.lang.String)
+    {
+        com.movesky.webapp.Activity_WebView$7 r0;
+        android.webkit.WebView $r1;
+        java.lang.String $r2, $r4;
+        java.lang.StringBuilder $r3;
+        android.content.Context $r5;
+
+        r0 := @this: com.movesky.webapp.Activity_WebView$7;
+
+        $r1 := @parameter0: android.webkit.WebView;
+
+        $r2 := @parameter1: java.lang.String;
+
+        specialinvoke r0.<android.webkit.WebViewClient: void onPageFinished(android.webkit.WebView,java.lang.String)>($r1, $r2);
+
+        $r3 = new java.lang.StringBuilder;
+
+        specialinvoke $r3.<java.lang.StringBuilder: void <init>()>();
+
+        $r3 = virtualinvoke $r3.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("###onPageFinished");
+
+        $r3 = virtualinvoke $r3.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r2);
+
+        $r4 = virtualinvoke $r3.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <com.zrd.common.ZrdCommon$ZrdLog: void Log(java.lang.String)>($r4);
+
+        $r5 = <com.movesky.webapp.Activity_WebView: android.content.Context m_ct>;
+
+        staticinvoke <com.movesky.webapp.YSHtml: void SendLog(android.content.Context,java.lang.String,java.lang.String)>($r5, "***onPageFinished", $r2);
+
+        return;
+    }
+
+    public void onPageStarted(android.webkit.WebView, java.lang.String, android.graphics.Bitmap)
+    {
+        com.movesky.webapp.Activity_WebView$7 r0;
+        android.webkit.WebView $r1;
+        java.lang.String $r2;
+        android.graphics.Bitmap $r3;
+
+        r0 := @this: com.movesky.webapp.Activity_WebView$7;
+
+        $r1 := @parameter0: android.webkit.WebView;
+
+        $r2 := @parameter1: java.lang.String;
+
+        $r3 := @parameter2: android.graphics.Bitmap;
+
+        specialinvoke r0.<android.webkit.WebViewClient: void onPageStarted(android.webkit.WebView,java.lang.String,android.graphics.Bitmap)>($r1, $r2, $r3);
+
+        return;
+    }
+
+    public void onReceivedError(android.webkit.WebView, int, java.lang.String, java.lang.String)
+    {
+        com.movesky.webapp.Activity_WebView$7 r0;
+        android.webkit.WebView $r1;
+        int $i0;
+        java.lang.String $r2, $r3;
+        android.content.Context $r4;
+
+        r0 := @this: com.movesky.webapp.Activity_WebView$7;
+
+        $r1 := @parameter0: android.webkit.WebView;
+
+        $i0 := @parameter1: int;
+
+        $r2 := @parameter2: java.lang.String;
+
+        $r3 := @parameter3: java.lang.String;
+
+        specialinvoke r0.<android.webkit.WebViewClient: void onReceivedError(android.webkit.WebView,int,java.lang.String,java.lang.String)>($r1, $i0, $r2, $r3);
+
+        $r4 = <com.movesky.webapp.Activity_WebView: android.content.Context m_ct>;
+
+        staticinvoke <com.movesky.webapp.YSHtml: void SendLog(android.content.Context,java.lang.String,java.lang.String)>($r4, "\u540c\u6b65\u5931\u8d25\uff0c\u8bf7\u7a0d\u5019\u518d\u8bd5", "");
+
+        return;
+    }
+
+    public boolean shouldOverrideUrlLoading(android.webkit.WebView, java.lang.String)
+    {
+        com.movesky.webapp.Activity_WebView$7 r0;
+        android.webkit.WebView $r1;
+        java.lang.String $r2;
+
+        r0 := @this: com.movesky.webapp.Activity_WebView$7;
+
+        $r1 := @parameter0: android.webkit.WebView;
+
+        $r2 := @parameter1: java.lang.String;
+
+        return 0;
+    }
+}

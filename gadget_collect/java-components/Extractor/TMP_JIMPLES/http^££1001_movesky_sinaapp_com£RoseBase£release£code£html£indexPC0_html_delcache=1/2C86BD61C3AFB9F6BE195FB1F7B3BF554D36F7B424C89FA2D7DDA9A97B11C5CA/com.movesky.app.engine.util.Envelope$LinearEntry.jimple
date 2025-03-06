@@ -1,0 +1,63 @@
+class com.movesky.app.engine.util.Envelope$LinearEntry extends com.movesky.app.engine.util.Envelope$Entry
+{
+    double endValue;
+    double slope;
+
+    public void <init>(float, float, double, double)
+    {
+        com.movesky.app.engine.util.Envelope$LinearEntry r0;
+        float $f0, $f1;
+        double $d0, $d1, $d2;
+
+        r0 := @this: com.movesky.app.engine.util.Envelope$LinearEntry;
+
+        $f0 := @parameter0: float;
+
+        $f1 := @parameter1: float;
+
+        $d0 := @parameter2: double;
+
+        $d1 := @parameter3: double;
+
+        specialinvoke r0.<com.movesky.app.engine.util.Envelope$Entry: void <init>(float,float)>($f0, $f1);
+
+        $d2 = $d1 - $d0;
+
+        $d0 = (double) $f1;
+
+        $d0 = $d2 / $d0;
+
+        r0.<com.movesky.app.engine.util.Envelope$LinearEntry: double slope> = $d0;
+
+        r0.<com.movesky.app.engine.util.Envelope$LinearEntry: double endValue> = $d1;
+
+        return;
+    }
+
+    public double getValueAtTime(float)
+    {
+        com.movesky.app.engine.util.Envelope$LinearEntry r0;
+        float $f0, $f1;
+        double $d0, $d1, $d2;
+
+        r0 := @this: com.movesky.app.engine.util.Envelope$LinearEntry;
+
+        $f0 := @parameter0: float;
+
+        $d0 = r0.<com.movesky.app.engine.util.Envelope$LinearEntry: double endValue>;
+
+        $d1 = r0.<com.movesky.app.engine.util.Envelope$LinearEntry: double slope>;
+
+        $f1 = r0.<com.movesky.app.engine.util.Envelope$LinearEntry: float endTime>;
+
+        $f0 = $f1 - $f0;
+
+        $d2 = (double) $f0;
+
+        $d1 = $d1 * $d2;
+
+        $d0 = $d0 - $d1;
+
+        return $d0;
+    }
+}

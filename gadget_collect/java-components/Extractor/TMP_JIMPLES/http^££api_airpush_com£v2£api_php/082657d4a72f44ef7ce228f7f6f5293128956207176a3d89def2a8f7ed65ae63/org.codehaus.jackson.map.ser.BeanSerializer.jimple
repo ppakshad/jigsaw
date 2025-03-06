@@ -1,0 +1,980 @@
+public class org.codehaus.jackson.map.ser.BeanSerializer extends org.codehaus.jackson.map.ser.SerializerBase implements org.codehaus.jackson.map.ResolvableSerializer, org.codehaus.jackson.schema.SchemaAware
+{
+    protected static final org.codehaus.jackson.map.ser.BeanPropertyWriter[] NO_PROPS;
+    protected final org.codehaus.jackson.map.ser.AnyGetterWriter _anyGetterWriter;
+    protected final org.codehaus.jackson.map.ser.BeanPropertyWriter[] _filteredProps;
+    protected final java.lang.Object _propertyFilterId;
+    protected final org.codehaus.jackson.map.ser.BeanPropertyWriter[] _props;
+
+    static void <clinit>()
+    {
+        org.codehaus.jackson.map.ser.BeanPropertyWriter[] $r0;
+
+        $r0 = newarray (org.codehaus.jackson.map.ser.BeanPropertyWriter)[0];
+
+        <org.codehaus.jackson.map.ser.BeanSerializer: org.codehaus.jackson.map.ser.BeanPropertyWriter[] NO_PROPS> = $r0;
+
+        return;
+    }
+
+    public void <init>(java.lang.Class, java.util.Collection)
+    {
+        org.codehaus.jackson.map.ser.BeanSerializer r0;
+        java.lang.Class r1;
+        java.util.Collection r2;
+        int $i0;
+        org.codehaus.jackson.map.ser.BeanPropertyWriter[] $r3;
+        java.lang.Object[] $r4;
+
+        r0 := @this: org.codehaus.jackson.map.ser.BeanSerializer;
+
+        r1 := @parameter0: java.lang.Class;
+
+        r2 := @parameter1: java.util.Collection;
+
+        $i0 = interfaceinvoke r2.<java.util.Collection: int size()>();
+
+        $r3 = newarray (org.codehaus.jackson.map.ser.BeanPropertyWriter)[$i0];
+
+        $r4 = interfaceinvoke r2.<java.util.Collection: java.lang.Object[] toArray(java.lang.Object[])>($r3);
+
+        $r3 = (org.codehaus.jackson.map.ser.BeanPropertyWriter[]) $r4;
+
+        specialinvoke r0.<org.codehaus.jackson.map.ser.BeanSerializer: void <init>(java.lang.Class,org.codehaus.jackson.map.ser.BeanPropertyWriter[],org.codehaus.jackson.map.ser.BeanPropertyWriter[],org.codehaus.jackson.map.ser.AnyGetterWriter,java.lang.Object)>(r1, $r3, null, null, null);
+
+        return;
+    }
+
+    public void <init>(java.lang.Class, org.codehaus.jackson.map.ser.BeanPropertyWriter[])
+    {
+        org.codehaus.jackson.map.ser.BeanSerializer r0;
+        java.lang.Class r1;
+        org.codehaus.jackson.map.ser.BeanPropertyWriter[] $r2;
+
+        r0 := @this: org.codehaus.jackson.map.ser.BeanSerializer;
+
+        r1 := @parameter0: java.lang.Class;
+
+        $r2 := @parameter1: org.codehaus.jackson.map.ser.BeanPropertyWriter[];
+
+        specialinvoke r0.<org.codehaus.jackson.map.ser.BeanSerializer: void <init>(java.lang.Class,org.codehaus.jackson.map.ser.BeanPropertyWriter[],org.codehaus.jackson.map.ser.BeanPropertyWriter[],org.codehaus.jackson.map.ser.AnyGetterWriter,java.lang.Object)>(r1, $r2, null, null, null);
+
+        return;
+    }
+
+    public void <init>(java.lang.Class, org.codehaus.jackson.map.ser.BeanPropertyWriter[], java.lang.Object)
+    {
+        org.codehaus.jackson.map.ser.BeanSerializer r0;
+        java.lang.Class r1;
+        org.codehaus.jackson.map.ser.BeanPropertyWriter[] $r2;
+        java.lang.Object $r3;
+
+        r0 := @this: org.codehaus.jackson.map.ser.BeanSerializer;
+
+        r1 := @parameter0: java.lang.Class;
+
+        $r2 := @parameter1: org.codehaus.jackson.map.ser.BeanPropertyWriter[];
+
+        $r3 := @parameter2: java.lang.Object;
+
+        specialinvoke r0.<org.codehaus.jackson.map.ser.SerializerBase: void <init>(java.lang.Class)>(r1);
+
+        r0.<org.codehaus.jackson.map.ser.BeanSerializer: org.codehaus.jackson.map.ser.BeanPropertyWriter[] _props> = $r2;
+
+        r0.<org.codehaus.jackson.map.ser.BeanSerializer: org.codehaus.jackson.map.ser.BeanPropertyWriter[] _filteredProps> = null;
+
+        r0.<org.codehaus.jackson.map.ser.BeanSerializer: org.codehaus.jackson.map.ser.AnyGetterWriter _anyGetterWriter> = null;
+
+        r0.<org.codehaus.jackson.map.ser.BeanSerializer: java.lang.Object _propertyFilterId> = $r3;
+
+        return;
+    }
+
+    public void <init>(java.lang.Class, org.codehaus.jackson.map.ser.BeanPropertyWriter[], org.codehaus.jackson.map.ser.BeanPropertyWriter[])
+    {
+        org.codehaus.jackson.map.ser.BeanSerializer r0;
+        java.lang.Class r1;
+        org.codehaus.jackson.map.ser.BeanPropertyWriter[] $r2, $r3;
+
+        r0 := @this: org.codehaus.jackson.map.ser.BeanSerializer;
+
+        r1 := @parameter0: java.lang.Class;
+
+        $r2 := @parameter1: org.codehaus.jackson.map.ser.BeanPropertyWriter[];
+
+        $r3 := @parameter2: org.codehaus.jackson.map.ser.BeanPropertyWriter[];
+
+        specialinvoke r0.<org.codehaus.jackson.map.ser.SerializerBase: void <init>(java.lang.Class)>(r1);
+
+        r0.<org.codehaus.jackson.map.ser.BeanSerializer: org.codehaus.jackson.map.ser.BeanPropertyWriter[] _props> = $r2;
+
+        r0.<org.codehaus.jackson.map.ser.BeanSerializer: org.codehaus.jackson.map.ser.BeanPropertyWriter[] _filteredProps> = $r3;
+
+        r0.<org.codehaus.jackson.map.ser.BeanSerializer: org.codehaus.jackson.map.ser.AnyGetterWriter _anyGetterWriter> = null;
+
+        r0.<org.codehaus.jackson.map.ser.BeanSerializer: java.lang.Object _propertyFilterId> = null;
+
+        return;
+    }
+
+    public void <init>(java.lang.Class, org.codehaus.jackson.map.ser.BeanPropertyWriter[], org.codehaus.jackson.map.ser.BeanPropertyWriter[], org.codehaus.jackson.map.ser.AnyGetterWriter, java.lang.Object)
+    {
+        org.codehaus.jackson.map.ser.BeanSerializer r0;
+        java.lang.Class r1;
+        org.codehaus.jackson.map.ser.BeanPropertyWriter[] $r2, $r3;
+        org.codehaus.jackson.map.ser.AnyGetterWriter $r4;
+        java.lang.Object $r5;
+
+        r0 := @this: org.codehaus.jackson.map.ser.BeanSerializer;
+
+        r1 := @parameter0: java.lang.Class;
+
+        $r2 := @parameter1: org.codehaus.jackson.map.ser.BeanPropertyWriter[];
+
+        $r3 := @parameter2: org.codehaus.jackson.map.ser.BeanPropertyWriter[];
+
+        $r4 := @parameter3: org.codehaus.jackson.map.ser.AnyGetterWriter;
+
+        $r5 := @parameter4: java.lang.Object;
+
+        specialinvoke r0.<org.codehaus.jackson.map.ser.SerializerBase: void <init>(java.lang.Class)>(r1);
+
+        r0.<org.codehaus.jackson.map.ser.BeanSerializer: org.codehaus.jackson.map.ser.BeanPropertyWriter[] _props> = $r2;
+
+        r0.<org.codehaus.jackson.map.ser.BeanSerializer: org.codehaus.jackson.map.ser.BeanPropertyWriter[] _filteredProps> = $r3;
+
+        r0.<org.codehaus.jackson.map.ser.BeanSerializer: org.codehaus.jackson.map.ser.AnyGetterWriter _anyGetterWriter> = $r4;
+
+        r0.<org.codehaus.jackson.map.ser.BeanSerializer: java.lang.Object _propertyFilterId> = $r5;
+
+        return;
+    }
+
+    protected void <init>(org.codehaus.jackson.map.ser.BeanSerializer)
+    {
+        org.codehaus.jackson.map.ser.BeanSerializer r0, $r1;
+        java.lang.Class $r2;
+        org.codehaus.jackson.map.ser.BeanPropertyWriter[] $r3, $r4;
+        org.codehaus.jackson.map.ser.AnyGetterWriter $r5;
+        java.lang.Object $r6;
+
+        r0 := @this: org.codehaus.jackson.map.ser.BeanSerializer;
+
+        $r1 := @parameter0: org.codehaus.jackson.map.ser.BeanSerializer;
+
+        $r2 = $r1.<org.codehaus.jackson.map.ser.BeanSerializer: java.lang.Class _handledType>;
+
+        $r3 = $r1.<org.codehaus.jackson.map.ser.BeanSerializer: org.codehaus.jackson.map.ser.BeanPropertyWriter[] _props>;
+
+        $r4 = $r1.<org.codehaus.jackson.map.ser.BeanSerializer: org.codehaus.jackson.map.ser.BeanPropertyWriter[] _filteredProps>;
+
+        $r5 = $r1.<org.codehaus.jackson.map.ser.BeanSerializer: org.codehaus.jackson.map.ser.AnyGetterWriter _anyGetterWriter>;
+
+        $r6 = $r1.<org.codehaus.jackson.map.ser.BeanSerializer: java.lang.Object _propertyFilterId>;
+
+        specialinvoke r0.<org.codehaus.jackson.map.ser.BeanSerializer: void <init>(java.lang.Class,org.codehaus.jackson.map.ser.BeanPropertyWriter[],org.codehaus.jackson.map.ser.BeanPropertyWriter[],org.codehaus.jackson.map.ser.AnyGetterWriter,java.lang.Object)>($r2, $r3, $r4, $r5, $r6);
+
+        return;
+    }
+
+    public void <init>(org.codehaus.jackson.type.JavaType, org.codehaus.jackson.map.ser.BeanPropertyWriter[], org.codehaus.jackson.map.ser.BeanPropertyWriter[], org.codehaus.jackson.map.ser.AnyGetterWriter, java.lang.Object)
+    {
+        org.codehaus.jackson.map.ser.BeanSerializer r0;
+        org.codehaus.jackson.type.JavaType $r1;
+        org.codehaus.jackson.map.ser.BeanPropertyWriter[] $r2, $r3;
+        org.codehaus.jackson.map.ser.AnyGetterWriter $r4;
+        java.lang.Object $r5;
+
+        r0 := @this: org.codehaus.jackson.map.ser.BeanSerializer;
+
+        $r1 := @parameter0: org.codehaus.jackson.type.JavaType;
+
+        $r2 := @parameter1: org.codehaus.jackson.map.ser.BeanPropertyWriter[];
+
+        $r3 := @parameter2: org.codehaus.jackson.map.ser.BeanPropertyWriter[];
+
+        $r4 := @parameter3: org.codehaus.jackson.map.ser.AnyGetterWriter;
+
+        $r5 := @parameter4: java.lang.Object;
+
+        specialinvoke r0.<org.codehaus.jackson.map.ser.SerializerBase: void <init>(org.codehaus.jackson.type.JavaType)>($r1);
+
+        r0.<org.codehaus.jackson.map.ser.BeanSerializer: org.codehaus.jackson.map.ser.BeanPropertyWriter[] _props> = $r2;
+
+        r0.<org.codehaus.jackson.map.ser.BeanSerializer: org.codehaus.jackson.map.ser.BeanPropertyWriter[] _filteredProps> = $r3;
+
+        r0.<org.codehaus.jackson.map.ser.BeanSerializer: org.codehaus.jackson.map.ser.AnyGetterWriter _anyGetterWriter> = $r4;
+
+        r0.<org.codehaus.jackson.map.ser.BeanSerializer: java.lang.Object _propertyFilterId> = $r5;
+
+        return;
+    }
+
+    public static org.codehaus.jackson.map.ser.BeanSerializer createDummy(java.lang.Class)
+    {
+        java.lang.Class r0;
+        org.codehaus.jackson.map.ser.BeanSerializer $r1;
+        org.codehaus.jackson.map.ser.BeanPropertyWriter[] $r2;
+
+        r0 := @parameter0: java.lang.Class;
+
+        $r1 = new org.codehaus.jackson.map.ser.BeanSerializer;
+
+        $r2 = <org.codehaus.jackson.map.ser.BeanSerializer: org.codehaus.jackson.map.ser.BeanPropertyWriter[] NO_PROPS>;
+
+        specialinvoke $r1.<org.codehaus.jackson.map.ser.BeanSerializer: void <init>(java.lang.Class,org.codehaus.jackson.map.ser.BeanPropertyWriter[],org.codehaus.jackson.map.ser.BeanPropertyWriter[],org.codehaus.jackson.map.ser.AnyGetterWriter,java.lang.Object)>(r0, $r2, null, null, null);
+
+        return $r1;
+    }
+
+    protected org.codehaus.jackson.map.ser.BeanPropertyFilter findFilter(org.codehaus.jackson.map.SerializerProvider) throws org.codehaus.jackson.map.JsonMappingException
+    {
+        org.codehaus.jackson.map.ser.BeanSerializer r0;
+        org.codehaus.jackson.map.SerializerProvider $r1;
+        java.lang.Object r2;
+        org.codehaus.jackson.map.ser.FilterProvider $r3;
+        org.codehaus.jackson.map.JsonMappingException $r4;
+        java.lang.StringBuilder $r5;
+        java.lang.String $r6;
+        org.codehaus.jackson.map.ser.BeanPropertyFilter $r7;
+        java.lang.Class $r8;
+
+        r0 := @this: org.codehaus.jackson.map.ser.BeanSerializer;
+
+        $r1 := @parameter0: org.codehaus.jackson.map.SerializerProvider;
+
+        r2 = r0.<org.codehaus.jackson.map.ser.BeanSerializer: java.lang.Object _propertyFilterId>;
+
+        $r3 = virtualinvoke $r1.<org.codehaus.jackson.map.SerializerProvider: org.codehaus.jackson.map.ser.FilterProvider getFilterProvider()>();
+
+        if $r3 != null goto label1;
+
+        $r4 = new org.codehaus.jackson.map.JsonMappingException;
+
+        $r5 = new java.lang.StringBuilder;
+
+        specialinvoke $r5.<java.lang.StringBuilder: void <init>()>();
+
+        $r5 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Can not resolve BeanPropertyFilter with id \'");
+
+        $r5 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>(r2);
+
+        $r5 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("\'; no FilterProvider configured");
+
+        $r6 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke $r4.<org.codehaus.jackson.map.JsonMappingException: void <init>(java.lang.String)>($r6);
+
+        throw $r4;
+
+     label1:
+        $r7 = virtualinvoke $r3.<org.codehaus.jackson.map.ser.FilterProvider: org.codehaus.jackson.map.ser.BeanPropertyFilter findFilter(java.lang.Object)>(r2);
+
+        if $r7 != null goto label2;
+
+        $r4 = new org.codehaus.jackson.map.JsonMappingException;
+
+        $r5 = new java.lang.StringBuilder;
+
+        specialinvoke $r5.<java.lang.StringBuilder: void <init>()>();
+
+        $r5 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("No filter configured with id \'");
+
+        $r5 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>(r2);
+
+        $r5 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("\' (type ");
+
+        $r8 = virtualinvoke r2.<java.lang.Object: java.lang.Class getClass()>();
+
+        $r6 = virtualinvoke $r8.<java.lang.Class: java.lang.String getName()>();
+
+        $r5 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r6);
+
+        $r5 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(")");
+
+        $r6 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke $r4.<org.codehaus.jackson.map.JsonMappingException: void <init>(java.lang.String)>($r6);
+
+        throw $r4;
+
+     label2:
+        return $r7;
+    }
+
+    public org.codehaus.jackson.JsonNode getSchema(org.codehaus.jackson.map.SerializerProvider, java.lang.reflect.Type) throws org.codehaus.jackson.map.JsonMappingException
+    {
+        org.codehaus.jackson.map.ser.BeanSerializer r0;
+        org.codehaus.jackson.map.SerializerProvider $r1;
+        java.lang.reflect.Type $r2;
+        org.codehaus.jackson.map.ser.BeanPropertyWriter r3;
+        org.codehaus.jackson.node.ObjectNode $r4, $r5;
+        int i0, $i1;
+        org.codehaus.jackson.map.ser.BeanPropertyWriter[] $r6;
+        org.codehaus.jackson.type.JavaType $r7;
+        java.lang.Object r8;
+        org.codehaus.jackson.map.JsonSerializer $r9, r10;
+        java.lang.Class $r11, r12;
+        boolean $z0;
+        org.codehaus.jackson.schema.SchemaAware r13;
+        org.codehaus.jackson.JsonNode $r14;
+        java.lang.String $r15;
+
+        r0 := @this: org.codehaus.jackson.map.ser.BeanSerializer;
+
+        $r1 := @parameter0: org.codehaus.jackson.map.SerializerProvider;
+
+        $r2 := @parameter1: java.lang.reflect.Type;
+
+        $r4 = virtualinvoke r0.<org.codehaus.jackson.map.ser.BeanSerializer: org.codehaus.jackson.node.ObjectNode createSchemaNode(java.lang.String,boolean)>("object", 1);
+
+        $r5 = virtualinvoke $r4.<org.codehaus.jackson.node.ObjectNode: org.codehaus.jackson.node.ObjectNode objectNode()>();
+
+        i0 = 0;
+
+     label1:
+        $r6 = r0.<org.codehaus.jackson.map.ser.BeanSerializer: org.codehaus.jackson.map.ser.BeanPropertyWriter[] _props>;
+
+        $i1 = lengthof $r6;
+
+        if i0 >= $i1 goto label8;
+
+        $r6 = r0.<org.codehaus.jackson.map.ser.BeanSerializer: org.codehaus.jackson.map.ser.BeanPropertyWriter[] _props>;
+
+        r3 = $r6[i0];
+
+        $r7 = virtualinvoke r3.<org.codehaus.jackson.map.ser.BeanPropertyWriter: org.codehaus.jackson.type.JavaType getSerializationType()>();
+
+        if $r7 != null goto label6;
+
+        r8 = virtualinvoke r3.<org.codehaus.jackson.map.ser.BeanPropertyWriter: java.lang.reflect.Type getGenericPropertyType()>();
+
+     label2:
+        $r9 = virtualinvoke r3.<org.codehaus.jackson.map.ser.BeanPropertyWriter: org.codehaus.jackson.map.JsonSerializer getSerializer()>();
+
+        r10 = $r9;
+
+        if $r9 != null goto label4;
+
+        $r11 = virtualinvoke r3.<org.codehaus.jackson.map.ser.BeanPropertyWriter: java.lang.Class getRawSerializationType()>();
+
+        r12 = $r11;
+
+        if $r11 != null goto label3;
+
+        r12 = virtualinvoke r3.<org.codehaus.jackson.map.ser.BeanPropertyWriter: java.lang.Class getPropertyType()>();
+
+     label3:
+        r10 = virtualinvoke $r1.<org.codehaus.jackson.map.SerializerProvider: org.codehaus.jackson.map.JsonSerializer findValueSerializer(java.lang.Class,org.codehaus.jackson.map.BeanProperty)>(r12, r3);
+
+     label4:
+        $z0 = r10 instanceof org.codehaus.jackson.schema.SchemaAware;
+
+        if $z0 == 0 goto label7;
+
+        r13 = (org.codehaus.jackson.schema.SchemaAware) r10;
+
+        $r2 = (java.lang.reflect.Type) r8;
+
+        $r14 = interfaceinvoke r13.<org.codehaus.jackson.schema.SchemaAware: org.codehaus.jackson.JsonNode getSchema(org.codehaus.jackson.map.SerializerProvider,java.lang.reflect.Type)>($r1, $r2);
+
+     label5:
+        $r15 = virtualinvoke r3.<org.codehaus.jackson.map.ser.BeanPropertyWriter: java.lang.String getName()>();
+
+        virtualinvoke $r5.<org.codehaus.jackson.node.ObjectNode: org.codehaus.jackson.JsonNode put(java.lang.String,org.codehaus.jackson.JsonNode)>($r15, $r14);
+
+        i0 = i0 + 1;
+
+        goto label1;
+
+     label6:
+        r8 = virtualinvoke $r7.<org.codehaus.jackson.type.JavaType: java.lang.Class getRawClass()>();
+
+        goto label2;
+
+     label7:
+        $r14 = staticinvoke <org.codehaus.jackson.schema.JsonSchema: org.codehaus.jackson.JsonNode getDefaultSchemaNode()>();
+
+        goto label5;
+
+     label8:
+        virtualinvoke $r4.<org.codehaus.jackson.node.ObjectNode: org.codehaus.jackson.JsonNode put(java.lang.String,org.codehaus.jackson.JsonNode)>("properties", $r5);
+
+        return $r4;
+    }
+
+    public void resolve(org.codehaus.jackson.map.SerializerProvider) throws org.codehaus.jackson.map.JsonMappingException
+    {
+        org.codehaus.jackson.map.ser.BeanSerializer r0;
+        org.codehaus.jackson.map.SerializerProvider $r1;
+        int i0, i1, i2, $i3;
+        org.codehaus.jackson.map.ser.BeanPropertyWriter r2;
+        org.codehaus.jackson.map.ser.BeanPropertyWriter[] $r3;
+        boolean $z0;
+        org.codehaus.jackson.type.JavaType $r4, r5;
+        java.lang.reflect.Type $r6;
+        org.codehaus.jackson.map.JsonSerializer $r7, r8;
+        java.lang.Object $r9;
+        org.codehaus.jackson.map.TypeSerializer r10;
+        org.codehaus.jackson.map.ser.ContainerSerializerBase r11;
+        org.codehaus.jackson.map.ser.AnyGetterWriter $r12;
+
+        r0 := @this: org.codehaus.jackson.map.ser.BeanSerializer;
+
+        $r1 := @parameter0: org.codehaus.jackson.map.SerializerProvider;
+
+        $r3 = r0.<org.codehaus.jackson.map.ser.BeanSerializer: org.codehaus.jackson.map.ser.BeanPropertyWriter[] _filteredProps>;
+
+        if $r3 != null goto label04;
+
+        i1 = 0;
+
+     label01:
+        i2 = 0;
+
+        $r3 = r0.<org.codehaus.jackson.map.ser.BeanSerializer: org.codehaus.jackson.map.ser.BeanPropertyWriter[] _props>;
+
+        i0 = lengthof $r3;
+
+     label02:
+        if i2 >= i0 goto label09;
+
+        $r3 = r0.<org.codehaus.jackson.map.ser.BeanSerializer: org.codehaus.jackson.map.ser.BeanPropertyWriter[] _props>;
+
+        r2 = $r3[i2];
+
+        $z0 = virtualinvoke r2.<org.codehaus.jackson.map.ser.BeanPropertyWriter: boolean hasSerializer()>();
+
+        if $z0 == 0 goto label05;
+
+     label03:
+        i2 = i2 + 1;
+
+        goto label02;
+
+     label04:
+        $r3 = r0.<org.codehaus.jackson.map.ser.BeanSerializer: org.codehaus.jackson.map.ser.BeanPropertyWriter[] _filteredProps>;
+
+        i1 = lengthof $r3;
+
+        goto label01;
+
+     label05:
+        $r4 = virtualinvoke r2.<org.codehaus.jackson.map.ser.BeanPropertyWriter: org.codehaus.jackson.type.JavaType getSerializationType()>();
+
+        r5 = $r4;
+
+        if $r4 != null goto label07;
+
+        $r6 = virtualinvoke r2.<org.codehaus.jackson.map.ser.BeanPropertyWriter: java.lang.reflect.Type getGenericPropertyType()>();
+
+        $r4 = staticinvoke <org.codehaus.jackson.map.type.TypeFactory: org.codehaus.jackson.type.JavaType type(java.lang.reflect.Type)>($r6);
+
+        r5 = $r4;
+
+        $z0 = virtualinvoke $r4.<org.codehaus.jackson.type.JavaType: boolean isFinal()>();
+
+        if $z0 != 0 goto label07;
+
+        $z0 = virtualinvoke $r4.<org.codehaus.jackson.type.JavaType: boolean isContainerType()>();
+
+        if $z0 != 0 goto label06;
+
+        $i3 = virtualinvoke $r4.<org.codehaus.jackson.type.JavaType: int containedTypeCount()>();
+
+        if $i3 <= 0 goto label03;
+
+     label06:
+        virtualinvoke r2.<org.codehaus.jackson.map.ser.BeanPropertyWriter: void setNonTrivialBaseType(org.codehaus.jackson.type.JavaType)>($r4);
+
+        goto label03;
+
+     label07:
+        $r7 = virtualinvoke $r1.<org.codehaus.jackson.map.SerializerProvider: org.codehaus.jackson.map.JsonSerializer findValueSerializer(org.codehaus.jackson.type.JavaType,org.codehaus.jackson.map.BeanProperty)>(r5, r2);
+
+        r8 = $r7;
+
+        $z0 = virtualinvoke r5.<org.codehaus.jackson.type.JavaType: boolean isContainerType()>();
+
+        if $z0 == 0 goto label08;
+
+        r5 = virtualinvoke r5.<org.codehaus.jackson.type.JavaType: org.codehaus.jackson.type.JavaType getContentType()>();
+
+        $r9 = virtualinvoke r5.<org.codehaus.jackson.type.JavaType: java.lang.Object getTypeHandler()>();
+
+        r10 = (org.codehaus.jackson.map.TypeSerializer) $r9;
+
+        if r10 == null goto label08;
+
+        $z0 = $r7 instanceof org.codehaus.jackson.map.ser.ContainerSerializerBase;
+
+        if $z0 == 0 goto label08;
+
+        r11 = (org.codehaus.jackson.map.ser.ContainerSerializerBase) $r7;
+
+        r8 = virtualinvoke r11.<org.codehaus.jackson.map.ser.ContainerSerializerBase: org.codehaus.jackson.map.ser.ContainerSerializerBase withValueTypeSerializer(org.codehaus.jackson.map.TypeSerializer)>(r10);
+
+     label08:
+        r2 = virtualinvoke r2.<org.codehaus.jackson.map.ser.BeanPropertyWriter: org.codehaus.jackson.map.ser.BeanPropertyWriter withSerializer(org.codehaus.jackson.map.JsonSerializer)>(r8);
+
+        $r3 = r0.<org.codehaus.jackson.map.ser.BeanSerializer: org.codehaus.jackson.map.ser.BeanPropertyWriter[] _props>;
+
+        $r3[i2] = r2;
+
+        if i2 >= i1 goto label03;
+
+        $r3 = r0.<org.codehaus.jackson.map.ser.BeanSerializer: org.codehaus.jackson.map.ser.BeanPropertyWriter[] _filteredProps>;
+
+        r2 = $r3[i2];
+
+        if r2 == null goto label03;
+
+        $r3 = r0.<org.codehaus.jackson.map.ser.BeanSerializer: org.codehaus.jackson.map.ser.BeanPropertyWriter[] _filteredProps>;
+
+        r2 = virtualinvoke r2.<org.codehaus.jackson.map.ser.BeanPropertyWriter: org.codehaus.jackson.map.ser.BeanPropertyWriter withSerializer(org.codehaus.jackson.map.JsonSerializer)>(r8);
+
+        $r3[i2] = r2;
+
+        goto label03;
+
+     label09:
+        $r12 = r0.<org.codehaus.jackson.map.ser.BeanSerializer: org.codehaus.jackson.map.ser.AnyGetterWriter _anyGetterWriter>;
+
+        if $r12 == null goto label10;
+
+        $r12 = r0.<org.codehaus.jackson.map.ser.BeanSerializer: org.codehaus.jackson.map.ser.AnyGetterWriter _anyGetterWriter>;
+
+        virtualinvoke $r12.<org.codehaus.jackson.map.ser.AnyGetterWriter: void resolve(org.codehaus.jackson.map.SerializerProvider)>($r1);
+
+     label10:
+        return;
+    }
+
+    public final void serialize(java.lang.Object, org.codehaus.jackson.JsonGenerator, org.codehaus.jackson.map.SerializerProvider) throws java.io.IOException, org.codehaus.jackson.JsonGenerationException
+    {
+        org.codehaus.jackson.map.ser.BeanSerializer r0;
+        java.lang.Object $r1, $r4;
+        org.codehaus.jackson.JsonGenerator $r2;
+        org.codehaus.jackson.map.SerializerProvider $r3;
+
+        r0 := @this: org.codehaus.jackson.map.ser.BeanSerializer;
+
+        $r1 := @parameter0: java.lang.Object;
+
+        $r2 := @parameter1: org.codehaus.jackson.JsonGenerator;
+
+        $r3 := @parameter2: org.codehaus.jackson.map.SerializerProvider;
+
+        virtualinvoke $r2.<org.codehaus.jackson.JsonGenerator: void writeStartObject()>();
+
+        $r4 = r0.<org.codehaus.jackson.map.ser.BeanSerializer: java.lang.Object _propertyFilterId>;
+
+        if $r4 == null goto label2;
+
+        virtualinvoke r0.<org.codehaus.jackson.map.ser.BeanSerializer: void serializeFieldsFiltered(java.lang.Object,org.codehaus.jackson.JsonGenerator,org.codehaus.jackson.map.SerializerProvider)>($r1, $r2, $r3);
+
+     label1:
+        virtualinvoke $r2.<org.codehaus.jackson.JsonGenerator: void writeEndObject()>();
+
+        return;
+
+     label2:
+        virtualinvoke r0.<org.codehaus.jackson.map.ser.BeanSerializer: void serializeFields(java.lang.Object,org.codehaus.jackson.JsonGenerator,org.codehaus.jackson.map.SerializerProvider)>($r1, $r2, $r3);
+
+        goto label1;
+    }
+
+    protected void serializeFields(java.lang.Object, org.codehaus.jackson.JsonGenerator, org.codehaus.jackson.map.SerializerProvider) throws java.io.IOException, org.codehaus.jackson.JsonGenerationException
+    {
+        org.codehaus.jackson.map.ser.BeanSerializer r0;
+        java.lang.Object $r1;
+        org.codehaus.jackson.JsonGenerator $r2;
+        org.codehaus.jackson.map.SerializerProvider $r3;
+        int i0, i1;
+        org.codehaus.jackson.map.JsonMappingException r4;
+        org.codehaus.jackson.map.ser.BeanPropertyWriter r5;
+        org.codehaus.jackson.map.ser.BeanPropertyWriter[] $r6;
+        java.lang.Class $r7;
+        org.codehaus.jackson.map.ser.AnyGetterWriter $r8;
+        java.lang.Exception $r9;
+        java.lang.String r10;
+        java.lang.StackOverflowError $r11;
+        org.codehaus.jackson.map.JsonMappingException$Reference $r12;
+
+        r0 := @this: org.codehaus.jackson.map.ser.BeanSerializer;
+
+        $r1 := @parameter0: java.lang.Object;
+
+        $r2 := @parameter1: org.codehaus.jackson.JsonGenerator;
+
+        $r3 := @parameter2: org.codehaus.jackson.map.SerializerProvider;
+
+        $r6 = r0.<org.codehaus.jackson.map.ser.BeanSerializer: org.codehaus.jackson.map.ser.BeanPropertyWriter[] _filteredProps>;
+
+        if $r6 == null goto label08;
+
+        $r7 = virtualinvoke $r3.<org.codehaus.jackson.map.SerializerProvider: java.lang.Class getSerializationView()>();
+
+        if $r7 == null goto label08;
+
+        $r6 = r0.<org.codehaus.jackson.map.ser.BeanSerializer: org.codehaus.jackson.map.ser.BeanPropertyWriter[] _filteredProps>;
+
+     label01:
+        i1 = 0;
+
+     label02:
+        i0 = lengthof $r6;
+
+     label03:
+        if i1 >= i0 goto label09;
+
+     label04:
+        r5 = $r6[i1];
+
+     label05:
+        if r5 == null goto label07;
+
+     label06:
+        virtualinvoke r5.<org.codehaus.jackson.map.ser.BeanPropertyWriter: void serializeAsField(java.lang.Object,org.codehaus.jackson.JsonGenerator,org.codehaus.jackson.map.SerializerProvider)>($r1, $r2, $r3);
+
+     label07:
+        i1 = i1 + 1;
+
+        goto label03;
+
+     label08:
+        $r6 = r0.<org.codehaus.jackson.map.ser.BeanSerializer: org.codehaus.jackson.map.ser.BeanPropertyWriter[] _props>;
+
+        goto label01;
+
+     label09:
+        $r8 = r0.<org.codehaus.jackson.map.ser.BeanSerializer: org.codehaus.jackson.map.ser.AnyGetterWriter _anyGetterWriter>;
+
+     label10:
+        if $r8 == null goto label20;
+
+     label11:
+        $r8 = r0.<org.codehaus.jackson.map.ser.BeanSerializer: org.codehaus.jackson.map.ser.AnyGetterWriter _anyGetterWriter>;
+
+     label12:
+        virtualinvoke $r8.<org.codehaus.jackson.map.ser.AnyGetterWriter: void getAndSerialize(java.lang.Object,org.codehaus.jackson.JsonGenerator,org.codehaus.jackson.map.SerializerProvider)>($r1, $r2, $r3);
+
+     label13:
+        return;
+
+     label14:
+        $r9 := @caughtexception;
+
+        i0 = lengthof $r6;
+
+        if i1 != i0 goto label16;
+
+        r10 = "[anySetter]";
+
+     label15:
+        virtualinvoke r0.<org.codehaus.jackson.map.ser.BeanSerializer: void wrapAndThrow(org.codehaus.jackson.map.SerializerProvider,java.lang.Throwable,java.lang.Object,java.lang.String)>($r3, $r9, $r1, r10);
+
+        return;
+
+     label16:
+        r5 = $r6[i1];
+
+        r10 = virtualinvoke r5.<org.codehaus.jackson.map.ser.BeanPropertyWriter: java.lang.String getName()>();
+
+        goto label15;
+
+     label17:
+        $r11 := @caughtexception;
+
+        r4 = new org.codehaus.jackson.map.JsonMappingException;
+
+        specialinvoke r4.<org.codehaus.jackson.map.JsonMappingException: void <init>(java.lang.String)>("Infinite recursion (StackOverflowError)");
+
+        i0 = lengthof $r6;
+
+        if i1 != i0 goto label19;
+
+        r10 = "[anySetter]";
+
+     label18:
+        $r12 = new org.codehaus.jackson.map.JsonMappingException$Reference;
+
+        specialinvoke $r12.<org.codehaus.jackson.map.JsonMappingException$Reference: void <init>(java.lang.Object,java.lang.String)>($r1, r10);
+
+        virtualinvoke r4.<org.codehaus.jackson.map.JsonMappingException: void prependPath(org.codehaus.jackson.map.JsonMappingException$Reference)>($r12);
+
+        throw r4;
+
+     label19:
+        r5 = $r6[i1];
+
+        r10 = virtualinvoke r5.<org.codehaus.jackson.map.ser.BeanPropertyWriter: java.lang.String getName()>();
+
+        goto label18;
+
+     label20:
+        return;
+
+        catch java.lang.Exception from label02 to label03 with label14;
+        catch java.lang.Exception from label04 to label05 with label14;
+        catch java.lang.Exception from label06 to label07 with label14;
+        catch java.lang.StackOverflowError from label06 to label07 with label17;
+        catch java.lang.Exception from label09 to label10 with label14;
+        catch java.lang.Exception from label11 to label13 with label14;
+        catch java.lang.StackOverflowError from label12 to label13 with label17;
+    }
+
+    protected void serializeFieldsFiltered(java.lang.Object, org.codehaus.jackson.JsonGenerator, org.codehaus.jackson.map.SerializerProvider) throws java.io.IOException, org.codehaus.jackson.JsonGenerationException
+    {
+        org.codehaus.jackson.map.ser.BeanSerializer r0;
+        java.lang.Object $r1;
+        org.codehaus.jackson.JsonGenerator $r2;
+        org.codehaus.jackson.map.SerializerProvider $r3;
+        int i0, i1;
+        org.codehaus.jackson.map.JsonMappingException r4;
+        org.codehaus.jackson.map.ser.BeanPropertyWriter r5;
+        org.codehaus.jackson.map.ser.BeanPropertyWriter[] $r6;
+        java.lang.Class $r7;
+        org.codehaus.jackson.map.ser.BeanPropertyFilter $r8;
+        org.codehaus.jackson.map.ser.AnyGetterWriter $r9;
+        java.lang.Exception $r10;
+        java.lang.String r11;
+        java.lang.StackOverflowError $r12;
+        org.codehaus.jackson.map.JsonMappingException$Reference $r13;
+
+        r0 := @this: org.codehaus.jackson.map.ser.BeanSerializer;
+
+        $r1 := @parameter0: java.lang.Object;
+
+        $r2 := @parameter1: org.codehaus.jackson.JsonGenerator;
+
+        $r3 := @parameter2: org.codehaus.jackson.map.SerializerProvider;
+
+        $r6 = r0.<org.codehaus.jackson.map.ser.BeanSerializer: org.codehaus.jackson.map.ser.BeanPropertyWriter[] _filteredProps>;
+
+        if $r6 == null goto label08;
+
+        $r7 = virtualinvoke $r3.<org.codehaus.jackson.map.SerializerProvider: java.lang.Class getSerializationView()>();
+
+        if $r7 == null goto label08;
+
+        $r6 = r0.<org.codehaus.jackson.map.ser.BeanSerializer: org.codehaus.jackson.map.ser.BeanPropertyWriter[] _filteredProps>;
+
+     label01:
+        $r8 = virtualinvoke r0.<org.codehaus.jackson.map.ser.BeanSerializer: org.codehaus.jackson.map.ser.BeanPropertyFilter findFilter(org.codehaus.jackson.map.SerializerProvider)>($r3);
+
+        i1 = 0;
+
+     label02:
+        i0 = lengthof $r6;
+
+     label03:
+        if i1 >= i0 goto label09;
+
+     label04:
+        r5 = $r6[i1];
+
+     label05:
+        if r5 == null goto label07;
+
+     label06:
+        interfaceinvoke $r8.<org.codehaus.jackson.map.ser.BeanPropertyFilter: void serializeAsField(java.lang.Object,org.codehaus.jackson.JsonGenerator,org.codehaus.jackson.map.SerializerProvider,org.codehaus.jackson.map.ser.BeanPropertyWriter)>($r1, $r2, $r3, r5);
+
+     label07:
+        i1 = i1 + 1;
+
+        goto label03;
+
+     label08:
+        $r6 = r0.<org.codehaus.jackson.map.ser.BeanSerializer: org.codehaus.jackson.map.ser.BeanPropertyWriter[] _props>;
+
+        goto label01;
+
+     label09:
+        $r9 = r0.<org.codehaus.jackson.map.ser.BeanSerializer: org.codehaus.jackson.map.ser.AnyGetterWriter _anyGetterWriter>;
+
+     label10:
+        if $r9 == null goto label20;
+
+     label11:
+        $r9 = r0.<org.codehaus.jackson.map.ser.BeanSerializer: org.codehaus.jackson.map.ser.AnyGetterWriter _anyGetterWriter>;
+
+     label12:
+        virtualinvoke $r9.<org.codehaus.jackson.map.ser.AnyGetterWriter: void getAndSerialize(java.lang.Object,org.codehaus.jackson.JsonGenerator,org.codehaus.jackson.map.SerializerProvider)>($r1, $r2, $r3);
+
+     label13:
+        return;
+
+     label14:
+        $r10 := @caughtexception;
+
+        i0 = lengthof $r6;
+
+        if i1 != i0 goto label16;
+
+        r11 = "[anySetter]";
+
+     label15:
+        virtualinvoke r0.<org.codehaus.jackson.map.ser.BeanSerializer: void wrapAndThrow(org.codehaus.jackson.map.SerializerProvider,java.lang.Throwable,java.lang.Object,java.lang.String)>($r3, $r10, $r1, r11);
+
+        return;
+
+     label16:
+        r5 = $r6[i1];
+
+        r11 = virtualinvoke r5.<org.codehaus.jackson.map.ser.BeanPropertyWriter: java.lang.String getName()>();
+
+        goto label15;
+
+     label17:
+        $r12 := @caughtexception;
+
+        r4 = new org.codehaus.jackson.map.JsonMappingException;
+
+        specialinvoke r4.<org.codehaus.jackson.map.JsonMappingException: void <init>(java.lang.String)>("Infinite recursion (StackOverflowError)");
+
+        i0 = lengthof $r6;
+
+        if i1 != i0 goto label19;
+
+        r11 = "[anySetter]";
+
+     label18:
+        $r13 = new org.codehaus.jackson.map.JsonMappingException$Reference;
+
+        specialinvoke $r13.<org.codehaus.jackson.map.JsonMappingException$Reference: void <init>(java.lang.Object,java.lang.String)>($r1, r11);
+
+        virtualinvoke r4.<org.codehaus.jackson.map.JsonMappingException: void prependPath(org.codehaus.jackson.map.JsonMappingException$Reference)>($r13);
+
+        throw r4;
+
+     label19:
+        r5 = $r6[i1];
+
+        r11 = virtualinvoke r5.<org.codehaus.jackson.map.ser.BeanPropertyWriter: java.lang.String getName()>();
+
+        goto label18;
+
+     label20:
+        return;
+
+        catch java.lang.Exception from label02 to label03 with label14;
+        catch java.lang.Exception from label04 to label05 with label14;
+        catch java.lang.Exception from label06 to label07 with label14;
+        catch java.lang.StackOverflowError from label06 to label07 with label17;
+        catch java.lang.Exception from label09 to label10 with label14;
+        catch java.lang.Exception from label11 to label13 with label14;
+        catch java.lang.StackOverflowError from label12 to label13 with label17;
+    }
+
+    public void serializeWithType(java.lang.Object, org.codehaus.jackson.JsonGenerator, org.codehaus.jackson.map.SerializerProvider, org.codehaus.jackson.map.TypeSerializer) throws java.io.IOException, org.codehaus.jackson.JsonGenerationException
+    {
+        org.codehaus.jackson.map.ser.BeanSerializer r0;
+        java.lang.Object $r1, $r5;
+        org.codehaus.jackson.JsonGenerator $r2;
+        org.codehaus.jackson.map.SerializerProvider $r3;
+        org.codehaus.jackson.map.TypeSerializer $r4;
+
+        r0 := @this: org.codehaus.jackson.map.ser.BeanSerializer;
+
+        $r1 := @parameter0: java.lang.Object;
+
+        $r2 := @parameter1: org.codehaus.jackson.JsonGenerator;
+
+        $r3 := @parameter2: org.codehaus.jackson.map.SerializerProvider;
+
+        $r4 := @parameter3: org.codehaus.jackson.map.TypeSerializer;
+
+        virtualinvoke $r4.<org.codehaus.jackson.map.TypeSerializer: void writeTypePrefixForObject(java.lang.Object,org.codehaus.jackson.JsonGenerator)>($r1, $r2);
+
+        $r5 = r0.<org.codehaus.jackson.map.ser.BeanSerializer: java.lang.Object _propertyFilterId>;
+
+        if $r5 == null goto label2;
+
+        virtualinvoke r0.<org.codehaus.jackson.map.ser.BeanSerializer: void serializeFieldsFiltered(java.lang.Object,org.codehaus.jackson.JsonGenerator,org.codehaus.jackson.map.SerializerProvider)>($r1, $r2, $r3);
+
+     label1:
+        virtualinvoke $r4.<org.codehaus.jackson.map.TypeSerializer: void writeTypeSuffixForObject(java.lang.Object,org.codehaus.jackson.JsonGenerator)>($r1, $r2);
+
+        return;
+
+     label2:
+        virtualinvoke r0.<org.codehaus.jackson.map.ser.BeanSerializer: void serializeFields(java.lang.Object,org.codehaus.jackson.JsonGenerator,org.codehaus.jackson.map.SerializerProvider)>($r1, $r2, $r3);
+
+        goto label1;
+    }
+
+    public java.lang.String toString()
+    {
+        org.codehaus.jackson.map.ser.BeanSerializer r0;
+        java.lang.StringBuilder $r1;
+        java.lang.Class $r2;
+        java.lang.String $r3;
+
+        r0 := @this: org.codehaus.jackson.map.ser.BeanSerializer;
+
+        $r1 = new java.lang.StringBuilder;
+
+        specialinvoke $r1.<java.lang.StringBuilder: void <init>()>();
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("BeanSerializer for ");
+
+        $r2 = virtualinvoke r0.<org.codehaus.jackson.map.ser.BeanSerializer: java.lang.Class handledType()>();
+
+        $r3 = virtualinvoke $r2.<java.lang.Class: java.lang.String getName()>();
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r3);
+
+        $r3 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        return $r3;
+    }
+
+    public org.codehaus.jackson.map.ser.BeanSerializer withFiltered(org.codehaus.jackson.map.ser.BeanPropertyWriter[])
+    {
+        org.codehaus.jackson.map.ser.BeanSerializer r0, $r7;
+        org.codehaus.jackson.map.ser.BeanPropertyWriter[] $r1, $r2;
+        org.codehaus.jackson.map.ser.AnyGetterWriter $r3;
+        java.lang.Object $r4;
+        java.lang.Class $r5;
+        java.lang.IllegalStateException $r6;
+
+        r0 := @this: org.codehaus.jackson.map.ser.BeanSerializer;
+
+        $r1 := @parameter0: org.codehaus.jackson.map.ser.BeanPropertyWriter[];
+
+        $r5 = virtualinvoke r0.<java.lang.Object: java.lang.Class getClass()>();
+
+        if $r5 == class "Lorg/codehaus/jackson/map/ser/BeanSerializer;" goto label1;
+
+        $r6 = new java.lang.IllegalStateException;
+
+        specialinvoke $r6.<java.lang.IllegalStateException: void <init>(java.lang.String)>("BeanSerializer.withFiltered() called on base class: sub-classes MUST override method");
+
+        throw $r6;
+
+     label1:
+        if $r1 != null goto label2;
+
+        $r2 = r0.<org.codehaus.jackson.map.ser.BeanSerializer: org.codehaus.jackson.map.ser.BeanPropertyWriter[] _filteredProps>;
+
+        if $r2 != null goto label2;
+
+        return r0;
+
+     label2:
+        $r7 = new org.codehaus.jackson.map.ser.BeanSerializer;
+
+        $r5 = virtualinvoke r0.<org.codehaus.jackson.map.ser.BeanSerializer: java.lang.Class handledType()>();
+
+        $r2 = r0.<org.codehaus.jackson.map.ser.BeanSerializer: org.codehaus.jackson.map.ser.BeanPropertyWriter[] _props>;
+
+        $r3 = r0.<org.codehaus.jackson.map.ser.BeanSerializer: org.codehaus.jackson.map.ser.AnyGetterWriter _anyGetterWriter>;
+
+        $r4 = r0.<org.codehaus.jackson.map.ser.BeanSerializer: java.lang.Object _propertyFilterId>;
+
+        specialinvoke $r7.<org.codehaus.jackson.map.ser.BeanSerializer: void <init>(java.lang.Class,org.codehaus.jackson.map.ser.BeanPropertyWriter[],org.codehaus.jackson.map.ser.BeanPropertyWriter[],org.codehaus.jackson.map.ser.AnyGetterWriter,java.lang.Object)>($r5, $r2, $r1, $r3, $r4);
+
+        return $r7;
+    }
+}

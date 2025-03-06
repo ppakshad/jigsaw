@@ -1,0 +1,179 @@
+class com.wiyun.ad.AdView$2 extends java.lang.Object implements android.view.View$OnKeyListener
+{
+    final com.wiyun.ad.AdView a;
+    private final android.widget.LinearLayout b;
+
+    void <init>(com.wiyun.ad.AdView, android.widget.LinearLayout)
+    {
+        com.wiyun.ad.AdView$2 r0;
+        com.wiyun.ad.AdView $r1;
+        android.widget.LinearLayout $r2;
+
+        r0 := @this: com.wiyun.ad.AdView$2;
+
+        $r1 := @parameter0: com.wiyun.ad.AdView;
+
+        $r2 := @parameter1: android.widget.LinearLayout;
+
+        r0.<com.wiyun.ad.AdView$2: com.wiyun.ad.AdView a> = $r1;
+
+        r0.<com.wiyun.ad.AdView$2: android.widget.LinearLayout b> = $r2;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    static com.wiyun.ad.AdView a(com.wiyun.ad.AdView$2)
+    {
+        com.wiyun.ad.AdView$2 $r0;
+        com.wiyun.ad.AdView r1;
+
+        $r0 := @parameter0: com.wiyun.ad.AdView$2;
+
+        r1 = $r0.<com.wiyun.ad.AdView$2: com.wiyun.ad.AdView a>;
+
+        return r1;
+    }
+
+    public boolean onKey(android.view.View, int, android.view.KeyEvent)
+    {
+        com.wiyun.ad.AdView$2 r0;
+        int $i0, $i1;
+        android.view.KeyEvent $r1;
+        android.view.View $r2;
+        android.widget.EditText $r3;
+        android.text.Editable $r4;
+        java.lang.String $r5, $r11;
+        boolean $z0;
+        com.wiyun.ad.AdView $r6;
+        android.content.Context $r7;
+        com.wiyun.ad.AdView$2$1 $r8;
+        android.content.Intent $r9;
+        com.wiyun.ad.i $r10;
+        android.net.Uri $r12;
+        com.wiyun.ad.AdView$AdListener $r13;
+        android.widget.LinearLayout $r14;
+        java.lang.Exception $r15;
+        java.lang.StringBuilder $r16;
+
+        r0 := @this: com.wiyun.ad.AdView$2;
+
+        $r2 := @parameter0: android.view.View;
+
+        $i0 := @parameter1: int;
+
+        $r1 := @parameter2: android.view.KeyEvent;
+
+        $i1 = virtualinvoke $r1.<android.view.KeyEvent: int getAction()>();
+
+        if $i1 != 0 goto label7;
+
+        if $i0 != 66 goto label6;
+
+        $r3 = (android.widget.EditText) $r2;
+
+        $r4 = virtualinvoke $r3.<android.widget.EditText: android.text.Editable getEditableText()>();
+
+        $r5 = interfaceinvoke $r4.<android.text.Editable: java.lang.String toString()>();
+
+        $z0 = staticinvoke <android.text.TextUtils: boolean isEmpty(java.lang.CharSequence)>($r5);
+
+        if $z0 != 0 goto label4;
+
+        $r6 = r0.<com.wiyun.ad.AdView$2: com.wiyun.ad.AdView a>;
+
+        $r7 = virtualinvoke $r6.<com.wiyun.ad.AdView: android.content.Context getContext()>();
+
+        $r7 = virtualinvoke $r7.<android.content.Context: android.content.Context getApplicationContext()>();
+
+        $r8 = new com.wiyun.ad.AdView$2$1;
+
+        specialinvoke $r8.<com.wiyun.ad.AdView$2$1: void <init>(com.wiyun.ad.AdView$2,android.content.Context)>(r0, $r7);
+
+        virtualinvoke $r8.<com.wiyun.ad.AdView$2$1: void start()>();
+
+        $r9 = new android.content.Intent;
+
+        specialinvoke $r9.<android.content.Intent: void <init>(java.lang.String)>("android.intent.action.VIEW");
+
+        virtualinvoke $r9.<android.content.Intent: android.content.Intent addFlags(int)>(268435456);
+
+     label1:
+        $r6 = r0.<com.wiyun.ad.AdView$2: com.wiyun.ad.AdView a>;
+
+        $r10 = staticinvoke <com.wiyun.ad.AdView: com.wiyun.ad.i e(com.wiyun.ad.AdView)>($r6);
+
+        $r11 = $r10.<com.wiyun.ad.i: java.lang.String q>;
+
+        $r5 = staticinvoke <java.net.URLEncoder: java.lang.String encode(java.lang.String,java.lang.String)>($r5, "utf-8");
+
+        $r11 = virtualinvoke $r11.<java.lang.String: java.lang.String replace(java.lang.CharSequence,java.lang.CharSequence)>("%query%", $r5);
+
+        $r12 = staticinvoke <android.net.Uri: android.net.Uri parse(java.lang.String)>($r11);
+
+        virtualinvoke $r9.<android.content.Intent: android.content.Intent setData(android.net.Uri)>($r12);
+
+        virtualinvoke $r7.<android.content.Context: void startActivity(android.content.Intent)>($r9);
+
+     label2:
+        $r6 = r0.<com.wiyun.ad.AdView$2: com.wiyun.ad.AdView a>;
+
+        $r13 = staticinvoke <com.wiyun.ad.AdView: com.wiyun.ad.AdView$AdListener f(com.wiyun.ad.AdView)>($r6);
+
+        if $r13 == null goto label3;
+
+        $r6 = r0.<com.wiyun.ad.AdView$2: com.wiyun.ad.AdView a>;
+
+        $r13 = staticinvoke <com.wiyun.ad.AdView: com.wiyun.ad.AdView$AdListener f(com.wiyun.ad.AdView)>($r6);
+
+        interfaceinvoke $r13.<com.wiyun.ad.AdView$AdListener: void onAdClicked()>();
+
+     label3:
+        $r6 = r0.<com.wiyun.ad.AdView$2: com.wiyun.ad.AdView a>;
+
+        $r14 = r0.<com.wiyun.ad.AdView$2: android.widget.LinearLayout b>;
+
+        staticinvoke <com.wiyun.ad.AdView: void a(com.wiyun.ad.AdView,android.widget.LinearLayout)>($r6, $r14);
+
+     label4:
+        return 1;
+
+     label5:
+        $r15 := @caughtexception;
+
+        $r16 = new java.lang.StringBuilder;
+
+        specialinvoke $r16.<java.lang.StringBuilder: void <init>(java.lang.String)>("Could not open browser on ad click to ");
+
+        $r6 = r0.<com.wiyun.ad.AdView$2: com.wiyun.ad.AdView a>;
+
+        $r10 = staticinvoke <com.wiyun.ad.AdView: com.wiyun.ad.i e(com.wiyun.ad.AdView)>($r6);
+
+        $r11 = $r10.<com.wiyun.ad.i: java.lang.String q>;
+
+        $r16 = virtualinvoke $r16.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r11);
+
+        $r11 = virtualinvoke $r16.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <android.util.Log: int e(java.lang.String,java.lang.String,java.lang.Throwable)>("WiYun", $r11, $r15);
+
+        goto label2;
+
+     label6:
+        if $i0 != 4 goto label7;
+
+        $r6 = r0.<com.wiyun.ad.AdView$2: com.wiyun.ad.AdView a>;
+
+        $r14 = r0.<com.wiyun.ad.AdView$2: android.widget.LinearLayout b>;
+
+        staticinvoke <com.wiyun.ad.AdView: void a(com.wiyun.ad.AdView,android.widget.LinearLayout)>($r6, $r14);
+
+        return 1;
+
+     label7:
+        return 0;
+
+        catch java.lang.Exception from label1 to label2 with label5;
+    }
+}

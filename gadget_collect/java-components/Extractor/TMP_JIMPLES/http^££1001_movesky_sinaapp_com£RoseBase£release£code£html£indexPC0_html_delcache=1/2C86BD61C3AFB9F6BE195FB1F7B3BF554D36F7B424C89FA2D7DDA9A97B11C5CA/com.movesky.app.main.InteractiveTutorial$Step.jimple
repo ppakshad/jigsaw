@@ -1,0 +1,108 @@
+abstract class com.movesky.app.main.InteractiveTutorial$Step extends com.movesky.app.engine.ui.UIView implements com.movesky.app.engine.ui.UIButtonDelegate
+{
+    final com.movesky.app.main.InteractiveTutorial this$0;
+
+    private void <init>(com.movesky.app.main.InteractiveTutorial)
+    {
+        com.movesky.app.main.InteractiveTutorial$Step r0;
+        com.movesky.app.main.InteractiveTutorial $r1;
+
+        r0 := @this: com.movesky.app.main.InteractiveTutorial$Step;
+
+        $r1 := @parameter0: com.movesky.app.main.InteractiveTutorial;
+
+        r0.<com.movesky.app.main.InteractiveTutorial$Step: com.movesky.app.main.InteractiveTutorial this$0> = $r1;
+
+        specialinvoke r0.<com.movesky.app.engine.ui.UIView: void <init>()>();
+
+        return;
+    }
+
+    void <init>(com.movesky.app.main.InteractiveTutorial, com.movesky.app.main.InteractiveTutorial$1)
+    {
+        com.movesky.app.main.InteractiveTutorial$Step r0;
+        com.movesky.app.main.InteractiveTutorial $r1;
+        com.movesky.app.main.InteractiveTutorial$1 $r2;
+
+        r0 := @this: com.movesky.app.main.InteractiveTutorial$Step;
+
+        $r1 := @parameter0: com.movesky.app.main.InteractiveTutorial;
+
+        $r2 := @parameter1: com.movesky.app.main.InteractiveTutorial$1;
+
+        specialinvoke r0.<com.movesky.app.main.InteractiveTutorial$Step: void <init>(com.movesky.app.main.InteractiveTutorial)>($r1);
+
+        return;
+    }
+
+    protected final void addOKButton(float, float)
+    {
+        com.movesky.app.main.InteractiveTutorial$Step r0;
+        float $f0, $f1;
+        com.movesky.app.engine.ui.UIButton $r1;
+        com.movesky.app.engine.ui.Anchor $r2;
+
+        r0 := @this: com.movesky.app.main.InteractiveTutorial$Step;
+
+        $f0 := @parameter0: float;
+
+        $f1 := @parameter1: float;
+
+        $r1 = new com.movesky.app.engine.ui.UIButton;
+
+        specialinvoke $r1.<com.movesky.app.engine.ui.UIButton: void <init>(java.lang.String)>("R.string.ok");
+
+        $r2 = <com.movesky.app.engine.ui.Anchor: com.movesky.app.engine.ui.Anchor TOP_CENTER>;
+
+        virtualinvoke $r1.<com.movesky.app.engine.ui.UIButton: void setAnchor(com.movesky.app.engine.ui.Anchor)>($r2);
+
+        virtualinvoke $r1.<com.movesky.app.engine.ui.UIButton: void setSize(float,float)>(50.0F, 30.0F);
+
+        $f1 = 28.0F + $f1;
+
+        virtualinvoke $r1.<com.movesky.app.engine.ui.UIButton: void setPosition(float,float)>($f0, $f1);
+
+        virtualinvoke $r1.<com.movesky.app.engine.ui.UIButton: void setButtonDelegate(com.movesky.app.engine.ui.UIButtonDelegate)>(r0);
+
+        virtualinvoke $r1.<com.movesky.app.engine.ui.UIButton: void expandForHitTesting(float,float)>(20.0F, 20.0F);
+
+        virtualinvoke r0.<com.movesky.app.main.InteractiveTutorial$Step: void addSubview(com.movesky.app.engine.ui.UIView)>($r1);
+
+        return;
+    }
+
+    public boolean containsPoint(float, float)
+    {
+        com.movesky.app.main.InteractiveTutorial$Step r0;
+        float $f0, $f1;
+
+        r0 := @this: com.movesky.app.main.InteractiveTutorial$Step;
+
+        $f0 := @parameter0: float;
+
+        $f1 := @parameter1: float;
+
+        return 1;
+    }
+
+    public boolean isPaused()
+    {
+        com.movesky.app.main.InteractiveTutorial$Step r0;
+
+        r0 := @this: com.movesky.app.main.InteractiveTutorial$Step;
+
+        return 0;
+    }
+
+    public void onClick(com.movesky.app.engine.ui.UIButton)
+    {
+        com.movesky.app.main.InteractiveTutorial$Step r0;
+        com.movesky.app.engine.ui.UIButton $r1;
+
+        r0 := @this: com.movesky.app.main.InteractiveTutorial$Step;
+
+        $r1 := @parameter0: com.movesky.app.engine.ui.UIButton;
+
+        return;
+    }
+}

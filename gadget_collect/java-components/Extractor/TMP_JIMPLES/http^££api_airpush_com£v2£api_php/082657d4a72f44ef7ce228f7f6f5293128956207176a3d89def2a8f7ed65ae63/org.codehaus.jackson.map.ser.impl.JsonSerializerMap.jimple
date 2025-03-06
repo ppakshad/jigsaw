@@ -1,0 +1,182 @@
+public class org.codehaus.jackson.map.ser.impl.JsonSerializerMap extends java.lang.Object
+{
+    private final org.codehaus.jackson.map.ser.impl.JsonSerializerMap$Bucket[] _buckets;
+    private final int _size;
+
+    public void <init>(java.util.Map)
+    {
+        org.codehaus.jackson.map.ser.impl.JsonSerializerMap r0;
+        java.util.Map r1;
+        org.codehaus.jackson.map.ser.impl.JsonSerializerMap$Bucket[] r2;
+        int i0, i1;
+        org.codehaus.jackson.map.ser.impl.JsonSerializerMap$Bucket $r3, $r4;
+        java.util.Set $r5;
+        java.util.Iterator $r6;
+        boolean $z0;
+        java.lang.Object $r7;
+        java.util.Map$Entry r8;
+        org.codehaus.jackson.map.ser.SerializerCache$TypeKey r9;
+        org.codehaus.jackson.map.JsonSerializer $r10;
+
+        r0 := @this: org.codehaus.jackson.map.ser.impl.JsonSerializerMap;
+
+        r1 := @parameter0: java.util.Map;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        i0 = interfaceinvoke r1.<java.util.Map: int size()>();
+
+        i1 = staticinvoke <org.codehaus.jackson.map.ser.impl.JsonSerializerMap: int findSize(int)>(i0);
+
+        r0.<org.codehaus.jackson.map.ser.impl.JsonSerializerMap: int _size> = i1;
+
+        i0 = i1 - 1;
+
+        r2 = newarray (org.codehaus.jackson.map.ser.impl.JsonSerializerMap$Bucket)[i1];
+
+        $r5 = interfaceinvoke r1.<java.util.Map: java.util.Set entrySet()>();
+
+        $r6 = interfaceinvoke $r5.<java.util.Set: java.util.Iterator iterator()>();
+
+     label1:
+        $z0 = interfaceinvoke $r6.<java.util.Iterator: boolean hasNext()>();
+
+        if $z0 == 0 goto label2;
+
+        $r7 = interfaceinvoke $r6.<java.util.Iterator: java.lang.Object next()>();
+
+        r8 = (java.util.Map$Entry) $r7;
+
+        $r7 = interfaceinvoke r8.<java.util.Map$Entry: java.lang.Object getKey()>();
+
+        r9 = (org.codehaus.jackson.map.ser.SerializerCache$TypeKey) $r7;
+
+        i1 = virtualinvoke r9.<org.codehaus.jackson.map.ser.SerializerCache$TypeKey: int hashCode()>();
+
+        i1 = i1 & i0;
+
+        $r3 = new org.codehaus.jackson.map.ser.impl.JsonSerializerMap$Bucket;
+
+        $r4 = r2[i1];
+
+        $r7 = interfaceinvoke r8.<java.util.Map$Entry: java.lang.Object getValue()>();
+
+        $r10 = (org.codehaus.jackson.map.JsonSerializer) $r7;
+
+        specialinvoke $r3.<org.codehaus.jackson.map.ser.impl.JsonSerializerMap$Bucket: void <init>(org.codehaus.jackson.map.ser.impl.JsonSerializerMap$Bucket,org.codehaus.jackson.map.ser.SerializerCache$TypeKey,org.codehaus.jackson.map.JsonSerializer)>($r4, r9, $r10);
+
+        r2[i1] = $r3;
+
+        goto label1;
+
+     label2:
+        r0.<org.codehaus.jackson.map.ser.impl.JsonSerializerMap: org.codehaus.jackson.map.ser.impl.JsonSerializerMap$Bucket[] _buckets> = r2;
+
+        return;
+    }
+
+    private static final int findSize(int)
+    {
+        int $i0, i1;
+
+        $i0 := @parameter0: int;
+
+        if $i0 > 64 goto label3;
+
+        $i0 = $i0 + $i0;
+
+     label1:
+        i1 = 8;
+
+     label2:
+        if i1 >= $i0 goto label4;
+
+        i1 = i1 + i1;
+
+        goto label2;
+
+     label3:
+        i1 = $i0 >> 2;
+
+        $i0 = i1 + $i0;
+
+        goto label1;
+
+     label4:
+        return i1;
+    }
+
+    public org.codehaus.jackson.map.JsonSerializer find(org.codehaus.jackson.map.ser.SerializerCache$TypeKey)
+    {
+        org.codehaus.jackson.map.ser.impl.JsonSerializerMap r0;
+        org.codehaus.jackson.map.ser.SerializerCache$TypeKey $r1, $r4;
+        int i0, $i1;
+        org.codehaus.jackson.map.ser.impl.JsonSerializerMap$Bucket[] $r2;
+        org.codehaus.jackson.map.ser.impl.JsonSerializerMap$Bucket r3;
+        boolean $z0;
+        org.codehaus.jackson.map.JsonSerializer r5;
+
+        r0 := @this: org.codehaus.jackson.map.ser.impl.JsonSerializerMap;
+
+        $r1 := @parameter0: org.codehaus.jackson.map.ser.SerializerCache$TypeKey;
+
+        i0 = virtualinvoke $r1.<org.codehaus.jackson.map.ser.SerializerCache$TypeKey: int hashCode()>();
+
+        $r2 = r0.<org.codehaus.jackson.map.ser.impl.JsonSerializerMap: org.codehaus.jackson.map.ser.impl.JsonSerializerMap$Bucket[] _buckets>;
+
+        $i1 = lengthof $r2;
+
+        $i1 = $i1 - 1;
+
+        i0 = i0 & $i1;
+
+        $r2 = r0.<org.codehaus.jackson.map.ser.impl.JsonSerializerMap: org.codehaus.jackson.map.ser.impl.JsonSerializerMap$Bucket[] _buckets>;
+
+        r3 = $r2[i0];
+
+        if r3 != null goto label1;
+
+        return null;
+
+     label1:
+        $r4 = r3.<org.codehaus.jackson.map.ser.impl.JsonSerializerMap$Bucket: org.codehaus.jackson.map.ser.SerializerCache$TypeKey key>;
+
+        $z0 = virtualinvoke $r1.<org.codehaus.jackson.map.ser.SerializerCache$TypeKey: boolean equals(java.lang.Object)>($r4);
+
+        if $z0 == 0 goto label2;
+
+        r5 = r3.<org.codehaus.jackson.map.ser.impl.JsonSerializerMap$Bucket: org.codehaus.jackson.map.JsonSerializer value>;
+
+        return r5;
+
+     label2:
+        r3 = r3.<org.codehaus.jackson.map.ser.impl.JsonSerializerMap$Bucket: org.codehaus.jackson.map.ser.impl.JsonSerializerMap$Bucket next>;
+
+        if r3 == null goto label3;
+
+        $r4 = r3.<org.codehaus.jackson.map.ser.impl.JsonSerializerMap$Bucket: org.codehaus.jackson.map.ser.SerializerCache$TypeKey key>;
+
+        $z0 = virtualinvoke $r1.<org.codehaus.jackson.map.ser.SerializerCache$TypeKey: boolean equals(java.lang.Object)>($r4);
+
+        if $z0 == 0 goto label2;
+
+        r5 = r3.<org.codehaus.jackson.map.ser.impl.JsonSerializerMap$Bucket: org.codehaus.jackson.map.JsonSerializer value>;
+
+        return r5;
+
+     label3:
+        return null;
+    }
+
+    public int size()
+    {
+        org.codehaus.jackson.map.ser.impl.JsonSerializerMap r0;
+        int i0;
+
+        r0 := @this: org.codehaus.jackson.map.ser.impl.JsonSerializerMap;
+
+        i0 = r0.<org.codehaus.jackson.map.ser.impl.JsonSerializerMap: int _size>;
+
+        return i0;
+    }
+}

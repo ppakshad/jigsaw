@@ -1,0 +1,77 @@
+public class com.ideaworks3d.marmalade.CursorLoaderHelper extends java.lang.Object
+{
+
+    public void <init>()
+    {
+        com.ideaworks3d.marmalade.CursorLoaderHelper r0;
+
+        r0 := @this: com.ideaworks3d.marmalade.CursorLoaderHelper;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public static boolean getCursor(android.net.Uri, java.lang.String[], com.ideaworks3d.marmalade.LoaderActivity$CursorCompleteListener)
+    {
+        android.net.Uri $r0;
+        java.lang.String[] $r1;
+        com.ideaworks3d.marmalade.LoaderActivity$CursorCompleteListener $r2;
+        android.content.CursorLoader $r3;
+        com.ideaworks3d.marmalade.LoaderActivity $r4;
+        com.ideaworks3d.marmalade.CursorLoaderHelper$1 $r5;
+        java.lang.Exception $r6;
+        java.lang.StringBuilder $r7;
+        java.lang.String $r8;
+
+        $r0 := @parameter0: android.net.Uri;
+
+        $r1 := @parameter1: java.lang.String[];
+
+        $r2 := @parameter2: com.ideaworks3d.marmalade.LoaderActivity$CursorCompleteListener;
+
+        $r3 = new android.content.CursorLoader;
+
+     label1:
+        $r4 = staticinvoke <com.ideaworks3d.marmalade.LoaderAPI: com.ideaworks3d.marmalade.LoaderActivity getActivity()>();
+
+        specialinvoke $r3.<android.content.CursorLoader: void <init>(android.content.Context,android.net.Uri,java.lang.String[],java.lang.String,java.lang.String[],java.lang.String)>($r4, $r0, $r1, null, null, null);
+
+     label2:
+        $r5 = new com.ideaworks3d.marmalade.CursorLoaderHelper$1;
+
+     label3:
+        specialinvoke $r5.<com.ideaworks3d.marmalade.CursorLoaderHelper$1: void <init>(com.ideaworks3d.marmalade.LoaderActivity$CursorCompleteListener)>($r2);
+
+        virtualinvoke $r3.<android.content.CursorLoader: void registerListener(int,android.content.Loader$OnLoadCompleteListener)>(0, $r5);
+
+        virtualinvoke $r3.<android.content.CursorLoader: void startLoading()>();
+
+     label4:
+        return 0;
+
+     label5:
+        $r6 := @caughtexception;
+
+        $r7 = new java.lang.StringBuilder;
+
+        specialinvoke $r7.<java.lang.StringBuilder: void <init>()>();
+
+        $r7 = virtualinvoke $r7.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Could not create cursorLoader ");
+
+        $r7 = virtualinvoke $r7.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($r6);
+
+        $r8 = virtualinvoke $r7.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <com.ideaworks3d.marmalade.LoaderAPI: void trace(java.lang.String)>($r8);
+
+        $r8 = virtualinvoke $r6.<java.lang.Exception: java.lang.String getMessage()>();
+
+        staticinvoke <com.ideaworks3d.marmalade.LoaderAPI: void trace(java.lang.String)>($r8);
+
+        return 0;
+
+        catch java.lang.Exception from label1 to label2 with label5;
+        catch java.lang.Exception from label3 to label4 with label5;
+    }
+}

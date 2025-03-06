@@ -1,0 +1,51 @@
+public abstract class com.movesky.app.engine.ai.fsm.StateTransition extends java.lang.Object
+{
+    private com.movesky.app.engine.ai.fsm.FiniteState m_end_state;
+    private com.movesky.app.engine.ai.fsm.FiniteState m_start_state;
+
+    public void <init>(com.movesky.app.engine.ai.fsm.FiniteState, com.movesky.app.engine.ai.fsm.FiniteState)
+    {
+        com.movesky.app.engine.ai.fsm.StateTransition r0;
+        com.movesky.app.engine.ai.fsm.FiniteState $r1, $r2;
+
+        r0 := @this: com.movesky.app.engine.ai.fsm.StateTransition;
+
+        $r1 := @parameter0: com.movesky.app.engine.ai.fsm.FiniteState;
+
+        $r2 := @parameter1: com.movesky.app.engine.ai.fsm.FiniteState;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        r0.<com.movesky.app.engine.ai.fsm.StateTransition: com.movesky.app.engine.ai.fsm.FiniteState m_start_state> = $r1;
+
+        r0.<com.movesky.app.engine.ai.fsm.StateTransition: com.movesky.app.engine.ai.fsm.FiniteState m_end_state> = $r2;
+
+        return;
+    }
+
+    public abstract boolean checkConditions(java.util.HashMap);
+
+    public com.movesky.app.engine.ai.fsm.FiniteState getNewState()
+    {
+        com.movesky.app.engine.ai.fsm.StateTransition r0;
+        com.movesky.app.engine.ai.fsm.FiniteState r1;
+
+        r0 := @this: com.movesky.app.engine.ai.fsm.StateTransition;
+
+        r1 = r0.<com.movesky.app.engine.ai.fsm.StateTransition: com.movesky.app.engine.ai.fsm.FiniteState m_end_state>;
+
+        return r1;
+    }
+
+    public com.movesky.app.engine.ai.fsm.FiniteState getStartState()
+    {
+        com.movesky.app.engine.ai.fsm.StateTransition r0;
+        com.movesky.app.engine.ai.fsm.FiniteState r1;
+
+        r0 := @this: com.movesky.app.engine.ai.fsm.StateTransition;
+
+        r1 = r0.<com.movesky.app.engine.ai.fsm.StateTransition: com.movesky.app.engine.ai.fsm.FiniteState m_start_state>;
+
+        return r1;
+    }
+}

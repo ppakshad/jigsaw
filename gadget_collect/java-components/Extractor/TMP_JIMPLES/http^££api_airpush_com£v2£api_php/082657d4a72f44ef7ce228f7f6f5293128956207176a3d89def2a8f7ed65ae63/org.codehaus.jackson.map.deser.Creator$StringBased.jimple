@@ -1,0 +1,121 @@
+final class org.codehaus.jackson.map.deser.Creator$StringBased extends java.lang.Object
+{
+    protected final java.lang.reflect.Constructor _ctor;
+    protected final java.lang.reflect.Method _factoryMethod;
+    protected final java.lang.Class _valueClass;
+
+    public void <init>(java.lang.Class, org.codehaus.jackson.map.introspect.AnnotatedConstructor, org.codehaus.jackson.map.introspect.AnnotatedMethod)
+    {
+        org.codehaus.jackson.map.deser.Creator$StringBased r0;
+        java.lang.Class r1;
+        org.codehaus.jackson.map.introspect.AnnotatedConstructor $r2;
+        org.codehaus.jackson.map.introspect.AnnotatedMethod $r3;
+        java.lang.reflect.Constructor $r4;
+        java.lang.reflect.Method $r5;
+
+        r0 := @this: org.codehaus.jackson.map.deser.Creator$StringBased;
+
+        r1 := @parameter0: java.lang.Class;
+
+        $r2 := @parameter1: org.codehaus.jackson.map.introspect.AnnotatedConstructor;
+
+        $r3 := @parameter2: org.codehaus.jackson.map.introspect.AnnotatedMethod;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        r0.<org.codehaus.jackson.map.deser.Creator$StringBased: java.lang.Class _valueClass> = r1;
+
+        if $r2 != null goto label3;
+
+        $r4 = null;
+
+     label1:
+        r0.<org.codehaus.jackson.map.deser.Creator$StringBased: java.lang.reflect.Constructor _ctor> = $r4;
+
+        if $r3 != null goto label4;
+
+        $r5 = null;
+
+     label2:
+        r0.<org.codehaus.jackson.map.deser.Creator$StringBased: java.lang.reflect.Method _factoryMethod> = $r5;
+
+        return;
+
+     label3:
+        $r4 = virtualinvoke $r2.<org.codehaus.jackson.map.introspect.AnnotatedConstructor: java.lang.reflect.Constructor getAnnotated()>();
+
+        goto label1;
+
+     label4:
+        $r5 = virtualinvoke $r3.<org.codehaus.jackson.map.introspect.AnnotatedMethod: java.lang.reflect.Method getAnnotated()>();
+
+        goto label2;
+    }
+
+    public java.lang.Object construct(java.lang.String)
+    {
+        org.codehaus.jackson.map.deser.Creator$StringBased r0;
+        java.lang.String $r1;
+        java.lang.reflect.Constructor $r2;
+        java.lang.Object[] $r3;
+        java.lang.Object $r4;
+        java.lang.reflect.Method $r5;
+        java.lang.Class $r6;
+        java.lang.Exception $r7;
+
+        r0 := @this: org.codehaus.jackson.map.deser.Creator$StringBased;
+
+        $r1 := @parameter0: java.lang.String;
+
+     label01:
+        $r2 = r0.<org.codehaus.jackson.map.deser.Creator$StringBased: java.lang.reflect.Constructor _ctor>;
+
+     label02:
+        if $r2 == null goto label05;
+
+     label03:
+        $r2 = r0.<org.codehaus.jackson.map.deser.Creator$StringBased: java.lang.reflect.Constructor _ctor>;
+
+        $r3 = newarray (java.lang.Object)[1];
+
+        $r3[0] = $r1;
+
+        $r4 = virtualinvoke $r2.<java.lang.reflect.Constructor: java.lang.Object newInstance(java.lang.Object[])>($r3);
+
+     label04:
+        return $r4;
+
+     label05:
+        $r5 = r0.<org.codehaus.jackson.map.deser.Creator$StringBased: java.lang.reflect.Method _factoryMethod>;
+
+     label06:
+        if $r5 == null goto label10;
+
+     label07:
+        $r5 = r0.<org.codehaus.jackson.map.deser.Creator$StringBased: java.lang.reflect.Method _factoryMethod>;
+
+        $r6 = r0.<org.codehaus.jackson.map.deser.Creator$StringBased: java.lang.Class _valueClass>;
+
+        $r3 = newarray (java.lang.Object)[1];
+
+        $r3[0] = $r1;
+
+        $r4 = virtualinvoke $r5.<java.lang.reflect.Method: java.lang.Object invoke(java.lang.Object,java.lang.Object[])>($r6, $r3);
+
+     label08:
+        return $r4;
+
+     label09:
+        $r7 := @caughtexception;
+
+        staticinvoke <org.codehaus.jackson.map.util.ClassUtil: void unwrapAndThrowAsIAE(java.lang.Throwable)>($r7);
+
+     label10:
+        return null;
+
+        catch java.lang.Exception from label01 to label02 with label09;
+        catch java.lang.Exception from label03 to label04 with label09;
+        catch java.lang.Exception from label05 to label06 with label09;
+        catch java.lang.Exception from label07 to label08 with label09;
+    }
+}

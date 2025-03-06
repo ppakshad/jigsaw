@@ -1,0 +1,145 @@
+public class com.startapp.android.publish.list3d.f extends java.lang.Object
+{
+    private static com.startapp.android.publish.list3d.f a;
+    private java.util.Map b;
+
+    static void <clinit>()
+    {
+        com.startapp.android.publish.list3d.f $r0;
+
+        $r0 = new com.startapp.android.publish.list3d.f;
+
+        specialinvoke $r0.<com.startapp.android.publish.list3d.f: void <init>()>();
+
+        <com.startapp.android.publish.list3d.f: com.startapp.android.publish.list3d.f a> = $r0;
+
+        return;
+    }
+
+    private void <init>()
+    {
+        com.startapp.android.publish.list3d.f r0;
+        java.util.concurrent.ConcurrentHashMap $r1;
+
+        r0 := @this: com.startapp.android.publish.list3d.f;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        $r1 = new java.util.concurrent.ConcurrentHashMap;
+
+        specialinvoke $r1.<java.util.concurrent.ConcurrentHashMap: void <init>()>();
+
+        r0.<com.startapp.android.publish.list3d.f: java.util.Map b> = $r1;
+
+        return;
+    }
+
+    public static com.startapp.android.publish.list3d.f a()
+    {
+        com.startapp.android.publish.list3d.f r0;
+
+        r0 = <com.startapp.android.publish.list3d.f: com.startapp.android.publish.list3d.f a>;
+
+        return r0;
+    }
+
+    public com.startapp.android.publish.list3d.e a(java.lang.String)
+    {
+        com.startapp.android.publish.list3d.f r0;
+        java.lang.String $r1;
+        java.util.Map $r2;
+        boolean $z0;
+        java.lang.Object $r3;
+        com.startapp.android.publish.list3d.e $r4;
+        java.lang.StringBuilder $r5;
+        int $i0;
+
+        r0 := @this: com.startapp.android.publish.list3d.f;
+
+        $r1 := @parameter0: java.lang.String;
+
+        $r2 = r0.<com.startapp.android.publish.list3d.f: java.util.Map b>;
+
+        $z0 = interfaceinvoke $r2.<java.util.Map: boolean containsKey(java.lang.Object)>($r1);
+
+        if $z0 == 0 goto label1;
+
+        $r2 = r0.<com.startapp.android.publish.list3d.f: java.util.Map b>;
+
+        $r3 = interfaceinvoke $r2.<java.util.Map: java.lang.Object get(java.lang.Object)>($r1);
+
+        $r4 = (com.startapp.android.publish.list3d.e) $r3;
+
+        return $r4;
+
+     label1:
+        $r4 = new com.startapp.android.publish.list3d.e;
+
+        specialinvoke $r4.<com.startapp.android.publish.list3d.e: void <init>()>();
+
+        $r2 = r0.<com.startapp.android.publish.list3d.f: java.util.Map b>;
+
+        interfaceinvoke $r2.<java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>($r1, $r4);
+
+        $r5 = new java.lang.StringBuilder;
+
+        specialinvoke $r5.<java.lang.StringBuilder: void <init>()>();
+
+        $r5 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Created new model for uuid ");
+
+        $r5 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r1);
+
+        $r5 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(", Size = ");
+
+        $r2 = r0.<com.startapp.android.publish.list3d.f: java.util.Map b>;
+
+        $i0 = interfaceinvoke $r2.<java.util.Map: int size()>();
+
+        $r5 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>($i0);
+
+        $r1 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <com.startapp.android.publish.i.n: void a(java.lang.String,int,java.lang.String)>("ListModelManager", 3, $r1);
+
+        return $r4;
+    }
+
+    public void b(java.lang.String)
+    {
+        com.startapp.android.publish.list3d.f r0;
+        java.lang.String $r1;
+        java.util.Map $r2;
+        java.lang.StringBuilder $r3;
+        int $i0;
+
+        r0 := @this: com.startapp.android.publish.list3d.f;
+
+        $r1 := @parameter0: java.lang.String;
+
+        $r2 = r0.<com.startapp.android.publish.list3d.f: java.util.Map b>;
+
+        interfaceinvoke $r2.<java.util.Map: java.lang.Object remove(java.lang.Object)>($r1);
+
+        $r3 = new java.lang.StringBuilder;
+
+        specialinvoke $r3.<java.lang.StringBuilder: void <init>()>();
+
+        $r3 = virtualinvoke $r3.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Model for ");
+
+        $r3 = virtualinvoke $r3.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r1);
+
+        $r3 = virtualinvoke $r3.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" was removed, Size = ");
+
+        $r2 = r0.<com.startapp.android.publish.list3d.f: java.util.Map b>;
+
+        $i0 = interfaceinvoke $r2.<java.util.Map: int size()>();
+
+        $r3 = virtualinvoke $r3.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>($i0);
+
+        $r1 = virtualinvoke $r3.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <com.startapp.android.publish.i.n: void a(java.lang.String,int,java.lang.String)>("ListModelManager", 3, $r1);
+
+        return;
+    }
+}

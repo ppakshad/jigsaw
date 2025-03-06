@@ -1,0 +1,86 @@
+class com.wiyun.ad.AdView$1 extends java.lang.Object implements android.view.View$OnFocusChangeListener
+{
+    final com.wiyun.ad.AdView a;
+    private final android.widget.LinearLayout b;
+
+    void <init>(com.wiyun.ad.AdView, android.widget.LinearLayout)
+    {
+        com.wiyun.ad.AdView$1 r0;
+        com.wiyun.ad.AdView $r1;
+        android.widget.LinearLayout $r2;
+
+        r0 := @this: com.wiyun.ad.AdView$1;
+
+        $r1 := @parameter0: com.wiyun.ad.AdView;
+
+        $r2 := @parameter1: android.widget.LinearLayout;
+
+        r0.<com.wiyun.ad.AdView$1: com.wiyun.ad.AdView a> = $r1;
+
+        r0.<com.wiyun.ad.AdView$1: android.widget.LinearLayout b> = $r2;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    static com.wiyun.ad.AdView a(com.wiyun.ad.AdView$1)
+    {
+        com.wiyun.ad.AdView$1 $r0;
+        com.wiyun.ad.AdView r1;
+
+        $r0 := @parameter0: com.wiyun.ad.AdView$1;
+
+        r1 = $r0.<com.wiyun.ad.AdView$1: com.wiyun.ad.AdView a>;
+
+        return r1;
+    }
+
+    public void onFocusChange(android.view.View, boolean)
+    {
+        com.wiyun.ad.AdView$1 r0;
+        android.view.View $r1;
+        boolean $z0;
+        android.widget.LinearLayout $r2;
+        android.view.ViewParent $r3;
+        com.wiyun.ad.AdView$1$1 $r4;
+        com.wiyun.ad.AdView$1$2 $r5;
+        com.wiyun.ad.AdView $r6;
+
+        r0 := @this: com.wiyun.ad.AdView$1;
+
+        $r1 := @parameter0: android.view.View;
+
+        $z0 := @parameter1: boolean;
+
+        if $z0 == 0 goto label1;
+
+        $r4 = new com.wiyun.ad.AdView$1$1;
+
+        specialinvoke $r4.<com.wiyun.ad.AdView$1$1: void <init>(com.wiyun.ad.AdView$1,android.view.View)>(r0, $r1);
+
+        virtualinvoke $r1.<android.view.View: boolean post(java.lang.Runnable)>($r4);
+
+        return;
+
+     label1:
+        $r5 = new com.wiyun.ad.AdView$1$2;
+
+        specialinvoke $r5.<com.wiyun.ad.AdView$1$2: void <init>(com.wiyun.ad.AdView$1,android.view.View)>(r0, $r1);
+
+        virtualinvoke $r1.<android.view.View: boolean post(java.lang.Runnable)>($r5);
+
+        $r3 = virtualinvoke $r1.<android.view.View: android.view.ViewParent getParent()>();
+
+        if $r3 == null goto label2;
+
+        $r6 = r0.<com.wiyun.ad.AdView$1: com.wiyun.ad.AdView a>;
+
+        $r2 = r0.<com.wiyun.ad.AdView$1: android.widget.LinearLayout b>;
+
+        staticinvoke <com.wiyun.ad.AdView: void a(com.wiyun.ad.AdView,android.widget.LinearLayout)>($r6, $r2);
+
+     label2:
+        return;
+    }
+}

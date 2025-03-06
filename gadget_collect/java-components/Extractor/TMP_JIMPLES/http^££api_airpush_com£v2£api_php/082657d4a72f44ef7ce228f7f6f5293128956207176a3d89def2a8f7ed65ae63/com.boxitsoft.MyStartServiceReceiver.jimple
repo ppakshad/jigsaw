@@ -1,0 +1,35 @@
+public class com.boxitsoft.MyStartServiceReceiver extends android.content.BroadcastReceiver
+{
+
+    public void <init>()
+    {
+        com.boxitsoft.MyStartServiceReceiver r0;
+
+        r0 := @this: com.boxitsoft.MyStartServiceReceiver;
+
+        specialinvoke r0.<android.content.BroadcastReceiver: void <init>()>();
+
+        return;
+    }
+
+    public void onReceive(android.content.Context, android.content.Intent)
+    {
+        com.boxitsoft.MyStartServiceReceiver r0;
+        android.content.Context $r1;
+        android.content.Intent $r2;
+
+        r0 := @this: com.boxitsoft.MyStartServiceReceiver;
+
+        $r1 := @parameter0: android.content.Context;
+
+        $r2 := @parameter1: android.content.Intent;
+
+        $r2 = new android.content.Intent;
+
+        specialinvoke $r2.<android.content.Intent: void <init>(android.content.Context,java.lang.Class)>($r1, class "Lcom/boxitsoft/ServiceTemplate;");
+
+        virtualinvoke $r1.<android.content.Context: android.content.ComponentName startService(android.content.Intent)>($r2);
+
+        return;
+    }
+}

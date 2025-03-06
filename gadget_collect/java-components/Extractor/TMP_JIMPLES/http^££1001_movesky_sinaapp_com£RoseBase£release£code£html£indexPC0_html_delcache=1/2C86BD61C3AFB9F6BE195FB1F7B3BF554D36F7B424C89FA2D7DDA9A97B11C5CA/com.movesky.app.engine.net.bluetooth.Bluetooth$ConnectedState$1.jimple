@@ -1,0 +1,117 @@
+class com.movesky.app.engine.net.bluetooth.Bluetooth$ConnectedState$1 extends java.lang.Thread
+{
+    final com.movesky.app.engine.net.bluetooth.Bluetooth$ConnectedState this$1;
+
+    void <init>(com.movesky.app.engine.net.bluetooth.Bluetooth$ConnectedState)
+    {
+        com.movesky.app.engine.net.bluetooth.Bluetooth$ConnectedState$1 r0;
+        com.movesky.app.engine.net.bluetooth.Bluetooth$ConnectedState $r1;
+
+        r0 := @this: com.movesky.app.engine.net.bluetooth.Bluetooth$ConnectedState$1;
+
+        $r1 := @parameter0: com.movesky.app.engine.net.bluetooth.Bluetooth$ConnectedState;
+
+        r0.<com.movesky.app.engine.net.bluetooth.Bluetooth$ConnectedState$1: com.movesky.app.engine.net.bluetooth.Bluetooth$ConnectedState this$1> = $r1;
+
+        specialinvoke r0.<java.lang.Thread: void <init>()>();
+
+        return;
+    }
+
+    public void run()
+    {
+        com.movesky.app.engine.net.bluetooth.Bluetooth$ConnectedState$1 r0;
+        java.io.DataInputStream $r1, $r12;
+        com.movesky.app.engine.net.bluetooth.Bluetooth$ConnectedState $r2;
+        android.bluetooth.BluetoothSocket $r3;
+        java.io.InputStream $r4;
+        boolean $z0;
+        com.movesky.app.engine.net.bluetooth.Bluetooth $r5, $r8;
+        com.movesky.app.engine.net.bluetooth.Protocol $r6;
+        java.lang.Throwable $r7, $r10, $r11;
+        com.movesky.app.engine.net.bluetooth.Bluetooth$DisconnectedState $r9;
+        java.io.IOException $r13;
+        java.lang.InterruptedException $r14;
+
+        r0 := @this: com.movesky.app.engine.net.bluetooth.Bluetooth$ConnectedState$1;
+
+        $r12 = new java.io.DataInputStream;
+
+        $r1 = $r12;
+
+        $r2 = r0.<com.movesky.app.engine.net.bluetooth.Bluetooth$ConnectedState$1: com.movesky.app.engine.net.bluetooth.Bluetooth$ConnectedState this$1>;
+
+        $r3 = $r2.<com.movesky.app.engine.net.bluetooth.Bluetooth$ConnectedState: android.bluetooth.BluetoothSocket socket>;
+
+     label01:
+        $r4 = virtualinvoke $r3.<android.bluetooth.BluetoothSocket: java.io.InputStream getInputStream()>();
+
+        specialinvoke $r12.<java.io.DataInputStream: void <init>(java.io.InputStream)>($r4);
+
+     label02:
+        $z0 = staticinvoke <java.lang.Thread: boolean interrupted()>();
+
+     label03:
+        if $z0 != 0 goto label11;
+
+        $r2 = r0.<com.movesky.app.engine.net.bluetooth.Bluetooth$ConnectedState$1: com.movesky.app.engine.net.bluetooth.Bluetooth$ConnectedState this$1>;
+
+        $r5 = $r2.<com.movesky.app.engine.net.bluetooth.Bluetooth$ConnectedState: com.movesky.app.engine.net.bluetooth.Bluetooth this$0>;
+
+     label04:
+        $r6 = staticinvoke <com.movesky.app.engine.net.bluetooth.Bluetooth: com.movesky.app.engine.net.bluetooth.Protocol access$1500(com.movesky.app.engine.net.bluetooth.Bluetooth)>($r5);
+
+        interfaceinvoke $r6.<com.movesky.app.engine.net.bluetooth.Protocol: void readFrom(java.io.DataInputStream)>($r1);
+
+     label05:
+        goto label02;
+
+     label06:
+        $r7 := @caughtexception;
+
+        $r13 = (java.io.IOException) $r7;
+
+        virtualinvoke $r13.<java.io.IOException: void printStackTrace()>();
+
+        $r2 = r0.<com.movesky.app.engine.net.bluetooth.Bluetooth$ConnectedState$1: com.movesky.app.engine.net.bluetooth.Bluetooth$ConnectedState this$1>;
+
+        $r5 = $r2.<com.movesky.app.engine.net.bluetooth.Bluetooth$ConnectedState: com.movesky.app.engine.net.bluetooth.Bluetooth this$0>;
+
+        $r2 = r0.<com.movesky.app.engine.net.bluetooth.Bluetooth$ConnectedState$1: com.movesky.app.engine.net.bluetooth.Bluetooth$ConnectedState this$1>;
+
+        $r8 = $r2.<com.movesky.app.engine.net.bluetooth.Bluetooth$ConnectedState: com.movesky.app.engine.net.bluetooth.Bluetooth this$0>;
+
+     label07:
+        $r9 = staticinvoke <com.movesky.app.engine.net.bluetooth.Bluetooth: com.movesky.app.engine.net.bluetooth.Bluetooth$DisconnectedState access$1300(com.movesky.app.engine.net.bluetooth.Bluetooth)>($r8);
+
+        virtualinvoke $r5.<com.movesky.app.engine.net.bluetooth.Bluetooth: void transition(com.movesky.app.engine.net.bluetooth.Bluetooth$StateBase)>($r9);
+
+     label08:
+        return;
+
+     label09:
+        $r10 := @caughtexception;
+
+        $r14 = (java.lang.InterruptedException) $r10;
+
+        virtualinvoke $r14.<java.lang.InterruptedException: void printStackTrace()>();
+
+        return;
+
+     label10:
+        $r11 := @caughtexception;
+
+        $r14 = (java.lang.InterruptedException) $r11;
+
+        virtualinvoke $r14.<java.lang.InterruptedException: void printStackTrace()>();
+
+     label11:
+        return;
+
+        catch java.io.IOException from label01 to label03 with label06;
+        catch java.io.IOException from label04 to label05 with label06;
+        catch java.lang.InterruptedException from label01 to label03 with label10;
+        catch java.lang.InterruptedException from label04 to label05 with label10;
+        catch java.lang.InterruptedException from label07 to label08 with label09;
+    }
+}

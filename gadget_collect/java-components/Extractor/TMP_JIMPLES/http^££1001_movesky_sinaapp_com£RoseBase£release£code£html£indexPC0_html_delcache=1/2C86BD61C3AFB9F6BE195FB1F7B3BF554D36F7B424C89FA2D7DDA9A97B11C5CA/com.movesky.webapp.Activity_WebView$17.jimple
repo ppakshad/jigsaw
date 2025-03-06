@@ -1,0 +1,56 @@
+final class com.movesky.webapp.Activity_WebView$17 extends android.os.Handler
+{
+
+    void <init>()
+    {
+        com.movesky.webapp.Activity_WebView$17 r0;
+
+        r0 := @this: com.movesky.webapp.Activity_WebView$17;
+
+        specialinvoke r0.<android.os.Handler: void <init>()>();
+
+        return;
+    }
+
+    public void handleMessage(android.os.Message)
+    {
+        com.movesky.webapp.Activity_WebView$17 r0;
+        android.os.Message $r1;
+        java.lang.String $r2;
+        java.util.Timer $r3;
+        int $i0;
+        android.webkit.WebView $r4;
+
+        r0 := @this: com.movesky.webapp.Activity_WebView$17;
+
+        $r1 := @parameter0: android.os.Message;
+
+        $i0 = $r1.<android.os.Message: int what>;
+
+        lookupswitch($i0)
+        {
+            case 1: goto label2;
+            default: goto label1;
+        };
+
+     label1:
+        specialinvoke r0.<android.os.Handler: void handleMessage(android.os.Message)>($r1);
+
+        return;
+
+     label2:
+        $r3 = staticinvoke <com.movesky.webapp.Activity_WebView: java.util.Timer access$400()>();
+
+        virtualinvoke $r3.<java.util.Timer: void cancel()>();
+
+        staticinvoke <com.movesky.webapp.Activity_WebView: java.util.Timer access$402(java.util.Timer)>(null);
+
+        $r4 = <com.movesky.webapp.Activity_WebView: android.webkit.WebView m_WebViewAdv>;
+
+        $r2 = <com.movesky.webapp.Activity_WebView: java.lang.String m_urlAdvert>;
+
+        virtualinvoke $r4.<android.webkit.WebView: void loadUrl(java.lang.String)>($r2);
+
+        goto label1;
+    }
+}

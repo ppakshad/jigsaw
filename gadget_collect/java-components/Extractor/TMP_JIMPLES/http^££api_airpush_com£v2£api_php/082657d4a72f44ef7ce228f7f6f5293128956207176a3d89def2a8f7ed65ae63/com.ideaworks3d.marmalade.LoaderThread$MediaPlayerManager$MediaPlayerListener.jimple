@@ -1,0 +1,170 @@
+class com.ideaworks3d.marmalade.LoaderThread$MediaPlayerManager$MediaPlayerListener extends java.lang.Object implements android.media.MediaPlayer$OnErrorListener, android.media.MediaPlayer$OnCompletionListener
+{
+    int m_channel;
+    final com.ideaworks3d.marmalade.LoaderThread$MediaPlayerManager this$1;
+
+    void <init>(com.ideaworks3d.marmalade.LoaderThread$MediaPlayerManager, int)
+    {
+        com.ideaworks3d.marmalade.LoaderThread$MediaPlayerManager$MediaPlayerListener r0;
+        com.ideaworks3d.marmalade.LoaderThread$MediaPlayerManager $r1;
+        int $i0;
+
+        r0 := @this: com.ideaworks3d.marmalade.LoaderThread$MediaPlayerManager$MediaPlayerListener;
+
+        $r1 := @parameter0: com.ideaworks3d.marmalade.LoaderThread$MediaPlayerManager;
+
+        $i0 := @parameter1: int;
+
+        r0.<com.ideaworks3d.marmalade.LoaderThread$MediaPlayerManager$MediaPlayerListener: com.ideaworks3d.marmalade.LoaderThread$MediaPlayerManager this$1> = $r1;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        r0.<com.ideaworks3d.marmalade.LoaderThread$MediaPlayerManager$MediaPlayerListener: int m_channel> = $i0;
+
+        return;
+    }
+
+    public void onCompletion(android.media.MediaPlayer)
+    {
+        com.ideaworks3d.marmalade.LoaderThread$MediaPlayerManager$MediaPlayerListener r0;
+        android.media.MediaPlayer $r1;
+        com.ideaworks3d.marmalade.LoaderThread$MediaPlayerManager $r2;
+        int[] $r3;
+        int $i0, $i1;
+        com.ideaworks3d.marmalade.LoaderThread$AudioState $r4;
+        android.media.MediaPlayer[] $r5;
+        java.lang.Throwable $r6;
+        java.lang.IllegalStateException $r7;
+
+        r0 := @this: com.ideaworks3d.marmalade.LoaderThread$MediaPlayerManager$MediaPlayerListener;
+
+        $r1 := @parameter0: android.media.MediaPlayer;
+
+        $r2 = r0.<com.ideaworks3d.marmalade.LoaderThread$MediaPlayerManager$MediaPlayerListener: com.ideaworks3d.marmalade.LoaderThread$MediaPlayerManager this$1>;
+
+        $r3 = staticinvoke <com.ideaworks3d.marmalade.LoaderThread$MediaPlayerManager: int[] access$300(com.ideaworks3d.marmalade.LoaderThread$MediaPlayerManager)>($r2);
+
+        $i0 = r0.<com.ideaworks3d.marmalade.LoaderThread$MediaPlayerManager$MediaPlayerListener: int m_channel>;
+
+        $i1 = $r3[$i0];
+
+        $i1 = $i1 - 1;
+
+        $r3[$i0] = $i1;
+
+        $r2 = r0.<com.ideaworks3d.marmalade.LoaderThread$MediaPlayerManager$MediaPlayerListener: com.ideaworks3d.marmalade.LoaderThread$MediaPlayerManager this$1>;
+
+        $r3 = staticinvoke <com.ideaworks3d.marmalade.LoaderThread$MediaPlayerManager: int[] access$300(com.ideaworks3d.marmalade.LoaderThread$MediaPlayerManager)>($r2);
+
+        $i0 = r0.<com.ideaworks3d.marmalade.LoaderThread$MediaPlayerManager$MediaPlayerListener: int m_channel>;
+
+        $i0 = $r3[$i0];
+
+        if $i0 != 0 goto label1;
+
+        $r2 = r0.<com.ideaworks3d.marmalade.LoaderThread$MediaPlayerManager$MediaPlayerListener: com.ideaworks3d.marmalade.LoaderThread$MediaPlayerManager this$1>;
+
+        $r4 = <com.ideaworks3d.marmalade.LoaderThread$AudioState: com.ideaworks3d.marmalade.LoaderThread$AudioState PlaybackCompleted>;
+
+        $i0 = r0.<com.ideaworks3d.marmalade.LoaderThread$MediaPlayerManager$MediaPlayerListener: int m_channel>;
+
+        staticinvoke <com.ideaworks3d.marmalade.LoaderThread$MediaPlayerManager: void access$000(com.ideaworks3d.marmalade.LoaderThread$MediaPlayerManager,com.ideaworks3d.marmalade.LoaderThread$AudioState,int)>($r2, $r4, $i0);
+
+        $r2 = r0.<com.ideaworks3d.marmalade.LoaderThread$MediaPlayerManager$MediaPlayerListener: com.ideaworks3d.marmalade.LoaderThread$MediaPlayerManager this$1>;
+
+        $i0 = r0.<com.ideaworks3d.marmalade.LoaderThread$MediaPlayerManager$MediaPlayerListener: int m_channel>;
+
+        virtualinvoke $r2.<com.ideaworks3d.marmalade.LoaderThread$MediaPlayerManager: void audioStop(int)>($i0);
+
+        return;
+
+     label1:
+        $r2 = r0.<com.ideaworks3d.marmalade.LoaderThread$MediaPlayerManager$MediaPlayerListener: com.ideaworks3d.marmalade.LoaderThread$MediaPlayerManager this$1>;
+
+     label2:
+        $r5 = staticinvoke <com.ideaworks3d.marmalade.LoaderThread$MediaPlayerManager: android.media.MediaPlayer[] access$100(com.ideaworks3d.marmalade.LoaderThread$MediaPlayerManager)>($r2);
+
+     label3:
+        $i0 = r0.<com.ideaworks3d.marmalade.LoaderThread$MediaPlayerManager$MediaPlayerListener: int m_channel>;
+
+        $r1 = $r5[$i0];
+
+     label4:
+        virtualinvoke $r1.<android.media.MediaPlayer: void start()>();
+
+     label5:
+        $r2 = r0.<com.ideaworks3d.marmalade.LoaderThread$MediaPlayerManager$MediaPlayerListener: com.ideaworks3d.marmalade.LoaderThread$MediaPlayerManager this$1>;
+
+        $r4 = <com.ideaworks3d.marmalade.LoaderThread$AudioState: com.ideaworks3d.marmalade.LoaderThread$AudioState Started>;
+
+        $i0 = r0.<com.ideaworks3d.marmalade.LoaderThread$MediaPlayerManager$MediaPlayerListener: int m_channel>;
+
+        staticinvoke <com.ideaworks3d.marmalade.LoaderThread$MediaPlayerManager: void access$000(com.ideaworks3d.marmalade.LoaderThread$MediaPlayerManager,com.ideaworks3d.marmalade.LoaderThread$AudioState,int)>($r2, $r4, $i0);
+
+        return;
+
+     label6:
+        $r6 := @caughtexception;
+
+        $r7 = (java.lang.IllegalStateException) $r6;
+
+        virtualinvoke $r7.<java.lang.IllegalStateException: void printStackTrace()>();
+
+        return;
+
+        catch java.lang.IllegalStateException from label2 to label3 with label6;
+        catch java.lang.IllegalStateException from label4 to label5 with label6;
+    }
+
+    public boolean onError(android.media.MediaPlayer, int, int)
+    {
+        com.ideaworks3d.marmalade.LoaderThread$MediaPlayerManager$MediaPlayerListener r0;
+        android.media.MediaPlayer $r1;
+        int $i0, $i1;
+        android.media.MediaPlayer[] $r2;
+        com.ideaworks3d.marmalade.LoaderThread$MediaPlayerManager $r3;
+        com.ideaworks3d.marmalade.LoaderThread$AudioState $r4;
+
+        r0 := @this: com.ideaworks3d.marmalade.LoaderThread$MediaPlayerManager$MediaPlayerListener;
+
+        $r1 := @parameter0: android.media.MediaPlayer;
+
+        $i0 := @parameter1: int;
+
+        $i1 := @parameter2: int;
+
+        $r3 = r0.<com.ideaworks3d.marmalade.LoaderThread$MediaPlayerManager$MediaPlayerListener: com.ideaworks3d.marmalade.LoaderThread$MediaPlayerManager this$1>;
+
+        $r4 = <com.ideaworks3d.marmalade.LoaderThread$AudioState: com.ideaworks3d.marmalade.LoaderThread$AudioState Error>;
+
+        $i0 = r0.<com.ideaworks3d.marmalade.LoaderThread$MediaPlayerManager$MediaPlayerListener: int m_channel>;
+
+        staticinvoke <com.ideaworks3d.marmalade.LoaderThread$MediaPlayerManager: void access$000(com.ideaworks3d.marmalade.LoaderThread$MediaPlayerManager,com.ideaworks3d.marmalade.LoaderThread$AudioState,int)>($r3, $r4, $i0);
+
+        $r3 = r0.<com.ideaworks3d.marmalade.LoaderThread$MediaPlayerManager$MediaPlayerListener: com.ideaworks3d.marmalade.LoaderThread$MediaPlayerManager this$1>;
+
+        $r2 = staticinvoke <com.ideaworks3d.marmalade.LoaderThread$MediaPlayerManager: android.media.MediaPlayer[] access$100(com.ideaworks3d.marmalade.LoaderThread$MediaPlayerManager)>($r3);
+
+        $i0 = r0.<com.ideaworks3d.marmalade.LoaderThread$MediaPlayerManager$MediaPlayerListener: int m_channel>;
+
+        $r1 = $r2[$i0];
+
+        virtualinvoke $r1.<android.media.MediaPlayer: void reset()>();
+
+        $r3 = r0.<com.ideaworks3d.marmalade.LoaderThread$MediaPlayerManager$MediaPlayerListener: com.ideaworks3d.marmalade.LoaderThread$MediaPlayerManager this$1>;
+
+        $r4 = <com.ideaworks3d.marmalade.LoaderThread$AudioState: com.ideaworks3d.marmalade.LoaderThread$AudioState Idle>;
+
+        $i0 = r0.<com.ideaworks3d.marmalade.LoaderThread$MediaPlayerManager$MediaPlayerListener: int m_channel>;
+
+        staticinvoke <com.ideaworks3d.marmalade.LoaderThread$MediaPlayerManager: void access$000(com.ideaworks3d.marmalade.LoaderThread$MediaPlayerManager,com.ideaworks3d.marmalade.LoaderThread$AudioState,int)>($r3, $r4, $i0);
+
+        $r3 = r0.<com.ideaworks3d.marmalade.LoaderThread$MediaPlayerManager$MediaPlayerListener: com.ideaworks3d.marmalade.LoaderThread$MediaPlayerManager this$1>;
+
+        $i0 = r0.<com.ideaworks3d.marmalade.LoaderThread$MediaPlayerManager$MediaPlayerListener: int m_channel>;
+
+        staticinvoke <com.ideaworks3d.marmalade.LoaderThread$MediaPlayerManager: void access$200(com.ideaworks3d.marmalade.LoaderThread$MediaPlayerManager,int)>($r3, $i0);
+
+        return 1;
+    }
+}

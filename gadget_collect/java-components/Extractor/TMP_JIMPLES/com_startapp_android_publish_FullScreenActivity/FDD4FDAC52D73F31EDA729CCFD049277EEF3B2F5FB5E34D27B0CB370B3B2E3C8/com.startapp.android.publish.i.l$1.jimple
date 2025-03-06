@@ -1,0 +1,55 @@
+class com.startapp.android.publish.i.l$1 extends android.os.Handler
+{
+    final com.startapp.android.publish.i.l a;
+
+    void <init>(com.startapp.android.publish.i.l, android.os.Looper)
+    {
+        com.startapp.android.publish.i.l$1 r0;
+        com.startapp.android.publish.i.l $r1;
+        android.os.Looper $r2;
+
+        r0 := @this: com.startapp.android.publish.i.l$1;
+
+        $r1 := @parameter0: com.startapp.android.publish.i.l;
+
+        $r2 := @parameter1: android.os.Looper;
+
+        r0.<com.startapp.android.publish.i.l$1: com.startapp.android.publish.i.l a> = $r1;
+
+        specialinvoke r0.<android.os.Handler: void <init>(android.os.Looper)>($r2);
+
+        return;
+    }
+
+    public void handleMessage(android.os.Message)
+    {
+        com.startapp.android.publish.i.l$1 r0;
+        android.os.Message $r1;
+        int $i0;
+        com.startapp.android.publish.i.l $r2;
+
+        r0 := @this: com.startapp.android.publish.i.l$1;
+
+        $r1 := @parameter0: android.os.Message;
+
+        $i0 = $r1.<android.os.Message: int what>;
+
+        lookupswitch($i0)
+        {
+            case 1: goto label2;
+            default: goto label1;
+        };
+
+     label1:
+        specialinvoke r0.<android.os.Handler: void handleMessage(android.os.Message)>($r1);
+
+        return;
+
+     label2:
+        $r2 = r0.<com.startapp.android.publish.i.l$1: com.startapp.android.publish.i.l a>;
+
+        staticinvoke <com.startapp.android.publish.i.l: void a(com.startapp.android.publish.i.l)>($r2);
+
+        return;
+    }
+}

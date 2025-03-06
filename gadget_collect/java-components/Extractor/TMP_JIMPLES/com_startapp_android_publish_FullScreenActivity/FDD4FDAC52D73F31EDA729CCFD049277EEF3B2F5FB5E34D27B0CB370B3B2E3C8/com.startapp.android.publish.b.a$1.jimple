@@ -1,0 +1,97 @@
+class com.startapp.android.publish.b.a$1 extends java.lang.Object implements com.startapp.android.publish.b.h$c
+{
+    final android.content.Context a;
+    final com.startapp.android.publish.b.a b;
+
+    void <init>(com.startapp.android.publish.b.a, android.content.Context)
+    {
+        com.startapp.android.publish.b.a$1 r0;
+        com.startapp.android.publish.b.a $r1;
+        android.content.Context $r2;
+
+        r0 := @this: com.startapp.android.publish.b.a$1;
+
+        $r1 := @parameter0: com.startapp.android.publish.b.a;
+
+        $r2 := @parameter1: android.content.Context;
+
+        r0.<com.startapp.android.publish.b.a$1: com.startapp.android.publish.b.a b> = $r1;
+
+        r0.<com.startapp.android.publish.b.a$1: android.content.Context a> = $r2;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public void a(java.util.List)
+    {
+        com.startapp.android.publish.b.a$1 r0;
+        java.util.List $r1;
+        java.util.Iterator $r2;
+        boolean $z0;
+        java.lang.Object $r3;
+        com.startapp.android.publish.b.h$b $r4;
+        java.lang.StringBuilder $r5;
+        com.startapp.android.publish.model.AdPreferences$Placement $r6;
+        java.lang.String $r7;
+        com.startapp.android.publish.b.a $r8;
+        android.content.Context $r9;
+        com.startapp.android.publish.model.AdPreferences $r10;
+        com.startapp.android.publish.model.SodaPreferences $r11;
+
+        r0 := @this: com.startapp.android.publish.b.a$1;
+
+        $r1 := @parameter0: java.util.List;
+
+        if $r1 == null goto label2;
+
+        $r2 = interfaceinvoke $r1.<java.util.List: java.util.Iterator iterator()>();
+
+     label1:
+        $z0 = interfaceinvoke $r2.<java.util.Iterator: boolean hasNext()>();
+
+        if $z0 == 0 goto label2;
+
+        $r3 = interfaceinvoke $r2.<java.util.Iterator: java.lang.Object next()>();
+
+        $r4 = (com.startapp.android.publish.b.h$b) $r3;
+
+        $r5 = new java.lang.StringBuilder;
+
+        specialinvoke $r5.<java.lang.StringBuilder: void <init>()>();
+
+        $r5 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Loading from disk: ");
+
+        $r6 = $r4.<com.startapp.android.publish.b.h$b: com.startapp.android.publish.model.AdPreferences$Placement placement>;
+
+        $r5 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($r6);
+
+        $r7 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <com.startapp.android.publish.i.n: void a(java.lang.String,int,java.lang.String)>("AdCacheManager", 4, $r7);
+
+        $r8 = r0.<com.startapp.android.publish.b.a$1: com.startapp.android.publish.b.a b>;
+
+        $r9 = r0.<com.startapp.android.publish.b.a$1: android.content.Context a>;
+
+        $r6 = virtualinvoke $r4.<com.startapp.android.publish.b.h$b: com.startapp.android.publish.model.AdPreferences$Placement a()>();
+
+        $r10 = virtualinvoke $r4.<com.startapp.android.publish.b.h$b: com.startapp.android.publish.model.AdPreferences b()>();
+
+        $r11 = virtualinvoke $r4.<com.startapp.android.publish.b.h$b: com.startapp.android.publish.model.SodaPreferences c()>();
+
+        staticinvoke <com.startapp.android.publish.b.a: com.startapp.android.publish.b.c a(com.startapp.android.publish.b.a,android.content.Context,com.startapp.android.publish.StartAppAd,com.startapp.android.publish.model.AdPreferences$Placement,com.startapp.android.publish.model.AdPreferences,com.startapp.android.publish.model.SodaPreferences,com.startapp.android.publish.AdEventListener,boolean)>($r8, $r9, null, $r6, $r10, $r11, null, 1);
+
+        goto label1;
+
+     label2:
+        $r8 = r0.<com.startapp.android.publish.b.a$1: com.startapp.android.publish.b.a b>;
+
+        $r9 = r0.<com.startapp.android.publish.b.a$1: android.content.Context a>;
+
+        staticinvoke <com.startapp.android.publish.b.a: void a(com.startapp.android.publish.b.a,android.content.Context)>($r8, $r9);
+
+        return;
+    }
+}

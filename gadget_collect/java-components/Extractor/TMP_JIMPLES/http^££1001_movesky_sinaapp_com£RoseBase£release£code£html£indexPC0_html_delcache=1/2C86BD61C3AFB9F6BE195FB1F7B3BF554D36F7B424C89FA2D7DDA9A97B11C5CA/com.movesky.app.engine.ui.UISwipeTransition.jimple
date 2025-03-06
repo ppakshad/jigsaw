@@ -1,0 +1,248 @@
+public class com.movesky.app.engine.ui.UISwipeTransition extends java.lang.Object
+{
+    private com.movesky.app.engine.ui.UISwipeTransition$Direction direction;
+    private float duration;
+    private float dx;
+    private float elapsed;
+    private boolean first;
+    private float width;
+
+    public void <init>(float, com.movesky.app.engine.ui.UISwipeTransition$Direction, float)
+    {
+        com.movesky.app.engine.ui.UISwipeTransition r0;
+        float $f0, $f1;
+        com.movesky.app.engine.ui.UISwipeTransition$Direction $r1;
+
+        r0 := @this: com.movesky.app.engine.ui.UISwipeTransition;
+
+        $f0 := @parameter0: float;
+
+        $r1 := @parameter1: com.movesky.app.engine.ui.UISwipeTransition$Direction;
+
+        $f1 := @parameter2: float;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        r0.<com.movesky.app.engine.ui.UISwipeTransition: float duration> = 0.3F;
+
+        r0.<com.movesky.app.engine.ui.UISwipeTransition: com.movesky.app.engine.ui.UISwipeTransition$Direction direction> = $r1;
+
+        r0.<com.movesky.app.engine.ui.UISwipeTransition: float width> = 320.0F;
+
+        return;
+    }
+
+    public boolean isDone()
+    {
+        com.movesky.app.engine.ui.UISwipeTransition r0;
+        float $f0, $f1;
+        byte $b0;
+
+        r0 := @this: com.movesky.app.engine.ui.UISwipeTransition;
+
+        $f1 = r0.<com.movesky.app.engine.ui.UISwipeTransition: float elapsed>;
+
+        $f0 = r0.<com.movesky.app.engine.ui.UISwipeTransition: float duration>;
+
+        $b0 = $f1 cmpl $f0;
+
+        if $b0 < 0 goto label1;
+
+        return 1;
+
+     label1:
+        return 0;
+    }
+
+    public void onDraw(android.graphics.Canvas, com.movesky.app.engine.ui.UIView, com.movesky.app.engine.ui.UIView)
+    {
+        com.movesky.app.engine.ui.UISwipeTransition r0;
+        android.graphics.Canvas $r1;
+        com.movesky.app.engine.ui.UIView $r2, $r3;
+        float $f0, $f1;
+        byte $b0;
+        com.movesky.app.engine.ui.UISwipeTransition$Direction $r4, $r5;
+
+        r0 := @this: com.movesky.app.engine.ui.UISwipeTransition;
+
+        $r1 := @parameter0: android.graphics.Canvas;
+
+        $r2 := @parameter1: com.movesky.app.engine.ui.UIView;
+
+        $r3 := @parameter2: com.movesky.app.engine.ui.UIView;
+
+        virtualinvoke $r1.<android.graphics.Canvas: int save()>();
+
+        $f0 = r0.<com.movesky.app.engine.ui.UISwipeTransition: float dx>;
+
+        virtualinvoke $r1.<android.graphics.Canvas: void translate(float,float)>($f0, 0.0F);
+
+        virtualinvoke $r2.<com.movesky.app.engine.ui.UIView: void onDraw(android.graphics.Canvas)>($r1);
+
+        virtualinvoke $r1.<android.graphics.Canvas: void restore()>();
+
+        $f0 = r0.<com.movesky.app.engine.ui.UISwipeTransition: float elapsed>;
+
+        $b0 = $f0 cmpl 0.0F;
+
+        if $b0 <= 0 goto label3;
+
+        virtualinvoke $r1.<android.graphics.Canvas: int save()>();
+
+        $r4 = r0.<com.movesky.app.engine.ui.UISwipeTransition: com.movesky.app.engine.ui.UISwipeTransition$Direction direction>;
+
+        $r5 = <com.movesky.app.engine.ui.UISwipeTransition$Direction: com.movesky.app.engine.ui.UISwipeTransition$Direction FROM_RIGHT>;
+
+        if $r4 != $r5 goto label2;
+
+        $f0 = r0.<com.movesky.app.engine.ui.UISwipeTransition: float width>;
+
+        $f1 = r0.<com.movesky.app.engine.ui.UISwipeTransition: float dx>;
+
+        $f0 = $f0 + $f1;
+
+     label1:
+        virtualinvoke $r1.<android.graphics.Canvas: void translate(float,float)>($f0, 0.0F);
+
+        virtualinvoke $r3.<com.movesky.app.engine.ui.UIView: void onDraw(android.graphics.Canvas)>($r1);
+
+        virtualinvoke $r1.<android.graphics.Canvas: void restore()>();
+
+        return;
+
+     label2:
+        $f0 = r0.<com.movesky.app.engine.ui.UISwipeTransition: float width>;
+
+        $f0 = neg $f0;
+
+        $f1 = r0.<com.movesky.app.engine.ui.UISwipeTransition: float dx>;
+
+        $f0 = $f0 + $f1;
+
+        goto label1;
+
+     label3:
+        return;
+    }
+
+    public void onUpdate(float)
+    {
+        com.movesky.app.engine.ui.UISwipeTransition r0;
+        float $f0, $f1, $f2;
+        boolean $z0;
+        int[] $r1;
+        com.movesky.app.engine.ui.UISwipeTransition$Direction $r2;
+        int $i0;
+
+        r0 := @this: com.movesky.app.engine.ui.UISwipeTransition;
+
+        $f0 := @parameter0: float;
+
+        $z0 = r0.<com.movesky.app.engine.ui.UISwipeTransition: boolean first>;
+
+        if $z0 == 0 goto label1;
+
+        r0.<com.movesky.app.engine.ui.UISwipeTransition: boolean first> = 0;
+
+        return;
+
+     label1:
+        $f1 = r0.<com.movesky.app.engine.ui.UISwipeTransition: float elapsed>;
+
+        $f0 = $f1 + $f0;
+
+        r0.<com.movesky.app.engine.ui.UISwipeTransition: float elapsed> = $f0;
+
+        $r1 = <com.movesky.app.engine.ui.UISwipeTransition$1: int[] $SwitchMap$com$movesky$app$engine$ui$UISwipeTransition$Direction>;
+
+        $r2 = r0.<com.movesky.app.engine.ui.UISwipeTransition: com.movesky.app.engine.ui.UISwipeTransition$Direction direction>;
+
+        $i0 = virtualinvoke $r2.<com.movesky.app.engine.ui.UISwipeTransition$Direction: int ordinal()>();
+
+        $i0 = $r1[$i0];
+
+        lookupswitch($i0)
+        {
+            case 1: goto label3;
+            case 2: goto label4;
+            default: goto label2;
+        };
+
+     label2:
+        return;
+
+     label3:
+        $f0 = r0.<com.movesky.app.engine.ui.UISwipeTransition: float width>;
+
+        $f1 = r0.<com.movesky.app.engine.ui.UISwipeTransition: float duration>;
+
+        $f2 = r0.<com.movesky.app.engine.ui.UISwipeTransition: float elapsed>;
+
+        $f1 = staticinvoke <com.movesky.app.engine.util.MathUtils: float scale(float,float,float,float,float,boolean)>(0.0F, $f1, 0.0F, 1.0F, $f2, 1);
+
+        $f0 = staticinvoke <com.movesky.app.engine.util.MathUtils: float lerp(float,float,float)>(0.0F, $f0, $f1);
+
+        $f0 = neg $f0;
+
+        r0.<com.movesky.app.engine.ui.UISwipeTransition: float dx> = $f0;
+
+        return;
+
+     label4:
+        $f0 = r0.<com.movesky.app.engine.ui.UISwipeTransition: float width>;
+
+        $f1 = r0.<com.movesky.app.engine.ui.UISwipeTransition: float duration>;
+
+        $f2 = r0.<com.movesky.app.engine.ui.UISwipeTransition: float elapsed>;
+
+        $f1 = staticinvoke <com.movesky.app.engine.util.MathUtils: float scale(float,float,float,float,float,boolean)>(0.0F, $f1, 0.0F, 1.0F, $f2, 1);
+
+        $f0 = staticinvoke <com.movesky.app.engine.util.MathUtils: float lerp(float,float,float)>(0.0F, $f0, $f1);
+
+        r0.<com.movesky.app.engine.ui.UISwipeTransition: float dx> = $f0;
+
+        return;
+    }
+
+    public void reset()
+    {
+        com.movesky.app.engine.ui.UISwipeTransition r0;
+        int $i0;
+        int[] $r1;
+        com.movesky.app.engine.ui.UISwipeTransition$Direction $r2;
+
+        r0 := @this: com.movesky.app.engine.ui.UISwipeTransition;
+
+        r0.<com.movesky.app.engine.ui.UISwipeTransition: float elapsed> = 0.0F;
+
+        r0.<com.movesky.app.engine.ui.UISwipeTransition: boolean first> = 1;
+
+        $r1 = <com.movesky.app.engine.ui.UISwipeTransition$1: int[] $SwitchMap$com$movesky$app$engine$ui$UISwipeTransition$Direction>;
+
+        $r2 = r0.<com.movesky.app.engine.ui.UISwipeTransition: com.movesky.app.engine.ui.UISwipeTransition$Direction direction>;
+
+        $i0 = virtualinvoke $r2.<com.movesky.app.engine.ui.UISwipeTransition$Direction: int ordinal()>();
+
+        $i0 = $r1[$i0];
+
+        lookupswitch($i0)
+        {
+            case 1: goto label2;
+            case 2: goto label3;
+            default: goto label1;
+        };
+
+     label1:
+        return;
+
+     label2:
+        r0.<com.movesky.app.engine.ui.UISwipeTransition: float dx> = -1.0F;
+
+        return;
+
+     label3:
+        r0.<com.movesky.app.engine.ui.UISwipeTransition: float dx> = 1.0F;
+
+        return;
+    }
+}

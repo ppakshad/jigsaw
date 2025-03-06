@@ -1,0 +1,54 @@
+public class com.movesky.app.main.achievements.impls.IncrementOnUnitCreateAchievement extends com.movesky.app.main.achievements.BBTHAchievement
+{
+
+    public void <init>(com.movesky.app.engine.achievements.AchievementInfo)
+    {
+        com.movesky.app.main.achievements.impls.IncrementOnUnitCreateAchievement r0;
+        com.movesky.app.engine.achievements.AchievementInfo $r1;
+
+        r0 := @this: com.movesky.app.main.achievements.impls.IncrementOnUnitCreateAchievement;
+
+        $r1 := @parameter0: com.movesky.app.engine.achievements.AchievementInfo;
+
+        specialinvoke r0.<com.movesky.app.main.achievements.BBTHAchievement: void <init>(com.movesky.app.engine.achievements.AchievementInfo)>($r1);
+
+        return;
+    }
+
+    public void unitCreated(com.movesky.app.main.achievements.events.UnitCreatedEvent)
+    {
+        com.movesky.app.main.achievements.impls.IncrementOnUnitCreateAchievement r0;
+        com.movesky.app.main.achievements.events.UnitCreatedEvent $r1;
+        com.movesky.app.main.Player $r2;
+        com.movesky.app.main.Team $r3, $r5;
+        com.movesky.app.main.units.Unit $r4;
+
+        r0 := @this: com.movesky.app.main.achievements.impls.IncrementOnUnitCreateAchievement;
+
+        $r1 := @parameter0: com.movesky.app.main.achievements.events.UnitCreatedEvent;
+
+        $r2 = virtualinvoke $r1.<com.movesky.app.main.achievements.events.UnitCreatedEvent: com.movesky.app.main.Player getLocalPlayer()>();
+
+        $r3 = virtualinvoke $r2.<com.movesky.app.main.Player: com.movesky.app.main.Team getTeam()>();
+
+        $r4 = virtualinvoke $r1.<com.movesky.app.main.achievements.events.UnitCreatedEvent: com.movesky.app.main.units.Unit getUnit()>();
+
+        $r5 = virtualinvoke $r4.<com.movesky.app.main.units.Unit: com.movesky.app.main.Team getTeam()>();
+
+        if $r3 != $r5 goto label1;
+
+        virtualinvoke r0.<com.movesky.app.main.achievements.impls.IncrementOnUnitCreateAchievement: void increment()>();
+
+     label1:
+        return;
+    }
+
+    public boolean usesUnitCreated()
+    {
+        com.movesky.app.main.achievements.impls.IncrementOnUnitCreateAchievement r0;
+
+        r0 := @this: com.movesky.app.main.achievements.impls.IncrementOnUnitCreateAchievement;
+
+        return 1;
+    }
+}

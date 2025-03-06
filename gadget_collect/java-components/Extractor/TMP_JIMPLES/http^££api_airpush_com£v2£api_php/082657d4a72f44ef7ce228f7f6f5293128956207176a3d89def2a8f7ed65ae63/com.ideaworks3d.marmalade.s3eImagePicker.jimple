@@ -1,0 +1,218 @@
+class com.ideaworks3d.marmalade.s3eImagePicker extends java.lang.Object
+{
+    static final java.lang.String[] CURSOR_TYPE;
+    static final int S3E_IMAGEPICKER_FORMAT_ANY;
+    static final int S3E_IMAGEPICKER_FORMAT_ANYIMAGE;
+    static final int S3E_IMAGEPICKER_FORMAT_ANYVIDEO;
+    static final int S3E_IMAGEPICKER_FORMAT_BMP;
+    static final int S3E_IMAGEPICKER_FORMAT_GIF;
+    static final int S3E_IMAGEPICKER_FORMAT_JPG;
+    static final int S3E_IMAGEPICKER_FORMAT_PNG;
+    static final int S3E_IMAGEPICKER_FORMAT_UNKNOWN;
+    private volatile boolean waitingForFile;
+
+    static void <clinit>()
+    {
+        java.lang.String[] $r0;
+
+        <com.ideaworks3d.marmalade.s3eImagePicker: int S3E_IMAGEPICKER_FORMAT_UNKNOWN> = 7;
+
+        <com.ideaworks3d.marmalade.s3eImagePicker: int S3E_IMAGEPICKER_FORMAT_PNG> = 2;
+
+        <com.ideaworks3d.marmalade.s3eImagePicker: int S3E_IMAGEPICKER_FORMAT_JPG> = 1;
+
+        <com.ideaworks3d.marmalade.s3eImagePicker: int S3E_IMAGEPICKER_FORMAT_GIF> = 4;
+
+        <com.ideaworks3d.marmalade.s3eImagePicker: int S3E_IMAGEPICKER_FORMAT_BMP> = 3;
+
+        <com.ideaworks3d.marmalade.s3eImagePicker: int S3E_IMAGEPICKER_FORMAT_ANYVIDEO> = 5;
+
+        <com.ideaworks3d.marmalade.s3eImagePicker: int S3E_IMAGEPICKER_FORMAT_ANYIMAGE> = 6;
+
+        <com.ideaworks3d.marmalade.s3eImagePicker: int S3E_IMAGEPICKER_FORMAT_ANY> = 0;
+
+        $r0 = newarray (java.lang.String)[2];
+
+        $r0[0] = "_data";
+
+        $r0[1] = "_id";
+
+        <com.ideaworks3d.marmalade.s3eImagePicker: java.lang.String[] CURSOR_TYPE> = $r0;
+
+        return;
+    }
+
+    void <init>()
+    {
+        com.ideaworks3d.marmalade.s3eImagePicker r0;
+
+        r0 := @this: com.ideaworks3d.marmalade.s3eImagePicker;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    static boolean access$002(com.ideaworks3d.marmalade.s3eImagePicker, boolean)
+    {
+        com.ideaworks3d.marmalade.s3eImagePicker $r0;
+        boolean $z0;
+
+        $r0 := @parameter0: com.ideaworks3d.marmalade.s3eImagePicker;
+
+        $z0 := @parameter1: boolean;
+
+        $r0.<com.ideaworks3d.marmalade.s3eImagePicker: boolean waitingForFile> = $z0;
+
+        return $z0;
+    }
+
+    public native boolean ImagePicker_addResultString(java.lang.String);
+
+    public java.io.File convertUriToFile(android.net.Uri)
+    {
+        com.ideaworks3d.marmalade.s3eImagePicker r0;
+        android.net.Uri $r1;
+        java.lang.String[] $r2;
+        com.ideaworks3d.marmalade.s3eImagePicker$1 $r3;
+        java.io.File[] $r4;
+        com.ideaworks3d.marmalade.LoaderActivity $r5;
+        boolean $z0;
+        java.io.File $r6;
+
+        r0 := @this: com.ideaworks3d.marmalade.s3eImagePicker;
+
+        $r1 := @parameter0: android.net.Uri;
+
+        $r4 = newarray (java.io.File)[1];
+
+        r0.<com.ideaworks3d.marmalade.s3eImagePicker: boolean waitingForFile> = 1;
+
+        $r5 = <com.ideaworks3d.marmalade.LoaderActivity: com.ideaworks3d.marmalade.LoaderActivity m_Activity>;
+
+        $r2 = <com.ideaworks3d.marmalade.s3eImagePicker: java.lang.String[] CURSOR_TYPE>;
+
+        $r3 = new com.ideaworks3d.marmalade.s3eImagePicker$1;
+
+        specialinvoke $r3.<com.ideaworks3d.marmalade.s3eImagePicker$1: void <init>(com.ideaworks3d.marmalade.s3eImagePicker,java.io.File[],android.net.Uri)>(r0, $r4, $r1);
+
+        virtualinvoke $r5.<com.ideaworks3d.marmalade.LoaderActivity: void getCursor(android.net.Uri,java.lang.String[],com.ideaworks3d.marmalade.LoaderActivity$CursorCompleteListener)>($r1, $r2, $r3);
+
+     label1:
+        $z0 = r0.<com.ideaworks3d.marmalade.s3eImagePicker: boolean waitingForFile>;
+
+        if $z0 == 0 goto label2;
+
+        staticinvoke <com.ideaworks3d.marmalade.LoaderAPI: void s3eDeviceYield(int)>(1);
+
+        goto label1;
+
+     label2:
+        $r6 = $r4[0];
+
+        return $r6;
+    }
+
+    public java.lang.String s3eImagePickerToFile(int, int)
+    {
+        com.ideaworks3d.marmalade.s3eImagePicker r0;
+        int $i0, $i1;
+        android.content.Intent $r1;
+        android.net.Uri $r2;
+        com.ideaworks3d.marmalade.LoaderActivity $r3;
+        java.io.File $r4;
+        java.lang.StringBuilder $r5;
+        java.lang.String $r6;
+        boolean $z0;
+
+        r0 := @this: com.ideaworks3d.marmalade.s3eImagePicker;
+
+        $i0 := @parameter0: int;
+
+        $i1 := @parameter1: int;
+
+        $r1 = new android.content.Intent;
+
+        $r2 = <android.provider.MediaStore$Images$Media: android.net.Uri EXTERNAL_CONTENT_URI>;
+
+        specialinvoke $r1.<android.content.Intent: void <init>(java.lang.String,android.net.Uri)>("android.intent.action.PICK", $r2);
+
+        lookupswitch($i0)
+        {
+            case 0: goto label5;
+            case 1: goto label2;
+            case 2: goto label2;
+            case 3: goto label2;
+            case 4: goto label2;
+            case 5: goto label4;
+            case 6: goto label2;
+            default: goto label1;
+        };
+
+     label1:
+        return null;
+
+     label2:
+        virtualinvoke $r1.<android.content.Intent: android.content.Intent setType(java.lang.String)>("image/*");
+
+     label3:
+        $r3 = <com.ideaworks3d.marmalade.LoaderActivity: com.ideaworks3d.marmalade.LoaderActivity m_Activity>;
+
+        $r1 = virtualinvoke $r3.<com.ideaworks3d.marmalade.LoaderActivity: android.content.Intent ExecuteIntent(android.content.Intent)>($r1);
+
+        if $r1 != null goto label6;
+
+        return null;
+
+     label4:
+        $r1 = new android.content.Intent;
+
+        $r2 = <android.provider.MediaStore$Video$Media: android.net.Uri EXTERNAL_CONTENT_URI>;
+
+        specialinvoke $r1.<android.content.Intent: void <init>(java.lang.String,android.net.Uri)>("android.intent.action.PICK", $r2);
+
+        virtualinvoke $r1.<android.content.Intent: android.content.Intent setType(java.lang.String)>("video/*");
+
+        goto label3;
+
+     label5:
+        $r1 = new android.content.Intent;
+
+        specialinvoke $r1.<android.content.Intent: void <init>(java.lang.String)>("android.intent.action.PICK");
+
+        virtualinvoke $r1.<android.content.Intent: android.content.Intent setType(java.lang.String)>("*/*");
+
+        goto label3;
+
+     label6:
+        $r2 = virtualinvoke $r1.<android.content.Intent: android.net.Uri getData()>();
+
+        $r4 = virtualinvoke r0.<com.ideaworks3d.marmalade.s3eImagePicker: java.io.File convertUriToFile(android.net.Uri)>($r2);
+
+        if $r4 != null goto label7;
+
+        return null;
+
+     label7:
+        $r5 = new java.lang.StringBuilder;
+
+        specialinvoke $r5.<java.lang.StringBuilder: void <init>()>();
+
+        $r5 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("raw://");
+
+        $r6 = virtualinvoke $r4.<java.io.File: java.lang.String getPath()>();
+
+        $r5 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r6);
+
+        $r6 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        $z0 = virtualinvoke r0.<com.ideaworks3d.marmalade.s3eImagePicker: boolean ImagePicker_addResultString(java.lang.String)>($r6);
+
+        if $z0 != 0 goto label8;
+
+        return null;
+
+     label8:
+        return $r6;
+    }
+}

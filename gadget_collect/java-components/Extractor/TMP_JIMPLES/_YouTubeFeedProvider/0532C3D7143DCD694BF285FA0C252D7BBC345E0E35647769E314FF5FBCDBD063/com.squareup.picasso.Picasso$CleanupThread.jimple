@@ -1,0 +1,123 @@
+class com.squareup.picasso.Picasso$CleanupThread extends java.lang.Thread
+{
+    private final android.os.Handler handler;
+    private final java.lang.ref.ReferenceQueue referenceQueue;
+
+    void <init>(java.lang.ref.ReferenceQueue, android.os.Handler)
+    {
+        com.squareup.picasso.Picasso$CleanupThread r0;
+        java.lang.ref.ReferenceQueue $r1;
+        android.os.Handler $r2;
+
+        r0 := @this: com.squareup.picasso.Picasso$CleanupThread;
+
+        $r1 := @parameter0: java.lang.ref.ReferenceQueue;
+
+        $r2 := @parameter1: android.os.Handler;
+
+        specialinvoke r0.<java.lang.Thread: void <init>()>();
+
+        r0.<com.squareup.picasso.Picasso$CleanupThread: java.lang.ref.ReferenceQueue referenceQueue> = $r1;
+
+        r0.<com.squareup.picasso.Picasso$CleanupThread: android.os.Handler handler> = $r2;
+
+        virtualinvoke r0.<com.squareup.picasso.Picasso$CleanupThread: void setDaemon(boolean)>(1);
+
+        virtualinvoke r0.<com.squareup.picasso.Picasso$CleanupThread: void setName(java.lang.String)>("Picasso-refQueue");
+
+        return;
+    }
+
+    public void run()
+    {
+        com.squareup.picasso.Picasso$CleanupThread r0;
+        java.lang.ref.ReferenceQueue $r1;
+        java.lang.ref.Reference $r2;
+        com.squareup.picasso.Action$RequestWeakReference $r3;
+        android.os.Handler $r4;
+        android.os.Message $r5;
+        com.squareup.picasso.Action $r6;
+        java.lang.Throwable $r7;
+        java.lang.Exception $r8;
+        com.squareup.picasso.Picasso$CleanupThread$1 $r9;
+
+        r0 := @this: com.squareup.picasso.Picasso$CleanupThread;
+
+        staticinvoke <android.os.Process: void setThreadPriority(int)>(10);
+
+     label01:
+        $r1 = r0.<com.squareup.picasso.Picasso$CleanupThread: java.lang.ref.ReferenceQueue referenceQueue>;
+
+     label02:
+        $r2 = virtualinvoke $r1.<java.lang.ref.ReferenceQueue: java.lang.ref.Reference remove(long)>(1000L);
+
+     label03:
+        $r3 = (com.squareup.picasso.Action$RequestWeakReference) $r2;
+
+        $r4 = r0.<com.squareup.picasso.Picasso$CleanupThread: android.os.Handler handler>;
+
+     label04:
+        $r5 = virtualinvoke $r4.<android.os.Handler: android.os.Message obtainMessage()>();
+
+     label05:
+        if $r3 == null goto label10;
+
+     label06:
+        $r5.<android.os.Message: int what> = 3;
+
+        $r6 = $r3.<com.squareup.picasso.Action$RequestWeakReference: com.squareup.picasso.Action action>;
+
+        $r5.<android.os.Message: java.lang.Object obj> = $r6;
+
+        $r4 = r0.<com.squareup.picasso.Picasso$CleanupThread: android.os.Handler handler>;
+
+     label07:
+        virtualinvoke $r4.<android.os.Handler: boolean sendMessage(android.os.Message)>($r5);
+
+     label08:
+        goto label01;
+
+     label09:
+        $r7 := @caughtexception;
+
+        return;
+
+     label10:
+        virtualinvoke $r5.<android.os.Message: void recycle()>();
+
+     label11:
+        goto label01;
+
+     label12:
+        $r8 := @caughtexception;
+
+        $r4 = r0.<com.squareup.picasso.Picasso$CleanupThread: android.os.Handler handler>;
+
+        $r9 = new com.squareup.picasso.Picasso$CleanupThread$1;
+
+        specialinvoke $r9.<com.squareup.picasso.Picasso$CleanupThread$1: void <init>(com.squareup.picasso.Picasso$CleanupThread,java.lang.Exception)>(r0, $r8);
+
+        virtualinvoke $r4.<android.os.Handler: boolean post(java.lang.Runnable)>($r9);
+
+        return;
+
+        catch java.lang.InterruptedException from label02 to label03 with label09;
+        catch java.lang.InterruptedException from label04 to label05 with label09;
+        catch java.lang.InterruptedException from label07 to label08 with label09;
+        catch java.lang.InterruptedException from label10 to label11 with label09;
+        catch java.lang.Exception from label01 to label05 with label12;
+        catch java.lang.Exception from label06 to label08 with label12;
+        catch java.lang.Exception from label10 to label11 with label12;
+    }
+
+    void shutdown()
+    {
+        com.squareup.picasso.Picasso$CleanupThread r0;
+
+        r0 := @this: com.squareup.picasso.Picasso$CleanupThread;
+
+        virtualinvoke r0.<com.squareup.picasso.Picasso$CleanupThread: void interrupt()>();
+
+        return;
+    }
+}

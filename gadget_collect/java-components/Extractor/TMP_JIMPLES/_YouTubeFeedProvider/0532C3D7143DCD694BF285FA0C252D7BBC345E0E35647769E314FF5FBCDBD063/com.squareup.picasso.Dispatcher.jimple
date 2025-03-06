@@ -1,0 +1,1563 @@
+class com.squareup.picasso.Dispatcher extends java.lang.Object
+{
+    static final int AIRPLANE_MODE_CHANGE;
+    private static final int AIRPLANE_MODE_OFF;
+    private static final int AIRPLANE_MODE_ON;
+    private static final int BATCH_DELAY;
+    private static final java.lang.String DISPATCHER_THREAD_NAME;
+    static final int HUNTER_BATCH_COMPLETE;
+    static final int HUNTER_COMPLETE;
+    static final int HUNTER_DECODE_FAILED;
+    static final int HUNTER_DELAY_NEXT_BATCH;
+    static final int HUNTER_RETRY;
+    static final int NETWORK_STATE_CHANGE;
+    static final int REQUEST_BATCH_RESUME;
+    static final int REQUEST_CANCEL;
+    static final int REQUEST_GCED;
+    static final int REQUEST_SUBMIT;
+    private static final int RETRY_DELAY;
+    static final int TAG_PAUSE;
+    static final int TAG_RESUME;
+    boolean airplaneMode;
+    final java.util.List batch;
+    final com.squareup.picasso.Cache cache;
+    final android.content.Context context;
+    final com.squareup.picasso.Dispatcher$DispatcherThread dispatcherThread;
+    final com.squareup.picasso.Downloader downloader;
+    final java.util.Map failedActions;
+    final android.os.Handler handler;
+    final java.util.Map hunterMap;
+    final android.os.Handler mainThreadHandler;
+    final java.util.Map pausedActions;
+    final java.util.Set pausedTags;
+    final com.squareup.picasso.Dispatcher$NetworkBroadcastReceiver receiver;
+    final boolean scansNetworkChanges;
+    final java.util.concurrent.ExecutorService service;
+    final com.squareup.picasso.Stats stats;
+
+    void <init>(android.content.Context, java.util.concurrent.ExecutorService, android.os.Handler, com.squareup.picasso.Downloader, com.squareup.picasso.Cache, com.squareup.picasso.Stats)
+    {
+        com.squareup.picasso.Dispatcher r0;
+        android.content.Context $r1, $r14;
+        java.util.concurrent.ExecutorService $r2;
+        android.os.Handler $r3;
+        com.squareup.picasso.Downloader $r4;
+        com.squareup.picasso.Cache $r5;
+        com.squareup.picasso.Stats $r6;
+        com.squareup.picasso.Dispatcher$DispatcherThread $r7;
+        android.os.Looper $r8;
+        java.util.LinkedHashMap $r9;
+        java.util.WeakHashMap $r10;
+        java.util.HashSet $r11;
+        com.squareup.picasso.Dispatcher$DispatcherHandler $r12;
+        java.util.ArrayList $r13;
+        boolean $z0;
+        com.squareup.picasso.Dispatcher$NetworkBroadcastReceiver $r15;
+
+        r0 := @this: com.squareup.picasso.Dispatcher;
+
+        $r1 := @parameter0: android.content.Context;
+
+        $r2 := @parameter1: java.util.concurrent.ExecutorService;
+
+        $r3 := @parameter2: android.os.Handler;
+
+        $r4 := @parameter3: com.squareup.picasso.Downloader;
+
+        $r5 := @parameter4: com.squareup.picasso.Cache;
+
+        $r6 := @parameter5: com.squareup.picasso.Stats;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        $r7 = new com.squareup.picasso.Dispatcher$DispatcherThread;
+
+        specialinvoke $r7.<com.squareup.picasso.Dispatcher$DispatcherThread: void <init>()>();
+
+        r0.<com.squareup.picasso.Dispatcher: com.squareup.picasso.Dispatcher$DispatcherThread dispatcherThread> = $r7;
+
+        $r7 = r0.<com.squareup.picasso.Dispatcher: com.squareup.picasso.Dispatcher$DispatcherThread dispatcherThread>;
+
+        virtualinvoke $r7.<com.squareup.picasso.Dispatcher$DispatcherThread: void start()>();
+
+        $r7 = r0.<com.squareup.picasso.Dispatcher: com.squareup.picasso.Dispatcher$DispatcherThread dispatcherThread>;
+
+        $r8 = virtualinvoke $r7.<com.squareup.picasso.Dispatcher$DispatcherThread: android.os.Looper getLooper()>();
+
+        staticinvoke <com.squareup.picasso.Utils: void flushStackLocalLeaks(android.os.Looper)>($r8);
+
+        r0.<com.squareup.picasso.Dispatcher: android.content.Context context> = $r1;
+
+        r0.<com.squareup.picasso.Dispatcher: java.util.concurrent.ExecutorService service> = $r2;
+
+        $r9 = new java.util.LinkedHashMap;
+
+        specialinvoke $r9.<java.util.LinkedHashMap: void <init>()>();
+
+        r0.<com.squareup.picasso.Dispatcher: java.util.Map hunterMap> = $r9;
+
+        $r10 = new java.util.WeakHashMap;
+
+        specialinvoke $r10.<java.util.WeakHashMap: void <init>()>();
+
+        r0.<com.squareup.picasso.Dispatcher: java.util.Map failedActions> = $r10;
+
+        $r10 = new java.util.WeakHashMap;
+
+        specialinvoke $r10.<java.util.WeakHashMap: void <init>()>();
+
+        r0.<com.squareup.picasso.Dispatcher: java.util.Map pausedActions> = $r10;
+
+        $r11 = new java.util.HashSet;
+
+        specialinvoke $r11.<java.util.HashSet: void <init>()>();
+
+        r0.<com.squareup.picasso.Dispatcher: java.util.Set pausedTags> = $r11;
+
+        $r12 = new com.squareup.picasso.Dispatcher$DispatcherHandler;
+
+        $r7 = r0.<com.squareup.picasso.Dispatcher: com.squareup.picasso.Dispatcher$DispatcherThread dispatcherThread>;
+
+        $r8 = virtualinvoke $r7.<com.squareup.picasso.Dispatcher$DispatcherThread: android.os.Looper getLooper()>();
+
+        specialinvoke $r12.<com.squareup.picasso.Dispatcher$DispatcherHandler: void <init>(android.os.Looper,com.squareup.picasso.Dispatcher)>($r8, r0);
+
+        r0.<com.squareup.picasso.Dispatcher: android.os.Handler handler> = $r12;
+
+        r0.<com.squareup.picasso.Dispatcher: com.squareup.picasso.Downloader downloader> = $r4;
+
+        r0.<com.squareup.picasso.Dispatcher: android.os.Handler mainThreadHandler> = $r3;
+
+        r0.<com.squareup.picasso.Dispatcher: com.squareup.picasso.Cache cache> = $r5;
+
+        r0.<com.squareup.picasso.Dispatcher: com.squareup.picasso.Stats stats> = $r6;
+
+        $r13 = new java.util.ArrayList;
+
+        specialinvoke $r13.<java.util.ArrayList: void <init>(int)>(4);
+
+        r0.<com.squareup.picasso.Dispatcher: java.util.List batch> = $r13;
+
+        $r14 = r0.<com.squareup.picasso.Dispatcher: android.content.Context context>;
+
+        $z0 = staticinvoke <com.squareup.picasso.Utils: boolean isAirplaneModeOn(android.content.Context)>($r14);
+
+        r0.<com.squareup.picasso.Dispatcher: boolean airplaneMode> = $z0;
+
+        $z0 = staticinvoke <com.squareup.picasso.Utils: boolean hasPermission(android.content.Context,java.lang.String)>($r1, "android.permission.ACCESS_NETWORK_STATE");
+
+        r0.<com.squareup.picasso.Dispatcher: boolean scansNetworkChanges> = $z0;
+
+        $r15 = new com.squareup.picasso.Dispatcher$NetworkBroadcastReceiver;
+
+        specialinvoke $r15.<com.squareup.picasso.Dispatcher$NetworkBroadcastReceiver: void <init>(com.squareup.picasso.Dispatcher)>(r0);
+
+        r0.<com.squareup.picasso.Dispatcher: com.squareup.picasso.Dispatcher$NetworkBroadcastReceiver receiver> = $r15;
+
+        $r15 = r0.<com.squareup.picasso.Dispatcher: com.squareup.picasso.Dispatcher$NetworkBroadcastReceiver receiver>;
+
+        virtualinvoke $r15.<com.squareup.picasso.Dispatcher$NetworkBroadcastReceiver: void register()>();
+
+        return;
+    }
+
+    private void batch(com.squareup.picasso.BitmapHunter)
+    {
+        com.squareup.picasso.Dispatcher r0;
+        com.squareup.picasso.BitmapHunter $r1;
+        boolean $z0;
+        java.util.List $r2;
+        android.os.Handler $r3;
+
+        r0 := @this: com.squareup.picasso.Dispatcher;
+
+        $r1 := @parameter0: com.squareup.picasso.BitmapHunter;
+
+        $z0 = virtualinvoke $r1.<com.squareup.picasso.BitmapHunter: boolean isCancelled()>();
+
+        if $z0 == 0 goto label1;
+
+        return;
+
+     label1:
+        $r2 = r0.<com.squareup.picasso.Dispatcher: java.util.List batch>;
+
+        interfaceinvoke $r2.<java.util.List: boolean add(java.lang.Object)>($r1);
+
+        $r3 = r0.<com.squareup.picasso.Dispatcher: android.os.Handler handler>;
+
+        $z0 = virtualinvoke $r3.<android.os.Handler: boolean hasMessages(int)>(7);
+
+        if $z0 != 0 goto label2;
+
+        $r3 = r0.<com.squareup.picasso.Dispatcher: android.os.Handler handler>;
+
+        virtualinvoke $r3.<android.os.Handler: boolean sendEmptyMessageDelayed(int,long)>(7, 200L);
+
+     label2:
+        return;
+    }
+
+    private void flushFailedActions()
+    {
+        com.squareup.picasso.Dispatcher r0;
+        java.util.Map $r1;
+        boolean $z0;
+        java.util.Collection $r2;
+        java.util.Iterator $r3;
+        java.lang.Object $r4;
+        com.squareup.picasso.Action $r5;
+        com.squareup.picasso.Picasso $r6;
+        com.squareup.picasso.Request $r7;
+        java.lang.String $r8;
+
+        r0 := @this: com.squareup.picasso.Dispatcher;
+
+        $r1 = r0.<com.squareup.picasso.Dispatcher: java.util.Map failedActions>;
+
+        $z0 = interfaceinvoke $r1.<java.util.Map: boolean isEmpty()>();
+
+        if $z0 != 0 goto label3;
+
+        $r1 = r0.<com.squareup.picasso.Dispatcher: java.util.Map failedActions>;
+
+        $r2 = interfaceinvoke $r1.<java.util.Map: java.util.Collection values()>();
+
+        $r3 = interfaceinvoke $r2.<java.util.Collection: java.util.Iterator iterator()>();
+
+     label1:
+        $z0 = interfaceinvoke $r3.<java.util.Iterator: boolean hasNext()>();
+
+        if $z0 == 0 goto label3;
+
+        $r4 = interfaceinvoke $r3.<java.util.Iterator: java.lang.Object next()>();
+
+        $r5 = (com.squareup.picasso.Action) $r4;
+
+        interfaceinvoke $r3.<java.util.Iterator: void remove()>();
+
+        $r6 = virtualinvoke $r5.<com.squareup.picasso.Action: com.squareup.picasso.Picasso getPicasso()>();
+
+        $z0 = $r6.<com.squareup.picasso.Picasso: boolean loggingEnabled>;
+
+        if $z0 == 0 goto label2;
+
+        $r7 = virtualinvoke $r5.<com.squareup.picasso.Action: com.squareup.picasso.Request getRequest()>();
+
+        $r8 = virtualinvoke $r7.<com.squareup.picasso.Request: java.lang.String logId()>();
+
+        staticinvoke <com.squareup.picasso.Utils: void log(java.lang.String,java.lang.String,java.lang.String)>("Dispatcher", "replaying", $r8);
+
+     label2:
+        virtualinvoke r0.<com.squareup.picasso.Dispatcher: void performSubmit(com.squareup.picasso.Action,boolean)>($r5, 0);
+
+        goto label1;
+
+     label3:
+        return;
+    }
+
+    private void logBatch(java.util.List)
+    {
+        com.squareup.picasso.Dispatcher r0;
+        java.util.List $r1;
+        boolean $z0;
+        java.lang.Object $r2;
+        com.squareup.picasso.BitmapHunter $r3;
+        com.squareup.picasso.Picasso $r4;
+        java.lang.StringBuilder $r5;
+        java.util.Iterator $r6;
+        int $i0;
+        java.lang.String $r7;
+
+        r0 := @this: com.squareup.picasso.Dispatcher;
+
+        $r1 := @parameter0: java.util.List;
+
+        if $r1 == null goto label5;
+
+        $z0 = interfaceinvoke $r1.<java.util.List: boolean isEmpty()>();
+
+        if $z0 == 0 goto label1;
+
+        return;
+
+     label1:
+        $r2 = interfaceinvoke $r1.<java.util.List: java.lang.Object get(int)>(0);
+
+        $r3 = (com.squareup.picasso.BitmapHunter) $r2;
+
+        $r4 = virtualinvoke $r3.<com.squareup.picasso.BitmapHunter: com.squareup.picasso.Picasso getPicasso()>();
+
+        $z0 = $r4.<com.squareup.picasso.Picasso: boolean loggingEnabled>;
+
+        if $z0 == 0 goto label5;
+
+        $r5 = new java.lang.StringBuilder;
+
+        specialinvoke $r5.<java.lang.StringBuilder: void <init>()>();
+
+        $r6 = interfaceinvoke $r1.<java.util.List: java.util.Iterator iterator()>();
+
+     label2:
+        $z0 = interfaceinvoke $r6.<java.util.Iterator: boolean hasNext()>();
+
+        if $z0 == 0 goto label4;
+
+        $r2 = interfaceinvoke $r6.<java.util.Iterator: java.lang.Object next()>();
+
+        $r3 = (com.squareup.picasso.BitmapHunter) $r2;
+
+        $i0 = virtualinvoke $r5.<java.lang.StringBuilder: int length()>();
+
+        if $i0 <= 0 goto label3;
+
+        virtualinvoke $r5.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(", ");
+
+     label3:
+        $r7 = staticinvoke <com.squareup.picasso.Utils: java.lang.String getLogIdsForHunter(com.squareup.picasso.BitmapHunter)>($r3);
+
+        virtualinvoke $r5.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r7);
+
+        goto label2;
+
+     label4:
+        $r7 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <com.squareup.picasso.Utils: void log(java.lang.String,java.lang.String,java.lang.String)>("Dispatcher", "delivered", $r7);
+
+     label5:
+        return;
+    }
+
+    private void markForReplay(com.squareup.picasso.Action)
+    {
+        com.squareup.picasso.Dispatcher r0;
+        com.squareup.picasso.Action $r1;
+        java.lang.Object $r2;
+        java.util.Map $r3;
+
+        r0 := @this: com.squareup.picasso.Dispatcher;
+
+        $r1 := @parameter0: com.squareup.picasso.Action;
+
+        $r2 = virtualinvoke $r1.<com.squareup.picasso.Action: java.lang.Object getTarget()>();
+
+        if $r2 == null goto label1;
+
+        $r1.<com.squareup.picasso.Action: boolean willReplay> = 1;
+
+        $r3 = r0.<com.squareup.picasso.Dispatcher: java.util.Map failedActions>;
+
+        interfaceinvoke $r3.<java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>($r2, $r1);
+
+     label1:
+        return;
+    }
+
+    private void markForReplay(com.squareup.picasso.BitmapHunter)
+    {
+        com.squareup.picasso.Dispatcher r0;
+        com.squareup.picasso.BitmapHunter $r1;
+        com.squareup.picasso.Action $r2;
+        java.util.List $r3;
+        int $i0, $i1;
+        java.lang.Object $r4;
+
+        r0 := @this: com.squareup.picasso.Dispatcher;
+
+        $r1 := @parameter0: com.squareup.picasso.BitmapHunter;
+
+        $r2 = virtualinvoke $r1.<com.squareup.picasso.BitmapHunter: com.squareup.picasso.Action getAction()>();
+
+        if $r2 == null goto label1;
+
+        specialinvoke r0.<com.squareup.picasso.Dispatcher: void markForReplay(com.squareup.picasso.Action)>($r2);
+
+     label1:
+        $r3 = virtualinvoke $r1.<com.squareup.picasso.BitmapHunter: java.util.List getActions()>();
+
+        if $r3 == null goto label3;
+
+        $i0 = interfaceinvoke $r3.<java.util.List: int size()>();
+
+        $i1 = 0;
+
+     label2:
+        if $i1 >= $i0 goto label3;
+
+        $r4 = interfaceinvoke $r3.<java.util.List: java.lang.Object get(int)>($i1);
+
+        $r2 = (com.squareup.picasso.Action) $r4;
+
+        specialinvoke r0.<com.squareup.picasso.Dispatcher: void markForReplay(com.squareup.picasso.Action)>($r2);
+
+        $i1 = $i1 + 1;
+
+        goto label2;
+
+     label3:
+        return;
+    }
+
+    void dispatchAirplaneModeChange(boolean)
+    {
+        com.squareup.picasso.Dispatcher r0;
+        boolean $z0;
+        android.os.Handler $r1, $r2;
+        android.os.Message $r3;
+        byte $b0;
+
+        r0 := @this: com.squareup.picasso.Dispatcher;
+
+        $z0 := @parameter0: boolean;
+
+        $r1 = r0.<com.squareup.picasso.Dispatcher: android.os.Handler handler>;
+
+        $r2 = r0.<com.squareup.picasso.Dispatcher: android.os.Handler handler>;
+
+        if $z0 == 0 goto label2;
+
+        $b0 = 1;
+
+     label1:
+        $r3 = virtualinvoke $r2.<android.os.Handler: android.os.Message obtainMessage(int,int,int)>(10, $b0, 0);
+
+        virtualinvoke $r1.<android.os.Handler: boolean sendMessage(android.os.Message)>($r3);
+
+        return;
+
+     label2:
+        $b0 = 0;
+
+        goto label1;
+    }
+
+    void dispatchCancel(com.squareup.picasso.Action)
+    {
+        com.squareup.picasso.Dispatcher r0;
+        com.squareup.picasso.Action $r1;
+        android.os.Handler $r2, $r4;
+        android.os.Message $r3;
+
+        r0 := @this: com.squareup.picasso.Dispatcher;
+
+        $r1 := @parameter0: com.squareup.picasso.Action;
+
+        $r2 = r0.<com.squareup.picasso.Dispatcher: android.os.Handler handler>;
+
+        $r4 = r0.<com.squareup.picasso.Dispatcher: android.os.Handler handler>;
+
+        $r3 = virtualinvoke $r4.<android.os.Handler: android.os.Message obtainMessage(int,java.lang.Object)>(2, $r1);
+
+        virtualinvoke $r2.<android.os.Handler: boolean sendMessage(android.os.Message)>($r3);
+
+        return;
+    }
+
+    void dispatchComplete(com.squareup.picasso.BitmapHunter)
+    {
+        com.squareup.picasso.Dispatcher r0;
+        com.squareup.picasso.BitmapHunter $r1;
+        android.os.Handler $r2, $r4;
+        android.os.Message $r3;
+
+        r0 := @this: com.squareup.picasso.Dispatcher;
+
+        $r1 := @parameter0: com.squareup.picasso.BitmapHunter;
+
+        $r2 = r0.<com.squareup.picasso.Dispatcher: android.os.Handler handler>;
+
+        $r4 = r0.<com.squareup.picasso.Dispatcher: android.os.Handler handler>;
+
+        $r3 = virtualinvoke $r4.<android.os.Handler: android.os.Message obtainMessage(int,java.lang.Object)>(4, $r1);
+
+        virtualinvoke $r2.<android.os.Handler: boolean sendMessage(android.os.Message)>($r3);
+
+        return;
+    }
+
+    void dispatchFailed(com.squareup.picasso.BitmapHunter)
+    {
+        com.squareup.picasso.Dispatcher r0;
+        com.squareup.picasso.BitmapHunter $r1;
+        android.os.Handler $r2, $r4;
+        android.os.Message $r3;
+
+        r0 := @this: com.squareup.picasso.Dispatcher;
+
+        $r1 := @parameter0: com.squareup.picasso.BitmapHunter;
+
+        $r2 = r0.<com.squareup.picasso.Dispatcher: android.os.Handler handler>;
+
+        $r4 = r0.<com.squareup.picasso.Dispatcher: android.os.Handler handler>;
+
+        $r3 = virtualinvoke $r4.<android.os.Handler: android.os.Message obtainMessage(int,java.lang.Object)>(6, $r1);
+
+        virtualinvoke $r2.<android.os.Handler: boolean sendMessage(android.os.Message)>($r3);
+
+        return;
+    }
+
+    void dispatchNetworkStateChange(android.net.NetworkInfo)
+    {
+        com.squareup.picasso.Dispatcher r0;
+        android.net.NetworkInfo $r1;
+        android.os.Handler $r2, $r4;
+        android.os.Message $r3;
+
+        r0 := @this: com.squareup.picasso.Dispatcher;
+
+        $r1 := @parameter0: android.net.NetworkInfo;
+
+        $r2 = r0.<com.squareup.picasso.Dispatcher: android.os.Handler handler>;
+
+        $r4 = r0.<com.squareup.picasso.Dispatcher: android.os.Handler handler>;
+
+        $r3 = virtualinvoke $r4.<android.os.Handler: android.os.Message obtainMessage(int,java.lang.Object)>(9, $r1);
+
+        virtualinvoke $r2.<android.os.Handler: boolean sendMessage(android.os.Message)>($r3);
+
+        return;
+    }
+
+    void dispatchPauseTag(java.lang.Object)
+    {
+        com.squareup.picasso.Dispatcher r0;
+        java.lang.Object $r1;
+        android.os.Handler $r2, $r4;
+        android.os.Message $r3;
+
+        r0 := @this: com.squareup.picasso.Dispatcher;
+
+        $r1 := @parameter0: java.lang.Object;
+
+        $r2 = r0.<com.squareup.picasso.Dispatcher: android.os.Handler handler>;
+
+        $r4 = r0.<com.squareup.picasso.Dispatcher: android.os.Handler handler>;
+
+        $r3 = virtualinvoke $r4.<android.os.Handler: android.os.Message obtainMessage(int,java.lang.Object)>(11, $r1);
+
+        virtualinvoke $r2.<android.os.Handler: boolean sendMessage(android.os.Message)>($r3);
+
+        return;
+    }
+
+    void dispatchResumeTag(java.lang.Object)
+    {
+        com.squareup.picasso.Dispatcher r0;
+        java.lang.Object $r1;
+        android.os.Handler $r2, $r4;
+        android.os.Message $r3;
+
+        r0 := @this: com.squareup.picasso.Dispatcher;
+
+        $r1 := @parameter0: java.lang.Object;
+
+        $r2 = r0.<com.squareup.picasso.Dispatcher: android.os.Handler handler>;
+
+        $r4 = r0.<com.squareup.picasso.Dispatcher: android.os.Handler handler>;
+
+        $r3 = virtualinvoke $r4.<android.os.Handler: android.os.Message obtainMessage(int,java.lang.Object)>(12, $r1);
+
+        virtualinvoke $r2.<android.os.Handler: boolean sendMessage(android.os.Message)>($r3);
+
+        return;
+    }
+
+    void dispatchRetry(com.squareup.picasso.BitmapHunter)
+    {
+        com.squareup.picasso.Dispatcher r0;
+        com.squareup.picasso.BitmapHunter $r1;
+        android.os.Handler $r2, $r4;
+        android.os.Message $r3;
+
+        r0 := @this: com.squareup.picasso.Dispatcher;
+
+        $r1 := @parameter0: com.squareup.picasso.BitmapHunter;
+
+        $r2 = r0.<com.squareup.picasso.Dispatcher: android.os.Handler handler>;
+
+        $r4 = r0.<com.squareup.picasso.Dispatcher: android.os.Handler handler>;
+
+        $r3 = virtualinvoke $r4.<android.os.Handler: android.os.Message obtainMessage(int,java.lang.Object)>(5, $r1);
+
+        virtualinvoke $r2.<android.os.Handler: boolean sendMessageDelayed(android.os.Message,long)>($r3, 500L);
+
+        return;
+    }
+
+    void dispatchSubmit(com.squareup.picasso.Action)
+    {
+        com.squareup.picasso.Dispatcher r0;
+        com.squareup.picasso.Action $r1;
+        android.os.Handler $r2, $r4;
+        android.os.Message $r3;
+
+        r0 := @this: com.squareup.picasso.Dispatcher;
+
+        $r1 := @parameter0: com.squareup.picasso.Action;
+
+        $r2 = r0.<com.squareup.picasso.Dispatcher: android.os.Handler handler>;
+
+        $r4 = r0.<com.squareup.picasso.Dispatcher: android.os.Handler handler>;
+
+        $r3 = virtualinvoke $r4.<android.os.Handler: android.os.Message obtainMessage(int,java.lang.Object)>(1, $r1);
+
+        virtualinvoke $r2.<android.os.Handler: boolean sendMessage(android.os.Message)>($r3);
+
+        return;
+    }
+
+    void performAirplaneModeChange(boolean)
+    {
+        com.squareup.picasso.Dispatcher r0;
+        boolean $z0;
+
+        r0 := @this: com.squareup.picasso.Dispatcher;
+
+        $z0 := @parameter0: boolean;
+
+        r0.<com.squareup.picasso.Dispatcher: boolean airplaneMode> = $z0;
+
+        return;
+    }
+
+    void performBatchComplete()
+    {
+        com.squareup.picasso.Dispatcher r0;
+        java.util.ArrayList $r1;
+        android.os.Message $r2;
+        java.util.List $r3;
+        android.os.Handler $r4, $r5;
+
+        r0 := @this: com.squareup.picasso.Dispatcher;
+
+        $r1 = new java.util.ArrayList;
+
+        $r3 = r0.<com.squareup.picasso.Dispatcher: java.util.List batch>;
+
+        specialinvoke $r1.<java.util.ArrayList: void <init>(java.util.Collection)>($r3);
+
+        $r3 = r0.<com.squareup.picasso.Dispatcher: java.util.List batch>;
+
+        interfaceinvoke $r3.<java.util.List: void clear()>();
+
+        $r4 = r0.<com.squareup.picasso.Dispatcher: android.os.Handler mainThreadHandler>;
+
+        $r5 = r0.<com.squareup.picasso.Dispatcher: android.os.Handler mainThreadHandler>;
+
+        $r2 = virtualinvoke $r5.<android.os.Handler: android.os.Message obtainMessage(int,java.lang.Object)>(8, $r1);
+
+        virtualinvoke $r4.<android.os.Handler: boolean sendMessage(android.os.Message)>($r2);
+
+        specialinvoke r0.<com.squareup.picasso.Dispatcher: void logBatch(java.util.List)>($r1);
+
+        return;
+    }
+
+    void performCancel(com.squareup.picasso.Action)
+    {
+        com.squareup.picasso.Dispatcher r0;
+        com.squareup.picasso.Action $r1;
+        java.lang.String $r2;
+        java.util.Map $r3;
+        java.lang.Object $r4;
+        com.squareup.picasso.BitmapHunter $r5;
+        boolean $z0;
+        com.squareup.picasso.Picasso $r6;
+        com.squareup.picasso.Request $r7;
+        java.util.Set $r8;
+
+        r0 := @this: com.squareup.picasso.Dispatcher;
+
+        $r1 := @parameter0: com.squareup.picasso.Action;
+
+        $r2 = virtualinvoke $r1.<com.squareup.picasso.Action: java.lang.String getKey()>();
+
+        $r3 = r0.<com.squareup.picasso.Dispatcher: java.util.Map hunterMap>;
+
+        $r4 = interfaceinvoke $r3.<java.util.Map: java.lang.Object get(java.lang.Object)>($r2);
+
+        $r5 = (com.squareup.picasso.BitmapHunter) $r4;
+
+        if $r5 == null goto label1;
+
+        virtualinvoke $r5.<com.squareup.picasso.BitmapHunter: void detach(com.squareup.picasso.Action)>($r1);
+
+        $z0 = virtualinvoke $r5.<com.squareup.picasso.BitmapHunter: boolean cancel()>();
+
+        if $z0 == 0 goto label1;
+
+        $r3 = r0.<com.squareup.picasso.Dispatcher: java.util.Map hunterMap>;
+
+        interfaceinvoke $r3.<java.util.Map: java.lang.Object remove(java.lang.Object)>($r2);
+
+        $r6 = virtualinvoke $r1.<com.squareup.picasso.Action: com.squareup.picasso.Picasso getPicasso()>();
+
+        $z0 = $r6.<com.squareup.picasso.Picasso: boolean loggingEnabled>;
+
+        if $z0 == 0 goto label1;
+
+        $r7 = virtualinvoke $r1.<com.squareup.picasso.Action: com.squareup.picasso.Request getRequest()>();
+
+        $r2 = virtualinvoke $r7.<com.squareup.picasso.Request: java.lang.String logId()>();
+
+        staticinvoke <com.squareup.picasso.Utils: void log(java.lang.String,java.lang.String,java.lang.String)>("Dispatcher", "canceled", $r2);
+
+     label1:
+        $r8 = r0.<com.squareup.picasso.Dispatcher: java.util.Set pausedTags>;
+
+        $r4 = virtualinvoke $r1.<com.squareup.picasso.Action: java.lang.Object getTag()>();
+
+        $z0 = interfaceinvoke $r8.<java.util.Set: boolean contains(java.lang.Object)>($r4);
+
+        if $z0 == 0 goto label2;
+
+        $r3 = r0.<com.squareup.picasso.Dispatcher: java.util.Map pausedActions>;
+
+        $r4 = virtualinvoke $r1.<com.squareup.picasso.Action: java.lang.Object getTarget()>();
+
+        interfaceinvoke $r3.<java.util.Map: java.lang.Object remove(java.lang.Object)>($r4);
+
+        $r6 = virtualinvoke $r1.<com.squareup.picasso.Action: com.squareup.picasso.Picasso getPicasso()>();
+
+        $z0 = $r6.<com.squareup.picasso.Picasso: boolean loggingEnabled>;
+
+        if $z0 == 0 goto label2;
+
+        $r7 = virtualinvoke $r1.<com.squareup.picasso.Action: com.squareup.picasso.Request getRequest()>();
+
+        $r2 = virtualinvoke $r7.<com.squareup.picasso.Request: java.lang.String logId()>();
+
+        staticinvoke <com.squareup.picasso.Utils: void log(java.lang.String,java.lang.String,java.lang.String,java.lang.String)>("Dispatcher", "canceled", $r2, "because paused request got canceled");
+
+     label2:
+        $r3 = r0.<com.squareup.picasso.Dispatcher: java.util.Map failedActions>;
+
+        $r4 = virtualinvoke $r1.<com.squareup.picasso.Action: java.lang.Object getTarget()>();
+
+        $r4 = interfaceinvoke $r3.<java.util.Map: java.lang.Object remove(java.lang.Object)>($r4);
+
+        $r1 = (com.squareup.picasso.Action) $r4;
+
+        if $r1 == null goto label3;
+
+        $r6 = virtualinvoke $r1.<com.squareup.picasso.Action: com.squareup.picasso.Picasso getPicasso()>();
+
+        $z0 = $r6.<com.squareup.picasso.Picasso: boolean loggingEnabled>;
+
+        if $z0 == 0 goto label3;
+
+        $r7 = virtualinvoke $r1.<com.squareup.picasso.Action: com.squareup.picasso.Request getRequest()>();
+
+        $r2 = virtualinvoke $r7.<com.squareup.picasso.Request: java.lang.String logId()>();
+
+        staticinvoke <com.squareup.picasso.Utils: void log(java.lang.String,java.lang.String,java.lang.String,java.lang.String)>("Dispatcher", "canceled", $r2, "from replaying");
+
+     label3:
+        return;
+    }
+
+    void performComplete(com.squareup.picasso.BitmapHunter)
+    {
+        com.squareup.picasso.Dispatcher r0;
+        com.squareup.picasso.BitmapHunter $r1;
+        int $i0;
+        boolean $z0;
+        com.squareup.picasso.Cache $r2;
+        java.lang.String $r3;
+        android.graphics.Bitmap $r4;
+        java.util.Map $r5;
+        com.squareup.picasso.Picasso $r6;
+
+        r0 := @this: com.squareup.picasso.Dispatcher;
+
+        $r1 := @parameter0: com.squareup.picasso.BitmapHunter;
+
+        $i0 = virtualinvoke $r1.<com.squareup.picasso.BitmapHunter: int getMemoryPolicy()>();
+
+        $z0 = staticinvoke <com.squareup.picasso.MemoryPolicy: boolean shouldWriteToMemoryCache(int)>($i0);
+
+        if $z0 == 0 goto label1;
+
+        $r2 = r0.<com.squareup.picasso.Dispatcher: com.squareup.picasso.Cache cache>;
+
+        $r3 = virtualinvoke $r1.<com.squareup.picasso.BitmapHunter: java.lang.String getKey()>();
+
+        $r4 = virtualinvoke $r1.<com.squareup.picasso.BitmapHunter: android.graphics.Bitmap getResult()>();
+
+        interfaceinvoke $r2.<com.squareup.picasso.Cache: void set(java.lang.String,android.graphics.Bitmap)>($r3, $r4);
+
+     label1:
+        $r5 = r0.<com.squareup.picasso.Dispatcher: java.util.Map hunterMap>;
+
+        $r3 = virtualinvoke $r1.<com.squareup.picasso.BitmapHunter: java.lang.String getKey()>();
+
+        interfaceinvoke $r5.<java.util.Map: java.lang.Object remove(java.lang.Object)>($r3);
+
+        specialinvoke r0.<com.squareup.picasso.Dispatcher: void batch(com.squareup.picasso.BitmapHunter)>($r1);
+
+        $r6 = virtualinvoke $r1.<com.squareup.picasso.BitmapHunter: com.squareup.picasso.Picasso getPicasso()>();
+
+        $z0 = $r6.<com.squareup.picasso.Picasso: boolean loggingEnabled>;
+
+        if $z0 == 0 goto label2;
+
+        $r3 = staticinvoke <com.squareup.picasso.Utils: java.lang.String getLogIdsForHunter(com.squareup.picasso.BitmapHunter)>($r1);
+
+        staticinvoke <com.squareup.picasso.Utils: void log(java.lang.String,java.lang.String,java.lang.String,java.lang.String)>("Dispatcher", "batched", $r3, "for completion");
+
+     label2:
+        return;
+    }
+
+    void performError(com.squareup.picasso.BitmapHunter, boolean)
+    {
+        com.squareup.picasso.Dispatcher r0;
+        com.squareup.picasso.BitmapHunter $r1;
+        boolean $z0, $z1;
+        java.lang.StringBuilder $r2;
+        com.squareup.picasso.Picasso $r3;
+        java.lang.String $r4, $r5;
+        java.util.Map $r6;
+
+        r0 := @this: com.squareup.picasso.Dispatcher;
+
+        $r1 := @parameter0: com.squareup.picasso.BitmapHunter;
+
+        $z0 := @parameter1: boolean;
+
+        $r3 = virtualinvoke $r1.<com.squareup.picasso.BitmapHunter: com.squareup.picasso.Picasso getPicasso()>();
+
+        $z1 = $r3.<com.squareup.picasso.Picasso: boolean loggingEnabled>;
+
+        if $z1 == 0 goto label2;
+
+        $r4 = staticinvoke <com.squareup.picasso.Utils: java.lang.String getLogIdsForHunter(com.squareup.picasso.BitmapHunter)>($r1);
+
+        $r2 = new java.lang.StringBuilder;
+
+        specialinvoke $r2.<java.lang.StringBuilder: void <init>(java.lang.String)>("for error");
+
+        if $z0 == 0 goto label3;
+
+        $r5 = " (will replay)";
+
+     label1:
+        $r2 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r5);
+
+        $r5 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <com.squareup.picasso.Utils: void log(java.lang.String,java.lang.String,java.lang.String,java.lang.String)>("Dispatcher", "batched", $r4, $r5);
+
+     label2:
+        $r6 = r0.<com.squareup.picasso.Dispatcher: java.util.Map hunterMap>;
+
+        $r4 = virtualinvoke $r1.<com.squareup.picasso.BitmapHunter: java.lang.String getKey()>();
+
+        interfaceinvoke $r6.<java.util.Map: java.lang.Object remove(java.lang.Object)>($r4);
+
+        specialinvoke r0.<com.squareup.picasso.Dispatcher: void batch(com.squareup.picasso.BitmapHunter)>($r1);
+
+        return;
+
+     label3:
+        $r5 = "";
+
+        goto label1;
+    }
+
+    void performNetworkStateChange(android.net.NetworkInfo)
+    {
+        com.squareup.picasso.Dispatcher r0;
+        android.net.NetworkInfo $r1;
+        boolean $z0;
+        java.util.concurrent.ExecutorService $r2;
+        com.squareup.picasso.PicassoExecutorService $r3;
+
+        r0 := @this: com.squareup.picasso.Dispatcher;
+
+        $r1 := @parameter0: android.net.NetworkInfo;
+
+        $r2 = r0.<com.squareup.picasso.Dispatcher: java.util.concurrent.ExecutorService service>;
+
+        $z0 = $r2 instanceof com.squareup.picasso.PicassoExecutorService;
+
+        if $z0 == 0 goto label1;
+
+        $r2 = r0.<com.squareup.picasso.Dispatcher: java.util.concurrent.ExecutorService service>;
+
+        $r3 = (com.squareup.picasso.PicassoExecutorService) $r2;
+
+        virtualinvoke $r3.<com.squareup.picasso.PicassoExecutorService: void adjustThreadCount(android.net.NetworkInfo)>($r1);
+
+     label1:
+        if $r1 == null goto label2;
+
+        $z0 = virtualinvoke $r1.<android.net.NetworkInfo: boolean isConnected()>();
+
+        if $z0 == 0 goto label2;
+
+        specialinvoke r0.<com.squareup.picasso.Dispatcher: void flushFailedActions()>();
+
+     label2:
+        return;
+    }
+
+    void performPauseTag(java.lang.Object)
+    {
+        com.squareup.picasso.Dispatcher r0;
+        java.lang.Object $r1, $r6;
+        java.util.Set $r2;
+        boolean $z0, $z1, $z2;
+        java.util.Map $r3;
+        java.util.Collection $r4;
+        java.util.Iterator $r5;
+        com.squareup.picasso.BitmapHunter $r7;
+        com.squareup.picasso.Picasso $r8;
+        com.squareup.picasso.Action $r9;
+        java.util.List $r10;
+        com.squareup.picasso.Request $r11;
+        java.lang.String $r12, $r14;
+        java.lang.StringBuilder $r13;
+        int $i0;
+
+        r0 := @this: com.squareup.picasso.Dispatcher;
+
+        $r1 := @parameter0: java.lang.Object;
+
+        $r2 = r0.<com.squareup.picasso.Dispatcher: java.util.Set pausedTags>;
+
+        $z0 = interfaceinvoke $r2.<java.util.Set: boolean add(java.lang.Object)>($r1);
+
+        if $z0 != 0 goto label01;
+
+        return;
+
+     label01:
+        $r3 = r0.<com.squareup.picasso.Dispatcher: java.util.Map hunterMap>;
+
+        $r4 = interfaceinvoke $r3.<java.util.Map: java.util.Collection values()>();
+
+        $r5 = interfaceinvoke $r4.<java.util.Collection: java.util.Iterator iterator()>();
+
+     label02:
+        $z0 = interfaceinvoke $r5.<java.util.Iterator: boolean hasNext()>();
+
+        if $z0 == 0 goto label10;
+
+        $r6 = interfaceinvoke $r5.<java.util.Iterator: java.lang.Object next()>();
+
+        $r7 = (com.squareup.picasso.BitmapHunter) $r6;
+
+        $r8 = virtualinvoke $r7.<com.squareup.picasso.BitmapHunter: com.squareup.picasso.Picasso getPicasso()>();
+
+        $z0 = $r8.<com.squareup.picasso.Picasso: boolean loggingEnabled>;
+
+        $r9 = virtualinvoke $r7.<com.squareup.picasso.BitmapHunter: com.squareup.picasso.Action getAction()>();
+
+        $r10 = virtualinvoke $r7.<com.squareup.picasso.BitmapHunter: java.util.List getActions()>();
+
+        if $r10 == null goto label08;
+
+        $z1 = interfaceinvoke $r10.<java.util.List: boolean isEmpty()>();
+
+        if $z1 != 0 goto label08;
+
+        $z1 = 1;
+
+     label03:
+        if $r9 != null goto label04;
+
+        if $z1 == 0 goto label02;
+
+     label04:
+        if $r9 == null goto label05;
+
+        $r6 = virtualinvoke $r9.<com.squareup.picasso.Action: java.lang.Object getTag()>();
+
+        $z2 = virtualinvoke $r6.<java.lang.Object: boolean equals(java.lang.Object)>($r1);
+
+        if $z2 == 0 goto label05;
+
+        virtualinvoke $r7.<com.squareup.picasso.BitmapHunter: void detach(com.squareup.picasso.Action)>($r9);
+
+        $r3 = r0.<com.squareup.picasso.Dispatcher: java.util.Map pausedActions>;
+
+        $r6 = virtualinvoke $r9.<com.squareup.picasso.Action: java.lang.Object getTarget()>();
+
+        interfaceinvoke $r3.<java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>($r6, $r9);
+
+        if $z0 == 0 goto label05;
+
+        $r11 = $r9.<com.squareup.picasso.Action: com.squareup.picasso.Request request>;
+
+        $r12 = virtualinvoke $r11.<com.squareup.picasso.Request: java.lang.String logId()>();
+
+        $r13 = new java.lang.StringBuilder;
+
+        specialinvoke $r13.<java.lang.StringBuilder: void <init>(java.lang.String)>("because tag \'");
+
+        $r13 = virtualinvoke $r13.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($r1);
+
+        $r13 = virtualinvoke $r13.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("\' was paused");
+
+        $r14 = virtualinvoke $r13.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <com.squareup.picasso.Utils: void log(java.lang.String,java.lang.String,java.lang.String,java.lang.String)>("Dispatcher", "paused", $r12, $r14);
+
+     label05:
+        if $z1 == 0 goto label09;
+
+        $i0 = interfaceinvoke $r10.<java.util.List: int size()>();
+
+        $i0 = $i0 + -1;
+
+     label06:
+        if $i0 < 0 goto label09;
+
+        $r6 = interfaceinvoke $r10.<java.util.List: java.lang.Object get(int)>($i0);
+
+        $r9 = (com.squareup.picasso.Action) $r6;
+
+        $r6 = virtualinvoke $r9.<com.squareup.picasso.Action: java.lang.Object getTag()>();
+
+        $z1 = virtualinvoke $r6.<java.lang.Object: boolean equals(java.lang.Object)>($r1);
+
+        if $z1 == 0 goto label07;
+
+        virtualinvoke $r7.<com.squareup.picasso.BitmapHunter: void detach(com.squareup.picasso.Action)>($r9);
+
+        $r3 = r0.<com.squareup.picasso.Dispatcher: java.util.Map pausedActions>;
+
+        $r6 = virtualinvoke $r9.<com.squareup.picasso.Action: java.lang.Object getTarget()>();
+
+        interfaceinvoke $r3.<java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>($r6, $r9);
+
+        if $z0 == 0 goto label07;
+
+        $r11 = $r9.<com.squareup.picasso.Action: com.squareup.picasso.Request request>;
+
+        $r12 = virtualinvoke $r11.<com.squareup.picasso.Request: java.lang.String logId()>();
+
+        $r13 = new java.lang.StringBuilder;
+
+        specialinvoke $r13.<java.lang.StringBuilder: void <init>(java.lang.String)>("because tag \'");
+
+        $r13 = virtualinvoke $r13.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($r1);
+
+        $r13 = virtualinvoke $r13.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("\' was paused");
+
+        $r14 = virtualinvoke $r13.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <com.squareup.picasso.Utils: void log(java.lang.String,java.lang.String,java.lang.String,java.lang.String)>("Dispatcher", "paused", $r12, $r14);
+
+     label07:
+        $i0 = $i0 + -1;
+
+        goto label06;
+
+     label08:
+        $z1 = 0;
+
+        goto label03;
+
+     label09:
+        $z1 = virtualinvoke $r7.<com.squareup.picasso.BitmapHunter: boolean cancel()>();
+
+        if $z1 == 0 goto label02;
+
+        interfaceinvoke $r5.<java.util.Iterator: void remove()>();
+
+        if $z0 == 0 goto label02;
+
+        $r12 = staticinvoke <com.squareup.picasso.Utils: java.lang.String getLogIdsForHunter(com.squareup.picasso.BitmapHunter)>($r7);
+
+        staticinvoke <com.squareup.picasso.Utils: void log(java.lang.String,java.lang.String,java.lang.String,java.lang.String)>("Dispatcher", "canceled", $r12, "all actions paused");
+
+        goto label02;
+
+     label10:
+        return;
+    }
+
+    void performResumeTag(java.lang.Object)
+    {
+        com.squareup.picasso.Dispatcher r0;
+        java.lang.Object $r1, $r7;
+        java.util.Set $r2;
+        boolean $z0;
+        java.util.ArrayList $r3;
+        java.util.Map $r4;
+        java.util.Collection $r5;
+        java.util.Iterator $r6;
+        com.squareup.picasso.Action $r8;
+        android.os.Handler $r9, $r10;
+        android.os.Message $r11;
+
+        r0 := @this: com.squareup.picasso.Dispatcher;
+
+        $r1 := @parameter0: java.lang.Object;
+
+        $r2 = r0.<com.squareup.picasso.Dispatcher: java.util.Set pausedTags>;
+
+        $z0 = interfaceinvoke $r2.<java.util.Set: boolean remove(java.lang.Object)>($r1);
+
+        if $z0 != 0 goto label1;
+
+        return;
+
+     label1:
+        $r3 = null;
+
+        $r4 = r0.<com.squareup.picasso.Dispatcher: java.util.Map pausedActions>;
+
+        $r5 = interfaceinvoke $r4.<java.util.Map: java.util.Collection values()>();
+
+        $r6 = interfaceinvoke $r5.<java.util.Collection: java.util.Iterator iterator()>();
+
+     label2:
+        $z0 = interfaceinvoke $r6.<java.util.Iterator: boolean hasNext()>();
+
+        if $z0 == 0 goto label4;
+
+        $r7 = interfaceinvoke $r6.<java.util.Iterator: java.lang.Object next()>();
+
+        $r8 = (com.squareup.picasso.Action) $r7;
+
+        $r7 = virtualinvoke $r8.<com.squareup.picasso.Action: java.lang.Object getTag()>();
+
+        $z0 = virtualinvoke $r7.<java.lang.Object: boolean equals(java.lang.Object)>($r1);
+
+        if $z0 == 0 goto label2;
+
+        if $r3 != null goto label3;
+
+        $r3 = new java.util.ArrayList;
+
+        specialinvoke $r3.<java.util.ArrayList: void <init>()>();
+
+     label3:
+        interfaceinvoke $r3.<java.util.List: boolean add(java.lang.Object)>($r8);
+
+        interfaceinvoke $r6.<java.util.Iterator: void remove()>();
+
+        goto label2;
+
+     label4:
+        if $r3 == null goto label5;
+
+        $r9 = r0.<com.squareup.picasso.Dispatcher: android.os.Handler mainThreadHandler>;
+
+        $r10 = r0.<com.squareup.picasso.Dispatcher: android.os.Handler mainThreadHandler>;
+
+        $r11 = virtualinvoke $r10.<android.os.Handler: android.os.Message obtainMessage(int,java.lang.Object)>(13, $r3);
+
+        virtualinvoke $r9.<android.os.Handler: boolean sendMessage(android.os.Message)>($r11);
+
+     label5:
+        return;
+    }
+
+    void performRetry(com.squareup.picasso.BitmapHunter)
+    {
+        com.squareup.picasso.Dispatcher r0;
+        com.squareup.picasso.BitmapHunter $r1;
+        boolean $z0, $z1, $z2, $z3;
+        java.util.concurrent.ExecutorService $r2;
+        android.content.Context $r3;
+        java.lang.Object $r4;
+        android.net.ConnectivityManager $r5;
+        android.net.NetworkInfo $r6;
+        com.squareup.picasso.Picasso $r7;
+        java.lang.String $r8;
+        java.lang.Exception $r9;
+        int $i0, $i1;
+        com.squareup.picasso.NetworkPolicy $r10;
+        java.util.concurrent.Future $r11;
+
+        r0 := @this: com.squareup.picasso.Dispatcher;
+
+        $r1 := @parameter0: com.squareup.picasso.BitmapHunter;
+
+        $z0 = 1;
+
+        $z1 = virtualinvoke $r1.<com.squareup.picasso.BitmapHunter: boolean isCancelled()>();
+
+        if $z1 == 0 goto label01;
+
+        return;
+
+     label01:
+        $r2 = r0.<com.squareup.picasso.Dispatcher: java.util.concurrent.ExecutorService service>;
+
+        $z1 = interfaceinvoke $r2.<java.util.concurrent.ExecutorService: boolean isShutdown()>();
+
+        if $z1 == 0 goto label02;
+
+        virtualinvoke r0.<com.squareup.picasso.Dispatcher: void performError(com.squareup.picasso.BitmapHunter,boolean)>($r1, 0);
+
+        return;
+
+     label02:
+        $z1 = r0.<com.squareup.picasso.Dispatcher: boolean scansNetworkChanges>;
+
+        if $z1 == 0 goto label13;
+
+        $r3 = r0.<com.squareup.picasso.Dispatcher: android.content.Context context>;
+
+        $r4 = staticinvoke <com.squareup.picasso.Utils: java.lang.Object getService(android.content.Context,java.lang.String)>($r3, "connectivity");
+
+        $r5 = (android.net.ConnectivityManager) $r4;
+
+        $r6 = virtualinvoke $r5.<android.net.ConnectivityManager: android.net.NetworkInfo getActiveNetworkInfo()>();
+
+     label03:
+        if $r6 == null goto label06;
+
+        $z1 = virtualinvoke $r6.<android.net.NetworkInfo: boolean isConnected()>();
+
+        if $z1 == 0 goto label06;
+
+        $z1 = 1;
+
+     label04:
+        $z2 = r0.<com.squareup.picasso.Dispatcher: boolean airplaneMode>;
+
+        $z3 = virtualinvoke $r1.<com.squareup.picasso.BitmapHunter: boolean shouldRetry(boolean,android.net.NetworkInfo)>($z2, $r6);
+
+        $z2 = virtualinvoke $r1.<com.squareup.picasso.BitmapHunter: boolean supportsReplay()>();
+
+        if $z3 != 0 goto label08;
+
+        $z1 = r0.<com.squareup.picasso.Dispatcher: boolean scansNetworkChanges>;
+
+        if $z1 == 0 goto label07;
+
+        if $z2 == 0 goto label07;
+
+     label05:
+        virtualinvoke r0.<com.squareup.picasso.Dispatcher: void performError(com.squareup.picasso.BitmapHunter,boolean)>($r1, $z0);
+
+        if $z0 == 0 goto label14;
+
+        specialinvoke r0.<com.squareup.picasso.Dispatcher: void markForReplay(com.squareup.picasso.BitmapHunter)>($r1);
+
+        return;
+
+     label06:
+        $z1 = 0;
+
+        goto label04;
+
+     label07:
+        $z0 = 0;
+
+        goto label05;
+
+     label08:
+        $z0 = r0.<com.squareup.picasso.Dispatcher: boolean scansNetworkChanges>;
+
+        if $z0 == 0 goto label09;
+
+        if $z1 == 0 goto label12;
+
+     label09:
+        $r7 = virtualinvoke $r1.<com.squareup.picasso.BitmapHunter: com.squareup.picasso.Picasso getPicasso()>();
+
+        $z0 = $r7.<com.squareup.picasso.Picasso: boolean loggingEnabled>;
+
+        if $z0 == 0 goto label10;
+
+        $r8 = staticinvoke <com.squareup.picasso.Utils: java.lang.String getLogIdsForHunter(com.squareup.picasso.BitmapHunter)>($r1);
+
+        staticinvoke <com.squareup.picasso.Utils: void log(java.lang.String,java.lang.String,java.lang.String)>("Dispatcher", "retrying", $r8);
+
+     label10:
+        $r9 = virtualinvoke $r1.<com.squareup.picasso.BitmapHunter: java.lang.Exception getException()>();
+
+        $z0 = $r9 instanceof com.squareup.picasso.NetworkRequestHandler$ContentLengthException;
+
+        if $z0 == 0 goto label11;
+
+        $i0 = $r1.<com.squareup.picasso.BitmapHunter: int networkPolicy>;
+
+        $r10 = <com.squareup.picasso.NetworkPolicy: com.squareup.picasso.NetworkPolicy NO_CACHE>;
+
+        $i1 = $r10.<com.squareup.picasso.NetworkPolicy: int index>;
+
+        $i0 = $i0 | $i1;
+
+        $r1.<com.squareup.picasso.BitmapHunter: int networkPolicy> = $i0;
+
+     label11:
+        $r2 = r0.<com.squareup.picasso.Dispatcher: java.util.concurrent.ExecutorService service>;
+
+        $r11 = interfaceinvoke $r2.<java.util.concurrent.ExecutorService: java.util.concurrent.Future submit(java.lang.Runnable)>($r1);
+
+        $r1.<com.squareup.picasso.BitmapHunter: java.util.concurrent.Future future> = $r11;
+
+        return;
+
+     label12:
+        virtualinvoke r0.<com.squareup.picasso.Dispatcher: void performError(com.squareup.picasso.BitmapHunter,boolean)>($r1, $z2);
+
+        if $z2 == 0 goto label14;
+
+        specialinvoke r0.<com.squareup.picasso.Dispatcher: void markForReplay(com.squareup.picasso.BitmapHunter)>($r1);
+
+        return;
+
+     label13:
+        $r6 = null;
+
+        goto label03;
+
+     label14:
+        return;
+    }
+
+    void performSubmit(com.squareup.picasso.Action)
+    {
+        com.squareup.picasso.Dispatcher r0;
+        com.squareup.picasso.Action $r1;
+
+        r0 := @this: com.squareup.picasso.Dispatcher;
+
+        $r1 := @parameter0: com.squareup.picasso.Action;
+
+        virtualinvoke r0.<com.squareup.picasso.Dispatcher: void performSubmit(com.squareup.picasso.Action,boolean)>($r1, 1);
+
+        return;
+    }
+
+    void performSubmit(com.squareup.picasso.Action, boolean)
+    {
+        com.squareup.picasso.Dispatcher r0;
+        com.squareup.picasso.Action $r1;
+        boolean $z0, $z1;
+        java.util.Set $r2;
+        java.lang.Object $r3;
+        java.util.Map $r4;
+        com.squareup.picasso.Picasso $r5;
+        com.squareup.picasso.Request $r6;
+        java.lang.String $r7, $r9;
+        java.lang.StringBuilder $r8;
+        com.squareup.picasso.BitmapHunter $r10;
+        java.util.concurrent.ExecutorService $r11;
+        com.squareup.picasso.Cache $r12;
+        com.squareup.picasso.Stats $r13;
+        java.util.concurrent.Future $r14;
+
+        r0 := @this: com.squareup.picasso.Dispatcher;
+
+        $r1 := @parameter0: com.squareup.picasso.Action;
+
+        $z0 := @parameter1: boolean;
+
+        $r2 = r0.<com.squareup.picasso.Dispatcher: java.util.Set pausedTags>;
+
+        $r3 = virtualinvoke $r1.<com.squareup.picasso.Action: java.lang.Object getTag()>();
+
+        $z1 = interfaceinvoke $r2.<java.util.Set: boolean contains(java.lang.Object)>($r3);
+
+        if $z1 == 0 goto label1;
+
+        $r4 = r0.<com.squareup.picasso.Dispatcher: java.util.Map pausedActions>;
+
+        $r3 = virtualinvoke $r1.<com.squareup.picasso.Action: java.lang.Object getTarget()>();
+
+        interfaceinvoke $r4.<java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>($r3, $r1);
+
+        $r5 = virtualinvoke $r1.<com.squareup.picasso.Action: com.squareup.picasso.Picasso getPicasso()>();
+
+        $z0 = $r5.<com.squareup.picasso.Picasso: boolean loggingEnabled>;
+
+        if $z0 == 0 goto label5;
+
+        $r6 = $r1.<com.squareup.picasso.Action: com.squareup.picasso.Request request>;
+
+        $r7 = virtualinvoke $r6.<com.squareup.picasso.Request: java.lang.String logId()>();
+
+        $r8 = new java.lang.StringBuilder;
+
+        specialinvoke $r8.<java.lang.StringBuilder: void <init>(java.lang.String)>("because tag \'");
+
+        $r3 = virtualinvoke $r1.<com.squareup.picasso.Action: java.lang.Object getTag()>();
+
+        $r8 = virtualinvoke $r8.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($r3);
+
+        $r8 = virtualinvoke $r8.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("\' is paused");
+
+        $r9 = virtualinvoke $r8.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <com.squareup.picasso.Utils: void log(java.lang.String,java.lang.String,java.lang.String,java.lang.String)>("Dispatcher", "paused", $r7, $r9);
+
+        return;
+
+     label1:
+        $r4 = r0.<com.squareup.picasso.Dispatcher: java.util.Map hunterMap>;
+
+        $r7 = virtualinvoke $r1.<com.squareup.picasso.Action: java.lang.String getKey()>();
+
+        $r3 = interfaceinvoke $r4.<java.util.Map: java.lang.Object get(java.lang.Object)>($r7);
+
+        $r10 = (com.squareup.picasso.BitmapHunter) $r3;
+
+        if $r10 == null goto label2;
+
+        virtualinvoke $r10.<com.squareup.picasso.BitmapHunter: void attach(com.squareup.picasso.Action)>($r1);
+
+        return;
+
+     label2:
+        $r11 = r0.<com.squareup.picasso.Dispatcher: java.util.concurrent.ExecutorService service>;
+
+        $z1 = interfaceinvoke $r11.<java.util.concurrent.ExecutorService: boolean isShutdown()>();
+
+        if $z1 == 0 goto label3;
+
+        $r5 = virtualinvoke $r1.<com.squareup.picasso.Action: com.squareup.picasso.Picasso getPicasso()>();
+
+        $z0 = $r5.<com.squareup.picasso.Picasso: boolean loggingEnabled>;
+
+        if $z0 == 0 goto label5;
+
+        $r6 = $r1.<com.squareup.picasso.Action: com.squareup.picasso.Request request>;
+
+        $r7 = virtualinvoke $r6.<com.squareup.picasso.Request: java.lang.String logId()>();
+
+        staticinvoke <com.squareup.picasso.Utils: void log(java.lang.String,java.lang.String,java.lang.String,java.lang.String)>("Dispatcher", "ignored", $r7, "because shut down");
+
+        return;
+
+     label3:
+        $r5 = virtualinvoke $r1.<com.squareup.picasso.Action: com.squareup.picasso.Picasso getPicasso()>();
+
+        $r12 = r0.<com.squareup.picasso.Dispatcher: com.squareup.picasso.Cache cache>;
+
+        $r13 = r0.<com.squareup.picasso.Dispatcher: com.squareup.picasso.Stats stats>;
+
+        $r10 = staticinvoke <com.squareup.picasso.BitmapHunter: com.squareup.picasso.BitmapHunter forRequest(com.squareup.picasso.Picasso,com.squareup.picasso.Dispatcher,com.squareup.picasso.Cache,com.squareup.picasso.Stats,com.squareup.picasso.Action)>($r5, r0, $r12, $r13, $r1);
+
+        $r11 = r0.<com.squareup.picasso.Dispatcher: java.util.concurrent.ExecutorService service>;
+
+        $r14 = interfaceinvoke $r11.<java.util.concurrent.ExecutorService: java.util.concurrent.Future submit(java.lang.Runnable)>($r10);
+
+        $r10.<com.squareup.picasso.BitmapHunter: java.util.concurrent.Future future> = $r14;
+
+        $r4 = r0.<com.squareup.picasso.Dispatcher: java.util.Map hunterMap>;
+
+        $r7 = virtualinvoke $r1.<com.squareup.picasso.Action: java.lang.String getKey()>();
+
+        interfaceinvoke $r4.<java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>($r7, $r10);
+
+        if $z0 == 0 goto label4;
+
+        $r4 = r0.<com.squareup.picasso.Dispatcher: java.util.Map failedActions>;
+
+        $r3 = virtualinvoke $r1.<com.squareup.picasso.Action: java.lang.Object getTarget()>();
+
+        interfaceinvoke $r4.<java.util.Map: java.lang.Object remove(java.lang.Object)>($r3);
+
+     label4:
+        $r5 = virtualinvoke $r1.<com.squareup.picasso.Action: com.squareup.picasso.Picasso getPicasso()>();
+
+        $z0 = $r5.<com.squareup.picasso.Picasso: boolean loggingEnabled>;
+
+        if $z0 == 0 goto label5;
+
+        $r6 = $r1.<com.squareup.picasso.Action: com.squareup.picasso.Request request>;
+
+        $r7 = virtualinvoke $r6.<com.squareup.picasso.Request: java.lang.String logId()>();
+
+        staticinvoke <com.squareup.picasso.Utils: void log(java.lang.String,java.lang.String,java.lang.String)>("Dispatcher", "enqueued", $r7);
+
+     label5:
+        return;
+    }
+
+    void shutdown()
+    {
+        com.squareup.picasso.Dispatcher r0;
+        com.squareup.picasso.Dispatcher$1 $r1;
+        java.util.concurrent.ExecutorService $r2;
+        boolean $z0;
+        com.squareup.picasso.Downloader $r3;
+        com.squareup.picasso.Dispatcher$DispatcherThread $r4;
+        android.os.Handler $r5;
+
+        r0 := @this: com.squareup.picasso.Dispatcher;
+
+        $r2 = r0.<com.squareup.picasso.Dispatcher: java.util.concurrent.ExecutorService service>;
+
+        $z0 = $r2 instanceof com.squareup.picasso.PicassoExecutorService;
+
+        if $z0 == 0 goto label1;
+
+        $r2 = r0.<com.squareup.picasso.Dispatcher: java.util.concurrent.ExecutorService service>;
+
+        interfaceinvoke $r2.<java.util.concurrent.ExecutorService: void shutdown()>();
+
+     label1:
+        $r3 = r0.<com.squareup.picasso.Dispatcher: com.squareup.picasso.Downloader downloader>;
+
+        interfaceinvoke $r3.<com.squareup.picasso.Downloader: void shutdown()>();
+
+        $r4 = r0.<com.squareup.picasso.Dispatcher: com.squareup.picasso.Dispatcher$DispatcherThread dispatcherThread>;
+
+        virtualinvoke $r4.<com.squareup.picasso.Dispatcher$DispatcherThread: boolean quit()>();
+
+        $r5 = <com.squareup.picasso.Picasso: android.os.Handler HANDLER>;
+
+        $r1 = new com.squareup.picasso.Dispatcher$1;
+
+        specialinvoke $r1.<com.squareup.picasso.Dispatcher$1: void <init>(com.squareup.picasso.Dispatcher)>(r0);
+
+        virtualinvoke $r5.<android.os.Handler: boolean post(java.lang.Runnable)>($r1);
+
+        return;
+    }
+
+    public static void <clinit>()
+    {
+        <com.squareup.picasso.Dispatcher: int TAG_RESUME> = 12;
+
+        <com.squareup.picasso.Dispatcher: int TAG_PAUSE> = 11;
+
+        <com.squareup.picasso.Dispatcher: int RETRY_DELAY> = 500;
+
+        <com.squareup.picasso.Dispatcher: int REQUEST_SUBMIT> = 1;
+
+        <com.squareup.picasso.Dispatcher: int REQUEST_GCED> = 3;
+
+        <com.squareup.picasso.Dispatcher: int REQUEST_CANCEL> = 2;
+
+        <com.squareup.picasso.Dispatcher: int REQUEST_BATCH_RESUME> = 13;
+
+        <com.squareup.picasso.Dispatcher: int NETWORK_STATE_CHANGE> = 9;
+
+        <com.squareup.picasso.Dispatcher: int HUNTER_RETRY> = 5;
+
+        <com.squareup.picasso.Dispatcher: int HUNTER_DELAY_NEXT_BATCH> = 7;
+
+        <com.squareup.picasso.Dispatcher: int HUNTER_DECODE_FAILED> = 6;
+
+        <com.squareup.picasso.Dispatcher: int HUNTER_COMPLETE> = 4;
+
+        <com.squareup.picasso.Dispatcher: int HUNTER_BATCH_COMPLETE> = 8;
+
+        <com.squareup.picasso.Dispatcher: java.lang.String DISPATCHER_THREAD_NAME> = "Dispatcher";
+
+        <com.squareup.picasso.Dispatcher: int BATCH_DELAY> = 200;
+
+        <com.squareup.picasso.Dispatcher: int AIRPLANE_MODE_ON> = 1;
+
+        <com.squareup.picasso.Dispatcher: int AIRPLANE_MODE_OFF> = 0;
+
+        <com.squareup.picasso.Dispatcher: int AIRPLANE_MODE_CHANGE> = 10;
+
+        return;
+    }
+}

@@ -1,0 +1,266 @@
+public class com.movesky.app.main.UnitSelector extends java.lang.Object
+{
+    private static final android.graphics.RectF DIMENSIONS;
+    private static final float UNIT_HEIGHT;
+    private static final float UNIT_SELECTOR_HEIGHT;
+    private static final float UNIT_SELECTOR_WIDTH;
+    private com.movesky.app.main.units.Unit attacker;
+    private com.movesky.app.main.units.UnitType currentUnitType;
+    private com.movesky.app.main.units.Unit defender;
+    private android.graphics.Paint rectPaint;
+    private android.graphics.Paint unitPaint;
+
+    static void <clinit>()
+    {
+        android.graphics.RectF $r0;
+
+        <com.movesky.app.main.UnitSelector: float UNIT_SELECTOR_WIDTH> = 50.0F;
+
+        <com.movesky.app.main.UnitSelector: float UNIT_SELECTOR_HEIGHT> = 80.0F;
+
+        <com.movesky.app.main.UnitSelector: float UNIT_HEIGHT> = 40.0F;
+
+        $r0 = new android.graphics.RectF;
+
+        specialinvoke $r0.<android.graphics.RectF: void <init>(float,float,float,float)>(270.0F, 0.0F, 320.0F, 80.0F);
+
+        <com.movesky.app.main.UnitSelector: android.graphics.RectF DIMENSIONS> = $r0;
+
+        return;
+    }
+
+    public void <init>(com.movesky.app.main.Team, com.movesky.app.main.units.UnitManager, com.movesky.app.engine.particles.ParticleSystem)
+    {
+        com.movesky.app.main.UnitSelector r0;
+        com.movesky.app.main.Team $r1;
+        com.movesky.app.main.units.UnitManager $r2;
+        com.movesky.app.engine.particles.ParticleSystem $r3;
+        com.movesky.app.main.units.UnitType $r4;
+        android.graphics.Paint $r5;
+        android.graphics.Paint$Join $r6;
+        android.graphics.Paint$Style $r7;
+        android.graphics.Paint$Cap $r8;
+        com.movesky.app.main.units.Unit $r9;
+        android.graphics.RectF $r10;
+        float $f0;
+
+        r0 := @this: com.movesky.app.main.UnitSelector;
+
+        $r1 := @parameter0: com.movesky.app.main.Team;
+
+        $r2 := @parameter1: com.movesky.app.main.units.UnitManager;
+
+        $r3 := @parameter2: com.movesky.app.engine.particles.ParticleSystem;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        $r4 = <com.movesky.app.main.units.UnitType: com.movesky.app.main.units.UnitType ATTACKING>;
+
+        r0.<com.movesky.app.main.UnitSelector: com.movesky.app.main.units.UnitType currentUnitType> = $r4;
+
+        $r5 = new android.graphics.Paint;
+
+        specialinvoke $r5.<android.graphics.Paint: void <init>(int)>(1);
+
+        r0.<com.movesky.app.main.UnitSelector: android.graphics.Paint rectPaint> = $r5;
+
+        $r5 = r0.<com.movesky.app.main.UnitSelector: android.graphics.Paint rectPaint>;
+
+        virtualinvoke $r5.<android.graphics.Paint: void setARGB(int,int,int,int)>(127, 0, 0, 0);
+
+        $r5 = new android.graphics.Paint;
+
+        specialinvoke $r5.<android.graphics.Paint: void <init>(int)>(1);
+
+        r0.<com.movesky.app.main.UnitSelector: android.graphics.Paint unitPaint> = $r5;
+
+        $r5 = r0.<com.movesky.app.main.UnitSelector: android.graphics.Paint unitPaint>;
+
+        virtualinvoke $r5.<android.graphics.Paint: void setStrokeWidth(float)>(2.0F);
+
+        $r5 = r0.<com.movesky.app.main.UnitSelector: android.graphics.Paint unitPaint>;
+
+        $r6 = <android.graphics.Paint$Join: android.graphics.Paint$Join ROUND>;
+
+        virtualinvoke $r5.<android.graphics.Paint: void setStrokeJoin(android.graphics.Paint$Join)>($r6);
+
+        $r5 = r0.<com.movesky.app.main.UnitSelector: android.graphics.Paint unitPaint>;
+
+        $r7 = <android.graphics.Paint$Style: android.graphics.Paint$Style STROKE>;
+
+        virtualinvoke $r5.<android.graphics.Paint: void setStyle(android.graphics.Paint$Style)>($r7);
+
+        $r5 = r0.<com.movesky.app.main.UnitSelector: android.graphics.Paint unitPaint>;
+
+        virtualinvoke $r5.<android.graphics.Paint: void setAntiAlias(boolean)>(1);
+
+        $r5 = r0.<com.movesky.app.main.UnitSelector: android.graphics.Paint unitPaint>;
+
+        $r8 = <android.graphics.Paint$Cap: android.graphics.Paint$Cap ROUND>;
+
+        virtualinvoke $r5.<android.graphics.Paint: void setStrokeCap(android.graphics.Paint$Cap)>($r8);
+
+        $r4 = <com.movesky.app.main.units.UnitType: com.movesky.app.main.units.UnitType ATTACKING>;
+
+        $r5 = r0.<com.movesky.app.main.UnitSelector: android.graphics.Paint unitPaint>;
+
+        $r9 = virtualinvoke $r4.<com.movesky.app.main.units.UnitType: com.movesky.app.main.units.Unit createUnit(com.movesky.app.main.units.UnitManager,com.movesky.app.main.Team,android.graphics.Paint,com.movesky.app.engine.particles.ParticleSystem)>($r2, $r1, $r5, $r3);
+
+        r0.<com.movesky.app.main.UnitSelector: com.movesky.app.main.units.Unit attacker> = $r9;
+
+        $r9 = r0.<com.movesky.app.main.UnitSelector: com.movesky.app.main.units.Unit attacker>;
+
+        $r10 = <com.movesky.app.main.UnitSelector: android.graphics.RectF DIMENSIONS>;
+
+        $f0 = virtualinvoke $r10.<android.graphics.RectF: float centerX()>();
+
+        virtualinvoke $r9.<com.movesky.app.main.units.Unit: void setPosition(float,float)>($f0, 20.0F);
+
+        $r4 = <com.movesky.app.main.units.UnitType: com.movesky.app.main.units.UnitType DEFENDING>;
+
+        $r5 = r0.<com.movesky.app.main.UnitSelector: android.graphics.Paint unitPaint>;
+
+        $r9 = virtualinvoke $r4.<com.movesky.app.main.units.UnitType: com.movesky.app.main.units.Unit createUnit(com.movesky.app.main.units.UnitManager,com.movesky.app.main.Team,android.graphics.Paint,com.movesky.app.engine.particles.ParticleSystem)>($r2, $r1, $r5, $r3);
+
+        r0.<com.movesky.app.main.UnitSelector: com.movesky.app.main.units.Unit defender> = $r9;
+
+        $r9 = r0.<com.movesky.app.main.UnitSelector: com.movesky.app.main.units.Unit defender>;
+
+        $r10 = <com.movesky.app.main.UnitSelector: android.graphics.RectF DIMENSIONS>;
+
+        $f0 = virtualinvoke $r10.<android.graphics.RectF: float centerX()>();
+
+        virtualinvoke $r9.<com.movesky.app.main.units.Unit: void setPosition(float,float)>($f0, 60.0F);
+
+        return;
+    }
+
+    public int checkUnitChange(float, float)
+    {
+        com.movesky.app.main.UnitSelector r0;
+        float $f0, $f1;
+        boolean $z0;
+        android.graphics.RectF $r1;
+        byte $b0;
+
+        r0 := @this: com.movesky.app.main.UnitSelector;
+
+        $f0 := @parameter0: float;
+
+        $f1 := @parameter1: float;
+
+        $r1 = <com.movesky.app.main.UnitSelector: android.graphics.RectF DIMENSIONS>;
+
+        $z0 = virtualinvoke $r1.<android.graphics.RectF: boolean contains(float,float)>($f0, $f1);
+
+        if $z0 != 0 goto label1;
+
+        return -1;
+
+     label1:
+        $b0 = $f1 cmpg 40.0F;
+
+        if $b0 >= 0 goto label2;
+
+        return 0;
+
+     label2:
+        return 1;
+    }
+
+    public void draw(android.graphics.Canvas)
+    {
+        com.movesky.app.main.UnitSelector r0;
+        android.graphics.Canvas $r1;
+        android.graphics.RectF $r2;
+        android.graphics.Paint $r3;
+        com.movesky.app.main.units.UnitType $r4, $r5;
+        com.movesky.app.main.units.Unit $r6;
+
+        r0 := @this: com.movesky.app.main.UnitSelector;
+
+        $r1 := @parameter0: android.graphics.Canvas;
+
+        $r2 = <com.movesky.app.main.UnitSelector: android.graphics.RectF DIMENSIONS>;
+
+        $r3 = r0.<com.movesky.app.main.UnitSelector: android.graphics.Paint rectPaint>;
+
+        virtualinvoke $r1.<android.graphics.Canvas: void drawRect(android.graphics.RectF,android.graphics.Paint)>($r2, $r3);
+
+        $r4 = r0.<com.movesky.app.main.UnitSelector: com.movesky.app.main.units.UnitType currentUnitType>;
+
+        $r5 = <com.movesky.app.main.units.UnitType: com.movesky.app.main.units.UnitType ATTACKING>;
+
+        if $r4 != $r5 goto label1;
+
+        $r3 = r0.<com.movesky.app.main.UnitSelector: android.graphics.Paint unitPaint>;
+
+        virtualinvoke $r3.<android.graphics.Paint: void setColor(int)>(-1);
+
+        $r6 = r0.<com.movesky.app.main.UnitSelector: com.movesky.app.main.units.Unit attacker>;
+
+        virtualinvoke $r6.<com.movesky.app.main.units.Unit: void drawChassis(android.graphics.Canvas)>($r1);
+
+        $r3 = r0.<com.movesky.app.main.UnitSelector: android.graphics.Paint unitPaint>;
+
+        virtualinvoke $r3.<android.graphics.Paint: void setColor(int)>(-7829368);
+
+        $r6 = r0.<com.movesky.app.main.UnitSelector: com.movesky.app.main.units.Unit defender>;
+
+        virtualinvoke $r6.<com.movesky.app.main.units.Unit: void drawChassis(android.graphics.Canvas)>($r1);
+
+        return;
+
+     label1:
+        $r4 = r0.<com.movesky.app.main.UnitSelector: com.movesky.app.main.units.UnitType currentUnitType>;
+
+        $r5 = <com.movesky.app.main.units.UnitType: com.movesky.app.main.units.UnitType DEFENDING>;
+
+        if $r4 != $r5 goto label2;
+
+        $r3 = r0.<com.movesky.app.main.UnitSelector: android.graphics.Paint unitPaint>;
+
+        virtualinvoke $r3.<android.graphics.Paint: void setColor(int)>(-1);
+
+        $r6 = r0.<com.movesky.app.main.UnitSelector: com.movesky.app.main.units.Unit defender>;
+
+        virtualinvoke $r6.<com.movesky.app.main.units.Unit: void drawChassis(android.graphics.Canvas)>($r1);
+
+        $r3 = r0.<com.movesky.app.main.UnitSelector: android.graphics.Paint unitPaint>;
+
+        virtualinvoke $r3.<android.graphics.Paint: void setColor(int)>(-7829368);
+
+        $r6 = r0.<com.movesky.app.main.UnitSelector: com.movesky.app.main.units.Unit attacker>;
+
+        virtualinvoke $r6.<com.movesky.app.main.units.Unit: void drawChassis(android.graphics.Canvas)>($r1);
+
+     label2:
+        return;
+    }
+
+    public com.movesky.app.main.units.UnitType getUnitType()
+    {
+        com.movesky.app.main.UnitSelector r0;
+        com.movesky.app.main.units.UnitType r1;
+
+        r0 := @this: com.movesky.app.main.UnitSelector;
+
+        r1 = r0.<com.movesky.app.main.UnitSelector: com.movesky.app.main.units.UnitType currentUnitType>;
+
+        return r1;
+    }
+
+    public void setUnitType(com.movesky.app.main.units.UnitType)
+    {
+        com.movesky.app.main.UnitSelector r0;
+        com.movesky.app.main.units.UnitType $r1;
+
+        r0 := @this: com.movesky.app.main.UnitSelector;
+
+        $r1 := @parameter0: com.movesky.app.main.units.UnitType;
+
+        r0.<com.movesky.app.main.UnitSelector: com.movesky.app.main.units.UnitType currentUnitType> = $r1;
+
+        return;
+    }
+}

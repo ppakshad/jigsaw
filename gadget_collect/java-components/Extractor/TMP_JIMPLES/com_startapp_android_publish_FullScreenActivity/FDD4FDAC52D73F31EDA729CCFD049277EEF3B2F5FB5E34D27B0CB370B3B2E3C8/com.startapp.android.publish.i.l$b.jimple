@@ -1,0 +1,60 @@
+class com.startapp.android.publish.i.l$b extends java.lang.Object
+{
+    final android.content.IntentFilter a;
+    final android.content.BroadcastReceiver b;
+    boolean c;
+
+    void <init>(android.content.IntentFilter, android.content.BroadcastReceiver)
+    {
+        com.startapp.android.publish.i.l$b r0;
+        android.content.IntentFilter $r1;
+        android.content.BroadcastReceiver $r2;
+
+        r0 := @this: com.startapp.android.publish.i.l$b;
+
+        $r1 := @parameter0: android.content.IntentFilter;
+
+        $r2 := @parameter1: android.content.BroadcastReceiver;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        r0.<com.startapp.android.publish.i.l$b: android.content.IntentFilter a> = $r1;
+
+        r0.<com.startapp.android.publish.i.l$b: android.content.BroadcastReceiver b> = $r2;
+
+        return;
+    }
+
+    public java.lang.String toString()
+    {
+        com.startapp.android.publish.i.l$b r0;
+        java.lang.String $r1;
+        java.lang.StringBuilder $r2;
+        android.content.BroadcastReceiver $r3;
+        android.content.IntentFilter $r4;
+
+        r0 := @this: com.startapp.android.publish.i.l$b;
+
+        $r2 = new java.lang.StringBuilder;
+
+        specialinvoke $r2.<java.lang.StringBuilder: void <init>(int)>(128);
+
+        virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Receiver{");
+
+        $r3 = r0.<com.startapp.android.publish.i.l$b: android.content.BroadcastReceiver b>;
+
+        virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($r3);
+
+        virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" filter=");
+
+        $r4 = r0.<com.startapp.android.publish.i.l$b: android.content.IntentFilter a>;
+
+        virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($r4);
+
+        virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("}");
+
+        $r1 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        return $r1;
+    }
+}

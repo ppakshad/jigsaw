@@ -1,0 +1,90 @@
+class com.squareup.picasso.RemoteViewsAction$NotificationAction extends com.squareup.picasso.RemoteViewsAction
+{
+    private final android.app.Notification notification;
+    private final int notificationId;
+
+    void <init>(com.squareup.picasso.Picasso, com.squareup.picasso.Request, android.widget.RemoteViews, int, int, android.app.Notification, int, int, java.lang.String, java.lang.Object, int)
+    {
+        com.squareup.picasso.RemoteViewsAction$NotificationAction r0;
+        com.squareup.picasso.Picasso $r1;
+        com.squareup.picasso.Request $r2;
+        android.widget.RemoteViews $r3;
+        int $i0, $i1, $i2, $i3, $i4;
+        android.app.Notification $r4;
+        java.lang.String $r5;
+        java.lang.Object $r6;
+
+        r0 := @this: com.squareup.picasso.RemoteViewsAction$NotificationAction;
+
+        $r1 := @parameter0: com.squareup.picasso.Picasso;
+
+        $r2 := @parameter1: com.squareup.picasso.Request;
+
+        $r3 := @parameter2: android.widget.RemoteViews;
+
+        $i0 := @parameter3: int;
+
+        $i1 := @parameter4: int;
+
+        $r4 := @parameter5: android.app.Notification;
+
+        $i2 := @parameter6: int;
+
+        $i3 := @parameter7: int;
+
+        $r5 := @parameter8: java.lang.String;
+
+        $r6 := @parameter9: java.lang.Object;
+
+        $i4 := @parameter10: int;
+
+        specialinvoke r0.<com.squareup.picasso.RemoteViewsAction: void <init>(com.squareup.picasso.Picasso,com.squareup.picasso.Request,android.widget.RemoteViews,int,int,int,int,java.lang.Object,java.lang.String)>($r1, $r2, $r3, $i0, $i4, $i2, $i3, $r6, $r5);
+
+        r0.<com.squareup.picasso.RemoteViewsAction$NotificationAction: int notificationId> = $i1;
+
+        r0.<com.squareup.picasso.RemoteViewsAction$NotificationAction: android.app.Notification notification> = $r4;
+
+        return;
+    }
+
+    volatile java.lang.Object getTarget()
+    {
+        com.squareup.picasso.RemoteViewsAction$NotificationAction r0;
+        com.squareup.picasso.RemoteViewsAction$RemoteViewsTarget $r1;
+
+        r0 := @this: com.squareup.picasso.RemoteViewsAction$NotificationAction;
+
+        $r1 = specialinvoke r0.<com.squareup.picasso.RemoteViewsAction: com.squareup.picasso.RemoteViewsAction$RemoteViewsTarget getTarget()>();
+
+        return $r1;
+    }
+
+    void update()
+    {
+        com.squareup.picasso.RemoteViewsAction$NotificationAction r0;
+        android.app.Notification $r1;
+        java.lang.Object $r2;
+        com.squareup.picasso.Picasso $r3;
+        android.content.Context $r4;
+        android.app.NotificationManager $r5;
+        int $i0;
+
+        r0 := @this: com.squareup.picasso.RemoteViewsAction$NotificationAction;
+
+        $r3 = r0.<com.squareup.picasso.RemoteViewsAction$NotificationAction: com.squareup.picasso.Picasso picasso>;
+
+        $r4 = $r3.<com.squareup.picasso.Picasso: android.content.Context context>;
+
+        $r2 = staticinvoke <com.squareup.picasso.Utils: java.lang.Object getService(android.content.Context,java.lang.String)>($r4, "notification");
+
+        $r5 = (android.app.NotificationManager) $r2;
+
+        $i0 = r0.<com.squareup.picasso.RemoteViewsAction$NotificationAction: int notificationId>;
+
+        $r1 = r0.<com.squareup.picasso.RemoteViewsAction$NotificationAction: android.app.Notification notification>;
+
+        virtualinvoke $r5.<android.app.NotificationManager: void notify(int,android.app.Notification)>($i0, $r1);
+
+        return;
+    }
+}

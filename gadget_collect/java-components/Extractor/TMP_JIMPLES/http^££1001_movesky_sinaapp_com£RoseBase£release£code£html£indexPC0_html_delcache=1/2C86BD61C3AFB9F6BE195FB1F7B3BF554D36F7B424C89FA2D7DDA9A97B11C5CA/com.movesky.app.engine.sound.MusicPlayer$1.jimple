@@ -1,0 +1,46 @@
+class com.movesky.app.engine.sound.MusicPlayer$1 extends java.lang.Object implements android.media.MediaPlayer$OnCompletionListener
+{
+    final com.movesky.app.engine.sound.MusicPlayer this$0;
+    final com.movesky.app.engine.sound.MusicPlayer$OnCompletionListener val$listener;
+
+    void <init>(com.movesky.app.engine.sound.MusicPlayer, com.movesky.app.engine.sound.MusicPlayer$OnCompletionListener)
+    {
+        com.movesky.app.engine.sound.MusicPlayer$1 r0;
+        com.movesky.app.engine.sound.MusicPlayer $r1;
+        com.movesky.app.engine.sound.MusicPlayer$OnCompletionListener $r2;
+
+        r0 := @this: com.movesky.app.engine.sound.MusicPlayer$1;
+
+        $r1 := @parameter0: com.movesky.app.engine.sound.MusicPlayer;
+
+        $r2 := @parameter1: com.movesky.app.engine.sound.MusicPlayer$OnCompletionListener;
+
+        r0.<com.movesky.app.engine.sound.MusicPlayer$1: com.movesky.app.engine.sound.MusicPlayer this$0> = $r1;
+
+        r0.<com.movesky.app.engine.sound.MusicPlayer$1: com.movesky.app.engine.sound.MusicPlayer$OnCompletionListener val$listener> = $r2;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public void onCompletion(android.media.MediaPlayer)
+    {
+        com.movesky.app.engine.sound.MusicPlayer$1 r0;
+        android.media.MediaPlayer $r1;
+        com.movesky.app.engine.sound.MusicPlayer$OnCompletionListener $r2;
+        com.movesky.app.engine.sound.MusicPlayer $r3;
+
+        r0 := @this: com.movesky.app.engine.sound.MusicPlayer$1;
+
+        $r1 := @parameter0: android.media.MediaPlayer;
+
+        $r2 = r0.<com.movesky.app.engine.sound.MusicPlayer$1: com.movesky.app.engine.sound.MusicPlayer$OnCompletionListener val$listener>;
+
+        $r3 = r0.<com.movesky.app.engine.sound.MusicPlayer$1: com.movesky.app.engine.sound.MusicPlayer this$0>;
+
+        interfaceinvoke $r2.<com.movesky.app.engine.sound.MusicPlayer$OnCompletionListener: void onCompletion(com.movesky.app.engine.sound.MusicPlayer)>($r3);
+
+        return;
+    }
+}

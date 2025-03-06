@@ -1,0 +1,326 @@
+public class org.codehaus.jackson.JsonLocation extends java.lang.Object implements java.io.Serializable
+{
+    public static final org.codehaus.jackson.JsonLocation NA;
+    private static final long serialVersionUID;
+    final int _columnNr;
+    final int _lineNr;
+    final java.lang.Object _sourceRef;
+    final long _totalBytes;
+    final long _totalChars;
+
+    static void <clinit>()
+    {
+        org.codehaus.jackson.JsonLocation $r0;
+
+        <org.codehaus.jackson.JsonLocation: long serialVersionUID> = 1L;
+
+        $r0 = new org.codehaus.jackson.JsonLocation;
+
+        specialinvoke $r0.<org.codehaus.jackson.JsonLocation: void <init>(java.lang.Object,long,long,int,int)>("N/A", -1L, -1L, -1, -1);
+
+        <org.codehaus.jackson.JsonLocation: org.codehaus.jackson.JsonLocation NA> = $r0;
+
+        return;
+    }
+
+    public void <init>(java.lang.Object, long, int, int)
+    {
+        org.codehaus.jackson.JsonLocation r0;
+        java.lang.Object $r1;
+        long $l0;
+        int $i1, $i2;
+
+        r0 := @this: org.codehaus.jackson.JsonLocation;
+
+        $r1 := @parameter0: java.lang.Object;
+
+        $l0 := @parameter1: long;
+
+        $i1 := @parameter2: int;
+
+        $i2 := @parameter3: int;
+
+        specialinvoke r0.<org.codehaus.jackson.JsonLocation: void <init>(java.lang.Object,long,long,int,int)>($r1, -1L, $l0, $i1, $i2);
+
+        return;
+    }
+
+    public void <init>(java.lang.Object, long, long, int, int)
+    {
+        org.codehaus.jackson.JsonLocation r0;
+        java.lang.Object $r1;
+        long $l0, $l1;
+        int $i2, $i3;
+
+        r0 := @this: org.codehaus.jackson.JsonLocation;
+
+        $r1 := @parameter0: java.lang.Object;
+
+        $l0 := @parameter1: long;
+
+        $l1 := @parameter2: long;
+
+        $i2 := @parameter3: int;
+
+        $i3 := @parameter4: int;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        r0.<org.codehaus.jackson.JsonLocation: java.lang.Object _sourceRef> = $r1;
+
+        r0.<org.codehaus.jackson.JsonLocation: long _totalBytes> = $l0;
+
+        r0.<org.codehaus.jackson.JsonLocation: long _totalChars> = $l1;
+
+        r0.<org.codehaus.jackson.JsonLocation: int _lineNr> = $i2;
+
+        r0.<org.codehaus.jackson.JsonLocation: int _columnNr> = $i3;
+
+        return;
+    }
+
+    public boolean equals(java.lang.Object)
+    {
+        org.codehaus.jackson.JsonLocation r0, $r2;
+        java.lang.Object $r1, $r3;
+        boolean $z0;
+        int $i0, $i1;
+        long $l2, $l3;
+        byte $b4;
+
+        r0 := @this: org.codehaus.jackson.JsonLocation;
+
+        $r1 := @parameter0: java.lang.Object;
+
+        if $r1 != r0 goto label1;
+
+        return 1;
+
+     label1:
+        if $r1 != null goto label2;
+
+        return 0;
+
+     label2:
+        $z0 = $r1 instanceof org.codehaus.jackson.JsonLocation;
+
+        if $z0 != 0 goto label3;
+
+        return 0;
+
+     label3:
+        $r2 = (org.codehaus.jackson.JsonLocation) $r1;
+
+        $r1 = r0.<org.codehaus.jackson.JsonLocation: java.lang.Object _sourceRef>;
+
+        if $r1 != null goto label4;
+
+        $r1 = $r2.<org.codehaus.jackson.JsonLocation: java.lang.Object _sourceRef>;
+
+        if $r1 == null goto label5;
+
+        return 0;
+
+     label4:
+        $r1 = r0.<org.codehaus.jackson.JsonLocation: java.lang.Object _sourceRef>;
+
+        $r3 = $r2.<org.codehaus.jackson.JsonLocation: java.lang.Object _sourceRef>;
+
+        $z0 = virtualinvoke $r1.<java.lang.Object: boolean equals(java.lang.Object)>($r3);
+
+        if $z0 != 0 goto label5;
+
+        return 0;
+
+     label5:
+        $i0 = r0.<org.codehaus.jackson.JsonLocation: int _lineNr>;
+
+        $i1 = $r2.<org.codehaus.jackson.JsonLocation: int _lineNr>;
+
+        if $i0 != $i1 goto label6;
+
+        $i0 = r0.<org.codehaus.jackson.JsonLocation: int _columnNr>;
+
+        $i1 = $r2.<org.codehaus.jackson.JsonLocation: int _columnNr>;
+
+        if $i0 != $i1 goto label6;
+
+        $l2 = r0.<org.codehaus.jackson.JsonLocation: long _totalChars>;
+
+        $l3 = $r2.<org.codehaus.jackson.JsonLocation: long _totalChars>;
+
+        $b4 = $l2 cmp $l3;
+
+        if $b4 != 0 goto label6;
+
+        $l2 = virtualinvoke r0.<org.codehaus.jackson.JsonLocation: long getByteOffset()>();
+
+        $l3 = virtualinvoke $r2.<org.codehaus.jackson.JsonLocation: long getByteOffset()>();
+
+        $b4 = $l2 cmp $l3;
+
+        if $b4 != 0 goto label6;
+
+        return 1;
+
+     label6:
+        return 0;
+    }
+
+    public long getByteOffset()
+    {
+        org.codehaus.jackson.JsonLocation r0;
+        long l0;
+
+        r0 := @this: org.codehaus.jackson.JsonLocation;
+
+        l0 = r0.<org.codehaus.jackson.JsonLocation: long _totalBytes>;
+
+        return l0;
+    }
+
+    public long getCharOffset()
+    {
+        org.codehaus.jackson.JsonLocation r0;
+        long l0;
+
+        r0 := @this: org.codehaus.jackson.JsonLocation;
+
+        l0 = r0.<org.codehaus.jackson.JsonLocation: long _totalChars>;
+
+        return l0;
+    }
+
+    public int getColumnNr()
+    {
+        org.codehaus.jackson.JsonLocation r0;
+        int i0;
+
+        r0 := @this: org.codehaus.jackson.JsonLocation;
+
+        i0 = r0.<org.codehaus.jackson.JsonLocation: int _columnNr>;
+
+        return i0;
+    }
+
+    public int getLineNr()
+    {
+        org.codehaus.jackson.JsonLocation r0;
+        int i0;
+
+        r0 := @this: org.codehaus.jackson.JsonLocation;
+
+        i0 = r0.<org.codehaus.jackson.JsonLocation: int _lineNr>;
+
+        return i0;
+    }
+
+    public java.lang.Object getSourceRef()
+    {
+        org.codehaus.jackson.JsonLocation r0;
+        java.lang.Object r1;
+
+        r0 := @this: org.codehaus.jackson.JsonLocation;
+
+        r1 = r0.<org.codehaus.jackson.JsonLocation: java.lang.Object _sourceRef>;
+
+        return r1;
+    }
+
+    public int hashCode()
+    {
+        org.codehaus.jackson.JsonLocation r0;
+        int $i0, $i1;
+        java.lang.Object $r1;
+        long $l2;
+
+        r0 := @this: org.codehaus.jackson.JsonLocation;
+
+        $r1 = r0.<org.codehaus.jackson.JsonLocation: java.lang.Object _sourceRef>;
+
+        if $r1 != null goto label2;
+
+        $i0 = 1;
+
+     label1:
+        $i1 = r0.<org.codehaus.jackson.JsonLocation: int _lineNr>;
+
+        $i0 = $i0 ^ $i1;
+
+        $i1 = r0.<org.codehaus.jackson.JsonLocation: int _columnNr>;
+
+        $i0 = $i0 + $i1;
+
+        $l2 = r0.<org.codehaus.jackson.JsonLocation: long _totalChars>;
+
+        $i1 = (int) $l2;
+
+        $i0 = $i0 ^ $i1;
+
+        $l2 = r0.<org.codehaus.jackson.JsonLocation: long _totalBytes>;
+
+        $i1 = (int) $l2;
+
+        $i0 = $i0 + $i1;
+
+        return $i0;
+
+     label2:
+        $r1 = r0.<org.codehaus.jackson.JsonLocation: java.lang.Object _sourceRef>;
+
+        $i0 = virtualinvoke $r1.<java.lang.Object: int hashCode()>();
+
+        goto label1;
+    }
+
+    public java.lang.String toString()
+    {
+        org.codehaus.jackson.JsonLocation r0;
+        java.lang.StringBuilder r1;
+        java.lang.Object $r2;
+        int $i0;
+        java.lang.String $r3;
+
+        r0 := @this: org.codehaus.jackson.JsonLocation;
+
+        r1 = new java.lang.StringBuilder;
+
+        specialinvoke r1.<java.lang.StringBuilder: void <init>(int)>(80);
+
+        virtualinvoke r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("[Source: ");
+
+        $r2 = r0.<org.codehaus.jackson.JsonLocation: java.lang.Object _sourceRef>;
+
+        if $r2 != null goto label2;
+
+        virtualinvoke r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("UNKNOWN");
+
+     label1:
+        virtualinvoke r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("; line: ");
+
+        $i0 = r0.<org.codehaus.jackson.JsonLocation: int _lineNr>;
+
+        virtualinvoke r1.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>($i0);
+
+        virtualinvoke r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(", column: ");
+
+        $i0 = r0.<org.codehaus.jackson.JsonLocation: int _columnNr>;
+
+        virtualinvoke r1.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>($i0);
+
+        virtualinvoke r1.<java.lang.StringBuilder: java.lang.StringBuilder append(char)>(93);
+
+        $r3 = virtualinvoke r1.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        return $r3;
+
+     label2:
+        $r2 = r0.<org.codehaus.jackson.JsonLocation: java.lang.Object _sourceRef>;
+
+        $r3 = virtualinvoke $r2.<java.lang.Object: java.lang.String toString()>();
+
+        virtualinvoke r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r3);
+
+        goto label1;
+    }
+}

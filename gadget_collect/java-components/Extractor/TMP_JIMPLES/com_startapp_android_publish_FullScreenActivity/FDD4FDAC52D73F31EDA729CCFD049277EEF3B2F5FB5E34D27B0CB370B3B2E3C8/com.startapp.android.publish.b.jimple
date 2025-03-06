@@ -1,0 +1,164 @@
+public class com.startapp.android.publish.b extends java.lang.Object implements com.startapp.android.publish.AdDisplayListener
+{
+    private com.startapp.android.publish.AdDisplayListener a;
+
+    public void <init>(com.startapp.android.publish.AdDisplayListener)
+    {
+        com.startapp.android.publish.b r0;
+        com.startapp.android.publish.AdDisplayListener $r1;
+
+        r0 := @this: com.startapp.android.publish.b;
+
+        $r1 := @parameter0: com.startapp.android.publish.AdDisplayListener;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        r0.<com.startapp.android.publish.b: com.startapp.android.publish.AdDisplayListener a> = $r1;
+
+        return;
+    }
+
+    static com.startapp.android.publish.AdDisplayListener a(com.startapp.android.publish.b)
+    {
+        com.startapp.android.publish.b $r0;
+        com.startapp.android.publish.AdDisplayListener r1;
+
+        $r0 := @parameter0: com.startapp.android.publish.b;
+
+        r1 = $r0.<com.startapp.android.publish.b: com.startapp.android.publish.AdDisplayListener a>;
+
+        return r1;
+    }
+
+    public void adClicked(com.startapp.android.publish.Ad)
+    {
+        com.startapp.android.publish.b r0;
+        com.startapp.android.publish.Ad $r1;
+        android.os.Looper $r2;
+        com.startapp.android.publish.AdDisplayListener $r3;
+        android.os.Handler $r4;
+        com.startapp.android.publish.b$3 $r5;
+
+        r0 := @this: com.startapp.android.publish.b;
+
+        $r1 := @parameter0: com.startapp.android.publish.Ad;
+
+        $r3 = r0.<com.startapp.android.publish.b: com.startapp.android.publish.AdDisplayListener a>;
+
+        if $r3 == null goto label1;
+
+        $r4 = new android.os.Handler;
+
+        $r2 = staticinvoke <android.os.Looper: android.os.Looper getMainLooper()>();
+
+        specialinvoke $r4.<android.os.Handler: void <init>(android.os.Looper)>($r2);
+
+        $r5 = new com.startapp.android.publish.b$3;
+
+        specialinvoke $r5.<com.startapp.android.publish.b$3: void <init>(com.startapp.android.publish.b,com.startapp.android.publish.Ad)>(r0, $r1);
+
+        virtualinvoke $r4.<android.os.Handler: boolean post(java.lang.Runnable)>($r5);
+
+     label1:
+        return;
+    }
+
+    public void adDisplayed(com.startapp.android.publish.Ad)
+    {
+        com.startapp.android.publish.b r0;
+        com.startapp.android.publish.Ad $r1;
+        android.os.Looper $r2;
+        com.startapp.android.publish.AdDisplayListener $r3;
+        android.os.Handler $r4;
+        com.startapp.android.publish.b$2 $r5;
+
+        r0 := @this: com.startapp.android.publish.b;
+
+        $r1 := @parameter0: com.startapp.android.publish.Ad;
+
+        $r3 = r0.<com.startapp.android.publish.b: com.startapp.android.publish.AdDisplayListener a>;
+
+        if $r3 == null goto label1;
+
+        $r4 = new android.os.Handler;
+
+        $r2 = staticinvoke <android.os.Looper: android.os.Looper getMainLooper()>();
+
+        specialinvoke $r4.<android.os.Handler: void <init>(android.os.Looper)>($r2);
+
+        $r5 = new com.startapp.android.publish.b$2;
+
+        specialinvoke $r5.<com.startapp.android.publish.b$2: void <init>(com.startapp.android.publish.b,com.startapp.android.publish.Ad)>(r0, $r1);
+
+        virtualinvoke $r4.<android.os.Handler: boolean post(java.lang.Runnable)>($r5);
+
+     label1:
+        return;
+    }
+
+    public void adHidden(com.startapp.android.publish.Ad)
+    {
+        com.startapp.android.publish.b r0;
+        com.startapp.android.publish.Ad $r1;
+        android.os.Looper $r2;
+        com.startapp.android.publish.AdDisplayListener $r3;
+        android.os.Handler $r4;
+        com.startapp.android.publish.b$1 $r5;
+
+        r0 := @this: com.startapp.android.publish.b;
+
+        $r1 := @parameter0: com.startapp.android.publish.Ad;
+
+        $r3 = r0.<com.startapp.android.publish.b: com.startapp.android.publish.AdDisplayListener a>;
+
+        if $r3 == null goto label1;
+
+        $r4 = new android.os.Handler;
+
+        $r2 = staticinvoke <android.os.Looper: android.os.Looper getMainLooper()>();
+
+        specialinvoke $r4.<android.os.Handler: void <init>(android.os.Looper)>($r2);
+
+        $r5 = new com.startapp.android.publish.b$1;
+
+        specialinvoke $r5.<com.startapp.android.publish.b$1: void <init>(com.startapp.android.publish.b,com.startapp.android.publish.Ad)>(r0, $r1);
+
+        virtualinvoke $r4.<android.os.Handler: boolean post(java.lang.Runnable)>($r5);
+
+     label1:
+        return;
+    }
+
+    public void adNotDisplayed(com.startapp.android.publish.Ad)
+    {
+        com.startapp.android.publish.b r0;
+        com.startapp.android.publish.Ad $r1;
+        android.os.Looper $r2;
+        com.startapp.android.publish.AdDisplayListener $r3;
+        android.os.Handler $r4;
+        com.startapp.android.publish.b$4 $r5;
+
+        r0 := @this: com.startapp.android.publish.b;
+
+        $r1 := @parameter0: com.startapp.android.publish.Ad;
+
+        $r3 = r0.<com.startapp.android.publish.b: com.startapp.android.publish.AdDisplayListener a>;
+
+        if $r3 == null goto label1;
+
+        $r4 = new android.os.Handler;
+
+        $r2 = staticinvoke <android.os.Looper: android.os.Looper getMainLooper()>();
+
+        specialinvoke $r4.<android.os.Handler: void <init>(android.os.Looper)>($r2);
+
+        $r5 = new com.startapp.android.publish.b$4;
+
+        specialinvoke $r5.<com.startapp.android.publish.b$4: void <init>(com.startapp.android.publish.b,com.startapp.android.publish.Ad)>(r0, $r1);
+
+        virtualinvoke $r4.<android.os.Handler: boolean post(java.lang.Runnable)>($r5);
+
+     label1:
+        return;
+    }
+}

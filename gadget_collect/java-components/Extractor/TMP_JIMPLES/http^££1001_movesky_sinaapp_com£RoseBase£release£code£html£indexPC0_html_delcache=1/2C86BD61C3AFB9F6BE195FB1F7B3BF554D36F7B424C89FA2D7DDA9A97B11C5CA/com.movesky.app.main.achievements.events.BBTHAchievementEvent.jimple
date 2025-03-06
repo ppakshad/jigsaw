@@ -1,0 +1,123 @@
+public class com.movesky.app.main.achievements.events.BBTHAchievementEvent extends java.lang.Object
+{
+    private float aiDifficulty;
+    private com.movesky.app.main.YSSimulation simulation;
+    private boolean singleplayer;
+
+    public void <init>(com.movesky.app.main.YSSimulation, boolean, float)
+    {
+        com.movesky.app.main.achievements.events.BBTHAchievementEvent r0;
+        com.movesky.app.main.YSSimulation $r1;
+        boolean $z0;
+        float $f0;
+
+        r0 := @this: com.movesky.app.main.achievements.events.BBTHAchievementEvent;
+
+        $r1 := @parameter0: com.movesky.app.main.YSSimulation;
+
+        $z0 := @parameter1: boolean;
+
+        $f0 := @parameter2: float;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        r0.<com.movesky.app.main.achievements.events.BBTHAchievementEvent: com.movesky.app.main.YSSimulation simulation> = $r1;
+
+        r0.<com.movesky.app.main.achievements.events.BBTHAchievementEvent: boolean singleplayer> = $z0;
+
+        r0.<com.movesky.app.main.achievements.events.BBTHAchievementEvent: float aiDifficulty> = $f0;
+
+        return;
+    }
+
+    public float getAiDifficulty()
+    {
+        com.movesky.app.main.achievements.events.BBTHAchievementEvent r0;
+        float f0;
+
+        r0 := @this: com.movesky.app.main.achievements.events.BBTHAchievementEvent;
+
+        f0 = r0.<com.movesky.app.main.achievements.events.BBTHAchievementEvent: float aiDifficulty>;
+
+        return f0;
+    }
+
+    public com.movesky.app.main.Player getLocalPlayer()
+    {
+        com.movesky.app.main.achievements.events.BBTHAchievementEvent r0;
+        com.movesky.app.main.YSSimulation $r1;
+        com.movesky.app.main.Player r2;
+
+        r0 := @this: com.movesky.app.main.achievements.events.BBTHAchievementEvent;
+
+        $r1 = r0.<com.movesky.app.main.achievements.events.BBTHAchievementEvent: com.movesky.app.main.YSSimulation simulation>;
+
+        r2 = $r1.<com.movesky.app.main.YSSimulation: com.movesky.app.main.Player localPlayer>;
+
+        return r2;
+    }
+
+    public com.movesky.app.main.Player getRemotePlayer()
+    {
+        com.movesky.app.main.achievements.events.BBTHAchievementEvent r0;
+        com.movesky.app.main.YSSimulation $r1;
+        com.movesky.app.main.Player r2;
+
+        r0 := @this: com.movesky.app.main.achievements.events.BBTHAchievementEvent;
+
+        $r1 = r0.<com.movesky.app.main.achievements.events.BBTHAchievementEvent: com.movesky.app.main.YSSimulation simulation>;
+
+        r2 = $r1.<com.movesky.app.main.YSSimulation: com.movesky.app.main.Player remotePlayer>;
+
+        return r2;
+    }
+
+    public com.movesky.app.main.Song getSong()
+    {
+        com.movesky.app.main.achievements.events.BBTHAchievementEvent r0;
+        com.movesky.app.main.YSSimulation $r1;
+        com.movesky.app.main.Song r2;
+
+        r0 := @this: com.movesky.app.main.achievements.events.BBTHAchievementEvent;
+
+        $r1 = r0.<com.movesky.app.main.achievements.events.BBTHAchievementEvent: com.movesky.app.main.YSSimulation simulation>;
+
+        r2 = $r1.<com.movesky.app.main.YSSimulation: com.movesky.app.main.Song song>;
+
+        return r2;
+    }
+
+    public com.movesky.app.engine.util.Bag getUnitsInCircle(float, float, float)
+    {
+        com.movesky.app.main.achievements.events.BBTHAchievementEvent r0;
+        float $f0, $f1, $f2;
+        com.movesky.app.engine.util.Bag $r1;
+        com.movesky.app.main.YSSimulation $r2;
+
+        r0 := @this: com.movesky.app.main.achievements.events.BBTHAchievementEvent;
+
+        $f0 := @parameter0: float;
+
+        $f1 := @parameter1: float;
+
+        $f2 := @parameter2: float;
+
+        $r2 = r0.<com.movesky.app.main.achievements.events.BBTHAchievementEvent: com.movesky.app.main.YSSimulation simulation>;
+
+        $r1 = virtualinvoke $r2.<com.movesky.app.main.YSSimulation: com.movesky.app.engine.util.Bag getUnitsInCircle(float,float,float)>($f0, $f1, $f2);
+
+        return $r1;
+    }
+
+    public boolean isSingleplayer()
+    {
+        com.movesky.app.main.achievements.events.BBTHAchievementEvent r0;
+        boolean z0;
+
+        r0 := @this: com.movesky.app.main.achievements.events.BBTHAchievementEvent;
+
+        z0 = r0.<com.movesky.app.main.achievements.events.BBTHAchievementEvent: boolean singleplayer>;
+
+        return z0;
+    }
+}

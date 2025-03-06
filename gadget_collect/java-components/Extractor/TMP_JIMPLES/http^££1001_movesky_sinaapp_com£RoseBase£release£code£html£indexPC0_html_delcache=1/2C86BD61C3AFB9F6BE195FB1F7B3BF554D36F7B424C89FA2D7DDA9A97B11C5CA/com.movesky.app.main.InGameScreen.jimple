@@ -1,0 +1,1705 @@
+public class com.movesky.app.main.InGameScreen extends com.movesky.app.engine.ui.UIView implements com.movesky.app.engine.sound.MusicPlayer$OnCompletionListener
+{
+    private static final long DRAG_HINT_DISPLAY_LENGTH;
+    private static final float END_FADE_TIME;
+    private static final long PLACEMENT_HINT_DISPLAY_LENGTH;
+    private static final long TAP_HINT_DISPLAY_LENGTH;
+    private static final boolean USE_UNIT_SELECTOR;
+    float aiDifficulty;
+    private android.graphics.Path arrowPath;
+    private com.movesky.app.main.BeatTrack beatTrack;
+    private com.movesky.app.engine.net.bluetooth.Bluetooth bluetooth;
+    private com.movesky.app.engine.ui.UINavigationController controller;
+    private boolean countdownStarted;
+    private com.movesky.app.engine.fastgraph.Wall currentWall;
+    private long drag_tip_start_time;
+    java.lang.String dragfingerfurthertodrawlongerwall_1;
+    java.lang.String dragfingerfurthertodrawlongerwall_2;
+    private com.movesky.app.engine.util.Timer drawParticleTimer;
+    private com.movesky.app.engine.util.Timer drawSimTimer;
+    private com.movesky.app.engine.util.Timer drawUITimer;
+    private com.movesky.app.engine.util.Timer entireDrawTimer;
+    private com.movesky.app.engine.util.Timer entireUpdateTimer;
+    private boolean gameIsStarted;
+    java.lang.String notsynced;
+    private android.graphics.Paint paint;
+    private com.movesky.app.engine.particles.ParticleSystem particles;
+    private com.movesky.app.main.ai.PlayerAI player_ai;
+    private float secondsUntilNextScreen;
+    private boolean setSong;
+    private com.movesky.app.main.YSSimulation sim;
+    private com.movesky.app.engine.util.Timer simUpdateTimer;
+    boolean singlePlayer;
+    private long tap_location_hint_time;
+    java.lang.String tapfurtherrighttomakeunits_1;
+    java.lang.String tapfurtherrighttomakeunits_2;
+    java.lang.String tapinsideyourzoneofinfluence_1;
+    java.lang.String tapinsideyourzoneofinfluence_2;
+    private com.movesky.app.main.Team team;
+    private com.movesky.app.main.Tutorial tutorial;
+    private boolean userScrolling;
+    java.lang.String waitingforotherplayer;
+
+    public void <init>(com.movesky.app.engine.ui.UINavigationController, com.movesky.app.main.Team, com.movesky.app.engine.net.bluetooth.Bluetooth, com.movesky.app.main.Song, com.movesky.app.engine.net.simulation.LockStepProtocol, boolean)
+    {
+        com.movesky.app.main.InGameScreen r0;
+        com.movesky.app.engine.ui.UINavigationController $r1;
+        com.movesky.app.main.Team $r2, $r14, $r15;
+        com.movesky.app.engine.net.bluetooth.Bluetooth $r3;
+        com.movesky.app.main.Song $r4;
+        com.movesky.app.engine.net.simulation.LockStepProtocol $r5;
+        boolean $z0, $z1;
+        com.movesky.app.engine.util.Timer $r6;
+        com.movesky.app.engine.core.GameActivity $r7;
+        java.lang.String $r8;
+        float $f0;
+        com.movesky.app.main.InteractiveTutorial $r9;
+        com.movesky.app.main.Tutorial $r10;
+        com.movesky.app.engine.ui.Anchor $r11;
+        android.graphics.Paint $r12;
+        com.movesky.app.main.YSSimulation $r13, $r21;
+        com.movesky.app.engine.particles.ParticleSystem $r16;
+        int $i0;
+        com.movesky.app.main.BeatTrack $r17;
+        android.graphics.Paint$Join $r18;
+        android.graphics.Paint$Align $r19;
+        com.movesky.app.main.ai.PlayerAI $r20;
+        com.movesky.app.main.Player $r22, $r23;
+        android.graphics.Path $r24;
+
+        r0 := @this: com.movesky.app.main.InGameScreen;
+
+        $r1 := @parameter0: com.movesky.app.engine.ui.UINavigationController;
+
+        $r2 := @parameter1: com.movesky.app.main.Team;
+
+        $r3 := @parameter2: com.movesky.app.engine.net.bluetooth.Bluetooth;
+
+        $r4 := @parameter3: com.movesky.app.main.Song;
+
+        $r5 := @parameter4: com.movesky.app.engine.net.simulation.LockStepProtocol;
+
+        $z0 := @parameter5: boolean;
+
+        specialinvoke r0.<com.movesky.app.engine.ui.UIView: void <init>()>();
+
+        $r6 = new com.movesky.app.engine.util.Timer;
+
+        specialinvoke $r6.<com.movesky.app.engine.util.Timer: void <init>()>();
+
+        r0.<com.movesky.app.main.InGameScreen: com.movesky.app.engine.util.Timer entireUpdateTimer> = $r6;
+
+        $r6 = new com.movesky.app.engine.util.Timer;
+
+        specialinvoke $r6.<com.movesky.app.engine.util.Timer: void <init>()>();
+
+        r0.<com.movesky.app.main.InGameScreen: com.movesky.app.engine.util.Timer simUpdateTimer> = $r6;
+
+        $r6 = new com.movesky.app.engine.util.Timer;
+
+        specialinvoke $r6.<com.movesky.app.engine.util.Timer: void <init>()>();
+
+        r0.<com.movesky.app.main.InGameScreen: com.movesky.app.engine.util.Timer entireDrawTimer> = $r6;
+
+        $r6 = new com.movesky.app.engine.util.Timer;
+
+        specialinvoke $r6.<com.movesky.app.engine.util.Timer: void <init>()>();
+
+        r0.<com.movesky.app.main.InGameScreen: com.movesky.app.engine.util.Timer drawParticleTimer> = $r6;
+
+        $r6 = new com.movesky.app.engine.util.Timer;
+
+        specialinvoke $r6.<com.movesky.app.engine.util.Timer: void <init>()>();
+
+        r0.<com.movesky.app.main.InGameScreen: com.movesky.app.engine.util.Timer drawSimTimer> = $r6;
+
+        $r6 = new com.movesky.app.engine.util.Timer;
+
+        specialinvoke $r6.<com.movesky.app.engine.util.Timer: void <init>()>();
+
+        r0.<com.movesky.app.main.InGameScreen: com.movesky.app.engine.util.Timer drawUITimer> = $r6;
+
+        r0.<com.movesky.app.main.InGameScreen: float secondsUntilNextScreen> = 4.0F;
+
+        $r7 = <com.movesky.app.engine.core.GameActivity: com.movesky.app.engine.core.GameActivity instance>;
+
+        $r8 = virtualinvoke $r7.<com.movesky.app.engine.core.GameActivity: java.lang.String getString(java.lang.String)>("R.string.dragfingerfurthertodrawlongerwall_1");
+
+        r0.<com.movesky.app.main.InGameScreen: java.lang.String dragfingerfurthertodrawlongerwall_1> = $r8;
+
+        $r7 = <com.movesky.app.engine.core.GameActivity: com.movesky.app.engine.core.GameActivity instance>;
+
+        $r8 = virtualinvoke $r7.<com.movesky.app.engine.core.GameActivity: java.lang.String getString(java.lang.String)>("R.string.dragfingerfurthertodrawlongerwall_2");
+
+        r0.<com.movesky.app.main.InGameScreen: java.lang.String dragfingerfurthertodrawlongerwall_2> = $r8;
+
+        $r7 = <com.movesky.app.engine.core.GameActivity: com.movesky.app.engine.core.GameActivity instance>;
+
+        $r8 = virtualinvoke $r7.<com.movesky.app.engine.core.GameActivity: java.lang.String getString(java.lang.String)>("R.string.tapinsideyourzoneofinfluence_1");
+
+        r0.<com.movesky.app.main.InGameScreen: java.lang.String tapinsideyourzoneofinfluence_1> = $r8;
+
+        $r7 = <com.movesky.app.engine.core.GameActivity: com.movesky.app.engine.core.GameActivity instance>;
+
+        $r8 = virtualinvoke $r7.<com.movesky.app.engine.core.GameActivity: java.lang.String getString(java.lang.String)>("R.string.tapinsideyourzoneofinfluence_2");
+
+        r0.<com.movesky.app.main.InGameScreen: java.lang.String tapinsideyourzoneofinfluence_2> = $r8;
+
+        $r7 = <com.movesky.app.engine.core.GameActivity: com.movesky.app.engine.core.GameActivity instance>;
+
+        $r8 = virtualinvoke $r7.<com.movesky.app.engine.core.GameActivity: java.lang.String getString(java.lang.String)>("R.string.tapfurtherrighttomakeunits_1");
+
+        r0.<com.movesky.app.main.InGameScreen: java.lang.String tapfurtherrighttomakeunits_1> = $r8;
+
+        $r7 = <com.movesky.app.engine.core.GameActivity: com.movesky.app.engine.core.GameActivity instance>;
+
+        $r8 = virtualinvoke $r7.<com.movesky.app.engine.core.GameActivity: java.lang.String getString(java.lang.String)>("R.string.tapfurtherrighttomakeunits_2");
+
+        r0.<com.movesky.app.main.InGameScreen: java.lang.String tapfurtherrighttomakeunits_2> = $r8;
+
+        $r7 = <com.movesky.app.engine.core.GameActivity: com.movesky.app.engine.core.GameActivity instance>;
+
+        $r8 = virtualinvoke $r7.<com.movesky.app.engine.core.GameActivity: java.lang.String getString(java.lang.String)>("R.string.notsynced");
+
+        r0.<com.movesky.app.main.InGameScreen: java.lang.String notsynced> = $r8;
+
+        $r7 = <com.movesky.app.engine.core.GameActivity: com.movesky.app.engine.core.GameActivity instance>;
+
+        $r8 = virtualinvoke $r7.<com.movesky.app.engine.core.GameActivity: java.lang.String getString(java.lang.String)>("R.string.waitingforotherplayer");
+
+        r0.<com.movesky.app.main.InGameScreen: java.lang.String waitingforotherplayer> = $r8;
+
+        virtualinvoke r0.<com.movesky.app.main.InGameScreen: void setSize(float,float)>(320.0F, 530.0F);
+
+        r0.<com.movesky.app.main.InGameScreen: com.movesky.app.engine.ui.UINavigationController controller> = $r1;
+
+        r0.<com.movesky.app.main.InGameScreen: boolean singlePlayer> = $z0;
+
+        r0.<com.movesky.app.main.InGameScreen: com.movesky.app.main.Team team> = $r2;
+
+        $f0 = <com.movesky.app.main.YSGame: float AI_DIFFICULTY>;
+
+        r0.<com.movesky.app.main.InGameScreen: float aiDifficulty> = $f0;
+
+        $r9 = new com.movesky.app.main.InteractiveTutorial;
+
+        specialinvoke $r9.<com.movesky.app.main.InteractiveTutorial: void <init>(com.movesky.app.main.Team)>($r2);
+
+        r0.<com.movesky.app.main.InGameScreen: com.movesky.app.main.Tutorial tutorial> = $r9;
+
+        $r10 = r0.<com.movesky.app.main.InGameScreen: com.movesky.app.main.Tutorial tutorial>;
+
+        virtualinvoke $r10.<com.movesky.app.main.Tutorial: void setSize(float,float)>(240.0F, 265.0F);
+
+        $r10 = r0.<com.movesky.app.main.InGameScreen: com.movesky.app.main.Tutorial tutorial>;
+
+        $r11 = <com.movesky.app.engine.ui.Anchor: com.movesky.app.engine.ui.Anchor CENTER_CENTER>;
+
+        virtualinvoke $r10.<com.movesky.app.main.Tutorial: void setAnchor(com.movesky.app.engine.ui.Anchor)>($r11);
+
+        $r10 = r0.<com.movesky.app.main.InGameScreen: com.movesky.app.main.Tutorial tutorial>;
+
+        virtualinvoke $r10.<com.movesky.app.main.Tutorial: void setPosition(float,float)>(160.0F, 265.0F);
+
+        $r12 = new android.graphics.Paint;
+
+        specialinvoke $r12.<android.graphics.Paint: void <init>(int)>(1);
+
+        r0.<com.movesky.app.main.InGameScreen: android.graphics.Paint paint> = $r12;
+
+        r0.<com.movesky.app.main.InGameScreen: long tap_location_hint_time> = 0L;
+
+        r0.<com.movesky.app.main.InGameScreen: com.movesky.app.engine.net.bluetooth.Bluetooth bluetooth> = $r3;
+
+        $r13 = new com.movesky.app.main.YSSimulation;
+
+        $r14 = r0.<com.movesky.app.main.InGameScreen: com.movesky.app.main.Team team>;
+
+        $r15 = <com.movesky.app.main.Team: com.movesky.app.main.Team SERVER>;
+
+        if $r14 != $r15 goto label5;
+
+        $z1 = 1;
+
+     label1:
+        specialinvoke $r13.<com.movesky.app.main.YSSimulation: void <init>(com.movesky.app.main.Team,com.movesky.app.engine.net.simulation.LockStepProtocol,boolean,com.movesky.app.main.InGameScreen)>($r2, $r5, $z1, r0);
+
+        r0.<com.movesky.app.main.InGameScreen: com.movesky.app.main.YSSimulation sim> = $r13;
+
+        $r16 = <com.movesky.app.main.YSGame: com.movesky.app.engine.particles.ParticleSystem PARTICLES>;
+
+        virtualinvoke $r16.<com.movesky.app.engine.particles.ParticleSystem: void reset()>();
+
+        $r2 = r0.<com.movesky.app.main.InGameScreen: com.movesky.app.main.Team team>;
+
+        $r14 = <com.movesky.app.main.Team: com.movesky.app.main.Team SERVER>;
+
+        if $r2 != $r14 goto label7;
+
+        if $z0 == 0 goto label6;
+
+        $r13 = r0.<com.movesky.app.main.InGameScreen: com.movesky.app.main.YSSimulation sim>;
+
+        $i0 = $r4.<com.movesky.app.main.Song: int id>;
+
+        virtualinvoke $r13.<com.movesky.app.main.YSSimulation: void simulateCustomEvent(float,float,int,boolean)>(0.0F, 0.0F, $i0, 1);
+
+     label2:
+        $r17 = new com.movesky.app.main.BeatTrack;
+
+        specialinvoke $r17.<com.movesky.app.main.BeatTrack: void <init>(com.movesky.app.engine.sound.MusicPlayer$OnCompletionListener)>(r0);
+
+        r0.<com.movesky.app.main.InGameScreen: com.movesky.app.main.BeatTrack beatTrack> = $r17;
+
+        $r17 = r0.<com.movesky.app.main.InGameScreen: com.movesky.app.main.BeatTrack beatTrack>;
+
+        virtualinvoke $r17.<com.movesky.app.main.BeatTrack: void setSong(com.movesky.app.main.Song)>($r4);
+
+        r0.<com.movesky.app.main.InGameScreen: boolean setSong> = 1;
+
+     label3:
+        $r12 = new android.graphics.Paint;
+
+        specialinvoke $r12.<android.graphics.Paint: void <init>()>();
+
+        r0.<com.movesky.app.main.InGameScreen: android.graphics.Paint paint> = $r12;
+
+        $r12 = r0.<com.movesky.app.main.InGameScreen: android.graphics.Paint paint>;
+
+        virtualinvoke $r12.<android.graphics.Paint: void setAntiAlias(boolean)>(1);
+
+        $r12 = r0.<com.movesky.app.main.InGameScreen: android.graphics.Paint paint>;
+
+        virtualinvoke $r12.<android.graphics.Paint: void setStrokeWidth(float)>(2.0F);
+
+        $r12 = r0.<com.movesky.app.main.InGameScreen: android.graphics.Paint paint>;
+
+        $r18 = <android.graphics.Paint$Join: android.graphics.Paint$Join ROUND>;
+
+        virtualinvoke $r12.<android.graphics.Paint: void setStrokeJoin(android.graphics.Paint$Join)>($r18);
+
+        $r12 = r0.<com.movesky.app.main.InGameScreen: android.graphics.Paint paint>;
+
+        virtualinvoke $r12.<android.graphics.Paint: void setTextSize(float)>(20.0F);
+
+        $r12 = r0.<com.movesky.app.main.InGameScreen: android.graphics.Paint paint>;
+
+        virtualinvoke $r12.<android.graphics.Paint: void setAntiAlias(boolean)>(1);
+
+        $r12 = r0.<com.movesky.app.main.InGameScreen: android.graphics.Paint paint>;
+
+        $r19 = <android.graphics.Paint$Align: android.graphics.Paint$Align CENTER>;
+
+        virtualinvoke $r12.<android.graphics.Paint: void setTextAlign(android.graphics.Paint$Align)>($r19);
+
+        $r12 = r0.<com.movesky.app.main.InGameScreen: android.graphics.Paint paint>;
+
+        virtualinvoke $r12.<android.graphics.Paint: void setStrokeWidth(float)>(2.0F);
+
+        $r16 = new com.movesky.app.engine.particles.ParticleSystem;
+
+        specialinvoke $r16.<com.movesky.app.engine.particles.ParticleSystem: void <init>(int,float)>(200, 0.5F);
+
+        r0.<com.movesky.app.main.InGameScreen: com.movesky.app.engine.particles.ParticleSystem particles> = $r16;
+
+        if $z0 == 0 goto label4;
+
+        $r20 = new com.movesky.app.main.ai.PlayerAI;
+
+        $r13 = r0.<com.movesky.app.main.InGameScreen: com.movesky.app.main.YSSimulation sim>;
+
+        $r21 = r0.<com.movesky.app.main.InGameScreen: com.movesky.app.main.YSSimulation sim>;
+
+        $r22 = $r21.<com.movesky.app.main.YSSimulation: com.movesky.app.main.Player remotePlayer>;
+
+        $r21 = r0.<com.movesky.app.main.InGameScreen: com.movesky.app.main.YSSimulation sim>;
+
+        $r23 = $r21.<com.movesky.app.main.YSSimulation: com.movesky.app.main.Player localPlayer>;
+
+        $r17 = r0.<com.movesky.app.main.InGameScreen: com.movesky.app.main.BeatTrack beatTrack>;
+
+        $f0 = r0.<com.movesky.app.main.InGameScreen: float aiDifficulty>;
+
+        specialinvoke $r20.<com.movesky.app.main.ai.PlayerAI: void <init>(com.movesky.app.main.YSSimulation,com.movesky.app.main.Player,com.movesky.app.main.Player,com.movesky.app.main.BeatTrack,float)>($r13, $r22, $r23, $r17, $f0);
+
+        r0.<com.movesky.app.main.InGameScreen: com.movesky.app.main.ai.PlayerAI player_ai> = $r20;
+
+     label4:
+        $r24 = new android.graphics.Path;
+
+        specialinvoke $r24.<android.graphics.Path: void <init>()>();
+
+        r0.<com.movesky.app.main.InGameScreen: android.graphics.Path arrowPath> = $r24;
+
+        $r24 = r0.<com.movesky.app.main.InGameScreen: android.graphics.Path arrowPath>;
+
+        virtualinvoke $r24.<android.graphics.Path: void moveTo(float,float)>(190.0F, 452.5F);
+
+        $r24 = r0.<com.movesky.app.main.InGameScreen: android.graphics.Path arrowPath>;
+
+        virtualinvoke $r24.<android.graphics.Path: void lineTo(float,float)>(200.0F, 462.5F);
+
+        $r24 = r0.<com.movesky.app.main.InGameScreen: android.graphics.Path arrowPath>;
+
+        virtualinvoke $r24.<android.graphics.Path: void lineTo(float,float)>(190.0F, 472.5F);
+
+        $r24 = r0.<com.movesky.app.main.InGameScreen: android.graphics.Path arrowPath>;
+
+        virtualinvoke $r24.<android.graphics.Path: void lineTo(float,float)>(190.0F, 467.5F);
+
+        $r24 = r0.<com.movesky.app.main.InGameScreen: android.graphics.Path arrowPath>;
+
+        virtualinvoke $r24.<android.graphics.Path: void lineTo(float,float)>(160.0F, 467.5F);
+
+        $r24 = r0.<com.movesky.app.main.InGameScreen: android.graphics.Path arrowPath>;
+
+        virtualinvoke $r24.<android.graphics.Path: void lineTo(float,float)>(160.0F, 457.5F);
+
+        $r24 = r0.<com.movesky.app.main.InGameScreen: android.graphics.Path arrowPath>;
+
+        virtualinvoke $r24.<android.graphics.Path: void lineTo(float,float)>(190.0F, 457.5F);
+
+        $r24 = r0.<com.movesky.app.main.InGameScreen: android.graphics.Path arrowPath>;
+
+        virtualinvoke $r24.<android.graphics.Path: void close()>();
+
+        return;
+
+     label5:
+        $z1 = 0;
+
+        goto label1;
+
+     label6:
+        $r13 = r0.<com.movesky.app.main.InGameScreen: com.movesky.app.main.YSSimulation sim>;
+
+        $i0 = $r4.<com.movesky.app.main.Song: int id>;
+
+        virtualinvoke $r13.<com.movesky.app.main.YSSimulation: void recordCustomEvent(float,float,int)>(0.0F, 0.0F, $i0);
+
+        goto label2;
+
+     label7:
+        $r17 = new com.movesky.app.main.BeatTrack;
+
+        specialinvoke $r17.<com.movesky.app.main.BeatTrack: void <init>(com.movesky.app.engine.sound.MusicPlayer$OnCompletionListener)>(r0);
+
+        r0.<com.movesky.app.main.InGameScreen: com.movesky.app.main.BeatTrack beatTrack> = $r17;
+
+        r0.<com.movesky.app.main.InGameScreen: boolean setSong> = 0;
+
+        goto label3;
+    }
+
+    private void moveToNextScreen()
+    {
+        com.movesky.app.main.InGameScreen r0;
+        com.movesky.app.main.YSSimulation$GameState $r1, $r4;
+        com.movesky.app.main.BeatTrack $r2;
+        com.movesky.app.main.YSSimulation $r3;
+        com.movesky.app.engine.ui.UINavigationController $r5, $r7;
+        com.movesky.app.main.GameStatusMessageScreen$TieScreen $r6;
+        boolean $z0, $z1;
+        com.movesky.app.engine.ui.UISwipeTransition $r8;
+        com.movesky.app.main.GameStatusMessageScreen$WinScreen $r9;
+        com.movesky.app.main.GameStatusMessageScreen$LoseScreen $r10;
+
+        r0 := @this: com.movesky.app.main.InGameScreen;
+
+        $r2 = r0.<com.movesky.app.main.InGameScreen: com.movesky.app.main.BeatTrack beatTrack>;
+
+        virtualinvoke $r2.<com.movesky.app.main.BeatTrack: void stopMusic()>();
+
+        $r3 = r0.<com.movesky.app.main.InGameScreen: com.movesky.app.main.YSSimulation sim>;
+
+        $r1 = virtualinvoke $r3.<com.movesky.app.main.YSSimulation: com.movesky.app.main.YSSimulation$GameState getGameState()>();
+
+        $r4 = <com.movesky.app.main.YSSimulation$GameState: com.movesky.app.main.YSSimulation$GameState TIE>;
+
+        if $r1 != $r4 goto label1;
+
+        $r5 = r0.<com.movesky.app.main.InGameScreen: com.movesky.app.engine.ui.UINavigationController controller>;
+
+        $r6 = new com.movesky.app.main.GameStatusMessageScreen$TieScreen;
+
+        $r7 = r0.<com.movesky.app.main.InGameScreen: com.movesky.app.engine.ui.UINavigationController controller>;
+
+        $z0 = r0.<com.movesky.app.main.InGameScreen: boolean singlePlayer>;
+
+        specialinvoke $r6.<com.movesky.app.main.GameStatusMessageScreen$TieScreen: void <init>(com.movesky.app.engine.ui.UINavigationController,boolean)>($r7, $z0);
+
+        virtualinvoke $r5.<com.movesky.app.engine.ui.UINavigationController: void pushUnder(com.movesky.app.engine.ui.UIView)>($r6);
+
+        $r5 = r0.<com.movesky.app.main.InGameScreen: com.movesky.app.engine.ui.UINavigationController controller>;
+
+        $r8 = <com.movesky.app.main.YSGame: com.movesky.app.engine.ui.UISwipeTransition FROM_RIGHT_TRANSITION>;
+
+        virtualinvoke $r5.<com.movesky.app.engine.ui.UINavigationController: boolean pop(com.movesky.app.engine.ui.UISwipeTransition)>($r8);
+
+        return;
+
+     label1:
+        $r3 = r0.<com.movesky.app.main.InGameScreen: com.movesky.app.main.YSSimulation sim>;
+
+        $z0 = $r3.<com.movesky.app.main.YSSimulation: boolean isServer>;
+
+        $r4 = <com.movesky.app.main.YSSimulation$GameState: com.movesky.app.main.YSSimulation$GameState SERVER_WON>;
+
+        if $r1 != $r4 goto label3;
+
+        $z1 = 1;
+
+     label2:
+        if $z0 != $z1 goto label4;
+
+        $r5 = r0.<com.movesky.app.main.InGameScreen: com.movesky.app.engine.ui.UINavigationController controller>;
+
+        $r9 = new com.movesky.app.main.GameStatusMessageScreen$WinScreen;
+
+        $r7 = r0.<com.movesky.app.main.InGameScreen: com.movesky.app.engine.ui.UINavigationController controller>;
+
+        $z0 = r0.<com.movesky.app.main.InGameScreen: boolean singlePlayer>;
+
+        specialinvoke $r9.<com.movesky.app.main.GameStatusMessageScreen$WinScreen: void <init>(com.movesky.app.engine.ui.UINavigationController,boolean)>($r7, $z0);
+
+        virtualinvoke $r5.<com.movesky.app.engine.ui.UINavigationController: void pushUnder(com.movesky.app.engine.ui.UIView)>($r9);
+
+        $r5 = r0.<com.movesky.app.main.InGameScreen: com.movesky.app.engine.ui.UINavigationController controller>;
+
+        $r8 = <com.movesky.app.main.YSGame: com.movesky.app.engine.ui.UISwipeTransition FROM_RIGHT_TRANSITION>;
+
+        virtualinvoke $r5.<com.movesky.app.engine.ui.UINavigationController: boolean pop(com.movesky.app.engine.ui.UISwipeTransition)>($r8);
+
+        return;
+
+     label3:
+        $z1 = 0;
+
+        goto label2;
+
+     label4:
+        $r5 = r0.<com.movesky.app.main.InGameScreen: com.movesky.app.engine.ui.UINavigationController controller>;
+
+        $r10 = new com.movesky.app.main.GameStatusMessageScreen$LoseScreen;
+
+        $r7 = r0.<com.movesky.app.main.InGameScreen: com.movesky.app.engine.ui.UINavigationController controller>;
+
+        $z0 = r0.<com.movesky.app.main.InGameScreen: boolean singlePlayer>;
+
+        specialinvoke $r10.<com.movesky.app.main.GameStatusMessageScreen$LoseScreen: void <init>(com.movesky.app.engine.ui.UINavigationController,boolean)>($r7, $z0);
+
+        virtualinvoke $r5.<com.movesky.app.engine.ui.UINavigationController: void pushUnder(com.movesky.app.engine.ui.UIView)>($r10);
+
+        $r5 = r0.<com.movesky.app.main.InGameScreen: com.movesky.app.engine.ui.UINavigationController controller>;
+
+        $r8 = <com.movesky.app.main.YSGame: com.movesky.app.engine.ui.UISwipeTransition FROM_RIGHT_TRANSITION>;
+
+        virtualinvoke $r5.<com.movesky.app.engine.ui.UINavigationController: boolean pop(com.movesky.app.engine.ui.UISwipeTransition)>($r8);
+
+        return;
+    }
+
+    public void endTutorial()
+    {
+        com.movesky.app.main.InGameScreen r0;
+        boolean $z0;
+        com.movesky.app.main.Tutorial $r1;
+        com.movesky.app.main.YSSimulation $r2;
+
+        r0 := @this: com.movesky.app.main.InGameScreen;
+
+        $z0 = r0.<com.movesky.app.main.InGameScreen: boolean gameIsStarted>;
+
+        if $z0 != 0 goto label1;
+
+        r0.<com.movesky.app.main.InGameScreen: boolean gameIsStarted> = 1;
+
+        $r1 = r0.<com.movesky.app.main.InGameScreen: com.movesky.app.main.Tutorial tutorial>;
+
+        virtualinvoke r0.<com.movesky.app.main.InGameScreen: void removeSubview(com.movesky.app.engine.ui.UIView)>($r1);
+
+        $r2 = r0.<com.movesky.app.main.InGameScreen: com.movesky.app.main.YSSimulation sim>;
+
+        virtualinvoke $r2.<com.movesky.app.main.YSSimulation: void recordCustomEvent(float,float,int)>(0.0F, 0.0F, 13);
+
+        $z0 = r0.<com.movesky.app.main.InGameScreen: boolean singlePlayer>;
+
+        if $z0 == 0 goto label1;
+
+        $r2 = r0.<com.movesky.app.main.InGameScreen: com.movesky.app.main.YSSimulation sim>;
+
+        virtualinvoke $r2.<com.movesky.app.main.YSSimulation: void setBothPlayersReady()>();
+
+     label1:
+        return;
+    }
+
+    public com.movesky.app.main.BeatTrack getBeatTrack()
+    {
+        com.movesky.app.main.InGameScreen r0;
+        com.movesky.app.main.BeatTrack r1;
+
+        r0 := @this: com.movesky.app.main.InGameScreen;
+
+        r1 = r0.<com.movesky.app.main.InGameScreen: com.movesky.app.main.BeatTrack beatTrack>;
+
+        return r1;
+    }
+
+    public void onActivityResult(int, int)
+    {
+        com.movesky.app.main.InGameScreen r0;
+        int $i0, $i1;
+        com.movesky.app.engine.net.bluetooth.Bluetooth $r1;
+
+        r0 := @this: com.movesky.app.main.InGameScreen;
+
+        $i0 := @parameter0: int;
+
+        $i1 := @parameter1: int;
+
+        $r1 = r0.<com.movesky.app.main.InGameScreen: com.movesky.app.engine.net.bluetooth.Bluetooth bluetooth>;
+
+        virtualinvoke $r1.<com.movesky.app.engine.net.bluetooth.Bluetooth: void onActivityResult(int,int)>($i0, $i1);
+
+        return;
+    }
+
+    public void onCompletion(com.movesky.app.engine.sound.MusicPlayer)
+    {
+        com.movesky.app.main.InGameScreen r0;
+        com.movesky.app.engine.sound.MusicPlayer $r1;
+        boolean $z0;
+        com.movesky.app.main.YSSimulation $r2;
+
+        r0 := @this: com.movesky.app.main.InGameScreen;
+
+        $r1 := @parameter0: com.movesky.app.engine.sound.MusicPlayer;
+
+        virtualinvoke $r1.<com.movesky.app.engine.sound.MusicPlayer: void stop()>();
+
+        virtualinvoke $r1.<com.movesky.app.engine.sound.MusicPlayer: void release()>();
+
+        $z0 = r0.<com.movesky.app.main.InGameScreen: boolean singlePlayer>;
+
+        if $z0 == 0 goto label1;
+
+        $r2 = r0.<com.movesky.app.main.InGameScreen: com.movesky.app.main.YSSimulation sim>;
+
+        virtualinvoke $r2.<com.movesky.app.main.YSSimulation: void simulateCustomEvent(float,float,int,boolean)>(0.0F, 0.0F, 69, 1);
+
+        return;
+
+     label1:
+        $r2 = r0.<com.movesky.app.main.InGameScreen: com.movesky.app.main.YSSimulation sim>;
+
+        virtualinvoke $r2.<com.movesky.app.main.YSSimulation: void recordCustomEvent(float,float,int)>(0.0F, 0.0F, 69);
+
+        return;
+    }
+
+    public void onDraw(android.graphics.Canvas)
+    {
+        com.movesky.app.main.InGameScreen r0;
+        android.graphics.Canvas $r1;
+        boolean $z0;
+        com.movesky.app.main.Tutorial $r2;
+        com.movesky.app.engine.util.Timer $r3;
+        com.movesky.app.main.Team $r4, $r5;
+        com.movesky.app.main.YSSimulation $r6;
+        android.graphics.Paint $r7;
+        int $i0, $i4;
+        android.graphics.Paint$Cap $r8;
+        com.movesky.app.engine.fastgraph.Wall $r9;
+        com.movesky.app.engine.util.Point $r10;
+        float $f0, $f1, $f2, $f3;
+        com.movesky.app.engine.particles.ParticleSystem $r11;
+        com.movesky.app.main.BeatTrack $r12;
+        long $l1, $l2;
+        byte $b3;
+        android.graphics.Paint$Style $r13;
+        java.lang.String $r14;
+        android.graphics.Path $r15;
+        com.movesky.app.engine.achievements.Achievements $r16;
+        double $d0;
+
+        r0 := @this: com.movesky.app.main.InGameScreen;
+
+        $r1 := @parameter0: android.graphics.Canvas;
+
+        $z0 = <com.movesky.app.main.YSGame: boolean SHOW_TUTORIAL>;
+
+        if $z0 == 0 goto label1;
+
+        $r2 = r0.<com.movesky.app.main.InGameScreen: com.movesky.app.main.Tutorial tutorial>;
+
+        $z0 = virtualinvoke $r2.<com.movesky.app.main.Tutorial: boolean isFinished()>();
+
+        if $z0 != 0 goto label1;
+
+        $r2 = r0.<com.movesky.app.main.InGameScreen: com.movesky.app.main.Tutorial tutorial>;
+
+        $z0 = virtualinvoke $r2.<com.movesky.app.main.Tutorial: boolean supressDrawing()>();
+
+        if $z0 == 0 goto label1;
+
+        $r2 = r0.<com.movesky.app.main.InGameScreen: com.movesky.app.main.Tutorial tutorial>;
+
+        virtualinvoke $r2.<com.movesky.app.main.Tutorial: void onDraw(android.graphics.Canvas)>($r1);
+
+        return;
+
+     label1:
+        $r3 = r0.<com.movesky.app.main.InGameScreen: com.movesky.app.engine.util.Timer entireDrawTimer>;
+
+        virtualinvoke $r3.<com.movesky.app.engine.util.Timer: void start()>();
+
+        $r3 = r0.<com.movesky.app.main.InGameScreen: com.movesky.app.engine.util.Timer drawSimTimer>;
+
+        virtualinvoke $r3.<com.movesky.app.engine.util.Timer: void start()>();
+
+        virtualinvoke $r1.<android.graphics.Canvas: int save()>();
+
+        virtualinvoke $r1.<android.graphics.Canvas: void translate(float,float)>(50.0F, 0.0F);
+
+        $r4 = r0.<com.movesky.app.main.InGameScreen: com.movesky.app.main.Team team>;
+
+        $r5 = <com.movesky.app.main.Team: com.movesky.app.main.Team SERVER>;
+
+        if $r4 != $r5 goto label2;
+
+        virtualinvoke $r1.<android.graphics.Canvas: void translate(float,float)>(0.0F, 265.0F);
+
+        virtualinvoke $r1.<android.graphics.Canvas: void scale(float,float)>(1.0F, -1.0F);
+
+        virtualinvoke $r1.<android.graphics.Canvas: void translate(float,float)>(0.0F, -265.0F);
+
+     label2:
+        $r6 = r0.<com.movesky.app.main.InGameScreen: com.movesky.app.main.YSSimulation sim>;
+
+        virtualinvoke $r6.<com.movesky.app.main.YSSimulation: void draw(android.graphics.Canvas)>($r1);
+
+        $r7 = r0.<com.movesky.app.main.InGameScreen: android.graphics.Paint paint>;
+
+        $r4 = r0.<com.movesky.app.main.InGameScreen: com.movesky.app.main.Team team>;
+
+        $i0 = virtualinvoke $r4.<com.movesky.app.main.Team: int getTempWallColor()>();
+
+        virtualinvoke $r7.<android.graphics.Paint: void setColor(int)>($i0);
+
+        $r7 = r0.<com.movesky.app.main.InGameScreen: android.graphics.Paint paint>;
+
+        $r8 = <android.graphics.Paint$Cap: android.graphics.Paint$Cap ROUND>;
+
+        virtualinvoke $r7.<android.graphics.Paint: void setStrokeCap(android.graphics.Paint$Cap)>($r8);
+
+        $r9 = r0.<com.movesky.app.main.InGameScreen: com.movesky.app.engine.fastgraph.Wall currentWall>;
+
+        if $r9 == null goto label3;
+
+        $r9 = r0.<com.movesky.app.main.InGameScreen: com.movesky.app.engine.fastgraph.Wall currentWall>;
+
+        $r10 = $r9.<com.movesky.app.engine.fastgraph.Wall: com.movesky.app.engine.util.Point a>;
+
+        $f0 = $r10.<com.movesky.app.engine.util.Point: float x>;
+
+        $r9 = r0.<com.movesky.app.main.InGameScreen: com.movesky.app.engine.fastgraph.Wall currentWall>;
+
+        $r10 = $r9.<com.movesky.app.engine.fastgraph.Wall: com.movesky.app.engine.util.Point a>;
+
+        $f1 = $r10.<com.movesky.app.engine.util.Point: float y>;
+
+        $r9 = r0.<com.movesky.app.main.InGameScreen: com.movesky.app.engine.fastgraph.Wall currentWall>;
+
+        $r10 = $r9.<com.movesky.app.engine.fastgraph.Wall: com.movesky.app.engine.util.Point b>;
+
+        $f2 = $r10.<com.movesky.app.engine.util.Point: float x>;
+
+        $r9 = r0.<com.movesky.app.main.InGameScreen: com.movesky.app.engine.fastgraph.Wall currentWall>;
+
+        $r10 = $r9.<com.movesky.app.engine.fastgraph.Wall: com.movesky.app.engine.util.Point b>;
+
+        $f3 = $r10.<com.movesky.app.engine.util.Point: float y>;
+
+        $r7 = r0.<com.movesky.app.main.InGameScreen: android.graphics.Paint paint>;
+
+        virtualinvoke $r1.<android.graphics.Canvas: void drawLine(float,float,float,float,android.graphics.Paint)>($f0, $f1, $f2, $f3, $r7);
+
+     label3:
+        $r7 = r0.<com.movesky.app.main.InGameScreen: android.graphics.Paint paint>;
+
+        $r8 = <android.graphics.Paint$Cap: android.graphics.Paint$Cap BUTT>;
+
+        virtualinvoke $r7.<android.graphics.Paint: void setStrokeCap(android.graphics.Paint$Cap)>($r8);
+
+        $r3 = r0.<com.movesky.app.main.InGameScreen: com.movesky.app.engine.util.Timer drawParticleTimer>;
+
+        virtualinvoke $r3.<com.movesky.app.engine.util.Timer: void start()>();
+
+        $r11 = r0.<com.movesky.app.main.InGameScreen: com.movesky.app.engine.particles.ParticleSystem particles>;
+
+        $r7 = r0.<com.movesky.app.main.InGameScreen: android.graphics.Paint paint>;
+
+        virtualinvoke $r11.<com.movesky.app.engine.particles.ParticleSystem: void draw(android.graphics.Canvas,android.graphics.Paint)>($r1, $r7);
+
+        $r3 = r0.<com.movesky.app.main.InGameScreen: com.movesky.app.engine.util.Timer drawParticleTimer>;
+
+        virtualinvoke $r3.<com.movesky.app.engine.util.Timer: void stop()>();
+
+        virtualinvoke $r1.<android.graphics.Canvas: void restore()>();
+
+        $r3 = r0.<com.movesky.app.main.InGameScreen: com.movesky.app.engine.util.Timer drawSimTimer>;
+
+        virtualinvoke $r3.<com.movesky.app.engine.util.Timer: void stop()>();
+
+        $r3 = r0.<com.movesky.app.main.InGameScreen: com.movesky.app.engine.util.Timer drawUITimer>;
+
+        virtualinvoke $r3.<com.movesky.app.engine.util.Timer: void start()>();
+
+        $r12 = r0.<com.movesky.app.main.InGameScreen: com.movesky.app.main.BeatTrack beatTrack>;
+
+        virtualinvoke $r12.<com.movesky.app.main.BeatTrack: void draw(android.graphics.Canvas)>($r1);
+
+        $r3 = r0.<com.movesky.app.main.InGameScreen: com.movesky.app.engine.util.Timer drawUITimer>;
+
+        virtualinvoke $r3.<com.movesky.app.engine.util.Timer: void stop()>();
+
+        $z0 = <com.movesky.app.main.YSGame: boolean SHOW_TUTORIAL>;
+
+        if $z0 == 0 goto label8;
+
+        $r2 = r0.<com.movesky.app.main.InGameScreen: com.movesky.app.main.Tutorial tutorial>;
+
+        $z0 = virtualinvoke $r2.<com.movesky.app.main.Tutorial: boolean isFinished()>();
+
+        if $z0 != 0 goto label8;
+
+        $r2 = r0.<com.movesky.app.main.InGameScreen: com.movesky.app.main.Tutorial tutorial>;
+
+        virtualinvoke $r2.<com.movesky.app.main.Tutorial: void onDraw(android.graphics.Canvas)>($r1);
+
+     label4:
+        $l1 = staticinvoke <java.lang.System: long currentTimeMillis()>();
+
+        $l2 = r0.<com.movesky.app.main.InGameScreen: long tap_location_hint_time>;
+
+        $l1 = $l1 - $l2;
+
+        $f0 = (float) $l1;
+
+        $f0 = $f0 / 3000.0F;
+
+        $b3 = $f0 cmpg 1.0F;
+
+        if $b3 >= 0 goto label5;
+
+        $r7 = r0.<com.movesky.app.main.InGameScreen: android.graphics.Paint paint>;
+
+        virtualinvoke $r7.<android.graphics.Paint: void setColor(int)>(-1);
+
+        $r7 = r0.<com.movesky.app.main.InGameScreen: android.graphics.Paint paint>;
+
+        $r13 = <android.graphics.Paint$Style: android.graphics.Paint$Style FILL>;
+
+        virtualinvoke $r7.<android.graphics.Paint: void setStyle(android.graphics.Paint$Style)>($r13);
+
+        $r7 = r0.<com.movesky.app.main.InGameScreen: android.graphics.Paint paint>;
+
+        virtualinvoke $r7.<android.graphics.Paint: void setTextSize(float)>(18.0F);
+
+        $r7 = r0.<com.movesky.app.main.InGameScreen: android.graphics.Paint paint>;
+
+        $r8 = <android.graphics.Paint$Cap: android.graphics.Paint$Cap ROUND>;
+
+        virtualinvoke $r7.<android.graphics.Paint: void setStrokeCap(android.graphics.Paint$Cap)>($r8);
+
+        $r7 = r0.<com.movesky.app.main.InGameScreen: android.graphics.Paint paint>;
+
+        $f1 = $f0 * $f0;
+
+        $f0 = $f0 - $f1;
+
+        $f0 = $f0 * 1020.0F;
+
+        $i0 = (int) $f0;
+
+        virtualinvoke $r7.<android.graphics.Paint: void setAlpha(int)>($i0);
+
+        $r14 = r0.<com.movesky.app.main.InGameScreen: java.lang.String tapfurtherrighttomakeunits_1>;
+
+        $r7 = r0.<com.movesky.app.main.InGameScreen: android.graphics.Paint paint>;
+
+        virtualinvoke $r1.<android.graphics.Canvas: void drawText(java.lang.String,float,float,android.graphics.Paint)>($r14, 160.0F, 417.5F, $r7);
+
+        $r14 = r0.<com.movesky.app.main.InGameScreen: java.lang.String tapfurtherrighttomakeunits_2>;
+
+        $r7 = r0.<com.movesky.app.main.InGameScreen: android.graphics.Paint paint>;
+
+        virtualinvoke $r1.<android.graphics.Canvas: void drawText(java.lang.String,float,float,android.graphics.Paint)>($r14, 160.0F, 442.5F, $r7);
+
+        $r15 = r0.<com.movesky.app.main.InGameScreen: android.graphics.Path arrowPath>;
+
+        $r7 = r0.<com.movesky.app.main.InGameScreen: android.graphics.Paint paint>;
+
+        virtualinvoke $r1.<android.graphics.Canvas: void drawPath(android.graphics.Path,android.graphics.Paint)>($r15, $r7);
+
+     label5:
+        $l1 = staticinvoke <java.lang.System: long currentTimeMillis()>();
+
+        $r6 = r0.<com.movesky.app.main.InGameScreen: com.movesky.app.main.YSSimulation sim>;
+
+        $l2 = $r6.<com.movesky.app.main.YSSimulation: long placement_tip_start_time>;
+
+        $l1 = $l1 - $l2;
+
+        $f0 = (float) $l1;
+
+        $f0 = $f0 / 3000.0F;
+
+        $b3 = $f0 cmpg 1.0F;
+
+        if $b3 >= 0 goto label6;
+
+        $r7 = r0.<com.movesky.app.main.InGameScreen: android.graphics.Paint paint>;
+
+        virtualinvoke $r7.<android.graphics.Paint: void setColor(int)>(-1);
+
+        $r7 = r0.<com.movesky.app.main.InGameScreen: android.graphics.Paint paint>;
+
+        $r13 = <android.graphics.Paint$Style: android.graphics.Paint$Style FILL>;
+
+        virtualinvoke $r7.<android.graphics.Paint: void setStyle(android.graphics.Paint$Style)>($r13);
+
+        $r7 = r0.<com.movesky.app.main.InGameScreen: android.graphics.Paint paint>;
+
+        virtualinvoke $r7.<android.graphics.Paint: void setTextSize(float)>(18.0F);
+
+        $r7 = r0.<com.movesky.app.main.InGameScreen: android.graphics.Paint paint>;
+
+        $f1 = $f0 * $f0;
+
+        $f0 = $f0 - $f1;
+
+        $f0 = $f0 * 1020.0F;
+
+        $i0 = (int) $f0;
+
+        virtualinvoke $r7.<android.graphics.Paint: void setAlpha(int)>($i0);
+
+        $r14 = r0.<com.movesky.app.main.InGameScreen: java.lang.String tapinsideyourzoneofinfluence_1>;
+
+        $r7 = r0.<com.movesky.app.main.InGameScreen: android.graphics.Paint paint>;
+
+        virtualinvoke $r1.<android.graphics.Canvas: void drawText(java.lang.String,float,float,android.graphics.Paint)>($r14, 160.0F, 152.5F, $r7);
+
+        $r14 = r0.<com.movesky.app.main.InGameScreen: java.lang.String tapinsideyourzoneofinfluence_2>;
+
+        $r7 = r0.<com.movesky.app.main.InGameScreen: android.graphics.Paint paint>;
+
+        virtualinvoke $r1.<android.graphics.Canvas: void drawText(java.lang.String,float,float,android.graphics.Paint)>($r14, 160.0F, 177.5F, $r7);
+
+     label6:
+        $l1 = staticinvoke <java.lang.System: long currentTimeMillis()>();
+
+        $l2 = r0.<com.movesky.app.main.InGameScreen: long drag_tip_start_time>;
+
+        $l1 = $l1 - $l2;
+
+        $f0 = (float) $l1;
+
+        $f0 = $f0 / 3000.0F;
+
+        $b3 = $f0 cmpg 1.0F;
+
+        if $b3 >= 0 goto label7;
+
+        $r7 = r0.<com.movesky.app.main.InGameScreen: android.graphics.Paint paint>;
+
+        virtualinvoke $r7.<android.graphics.Paint: void setColor(int)>(-1);
+
+        $r7 = r0.<com.movesky.app.main.InGameScreen: android.graphics.Paint paint>;
+
+        $r13 = <android.graphics.Paint$Style: android.graphics.Paint$Style FILL>;
+
+        virtualinvoke $r7.<android.graphics.Paint: void setStyle(android.graphics.Paint$Style)>($r13);
+
+        $r7 = r0.<com.movesky.app.main.InGameScreen: android.graphics.Paint paint>;
+
+        virtualinvoke $r7.<android.graphics.Paint: void setTextSize(float)>(18.0F);
+
+        $r7 = r0.<com.movesky.app.main.InGameScreen: android.graphics.Paint paint>;
+
+        $f1 = $f0 * $f0;
+
+        $f0 = $f0 - $f1;
+
+        $f0 = $f0 * 1020.0F;
+
+        $i0 = (int) $f0;
+
+        virtualinvoke $r7.<android.graphics.Paint: void setAlpha(int)>($i0);
+
+        $r14 = r0.<com.movesky.app.main.InGameScreen: java.lang.String dragfingerfurthertodrawlongerwall_1>;
+
+        $r7 = r0.<com.movesky.app.main.InGameScreen: android.graphics.Paint paint>;
+
+        virtualinvoke $r1.<android.graphics.Canvas: void drawText(java.lang.String,float,float,android.graphics.Paint)>($r14, 160.0F, 285.0F, $r7);
+
+        $r14 = r0.<com.movesky.app.main.InGameScreen: java.lang.String dragfingerfurthertodrawlongerwall_2>;
+
+        $r7 = r0.<com.movesky.app.main.InGameScreen: android.graphics.Paint paint>;
+
+        virtualinvoke $r1.<android.graphics.Canvas: void drawText(java.lang.String,float,float,android.graphics.Paint)>($r14, 160.0F, 310.0F, $r7);
+
+     label7:
+        specialinvoke r0.<com.movesky.app.engine.ui.UIView: void onDraw(android.graphics.Canvas)>($r1);
+
+        $r3 = r0.<com.movesky.app.main.InGameScreen: com.movesky.app.engine.util.Timer entireDrawTimer>;
+
+        virtualinvoke $r3.<com.movesky.app.engine.util.Timer: void stop()>();
+
+        $r16 = <com.movesky.app.engine.achievements.Achievements: com.movesky.app.engine.achievements.Achievements INSTANCE>;
+
+        virtualinvoke $r16.<com.movesky.app.engine.achievements.Achievements: void draw(android.graphics.Canvas,float,float)>($r1, 320.0F, 35.333332F);
+
+        return;
+
+     label8:
+        $r6 = r0.<com.movesky.app.main.InGameScreen: com.movesky.app.main.YSSimulation sim>;
+
+        $z0 = virtualinvoke $r6.<com.movesky.app.main.YSSimulation: boolean isReady()>();
+
+        if $z0 != 0 goto label9;
+
+        $r7 = r0.<com.movesky.app.main.InGameScreen: android.graphics.Paint paint>;
+
+        virtualinvoke $r7.<android.graphics.Paint: void setColor(int)>(-1);
+
+        $r7 = r0.<com.movesky.app.main.InGameScreen: android.graphics.Paint paint>;
+
+        virtualinvoke $r7.<android.graphics.Paint: void setTextSize(float)>(20.0F);
+
+        $r14 = r0.<com.movesky.app.main.InGameScreen: java.lang.String waitingforotherplayer>;
+
+        $r7 = r0.<com.movesky.app.main.InGameScreen: android.graphics.Paint paint>;
+
+        virtualinvoke $r1.<android.graphics.Canvas: void drawText(java.lang.String,float,float,android.graphics.Paint)>($r14, 185.0F, 265.0F, $r7);
+
+        goto label4;
+
+     label9:
+        $r6 = r0.<com.movesky.app.main.InGameScreen: com.movesky.app.main.YSSimulation sim>;
+
+        $f0 = virtualinvoke $r6.<com.movesky.app.main.YSSimulation: float getStartingCountdown()>();
+
+        $d0 = (double) $f0;
+
+        $d0 = staticinvoke <java.lang.Math: double ceil(double)>($d0);
+
+        $i0 = (int) $d0;
+
+        if $i0 <= 0 goto label4;
+
+        $i4 = (int) $f0;
+
+        $f1 = (float) $i4;
+
+        $f0 = $f0 - $f1;
+
+        $r7 = r0.<com.movesky.app.main.InGameScreen: android.graphics.Paint paint>;
+
+        $f0 = $f0 * 255.0F;
+
+        $i4 = (int) $f0;
+
+        virtualinvoke $r7.<android.graphics.Paint: void setARGB(int,int,int,int)>($i4, 255, 255, 255);
+
+        $r7 = r0.<com.movesky.app.main.InGameScreen: android.graphics.Paint paint>;
+
+        virtualinvoke $r7.<android.graphics.Paint: void setTextSize(float)>(100.0F);
+
+        $r14 = staticinvoke <java.lang.Integer: java.lang.String toString(int)>($i0);
+
+        $r7 = r0.<com.movesky.app.main.InGameScreen: android.graphics.Paint paint>;
+
+        virtualinvoke $r1.<android.graphics.Canvas: void drawText(java.lang.String,float,float,android.graphics.Paint)>($r14, 185.0F, 295.0F, $r7);
+
+        goto label4;
+    }
+
+    public void onStop()
+    {
+        com.movesky.app.main.InGameScreen r0;
+        com.movesky.app.main.BeatTrack $r1;
+        com.movesky.app.engine.net.bluetooth.Bluetooth $r2;
+        boolean $z0;
+        com.movesky.app.engine.ui.UINavigationController $r3;
+        com.movesky.app.engine.achievements.Achievements $r4;
+
+        r0 := @this: com.movesky.app.main.InGameScreen;
+
+        $r1 = r0.<com.movesky.app.main.InGameScreen: com.movesky.app.main.BeatTrack beatTrack>;
+
+        virtualinvoke $r1.<com.movesky.app.main.BeatTrack: void stopMusic()>();
+
+        $r2 = r0.<com.movesky.app.main.InGameScreen: com.movesky.app.engine.net.bluetooth.Bluetooth bluetooth>;
+
+        virtualinvoke $r2.<com.movesky.app.engine.net.bluetooth.Bluetooth: void disconnect()>();
+
+        $z0 = r0.<com.movesky.app.main.InGameScreen: boolean singlePlayer>;
+
+        if $z0 == 0 goto label1;
+
+        $r3 = r0.<com.movesky.app.main.InGameScreen: com.movesky.app.engine.ui.UINavigationController controller>;
+
+        virtualinvoke $r3.<com.movesky.app.engine.ui.UINavigationController: boolean pop()>();
+
+     label1:
+        $r4 = <com.movesky.app.engine.achievements.Achievements: com.movesky.app.engine.achievements.Achievements INSTANCE>;
+
+        virtualinvoke $r4.<com.movesky.app.engine.achievements.Achievements: void commit()>();
+
+        return;
+    }
+
+    public void onTouchDown(float, float)
+    {
+        com.movesky.app.main.InGameScreen r0;
+        float $f0, $f1;
+        boolean $z0, $z1, $z2;
+        com.movesky.app.main.Tutorial $r1;
+        com.movesky.app.main.BeatTrack $r2;
+        com.movesky.app.engine.sound.Beat$BeatType $r3, $r4;
+        com.movesky.app.main.Team $r5, $r6;
+        byte $b0;
+        long $l1;
+        com.movesky.app.engine.fastgraph.Wall $r7;
+        com.movesky.app.main.YSSimulation $r8;
+
+        r0 := @this: com.movesky.app.main.InGameScreen;
+
+        $f0 := @parameter0: float;
+
+        $f1 := @parameter1: float;
+
+        $z0 = <com.movesky.app.main.YSGame: boolean SHOW_TUTORIAL>;
+
+        if $z0 == 0 goto label1;
+
+        $r1 = r0.<com.movesky.app.main.InGameScreen: com.movesky.app.main.Tutorial tutorial>;
+
+        $z0 = virtualinvoke $r1.<com.movesky.app.main.Tutorial: boolean isFinished()>();
+
+        if $z0 != 0 goto label1;
+
+        $r1 = r0.<com.movesky.app.main.InGameScreen: com.movesky.app.main.Tutorial tutorial>;
+
+        virtualinvoke $r1.<com.movesky.app.main.Tutorial: void onTouchDown(float,float)>($f0, $f1);
+
+        return;
+
+     label1:
+        $r2 = r0.<com.movesky.app.main.InGameScreen: com.movesky.app.main.BeatTrack beatTrack>;
+
+        $r3 = virtualinvoke $r2.<com.movesky.app.main.BeatTrack: com.movesky.app.engine.sound.Beat$BeatType onTouchDown(float,float)>($f0, $f1);
+
+        $r4 = <com.movesky.app.engine.sound.Beat$BeatType: com.movesky.app.engine.sound.Beat$BeatType HOLD>;
+
+        if $r3 != $r4 goto label7;
+
+        $z0 = 1;
+
+     label2:
+        $r4 = <com.movesky.app.engine.sound.Beat$BeatType: com.movesky.app.engine.sound.Beat$BeatType REST>;
+
+        if $r3 == $r4 goto label8;
+
+        $z1 = 1;
+
+     label3:
+        $f0 = $f0 - 50.0F;
+
+        $f1 = $f1 - 0.0F;
+
+        $r5 = r0.<com.movesky.app.main.InGameScreen: com.movesky.app.main.Team team>;
+
+        $r6 = <com.movesky.app.main.Team: com.movesky.app.main.Team SERVER>;
+
+        if $r5 != $r6 goto label4;
+
+        $f1 = 530.0F - $f1;
+
+     label4:
+        $b0 = $f0 cmpg 0.0F;
+
+        if $b0 >= 0 goto label5;
+
+        $l1 = staticinvoke <java.lang.System: long currentTimeMillis()>();
+
+        r0.<com.movesky.app.main.InGameScreen: long tap_location_hint_time> = $l1;
+
+     label5:
+        if $z1 == 0 goto label6;
+
+        if $z0 == 0 goto label6;
+
+        $b0 = $f0 cmpl 0.0F;
+
+        if $b0 <= 0 goto label6;
+
+        $b0 = $f1 cmpl 0.0F;
+
+        if $b0 <= 0 goto label6;
+
+        $r7 = new com.movesky.app.engine.fastgraph.Wall;
+
+        specialinvoke $r7.<com.movesky.app.engine.fastgraph.Wall: void <init>(float,float,float,float)>($f0, $f1, $f0, $f1);
+
+        r0.<com.movesky.app.main.InGameScreen: com.movesky.app.engine.fastgraph.Wall currentWall> = $r7;
+
+     label6:
+        $z2 = r0.<com.movesky.app.main.InGameScreen: boolean singlePlayer>;
+
+        if $z2 == 0 goto label9;
+
+        $r8 = r0.<com.movesky.app.main.InGameScreen: com.movesky.app.main.YSSimulation sim>;
+
+        virtualinvoke $r8.<com.movesky.app.main.YSSimulation: void simulateTapDown(float,float,boolean,boolean,boolean)>($f0, $f1, 1, $z0, $z1);
+
+        return;
+
+     label7:
+        $z0 = 0;
+
+        goto label2;
+
+     label8:
+        $z1 = 0;
+
+        goto label3;
+
+     label9:
+        $r8 = r0.<com.movesky.app.main.InGameScreen: com.movesky.app.main.YSSimulation sim>;
+
+        virtualinvoke $r8.<com.movesky.app.main.YSSimulation: void recordTapDown(float,float,boolean,boolean)>($f0, $f1, $z0, $z1);
+
+        return;
+    }
+
+    public void onTouchMove(float, float)
+    {
+        com.movesky.app.main.InGameScreen r0;
+        float $f0, $f1;
+        boolean $z0;
+        com.movesky.app.main.Tutorial $r1;
+        com.movesky.app.main.Team $r2, $r3;
+        com.movesky.app.engine.fastgraph.Wall $r4;
+        byte $b0;
+        com.movesky.app.main.YSSimulation $r5;
+        com.movesky.app.engine.util.Point $r6;
+
+        r0 := @this: com.movesky.app.main.InGameScreen;
+
+        $f0 := @parameter0: float;
+
+        $f1 := @parameter1: float;
+
+        $z0 = <com.movesky.app.main.YSGame: boolean SHOW_TUTORIAL>;
+
+        if $z0 == 0 goto label1;
+
+        $r1 = r0.<com.movesky.app.main.InGameScreen: com.movesky.app.main.Tutorial tutorial>;
+
+        $z0 = virtualinvoke $r1.<com.movesky.app.main.Tutorial: boolean isFinished()>();
+
+        if $z0 != 0 goto label1;
+
+        $r1 = r0.<com.movesky.app.main.InGameScreen: com.movesky.app.main.Tutorial tutorial>;
+
+        virtualinvoke $r1.<com.movesky.app.main.Tutorial: void onTouchMove(float,float)>($f0, $f1);
+
+        return;
+
+     label1:
+        $f0 = $f0 - 50.0F;
+
+        $f1 = $f1 - 0.0F;
+
+        $r2 = r0.<com.movesky.app.main.InGameScreen: com.movesky.app.main.Team team>;
+
+        $r3 = <com.movesky.app.main.Team: com.movesky.app.main.Team SERVER>;
+
+        if $r2 != $r3 goto label2;
+
+        $f1 = 530.0F - $f1;
+
+     label2:
+        $r4 = r0.<com.movesky.app.main.InGameScreen: com.movesky.app.engine.fastgraph.Wall currentWall>;
+
+        if $r4 == null goto label4;
+
+        $b0 = $f0 cmpg 0.0F;
+
+        if $b0 < 0 goto label3;
+
+        $b0 = $f1 cmpg 0.0F;
+
+        if $b0 >= 0 goto label5;
+
+     label3:
+        virtualinvoke r0.<com.movesky.app.main.InGameScreen: void simulateWallGeneration()>();
+
+     label4:
+        $z0 = r0.<com.movesky.app.main.InGameScreen: boolean singlePlayer>;
+
+        if $z0 == 0 goto label6;
+
+        $r5 = r0.<com.movesky.app.main.InGameScreen: com.movesky.app.main.YSSimulation sim>;
+
+        virtualinvoke $r5.<com.movesky.app.main.YSSimulation: void simulateTapMove(float,float,boolean)>($f0, $f1, 1);
+
+        return;
+
+     label5:
+        $r4 = r0.<com.movesky.app.main.InGameScreen: com.movesky.app.engine.fastgraph.Wall currentWall>;
+
+        $r6 = $r4.<com.movesky.app.engine.fastgraph.Wall: com.movesky.app.engine.util.Point b>;
+
+        virtualinvoke $r6.<com.movesky.app.engine.util.Point: void set(float,float)>($f0, $f1);
+
+        goto label4;
+
+     label6:
+        $r5 = r0.<com.movesky.app.main.InGameScreen: com.movesky.app.main.YSSimulation sim>;
+
+        virtualinvoke $r5.<com.movesky.app.main.YSSimulation: void recordTapMove(float,float)>($f0, $f1);
+
+        return;
+    }
+
+    public void onTouchUp(float, float)
+    {
+        com.movesky.app.main.InGameScreen r0;
+        float $f0, $f1;
+        boolean $z0;
+        com.movesky.app.main.Tutorial $r1;
+        com.movesky.app.main.BeatTrack $r2;
+        com.movesky.app.main.Team $r3, $r4;
+        com.movesky.app.engine.fastgraph.Wall $r5;
+        com.movesky.app.main.YSSimulation $r6;
+
+        r0 := @this: com.movesky.app.main.InGameScreen;
+
+        $f0 := @parameter0: float;
+
+        $f1 := @parameter1: float;
+
+        $z0 = <com.movesky.app.main.YSGame: boolean SHOW_TUTORIAL>;
+
+        if $z0 == 0 goto label1;
+
+        $r1 = r0.<com.movesky.app.main.InGameScreen: com.movesky.app.main.Tutorial tutorial>;
+
+        $z0 = virtualinvoke $r1.<com.movesky.app.main.Tutorial: boolean isFinished()>();
+
+        if $z0 != 0 goto label1;
+
+        $r1 = r0.<com.movesky.app.main.InGameScreen: com.movesky.app.main.Tutorial tutorial>;
+
+        virtualinvoke $r1.<com.movesky.app.main.Tutorial: void onTouchUp(float,float)>($f0, $f1);
+
+        return;
+
+     label1:
+        $r2 = r0.<com.movesky.app.main.InGameScreen: com.movesky.app.main.BeatTrack beatTrack>;
+
+        virtualinvoke $r2.<com.movesky.app.main.BeatTrack: void onTouchUp(float,float)>($f0, $f1);
+
+        $z0 = r0.<com.movesky.app.main.InGameScreen: boolean userScrolling>;
+
+        if $z0 == 0 goto label2;
+
+        r0.<com.movesky.app.main.InGameScreen: boolean userScrolling> = 0;
+
+        return;
+
+     label2:
+        $f0 = $f0 - 50.0F;
+
+        $f1 = $f1 - 0.0F;
+
+        $r3 = r0.<com.movesky.app.main.InGameScreen: com.movesky.app.main.Team team>;
+
+        $r4 = <com.movesky.app.main.Team: com.movesky.app.main.Team SERVER>;
+
+        if $r3 != $r4 goto label3;
+
+        $f1 = 530.0F - $f1;
+
+     label3:
+        $r5 = r0.<com.movesky.app.main.InGameScreen: com.movesky.app.engine.fastgraph.Wall currentWall>;
+
+        if $r5 == null goto label4;
+
+        virtualinvoke r0.<com.movesky.app.main.InGameScreen: void simulateWallGeneration()>();
+
+     label4:
+        $z0 = r0.<com.movesky.app.main.InGameScreen: boolean singlePlayer>;
+
+        if $z0 == 0 goto label5;
+
+        $r6 = r0.<com.movesky.app.main.InGameScreen: com.movesky.app.main.YSSimulation sim>;
+
+        virtualinvoke $r6.<com.movesky.app.main.YSSimulation: void simulateTapUp(float,float,boolean)>($f0, $f1, 1);
+
+        return;
+
+     label5:
+        $r6 = r0.<com.movesky.app.main.InGameScreen: com.movesky.app.main.YSSimulation sim>;
+
+        virtualinvoke $r6.<com.movesky.app.main.YSSimulation: void recordTapUp(float,float)>($f0, $f1);
+
+        return;
+    }
+
+    public void onUpdate(float)
+    {
+        com.movesky.app.main.InGameScreen r0;
+        float $f0, $f1;
+        boolean $z0;
+        com.movesky.app.engine.util.Timer $r1;
+        com.movesky.app.main.Team $r2, $r3;
+        com.movesky.app.main.YSSimulation $r4;
+        com.movesky.app.main.Song $r5;
+        com.movesky.app.main.BeatTrack $r6;
+        com.movesky.app.engine.net.bluetooth.Bluetooth $r7;
+        com.movesky.app.engine.net.bluetooth.State $r8, $r9;
+        com.movesky.app.engine.ui.UINavigationController $r10, $r12;
+        com.movesky.app.main.GameStatusMessageScreen$DisconnectScreen $r11;
+        com.movesky.app.main.YSSimulation$GameState $r13, $r14;
+        com.movesky.app.main.ai.PlayerAI $r15;
+        com.movesky.app.main.Tutorial $r16;
+        com.movesky.app.engine.particles.ParticleSystem $r17;
+        byte $b0;
+        com.movesky.app.engine.achievements.Achievements $r18;
+
+        r0 := @this: com.movesky.app.main.InGameScreen;
+
+        $f0 := @parameter0: float;
+
+        $r1 = r0.<com.movesky.app.main.InGameScreen: com.movesky.app.engine.util.Timer entireUpdateTimer>;
+
+        virtualinvoke $r1.<com.movesky.app.engine.util.Timer: void start()>();
+
+        $z0 = r0.<com.movesky.app.main.InGameScreen: boolean setSong>;
+
+        if $z0 != 0 goto label01;
+
+        $r2 = r0.<com.movesky.app.main.InGameScreen: com.movesky.app.main.Team team>;
+
+        $r3 = <com.movesky.app.main.Team: com.movesky.app.main.Team CLIENT>;
+
+        if $r2 != $r3 goto label01;
+
+        $r4 = r0.<com.movesky.app.main.InGameScreen: com.movesky.app.main.YSSimulation sim>;
+
+        $r5 = $r4.<com.movesky.app.main.YSSimulation: com.movesky.app.main.Song song>;
+
+        if $r5 == null goto label01;
+
+        $r6 = r0.<com.movesky.app.main.InGameScreen: com.movesky.app.main.BeatTrack beatTrack>;
+
+        $r4 = r0.<com.movesky.app.main.InGameScreen: com.movesky.app.main.YSSimulation sim>;
+
+        $r5 = $r4.<com.movesky.app.main.YSSimulation: com.movesky.app.main.Song song>;
+
+        virtualinvoke $r6.<com.movesky.app.main.BeatTrack: void setSong(com.movesky.app.main.Song)>($r5);
+
+        r0.<com.movesky.app.main.InGameScreen: boolean setSong> = 1;
+
+     label01:
+        $z0 = r0.<com.movesky.app.main.InGameScreen: boolean singlePlayer>;
+
+        if $z0 != 0 goto label02;
+
+        $r7 = r0.<com.movesky.app.main.InGameScreen: com.movesky.app.engine.net.bluetooth.Bluetooth bluetooth>;
+
+        $r8 = virtualinvoke $r7.<com.movesky.app.engine.net.bluetooth.Bluetooth: com.movesky.app.engine.net.bluetooth.State getState()>();
+
+        $r9 = <com.movesky.app.engine.net.bluetooth.State: com.movesky.app.engine.net.bluetooth.State CONNECTED>;
+
+        if $r8 == $r9 goto label02;
+
+        $r6 = r0.<com.movesky.app.main.InGameScreen: com.movesky.app.main.BeatTrack beatTrack>;
+
+        virtualinvoke $r6.<com.movesky.app.main.BeatTrack: void stopMusic()>();
+
+        $r10 = r0.<com.movesky.app.main.InGameScreen: com.movesky.app.engine.ui.UINavigationController controller>;
+
+        $r11 = new com.movesky.app.main.GameStatusMessageScreen$DisconnectScreen;
+
+        $r12 = r0.<com.movesky.app.main.InGameScreen: com.movesky.app.engine.ui.UINavigationController controller>;
+
+        $z0 = r0.<com.movesky.app.main.InGameScreen: boolean singlePlayer>;
+
+        specialinvoke $r11.<com.movesky.app.main.GameStatusMessageScreen$DisconnectScreen: void <init>(com.movesky.app.engine.ui.UINavigationController,boolean)>($r12, $z0);
+
+        virtualinvoke $r10.<com.movesky.app.engine.ui.UINavigationController: void pushUnder(com.movesky.app.engine.ui.UIView)>($r11);
+
+        $r10 = r0.<com.movesky.app.main.InGameScreen: com.movesky.app.engine.ui.UINavigationController controller>;
+
+        virtualinvoke $r10.<com.movesky.app.engine.ui.UINavigationController: boolean pop()>();
+
+     label02:
+        $z0 = r0.<com.movesky.app.main.InGameScreen: boolean singlePlayer>;
+
+        if $z0 == 0 goto label03;
+
+        $r4 = r0.<com.movesky.app.main.InGameScreen: com.movesky.app.main.YSSimulation sim>;
+
+        $r13 = virtualinvoke $r4.<com.movesky.app.main.YSSimulation: com.movesky.app.main.YSSimulation$GameState getGameState()>();
+
+        $r14 = <com.movesky.app.main.YSSimulation$GameState: com.movesky.app.main.YSSimulation$GameState IN_PROGRESS>;
+
+        if $r13 != $r14 goto label03;
+
+        $r15 = r0.<com.movesky.app.main.InGameScreen: com.movesky.app.main.ai.PlayerAI player_ai>;
+
+        virtualinvoke $r15.<com.movesky.app.main.ai.PlayerAI: void update(float)>($f0);
+
+     label03:
+        $r1 = r0.<com.movesky.app.main.InGameScreen: com.movesky.app.engine.util.Timer simUpdateTimer>;
+
+        virtualinvoke $r1.<com.movesky.app.engine.util.Timer: void start()>();
+
+        $z0 = r0.<com.movesky.app.main.InGameScreen: boolean singlePlayer>;
+
+        if $z0 == 0 goto label09;
+
+        $r4 = r0.<com.movesky.app.main.InGameScreen: com.movesky.app.main.YSSimulation sim>;
+
+        virtualinvoke $r4.<com.movesky.app.main.YSSimulation: void update(float)>($f0);
+
+     label04:
+        $r1 = r0.<com.movesky.app.main.InGameScreen: com.movesky.app.engine.util.Timer simUpdateTimer>;
+
+        virtualinvoke $r1.<com.movesky.app.engine.util.Timer: void stop()>();
+
+        $z0 = <com.movesky.app.main.YSGame: boolean SHOW_TUTORIAL>;
+
+        if $z0 == 0 goto label10;
+
+        $r16 = r0.<com.movesky.app.main.InGameScreen: com.movesky.app.main.Tutorial tutorial>;
+
+        $z0 = virtualinvoke $r16.<com.movesky.app.main.Tutorial: boolean isFinished()>();
+
+        if $z0 != 0 goto label10;
+
+        $r16 = r0.<com.movesky.app.main.InGameScreen: com.movesky.app.main.Tutorial tutorial>;
+
+        virtualinvoke $r16.<com.movesky.app.main.Tutorial: void onUpdate(float)>($f0);
+
+     label05:
+        $z0 = r0.<com.movesky.app.main.InGameScreen: boolean countdownStarted>;
+
+        if $z0 != 0 goto label06;
+
+        $r4 = r0.<com.movesky.app.main.InGameScreen: com.movesky.app.main.YSSimulation sim>;
+
+        $r13 = virtualinvoke $r4.<com.movesky.app.main.YSSimulation: com.movesky.app.main.YSSimulation$GameState getGameState()>();
+
+        $r14 = <com.movesky.app.main.YSSimulation$GameState: com.movesky.app.main.YSSimulation$GameState WAITING_TO_START>;
+
+        if $r13 != $r14 goto label06;
+
+        $r4 = r0.<com.movesky.app.main.InGameScreen: com.movesky.app.main.YSSimulation sim>;
+
+        $z0 = virtualinvoke $r4.<com.movesky.app.main.YSSimulation: boolean isReady()>();
+
+        if $z0 == 0 goto label06;
+
+        $r6 = r0.<com.movesky.app.main.InGameScreen: com.movesky.app.main.BeatTrack beatTrack>;
+
+        virtualinvoke $r6.<com.movesky.app.main.BeatTrack: void setStartDelay(int)>(3000);
+
+        r0.<com.movesky.app.main.InGameScreen: boolean countdownStarted> = 1;
+
+     label06:
+        $z0 = r0.<com.movesky.app.main.InGameScreen: boolean setSong>;
+
+        if $z0 == 0 goto label07;
+
+        $r4 = r0.<com.movesky.app.main.InGameScreen: com.movesky.app.main.YSSimulation sim>;
+
+        $r13 = virtualinvoke $r4.<com.movesky.app.main.YSSimulation: com.movesky.app.main.YSSimulation$GameState getGameState()>();
+
+        $r14 = <com.movesky.app.main.YSSimulation$GameState: com.movesky.app.main.YSSimulation$GameState IN_PROGRESS>;
+
+        if $r13 != $r14 goto label07;
+
+        $r6 = r0.<com.movesky.app.main.InGameScreen: com.movesky.app.main.BeatTrack beatTrack>;
+
+        $z0 = virtualinvoke $r6.<com.movesky.app.main.BeatTrack: boolean isPlaying()>();
+
+        if $z0 != 0 goto label07;
+
+        $r6 = r0.<com.movesky.app.main.InGameScreen: com.movesky.app.main.BeatTrack beatTrack>;
+
+        virtualinvoke $r6.<com.movesky.app.main.BeatTrack: void startMusic()>();
+
+     label07:
+        $r6 = r0.<com.movesky.app.main.InGameScreen: com.movesky.app.main.BeatTrack beatTrack>;
+
+        virtualinvoke $r6.<com.movesky.app.main.BeatTrack: void refreshBeats()>();
+
+        $r17 = r0.<com.movesky.app.main.InGameScreen: com.movesky.app.engine.particles.ParticleSystem particles>;
+
+        virtualinvoke $r17.<com.movesky.app.engine.particles.ParticleSystem: void tick(float)>($f0);
+
+        $r1 = r0.<com.movesky.app.main.InGameScreen: com.movesky.app.engine.util.Timer entireUpdateTimer>;
+
+        virtualinvoke $r1.<com.movesky.app.engine.util.Timer: void stop()>();
+
+        $r4 = r0.<com.movesky.app.main.InGameScreen: com.movesky.app.main.YSSimulation sim>;
+
+        $r13 = virtualinvoke $r4.<com.movesky.app.main.YSSimulation: com.movesky.app.main.YSSimulation$GameState getGameState()>();
+
+        $r14 = <com.movesky.app.main.YSSimulation$GameState: com.movesky.app.main.YSSimulation$GameState WAITING_TO_START>;
+
+        if $r13 == $r14 goto label08;
+
+        $r14 = <com.movesky.app.main.YSSimulation$GameState: com.movesky.app.main.YSSimulation$GameState IN_PROGRESS>;
+
+        if $r13 == $r14 goto label08;
+
+        $r6 = r0.<com.movesky.app.main.InGameScreen: com.movesky.app.main.BeatTrack beatTrack>;
+
+        $f1 = r0.<com.movesky.app.main.InGameScreen: float secondsUntilNextScreen>;
+
+        $f1 = $f1 / 4.0F;
+
+        virtualinvoke $r6.<com.movesky.app.main.BeatTrack: void setVolume(float)>($f1);
+
+        $f1 = r0.<com.movesky.app.main.InGameScreen: float secondsUntilNextScreen>;
+
+        $f1 = $f1 - $f0;
+
+        r0.<com.movesky.app.main.InGameScreen: float secondsUntilNextScreen> = $f1;
+
+        $f1 = r0.<com.movesky.app.main.InGameScreen: float secondsUntilNextScreen>;
+
+        $b0 = $f1 cmpg 0.0F;
+
+        if $b0 >= 0 goto label08;
+
+        specialinvoke r0.<com.movesky.app.main.InGameScreen: void moveToNextScreen()>();
+
+     label08:
+        $r18 = <com.movesky.app.engine.achievements.Achievements: com.movesky.app.engine.achievements.Achievements INSTANCE>;
+
+        virtualinvoke $r18.<com.movesky.app.engine.achievements.Achievements: void tick(float)>($f0);
+
+        return;
+
+     label09:
+        $r4 = r0.<com.movesky.app.main.InGameScreen: com.movesky.app.main.YSSimulation sim>;
+
+        virtualinvoke $r4.<com.movesky.app.main.YSSimulation: void onUpdate(float)>($f0);
+
+        goto label04;
+
+     label10:
+        virtualinvoke r0.<com.movesky.app.main.InGameScreen: void endTutorial()>();
+
+        goto label05;
+    }
+
+    public boolean shouldPlayMenuMusic()
+    {
+        com.movesky.app.main.InGameScreen r0;
+
+        r0 := @this: com.movesky.app.main.InGameScreen;
+
+        return 0;
+    }
+
+    public void simulateWallGeneration()
+    {
+        com.movesky.app.main.InGameScreen r0;
+        com.movesky.app.main.Team $r1;
+        long $l0;
+        com.movesky.app.engine.fastgraph.Wall $r2;
+        float $f0;
+        byte $b1;
+
+        r0 := @this: com.movesky.app.main.InGameScreen;
+
+        $r2 = r0.<com.movesky.app.main.InGameScreen: com.movesky.app.engine.fastgraph.Wall currentWall>;
+
+        virtualinvoke $r2.<com.movesky.app.engine.fastgraph.Wall: void updateLength()>();
+
+        $r2 = r0.<com.movesky.app.main.InGameScreen: com.movesky.app.engine.fastgraph.Wall currentWall>;
+
+        $f0 = $r2.<com.movesky.app.engine.fastgraph.Wall: float length>;
+
+        $b1 = $f0 cmpg 5.0F;
+
+        if $b1 > 0 goto label1;
+
+        $l0 = staticinvoke <java.lang.System: long currentTimeMillis()>();
+
+        r0.<com.movesky.app.main.InGameScreen: long drag_tip_start_time> = $l0;
+
+     label1:
+        $r2 = r0.<com.movesky.app.main.InGameScreen: com.movesky.app.engine.fastgraph.Wall currentWall>;
+
+        $f0 = $r2.<com.movesky.app.engine.fastgraph.Wall: float length>;
+
+        $b1 = $f0 cmpl 5.0F;
+
+        if $b1 < 0 goto label2;
+
+        $r2 = r0.<com.movesky.app.main.InGameScreen: com.movesky.app.engine.fastgraph.Wall currentWall>;
+
+        $r1 = r0.<com.movesky.app.main.InGameScreen: com.movesky.app.main.Team team>;
+
+        staticinvoke <com.movesky.app.main.YSSimulation: void generateParticlesForWall(com.movesky.app.engine.fastgraph.Wall,com.movesky.app.main.Team)>($r2, $r1);
+
+     label2:
+        r0.<com.movesky.app.main.InGameScreen: com.movesky.app.engine.fastgraph.Wall currentWall> = null;
+
+        return;
+    }
+
+    public void willHide(boolean)
+    {
+        com.movesky.app.main.InGameScreen r0;
+        boolean $z0;
+        com.movesky.app.main.BeatTrack $r1;
+
+        r0 := @this: com.movesky.app.main.InGameScreen;
+
+        $z0 := @parameter0: boolean;
+
+        specialinvoke r0.<com.movesky.app.engine.ui.UIView: void willHide(boolean)>($z0);
+
+        $r1 = r0.<com.movesky.app.main.InGameScreen: com.movesky.app.main.BeatTrack beatTrack>;
+
+        virtualinvoke $r1.<com.movesky.app.main.BeatTrack: void stopMusic()>();
+
+        return;
+    }
+
+    public static void <clinit>()
+    {
+        <com.movesky.app.main.InGameScreen: long TAP_HINT_DISPLAY_LENGTH> = 3000L;
+
+        <com.movesky.app.main.InGameScreen: long PLACEMENT_HINT_DISPLAY_LENGTH> = 3000L;
+
+        <com.movesky.app.main.InGameScreen: float END_FADE_TIME> = 4.0F;
+
+        <com.movesky.app.main.InGameScreen: long DRAG_HINT_DISPLAY_LENGTH> = 3000L;
+
+        return;
+    }
+}

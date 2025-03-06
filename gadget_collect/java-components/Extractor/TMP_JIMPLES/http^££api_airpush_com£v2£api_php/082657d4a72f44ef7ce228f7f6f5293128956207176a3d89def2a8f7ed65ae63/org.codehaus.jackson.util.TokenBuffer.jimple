@@ -1,0 +1,1646 @@
+public class org.codehaus.jackson.util.TokenBuffer extends org.codehaus.jackson.JsonGenerator
+{
+    protected static final int DEFAULT_PARSER_FEATURES;
+    protected int _appendOffset;
+    protected boolean _closed;
+    protected org.codehaus.jackson.util.TokenBuffer$Segment _first;
+    protected int _generatorFeatures;
+    protected org.codehaus.jackson.util.TokenBuffer$Segment _last;
+    protected org.codehaus.jackson.ObjectCodec _objectCodec;
+    protected org.codehaus.jackson.impl.JsonWriteContext _writeContext;
+
+    static void <clinit>()
+    {
+        int $i0;
+
+        $i0 = staticinvoke <org.codehaus.jackson.JsonParser$Feature: int collectDefaults()>();
+
+        <org.codehaus.jackson.util.TokenBuffer: int DEFAULT_PARSER_FEATURES> = $i0;
+
+        return;
+    }
+
+    public void <init>(org.codehaus.jackson.ObjectCodec)
+    {
+        org.codehaus.jackson.util.TokenBuffer r0;
+        org.codehaus.jackson.ObjectCodec $r1;
+        org.codehaus.jackson.impl.JsonWriteContext $r2;
+        int $i0;
+        org.codehaus.jackson.util.TokenBuffer$Segment $r3;
+
+        r0 := @this: org.codehaus.jackson.util.TokenBuffer;
+
+        $r1 := @parameter0: org.codehaus.jackson.ObjectCodec;
+
+        specialinvoke r0.<org.codehaus.jackson.JsonGenerator: void <init>()>();
+
+        r0.<org.codehaus.jackson.util.TokenBuffer: org.codehaus.jackson.ObjectCodec _objectCodec> = $r1;
+
+        $i0 = <org.codehaus.jackson.util.TokenBuffer: int DEFAULT_PARSER_FEATURES>;
+
+        r0.<org.codehaus.jackson.util.TokenBuffer: int _generatorFeatures> = $i0;
+
+        $r2 = staticinvoke <org.codehaus.jackson.impl.JsonWriteContext: org.codehaus.jackson.impl.JsonWriteContext createRootContext()>();
+
+        r0.<org.codehaus.jackson.util.TokenBuffer: org.codehaus.jackson.impl.JsonWriteContext _writeContext> = $r2;
+
+        $r3 = new org.codehaus.jackson.util.TokenBuffer$Segment;
+
+        specialinvoke $r3.<org.codehaus.jackson.util.TokenBuffer$Segment: void <init>()>();
+
+        r0.<org.codehaus.jackson.util.TokenBuffer: org.codehaus.jackson.util.TokenBuffer$Segment _last> = $r3;
+
+        r0.<org.codehaus.jackson.util.TokenBuffer: org.codehaus.jackson.util.TokenBuffer$Segment _first> = $r3;
+
+        r0.<org.codehaus.jackson.util.TokenBuffer: int _appendOffset> = 0;
+
+        return;
+    }
+
+    protected final void _append(org.codehaus.jackson.JsonToken)
+    {
+        org.codehaus.jackson.util.TokenBuffer r0;
+        org.codehaus.jackson.JsonToken $r1;
+        int $i0;
+        org.codehaus.jackson.util.TokenBuffer$Segment $r2;
+
+        r0 := @this: org.codehaus.jackson.util.TokenBuffer;
+
+        $r1 := @parameter0: org.codehaus.jackson.JsonToken;
+
+        $r2 = r0.<org.codehaus.jackson.util.TokenBuffer: org.codehaus.jackson.util.TokenBuffer$Segment _last>;
+
+        $i0 = r0.<org.codehaus.jackson.util.TokenBuffer: int _appendOffset>;
+
+        $r2 = virtualinvoke $r2.<org.codehaus.jackson.util.TokenBuffer$Segment: org.codehaus.jackson.util.TokenBuffer$Segment append(int,org.codehaus.jackson.JsonToken)>($i0, $r1);
+
+        if $r2 != null goto label1;
+
+        $i0 = r0.<org.codehaus.jackson.util.TokenBuffer: int _appendOffset>;
+
+        $i0 = $i0 + 1;
+
+        r0.<org.codehaus.jackson.util.TokenBuffer: int _appendOffset> = $i0;
+
+        return;
+
+     label1:
+        r0.<org.codehaus.jackson.util.TokenBuffer: org.codehaus.jackson.util.TokenBuffer$Segment _last> = $r2;
+
+        r0.<org.codehaus.jackson.util.TokenBuffer: int _appendOffset> = 1;
+
+        return;
+    }
+
+    protected final void _append(org.codehaus.jackson.JsonToken, java.lang.Object)
+    {
+        org.codehaus.jackson.util.TokenBuffer r0;
+        org.codehaus.jackson.JsonToken $r1;
+        java.lang.Object $r2;
+        int $i0;
+        org.codehaus.jackson.util.TokenBuffer$Segment $r3;
+
+        r0 := @this: org.codehaus.jackson.util.TokenBuffer;
+
+        $r1 := @parameter0: org.codehaus.jackson.JsonToken;
+
+        $r2 := @parameter1: java.lang.Object;
+
+        $r3 = r0.<org.codehaus.jackson.util.TokenBuffer: org.codehaus.jackson.util.TokenBuffer$Segment _last>;
+
+        $i0 = r0.<org.codehaus.jackson.util.TokenBuffer: int _appendOffset>;
+
+        $r3 = virtualinvoke $r3.<org.codehaus.jackson.util.TokenBuffer$Segment: org.codehaus.jackson.util.TokenBuffer$Segment append(int,org.codehaus.jackson.JsonToken,java.lang.Object)>($i0, $r1, $r2);
+
+        if $r3 != null goto label1;
+
+        $i0 = r0.<org.codehaus.jackson.util.TokenBuffer: int _appendOffset>;
+
+        $i0 = $i0 + 1;
+
+        r0.<org.codehaus.jackson.util.TokenBuffer: int _appendOffset> = $i0;
+
+        return;
+
+     label1:
+        r0.<org.codehaus.jackson.util.TokenBuffer: org.codehaus.jackson.util.TokenBuffer$Segment _last> = $r3;
+
+        r0.<org.codehaus.jackson.util.TokenBuffer: int _appendOffset> = 1;
+
+        return;
+    }
+
+    protected void _reportUnsupportedOperation()
+    {
+        org.codehaus.jackson.util.TokenBuffer r0;
+        java.lang.UnsupportedOperationException $r1;
+
+        r0 := @this: org.codehaus.jackson.util.TokenBuffer;
+
+        $r1 = new java.lang.UnsupportedOperationException;
+
+        specialinvoke $r1.<java.lang.UnsupportedOperationException: void <init>(java.lang.String)>("Called operation not supported for TokenBuffer");
+
+        throw $r1;
+    }
+
+    public org.codehaus.jackson.JsonParser asParser()
+    {
+        org.codehaus.jackson.util.TokenBuffer r0;
+        org.codehaus.jackson.JsonParser $r1;
+        org.codehaus.jackson.ObjectCodec $r2;
+
+        r0 := @this: org.codehaus.jackson.util.TokenBuffer;
+
+        $r2 = r0.<org.codehaus.jackson.util.TokenBuffer: org.codehaus.jackson.ObjectCodec _objectCodec>;
+
+        $r1 = virtualinvoke r0.<org.codehaus.jackson.util.TokenBuffer: org.codehaus.jackson.JsonParser asParser(org.codehaus.jackson.ObjectCodec)>($r2);
+
+        return $r1;
+    }
+
+    public org.codehaus.jackson.JsonParser asParser(org.codehaus.jackson.JsonParser)
+    {
+        org.codehaus.jackson.util.TokenBuffer r0;
+        org.codehaus.jackson.JsonParser $r1;
+        org.codehaus.jackson.util.TokenBuffer$Parser r2;
+        org.codehaus.jackson.util.TokenBuffer$Segment $r3;
+        org.codehaus.jackson.ObjectCodec $r4;
+        org.codehaus.jackson.JsonLocation $r5;
+
+        r0 := @this: org.codehaus.jackson.util.TokenBuffer;
+
+        $r1 := @parameter0: org.codehaus.jackson.JsonParser;
+
+        r2 = new org.codehaus.jackson.util.TokenBuffer$Parser;
+
+        $r3 = r0.<org.codehaus.jackson.util.TokenBuffer: org.codehaus.jackson.util.TokenBuffer$Segment _first>;
+
+        $r4 = virtualinvoke $r1.<org.codehaus.jackson.JsonParser: org.codehaus.jackson.ObjectCodec getCodec()>();
+
+        specialinvoke r2.<org.codehaus.jackson.util.TokenBuffer$Parser: void <init>(org.codehaus.jackson.util.TokenBuffer$Segment,org.codehaus.jackson.ObjectCodec)>($r3, $r4);
+
+        $r5 = virtualinvoke $r1.<org.codehaus.jackson.JsonParser: org.codehaus.jackson.JsonLocation getTokenLocation()>();
+
+        virtualinvoke r2.<org.codehaus.jackson.util.TokenBuffer$Parser: void setLocation(org.codehaus.jackson.JsonLocation)>($r5);
+
+        return r2;
+    }
+
+    public org.codehaus.jackson.JsonParser asParser(org.codehaus.jackson.ObjectCodec)
+    {
+        org.codehaus.jackson.util.TokenBuffer r0;
+        org.codehaus.jackson.ObjectCodec $r1;
+        org.codehaus.jackson.util.TokenBuffer$Parser $r2;
+        org.codehaus.jackson.util.TokenBuffer$Segment $r3;
+
+        r0 := @this: org.codehaus.jackson.util.TokenBuffer;
+
+        $r1 := @parameter0: org.codehaus.jackson.ObjectCodec;
+
+        $r2 = new org.codehaus.jackson.util.TokenBuffer$Parser;
+
+        $r3 = r0.<org.codehaus.jackson.util.TokenBuffer: org.codehaus.jackson.util.TokenBuffer$Segment _first>;
+
+        specialinvoke $r2.<org.codehaus.jackson.util.TokenBuffer$Parser: void <init>(org.codehaus.jackson.util.TokenBuffer$Segment,org.codehaus.jackson.ObjectCodec)>($r3, $r1);
+
+        return $r2;
+    }
+
+    public void close() throws java.io.IOException
+    {
+        org.codehaus.jackson.util.TokenBuffer r0;
+
+        r0 := @this: org.codehaus.jackson.util.TokenBuffer;
+
+        r0.<org.codehaus.jackson.util.TokenBuffer: boolean _closed> = 1;
+
+        return;
+    }
+
+    public void copyCurrentEvent(org.codehaus.jackson.JsonParser) throws java.io.IOException, org.codehaus.jackson.JsonProcessingException
+    {
+        org.codehaus.jackson.util.TokenBuffer r0;
+        org.codehaus.jackson.JsonParser $r1;
+        int[] $r2;
+        org.codehaus.jackson.JsonToken $r3;
+        int $i0, $i1;
+        java.lang.RuntimeException $r4;
+        java.lang.String $r5;
+        boolean $z0;
+        char[] $r6;
+        org.codehaus.jackson.JsonParser$NumberType $r7;
+        long $l2;
+        java.math.BigInteger $r8;
+        double $d0;
+        java.math.BigDecimal $r9;
+        float $f0;
+        java.lang.Object $r10;
+
+        r0 := @this: org.codehaus.jackson.util.TokenBuffer;
+
+        $r1 := @parameter0: org.codehaus.jackson.JsonParser;
+
+        $r2 = <org.codehaus.jackson.util.TokenBuffer$1: int[] $SwitchMap$org$codehaus$jackson$JsonToken>;
+
+        $r3 = virtualinvoke $r1.<org.codehaus.jackson.JsonParser: org.codehaus.jackson.JsonToken getCurrentToken()>();
+
+        $i0 = virtualinvoke $r3.<org.codehaus.jackson.JsonToken: int ordinal()>();
+
+        $i0 = $r2[$i0];
+
+        lookupswitch($i0)
+        {
+            case 1: goto label02;
+            case 2: goto label03;
+            case 3: goto label04;
+            case 4: goto label05;
+            case 5: goto label06;
+            case 6: goto label07;
+            case 7: goto label09;
+            case 8: goto label13;
+            case 9: goto label17;
+            case 10: goto label18;
+            case 11: goto label19;
+            case 12: goto label20;
+            default: goto label01;
+        };
+
+     label01:
+        $r4 = new java.lang.RuntimeException;
+
+        specialinvoke $r4.<java.lang.RuntimeException: void <init>(java.lang.String)>("Internal error: should never end up through this code path");
+
+        throw $r4;
+
+     label02:
+        virtualinvoke r0.<org.codehaus.jackson.util.TokenBuffer: void writeStartObject()>();
+
+        return;
+
+     label03:
+        virtualinvoke r0.<org.codehaus.jackson.util.TokenBuffer: void writeEndObject()>();
+
+        return;
+
+     label04:
+        virtualinvoke r0.<org.codehaus.jackson.util.TokenBuffer: void writeStartArray()>();
+
+        return;
+
+     label05:
+        virtualinvoke r0.<org.codehaus.jackson.util.TokenBuffer: void writeEndArray()>();
+
+        return;
+
+     label06:
+        $r5 = virtualinvoke $r1.<org.codehaus.jackson.JsonParser: java.lang.String getCurrentName()>();
+
+        virtualinvoke r0.<org.codehaus.jackson.util.TokenBuffer: void writeFieldName(java.lang.String)>($r5);
+
+        return;
+
+     label07:
+        $z0 = virtualinvoke $r1.<org.codehaus.jackson.JsonParser: boolean hasTextCharacters()>();
+
+        if $z0 == 0 goto label08;
+
+        $r6 = virtualinvoke $r1.<org.codehaus.jackson.JsonParser: char[] getTextCharacters()>();
+
+        $i0 = virtualinvoke $r1.<org.codehaus.jackson.JsonParser: int getTextOffset()>();
+
+        $i1 = virtualinvoke $r1.<org.codehaus.jackson.JsonParser: int getTextLength()>();
+
+        virtualinvoke r0.<org.codehaus.jackson.util.TokenBuffer: void writeString(char[],int,int)>($r6, $i0, $i1);
+
+        return;
+
+     label08:
+        $r5 = virtualinvoke $r1.<org.codehaus.jackson.JsonParser: java.lang.String getText()>();
+
+        virtualinvoke r0.<org.codehaus.jackson.util.TokenBuffer: void writeString(java.lang.String)>($r5);
+
+        return;
+
+     label09:
+        $r2 = <org.codehaus.jackson.util.TokenBuffer$1: int[] $SwitchMap$org$codehaus$jackson$JsonParser$NumberType>;
+
+        $r7 = virtualinvoke $r1.<org.codehaus.jackson.JsonParser: org.codehaus.jackson.JsonParser$NumberType getNumberType()>();
+
+        $i0 = virtualinvoke $r7.<org.codehaus.jackson.JsonParser$NumberType: int ordinal()>();
+
+        $i0 = $r2[$i0];
+
+        lookupswitch($i0)
+        {
+            case 1: goto label11;
+            case 2: goto label12;
+            default: goto label10;
+        };
+
+     label10:
+        $l2 = virtualinvoke $r1.<org.codehaus.jackson.JsonParser: long getLongValue()>();
+
+        virtualinvoke r0.<org.codehaus.jackson.util.TokenBuffer: void writeNumber(long)>($l2);
+
+        return;
+
+     label11:
+        $i0 = virtualinvoke $r1.<org.codehaus.jackson.JsonParser: int getIntValue()>();
+
+        virtualinvoke r0.<org.codehaus.jackson.util.TokenBuffer: void writeNumber(int)>($i0);
+
+        return;
+
+     label12:
+        $r8 = virtualinvoke $r1.<org.codehaus.jackson.JsonParser: java.math.BigInteger getBigIntegerValue()>();
+
+        virtualinvoke r0.<org.codehaus.jackson.util.TokenBuffer: void writeNumber(java.math.BigInteger)>($r8);
+
+        return;
+
+     label13:
+        $r2 = <org.codehaus.jackson.util.TokenBuffer$1: int[] $SwitchMap$org$codehaus$jackson$JsonParser$NumberType>;
+
+        $r7 = virtualinvoke $r1.<org.codehaus.jackson.JsonParser: org.codehaus.jackson.JsonParser$NumberType getNumberType()>();
+
+        $i0 = virtualinvoke $r7.<org.codehaus.jackson.JsonParser$NumberType: int ordinal()>();
+
+        $i0 = $r2[$i0];
+
+        lookupswitch($i0)
+        {
+            case 3: goto label15;
+            case 4: goto label16;
+            default: goto label14;
+        };
+
+     label14:
+        $d0 = virtualinvoke $r1.<org.codehaus.jackson.JsonParser: double getDoubleValue()>();
+
+        virtualinvoke r0.<org.codehaus.jackson.util.TokenBuffer: void writeNumber(double)>($d0);
+
+        return;
+
+     label15:
+        $r9 = virtualinvoke $r1.<org.codehaus.jackson.JsonParser: java.math.BigDecimal getDecimalValue()>();
+
+        virtualinvoke r0.<org.codehaus.jackson.util.TokenBuffer: void writeNumber(java.math.BigDecimal)>($r9);
+
+        return;
+
+     label16:
+        $f0 = virtualinvoke $r1.<org.codehaus.jackson.JsonParser: float getFloatValue()>();
+
+        virtualinvoke r0.<org.codehaus.jackson.util.TokenBuffer: void writeNumber(float)>($f0);
+
+        return;
+
+     label17:
+        virtualinvoke r0.<org.codehaus.jackson.util.TokenBuffer: void writeBoolean(boolean)>(1);
+
+        return;
+
+     label18:
+        virtualinvoke r0.<org.codehaus.jackson.util.TokenBuffer: void writeBoolean(boolean)>(0);
+
+        return;
+
+     label19:
+        virtualinvoke r0.<org.codehaus.jackson.util.TokenBuffer: void writeNull()>();
+
+        return;
+
+     label20:
+        $r10 = virtualinvoke $r1.<org.codehaus.jackson.JsonParser: java.lang.Object getEmbeddedObject()>();
+
+        virtualinvoke r0.<org.codehaus.jackson.util.TokenBuffer: void writeObject(java.lang.Object)>($r10);
+
+        return;
+    }
+
+    public void copyCurrentStructure(org.codehaus.jackson.JsonParser) throws java.io.IOException, org.codehaus.jackson.JsonProcessingException
+    {
+        org.codehaus.jackson.util.TokenBuffer r0;
+        org.codehaus.jackson.JsonParser $r1;
+        org.codehaus.jackson.JsonToken $r2, r3, $r4;
+        java.lang.String $r5;
+        int[] $r6;
+        int $i0;
+
+        r0 := @this: org.codehaus.jackson.util.TokenBuffer;
+
+        $r1 := @parameter0: org.codehaus.jackson.JsonParser;
+
+        $r2 = virtualinvoke $r1.<org.codehaus.jackson.JsonParser: org.codehaus.jackson.JsonToken getCurrentToken()>();
+
+        r3 = $r2;
+
+        $r4 = <org.codehaus.jackson.JsonToken: org.codehaus.jackson.JsonToken FIELD_NAME>;
+
+        if $r2 != $r4 goto label1;
+
+        $r5 = virtualinvoke $r1.<org.codehaus.jackson.JsonParser: java.lang.String getCurrentName()>();
+
+        virtualinvoke r0.<org.codehaus.jackson.util.TokenBuffer: void writeFieldName(java.lang.String)>($r5);
+
+        r3 = virtualinvoke $r1.<org.codehaus.jackson.JsonParser: org.codehaus.jackson.JsonToken nextToken()>();
+
+     label1:
+        $r6 = <org.codehaus.jackson.util.TokenBuffer$1: int[] $SwitchMap$org$codehaus$jackson$JsonToken>;
+
+        $i0 = virtualinvoke r3.<org.codehaus.jackson.JsonToken: int ordinal()>();
+
+        $i0 = $r6[$i0];
+
+        lookupswitch($i0)
+        {
+            case 1: goto label6;
+            case 2: goto label2;
+            case 3: goto label3;
+            default: goto label2;
+        };
+
+     label2:
+        virtualinvoke r0.<org.codehaus.jackson.util.TokenBuffer: void copyCurrentEvent(org.codehaus.jackson.JsonParser)>($r1);
+
+        return;
+
+     label3:
+        virtualinvoke r0.<org.codehaus.jackson.util.TokenBuffer: void writeStartArray()>();
+
+     label4:
+        $r2 = virtualinvoke $r1.<org.codehaus.jackson.JsonParser: org.codehaus.jackson.JsonToken nextToken()>();
+
+        r3 = <org.codehaus.jackson.JsonToken: org.codehaus.jackson.JsonToken END_ARRAY>;
+
+        if $r2 == r3 goto label5;
+
+        virtualinvoke r0.<org.codehaus.jackson.util.TokenBuffer: void copyCurrentStructure(org.codehaus.jackson.JsonParser)>($r1);
+
+        goto label4;
+
+     label5:
+        virtualinvoke r0.<org.codehaus.jackson.util.TokenBuffer: void writeEndArray()>();
+
+        return;
+
+     label6:
+        virtualinvoke r0.<org.codehaus.jackson.util.TokenBuffer: void writeStartObject()>();
+
+     label7:
+        $r2 = virtualinvoke $r1.<org.codehaus.jackson.JsonParser: org.codehaus.jackson.JsonToken nextToken()>();
+
+        r3 = <org.codehaus.jackson.JsonToken: org.codehaus.jackson.JsonToken END_OBJECT>;
+
+        if $r2 == r3 goto label8;
+
+        virtualinvoke r0.<org.codehaus.jackson.util.TokenBuffer: void copyCurrentStructure(org.codehaus.jackson.JsonParser)>($r1);
+
+        goto label7;
+
+     label8:
+        virtualinvoke r0.<org.codehaus.jackson.util.TokenBuffer: void writeEndObject()>();
+
+        return;
+    }
+
+    public org.codehaus.jackson.JsonGenerator disable(org.codehaus.jackson.JsonGenerator$Feature)
+    {
+        org.codehaus.jackson.util.TokenBuffer r0;
+        org.codehaus.jackson.JsonGenerator$Feature $r1;
+        int $i0, $i1;
+
+        r0 := @this: org.codehaus.jackson.util.TokenBuffer;
+
+        $r1 := @parameter0: org.codehaus.jackson.JsonGenerator$Feature;
+
+        $i1 = r0.<org.codehaus.jackson.util.TokenBuffer: int _generatorFeatures>;
+
+        $i0 = virtualinvoke $r1.<org.codehaus.jackson.JsonGenerator$Feature: int getMask()>();
+
+        $i0 = $i0 ^ -1;
+
+        $i1 = $i1 & $i0;
+
+        r0.<org.codehaus.jackson.util.TokenBuffer: int _generatorFeatures> = $i1;
+
+        return r0;
+    }
+
+    public org.codehaus.jackson.JsonGenerator enable(org.codehaus.jackson.JsonGenerator$Feature)
+    {
+        org.codehaus.jackson.util.TokenBuffer r0;
+        org.codehaus.jackson.JsonGenerator$Feature $r1;
+        int $i0, $i1;
+
+        r0 := @this: org.codehaus.jackson.util.TokenBuffer;
+
+        $r1 := @parameter0: org.codehaus.jackson.JsonGenerator$Feature;
+
+        $i1 = r0.<org.codehaus.jackson.util.TokenBuffer: int _generatorFeatures>;
+
+        $i0 = virtualinvoke $r1.<org.codehaus.jackson.JsonGenerator$Feature: int getMask()>();
+
+        $i0 = $i1 | $i0;
+
+        r0.<org.codehaus.jackson.util.TokenBuffer: int _generatorFeatures> = $i0;
+
+        return r0;
+    }
+
+    public void flush() throws java.io.IOException
+    {
+        org.codehaus.jackson.util.TokenBuffer r0;
+
+        r0 := @this: org.codehaus.jackson.util.TokenBuffer;
+
+        return;
+    }
+
+    public org.codehaus.jackson.ObjectCodec getCodec()
+    {
+        org.codehaus.jackson.util.TokenBuffer r0;
+        org.codehaus.jackson.ObjectCodec r1;
+
+        r0 := @this: org.codehaus.jackson.util.TokenBuffer;
+
+        r1 = r0.<org.codehaus.jackson.util.TokenBuffer: org.codehaus.jackson.ObjectCodec _objectCodec>;
+
+        return r1;
+    }
+
+    public volatile org.codehaus.jackson.JsonStreamContext getOutputContext()
+    {
+        org.codehaus.jackson.util.TokenBuffer r0;
+        org.codehaus.jackson.impl.JsonWriteContext $r1;
+
+        r0 := @this: org.codehaus.jackson.util.TokenBuffer;
+
+        $r1 = virtualinvoke r0.<org.codehaus.jackson.util.TokenBuffer: org.codehaus.jackson.impl.JsonWriteContext getOutputContext()>();
+
+        return $r1;
+    }
+
+    public final org.codehaus.jackson.impl.JsonWriteContext getOutputContext()
+    {
+        org.codehaus.jackson.util.TokenBuffer r0;
+        org.codehaus.jackson.impl.JsonWriteContext r1;
+
+        r0 := @this: org.codehaus.jackson.util.TokenBuffer;
+
+        r1 = r0.<org.codehaus.jackson.util.TokenBuffer: org.codehaus.jackson.impl.JsonWriteContext _writeContext>;
+
+        return r1;
+    }
+
+    public boolean isClosed()
+    {
+        org.codehaus.jackson.util.TokenBuffer r0;
+        boolean z0;
+
+        r0 := @this: org.codehaus.jackson.util.TokenBuffer;
+
+        z0 = r0.<org.codehaus.jackson.util.TokenBuffer: boolean _closed>;
+
+        return z0;
+    }
+
+    public boolean isEnabled(org.codehaus.jackson.JsonGenerator$Feature)
+    {
+        org.codehaus.jackson.util.TokenBuffer r0;
+        org.codehaus.jackson.JsonGenerator$Feature $r1;
+        int $i0, $i1;
+
+        r0 := @this: org.codehaus.jackson.util.TokenBuffer;
+
+        $r1 := @parameter0: org.codehaus.jackson.JsonGenerator$Feature;
+
+        $i1 = r0.<org.codehaus.jackson.util.TokenBuffer: int _generatorFeatures>;
+
+        $i0 = virtualinvoke $r1.<org.codehaus.jackson.JsonGenerator$Feature: int getMask()>();
+
+        $i0 = $i1 & $i0;
+
+        if $i0 == 0 goto label1;
+
+        return 1;
+
+     label1:
+        return 0;
+    }
+
+    public void serialize(org.codehaus.jackson.JsonGenerator) throws java.io.IOException, org.codehaus.jackson.JsonGenerationException
+    {
+        org.codehaus.jackson.util.TokenBuffer r0;
+        org.codehaus.jackson.JsonGenerator $r1;
+        org.codehaus.jackson.util.TokenBuffer$Segment r2, $r3;
+        int i0, $i1;
+        org.codehaus.jackson.JsonToken $r4;
+        int[] $r5;
+        java.lang.RuntimeException $r6;
+        java.lang.Object $r7;
+        boolean $z0;
+        org.codehaus.jackson.SerializableString r8;
+        java.lang.String r9;
+        java.lang.Number r10;
+        java.math.BigInteger r11;
+        long $l2;
+        java.math.BigDecimal r12;
+        java.lang.Float r13;
+        float $f0;
+        java.lang.Double r14;
+        double $d0;
+        org.codehaus.jackson.JsonGenerationException $r15;
+        java.lang.StringBuilder $r16;
+        java.lang.Class $r17;
+
+        r0 := @this: org.codehaus.jackson.util.TokenBuffer;
+
+        $r1 := @parameter0: org.codehaus.jackson.JsonGenerator;
+
+        r2 = r0.<org.codehaus.jackson.util.TokenBuffer: org.codehaus.jackson.util.TokenBuffer$Segment _first>;
+
+        i0 = -1;
+
+     label01:
+        i0 = i0 + 1;
+
+        if i0 < 16 goto label02;
+
+        i0 = 0;
+
+        $r3 = virtualinvoke r2.<org.codehaus.jackson.util.TokenBuffer$Segment: org.codehaus.jackson.util.TokenBuffer$Segment next()>();
+
+        r2 = $r3;
+
+        if $r3 != null goto label02;
+
+        return;
+
+     label02:
+        $r4 = virtualinvoke r2.<org.codehaus.jackson.util.TokenBuffer$Segment: org.codehaus.jackson.JsonToken type(int)>(i0);
+
+        if $r4 == null goto label25;
+
+        $r5 = <org.codehaus.jackson.util.TokenBuffer$1: int[] $SwitchMap$org$codehaus$jackson$JsonToken>;
+
+        $i1 = virtualinvoke $r4.<org.codehaus.jackson.JsonToken: int ordinal()>();
+
+        $i1 = $r5[$i1];
+
+        lookupswitch($i1)
+        {
+            case 1: goto label04;
+            case 2: goto label05;
+            case 3: goto label06;
+            case 4: goto label07;
+            case 5: goto label08;
+            case 6: goto label10;
+            case 7: goto label12;
+            case 8: goto label15;
+            case 9: goto label21;
+            case 10: goto label22;
+            case 11: goto label23;
+            case 12: goto label24;
+            default: goto label03;
+        };
+
+     label03:
+        $r6 = new java.lang.RuntimeException;
+
+        specialinvoke $r6.<java.lang.RuntimeException: void <init>(java.lang.String)>("Internal error: should never end up through this code path");
+
+        throw $r6;
+
+     label04:
+        virtualinvoke $r1.<org.codehaus.jackson.JsonGenerator: void writeStartObject()>();
+
+        goto label01;
+
+     label05:
+        virtualinvoke $r1.<org.codehaus.jackson.JsonGenerator: void writeEndObject()>();
+
+        goto label01;
+
+     label06:
+        virtualinvoke $r1.<org.codehaus.jackson.JsonGenerator: void writeStartArray()>();
+
+        goto label01;
+
+     label07:
+        virtualinvoke $r1.<org.codehaus.jackson.JsonGenerator: void writeEndArray()>();
+
+        goto label01;
+
+     label08:
+        $r7 = virtualinvoke r2.<org.codehaus.jackson.util.TokenBuffer$Segment: java.lang.Object get(int)>(i0);
+
+        $z0 = $r7 instanceof org.codehaus.jackson.SerializableString;
+
+        if $z0 == 0 goto label09;
+
+        r8 = (org.codehaus.jackson.SerializableString) $r7;
+
+        virtualinvoke $r1.<org.codehaus.jackson.JsonGenerator: void writeFieldName(org.codehaus.jackson.SerializableString)>(r8);
+
+        goto label01;
+
+     label09:
+        r9 = (java.lang.String) $r7;
+
+        virtualinvoke $r1.<org.codehaus.jackson.JsonGenerator: void writeFieldName(java.lang.String)>(r9);
+
+        goto label01;
+
+     label10:
+        $r7 = virtualinvoke r2.<org.codehaus.jackson.util.TokenBuffer$Segment: java.lang.Object get(int)>(i0);
+
+        $z0 = $r7 instanceof org.codehaus.jackson.SerializableString;
+
+        if $z0 == 0 goto label11;
+
+        r8 = (org.codehaus.jackson.SerializableString) $r7;
+
+        virtualinvoke $r1.<org.codehaus.jackson.JsonGenerator: void writeString(org.codehaus.jackson.SerializableString)>(r8);
+
+        goto label01;
+
+     label11:
+        r9 = (java.lang.String) $r7;
+
+        virtualinvoke $r1.<org.codehaus.jackson.JsonGenerator: void writeString(java.lang.String)>(r9);
+
+        goto label01;
+
+     label12:
+        $r7 = virtualinvoke r2.<org.codehaus.jackson.util.TokenBuffer$Segment: java.lang.Object get(int)>(i0);
+
+        r10 = (java.lang.Number) $r7;
+
+        $z0 = r10 instanceof java.math.BigInteger;
+
+        if $z0 == 0 goto label13;
+
+        r11 = (java.math.BigInteger) r10;
+
+        virtualinvoke $r1.<org.codehaus.jackson.JsonGenerator: void writeNumber(java.math.BigInteger)>(r11);
+
+        goto label01;
+
+     label13:
+        $z0 = r10 instanceof java.lang.Long;
+
+        if $z0 == 0 goto label14;
+
+        $l2 = virtualinvoke r10.<java.lang.Number: long longValue()>();
+
+        virtualinvoke $r1.<org.codehaus.jackson.JsonGenerator: void writeNumber(long)>($l2);
+
+        goto label01;
+
+     label14:
+        $i1 = virtualinvoke r10.<java.lang.Number: int intValue()>();
+
+        virtualinvoke $r1.<org.codehaus.jackson.JsonGenerator: void writeNumber(int)>($i1);
+
+        goto label01;
+
+     label15:
+        $r7 = virtualinvoke r2.<org.codehaus.jackson.util.TokenBuffer$Segment: java.lang.Object get(int)>(i0);
+
+        $z0 = $r7 instanceof java.math.BigDecimal;
+
+        if $z0 == 0 goto label16;
+
+        r12 = (java.math.BigDecimal) $r7;
+
+        virtualinvoke $r1.<org.codehaus.jackson.JsonGenerator: void writeNumber(java.math.BigDecimal)>(r12);
+
+        goto label01;
+
+     label16:
+        $z0 = $r7 instanceof java.lang.Float;
+
+        if $z0 == 0 goto label17;
+
+        r13 = (java.lang.Float) $r7;
+
+        $f0 = virtualinvoke r13.<java.lang.Float: float floatValue()>();
+
+        virtualinvoke $r1.<org.codehaus.jackson.JsonGenerator: void writeNumber(float)>($f0);
+
+        goto label01;
+
+     label17:
+        $z0 = $r7 instanceof java.lang.Double;
+
+        if $z0 == 0 goto label18;
+
+        r14 = (java.lang.Double) $r7;
+
+        $d0 = virtualinvoke r14.<java.lang.Double: double doubleValue()>();
+
+        virtualinvoke $r1.<org.codehaus.jackson.JsonGenerator: void writeNumber(double)>($d0);
+
+        goto label01;
+
+     label18:
+        if $r7 != null goto label19;
+
+        virtualinvoke $r1.<org.codehaus.jackson.JsonGenerator: void writeNull()>();
+
+        goto label01;
+
+     label19:
+        $z0 = $r7 instanceof java.lang.String;
+
+        if $z0 == 0 goto label20;
+
+        r9 = (java.lang.String) $r7;
+
+        virtualinvoke $r1.<org.codehaus.jackson.JsonGenerator: void writeNumber(java.lang.String)>(r9);
+
+        goto label01;
+
+     label20:
+        $r15 = new org.codehaus.jackson.JsonGenerationException;
+
+        $r16 = new java.lang.StringBuilder;
+
+        specialinvoke $r16.<java.lang.StringBuilder: void <init>()>();
+
+        $r16 = virtualinvoke $r16.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Unrecognized value type for VALUE_NUMBER_FLOAT: ");
+
+        $r17 = virtualinvoke $r7.<java.lang.Object: java.lang.Class getClass()>();
+
+        r9 = virtualinvoke $r17.<java.lang.Class: java.lang.String getName()>();
+
+        $r16 = virtualinvoke $r16.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(r9);
+
+        $r16 = virtualinvoke $r16.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(", can not serialize");
+
+        r9 = virtualinvoke $r16.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke $r15.<org.codehaus.jackson.JsonGenerationException: void <init>(java.lang.String)>(r9);
+
+        throw $r15;
+
+     label21:
+        virtualinvoke $r1.<org.codehaus.jackson.JsonGenerator: void writeBoolean(boolean)>(1);
+
+        goto label01;
+
+     label22:
+        virtualinvoke $r1.<org.codehaus.jackson.JsonGenerator: void writeBoolean(boolean)>(0);
+
+        goto label01;
+
+     label23:
+        virtualinvoke $r1.<org.codehaus.jackson.JsonGenerator: void writeNull()>();
+
+        goto label01;
+
+     label24:
+        $r7 = virtualinvoke r2.<org.codehaus.jackson.util.TokenBuffer$Segment: java.lang.Object get(int)>(i0);
+
+        virtualinvoke $r1.<org.codehaus.jackson.JsonGenerator: void writeObject(java.lang.Object)>($r7);
+
+        goto label01;
+
+     label25:
+        return;
+    }
+
+    public org.codehaus.jackson.JsonGenerator setCodec(org.codehaus.jackson.ObjectCodec)
+    {
+        org.codehaus.jackson.util.TokenBuffer r0;
+        org.codehaus.jackson.ObjectCodec $r1;
+
+        r0 := @this: org.codehaus.jackson.util.TokenBuffer;
+
+        $r1 := @parameter0: org.codehaus.jackson.ObjectCodec;
+
+        r0.<org.codehaus.jackson.util.TokenBuffer: org.codehaus.jackson.ObjectCodec _objectCodec> = $r1;
+
+        return r0;
+    }
+
+    public java.lang.String toString()
+    {
+        org.codehaus.jackson.util.TokenBuffer r0;
+        java.lang.Throwable r1;
+        java.lang.StringBuilder r2, $r5;
+        org.codehaus.jackson.JsonParser $r3;
+        int i0;
+        org.codehaus.jackson.JsonToken $r4;
+        java.lang.String $r6;
+        java.lang.IllegalStateException $r7;
+
+        r0 := @this: org.codehaus.jackson.util.TokenBuffer;
+
+        r2 = new java.lang.StringBuilder;
+
+        specialinvoke r2.<java.lang.StringBuilder: void <init>()>();
+
+        virtualinvoke r2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("[TokenBuffer: ");
+
+        $r3 = virtualinvoke r0.<org.codehaus.jackson.util.TokenBuffer: org.codehaus.jackson.JsonParser asParser()>();
+
+        i0 = 0;
+
+     label1:
+        $r4 = virtualinvoke $r3.<org.codehaus.jackson.JsonParser: org.codehaus.jackson.JsonToken nextToken()>();
+
+     label2:
+        if $r4 != null goto label5;
+
+        if i0 < 100 goto label3;
+
+        $r5 = virtualinvoke r2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" ... (truncated ");
+
+        i0 = i0 - 100;
+
+        $r5 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>(i0);
+
+        virtualinvoke $r5.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" entries)");
+
+     label3:
+        virtualinvoke r2.<java.lang.StringBuilder: java.lang.StringBuilder append(char)>(93);
+
+        $r6 = virtualinvoke r2.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        return $r6;
+
+     label4:
+        r1 := @caughtexception;
+
+        $r7 = new java.lang.IllegalStateException;
+
+        specialinvoke $r7.<java.lang.IllegalStateException: void <init>(java.lang.Throwable)>(r1);
+
+        throw $r7;
+
+     label5:
+        if i0 >= 100 goto label7;
+
+        if i0 <= 0 goto label6;
+
+        virtualinvoke r2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(", ");
+
+     label6:
+        $r6 = virtualinvoke $r4.<org.codehaus.jackson.JsonToken: java.lang.String toString()>();
+
+        virtualinvoke r2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r6);
+
+     label7:
+        i0 = i0 + 1;
+
+        goto label1;
+
+        catch java.io.IOException from label1 to label2 with label4;
+    }
+
+    public org.codehaus.jackson.JsonGenerator useDefaultPrettyPrinter()
+    {
+        org.codehaus.jackson.util.TokenBuffer r0;
+
+        r0 := @this: org.codehaus.jackson.util.TokenBuffer;
+
+        return r0;
+    }
+
+    public void writeBinary(org.codehaus.jackson.Base64Variant, byte[], int, int) throws java.io.IOException, org.codehaus.jackson.JsonGenerationException
+    {
+        org.codehaus.jackson.util.TokenBuffer r0;
+        org.codehaus.jackson.Base64Variant $r1;
+        byte[] $r2, r3;
+        int $i0, $i1;
+
+        r0 := @this: org.codehaus.jackson.util.TokenBuffer;
+
+        $r1 := @parameter0: org.codehaus.jackson.Base64Variant;
+
+        $r2 := @parameter1: byte[];
+
+        $i0 := @parameter2: int;
+
+        $i1 := @parameter3: int;
+
+        r3 = newarray (byte)[$i1];
+
+        staticinvoke <java.lang.System: void arraycopy(java.lang.Object,int,java.lang.Object,int,int)>($r2, $i0, r3, 0, $i1);
+
+        virtualinvoke r0.<org.codehaus.jackson.util.TokenBuffer: void writeObject(java.lang.Object)>(r3);
+
+        return;
+    }
+
+    public void writeBoolean(boolean) throws java.io.IOException, org.codehaus.jackson.JsonGenerationException
+    {
+        org.codehaus.jackson.util.TokenBuffer r0;
+        boolean $z0;
+        org.codehaus.jackson.JsonToken $r1;
+
+        r0 := @this: org.codehaus.jackson.util.TokenBuffer;
+
+        $z0 := @parameter0: boolean;
+
+        if $z0 == 0 goto label2;
+
+        $r1 = <org.codehaus.jackson.JsonToken: org.codehaus.jackson.JsonToken VALUE_TRUE>;
+
+     label1:
+        virtualinvoke r0.<org.codehaus.jackson.util.TokenBuffer: void _append(org.codehaus.jackson.JsonToken)>($r1);
+
+        return;
+
+     label2:
+        $r1 = <org.codehaus.jackson.JsonToken: org.codehaus.jackson.JsonToken VALUE_FALSE>;
+
+        goto label1;
+    }
+
+    public final void writeEndArray() throws java.io.IOException, org.codehaus.jackson.JsonGenerationException
+    {
+        org.codehaus.jackson.util.TokenBuffer r0;
+        org.codehaus.jackson.impl.JsonWriteContext $r1;
+        org.codehaus.jackson.JsonToken $r2;
+
+        r0 := @this: org.codehaus.jackson.util.TokenBuffer;
+
+        $r2 = <org.codehaus.jackson.JsonToken: org.codehaus.jackson.JsonToken END_ARRAY>;
+
+        virtualinvoke r0.<org.codehaus.jackson.util.TokenBuffer: void _append(org.codehaus.jackson.JsonToken)>($r2);
+
+        $r1 = r0.<org.codehaus.jackson.util.TokenBuffer: org.codehaus.jackson.impl.JsonWriteContext _writeContext>;
+
+        $r1 = virtualinvoke $r1.<org.codehaus.jackson.impl.JsonWriteContext: org.codehaus.jackson.impl.JsonWriteContext getParent()>();
+
+        if $r1 == null goto label1;
+
+        r0.<org.codehaus.jackson.util.TokenBuffer: org.codehaus.jackson.impl.JsonWriteContext _writeContext> = $r1;
+
+     label1:
+        return;
+    }
+
+    public final void writeEndObject() throws java.io.IOException, org.codehaus.jackson.JsonGenerationException
+    {
+        org.codehaus.jackson.util.TokenBuffer r0;
+        org.codehaus.jackson.impl.JsonWriteContext $r1;
+        org.codehaus.jackson.JsonToken $r2;
+
+        r0 := @this: org.codehaus.jackson.util.TokenBuffer;
+
+        $r2 = <org.codehaus.jackson.JsonToken: org.codehaus.jackson.JsonToken END_OBJECT>;
+
+        virtualinvoke r0.<org.codehaus.jackson.util.TokenBuffer: void _append(org.codehaus.jackson.JsonToken)>($r2);
+
+        $r1 = r0.<org.codehaus.jackson.util.TokenBuffer: org.codehaus.jackson.impl.JsonWriteContext _writeContext>;
+
+        $r1 = virtualinvoke $r1.<org.codehaus.jackson.impl.JsonWriteContext: org.codehaus.jackson.impl.JsonWriteContext getParent()>();
+
+        if $r1 == null goto label1;
+
+        r0.<org.codehaus.jackson.util.TokenBuffer: org.codehaus.jackson.impl.JsonWriteContext _writeContext> = $r1;
+
+     label1:
+        return;
+    }
+
+    public final void writeFieldName(java.lang.String) throws java.io.IOException, org.codehaus.jackson.JsonGenerationException
+    {
+        org.codehaus.jackson.util.TokenBuffer r0;
+        java.lang.String $r1;
+        org.codehaus.jackson.JsonToken $r2;
+        org.codehaus.jackson.impl.JsonWriteContext $r3;
+
+        r0 := @this: org.codehaus.jackson.util.TokenBuffer;
+
+        $r1 := @parameter0: java.lang.String;
+
+        $r2 = <org.codehaus.jackson.JsonToken: org.codehaus.jackson.JsonToken FIELD_NAME>;
+
+        virtualinvoke r0.<org.codehaus.jackson.util.TokenBuffer: void _append(org.codehaus.jackson.JsonToken,java.lang.Object)>($r2, $r1);
+
+        $r3 = r0.<org.codehaus.jackson.util.TokenBuffer: org.codehaus.jackson.impl.JsonWriteContext _writeContext>;
+
+        virtualinvoke $r3.<org.codehaus.jackson.impl.JsonWriteContext: int writeFieldName(java.lang.String)>($r1);
+
+        return;
+    }
+
+    public void writeFieldName(org.codehaus.jackson.SerializableString) throws java.io.IOException, org.codehaus.jackson.JsonGenerationException
+    {
+        org.codehaus.jackson.util.TokenBuffer r0;
+        org.codehaus.jackson.SerializableString $r1;
+        java.lang.String $r2;
+        org.codehaus.jackson.JsonToken $r3;
+        org.codehaus.jackson.impl.JsonWriteContext $r4;
+
+        r0 := @this: org.codehaus.jackson.util.TokenBuffer;
+
+        $r1 := @parameter0: org.codehaus.jackson.SerializableString;
+
+        $r3 = <org.codehaus.jackson.JsonToken: org.codehaus.jackson.JsonToken FIELD_NAME>;
+
+        virtualinvoke r0.<org.codehaus.jackson.util.TokenBuffer: void _append(org.codehaus.jackson.JsonToken,java.lang.Object)>($r3, $r1);
+
+        $r4 = r0.<org.codehaus.jackson.util.TokenBuffer: org.codehaus.jackson.impl.JsonWriteContext _writeContext>;
+
+        $r2 = interfaceinvoke $r1.<org.codehaus.jackson.SerializableString: java.lang.String getValue()>();
+
+        virtualinvoke $r4.<org.codehaus.jackson.impl.JsonWriteContext: int writeFieldName(java.lang.String)>($r2);
+
+        return;
+    }
+
+    public void writeFieldName(org.codehaus.jackson.io.SerializedString) throws java.io.IOException, org.codehaus.jackson.JsonGenerationException
+    {
+        org.codehaus.jackson.util.TokenBuffer r0;
+        org.codehaus.jackson.io.SerializedString $r1;
+        java.lang.String $r2;
+        org.codehaus.jackson.JsonToken $r3;
+        org.codehaus.jackson.impl.JsonWriteContext $r4;
+
+        r0 := @this: org.codehaus.jackson.util.TokenBuffer;
+
+        $r1 := @parameter0: org.codehaus.jackson.io.SerializedString;
+
+        $r3 = <org.codehaus.jackson.JsonToken: org.codehaus.jackson.JsonToken FIELD_NAME>;
+
+        virtualinvoke r0.<org.codehaus.jackson.util.TokenBuffer: void _append(org.codehaus.jackson.JsonToken,java.lang.Object)>($r3, $r1);
+
+        $r4 = r0.<org.codehaus.jackson.util.TokenBuffer: org.codehaus.jackson.impl.JsonWriteContext _writeContext>;
+
+        $r2 = virtualinvoke $r1.<org.codehaus.jackson.io.SerializedString: java.lang.String getValue()>();
+
+        virtualinvoke $r4.<org.codehaus.jackson.impl.JsonWriteContext: int writeFieldName(java.lang.String)>($r2);
+
+        return;
+    }
+
+    public void writeNull() throws java.io.IOException, org.codehaus.jackson.JsonGenerationException
+    {
+        org.codehaus.jackson.util.TokenBuffer r0;
+        org.codehaus.jackson.JsonToken $r1;
+
+        r0 := @this: org.codehaus.jackson.util.TokenBuffer;
+
+        $r1 = <org.codehaus.jackson.JsonToken: org.codehaus.jackson.JsonToken VALUE_NULL>;
+
+        virtualinvoke r0.<org.codehaus.jackson.util.TokenBuffer: void _append(org.codehaus.jackson.JsonToken)>($r1);
+
+        return;
+    }
+
+    public void writeNumber(double) throws java.io.IOException, org.codehaus.jackson.JsonGenerationException
+    {
+        org.codehaus.jackson.util.TokenBuffer r0;
+        double $d0;
+        org.codehaus.jackson.JsonToken $r1;
+        java.lang.Double $r2;
+
+        r0 := @this: org.codehaus.jackson.util.TokenBuffer;
+
+        $d0 := @parameter0: double;
+
+        $r1 = <org.codehaus.jackson.JsonToken: org.codehaus.jackson.JsonToken VALUE_NUMBER_FLOAT>;
+
+        $r2 = staticinvoke <java.lang.Double: java.lang.Double valueOf(double)>($d0);
+
+        virtualinvoke r0.<org.codehaus.jackson.util.TokenBuffer: void _append(org.codehaus.jackson.JsonToken,java.lang.Object)>($r1, $r2);
+
+        return;
+    }
+
+    public void writeNumber(float) throws java.io.IOException, org.codehaus.jackson.JsonGenerationException
+    {
+        org.codehaus.jackson.util.TokenBuffer r0;
+        float $f0;
+        org.codehaus.jackson.JsonToken $r1;
+        java.lang.Float $r2;
+
+        r0 := @this: org.codehaus.jackson.util.TokenBuffer;
+
+        $f0 := @parameter0: float;
+
+        $r1 = <org.codehaus.jackson.JsonToken: org.codehaus.jackson.JsonToken VALUE_NUMBER_FLOAT>;
+
+        $r2 = staticinvoke <java.lang.Float: java.lang.Float valueOf(float)>($f0);
+
+        virtualinvoke r0.<org.codehaus.jackson.util.TokenBuffer: void _append(org.codehaus.jackson.JsonToken,java.lang.Object)>($r1, $r2);
+
+        return;
+    }
+
+    public void writeNumber(int) throws java.io.IOException, org.codehaus.jackson.JsonGenerationException
+    {
+        org.codehaus.jackson.util.TokenBuffer r0;
+        int $i0;
+        org.codehaus.jackson.JsonToken $r1;
+        java.lang.Integer $r2;
+
+        r0 := @this: org.codehaus.jackson.util.TokenBuffer;
+
+        $i0 := @parameter0: int;
+
+        $r1 = <org.codehaus.jackson.JsonToken: org.codehaus.jackson.JsonToken VALUE_NUMBER_INT>;
+
+        $r2 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>($i0);
+
+        virtualinvoke r0.<org.codehaus.jackson.util.TokenBuffer: void _append(org.codehaus.jackson.JsonToken,java.lang.Object)>($r1, $r2);
+
+        return;
+    }
+
+    public void writeNumber(long) throws java.io.IOException, org.codehaus.jackson.JsonGenerationException
+    {
+        org.codehaus.jackson.util.TokenBuffer r0;
+        long $l0;
+        org.codehaus.jackson.JsonToken $r1;
+        java.lang.Long $r2;
+
+        r0 := @this: org.codehaus.jackson.util.TokenBuffer;
+
+        $l0 := @parameter0: long;
+
+        $r1 = <org.codehaus.jackson.JsonToken: org.codehaus.jackson.JsonToken VALUE_NUMBER_INT>;
+
+        $r2 = staticinvoke <java.lang.Long: java.lang.Long valueOf(long)>($l0);
+
+        virtualinvoke r0.<org.codehaus.jackson.util.TokenBuffer: void _append(org.codehaus.jackson.JsonToken,java.lang.Object)>($r1, $r2);
+
+        return;
+    }
+
+    public void writeNumber(java.lang.String) throws java.io.IOException, org.codehaus.jackson.JsonGenerationException
+    {
+        org.codehaus.jackson.util.TokenBuffer r0;
+        java.lang.String $r1;
+        org.codehaus.jackson.JsonToken $r2;
+
+        r0 := @this: org.codehaus.jackson.util.TokenBuffer;
+
+        $r1 := @parameter0: java.lang.String;
+
+        $r2 = <org.codehaus.jackson.JsonToken: org.codehaus.jackson.JsonToken VALUE_NUMBER_FLOAT>;
+
+        virtualinvoke r0.<org.codehaus.jackson.util.TokenBuffer: void _append(org.codehaus.jackson.JsonToken,java.lang.Object)>($r2, $r1);
+
+        return;
+    }
+
+    public void writeNumber(java.math.BigDecimal) throws java.io.IOException, org.codehaus.jackson.JsonGenerationException
+    {
+        org.codehaus.jackson.util.TokenBuffer r0;
+        java.math.BigDecimal $r1;
+        org.codehaus.jackson.JsonToken $r2;
+
+        r0 := @this: org.codehaus.jackson.util.TokenBuffer;
+
+        $r1 := @parameter0: java.math.BigDecimal;
+
+        if $r1 != null goto label1;
+
+        virtualinvoke r0.<org.codehaus.jackson.util.TokenBuffer: void writeNull()>();
+
+        return;
+
+     label1:
+        $r2 = <org.codehaus.jackson.JsonToken: org.codehaus.jackson.JsonToken VALUE_NUMBER_FLOAT>;
+
+        virtualinvoke r0.<org.codehaus.jackson.util.TokenBuffer: void _append(org.codehaus.jackson.JsonToken,java.lang.Object)>($r2, $r1);
+
+        return;
+    }
+
+    public void writeNumber(java.math.BigInteger) throws java.io.IOException, org.codehaus.jackson.JsonGenerationException
+    {
+        org.codehaus.jackson.util.TokenBuffer r0;
+        java.math.BigInteger $r1;
+        org.codehaus.jackson.JsonToken $r2;
+
+        r0 := @this: org.codehaus.jackson.util.TokenBuffer;
+
+        $r1 := @parameter0: java.math.BigInteger;
+
+        if $r1 != null goto label1;
+
+        virtualinvoke r0.<org.codehaus.jackson.util.TokenBuffer: void writeNull()>();
+
+        return;
+
+     label1:
+        $r2 = <org.codehaus.jackson.JsonToken: org.codehaus.jackson.JsonToken VALUE_NUMBER_INT>;
+
+        virtualinvoke r0.<org.codehaus.jackson.util.TokenBuffer: void _append(org.codehaus.jackson.JsonToken,java.lang.Object)>($r2, $r1);
+
+        return;
+    }
+
+    public void writeObject(java.lang.Object) throws java.io.IOException, org.codehaus.jackson.JsonProcessingException
+    {
+        org.codehaus.jackson.util.TokenBuffer r0;
+        java.lang.Object $r1;
+        org.codehaus.jackson.JsonToken $r2;
+
+        r0 := @this: org.codehaus.jackson.util.TokenBuffer;
+
+        $r1 := @parameter0: java.lang.Object;
+
+        $r2 = <org.codehaus.jackson.JsonToken: org.codehaus.jackson.JsonToken VALUE_EMBEDDED_OBJECT>;
+
+        virtualinvoke r0.<org.codehaus.jackson.util.TokenBuffer: void _append(org.codehaus.jackson.JsonToken,java.lang.Object)>($r2, $r1);
+
+        return;
+    }
+
+    public void writeRaw(char) throws java.io.IOException, org.codehaus.jackson.JsonGenerationException
+    {
+        org.codehaus.jackson.util.TokenBuffer r0;
+        char $c0;
+
+        r0 := @this: org.codehaus.jackson.util.TokenBuffer;
+
+        $c0 := @parameter0: char;
+
+        virtualinvoke r0.<org.codehaus.jackson.util.TokenBuffer: void _reportUnsupportedOperation()>();
+
+        return;
+    }
+
+    public void writeRaw(java.lang.String) throws java.io.IOException, org.codehaus.jackson.JsonGenerationException
+    {
+        org.codehaus.jackson.util.TokenBuffer r0;
+        java.lang.String $r1;
+
+        r0 := @this: org.codehaus.jackson.util.TokenBuffer;
+
+        $r1 := @parameter0: java.lang.String;
+
+        virtualinvoke r0.<org.codehaus.jackson.util.TokenBuffer: void _reportUnsupportedOperation()>();
+
+        return;
+    }
+
+    public void writeRaw(java.lang.String, int, int) throws java.io.IOException, org.codehaus.jackson.JsonGenerationException
+    {
+        org.codehaus.jackson.util.TokenBuffer r0;
+        java.lang.String $r1;
+        int $i0, $i1;
+
+        r0 := @this: org.codehaus.jackson.util.TokenBuffer;
+
+        $r1 := @parameter0: java.lang.String;
+
+        $i0 := @parameter1: int;
+
+        $i1 := @parameter2: int;
+
+        virtualinvoke r0.<org.codehaus.jackson.util.TokenBuffer: void _reportUnsupportedOperation()>();
+
+        return;
+    }
+
+    public void writeRaw(char[], int, int) throws java.io.IOException, org.codehaus.jackson.JsonGenerationException
+    {
+        org.codehaus.jackson.util.TokenBuffer r0;
+        char[] $r1;
+        int $i0, $i1;
+
+        r0 := @this: org.codehaus.jackson.util.TokenBuffer;
+
+        $r1 := @parameter0: char[];
+
+        $i0 := @parameter1: int;
+
+        $i1 := @parameter2: int;
+
+        virtualinvoke r0.<org.codehaus.jackson.util.TokenBuffer: void _reportUnsupportedOperation()>();
+
+        return;
+    }
+
+    public void writeRawUTF8String(byte[], int, int) throws java.io.IOException, org.codehaus.jackson.JsonGenerationException
+    {
+        org.codehaus.jackson.util.TokenBuffer r0;
+        byte[] $r1;
+        int $i0, $i1;
+
+        r0 := @this: org.codehaus.jackson.util.TokenBuffer;
+
+        $r1 := @parameter0: byte[];
+
+        $i0 := @parameter1: int;
+
+        $i1 := @parameter2: int;
+
+        virtualinvoke r0.<org.codehaus.jackson.util.TokenBuffer: void _reportUnsupportedOperation()>();
+
+        return;
+    }
+
+    public void writeRawValue(java.lang.String) throws java.io.IOException, org.codehaus.jackson.JsonGenerationException
+    {
+        org.codehaus.jackson.util.TokenBuffer r0;
+        java.lang.String $r1;
+
+        r0 := @this: org.codehaus.jackson.util.TokenBuffer;
+
+        $r1 := @parameter0: java.lang.String;
+
+        virtualinvoke r0.<org.codehaus.jackson.util.TokenBuffer: void _reportUnsupportedOperation()>();
+
+        return;
+    }
+
+    public void writeRawValue(java.lang.String, int, int) throws java.io.IOException, org.codehaus.jackson.JsonGenerationException
+    {
+        org.codehaus.jackson.util.TokenBuffer r0;
+        java.lang.String $r1;
+        int $i0, $i1;
+
+        r0 := @this: org.codehaus.jackson.util.TokenBuffer;
+
+        $r1 := @parameter0: java.lang.String;
+
+        $i0 := @parameter1: int;
+
+        $i1 := @parameter2: int;
+
+        virtualinvoke r0.<org.codehaus.jackson.util.TokenBuffer: void _reportUnsupportedOperation()>();
+
+        return;
+    }
+
+    public void writeRawValue(char[], int, int) throws java.io.IOException, org.codehaus.jackson.JsonGenerationException
+    {
+        org.codehaus.jackson.util.TokenBuffer r0;
+        char[] $r1;
+        int $i0, $i1;
+
+        r0 := @this: org.codehaus.jackson.util.TokenBuffer;
+
+        $r1 := @parameter0: char[];
+
+        $i0 := @parameter1: int;
+
+        $i1 := @parameter2: int;
+
+        virtualinvoke r0.<org.codehaus.jackson.util.TokenBuffer: void _reportUnsupportedOperation()>();
+
+        return;
+    }
+
+    public final void writeStartArray() throws java.io.IOException, org.codehaus.jackson.JsonGenerationException
+    {
+        org.codehaus.jackson.util.TokenBuffer r0;
+        org.codehaus.jackson.impl.JsonWriteContext $r1;
+        org.codehaus.jackson.JsonToken $r2;
+
+        r0 := @this: org.codehaus.jackson.util.TokenBuffer;
+
+        $r2 = <org.codehaus.jackson.JsonToken: org.codehaus.jackson.JsonToken START_ARRAY>;
+
+        virtualinvoke r0.<org.codehaus.jackson.util.TokenBuffer: void _append(org.codehaus.jackson.JsonToken)>($r2);
+
+        $r1 = r0.<org.codehaus.jackson.util.TokenBuffer: org.codehaus.jackson.impl.JsonWriteContext _writeContext>;
+
+        $r1 = virtualinvoke $r1.<org.codehaus.jackson.impl.JsonWriteContext: org.codehaus.jackson.impl.JsonWriteContext createChildArrayContext()>();
+
+        r0.<org.codehaus.jackson.util.TokenBuffer: org.codehaus.jackson.impl.JsonWriteContext _writeContext> = $r1;
+
+        return;
+    }
+
+    public final void writeStartObject() throws java.io.IOException, org.codehaus.jackson.JsonGenerationException
+    {
+        org.codehaus.jackson.util.TokenBuffer r0;
+        org.codehaus.jackson.impl.JsonWriteContext $r1;
+        org.codehaus.jackson.JsonToken $r2;
+
+        r0 := @this: org.codehaus.jackson.util.TokenBuffer;
+
+        $r2 = <org.codehaus.jackson.JsonToken: org.codehaus.jackson.JsonToken START_OBJECT>;
+
+        virtualinvoke r0.<org.codehaus.jackson.util.TokenBuffer: void _append(org.codehaus.jackson.JsonToken)>($r2);
+
+        $r1 = r0.<org.codehaus.jackson.util.TokenBuffer: org.codehaus.jackson.impl.JsonWriteContext _writeContext>;
+
+        $r1 = virtualinvoke $r1.<org.codehaus.jackson.impl.JsonWriteContext: org.codehaus.jackson.impl.JsonWriteContext createChildObjectContext()>();
+
+        r0.<org.codehaus.jackson.util.TokenBuffer: org.codehaus.jackson.impl.JsonWriteContext _writeContext> = $r1;
+
+        return;
+    }
+
+    public void writeString(java.lang.String) throws java.io.IOException, org.codehaus.jackson.JsonGenerationException
+    {
+        org.codehaus.jackson.util.TokenBuffer r0;
+        java.lang.String $r1;
+        org.codehaus.jackson.JsonToken $r2;
+
+        r0 := @this: org.codehaus.jackson.util.TokenBuffer;
+
+        $r1 := @parameter0: java.lang.String;
+
+        if $r1 != null goto label1;
+
+        virtualinvoke r0.<org.codehaus.jackson.util.TokenBuffer: void writeNull()>();
+
+        return;
+
+     label1:
+        $r2 = <org.codehaus.jackson.JsonToken: org.codehaus.jackson.JsonToken VALUE_STRING>;
+
+        virtualinvoke r0.<org.codehaus.jackson.util.TokenBuffer: void _append(org.codehaus.jackson.JsonToken,java.lang.Object)>($r2, $r1);
+
+        return;
+    }
+
+    public void writeString(org.codehaus.jackson.SerializableString) throws java.io.IOException, org.codehaus.jackson.JsonGenerationException
+    {
+        org.codehaus.jackson.util.TokenBuffer r0;
+        org.codehaus.jackson.SerializableString $r1;
+        org.codehaus.jackson.JsonToken $r2;
+
+        r0 := @this: org.codehaus.jackson.util.TokenBuffer;
+
+        $r1 := @parameter0: org.codehaus.jackson.SerializableString;
+
+        if $r1 != null goto label1;
+
+        virtualinvoke r0.<org.codehaus.jackson.util.TokenBuffer: void writeNull()>();
+
+        return;
+
+     label1:
+        $r2 = <org.codehaus.jackson.JsonToken: org.codehaus.jackson.JsonToken VALUE_STRING>;
+
+        virtualinvoke r0.<org.codehaus.jackson.util.TokenBuffer: void _append(org.codehaus.jackson.JsonToken,java.lang.Object)>($r2, $r1);
+
+        return;
+    }
+
+    public void writeString(char[], int, int) throws java.io.IOException, org.codehaus.jackson.JsonGenerationException
+    {
+        org.codehaus.jackson.util.TokenBuffer r0;
+        char[] $r1;
+        int $i0, $i1;
+        java.lang.String $r2;
+
+        r0 := @this: org.codehaus.jackson.util.TokenBuffer;
+
+        $r1 := @parameter0: char[];
+
+        $i0 := @parameter1: int;
+
+        $i1 := @parameter2: int;
+
+        $r2 = new java.lang.String;
+
+        specialinvoke $r2.<java.lang.String: void <init>(char[],int,int)>($r1, $i0, $i1);
+
+        virtualinvoke r0.<org.codehaus.jackson.util.TokenBuffer: void writeString(java.lang.String)>($r2);
+
+        return;
+    }
+
+    public void writeTree(org.codehaus.jackson.JsonNode) throws java.io.IOException, org.codehaus.jackson.JsonProcessingException
+    {
+        org.codehaus.jackson.util.TokenBuffer r0;
+        org.codehaus.jackson.JsonNode $r1;
+        org.codehaus.jackson.JsonToken $r2;
+
+        r0 := @this: org.codehaus.jackson.util.TokenBuffer;
+
+        $r1 := @parameter0: org.codehaus.jackson.JsonNode;
+
+        $r2 = <org.codehaus.jackson.JsonToken: org.codehaus.jackson.JsonToken VALUE_EMBEDDED_OBJECT>;
+
+        virtualinvoke r0.<org.codehaus.jackson.util.TokenBuffer: void _append(org.codehaus.jackson.JsonToken,java.lang.Object)>($r2, $r1);
+
+        return;
+    }
+
+    public void writeUTF8String(byte[], int, int) throws java.io.IOException, org.codehaus.jackson.JsonGenerationException
+    {
+        org.codehaus.jackson.util.TokenBuffer r0;
+        byte[] $r1;
+        int $i0, $i1;
+
+        r0 := @this: org.codehaus.jackson.util.TokenBuffer;
+
+        $r1 := @parameter0: byte[];
+
+        $i0 := @parameter1: int;
+
+        $i1 := @parameter2: int;
+
+        virtualinvoke r0.<org.codehaus.jackson.util.TokenBuffer: void _reportUnsupportedOperation()>();
+
+        return;
+    }
+}

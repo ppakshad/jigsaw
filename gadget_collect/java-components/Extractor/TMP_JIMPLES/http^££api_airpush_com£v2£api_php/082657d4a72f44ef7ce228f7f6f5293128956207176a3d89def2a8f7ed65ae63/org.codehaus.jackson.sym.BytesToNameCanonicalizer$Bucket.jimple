@@ -1,0 +1,166 @@
+final class org.codehaus.jackson.sym.BytesToNameCanonicalizer$Bucket extends java.lang.Object
+{
+    protected final org.codehaus.jackson.sym.Name _name;
+    protected final org.codehaus.jackson.sym.BytesToNameCanonicalizer$Bucket _next;
+
+    void <init>(org.codehaus.jackson.sym.Name, org.codehaus.jackson.sym.BytesToNameCanonicalizer$Bucket)
+    {
+        org.codehaus.jackson.sym.BytesToNameCanonicalizer$Bucket r0, $r2;
+        org.codehaus.jackson.sym.Name $r1;
+
+        r0 := @this: org.codehaus.jackson.sym.BytesToNameCanonicalizer$Bucket;
+
+        $r1 := @parameter0: org.codehaus.jackson.sym.Name;
+
+        $r2 := @parameter1: org.codehaus.jackson.sym.BytesToNameCanonicalizer$Bucket;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        r0.<org.codehaus.jackson.sym.BytesToNameCanonicalizer$Bucket: org.codehaus.jackson.sym.Name _name> = $r1;
+
+        r0.<org.codehaus.jackson.sym.BytesToNameCanonicalizer$Bucket: org.codehaus.jackson.sym.BytesToNameCanonicalizer$Bucket _next> = $r2;
+
+        return;
+    }
+
+    public org.codehaus.jackson.sym.Name find(int, int, int)
+    {
+        org.codehaus.jackson.sym.BytesToNameCanonicalizer$Bucket r0;
+        int $i0, $i1, $i2, $i3;
+        org.codehaus.jackson.sym.Name r1;
+        boolean $z0;
+
+        r0 := @this: org.codehaus.jackson.sym.BytesToNameCanonicalizer$Bucket;
+
+        $i0 := @parameter0: int;
+
+        $i1 := @parameter1: int;
+
+        $i2 := @parameter2: int;
+
+        r1 = r0.<org.codehaus.jackson.sym.BytesToNameCanonicalizer$Bucket: org.codehaus.jackson.sym.Name _name>;
+
+        $i3 = virtualinvoke r1.<org.codehaus.jackson.sym.Name: int hashCode()>();
+
+        if $i3 != $i0 goto label1;
+
+        r1 = r0.<org.codehaus.jackson.sym.BytesToNameCanonicalizer$Bucket: org.codehaus.jackson.sym.Name _name>;
+
+        $z0 = virtualinvoke r1.<org.codehaus.jackson.sym.Name: boolean equals(int,int)>($i1, $i2);
+
+        if $z0 == 0 goto label1;
+
+        r1 = r0.<org.codehaus.jackson.sym.BytesToNameCanonicalizer$Bucket: org.codehaus.jackson.sym.Name _name>;
+
+        return r1;
+
+     label1:
+        r0 = r0.<org.codehaus.jackson.sym.BytesToNameCanonicalizer$Bucket: org.codehaus.jackson.sym.BytesToNameCanonicalizer$Bucket _next>;
+
+     label2:
+        if r0 == null goto label4;
+
+        r1 = r0.<org.codehaus.jackson.sym.BytesToNameCanonicalizer$Bucket: org.codehaus.jackson.sym.Name _name>;
+
+        $i3 = virtualinvoke r1.<org.codehaus.jackson.sym.Name: int hashCode()>();
+
+        if $i3 != $i0 goto label3;
+
+        $z0 = virtualinvoke r1.<org.codehaus.jackson.sym.Name: boolean equals(int,int)>($i1, $i2);
+
+        if $z0 == 0 goto label3;
+
+        return r1;
+
+     label3:
+        r0 = r0.<org.codehaus.jackson.sym.BytesToNameCanonicalizer$Bucket: org.codehaus.jackson.sym.BytesToNameCanonicalizer$Bucket _next>;
+
+        goto label2;
+
+     label4:
+        return null;
+    }
+
+    public org.codehaus.jackson.sym.Name find(int, int[], int)
+    {
+        org.codehaus.jackson.sym.BytesToNameCanonicalizer$Bucket r0;
+        int $i0, $i1, $i2;
+        int[] $r1;
+        org.codehaus.jackson.sym.Name r2;
+        boolean $z0;
+
+        r0 := @this: org.codehaus.jackson.sym.BytesToNameCanonicalizer$Bucket;
+
+        $i0 := @parameter0: int;
+
+        $r1 := @parameter1: int[];
+
+        $i1 := @parameter2: int;
+
+        r2 = r0.<org.codehaus.jackson.sym.BytesToNameCanonicalizer$Bucket: org.codehaus.jackson.sym.Name _name>;
+
+        $i2 = virtualinvoke r2.<org.codehaus.jackson.sym.Name: int hashCode()>();
+
+        if $i2 != $i0 goto label1;
+
+        r2 = r0.<org.codehaus.jackson.sym.BytesToNameCanonicalizer$Bucket: org.codehaus.jackson.sym.Name _name>;
+
+        $z0 = virtualinvoke r2.<org.codehaus.jackson.sym.Name: boolean equals(int[],int)>($r1, $i1);
+
+        if $z0 == 0 goto label1;
+
+        r2 = r0.<org.codehaus.jackson.sym.BytesToNameCanonicalizer$Bucket: org.codehaus.jackson.sym.Name _name>;
+
+        return r2;
+
+     label1:
+        r0 = r0.<org.codehaus.jackson.sym.BytesToNameCanonicalizer$Bucket: org.codehaus.jackson.sym.BytesToNameCanonicalizer$Bucket _next>;
+
+     label2:
+        if r0 == null goto label4;
+
+        r2 = r0.<org.codehaus.jackson.sym.BytesToNameCanonicalizer$Bucket: org.codehaus.jackson.sym.Name _name>;
+
+        $i2 = virtualinvoke r2.<org.codehaus.jackson.sym.Name: int hashCode()>();
+
+        if $i2 != $i0 goto label3;
+
+        $z0 = virtualinvoke r2.<org.codehaus.jackson.sym.Name: boolean equals(int[],int)>($r1, $i1);
+
+        if $z0 == 0 goto label3;
+
+        return r2;
+
+     label3:
+        r0 = r0.<org.codehaus.jackson.sym.BytesToNameCanonicalizer$Bucket: org.codehaus.jackson.sym.BytesToNameCanonicalizer$Bucket _next>;
+
+        goto label2;
+
+     label4:
+        return null;
+    }
+
+    public int length()
+    {
+        org.codehaus.jackson.sym.BytesToNameCanonicalizer$Bucket r0;
+        int i0;
+
+        r0 := @this: org.codehaus.jackson.sym.BytesToNameCanonicalizer$Bucket;
+
+        i0 = 1;
+
+        r0 = r0.<org.codehaus.jackson.sym.BytesToNameCanonicalizer$Bucket: org.codehaus.jackson.sym.BytesToNameCanonicalizer$Bucket _next>;
+
+     label1:
+        if r0 == null goto label2;
+
+        i0 = i0 + 1;
+
+        r0 = r0.<org.codehaus.jackson.sym.BytesToNameCanonicalizer$Bucket: org.codehaus.jackson.sym.BytesToNameCanonicalizer$Bucket _next>;
+
+        goto label1;
+
+     label2:
+        return i0;
+    }
+}

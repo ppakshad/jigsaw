@@ -1,0 +1,228 @@
+class com.squareup.picasso.NetworkRequestHandler extends com.squareup.picasso.RequestHandler
+{
+    static final int RETRY_COUNT;
+    private static final java.lang.String SCHEME_HTTP;
+    private static final java.lang.String SCHEME_HTTPS;
+    private final com.squareup.picasso.Downloader downloader;
+    private final com.squareup.picasso.Stats stats;
+
+    public void <init>(com.squareup.picasso.Downloader, com.squareup.picasso.Stats)
+    {
+        com.squareup.picasso.NetworkRequestHandler r0;
+        com.squareup.picasso.Downloader $r1;
+        com.squareup.picasso.Stats $r2;
+
+        r0 := @this: com.squareup.picasso.NetworkRequestHandler;
+
+        $r1 := @parameter0: com.squareup.picasso.Downloader;
+
+        $r2 := @parameter1: com.squareup.picasso.Stats;
+
+        specialinvoke r0.<com.squareup.picasso.RequestHandler: void <init>()>();
+
+        r0.<com.squareup.picasso.NetworkRequestHandler: com.squareup.picasso.Downloader downloader> = $r1;
+
+        r0.<com.squareup.picasso.NetworkRequestHandler: com.squareup.picasso.Stats stats> = $r2;
+
+        return;
+    }
+
+    public boolean canHandleRequest(com.squareup.picasso.Request)
+    {
+        com.squareup.picasso.NetworkRequestHandler r0;
+        com.squareup.picasso.Request $r1;
+        android.net.Uri $r2;
+        java.lang.String $r3, $r4;
+        boolean $z0;
+
+        r0 := @this: com.squareup.picasso.NetworkRequestHandler;
+
+        $r1 := @parameter0: com.squareup.picasso.Request;
+
+        $r2 = $r1.<com.squareup.picasso.Request: android.net.Uri uri>;
+
+        $r3 = virtualinvoke $r2.<android.net.Uri: java.lang.String getScheme()>();
+
+        $r4 = "http";
+
+        $z0 = virtualinvoke $r4.<java.lang.String: boolean equals(java.lang.Object)>($r3);
+
+        if $z0 != 0 goto label1;
+
+        $r4 = "https";
+
+        $z0 = virtualinvoke $r4.<java.lang.String: boolean equals(java.lang.Object)>($r3);
+
+        if $z0 == 0 goto label2;
+
+     label1:
+        return 1;
+
+     label2:
+        return 0;
+    }
+
+    int getRetryCount()
+    {
+        com.squareup.picasso.NetworkRequestHandler r0;
+
+        r0 := @this: com.squareup.picasso.NetworkRequestHandler;
+
+        return 2;
+    }
+
+    public com.squareup.picasso.RequestHandler$Result load(com.squareup.picasso.Request, int) throws java.io.IOException
+    {
+        com.squareup.picasso.NetworkRequestHandler r0;
+        com.squareup.picasso.Request $r1;
+        int $i0;
+        com.squareup.picasso.Downloader $r2;
+        android.net.Uri $r3;
+        com.squareup.picasso.Downloader$Response $r4;
+        boolean $z0;
+        com.squareup.picasso.Picasso$LoadedFrom $r5, $r9;
+        android.graphics.Bitmap $r6;
+        com.squareup.picasso.RequestHandler$Result $r7;
+        java.io.InputStream $r8;
+        long $l1;
+        byte $b2;
+        com.squareup.picasso.NetworkRequestHandler$ContentLengthException $r10;
+        com.squareup.picasso.Stats $r11;
+
+        r0 := @this: com.squareup.picasso.NetworkRequestHandler;
+
+        $r1 := @parameter0: com.squareup.picasso.Request;
+
+        $i0 := @parameter1: int;
+
+        $r2 = r0.<com.squareup.picasso.NetworkRequestHandler: com.squareup.picasso.Downloader downloader>;
+
+        $r3 = $r1.<com.squareup.picasso.Request: android.net.Uri uri>;
+
+        $i0 = $r1.<com.squareup.picasso.Request: int networkPolicy>;
+
+        $r4 = interfaceinvoke $r2.<com.squareup.picasso.Downloader: com.squareup.picasso.Downloader$Response load(android.net.Uri,int)>($r3, $i0);
+
+        if $r4 != null goto label1;
+
+        return null;
+
+     label1:
+        $z0 = $r4.<com.squareup.picasso.Downloader$Response: boolean cached>;
+
+        if $z0 == 0 goto label3;
+
+        $r5 = <com.squareup.picasso.Picasso$LoadedFrom: com.squareup.picasso.Picasso$LoadedFrom DISK>;
+
+     label2:
+        $r6 = virtualinvoke $r4.<com.squareup.picasso.Downloader$Response: android.graphics.Bitmap getBitmap()>();
+
+        if $r6 == null goto label4;
+
+        $r7 = new com.squareup.picasso.RequestHandler$Result;
+
+        specialinvoke $r7.<com.squareup.picasso.RequestHandler$Result: void <init>(android.graphics.Bitmap,com.squareup.picasso.Picasso$LoadedFrom)>($r6, $r5);
+
+        return $r7;
+
+     label3:
+        $r5 = <com.squareup.picasso.Picasso$LoadedFrom: com.squareup.picasso.Picasso$LoadedFrom NETWORK>;
+
+        goto label2;
+
+     label4:
+        $r8 = virtualinvoke $r4.<com.squareup.picasso.Downloader$Response: java.io.InputStream getInputStream()>();
+
+        if $r8 != null goto label5;
+
+        return null;
+
+     label5:
+        $r9 = <com.squareup.picasso.Picasso$LoadedFrom: com.squareup.picasso.Picasso$LoadedFrom DISK>;
+
+        if $r5 != $r9 goto label6;
+
+        $l1 = virtualinvoke $r4.<com.squareup.picasso.Downloader$Response: long getContentLength()>();
+
+        $b2 = $l1 cmp 0L;
+
+        if $b2 != 0 goto label6;
+
+        staticinvoke <com.squareup.picasso.Utils: void closeQuietly(java.io.InputStream)>($r8);
+
+        $r10 = new com.squareup.picasso.NetworkRequestHandler$ContentLengthException;
+
+        specialinvoke $r10.<com.squareup.picasso.NetworkRequestHandler$ContentLengthException: void <init>(java.lang.String)>("Received response with 0 content-length header.");
+
+        throw $r10;
+
+     label6:
+        $r9 = <com.squareup.picasso.Picasso$LoadedFrom: com.squareup.picasso.Picasso$LoadedFrom NETWORK>;
+
+        if $r5 != $r9 goto label7;
+
+        $l1 = virtualinvoke $r4.<com.squareup.picasso.Downloader$Response: long getContentLength()>();
+
+        $b2 = $l1 cmp 0L;
+
+        if $b2 <= 0 goto label7;
+
+        $r11 = r0.<com.squareup.picasso.NetworkRequestHandler: com.squareup.picasso.Stats stats>;
+
+        $l1 = virtualinvoke $r4.<com.squareup.picasso.Downloader$Response: long getContentLength()>();
+
+        virtualinvoke $r11.<com.squareup.picasso.Stats: void dispatchDownloadFinished(long)>($l1);
+
+     label7:
+        $r7 = new com.squareup.picasso.RequestHandler$Result;
+
+        specialinvoke $r7.<com.squareup.picasso.RequestHandler$Result: void <init>(java.io.InputStream,com.squareup.picasso.Picasso$LoadedFrom)>($r8, $r5);
+
+        return $r7;
+    }
+
+    boolean shouldRetry(boolean, android.net.NetworkInfo)
+    {
+        com.squareup.picasso.NetworkRequestHandler r0;
+        boolean $z0;
+        android.net.NetworkInfo $r1;
+
+        r0 := @this: com.squareup.picasso.NetworkRequestHandler;
+
+        $z0 := @parameter0: boolean;
+
+        $r1 := @parameter1: android.net.NetworkInfo;
+
+        if $r1 == null goto label1;
+
+        $z0 = virtualinvoke $r1.<android.net.NetworkInfo: boolean isConnected()>();
+
+        if $z0 == 0 goto label2;
+
+     label1:
+        return 1;
+
+     label2:
+        return 0;
+    }
+
+    boolean supportsReplay()
+    {
+        com.squareup.picasso.NetworkRequestHandler r0;
+
+        r0 := @this: com.squareup.picasso.NetworkRequestHandler;
+
+        return 1;
+    }
+
+    public static void <clinit>()
+    {
+        <com.squareup.picasso.NetworkRequestHandler: java.lang.String SCHEME_HTTPS> = "https";
+
+        <com.squareup.picasso.NetworkRequestHandler: java.lang.String SCHEME_HTTP> = "http";
+
+        <com.squareup.picasso.NetworkRequestHandler: int RETRY_COUNT> = 2;
+
+        return;
+    }
+}

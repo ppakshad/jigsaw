@@ -1,0 +1,51 @@
+class com.startapp.android.publish.inappbrowser.AnimatingProgressBar$1 extends java.lang.Object implements android.animation.ValueAnimator$AnimatorUpdateListener
+{
+    java.lang.Integer a;
+    final com.startapp.android.publish.inappbrowser.AnimatingProgressBar b;
+
+    void <init>(com.startapp.android.publish.inappbrowser.AnimatingProgressBar)
+    {
+        com.startapp.android.publish.inappbrowser.AnimatingProgressBar$1 r0;
+        com.startapp.android.publish.inappbrowser.AnimatingProgressBar $r1;
+
+        r0 := @this: com.startapp.android.publish.inappbrowser.AnimatingProgressBar$1;
+
+        $r1 := @parameter0: com.startapp.android.publish.inappbrowser.AnimatingProgressBar;
+
+        r0.<com.startapp.android.publish.inappbrowser.AnimatingProgressBar$1: com.startapp.android.publish.inappbrowser.AnimatingProgressBar b> = $r1;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public void onAnimationUpdate(android.animation.ValueAnimator)
+    {
+        com.startapp.android.publish.inappbrowser.AnimatingProgressBar$1 r0;
+        android.animation.ValueAnimator $r1;
+        java.lang.Object $r2;
+        java.lang.Integer $r3;
+        com.startapp.android.publish.inappbrowser.AnimatingProgressBar $r4;
+        int $i0;
+
+        r0 := @this: com.startapp.android.publish.inappbrowser.AnimatingProgressBar$1;
+
+        $r1 := @parameter0: android.animation.ValueAnimator;
+
+        $r2 = virtualinvoke $r1.<android.animation.ValueAnimator: java.lang.Object getAnimatedValue()>();
+
+        $r3 = (java.lang.Integer) $r2;
+
+        r0.<com.startapp.android.publish.inappbrowser.AnimatingProgressBar$1: java.lang.Integer a> = $r3;
+
+        $r4 = r0.<com.startapp.android.publish.inappbrowser.AnimatingProgressBar$1: com.startapp.android.publish.inappbrowser.AnimatingProgressBar b>;
+
+        $r3 = r0.<com.startapp.android.publish.inappbrowser.AnimatingProgressBar$1: java.lang.Integer a>;
+
+        $i0 = virtualinvoke $r3.<java.lang.Integer: int intValue()>();
+
+        staticinvoke <com.startapp.android.publish.inappbrowser.AnimatingProgressBar: void a(com.startapp.android.publish.inappbrowser.AnimatingProgressBar,int)>($r4, $i0);
+
+        return;
+    }
+}

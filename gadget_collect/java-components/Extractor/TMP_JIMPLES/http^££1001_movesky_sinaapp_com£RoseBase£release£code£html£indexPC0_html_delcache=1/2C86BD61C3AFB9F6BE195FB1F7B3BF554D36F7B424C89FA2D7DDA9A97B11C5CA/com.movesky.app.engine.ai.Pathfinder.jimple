@@ -1,0 +1,506 @@
+public class com.movesky.app.engine.ai.Pathfinder extends java.lang.Object
+{
+    java.util.HashMap m_came_from;
+    java.util.HashSet m_closed_set;
+    java.util.HashMap m_entries;
+    private java.util.ArrayList m_found_path;
+    com.movesky.app.engine.ai.ConnectedGraph m_graph;
+    java.util.PriorityQueue m_open_set;
+
+    public void <init>(com.movesky.app.engine.ai.ConnectedGraph)
+    {
+        com.movesky.app.engine.ai.Pathfinder r0;
+        com.movesky.app.engine.ai.ConnectedGraph $r1;
+        java.util.HashMap $r2;
+        com.movesky.app.engine.ai.AStarEntry $r3;
+        java.util.Set $r4;
+        java.util.Iterator $r5;
+        boolean $z0;
+        java.lang.Object $r6;
+        com.movesky.app.engine.util.Point $r7;
+        java.util.HashSet $r8;
+        java.util.PriorityQueue $r9;
+        java.util.ArrayList $r10;
+
+        r0 := @this: com.movesky.app.engine.ai.Pathfinder;
+
+        $r1 := @parameter0: com.movesky.app.engine.ai.ConnectedGraph;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        r0.<com.movesky.app.engine.ai.Pathfinder: com.movesky.app.engine.ai.ConnectedGraph m_graph> = $r1;
+
+        $r2 = new java.util.HashMap;
+
+        specialinvoke $r2.<java.util.HashMap: void <init>()>();
+
+        r0.<com.movesky.app.engine.ai.Pathfinder: java.util.HashMap m_entries> = $r2;
+
+        $r2 = virtualinvoke $r1.<com.movesky.app.engine.ai.ConnectedGraph: java.util.HashMap getGraph()>();
+
+        $r4 = virtualinvoke $r2.<java.util.HashMap: java.util.Set keySet()>();
+
+        $r5 = interfaceinvoke $r4.<java.util.Set: java.util.Iterator iterator()>();
+
+     label1:
+        $z0 = interfaceinvoke $r5.<java.util.Iterator: boolean hasNext()>();
+
+        if $z0 == 0 goto label2;
+
+        $r6 = interfaceinvoke $r5.<java.util.Iterator: java.lang.Object next()>();
+
+        $r7 = (com.movesky.app.engine.util.Point) $r6;
+
+        $r2 = r0.<com.movesky.app.engine.ai.Pathfinder: java.util.HashMap m_entries>;
+
+        $r3 = new com.movesky.app.engine.ai.AStarEntry;
+
+        specialinvoke $r3.<com.movesky.app.engine.ai.AStarEntry: void <init>(com.movesky.app.engine.util.Point)>($r7);
+
+        virtualinvoke $r2.<java.util.HashMap: java.lang.Object put(java.lang.Object,java.lang.Object)>($r7, $r3);
+
+        goto label1;
+
+     label2:
+        $r8 = new java.util.HashSet;
+
+        specialinvoke $r8.<java.util.HashSet: void <init>()>();
+
+        r0.<com.movesky.app.engine.ai.Pathfinder: java.util.HashSet m_closed_set> = $r8;
+
+        $r2 = new java.util.HashMap;
+
+        specialinvoke $r2.<java.util.HashMap: void <init>()>();
+
+        r0.<com.movesky.app.engine.ai.Pathfinder: java.util.HashMap m_came_from> = $r2;
+
+        $r9 = new java.util.PriorityQueue;
+
+        specialinvoke $r9.<java.util.PriorityQueue: void <init>()>();
+
+        r0.<com.movesky.app.engine.ai.Pathfinder: java.util.PriorityQueue m_open_set> = $r9;
+
+        $r10 = new java.util.ArrayList;
+
+        specialinvoke $r10.<java.util.ArrayList: void <init>()>();
+
+        r0.<com.movesky.app.engine.ai.Pathfinder: java.util.ArrayList m_found_path> = $r10;
+
+        return;
+    }
+
+    private int estimateHScore(com.movesky.app.engine.ai.Heuristic, com.movesky.app.engine.ai.AStarEntry, com.movesky.app.engine.util.Point)
+    {
+        com.movesky.app.engine.ai.Pathfinder r0;
+        com.movesky.app.engine.ai.Heuristic $r1;
+        com.movesky.app.engine.ai.AStarEntry $r2;
+        com.movesky.app.engine.util.Point $r3, $r4;
+        float $f0;
+        int $i0;
+
+        r0 := @this: com.movesky.app.engine.ai.Pathfinder;
+
+        $r1 := @parameter0: com.movesky.app.engine.ai.Heuristic;
+
+        $r2 := @parameter1: com.movesky.app.engine.ai.AStarEntry;
+
+        $r3 := @parameter2: com.movesky.app.engine.util.Point;
+
+        if $r1 != null goto label1;
+
+        $f0 = specialinvoke r0.<com.movesky.app.engine.ai.Pathfinder: float getDistSqr(com.movesky.app.engine.ai.AStarEntry,com.movesky.app.engine.util.Point)>($r2, $r3);
+
+        $i0 = (int) $f0;
+
+        return $i0;
+
+     label1:
+        $r4 = $r2.<com.movesky.app.engine.ai.AStarEntry: com.movesky.app.engine.util.Point m_point>;
+
+        $i0 = interfaceinvoke $r1.<com.movesky.app.engine.ai.Heuristic: int estimateHScore(com.movesky.app.engine.util.Point,com.movesky.app.engine.util.Point)>($r4, $r3);
+
+        return $i0;
+    }
+
+    private float getDistSqr(com.movesky.app.engine.ai.AStarEntry, com.movesky.app.engine.util.Point)
+    {
+        com.movesky.app.engine.ai.Pathfinder r0;
+        com.movesky.app.engine.ai.AStarEntry $r1;
+        com.movesky.app.engine.util.Point $r2, $r3;
+        float $f0, $f1, $f2;
+
+        r0 := @this: com.movesky.app.engine.ai.Pathfinder;
+
+        $r1 := @parameter0: com.movesky.app.engine.ai.AStarEntry;
+
+        $r2 := @parameter1: com.movesky.app.engine.util.Point;
+
+        $r3 = $r1.<com.movesky.app.engine.ai.AStarEntry: com.movesky.app.engine.util.Point m_point>;
+
+        $f1 = $r3.<com.movesky.app.engine.util.Point: float x>;
+
+        $f0 = $r2.<com.movesky.app.engine.util.Point: float x>;
+
+        $f1 = $f1 - $f0;
+
+        $r3 = $r1.<com.movesky.app.engine.ai.AStarEntry: com.movesky.app.engine.util.Point m_point>;
+
+        $f2 = $r3.<com.movesky.app.engine.util.Point: float y>;
+
+        $f0 = $r2.<com.movesky.app.engine.util.Point: float y>;
+
+        $f0 = $f2 - $f0;
+
+        $f1 = $f1 * $f1;
+
+        $f0 = $f0 * $f0;
+
+        $f1 = $f1 + $f0;
+
+        return $f1;
+    }
+
+    private void reconstructPath(com.movesky.app.engine.util.Point)
+    {
+        com.movesky.app.engine.ai.Pathfinder r0;
+        com.movesky.app.engine.util.Point $r1, $r4;
+        java.util.HashMap $r2;
+        boolean $z0;
+        java.lang.Object $r3;
+        java.util.ArrayList $r5;
+
+        r0 := @this: com.movesky.app.engine.ai.Pathfinder;
+
+        $r1 := @parameter0: com.movesky.app.engine.util.Point;
+
+        $r2 = r0.<com.movesky.app.engine.ai.Pathfinder: java.util.HashMap m_came_from>;
+
+        $z0 = virtualinvoke $r2.<java.util.HashMap: boolean containsKey(java.lang.Object)>($r1);
+
+        if $z0 == 0 goto label1;
+
+        $r2 = r0.<com.movesky.app.engine.ai.Pathfinder: java.util.HashMap m_came_from>;
+
+        $r3 = virtualinvoke $r2.<java.util.HashMap: java.lang.Object get(java.lang.Object)>($r1);
+
+        $r4 = (com.movesky.app.engine.util.Point) $r3;
+
+        specialinvoke r0.<com.movesky.app.engine.ai.Pathfinder: void reconstructPath(com.movesky.app.engine.util.Point)>($r4);
+
+     label1:
+        $r5 = r0.<com.movesky.app.engine.ai.Pathfinder: java.util.ArrayList m_found_path>;
+
+        virtualinvoke $r5.<java.util.ArrayList: boolean add(java.lang.Object)>($r1);
+
+        return;
+    }
+
+    public void clearPath()
+    {
+        com.movesky.app.engine.ai.Pathfinder r0;
+        java.util.ArrayList $r1;
+
+        r0 := @this: com.movesky.app.engine.ai.Pathfinder;
+
+        $r1 = r0.<com.movesky.app.engine.ai.Pathfinder: java.util.ArrayList m_found_path>;
+
+        virtualinvoke $r1.<java.util.ArrayList: void clear()>();
+
+        return;
+    }
+
+    public boolean findPath(com.movesky.app.engine.util.Point, com.movesky.app.engine.util.Point)
+    {
+        com.movesky.app.engine.ai.Pathfinder r0;
+        com.movesky.app.engine.util.Point $r1, $r2;
+        boolean $z0;
+
+        r0 := @this: com.movesky.app.engine.ai.Pathfinder;
+
+        $r1 := @parameter0: com.movesky.app.engine.util.Point;
+
+        $r2 := @parameter1: com.movesky.app.engine.util.Point;
+
+        $z0 = virtualinvoke r0.<com.movesky.app.engine.ai.Pathfinder: boolean findPath(com.movesky.app.engine.util.Point,com.movesky.app.engine.util.Point,com.movesky.app.engine.ai.Heuristic,float)>($r1, $r2, null, 1.0F);
+
+        return $z0;
+    }
+
+    public boolean findPath(com.movesky.app.engine.util.Point, com.movesky.app.engine.util.Point, com.movesky.app.engine.ai.Heuristic)
+    {
+        com.movesky.app.engine.ai.Pathfinder r0;
+        com.movesky.app.engine.util.Point $r1, $r2;
+        com.movesky.app.engine.ai.Heuristic $r3;
+        boolean $z0;
+
+        r0 := @this: com.movesky.app.engine.ai.Pathfinder;
+
+        $r1 := @parameter0: com.movesky.app.engine.util.Point;
+
+        $r2 := @parameter1: com.movesky.app.engine.util.Point;
+
+        $r3 := @parameter2: com.movesky.app.engine.ai.Heuristic;
+
+        $z0 = virtualinvoke r0.<com.movesky.app.engine.ai.Pathfinder: boolean findPath(com.movesky.app.engine.util.Point,com.movesky.app.engine.util.Point,com.movesky.app.engine.ai.Heuristic,float)>($r1, $r2, $r3, 1.0F);
+
+        return $z0;
+    }
+
+    public boolean findPath(com.movesky.app.engine.util.Point, com.movesky.app.engine.util.Point, com.movesky.app.engine.ai.Heuristic, float)
+    {
+        com.movesky.app.engine.ai.Pathfinder r0;
+        com.movesky.app.engine.util.Point $r1, $r2, $r12;
+        com.movesky.app.engine.ai.Heuristic $r3;
+        float $f0, $f1;
+        java.util.HashSet $r4;
+        java.util.HashMap $r5;
+        java.util.PriorityQueue $r6;
+        java.util.ArrayList $r7;
+        com.movesky.app.engine.ai.ConnectedGraph $r8;
+        java.util.Set $r9;
+        java.util.Iterator $r10;
+        boolean $z0;
+        java.lang.Object $r11;
+        com.movesky.app.engine.ai.AStarEntry $r13, $r14;
+        int $i0, $i2, $i3, $i4;
+        byte $b1;
+
+        r0 := @this: com.movesky.app.engine.ai.Pathfinder;
+
+        $r1 := @parameter0: com.movesky.app.engine.util.Point;
+
+        $r2 := @parameter1: com.movesky.app.engine.util.Point;
+
+        $r3 := @parameter2: com.movesky.app.engine.ai.Heuristic;
+
+        $f0 := @parameter3: float;
+
+        $r4 = r0.<com.movesky.app.engine.ai.Pathfinder: java.util.HashSet m_closed_set>;
+
+        virtualinvoke $r4.<java.util.HashSet: void clear()>();
+
+        $r5 = r0.<com.movesky.app.engine.ai.Pathfinder: java.util.HashMap m_came_from>;
+
+        virtualinvoke $r5.<java.util.HashMap: void clear()>();
+
+        $r6 = r0.<com.movesky.app.engine.ai.Pathfinder: java.util.PriorityQueue m_open_set>;
+
+        virtualinvoke $r6.<java.util.PriorityQueue: void clear()>();
+
+        $r7 = r0.<com.movesky.app.engine.ai.Pathfinder: java.util.ArrayList m_found_path>;
+
+        virtualinvoke $r7.<java.util.ArrayList: void clear()>();
+
+        $r8 = r0.<com.movesky.app.engine.ai.Pathfinder: com.movesky.app.engine.ai.ConnectedGraph m_graph>;
+
+        $r5 = virtualinvoke $r8.<com.movesky.app.engine.ai.ConnectedGraph: java.util.HashMap getGraph()>();
+
+        $r9 = virtualinvoke $r5.<java.util.HashMap: java.util.Set keySet()>();
+
+        $r10 = interfaceinvoke $r9.<java.util.Set: java.util.Iterator iterator()>();
+
+     label01:
+        $z0 = interfaceinvoke $r10.<java.util.Iterator: boolean hasNext()>();
+
+        if $z0 == 0 goto label03;
+
+        $r11 = interfaceinvoke $r10.<java.util.Iterator: java.lang.Object next()>();
+
+        $r12 = (com.movesky.app.engine.util.Point) $r11;
+
+        $r5 = r0.<com.movesky.app.engine.ai.Pathfinder: java.util.HashMap m_entries>;
+
+        $z0 = virtualinvoke $r5.<java.util.HashMap: boolean containsKey(java.lang.Object)>($r12);
+
+        if $z0 != 0 goto label02;
+
+        $r5 = r0.<com.movesky.app.engine.ai.Pathfinder: java.util.HashMap m_entries>;
+
+        $r13 = new com.movesky.app.engine.ai.AStarEntry;
+
+        specialinvoke $r13.<com.movesky.app.engine.ai.AStarEntry: void <init>(com.movesky.app.engine.util.Point)>($r12);
+
+        virtualinvoke $r5.<java.util.HashMap: java.lang.Object put(java.lang.Object,java.lang.Object)>($r12, $r13);
+
+        goto label01;
+
+     label02:
+        $r5 = r0.<com.movesky.app.engine.ai.Pathfinder: java.util.HashMap m_entries>;
+
+        $r11 = virtualinvoke $r5.<java.util.HashMap: java.lang.Object get(java.lang.Object)>($r12);
+
+        $r13 = (com.movesky.app.engine.ai.AStarEntry) $r11;
+
+        $r13.<com.movesky.app.engine.ai.AStarEntry: int m_f_score> = 2147483647;
+
+        $r13.<com.movesky.app.engine.ai.AStarEntry: int m_g_score> = 2147483647;
+
+        $r13.<com.movesky.app.engine.ai.AStarEntry: int m_h_score> = 2147483647;
+
+        goto label01;
+
+     label03:
+        $r8 = r0.<com.movesky.app.engine.ai.Pathfinder: com.movesky.app.engine.ai.ConnectedGraph m_graph>;
+
+        $z0 = virtualinvoke $r8.<com.movesky.app.engine.ai.ConnectedGraph: boolean contains(com.movesky.app.engine.util.Point)>($r1);
+
+        if $z0 != 0 goto label04;
+
+        return 0;
+
+     label04:
+        $r5 = r0.<com.movesky.app.engine.ai.Pathfinder: java.util.HashMap m_entries>;
+
+        $r11 = virtualinvoke $r5.<java.util.HashMap: java.lang.Object get(java.lang.Object)>($r1);
+
+        $r13 = (com.movesky.app.engine.ai.AStarEntry) $r11;
+
+        $r13.<com.movesky.app.engine.ai.AStarEntry: int m_g_score> = 0;
+
+        $i0 = specialinvoke r0.<com.movesky.app.engine.ai.Pathfinder: int estimateHScore(com.movesky.app.engine.ai.Heuristic,com.movesky.app.engine.ai.AStarEntry,com.movesky.app.engine.util.Point)>($r3, $r13, $r2);
+
+        $r13.<com.movesky.app.engine.ai.AStarEntry: int m_h_score> = $i0;
+
+        $r5 = r0.<com.movesky.app.engine.ai.Pathfinder: java.util.HashMap m_entries>;
+
+        $r11 = virtualinvoke $r5.<java.util.HashMap: java.lang.Object get(java.lang.Object)>($r1);
+
+        $r14 = (com.movesky.app.engine.ai.AStarEntry) $r11;
+
+        $i0 = $r14.<com.movesky.app.engine.ai.AStarEntry: int m_h_score>;
+
+        $r13.<com.movesky.app.engine.ai.AStarEntry: int m_f_score> = $i0;
+
+        $r6 = r0.<com.movesky.app.engine.ai.Pathfinder: java.util.PriorityQueue m_open_set>;
+
+        virtualinvoke $r6.<java.util.PriorityQueue: boolean offer(java.lang.Object)>($r13);
+
+        $f0 = $f0 * $f0;
+
+     label05:
+        $r6 = r0.<com.movesky.app.engine.ai.Pathfinder: java.util.PriorityQueue m_open_set>;
+
+        $i0 = virtualinvoke $r6.<java.util.PriorityQueue: int size()>();
+
+        if $i0 == 0 goto label10;
+
+        $r6 = r0.<com.movesky.app.engine.ai.Pathfinder: java.util.PriorityQueue m_open_set>;
+
+        $r11 = virtualinvoke $r6.<java.util.PriorityQueue: java.lang.Object poll()>();
+
+        $r13 = (com.movesky.app.engine.ai.AStarEntry) $r11;
+
+        $f1 = specialinvoke r0.<com.movesky.app.engine.ai.Pathfinder: float getDistSqr(com.movesky.app.engine.ai.AStarEntry,com.movesky.app.engine.util.Point)>($r13, $r2);
+
+        $b1 = $f1 cmpg $f0;
+
+        if $b1 >= 0 goto label06;
+
+        $r1 = $r13.<com.movesky.app.engine.ai.AStarEntry: com.movesky.app.engine.util.Point m_point>;
+
+        specialinvoke r0.<com.movesky.app.engine.ai.Pathfinder: void reconstructPath(com.movesky.app.engine.util.Point)>($r1);
+
+        return 1;
+
+     label06:
+        $r4 = r0.<com.movesky.app.engine.ai.Pathfinder: java.util.HashSet m_closed_set>;
+
+        $r1 = $r13.<com.movesky.app.engine.ai.AStarEntry: com.movesky.app.engine.util.Point m_point>;
+
+        virtualinvoke $r4.<java.util.HashSet: boolean add(java.lang.Object)>($r1);
+
+        $r8 = r0.<com.movesky.app.engine.ai.Pathfinder: com.movesky.app.engine.ai.ConnectedGraph m_graph>;
+
+        $r1 = $r13.<com.movesky.app.engine.ai.AStarEntry: com.movesky.app.engine.util.Point m_point>;
+
+        $r7 = virtualinvoke $r8.<com.movesky.app.engine.ai.ConnectedGraph: java.util.ArrayList getNeighbors(com.movesky.app.engine.util.Point)>($r1);
+
+        if $r7 == null goto label05;
+
+        $i0 = virtualinvoke $r7.<java.util.ArrayList: int size()>();
+
+        $i2 = 0;
+
+     label07:
+        if $i2 >= $i0 goto label05;
+
+        $r11 = virtualinvoke $r7.<java.util.ArrayList: java.lang.Object get(int)>($i2);
+
+        $r1 = (com.movesky.app.engine.util.Point) $r11;
+
+        $r4 = r0.<com.movesky.app.engine.ai.Pathfinder: java.util.HashSet m_closed_set>;
+
+        $z0 = virtualinvoke $r4.<java.util.HashSet: boolean contains(java.lang.Object)>($r1);
+
+        if $z0 == 0 goto label09;
+
+     label08:
+        $i2 = $i2 + 1;
+
+        goto label07;
+
+     label09:
+        $i3 = $r13.<com.movesky.app.engine.ai.AStarEntry: int m_g_score>;
+
+        $f1 = specialinvoke r0.<com.movesky.app.engine.ai.Pathfinder: float getDistSqr(com.movesky.app.engine.ai.AStarEntry,com.movesky.app.engine.util.Point)>($r13, $r1);
+
+        $i4 = (int) $f1;
+
+        $i3 = $i4 + $i3;
+
+        $r5 = r0.<com.movesky.app.engine.ai.Pathfinder: java.util.HashMap m_entries>;
+
+        $r11 = virtualinvoke $r5.<java.util.HashMap: java.lang.Object get(java.lang.Object)>($r1);
+
+        $r14 = (com.movesky.app.engine.ai.AStarEntry) $r11;
+
+        $i4 = $r14.<com.movesky.app.engine.ai.AStarEntry: int m_g_score>;
+
+        if $i4 <= $i3 goto label08;
+
+        $r14.<com.movesky.app.engine.ai.AStarEntry: int m_g_score> = $i3;
+
+        $i3 = specialinvoke r0.<com.movesky.app.engine.ai.Pathfinder: int estimateHScore(com.movesky.app.engine.ai.Heuristic,com.movesky.app.engine.ai.AStarEntry,com.movesky.app.engine.util.Point)>($r3, $r14, $r2);
+
+        $r14.<com.movesky.app.engine.ai.AStarEntry: int m_h_score> = $i3;
+
+        $i3 = $r14.<com.movesky.app.engine.ai.AStarEntry: int m_g_score>;
+
+        $i4 = $r14.<com.movesky.app.engine.ai.AStarEntry: int m_h_score>;
+
+        $i3 = $i3 + $i4;
+
+        $r14.<com.movesky.app.engine.ai.AStarEntry: int m_f_score> = $i3;
+
+        $r6 = r0.<com.movesky.app.engine.ai.Pathfinder: java.util.PriorityQueue m_open_set>;
+
+        virtualinvoke $r6.<java.util.PriorityQueue: boolean remove(java.lang.Object)>($r14);
+
+        $r6 = r0.<com.movesky.app.engine.ai.Pathfinder: java.util.PriorityQueue m_open_set>;
+
+        virtualinvoke $r6.<java.util.PriorityQueue: boolean offer(java.lang.Object)>($r14);
+
+        $r5 = r0.<com.movesky.app.engine.ai.Pathfinder: java.util.HashMap m_came_from>;
+
+        $r12 = $r13.<com.movesky.app.engine.ai.AStarEntry: com.movesky.app.engine.util.Point m_point>;
+
+        virtualinvoke $r5.<java.util.HashMap: java.lang.Object put(java.lang.Object,java.lang.Object)>($r1, $r12);
+
+        goto label08;
+
+     label10:
+        return 0;
+    }
+
+    public java.util.ArrayList getPath()
+    {
+        com.movesky.app.engine.ai.Pathfinder r0;
+        java.util.ArrayList r1;
+
+        r0 := @this: com.movesky.app.engine.ai.Pathfinder;
+
+        r1 = r0.<com.movesky.app.engine.ai.Pathfinder: java.util.ArrayList m_found_path>;
+
+        return r1;
+    }
+}

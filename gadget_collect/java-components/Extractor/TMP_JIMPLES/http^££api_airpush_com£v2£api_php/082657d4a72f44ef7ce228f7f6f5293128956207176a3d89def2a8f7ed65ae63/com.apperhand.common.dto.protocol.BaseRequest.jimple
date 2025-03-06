@@ -1,0 +1,141 @@
+public abstract class com.apperhand.common.dto.protocol.BaseRequest extends com.apperhand.common.dto.BaseDTO
+{
+    private static final long serialVersionUID;
+    protected java.lang.String abTestId;
+    protected com.apperhand.common.dto.ApplicationDetails applicationDetails;
+    protected java.util.Map parameters;
+
+    public void <init>()
+    {
+        com.apperhand.common.dto.protocol.BaseRequest r0;
+        java.util.HashMap $r1;
+
+        r0 := @this: com.apperhand.common.dto.protocol.BaseRequest;
+
+        specialinvoke r0.<com.apperhand.common.dto.BaseDTO: void <init>()>();
+
+        $r1 = new java.util.HashMap;
+
+        specialinvoke $r1.<java.util.HashMap: void <init>()>();
+
+        r0.<com.apperhand.common.dto.protocol.BaseRequest: java.util.Map parameters> = $r1;
+
+        return;
+    }
+
+    public java.lang.String getAbTestId()
+    {
+        com.apperhand.common.dto.protocol.BaseRequest r0;
+        java.lang.String r1;
+
+        r0 := @this: com.apperhand.common.dto.protocol.BaseRequest;
+
+        r1 = r0.<com.apperhand.common.dto.protocol.BaseRequest: java.lang.String abTestId>;
+
+        return r1;
+    }
+
+    public com.apperhand.common.dto.ApplicationDetails getApplicationDetails()
+    {
+        com.apperhand.common.dto.protocol.BaseRequest r0;
+        com.apperhand.common.dto.ApplicationDetails r1;
+
+        r0 := @this: com.apperhand.common.dto.protocol.BaseRequest;
+
+        r1 = r0.<com.apperhand.common.dto.protocol.BaseRequest: com.apperhand.common.dto.ApplicationDetails applicationDetails>;
+
+        return r1;
+    }
+
+    public java.util.Map getParameters()
+    {
+        com.apperhand.common.dto.protocol.BaseRequest r0;
+        java.util.Map r1;
+
+        r0 := @this: com.apperhand.common.dto.protocol.BaseRequest;
+
+        r1 = r0.<com.apperhand.common.dto.protocol.BaseRequest: java.util.Map parameters>;
+
+        return r1;
+    }
+
+    public void setAbTestId(java.lang.String)
+    {
+        com.apperhand.common.dto.protocol.BaseRequest r0;
+        java.lang.String $r1;
+
+        r0 := @this: com.apperhand.common.dto.protocol.BaseRequest;
+
+        $r1 := @parameter0: java.lang.String;
+
+        r0.<com.apperhand.common.dto.protocol.BaseRequest: java.lang.String abTestId> = $r1;
+
+        return;
+    }
+
+    public void setApplicationDetails(com.apperhand.common.dto.ApplicationDetails)
+    {
+        com.apperhand.common.dto.protocol.BaseRequest r0;
+        com.apperhand.common.dto.ApplicationDetails $r1;
+
+        r0 := @this: com.apperhand.common.dto.protocol.BaseRequest;
+
+        $r1 := @parameter0: com.apperhand.common.dto.ApplicationDetails;
+
+        r0.<com.apperhand.common.dto.protocol.BaseRequest: com.apperhand.common.dto.ApplicationDetails applicationDetails> = $r1;
+
+        return;
+    }
+
+    public void setParameters(java.util.Map)
+    {
+        com.apperhand.common.dto.protocol.BaseRequest r0;
+        java.util.Map r1;
+
+        r0 := @this: com.apperhand.common.dto.protocol.BaseRequest;
+
+        r1 := @parameter0: java.util.Map;
+
+        r0.<com.apperhand.common.dto.protocol.BaseRequest: java.util.Map parameters> = r1;
+
+        return;
+    }
+
+    public java.lang.String toString()
+    {
+        com.apperhand.common.dto.protocol.BaseRequest r0;
+        java.lang.StringBuilder $r1;
+        com.apperhand.common.dto.ApplicationDetails $r2;
+        java.util.Map $r3;
+        java.lang.String $r4;
+
+        r0 := @this: com.apperhand.common.dto.protocol.BaseRequest;
+
+        $r1 = new java.lang.StringBuilder;
+
+        specialinvoke $r1.<java.lang.StringBuilder: void <init>(java.lang.String)>("BaseRequest [applicationDetails=");
+
+        $r2 = r0.<com.apperhand.common.dto.protocol.BaseRequest: com.apperhand.common.dto.ApplicationDetails applicationDetails>;
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($r2);
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(", parameters=");
+
+        $r3 = r0.<com.apperhand.common.dto.protocol.BaseRequest: java.util.Map parameters>;
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($r3);
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("]");
+
+        $r4 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        return $r4;
+    }
+
+    public static void <clinit>()
+    {
+        <com.apperhand.common.dto.protocol.BaseRequest: long serialVersionUID> = -8678102737921448588L;
+
+        return;
+    }
+}

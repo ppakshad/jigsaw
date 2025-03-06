@@ -1,0 +1,464 @@
+public class com.startapp.android.publish.video.b.b extends com.startapp.android.publish.video.b.a implements android.media.MediaPlayer$OnCompletionListener, android.media.MediaPlayer$OnErrorListener, android.media.MediaPlayer$OnPreparedListener
+{
+    private android.media.MediaPlayer h;
+    private android.widget.VideoView i;
+
+    public void <init>(android.widget.VideoView)
+    {
+        com.startapp.android.publish.video.b.b r0;
+        android.widget.VideoView $r1;
+
+        r0 := @this: com.startapp.android.publish.video.b.b;
+
+        $r1 := @parameter0: android.widget.VideoView;
+
+        specialinvoke r0.<com.startapp.android.publish.video.b.a: void <init>()>();
+
+        staticinvoke <com.startapp.android.publish.i.n: void a(java.lang.String,int,java.lang.String)>("NativeVideoPlayer", 4, "Ctor");
+
+        r0.<com.startapp.android.publish.video.b.b: android.widget.VideoView i> = $r1;
+
+        $r1 = r0.<com.startapp.android.publish.video.b.b: android.widget.VideoView i>;
+
+        virtualinvoke $r1.<android.widget.VideoView: void setOnPreparedListener(android.media.MediaPlayer$OnPreparedListener)>(r0);
+
+        $r1 = r0.<com.startapp.android.publish.video.b.b: android.widget.VideoView i>;
+
+        virtualinvoke $r1.<android.widget.VideoView: void setOnCompletionListener(android.media.MediaPlayer$OnCompletionListener)>(r0);
+
+        $r1 = r0.<com.startapp.android.publish.video.b.b: android.widget.VideoView i>;
+
+        virtualinvoke $r1.<android.widget.VideoView: void setOnErrorListener(android.media.MediaPlayer$OnErrorListener)>(r0);
+
+        return;
+    }
+
+    private com.startapp.android.publish.video.b.c$g a(int, int, int)
+    {
+        com.startapp.android.publish.video.b.b r0;
+        int $i0, $i1, $i2;
+        com.startapp.android.publish.video.b.c$g $r1;
+        com.startapp.android.publish.video.b.b$b $r2, $r3;
+        com.startapp.android.publish.video.b.c$h $r4;
+        com.startapp.android.publish.video.b.b$a $r5;
+        java.lang.String $r6;
+
+        r0 := @this: com.startapp.android.publish.video.b.b;
+
+        $i0 := @parameter0: int;
+
+        $i1 := @parameter1: int;
+
+        $i2 := @parameter2: int;
+
+        $r2 = staticinvoke <com.startapp.android.publish.video.b.b$b: com.startapp.android.publish.video.b.b$b a(int)>($i0);
+
+        $r3 = <com.startapp.android.publish.video.b.b$b: com.startapp.android.publish.video.b.b$b b>;
+
+        if $r2 != $r3 goto label2;
+
+        $r4 = <com.startapp.android.publish.video.b.c$h: com.startapp.android.publish.video.b.c$h b>;
+
+     label1:
+        $r5 = staticinvoke <com.startapp.android.publish.video.b.b$a: com.startapp.android.publish.video.b.b$a a(int)>($i1);
+
+        $r6 = virtualinvoke $r5.<com.startapp.android.publish.video.b.b$a: java.lang.String toString()>();
+
+        $r1 = new com.startapp.android.publish.video.b.c$g;
+
+        specialinvoke $r1.<com.startapp.android.publish.video.b.c$g: void <init>(com.startapp.android.publish.video.b.c$h,java.lang.String,int)>($r4, $r6, $i2);
+
+        return $r1;
+
+     label2:
+        $r4 = <com.startapp.android.publish.video.b.c$h: com.startapp.android.publish.video.b.c$h a>;
+
+        goto label1;
+    }
+
+    public void a()
+    {
+        com.startapp.android.publish.video.b.b r0;
+        android.widget.VideoView $r1;
+
+        r0 := @this: com.startapp.android.publish.video.b.b;
+
+        staticinvoke <com.startapp.android.publish.i.n: void a(java.lang.String,int,java.lang.String)>("NativeVideoPlayer", 4, "start");
+
+        $r1 = r0.<com.startapp.android.publish.video.b.b: android.widget.VideoView i>;
+
+        virtualinvoke $r1.<android.widget.VideoView: void start()>();
+
+        return;
+    }
+
+    public void a(int)
+    {
+        com.startapp.android.publish.video.b.b r0;
+        int $i0;
+        java.lang.StringBuilder $r1;
+        java.lang.String $r2;
+        android.widget.VideoView $r3;
+
+        r0 := @this: com.startapp.android.publish.video.b.b;
+
+        $i0 := @parameter0: int;
+
+        $r1 = new java.lang.StringBuilder;
+
+        specialinvoke $r1.<java.lang.StringBuilder: void <init>()>();
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("seekTo(");
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>($i0);
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(")");
+
+        $r2 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <com.startapp.android.publish.i.n: void a(java.lang.String,int,java.lang.String)>("NativeVideoPlayer", 4, $r2);
+
+        $r3 = r0.<com.startapp.android.publish.video.b.b: android.widget.VideoView i>;
+
+        virtualinvoke $r3.<android.widget.VideoView: void seekTo(int)>($i0);
+
+        return;
+    }
+
+    public void a(java.lang.String)
+    {
+        com.startapp.android.publish.video.b.b r0;
+        java.lang.String $r1, $r3;
+        java.lang.StringBuilder $r2;
+        android.widget.VideoView $r4;
+
+        r0 := @this: com.startapp.android.publish.video.b.b;
+
+        $r1 := @parameter0: java.lang.String;
+
+        $r2 = new java.lang.StringBuilder;
+
+        specialinvoke $r2.<java.lang.StringBuilder: void <init>()>();
+
+        $r2 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("setVideoLocation(");
+
+        $r2 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r1);
+
+        $r2 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(")");
+
+        $r3 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <com.startapp.android.publish.i.n: void a(java.lang.String,int,java.lang.String)>("NativeVideoPlayer", 4, $r3);
+
+        specialinvoke r0.<com.startapp.android.publish.video.b.a: void a(java.lang.String)>($r1);
+
+        $r4 = r0.<com.startapp.android.publish.video.b.b: android.widget.VideoView i>;
+
+        $r1 = r0.<com.startapp.android.publish.video.b.b: java.lang.String a>;
+
+        virtualinvoke $r4.<android.widget.VideoView: void setVideoPath(java.lang.String)>($r1);
+
+        return;
+    }
+
+    public void a(boolean)
+    {
+        com.startapp.android.publish.video.b.b r0;
+        boolean $z0;
+        java.lang.StringBuilder $r1;
+        java.lang.String $r2;
+        android.media.MediaPlayer $r3;
+
+        r0 := @this: com.startapp.android.publish.video.b.b;
+
+        $z0 := @parameter0: boolean;
+
+        $r1 = new java.lang.StringBuilder;
+
+        specialinvoke $r1.<java.lang.StringBuilder: void <init>()>();
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("setMute(");
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(boolean)>($z0);
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(")");
+
+        $r2 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <com.startapp.android.publish.i.n: void a(java.lang.String,int,java.lang.String)>("NativeVideoPlayer", 4, $r2);
+
+        $r3 = r0.<com.startapp.android.publish.video.b.b: android.media.MediaPlayer h>;
+
+        if $r3 == null goto label2;
+
+        if $z0 == 0 goto label1;
+
+        $r3 = r0.<com.startapp.android.publish.video.b.b: android.media.MediaPlayer h>;
+
+        virtualinvoke $r3.<android.media.MediaPlayer: void setVolume(float,float)>(0.0F, 0.0F);
+
+        return;
+
+     label1:
+        $r3 = r0.<com.startapp.android.publish.video.b.b: android.media.MediaPlayer h>;
+
+        virtualinvoke $r3.<android.media.MediaPlayer: void setVolume(float,float)>(1.0F, 1.0F);
+
+     label2:
+        return;
+    }
+
+    public void b()
+    {
+        com.startapp.android.publish.video.b.b r0;
+        android.widget.VideoView $r1;
+
+        r0 := @this: com.startapp.android.publish.video.b.b;
+
+        staticinvoke <com.startapp.android.publish.i.n: void a(java.lang.String,int,java.lang.String)>("NativeVideoPlayer", 4, "pause");
+
+        $r1 = r0.<com.startapp.android.publish.video.b.b: android.widget.VideoView i>;
+
+        virtualinvoke $r1.<android.widget.VideoView: void pause()>();
+
+        return;
+    }
+
+    public void c()
+    {
+        com.startapp.android.publish.video.b.b r0;
+        android.widget.VideoView $r1;
+
+        r0 := @this: com.startapp.android.publish.video.b.b;
+
+        staticinvoke <com.startapp.android.publish.i.n: void a(java.lang.String,int,java.lang.String)>("NativeVideoPlayer", 4, "stop");
+
+        $r1 = r0.<com.startapp.android.publish.video.b.b: android.widget.VideoView i>;
+
+        virtualinvoke $r1.<android.widget.VideoView: void stopPlayback()>();
+
+        return;
+    }
+
+    public int d()
+    {
+        com.startapp.android.publish.video.b.b r0;
+        int $i0;
+        android.widget.VideoView $r1;
+
+        r0 := @this: com.startapp.android.publish.video.b.b;
+
+        $r1 = r0.<com.startapp.android.publish.video.b.b: android.widget.VideoView i>;
+
+        $i0 = virtualinvoke $r1.<android.widget.VideoView: int getCurrentPosition()>();
+
+        return $i0;
+    }
+
+    public int e()
+    {
+        com.startapp.android.publish.video.b.b r0;
+        int $i0;
+        android.widget.VideoView $r1;
+
+        r0 := @this: com.startapp.android.publish.video.b.b;
+
+        $r1 = r0.<com.startapp.android.publish.video.b.b: android.widget.VideoView i>;
+
+        $i0 = virtualinvoke $r1.<android.widget.VideoView: int getDuration()>();
+
+        return $i0;
+    }
+
+    public boolean f()
+    {
+        com.startapp.android.publish.video.b.b r0;
+        android.media.MediaPlayer $r1;
+
+        r0 := @this: com.startapp.android.publish.video.b.b;
+
+        $r1 = r0.<com.startapp.android.publish.video.b.b: android.media.MediaPlayer h>;
+
+        if $r1 == null goto label1;
+
+        return 1;
+
+     label1:
+        return 0;
+    }
+
+    public void g()
+    {
+        com.startapp.android.publish.video.b.b r0;
+        android.media.MediaPlayer $r1;
+
+        r0 := @this: com.startapp.android.publish.video.b.b;
+
+        $r1 = r0.<com.startapp.android.publish.video.b.b: android.media.MediaPlayer h>;
+
+        if $r1 == null goto label1;
+
+        r0.<com.startapp.android.publish.video.b.b: android.media.MediaPlayer h> = null;
+
+     label1:
+        return;
+    }
+
+    public void onCompletion(android.media.MediaPlayer)
+    {
+        com.startapp.android.publish.video.b.b r0;
+        android.media.MediaPlayer $r1;
+        com.startapp.android.publish.video.b.c$d $r2;
+
+        r0 := @this: com.startapp.android.publish.video.b.b;
+
+        $r1 := @parameter0: android.media.MediaPlayer;
+
+        staticinvoke <com.startapp.android.publish.i.n: void a(java.lang.String,int,java.lang.String)>("NativeVideoPlayer", 4, "onCompletion");
+
+        $r2 = r0.<com.startapp.android.publish.video.b.b: com.startapp.android.publish.video.b.c$d d>;
+
+        if $r2 == null goto label1;
+
+        staticinvoke <com.startapp.android.publish.i.n: void a(java.lang.String,int,java.lang.String)>("NativeVideoPlayer", 3, "Dispatching onCompletion");
+
+        $r2 = r0.<com.startapp.android.publish.video.b.b: com.startapp.android.publish.video.b.c$d d>;
+
+        interfaceinvoke $r2.<com.startapp.android.publish.video.b.c$d: void a()>();
+
+     label1:
+        return;
+    }
+
+    public boolean onError(android.media.MediaPlayer, int, int)
+    {
+        com.startapp.android.publish.video.b.b r0;
+        android.media.MediaPlayer $r1;
+        int $i0, $i1, $i2;
+        java.lang.StringBuilder $r2;
+        java.lang.String $r3;
+        com.startapp.android.publish.video.b.c$e $r4;
+        com.startapp.android.publish.video.b.c$g $r5;
+        boolean $z0;
+
+        r0 := @this: com.startapp.android.publish.video.b.b;
+
+        $r1 := @parameter0: android.media.MediaPlayer;
+
+        $i0 := @parameter1: int;
+
+        $i1 := @parameter2: int;
+
+        $r2 = new java.lang.StringBuilder;
+
+        specialinvoke $r2.<java.lang.StringBuilder: void <init>()>();
+
+        $r2 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("onError(");
+
+        $r2 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>($i0);
+
+        $r2 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(", ");
+
+        $r2 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>($i1);
+
+        $r2 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(")");
+
+        $r3 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <com.startapp.android.publish.i.n: void a(java.lang.String,int,java.lang.String)>("NativeVideoPlayer", 6, $r3);
+
+        $r4 = r0.<com.startapp.android.publish.video.b.b: com.startapp.android.publish.video.b.c$e c>;
+
+        if $r4 == null goto label3;
+
+        staticinvoke <com.startapp.android.publish.i.n: void a(java.lang.String,int,java.lang.String)>("NativeVideoPlayer", 3, "Dispatching onError");
+
+        if $r1 == null goto label2;
+
+        $i2 = virtualinvoke $r1.<android.media.MediaPlayer: int getCurrentPosition()>();
+
+     label1:
+        $r4 = r0.<com.startapp.android.publish.video.b.b: com.startapp.android.publish.video.b.c$e c>;
+
+        $r5 = specialinvoke r0.<com.startapp.android.publish.video.b.b: com.startapp.android.publish.video.b.c$g a(int,int,int)>($i0, $i1, $i2);
+
+        $z0 = interfaceinvoke $r4.<com.startapp.android.publish.video.b.c$e: boolean a(com.startapp.android.publish.video.b.c$g)>($r5);
+
+        return $z0;
+
+     label2:
+        $i2 = -1;
+
+        goto label1;
+
+     label3:
+        return 0;
+    }
+
+    public void onPrepared(android.media.MediaPlayer)
+    {
+        com.startapp.android.publish.video.b.b r0;
+        android.media.MediaPlayer $r1;
+        com.startapp.android.publish.video.b.c$f $r2;
+        java.lang.String $r3;
+        boolean $z0;
+        com.startapp.android.publish.video.b.b$1 $r4;
+        com.startapp.android.publish.video.a $r5;
+        com.startapp.android.publish.video.b.c$c $r6;
+
+        r0 := @this: com.startapp.android.publish.video.b.b;
+
+        $r1 := @parameter0: android.media.MediaPlayer;
+
+        staticinvoke <com.startapp.android.publish.i.n: void a(java.lang.String,int,java.lang.String)>("NativeVideoPlayer", 4, "onPrepared");
+
+        r0.<com.startapp.android.publish.video.b.b: android.media.MediaPlayer h> = $r1;
+
+        $r2 = r0.<com.startapp.android.publish.video.b.b: com.startapp.android.publish.video.b.c$f b>;
+
+        if $r2 == null goto label1;
+
+        staticinvoke <com.startapp.android.publish.i.n: void a(java.lang.String,int,java.lang.String)>("NativeVideoPlayer", 3, "Dispatching onPrepared");
+
+        $r2 = r0.<com.startapp.android.publish.video.b.b: com.startapp.android.publish.video.b.c$f b>;
+
+        interfaceinvoke $r2.<com.startapp.android.publish.video.b.c$f: void a()>();
+
+     label1:
+        $r3 = r0.<com.startapp.android.publish.video.b.b: java.lang.String a>;
+
+        $z0 = staticinvoke <com.startapp.android.publish.i.x: boolean b(java.lang.String)>($r3);
+
+        if $z0 == 0 goto label2;
+
+        $r1 = r0.<com.startapp.android.publish.video.b.b: android.media.MediaPlayer h>;
+
+        if $r1 == null goto label2;
+
+        $r1 = r0.<com.startapp.android.publish.video.b.b: android.media.MediaPlayer h>;
+
+        $r4 = new com.startapp.android.publish.video.b.b$1;
+
+        specialinvoke $r4.<com.startapp.android.publish.video.b.b$1: void <init>(com.startapp.android.publish.video.b.b)>(r0);
+
+        virtualinvoke $r1.<android.media.MediaPlayer: void setOnBufferingUpdateListener(android.media.MediaPlayer$OnBufferingUpdateListener)>($r4);
+
+        return;
+
+     label2:
+        $r3 = r0.<com.startapp.android.publish.video.b.b: java.lang.String a>;
+
+        $z0 = staticinvoke <com.startapp.android.publish.i.x: boolean b(java.lang.String)>($r3);
+
+        if $z0 != 0 goto label3;
+
+        $r5 = staticinvoke <com.startapp.android.publish.video.a: com.startapp.android.publish.video.a a()>();
+
+        $r6 = r0.<com.startapp.android.publish.video.b.b: com.startapp.android.publish.video.b.c$c f>;
+
+        virtualinvoke $r5.<com.startapp.android.publish.video.a: void a(com.startapp.android.publish.video.b.c$c)>($r6);
+
+     label3:
+        return;
+    }
+}

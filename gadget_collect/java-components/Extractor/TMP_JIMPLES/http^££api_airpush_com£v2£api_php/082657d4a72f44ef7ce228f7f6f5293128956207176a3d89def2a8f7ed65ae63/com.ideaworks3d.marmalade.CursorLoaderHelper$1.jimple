@@ -1,0 +1,62 @@
+final class com.ideaworks3d.marmalade.CursorLoaderHelper$1 extends java.lang.Object implements android.content.Loader$OnLoadCompleteListener
+{
+    final com.ideaworks3d.marmalade.LoaderActivity$CursorCompleteListener val$completeCallback;
+
+    void <init>(com.ideaworks3d.marmalade.LoaderActivity$CursorCompleteListener)
+    {
+        com.ideaworks3d.marmalade.CursorLoaderHelper$1 r0;
+        com.ideaworks3d.marmalade.LoaderActivity$CursorCompleteListener $r1;
+
+        r0 := @this: com.ideaworks3d.marmalade.CursorLoaderHelper$1;
+
+        $r1 := @parameter0: com.ideaworks3d.marmalade.LoaderActivity$CursorCompleteListener;
+
+        r0.<com.ideaworks3d.marmalade.CursorLoaderHelper$1: com.ideaworks3d.marmalade.LoaderActivity$CursorCompleteListener val$completeCallback> = $r1;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public void onLoadComplete(android.content.Loader, android.database.Cursor)
+    {
+        com.ideaworks3d.marmalade.CursorLoaderHelper$1 r0;
+        android.content.Loader $r1;
+        android.database.Cursor $r2;
+        com.ideaworks3d.marmalade.LoaderActivity$CursorCompleteListener $r3;
+
+        r0 := @this: com.ideaworks3d.marmalade.CursorLoaderHelper$1;
+
+        $r1 := @parameter0: android.content.Loader;
+
+        $r2 := @parameter1: android.database.Cursor;
+
+        staticinvoke <com.ideaworks3d.marmalade.LoaderAPI: void trace(java.lang.String)>("CursorLoader onLoadComplete");
+
+        $r3 = r0.<com.ideaworks3d.marmalade.CursorLoaderHelper$1: com.ideaworks3d.marmalade.LoaderActivity$CursorCompleteListener val$completeCallback>;
+
+        interfaceinvoke $r3.<com.ideaworks3d.marmalade.LoaderActivity$CursorCompleteListener: void cursorLoadComplete(android.database.Cursor)>($r2);
+
+        return;
+    }
+
+    public volatile void onLoadComplete(android.content.Loader, java.lang.Object)
+    {
+        com.ideaworks3d.marmalade.CursorLoaderHelper$1 r0;
+        android.content.Loader $r1;
+        java.lang.Object $r2;
+        android.database.Cursor $r3;
+
+        r0 := @this: com.ideaworks3d.marmalade.CursorLoaderHelper$1;
+
+        $r1 := @parameter0: android.content.Loader;
+
+        $r2 := @parameter1: java.lang.Object;
+
+        $r3 = (android.database.Cursor) $r2;
+
+        virtualinvoke r0.<com.ideaworks3d.marmalade.CursorLoaderHelper$1: void onLoadComplete(android.content.Loader,android.database.Cursor)>($r1, $r3);
+
+        return;
+    }
+}

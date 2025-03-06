@@ -1,0 +1,81 @@
+class com.ideaworks3d.marmalade.LoaderThread$1 extends android.content.BroadcastReceiver
+{
+    final com.ideaworks3d.marmalade.LoaderThread this$0;
+
+    void <init>(com.ideaworks3d.marmalade.LoaderThread)
+    {
+        com.ideaworks3d.marmalade.LoaderThread$1 r0;
+        com.ideaworks3d.marmalade.LoaderThread $r1;
+
+        r0 := @this: com.ideaworks3d.marmalade.LoaderThread$1;
+
+        $r1 := @parameter0: com.ideaworks3d.marmalade.LoaderThread;
+
+        r0.<com.ideaworks3d.marmalade.LoaderThread$1: com.ideaworks3d.marmalade.LoaderThread this$0> = $r1;
+
+        specialinvoke r0.<android.content.BroadcastReceiver: void <init>()>();
+
+        return;
+    }
+
+    public void onReceive(android.content.Context, android.content.Intent)
+    {
+        com.ideaworks3d.marmalade.LoaderThread$1 r0;
+        android.content.Context $r1;
+        android.content.Intent $r2;
+        com.ideaworks3d.marmalade.LoaderThread $r3, $r4;
+        int $i0;
+        boolean $z0, $z1;
+
+        r0 := @this: com.ideaworks3d.marmalade.LoaderThread$1;
+
+        $r1 := @parameter0: android.content.Context;
+
+        $r2 := @parameter1: android.content.Intent;
+
+        $r3 = r0.<com.ideaworks3d.marmalade.LoaderThread$1: com.ideaworks3d.marmalade.LoaderThread this$0>;
+
+        $i0 = virtualinvoke $r2.<android.content.Intent: int getIntExtra(java.lang.String,int)>("level", 0);
+
+        staticinvoke <com.ideaworks3d.marmalade.LoaderThread: int access$602(com.ideaworks3d.marmalade.LoaderThread,int)>($r3, $i0);
+
+        $r3 = r0.<com.ideaworks3d.marmalade.LoaderThread$1: com.ideaworks3d.marmalade.LoaderThread this$0>;
+
+        $z0 = staticinvoke <com.ideaworks3d.marmalade.LoaderThread: boolean access$700(com.ideaworks3d.marmalade.LoaderThread)>($r3);
+
+        $r3 = r0.<com.ideaworks3d.marmalade.LoaderThread$1: com.ideaworks3d.marmalade.LoaderThread this$0>;
+
+        $i0 = virtualinvoke $r2.<android.content.Intent: int getIntExtra(java.lang.String,int)>("plugged", 0);
+
+        if $i0 == 0 goto label2;
+
+        $z1 = 1;
+
+     label1:
+        staticinvoke <com.ideaworks3d.marmalade.LoaderThread: boolean access$702(com.ideaworks3d.marmalade.LoaderThread,boolean)>($r3, $z1);
+
+        $r3 = r0.<com.ideaworks3d.marmalade.LoaderThread$1: com.ideaworks3d.marmalade.LoaderThread this$0>;
+
+        $z1 = staticinvoke <com.ideaworks3d.marmalade.LoaderThread: boolean access$700(com.ideaworks3d.marmalade.LoaderThread)>($r3);
+
+        if $z0 == $z1 goto label3;
+
+        $r3 = r0.<com.ideaworks3d.marmalade.LoaderThread$1: com.ideaworks3d.marmalade.LoaderThread this$0>;
+
+        $r4 = r0.<com.ideaworks3d.marmalade.LoaderThread$1: com.ideaworks3d.marmalade.LoaderThread this$0>;
+
+        $z0 = staticinvoke <com.ideaworks3d.marmalade.LoaderThread: boolean access$700(com.ideaworks3d.marmalade.LoaderThread)>($r4);
+
+        staticinvoke <com.ideaworks3d.marmalade.LoaderThread: void access$800(com.ideaworks3d.marmalade.LoaderThread,boolean)>($r3, $z0);
+
+        return;
+
+     label2:
+        $z1 = 0;
+
+        goto label1;
+
+     label3:
+        return;
+    }
+}

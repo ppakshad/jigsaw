@@ -1,0 +1,78 @@
+public abstract class com.movesky.app.engine.achievements.AchievementManager extends java.lang.Object
+{
+    protected com.movesky.app.engine.util.Bag achievements;
+    protected java.util.Map infoMap;
+
+    public void <init>(int)
+    {
+        com.movesky.app.engine.achievements.AchievementManager r0;
+        int $i0, $i1, $i2;
+        com.movesky.app.engine.achievements.AchievementInfo $r1;
+        java.util.Map $r2;
+        java.util.HashMap $r3;
+        com.movesky.app.engine.achievements.AchievementInfo[] $r4;
+        java.lang.Integer $r5;
+        com.movesky.app.engine.util.Bag $r6;
+
+        r0 := @this: com.movesky.app.engine.achievements.AchievementManager;
+
+        $i0 := @parameter0: int;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        $r3 = new java.util.HashMap;
+
+        specialinvoke $r3.<java.util.HashMap: void <init>()>();
+
+        r0.<com.movesky.app.engine.achievements.AchievementManager: java.util.Map infoMap> = $r3;
+
+        $r4 = staticinvoke <com.movesky.app.engine.achievements.AchievementInfoParser: com.movesky.app.engine.achievements.AchievementInfo[] parseAchievementInfos(int)>(1000);
+
+        $i0 = lengthof $r4;
+
+        $i1 = 0;
+
+     label1:
+        if $i1 >= $i0 goto label2;
+
+        $r1 = $r4[$i1];
+
+        $r2 = r0.<com.movesky.app.engine.achievements.AchievementManager: java.util.Map infoMap>;
+
+        $i2 = $r1.<com.movesky.app.engine.achievements.AchievementInfo: int id>;
+
+        $r5 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>($i2);
+
+        interfaceinvoke $r2.<java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>($r5, $r1);
+
+        $i1 = $i1 + 1;
+
+        goto label1;
+
+     label2:
+        $r6 = new com.movesky.app.engine.util.Bag;
+
+        specialinvoke $r6.<com.movesky.app.engine.util.Bag: void <init>()>();
+
+        r0.<com.movesky.app.engine.achievements.AchievementManager: com.movesky.app.engine.util.Bag achievements> = $r6;
+
+        return;
+    }
+
+    public java.util.Collection getAchievements()
+    {
+        com.movesky.app.engine.achievements.AchievementManager r0;
+        java.util.Collection $r1;
+        com.movesky.app.engine.util.Bag $r2;
+
+        r0 := @this: com.movesky.app.engine.achievements.AchievementManager;
+
+        $r2 = r0.<com.movesky.app.engine.achievements.AchievementManager: com.movesky.app.engine.util.Bag achievements>;
+
+        $r1 = staticinvoke <java.util.Collections: java.util.Collection unmodifiableCollection(java.util.Collection)>($r2);
+
+        return $r1;
+    }
+
+    protected abstract void registerAchievements();
+}

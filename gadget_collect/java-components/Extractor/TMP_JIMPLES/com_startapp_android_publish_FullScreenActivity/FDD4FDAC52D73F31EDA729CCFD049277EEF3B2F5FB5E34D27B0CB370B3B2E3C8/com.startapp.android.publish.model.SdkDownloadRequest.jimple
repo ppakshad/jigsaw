@@ -1,0 +1,53 @@
+public class com.startapp.android.publish.model.SdkDownloadRequest extends com.startapp.android.publish.model.BaseRequest
+{
+    private static final java.lang.String PLACEMENT;
+
+    public void <init>()
+    {
+        com.startapp.android.publish.model.SdkDownloadRequest r0;
+
+        r0 := @this: com.startapp.android.publish.model.SdkDownloadRequest;
+
+        specialinvoke r0.<com.startapp.android.publish.model.BaseRequest: void <init>()>();
+
+        return;
+    }
+
+    public java.util.List getNameValueMap()
+    {
+        com.startapp.android.publish.model.SdkDownloadRequest r0;
+        java.util.List $r1;
+        java.lang.Object $r2;
+        java.util.ArrayList $r3;
+
+        r0 := @this: com.startapp.android.publish.model.SdkDownloadRequest;
+
+        $r1 = specialinvoke r0.<com.startapp.android.publish.model.BaseRequest: java.util.List getNameValueMap()>();
+
+        $r2 = $r1;
+
+        if $r1 != null goto label1;
+
+        $r3 = new java.util.ArrayList;
+
+        $r2 = $r3;
+
+        specialinvoke $r3.<java.util.ArrayList: void <init>()>();
+
+     label1:
+        $r1 = (java.util.List) $r2;
+
+        staticinvoke <com.startapp.android.publish.i.x: void a(java.util.List,java.lang.String,java.lang.Object,boolean)>($r1, "placement", "INAPP_DOWNLOAD", 1);
+
+        $r1 = (java.util.List) $r2;
+
+        return $r1;
+    }
+
+    public static void <clinit>()
+    {
+        <com.startapp.android.publish.model.SdkDownloadRequest: java.lang.String PLACEMENT> = "INAPP_DOWNLOAD";
+
+        return;
+    }
+}

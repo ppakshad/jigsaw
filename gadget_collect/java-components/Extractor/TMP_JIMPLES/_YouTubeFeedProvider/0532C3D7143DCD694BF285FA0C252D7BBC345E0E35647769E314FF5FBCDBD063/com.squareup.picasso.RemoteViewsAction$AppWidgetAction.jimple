@@ -1,0 +1,82 @@
+class com.squareup.picasso.RemoteViewsAction$AppWidgetAction extends com.squareup.picasso.RemoteViewsAction
+{
+    private final int[] appWidgetIds;
+
+    void <init>(com.squareup.picasso.Picasso, com.squareup.picasso.Request, android.widget.RemoteViews, int, int[], int, int, java.lang.String, java.lang.Object, int)
+    {
+        com.squareup.picasso.RemoteViewsAction$AppWidgetAction r0;
+        com.squareup.picasso.Picasso $r1;
+        com.squareup.picasso.Request $r2;
+        android.widget.RemoteViews $r3;
+        int $i0, $i1, $i2, $i3;
+        int[] $r4;
+        java.lang.String $r5;
+        java.lang.Object $r6;
+
+        r0 := @this: com.squareup.picasso.RemoteViewsAction$AppWidgetAction;
+
+        $r1 := @parameter0: com.squareup.picasso.Picasso;
+
+        $r2 := @parameter1: com.squareup.picasso.Request;
+
+        $r3 := @parameter2: android.widget.RemoteViews;
+
+        $i0 := @parameter3: int;
+
+        $r4 := @parameter4: int[];
+
+        $i1 := @parameter5: int;
+
+        $i2 := @parameter6: int;
+
+        $r5 := @parameter7: java.lang.String;
+
+        $r6 := @parameter8: java.lang.Object;
+
+        $i3 := @parameter9: int;
+
+        specialinvoke r0.<com.squareup.picasso.RemoteViewsAction: void <init>(com.squareup.picasso.Picasso,com.squareup.picasso.Request,android.widget.RemoteViews,int,int,int,int,java.lang.Object,java.lang.String)>($r1, $r2, $r3, $i0, $i3, $i1, $i2, $r6, $r5);
+
+        r0.<com.squareup.picasso.RemoteViewsAction$AppWidgetAction: int[] appWidgetIds> = $r4;
+
+        return;
+    }
+
+    volatile java.lang.Object getTarget()
+    {
+        com.squareup.picasso.RemoteViewsAction$AppWidgetAction r0;
+        com.squareup.picasso.RemoteViewsAction$RemoteViewsTarget $r1;
+
+        r0 := @this: com.squareup.picasso.RemoteViewsAction$AppWidgetAction;
+
+        $r1 = specialinvoke r0.<com.squareup.picasso.RemoteViewsAction: com.squareup.picasso.RemoteViewsAction$RemoteViewsTarget getTarget()>();
+
+        return $r1;
+    }
+
+    void update()
+    {
+        com.squareup.picasso.RemoteViewsAction$AppWidgetAction r0;
+        int[] $r1;
+        android.widget.RemoteViews $r2;
+        android.appwidget.AppWidgetManager $r3;
+        com.squareup.picasso.Picasso $r4;
+        android.content.Context $r5;
+
+        r0 := @this: com.squareup.picasso.RemoteViewsAction$AppWidgetAction;
+
+        $r4 = r0.<com.squareup.picasso.RemoteViewsAction$AppWidgetAction: com.squareup.picasso.Picasso picasso>;
+
+        $r5 = $r4.<com.squareup.picasso.Picasso: android.content.Context context>;
+
+        $r3 = staticinvoke <android.appwidget.AppWidgetManager: android.appwidget.AppWidgetManager getInstance(android.content.Context)>($r5);
+
+        $r1 = r0.<com.squareup.picasso.RemoteViewsAction$AppWidgetAction: int[] appWidgetIds>;
+
+        $r2 = r0.<com.squareup.picasso.RemoteViewsAction$AppWidgetAction: android.widget.RemoteViews remoteViews>;
+
+        virtualinvoke $r3.<android.appwidget.AppWidgetManager: void updateAppWidget(int[],android.widget.RemoteViews)>($r1, $r2);
+
+        return;
+    }
+}

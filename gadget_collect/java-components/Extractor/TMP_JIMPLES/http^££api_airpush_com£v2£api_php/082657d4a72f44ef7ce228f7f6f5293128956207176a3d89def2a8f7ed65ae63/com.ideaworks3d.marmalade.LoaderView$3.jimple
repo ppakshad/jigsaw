@@ -1,0 +1,52 @@
+class com.ideaworks3d.marmalade.LoaderView$3 extends java.lang.Object implements java.lang.Runnable
+{
+    final com.ideaworks3d.marmalade.LoaderView this$0;
+
+    void <init>(com.ideaworks3d.marmalade.LoaderView)
+    {
+        com.ideaworks3d.marmalade.LoaderView$3 r0;
+        com.ideaworks3d.marmalade.LoaderView $r1;
+
+        r0 := @this: com.ideaworks3d.marmalade.LoaderView$3;
+
+        $r1 := @parameter0: com.ideaworks3d.marmalade.LoaderView;
+
+        r0.<com.ideaworks3d.marmalade.LoaderView$3: com.ideaworks3d.marmalade.LoaderView this$0> = $r1;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public void run()
+    {
+        com.ideaworks3d.marmalade.LoaderView$3 r0;
+        com.ideaworks3d.marmalade.LoaderView $r1;
+        com.ideaworks3d.marmalade.LoaderActivity $r2;
+        java.lang.Object $r3;
+        android.os.PowerManager $r4;
+        java.lang.Class $r5;
+        java.lang.String $r6;
+        android.os.PowerManager$WakeLock $r7;
+
+        r0 := @this: com.ideaworks3d.marmalade.LoaderView$3;
+
+        $r1 = r0.<com.ideaworks3d.marmalade.LoaderView$3: com.ideaworks3d.marmalade.LoaderView this$0>;
+
+        $r2 = $r1.<com.ideaworks3d.marmalade.LoaderView: com.ideaworks3d.marmalade.LoaderActivity m_LoaderActivity>;
+
+        $r3 = virtualinvoke $r2.<com.ideaworks3d.marmalade.LoaderActivity: java.lang.Object getSystemService(java.lang.String)>("power");
+
+        $r4 = (android.os.PowerManager) $r3;
+
+        $r5 = virtualinvoke r0.<java.lang.Object: java.lang.Class getClass()>();
+
+        $r6 = virtualinvoke $r5.<java.lang.Class: java.lang.String getName()>();
+
+        $r7 = virtualinvoke $r4.<android.os.PowerManager: android.os.PowerManager$WakeLock newWakeLock(int,java.lang.String)>(26, $r6);
+
+        virtualinvoke $r7.<android.os.PowerManager$WakeLock: void acquire(long)>(3000L);
+
+        return;
+    }
+}

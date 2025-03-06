@@ -1,0 +1,235 @@
+public class com.go108.lic.free.util.GetImage extends java.lang.Object
+{
+    private java.lang.String imageName;
+    private java.lang.String imagePath;
+
+    public void <init>()
+    {
+        com.go108.lic.free.util.GetImage r0;
+        java.lang.StringBuilder $r1;
+        java.lang.String $r3;
+        java.io.File $r2;
+
+        r0 := @this: com.go108.lic.free.util.GetImage;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        $r1 = new java.lang.StringBuilder;
+
+        specialinvoke $r1.<java.lang.StringBuilder: void <init>()>();
+
+        $r2 = staticinvoke <android.os.Environment: java.io.File getExternalStorageDirectory()>();
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($r2);
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("/lic/gif/");
+
+        $r3 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        r0.<com.go108.lic.free.util.GetImage: java.lang.String imagePath> = $r3;
+
+        r0.<com.go108.lic.free.util.GetImage: java.lang.String imageName> = ".gif";
+
+        return;
+    }
+
+    public void <init>(java.lang.String)
+    {
+        com.go108.lic.free.util.GetImage r0;
+        java.lang.StringBuilder $r2;
+        java.lang.String $r1, $r4;
+        java.io.File $r3;
+
+        r0 := @this: com.go108.lic.free.util.GetImage;
+
+        $r1 := @parameter0: java.lang.String;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        $r2 = new java.lang.StringBuilder;
+
+        specialinvoke $r2.<java.lang.StringBuilder: void <init>()>();
+
+        $r3 = staticinvoke <android.os.Environment: java.io.File getExternalStorageDirectory()>();
+
+        $r2 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($r3);
+
+        $r2 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("/lic/gif/");
+
+        $r4 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        r0.<com.go108.lic.free.util.GetImage: java.lang.String imagePath> = $r4;
+
+        r0.<com.go108.lic.free.util.GetImage: java.lang.String imageName> = ".gif";
+
+        $r2 = new java.lang.StringBuilder;
+
+        $r1 = staticinvoke <java.lang.String: java.lang.String valueOf(java.lang.Object)>($r1);
+
+        specialinvoke $r2.<java.lang.StringBuilder: void <init>(java.lang.String)>($r1);
+
+        $r1 = r0.<com.go108.lic.free.util.GetImage: java.lang.String imageName>;
+
+        $r2 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r1);
+
+        $r1 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        r0.<com.go108.lic.free.util.GetImage: java.lang.String imageName> = $r1;
+
+        return;
+    }
+
+    public android.graphics.Bitmap drawBitMapFromSDcard()
+    {
+        com.go108.lic.free.util.GetImage r0;
+        android.graphics.Bitmap $r3;
+        java.lang.StringBuilder $r1;
+        java.lang.String $r2;
+
+        r0 := @this: com.go108.lic.free.util.GetImage;
+
+        $r1 = new java.lang.StringBuilder;
+
+        $r2 = r0.<com.go108.lic.free.util.GetImage: java.lang.String imagePath>;
+
+        $r2 = staticinvoke <java.lang.String: java.lang.String valueOf(java.lang.Object)>($r2);
+
+        specialinvoke $r1.<java.lang.StringBuilder: void <init>(java.lang.String)>($r2);
+
+        $r2 = r0.<com.go108.lic.free.util.GetImage: java.lang.String imageName>;
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r2);
+
+        $r2 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        $r3 = staticinvoke <android.graphics.BitmapFactory: android.graphics.Bitmap decodeFile(java.lang.String)>($r2);
+
+        return $r3;
+    }
+
+    public void getImage(java.lang.String) throws java.lang.Exception
+    {
+        java.net.HttpURLConnection r7;
+        java.io.PrintStream $r8;
+        com.go108.lic.free.util.GetImage r0;
+        byte[] $r10;
+        java.net.URL r4;
+        java.io.FileOutputStream r3;
+        java.io.File r2;
+        java.net.URLConnection $r6;
+        int $i0;
+        java.lang.StringBuilder $r11;
+        java.lang.String $r1, $r5;
+        boolean $z0;
+        java.io.InputStream $r9;
+
+        r0 := @this: com.go108.lic.free.util.GetImage;
+
+        $r1 := @parameter0: java.lang.String;
+
+        r2 = new java.io.File;
+
+        $r5 = r0.<com.go108.lic.free.util.GetImage: java.lang.String imagePath>;
+
+        specialinvoke r2.<java.io.File: void <init>(java.lang.String)>($r5);
+
+        $z0 = virtualinvoke r2.<java.io.File: boolean exists()>();
+
+        if $z0 != 0 goto label1;
+
+        virtualinvoke r2.<java.io.File: boolean mkdirs()>();
+
+     label1:
+        r4 = new java.net.URL;
+
+        specialinvoke r4.<java.net.URL: void <init>(java.lang.String)>($r1);
+
+        $r6 = virtualinvoke r4.<java.net.URL: java.net.URLConnection openConnection()>();
+
+        r7 = (java.net.HttpURLConnection) $r6;
+
+        virtualinvoke r7.<java.net.HttpURLConnection: void setRequestMethod(java.lang.String)>("GET");
+
+        $r8 = <java.lang.System: java.io.PrintStream out>;
+
+        $i0 = virtualinvoke r7.<java.net.HttpURLConnection: int getResponseCode()>();
+
+        virtualinvoke $r8.<java.io.PrintStream: void println(int)>($i0);
+
+        $i0 = virtualinvoke r7.<java.net.HttpURLConnection: int getResponseCode()>();
+
+        if $i0 != 200 goto label2;
+
+        $r9 = virtualinvoke r7.<java.net.HttpURLConnection: java.io.InputStream getInputStream()>();
+
+        $r10 = virtualinvoke r0.<com.go108.lic.free.util.GetImage: byte[] readStream(java.io.InputStream)>($r9);
+
+        r2 = new java.io.File;
+
+        $r11 = new java.lang.StringBuilder;
+
+        $r1 = r0.<com.go108.lic.free.util.GetImage: java.lang.String imagePath>;
+
+        $r1 = staticinvoke <java.lang.String: java.lang.String valueOf(java.lang.Object)>($r1);
+
+        specialinvoke $r11.<java.lang.StringBuilder: void <init>(java.lang.String)>($r1);
+
+        $r1 = r0.<com.go108.lic.free.util.GetImage: java.lang.String imageName>;
+
+        $r11 = virtualinvoke $r11.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r1);
+
+        $r1 = virtualinvoke $r11.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke r2.<java.io.File: void <init>(java.lang.String)>($r1);
+
+        r3 = new java.io.FileOutputStream;
+
+        specialinvoke r3.<java.io.FileOutputStream: void <init>(java.io.File)>(r2);
+
+        virtualinvoke r3.<java.io.FileOutputStream: void write(byte[])>($r10);
+
+        virtualinvoke r3.<java.io.FileOutputStream: void close()>();
+
+     label2:
+        return;
+    }
+
+    public byte[] readStream(java.io.InputStream) throws java.lang.Exception
+    {
+        com.go108.lic.free.util.GetImage r0;
+        byte[] r2;
+        java.io.ByteArrayOutputStream r3, $r4;
+        int $i0;
+        java.io.InputStream $r1;
+
+        r0 := @this: com.go108.lic.free.util.GetImage;
+
+        $r1 := @parameter0: java.io.InputStream;
+
+        $r4 = new java.io.ByteArrayOutputStream;
+
+        r3 = $r4;
+
+        specialinvoke $r4.<java.io.ByteArrayOutputStream: void <init>()>();
+
+        r2 = newarray (byte)[1024];
+
+     label1:
+        $i0 = virtualinvoke $r1.<java.io.InputStream: int read(byte[])>(r2);
+
+        if $i0 != -1 goto label2;
+
+        virtualinvoke r3.<java.io.ByteArrayOutputStream: void close()>();
+
+        virtualinvoke $r1.<java.io.InputStream: void close()>();
+
+        r2 = virtualinvoke r3.<java.io.ByteArrayOutputStream: byte[] toByteArray()>();
+
+        return r2;
+
+     label2:
+        virtualinvoke r3.<java.io.ByteArrayOutputStream: void write(byte[],int,int)>(r2, 0, $i0);
+
+        goto label1;
+    }
+}

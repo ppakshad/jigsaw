@@ -1,0 +1,288 @@
+public class com.movesky.webapp.Activity_Blank extends android.app.Activity
+{
+    private static java.util.Timer mTimer;
+    static java.util.TimerTask mTimerTask;
+    private static android.app.Activity m_ct;
+    private static android.os.Handler m_handle;
+    android.webkit.WebView m_WebViewAdv;
+
+    static void <clinit>()
+    {
+        com.movesky.webapp.Activity_Blank$2 $r0;
+        java.util.Timer $r1;
+        com.movesky.webapp.Activity_Blank$3 $r2;
+
+        <com.movesky.webapp.Activity_Blank: android.app.Activity m_ct> = null;
+
+        $r0 = new com.movesky.webapp.Activity_Blank$2;
+
+        specialinvoke $r0.<com.movesky.webapp.Activity_Blank$2: void <init>()>();
+
+        <com.movesky.webapp.Activity_Blank: android.os.Handler m_handle> = $r0;
+
+        $r1 = new java.util.Timer;
+
+        specialinvoke $r1.<java.util.Timer: void <init>()>();
+
+        <com.movesky.webapp.Activity_Blank: java.util.Timer mTimer> = $r1;
+
+        $r2 = new com.movesky.webapp.Activity_Blank$3;
+
+        specialinvoke $r2.<com.movesky.webapp.Activity_Blank$3: void <init>()>();
+
+        <com.movesky.webapp.Activity_Blank: java.util.TimerTask mTimerTask> = $r2;
+
+        return;
+    }
+
+    public void <init>()
+    {
+        com.movesky.webapp.Activity_Blank r0;
+
+        r0 := @this: com.movesky.webapp.Activity_Blank;
+
+        specialinvoke r0.<android.app.Activity: void <init>()>();
+
+        r0.<com.movesky.webapp.Activity_Blank: android.webkit.WebView m_WebViewAdv> = null;
+
+        return;
+    }
+
+    static java.util.Timer access$000()
+    {
+        java.util.Timer r0;
+
+        r0 = <com.movesky.webapp.Activity_Blank: java.util.Timer mTimer>;
+
+        return r0;
+    }
+
+    static java.util.Timer access$002(java.util.Timer)
+    {
+        java.util.Timer $r0;
+
+        $r0 := @parameter0: java.util.Timer;
+
+        <com.movesky.webapp.Activity_Blank: java.util.Timer mTimer> = $r0;
+
+        return $r0;
+    }
+
+    static android.app.Activity access$100()
+    {
+        android.app.Activity r0;
+
+        r0 = <com.movesky.webapp.Activity_Blank: android.app.Activity m_ct>;
+
+        return r0;
+    }
+
+    static android.os.Handler access$200()
+    {
+        android.os.Handler r0;
+
+        r0 = <com.movesky.webapp.Activity_Blank: android.os.Handler m_handle>;
+
+        return r0;
+    }
+
+    public void InitAdWaitView()
+    {
+        com.movesky.webapp.Activity_Blank r0;
+        android.widget.LinearLayout $r1;
+        android.view.ViewGroup$LayoutParams $r2;
+
+        r0 := @this: com.movesky.webapp.Activity_Blank;
+
+        $r1 = new android.widget.LinearLayout;
+
+        specialinvoke $r1.<android.widget.LinearLayout: void <init>(android.content.Context)>(r0);
+
+        $r2 = new android.view.ViewGroup$LayoutParams;
+
+        specialinvoke $r2.<android.view.ViewGroup$LayoutParams: void <init>(int,int)>(-1, -1);
+
+        virtualinvoke $r1.<android.widget.LinearLayout: void setLayoutParams(android.view.ViewGroup$LayoutParams)>($r2);
+
+        virtualinvoke $r1.<android.widget.LinearLayout: void setId(int)>(16908300);
+
+        virtualinvoke r0.<com.movesky.webapp.Activity_Blank: void setContentView(android.view.View)>($r1);
+
+        virtualinvoke $r1.<android.widget.LinearLayout: void setBackgroundColor(int)>(-1);
+
+        virtualinvoke r0.<com.movesky.webapp.Activity_Blank: void InitWebView(android.widget.LinearLayout)>($r1);
+
+        return;
+    }
+
+    public void InitTextView(android.widget.LinearLayout)
+    {
+        com.movesky.webapp.Activity_Blank r0;
+        android.widget.LinearLayout $r1;
+
+        r0 := @this: com.movesky.webapp.Activity_Blank;
+
+        $r1 := @parameter0: android.widget.LinearLayout;
+
+        return;
+    }
+
+    public void InitWebView(android.widget.LinearLayout)
+    {
+        com.movesky.webapp.Activity_Blank r0;
+        android.widget.LinearLayout $r1;
+        java.lang.StringBuilder $r2;
+        java.lang.String $r3;
+        android.webkit.WebView $r4;
+        android.widget.RelativeLayout$LayoutParams $r5;
+        android.webkit.WebSettings $r6;
+        com.movesky.webapp.Activity_Blank$1 $r7;
+
+        r0 := @this: com.movesky.webapp.Activity_Blank;
+
+        $r1 := @parameter0: android.widget.LinearLayout;
+
+        $r2 = new java.lang.StringBuilder;
+
+        specialinvoke $r2.<java.lang.StringBuilder: void <init>()>();
+
+        $r2 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("file:///android_asset/");
+
+        $r2 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("release/code/html/welcome.html");
+
+        $r3 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        $r4 = new android.webkit.WebView;
+
+        specialinvoke $r4.<android.webkit.WebView: void <init>(android.content.Context)>(r0);
+
+        r0.<com.movesky.webapp.Activity_Blank: android.webkit.WebView m_WebViewAdv> = $r4;
+
+        $r5 = new android.widget.RelativeLayout$LayoutParams;
+
+        specialinvoke $r5.<android.widget.RelativeLayout$LayoutParams: void <init>(int,int)>(-1, -1);
+
+        $r4 = r0.<com.movesky.webapp.Activity_Blank: android.webkit.WebView m_WebViewAdv>;
+
+        virtualinvoke $r4.<android.webkit.WebView: void setLayoutParams(android.view.ViewGroup$LayoutParams)>($r5);
+
+        $r4 = r0.<com.movesky.webapp.Activity_Blank: android.webkit.WebView m_WebViewAdv>;
+
+        virtualinvoke $r1.<android.widget.LinearLayout: void addView(android.view.View)>($r4);
+
+        $r4 = r0.<com.movesky.webapp.Activity_Blank: android.webkit.WebView m_WebViewAdv>;
+
+        virtualinvoke $r4.<android.webkit.WebView: void setVerticalScrollBarEnabled(boolean)>(0);
+
+        $r4 = r0.<com.movesky.webapp.Activity_Blank: android.webkit.WebView m_WebViewAdv>;
+
+        virtualinvoke $r4.<android.webkit.WebView: void setHorizontalScrollBarEnabled(boolean)>(0);
+
+        $r4 = r0.<com.movesky.webapp.Activity_Blank: android.webkit.WebView m_WebViewAdv>;
+
+        $r6 = virtualinvoke $r4.<android.webkit.WebView: android.webkit.WebSettings getSettings()>();
+
+        virtualinvoke $r6.<android.webkit.WebSettings: void setBuiltInZoomControls(boolean)>(0);
+
+        virtualinvoke $r6.<android.webkit.WebSettings: void setJavaScriptEnabled(boolean)>(1);
+
+        $r4 = r0.<com.movesky.webapp.Activity_Blank: android.webkit.WebView m_WebViewAdv>;
+
+        $r7 = new com.movesky.webapp.Activity_Blank$1;
+
+        specialinvoke $r7.<com.movesky.webapp.Activity_Blank$1: void <init>(com.movesky.webapp.Activity_Blank)>(r0);
+
+        virtualinvoke $r4.<android.webkit.WebView: void setOnLongClickListener(android.view.View$OnLongClickListener)>($r7);
+
+        $r4 = r0.<com.movesky.webapp.Activity_Blank: android.webkit.WebView m_WebViewAdv>;
+
+        virtualinvoke $r4.<android.webkit.WebView: void loadUrl(java.lang.String)>($r3);
+
+        return;
+    }
+
+    public void onCreate(android.os.Bundle)
+    {
+        com.movesky.webapp.Activity_Blank r0;
+        android.os.Bundle $r1;
+        android.content.Intent $r2;
+        java.lang.String $r3, $r5;
+        boolean $z0;
+        java.lang.Object[] $r4;
+        java.util.Timer $r6;
+        java.util.TimerTask $r7;
+        long $l0;
+        java.lang.Long $r8;
+
+        r0 := @this: com.movesky.webapp.Activity_Blank;
+
+        $r1 := @parameter0: android.os.Bundle;
+
+        specialinvoke r0.<android.app.Activity: void onCreate(android.os.Bundle)>($r1);
+
+        <com.movesky.webapp.Activity_Blank: android.app.Activity m_ct> = r0;
+
+        $r2 = virtualinvoke r0.<com.movesky.webapp.Activity_Blank: android.content.Intent getIntent()>();
+
+        $r1 = virtualinvoke $r2.<android.content.Intent: android.os.Bundle getExtras()>();
+
+        if $r1 != null goto label1;
+
+        return;
+
+     label1:
+        $r3 = virtualinvoke $r1.<android.os.Bundle: java.lang.String getString(java.lang.String)>("Cmd");
+
+        $z0 = virtualinvoke $r3.<java.lang.String: boolean equals(java.lang.Object)>("ShowTaobaoWelcome");
+
+        if $z0 == 0 goto label3;
+
+        virtualinvoke r0.<com.movesky.webapp.Activity_Blank: void InitAdWaitView()>();
+
+        $r3 = virtualinvoke $r1.<android.os.Bundle: java.lang.String getString(java.lang.String)>("Mode");
+
+        $r4 = newarray (java.lang.Object)[1];
+
+        $r4[0] = $r3;
+
+        $r5 = staticinvoke <java.lang.String: java.lang.String format(java.lang.String,java.lang.Object[])>("Mode=%s", $r4);
+
+        staticinvoke <com.zrd.common.ZrdCommon$ZrdLog: void Log(java.lang.String)>($r5);
+
+        $z0 = virtualinvoke $r3.<java.lang.String: boolean equals(java.lang.Object)>("1");
+
+        if $z0 == 0 goto label2;
+
+        $r6 = <com.movesky.webapp.Activity_Blank: java.util.Timer mTimer>;
+
+        $r7 = <com.movesky.webapp.Activity_Blank: java.util.TimerTask mTimerTask>;
+
+        $l0 = <com.movesky.webapp.YSHtml: long m_durTaobaoImgShow>;
+
+        virtualinvoke $r6.<java.util.Timer: void schedule(java.util.TimerTask,long,long)>($r7, $l0, 1000L);
+
+        $r4 = newarray (java.lang.Object)[1];
+
+        $l0 = <com.movesky.webapp.YSHtml: long m_durTaobaoImgShow>;
+
+        $r8 = staticinvoke <java.lang.Long: java.lang.Long valueOf(long)>($l0);
+
+        $r4[0] = $r8;
+
+        $r3 = staticinvoke <java.lang.String: java.lang.String format(java.lang.String,java.lang.Object[])>("m_durTaobaoImgShow=%d", $r4);
+
+        staticinvoke <com.zrd.common.ZrdCommon$ZrdLog: void Log(java.lang.String)>($r3);
+
+        return;
+
+     label2:
+        $r6 = <com.movesky.webapp.Activity_Blank: java.util.Timer mTimer>;
+
+        $r7 = <com.movesky.webapp.Activity_Blank: java.util.TimerTask mTimerTask>;
+
+        virtualinvoke $r6.<java.util.Timer: void schedule(java.util.TimerTask,long,long)>($r7, 2000L, 1000L);
+
+     label3:
+        return;
+    }
+}

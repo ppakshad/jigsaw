@@ -1,0 +1,91 @@
+class jp.yoututubebedouga.HttpPostTask$1 extends java.lang.Object implements org.apache.http.client.ResponseHandler
+{
+    final jp.yoututubebedouga.HttpPostTask this$0;
+
+    void <init>(jp.yoututubebedouga.HttpPostTask)
+    {
+        jp.yoututubebedouga.HttpPostTask$1 r0;
+        jp.yoututubebedouga.HttpPostTask $r1;
+
+        r0 := @this: jp.yoututubebedouga.HttpPostTask$1;
+
+        $r1 := @parameter0: jp.yoututubebedouga.HttpPostTask;
+
+        r0.<jp.yoututubebedouga.HttpPostTask$1: jp.yoututubebedouga.HttpPostTask this$0> = $r1;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public volatile java.lang.Object handleResponse(org.apache.http.HttpResponse) throws org.apache.http.client.ClientProtocolException, java.io.IOException
+    {
+        jp.yoututubebedouga.HttpPostTask$1 r0;
+        org.apache.http.HttpResponse $r1;
+        java.lang.Void $r2;
+
+        r0 := @this: jp.yoututubebedouga.HttpPostTask$1;
+
+        $r1 := @parameter0: org.apache.http.HttpResponse;
+
+        $r2 = virtualinvoke r0.<jp.yoututubebedouga.HttpPostTask$1: java.lang.Void handleResponse(org.apache.http.HttpResponse)>($r1);
+
+        return $r2;
+    }
+
+    public java.lang.Void handleResponse(org.apache.http.HttpResponse) throws java.io.IOException
+    {
+        org.apache.http.HttpEntity $r4;
+        org.apache.http.StatusLine $r2;
+        jp.yoututubebedouga.HttpPostTask $r3, $r5;
+        jp.yoututubebedouga.HttpPostTask$1 r0;
+        int $i0;
+        org.apache.http.HttpResponse $r1;
+        java.lang.String $r6;
+
+        r0 := @this: jp.yoututubebedouga.HttpPostTask$1;
+
+        $r1 := @parameter0: org.apache.http.HttpResponse;
+
+        $r2 = interfaceinvoke $r1.<org.apache.http.HttpResponse: org.apache.http.StatusLine getStatusLine()>();
+
+        $i0 = interfaceinvoke $r2.<org.apache.http.StatusLine: int getStatusCode()>();
+
+        lookupswitch($i0)
+        {
+            case 200: goto label3;
+            case 404: goto label4;
+            default: goto label1;
+        };
+
+     label1:
+        $r3 = r0.<jp.yoututubebedouga.HttpPostTask$1: jp.yoututubebedouga.HttpPostTask this$0>;
+
+        staticinvoke <jp.yoututubebedouga.HttpPostTask: void access$4(jp.yoututubebedouga.HttpPostTask,java.lang.String)>($r3, "\u901a\u4fe1\u30a8\u30e9\u30fc\u304c\u767a\u751f");
+
+     label2:
+        return null;
+
+     label3:
+        $r3 = r0.<jp.yoututubebedouga.HttpPostTask$1: jp.yoututubebedouga.HttpPostTask this$0>;
+
+        $r4 = interfaceinvoke $r1.<org.apache.http.HttpResponse: org.apache.http.HttpEntity getEntity()>();
+
+        $r5 = r0.<jp.yoututubebedouga.HttpPostTask$1: jp.yoututubebedouga.HttpPostTask this$0>;
+
+        $r6 = staticinvoke <jp.yoututubebedouga.HttpPostTask: java.lang.String access$2(jp.yoututubebedouga.HttpPostTask)>($r5);
+
+        $r6 = staticinvoke <org.apache.http.util.EntityUtils: java.lang.String toString(org.apache.http.HttpEntity,java.lang.String)>($r4, $r6);
+
+        staticinvoke <jp.yoututubebedouga.HttpPostTask: void access$3(jp.yoututubebedouga.HttpPostTask,java.lang.String)>($r3, $r6);
+
+        goto label2;
+
+     label4:
+        $r3 = r0.<jp.yoututubebedouga.HttpPostTask$1: jp.yoututubebedouga.HttpPostTask this$0>;
+
+        staticinvoke <jp.yoututubebedouga.HttpPostTask: void access$4(jp.yoututubebedouga.HttpPostTask,java.lang.String)>($r3, "404 Not Found");
+
+        goto label2;
+    }
+}

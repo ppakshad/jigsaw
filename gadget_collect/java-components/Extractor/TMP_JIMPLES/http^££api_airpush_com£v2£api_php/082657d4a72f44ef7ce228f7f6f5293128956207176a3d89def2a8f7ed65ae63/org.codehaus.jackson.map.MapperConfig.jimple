@@ -1,0 +1,39 @@
+public interface  org.codehaus.jackson.map.MapperConfig extends java.lang.Object implements org.codehaus.jackson.map.ClassIntrospector$MixInResolver
+{
+
+    public abstract void addMixInAnnotations(java.lang.Class, java.lang.Class);
+
+    public abstract void appendAnnotationIntrospector(org.codehaus.jackson.map.AnnotationIntrospector);
+
+    public abstract org.codehaus.jackson.map.MapperConfig createUnshared(org.codehaus.jackson.map.jsontype.TypeResolverBuilder, org.codehaus.jackson.map.introspect.VisibilityChecker, org.codehaus.jackson.map.jsontype.SubtypeResolver);
+
+    public abstract java.lang.Class findMixInClassFor(java.lang.Class);
+
+    public abstract void fromAnnotations(java.lang.Class);
+
+    public abstract org.codehaus.jackson.map.AnnotationIntrospector getAnnotationIntrospector();
+
+    public abstract java.text.DateFormat getDateFormat();
+
+    public abstract org.codehaus.jackson.map.jsontype.TypeResolverBuilder getDefaultTyper(org.codehaus.jackson.type.JavaType);
+
+    public abstract org.codehaus.jackson.map.introspect.VisibilityChecker getDefaultVisibilityChecker();
+
+    public abstract org.codehaus.jackson.map.jsontype.SubtypeResolver getSubtypeResolver();
+
+    public abstract void insertAnnotationIntrospector(org.codehaus.jackson.map.AnnotationIntrospector);
+
+    public abstract org.codehaus.jackson.map.BeanDescription introspectClassAnnotations(java.lang.Class);
+
+    public abstract org.codehaus.jackson.map.BeanDescription introspectDirectClassAnnotations(java.lang.Class);
+
+    public abstract void setAnnotationIntrospector(org.codehaus.jackson.map.AnnotationIntrospector);
+
+    public abstract void setDateFormat(java.text.DateFormat);
+
+    public abstract void setIntrospector(org.codehaus.jackson.map.ClassIntrospector);
+
+    public abstract void setMixInAnnotations(java.util.Map);
+
+    public abstract void setSubtypeResolver(org.codehaus.jackson.map.jsontype.SubtypeResolver);
+}

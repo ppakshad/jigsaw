@@ -1,0 +1,127 @@
+class com.wiyun.ad.q extends android.widget.FrameLayout
+{
+
+    public void <init>(android.content.Context)
+    {
+        com.wiyun.ad.q r0;
+        android.content.Context $r1;
+
+        r0 := @this: com.wiyun.ad.q;
+
+        $r1 := @parameter0: android.content.Context;
+
+        specialinvoke r0.<android.widget.FrameLayout: void <init>(android.content.Context)>($r1);
+
+        return;
+    }
+
+    public void <init>(android.content.Context, android.util.AttributeSet)
+    {
+        com.wiyun.ad.q r0;
+        android.content.Context $r1;
+        android.util.AttributeSet $r2;
+
+        r0 := @this: com.wiyun.ad.q;
+
+        $r1 := @parameter0: android.content.Context;
+
+        $r2 := @parameter1: android.util.AttributeSet;
+
+        specialinvoke r0.<android.widget.FrameLayout: void <init>(android.content.Context,android.util.AttributeSet)>($r1, $r2);
+
+        return;
+    }
+
+    public void <init>(android.content.Context, android.util.AttributeSet, int)
+    {
+        com.wiyun.ad.q r0;
+        android.content.Context $r1;
+        android.util.AttributeSet $r2;
+        int $i0;
+
+        r0 := @this: com.wiyun.ad.q;
+
+        $r1 := @parameter0: android.content.Context;
+
+        $r2 := @parameter1: android.util.AttributeSet;
+
+        $i0 := @parameter2: int;
+
+        specialinvoke r0.<android.widget.FrameLayout: void <init>(android.content.Context,android.util.AttributeSet,int)>($r1, $r2, $i0);
+
+        return;
+    }
+
+    protected void onLayout(boolean, int, int, int, int)
+    {
+        com.wiyun.ad.q r0;
+        boolean $z0;
+        int $i0, $i1, $i2, $i3, $i4, $i5, $i6;
+        android.view.View $r1;
+
+        r0 := @this: com.wiyun.ad.q;
+
+        $z0 := @parameter0: boolean;
+
+        $i0 := @parameter1: int;
+
+        $i1 := @parameter2: int;
+
+        $i2 := @parameter3: int;
+
+        $i3 := @parameter4: int;
+
+        specialinvoke r0.<android.widget.FrameLayout: void onLayout(boolean,int,int,int,int)>($z0, $i0, $i1, $i2, $i3);
+
+        $i4 = virtualinvoke r0.<com.wiyun.ad.q: int getChildCount()>();
+
+        $i5 = 0;
+
+     label1:
+        if $i5 < $i4 goto label2;
+
+        return;
+
+     label2:
+        $r1 = virtualinvoke r0.<com.wiyun.ad.q: android.view.View getChildAt(int)>($i5);
+
+        $i6 = virtualinvoke $r1.<android.view.View: int getId()>();
+
+        if $i6 != 4096 goto label3;
+
+        virtualinvoke $r1.<android.view.View: void layout(int,int,int,int)>($i0, $i1, $i2, $i3);
+
+        return;
+
+     label3:
+        $i5 = $i5 + 1;
+
+        goto label1;
+    }
+
+    protected void onMeasure(int, int)
+    {
+        com.wiyun.ad.q r0;
+        int $i0, $i1;
+
+        r0 := @this: com.wiyun.ad.q;
+
+        $i0 := @parameter0: int;
+
+        $i1 := @parameter1: int;
+
+        specialinvoke r0.<android.widget.FrameLayout: void onMeasure(int,int)>($i0, $i1);
+
+        $i1 = virtualinvoke r0.<com.wiyun.ad.q: int getMeasuredWidth()>();
+
+        $i0 = virtualinvoke r0.<com.wiyun.ad.q: int getMeasuredHeight()>();
+
+        $i1 = $i1 + 14;
+
+        $i0 = $i0 + 8;
+
+        virtualinvoke r0.<com.wiyun.ad.q: void setMeasuredDimension(int,int)>($i1, $i0);
+
+        return;
+    }
+}

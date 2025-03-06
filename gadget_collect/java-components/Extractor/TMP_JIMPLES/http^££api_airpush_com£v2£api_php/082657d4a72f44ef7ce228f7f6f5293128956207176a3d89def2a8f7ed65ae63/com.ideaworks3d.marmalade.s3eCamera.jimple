@@ -1,0 +1,1204 @@
+class com.ideaworks3d.marmalade.s3eCamera extends java.lang.Object implements android.hardware.Camera$PreviewCallback, com.ideaworks3d.marmalade.SuspendResumeListener
+{
+    static final int S3E_CAMERA_AUTO_FOCUS;
+    static final int S3E_CAMERA_AVAILABLE;
+    static final int S3E_CAMERA_BRIGHTNESS;
+    static final int S3E_CAMERA_BUSY;
+    static final int S3E_CAMERA_CONTRAST;
+    static final int S3E_CAMERA_PIXEL_TYPE_NV21;
+    static final int S3E_CAMERA_PIXEL_TYPE_RGB565;
+    static final int S3E_CAMERA_QUALITY;
+    static final int S3E_CAMERA_STATUS;
+    static final int S3E_CAMERA_TYPE;
+    int m_AutoFocus;
+    private byte[] m_Buffer;
+    private android.hardware.Camera m_Camera;
+    int m_Hint;
+    private boolean m_NeedsRemovePreview;
+    private com.ideaworks3d.marmalade.s3eCamera$Preview m_Preview;
+    int m_Quality;
+    private android.hardware.Camera$Size m_Size;
+    int m_Type;
+    private com.ideaworks3d.marmalade.LoaderView m_View;
+    java.lang.reflect.Method m_addCallbackBuffer;
+    java.lang.reflect.Method m_setPreviewCallbackWithBuffer;
+    private boolean running;
+
+    public void <init>()
+    {
+        com.ideaworks3d.marmalade.s3eCamera r0;
+
+        r0 := @this: com.ideaworks3d.marmalade.s3eCamera;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        r0.<com.ideaworks3d.marmalade.s3eCamera: int m_Hint> = 0;
+
+        r0.<com.ideaworks3d.marmalade.s3eCamera: int m_Type> = 0;
+
+        r0.<com.ideaworks3d.marmalade.s3eCamera: int m_Quality> = 0;
+
+        r0.<com.ideaworks3d.marmalade.s3eCamera: int m_AutoFocus> = 0;
+
+        r0.<com.ideaworks3d.marmalade.s3eCamera: boolean running> = 0;
+
+        r0.<com.ideaworks3d.marmalade.s3eCamera: boolean m_NeedsRemovePreview> = 0;
+
+        staticinvoke <com.ideaworks3d.marmalade.LoaderAPI: void addSuspendResumeListener(com.ideaworks3d.marmalade.SuspendResumeListener)>(r0);
+
+        return;
+    }
+
+    static android.hardware.Camera access$000(com.ideaworks3d.marmalade.s3eCamera)
+    {
+        com.ideaworks3d.marmalade.s3eCamera $r0;
+        android.hardware.Camera r1;
+
+        $r0 := @parameter0: com.ideaworks3d.marmalade.s3eCamera;
+
+        r1 = $r0.<com.ideaworks3d.marmalade.s3eCamera: android.hardware.Camera m_Camera>;
+
+        return r1;
+    }
+
+    static android.hardware.Camera access$002(com.ideaworks3d.marmalade.s3eCamera, android.hardware.Camera)
+    {
+        com.ideaworks3d.marmalade.s3eCamera $r0;
+        android.hardware.Camera $r1;
+
+        $r0 := @parameter0: com.ideaworks3d.marmalade.s3eCamera;
+
+        $r1 := @parameter1: android.hardware.Camera;
+
+        $r0.<com.ideaworks3d.marmalade.s3eCamera: android.hardware.Camera m_Camera> = $r1;
+
+        return $r1;
+    }
+
+    private android.hardware.Camera$Size getOptimalPreviewSize(java.util.List, int, int)
+    {
+        java.util.List $r0;
+        int $i0, $i1, $i2, $i3;
+        com.ideaworks3d.marmalade.s3eCamera r1;
+        java.util.Iterator $r2;
+        android.hardware.Camera$Size $r3, r5;
+        double $d0, $d1;
+        boolean $z0;
+        java.lang.Object $r4;
+        java.lang.StringBuilder $r6;
+        java.lang.String $r7;
+        byte $b4;
+
+        r1 := @this: com.ideaworks3d.marmalade.s3eCamera;
+
+        $r0 := @parameter0: java.util.List;
+
+        $i0 := @parameter1: int;
+
+        $i1 := @parameter2: int;
+
+        $r2 = interfaceinvoke $r0.<java.util.List: java.util.Iterator iterator()>();
+
+        $r3 = null;
+
+        $d0 = 1.7976931348623157E308;
+
+     label1:
+        $z0 = interfaceinvoke $r2.<java.util.Iterator: boolean hasNext()>();
+
+        if $z0 == 0 goto label2;
+
+        $r4 = interfaceinvoke $r2.<java.util.Iterator: java.lang.Object next()>();
+
+        r5 = (android.hardware.Camera$Size) $r4;
+
+        $r6 = new java.lang.StringBuilder;
+
+        specialinvoke $r6.<java.lang.StringBuilder: void <init>()>();
+
+        $r6 = virtualinvoke $r6.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Available size: ");
+
+        $i2 = r5.<android.hardware.Camera$Size: int width>;
+
+        $r6 = virtualinvoke $r6.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>($i2);
+
+        $r6 = virtualinvoke $r6.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("x");
+
+        $i2 = r5.<android.hardware.Camera$Size: int height>;
+
+        $r6 = virtualinvoke $r6.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>($i2);
+
+        $r7 = virtualinvoke $r6.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <android.util.Log: int i(java.lang.String,java.lang.String)>("CameraView", $r7);
+
+        $i2 = r5.<android.hardware.Camera$Size: int height>;
+
+        $i2 = $i2 - $i1;
+
+        $i2 = staticinvoke <java.lang.Math: int abs(int)>($i2);
+
+        $i3 = r5.<android.hardware.Camera$Size: int width>;
+
+        $i3 = $i3 - $i0;
+
+        $i3 = staticinvoke <java.lang.Math: int abs(int)>($i3);
+
+        $i2 = $i2 + $i3;
+
+        $d1 = (double) $i2;
+
+        $b4 = $d1 cmpg $d0;
+
+        if $b4 >= 0 goto label1;
+
+        $d0 = $d1;
+
+        $r3 = r5;
+
+        goto label1;
+
+     label2:
+        return $r3;
+    }
+
+    private native void previewCallback(byte[], int, int, int, int);
+
+    public int createPreview()
+    {
+        com.ideaworks3d.marmalade.s3eCamera r0;
+        android.view.WindowManager$LayoutParams $r1;
+        int $i0;
+        com.ideaworks3d.marmalade.s3eCamera$Preview $r2;
+        com.ideaworks3d.marmalade.LoaderActivity $r3;
+        android.view.Window $r4;
+        android.view.WindowManager $r5;
+
+        r0 := @this: com.ideaworks3d.marmalade.s3eCamera;
+
+        $r1 = new android.view.WindowManager$LayoutParams;
+
+        specialinvoke $r1.<android.view.WindowManager$LayoutParams: void <init>()>();
+
+        $i0 = $r1.<android.view.WindowManager$LayoutParams: int flags>;
+
+        $i0 = $i0 | 8;
+
+        $r1.<android.view.WindowManager$LayoutParams: int flags> = $i0;
+
+        $i0 = $r1.<android.view.WindowManager$LayoutParams: int flags>;
+
+        $i0 = $i0 | 16;
+
+        $r1.<android.view.WindowManager$LayoutParams: int flags> = $i0;
+
+        $i0 = $r1.<android.view.WindowManager$LayoutParams: int flags>;
+
+        $i0 = $i0 | 512;
+
+        $r1.<android.view.WindowManager$LayoutParams: int flags> = $i0;
+
+        $i0 = $r1.<android.view.WindowManager$LayoutParams: int flags>;
+
+        $i0 = $i0 | 1024;
+
+        $r1.<android.view.WindowManager$LayoutParams: int flags> = $i0;
+
+        $r1.<android.view.WindowManager$LayoutParams: int gravity> = 85;
+
+        $r1.<android.view.WindowManager$LayoutParams: int x> = 0;
+
+        $r1.<android.view.WindowManager$LayoutParams: int y> = 0;
+
+        $r1.<android.view.WindowManager$LayoutParams: int width> = 1;
+
+        $r1.<android.view.WindowManager$LayoutParams: int height> = 1;
+
+        $r2 = new com.ideaworks3d.marmalade.s3eCamera$Preview;
+
+        $r3 = <com.ideaworks3d.marmalade.LoaderActivity: com.ideaworks3d.marmalade.LoaderActivity m_Activity>;
+
+        specialinvoke $r2.<com.ideaworks3d.marmalade.s3eCamera$Preview: void <init>(com.ideaworks3d.marmalade.s3eCamera,android.content.Context)>(r0, $r3);
+
+        r0.<com.ideaworks3d.marmalade.s3eCamera: com.ideaworks3d.marmalade.s3eCamera$Preview m_Preview> = $r2;
+
+        r0.<com.ideaworks3d.marmalade.s3eCamera: boolean m_NeedsRemovePreview> = 1;
+
+        $r3 = <com.ideaworks3d.marmalade.LoaderActivity: com.ideaworks3d.marmalade.LoaderActivity m_Activity>;
+
+        $r4 = virtualinvoke $r3.<com.ideaworks3d.marmalade.LoaderActivity: android.view.Window getWindow()>();
+
+        $r5 = virtualinvoke $r4.<android.view.Window: android.view.WindowManager getWindowManager()>();
+
+        $r2 = r0.<com.ideaworks3d.marmalade.s3eCamera: com.ideaworks3d.marmalade.s3eCamera$Preview m_Preview>;
+
+        interfaceinvoke $r5.<android.view.WindowManager: void addView(android.view.View,android.view.ViewGroup$LayoutParams)>($r2, $r1);
+
+        return 0;
+    }
+
+    public void onPreviewFrame(byte[], android.hardware.Camera)
+    {
+        com.ideaworks3d.marmalade.s3eCamera r0;
+        byte[] $r1;
+        android.hardware.Camera $r2;
+        android.hardware.Camera$Parameters $r3;
+        int $i0, $i1, $i2, $i3;
+        android.hardware.Camera$Size $r4;
+        com.ideaworks3d.marmalade.LoaderActivity $r5;
+        com.ideaworks3d.marmalade.LoaderThread $r6;
+        java.lang.reflect.Method $r7;
+        java.lang.Object[] $r8;
+        java.lang.Exception $r9;
+
+        r0 := @this: com.ideaworks3d.marmalade.s3eCamera;
+
+        $r1 := @parameter0: byte[];
+
+        $r2 := @parameter1: android.hardware.Camera;
+
+        $r3 = virtualinvoke $r2.<android.hardware.Camera: android.hardware.Camera$Parameters getParameters()>();
+
+        $i0 = virtualinvoke $r3.<android.hardware.Camera$Parameters: int getPreviewFormat()>();
+
+        $r4 = r0.<com.ideaworks3d.marmalade.s3eCamera: android.hardware.Camera$Size m_Size>;
+
+        $i1 = $r4.<android.hardware.Camera$Size: int width>;
+
+        $r4 = r0.<com.ideaworks3d.marmalade.s3eCamera: android.hardware.Camera$Size m_Size>;
+
+        $i2 = $r4.<android.hardware.Camera$Size: int height>;
+
+        $r5 = <com.ideaworks3d.marmalade.LoaderActivity: com.ideaworks3d.marmalade.LoaderActivity m_Activity>;
+
+        $r6 = virtualinvoke $r5.<com.ideaworks3d.marmalade.LoaderActivity: com.ideaworks3d.marmalade.LoaderThread LoaderThread()>();
+
+        $i3 = virtualinvoke $r6.<com.ideaworks3d.marmalade.LoaderThread: int getOrientation()>();
+
+        specialinvoke r0.<com.ideaworks3d.marmalade.s3eCamera: void previewCallback(byte[],int,int,int,int)>($r1, $i0, $i1, $i2, $i3);
+
+        $r7 = r0.<com.ideaworks3d.marmalade.s3eCamera: java.lang.reflect.Method m_addCallbackBuffer>;
+
+        if $r7 == null goto label4;
+
+     label1:
+        $r7 = r0.<com.ideaworks3d.marmalade.s3eCamera: java.lang.reflect.Method m_addCallbackBuffer>;
+
+        $r2 = r0.<com.ideaworks3d.marmalade.s3eCamera: android.hardware.Camera m_Camera>;
+
+        $r8 = newarray (java.lang.Object)[1];
+
+        $r1 = r0.<com.ideaworks3d.marmalade.s3eCamera: byte[] m_Buffer>;
+
+        $r8[0] = $r1;
+
+        virtualinvoke $r7.<java.lang.reflect.Method: java.lang.Object invoke(java.lang.Object,java.lang.Object[])>($r2, $r8);
+
+     label2:
+        return;
+
+     label3:
+        $r9 := @caughtexception;
+
+     label4:
+        return;
+
+        catch java.lang.Exception from label1 to label2 with label3;
+    }
+
+    public void onSuspendResumeEvent(com.ideaworks3d.marmalade.SuspendResumeEvent)
+    {
+        com.ideaworks3d.marmalade.s3eCamera r0;
+        com.ideaworks3d.marmalade.SuspendResumeEvent $r1;
+        int $i0, $i1;
+        boolean $z0;
+        com.ideaworks3d.marmalade.SuspendResumeEvent$EventType $r2, $r3;
+
+        r0 := @this: com.ideaworks3d.marmalade.s3eCamera;
+
+        $r1 := @parameter0: com.ideaworks3d.marmalade.SuspendResumeEvent;
+
+        $z0 = r0.<com.ideaworks3d.marmalade.s3eCamera: boolean running>;
+
+        if $z0 != 0 goto label1;
+
+        return;
+
+     label1:
+        $r2 = $r1.<com.ideaworks3d.marmalade.SuspendResumeEvent: com.ideaworks3d.marmalade.SuspendResumeEvent$EventType eventType>;
+
+        $r3 = <com.ideaworks3d.marmalade.SuspendResumeEvent$EventType: com.ideaworks3d.marmalade.SuspendResumeEvent$EventType RESUME>;
+
+        if $r2 != $r3 goto label2;
+
+        $i1 = r0.<com.ideaworks3d.marmalade.s3eCamera: int m_Hint>;
+
+        $i0 = r0.<com.ideaworks3d.marmalade.s3eCamera: int m_Quality>;
+
+        virtualinvoke r0.<com.ideaworks3d.marmalade.s3eCamera: int s3eCameraStart(int,int,int)>($i1, 4097, $i0);
+
+     label2:
+        $r2 = $r1.<com.ideaworks3d.marmalade.SuspendResumeEvent: com.ideaworks3d.marmalade.SuspendResumeEvent$EventType eventType>;
+
+        $r3 = <com.ideaworks3d.marmalade.SuspendResumeEvent$EventType: com.ideaworks3d.marmalade.SuspendResumeEvent$EventType SUSPEND>;
+
+        if $r2 != $r3 goto label3;
+
+        virtualinvoke r0.<com.ideaworks3d.marmalade.s3eCamera: int s3eCameraStop()>();
+
+        r0.<com.ideaworks3d.marmalade.s3eCamera: boolean running> = 1;
+
+     label3:
+        $r2 = $r1.<com.ideaworks3d.marmalade.SuspendResumeEvent: com.ideaworks3d.marmalade.SuspendResumeEvent$EventType eventType>;
+
+        $r3 = <com.ideaworks3d.marmalade.SuspendResumeEvent$EventType: com.ideaworks3d.marmalade.SuspendResumeEvent$EventType SHUTDOWN>;
+
+        if $r2 != $r3 goto label4;
+
+        virtualinvoke r0.<com.ideaworks3d.marmalade.s3eCamera: int s3eCameraStop()>();
+
+     label4:
+        return;
+    }
+
+    public int removePreview()
+    {
+        com.ideaworks3d.marmalade.s3eCamera r0;
+        com.ideaworks3d.marmalade.s3eCamera$Preview $r1;
+        boolean $z0;
+        com.ideaworks3d.marmalade.LoaderActivity $r2;
+        android.view.Window $r3;
+        android.view.WindowManager $r4;
+
+        r0 := @this: com.ideaworks3d.marmalade.s3eCamera;
+
+        $r1 = r0.<com.ideaworks3d.marmalade.s3eCamera: com.ideaworks3d.marmalade.s3eCamera$Preview m_Preview>;
+
+        if $r1 == null goto label1;
+
+        $z0 = r0.<com.ideaworks3d.marmalade.s3eCamera: boolean m_NeedsRemovePreview>;
+
+        if $z0 == 0 goto label1;
+
+        r0.<com.ideaworks3d.marmalade.s3eCamera: boolean m_NeedsRemovePreview> = 0;
+
+        $r2 = <com.ideaworks3d.marmalade.LoaderActivity: com.ideaworks3d.marmalade.LoaderActivity m_Activity>;
+
+        $r3 = virtualinvoke $r2.<com.ideaworks3d.marmalade.LoaderActivity: android.view.Window getWindow()>();
+
+        $r4 = virtualinvoke $r3.<android.view.Window: android.view.WindowManager getWindowManager()>();
+
+        $r1 = r0.<com.ideaworks3d.marmalade.s3eCamera: com.ideaworks3d.marmalade.s3eCamera$Preview m_Preview>;
+
+        interfaceinvoke $r4.<android.view.WindowManager: void removeViewImmediate(android.view.View)>($r1);
+
+        r0.<com.ideaworks3d.marmalade.s3eCamera: com.ideaworks3d.marmalade.s3eCamera$Preview m_Preview> = null;
+
+        return 0;
+
+     label1:
+        return 1;
+    }
+
+    public int s3eCameraGetInt(int)
+    {
+        int $i0;
+        com.ideaworks3d.marmalade.s3eCamera r0;
+        android.hardware.Camera $r1;
+        com.ideaworks3d.marmalade.LoaderActivity $r2;
+        android.content.pm.PackageManager $r3;
+        java.lang.Class $r4;
+        java.lang.Class[] $r5;
+        java.lang.reflect.Method $r6;
+        java.lang.Object[] $r7;
+        java.lang.Object $r8;
+        java.lang.Boolean r9;
+        boolean $z0;
+        java.lang.Exception $r10;
+
+        r0 := @this: com.ideaworks3d.marmalade.s3eCamera;
+
+        $i0 := @parameter0: int;
+
+        if $i0 != 1 goto label2;
+
+        $r1 = r0.<com.ideaworks3d.marmalade.s3eCamera: android.hardware.Camera m_Camera>;
+
+        if $r1 != null goto label1;
+
+        return 0;
+
+     label1:
+        return 1;
+
+     label2:
+        if $i0 != 0 goto label7;
+
+        $r2 = <com.ideaworks3d.marmalade.LoaderActivity: com.ideaworks3d.marmalade.LoaderActivity m_Activity>;
+
+        $r3 = virtualinvoke $r2.<com.ideaworks3d.marmalade.LoaderActivity: android.content.pm.PackageManager getPackageManager()>();
+
+        $r4 = class "Landroid/content/pm/PackageManager;";
+
+     label3:
+        $r5 = newarray (java.lang.Class)[1];
+
+        $r5[0] = class "Ljava/lang/String;";
+
+        $r6 = virtualinvoke $r4.<java.lang.Class: java.lang.reflect.Method getMethod(java.lang.String,java.lang.Class[])>("hasSystemFeature", $r5);
+
+        $r7 = newarray (java.lang.Object)[1];
+
+        $r7[0] = "android.hardware.camera";
+
+        $r8 = virtualinvoke $r6.<java.lang.reflect.Method: java.lang.Object invoke(java.lang.Object,java.lang.Object[])>($r3, $r7);
+
+        r9 = (java.lang.Boolean) $r8;
+
+        $z0 = virtualinvoke r9.<java.lang.Boolean: boolean booleanValue()>();
+
+     label4:
+        if $z0 == 0 goto label5;
+
+        return 1;
+
+     label5:
+        return 0;
+
+     label6:
+        $r10 := @caughtexception;
+
+        return 1;
+
+     label7:
+        return 0;
+
+        catch java.lang.Exception from label3 to label4 with label6;
+    }
+
+    public boolean s3eCameraIsFormatSupported(int)
+    {
+        com.ideaworks3d.marmalade.s3eCamera r0;
+        int $i0;
+        android.hardware.Camera $r1;
+        boolean $z0, $z1;
+        android.hardware.Camera$Parameters $r2;
+        java.lang.Class $r3;
+        java.lang.Class[] $r4;
+        java.lang.reflect.Method $r5;
+        java.lang.Object[] $r6;
+        java.lang.Object $r7;
+        java.util.List $r8;
+        java.lang.StringBuilder $r9;
+        java.lang.String $r10;
+        java.lang.Integer $r11;
+        java.lang.Exception $r12, $r14;
+        java.lang.Throwable $r13;
+
+        r0 := @this: com.ideaworks3d.marmalade.s3eCamera;
+
+        $i0 := @parameter0: int;
+
+        if $i0 != 4097 goto label01;
+
+        return 1;
+
+     label01:
+        if $i0 != 1058 goto label12;
+
+     label02:
+        $r1 = r0.<com.ideaworks3d.marmalade.s3eCamera: android.hardware.Camera m_Camera>;
+
+     label03:
+        if $r1 != null goto label21;
+
+     label04:
+        $r1 = staticinvoke <android.hardware.Camera: android.hardware.Camera open()>();
+
+        r0.<com.ideaworks3d.marmalade.s3eCamera: android.hardware.Camera m_Camera> = $r1;
+
+     label05:
+        $z0 = 1;
+
+     label06:
+        $r1 = r0.<com.ideaworks3d.marmalade.s3eCamera: android.hardware.Camera m_Camera>;
+
+        $r2 = virtualinvoke $r1.<android.hardware.Camera: android.hardware.Camera$Parameters getParameters()>();
+
+        $r3 = virtualinvoke $r2.<java.lang.Object: java.lang.Class getClass()>();
+
+        $r4 = newarray (java.lang.Class)[0];
+
+        $r5 = virtualinvoke $r3.<java.lang.Class: java.lang.reflect.Method getMethod(java.lang.String,java.lang.Class[])>("getSupportedPreviewFormats", $r4);
+
+        $r6 = newarray (java.lang.Object)[0];
+
+        $r7 = virtualinvoke $r5.<java.lang.reflect.Method: java.lang.Object invoke(java.lang.Object,java.lang.Object[])>($r2, $r6);
+
+        $r8 = (java.util.List) $r7;
+
+     label07:
+        $r9 = new java.lang.StringBuilder;
+
+     label08:
+        specialinvoke $r9.<java.lang.StringBuilder: void <init>()>();
+
+        $r9 = virtualinvoke $r9.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Supported formats: ");
+
+        $r9 = virtualinvoke $r9.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($r8);
+
+        $r10 = virtualinvoke $r9.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <android.util.Log: int i(java.lang.String,java.lang.String)>("CameraView", $r10);
+
+        $r11 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>(4);
+
+        $z1 = interfaceinvoke $r8.<java.util.List: boolean contains(java.lang.Object)>($r11);
+
+     label09:
+        if $z1 == 0 goto label11;
+
+        if $z0 != 1 goto label10;
+
+        $r1 = r0.<com.ideaworks3d.marmalade.s3eCamera: android.hardware.Camera m_Camera>;
+
+        virtualinvoke $r1.<android.hardware.Camera: void release()>();
+
+        r0.<com.ideaworks3d.marmalade.s3eCamera: android.hardware.Camera m_Camera> = null;
+
+     label10:
+        return 1;
+
+     label11:
+        if $z0 != 1 goto label12;
+
+        $r1 = r0.<com.ideaworks3d.marmalade.s3eCamera: android.hardware.Camera m_Camera>;
+
+        virtualinvoke $r1.<android.hardware.Camera: void release()>();
+
+        r0.<com.ideaworks3d.marmalade.s3eCamera: android.hardware.Camera m_Camera> = null;
+
+     label12:
+        return 0;
+
+     label13:
+        $r12 := @caughtexception;
+
+        $z0 = 0;
+
+     label14:
+        if $z0 != 1 goto label15;
+
+        $r1 = r0.<com.ideaworks3d.marmalade.s3eCamera: android.hardware.Camera m_Camera>;
+
+        virtualinvoke $r1.<android.hardware.Camera: void release()>();
+
+        r0.<com.ideaworks3d.marmalade.s3eCamera: android.hardware.Camera m_Camera> = null;
+
+     label15:
+        return 0;
+
+     label16:
+        $r13 := @caughtexception;
+
+        $z0 = 0;
+
+     label17:
+        if $z0 != 1 goto label18;
+
+        $r1 = r0.<com.ideaworks3d.marmalade.s3eCamera: android.hardware.Camera m_Camera>;
+
+        virtualinvoke $r1.<android.hardware.Camera: void release()>();
+
+        r0.<com.ideaworks3d.marmalade.s3eCamera: android.hardware.Camera m_Camera> = null;
+
+     label18:
+        throw $r13;
+
+     label19:
+        $r13 := @caughtexception;
+
+        goto label17;
+
+     label20:
+        $r14 := @caughtexception;
+
+        goto label14;
+
+     label21:
+        $z0 = 0;
+
+        goto label06;
+
+        catch java.lang.Exception from label02 to label03 with label13;
+        catch java.lang.Exception from label04 to label05 with label13;
+        catch java.lang.Throwable from label02 to label03 with label16;
+        catch java.lang.Throwable from label04 to label05 with label16;
+        catch java.lang.Exception from label06 to label07 with label20;
+        catch java.lang.Exception from label08 to label09 with label20;
+        catch java.lang.Throwable from label06 to label09 with label19;
+    }
+
+    public int s3eCameraSetInt(int, int)
+    {
+        com.ideaworks3d.marmalade.s3eCamera r0;
+        int $i0, $i1;
+        android.hardware.Camera $r1;
+
+        r0 := @this: com.ideaworks3d.marmalade.s3eCamera;
+
+        $i0 := @parameter0: int;
+
+        $i1 := @parameter1: int;
+
+        if $i0 != 7 goto label1;
+
+        r0.<com.ideaworks3d.marmalade.s3eCamera: int m_Type> = $i1;
+
+     label1:
+        if $i0 != 3 goto label2;
+
+        $r1 = r0.<com.ideaworks3d.marmalade.s3eCamera: android.hardware.Camera m_Camera>;
+
+        if $r1 == null goto label2;
+
+     label2:
+        return 0;
+    }
+
+    public int s3eCameraStart(int, int, int)
+    {
+        com.ideaworks3d.marmalade.s3eCamera r0;
+        int $i0, $i1, $i2;
+        com.ideaworks3d.marmalade.LoaderActivity $r1;
+        com.ideaworks3d.marmalade.LoaderView $r2;
+        java.lang.Class $r3, $r11;
+        java.lang.Class[] $r4;
+        java.lang.reflect.Method $r5;
+        android.hardware.Camera $r6;
+        android.hardware.Camera$Size $r7;
+        byte[] $r8;
+        java.lang.Object[] $r9;
+        com.ideaworks3d.marmalade.s3eCamera$1 $r10;
+        java.lang.Integer $r12;
+        java.lang.Object $r13;
+        java.lang.Exception $r14, $r15;
+        com.ideaworks3d.marmalade.s3eCamera$2 $r16;
+
+        r0 := @this: com.ideaworks3d.marmalade.s3eCamera;
+
+        $i0 := @parameter0: int;
+
+        $i1 := @parameter1: int;
+
+        $i2 := @parameter2: int;
+
+        r0.<com.ideaworks3d.marmalade.s3eCamera: int m_Hint> = $i0;
+
+        r0.<com.ideaworks3d.marmalade.s3eCamera: int m_Quality> = $i2;
+
+        $r1 = <com.ideaworks3d.marmalade.LoaderActivity: com.ideaworks3d.marmalade.LoaderActivity m_Activity>;
+
+        $r2 = $r1.<com.ideaworks3d.marmalade.LoaderActivity: com.ideaworks3d.marmalade.LoaderView m_View>;
+
+        r0.<com.ideaworks3d.marmalade.s3eCamera: com.ideaworks3d.marmalade.LoaderView m_View> = $r2;
+
+        $r3 = class "Landroid/hardware/Camera;";
+
+     label01:
+        $r4 = newarray (java.lang.Class)[1];
+
+        $r4[0] = class "Landroid/hardware/Camera$PreviewCallback;";
+
+        $r5 = virtualinvoke $r3.<java.lang.Class: java.lang.reflect.Method getMethod(java.lang.String,java.lang.Class[])>("setPreviewCallbackWithBuffer", $r4);
+
+        r0.<com.ideaworks3d.marmalade.s3eCamera: java.lang.reflect.Method m_setPreviewCallbackWithBuffer> = $r5;
+
+     label02:
+        $r3 = class "Landroid/hardware/Camera;";
+
+     label03:
+        $r4 = newarray (java.lang.Class)[1];
+
+        $r4[0] = class "[B";
+
+        $r5 = virtualinvoke $r3.<java.lang.Class: java.lang.reflect.Method getMethod(java.lang.String,java.lang.Class[])>("addCallbackBuffer", $r4);
+
+        r0.<com.ideaworks3d.marmalade.s3eCamera: java.lang.reflect.Method m_addCallbackBuffer> = $r5;
+
+        $i0 = r0.<com.ideaworks3d.marmalade.s3eCamera: int m_Type>;
+
+     label04:
+        if $i0 != 0 goto label13;
+
+     label05:
+        $r6 = staticinvoke <android.hardware.Camera: android.hardware.Camera open()>();
+
+        r0.<com.ideaworks3d.marmalade.s3eCamera: android.hardware.Camera m_Camera> = $r6;
+
+     label06:
+        virtualinvoke r0.<com.ideaworks3d.marmalade.s3eCamera: void setCameraParameters()>();
+
+        staticinvoke <com.ideaworks3d.marmalade.LoaderAPI: void trace(java.lang.String)>("Creating image buffer");
+
+        $r7 = r0.<com.ideaworks3d.marmalade.s3eCamera: android.hardware.Camera$Size m_Size>;
+
+        $i0 = $r7.<android.hardware.Camera$Size: int width>;
+
+        $r7 = r0.<com.ideaworks3d.marmalade.s3eCamera: android.hardware.Camera$Size m_Size>;
+
+        $i1 = $r7.<android.hardware.Camera$Size: int height>;
+
+     label07:
+        $i0 = $i0 * $i1;
+
+        $i0 = $i0 * 2;
+
+     label08:
+        $r8 = newarray (byte)[$i0];
+
+        r0.<com.ideaworks3d.marmalade.s3eCamera: byte[] m_Buffer> = $r8;
+
+        staticinvoke <com.ideaworks3d.marmalade.LoaderAPI: void trace(java.lang.String)>("Invoking preview methods");
+
+        $r5 = r0.<com.ideaworks3d.marmalade.s3eCamera: java.lang.reflect.Method m_addCallbackBuffer>;
+
+        $r6 = r0.<com.ideaworks3d.marmalade.s3eCamera: android.hardware.Camera m_Camera>;
+
+        $r9 = newarray (java.lang.Object)[1];
+
+        $r8 = r0.<com.ideaworks3d.marmalade.s3eCamera: byte[] m_Buffer>;
+
+        $r9[0] = $r8;
+
+        virtualinvoke $r5.<java.lang.reflect.Method: java.lang.Object invoke(java.lang.Object,java.lang.Object[])>($r6, $r9);
+
+        $r5 = r0.<com.ideaworks3d.marmalade.s3eCamera: java.lang.reflect.Method m_setPreviewCallbackWithBuffer>;
+
+        $r6 = r0.<com.ideaworks3d.marmalade.s3eCamera: android.hardware.Camera m_Camera>;
+
+        $r9 = newarray (java.lang.Object)[1];
+
+        $r9[0] = r0;
+
+        virtualinvoke $r5.<java.lang.reflect.Method: java.lang.Object invoke(java.lang.Object,java.lang.Object[])>($r6, $r9);
+
+     label09:
+        $i0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $i0 < 11 goto label11;
+
+        $r1 = <com.ideaworks3d.marmalade.LoaderActivity: com.ideaworks3d.marmalade.LoaderActivity m_Activity>;
+
+        $r10 = new com.ideaworks3d.marmalade.s3eCamera$1;
+
+     label10:
+        specialinvoke $r10.<com.ideaworks3d.marmalade.s3eCamera$1: void <init>(com.ideaworks3d.marmalade.s3eCamera)>(r0);
+
+        virtualinvoke $r1.<com.ideaworks3d.marmalade.LoaderActivity: void runOnUiThread(java.lang.Runnable)>($r10);
+
+     label11:
+        $r6 = r0.<com.ideaworks3d.marmalade.s3eCamera: android.hardware.Camera m_Camera>;
+
+        virtualinvoke $r6.<android.hardware.Camera: void startPreview()>();
+
+        r0.<com.ideaworks3d.marmalade.s3eCamera: boolean running> = 1;
+
+        staticinvoke <android.util.Log: int i(java.lang.String,java.lang.String)>("CameraView", "done");
+
+     label12:
+        return 0;
+
+     label13:
+        $r3 = class "Landroid/hardware/Camera;";
+
+     label14:
+        $r4 = newarray (java.lang.Class)[1];
+
+     label15:
+        $r11 = <java.lang.Integer: java.lang.Class TYPE>;
+
+     label16:
+        $r4[0] = $r11;
+
+        $r5 = virtualinvoke $r3.<java.lang.Class: java.lang.reflect.Method getMethod(java.lang.String,java.lang.Class[])>("open", $r4);
+
+        $r9 = newarray (java.lang.Object)[1];
+
+        $i0 = r0.<com.ideaworks3d.marmalade.s3eCamera: int m_Type>;
+
+        $r12 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>($i0);
+
+        $r9[0] = $r12;
+
+        $r13 = virtualinvoke $r5.<java.lang.reflect.Method: java.lang.Object invoke(java.lang.Object,java.lang.Object[])>(null, $r9);
+
+        $r6 = (android.hardware.Camera) $r13;
+
+        r0.<com.ideaworks3d.marmalade.s3eCamera: android.hardware.Camera m_Camera> = $r6;
+
+     label17:
+        goto label06;
+
+     label18:
+        $r14 := @caughtexception;
+
+     label19:
+        staticinvoke <com.ideaworks3d.marmalade.LoaderAPI: void trace(java.lang.String)>("Did not find open specific camera method");
+
+        $r6 = staticinvoke <android.hardware.Camera: android.hardware.Camera open()>();
+
+        r0.<com.ideaworks3d.marmalade.s3eCamera: android.hardware.Camera m_Camera> = $r6;
+
+     label20:
+        goto label06;
+
+     label21:
+        $r15 := @caughtexception;
+
+        staticinvoke <com.ideaworks3d.marmalade.LoaderAPI: java.lang.String getStackTrace(java.lang.Throwable)>($r15);
+
+        $r5 = r0.<com.ideaworks3d.marmalade.s3eCamera: java.lang.reflect.Method m_setPreviewCallbackWithBuffer>;
+
+        if $r5 != null goto label22;
+
+        $r1 = <com.ideaworks3d.marmalade.LoaderActivity: com.ideaworks3d.marmalade.LoaderActivity m_Activity>;
+
+        $r16 = new com.ideaworks3d.marmalade.s3eCamera$2;
+
+        specialinvoke $r16.<com.ideaworks3d.marmalade.s3eCamera$2: void <init>(com.ideaworks3d.marmalade.s3eCamera)>(r0);
+
+        virtualinvoke $r1.<com.ideaworks3d.marmalade.LoaderActivity: void runOnUiThread(java.lang.Runnable)>($r16);
+
+     label22:
+        r0.<com.ideaworks3d.marmalade.s3eCamera: boolean running> = 1;
+
+        return 0;
+
+        catch java.lang.Exception from label01 to label02 with label21;
+        catch java.lang.Exception from label03 to label04 with label21;
+        catch java.lang.Exception from label05 to label07 with label21;
+        catch java.lang.Exception from label08 to label09 with label21;
+        catch java.lang.Exception from label10 to label12 with label21;
+        catch java.lang.Exception from label14 to label15 with label18;
+        catch java.lang.Exception from label16 to label17 with label18;
+        catch java.lang.Exception from label19 to label20 with label21;
+    }
+
+    public int s3eCameraStop()
+    {
+        com.ideaworks3d.marmalade.s3eCamera r0;
+        java.lang.reflect.Method $r1;
+        android.hardware.Camera $r2;
+        boolean $z0;
+        com.ideaworks3d.marmalade.LoaderActivity $r3;
+        com.ideaworks3d.marmalade.s3eCamera$3 $r4;
+
+        r0 := @this: com.ideaworks3d.marmalade.s3eCamera;
+
+        r0.<com.ideaworks3d.marmalade.s3eCamera: boolean running> = 0;
+
+        $r1 = r0.<com.ideaworks3d.marmalade.s3eCamera: java.lang.reflect.Method m_setPreviewCallbackWithBuffer>;
+
+        if $r1 == null goto label1;
+
+        $r2 = r0.<com.ideaworks3d.marmalade.s3eCamera: android.hardware.Camera m_Camera>;
+
+        virtualinvoke $r2.<android.hardware.Camera: void setPreviewCallback(android.hardware.Camera$PreviewCallback)>(null);
+
+        $r2 = r0.<com.ideaworks3d.marmalade.s3eCamera: android.hardware.Camera m_Camera>;
+
+        virtualinvoke $r2.<android.hardware.Camera: void stopPreview()>();
+
+        $r2 = r0.<com.ideaworks3d.marmalade.s3eCamera: android.hardware.Camera m_Camera>;
+
+        virtualinvoke $r2.<android.hardware.Camera: void release()>();
+
+        r0.<com.ideaworks3d.marmalade.s3eCamera: android.hardware.Camera m_Camera> = null;
+
+        r0.<com.ideaworks3d.marmalade.s3eCamera: byte[] m_Buffer> = null;
+
+     label1:
+        $z0 = r0.<com.ideaworks3d.marmalade.s3eCamera: boolean m_NeedsRemovePreview>;
+
+        if $z0 == 0 goto label2;
+
+        $r3 = <com.ideaworks3d.marmalade.LoaderActivity: com.ideaworks3d.marmalade.LoaderActivity m_Activity>;
+
+        $r4 = new com.ideaworks3d.marmalade.s3eCamera$3;
+
+        specialinvoke $r4.<com.ideaworks3d.marmalade.s3eCamera$3: void <init>(com.ideaworks3d.marmalade.s3eCamera)>(r0);
+
+        virtualinvoke $r3.<com.ideaworks3d.marmalade.LoaderActivity: void runOnUiThread(java.lang.Runnable)>($r4);
+
+     label2:
+        return 0;
+    }
+
+    public void setCameraParameters()
+    {
+        com.ideaworks3d.marmalade.s3eCamera r0;
+        android.hardware.Camera $r1;
+        android.hardware.Camera$Parameters $r2;
+        java.lang.Class $r3;
+        java.lang.Class[] $r4;
+        java.lang.reflect.Method $r5;
+        java.lang.Object[] $r6;
+        java.lang.Object $r7;
+        java.util.List $r8, $r9;
+        java.lang.StringBuilder $r10;
+        java.lang.String $r11;
+        java.lang.Integer $r12;
+        boolean $z0;
+        int $i0, $i1;
+        com.ideaworks3d.marmalade.LoaderView $r13;
+        android.hardware.Camera$Size $r14;
+        java.lang.Exception $r15, $r16, $r17;
+
+        r0 := @this: com.ideaworks3d.marmalade.s3eCamera;
+
+        staticinvoke <com.ideaworks3d.marmalade.LoaderAPI: void trace(java.lang.String)>("Setting camera parameters");
+
+        $r1 = r0.<com.ideaworks3d.marmalade.s3eCamera: android.hardware.Camera m_Camera>;
+
+        $r2 = virtualinvoke $r1.<android.hardware.Camera: android.hardware.Camera$Parameters getParameters()>();
+
+     label01:
+        $r3 = virtualinvoke $r2.<java.lang.Object: java.lang.Class getClass()>();
+
+        $r4 = newarray (java.lang.Class)[0];
+
+        $r5 = virtualinvoke $r3.<java.lang.Class: java.lang.reflect.Method getMethod(java.lang.String,java.lang.Class[])>("getSupportedPreviewSizes", $r4);
+
+        $r6 = newarray (java.lang.Object)[0];
+
+        $r7 = virtualinvoke $r5.<java.lang.reflect.Method: java.lang.Object invoke(java.lang.Object,java.lang.Object[])>($r2, $r6);
+
+        $r8 = (java.util.List) $r7;
+
+     label02:
+        $r4 = newarray (java.lang.Class)[0];
+
+        $r5 = virtualinvoke $r3.<java.lang.Class: java.lang.reflect.Method getMethod(java.lang.String,java.lang.Class[])>("getSupportedPreviewFormats", $r4);
+
+        $r6 = newarray (java.lang.Object)[0];
+
+        $r7 = virtualinvoke $r5.<java.lang.reflect.Method: java.lang.Object invoke(java.lang.Object,java.lang.Object[])>($r2, $r6);
+
+        $r9 = (java.util.List) $r7;
+
+     label03:
+        $r10 = new java.lang.StringBuilder;
+
+     label04:
+        specialinvoke $r10.<java.lang.StringBuilder: void <init>()>();
+
+        $r10 = virtualinvoke $r10.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Supported formats: ");
+
+        $r10 = virtualinvoke $r10.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($r9);
+
+        $r11 = virtualinvoke $r10.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <android.util.Log: int i(java.lang.String,java.lang.String)>("CameraView", $r11);
+
+        $r12 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>(4);
+
+        $z0 = interfaceinvoke $r9.<java.util.List: boolean contains(java.lang.Object)>($r12);
+
+     label05:
+        if $z0 == 0 goto label07;
+
+     label06:
+        virtualinvoke $r2.<android.hardware.Camera$Parameters: void setPreviewFormat(int)>(4);
+
+     label07:
+        staticinvoke <com.ideaworks3d.marmalade.LoaderAPI: void trace(java.lang.String)>("Setting preview size");
+
+        $i0 = r0.<com.ideaworks3d.marmalade.s3eCamera: int m_Hint>;
+
+        if $i0 != 2 goto label15;
+
+        $r13 = r0.<com.ideaworks3d.marmalade.s3eCamera: com.ideaworks3d.marmalade.LoaderView m_View>;
+
+        $i0 = $r13.<com.ideaworks3d.marmalade.LoaderView: int m_Width>;
+
+        $r13 = r0.<com.ideaworks3d.marmalade.s3eCamera: com.ideaworks3d.marmalade.LoaderView m_View>;
+
+        $i1 = $r13.<com.ideaworks3d.marmalade.LoaderView: int m_Height>;
+
+     label08:
+        if $r8 == null goto label17;
+
+        $r10 = new java.lang.StringBuilder;
+
+        specialinvoke $r10.<java.lang.StringBuilder: void <init>()>();
+
+        $r10 = virtualinvoke $r10.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Ideal size: ");
+
+        $r10 = virtualinvoke $r10.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>($i0);
+
+        $r10 = virtualinvoke $r10.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("x");
+
+        $r10 = virtualinvoke $r10.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>($i1);
+
+        $r11 = virtualinvoke $r10.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <android.util.Log: int i(java.lang.String,java.lang.String)>("CameraView", $r11);
+
+        $r14 = specialinvoke r0.<com.ideaworks3d.marmalade.s3eCamera: android.hardware.Camera$Size getOptimalPreviewSize(java.util.List,int,int)>($r8, $i0, $i1);
+
+        r0.<com.ideaworks3d.marmalade.s3eCamera: android.hardware.Camera$Size m_Size> = $r14;
+
+        $r10 = new java.lang.StringBuilder;
+
+        specialinvoke $r10.<java.lang.StringBuilder: void <init>()>();
+
+        $r10 = virtualinvoke $r10.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Got size: ");
+
+        $r14 = r0.<com.ideaworks3d.marmalade.s3eCamera: android.hardware.Camera$Size m_Size>;
+
+        $i0 = $r14.<android.hardware.Camera$Size: int width>;
+
+        $r10 = virtualinvoke $r10.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>($i0);
+
+        $r10 = virtualinvoke $r10.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("x");
+
+        $r14 = r0.<com.ideaworks3d.marmalade.s3eCamera: android.hardware.Camera$Size m_Size>;
+
+        $i0 = $r14.<android.hardware.Camera$Size: int height>;
+
+        $r10 = virtualinvoke $r10.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>($i0);
+
+        $r11 = virtualinvoke $r10.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <android.util.Log: int i(java.lang.String,java.lang.String)>("CameraView", $r11);
+
+        $r14 = r0.<com.ideaworks3d.marmalade.s3eCamera: android.hardware.Camera$Size m_Size>;
+
+        $i0 = $r14.<android.hardware.Camera$Size: int width>;
+
+        $r14 = r0.<com.ideaworks3d.marmalade.s3eCamera: android.hardware.Camera$Size m_Size>;
+
+        $i1 = $r14.<android.hardware.Camera$Size: int height>;
+
+        virtualinvoke $r2.<android.hardware.Camera$Parameters: void setPreviewSize(int,int)>($i0, $i1);
+
+     label09:
+        $i0 = r0.<com.ideaworks3d.marmalade.s3eCamera: int m_Type>;
+
+        if $i0 == 0 goto label10;
+
+        staticinvoke <com.ideaworks3d.marmalade.LoaderAPI: void trace(java.lang.String)>("Setting camera ID");
+
+        $i0 = r0.<com.ideaworks3d.marmalade.s3eCamera: int m_Type>;
+
+        $i0 = $i0 + 1;
+
+        virtualinvoke $r2.<android.hardware.Camera$Parameters: void set(java.lang.String,int)>("camera-id", $i0);
+
+     label10:
+        $r14 = virtualinvoke $r2.<android.hardware.Camera$Parameters: android.hardware.Camera$Size getPreviewSize()>();
+
+        r0.<com.ideaworks3d.marmalade.s3eCamera: android.hardware.Camera$Size m_Size> = $r14;
+
+     label11:
+        $r1 = r0.<com.ideaworks3d.marmalade.s3eCamera: android.hardware.Camera m_Camera>;
+
+        virtualinvoke $r1.<android.hardware.Camera: void setParameters(android.hardware.Camera$Parameters)>($r2);
+
+     label12:
+        return;
+
+     label13:
+        $r15 := @caughtexception;
+
+        $r8 = null;
+
+     label14:
+        staticinvoke <android.util.Log: int i(java.lang.String,java.lang.String)>("CameraView", "Could not request alternative preview format (OS Version < 2.0?)");
+
+        goto label07;
+
+     label15:
+        $i0 = r0.<com.ideaworks3d.marmalade.s3eCamera: int m_Hint>;
+
+        if $i0 != 1 goto label16;
+
+        $r13 = r0.<com.ideaworks3d.marmalade.s3eCamera: com.ideaworks3d.marmalade.LoaderView m_View>;
+
+        $i0 = $r13.<com.ideaworks3d.marmalade.LoaderView: int m_Width>;
+
+        $r13 = r0.<com.ideaworks3d.marmalade.s3eCamera: com.ideaworks3d.marmalade.LoaderView m_View>;
+
+        $i1 = $r13.<com.ideaworks3d.marmalade.LoaderView: int m_Height>;
+
+        $i0 = $i0 / 2;
+
+        $i1 = $i1 / 2;
+
+        goto label08;
+
+     label16:
+        $r13 = r0.<com.ideaworks3d.marmalade.s3eCamera: com.ideaworks3d.marmalade.LoaderView m_View>;
+
+        $i0 = $r13.<com.ideaworks3d.marmalade.LoaderView: int m_Width>;
+
+        $r13 = r0.<com.ideaworks3d.marmalade.s3eCamera: com.ideaworks3d.marmalade.LoaderView m_View>;
+
+        $i1 = $r13.<com.ideaworks3d.marmalade.LoaderView: int m_Height>;
+
+        $i0 = $i0 / 4;
+
+        $i1 = $i1 / 4;
+
+        goto label08;
+
+     label17:
+        virtualinvoke $r2.<android.hardware.Camera$Parameters: void setPreviewSize(int,int)>($i0, $i1);
+
+        goto label09;
+
+     label18:
+        $r16 := @caughtexception;
+
+        staticinvoke <android.util.Log: int i(java.lang.String,java.lang.String)>("CameraView", "Exception setting requested preview size");
+
+        return;
+
+     label19:
+        $r17 := @caughtexception;
+
+        goto label14;
+
+        catch java.lang.Exception from label01 to label02 with label13;
+        catch java.lang.Exception from label02 to label03 with label19;
+        catch java.lang.Exception from label04 to label05 with label19;
+        catch java.lang.Exception from label06 to label07 with label19;
+        catch java.lang.Exception from label11 to label12 with label18;
+    }
+
+    public static void <clinit>()
+    {
+        <com.ideaworks3d.marmalade.s3eCamera: int S3E_CAMERA_TYPE> = 7;
+
+        <com.ideaworks3d.marmalade.s3eCamera: int S3E_CAMERA_STATUS> = 1;
+
+        <com.ideaworks3d.marmalade.s3eCamera: int S3E_CAMERA_QUALITY> = 6;
+
+        <com.ideaworks3d.marmalade.s3eCamera: int S3E_CAMERA_PIXEL_TYPE_RGB565> = 1058;
+
+        <com.ideaworks3d.marmalade.s3eCamera: int S3E_CAMERA_PIXEL_TYPE_NV21> = 4097;
+
+        <com.ideaworks3d.marmalade.s3eCamera: int S3E_CAMERA_CONTRAST> = 5;
+
+        <com.ideaworks3d.marmalade.s3eCamera: int S3E_CAMERA_BUSY> = 2;
+
+        <com.ideaworks3d.marmalade.s3eCamera: int S3E_CAMERA_BRIGHTNESS> = 4;
+
+        <com.ideaworks3d.marmalade.s3eCamera: int S3E_CAMERA_AVAILABLE> = 0;
+
+        <com.ideaworks3d.marmalade.s3eCamera: int S3E_CAMERA_AUTO_FOCUS> = 3;
+
+        return;
+    }
+}

@@ -1,0 +1,71 @@
+class com.ideaworks3d.marmalade.LoaderThread$4 extends java.lang.Object implements java.lang.Runnable
+{
+    final com.ideaworks3d.marmalade.LoaderThread this$0;
+
+    void <init>(com.ideaworks3d.marmalade.LoaderThread)
+    {
+        com.ideaworks3d.marmalade.LoaderThread$4 r0;
+        com.ideaworks3d.marmalade.LoaderThread $r1;
+
+        r0 := @this: com.ideaworks3d.marmalade.LoaderThread$4;
+
+        $r1 := @parameter0: com.ideaworks3d.marmalade.LoaderThread;
+
+        r0.<com.ideaworks3d.marmalade.LoaderThread$4: com.ideaworks3d.marmalade.LoaderThread this$0> = $r1;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public void run()
+    {
+        com.ideaworks3d.marmalade.LoaderThread$4 r0;
+        com.ideaworks3d.marmalade.LoaderThread $r1;
+        com.ideaworks3d.marmalade.LoaderActivity $r2;
+        boolean $z0;
+        java.lang.Runnable $r3, $r4;
+        java.lang.Throwable $r5;
+
+        r0 := @this: com.ideaworks3d.marmalade.LoaderThread$4;
+
+        $r1 = r0.<com.ideaworks3d.marmalade.LoaderThread$4: com.ideaworks3d.marmalade.LoaderThread this$0>;
+
+        $r2 = staticinvoke <com.ideaworks3d.marmalade.LoaderThread: com.ideaworks3d.marmalade.LoaderActivity access$1200(com.ideaworks3d.marmalade.LoaderThread)>($r1);
+
+        $r1 = r0.<com.ideaworks3d.marmalade.LoaderThread$4: com.ideaworks3d.marmalade.LoaderThread this$0>;
+
+        $z0 = staticinvoke <com.ideaworks3d.marmalade.LoaderThread: boolean access$1100(com.ideaworks3d.marmalade.LoaderThread)>($r1);
+
+        virtualinvoke $r2.<com.ideaworks3d.marmalade.LoaderActivity: void createView(boolean)>($z0);
+
+        $r1 = r0.<com.ideaworks3d.marmalade.LoaderThread$4: com.ideaworks3d.marmalade.LoaderThread this$0>;
+
+        $r3 = staticinvoke <com.ideaworks3d.marmalade.LoaderThread: java.lang.Runnable access$1300(com.ideaworks3d.marmalade.LoaderThread)>($r1);
+
+        entermonitor $r3;
+
+     label1:
+        $r1 = r0.<com.ideaworks3d.marmalade.LoaderThread$4: com.ideaworks3d.marmalade.LoaderThread this$0>;
+
+        $r4 = staticinvoke <com.ideaworks3d.marmalade.LoaderThread: java.lang.Runnable access$1300(com.ideaworks3d.marmalade.LoaderThread)>($r1);
+
+        virtualinvoke $r4.<java.lang.Object: void notify()>();
+
+        exitmonitor $r3;
+
+     label2:
+        return;
+
+     label3:
+        $r5 := @caughtexception;
+
+        exitmonitor $r3;
+
+     label4:
+        throw $r5;
+
+        catch java.lang.Throwable from label1 to label2 with label3;
+        catch java.lang.Throwable from label3 to label4 with label3;
+    }
+}

@@ -1,0 +1,288 @@
+public class com.startapp.android.publish.adinformation.d extends java.lang.Object implements java.io.Serializable
+{
+    private static final long serialVersionUID;
+    private transient android.graphics.Bitmap a;
+    private transient android.graphics.Bitmap b;
+    private transient android.graphics.Bitmap c;
+    private int height;
+    private java.lang.String imageFallbackUrl;
+    private java.lang.String imageUrl;
+    private java.lang.String name;
+    private int width;
+
+    private void <init>()
+    {
+        com.startapp.android.publish.adinformation.d r0;
+
+        r0 := @this: com.startapp.android.publish.adinformation.d;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        r0.<com.startapp.android.publish.adinformation.d: java.lang.String imageUrl> = "";
+
+        r0.<com.startapp.android.publish.adinformation.d: java.lang.String imageFallbackUrl> = "";
+
+        r0.<com.startapp.android.publish.adinformation.d: android.graphics.Bitmap c> = null;
+
+        r0.<com.startapp.android.publish.adinformation.d: int width> = 1;
+
+        r0.<com.startapp.android.publish.adinformation.d: int height> = 1;
+
+        return;
+    }
+
+    public static com.startapp.android.publish.adinformation.d c(java.lang.String)
+    {
+        java.lang.String $r0;
+        com.startapp.android.publish.adinformation.d $r1;
+
+        $r0 := @parameter0: java.lang.String;
+
+        $r1 = new com.startapp.android.publish.adinformation.d;
+
+        specialinvoke $r1.<com.startapp.android.publish.adinformation.d: void <init>()>();
+
+        virtualinvoke $r1.<com.startapp.android.publish.adinformation.d: void b(java.lang.String)>($r0);
+
+        return $r1;
+    }
+
+    public android.graphics.Bitmap a(android.content.Context)
+    {
+        com.startapp.android.publish.adinformation.d r0;
+        android.content.Context $r1;
+        android.graphics.Bitmap $r2;
+
+        r0 := @this: com.startapp.android.publish.adinformation.d;
+
+        $r1 := @parameter0: android.content.Context;
+
+        $r2 = r0.<com.startapp.android.publish.adinformation.d: android.graphics.Bitmap c>;
+
+        if $r2 != null goto label1;
+
+        $r2 = virtualinvoke r0.<com.startapp.android.publish.adinformation.d: android.graphics.Bitmap f()>();
+
+        r0.<com.startapp.android.publish.adinformation.d: android.graphics.Bitmap c> = $r2;
+
+        $r2 = r0.<com.startapp.android.publish.adinformation.d: android.graphics.Bitmap c>;
+
+        if $r2 != null goto label1;
+
+        $r2 = virtualinvoke r0.<com.startapp.android.publish.adinformation.d: android.graphics.Bitmap b(android.content.Context)>($r1);
+
+        r0.<com.startapp.android.publish.adinformation.d: android.graphics.Bitmap c> = $r2;
+
+     label1:
+        $r2 = r0.<com.startapp.android.publish.adinformation.d: android.graphics.Bitmap c>;
+
+        return $r2;
+    }
+
+    public java.lang.String a()
+    {
+        com.startapp.android.publish.adinformation.d r0;
+        java.lang.String r1;
+
+        r0 := @this: com.startapp.android.publish.adinformation.d;
+
+        r1 = r0.<com.startapp.android.publish.adinformation.d: java.lang.String name>;
+
+        return r1;
+    }
+
+    public void a(int)
+    {
+        com.startapp.android.publish.adinformation.d r0;
+        int $i0;
+
+        r0 := @this: com.startapp.android.publish.adinformation.d;
+
+        $i0 := @parameter0: int;
+
+        r0.<com.startapp.android.publish.adinformation.d: int width> = $i0;
+
+        return;
+    }
+
+    protected void a(android.graphics.Bitmap)
+    {
+        com.startapp.android.publish.adinformation.d r0;
+        android.graphics.Bitmap $r1;
+
+        r0 := @this: com.startapp.android.publish.adinformation.d;
+
+        $r1 := @parameter0: android.graphics.Bitmap;
+
+        r0.<com.startapp.android.publish.adinformation.d: android.graphics.Bitmap a> = $r1;
+
+        if $r1 == null goto label1;
+
+        r0.<com.startapp.android.publish.adinformation.d: android.graphics.Bitmap c> = $r1;
+
+     label1:
+        return;
+    }
+
+    public void a(java.lang.String)
+    {
+        com.startapp.android.publish.adinformation.d r0;
+        java.lang.String $r1;
+
+        r0 := @this: com.startapp.android.publish.adinformation.d;
+
+        $r1 := @parameter0: java.lang.String;
+
+        r0.<com.startapp.android.publish.adinformation.d: java.lang.String imageFallbackUrl> = $r1;
+
+        return;
+    }
+
+    public int b()
+    {
+        com.startapp.android.publish.adinformation.d r0;
+        int i0;
+
+        r0 := @this: com.startapp.android.publish.adinformation.d;
+
+        i0 = r0.<com.startapp.android.publish.adinformation.d: int width>;
+
+        return i0;
+    }
+
+    protected android.graphics.Bitmap b(android.content.Context)
+    {
+        com.startapp.android.publish.adinformation.d r0;
+        android.content.Context $r1;
+        android.graphics.Bitmap $r2;
+        java.lang.String $r3;
+
+        r0 := @this: com.startapp.android.publish.adinformation.d;
+
+        $r1 := @parameter0: android.content.Context;
+
+        $r2 = r0.<com.startapp.android.publish.adinformation.d: android.graphics.Bitmap b>;
+
+        if $r2 != null goto label1;
+
+        $r3 = virtualinvoke r0.<com.startapp.android.publish.adinformation.d: java.lang.String g()>();
+
+        $r2 = staticinvoke <com.startapp.android.publish.i.f: android.graphics.Bitmap a(android.content.Context,java.lang.String)>($r1, $r3);
+
+        r0.<com.startapp.android.publish.adinformation.d: android.graphics.Bitmap b> = $r2;
+
+     label1:
+        $r2 = r0.<com.startapp.android.publish.adinformation.d: android.graphics.Bitmap b>;
+
+        return $r2;
+    }
+
+    public void b(int)
+    {
+        com.startapp.android.publish.adinformation.d r0;
+        int $i0;
+
+        r0 := @this: com.startapp.android.publish.adinformation.d;
+
+        $i0 := @parameter0: int;
+
+        r0.<com.startapp.android.publish.adinformation.d: int height> = $i0;
+
+        return;
+    }
+
+    protected void b(java.lang.String)
+    {
+        com.startapp.android.publish.adinformation.d r0;
+        java.lang.String $r1;
+
+        r0 := @this: com.startapp.android.publish.adinformation.d;
+
+        $r1 := @parameter0: java.lang.String;
+
+        r0.<com.startapp.android.publish.adinformation.d: java.lang.String name> = $r1;
+
+        return;
+    }
+
+    public int c()
+    {
+        com.startapp.android.publish.adinformation.d r0;
+        int i0;
+
+        r0 := @this: com.startapp.android.publish.adinformation.d;
+
+        i0 = r0.<com.startapp.android.publish.adinformation.d: int height>;
+
+        return i0;
+    }
+
+    public java.lang.String d()
+    {
+        com.startapp.android.publish.adinformation.d r0;
+        java.lang.String r1;
+
+        r0 := @this: com.startapp.android.publish.adinformation.d;
+
+        r1 = r0.<com.startapp.android.publish.adinformation.d: java.lang.String imageUrl>;
+
+        return r1;
+    }
+
+    protected void e()
+    {
+        com.startapp.android.publish.adinformation.d r0;
+        java.lang.String $r1;
+        com.startapp.android.publish.adinformation.d$1 $r2;
+        com.startapp.android.publish.i.g $r3;
+
+        r0 := @this: com.startapp.android.publish.adinformation.d;
+
+        virtualinvoke r0.<com.startapp.android.publish.adinformation.d: void a(android.graphics.Bitmap)>(null);
+
+        $r3 = new com.startapp.android.publish.i.g;
+
+        $r1 = r0.<com.startapp.android.publish.adinformation.d: java.lang.String imageUrl>;
+
+        $r2 = new com.startapp.android.publish.adinformation.d$1;
+
+        specialinvoke $r2.<com.startapp.android.publish.adinformation.d$1: void <init>(com.startapp.android.publish.adinformation.d)>(r0);
+
+        specialinvoke $r3.<com.startapp.android.publish.i.g: void <init>(java.lang.String,com.startapp.android.publish.i.g$a,int)>($r1, $r2, 0);
+
+        virtualinvoke $r3.<com.startapp.android.publish.i.g: void a()>();
+
+        return;
+    }
+
+    protected android.graphics.Bitmap f()
+    {
+        com.startapp.android.publish.adinformation.d r0;
+        android.graphics.Bitmap r1;
+
+        r0 := @this: com.startapp.android.publish.adinformation.d;
+
+        r1 = r0.<com.startapp.android.publish.adinformation.d: android.graphics.Bitmap a>;
+
+        return r1;
+    }
+
+    protected java.lang.String g()
+    {
+        com.startapp.android.publish.adinformation.d r0;
+        java.lang.String r1;
+
+        r0 := @this: com.startapp.android.publish.adinformation.d;
+
+        r1 = r0.<com.startapp.android.publish.adinformation.d: java.lang.String imageFallbackUrl>;
+
+        return r1;
+    }
+
+    public static void <clinit>()
+    {
+        <com.startapp.android.publish.adinformation.d: long serialVersionUID> = 1L;
+
+        return;
+    }
+}

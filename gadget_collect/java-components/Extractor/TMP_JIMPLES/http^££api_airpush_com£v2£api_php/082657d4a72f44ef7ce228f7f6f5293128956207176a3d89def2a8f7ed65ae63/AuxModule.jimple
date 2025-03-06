@@ -1,0 +1,587 @@
+class AuxModule extends java.lang.Object implements android.content.DialogInterface$OnClickListener
+{
+    boolean _hasAsweredDialog;
+    int _lastButtonDialogPressed;
+    java.lang.String _message;
+    AuxModule$EnumMsgType _msgType;
+    java.lang.String _redirectUrl;
+    final java.lang.Runnable _showWebView;
+    java.lang.String _title;
+    java.lang.String _ulrMoreGames;
+    java.lang.String _userEmail;
+    android.webkit.WebView _webview;
+    private final java.lang.Runnable m_ShowMessage;
+
+    void <init>()
+    {
+        AuxModule r0;
+        AuxModule$EnumMsgType $r1;
+        AuxModule$1 $r2;
+        AuxModule$2 $r3;
+
+        r0 := @this: AuxModule;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        $r1 = <AuxModule$EnumMsgType: AuxModule$EnumMsgType Ok>;
+
+        r0.<AuxModule: AuxModule$EnumMsgType _msgType> = $r1;
+
+        r0.<AuxModule: java.lang.String _redirectUrl> = null;
+
+        r0.<AuxModule: java.lang.String _message> = null;
+
+        r0.<AuxModule: java.lang.String _title> = null;
+
+        r0.<AuxModule: java.lang.String _userEmail> = null;
+
+        r0.<AuxModule: boolean _hasAsweredDialog> = 0;
+
+        r0.<AuxModule: int _lastButtonDialogPressed> = 0;
+
+        $r2 = new AuxModule$1;
+
+        specialinvoke $r2.<AuxModule$1: void <init>(AuxModule)>(r0);
+
+        r0.<AuxModule: java.lang.Runnable m_ShowMessage> = $r2;
+
+        r0.<AuxModule: java.lang.String _ulrMoreGames> = null;
+
+        r0.<AuxModule: android.webkit.WebView _webview> = null;
+
+        $r3 = new AuxModule$2;
+
+        specialinvoke $r3.<AuxModule$2: void <init>(AuxModule)>(r0);
+
+        r0.<AuxModule: java.lang.Runnable _showWebView> = $r3;
+
+        return;
+    }
+
+    static void access$000(AuxModule)
+    {
+        AuxModule $r0;
+
+        $r0 := @parameter0: AuxModule;
+
+        specialinvoke $r0.<AuxModule: void showMessageReal()>();
+
+        return;
+    }
+
+    private void showMessageReal()
+    {
+        AuxModule r0;
+        android.app.AlertDialog $r1;
+        android.app.AlertDialog$Builder $r2;
+        com.ideaworks3d.marmalade.LoaderActivity $r3;
+        java.lang.String $r4;
+        AuxModule$EnumMsgType $r5, $r6;
+
+        r0 := @this: AuxModule;
+
+        $r2 = new android.app.AlertDialog$Builder;
+
+        $r3 = <com.ideaworks3d.marmalade.LoaderActivity: com.ideaworks3d.marmalade.LoaderActivity m_Activity>;
+
+        specialinvoke $r2.<android.app.AlertDialog$Builder: void <init>(android.content.Context)>($r3);
+
+        $r4 = r0.<AuxModule: java.lang.String _title>;
+
+        virtualinvoke $r2.<android.app.AlertDialog$Builder: android.app.AlertDialog$Builder setTitle(java.lang.CharSequence)>($r4);
+
+        $r4 = r0.<AuxModule: java.lang.String _message>;
+
+        virtualinvoke $r2.<android.app.AlertDialog$Builder: android.app.AlertDialog$Builder setMessage(java.lang.CharSequence)>($r4);
+
+        $r5 = r0.<AuxModule: AuxModule$EnumMsgType _msgType>;
+
+        $r6 = <AuxModule$EnumMsgType: AuxModule$EnumMsgType Ok>;
+
+        if $r5 != $r6 goto label1;
+
+        virtualinvoke $r2.<android.app.AlertDialog$Builder: android.app.AlertDialog$Builder setPositiveButton(java.lang.CharSequence,android.content.DialogInterface$OnClickListener)>("OK", r0);
+
+     label1:
+        $r5 = r0.<AuxModule: AuxModule$EnumMsgType _msgType>;
+
+        $r6 = <AuxModule$EnumMsgType: AuxModule$EnumMsgType YesNo>;
+
+        if $r5 != $r6 goto label2;
+
+        virtualinvoke $r2.<android.app.AlertDialog$Builder: android.app.AlertDialog$Builder setPositiveButton(java.lang.CharSequence,android.content.DialogInterface$OnClickListener)>("Yes", r0);
+
+        virtualinvoke $r2.<android.app.AlertDialog$Builder: android.app.AlertDialog$Builder setNegativeButton(java.lang.CharSequence,android.content.DialogInterface$OnClickListener)>("No", r0);
+
+     label2:
+        $r1 = virtualinvoke $r2.<android.app.AlertDialog$Builder: android.app.AlertDialog create()>();
+
+        virtualinvoke $r1.<android.app.Dialog: void show()>();
+
+        return;
+    }
+
+    public void AuxModule_AskToSubscribe(java.lang.String, java.lang.String)
+    {
+        AuxModule r0;
+        java.lang.String $r1, $r2;
+        int $i0;
+        boolean $z0;
+        com.ideaworks3d.marmalade.LoaderActivity $r3;
+        AuxModule$4 $r4;
+
+        r0 := @this: AuxModule;
+
+        $r1 := @parameter0: java.lang.String;
+
+        $r2 := @parameter1: java.lang.String;
+
+        $i0 = virtualinvoke r0.<AuxModule: int AuxModule_GetInt(java.lang.String,int)>("HAS_SUBSCRIBED", 0);
+
+        if $i0 != 0 goto label1;
+
+        $z0 = virtualinvoke r0.<AuxModule: boolean AuxModule_IsNetworkAvailable()>();
+
+        if $z0 == 0 goto label1;
+
+        $r3 = <com.ideaworks3d.marmalade.LoaderActivity: com.ideaworks3d.marmalade.LoaderActivity m_Activity>;
+
+        $r4 = new AuxModule$4;
+
+        specialinvoke $r4.<AuxModule$4: void <init>(AuxModule,java.lang.String,java.lang.String)>(r0, $r1, $r2);
+
+        virtualinvoke $r3.<com.ideaworks3d.marmalade.LoaderActivity: void runOnUiThread(java.lang.Runnable)>($r4);
+
+     label1:
+        return;
+    }
+
+    public int AuxModule_GetInt(java.lang.String, int)
+    {
+        AuxModule r0;
+        java.lang.String $r1;
+        int $i0;
+        com.ideaworks3d.marmalade.LoaderActivity $r2;
+        android.content.SharedPreferences $r3;
+
+        r0 := @this: AuxModule;
+
+        $r1 := @parameter0: java.lang.String;
+
+        $i0 := @parameter1: int;
+
+        $r2 = <com.ideaworks3d.marmalade.LoaderActivity: com.ideaworks3d.marmalade.LoaderActivity m_Activity>;
+
+        $r3 = virtualinvoke $r2.<com.ideaworks3d.marmalade.LoaderActivity: android.content.SharedPreferences getPreferences(int)>(0);
+
+        $i0 = interfaceinvoke $r3.<android.content.SharedPreferences: int getInt(java.lang.String,int)>($r1, $i0);
+
+        return $i0;
+    }
+
+    public int AuxModule_GetLastReponse()
+    {
+        AuxModule r0;
+        int i0;
+
+        r0 := @this: AuxModule;
+
+        i0 = r0.<AuxModule: int _lastButtonDialogPressed>;
+
+        return i0;
+    }
+
+    public int AuxModule_GetUserEmailCharAt(int)
+    {
+        AuxModule r0;
+        int $i0;
+        char $c1;
+        java.lang.String $r1;
+
+        r0 := @this: AuxModule;
+
+        $i0 := @parameter0: int;
+
+        $r1 = r0.<AuxModule: java.lang.String _userEmail>;
+
+        if $r1 == null goto label1;
+
+        $r1 = r0.<AuxModule: java.lang.String _userEmail>;
+
+        $c1 = virtualinvoke $r1.<java.lang.String: char charAt(int)>($i0);
+
+        return $c1;
+
+     label1:
+        return 0;
+    }
+
+    public boolean AuxModule_HasAnsweredDialog()
+    {
+        AuxModule r0;
+        boolean z0;
+
+        r0 := @this: AuxModule;
+
+        z0 = r0.<AuxModule: boolean _hasAsweredDialog>;
+
+        return z0;
+    }
+
+    public void AuxModule_HideWebView()
+    {
+        AuxModule r0;
+        com.ideaworks3d.marmalade.LoaderActivity $r1;
+        AuxModule$3 $r2;
+
+        r0 := @this: AuxModule;
+
+        $r1 = <com.ideaworks3d.marmalade.LoaderActivity: com.ideaworks3d.marmalade.LoaderActivity m_Activity>;
+
+        $r2 = new AuxModule$3;
+
+        specialinvoke $r2.<AuxModule$3: void <init>(AuxModule)>(r0);
+
+        virtualinvoke $r1.<com.ideaworks3d.marmalade.LoaderActivity: void runOnUiThread(java.lang.Runnable)>($r2);
+
+        return;
+    }
+
+    public boolean AuxModule_IsNetworkAvailable()
+    {
+        AuxModule r0;
+        com.ideaworks3d.marmalade.LoaderActivity $r1;
+        java.lang.Object $r2;
+        android.net.ConnectivityManager r3;
+        android.net.NetworkInfo $r4;
+        boolean $z0;
+
+        r0 := @this: AuxModule;
+
+        $r1 = <com.ideaworks3d.marmalade.LoaderActivity: com.ideaworks3d.marmalade.LoaderActivity m_Activity>;
+
+        $r2 = virtualinvoke $r1.<com.ideaworks3d.marmalade.LoaderActivity: java.lang.Object getSystemService(java.lang.String)>("connectivity");
+
+        r3 = (android.net.ConnectivityManager) $r2;
+
+        $r4 = virtualinvoke r3.<android.net.ConnectivityManager: android.net.NetworkInfo getActiveNetworkInfo()>();
+
+        if $r4 == null goto label1;
+
+        $z0 = virtualinvoke $r4.<android.net.NetworkInfo: boolean isConnectedOrConnecting()>();
+
+        if $z0 == 0 goto label1;
+
+        return 1;
+
+     label1:
+        return 0;
+    }
+
+    public int AuxModule_ObtainUserEmail()
+    {
+        AuxModule r0;
+        com.ideaworks3d.marmalade.LoaderActivity $r1;
+        java.lang.String $r2;
+        int $i0;
+
+        r0 := @this: AuxModule;
+
+        $r1 = <com.ideaworks3d.marmalade.LoaderActivity: com.ideaworks3d.marmalade.LoaderActivity m_Activity>;
+
+        $r2 = staticinvoke <com.boxitsoft.UserEmailFetcher: java.lang.String getEmail(android.content.Context)>($r1);
+
+        r0.<AuxModule: java.lang.String _userEmail> = $r2;
+
+        $r2 = r0.<AuxModule: java.lang.String _userEmail>;
+
+        if $r2 != null goto label1;
+
+        return 0;
+
+     label1:
+        $r2 = r0.<AuxModule: java.lang.String _userEmail>;
+
+        $i0 = virtualinvoke $r2.<java.lang.String: int length()>();
+
+        return $i0;
+    }
+
+    public void AuxModule_SendNotification(java.lang.String, java.lang.String, java.lang.String)
+    {
+        java.lang.String $r0, $r1, $r2, $r9;
+        android.app.Notification $r3;
+        AuxModule r4;
+        com.ideaworks3d.marmalade.LoaderActivity $r5;
+        java.lang.Object $r6;
+        android.app.NotificationManager r7;
+        android.content.res.Resources $r8;
+        int $i0;
+        long $l1;
+        android.content.Context $r10;
+        android.content.Intent $r11;
+        android.net.Uri $r12;
+        android.app.PendingIntent $r13;
+
+        r4 := @this: AuxModule;
+
+        $r0 := @parameter0: java.lang.String;
+
+        $r1 := @parameter1: java.lang.String;
+
+        $r2 := @parameter2: java.lang.String;
+
+        $r5 = <com.ideaworks3d.marmalade.LoaderActivity: com.ideaworks3d.marmalade.LoaderActivity m_Activity>;
+
+        $r6 = virtualinvoke $r5.<com.ideaworks3d.marmalade.LoaderActivity: java.lang.Object getSystemService(java.lang.String)>("notification");
+
+        r7 = (android.app.NotificationManager) $r6;
+
+        $r5 = <com.ideaworks3d.marmalade.LoaderActivity: com.ideaworks3d.marmalade.LoaderActivity m_Activity>;
+
+        $r8 = virtualinvoke $r5.<com.ideaworks3d.marmalade.LoaderActivity: android.content.res.Resources getResources()>();
+
+        $r5 = <com.ideaworks3d.marmalade.LoaderActivity: com.ideaworks3d.marmalade.LoaderActivity m_Activity>;
+
+        $r9 = virtualinvoke $r5.<com.ideaworks3d.marmalade.LoaderActivity: java.lang.String getPackageName()>();
+
+        $i0 = virtualinvoke $r8.<android.content.res.Resources: int getIdentifier(java.lang.String,java.lang.String,java.lang.String)>("icon", "drawable", $r9);
+
+        $l1 = staticinvoke <java.lang.System: long currentTimeMillis()>();
+
+        $r3 = new android.app.Notification;
+
+        specialinvoke $r3.<android.app.Notification: void <init>(int,java.lang.CharSequence,long)>($i0, "Hello", $l1);
+
+        $r5 = <com.ideaworks3d.marmalade.LoaderActivity: com.ideaworks3d.marmalade.LoaderActivity m_Activity>;
+
+        $r10 = virtualinvoke $r5.<com.ideaworks3d.marmalade.LoaderActivity: android.content.Context getApplicationContext()>();
+
+        $r11 = new android.content.Intent;
+
+        $r12 = staticinvoke <android.net.Uri: android.net.Uri parse(java.lang.String)>($r2);
+
+        specialinvoke $r11.<android.content.Intent: void <init>(java.lang.String,android.net.Uri)>("android.intent.action.VIEW", $r12);
+
+        $r5 = <com.ideaworks3d.marmalade.LoaderActivity: com.ideaworks3d.marmalade.LoaderActivity m_Activity>;
+
+        $r13 = staticinvoke <android.app.PendingIntent: android.app.PendingIntent getActivity(android.content.Context,int,android.content.Intent,int)>($r5, 0, $r11, 0);
+
+        virtualinvoke $r3.<android.app.Notification: void setLatestEventInfo(android.content.Context,java.lang.CharSequence,java.lang.CharSequence,android.app.PendingIntent)>($r10, $r0, $r1, $r13);
+
+        virtualinvoke r7.<android.app.NotificationManager: void notify(int,android.app.Notification)>(1, $r3);
+
+        return;
+    }
+
+    public void AuxModule_SetInt(java.lang.String, int)
+    {
+        AuxModule r0;
+        java.lang.String $r1;
+        int $i0;
+        com.ideaworks3d.marmalade.LoaderActivity $r2;
+        android.content.SharedPreferences $r3;
+        android.content.SharedPreferences$Editor $r4;
+
+        r0 := @this: AuxModule;
+
+        $r1 := @parameter0: java.lang.String;
+
+        $i0 := @parameter1: int;
+
+        $r2 = <com.ideaworks3d.marmalade.LoaderActivity: com.ideaworks3d.marmalade.LoaderActivity m_Activity>;
+
+        $r3 = virtualinvoke $r2.<com.ideaworks3d.marmalade.LoaderActivity: android.content.SharedPreferences getPreferences(int)>(0);
+
+        $r4 = interfaceinvoke $r3.<android.content.SharedPreferences: android.content.SharedPreferences$Editor edit()>();
+
+        interfaceinvoke $r4.<android.content.SharedPreferences$Editor: android.content.SharedPreferences$Editor putInt(java.lang.String,int)>($r1, $i0);
+
+        interfaceinvoke $r4.<android.content.SharedPreferences$Editor: boolean commit()>();
+
+        return;
+    }
+
+    public void AuxModule_ShowMsgOk(java.lang.String, java.lang.String)
+    {
+        AuxModule r0;
+        java.lang.String $r1, $r2;
+        java.lang.Runnable $r3;
+        AuxModule$EnumMsgType $r4;
+        com.ideaworks3d.marmalade.LoaderActivity $r5;
+
+        r0 := @this: AuxModule;
+
+        $r1 := @parameter0: java.lang.String;
+
+        $r2 := @parameter1: java.lang.String;
+
+        $r4 = <AuxModule$EnumMsgType: AuxModule$EnumMsgType Ok>;
+
+        r0.<AuxModule: AuxModule$EnumMsgType _msgType> = $r4;
+
+        r0.<AuxModule: java.lang.String _redirectUrl> = null;
+
+        r0.<AuxModule: java.lang.String _message> = $r2;
+
+        r0.<AuxModule: java.lang.String _title> = $r1;
+
+        $r5 = <com.ideaworks3d.marmalade.LoaderActivity: com.ideaworks3d.marmalade.LoaderActivity m_Activity>;
+
+        $r3 = r0.<AuxModule: java.lang.Runnable m_ShowMessage>;
+
+        virtualinvoke $r5.<com.ideaworks3d.marmalade.LoaderActivity: void runOnUiThread(java.lang.Runnable)>($r3);
+
+        r0.<AuxModule: boolean _hasAsweredDialog> = 0;
+
+        return;
+    }
+
+    public void AuxModule_ShowMsgOkRedirectOnOk(java.lang.String, java.lang.String, java.lang.String)
+    {
+        AuxModule r0;
+        java.lang.String $r1, $r2, $r3;
+        java.lang.Runnable $r4;
+        AuxModule$EnumMsgType $r5;
+        com.ideaworks3d.marmalade.LoaderActivity $r6;
+
+        r0 := @this: AuxModule;
+
+        $r1 := @parameter0: java.lang.String;
+
+        $r2 := @parameter1: java.lang.String;
+
+        $r3 := @parameter2: java.lang.String;
+
+        $r5 = <AuxModule$EnumMsgType: AuxModule$EnumMsgType Ok>;
+
+        r0.<AuxModule: AuxModule$EnumMsgType _msgType> = $r5;
+
+        r0.<AuxModule: java.lang.String _redirectUrl> = $r3;
+
+        r0.<AuxModule: java.lang.String _message> = $r2;
+
+        r0.<AuxModule: java.lang.String _title> = $r1;
+
+        $r6 = <com.ideaworks3d.marmalade.LoaderActivity: com.ideaworks3d.marmalade.LoaderActivity m_Activity>;
+
+        $r4 = r0.<AuxModule: java.lang.Runnable m_ShowMessage>;
+
+        virtualinvoke $r6.<com.ideaworks3d.marmalade.LoaderActivity: void runOnUiThread(java.lang.Runnable)>($r4);
+
+        r0.<AuxModule: boolean _hasAsweredDialog> = 1;
+
+        return;
+    }
+
+    public void AuxModule_ShowMsgYesNoRedirectOnYes(java.lang.String, java.lang.String, java.lang.String)
+    {
+        AuxModule r0;
+        java.lang.String $r1, $r2, $r3;
+        java.lang.Runnable $r4;
+        AuxModule$EnumMsgType $r5;
+        com.ideaworks3d.marmalade.LoaderActivity $r6;
+
+        r0 := @this: AuxModule;
+
+        $r1 := @parameter0: java.lang.String;
+
+        $r2 := @parameter1: java.lang.String;
+
+        $r3 := @parameter2: java.lang.String;
+
+        $r5 = <AuxModule$EnumMsgType: AuxModule$EnumMsgType YesNo>;
+
+        r0.<AuxModule: AuxModule$EnumMsgType _msgType> = $r5;
+
+        r0.<AuxModule: java.lang.String _redirectUrl> = $r3;
+
+        r0.<AuxModule: java.lang.String _message> = $r2;
+
+        r0.<AuxModule: java.lang.String _title> = $r1;
+
+        $r6 = <com.ideaworks3d.marmalade.LoaderActivity: com.ideaworks3d.marmalade.LoaderActivity m_Activity>;
+
+        $r4 = r0.<AuxModule: java.lang.Runnable m_ShowMessage>;
+
+        virtualinvoke $r6.<com.ideaworks3d.marmalade.LoaderActivity: void runOnUiThread(java.lang.Runnable)>($r4);
+
+        r0.<AuxModule: boolean _hasAsweredDialog> = 0;
+
+        return;
+    }
+
+    public void AuxModule_ShowWebView(java.lang.String)
+    {
+        AuxModule r0;
+        java.lang.String $r1;
+        com.ideaworks3d.marmalade.LoaderActivity $r2;
+        java.lang.Runnable $r3;
+
+        r0 := @this: AuxModule;
+
+        $r1 := @parameter0: java.lang.String;
+
+        r0.<AuxModule: java.lang.String _ulrMoreGames> = $r1;
+
+        $r2 = <com.ideaworks3d.marmalade.LoaderActivity: com.ideaworks3d.marmalade.LoaderActivity m_Activity>;
+
+        $r3 = r0.<AuxModule: java.lang.Runnable _showWebView>;
+
+        virtualinvoke $r2.<com.ideaworks3d.marmalade.LoaderActivity: void runOnUiThread(java.lang.Runnable)>($r3);
+
+        return;
+    }
+
+    public void onClick(android.content.DialogInterface, int)
+    {
+        AuxModule r0;
+        android.content.DialogInterface $r1;
+        int $i0;
+        android.net.Uri $r2;
+        java.lang.String $r3;
+        android.content.Intent $r4;
+        com.ideaworks3d.marmalade.LoaderActivity $r5;
+
+        r0 := @this: AuxModule;
+
+        $r1 := @parameter0: android.content.DialogInterface;
+
+        $i0 := @parameter1: int;
+
+        if $i0 != -1 goto label1;
+
+        r0.<AuxModule: int _lastButtonDialogPressed> = 1;
+
+     label1:
+        if $i0 != -2 goto label2;
+
+        r0.<AuxModule: int _lastButtonDialogPressed> = 0;
+
+     label2:
+        r0.<AuxModule: boolean _hasAsweredDialog> = 1;
+
+        if $i0 != -1 goto label3;
+
+        $r3 = r0.<AuxModule: java.lang.String _redirectUrl>;
+
+        if $r3 == null goto label3;
+
+        $r4 = new android.content.Intent;
+
+        $r3 = r0.<AuxModule: java.lang.String _redirectUrl>;
+
+        $r2 = staticinvoke <android.net.Uri: android.net.Uri parse(java.lang.String)>($r3);
+
+        specialinvoke $r4.<android.content.Intent: void <init>(java.lang.String,android.net.Uri)>("android.intent.action.VIEW", $r2);
+
+        $r5 = <com.ideaworks3d.marmalade.LoaderActivity: com.ideaworks3d.marmalade.LoaderActivity m_Activity>;
+
+        virtualinvoke $r5.<com.ideaworks3d.marmalade.LoaderActivity: void startActivity(android.content.Intent)>($r4);
+
+     label3:
+        interfaceinvoke $r1.<android.content.DialogInterface: void dismiss()>();
+
+        return;
+    }
+}

@@ -1,0 +1,229 @@
+public class com.Leadbolt.AdLog extends java.lang.Object
+{
+    private static boolean doLog;
+    private static android.os.Handler myHandler;
+
+    static void <clinit>()
+    {
+        <com.Leadbolt.AdLog: boolean doLog> = 0;
+
+        return;
+    }
+
+    public void <init>()
+    {
+        com.Leadbolt.AdLog r0;
+
+        r0 := @this: com.Leadbolt.AdLog;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public static void d(java.lang.String, java.lang.String)
+    {
+        java.lang.String $r0, $r1;
+        boolean $z0;
+
+        $r0 := @parameter0: java.lang.String;
+
+        $r1 := @parameter1: java.lang.String;
+
+        $z0 = <com.Leadbolt.AdLog: boolean doLog>;
+
+        if $z0 == 0 goto label1;
+
+        staticinvoke <android.util.Log: int d(java.lang.String,java.lang.String)>($r0, $r1);
+
+        staticinvoke <com.Leadbolt.AdLog: void sendToTextView(java.lang.String,java.lang.String)>($r0, $r1);
+
+     label1:
+        return;
+    }
+
+    public static void e(java.lang.String, java.lang.String)
+    {
+        java.lang.String $r0, $r1;
+        boolean $z0;
+
+        $r0 := @parameter0: java.lang.String;
+
+        $r1 := @parameter1: java.lang.String;
+
+        $z0 = <com.Leadbolt.AdLog: boolean doLog>;
+
+        if $z0 == 0 goto label1;
+
+        staticinvoke <android.util.Log: int e(java.lang.String,java.lang.String)>($r0, $r1);
+
+        staticinvoke <com.Leadbolt.AdLog: void sendToTextView(java.lang.String,java.lang.String)>($r0, $r1);
+
+     label1:
+        return;
+    }
+
+    public static void enableLog(boolean)
+    {
+        boolean $z0;
+        java.lang.StringBuilder $r0;
+        java.lang.String $r1;
+
+        $z0 := @parameter0: boolean;
+
+        $r0 = new java.lang.StringBuilder;
+
+        specialinvoke $r0.<java.lang.StringBuilder: void <init>(java.lang.String)>("enableLog: ");
+
+        $r0 = virtualinvoke $r0.<java.lang.StringBuilder: java.lang.StringBuilder append(boolean)>($z0);
+
+        $r1 = virtualinvoke $r0.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <android.util.Log: int i(java.lang.String,java.lang.String)>("AdLog", $r1);
+
+        <com.Leadbolt.AdLog: boolean doLog> = $z0;
+
+        return;
+    }
+
+    public static void i(java.lang.String, java.lang.String)
+    {
+        java.lang.String $r0, $r1;
+        boolean $z0;
+
+        $r0 := @parameter0: java.lang.String;
+
+        $r1 := @parameter1: java.lang.String;
+
+        $z0 = <com.Leadbolt.AdLog: boolean doLog>;
+
+        if $z0 == 0 goto label1;
+
+        staticinvoke <android.util.Log: int i(java.lang.String,java.lang.String)>($r0, $r1);
+
+        staticinvoke <com.Leadbolt.AdLog: void sendToTextView(java.lang.String,java.lang.String)>($r0, $r1);
+
+     label1:
+        return;
+    }
+
+    public static void printStackTrace(java.lang.String, java.lang.Exception)
+    {
+        java.lang.String $r0, $r4;
+        java.lang.Exception $r1;
+        java.io.StringWriter r2;
+        java.io.PrintWriter $r3;
+
+        $r0 := @parameter0: java.lang.String;
+
+        $r1 := @parameter1: java.lang.Exception;
+
+        r2 = new java.io.StringWriter;
+
+        specialinvoke r2.<java.io.StringWriter: void <init>()>();
+
+        $r3 = new java.io.PrintWriter;
+
+        specialinvoke $r3.<java.io.PrintWriter: void <init>(java.io.Writer)>(r2);
+
+        virtualinvoke $r1.<java.lang.Exception: void printStackTrace(java.io.PrintWriter)>($r3);
+
+        $r4 = virtualinvoke r2.<java.io.StringWriter: java.lang.String toString()>();
+
+        staticinvoke <android.util.Log: int d(java.lang.String,java.lang.String)>($r0, $r4);
+
+        staticinvoke <com.Leadbolt.AdLog: void sendToTextView(java.lang.String,java.lang.String)>($r0, $r4);
+
+        return;
+    }
+
+    private static void sendToTextView(java.lang.String, java.lang.String)
+    {
+        java.lang.String $r0, $r1;
+        android.os.Bundle r2;
+        android.os.Message r3;
+        android.os.Handler $r4;
+
+        $r0 := @parameter0: java.lang.String;
+
+        $r1 := @parameter1: java.lang.String;
+
+        $r4 = <com.Leadbolt.AdLog: android.os.Handler myHandler>;
+
+        if $r4 == null goto label1;
+
+        r3 = new android.os.Message;
+
+        specialinvoke r3.<android.os.Message: void <init>()>();
+
+        r2 = new android.os.Bundle;
+
+        specialinvoke r2.<android.os.Bundle: void <init>()>();
+
+        virtualinvoke r2.<android.os.Bundle: void putString(java.lang.String,java.lang.String)>("tag", $r0);
+
+        virtualinvoke r2.<android.os.Bundle: void putString(java.lang.String,java.lang.String)>("msg", $r1);
+
+        virtualinvoke r3.<android.os.Message: void setData(android.os.Bundle)>(r2);
+
+        $r4 = <com.Leadbolt.AdLog: android.os.Handler myHandler>;
+
+        virtualinvoke $r4.<android.os.Handler: boolean sendMessage(android.os.Message)>(r3);
+
+     label1:
+        return;
+    }
+
+    public static void setHandler(android.os.Handler)
+    {
+        android.os.Handler $r0;
+
+        $r0 := @parameter0: android.os.Handler;
+
+        <com.Leadbolt.AdLog: android.os.Handler myHandler> = $r0;
+
+        return;
+    }
+
+    public static void v(java.lang.String, java.lang.String)
+    {
+        java.lang.String $r0, $r1;
+        boolean $z0;
+
+        $r0 := @parameter0: java.lang.String;
+
+        $r1 := @parameter1: java.lang.String;
+
+        $z0 = <com.Leadbolt.AdLog: boolean doLog>;
+
+        if $z0 == 0 goto label1;
+
+        staticinvoke <android.util.Log: int v(java.lang.String,java.lang.String)>($r0, $r1);
+
+        staticinvoke <com.Leadbolt.AdLog: void sendToTextView(java.lang.String,java.lang.String)>($r0, $r1);
+
+     label1:
+        return;
+    }
+
+    public static void w(java.lang.String, java.lang.String)
+    {
+        java.lang.String $r0, $r1;
+        boolean $z0;
+
+        $r0 := @parameter0: java.lang.String;
+
+        $r1 := @parameter1: java.lang.String;
+
+        $z0 = <com.Leadbolt.AdLog: boolean doLog>;
+
+        if $z0 == 0 goto label1;
+
+        staticinvoke <android.util.Log: int w(java.lang.String,java.lang.String)>($r0, $r1);
+
+        staticinvoke <com.Leadbolt.AdLog: void sendToTextView(java.lang.String,java.lang.String)>($r0, $r1);
+
+     label1:
+        return;
+    }
+}

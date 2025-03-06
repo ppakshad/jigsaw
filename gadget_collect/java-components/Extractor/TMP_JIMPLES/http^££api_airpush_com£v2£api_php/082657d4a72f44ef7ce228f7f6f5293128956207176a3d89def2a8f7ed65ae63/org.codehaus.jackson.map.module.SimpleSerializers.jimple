@@ -1,0 +1,299 @@
+public class org.codehaus.jackson.map.module.SimpleSerializers extends java.lang.Object implements org.codehaus.jackson.map.Serializers
+{
+    protected java.util.HashMap _classMappings;
+    protected java.util.HashMap _interfaceMappings;
+
+    public void <init>()
+    {
+        org.codehaus.jackson.map.module.SimpleSerializers r0;
+
+        r0 := @this: org.codehaus.jackson.map.module.SimpleSerializers;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        r0.<org.codehaus.jackson.map.module.SimpleSerializers: java.util.HashMap _classMappings> = null;
+
+        r0.<org.codehaus.jackson.map.module.SimpleSerializers: java.util.HashMap _interfaceMappings> = null;
+
+        return;
+    }
+
+    private void _addSerializer(java.lang.Class, org.codehaus.jackson.map.JsonSerializer)
+    {
+        org.codehaus.jackson.map.module.SimpleSerializers r0;
+        java.lang.Class r1;
+        org.codehaus.jackson.map.JsonSerializer r2;
+        org.codehaus.jackson.map.type.ClassKey r3;
+        boolean $z0;
+        java.util.HashMap $r4;
+
+        r0 := @this: org.codehaus.jackson.map.module.SimpleSerializers;
+
+        r1 := @parameter0: java.lang.Class;
+
+        r2 := @parameter1: org.codehaus.jackson.map.JsonSerializer;
+
+        r3 = new org.codehaus.jackson.map.type.ClassKey;
+
+        specialinvoke r3.<org.codehaus.jackson.map.type.ClassKey: void <init>(java.lang.Class)>(r1);
+
+        $z0 = virtualinvoke r1.<java.lang.Class: boolean isInterface()>();
+
+        if $z0 == 0 goto label2;
+
+        $r4 = r0.<org.codehaus.jackson.map.module.SimpleSerializers: java.util.HashMap _interfaceMappings>;
+
+        if $r4 != null goto label1;
+
+        $r4 = new java.util.HashMap;
+
+        specialinvoke $r4.<java.util.HashMap: void <init>()>();
+
+        r0.<org.codehaus.jackson.map.module.SimpleSerializers: java.util.HashMap _interfaceMappings> = $r4;
+
+     label1:
+        $r4 = r0.<org.codehaus.jackson.map.module.SimpleSerializers: java.util.HashMap _interfaceMappings>;
+
+        virtualinvoke $r4.<java.util.HashMap: java.lang.Object put(java.lang.Object,java.lang.Object)>(r3, r2);
+
+        return;
+
+     label2:
+        $r4 = r0.<org.codehaus.jackson.map.module.SimpleSerializers: java.util.HashMap _classMappings>;
+
+        if $r4 != null goto label3;
+
+        $r4 = new java.util.HashMap;
+
+        specialinvoke $r4.<java.util.HashMap: void <init>()>();
+
+        r0.<org.codehaus.jackson.map.module.SimpleSerializers: java.util.HashMap _classMappings> = $r4;
+
+     label3:
+        $r4 = r0.<org.codehaus.jackson.map.module.SimpleSerializers: java.util.HashMap _classMappings>;
+
+        virtualinvoke $r4.<java.util.HashMap: java.lang.Object put(java.lang.Object,java.lang.Object)>(r3, r2);
+
+        return;
+    }
+
+    protected org.codehaus.jackson.map.JsonSerializer _findInterfaceMapping(java.lang.Class, org.codehaus.jackson.map.type.ClassKey)
+    {
+        org.codehaus.jackson.map.module.SimpleSerializers r0;
+        java.lang.Class r1;
+        org.codehaus.jackson.map.type.ClassKey $r2;
+        int i0, i1;
+        java.lang.Class[] $r3;
+        java.util.HashMap $r4;
+        java.lang.Object $r5;
+        org.codehaus.jackson.map.JsonSerializer r6;
+
+        r0 := @this: org.codehaus.jackson.map.module.SimpleSerializers;
+
+        r1 := @parameter0: java.lang.Class;
+
+        $r2 := @parameter1: org.codehaus.jackson.map.type.ClassKey;
+
+        $r3 = virtualinvoke r1.<java.lang.Class: java.lang.Class[] getInterfaces()>();
+
+        i0 = lengthof $r3;
+
+        i1 = 0;
+
+     label1:
+        if i1 >= i0 goto label4;
+
+        r1 = $r3[i1];
+
+        virtualinvoke $r2.<org.codehaus.jackson.map.type.ClassKey: void reset(java.lang.Class)>(r1);
+
+        $r4 = r0.<org.codehaus.jackson.map.module.SimpleSerializers: java.util.HashMap _interfaceMappings>;
+
+        $r5 = virtualinvoke $r4.<java.util.HashMap: java.lang.Object get(java.lang.Object)>($r2);
+
+        r6 = (org.codehaus.jackson.map.JsonSerializer) $r5;
+
+        if r6 == null goto label2;
+
+        return r6;
+
+     label2:
+        r6 = virtualinvoke r0.<org.codehaus.jackson.map.module.SimpleSerializers: org.codehaus.jackson.map.JsonSerializer _findInterfaceMapping(java.lang.Class,org.codehaus.jackson.map.type.ClassKey)>(r1, $r2);
+
+        if r6 == null goto label3;
+
+        return r6;
+
+     label3:
+        i1 = i1 + 1;
+
+        goto label1;
+
+     label4:
+        return null;
+    }
+
+    public void addSerializer(java.lang.Class, org.codehaus.jackson.map.JsonSerializer)
+    {
+        org.codehaus.jackson.map.module.SimpleSerializers r0;
+        java.lang.Class r1;
+        org.codehaus.jackson.map.JsonSerializer r2;
+
+        r0 := @this: org.codehaus.jackson.map.module.SimpleSerializers;
+
+        r1 := @parameter0: java.lang.Class;
+
+        r2 := @parameter1: org.codehaus.jackson.map.JsonSerializer;
+
+        specialinvoke r0.<org.codehaus.jackson.map.module.SimpleSerializers: void _addSerializer(java.lang.Class,org.codehaus.jackson.map.JsonSerializer)>(r1, r2);
+
+        return;
+    }
+
+    public void addSerializer(org.codehaus.jackson.map.JsonSerializer)
+    {
+        org.codehaus.jackson.map.module.SimpleSerializers r0;
+        org.codehaus.jackson.map.JsonSerializer r1;
+        java.lang.Class $r2;
+        java.lang.IllegalArgumentException $r3;
+        java.lang.StringBuilder $r4;
+        java.lang.String $r5;
+
+        r0 := @this: org.codehaus.jackson.map.module.SimpleSerializers;
+
+        r1 := @parameter0: org.codehaus.jackson.map.JsonSerializer;
+
+        $r2 = virtualinvoke r1.<org.codehaus.jackson.map.JsonSerializer: java.lang.Class handledType()>();
+
+        if $r2 == null goto label1;
+
+        if $r2 != class "Ljava/lang/Object;" goto label2;
+
+     label1:
+        $r3 = new java.lang.IllegalArgumentException;
+
+        $r4 = new java.lang.StringBuilder;
+
+        specialinvoke $r4.<java.lang.StringBuilder: void <init>()>();
+
+        $r4 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("JsonSerializer of type ");
+
+        $r2 = virtualinvoke r1.<java.lang.Object: java.lang.Class getClass()>();
+
+        $r5 = virtualinvoke $r2.<java.lang.Class: java.lang.String getName()>();
+
+        $r4 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r5);
+
+        $r4 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" does not define valid handledType() (use alternative registration method?)");
+
+        $r5 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke $r3.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>($r5);
+
+        throw $r3;
+
+     label2:
+        specialinvoke r0.<org.codehaus.jackson.map.module.SimpleSerializers: void _addSerializer(java.lang.Class,org.codehaus.jackson.map.JsonSerializer)>($r2, r1);
+
+        return;
+    }
+
+    public org.codehaus.jackson.map.JsonSerializer findSerializer(org.codehaus.jackson.map.SerializationConfig, org.codehaus.jackson.type.JavaType, org.codehaus.jackson.map.BeanDescription, org.codehaus.jackson.map.BeanProperty)
+    {
+        org.codehaus.jackson.map.module.SimpleSerializers r0;
+        org.codehaus.jackson.map.SerializationConfig $r1;
+        org.codehaus.jackson.type.JavaType $r2;
+        org.codehaus.jackson.map.BeanDescription $r3;
+        org.codehaus.jackson.map.BeanProperty $r4;
+        org.codehaus.jackson.map.type.ClassKey r5;
+        java.lang.Class $r6, r10;
+        boolean $z0;
+        java.util.HashMap $r7;
+        java.lang.Object $r8;
+        org.codehaus.jackson.map.JsonSerializer r9;
+
+        r0 := @this: org.codehaus.jackson.map.module.SimpleSerializers;
+
+        $r1 := @parameter0: org.codehaus.jackson.map.SerializationConfig;
+
+        $r2 := @parameter1: org.codehaus.jackson.type.JavaType;
+
+        $r3 := @parameter2: org.codehaus.jackson.map.BeanDescription;
+
+        $r4 := @parameter3: org.codehaus.jackson.map.BeanProperty;
+
+        $r6 = virtualinvoke $r2.<org.codehaus.jackson.type.JavaType: java.lang.Class getRawClass()>();
+
+        r5 = new org.codehaus.jackson.map.type.ClassKey;
+
+        specialinvoke r5.<org.codehaus.jackson.map.type.ClassKey: void <init>(java.lang.Class)>($r6);
+
+        $z0 = virtualinvoke $r6.<java.lang.Class: boolean isInterface()>();
+
+        if $z0 == 0 goto label1;
+
+        $r7 = r0.<org.codehaus.jackson.map.module.SimpleSerializers: java.util.HashMap _interfaceMappings>;
+
+        if $r7 == null goto label5;
+
+        $r7 = r0.<org.codehaus.jackson.map.module.SimpleSerializers: java.util.HashMap _interfaceMappings>;
+
+        $r8 = virtualinvoke $r7.<java.util.HashMap: java.lang.Object get(java.lang.Object)>(r5);
+
+        r9 = (org.codehaus.jackson.map.JsonSerializer) $r8;
+
+        if r9 == null goto label5;
+
+        return r9;
+
+     label1:
+        $r7 = r0.<org.codehaus.jackson.map.module.SimpleSerializers: java.util.HashMap _classMappings>;
+
+        if $r7 == null goto label5;
+
+        $r7 = r0.<org.codehaus.jackson.map.module.SimpleSerializers: java.util.HashMap _classMappings>;
+
+        $r8 = virtualinvoke $r7.<java.util.HashMap: java.lang.Object get(java.lang.Object)>(r5);
+
+        r9 = (org.codehaus.jackson.map.JsonSerializer) $r8;
+
+        if r9 == null goto label2;
+
+        return r9;
+
+     label2:
+        r10 = $r6;
+
+     label3:
+        if r10 == null goto label5;
+
+        virtualinvoke r5.<org.codehaus.jackson.map.type.ClassKey: void reset(java.lang.Class)>(r10);
+
+        $r7 = r0.<org.codehaus.jackson.map.module.SimpleSerializers: java.util.HashMap _classMappings>;
+
+        $r8 = virtualinvoke $r7.<java.util.HashMap: java.lang.Object get(java.lang.Object)>(r5);
+
+        r9 = (org.codehaus.jackson.map.JsonSerializer) $r8;
+
+        if r9 == null goto label4;
+
+        return r9;
+
+     label4:
+        r10 = virtualinvoke r10.<java.lang.Class: java.lang.Class getSuperclass()>();
+
+        goto label3;
+
+     label5:
+        $r7 = r0.<org.codehaus.jackson.map.module.SimpleSerializers: java.util.HashMap _interfaceMappings>;
+
+        if $r7 == null goto label6;
+
+        r9 = virtualinvoke r0.<org.codehaus.jackson.map.module.SimpleSerializers: org.codehaus.jackson.map.JsonSerializer _findInterfaceMapping(java.lang.Class,org.codehaus.jackson.map.type.ClassKey)>($r6, r5);
+
+        return r9;
+
+     label6:
+        return null;
+    }
+}

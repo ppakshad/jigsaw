@@ -1,0 +1,276 @@
+class com.startapp.android.publish.list3d.c$1 extends android.content.BroadcastReceiver
+{
+    final com.startapp.android.publish.list3d.c a;
+
+    void <init>(com.startapp.android.publish.list3d.c)
+    {
+        com.startapp.android.publish.list3d.c$1 r0;
+        com.startapp.android.publish.list3d.c $r1;
+
+        r0 := @this: com.startapp.android.publish.list3d.c$1;
+
+        $r1 := @parameter0: com.startapp.android.publish.list3d.c;
+
+        r0.<com.startapp.android.publish.list3d.c$1: com.startapp.android.publish.list3d.c a> = $r1;
+
+        specialinvoke r0.<android.content.BroadcastReceiver: void <init>()>();
+
+        return;
+    }
+
+    public void onReceive(android.content.Context, android.content.Intent)
+    {
+        com.startapp.android.publish.list3d.c$1 r0;
+        android.content.Context $r1, $r11;
+        android.content.Intent $r2;
+        com.startapp.android.publish.list3d.c $r3, $r6;
+        int $i0, $i1;
+        double $d0, $d1;
+        java.lang.StringBuilder $r4;
+        java.lang.String $r5, $r12;
+        android.os.Parcelable $r7;
+        com.startapp.android.publish.list3d.Dynamics $r8;
+        float $f0;
+        java.util.ArrayList $r9;
+        com.startapp.android.publish.list3d.b $r10;
+        com.startapp.android.publish.i.l $r13;
+
+        r0 := @this: com.startapp.android.publish.list3d.c$1;
+
+        $r1 := @parameter0: android.content.Context;
+
+        $r2 := @parameter1: android.content.Intent;
+
+        $r3 = r0.<com.startapp.android.publish.list3d.c$1: com.startapp.android.publish.list3d.c a>;
+
+        $i0 = virtualinvoke $r3.<com.startapp.android.publish.list3d.c: int getHeight()>();
+
+        $i0 = virtualinvoke $r2.<android.content.Intent: int getIntExtra(java.lang.String,int)>("getHeight", $i0);
+
+        $r3 = r0.<com.startapp.android.publish.list3d.c$1: com.startapp.android.publish.list3d.c a>;
+
+        $i1 = virtualinvoke $r3.<com.startapp.android.publish.list3d.c: int getHeight()>();
+
+        $d0 = (double) $i1;
+
+        $d1 = (double) $i0;
+
+        $d0 = $d0 / $d1;
+
+        $r4 = new java.lang.StringBuilder;
+
+        specialinvoke $r4.<java.lang.StringBuilder: void <init>()>();
+
+        $r3 = r0.<com.startapp.android.publish.list3d.c$1: com.startapp.android.publish.list3d.c a>;
+
+        $r5 = staticinvoke <com.startapp.android.publish.list3d.c: java.lang.String a(com.startapp.android.publish.list3d.c)>($r3);
+
+        $r4 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r5);
+
+        $r4 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Updating Position with Ratio: [");
+
+        $r4 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.StringBuilder append(double)>($d0);
+
+        $r4 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("]");
+
+        $r5 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <com.startapp.android.publish.i.n: void a(int,java.lang.String)>(3, $r5);
+
+        $r3 = r0.<com.startapp.android.publish.list3d.c$1: com.startapp.android.publish.list3d.c a>;
+
+        $r6 = r0.<com.startapp.android.publish.list3d.c$1: com.startapp.android.publish.list3d.c a>;
+
+        $i0 = staticinvoke <com.startapp.android.publish.list3d.c: int b(com.startapp.android.publish.list3d.c)>($r6);
+
+        $i0 = virtualinvoke $r2.<android.content.Intent: int getIntExtra(java.lang.String,int)>("mTouchState", $i0);
+
+        staticinvoke <com.startapp.android.publish.list3d.c: int a(com.startapp.android.publish.list3d.c,int)>($r3, $i0);
+
+        $r3 = r0.<com.startapp.android.publish.list3d.c$1: com.startapp.android.publish.list3d.c a>;
+
+        $r6 = r0.<com.startapp.android.publish.list3d.c$1: com.startapp.android.publish.list3d.c a>;
+
+        $i0 = staticinvoke <com.startapp.android.publish.list3d.c: int c(com.startapp.android.publish.list3d.c)>($r6);
+
+        $i0 = virtualinvoke $r2.<android.content.Intent: int getIntExtra(java.lang.String,int)>("mTouchStartX", $i0);
+
+        staticinvoke <com.startapp.android.publish.list3d.c: int b(com.startapp.android.publish.list3d.c,int)>($r3, $i0);
+
+        $r3 = r0.<com.startapp.android.publish.list3d.c$1: com.startapp.android.publish.list3d.c a>;
+
+        $r6 = r0.<com.startapp.android.publish.list3d.c$1: com.startapp.android.publish.list3d.c a>;
+
+        $i0 = staticinvoke <com.startapp.android.publish.list3d.c: int d(com.startapp.android.publish.list3d.c)>($r6);
+
+        $i0 = virtualinvoke $r2.<android.content.Intent: int getIntExtra(java.lang.String,int)>("mTouchStartY", $i0);
+
+        staticinvoke <com.startapp.android.publish.list3d.c: int c(com.startapp.android.publish.list3d.c,int)>($r3, $i0);
+
+        $r3 = r0.<com.startapp.android.publish.list3d.c$1: com.startapp.android.publish.list3d.c a>;
+
+        $r6 = r0.<com.startapp.android.publish.list3d.c$1: com.startapp.android.publish.list3d.c a>;
+
+        $i0 = staticinvoke <com.startapp.android.publish.list3d.c: int e(com.startapp.android.publish.list3d.c)>($r6);
+
+        $i0 = virtualinvoke $r2.<android.content.Intent: int getIntExtra(java.lang.String,int)>("mListRotation", $i0);
+
+        staticinvoke <com.startapp.android.publish.list3d.c: int d(com.startapp.android.publish.list3d.c,int)>($r3, $i0);
+
+        $r3 = r0.<com.startapp.android.publish.list3d.c$1: com.startapp.android.publish.list3d.c a>;
+
+        $r6 = r0.<com.startapp.android.publish.list3d.c$1: com.startapp.android.publish.list3d.c a>;
+
+        $i0 = staticinvoke <com.startapp.android.publish.list3d.c: int f(com.startapp.android.publish.list3d.c)>($r6);
+
+        $i0 = virtualinvoke $r2.<android.content.Intent: int getIntExtra(java.lang.String,int)>("mFirstItemPosition", $i0);
+
+        $d1 = (double) $i0;
+
+        $d1 = $d1 * $d0;
+
+        $i0 = (int) $d1;
+
+        staticinvoke <com.startapp.android.publish.list3d.c: int e(com.startapp.android.publish.list3d.c,int)>($r3, $i0);
+
+        $r3 = r0.<com.startapp.android.publish.list3d.c$1: com.startapp.android.publish.list3d.c a>;
+
+        staticinvoke <com.startapp.android.publish.list3d.c: int g(com.startapp.android.publish.list3d.c)>($r3);
+
+        $r3 = r0.<com.startapp.android.publish.list3d.c$1: com.startapp.android.publish.list3d.c a>;
+
+        $r6 = r0.<com.startapp.android.publish.list3d.c$1: com.startapp.android.publish.list3d.c a>;
+
+        $i0 = staticinvoke <com.startapp.android.publish.list3d.c: int h(com.startapp.android.publish.list3d.c)>($r6);
+
+        $i0 = virtualinvoke $r2.<android.content.Intent: int getIntExtra(java.lang.String,int)>("mLastItemPosition", $i0);
+
+        $d1 = (double) $i0;
+
+        $d1 = $d1 * $d0;
+
+        $i0 = (int) $d1;
+
+        staticinvoke <com.startapp.android.publish.list3d.c: int f(com.startapp.android.publish.list3d.c,int)>($r3, $i0);
+
+        $r3 = r0.<com.startapp.android.publish.list3d.c$1: com.startapp.android.publish.list3d.c a>;
+
+        staticinvoke <com.startapp.android.publish.list3d.c: int i(com.startapp.android.publish.list3d.c)>($r3);
+
+        $r3 = r0.<com.startapp.android.publish.list3d.c$1: com.startapp.android.publish.list3d.c a>;
+
+        $r6 = r0.<com.startapp.android.publish.list3d.c$1: com.startapp.android.publish.list3d.c a>;
+
+        $i0 = staticinvoke <com.startapp.android.publish.list3d.c: int j(com.startapp.android.publish.list3d.c)>($r6);
+
+        $i0 = virtualinvoke $r2.<android.content.Intent: int getIntExtra(java.lang.String,int)>("mListTop", $i0);
+
+        $d1 = (double) $i0;
+
+        $d1 = $d1 * $d0;
+
+        $i0 = (int) $d1;
+
+        staticinvoke <com.startapp.android.publish.list3d.c: int g(com.startapp.android.publish.list3d.c,int)>($r3, $i0);
+
+        $r3 = r0.<com.startapp.android.publish.list3d.c$1: com.startapp.android.publish.list3d.c a>;
+
+        $r6 = r0.<com.startapp.android.publish.list3d.c$1: com.startapp.android.publish.list3d.c a>;
+
+        $i0 = staticinvoke <com.startapp.android.publish.list3d.c: int k(com.startapp.android.publish.list3d.c)>($r6);
+
+        $i0 = virtualinvoke $r2.<android.content.Intent: int getIntExtra(java.lang.String,int)>("mListTopStart", $i0);
+
+        $d1 = (double) $i0;
+
+        $d1 = $d1 * $d0;
+
+        $i0 = (int) $d1;
+
+        staticinvoke <com.startapp.android.publish.list3d.c: int h(com.startapp.android.publish.list3d.c,int)>($r3, $i0);
+
+        $r3 = r0.<com.startapp.android.publish.list3d.c$1: com.startapp.android.publish.list3d.c a>;
+
+        $r6 = r0.<com.startapp.android.publish.list3d.c$1: com.startapp.android.publish.list3d.c a>;
+
+        $i0 = staticinvoke <com.startapp.android.publish.list3d.c: int l(com.startapp.android.publish.list3d.c)>($r6);
+
+        $i0 = virtualinvoke $r2.<android.content.Intent: int getIntExtra(java.lang.String,int)>("mListTopOffset", $i0);
+
+        $d1 = (double) $i0;
+
+        $d1 = $d1 * $d0;
+
+        $i0 = (int) $d1;
+
+        staticinvoke <com.startapp.android.publish.list3d.c: int i(com.startapp.android.publish.list3d.c,int)>($r3, $i0);
+
+        $r3 = r0.<com.startapp.android.publish.list3d.c$1: com.startapp.android.publish.list3d.c a>;
+
+        $r7 = virtualinvoke $r2.<android.content.Intent: android.os.Parcelable getParcelableExtra(java.lang.String)>("mDynamics");
+
+        $r8 = (com.startapp.android.publish.list3d.Dynamics) $r7;
+
+        staticinvoke <com.startapp.android.publish.list3d.c: com.startapp.android.publish.list3d.Dynamics a(com.startapp.android.publish.list3d.c,com.startapp.android.publish.list3d.Dynamics)>($r3, $r8);
+
+        $r3 = r0.<com.startapp.android.publish.list3d.c$1: com.startapp.android.publish.list3d.c a>;
+
+        $r6 = r0.<com.startapp.android.publish.list3d.c$1: com.startapp.android.publish.list3d.c a>;
+
+        $f0 = staticinvoke <com.startapp.android.publish.list3d.c: float m(com.startapp.android.publish.list3d.c)>($r6);
+
+        $f0 = virtualinvoke $r2.<android.content.Intent: float getFloatExtra(java.lang.String,float)>("mLastVelocity", $f0);
+
+        staticinvoke <com.startapp.android.publish.list3d.c: float a(com.startapp.android.publish.list3d.c,float)>($r3, $f0);
+
+        $r3 = r0.<com.startapp.android.publish.list3d.c$1: com.startapp.android.publish.list3d.c a>;
+
+        $r8 = staticinvoke <com.startapp.android.publish.list3d.c: com.startapp.android.publish.list3d.Dynamics n(com.startapp.android.publish.list3d.c)>($r3);
+
+        virtualinvoke $r8.<com.startapp.android.publish.list3d.Dynamics: void a(double)>($d0);
+
+        $r9 = virtualinvoke $r2.<android.content.Intent: java.util.ArrayList getParcelableArrayListExtra(java.lang.String)>("list");
+
+        $r10 = new com.startapp.android.publish.list3d.b;
+
+        $r3 = r0.<com.startapp.android.publish.list3d.c$1: com.startapp.android.publish.list3d.c a>;
+
+        $r11 = virtualinvoke $r3.<com.startapp.android.publish.list3d.c: android.content.Context getContext()>();
+
+        $r3 = r0.<com.startapp.android.publish.list3d.c$1: com.startapp.android.publish.list3d.c a>;
+
+        $r5 = staticinvoke <com.startapp.android.publish.list3d.c: java.lang.String o(com.startapp.android.publish.list3d.c)>($r3);
+
+        $r3 = r0.<com.startapp.android.publish.list3d.c$1: com.startapp.android.publish.list3d.c a>;
+
+        $r12 = staticinvoke <com.startapp.android.publish.list3d.c: java.lang.String p(com.startapp.android.publish.list3d.c)>($r3);
+
+        specialinvoke $r10.<com.startapp.android.publish.list3d.b: void <init>(android.content.Context,java.util.List,java.lang.String,java.lang.String,java.lang.String)>($r11, $r9, "home", $r5, $r12);
+
+        $r3 = r0.<com.startapp.android.publish.list3d.c$1: com.startapp.android.publish.list3d.c a>;
+
+        virtualinvoke $r3.<com.startapp.android.publish.list3d.c: void setAdapter(android.widget.Adapter)>($r10);
+
+        $r3 = r0.<com.startapp.android.publish.list3d.c$1: com.startapp.android.publish.list3d.c a>;
+
+        staticinvoke <com.startapp.android.publish.list3d.c: boolean a(com.startapp.android.publish.list3d.c,boolean)>($r3, 1);
+
+        $r3 = r0.<com.startapp.android.publish.list3d.c$1: com.startapp.android.publish.list3d.c a>;
+
+        staticinvoke <com.startapp.android.publish.list3d.c: boolean b(com.startapp.android.publish.list3d.c,boolean)>($r3, 1);
+
+        $r3 = r0.<com.startapp.android.publish.list3d.c$1: com.startapp.android.publish.list3d.c a>;
+
+        $r6 = r0.<com.startapp.android.publish.list3d.c$1: com.startapp.android.publish.list3d.c a>;
+
+        $f0 = staticinvoke <com.startapp.android.publish.list3d.c: float m(com.startapp.android.publish.list3d.c)>($r6);
+
+        staticinvoke <com.startapp.android.publish.list3d.c: void a(com.startapp.android.publish.list3d.c,float,boolean)>($r3, $f0, 1);
+
+        $r13 = staticinvoke <com.startapp.android.publish.i.l: com.startapp.android.publish.i.l a(android.content.Context)>($r1);
+
+        virtualinvoke $r13.<com.startapp.android.publish.i.l: void a(android.content.BroadcastReceiver)>(r0);
+
+        return;
+    }
+}

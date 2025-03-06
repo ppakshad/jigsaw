@@ -1,0 +1,120 @@
+class com.squareup.picasso.ResourceRequestHandler extends com.squareup.picasso.RequestHandler
+{
+    private final android.content.Context context;
+
+    void <init>(android.content.Context)
+    {
+        com.squareup.picasso.ResourceRequestHandler r0;
+        android.content.Context $r1;
+
+        r0 := @this: com.squareup.picasso.ResourceRequestHandler;
+
+        $r1 := @parameter0: android.content.Context;
+
+        specialinvoke r0.<com.squareup.picasso.RequestHandler: void <init>()>();
+
+        r0.<com.squareup.picasso.ResourceRequestHandler: android.content.Context context> = $r1;
+
+        return;
+    }
+
+    private static android.graphics.Bitmap decodeResource(android.content.res.Resources, int, com.squareup.picasso.Request)
+    {
+        android.content.res.Resources $r0;
+        int $i0, $i1, $i2;
+        com.squareup.picasso.Request $r1;
+        android.graphics.BitmapFactory$Options $r2;
+        boolean $z0;
+        android.graphics.Bitmap $r3;
+
+        $r0 := @parameter0: android.content.res.Resources;
+
+        $i0 := @parameter1: int;
+
+        $r1 := @parameter2: com.squareup.picasso.Request;
+
+        $r2 = staticinvoke <com.squareup.picasso.ResourceRequestHandler: android.graphics.BitmapFactory$Options createBitmapOptions(com.squareup.picasso.Request)>($r1);
+
+        $z0 = staticinvoke <com.squareup.picasso.ResourceRequestHandler: boolean requiresInSampleSize(android.graphics.BitmapFactory$Options)>($r2);
+
+        if $z0 == 0 goto label1;
+
+        staticinvoke <android.graphics.BitmapFactory: android.graphics.Bitmap decodeResource(android.content.res.Resources,int,android.graphics.BitmapFactory$Options)>($r0, $i0, $r2);
+
+        $i2 = $r1.<com.squareup.picasso.Request: int targetWidth>;
+
+        $i1 = $r1.<com.squareup.picasso.Request: int targetHeight>;
+
+        staticinvoke <com.squareup.picasso.ResourceRequestHandler: void calculateInSampleSize(int,int,android.graphics.BitmapFactory$Options,com.squareup.picasso.Request)>($i2, $i1, $r2, $r1);
+
+     label1:
+        $r3 = staticinvoke <android.graphics.BitmapFactory: android.graphics.Bitmap decodeResource(android.content.res.Resources,int,android.graphics.BitmapFactory$Options)>($r0, $i0, $r2);
+
+        return $r3;
+    }
+
+    public boolean canHandleRequest(com.squareup.picasso.Request)
+    {
+        com.squareup.picasso.ResourceRequestHandler r0;
+        com.squareup.picasso.Request $r1;
+        int $i0;
+        java.lang.String $r2, $r4;
+        android.net.Uri $r3;
+        boolean $z0;
+
+        r0 := @this: com.squareup.picasso.ResourceRequestHandler;
+
+        $r1 := @parameter0: com.squareup.picasso.Request;
+
+        $i0 = $r1.<com.squareup.picasso.Request: int resourceId>;
+
+        if $i0 == 0 goto label1;
+
+        return 1;
+
+     label1:
+        $r2 = "android.resource";
+
+        $r3 = $r1.<com.squareup.picasso.Request: android.net.Uri uri>;
+
+        $r4 = virtualinvoke $r3.<android.net.Uri: java.lang.String getScheme()>();
+
+        $z0 = virtualinvoke $r2.<java.lang.String: boolean equals(java.lang.Object)>($r4);
+
+        return $z0;
+    }
+
+    public com.squareup.picasso.RequestHandler$Result load(com.squareup.picasso.Request, int) throws java.io.IOException
+    {
+        com.squareup.picasso.ResourceRequestHandler r0;
+        com.squareup.picasso.Request $r1;
+        int $i0;
+        com.squareup.picasso.RequestHandler$Result $r2;
+        android.content.Context $r3;
+        android.content.res.Resources $r4;
+        android.graphics.Bitmap $r5;
+        com.squareup.picasso.Picasso$LoadedFrom $r6;
+
+        r0 := @this: com.squareup.picasso.ResourceRequestHandler;
+
+        $r1 := @parameter0: com.squareup.picasso.Request;
+
+        $i0 := @parameter1: int;
+
+        $r3 = r0.<com.squareup.picasso.ResourceRequestHandler: android.content.Context context>;
+
+        $r4 = staticinvoke <com.squareup.picasso.Utils: android.content.res.Resources getResources(android.content.Context,com.squareup.picasso.Request)>($r3, $r1);
+
+        $i0 = staticinvoke <com.squareup.picasso.Utils: int getResourceId(android.content.res.Resources,com.squareup.picasso.Request)>($r4, $r1);
+
+        $r2 = new com.squareup.picasso.RequestHandler$Result;
+
+        $r5 = staticinvoke <com.squareup.picasso.ResourceRequestHandler: android.graphics.Bitmap decodeResource(android.content.res.Resources,int,com.squareup.picasso.Request)>($r4, $i0, $r1);
+
+        $r6 = <com.squareup.picasso.Picasso$LoadedFrom: com.squareup.picasso.Picasso$LoadedFrom DISK>;
+
+        specialinvoke $r2.<com.squareup.picasso.RequestHandler$Result: void <init>(android.graphics.Bitmap,com.squareup.picasso.Picasso$LoadedFrom)>($r5, $r6);
+
+        return $r2;
+    }
+}

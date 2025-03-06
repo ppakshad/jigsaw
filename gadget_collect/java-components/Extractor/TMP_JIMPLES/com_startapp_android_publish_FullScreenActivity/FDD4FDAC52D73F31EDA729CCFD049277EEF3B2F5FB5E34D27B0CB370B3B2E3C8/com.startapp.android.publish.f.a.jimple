@@ -1,0 +1,127 @@
+public class com.startapp.android.publish.f.a extends java.lang.Object
+{
+    private java.util.List a;
+    private android.content.Context b;
+    private java.util.List c;
+
+    public void <init>(android.content.Context, java.util.List)
+    {
+        com.startapp.android.publish.f.a r0;
+        android.content.Context $r1;
+        java.util.List $r2;
+        java.util.ArrayList $r3;
+
+        r0 := @this: com.startapp.android.publish.f.a;
+
+        $r1 := @parameter0: android.content.Context;
+
+        $r2 := @parameter1: java.util.List;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        $r3 = new java.util.ArrayList;
+
+        specialinvoke $r3.<java.util.ArrayList: void <init>()>();
+
+        r0.<com.startapp.android.publish.f.a: java.util.List c> = $r3;
+
+        r0.<com.startapp.android.publish.f.a: java.util.List a> = $r2;
+
+        r0.<com.startapp.android.publish.f.a: android.content.Context b> = $r1;
+
+        return;
+    }
+
+    private void c()
+    {
+        com.startapp.android.publish.f.a r0;
+        java.util.List $r1, $r2;
+        int $i0, $i1;
+        java.lang.Object $r3;
+        java.lang.String $r4;
+        android.content.Context $r5;
+        com.startapp.android.publish.i.v $r6;
+
+        r0 := @this: com.startapp.android.publish.f.a;
+
+        $r1 = r0.<com.startapp.android.publish.f.a: java.util.List a>;
+
+        $r2 = r0.<com.startapp.android.publish.f.a: java.util.List c>;
+
+        staticinvoke <com.startapp.android.publish.i.x: void a(java.util.List,java.util.List)>($r1, $r2);
+
+        $i0 = 0;
+
+     label1:
+        $r1 = r0.<com.startapp.android.publish.f.a: java.util.List c>;
+
+        $i1 = interfaceinvoke $r1.<java.util.List: int size()>();
+
+        if $i0 >= $i1 goto label3;
+
+        $r1 = r0.<com.startapp.android.publish.f.a: java.util.List c>;
+
+        $r3 = interfaceinvoke $r1.<java.util.List: java.lang.Object get(int)>($i0);
+
+        $r4 = (java.lang.String) $r3;
+
+        $i1 = virtualinvoke $r4.<java.lang.String: int length()>();
+
+        if $i1 == 0 goto label2;
+
+        $r5 = r0.<com.startapp.android.publish.f.a: android.content.Context b>;
+
+        $r6 = new com.startapp.android.publish.i.v;
+
+        specialinvoke $r6.<com.startapp.android.publish.i.v: void <init>()>();
+
+        $r6 = virtualinvoke $r6.<com.startapp.android.publish.i.v: com.startapp.android.publish.i.v setNonImpressionReason(java.lang.String)>("APP_PRESENCE");
+
+        staticinvoke <com.startapp.android.publish.i.x: void a(android.content.Context,java.lang.String,com.startapp.android.publish.i.v)>($r5, $r4, $r6);
+
+     label2:
+        $i0 = $i0 + 1;
+
+        goto label1;
+
+     label3:
+        return;
+    }
+
+    public void a()
+    {
+        com.startapp.android.publish.f.a r0;
+        java.lang.Thread $r1;
+        com.startapp.android.publish.f.a$1 $r2;
+
+        r0 := @this: com.startapp.android.publish.f.a;
+
+        $r1 = new java.lang.Thread;
+
+        $r2 = new com.startapp.android.publish.f.a$1;
+
+        specialinvoke $r2.<com.startapp.android.publish.f.a$1: void <init>(com.startapp.android.publish.f.a)>(r0);
+
+        specialinvoke $r1.<java.lang.Thread: void <init>(java.lang.Runnable)>($r2);
+
+        virtualinvoke $r1.<java.lang.Thread: void start()>();
+
+        return;
+    }
+
+    protected java.lang.Boolean b()
+    {
+        com.startapp.android.publish.f.a r0;
+        java.lang.Boolean $r1;
+
+        r0 := @this: com.startapp.android.publish.f.a;
+
+        staticinvoke <com.startapp.android.publish.i.n: void a(int,java.lang.String)>(3, "in doInBackground handler");
+
+        specialinvoke r0.<com.startapp.android.publish.f.a: void c()>();
+
+        $r1 = staticinvoke <java.lang.Boolean: java.lang.Boolean valueOf(boolean)>(1);
+
+        return $r1;
+    }
+}

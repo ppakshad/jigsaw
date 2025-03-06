@@ -1,0 +1,211 @@
+public class com.movesky.app.engine.achievements.UnlockAnimation extends java.lang.Object
+{
+    public static final float FADE_OUT_TIME;
+    public static final float TOTAL_TIME;
+    public static final float WAITING_TIME;
+    private final java.lang.String _name;
+    private float _timeLeft;
+    java.lang.String achievementUnlockedString;
+
+    public void <init>(java.lang.String)
+    {
+        com.movesky.app.engine.achievements.UnlockAnimation r0;
+        java.lang.String $r1;
+
+        r0 := @this: com.movesky.app.engine.achievements.UnlockAnimation;
+
+        $r1 := @parameter0: java.lang.String;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        r0.<com.movesky.app.engine.achievements.UnlockAnimation: java.lang.String achievementUnlockedString> = "p09kc78r44jdc90jnwq4";
+
+        r0.<com.movesky.app.engine.achievements.UnlockAnimation: java.lang.String _name> = $r1;
+
+        r0.<com.movesky.app.engine.achievements.UnlockAnimation: float _timeLeft> = 5.0F;
+
+        return;
+    }
+
+    public float draw(android.graphics.Canvas, android.graphics.Paint, float, float, float)
+    {
+        com.movesky.app.engine.achievements.UnlockAnimation r0;
+        android.graphics.Canvas $r1;
+        android.graphics.Paint $r2;
+        float $f0, $f1, $f2, $f3, $f4, $f5;
+        byte $b0;
+        android.graphics.Paint$Style $r3;
+        int $i1;
+        android.graphics.Typeface $r4;
+        java.lang.String $r5;
+
+        r0 := @this: com.movesky.app.engine.achievements.UnlockAnimation;
+
+        $r1 := @parameter0: android.graphics.Canvas;
+
+        $r2 := @parameter1: android.graphics.Paint;
+
+        $f0 := @parameter2: float;
+
+        $f1 := @parameter3: float;
+
+        $f2 := @parameter4: float;
+
+        $f3 = r0.<com.movesky.app.engine.achievements.UnlockAnimation: float _timeLeft>;
+
+        $b0 = $f3 cmpg 0.0F;
+
+        if $b0 >= 0 goto label1;
+
+        return $f2;
+
+     label1:
+        $f3 = r0.<com.movesky.app.engine.achievements.UnlockAnimation: float _timeLeft>;
+
+        $b0 = $f3 cmpg 0.6F;
+
+        if $b0 >= 0 goto label3;
+
+        $f3 = $f2 - $f1;
+
+        $f4 = r0.<com.movesky.app.engine.achievements.UnlockAnimation: float _timeLeft>;
+
+        $f4 = $f4 * 1.666F;
+
+        $f3 = staticinvoke <com.movesky.app.engine.util.MathUtils: float lerp(float,float,float)>($f3, $f2, $f4);
+
+     label2:
+        $f2 = $f3 + $f1;
+
+        virtualinvoke $r2.<android.graphics.Paint: void setColor(int)>(-1);
+
+        $r3 = <android.graphics.Paint$Style: android.graphics.Paint$Style STROKE>;
+
+        virtualinvoke $r2.<android.graphics.Paint: void setStyle(android.graphics.Paint$Style)>($r3);
+
+        virtualinvoke $r1.<android.graphics.Canvas: void drawRect(float,float,float,float,android.graphics.Paint)>(0.0F, $f3, $f0, $f2, $r2);
+
+        $i1 = staticinvoke <android.graphics.Color: int argb(int,int,int,int)>(120, 0, 0, 0);
+
+        virtualinvoke $r2.<android.graphics.Paint: void setColor(int)>($i1);
+
+        $r3 = <android.graphics.Paint$Style: android.graphics.Paint$Style FILL>;
+
+        virtualinvoke $r2.<android.graphics.Paint: void setStyle(android.graphics.Paint$Style)>($r3);
+
+        virtualinvoke $r1.<android.graphics.Canvas: void drawRect(float,float,float,float,android.graphics.Paint)>(0.0F, $f3, $f0, $f2, $r2);
+
+        virtualinvoke $r2.<android.graphics.Paint: void setColor(int)>(-1);
+
+        $f4 = $f1 * 0.45F;
+
+        virtualinvoke $r2.<android.graphics.Paint: void setTextSize(float)>($f4);
+
+        $r4 = <android.graphics.Typeface: android.graphics.Typeface DEFAULT_BOLD>;
+
+        virtualinvoke $r2.<android.graphics.Paint: android.graphics.Typeface setTypeface(android.graphics.Typeface)>($r4);
+
+        $r5 = r0.<com.movesky.app.engine.achievements.UnlockAnimation: java.lang.String achievementUnlockedString>;
+
+        $f4 = $f0 * 0.01F;
+
+        $f5 = $f1 * 0.45F;
+
+        $f5 = $f5 + $f3;
+
+        virtualinvoke $r1.<android.graphics.Canvas: void drawText(java.lang.String,float,float,android.graphics.Paint)>($r5, $f4, $f5, $r2);
+
+        $f4 = 0.35F * $f1;
+
+        virtualinvoke $r2.<android.graphics.Paint: void setTextSize(float)>($f4);
+
+        $r4 = <android.graphics.Typeface: android.graphics.Typeface DEFAULT>;
+
+        virtualinvoke $r2.<android.graphics.Paint: android.graphics.Typeface setTypeface(android.graphics.Typeface)>($r4);
+
+        $r5 = r0.<com.movesky.app.engine.achievements.UnlockAnimation: java.lang.String _name>;
+
+        $f0 = $f0 * 0.01F;
+
+        $f1 = 0.85F * $f1;
+
+        $f1 = $f3 + $f1;
+
+        virtualinvoke $r1.<android.graphics.Canvas: void drawText(java.lang.String,float,float,android.graphics.Paint)>($r5, $f0, $f1, $r2);
+
+        return $f2;
+
+     label3:
+        $f3 = r0.<com.movesky.app.engine.achievements.UnlockAnimation: float _timeLeft>;
+
+        $b0 = $f3 cmpl 4.4F;
+
+        if $b0 < 0 goto label4;
+
+        $f3 = $f2 - $f1;
+
+        $f4 = r0.<com.movesky.app.engine.achievements.UnlockAnimation: float _timeLeft>;
+
+        $f4 = $f4 - 4.4F;
+
+        $f4 = $f4 * 1.666F;
+
+        $f3 = staticinvoke <com.movesky.app.engine.util.MathUtils: float lerp(float,float,float)>($f2, $f3, $f4);
+
+        goto label2;
+
+     label4:
+        $f3 = $f2;
+
+        goto label2;
+    }
+
+    public boolean isOver()
+    {
+        com.movesky.app.engine.achievements.UnlockAnimation r0;
+        float $f0;
+        byte $b0;
+
+        r0 := @this: com.movesky.app.engine.achievements.UnlockAnimation;
+
+        $f0 = r0.<com.movesky.app.engine.achievements.UnlockAnimation: float _timeLeft>;
+
+        $b0 = $f0 cmpg 0.0F;
+
+        if $b0 >= 0 goto label1;
+
+        return 1;
+
+     label1:
+        return 0;
+    }
+
+    public void tick(float)
+    {
+        com.movesky.app.engine.achievements.UnlockAnimation r0;
+        float $f0, $f1;
+
+        r0 := @this: com.movesky.app.engine.achievements.UnlockAnimation;
+
+        $f0 := @parameter0: float;
+
+        $f1 = r0.<com.movesky.app.engine.achievements.UnlockAnimation: float _timeLeft>;
+
+        $f0 = $f1 - $f0;
+
+        r0.<com.movesky.app.engine.achievements.UnlockAnimation: float _timeLeft> = $f0;
+
+        return;
+    }
+
+    public static void <clinit>()
+    {
+        <com.movesky.app.engine.achievements.UnlockAnimation: float WAITING_TIME> = 4.4F;
+
+        <com.movesky.app.engine.achievements.UnlockAnimation: float TOTAL_TIME> = 5.0F;
+
+        <com.movesky.app.engine.achievements.UnlockAnimation: float FADE_OUT_TIME> = 0.6F;
+
+        return;
+    }
+}

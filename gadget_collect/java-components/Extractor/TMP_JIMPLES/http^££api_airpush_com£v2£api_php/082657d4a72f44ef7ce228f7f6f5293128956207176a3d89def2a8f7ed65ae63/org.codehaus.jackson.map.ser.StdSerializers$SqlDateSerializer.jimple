@@ -1,0 +1,78 @@
+public final class org.codehaus.jackson.map.ser.StdSerializers$SqlDateSerializer extends org.codehaus.jackson.map.ser.ScalarSerializerBase
+{
+
+    public void <init>()
+    {
+        org.codehaus.jackson.map.ser.StdSerializers$SqlDateSerializer r0;
+
+        r0 := @this: org.codehaus.jackson.map.ser.StdSerializers$SqlDateSerializer;
+
+        specialinvoke r0.<org.codehaus.jackson.map.ser.ScalarSerializerBase: void <init>(java.lang.Class)>(class "Ljava/sql/Date;");
+
+        return;
+    }
+
+    public org.codehaus.jackson.JsonNode getSchema(org.codehaus.jackson.map.SerializerProvider, java.lang.reflect.Type)
+    {
+        org.codehaus.jackson.map.ser.StdSerializers$SqlDateSerializer r0;
+        org.codehaus.jackson.map.SerializerProvider $r1;
+        java.lang.reflect.Type $r2;
+        org.codehaus.jackson.node.ObjectNode $r3;
+
+        r0 := @this: org.codehaus.jackson.map.ser.StdSerializers$SqlDateSerializer;
+
+        $r1 := @parameter0: org.codehaus.jackson.map.SerializerProvider;
+
+        $r2 := @parameter1: java.lang.reflect.Type;
+
+        $r3 = virtualinvoke r0.<org.codehaus.jackson.map.ser.StdSerializers$SqlDateSerializer: org.codehaus.jackson.node.ObjectNode createSchemaNode(java.lang.String,boolean)>("string", 1);
+
+        return $r3;
+    }
+
+    public volatile void serialize(java.lang.Object, org.codehaus.jackson.JsonGenerator, org.codehaus.jackson.map.SerializerProvider) throws java.io.IOException, org.codehaus.jackson.JsonGenerationException
+    {
+        org.codehaus.jackson.map.ser.StdSerializers$SqlDateSerializer r0;
+        org.codehaus.jackson.JsonGenerator $r1;
+        org.codehaus.jackson.map.SerializerProvider $r2;
+        java.lang.Object $r3;
+        java.sql.Date $r4;
+
+        r0 := @this: org.codehaus.jackson.map.ser.StdSerializers$SqlDateSerializer;
+
+        $r3 := @parameter0: java.lang.Object;
+
+        $r1 := @parameter1: org.codehaus.jackson.JsonGenerator;
+
+        $r2 := @parameter2: org.codehaus.jackson.map.SerializerProvider;
+
+        $r4 = (java.sql.Date) $r3;
+
+        virtualinvoke r0.<org.codehaus.jackson.map.ser.StdSerializers$SqlDateSerializer: void serialize(java.sql.Date,org.codehaus.jackson.JsonGenerator,org.codehaus.jackson.map.SerializerProvider)>($r4, $r1, $r2);
+
+        return;
+    }
+
+    public void serialize(java.sql.Date, org.codehaus.jackson.JsonGenerator, org.codehaus.jackson.map.SerializerProvider) throws java.io.IOException, org.codehaus.jackson.JsonGenerationException
+    {
+        org.codehaus.jackson.map.ser.StdSerializers$SqlDateSerializer r0;
+        java.sql.Date $r1;
+        org.codehaus.jackson.JsonGenerator $r2;
+        org.codehaus.jackson.map.SerializerProvider $r3;
+        java.lang.String $r4;
+
+        r0 := @this: org.codehaus.jackson.map.ser.StdSerializers$SqlDateSerializer;
+
+        $r1 := @parameter0: java.sql.Date;
+
+        $r2 := @parameter1: org.codehaus.jackson.JsonGenerator;
+
+        $r3 := @parameter2: org.codehaus.jackson.map.SerializerProvider;
+
+        $r4 = virtualinvoke $r1.<java.sql.Date: java.lang.String toString()>();
+
+        virtualinvoke $r2.<org.codehaus.jackson.JsonGenerator: void writeString(java.lang.String)>($r4);
+
+        return;
+    }
+}

@@ -1,0 +1,692 @@
+public final class org.codehaus.jackson.node.TextNode extends org.codehaus.jackson.node.ValueNode
+{
+    static final org.codehaus.jackson.node.TextNode EMPTY_STRING_NODE;
+    static final int INT_SPACE;
+    final java.lang.String _value;
+
+    static void <clinit>()
+    {
+        org.codehaus.jackson.node.TextNode $r0;
+
+        <org.codehaus.jackson.node.TextNode: int INT_SPACE> = 32;
+
+        $r0 = new org.codehaus.jackson.node.TextNode;
+
+        specialinvoke $r0.<org.codehaus.jackson.node.TextNode: void <init>(java.lang.String)>("");
+
+        <org.codehaus.jackson.node.TextNode: org.codehaus.jackson.node.TextNode EMPTY_STRING_NODE> = $r0;
+
+        return;
+    }
+
+    public void <init>(java.lang.String)
+    {
+        org.codehaus.jackson.node.TextNode r0;
+        java.lang.String $r1;
+
+        r0 := @this: org.codehaus.jackson.node.TextNode;
+
+        $r1 := @parameter0: java.lang.String;
+
+        specialinvoke r0.<org.codehaus.jackson.node.ValueNode: void <init>()>();
+
+        r0.<org.codehaus.jackson.node.TextNode: java.lang.String _value> = $r1;
+
+        return;
+    }
+
+    protected static void appendQuoted(java.lang.StringBuilder, java.lang.String)
+    {
+        java.lang.StringBuilder $r0;
+        java.lang.String $r1;
+
+        $r0 := @parameter0: java.lang.StringBuilder;
+
+        $r1 := @parameter1: java.lang.String;
+
+        virtualinvoke $r0.<java.lang.StringBuilder: java.lang.StringBuilder append(char)>(34);
+
+        staticinvoke <org.codehaus.jackson.util.CharTypes: void appendQuoted(java.lang.StringBuilder,java.lang.String)>($r0, $r1);
+
+        virtualinvoke $r0.<java.lang.StringBuilder: java.lang.StringBuilder append(char)>(34);
+
+        return;
+    }
+
+    public static org.codehaus.jackson.node.TextNode valueOf(java.lang.String)
+    {
+        java.lang.String $r0;
+        int $i0;
+        org.codehaus.jackson.node.TextNode $r1;
+
+        $r0 := @parameter0: java.lang.String;
+
+        if $r0 != null goto label1;
+
+        return null;
+
+     label1:
+        $i0 = virtualinvoke $r0.<java.lang.String: int length()>();
+
+        if $i0 != 0 goto label2;
+
+        $r1 = <org.codehaus.jackson.node.TextNode: org.codehaus.jackson.node.TextNode EMPTY_STRING_NODE>;
+
+        return $r1;
+
+     label2:
+        $r1 = new org.codehaus.jackson.node.TextNode;
+
+        specialinvoke $r1.<org.codehaus.jackson.node.TextNode: void <init>(java.lang.String)>($r0);
+
+        return $r1;
+    }
+
+    protected void _reportBase64EOF() throws org.codehaus.jackson.JsonParseException
+    {
+        org.codehaus.jackson.node.TextNode r0;
+        org.codehaus.jackson.JsonParseException $r1;
+        org.codehaus.jackson.JsonLocation $r2;
+
+        r0 := @this: org.codehaus.jackson.node.TextNode;
+
+        $r1 = new org.codehaus.jackson.JsonParseException;
+
+        $r2 = <org.codehaus.jackson.JsonLocation: org.codehaus.jackson.JsonLocation NA>;
+
+        specialinvoke $r1.<org.codehaus.jackson.JsonParseException: void <init>(java.lang.String,org.codehaus.jackson.JsonLocation)>("Unexpected end-of-String when base64 content", $r2);
+
+        throw $r1;
+    }
+
+    protected void _reportInvalidBase64(org.codehaus.jackson.Base64Variant, char, int) throws org.codehaus.jackson.JsonParseException
+    {
+        org.codehaus.jackson.node.TextNode r0;
+        org.codehaus.jackson.Base64Variant $r1;
+        char $c0;
+        int $i1;
+
+        r0 := @this: org.codehaus.jackson.node.TextNode;
+
+        $r1 := @parameter0: org.codehaus.jackson.Base64Variant;
+
+        $c0 := @parameter1: char;
+
+        $i1 := @parameter2: int;
+
+        virtualinvoke r0.<org.codehaus.jackson.node.TextNode: void _reportInvalidBase64(org.codehaus.jackson.Base64Variant,char,int,java.lang.String)>($r1, $c0, $i1, null);
+
+        return;
+    }
+
+    protected void _reportInvalidBase64(org.codehaus.jackson.Base64Variant, char, int, java.lang.String) throws org.codehaus.jackson.JsonParseException
+    {
+        org.codehaus.jackson.node.TextNode r0;
+        org.codehaus.jackson.Base64Variant $r1;
+        char $c0;
+        int $i1;
+        java.lang.String $r2, $r4;
+        java.lang.StringBuilder $r3;
+        org.codehaus.jackson.JsonParseException $r5;
+        org.codehaus.jackson.JsonLocation $r6;
+        boolean $z0;
+
+        r0 := @this: org.codehaus.jackson.node.TextNode;
+
+        $r1 := @parameter0: org.codehaus.jackson.Base64Variant;
+
+        $c0 := @parameter1: char;
+
+        $i1 := @parameter2: int;
+
+        $r2 := @parameter3: java.lang.String;
+
+        if $c0 > 32 goto label3;
+
+        $r3 = new java.lang.StringBuilder;
+
+        specialinvoke $r3.<java.lang.StringBuilder: void <init>()>();
+
+        $r3 = virtualinvoke $r3.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Illegal white space character (code 0x");
+
+        $r4 = staticinvoke <java.lang.Integer: java.lang.String toHexString(int)>($c0);
+
+        $r3 = virtualinvoke $r3.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r4);
+
+        $r3 = virtualinvoke $r3.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(") as character #");
+
+        $i1 = $i1 + 1;
+
+        $r3 = virtualinvoke $r3.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>($i1);
+
+        $r3 = virtualinvoke $r3.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" of 4-char base64 unit: can only used between units");
+
+        $r4 = virtualinvoke $r3.<java.lang.StringBuilder: java.lang.String toString()>();
+
+     label1:
+        if $r2 == null goto label2;
+
+        $r3 = new java.lang.StringBuilder;
+
+        specialinvoke $r3.<java.lang.StringBuilder: void <init>()>();
+
+        $r3 = virtualinvoke $r3.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r4);
+
+        $r3 = virtualinvoke $r3.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(": ");
+
+        $r3 = virtualinvoke $r3.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r2);
+
+        $r4 = virtualinvoke $r3.<java.lang.StringBuilder: java.lang.String toString()>();
+
+     label2:
+        $r5 = new org.codehaus.jackson.JsonParseException;
+
+        $r6 = <org.codehaus.jackson.JsonLocation: org.codehaus.jackson.JsonLocation NA>;
+
+        specialinvoke $r5.<org.codehaus.jackson.JsonParseException: void <init>(java.lang.String,org.codehaus.jackson.JsonLocation)>($r4, $r6);
+
+        throw $r5;
+
+     label3:
+        $z0 = virtualinvoke $r1.<org.codehaus.jackson.Base64Variant: boolean usesPaddingChar(char)>($c0);
+
+        if $z0 == 0 goto label4;
+
+        $r3 = new java.lang.StringBuilder;
+
+        specialinvoke $r3.<java.lang.StringBuilder: void <init>()>();
+
+        $r3 = virtualinvoke $r3.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Unexpected padding character (\'");
+
+        $c0 = virtualinvoke $r1.<org.codehaus.jackson.Base64Variant: char getPaddingChar()>();
+
+        $r3 = virtualinvoke $r3.<java.lang.StringBuilder: java.lang.StringBuilder append(char)>($c0);
+
+        $r3 = virtualinvoke $r3.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("\') as character #");
+
+        $i1 = $i1 + 1;
+
+        $r3 = virtualinvoke $r3.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>($i1);
+
+        $r3 = virtualinvoke $r3.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" of 4-char base64 unit: padding only legal as 3rd or 4th character");
+
+        $r4 = virtualinvoke $r3.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        goto label1;
+
+     label4:
+        $z0 = staticinvoke <java.lang.Character: boolean isDefined(char)>($c0);
+
+        if $z0 == 0 goto label5;
+
+        $z0 = staticinvoke <java.lang.Character: boolean isISOControl(char)>($c0);
+
+        if $z0 == 0 goto label6;
+
+     label5:
+        $r3 = new java.lang.StringBuilder;
+
+        specialinvoke $r3.<java.lang.StringBuilder: void <init>()>();
+
+        $r3 = virtualinvoke $r3.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Illegal character (code 0x");
+
+        $r4 = staticinvoke <java.lang.Integer: java.lang.String toHexString(int)>($c0);
+
+        $r3 = virtualinvoke $r3.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r4);
+
+        $r3 = virtualinvoke $r3.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(") in base64 content");
+
+        $r4 = virtualinvoke $r3.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        goto label1;
+
+     label6:
+        $r3 = new java.lang.StringBuilder;
+
+        specialinvoke $r3.<java.lang.StringBuilder: void <init>()>();
+
+        $r3 = virtualinvoke $r3.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Illegal character \'");
+
+        $r3 = virtualinvoke $r3.<java.lang.StringBuilder: java.lang.StringBuilder append(char)>($c0);
+
+        $r3 = virtualinvoke $r3.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("\' (code 0x");
+
+        $r4 = staticinvoke <java.lang.Integer: java.lang.String toHexString(int)>($c0);
+
+        $r3 = virtualinvoke $r3.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r4);
+
+        $r3 = virtualinvoke $r3.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(") in base64 content");
+
+        $r4 = virtualinvoke $r3.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        goto label1;
+    }
+
+    public org.codehaus.jackson.JsonToken asToken()
+    {
+        org.codehaus.jackson.node.TextNode r0;
+        org.codehaus.jackson.JsonToken r1;
+
+        r0 := @this: org.codehaus.jackson.node.TextNode;
+
+        r1 = <org.codehaus.jackson.JsonToken: org.codehaus.jackson.JsonToken VALUE_STRING>;
+
+        return r1;
+    }
+
+    public boolean equals(java.lang.Object)
+    {
+        org.codehaus.jackson.node.TextNode r0, r4;
+        java.lang.Object r1;
+        java.lang.Class $r2, $r3;
+        java.lang.String $r5, $r6;
+        boolean $z0;
+
+        r0 := @this: org.codehaus.jackson.node.TextNode;
+
+        r1 := @parameter0: java.lang.Object;
+
+        if r1 != r0 goto label1;
+
+        return 1;
+
+     label1:
+        if r1 != null goto label2;
+
+        return 0;
+
+     label2:
+        $r2 = virtualinvoke r1.<java.lang.Object: java.lang.Class getClass()>();
+
+        $r3 = virtualinvoke r0.<java.lang.Object: java.lang.Class getClass()>();
+
+        if $r2 == $r3 goto label3;
+
+        return 0;
+
+     label3:
+        r4 = (org.codehaus.jackson.node.TextNode) r1;
+
+        $r5 = r4.<org.codehaus.jackson.node.TextNode: java.lang.String _value>;
+
+        $r6 = r0.<org.codehaus.jackson.node.TextNode: java.lang.String _value>;
+
+        $z0 = virtualinvoke $r5.<java.lang.String: boolean equals(java.lang.Object)>($r6);
+
+        return $z0;
+    }
+
+    public byte[] getBinaryValue() throws java.io.IOException
+    {
+        org.codehaus.jackson.node.TextNode r0;
+        org.codehaus.jackson.Base64Variant $r1;
+        byte[] $r2;
+
+        r0 := @this: org.codehaus.jackson.node.TextNode;
+
+        $r1 = staticinvoke <org.codehaus.jackson.Base64Variants: org.codehaus.jackson.Base64Variant getDefaultVariant()>();
+
+        $r2 = virtualinvoke r0.<org.codehaus.jackson.node.TextNode: byte[] getBinaryValue(org.codehaus.jackson.Base64Variant)>($r1);
+
+        return $r2;
+    }
+
+    public byte[] getBinaryValue(org.codehaus.jackson.Base64Variant) throws java.io.IOException
+    {
+        org.codehaus.jackson.node.TextNode r0;
+        org.codehaus.jackson.Base64Variant $r1;
+        org.codehaus.jackson.util.ByteArrayBuilder r2;
+        java.lang.String r3, $r6;
+        int i0, $i1, i2, $i4;
+        char $c3, $c5;
+        byte[] $r4;
+        boolean $z0;
+        java.lang.StringBuilder $r5;
+
+        r0 := @this: org.codehaus.jackson.node.TextNode;
+
+        $r1 := @parameter0: org.codehaus.jackson.Base64Variant;
+
+        r2 = new org.codehaus.jackson.util.ByteArrayBuilder;
+
+        specialinvoke r2.<org.codehaus.jackson.util.ByteArrayBuilder: void <init>(int)>(100);
+
+        r3 = r0.<org.codehaus.jackson.node.TextNode: java.lang.String _value>;
+
+        i0 = 0;
+
+        $i1 = virtualinvoke r3.<java.lang.String: int length()>();
+
+     label01:
+        if i0 >= $i1 goto label03;
+
+     label02:
+        i2 = i0 + 1;
+
+        $c3 = virtualinvoke r3.<java.lang.String: char charAt(int)>(i0);
+
+        if i2 < $i1 goto label04;
+
+     label03:
+        $r4 = virtualinvoke r2.<org.codehaus.jackson.util.ByteArrayBuilder: byte[] toByteArray()>();
+
+        return $r4;
+
+     label04:
+        if $c3 <= 32 goto label16;
+
+        $i4 = virtualinvoke $r1.<org.codehaus.jackson.Base64Variant: int decodeBase64Char(char)>($c3);
+
+        if $i4 >= 0 goto label05;
+
+        virtualinvoke r0.<org.codehaus.jackson.node.TextNode: void _reportInvalidBase64(org.codehaus.jackson.Base64Variant,char,int)>($r1, $c3, 0);
+
+     label05:
+        if i2 < $i1 goto label06;
+
+        virtualinvoke r0.<org.codehaus.jackson.node.TextNode: void _reportBase64EOF()>();
+
+     label06:
+        i0 = i2 + 1;
+
+        $c3 = virtualinvoke r3.<java.lang.String: char charAt(int)>(i2);
+
+        i2 = virtualinvoke $r1.<org.codehaus.jackson.Base64Variant: int decodeBase64Char(char)>($c3);
+
+        if i2 >= 0 goto label07;
+
+        virtualinvoke r0.<org.codehaus.jackson.node.TextNode: void _reportInvalidBase64(org.codehaus.jackson.Base64Variant,char,int)>($r1, $c3, 1);
+
+     label07:
+        $i4 = $i4 << 6;
+
+        $i4 = $i4 | i2;
+
+        if i0 < $i1 goto label08;
+
+        virtualinvoke r0.<org.codehaus.jackson.node.TextNode: void _reportBase64EOF()>();
+
+     label08:
+        i2 = i0 + 1;
+
+        $c3 = virtualinvoke r3.<java.lang.String: char charAt(int)>(i0);
+
+        i0 = virtualinvoke $r1.<org.codehaus.jackson.Base64Variant: int decodeBase64Char(char)>($c3);
+
+        if i0 >= 0 goto label12;
+
+        if i0 == -2 goto label09;
+
+        virtualinvoke r0.<org.codehaus.jackson.node.TextNode: void _reportInvalidBase64(org.codehaus.jackson.Base64Variant,char,int)>($r1, $c3, 2);
+
+     label09:
+        if i2 < $i1 goto label10;
+
+        virtualinvoke r0.<org.codehaus.jackson.node.TextNode: void _reportBase64EOF()>();
+
+     label10:
+        i0 = i2 + 1;
+
+        $c3 = virtualinvoke r3.<java.lang.String: char charAt(int)>(i2);
+
+        $z0 = virtualinvoke $r1.<org.codehaus.jackson.Base64Variant: boolean usesPaddingChar(char)>($c3);
+
+        if $z0 != 0 goto label11;
+
+        $r5 = new java.lang.StringBuilder;
+
+        specialinvoke $r5.<java.lang.StringBuilder: void <init>()>();
+
+        $r5 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("expected padding character \'");
+
+        $c5 = virtualinvoke $r1.<org.codehaus.jackson.Base64Variant: char getPaddingChar()>();
+
+        $r5 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.StringBuilder append(char)>($c5);
+
+        $r5 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("\'");
+
+        $r6 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        virtualinvoke r0.<org.codehaus.jackson.node.TextNode: void _reportInvalidBase64(org.codehaus.jackson.Base64Variant,char,int,java.lang.String)>($r1, $c3, 3, $r6);
+
+     label11:
+        i2 = $i4 >> 4;
+
+        virtualinvoke r2.<org.codehaus.jackson.util.ByteArrayBuilder: void append(int)>(i2);
+
+        goto label01;
+
+     label12:
+        $i4 = $i4 << 6;
+
+        $i4 = $i4 | i0;
+
+        if i2 < $i1 goto label13;
+
+        virtualinvoke r0.<org.codehaus.jackson.node.TextNode: void _reportBase64EOF()>();
+
+     label13:
+        i0 = i2 + 1;
+
+        $c3 = virtualinvoke r3.<java.lang.String: char charAt(int)>(i2);
+
+        i2 = virtualinvoke $r1.<org.codehaus.jackson.Base64Variant: int decodeBase64Char(char)>($c3);
+
+        if i2 >= 0 goto label15;
+
+        if i2 == -2 goto label14;
+
+        virtualinvoke r0.<org.codehaus.jackson.node.TextNode: void _reportInvalidBase64(org.codehaus.jackson.Base64Variant,char,int)>($r1, $c3, 3);
+
+     label14:
+        i2 = $i4 >> 2;
+
+        virtualinvoke r2.<org.codehaus.jackson.util.ByteArrayBuilder: void appendTwoBytes(int)>(i2);
+
+        goto label01;
+
+     label15:
+        $i4 = $i4 << 6;
+
+        i2 = $i4 | i2;
+
+        virtualinvoke r2.<org.codehaus.jackson.util.ByteArrayBuilder: void appendThreeBytes(int)>(i2);
+
+        goto label01;
+
+     label16:
+        i0 = i2;
+
+        goto label02;
+    }
+
+    public java.lang.String getTextValue()
+    {
+        org.codehaus.jackson.node.TextNode r0;
+        java.lang.String r1;
+
+        r0 := @this: org.codehaus.jackson.node.TextNode;
+
+        r1 = r0.<org.codehaus.jackson.node.TextNode: java.lang.String _value>;
+
+        return r1;
+    }
+
+    public boolean getValueAsBoolean(boolean)
+    {
+        org.codehaus.jackson.node.TextNode r0;
+        boolean $z0, $z1;
+        java.lang.String $r1, $r2;
+
+        r0 := @this: org.codehaus.jackson.node.TextNode;
+
+        $z0 := @parameter0: boolean;
+
+        $r1 = r0.<org.codehaus.jackson.node.TextNode: java.lang.String _value>;
+
+        if $r1 == null goto label1;
+
+        $r1 = "true";
+
+        $r2 = r0.<org.codehaus.jackson.node.TextNode: java.lang.String _value>;
+
+        $r2 = virtualinvoke $r2.<java.lang.String: java.lang.String trim()>();
+
+        $z1 = virtualinvoke $r1.<java.lang.String: boolean equals(java.lang.Object)>($r2);
+
+        if $z1 == 0 goto label1;
+
+        return 1;
+
+     label1:
+        return $z0;
+    }
+
+    public double getValueAsDouble(double)
+    {
+        org.codehaus.jackson.node.TextNode r0;
+        double $d0;
+        java.lang.String $r1;
+
+        r0 := @this: org.codehaus.jackson.node.TextNode;
+
+        $d0 := @parameter0: double;
+
+        $r1 = r0.<org.codehaus.jackson.node.TextNode: java.lang.String _value>;
+
+        $d0 = staticinvoke <org.codehaus.jackson.io.NumberInput: double parseAsDouble(java.lang.String,double)>($r1, $d0);
+
+        return $d0;
+    }
+
+    public int getValueAsInt(int)
+    {
+        org.codehaus.jackson.node.TextNode r0;
+        int $i0;
+        java.lang.String $r1;
+
+        r0 := @this: org.codehaus.jackson.node.TextNode;
+
+        $i0 := @parameter0: int;
+
+        $r1 = r0.<org.codehaus.jackson.node.TextNode: java.lang.String _value>;
+
+        $i0 = staticinvoke <org.codehaus.jackson.io.NumberInput: int parseAsInt(java.lang.String,int)>($r1, $i0);
+
+        return $i0;
+    }
+
+    public long getValueAsLong(long)
+    {
+        org.codehaus.jackson.node.TextNode r0;
+        long $l0;
+        java.lang.String $r1;
+
+        r0 := @this: org.codehaus.jackson.node.TextNode;
+
+        $l0 := @parameter0: long;
+
+        $r1 = r0.<org.codehaus.jackson.node.TextNode: java.lang.String _value>;
+
+        $l0 = staticinvoke <org.codehaus.jackson.io.NumberInput: long parseAsLong(java.lang.String,long)>($r1, $l0);
+
+        return $l0;
+    }
+
+    public java.lang.String getValueAsText()
+    {
+        org.codehaus.jackson.node.TextNode r0;
+        java.lang.String r1;
+
+        r0 := @this: org.codehaus.jackson.node.TextNode;
+
+        r1 = r0.<org.codehaus.jackson.node.TextNode: java.lang.String _value>;
+
+        return r1;
+    }
+
+    public int hashCode()
+    {
+        org.codehaus.jackson.node.TextNode r0;
+        int $i0;
+        java.lang.String $r1;
+
+        r0 := @this: org.codehaus.jackson.node.TextNode;
+
+        $r1 = r0.<org.codehaus.jackson.node.TextNode: java.lang.String _value>;
+
+        $i0 = virtualinvoke $r1.<java.lang.String: int hashCode()>();
+
+        return $i0;
+    }
+
+    public boolean isTextual()
+    {
+        org.codehaus.jackson.node.TextNode r0;
+
+        r0 := @this: org.codehaus.jackson.node.TextNode;
+
+        return 1;
+    }
+
+    public final void serialize(org.codehaus.jackson.JsonGenerator, org.codehaus.jackson.map.SerializerProvider) throws java.io.IOException, org.codehaus.jackson.JsonProcessingException
+    {
+        org.codehaus.jackson.node.TextNode r0;
+        org.codehaus.jackson.JsonGenerator $r1;
+        org.codehaus.jackson.map.SerializerProvider $r2;
+        java.lang.String $r3;
+
+        r0 := @this: org.codehaus.jackson.node.TextNode;
+
+        $r1 := @parameter0: org.codehaus.jackson.JsonGenerator;
+
+        $r2 := @parameter1: org.codehaus.jackson.map.SerializerProvider;
+
+        $r3 = r0.<org.codehaus.jackson.node.TextNode: java.lang.String _value>;
+
+        if $r3 != null goto label1;
+
+        virtualinvoke $r1.<org.codehaus.jackson.JsonGenerator: void writeNull()>();
+
+        return;
+
+     label1:
+        $r3 = r0.<org.codehaus.jackson.node.TextNode: java.lang.String _value>;
+
+        virtualinvoke $r1.<org.codehaus.jackson.JsonGenerator: void writeString(java.lang.String)>($r3);
+
+        return;
+    }
+
+    public java.lang.String toString()
+    {
+        org.codehaus.jackson.node.TextNode r0;
+        java.lang.StringBuilder r1;
+        int $i0, $i1;
+        java.lang.String $r2;
+
+        r0 := @this: org.codehaus.jackson.node.TextNode;
+
+        $r2 = r0.<org.codehaus.jackson.node.TextNode: java.lang.String _value>;
+
+        $i0 = virtualinvoke $r2.<java.lang.String: int length()>();
+
+        $i1 = $i0 + 2;
+
+        $i0 = $i0 >> 4;
+
+        $i1 = $i1 + $i0;
+
+        r1 = new java.lang.StringBuilder;
+
+        specialinvoke r1.<java.lang.StringBuilder: void <init>(int)>($i1);
+
+        $r2 = r0.<org.codehaus.jackson.node.TextNode: java.lang.String _value>;
+
+        staticinvoke <org.codehaus.jackson.node.TextNode: void appendQuoted(java.lang.StringBuilder,java.lang.String)>(r1, $r2);
+
+        $r2 = virtualinvoke r1.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        return $r2;
+    }
+}

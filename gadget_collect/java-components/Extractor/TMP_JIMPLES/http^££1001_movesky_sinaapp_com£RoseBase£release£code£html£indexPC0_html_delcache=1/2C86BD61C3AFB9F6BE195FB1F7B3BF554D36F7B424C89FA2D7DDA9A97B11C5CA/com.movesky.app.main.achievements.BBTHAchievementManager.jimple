@@ -1,0 +1,1236 @@
+public final class com.movesky.app.main.achievements.BBTHAchievementManager extends com.movesky.app.engine.achievements.AchievementManager
+{
+    public static final com.movesky.app.main.achievements.BBTHAchievementManager INSTANCE;
+    private com.movesky.app.engine.util.Bag baseDestroyedAchievements;
+    private com.movesky.app.engine.util.Bag beatHitAchievements;
+    private com.movesky.app.engine.util.Bag beatMissedAchievements;
+    private com.movesky.app.engine.util.Bag gameEndedAchievements;
+    private com.movesky.app.engine.util.Bag unitCreatedAchievements;
+    private com.movesky.app.engine.util.Bag unitDeadAchievements;
+    private com.movesky.app.engine.util.Bag updateAchievements;
+    private com.movesky.app.engine.util.Bag wallCreatedAchievements;
+
+    static void <clinit>()
+    {
+        com.movesky.app.main.achievements.BBTHAchievementManager $r0;
+
+        $r0 = new com.movesky.app.main.achievements.BBTHAchievementManager;
+
+        specialinvoke $r0.<com.movesky.app.main.achievements.BBTHAchievementManager: void <init>(int)>(1000);
+
+        <com.movesky.app.main.achievements.BBTHAchievementManager: com.movesky.app.main.achievements.BBTHAchievementManager INSTANCE> = $r0;
+
+        return;
+    }
+
+    private void <init>(int)
+    {
+        com.movesky.app.main.achievements.BBTHAchievementManager r0;
+        int $i0;
+        com.movesky.app.engine.util.Bag $r1;
+
+        r0 := @this: com.movesky.app.main.achievements.BBTHAchievementManager;
+
+        $i0 := @parameter0: int;
+
+        specialinvoke r0.<com.movesky.app.engine.achievements.AchievementManager: void <init>(int)>(1000);
+
+        $r1 = new com.movesky.app.engine.util.Bag;
+
+        specialinvoke $r1.<com.movesky.app.engine.util.Bag: void <init>()>();
+
+        r0.<com.movesky.app.main.achievements.BBTHAchievementManager: com.movesky.app.engine.util.Bag baseDestroyedAchievements> = $r1;
+
+        $r1 = new com.movesky.app.engine.util.Bag;
+
+        specialinvoke $r1.<com.movesky.app.engine.util.Bag: void <init>()>();
+
+        r0.<com.movesky.app.main.achievements.BBTHAchievementManager: com.movesky.app.engine.util.Bag gameEndedAchievements> = $r1;
+
+        $r1 = new com.movesky.app.engine.util.Bag;
+
+        specialinvoke $r1.<com.movesky.app.engine.util.Bag: void <init>()>();
+
+        r0.<com.movesky.app.main.achievements.BBTHAchievementManager: com.movesky.app.engine.util.Bag unitDeadAchievements> = $r1;
+
+        $r1 = new com.movesky.app.engine.util.Bag;
+
+        specialinvoke $r1.<com.movesky.app.engine.util.Bag: void <init>()>();
+
+        r0.<com.movesky.app.main.achievements.BBTHAchievementManager: com.movesky.app.engine.util.Bag unitCreatedAchievements> = $r1;
+
+        $r1 = new com.movesky.app.engine.util.Bag;
+
+        specialinvoke $r1.<com.movesky.app.engine.util.Bag: void <init>()>();
+
+        r0.<com.movesky.app.main.achievements.BBTHAchievementManager: com.movesky.app.engine.util.Bag beatHitAchievements> = $r1;
+
+        $r1 = new com.movesky.app.engine.util.Bag;
+
+        specialinvoke $r1.<com.movesky.app.engine.util.Bag: void <init>()>();
+
+        r0.<com.movesky.app.main.achievements.BBTHAchievementManager: com.movesky.app.engine.util.Bag beatMissedAchievements> = $r1;
+
+        $r1 = new com.movesky.app.engine.util.Bag;
+
+        specialinvoke $r1.<com.movesky.app.engine.util.Bag: void <init>()>();
+
+        r0.<com.movesky.app.main.achievements.BBTHAchievementManager: com.movesky.app.engine.util.Bag wallCreatedAchievements> = $r1;
+
+        $r1 = new com.movesky.app.engine.util.Bag;
+
+        specialinvoke $r1.<com.movesky.app.engine.util.Bag: void <init>()>();
+
+        r0.<com.movesky.app.main.achievements.BBTHAchievementManager: com.movesky.app.engine.util.Bag updateAchievements> = $r1;
+
+        return;
+    }
+
+    public void initialize()
+    {
+        com.movesky.app.main.achievements.BBTHAchievementManager r0;
+
+        r0 := @this: com.movesky.app.main.achievements.BBTHAchievementManager;
+
+        virtualinvoke r0.<com.movesky.app.main.achievements.BBTHAchievementManager: void registerAchievements()>();
+
+        return;
+    }
+
+    public void notifyBaseDestroyed(com.movesky.app.main.achievements.events.BaseDestroyedEvent)
+    {
+        com.movesky.app.main.achievements.BBTHAchievementManager r0;
+        com.movesky.app.main.achievements.events.BaseDestroyedEvent $r1;
+        com.movesky.app.engine.util.Bag $r2;
+        java.util.Iterator $r3;
+        boolean $z0;
+        java.lang.Object $r4;
+        com.movesky.app.main.achievements.BBTHAchievement $r5;
+
+        r0 := @this: com.movesky.app.main.achievements.BBTHAchievementManager;
+
+        $r1 := @parameter0: com.movesky.app.main.achievements.events.BaseDestroyedEvent;
+
+        $r2 = r0.<com.movesky.app.main.achievements.BBTHAchievementManager: com.movesky.app.engine.util.Bag achievements>;
+
+        $r3 = virtualinvoke $r2.<com.movesky.app.engine.util.Bag: java.util.Iterator iterator()>();
+
+     label1:
+        $z0 = interfaceinvoke $r3.<java.util.Iterator: boolean hasNext()>();
+
+        if $z0 == 0 goto label2;
+
+        $r4 = interfaceinvoke $r3.<java.util.Iterator: java.lang.Object next()>();
+
+        $r5 = (com.movesky.app.main.achievements.BBTHAchievement) $r4;
+
+        virtualinvoke $r5.<com.movesky.app.main.achievements.BBTHAchievement: void baseDestroyed(com.movesky.app.main.achievements.events.BaseDestroyedEvent)>($r1);
+
+        goto label1;
+
+     label2:
+        return;
+    }
+
+    public void notifyBeatHit(com.movesky.app.main.achievements.events.BeatHitEvent)
+    {
+        com.movesky.app.main.achievements.BBTHAchievementManager r0;
+        com.movesky.app.main.achievements.events.BeatHitEvent $r1;
+        com.movesky.app.engine.util.Bag $r2;
+        java.util.Iterator $r3;
+        boolean $z0;
+        java.lang.Object $r4;
+        com.movesky.app.main.achievements.BBTHAchievement $r5;
+
+        r0 := @this: com.movesky.app.main.achievements.BBTHAchievementManager;
+
+        $r1 := @parameter0: com.movesky.app.main.achievements.events.BeatHitEvent;
+
+        $r2 = r0.<com.movesky.app.main.achievements.BBTHAchievementManager: com.movesky.app.engine.util.Bag achievements>;
+
+        $r3 = virtualinvoke $r2.<com.movesky.app.engine.util.Bag: java.util.Iterator iterator()>();
+
+     label1:
+        $z0 = interfaceinvoke $r3.<java.util.Iterator: boolean hasNext()>();
+
+        if $z0 == 0 goto label2;
+
+        $r4 = interfaceinvoke $r3.<java.util.Iterator: java.lang.Object next()>();
+
+        $r5 = (com.movesky.app.main.achievements.BBTHAchievement) $r4;
+
+        virtualinvoke $r5.<com.movesky.app.main.achievements.BBTHAchievement: void beatHit(com.movesky.app.main.achievements.events.BeatHitEvent)>($r1);
+
+        goto label1;
+
+     label2:
+        return;
+    }
+
+    public void notifyBeatMissed(com.movesky.app.main.achievements.events.BeatMissedEvent)
+    {
+        com.movesky.app.main.achievements.BBTHAchievementManager r0;
+        com.movesky.app.main.achievements.events.BeatMissedEvent $r1;
+        com.movesky.app.engine.util.Bag $r2;
+        java.util.Iterator $r3;
+        boolean $z0;
+        java.lang.Object $r4;
+        com.movesky.app.main.achievements.BBTHAchievement $r5;
+
+        r0 := @this: com.movesky.app.main.achievements.BBTHAchievementManager;
+
+        $r1 := @parameter0: com.movesky.app.main.achievements.events.BeatMissedEvent;
+
+        $r2 = r0.<com.movesky.app.main.achievements.BBTHAchievementManager: com.movesky.app.engine.util.Bag achievements>;
+
+        $r3 = virtualinvoke $r2.<com.movesky.app.engine.util.Bag: java.util.Iterator iterator()>();
+
+     label1:
+        $z0 = interfaceinvoke $r3.<java.util.Iterator: boolean hasNext()>();
+
+        if $z0 == 0 goto label2;
+
+        $r4 = interfaceinvoke $r3.<java.util.Iterator: java.lang.Object next()>();
+
+        $r5 = (com.movesky.app.main.achievements.BBTHAchievement) $r4;
+
+        virtualinvoke $r5.<com.movesky.app.main.achievements.BBTHAchievement: void beatMissed(com.movesky.app.main.achievements.events.BeatMissedEvent)>($r1);
+
+        goto label1;
+
+     label2:
+        return;
+    }
+
+    public void notifyGameEnded(com.movesky.app.main.achievements.events.GameEndedEvent)
+    {
+        com.movesky.app.main.achievements.BBTHAchievementManager r0;
+        com.movesky.app.main.achievements.events.GameEndedEvent $r1;
+        com.movesky.app.engine.util.Bag $r2;
+        java.util.Iterator $r3;
+        boolean $z0;
+        java.lang.Object $r4;
+        com.movesky.app.main.achievements.BBTHAchievement $r5;
+
+        r0 := @this: com.movesky.app.main.achievements.BBTHAchievementManager;
+
+        $r1 := @parameter0: com.movesky.app.main.achievements.events.GameEndedEvent;
+
+        $r2 = r0.<com.movesky.app.main.achievements.BBTHAchievementManager: com.movesky.app.engine.util.Bag achievements>;
+
+        $r3 = virtualinvoke $r2.<com.movesky.app.engine.util.Bag: java.util.Iterator iterator()>();
+
+     label1:
+        $z0 = interfaceinvoke $r3.<java.util.Iterator: boolean hasNext()>();
+
+        if $z0 == 0 goto label2;
+
+        $r4 = interfaceinvoke $r3.<java.util.Iterator: java.lang.Object next()>();
+
+        $r5 = (com.movesky.app.main.achievements.BBTHAchievement) $r4;
+
+        virtualinvoke $r5.<com.movesky.app.main.achievements.BBTHAchievement: void gameEnded(com.movesky.app.main.achievements.events.GameEndedEvent)>($r1);
+
+        goto label1;
+
+     label2:
+        return;
+    }
+
+    public void notifyUnitCreated(com.movesky.app.main.achievements.events.UnitCreatedEvent)
+    {
+        com.movesky.app.main.achievements.BBTHAchievementManager r0;
+        com.movesky.app.main.achievements.events.UnitCreatedEvent $r1;
+        com.movesky.app.engine.util.Bag $r2;
+        java.util.Iterator $r3;
+        boolean $z0;
+        java.lang.Object $r4;
+        com.movesky.app.main.achievements.BBTHAchievement $r5;
+
+        r0 := @this: com.movesky.app.main.achievements.BBTHAchievementManager;
+
+        $r1 := @parameter0: com.movesky.app.main.achievements.events.UnitCreatedEvent;
+
+        $r2 = r0.<com.movesky.app.main.achievements.BBTHAchievementManager: com.movesky.app.engine.util.Bag achievements>;
+
+        $r3 = virtualinvoke $r2.<com.movesky.app.engine.util.Bag: java.util.Iterator iterator()>();
+
+     label1:
+        $z0 = interfaceinvoke $r3.<java.util.Iterator: boolean hasNext()>();
+
+        if $z0 == 0 goto label2;
+
+        $r4 = interfaceinvoke $r3.<java.util.Iterator: java.lang.Object next()>();
+
+        $r5 = (com.movesky.app.main.achievements.BBTHAchievement) $r4;
+
+        virtualinvoke $r5.<com.movesky.app.main.achievements.BBTHAchievement: void unitCreated(com.movesky.app.main.achievements.events.UnitCreatedEvent)>($r1);
+
+        goto label1;
+
+     label2:
+        return;
+    }
+
+    public void notifyUnitDead(com.movesky.app.main.achievements.events.UnitDeadEvent)
+    {
+        com.movesky.app.main.achievements.BBTHAchievementManager r0;
+        com.movesky.app.main.achievements.events.UnitDeadEvent $r1;
+        com.movesky.app.engine.util.Bag $r2;
+        java.util.Iterator $r3;
+        boolean $z0;
+        java.lang.Object $r4;
+        com.movesky.app.main.achievements.BBTHAchievement $r5;
+
+        r0 := @this: com.movesky.app.main.achievements.BBTHAchievementManager;
+
+        $r1 := @parameter0: com.movesky.app.main.achievements.events.UnitDeadEvent;
+
+        $r2 = r0.<com.movesky.app.main.achievements.BBTHAchievementManager: com.movesky.app.engine.util.Bag achievements>;
+
+        $r3 = virtualinvoke $r2.<com.movesky.app.engine.util.Bag: java.util.Iterator iterator()>();
+
+     label1:
+        $z0 = interfaceinvoke $r3.<java.util.Iterator: boolean hasNext()>();
+
+        if $z0 == 0 goto label2;
+
+        $r4 = interfaceinvoke $r3.<java.util.Iterator: java.lang.Object next()>();
+
+        $r5 = (com.movesky.app.main.achievements.BBTHAchievement) $r4;
+
+        virtualinvoke $r5.<com.movesky.app.main.achievements.BBTHAchievement: void unitDead(com.movesky.app.main.achievements.events.UnitDeadEvent)>($r1);
+
+        goto label1;
+
+     label2:
+        return;
+    }
+
+    public void notifyUpdate(com.movesky.app.main.achievements.events.UpdateEvent)
+    {
+        com.movesky.app.main.achievements.BBTHAchievementManager r0;
+        com.movesky.app.main.achievements.events.UpdateEvent $r1;
+        com.movesky.app.engine.util.Bag $r2;
+        java.util.Iterator $r3;
+        boolean $z0;
+        java.lang.Object $r4;
+        com.movesky.app.main.achievements.BBTHAchievement $r5;
+
+        r0 := @this: com.movesky.app.main.achievements.BBTHAchievementManager;
+
+        $r1 := @parameter0: com.movesky.app.main.achievements.events.UpdateEvent;
+
+        $r2 = r0.<com.movesky.app.main.achievements.BBTHAchievementManager: com.movesky.app.engine.util.Bag achievements>;
+
+        $r3 = virtualinvoke $r2.<com.movesky.app.engine.util.Bag: java.util.Iterator iterator()>();
+
+     label1:
+        $z0 = interfaceinvoke $r3.<java.util.Iterator: boolean hasNext()>();
+
+        if $z0 == 0 goto label2;
+
+        $r4 = interfaceinvoke $r3.<java.util.Iterator: java.lang.Object next()>();
+
+        $r5 = (com.movesky.app.main.achievements.BBTHAchievement) $r4;
+
+        virtualinvoke $r5.<com.movesky.app.main.achievements.BBTHAchievement: void update(com.movesky.app.main.achievements.events.UpdateEvent)>($r1);
+
+        goto label1;
+
+     label2:
+        return;
+    }
+
+    public void notifyWallCreated(com.movesky.app.main.achievements.events.WallCreatedEvent)
+    {
+        com.movesky.app.main.achievements.BBTHAchievementManager r0;
+        com.movesky.app.main.achievements.events.WallCreatedEvent $r1;
+        com.movesky.app.engine.util.Bag $r2;
+        java.util.Iterator $r3;
+        boolean $z0;
+        java.lang.Object $r4;
+        com.movesky.app.main.achievements.BBTHAchievement $r5;
+
+        r0 := @this: com.movesky.app.main.achievements.BBTHAchievementManager;
+
+        $r1 := @parameter0: com.movesky.app.main.achievements.events.WallCreatedEvent;
+
+        $r2 = r0.<com.movesky.app.main.achievements.BBTHAchievementManager: com.movesky.app.engine.util.Bag achievements>;
+
+        $r3 = virtualinvoke $r2.<com.movesky.app.engine.util.Bag: java.util.Iterator iterator()>();
+
+     label1:
+        $z0 = interfaceinvoke $r3.<java.util.Iterator: boolean hasNext()>();
+
+        if $z0 == 0 goto label2;
+
+        $r4 = interfaceinvoke $r3.<java.util.Iterator: java.lang.Object next()>();
+
+        $r5 = (com.movesky.app.main.achievements.BBTHAchievement) $r4;
+
+        virtualinvoke $r5.<com.movesky.app.main.achievements.BBTHAchievement: void wallCreated(com.movesky.app.main.achievements.events.WallCreatedEvent)>($r1);
+
+        goto label1;
+
+     label2:
+        return;
+    }
+
+    void postRegisterAchievements()
+    {
+        com.movesky.app.main.achievements.BBTHAchievementManager r0;
+        com.movesky.app.engine.achievements.AchievementInfo $r1;
+        com.movesky.app.engine.util.Bag $r2;
+        java.util.Iterator $r3;
+        boolean $z0;
+        java.lang.Object $r4;
+        com.movesky.app.main.achievements.BBTHAchievement $r5;
+        com.movesky.app.engine.achievements.Achievements $r6;
+
+        r0 := @this: com.movesky.app.main.achievements.BBTHAchievementManager;
+
+        $r2 = r0.<com.movesky.app.main.achievements.BBTHAchievementManager: com.movesky.app.engine.util.Bag achievements>;
+
+        $r3 = virtualinvoke $r2.<com.movesky.app.engine.util.Bag: java.util.Iterator iterator()>();
+
+     label1:
+        $z0 = interfaceinvoke $r3.<java.util.Iterator: boolean hasNext()>();
+
+        if $z0 == 0 goto label9;
+
+        $r4 = interfaceinvoke $r3.<java.util.Iterator: java.lang.Object next()>();
+
+        $r5 = (com.movesky.app.main.achievements.BBTHAchievement) $r4;
+
+        $r6 = <com.movesky.app.engine.achievements.Achievements: com.movesky.app.engine.achievements.Achievements INSTANCE>;
+
+        $r1 = $r5.<com.movesky.app.main.achievements.BBTHAchievement: com.movesky.app.engine.achievements.AchievementInfo achievementInfo>;
+
+        $z0 = virtualinvoke $r6.<com.movesky.app.engine.achievements.Achievements: boolean isUnlocked(com.movesky.app.engine.achievements.AchievementInfo)>($r1);
+
+        if $z0 != 0 goto label1;
+
+        $z0 = virtualinvoke $r5.<com.movesky.app.main.achievements.BBTHAchievement: boolean usesBaseDestroyed()>();
+
+        if $z0 == 0 goto label2;
+
+        $r2 = r0.<com.movesky.app.main.achievements.BBTHAchievementManager: com.movesky.app.engine.util.Bag baseDestroyedAchievements>;
+
+        virtualinvoke $r2.<com.movesky.app.engine.util.Bag: boolean add(java.lang.Object)>($r5);
+
+     label2:
+        $z0 = virtualinvoke $r5.<com.movesky.app.main.achievements.BBTHAchievement: boolean usesGameEnded()>();
+
+        if $z0 == 0 goto label3;
+
+        $r2 = r0.<com.movesky.app.main.achievements.BBTHAchievementManager: com.movesky.app.engine.util.Bag gameEndedAchievements>;
+
+        virtualinvoke $r2.<com.movesky.app.engine.util.Bag: boolean add(java.lang.Object)>($r5);
+
+     label3:
+        $z0 = virtualinvoke $r5.<com.movesky.app.main.achievements.BBTHAchievement: boolean usesUnitDead()>();
+
+        if $z0 == 0 goto label4;
+
+        $r2 = r0.<com.movesky.app.main.achievements.BBTHAchievementManager: com.movesky.app.engine.util.Bag unitDeadAchievements>;
+
+        virtualinvoke $r2.<com.movesky.app.engine.util.Bag: boolean add(java.lang.Object)>($r5);
+
+     label4:
+        $z0 = virtualinvoke $r5.<com.movesky.app.main.achievements.BBTHAchievement: boolean usesUnitCreated()>();
+
+        if $z0 == 0 goto label5;
+
+        $r2 = r0.<com.movesky.app.main.achievements.BBTHAchievementManager: com.movesky.app.engine.util.Bag unitCreatedAchievements>;
+
+        virtualinvoke $r2.<com.movesky.app.engine.util.Bag: boolean add(java.lang.Object)>($r5);
+
+     label5:
+        $z0 = virtualinvoke $r5.<com.movesky.app.main.achievements.BBTHAchievement: boolean usesBeatHit()>();
+
+        if $z0 == 0 goto label6;
+
+        $r2 = r0.<com.movesky.app.main.achievements.BBTHAchievementManager: com.movesky.app.engine.util.Bag beatHitAchievements>;
+
+        virtualinvoke $r2.<com.movesky.app.engine.util.Bag: boolean add(java.lang.Object)>($r5);
+
+     label6:
+        $z0 = virtualinvoke $r5.<com.movesky.app.main.achievements.BBTHAchievement: boolean usesBeatMissed()>();
+
+        if $z0 == 0 goto label7;
+
+        $r2 = r0.<com.movesky.app.main.achievements.BBTHAchievementManager: com.movesky.app.engine.util.Bag beatMissedAchievements>;
+
+        virtualinvoke $r2.<com.movesky.app.engine.util.Bag: boolean add(java.lang.Object)>($r5);
+
+     label7:
+        $z0 = virtualinvoke $r5.<com.movesky.app.main.achievements.BBTHAchievement: boolean usesWallCreated()>();
+
+        if $z0 == 0 goto label8;
+
+        $r2 = r0.<com.movesky.app.main.achievements.BBTHAchievementManager: com.movesky.app.engine.util.Bag wallCreatedAchievements>;
+
+        virtualinvoke $r2.<com.movesky.app.engine.util.Bag: boolean add(java.lang.Object)>($r5);
+
+     label8:
+        $z0 = virtualinvoke $r5.<com.movesky.app.main.achievements.BBTHAchievement: boolean usesUpdate()>();
+
+        if $z0 == 0 goto label1;
+
+        $r2 = r0.<com.movesky.app.main.achievements.BBTHAchievementManager: com.movesky.app.engine.util.Bag updateAchievements>;
+
+        virtualinvoke $r2.<com.movesky.app.engine.util.Bag: boolean add(java.lang.Object)>($r5);
+
+        goto label1;
+
+     label9:
+        return;
+    }
+
+    public void registerAchievements()
+    {
+        com.movesky.app.main.achievements.BBTHAchievementManager r0;
+        com.movesky.app.engine.util.Bag $r1;
+        boolean $z0;
+        java.util.Map $r2;
+        java.lang.Integer $r3;
+        java.lang.Object $r4;
+        com.movesky.app.engine.achievements.AchievementInfo $r5;
+        com.movesky.app.main.achievements.impls.SongAchievement $r6;
+        com.movesky.app.main.Song $r7;
+        com.movesky.app.main.achievements.impls.DesperateTimes $r8;
+        com.movesky.app.main.achievements.impls.DesperateMeasures $r9;
+        com.movesky.app.main.achievements.impls.UltimateStalemate $r10;
+        com.movesky.app.main.achievements.impls.FlawlessVictory $r11;
+        com.movesky.app.main.achievements.impls.StrategistAchievement $r12;
+        com.movesky.app.main.achievements.impls.IncrementOnUberCreateAchievement $r13;
+        com.movesky.app.main.achievements.impls.ComboCounterAchievement $r14;
+        com.movesky.app.main.achievements.impls.FullComboAchievement $r15;
+        com.movesky.app.main.achievements.impls.UnitCountAchievement $r16;
+        com.movesky.app.main.achievements.impls.Humiliation $r17;
+        com.movesky.app.main.achievements.impls.ItsSuperEffective $r18;
+        com.movesky.app.main.achievements.impls.YoDawgIHeardYouLikeUnits $r19;
+        com.movesky.app.main.achievements.impls.Showdown $r20;
+        com.movesky.app.main.achievements.impls.QuantityOverQuality $r21;
+        com.movesky.app.main.achievements.impls.AnythingYouCanDo $r22;
+        com.movesky.app.main.achievements.impls.IncrementOnUnitKillAchievement $r23;
+        com.movesky.app.main.achievements.impls.IncrementOnUnitCreateAchievement $r24;
+
+        r0 := @this: com.movesky.app.main.achievements.BBTHAchievementManager;
+
+        $r1 = r0.<com.movesky.app.main.achievements.BBTHAchievementManager: com.movesky.app.engine.util.Bag achievements>;
+
+        $z0 = virtualinvoke $r1.<com.movesky.app.engine.util.Bag: boolean isEmpty()>();
+
+        if $z0 != 0 goto label01;
+
+        return;
+
+     label01:
+        $r2 = r0.<com.movesky.app.main.achievements.BBTHAchievementManager: java.util.Map infoMap>;
+
+        $r3 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>(0);
+
+        $r4 = interfaceinvoke $r2.<java.util.Map: java.lang.Object get(java.lang.Object)>($r3);
+
+        $r5 = (com.movesky.app.engine.achievements.AchievementInfo) $r4;
+
+        if $r5 == null goto label02;
+
+        $r1 = r0.<com.movesky.app.main.achievements.BBTHAchievementManager: com.movesky.app.engine.util.Bag achievements>;
+
+        $r6 = new com.movesky.app.main.achievements.impls.SongAchievement;
+
+        $r7 = <com.movesky.app.main.Song: com.movesky.app.main.Song MISTAKE_THE_GETAWAY>;
+
+        specialinvoke $r6.<com.movesky.app.main.achievements.impls.SongAchievement: void <init>(com.movesky.app.engine.achievements.AchievementInfo,com.movesky.app.main.Song)>($r5, $r7);
+
+        virtualinvoke $r1.<com.movesky.app.engine.util.Bag: boolean add(java.lang.Object)>($r6);
+
+     label02:
+        $r2 = r0.<com.movesky.app.main.achievements.BBTHAchievementManager: java.util.Map infoMap>;
+
+        $r3 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>(1);
+
+        $r4 = interfaceinvoke $r2.<java.util.Map: java.lang.Object get(java.lang.Object)>($r3);
+
+        $r5 = (com.movesky.app.engine.achievements.AchievementInfo) $r4;
+
+        if $r5 == null goto label03;
+
+        $r1 = r0.<com.movesky.app.main.achievements.BBTHAchievementManager: com.movesky.app.engine.util.Bag achievements>;
+
+        $r6 = new com.movesky.app.main.achievements.impls.SongAchievement;
+
+        $r7 = <com.movesky.app.main.Song: com.movesky.app.main.Song MIGHT_AND_MAGIC>;
+
+        specialinvoke $r6.<com.movesky.app.main.achievements.impls.SongAchievement: void <init>(com.movesky.app.engine.achievements.AchievementInfo,com.movesky.app.main.Song)>($r5, $r7);
+
+        virtualinvoke $r1.<com.movesky.app.engine.util.Bag: boolean add(java.lang.Object)>($r6);
+
+     label03:
+        $r2 = r0.<com.movesky.app.main.achievements.BBTHAchievementManager: java.util.Map infoMap>;
+
+        $r3 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>(2);
+
+        $r4 = interfaceinvoke $r2.<java.util.Map: java.lang.Object get(java.lang.Object)>($r3);
+
+        $r5 = (com.movesky.app.engine.achievements.AchievementInfo) $r4;
+
+        if $r5 == null goto label04;
+
+        $r1 = r0.<com.movesky.app.main.achievements.BBTHAchievementManager: com.movesky.app.engine.util.Bag achievements>;
+
+        $r6 = new com.movesky.app.main.achievements.impls.SongAchievement;
+
+        $r7 = <com.movesky.app.main.Song: com.movesky.app.main.Song RETRO>;
+
+        specialinvoke $r6.<com.movesky.app.main.achievements.impls.SongAchievement: void <init>(com.movesky.app.engine.achievements.AchievementInfo,com.movesky.app.main.Song)>($r5, $r7);
+
+        virtualinvoke $r1.<com.movesky.app.engine.util.Bag: boolean add(java.lang.Object)>($r6);
+
+     label04:
+        $r2 = r0.<com.movesky.app.main.achievements.BBTHAchievementManager: java.util.Map infoMap>;
+
+        $r3 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>(3);
+
+        $r4 = interfaceinvoke $r2.<java.util.Map: java.lang.Object get(java.lang.Object)>($r3);
+
+        $r5 = (com.movesky.app.engine.achievements.AchievementInfo) $r4;
+
+        if $r5 == null goto label05;
+
+        $r1 = r0.<com.movesky.app.main.achievements.BBTHAchievementManager: com.movesky.app.engine.util.Bag achievements>;
+
+        $r6 = new com.movesky.app.main.achievements.impls.SongAchievement;
+
+        $r7 = <com.movesky.app.main.Song: com.movesky.app.main.Song JAVLA_SLADDAR>;
+
+        specialinvoke $r6.<com.movesky.app.main.achievements.impls.SongAchievement: void <init>(com.movesky.app.engine.achievements.AchievementInfo,com.movesky.app.main.Song)>($r5, $r7);
+
+        virtualinvoke $r1.<com.movesky.app.engine.util.Bag: boolean add(java.lang.Object)>($r6);
+
+     label05:
+        $r2 = r0.<com.movesky.app.main.achievements.BBTHAchievementManager: java.util.Map infoMap>;
+
+        $r3 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>(4);
+
+        $r4 = interfaceinvoke $r2.<java.util.Map: java.lang.Object get(java.lang.Object)>($r3);
+
+        $r5 = (com.movesky.app.engine.achievements.AchievementInfo) $r4;
+
+        if $r5 == null goto label06;
+
+        $r1 = r0.<com.movesky.app.main.achievements.BBTHAchievementManager: com.movesky.app.engine.util.Bag achievements>;
+
+        $r6 = new com.movesky.app.main.achievements.impls.SongAchievement;
+
+        $r7 = <com.movesky.app.main.Song: com.movesky.app.main.Song ODINS_KRAFT>;
+
+        specialinvoke $r6.<com.movesky.app.main.achievements.impls.SongAchievement: void <init>(com.movesky.app.engine.achievements.AchievementInfo,com.movesky.app.main.Song)>($r5, $r7);
+
+        virtualinvoke $r1.<com.movesky.app.engine.util.Bag: boolean add(java.lang.Object)>($r6);
+
+     label06:
+        $r2 = r0.<com.movesky.app.main.achievements.BBTHAchievementManager: java.util.Map infoMap>;
+
+        $r3 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>(100);
+
+        $r4 = interfaceinvoke $r2.<java.util.Map: java.lang.Object get(java.lang.Object)>($r3);
+
+        $r5 = (com.movesky.app.engine.achievements.AchievementInfo) $r4;
+
+        if $r5 == null goto label07;
+
+        $r1 = r0.<com.movesky.app.main.achievements.BBTHAchievementManager: com.movesky.app.engine.util.Bag achievements>;
+
+        $r8 = new com.movesky.app.main.achievements.impls.DesperateTimes;
+
+        specialinvoke $r8.<com.movesky.app.main.achievements.impls.DesperateTimes: void <init>(com.movesky.app.engine.achievements.AchievementInfo)>($r5);
+
+        virtualinvoke $r1.<com.movesky.app.engine.util.Bag: boolean add(java.lang.Object)>($r8);
+
+     label07:
+        $r2 = r0.<com.movesky.app.main.achievements.BBTHAchievementManager: java.util.Map infoMap>;
+
+        $r3 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>(101);
+
+        $r4 = interfaceinvoke $r2.<java.util.Map: java.lang.Object get(java.lang.Object)>($r3);
+
+        $r5 = (com.movesky.app.engine.achievements.AchievementInfo) $r4;
+
+        if $r5 == null goto label08;
+
+        $r1 = r0.<com.movesky.app.main.achievements.BBTHAchievementManager: com.movesky.app.engine.util.Bag achievements>;
+
+        $r9 = new com.movesky.app.main.achievements.impls.DesperateMeasures;
+
+        specialinvoke $r9.<com.movesky.app.main.achievements.impls.DesperateMeasures: void <init>(com.movesky.app.engine.achievements.AchievementInfo)>($r5);
+
+        virtualinvoke $r1.<com.movesky.app.engine.util.Bag: boolean add(java.lang.Object)>($r9);
+
+     label08:
+        $r2 = r0.<com.movesky.app.main.achievements.BBTHAchievementManager: java.util.Map infoMap>;
+
+        $r3 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>(102);
+
+        $r4 = interfaceinvoke $r2.<java.util.Map: java.lang.Object get(java.lang.Object)>($r3);
+
+        $r5 = (com.movesky.app.engine.achievements.AchievementInfo) $r4;
+
+        if $r5 == null goto label09;
+
+        $r1 = r0.<com.movesky.app.main.achievements.BBTHAchievementManager: com.movesky.app.engine.util.Bag achievements>;
+
+        $r10 = new com.movesky.app.main.achievements.impls.UltimateStalemate;
+
+        specialinvoke $r10.<com.movesky.app.main.achievements.impls.UltimateStalemate: void <init>(com.movesky.app.engine.achievements.AchievementInfo)>($r5);
+
+        virtualinvoke $r1.<com.movesky.app.engine.util.Bag: boolean add(java.lang.Object)>($r10);
+
+     label09:
+        $r2 = r0.<com.movesky.app.main.achievements.BBTHAchievementManager: java.util.Map infoMap>;
+
+        $r3 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>(103);
+
+        $r4 = interfaceinvoke $r2.<java.util.Map: java.lang.Object get(java.lang.Object)>($r3);
+
+        $r5 = (com.movesky.app.engine.achievements.AchievementInfo) $r4;
+
+        if $r5 == null goto label10;
+
+        $r1 = r0.<com.movesky.app.main.achievements.BBTHAchievementManager: com.movesky.app.engine.util.Bag achievements>;
+
+        $r11 = new com.movesky.app.main.achievements.impls.FlawlessVictory;
+
+        specialinvoke $r11.<com.movesky.app.main.achievements.impls.FlawlessVictory: void <init>(com.movesky.app.engine.achievements.AchievementInfo)>($r5);
+
+        virtualinvoke $r1.<com.movesky.app.engine.util.Bag: boolean add(java.lang.Object)>($r11);
+
+     label10:
+        $r2 = r0.<com.movesky.app.main.achievements.BBTHAchievementManager: java.util.Map infoMap>;
+
+        $r3 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>(104);
+
+        $r4 = interfaceinvoke $r2.<java.util.Map: java.lang.Object get(java.lang.Object)>($r3);
+
+        $r5 = (com.movesky.app.engine.achievements.AchievementInfo) $r4;
+
+        if $r5 == null goto label11;
+
+        $r1 = r0.<com.movesky.app.main.achievements.BBTHAchievementManager: com.movesky.app.engine.util.Bag achievements>;
+
+        $r12 = new com.movesky.app.main.achievements.impls.StrategistAchievement;
+
+        specialinvoke $r12.<com.movesky.app.main.achievements.impls.StrategistAchievement: void <init>(com.movesky.app.engine.achievements.AchievementInfo)>($r5);
+
+        virtualinvoke $r1.<com.movesky.app.engine.util.Bag: boolean add(java.lang.Object)>($r12);
+
+     label11:
+        $r2 = r0.<com.movesky.app.main.achievements.BBTHAchievementManager: java.util.Map infoMap>;
+
+        $r3 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>(200);
+
+        $r4 = interfaceinvoke $r2.<java.util.Map: java.lang.Object get(java.lang.Object)>($r3);
+
+        $r5 = (com.movesky.app.engine.achievements.AchievementInfo) $r4;
+
+        if $r5 == null goto label12;
+
+        $r1 = r0.<com.movesky.app.main.achievements.BBTHAchievementManager: com.movesky.app.engine.util.Bag achievements>;
+
+        $r13 = new com.movesky.app.main.achievements.impls.IncrementOnUberCreateAchievement;
+
+        specialinvoke $r13.<com.movesky.app.main.achievements.impls.IncrementOnUberCreateAchievement: void <init>(com.movesky.app.engine.achievements.AchievementInfo)>($r5);
+
+        virtualinvoke $r1.<com.movesky.app.engine.util.Bag: boolean add(java.lang.Object)>($r13);
+
+     label12:
+        $r2 = r0.<com.movesky.app.main.achievements.BBTHAchievementManager: java.util.Map infoMap>;
+
+        $r3 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>(201);
+
+        $r4 = interfaceinvoke $r2.<java.util.Map: java.lang.Object get(java.lang.Object)>($r3);
+
+        $r5 = (com.movesky.app.engine.achievements.AchievementInfo) $r4;
+
+        if $r5 == null goto label13;
+
+        $r1 = r0.<com.movesky.app.main.achievements.BBTHAchievementManager: com.movesky.app.engine.util.Bag achievements>;
+
+        $r14 = new com.movesky.app.main.achievements.impls.ComboCounterAchievement;
+
+        specialinvoke $r14.<com.movesky.app.main.achievements.impls.ComboCounterAchievement: void <init>(com.movesky.app.engine.achievements.AchievementInfo,int)>($r5, 25);
+
+        virtualinvoke $r1.<com.movesky.app.engine.util.Bag: boolean add(java.lang.Object)>($r14);
+
+     label13:
+        $r2 = r0.<com.movesky.app.main.achievements.BBTHAchievementManager: java.util.Map infoMap>;
+
+        $r3 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>(202);
+
+        $r4 = interfaceinvoke $r2.<java.util.Map: java.lang.Object get(java.lang.Object)>($r3);
+
+        $r5 = (com.movesky.app.engine.achievements.AchievementInfo) $r4;
+
+        if $r5 == null goto label14;
+
+        $r1 = r0.<com.movesky.app.main.achievements.BBTHAchievementManager: com.movesky.app.engine.util.Bag achievements>;
+
+        $r14 = new com.movesky.app.main.achievements.impls.ComboCounterAchievement;
+
+        specialinvoke $r14.<com.movesky.app.main.achievements.impls.ComboCounterAchievement: void <init>(com.movesky.app.engine.achievements.AchievementInfo,int)>($r5, 100);
+
+        virtualinvoke $r1.<com.movesky.app.engine.util.Bag: boolean add(java.lang.Object)>($r14);
+
+     label14:
+        $r2 = r0.<com.movesky.app.main.achievements.BBTHAchievementManager: java.util.Map infoMap>;
+
+        $r3 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>(203);
+
+        $r4 = interfaceinvoke $r2.<java.util.Map: java.lang.Object get(java.lang.Object)>($r3);
+
+        $r5 = (com.movesky.app.engine.achievements.AchievementInfo) $r4;
+
+        if $r5 == null goto label15;
+
+        $r1 = r0.<com.movesky.app.main.achievements.BBTHAchievementManager: com.movesky.app.engine.util.Bag achievements>;
+
+        $r14 = new com.movesky.app.main.achievements.impls.ComboCounterAchievement;
+
+        specialinvoke $r14.<com.movesky.app.main.achievements.impls.ComboCounterAchievement: void <init>(com.movesky.app.engine.achievements.AchievementInfo,int)>($r5, 300);
+
+        virtualinvoke $r1.<com.movesky.app.engine.util.Bag: boolean add(java.lang.Object)>($r14);
+
+     label15:
+        $r2 = r0.<com.movesky.app.main.achievements.BBTHAchievementManager: java.util.Map infoMap>;
+
+        $r3 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>(204);
+
+        $r4 = interfaceinvoke $r2.<java.util.Map: java.lang.Object get(java.lang.Object)>($r3);
+
+        $r5 = (com.movesky.app.engine.achievements.AchievementInfo) $r4;
+
+        if $r5 == null goto label16;
+
+        $r1 = r0.<com.movesky.app.main.achievements.BBTHAchievementManager: com.movesky.app.engine.util.Bag achievements>;
+
+        $r15 = new com.movesky.app.main.achievements.impls.FullComboAchievement;
+
+        specialinvoke $r15.<com.movesky.app.main.achievements.impls.FullComboAchievement: void <init>(com.movesky.app.engine.achievements.AchievementInfo)>($r5);
+
+        virtualinvoke $r1.<com.movesky.app.engine.util.Bag: boolean add(java.lang.Object)>($r15);
+
+     label16:
+        $r2 = r0.<com.movesky.app.main.achievements.BBTHAchievementManager: java.util.Map infoMap>;
+
+        $r3 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>(300);
+
+        $r4 = interfaceinvoke $r2.<java.util.Map: java.lang.Object get(java.lang.Object)>($r3);
+
+        $r5 = (com.movesky.app.engine.achievements.AchievementInfo) $r4;
+
+        $r2 = r0.<com.movesky.app.main.achievements.BBTHAchievementManager: java.util.Map infoMap>;
+
+        $r3 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>(400);
+
+        $r4 = interfaceinvoke $r2.<java.util.Map: java.lang.Object get(java.lang.Object)>($r3);
+
+        $r5 = (com.movesky.app.engine.achievements.AchievementInfo) $r4;
+
+        if $r5 == null goto label17;
+
+        $r1 = r0.<com.movesky.app.main.achievements.BBTHAchievementManager: com.movesky.app.engine.util.Bag achievements>;
+
+        $r16 = new com.movesky.app.main.achievements.impls.UnitCountAchievement;
+
+        specialinvoke $r16.<com.movesky.app.main.achievements.impls.UnitCountAchievement: void <init>(com.movesky.app.engine.achievements.AchievementInfo,int)>($r5, 25);
+
+        virtualinvoke $r1.<com.movesky.app.engine.util.Bag: boolean add(java.lang.Object)>($r16);
+
+     label17:
+        $r2 = r0.<com.movesky.app.main.achievements.BBTHAchievementManager: java.util.Map infoMap>;
+
+        $r3 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>(401);
+
+        $r4 = interfaceinvoke $r2.<java.util.Map: java.lang.Object get(java.lang.Object)>($r3);
+
+        $r5 = (com.movesky.app.engine.achievements.AchievementInfo) $r4;
+
+        if $r5 == null goto label18;
+
+        $r1 = r0.<com.movesky.app.main.achievements.BBTHAchievementManager: com.movesky.app.engine.util.Bag achievements>;
+
+        $r17 = new com.movesky.app.main.achievements.impls.Humiliation;
+
+        specialinvoke $r17.<com.movesky.app.main.achievements.impls.Humiliation: void <init>(com.movesky.app.engine.achievements.AchievementInfo)>($r5);
+
+        virtualinvoke $r1.<com.movesky.app.engine.util.Bag: boolean add(java.lang.Object)>($r17);
+
+     label18:
+        $r2 = r0.<com.movesky.app.main.achievements.BBTHAchievementManager: java.util.Map infoMap>;
+
+        $r3 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>(402);
+
+        $r4 = interfaceinvoke $r2.<java.util.Map: java.lang.Object get(java.lang.Object)>($r3);
+
+        $r5 = (com.movesky.app.engine.achievements.AchievementInfo) $r4;
+
+        if $r5 == null goto label19;
+
+        $r1 = r0.<com.movesky.app.main.achievements.BBTHAchievementManager: com.movesky.app.engine.util.Bag achievements>;
+
+        $r18 = new com.movesky.app.main.achievements.impls.ItsSuperEffective;
+
+        specialinvoke $r18.<com.movesky.app.main.achievements.impls.ItsSuperEffective: void <init>(com.movesky.app.engine.achievements.AchievementInfo)>($r5);
+
+        virtualinvoke $r1.<com.movesky.app.engine.util.Bag: boolean add(java.lang.Object)>($r18);
+
+     label19:
+        $r2 = r0.<com.movesky.app.main.achievements.BBTHAchievementManager: java.util.Map infoMap>;
+
+        $r3 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>(403);
+
+        $r4 = interfaceinvoke $r2.<java.util.Map: java.lang.Object get(java.lang.Object)>($r3);
+
+        $r5 = (com.movesky.app.engine.achievements.AchievementInfo) $r4;
+
+        if $r5 == null goto label20;
+
+        $r1 = r0.<com.movesky.app.main.achievements.BBTHAchievementManager: com.movesky.app.engine.util.Bag achievements>;
+
+        $r19 = new com.movesky.app.main.achievements.impls.YoDawgIHeardYouLikeUnits;
+
+        specialinvoke $r19.<com.movesky.app.main.achievements.impls.YoDawgIHeardYouLikeUnits: void <init>(com.movesky.app.engine.achievements.AchievementInfo)>($r5);
+
+        virtualinvoke $r1.<com.movesky.app.engine.util.Bag: boolean add(java.lang.Object)>($r19);
+
+     label20:
+        $r2 = r0.<com.movesky.app.main.achievements.BBTHAchievementManager: java.util.Map infoMap>;
+
+        $r3 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>(404);
+
+        $r4 = interfaceinvoke $r2.<java.util.Map: java.lang.Object get(java.lang.Object)>($r3);
+
+        $r5 = (com.movesky.app.engine.achievements.AchievementInfo) $r4;
+
+        if $r5 == null goto label21;
+
+        $r1 = r0.<com.movesky.app.main.achievements.BBTHAchievementManager: com.movesky.app.engine.util.Bag achievements>;
+
+        $r20 = new com.movesky.app.main.achievements.impls.Showdown;
+
+        specialinvoke $r20.<com.movesky.app.main.achievements.impls.Showdown: void <init>(com.movesky.app.engine.achievements.AchievementInfo)>($r5);
+
+        virtualinvoke $r1.<com.movesky.app.engine.util.Bag: boolean add(java.lang.Object)>($r20);
+
+     label21:
+        $r2 = r0.<com.movesky.app.main.achievements.BBTHAchievementManager: java.util.Map infoMap>;
+
+        $r3 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>(405);
+
+        $r4 = interfaceinvoke $r2.<java.util.Map: java.lang.Object get(java.lang.Object)>($r3);
+
+        $r5 = (com.movesky.app.engine.achievements.AchievementInfo) $r4;
+
+        if $r5 == null goto label22;
+
+        $r1 = r0.<com.movesky.app.main.achievements.BBTHAchievementManager: com.movesky.app.engine.util.Bag achievements>;
+
+        $r21 = new com.movesky.app.main.achievements.impls.QuantityOverQuality;
+
+        specialinvoke $r21.<com.movesky.app.main.achievements.impls.QuantityOverQuality: void <init>(com.movesky.app.engine.achievements.AchievementInfo)>($r5);
+
+        virtualinvoke $r1.<com.movesky.app.engine.util.Bag: boolean add(java.lang.Object)>($r21);
+
+     label22:
+        $r2 = r0.<com.movesky.app.main.achievements.BBTHAchievementManager: java.util.Map infoMap>;
+
+        $r3 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>(406);
+
+        $r4 = interfaceinvoke $r2.<java.util.Map: java.lang.Object get(java.lang.Object)>($r3);
+
+        $r5 = (com.movesky.app.engine.achievements.AchievementInfo) $r4;
+
+        $r2 = r0.<com.movesky.app.main.achievements.BBTHAchievementManager: java.util.Map infoMap>;
+
+        $r3 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>(500);
+
+        $r4 = interfaceinvoke $r2.<java.util.Map: java.lang.Object get(java.lang.Object)>($r3);
+
+        $r5 = (com.movesky.app.engine.achievements.AchievementInfo) $r4;
+
+        if $r5 == null goto label23;
+
+        $r1 = r0.<com.movesky.app.main.achievements.BBTHAchievementManager: com.movesky.app.engine.util.Bag achievements>;
+
+        $r22 = new com.movesky.app.main.achievements.impls.AnythingYouCanDo;
+
+        specialinvoke $r22.<com.movesky.app.main.achievements.impls.AnythingYouCanDo: void <init>(com.movesky.app.engine.achievements.AchievementInfo)>($r5);
+
+        virtualinvoke $r1.<com.movesky.app.engine.util.Bag: boolean add(java.lang.Object)>($r22);
+
+     label23:
+        $r2 = r0.<com.movesky.app.main.achievements.BBTHAchievementManager: java.util.Map infoMap>;
+
+        $r3 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>(600);
+
+        $r4 = interfaceinvoke $r2.<java.util.Map: java.lang.Object get(java.lang.Object)>($r3);
+
+        $r5 = (com.movesky.app.engine.achievements.AchievementInfo) $r4;
+
+        if $r5 == null goto label24;
+
+        $r1 = r0.<com.movesky.app.main.achievements.BBTHAchievementManager: com.movesky.app.engine.util.Bag achievements>;
+
+        $r23 = new com.movesky.app.main.achievements.impls.IncrementOnUnitKillAchievement;
+
+        specialinvoke $r23.<com.movesky.app.main.achievements.impls.IncrementOnUnitKillAchievement: void <init>(com.movesky.app.engine.achievements.AchievementInfo)>($r5);
+
+        virtualinvoke $r1.<com.movesky.app.engine.util.Bag: boolean add(java.lang.Object)>($r23);
+
+     label24:
+        $r2 = r0.<com.movesky.app.main.achievements.BBTHAchievementManager: java.util.Map infoMap>;
+
+        $r3 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>(601);
+
+        $r4 = interfaceinvoke $r2.<java.util.Map: java.lang.Object get(java.lang.Object)>($r3);
+
+        $r5 = (com.movesky.app.engine.achievements.AchievementInfo) $r4;
+
+        if $r5 == null goto label25;
+
+        $r1 = r0.<com.movesky.app.main.achievements.BBTHAchievementManager: com.movesky.app.engine.util.Bag achievements>;
+
+        $r23 = new com.movesky.app.main.achievements.impls.IncrementOnUnitKillAchievement;
+
+        specialinvoke $r23.<com.movesky.app.main.achievements.impls.IncrementOnUnitKillAchievement: void <init>(com.movesky.app.engine.achievements.AchievementInfo)>($r5);
+
+        virtualinvoke $r1.<com.movesky.app.engine.util.Bag: boolean add(java.lang.Object)>($r23);
+
+     label25:
+        $r2 = r0.<com.movesky.app.main.achievements.BBTHAchievementManager: java.util.Map infoMap>;
+
+        $r3 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>(602);
+
+        $r4 = interfaceinvoke $r2.<java.util.Map: java.lang.Object get(java.lang.Object)>($r3);
+
+        $r5 = (com.movesky.app.engine.achievements.AchievementInfo) $r4;
+
+        if $r5 == null goto label26;
+
+        $r1 = r0.<com.movesky.app.main.achievements.BBTHAchievementManager: com.movesky.app.engine.util.Bag achievements>;
+
+        $r23 = new com.movesky.app.main.achievements.impls.IncrementOnUnitKillAchievement;
+
+        specialinvoke $r23.<com.movesky.app.main.achievements.impls.IncrementOnUnitKillAchievement: void <init>(com.movesky.app.engine.achievements.AchievementInfo)>($r5);
+
+        virtualinvoke $r1.<com.movesky.app.engine.util.Bag: boolean add(java.lang.Object)>($r23);
+
+     label26:
+        $r2 = r0.<com.movesky.app.main.achievements.BBTHAchievementManager: java.util.Map infoMap>;
+
+        $r3 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>(603);
+
+        $r4 = interfaceinvoke $r2.<java.util.Map: java.lang.Object get(java.lang.Object)>($r3);
+
+        $r5 = (com.movesky.app.engine.achievements.AchievementInfo) $r4;
+
+        if $r5 == null goto label27;
+
+        $r1 = r0.<com.movesky.app.main.achievements.BBTHAchievementManager: com.movesky.app.engine.util.Bag achievements>;
+
+        $r24 = new com.movesky.app.main.achievements.impls.IncrementOnUnitCreateAchievement;
+
+        specialinvoke $r24.<com.movesky.app.main.achievements.impls.IncrementOnUnitCreateAchievement: void <init>(com.movesky.app.engine.achievements.AchievementInfo)>($r5);
+
+        virtualinvoke $r1.<com.movesky.app.engine.util.Bag: boolean add(java.lang.Object)>($r24);
+
+     label27:
+        $r2 = r0.<com.movesky.app.main.achievements.BBTHAchievementManager: java.util.Map infoMap>;
+
+        $r3 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>(604);
+
+        $r4 = interfaceinvoke $r2.<java.util.Map: java.lang.Object get(java.lang.Object)>($r3);
+
+        $r5 = (com.movesky.app.engine.achievements.AchievementInfo) $r4;
+
+        if $r5 == null goto label28;
+
+        $r1 = r0.<com.movesky.app.main.achievements.BBTHAchievementManager: com.movesky.app.engine.util.Bag achievements>;
+
+        $r24 = new com.movesky.app.main.achievements.impls.IncrementOnUnitCreateAchievement;
+
+        specialinvoke $r24.<com.movesky.app.main.achievements.impls.IncrementOnUnitCreateAchievement: void <init>(com.movesky.app.engine.achievements.AchievementInfo)>($r5);
+
+        virtualinvoke $r1.<com.movesky.app.engine.util.Bag: boolean add(java.lang.Object)>($r24);
+
+     label28:
+        $r2 = r0.<com.movesky.app.main.achievements.BBTHAchievementManager: java.util.Map infoMap>;
+
+        $r3 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>(605);
+
+        $r4 = interfaceinvoke $r2.<java.util.Map: java.lang.Object get(java.lang.Object)>($r3);
+
+        $r5 = (com.movesky.app.engine.achievements.AchievementInfo) $r4;
+
+        if $r5 == null goto label29;
+
+        $r1 = r0.<com.movesky.app.main.achievements.BBTHAchievementManager: com.movesky.app.engine.util.Bag achievements>;
+
+        $r24 = new com.movesky.app.main.achievements.impls.IncrementOnUnitCreateAchievement;
+
+        specialinvoke $r24.<com.movesky.app.main.achievements.impls.IncrementOnUnitCreateAchievement: void <init>(com.movesky.app.engine.achievements.AchievementInfo)>($r5);
+
+        virtualinvoke $r1.<com.movesky.app.engine.util.Bag: boolean add(java.lang.Object)>($r24);
+
+     label29:
+        $r2 = r0.<com.movesky.app.main.achievements.BBTHAchievementManager: java.util.Map infoMap>;
+
+        $r3 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>(606);
+
+        $r4 = interfaceinvoke $r2.<java.util.Map: java.lang.Object get(java.lang.Object)>($r3);
+
+        $r5 = (com.movesky.app.engine.achievements.AchievementInfo) $r4;
+
+        if $r5 == null goto label30;
+
+        $r1 = r0.<com.movesky.app.main.achievements.BBTHAchievementManager: com.movesky.app.engine.util.Bag achievements>;
+
+        $r13 = new com.movesky.app.main.achievements.impls.IncrementOnUberCreateAchievement;
+
+        specialinvoke $r13.<com.movesky.app.main.achievements.impls.IncrementOnUberCreateAchievement: void <init>(com.movesky.app.engine.achievements.AchievementInfo)>($r5);
+
+        virtualinvoke $r1.<com.movesky.app.engine.util.Bag: boolean add(java.lang.Object)>($r13);
+
+     label30:
+        $r2 = r0.<com.movesky.app.main.achievements.BBTHAchievementManager: java.util.Map infoMap>;
+
+        $r3 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>(607);
+
+        $r4 = interfaceinvoke $r2.<java.util.Map: java.lang.Object get(java.lang.Object)>($r3);
+
+        $r5 = (com.movesky.app.engine.achievements.AchievementInfo) $r4;
+
+        if $r5 == null goto label31;
+
+        $r1 = r0.<com.movesky.app.main.achievements.BBTHAchievementManager: com.movesky.app.engine.util.Bag achievements>;
+
+        $r13 = new com.movesky.app.main.achievements.impls.IncrementOnUberCreateAchievement;
+
+        specialinvoke $r13.<com.movesky.app.main.achievements.impls.IncrementOnUberCreateAchievement: void <init>(com.movesky.app.engine.achievements.AchievementInfo)>($r5);
+
+        virtualinvoke $r1.<com.movesky.app.engine.util.Bag: boolean add(java.lang.Object)>($r13);
+
+     label31:
+        $r2 = r0.<com.movesky.app.main.achievements.BBTHAchievementManager: java.util.Map infoMap>;
+
+        $r3 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>(608);
+
+        $r4 = interfaceinvoke $r2.<java.util.Map: java.lang.Object get(java.lang.Object)>($r3);
+
+        $r5 = (com.movesky.app.engine.achievements.AchievementInfo) $r4;
+
+        if $r5 == null goto label32;
+
+        $r1 = r0.<com.movesky.app.main.achievements.BBTHAchievementManager: com.movesky.app.engine.util.Bag achievements>;
+
+        $r13 = new com.movesky.app.main.achievements.impls.IncrementOnUberCreateAchievement;
+
+        specialinvoke $r13.<com.movesky.app.main.achievements.impls.IncrementOnUberCreateAchievement: void <init>(com.movesky.app.engine.achievements.AchievementInfo)>($r5);
+
+        virtualinvoke $r1.<com.movesky.app.engine.util.Bag: boolean add(java.lang.Object)>($r13);
+
+     label32:
+        virtualinvoke r0.<com.movesky.app.main.achievements.BBTHAchievementManager: void postRegisterAchievements()>();
+
+        return;
+    }
+
+    public void unregisterAchievementFromEvents(com.movesky.app.main.achievements.BBTHAchievement)
+    {
+        com.movesky.app.main.achievements.BBTHAchievementManager r0;
+        com.movesky.app.main.achievements.BBTHAchievement $r1;
+        boolean $z0;
+        com.movesky.app.engine.util.Bag $r2;
+
+        r0 := @this: com.movesky.app.main.achievements.BBTHAchievementManager;
+
+        $r1 := @parameter0: com.movesky.app.main.achievements.BBTHAchievement;
+
+        $z0 = virtualinvoke $r1.<com.movesky.app.main.achievements.BBTHAchievement: boolean usesBaseDestroyed()>();
+
+        if $z0 == 0 goto label1;
+
+        $r2 = r0.<com.movesky.app.main.achievements.BBTHAchievementManager: com.movesky.app.engine.util.Bag baseDestroyedAchievements>;
+
+        virtualinvoke $r2.<com.movesky.app.engine.util.Bag: boolean remove(java.lang.Object)>($r1);
+
+     label1:
+        $z0 = virtualinvoke $r1.<com.movesky.app.main.achievements.BBTHAchievement: boolean usesGameEnded()>();
+
+        if $z0 == 0 goto label2;
+
+        $r2 = r0.<com.movesky.app.main.achievements.BBTHAchievementManager: com.movesky.app.engine.util.Bag gameEndedAchievements>;
+
+        virtualinvoke $r2.<com.movesky.app.engine.util.Bag: boolean remove(java.lang.Object)>($r1);
+
+     label2:
+        $z0 = virtualinvoke $r1.<com.movesky.app.main.achievements.BBTHAchievement: boolean usesUnitDead()>();
+
+        if $z0 == 0 goto label3;
+
+        $r2 = r0.<com.movesky.app.main.achievements.BBTHAchievementManager: com.movesky.app.engine.util.Bag unitDeadAchievements>;
+
+        virtualinvoke $r2.<com.movesky.app.engine.util.Bag: boolean remove(java.lang.Object)>($r1);
+
+     label3:
+        $z0 = virtualinvoke $r1.<com.movesky.app.main.achievements.BBTHAchievement: boolean usesUnitCreated()>();
+
+        if $z0 == 0 goto label4;
+
+        $r2 = r0.<com.movesky.app.main.achievements.BBTHAchievementManager: com.movesky.app.engine.util.Bag unitCreatedAchievements>;
+
+        virtualinvoke $r2.<com.movesky.app.engine.util.Bag: boolean remove(java.lang.Object)>($r1);
+
+     label4:
+        $z0 = virtualinvoke $r1.<com.movesky.app.main.achievements.BBTHAchievement: boolean usesBeatHit()>();
+
+        if $z0 == 0 goto label5;
+
+        $r2 = r0.<com.movesky.app.main.achievements.BBTHAchievementManager: com.movesky.app.engine.util.Bag beatHitAchievements>;
+
+        virtualinvoke $r2.<com.movesky.app.engine.util.Bag: boolean remove(java.lang.Object)>($r1);
+
+     label5:
+        $z0 = virtualinvoke $r1.<com.movesky.app.main.achievements.BBTHAchievement: boolean usesBeatMissed()>();
+
+        if $z0 == 0 goto label6;
+
+        $r2 = r0.<com.movesky.app.main.achievements.BBTHAchievementManager: com.movesky.app.engine.util.Bag beatMissedAchievements>;
+
+        virtualinvoke $r2.<com.movesky.app.engine.util.Bag: boolean remove(java.lang.Object)>($r1);
+
+     label6:
+        $z0 = virtualinvoke $r1.<com.movesky.app.main.achievements.BBTHAchievement: boolean usesWallCreated()>();
+
+        if $z0 == 0 goto label7;
+
+        $r2 = r0.<com.movesky.app.main.achievements.BBTHAchievementManager: com.movesky.app.engine.util.Bag wallCreatedAchievements>;
+
+        virtualinvoke $r2.<com.movesky.app.engine.util.Bag: boolean remove(java.lang.Object)>($r1);
+
+     label7:
+        $z0 = virtualinvoke $r1.<com.movesky.app.main.achievements.BBTHAchievement: boolean usesUpdate()>();
+
+        if $z0 == 0 goto label8;
+
+        $r2 = r0.<com.movesky.app.main.achievements.BBTHAchievementManager: com.movesky.app.engine.util.Bag updateAchievements>;
+
+        virtualinvoke $r2.<com.movesky.app.engine.util.Bag: boolean remove(java.lang.Object)>($r1);
+
+     label8:
+        return;
+    }
+}

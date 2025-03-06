@@ -1,0 +1,530 @@
+public class org.codehaus.jackson.map.ser.PropertyBuilder extends java.lang.Object
+{
+    protected final org.codehaus.jackson.map.AnnotationIntrospector _annotationIntrospector;
+    protected final org.codehaus.jackson.map.introspect.BasicBeanDescription _beanDesc;
+    protected final org.codehaus.jackson.map.SerializationConfig _config;
+    protected java.lang.Object _defaultBean;
+    protected final org.codehaus.jackson.map.annotate.JsonSerialize$Inclusion _outputProps;
+
+    public void <init>(org.codehaus.jackson.map.SerializationConfig, org.codehaus.jackson.map.introspect.BasicBeanDescription)
+    {
+        org.codehaus.jackson.map.ser.PropertyBuilder r0;
+        org.codehaus.jackson.map.SerializationConfig $r1;
+        org.codehaus.jackson.map.introspect.BasicBeanDescription $r2;
+        org.codehaus.jackson.map.annotate.JsonSerialize$Inclusion $r3;
+        org.codehaus.jackson.map.AnnotationIntrospector $r4;
+
+        r0 := @this: org.codehaus.jackson.map.ser.PropertyBuilder;
+
+        $r1 := @parameter0: org.codehaus.jackson.map.SerializationConfig;
+
+        $r2 := @parameter1: org.codehaus.jackson.map.introspect.BasicBeanDescription;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        r0.<org.codehaus.jackson.map.ser.PropertyBuilder: org.codehaus.jackson.map.SerializationConfig _config> = $r1;
+
+        r0.<org.codehaus.jackson.map.ser.PropertyBuilder: org.codehaus.jackson.map.introspect.BasicBeanDescription _beanDesc> = $r2;
+
+        $r3 = virtualinvoke $r1.<org.codehaus.jackson.map.SerializationConfig: org.codehaus.jackson.map.annotate.JsonSerialize$Inclusion getSerializationInclusion()>();
+
+        $r3 = virtualinvoke $r2.<org.codehaus.jackson.map.introspect.BasicBeanDescription: org.codehaus.jackson.map.annotate.JsonSerialize$Inclusion findSerializationInclusion(org.codehaus.jackson.map.annotate.JsonSerialize$Inclusion)>($r3);
+
+        r0.<org.codehaus.jackson.map.ser.PropertyBuilder: org.codehaus.jackson.map.annotate.JsonSerialize$Inclusion _outputProps> = $r3;
+
+        $r1 = r0.<org.codehaus.jackson.map.ser.PropertyBuilder: org.codehaus.jackson.map.SerializationConfig _config>;
+
+        $r4 = virtualinvoke $r1.<org.codehaus.jackson.map.SerializationConfig: org.codehaus.jackson.map.AnnotationIntrospector getAnnotationIntrospector()>();
+
+        r0.<org.codehaus.jackson.map.ser.PropertyBuilder: org.codehaus.jackson.map.AnnotationIntrospector _annotationIntrospector> = $r4;
+
+        return;
+    }
+
+    protected java.lang.Object _throwWrapped(java.lang.Exception, java.lang.String, java.lang.Object)
+    {
+        org.codehaus.jackson.map.ser.PropertyBuilder r0;
+        java.lang.Exception $r1;
+        java.lang.String $r2;
+        java.lang.Object $r3;
+        java.lang.Throwable r4, $r5;
+        boolean $z0;
+        java.lang.Error r6;
+        java.lang.RuntimeException r7;
+        java.lang.IllegalArgumentException $r8;
+        java.lang.StringBuilder $r9;
+        java.lang.Class $r10;
+
+        r0 := @this: org.codehaus.jackson.map.ser.PropertyBuilder;
+
+        $r1 := @parameter0: java.lang.Exception;
+
+        $r2 := @parameter1: java.lang.String;
+
+        $r3 := @parameter2: java.lang.Object;
+
+        r4 = $r1;
+
+     label1:
+        $r5 = virtualinvoke r4.<java.lang.Throwable: java.lang.Throwable getCause()>();
+
+        if $r5 == null goto label2;
+
+        r4 = virtualinvoke r4.<java.lang.Throwable: java.lang.Throwable getCause()>();
+
+        goto label1;
+
+     label2:
+        $z0 = r4 instanceof java.lang.Error;
+
+        if $z0 == 0 goto label3;
+
+        r6 = (java.lang.Error) r4;
+
+        throw r6;
+
+     label3:
+        $z0 = r4 instanceof java.lang.RuntimeException;
+
+        if $z0 == 0 goto label4;
+
+        r7 = (java.lang.RuntimeException) r4;
+
+        throw r7;
+
+     label4:
+        $r8 = new java.lang.IllegalArgumentException;
+
+        $r9 = new java.lang.StringBuilder;
+
+        specialinvoke $r9.<java.lang.StringBuilder: void <init>()>();
+
+        $r9 = virtualinvoke $r9.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Failed to get property \'");
+
+        $r9 = virtualinvoke $r9.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r2);
+
+        $r9 = virtualinvoke $r9.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("\' of default ");
+
+        $r10 = virtualinvoke $r3.<java.lang.Object: java.lang.Class getClass()>();
+
+        $r2 = virtualinvoke $r10.<java.lang.Class: java.lang.String getName()>();
+
+        $r9 = virtualinvoke $r9.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r2);
+
+        $r9 = virtualinvoke $r9.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" instance");
+
+        $r2 = virtualinvoke $r9.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke $r8.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>($r2);
+
+        throw $r8;
+    }
+
+    protected org.codehaus.jackson.map.ser.BeanPropertyWriter buildWriter(java.lang.String, org.codehaus.jackson.type.JavaType, org.codehaus.jackson.map.JsonSerializer, org.codehaus.jackson.map.TypeSerializer, org.codehaus.jackson.map.TypeSerializer, org.codehaus.jackson.map.introspect.AnnotatedMember, boolean)
+    {
+        org.codehaus.jackson.map.ser.PropertyBuilder r0;
+        java.lang.String $r1;
+        org.codehaus.jackson.type.JavaType $r2, $r10, r11;
+        org.codehaus.jackson.map.JsonSerializer r3;
+        org.codehaus.jackson.map.TypeSerializer $r4, $r5;
+        org.codehaus.jackson.map.introspect.AnnotatedMember $r6;
+        boolean $z0, $z1;
+        java.lang.reflect.Method r7;
+        org.codehaus.jackson.map.introspect.AnnotatedField $r8;
+        java.lang.reflect.Field $r9;
+        java.lang.IllegalStateException $r12;
+        java.lang.StringBuilder $r13;
+        org.codehaus.jackson.map.introspect.BasicBeanDescription $r14;
+        org.codehaus.jackson.map.introspect.AnnotatedMethod $r15;
+        java.lang.Object r16, $r22;
+        org.codehaus.jackson.map.AnnotationIntrospector $r17;
+        org.codehaus.jackson.map.annotate.JsonSerialize$Inclusion $r18;
+        int[] $r19;
+        int $i0;
+        org.codehaus.jackson.map.ser.BeanPropertyWriter $r20;
+        org.codehaus.jackson.map.util.Annotations $r21;
+
+        r0 := @this: org.codehaus.jackson.map.ser.PropertyBuilder;
+
+        $r1 := @parameter0: java.lang.String;
+
+        $r2 := @parameter1: org.codehaus.jackson.type.JavaType;
+
+        r3 := @parameter2: org.codehaus.jackson.map.JsonSerializer;
+
+        $r4 := @parameter3: org.codehaus.jackson.map.TypeSerializer;
+
+        $r5 := @parameter4: org.codehaus.jackson.map.TypeSerializer;
+
+        $r6 := @parameter5: org.codehaus.jackson.map.introspect.AnnotatedMember;
+
+        $z0 := @parameter6: boolean;
+
+        $z1 = $r6 instanceof org.codehaus.jackson.map.introspect.AnnotatedField;
+
+        if $z1 == 0 goto label3;
+
+        r7 = null;
+
+        $r8 = (org.codehaus.jackson.map.introspect.AnnotatedField) $r6;
+
+        $r9 = virtualinvoke $r8.<org.codehaus.jackson.map.introspect.AnnotatedField: java.lang.reflect.Field getAnnotated()>();
+
+     label1:
+        $r10 = virtualinvoke r0.<org.codehaus.jackson.map.ser.PropertyBuilder: org.codehaus.jackson.type.JavaType findSerializationType(org.codehaus.jackson.map.introspect.Annotated,boolean)>($r6, $z0);
+
+        r11 = $r10;
+
+        if $r5 == null goto label5;
+
+        if $r10 != null goto label2;
+
+        r11 = $r2;
+
+     label2:
+        $r10 = virtualinvoke r11.<org.codehaus.jackson.type.JavaType: org.codehaus.jackson.type.JavaType getContentType()>();
+
+        if $r10 != null goto label4;
+
+        $r12 = new java.lang.IllegalStateException;
+
+        $r13 = new java.lang.StringBuilder;
+
+        specialinvoke $r13.<java.lang.StringBuilder: void <init>()>();
+
+        $r13 = virtualinvoke $r13.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Problem trying to create BeanPropertyWriter for property \'");
+
+        $r13 = virtualinvoke $r13.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r1);
+
+        $r13 = virtualinvoke $r13.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("\' (of type ");
+
+        $r14 = r0.<org.codehaus.jackson.map.ser.PropertyBuilder: org.codehaus.jackson.map.introspect.BasicBeanDescription _beanDesc>;
+
+        $r2 = virtualinvoke $r14.<org.codehaus.jackson.map.introspect.BasicBeanDescription: org.codehaus.jackson.type.JavaType getType()>();
+
+        $r13 = virtualinvoke $r13.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($r2);
+
+        $r13 = virtualinvoke $r13.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("); serialization type ");
+
+        $r13 = virtualinvoke $r13.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>(r11);
+
+        $r13 = virtualinvoke $r13.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" has no content");
+
+        $r1 = virtualinvoke $r13.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke $r12.<java.lang.IllegalStateException: void <init>(java.lang.String)>($r1);
+
+        throw $r12;
+
+     label3:
+        $r15 = (org.codehaus.jackson.map.introspect.AnnotatedMethod) $r6;
+
+        r7 = virtualinvoke $r15.<org.codehaus.jackson.map.introspect.AnnotatedMethod: java.lang.reflect.Method getAnnotated()>();
+
+        $r9 = null;
+
+        goto label1;
+
+     label4:
+        $r10 = virtualinvoke r11.<org.codehaus.jackson.type.JavaType: org.codehaus.jackson.type.JavaType withContentTypeHandler(java.lang.Object)>($r5);
+
+        r11 = $r10;
+
+        virtualinvoke $r10.<org.codehaus.jackson.type.JavaType: org.codehaus.jackson.type.JavaType getContentType()>();
+
+     label5:
+        r16 = null;
+
+        $z0 = 0;
+
+        $r17 = r0.<org.codehaus.jackson.map.ser.PropertyBuilder: org.codehaus.jackson.map.AnnotationIntrospector _annotationIntrospector>;
+
+        $r18 = r0.<org.codehaus.jackson.map.ser.PropertyBuilder: org.codehaus.jackson.map.annotate.JsonSerialize$Inclusion _outputProps>;
+
+        $r18 = virtualinvoke $r17.<org.codehaus.jackson.map.AnnotationIntrospector: org.codehaus.jackson.map.annotate.JsonSerialize$Inclusion findSerializationInclusion(org.codehaus.jackson.map.introspect.Annotated,org.codehaus.jackson.map.annotate.JsonSerialize$Inclusion)>($r6, $r18);
+
+        if $r18 == null goto label6;
+
+        $r19 = <org.codehaus.jackson.map.ser.PropertyBuilder$1: int[] $SwitchMap$org$codehaus$jackson$map$annotate$JsonSerialize$Inclusion>;
+
+        $i0 = virtualinvoke $r18.<org.codehaus.jackson.map.annotate.JsonSerialize$Inclusion: int ordinal()>();
+
+        $i0 = $r19[$i0];
+
+        lookupswitch($i0)
+        {
+            case 1: goto label7;
+            case 2: goto label8;
+            default: goto label6;
+        };
+
+     label6:
+        $r20 = new org.codehaus.jackson.map.ser.BeanPropertyWriter;
+
+        $r14 = r0.<org.codehaus.jackson.map.ser.PropertyBuilder: org.codehaus.jackson.map.introspect.BasicBeanDescription _beanDesc>;
+
+        $r21 = virtualinvoke $r14.<org.codehaus.jackson.map.introspect.BasicBeanDescription: org.codehaus.jackson.map.util.Annotations getClassAnnotations()>();
+
+        specialinvoke $r20.<org.codehaus.jackson.map.ser.BeanPropertyWriter: void <init>(org.codehaus.jackson.map.introspect.AnnotatedMember,org.codehaus.jackson.map.util.Annotations,java.lang.String,org.codehaus.jackson.type.JavaType,org.codehaus.jackson.map.JsonSerializer,org.codehaus.jackson.map.TypeSerializer,org.codehaus.jackson.type.JavaType,java.lang.reflect.Method,java.lang.reflect.Field,boolean,java.lang.Object)>($r6, $r21, $r1, $r2, r3, $r4, r11, r7, $r9, $z0, r16);
+
+        return $r20;
+
+     label7:
+        $r22 = virtualinvoke r0.<org.codehaus.jackson.map.ser.PropertyBuilder: java.lang.Object getDefaultValue(java.lang.String,java.lang.reflect.Method,java.lang.reflect.Field)>($r1, r7, $r9);
+
+        r16 = $r22;
+
+        if $r22 != null goto label6;
+
+        $z0 = 1;
+
+        goto label6;
+
+     label8:
+        $z0 = 1;
+
+        goto label6;
+    }
+
+    protected org.codehaus.jackson.type.JavaType findSerializationType(org.codehaus.jackson.map.introspect.Annotated, boolean)
+    {
+        org.codehaus.jackson.map.ser.PropertyBuilder r0;
+        org.codehaus.jackson.map.introspect.Annotated $r1;
+        boolean $z0;
+        org.codehaus.jackson.map.AnnotationIntrospector $r2;
+        java.lang.Class $r3, $r4;
+        org.codehaus.jackson.type.JavaType $r5;
+        java.lang.IllegalArgumentException $r6;
+        java.lang.StringBuilder $r7;
+        java.lang.String $r8;
+        org.codehaus.jackson.map.annotate.JsonSerialize$Typing $r9, $r10;
+        java.lang.reflect.Type $r11;
+        org.codehaus.jackson.map.introspect.BasicBeanDescription $r12;
+
+        r0 := @this: org.codehaus.jackson.map.ser.PropertyBuilder;
+
+        $r1 := @parameter0: org.codehaus.jackson.map.introspect.Annotated;
+
+        $z0 := @parameter1: boolean;
+
+        $r2 = r0.<org.codehaus.jackson.map.ser.PropertyBuilder: org.codehaus.jackson.map.AnnotationIntrospector _annotationIntrospector>;
+
+        $r3 = virtualinvoke $r2.<org.codehaus.jackson.map.AnnotationIntrospector: java.lang.Class findSerializationType(org.codehaus.jackson.map.introspect.Annotated)>($r1);
+
+        if $r3 == null goto label3;
+
+        $r4 = virtualinvoke $r1.<org.codehaus.jackson.map.introspect.Annotated: java.lang.Class getRawType()>();
+
+        $z0 = virtualinvoke $r3.<java.lang.Class: boolean isAssignableFrom(java.lang.Class)>($r4);
+
+        if $z0 == 0 goto label1;
+
+        $r5 = staticinvoke <org.codehaus.jackson.map.type.TypeFactory: org.codehaus.jackson.type.JavaType type(java.lang.reflect.Type)>($r3);
+
+        return $r5;
+
+     label1:
+        $z0 = virtualinvoke $r4.<java.lang.Class: boolean isAssignableFrom(java.lang.Class)>($r3);
+
+        if $z0 != 0 goto label2;
+
+        $r6 = new java.lang.IllegalArgumentException;
+
+        $r7 = new java.lang.StringBuilder;
+
+        specialinvoke $r7.<java.lang.StringBuilder: void <init>()>();
+
+        $r7 = virtualinvoke $r7.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Illegal concrete-type annotation for method \'");
+
+        $r8 = virtualinvoke $r1.<org.codehaus.jackson.map.introspect.Annotated: java.lang.String getName()>();
+
+        $r7 = virtualinvoke $r7.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r8);
+
+        $r7 = virtualinvoke $r7.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("\': class ");
+
+        $r8 = virtualinvoke $r3.<java.lang.Class: java.lang.String getName()>();
+
+        $r7 = virtualinvoke $r7.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r8);
+
+        $r7 = virtualinvoke $r7.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" not a super-type of (declared) class ");
+
+        $r8 = virtualinvoke $r4.<java.lang.Class: java.lang.String getName()>();
+
+        $r7 = virtualinvoke $r7.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r8);
+
+        $r8 = virtualinvoke $r7.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke $r6.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>($r8);
+
+        throw $r6;
+
+     label2:
+        $r5 = staticinvoke <org.codehaus.jackson.map.type.TypeFactory: org.codehaus.jackson.type.JavaType type(java.lang.reflect.Type)>($r3);
+
+        return $r5;
+
+     label3:
+        $r2 = r0.<org.codehaus.jackson.map.ser.PropertyBuilder: org.codehaus.jackson.map.AnnotationIntrospector _annotationIntrospector>;
+
+        $r9 = virtualinvoke $r2.<org.codehaus.jackson.map.AnnotationIntrospector: org.codehaus.jackson.map.annotate.JsonSerialize$Typing findSerializationTyping(org.codehaus.jackson.map.introspect.Annotated)>($r1);
+
+        if $r9 == null goto label4;
+
+        $r10 = <org.codehaus.jackson.map.annotate.JsonSerialize$Typing: org.codehaus.jackson.map.annotate.JsonSerialize$Typing STATIC>;
+
+        if $r9 != $r10 goto label5;
+
+        $z0 = 1;
+
+     label4:
+        if $z0 == 0 goto label6;
+
+        $r11 = virtualinvoke $r1.<org.codehaus.jackson.map.introspect.Annotated: java.lang.reflect.Type getGenericType()>();
+
+        $r12 = r0.<org.codehaus.jackson.map.ser.PropertyBuilder: org.codehaus.jackson.map.introspect.BasicBeanDescription _beanDesc>;
+
+        $r5 = virtualinvoke $r12.<org.codehaus.jackson.map.introspect.BasicBeanDescription: org.codehaus.jackson.type.JavaType getType()>();
+
+        $r5 = staticinvoke <org.codehaus.jackson.map.type.TypeFactory: org.codehaus.jackson.type.JavaType type(java.lang.reflect.Type,org.codehaus.jackson.type.JavaType)>($r11, $r5);
+
+        return $r5;
+
+     label5:
+        $z0 = 0;
+
+        goto label4;
+
+     label6:
+        return null;
+    }
+
+    public org.codehaus.jackson.map.util.Annotations getClassAnnotations()
+    {
+        org.codehaus.jackson.map.ser.PropertyBuilder r0;
+        org.codehaus.jackson.map.util.Annotations $r1;
+        org.codehaus.jackson.map.introspect.BasicBeanDescription $r2;
+
+        r0 := @this: org.codehaus.jackson.map.ser.PropertyBuilder;
+
+        $r2 = r0.<org.codehaus.jackson.map.ser.PropertyBuilder: org.codehaus.jackson.map.introspect.BasicBeanDescription _beanDesc>;
+
+        $r1 = virtualinvoke $r2.<org.codehaus.jackson.map.introspect.BasicBeanDescription: org.codehaus.jackson.map.util.Annotations getClassAnnotations()>();
+
+        return $r1;
+    }
+
+    protected java.lang.Object getDefaultBean()
+    {
+        org.codehaus.jackson.map.ser.PropertyBuilder r0;
+        java.lang.Object $r1;
+        org.codehaus.jackson.map.introspect.BasicBeanDescription $r2;
+        org.codehaus.jackson.map.SerializationConfig $r3;
+        org.codehaus.jackson.map.SerializationConfig$Feature $r4;
+        boolean $z0;
+        org.codehaus.jackson.map.introspect.AnnotatedClass $r5;
+        java.lang.Class $r6;
+        java.lang.IllegalArgumentException $r7;
+        java.lang.StringBuilder $r8;
+        java.lang.String $r9;
+
+        r0 := @this: org.codehaus.jackson.map.ser.PropertyBuilder;
+
+        $r1 = r0.<org.codehaus.jackson.map.ser.PropertyBuilder: java.lang.Object _defaultBean>;
+
+        if $r1 != null goto label1;
+
+        $r2 = r0.<org.codehaus.jackson.map.ser.PropertyBuilder: org.codehaus.jackson.map.introspect.BasicBeanDescription _beanDesc>;
+
+        $r3 = r0.<org.codehaus.jackson.map.ser.PropertyBuilder: org.codehaus.jackson.map.SerializationConfig _config>;
+
+        $r4 = <org.codehaus.jackson.map.SerializationConfig$Feature: org.codehaus.jackson.map.SerializationConfig$Feature CAN_OVERRIDE_ACCESS_MODIFIERS>;
+
+        $z0 = virtualinvoke $r3.<org.codehaus.jackson.map.SerializationConfig: boolean isEnabled(org.codehaus.jackson.map.SerializationConfig$Feature)>($r4);
+
+        $r1 = virtualinvoke $r2.<org.codehaus.jackson.map.introspect.BasicBeanDescription: java.lang.Object instantiateBean(boolean)>($z0);
+
+        r0.<org.codehaus.jackson.map.ser.PropertyBuilder: java.lang.Object _defaultBean> = $r1;
+
+        $r1 = r0.<org.codehaus.jackson.map.ser.PropertyBuilder: java.lang.Object _defaultBean>;
+
+        if $r1 != null goto label1;
+
+        $r2 = r0.<org.codehaus.jackson.map.ser.PropertyBuilder: org.codehaus.jackson.map.introspect.BasicBeanDescription _beanDesc>;
+
+        $r5 = virtualinvoke $r2.<org.codehaus.jackson.map.introspect.BasicBeanDescription: org.codehaus.jackson.map.introspect.AnnotatedClass getClassInfo()>();
+
+        $r6 = virtualinvoke $r5.<org.codehaus.jackson.map.introspect.AnnotatedClass: java.lang.Class getAnnotated()>();
+
+        $r7 = new java.lang.IllegalArgumentException;
+
+        $r8 = new java.lang.StringBuilder;
+
+        specialinvoke $r8.<java.lang.StringBuilder: void <init>()>();
+
+        $r8 = virtualinvoke $r8.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Class ");
+
+        $r9 = virtualinvoke $r6.<java.lang.Class: java.lang.String getName()>();
+
+        $r8 = virtualinvoke $r8.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r9);
+
+        $r8 = virtualinvoke $r8.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" has no default constructor; can not instantiate default bean value to support \'properties=JsonSerialize.Inclusion.NON_DEFAULT\' annotation");
+
+        $r9 = virtualinvoke $r8.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke $r7.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>($r9);
+
+        throw $r7;
+
+     label1:
+        $r1 = r0.<org.codehaus.jackson.map.ser.PropertyBuilder: java.lang.Object _defaultBean>;
+
+        return $r1;
+    }
+
+    protected java.lang.Object getDefaultValue(java.lang.String, java.lang.reflect.Method, java.lang.reflect.Field)
+    {
+        org.codehaus.jackson.map.ser.PropertyBuilder r0;
+        java.lang.String $r1;
+        java.lang.reflect.Method $r2;
+        java.lang.reflect.Field $r3;
+        java.lang.Object $r4, $r6;
+        java.lang.Object[] $r5;
+        java.lang.Exception $r7;
+
+        r0 := @this: org.codehaus.jackson.map.ser.PropertyBuilder;
+
+        $r1 := @parameter0: java.lang.String;
+
+        $r2 := @parameter1: java.lang.reflect.Method;
+
+        $r3 := @parameter2: java.lang.reflect.Field;
+
+        $r4 = virtualinvoke r0.<org.codehaus.jackson.map.ser.PropertyBuilder: java.lang.Object getDefaultBean()>();
+
+        if $r2 == null goto label3;
+
+     label1:
+        $r5 = newarray (java.lang.Object)[0];
+
+        $r6 = virtualinvoke $r2.<java.lang.reflect.Method: java.lang.Object invoke(java.lang.Object,java.lang.Object[])>($r4, $r5);
+
+     label2:
+        return $r6;
+
+     label3:
+        $r6 = virtualinvoke $r3.<java.lang.reflect.Field: java.lang.Object get(java.lang.Object)>($r4);
+
+     label4:
+        return $r6;
+
+     label5:
+        $r7 := @caughtexception;
+
+        $r4 = virtualinvoke r0.<org.codehaus.jackson.map.ser.PropertyBuilder: java.lang.Object _throwWrapped(java.lang.Exception,java.lang.String,java.lang.Object)>($r7, $r1, $r4);
+
+        return $r4;
+
+        catch java.lang.Exception from label1 to label2 with label5;
+        catch java.lang.Exception from label3 to label4 with label5;
+    }
+}

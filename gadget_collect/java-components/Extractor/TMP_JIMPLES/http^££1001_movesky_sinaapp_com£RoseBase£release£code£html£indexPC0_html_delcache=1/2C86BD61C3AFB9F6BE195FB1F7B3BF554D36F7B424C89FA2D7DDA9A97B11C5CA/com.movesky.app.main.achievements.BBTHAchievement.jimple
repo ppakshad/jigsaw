@@ -1,0 +1,211 @@
+public abstract class com.movesky.app.main.achievements.BBTHAchievement extends com.movesky.app.engine.achievements.Achievement
+{
+
+    public void <init>(com.movesky.app.engine.achievements.AchievementInfo)
+    {
+        com.movesky.app.main.achievements.BBTHAchievement r0;
+        com.movesky.app.engine.achievements.AchievementInfo $r1;
+
+        r0 := @this: com.movesky.app.main.achievements.BBTHAchievement;
+
+        $r1 := @parameter0: com.movesky.app.engine.achievements.AchievementInfo;
+
+        specialinvoke r0.<com.movesky.app.engine.achievements.Achievement: void <init>(com.movesky.app.engine.achievements.AchievementInfo)>($r1);
+
+        return;
+    }
+
+    public void baseDestroyed(com.movesky.app.main.achievements.events.BaseDestroyedEvent)
+    {
+        com.movesky.app.main.achievements.BBTHAchievement r0;
+        com.movesky.app.main.achievements.events.BaseDestroyedEvent $r1;
+
+        r0 := @this: com.movesky.app.main.achievements.BBTHAchievement;
+
+        $r1 := @parameter0: com.movesky.app.main.achievements.events.BaseDestroyedEvent;
+
+        return;
+    }
+
+    public void beatHit(com.movesky.app.main.achievements.events.BeatHitEvent)
+    {
+        com.movesky.app.main.achievements.BBTHAchievement r0;
+        com.movesky.app.main.achievements.events.BeatHitEvent $r1;
+
+        r0 := @this: com.movesky.app.main.achievements.BBTHAchievement;
+
+        $r1 := @parameter0: com.movesky.app.main.achievements.events.BeatHitEvent;
+
+        return;
+    }
+
+    public void beatMissed(com.movesky.app.main.achievements.events.BeatMissedEvent)
+    {
+        com.movesky.app.main.achievements.BBTHAchievement r0;
+        com.movesky.app.main.achievements.events.BeatMissedEvent $r1;
+
+        r0 := @this: com.movesky.app.main.achievements.BBTHAchievement;
+
+        $r1 := @parameter0: com.movesky.app.main.achievements.events.BeatMissedEvent;
+
+        return;
+    }
+
+    public void gameEnded(com.movesky.app.main.achievements.events.GameEndedEvent)
+    {
+        com.movesky.app.main.achievements.BBTHAchievement r0;
+        com.movesky.app.main.achievements.events.GameEndedEvent $r1;
+
+        r0 := @this: com.movesky.app.main.achievements.BBTHAchievement;
+
+        $r1 := @parameter0: com.movesky.app.main.achievements.events.GameEndedEvent;
+
+        return;
+    }
+
+    protected void increment()
+    {
+        com.movesky.app.main.achievements.BBTHAchievement r0;
+        com.movesky.app.engine.achievements.AchievementInfo $r1;
+        boolean $z0;
+        com.movesky.app.engine.achievements.Achievements $r2;
+        com.movesky.app.main.achievements.BBTHAchievementManager $r3;
+
+        r0 := @this: com.movesky.app.main.achievements.BBTHAchievement;
+
+        $r2 = <com.movesky.app.engine.achievements.Achievements: com.movesky.app.engine.achievements.Achievements INSTANCE>;
+
+        $r1 = r0.<com.movesky.app.main.achievements.BBTHAchievement: com.movesky.app.engine.achievements.AchievementInfo achievementInfo>;
+
+        $z0 = virtualinvoke $r2.<com.movesky.app.engine.achievements.Achievements: boolean increment(com.movesky.app.engine.achievements.AchievementInfo)>($r1);
+
+        if $z0 == 0 goto label1;
+
+        $r3 = <com.movesky.app.main.achievements.BBTHAchievementManager: com.movesky.app.main.achievements.BBTHAchievementManager INSTANCE>;
+
+        virtualinvoke $r3.<com.movesky.app.main.achievements.BBTHAchievementManager: void unregisterAchievementFromEvents(com.movesky.app.main.achievements.BBTHAchievement)>(r0);
+
+     label1:
+        return;
+    }
+
+    public void unitCreated(com.movesky.app.main.achievements.events.UnitCreatedEvent)
+    {
+        com.movesky.app.main.achievements.BBTHAchievement r0;
+        com.movesky.app.main.achievements.events.UnitCreatedEvent $r1;
+
+        r0 := @this: com.movesky.app.main.achievements.BBTHAchievement;
+
+        $r1 := @parameter0: com.movesky.app.main.achievements.events.UnitCreatedEvent;
+
+        return;
+    }
+
+    public void unitDead(com.movesky.app.main.achievements.events.UnitDeadEvent)
+    {
+        com.movesky.app.main.achievements.BBTHAchievement r0;
+        com.movesky.app.main.achievements.events.UnitDeadEvent $r1;
+
+        r0 := @this: com.movesky.app.main.achievements.BBTHAchievement;
+
+        $r1 := @parameter0: com.movesky.app.main.achievements.events.UnitDeadEvent;
+
+        return;
+    }
+
+    public void update(com.movesky.app.main.achievements.events.UpdateEvent)
+    {
+        com.movesky.app.main.achievements.BBTHAchievement r0;
+        com.movesky.app.main.achievements.events.UpdateEvent $r1;
+
+        r0 := @this: com.movesky.app.main.achievements.BBTHAchievement;
+
+        $r1 := @parameter0: com.movesky.app.main.achievements.events.UpdateEvent;
+
+        return;
+    }
+
+    public boolean usesBaseDestroyed()
+    {
+        com.movesky.app.main.achievements.BBTHAchievement r0;
+
+        r0 := @this: com.movesky.app.main.achievements.BBTHAchievement;
+
+        return 0;
+    }
+
+    public boolean usesBeatHit()
+    {
+        com.movesky.app.main.achievements.BBTHAchievement r0;
+
+        r0 := @this: com.movesky.app.main.achievements.BBTHAchievement;
+
+        return 0;
+    }
+
+    public boolean usesBeatMissed()
+    {
+        com.movesky.app.main.achievements.BBTHAchievement r0;
+
+        r0 := @this: com.movesky.app.main.achievements.BBTHAchievement;
+
+        return 0;
+    }
+
+    public boolean usesGameEnded()
+    {
+        com.movesky.app.main.achievements.BBTHAchievement r0;
+
+        r0 := @this: com.movesky.app.main.achievements.BBTHAchievement;
+
+        return 0;
+    }
+
+    public boolean usesUnitCreated()
+    {
+        com.movesky.app.main.achievements.BBTHAchievement r0;
+
+        r0 := @this: com.movesky.app.main.achievements.BBTHAchievement;
+
+        return 0;
+    }
+
+    public boolean usesUnitDead()
+    {
+        com.movesky.app.main.achievements.BBTHAchievement r0;
+
+        r0 := @this: com.movesky.app.main.achievements.BBTHAchievement;
+
+        return 0;
+    }
+
+    public boolean usesUpdate()
+    {
+        com.movesky.app.main.achievements.BBTHAchievement r0;
+
+        r0 := @this: com.movesky.app.main.achievements.BBTHAchievement;
+
+        return 0;
+    }
+
+    public boolean usesWallCreated()
+    {
+        com.movesky.app.main.achievements.BBTHAchievement r0;
+
+        r0 := @this: com.movesky.app.main.achievements.BBTHAchievement;
+
+        return 0;
+    }
+
+    public void wallCreated(com.movesky.app.main.achievements.events.WallCreatedEvent)
+    {
+        com.movesky.app.main.achievements.BBTHAchievement r0;
+        com.movesky.app.main.achievements.events.WallCreatedEvent $r1;
+
+        r0 := @this: com.movesky.app.main.achievements.BBTHAchievement;
+
+        $r1 := @parameter0: com.movesky.app.main.achievements.events.WallCreatedEvent;
+
+        return;
+    }
+}

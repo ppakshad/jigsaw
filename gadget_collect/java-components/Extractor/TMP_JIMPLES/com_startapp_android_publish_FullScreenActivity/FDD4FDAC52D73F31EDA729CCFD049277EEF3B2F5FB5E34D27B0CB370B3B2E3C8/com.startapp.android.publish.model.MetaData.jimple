@@ -1,0 +1,2056 @@
+public class com.startapp.android.publish.model.MetaData extends com.startapp.android.publish.model.BaseResponse
+{
+    public static final int DEFAULT_ACTIVITIES_BETWEEN_ADS;
+    public static final java.lang.String DEFAULT_AD_CLICK_URL;
+    public static final java.lang.String DEFAULT_AD_PLATFORM_HOST;
+    public static final boolean DEFAULT_APP_PRESENCE;
+    public static final boolean DEFAULT_AUTO_INTERSTITIAL_ENABLED;
+    public static final int DEFAULT_BG_BOTTOM;
+    public static final int DEFAULT_BG_TOP;
+    public static final boolean DEFAULT_DISABLE_INAPP_STORE;
+    public static final boolean DEFAULT_DISABLE_RETURN_AD;
+    public static final boolean DEFAULT_DISABLE_SPLASH_AD;
+    public static final boolean DEFAULT_DISABLE_TWO_CLICKS;
+    public static final int DEFAULT_FULLSCREEN_OVERLAY_PROBABILITY;
+    public static final int DEFAULT_HOME_PROBABILITY_3D;
+    public static final int DEFAULT_HTML_3D_PROBABILITY_3D;
+    public static final boolean DEFAULT_INAPPBROWSER;
+    public static final long DEFAULT_LAST_KNOWN_LOCATION_THRESHOLD;
+    public static final java.lang.String DEFAULT_LOCATION_SOURCE;
+    public static final int DEFAULT_MAX_ADS;
+    public static final java.lang.String DEFAULT_METADATA_HOST;
+    public static final java.lang.Integer DEFAULT_POWERED_BY_BG;
+    public static final java.lang.Integer DEFAULT_POWERED_BY_TEXT_COLOR;
+    public static final int DEFAULT_PROBABILITY_3D;
+    public static final java.lang.String DEFAULT_PROFILE_ID;
+    public static final long DEFAULT_RETURN_AD_MIN_BACKGROUND_TIME;
+    public static final int DEFAULT_SECONDS_BETWEEN_ADS;
+    public static final int DEFAULT_SESSION_MAX_BACKGROUND_TIME;
+    public static final int DEFAULT_SMART_REDIRECT_TIMEOUT;
+    public static final int DEFAULT_TITLE_BG;
+    public static final java.lang.String DEFAULT_TITLE_CONTENT;
+    public static final java.lang.Integer DEFAULT_TITLE_LINE_COLOR;
+    public static final java.lang.Integer DEFAULT_TITLE_TEXT_COLOR;
+    public static final java.util.Set DEFAULT_TITLE_TEXT_DECORATION;
+    public static final java.lang.Integer DEFAULT_TITLE_TEXT_SIZE;
+    public static final boolean DEFAULT_WF_SCAN_ENABLED;
+    public static final java.lang.String KEY_METADATA;
+    public static final java.lang.String TEXT_DECORATION_BOLD;
+    public static final java.lang.String TEXT_DECORATION_ITALIC;
+    public static final java.lang.String TEXT_DECORATION_UNDERLINE;
+    private static transient com.startapp.android.publish.model.MetaData instance;
+    private static transient java.lang.Object lock;
+    private static final long serialVersionUID;
+    private static transient com.startapp.android.publish.f.h task;
+    private com.startapp.android.publish.model.ACMConfig ACM;
+    private com.startapp.android.publish.adinformation.AdInformationConfig AdInformation;
+    private com.startapp.android.publish.banner.BannerOptions BannerOptions;
+    private long IABDisplayImpressionDelayInSeconds;
+    private long IABVideoImpressionDelayInSeconds;
+    private com.startapp.android.publish.splash.SplashConfig SplashConfig;
+    private boolean SupportIABViewability;
+    private java.lang.String adClickURL;
+    private java.lang.String adPlatformHostGeneric;
+    private com.startapp.android.publish.model.adrules.AdRules adRules;
+    private com.startapp.android.publish.d.a analytics;
+    private boolean appPresence;
+    private boolean autoInterstitialEnabled;
+    private java.lang.Integer backgroundGradientBottom;
+    private java.lang.Integer backgroundGradientTop;
+    private int defaultActivitiesBetweenAds;
+    private int defaultSecondsBetweenAds;
+    private boolean disableInAppStore;
+    private boolean disableReturnAd;
+    private boolean disableSplashAd;
+    private boolean disableTwoClicks;
+    private java.lang.Integer fullpageOfferWallProbability;
+    private java.lang.Integer fullpageOverlayProbability;
+    private java.lang.Integer homeProbability3D;
+    private boolean inAppBrowser;
+    private com.startapp.android.publish.model.MetaData$inAppBrowserPreLoad inAppBrowserPreLoad;
+    private java.lang.Integer itemDescriptionTextColor;
+    private java.util.Set itemDescriptionTextDecoration;
+    private java.lang.Integer itemDescriptionTextSize;
+    private java.lang.Integer itemGradientBottom;
+    private java.lang.Integer itemGradientTop;
+    private java.lang.Integer itemTitleTextColor;
+    private java.util.Set itemTitleTextDecoration;
+    private java.lang.Integer itemTitleTextSize;
+    private transient boolean loading;
+    private com.startapp.android.publish.model.LocationConfig location;
+    private java.lang.Integer maxAds;
+    private java.lang.String metaDataHostGeneric;
+    private transient java.util.List metaDataListeners;
+    private java.lang.Integer poweredByBackgroundColor;
+    private java.lang.Integer poweredByTextColor;
+    private java.lang.Integer probability3D;
+    private java.lang.String profileId;
+    private transient boolean ready;
+    private long returnAdMinBackgroundTime;
+    private int sessionMaxBackgroundTime;
+    private int smartRedirectTimeout;
+    private java.util.HashMap templates;
+    private java.lang.Integer titleBackgroundColor;
+    private java.lang.String titleContent;
+    private java.lang.Integer titleLineColor;
+    private java.lang.Integer titleTextColor;
+    private java.util.Set titleTextDecoration;
+    private java.lang.Integer titleTextSize;
+    private com.startapp.android.publish.model.VideoConfig video;
+    private boolean wfScanEnabled;
+
+    static void <clinit>()
+    {
+        java.lang.Object $r0;
+        java.lang.Integer $r1;
+        java.util.HashSet $r2;
+        java.lang.String[] $r3;
+        java.util.List $r4;
+        java.lang.String $r5;
+        byte[] $r6;
+        com.startapp.android.publish.model.MetaData $r7;
+
+        <com.startapp.android.publish.model.MetaData: long serialVersionUID> = 1L;
+
+        <com.startapp.android.publish.model.MetaData: java.lang.String TEXT_DECORATION_UNDERLINE> = "UNDERLINE";
+
+        <com.startapp.android.publish.model.MetaData: java.lang.String TEXT_DECORATION_ITALIC> = "ITALIC";
+
+        <com.startapp.android.publish.model.MetaData: java.lang.String TEXT_DECORATION_BOLD> = "BOLD";
+
+        <com.startapp.android.publish.model.MetaData: java.lang.String KEY_METADATA> = "metaData";
+
+        <com.startapp.android.publish.model.MetaData: boolean DEFAULT_WF_SCAN_ENABLED> = 1;
+
+        <com.startapp.android.publish.model.MetaData: java.lang.String DEFAULT_TITLE_CONTENT> = "Recommended for you";
+
+        <com.startapp.android.publish.model.MetaData: int DEFAULT_TITLE_BG> = -14803426;
+
+        <com.startapp.android.publish.model.MetaData: int DEFAULT_SMART_REDIRECT_TIMEOUT> = 5;
+
+        <com.startapp.android.publish.model.MetaData: int DEFAULT_SESSION_MAX_BACKGROUND_TIME> = 1800;
+
+        <com.startapp.android.publish.model.MetaData: int DEFAULT_SECONDS_BETWEEN_ADS> = 0;
+
+        <com.startapp.android.publish.model.MetaData: long DEFAULT_RETURN_AD_MIN_BACKGROUND_TIME> = 300L;
+
+        <com.startapp.android.publish.model.MetaData: int DEFAULT_PROBABILITY_3D> = 0;
+
+        <com.startapp.android.publish.model.MetaData: int DEFAULT_MAX_ADS> = 10;
+
+        <com.startapp.android.publish.model.MetaData: java.lang.String DEFAULT_LOCATION_SOURCE> = "API";
+
+        <com.startapp.android.publish.model.MetaData: long DEFAULT_LAST_KNOWN_LOCATION_THRESHOLD> = 30L;
+
+        <com.startapp.android.publish.model.MetaData: boolean DEFAULT_INAPPBROWSER> = 1;
+
+        <com.startapp.android.publish.model.MetaData: int DEFAULT_HTML_3D_PROBABILITY_3D> = 100;
+
+        <com.startapp.android.publish.model.MetaData: int DEFAULT_HOME_PROBABILITY_3D> = 80;
+
+        <com.startapp.android.publish.model.MetaData: int DEFAULT_FULLSCREEN_OVERLAY_PROBABILITY> = 0;
+
+        <com.startapp.android.publish.model.MetaData: boolean DEFAULT_DISABLE_TWO_CLICKS> = 0;
+
+        <com.startapp.android.publish.model.MetaData: boolean DEFAULT_DISABLE_SPLASH_AD> = 0;
+
+        <com.startapp.android.publish.model.MetaData: boolean DEFAULT_DISABLE_RETURN_AD> = 0;
+
+        <com.startapp.android.publish.model.MetaData: boolean DEFAULT_DISABLE_INAPP_STORE> = 0;
+
+        <com.startapp.android.publish.model.MetaData: int DEFAULT_BG_TOP> = -14606047;
+
+        <com.startapp.android.publish.model.MetaData: int DEFAULT_BG_BOTTOM> = -14606047;
+
+        <com.startapp.android.publish.model.MetaData: boolean DEFAULT_AUTO_INTERSTITIAL_ENABLED> = 1;
+
+        <com.startapp.android.publish.model.MetaData: boolean DEFAULT_APP_PRESENCE> = 1;
+
+        <com.startapp.android.publish.model.MetaData: int DEFAULT_ACTIVITIES_BETWEEN_ADS> = 1;
+
+        $r0 = new java.lang.Object;
+
+        specialinvoke $r0.<java.lang.Object: void <init>()>();
+
+        <com.startapp.android.publish.model.MetaData: java.lang.Object lock> = $r0;
+
+        $r1 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>(18);
+
+        <com.startapp.android.publish.model.MetaData: java.lang.Integer DEFAULT_TITLE_TEXT_SIZE> = $r1;
+
+        $r1 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>(-1);
+
+        <com.startapp.android.publish.model.MetaData: java.lang.Integer DEFAULT_TITLE_TEXT_COLOR> = $r1;
+
+        $r2 = new java.util.HashSet;
+
+        $r3 = newarray (java.lang.String)[1];
+
+        $r3[0] = "BOLD";
+
+        $r4 = staticinvoke <java.util.Arrays: java.util.List asList(java.lang.Object[])>($r3);
+
+        specialinvoke $r2.<java.util.HashSet: void <init>(java.util.Collection)>($r4);
+
+        <com.startapp.android.publish.model.MetaData: java.util.Set DEFAULT_TITLE_TEXT_DECORATION> = $r2;
+
+        $r1 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>(-16777216);
+
+        <com.startapp.android.publish.model.MetaData: java.lang.Integer DEFAULT_TITLE_LINE_COLOR> = $r1;
+
+        $r1 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>(-14803426);
+
+        <com.startapp.android.publish.model.MetaData: java.lang.Integer DEFAULT_POWERED_BY_BG> = $r1;
+
+        $r1 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>(-1);
+
+        <com.startapp.android.publish.model.MetaData: java.lang.Integer DEFAULT_POWERED_BY_TEXT_COLOR> = $r1;
+
+        $r5 = new java.lang.String;
+
+        $r6 = newarray (byte)[48];
+
+        $r6[0] = 104;
+
+        $r6[1] = 116;
+
+        $r6[2] = 116;
+
+        $r6[3] = 112;
+
+        $r6[4] = 58;
+
+        $r6[5] = 47;
+
+        $r6[6] = 47;
+
+        $r6[7] = 119;
+
+        $r6[8] = 119;
+
+        $r6[9] = 119;
+
+        $r6[10] = 46;
+
+        $r6[11] = 115;
+
+        $r6[12] = 116;
+
+        $r6[13] = 97;
+
+        $r6[14] = 114;
+
+        $r6[15] = 116;
+
+        $r6[16] = 97;
+
+        $r6[17] = 112;
+
+        $r6[18] = 112;
+
+        $r6[19] = 101;
+
+        $r6[20] = 120;
+
+        $r6[21] = 99;
+
+        $r6[22] = 104;
+
+        $r6[23] = 97;
+
+        $r6[24] = 110;
+
+        $r6[25] = 103;
+
+        $r6[26] = 101;
+
+        $r6[27] = 46;
+
+        $r6[28] = 99;
+
+        $r6[29] = 111;
+
+        $r6[30] = 109;
+
+        $r6[31] = 47;
+
+        $r6[32] = 116;
+
+        $r6[33] = 114;
+
+        $r6[34] = 97;
+
+        $r6[35] = 99;
+
+        $r6[36] = 107;
+
+        $r6[37] = 105;
+
+        $r6[38] = 110;
+
+        $r6[39] = 103;
+
+        $r6[40] = 47;
+
+        $r6[41] = 97;
+
+        $r6[42] = 100;
+
+        $r6[43] = 67;
+
+        $r6[44] = 108;
+
+        $r6[45] = 105;
+
+        $r6[46] = 99;
+
+        $r6[47] = 107;
+
+        specialinvoke $r5.<java.lang.String: void <init>(byte[])>($r6);
+
+        <com.startapp.android.publish.model.MetaData: java.lang.String DEFAULT_AD_CLICK_URL> = $r5;
+
+        $r5 = new java.lang.String;
+
+        $r6 = newarray (byte)[37];
+
+        $r6[0] = 104;
+
+        $r6[1] = 116;
+
+        $r6[2] = 116;
+
+        $r6[3] = 112;
+
+        $r6[4] = 58;
+
+        $r6[5] = 47;
+
+        $r6[6] = 47;
+
+        $r6[7] = 105;
+
+        $r6[8] = 110;
+
+        $r6[9] = 105;
+
+        $r6[10] = 116;
+
+        $r6[11] = 46;
+
+        $r6[12] = 115;
+
+        $r6[13] = 116;
+
+        $r6[14] = 97;
+
+        $r6[15] = 114;
+
+        $r6[16] = 116;
+
+        $r6[17] = 97;
+
+        $r6[18] = 112;
+
+        $r6[19] = 112;
+
+        $r6[20] = 101;
+
+        $r6[21] = 120;
+
+        $r6[22] = 99;
+
+        $r6[23] = 104;
+
+        $r6[24] = 97;
+
+        $r6[25] = 110;
+
+        $r6[26] = 103;
+
+        $r6[27] = 101;
+
+        $r6[28] = 46;
+
+        $r6[29] = 99;
+
+        $r6[30] = 111;
+
+        $r6[31] = 109;
+
+        $r6[32] = 47;
+
+        $r6[33] = 49;
+
+        $r6[34] = 46;
+
+        $r6[35] = 52;
+
+        $r6[36] = 47;
+
+        specialinvoke $r5.<java.lang.String: void <init>(byte[])>($r6);
+
+        <com.startapp.android.publish.model.MetaData: java.lang.String DEFAULT_METADATA_HOST> = $r5;
+
+        $r5 = new java.lang.String;
+
+        $r6 = newarray (byte)[36];
+
+        $r6[0] = 104;
+
+        $r6[1] = 116;
+
+        $r6[2] = 116;
+
+        $r6[3] = 112;
+
+        $r6[4] = 58;
+
+        $r6[5] = 47;
+
+        $r6[6] = 47;
+
+        $r6[7] = 119;
+
+        $r6[8] = 119;
+
+        $r6[9] = 119;
+
+        $r6[10] = 46;
+
+        $r6[11] = 115;
+
+        $r6[12] = 116;
+
+        $r6[13] = 97;
+
+        $r6[14] = 114;
+
+        $r6[15] = 116;
+
+        $r6[16] = 97;
+
+        $r6[17] = 112;
+
+        $r6[18] = 112;
+
+        $r6[19] = 101;
+
+        $r6[20] = 120;
+
+        $r6[21] = 99;
+
+        $r6[22] = 104;
+
+        $r6[23] = 97;
+
+        $r6[24] = 110;
+
+        $r6[25] = 103;
+
+        $r6[26] = 101;
+
+        $r6[27] = 46;
+
+        $r6[28] = 99;
+
+        $r6[29] = 111;
+
+        $r6[30] = 109;
+
+        $r6[31] = 47;
+
+        $r6[32] = 49;
+
+        $r6[33] = 46;
+
+        $r6[34] = 52;
+
+        $r6[35] = 47;
+
+        specialinvoke $r5.<java.lang.String: void <init>(byte[])>($r6);
+
+        <com.startapp.android.publish.model.MetaData: java.lang.String DEFAULT_AD_PLATFORM_HOST> = $r5;
+
+        <com.startapp.android.publish.model.MetaData: java.lang.String DEFAULT_PROFILE_ID> = null;
+
+        $r7 = new com.startapp.android.publish.model.MetaData;
+
+        specialinvoke $r7.<com.startapp.android.publish.model.MetaData: void <init>()>();
+
+        <com.startapp.android.publish.model.MetaData: com.startapp.android.publish.model.MetaData instance> = $r7;
+
+        return;
+    }
+
+    private void <init>()
+    {
+        com.startapp.android.publish.model.MetaData r0;
+        java.lang.Integer $r1;
+        java.util.Set $r2;
+        com.startapp.android.publish.banner.BannerOptions $r3;
+        java.util.HashMap $r4;
+        com.startapp.android.publish.splash.SplashConfig $r5;
+        com.startapp.android.publish.adinformation.AdInformationConfig $r6;
+        java.lang.String $r7;
+        com.startapp.android.publish.model.adrules.AdRules $r8;
+        com.startapp.android.publish.d.a $r9;
+        com.startapp.android.publish.model.VideoConfig $r10;
+        com.startapp.android.publish.model.LocationConfig $r11;
+        com.startapp.android.publish.model.ACMConfig $r12;
+        java.util.ArrayList $r13;
+
+        r0 := @this: com.startapp.android.publish.model.MetaData;
+
+        specialinvoke r0.<com.startapp.android.publish.model.BaseResponse: void <init>()>();
+
+        $r1 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>(0);
+
+        r0.<com.startapp.android.publish.model.MetaData: java.lang.Integer probability3D> = $r1;
+
+        $r1 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>(80);
+
+        r0.<com.startapp.android.publish.model.MetaData: java.lang.Integer homeProbability3D> = $r1;
+
+        $r1 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>(100);
+
+        r0.<com.startapp.android.publish.model.MetaData: java.lang.Integer fullpageOfferWallProbability> = $r1;
+
+        $r1 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>(0);
+
+        r0.<com.startapp.android.publish.model.MetaData: java.lang.Integer fullpageOverlayProbability> = $r1;
+
+        $r1 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>(-14606047);
+
+        r0.<com.startapp.android.publish.model.MetaData: java.lang.Integer backgroundGradientTop> = $r1;
+
+        $r1 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>(-14606047);
+
+        r0.<com.startapp.android.publish.model.MetaData: java.lang.Integer backgroundGradientBottom> = $r1;
+
+        $r1 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>(10);
+
+        r0.<com.startapp.android.publish.model.MetaData: java.lang.Integer maxAds> = $r1;
+
+        $r1 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>(-14803426);
+
+        r0.<com.startapp.android.publish.model.MetaData: java.lang.Integer titleBackgroundColor> = $r1;
+
+        r0.<com.startapp.android.publish.model.MetaData: java.lang.String titleContent> = "Recommended for you";
+
+        $r1 = <com.startapp.android.publish.model.MetaData: java.lang.Integer DEFAULT_TITLE_TEXT_SIZE>;
+
+        r0.<com.startapp.android.publish.model.MetaData: java.lang.Integer titleTextSize> = $r1;
+
+        $r1 = <com.startapp.android.publish.model.MetaData: java.lang.Integer DEFAULT_TITLE_TEXT_COLOR>;
+
+        r0.<com.startapp.android.publish.model.MetaData: java.lang.Integer titleTextColor> = $r1;
+
+        $r2 = <com.startapp.android.publish.model.MetaData: java.util.Set DEFAULT_TITLE_TEXT_DECORATION>;
+
+        r0.<com.startapp.android.publish.model.MetaData: java.util.Set titleTextDecoration> = $r2;
+
+        $r1 = <com.startapp.android.publish.model.MetaData: java.lang.Integer DEFAULT_TITLE_LINE_COLOR>;
+
+        r0.<com.startapp.android.publish.model.MetaData: java.lang.Integer titleLineColor> = $r1;
+
+        $r1 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>(-14014151);
+
+        r0.<com.startapp.android.publish.model.MetaData: java.lang.Integer itemGradientTop> = $r1;
+
+        $r1 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>(-8750199);
+
+        r0.<com.startapp.android.publish.model.MetaData: java.lang.Integer itemGradientBottom> = $r1;
+
+        $r1 = <com.startapp.android.publish.model.MetaDataStyle: java.lang.Integer DEFAULT_ITEM_TITLE_TEXT_SIZE>;
+
+        r0.<com.startapp.android.publish.model.MetaData: java.lang.Integer itemTitleTextSize> = $r1;
+
+        $r1 = <com.startapp.android.publish.model.MetaDataStyle: java.lang.Integer DEFAULT_ITEM_TITLE_TEXT_COLOR>;
+
+        r0.<com.startapp.android.publish.model.MetaData: java.lang.Integer itemTitleTextColor> = $r1;
+
+        $r2 = <com.startapp.android.publish.model.MetaDataStyle: java.util.Set DEFAULT_ITEM_TITLE_TEXT_DECORATION>;
+
+        r0.<com.startapp.android.publish.model.MetaData: java.util.Set itemTitleTextDecoration> = $r2;
+
+        $r1 = <com.startapp.android.publish.model.MetaDataStyle: java.lang.Integer DEFAULT_ITEM_DESC_TEXT_SIZE>;
+
+        r0.<com.startapp.android.publish.model.MetaData: java.lang.Integer itemDescriptionTextSize> = $r1;
+
+        $r1 = <com.startapp.android.publish.model.MetaDataStyle: java.lang.Integer DEFAULT_ITEM_DESC_TEXT_COLOR>;
+
+        r0.<com.startapp.android.publish.model.MetaData: java.lang.Integer itemDescriptionTextColor> = $r1;
+
+        $r2 = <com.startapp.android.publish.model.MetaDataStyle: java.util.Set DEFAULT_ITEM_DESC_TEXT_DECORATION>;
+
+        r0.<com.startapp.android.publish.model.MetaData: java.util.Set itemDescriptionTextDecoration> = $r2;
+
+        $r3 = new com.startapp.android.publish.banner.BannerOptions;
+
+        specialinvoke $r3.<com.startapp.android.publish.banner.BannerOptions: void <init>()>();
+
+        r0.<com.startapp.android.publish.model.MetaData: com.startapp.android.publish.banner.BannerOptions BannerOptions> = $r3;
+
+        $r4 = new java.util.HashMap;
+
+        specialinvoke $r4.<java.util.HashMap: void <init>()>();
+
+        r0.<com.startapp.android.publish.model.MetaData: java.util.HashMap templates> = $r4;
+
+        $r1 = <com.startapp.android.publish.model.MetaData: java.lang.Integer DEFAULT_POWERED_BY_BG>;
+
+        r0.<com.startapp.android.publish.model.MetaData: java.lang.Integer poweredByBackgroundColor> = $r1;
+
+        $r1 = <com.startapp.android.publish.model.MetaData: java.lang.Integer DEFAULT_POWERED_BY_TEXT_COLOR>;
+
+        r0.<com.startapp.android.publish.model.MetaData: java.lang.Integer poweredByTextColor> = $r1;
+
+        $r5 = new com.startapp.android.publish.splash.SplashConfig;
+
+        specialinvoke $r5.<com.startapp.android.publish.splash.SplashConfig: void <init>()>();
+
+        r0.<com.startapp.android.publish.model.MetaData: com.startapp.android.publish.splash.SplashConfig SplashConfig> = $r5;
+
+        $r6 = staticinvoke <com.startapp.android.publish.adinformation.AdInformationConfig: com.startapp.android.publish.adinformation.AdInformationConfig a()>();
+
+        r0.<com.startapp.android.publish.model.MetaData: com.startapp.android.publish.adinformation.AdInformationConfig AdInformation> = $r6;
+
+        $r7 = <com.startapp.android.publish.model.MetaData: java.lang.String DEFAULT_AD_CLICK_URL>;
+
+        r0.<com.startapp.android.publish.model.MetaData: java.lang.String adClickURL> = $r7;
+
+        $r7 = <com.startapp.android.publish.model.MetaData: java.lang.String DEFAULT_METADATA_HOST>;
+
+        r0.<com.startapp.android.publish.model.MetaData: java.lang.String metaDataHostGeneric> = $r7;
+
+        $r7 = <com.startapp.android.publish.model.MetaData: java.lang.String DEFAULT_AD_PLATFORM_HOST>;
+
+        r0.<com.startapp.android.publish.model.MetaData: java.lang.String adPlatformHostGeneric> = $r7;
+
+        r0.<com.startapp.android.publish.model.MetaData: int sessionMaxBackgroundTime> = 1800;
+
+        $r7 = <com.startapp.android.publish.model.MetaData: java.lang.String DEFAULT_PROFILE_ID>;
+
+        r0.<com.startapp.android.publish.model.MetaData: java.lang.String profileId> = $r7;
+
+        r0.<com.startapp.android.publish.model.MetaData: long returnAdMinBackgroundTime> = 300L;
+
+        r0.<com.startapp.android.publish.model.MetaData: boolean disableReturnAd> = 0;
+
+        r0.<com.startapp.android.publish.model.MetaData: boolean disableSplashAd> = 0;
+
+        r0.<com.startapp.android.publish.model.MetaData: int smartRedirectTimeout> = 5;
+
+        r0.<com.startapp.android.publish.model.MetaData: boolean autoInterstitialEnabled> = 1;
+
+        r0.<com.startapp.android.publish.model.MetaData: int defaultActivitiesBetweenAds> = 1;
+
+        r0.<com.startapp.android.publish.model.MetaData: int defaultSecondsBetweenAds> = 0;
+
+        r0.<com.startapp.android.publish.model.MetaData: boolean inAppBrowser> = 1;
+
+        r0.<com.startapp.android.publish.model.MetaData: boolean SupportIABViewability> = 1;
+
+        r0.<com.startapp.android.publish.model.MetaData: long IABDisplayImpressionDelayInSeconds> = 1L;
+
+        r0.<com.startapp.android.publish.model.MetaData: long IABVideoImpressionDelayInSeconds> = 2L;
+
+        r0.<com.startapp.android.publish.model.MetaData: boolean disableTwoClicks> = 0;
+
+        r0.<com.startapp.android.publish.model.MetaData: boolean appPresence> = 1;
+
+        $r8 = new com.startapp.android.publish.model.adrules.AdRules;
+
+        specialinvoke $r8.<com.startapp.android.publish.model.adrules.AdRules: void <init>()>();
+
+        r0.<com.startapp.android.publish.model.MetaData: com.startapp.android.publish.model.adrules.AdRules adRules> = $r8;
+
+        r0.<com.startapp.android.publish.model.MetaData: boolean disableInAppStore> = 0;
+
+        $r9 = new com.startapp.android.publish.d.a;
+
+        specialinvoke $r9.<com.startapp.android.publish.d.a: void <init>()>();
+
+        r0.<com.startapp.android.publish.model.MetaData: com.startapp.android.publish.d.a analytics> = $r9;
+
+        $r10 = new com.startapp.android.publish.model.VideoConfig;
+
+        specialinvoke $r10.<com.startapp.android.publish.model.VideoConfig: void <init>()>();
+
+        r0.<com.startapp.android.publish.model.MetaData: com.startapp.android.publish.model.VideoConfig video> = $r10;
+
+        $r11 = new com.startapp.android.publish.model.LocationConfig;
+
+        specialinvoke $r11.<com.startapp.android.publish.model.LocationConfig: void <init>()>();
+
+        r0.<com.startapp.android.publish.model.MetaData: com.startapp.android.publish.model.LocationConfig location> = $r11;
+
+        $r12 = new com.startapp.android.publish.model.ACMConfig;
+
+        specialinvoke $r12.<com.startapp.android.publish.model.ACMConfig: void <init>()>();
+
+        r0.<com.startapp.android.publish.model.MetaData: com.startapp.android.publish.model.ACMConfig ACM> = $r12;
+
+        r0.<com.startapp.android.publish.model.MetaData: boolean wfScanEnabled> = 1;
+
+        r0.<com.startapp.android.publish.model.MetaData: boolean loading> = 0;
+
+        r0.<com.startapp.android.publish.model.MetaData: boolean ready> = 0;
+
+        $r13 = new java.util.ArrayList;
+
+        specialinvoke $r13.<java.util.ArrayList: void <init>()>();
+
+        r0.<com.startapp.android.publish.model.MetaData: java.util.List metaDataListeners> = $r13;
+
+        $r6 = virtualinvoke r0.<com.startapp.android.publish.model.MetaData: com.startapp.android.publish.adinformation.AdInformationConfig getAdInformationConfig()>();
+
+        virtualinvoke $r6.<com.startapp.android.publish.adinformation.AdInformationConfig: void h()>();
+
+        return;
+    }
+
+    public static void failedLoading()
+    {
+        java.util.ArrayList $r0;
+        java.lang.Object $r1;
+        com.startapp.android.publish.model.MetaData $r2;
+        java.util.List $r3;
+        java.util.Iterator $r4;
+        boolean $z0;
+        com.startapp.android.publish.f.o $r5;
+        java.lang.Throwable $r6;
+
+        $r0 = null;
+
+        $r1 = <com.startapp.android.publish.model.MetaData: java.lang.Object lock>;
+
+        entermonitor $r1;
+
+     label1:
+        $r2 = staticinvoke <com.startapp.android.publish.model.MetaData: com.startapp.android.publish.model.MetaData getInstance()>();
+
+        $r3 = $r2.<com.startapp.android.publish.model.MetaData: java.util.List metaDataListeners>;
+
+        if $r3 == null goto label2;
+
+        $r0 = new java.util.ArrayList;
+
+        $r2 = staticinvoke <com.startapp.android.publish.model.MetaData: com.startapp.android.publish.model.MetaData getInstance()>();
+
+        $r3 = $r2.<com.startapp.android.publish.model.MetaData: java.util.List metaDataListeners>;
+
+        specialinvoke $r0.<java.util.ArrayList: void <init>(java.util.Collection)>($r3);
+
+        $r2 = staticinvoke <com.startapp.android.publish.model.MetaData: com.startapp.android.publish.model.MetaData getInstance()>();
+
+        $r3 = $r2.<com.startapp.android.publish.model.MetaData: java.util.List metaDataListeners>;
+
+        interfaceinvoke $r3.<java.util.List: void clear()>();
+
+     label2:
+        $r2 = staticinvoke <com.startapp.android.publish.model.MetaData: com.startapp.android.publish.model.MetaData getInstance()>();
+
+        $r2.<com.startapp.android.publish.model.MetaData: boolean loading> = 0;
+
+        exitmonitor $r1;
+
+     label3:
+        if $r0 == null goto label8;
+
+        $r4 = interfaceinvoke $r0.<java.util.List: java.util.Iterator iterator()>();
+
+     label4:
+        $z0 = interfaceinvoke $r4.<java.util.Iterator: boolean hasNext()>();
+
+        if $z0 == 0 goto label8;
+
+        $r1 = interfaceinvoke $r4.<java.util.Iterator: java.lang.Object next()>();
+
+        $r5 = (com.startapp.android.publish.f.o) $r1;
+
+        interfaceinvoke $r5.<com.startapp.android.publish.f.o: void onFailedLoadingMeta()>();
+
+        goto label4;
+
+     label5:
+        $r6 := @caughtexception;
+
+     label6:
+        exitmonitor $r1;
+
+     label7:
+        throw $r6;
+
+     label8:
+        return;
+
+        catch java.lang.Throwable from label1 to label3 with label5;
+        catch java.lang.Throwable from label6 to label7 with label5;
+    }
+
+    public static com.startapp.android.publish.model.MetaData getInstance()
+    {
+        com.startapp.android.publish.model.MetaData r0;
+
+        r0 = <com.startapp.android.publish.model.MetaData: com.startapp.android.publish.model.MetaData instance>;
+
+        return r0;
+    }
+
+    public static java.lang.Object getLock()
+    {
+        java.lang.Object r0;
+
+        r0 = <com.startapp.android.publish.model.MetaData: java.lang.Object lock>;
+
+        return r0;
+    }
+
+    public static void init(android.content.Context)
+    {
+        android.content.Context $r0;
+        java.lang.Object $r1;
+        com.startapp.android.publish.model.MetaData $r2;
+        com.startapp.android.publish.adinformation.AdInformationConfig $r3;
+
+        $r0 := @parameter0: android.content.Context;
+
+        $r1 = staticinvoke <com.startapp.android.publish.i.k: java.lang.Object a(android.content.Context,java.lang.String,java.lang.Class)>($r0, "StartappMetadata", class "Lcom/startapp/android/publish/model/MetaData;");
+
+        $r2 = (com.startapp.android.publish.model.MetaData) $r1;
+
+        if $r2 == null goto label2;
+
+        specialinvoke $r2.<com.startapp.android.publish.model.MetaData: void initTransientFields()>();
+
+        <com.startapp.android.publish.model.MetaData: com.startapp.android.publish.model.MetaData instance> = $r2;
+
+     label1:
+        $r2 = staticinvoke <com.startapp.android.publish.model.MetaData: com.startapp.android.publish.model.MetaData getInstance()>();
+
+        $r3 = virtualinvoke $r2.<com.startapp.android.publish.model.MetaData: com.startapp.android.publish.adinformation.AdInformationConfig getAdInformationConfig()>();
+
+        virtualinvoke $r3.<com.startapp.android.publish.adinformation.AdInformationConfig: void h()>();
+
+        $r2 = staticinvoke <com.startapp.android.publish.model.MetaData: com.startapp.android.publish.model.MetaData getInstance()>();
+
+        virtualinvoke $r2.<com.startapp.android.publish.model.MetaData: void applyAdPlatformProtocolToHosts()>();
+
+        return;
+
+     label2:
+        $r2 = new com.startapp.android.publish.model.MetaData;
+
+        specialinvoke $r2.<com.startapp.android.publish.model.MetaData: void <init>()>();
+
+        <com.startapp.android.publish.model.MetaData: com.startapp.android.publish.model.MetaData instance> = $r2;
+
+        goto label1;
+    }
+
+    private void initTransientFields()
+    {
+        com.startapp.android.publish.model.MetaData r0;
+        java.util.ArrayList $r1;
+        com.startapp.android.publish.adinformation.AdInformationConfig $r2;
+        com.startapp.android.publish.model.adrules.AdRules $r3;
+
+        r0 := @this: com.startapp.android.publish.model.MetaData;
+
+        r0.<com.startapp.android.publish.model.MetaData: boolean loading> = 0;
+
+        r0.<com.startapp.android.publish.model.MetaData: boolean ready> = 0;
+
+        $r1 = new java.util.ArrayList;
+
+        specialinvoke $r1.<java.util.ArrayList: void <init>()>();
+
+        r0.<com.startapp.android.publish.model.MetaData: java.util.List metaDataListeners> = $r1;
+
+        $r2 = r0.<com.startapp.android.publish.model.MetaData: com.startapp.android.publish.adinformation.AdInformationConfig AdInformation>;
+
+        virtualinvoke $r2.<com.startapp.android.publish.adinformation.AdInformationConfig: void l()>();
+
+        $r3 = r0.<com.startapp.android.publish.model.MetaData: com.startapp.android.publish.model.adrules.AdRules adRules>;
+
+        virtualinvoke $r3.<com.startapp.android.publish.model.adrules.AdRules: void initTransientFields()>();
+
+        return;
+    }
+
+    public static void update(android.content.Context, com.startapp.android.publish.model.MetaData)
+    {
+        android.content.Context $r0;
+        com.startapp.android.publish.model.MetaData $r1, $r3;
+        java.lang.Object $r2, $r12;
+        java.util.List $r4;
+        java.lang.Boolean $r5;
+        boolean $z0;
+        java.io.ByteArrayOutputStream $r6;
+        com.startapp.android.publish.e.b $r7;
+        java.lang.String $r8;
+        com.startapp.android.publish.adinformation.AdInformationConfig $r9;
+        java.util.ArrayList $r10;
+        java.util.Iterator $r11;
+        com.startapp.android.publish.f.o $r13;
+        java.lang.Throwable $r14;
+        java.lang.Integer $r15;
+        int $i0;
+
+        $r0 := @parameter0: android.content.Context;
+
+        $r1 := @parameter1: com.startapp.android.publish.model.MetaData;
+
+        $r2 = <com.startapp.android.publish.model.MetaData: java.lang.Object lock>;
+
+        entermonitor $r2;
+
+     label1:
+        $r3 = staticinvoke <com.startapp.android.publish.model.MetaData: com.startapp.android.publish.model.MetaData getInstance()>();
+
+        $r4 = $r3.<com.startapp.android.publish.model.MetaData: java.util.List metaDataListeners>;
+
+        $r1.<com.startapp.android.publish.model.MetaData: java.util.List metaDataListeners> = $r4;
+
+        <com.startapp.android.publish.model.MetaData: com.startapp.android.publish.model.MetaData instance> = $r1;
+
+        $r5 = staticinvoke <com.startapp.android.publish.e: java.lang.Boolean a()>();
+
+        $z0 = virtualinvoke $r5.<java.lang.Boolean: boolean booleanValue()>();
+
+        if $z0 == 0 goto label2;
+
+        staticinvoke <com.startapp.android.publish.i.n: void a(int,java.lang.String)>(3, "MetaData received:");
+
+        $r6 = new java.io.ByteArrayOutputStream;
+
+        specialinvoke $r6.<java.io.ByteArrayOutputStream: void <init>()>();
+
+        $r7 = new com.startapp.android.publish.e.b;
+
+        specialinvoke $r7.<com.startapp.android.publish.e.b: void <init>(java.io.OutputStream)>($r6);
+
+        virtualinvoke $r7.<com.startapp.android.publish.e.b: void a(java.lang.Object)>($r1);
+
+        virtualinvoke $r7.<com.startapp.android.publish.e.b: void close()>();
+
+        $r8 = virtualinvoke $r6.<java.io.ByteArrayOutputStream: java.lang.String toString()>();
+
+        staticinvoke <com.startapp.android.publish.i.n: void a(int,java.lang.String)>(3, $r8);
+
+     label2:
+        $r3 = staticinvoke <com.startapp.android.publish.model.MetaData: com.startapp.android.publish.model.MetaData getInstance()>();
+
+        $r9 = $r3.<com.startapp.android.publish.model.MetaData: com.startapp.android.publish.adinformation.AdInformationConfig AdInformation>;
+
+        staticinvoke <com.startapp.android.publish.adinformation.AdInformationConfig: void a(com.startapp.android.publish.adinformation.AdInformationConfig)>($r9);
+
+        staticinvoke <com.startapp.android.publish.i.k: void a(android.content.Context,java.lang.String,java.io.Serializable)>($r0, "StartappMetadata", $r1);
+
+        staticinvoke <com.startapp.android.publish.i.n: void a(int,java.lang.String)>(3, "MetaData saved:");
+
+        $r1 = staticinvoke <com.startapp.android.publish.model.MetaData: com.startapp.android.publish.model.MetaData getInstance()>();
+
+        virtualinvoke $r1.<com.startapp.android.publish.model.MetaData: void applyAdPlatformProtocolToHosts()>();
+
+        $r1 = staticinvoke <com.startapp.android.publish.model.MetaData: com.startapp.android.publish.model.MetaData getInstance()>();
+
+        $r9 = virtualinvoke $r1.<com.startapp.android.publish.model.MetaData: com.startapp.android.publish.adinformation.AdInformationConfig getAdInformationConfig()>();
+
+        virtualinvoke $r9.<com.startapp.android.publish.adinformation.AdInformationConfig: void h()>();
+
+        $r1 = staticinvoke <com.startapp.android.publish.model.MetaData: com.startapp.android.publish.model.MetaData getInstance()>();
+
+        $r1.<com.startapp.android.publish.model.MetaData: boolean loading> = 0;
+
+        $r1 = staticinvoke <com.startapp.android.publish.model.MetaData: com.startapp.android.publish.model.MetaData getInstance()>();
+
+        $r1.<com.startapp.android.publish.model.MetaData: boolean ready> = 1;
+
+        $r1 = staticinvoke <com.startapp.android.publish.model.MetaData: com.startapp.android.publish.model.MetaData getInstance()>();
+
+        $r4 = $r1.<com.startapp.android.publish.model.MetaData: java.util.List metaDataListeners>;
+
+        if $r4 == null goto label6;
+
+        $r10 = new java.util.ArrayList;
+
+        $r1 = staticinvoke <com.startapp.android.publish.model.MetaData: com.startapp.android.publish.model.MetaData getInstance()>();
+
+        $r4 = $r1.<com.startapp.android.publish.model.MetaData: java.util.List metaDataListeners>;
+
+        specialinvoke $r10.<java.util.ArrayList: void <init>(java.util.Collection)>($r4);
+
+        $r1 = staticinvoke <com.startapp.android.publish.model.MetaData: com.startapp.android.publish.model.MetaData getInstance()>();
+
+        $r4 = $r1.<com.startapp.android.publish.model.MetaData: java.util.List metaDataListeners>;
+
+        interfaceinvoke $r4.<java.util.List: void clear()>();
+
+        $r11 = interfaceinvoke $r10.<java.util.List: java.util.Iterator iterator()>();
+
+     label3:
+        $z0 = interfaceinvoke $r11.<java.util.Iterator: boolean hasNext()>();
+
+        if $z0 == 0 goto label6;
+
+        $r12 = interfaceinvoke $r11.<java.util.Iterator: java.lang.Object next()>();
+
+        $r13 = (com.startapp.android.publish.f.o) $r12;
+
+        interfaceinvoke $r13.<com.startapp.android.publish.f.o: void onFinishLoadingMeta()>();
+
+        goto label3;
+
+     label4:
+        $r14 := @caughtexception;
+
+        exitmonitor $r2;
+
+     label5:
+        throw $r14;
+
+     label6:
+        $r15 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>(0);
+
+        $r15 = staticinvoke <com.startapp.android.publish.i.j: java.lang.Integer a(android.content.Context,java.lang.String,java.lang.Integer)>($r0, "totalSessions", $r15);
+
+        $i0 = virtualinvoke $r15.<java.lang.Integer: int intValue()>();
+
+        $i0 = $i0 + 1;
+
+        $r15 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>($i0);
+
+        staticinvoke <com.startapp.android.publish.i.j: void b(android.content.Context,java.lang.String,java.lang.Integer)>($r0, "totalSessions", $r15);
+
+        <com.startapp.android.publish.model.MetaData: com.startapp.android.publish.f.h task> = null;
+
+        exitmonitor $r2;
+
+     label7:
+        return;
+
+        catch java.lang.Throwable from label1 to label5 with label4;
+        catch java.lang.Throwable from label6 to label7 with label4;
+    }
+
+    public void addMetaDataListener(com.startapp.android.publish.f.o)
+    {
+        com.startapp.android.publish.model.MetaData r0;
+        com.startapp.android.publish.f.o $r1;
+        java.lang.Object $r2;
+        java.util.List $r3;
+        java.lang.Throwable $r4;
+
+        r0 := @this: com.startapp.android.publish.model.MetaData;
+
+        $r1 := @parameter0: com.startapp.android.publish.f.o;
+
+        $r2 = <com.startapp.android.publish.model.MetaData: java.lang.Object lock>;
+
+        entermonitor $r2;
+
+     label1:
+        $r3 = r0.<com.startapp.android.publish.model.MetaData: java.util.List metaDataListeners>;
+
+        interfaceinvoke $r3.<java.util.List: boolean add(java.lang.Object)>($r1);
+
+        exitmonitor $r2;
+
+     label2:
+        return;
+
+     label3:
+        $r4 := @caughtexception;
+
+        exitmonitor $r2;
+
+     label4:
+        throw $r4;
+
+        catch java.lang.Throwable from label1 to label2 with label3;
+        catch java.lang.Throwable from label3 to label4 with label3;
+    }
+
+    public void applyAdPlatformProtocolToHosts()
+    {
+        com.startapp.android.publish.model.MetaData r0;
+        java.lang.String $r1;
+
+        r0 := @this: com.startapp.android.publish.model.MetaData;
+
+        $r1 = r0.<com.startapp.android.publish.model.MetaData: java.lang.String adPlatformHostGeneric>;
+
+        $r1 = virtualinvoke $r1.<java.lang.String: java.lang.String replace(java.lang.CharSequence,java.lang.CharSequence)>("%AdPlatformProtocol%", "1.4");
+
+        r0.<com.startapp.android.publish.model.MetaData: java.lang.String adPlatformHostGeneric> = $r1;
+
+        $r1 = r0.<com.startapp.android.publish.model.MetaData: java.lang.String metaDataHostGeneric>;
+
+        $r1 = virtualinvoke $r1.<java.lang.String: java.lang.String replace(java.lang.CharSequence,java.lang.CharSequence)>("%AdPlatformProtocol%", "1.4");
+
+        r0.<com.startapp.android.publish.model.MetaData: java.lang.String metaDataHostGeneric> = $r1;
+
+        return;
+    }
+
+    public com.startapp.android.publish.model.ACMConfig getACMConfig()
+    {
+        com.startapp.android.publish.model.MetaData r0;
+        com.startapp.android.publish.model.ACMConfig r1;
+
+        r0 := @this: com.startapp.android.publish.model.MetaData;
+
+        r1 = r0.<com.startapp.android.publish.model.MetaData: com.startapp.android.publish.model.ACMConfig ACM>;
+
+        return r1;
+    }
+
+    public java.lang.String getAdClickUrl()
+    {
+        com.startapp.android.publish.model.MetaData r0;
+        java.lang.String r1;
+
+        r0 := @this: com.startapp.android.publish.model.MetaData;
+
+        r1 = r0.<com.startapp.android.publish.model.MetaData: java.lang.String adClickURL>;
+
+        return r1;
+    }
+
+    public com.startapp.android.publish.adinformation.AdInformationConfig getAdInformationConfig()
+    {
+        com.startapp.android.publish.model.MetaData r0;
+        com.startapp.android.publish.adinformation.AdInformationConfig r1;
+
+        r0 := @this: com.startapp.android.publish.model.MetaData;
+
+        r1 = r0.<com.startapp.android.publish.model.MetaData: com.startapp.android.publish.adinformation.AdInformationConfig AdInformation>;
+
+        return r1;
+    }
+
+    public java.lang.String getAdPlatformHost()
+    {
+        com.startapp.android.publish.model.MetaData r0;
+        java.lang.String $r1;
+
+        r0 := @this: com.startapp.android.publish.model.MetaData;
+
+        $r1 = <com.startapp.android.publish.e: java.lang.String OVERRIDE_HOST>;
+
+        if $r1 == null goto label1;
+
+        $r1 = <com.startapp.android.publish.e: java.lang.String OVERRIDE_HOST>;
+
+        return $r1;
+
+     label1:
+        $r1 = r0.<com.startapp.android.publish.model.MetaData: java.lang.String adPlatformHostGeneric>;
+
+        return $r1;
+    }
+
+    public com.startapp.android.publish.model.adrules.AdRules getAdRules()
+    {
+        com.startapp.android.publish.model.MetaData r0;
+        com.startapp.android.publish.model.adrules.AdRules r1;
+
+        r0 := @this: com.startapp.android.publish.model.MetaData;
+
+        r1 = r0.<com.startapp.android.publish.model.MetaData: com.startapp.android.publish.model.adrules.AdRules adRules>;
+
+        return r1;
+    }
+
+    public com.startapp.android.publish.d.a getAnalyticsConfig()
+    {
+        com.startapp.android.publish.model.MetaData r0;
+        com.startapp.android.publish.d.a r1;
+
+        r0 := @this: com.startapp.android.publish.model.MetaData;
+
+        r1 = r0.<com.startapp.android.publish.model.MetaData: com.startapp.android.publish.d.a analytics>;
+
+        return r1;
+    }
+
+    public int getBackgroundGradientBottom()
+    {
+        com.startapp.android.publish.model.MetaData r0;
+        int $i0;
+        java.lang.Integer $r1;
+
+        r0 := @this: com.startapp.android.publish.model.MetaData;
+
+        $r1 = r0.<com.startapp.android.publish.model.MetaData: java.lang.Integer backgroundGradientBottom>;
+
+        $i0 = virtualinvoke $r1.<java.lang.Integer: int intValue()>();
+
+        return $i0;
+    }
+
+    public int getBackgroundGradientTop()
+    {
+        com.startapp.android.publish.model.MetaData r0;
+        int $i0;
+        java.lang.Integer $r1;
+
+        r0 := @this: com.startapp.android.publish.model.MetaData;
+
+        $r1 = r0.<com.startapp.android.publish.model.MetaData: java.lang.Integer backgroundGradientTop>;
+
+        $i0 = virtualinvoke $r1.<java.lang.Integer: int intValue()>();
+
+        return $i0;
+    }
+
+    public com.startapp.android.publish.banner.BannerOptions getBannerOptions()
+    {
+        com.startapp.android.publish.model.MetaData r0;
+        com.startapp.android.publish.banner.BannerOptions r1;
+
+        r0 := @this: com.startapp.android.publish.model.MetaData;
+
+        r1 = r0.<com.startapp.android.publish.model.MetaData: com.startapp.android.publish.banner.BannerOptions BannerOptions>;
+
+        return r1;
+    }
+
+    public com.startapp.android.publish.banner.BannerOptions getBannerOptionsCopy()
+    {
+        com.startapp.android.publish.model.MetaData r0;
+        com.startapp.android.publish.banner.BannerOptions $r1, $r2;
+
+        r0 := @this: com.startapp.android.publish.model.MetaData;
+
+        $r1 = new com.startapp.android.publish.banner.BannerOptions;
+
+        $r2 = r0.<com.startapp.android.publish.model.MetaData: com.startapp.android.publish.banner.BannerOptions BannerOptions>;
+
+        specialinvoke $r1.<com.startapp.android.publish.banner.BannerOptions: void <init>(com.startapp.android.publish.banner.BannerOptions)>($r2);
+
+        return $r1;
+    }
+
+    public int getDefaultActivitiesBetweenAds()
+    {
+        com.startapp.android.publish.model.MetaData r0;
+        int i0;
+
+        r0 := @this: com.startapp.android.publish.model.MetaData;
+
+        i0 = r0.<com.startapp.android.publish.model.MetaData: int defaultActivitiesBetweenAds>;
+
+        return i0;
+    }
+
+    public int getDefaultSecondsBetweenAds()
+    {
+        com.startapp.android.publish.model.MetaData r0;
+        int i0;
+
+        r0 := @this: com.startapp.android.publish.model.MetaData;
+
+        i0 = r0.<com.startapp.android.publish.model.MetaData: int defaultSecondsBetweenAds>;
+
+        return i0;
+    }
+
+    public java.lang.String getEulaURL()
+    {
+        com.startapp.android.publish.model.MetaData r0;
+        java.lang.String $r1;
+        com.startapp.android.publish.adinformation.AdInformationConfig $r2;
+
+        r0 := @this: com.startapp.android.publish.model.MetaData;
+
+        $r2 = r0.<com.startapp.android.publish.model.MetaData: com.startapp.android.publish.adinformation.AdInformationConfig AdInformation>;
+
+        $r1 = virtualinvoke $r2.<com.startapp.android.publish.adinformation.AdInformationConfig: java.lang.String b()>();
+
+        return $r1;
+    }
+
+    public int getFullpageOfferwallProbability()
+    {
+        com.startapp.android.publish.model.MetaData r0;
+        int $i0;
+        java.lang.Integer $r1;
+
+        r0 := @this: com.startapp.android.publish.model.MetaData;
+
+        $r1 = r0.<com.startapp.android.publish.model.MetaData: java.lang.Integer fullpageOfferWallProbability>;
+
+        $i0 = virtualinvoke $r1.<java.lang.Integer: int intValue()>();
+
+        return $i0;
+    }
+
+    public int getFullscreenOverlayProbability()
+    {
+        com.startapp.android.publish.model.MetaData r0;
+        int $i0;
+        java.lang.Integer $r1;
+
+        r0 := @this: com.startapp.android.publish.model.MetaData;
+
+        $r1 = r0.<com.startapp.android.publish.model.MetaData: java.lang.Integer fullpageOverlayProbability>;
+
+        $i0 = virtualinvoke $r1.<java.lang.Integer: int intValue()>();
+
+        return $i0;
+    }
+
+    public int getHomeProbability3D()
+    {
+        com.startapp.android.publish.model.MetaData r0;
+        int $i0;
+        java.lang.Integer $r1;
+
+        r0 := @this: com.startapp.android.publish.model.MetaData;
+
+        $r1 = r0.<com.startapp.android.publish.model.MetaData: java.lang.Integer homeProbability3D>;
+
+        $i0 = virtualinvoke $r1.<java.lang.Integer: int intValue()>();
+
+        return $i0;
+    }
+
+    public long getIABDisplayImpressionDelayInSeconds()
+    {
+        com.startapp.android.publish.model.MetaData r0;
+        long l0;
+
+        r0 := @this: com.startapp.android.publish.model.MetaData;
+
+        l0 = r0.<com.startapp.android.publish.model.MetaData: long IABDisplayImpressionDelayInSeconds>;
+
+        return l0;
+    }
+
+    public long getIABVideoImpressionDelayInSeconds()
+    {
+        com.startapp.android.publish.model.MetaData r0;
+        long l0;
+
+        r0 := @this: com.startapp.android.publish.model.MetaData;
+
+        l0 = r0.<com.startapp.android.publish.model.MetaData: long IABVideoImpressionDelayInSeconds>;
+
+        return l0;
+    }
+
+    public com.startapp.android.publish.model.MetaData$inAppBrowserPreLoad getInAppBrowserPreLoad()
+    {
+        com.startapp.android.publish.model.MetaData r0;
+        com.startapp.android.publish.model.MetaData$inAppBrowserPreLoad r1;
+
+        r0 := @this: com.startapp.android.publish.model.MetaData;
+
+        r1 = r0.<com.startapp.android.publish.model.MetaData: com.startapp.android.publish.model.MetaData$inAppBrowserPreLoad inAppBrowserPreLoad>;
+
+        return r1;
+    }
+
+    public java.lang.Integer getItemDescriptionTextColor()
+    {
+        com.startapp.android.publish.model.MetaData r0;
+        java.lang.Integer r1;
+
+        r0 := @this: com.startapp.android.publish.model.MetaData;
+
+        r1 = r0.<com.startapp.android.publish.model.MetaData: java.lang.Integer itemDescriptionTextColor>;
+
+        return r1;
+    }
+
+    public java.util.Set getItemDescriptionTextDecoration()
+    {
+        com.startapp.android.publish.model.MetaData r0;
+        java.util.Set r1;
+
+        r0 := @this: com.startapp.android.publish.model.MetaData;
+
+        r1 = r0.<com.startapp.android.publish.model.MetaData: java.util.Set itemDescriptionTextDecoration>;
+
+        return r1;
+    }
+
+    public java.lang.Integer getItemDescriptionTextSize()
+    {
+        com.startapp.android.publish.model.MetaData r0;
+        java.lang.Integer r1;
+
+        r0 := @this: com.startapp.android.publish.model.MetaData;
+
+        r1 = r0.<com.startapp.android.publish.model.MetaData: java.lang.Integer itemDescriptionTextSize>;
+
+        return r1;
+    }
+
+    public int getItemGradientBottom()
+    {
+        com.startapp.android.publish.model.MetaData r0;
+        int $i0;
+        java.lang.Integer $r1;
+
+        r0 := @this: com.startapp.android.publish.model.MetaData;
+
+        $r1 = r0.<com.startapp.android.publish.model.MetaData: java.lang.Integer itemGradientBottom>;
+
+        $i0 = virtualinvoke $r1.<java.lang.Integer: int intValue()>();
+
+        return $i0;
+    }
+
+    public int getItemGradientTop()
+    {
+        com.startapp.android.publish.model.MetaData r0;
+        int $i0;
+        java.lang.Integer $r1;
+
+        r0 := @this: com.startapp.android.publish.model.MetaData;
+
+        $r1 = r0.<com.startapp.android.publish.model.MetaData: java.lang.Integer itemGradientTop>;
+
+        $i0 = virtualinvoke $r1.<java.lang.Integer: int intValue()>();
+
+        return $i0;
+    }
+
+    public java.lang.Integer getItemTitleTextColor()
+    {
+        com.startapp.android.publish.model.MetaData r0;
+        java.lang.Integer r1;
+
+        r0 := @this: com.startapp.android.publish.model.MetaData;
+
+        r1 = r0.<com.startapp.android.publish.model.MetaData: java.lang.Integer itemTitleTextColor>;
+
+        return r1;
+    }
+
+    public java.util.Set getItemTitleTextDecoration()
+    {
+        com.startapp.android.publish.model.MetaData r0;
+        java.util.Set r1;
+
+        r0 := @this: com.startapp.android.publish.model.MetaData;
+
+        r1 = r0.<com.startapp.android.publish.model.MetaData: java.util.Set itemTitleTextDecoration>;
+
+        return r1;
+    }
+
+    public java.lang.Integer getItemTitleTextSize()
+    {
+        com.startapp.android.publish.model.MetaData r0;
+        java.lang.Integer r1;
+
+        r0 := @this: com.startapp.android.publish.model.MetaData;
+
+        r1 = r0.<com.startapp.android.publish.model.MetaData: java.lang.Integer itemTitleTextSize>;
+
+        return r1;
+    }
+
+    public com.startapp.android.publish.model.LocationConfig getLocationConfig()
+    {
+        com.startapp.android.publish.model.MetaData r0;
+        com.startapp.android.publish.model.LocationConfig r1;
+
+        r0 := @this: com.startapp.android.publish.model.MetaData;
+
+        r1 = r0.<com.startapp.android.publish.model.MetaData: com.startapp.android.publish.model.LocationConfig location>;
+
+        return r1;
+    }
+
+    public int getMaxAds()
+    {
+        com.startapp.android.publish.model.MetaData r0;
+        int $i0;
+        java.lang.Integer $r1;
+
+        r0 := @this: com.startapp.android.publish.model.MetaData;
+
+        $r1 = r0.<com.startapp.android.publish.model.MetaData: java.lang.Integer maxAds>;
+
+        $i0 = virtualinvoke $r1.<java.lang.Integer: int intValue()>();
+
+        return $i0;
+    }
+
+    public java.lang.String getMetaDataHost()
+    {
+        com.startapp.android.publish.model.MetaData r0;
+        java.lang.String $r1;
+
+        r0 := @this: com.startapp.android.publish.model.MetaData;
+
+        $r1 = <com.startapp.android.publish.e: java.lang.String OVERRIDE_HOST>;
+
+        if $r1 == null goto label1;
+
+        $r1 = <com.startapp.android.publish.e: java.lang.String OVERRIDE_HOST>;
+
+        return $r1;
+
+     label1:
+        $r1 = r0.<com.startapp.android.publish.model.MetaData: java.lang.String metaDataHostGeneric>;
+
+        return $r1;
+    }
+
+    public java.lang.Integer getPoweredByBackgroundColor()
+    {
+        com.startapp.android.publish.model.MetaData r0;
+        java.lang.Integer r1;
+
+        r0 := @this: com.startapp.android.publish.model.MetaData;
+
+        r1 = r0.<com.startapp.android.publish.model.MetaData: java.lang.Integer poweredByBackgroundColor>;
+
+        return r1;
+    }
+
+    public java.lang.Integer getPoweredByTextColor()
+    {
+        com.startapp.android.publish.model.MetaData r0;
+        java.lang.Integer r1;
+
+        r0 := @this: com.startapp.android.publish.model.MetaData;
+
+        r1 = r0.<com.startapp.android.publish.model.MetaData: java.lang.Integer poweredByTextColor>;
+
+        return r1;
+    }
+
+    public java.lang.String getPrivacyIconUrl()
+    {
+        com.startapp.android.publish.model.MetaData r0;
+        java.lang.String $r1;
+        com.startapp.android.publish.adinformation.AdInformationConfig $r2;
+
+        r0 := @this: com.startapp.android.publish.model.MetaData;
+
+        $r2 = r0.<com.startapp.android.publish.model.MetaData: com.startapp.android.publish.adinformation.AdInformationConfig AdInformation>;
+
+        $r1 = virtualinvoke $r2.<com.startapp.android.publish.adinformation.AdInformationConfig: java.lang.String c()>();
+
+        return $r1;
+    }
+
+    public int getProbability3D()
+    {
+        com.startapp.android.publish.model.MetaData r0;
+        int $i0;
+        java.lang.Integer $r1;
+
+        r0 := @this: com.startapp.android.publish.model.MetaData;
+
+        $r1 = r0.<com.startapp.android.publish.model.MetaData: java.lang.Integer probability3D>;
+
+        $i0 = virtualinvoke $r1.<java.lang.Integer: int intValue()>();
+
+        return $i0;
+    }
+
+    public java.lang.String getProfileId()
+    {
+        com.startapp.android.publish.model.MetaData r0;
+        java.lang.String r1;
+
+        r0 := @this: com.startapp.android.publish.model.MetaData;
+
+        r1 = r0.<com.startapp.android.publish.model.MetaData: java.lang.String profileId>;
+
+        return r1;
+    }
+
+    public long getReturnAdMinBackgroundTime()
+    {
+        com.startapp.android.publish.model.MetaData r0;
+        long $l0;
+        java.util.concurrent.TimeUnit $r1;
+
+        r0 := @this: com.startapp.android.publish.model.MetaData;
+
+        $r1 = <java.util.concurrent.TimeUnit: java.util.concurrent.TimeUnit SECONDS>;
+
+        $l0 = r0.<com.startapp.android.publish.model.MetaData: long returnAdMinBackgroundTime>;
+
+        $l0 = virtualinvoke $r1.<java.util.concurrent.TimeUnit: long toMillis(long)>($l0);
+
+        return $l0;
+    }
+
+    public long getSessionMaxBackgroundTime()
+    {
+        com.startapp.android.publish.model.MetaData r0;
+        long $l0;
+        java.util.concurrent.TimeUnit $r1;
+        int $i1;
+
+        r0 := @this: com.startapp.android.publish.model.MetaData;
+
+        $r1 = <java.util.concurrent.TimeUnit: java.util.concurrent.TimeUnit SECONDS>;
+
+        $i1 = r0.<com.startapp.android.publish.model.MetaData: int sessionMaxBackgroundTime>;
+
+        $l0 = (long) $i1;
+
+        $l0 = virtualinvoke $r1.<java.util.concurrent.TimeUnit: long toMillis(long)>($l0);
+
+        return $l0;
+    }
+
+    public long getSmartRedirectTimeout()
+    {
+        com.startapp.android.publish.model.MetaData r0;
+        long $l0;
+        java.util.concurrent.TimeUnit $r1;
+        int $i1;
+
+        r0 := @this: com.startapp.android.publish.model.MetaData;
+
+        $r1 = <java.util.concurrent.TimeUnit: java.util.concurrent.TimeUnit SECONDS>;
+
+        $i1 = r0.<com.startapp.android.publish.model.MetaData: int smartRedirectTimeout>;
+
+        $l0 = (long) $i1;
+
+        $l0 = virtualinvoke $r1.<java.util.concurrent.TimeUnit: long toMillis(long)>($l0);
+
+        return $l0;
+    }
+
+    public com.startapp.android.publish.splash.SplashConfig getSplashConfig()
+    {
+        com.startapp.android.publish.model.MetaData r0;
+        com.startapp.android.publish.splash.SplashConfig r1;
+
+        r0 := @this: com.startapp.android.publish.model.MetaData;
+
+        r1 = r0.<com.startapp.android.publish.model.MetaData: com.startapp.android.publish.splash.SplashConfig SplashConfig>;
+
+        return r1;
+    }
+
+    public com.startapp.android.publish.model.MetaDataStyle getTemplate(java.lang.String)
+    {
+        com.startapp.android.publish.model.MetaData r0;
+        java.lang.String $r1;
+        java.lang.Object $r2;
+        java.util.HashMap $r3;
+        com.startapp.android.publish.model.MetaDataStyle $r4;
+
+        r0 := @this: com.startapp.android.publish.model.MetaData;
+
+        $r1 := @parameter0: java.lang.String;
+
+        $r3 = r0.<com.startapp.android.publish.model.MetaData: java.util.HashMap templates>;
+
+        $r2 = virtualinvoke $r3.<java.util.HashMap: java.lang.Object get(java.lang.Object)>($r1);
+
+        $r4 = (com.startapp.android.publish.model.MetaDataStyle) $r2;
+
+        return $r4;
+    }
+
+    public java.lang.Integer getTitleBackgroundColor()
+    {
+        com.startapp.android.publish.model.MetaData r0;
+        java.lang.Integer r1;
+
+        r0 := @this: com.startapp.android.publish.model.MetaData;
+
+        r1 = r0.<com.startapp.android.publish.model.MetaData: java.lang.Integer titleBackgroundColor>;
+
+        return r1;
+    }
+
+    public java.lang.String getTitleContent()
+    {
+        com.startapp.android.publish.model.MetaData r0;
+        java.lang.String r1;
+
+        r0 := @this: com.startapp.android.publish.model.MetaData;
+
+        r1 = r0.<com.startapp.android.publish.model.MetaData: java.lang.String titleContent>;
+
+        return r1;
+    }
+
+    public java.lang.Integer getTitleLineColor()
+    {
+        com.startapp.android.publish.model.MetaData r0;
+        java.lang.Integer r1;
+
+        r0 := @this: com.startapp.android.publish.model.MetaData;
+
+        r1 = r0.<com.startapp.android.publish.model.MetaData: java.lang.Integer titleLineColor>;
+
+        return r1;
+    }
+
+    public java.lang.Integer getTitleTextColor()
+    {
+        com.startapp.android.publish.model.MetaData r0;
+        java.lang.Integer r1;
+
+        r0 := @this: com.startapp.android.publish.model.MetaData;
+
+        r1 = r0.<com.startapp.android.publish.model.MetaData: java.lang.Integer titleTextColor>;
+
+        return r1;
+    }
+
+    public java.util.Set getTitleTextDecoration()
+    {
+        com.startapp.android.publish.model.MetaData r0;
+        java.util.Set r1;
+
+        r0 := @this: com.startapp.android.publish.model.MetaData;
+
+        r1 = r0.<com.startapp.android.publish.model.MetaData: java.util.Set titleTextDecoration>;
+
+        return r1;
+    }
+
+    public java.lang.Integer getTitleTextSize()
+    {
+        com.startapp.android.publish.model.MetaData r0;
+        java.lang.Integer r1;
+
+        r0 := @this: com.startapp.android.publish.model.MetaData;
+
+        r1 = r0.<com.startapp.android.publish.model.MetaData: java.lang.Integer titleTextSize>;
+
+        return r1;
+    }
+
+    public com.startapp.android.publish.model.VideoConfig getVideoConfig()
+    {
+        com.startapp.android.publish.model.MetaData r0;
+        com.startapp.android.publish.model.VideoConfig r1;
+
+        r0 := @this: com.startapp.android.publish.model.MetaData;
+
+        r1 = r0.<com.startapp.android.publish.model.MetaData: com.startapp.android.publish.model.VideoConfig video>;
+
+        return r1;
+    }
+
+    public boolean isAppPresenceEnabled()
+    {
+        com.startapp.android.publish.model.MetaData r0;
+        boolean z0;
+
+        r0 := @this: com.startapp.android.publish.model.MetaData;
+
+        z0 = r0.<com.startapp.android.publish.model.MetaData: boolean appPresence>;
+
+        return z0;
+    }
+
+    public boolean isAutoInterstitialEnabled()
+    {
+        com.startapp.android.publish.model.MetaData r0;
+        boolean z0;
+
+        r0 := @this: com.startapp.android.publish.model.MetaData;
+
+        z0 = r0.<com.startapp.android.publish.model.MetaData: boolean autoInterstitialEnabled>;
+
+        return z0;
+    }
+
+    public boolean isDisableInAppStore()
+    {
+        com.startapp.android.publish.model.MetaData r0;
+        boolean z0;
+
+        r0 := @this: com.startapp.android.publish.model.MetaData;
+
+        z0 = r0.<com.startapp.android.publish.model.MetaData: boolean disableInAppStore>;
+
+        return z0;
+    }
+
+    public boolean isDisableReturnAd()
+    {
+        com.startapp.android.publish.model.MetaData r0;
+        boolean z0;
+
+        r0 := @this: com.startapp.android.publish.model.MetaData;
+
+        z0 = r0.<com.startapp.android.publish.model.MetaData: boolean disableReturnAd>;
+
+        return z0;
+    }
+
+    public boolean isDisableSplashAd()
+    {
+        com.startapp.android.publish.model.MetaData r0;
+        boolean z0;
+
+        r0 := @this: com.startapp.android.publish.model.MetaData;
+
+        z0 = r0.<com.startapp.android.publish.model.MetaData: boolean disableSplashAd>;
+
+        return z0;
+    }
+
+    public boolean isDisableTwoClicks()
+    {
+        com.startapp.android.publish.model.MetaData r0;
+        boolean z0;
+
+        r0 := @this: com.startapp.android.publish.model.MetaData;
+
+        z0 = r0.<com.startapp.android.publish.model.MetaData: boolean disableTwoClicks>;
+
+        return z0;
+    }
+
+    public boolean isInAppBrowser()
+    {
+        com.startapp.android.publish.model.MetaData r0;
+        boolean z0;
+
+        r0 := @this: com.startapp.android.publish.model.MetaData;
+
+        z0 = r0.<com.startapp.android.publish.model.MetaData: boolean inAppBrowser>;
+
+        return z0;
+    }
+
+    public boolean isLoading()
+    {
+        com.startapp.android.publish.model.MetaData r0;
+        boolean z0;
+
+        r0 := @this: com.startapp.android.publish.model.MetaData;
+
+        z0 = r0.<com.startapp.android.publish.model.MetaData: boolean loading>;
+
+        return z0;
+    }
+
+    public boolean isReady()
+    {
+        com.startapp.android.publish.model.MetaData r0;
+        boolean z0;
+
+        r0 := @this: com.startapp.android.publish.model.MetaData;
+
+        z0 = r0.<com.startapp.android.publish.model.MetaData: boolean ready>;
+
+        return z0;
+    }
+
+    public boolean isSupportIABViewability()
+    {
+        com.startapp.android.publish.model.MetaData r0;
+        boolean z0;
+
+        r0 := @this: com.startapp.android.publish.model.MetaData;
+
+        z0 = r0.<com.startapp.android.publish.model.MetaData: boolean SupportIABViewability>;
+
+        return z0;
+    }
+
+    public boolean isWfScanEnabled()
+    {
+        com.startapp.android.publish.model.MetaData r0;
+        boolean z0;
+
+        r0 := @this: com.startapp.android.publish.model.MetaData;
+
+        z0 = r0.<com.startapp.android.publish.model.MetaData: boolean wfScanEnabled>;
+
+        return z0;
+    }
+
+    public void loadFromServer(android.content.Context, com.startapp.android.publish.model.AdPreferences, com.startapp.android.publish.model.MetaDataRequest$RequestReason, boolean, com.startapp.android.publish.f.o)
+    {
+        com.startapp.android.publish.model.MetaData r0;
+        android.content.Context $r1;
+        com.startapp.android.publish.model.AdPreferences $r2;
+        com.startapp.android.publish.model.MetaDataRequest$RequestReason $r3;
+        boolean $z0;
+        com.startapp.android.publish.f.o $r4;
+
+        r0 := @this: com.startapp.android.publish.model.MetaData;
+
+        $r1 := @parameter0: android.content.Context;
+
+        $r2 := @parameter1: com.startapp.android.publish.model.AdPreferences;
+
+        $r3 := @parameter2: com.startapp.android.publish.model.MetaDataRequest$RequestReason;
+
+        $z0 := @parameter3: boolean;
+
+        $r4 := @parameter4: com.startapp.android.publish.f.o;
+
+        virtualinvoke r0.<com.startapp.android.publish.model.MetaData: void loadFromServer(android.content.Context,com.startapp.android.publish.model.AdPreferences,com.startapp.android.publish.model.MetaDataRequest$RequestReason,boolean,com.startapp.android.publish.f.o,boolean)>($r1, $r2, $r3, $z0, $r4, 0);
+
+        return;
+    }
+
+    public void loadFromServer(android.content.Context, com.startapp.android.publish.model.AdPreferences, com.startapp.android.publish.model.MetaDataRequest$RequestReason, boolean, com.startapp.android.publish.f.o, boolean)
+    {
+        com.startapp.android.publish.model.MetaData r0, $r6;
+        android.content.Context $r1;
+        com.startapp.android.publish.model.AdPreferences $r2;
+        com.startapp.android.publish.model.MetaDataRequest$RequestReason $r3;
+        boolean $z0, $z1, $z2;
+        com.startapp.android.publish.f.o $r4;
+        java.lang.Object $r5;
+        com.startapp.android.publish.f.h $r7;
+        java.lang.Throwable $r8;
+
+        r0 := @this: com.startapp.android.publish.model.MetaData;
+
+        $r1 := @parameter0: android.content.Context;
+
+        $r2 := @parameter1: com.startapp.android.publish.model.AdPreferences;
+
+        $r3 := @parameter2: com.startapp.android.publish.model.MetaDataRequest$RequestReason;
+
+        $z0 := @parameter3: boolean;
+
+        $r4 := @parameter4: com.startapp.android.publish.f.o;
+
+        $z1 := @parameter5: boolean;
+
+        if $z0 != 0 goto label01;
+
+        if $r4 == null goto label01;
+
+        interfaceinvoke $r4.<com.startapp.android.publish.f.o: void onFinishLoadingMeta()>();
+
+     label01:
+        $r5 = <com.startapp.android.publish.model.MetaData: java.lang.Object lock>;
+
+        entermonitor $r5;
+
+     label02:
+        $r6 = staticinvoke <com.startapp.android.publish.model.MetaData: com.startapp.android.publish.model.MetaData getInstance()>();
+
+        $z2 = virtualinvoke $r6.<com.startapp.android.publish.model.MetaData: boolean isReady()>();
+
+        if $z2 == 0 goto label03;
+
+        if $z1 == 0 goto label09;
+
+     label03:
+        $r6 = staticinvoke <com.startapp.android.publish.model.MetaData: com.startapp.android.publish.model.MetaData getInstance()>();
+
+        $z2 = virtualinvoke $r6.<com.startapp.android.publish.model.MetaData: boolean isLoading()>();
+
+        if $z2 == 0 goto label04;
+
+        if $z1 == 0 goto label06;
+
+     label04:
+        r0.<com.startapp.android.publish.model.MetaData: boolean loading> = 1;
+
+        r0.<com.startapp.android.publish.model.MetaData: boolean ready> = 0;
+
+        $r7 = <com.startapp.android.publish.model.MetaData: com.startapp.android.publish.f.h task>;
+
+        if $r7 == null goto label05;
+
+        $r7 = <com.startapp.android.publish.model.MetaData: com.startapp.android.publish.f.h task>;
+
+        virtualinvoke $r7.<com.startapp.android.publish.f.h: void b()>();
+
+     label05:
+        $r7 = new com.startapp.android.publish.f.h;
+
+        specialinvoke $r7.<com.startapp.android.publish.f.h: void <init>(android.content.Context,com.startapp.android.publish.model.AdPreferences,com.startapp.android.publish.model.MetaDataRequest$RequestReason)>($r1, $r2, $r3);
+
+        <com.startapp.android.publish.model.MetaData: com.startapp.android.publish.f.h task> = $r7;
+
+        $r7 = <com.startapp.android.publish.model.MetaData: com.startapp.android.publish.f.h task>;
+
+        virtualinvoke $r7.<com.startapp.android.publish.f.h: void a()>();
+
+     label06:
+        if $z0 == 0 goto label07;
+
+        if $r4 == null goto label07;
+
+        r0 = staticinvoke <com.startapp.android.publish.model.MetaData: com.startapp.android.publish.model.MetaData getInstance()>();
+
+        virtualinvoke r0.<com.startapp.android.publish.model.MetaData: void addMetaDataListener(com.startapp.android.publish.f.o)>($r4);
+
+     label07:
+        exitmonitor $r5;
+
+     label08:
+        return;
+
+     label09:
+        exitmonitor $r5;
+
+     label10:
+        if $z0 == 0 goto label14;
+
+        if $r4 == null goto label14;
+
+        interfaceinvoke $r4.<com.startapp.android.publish.f.o: void onFinishLoadingMeta()>();
+
+        return;
+
+     label11:
+        $r8 := @caughtexception;
+
+     label12:
+        exitmonitor $r5;
+
+     label13:
+        throw $r8;
+
+     label14:
+        return;
+
+        catch java.lang.Throwable from label02 to label08 with label11;
+        catch java.lang.Throwable from label09 to label10 with label11;
+        catch java.lang.Throwable from label12 to label13 with label11;
+    }
+
+    public void setInAppBrowser(boolean)
+    {
+        com.startapp.android.publish.model.MetaData r0;
+        boolean $z0;
+
+        r0 := @this: com.startapp.android.publish.model.MetaData;
+
+        $z0 := @parameter0: boolean;
+
+        r0.<com.startapp.android.publish.model.MetaData: boolean inAppBrowser> = $z0;
+
+        return;
+    }
+
+    public void setInAppBrowserPreLoad(com.startapp.android.publish.model.MetaData$inAppBrowserPreLoad)
+    {
+        com.startapp.android.publish.model.MetaData r0;
+        com.startapp.android.publish.model.MetaData$inAppBrowserPreLoad $r1;
+
+        r0 := @this: com.startapp.android.publish.model.MetaData;
+
+        $r1 := @parameter0: com.startapp.android.publish.model.MetaData$inAppBrowserPreLoad;
+
+        r0.<com.startapp.android.publish.model.MetaData: com.startapp.android.publish.model.MetaData$inAppBrowserPreLoad inAppBrowserPreLoad> = $r1;
+
+        return;
+    }
+}

@@ -1,0 +1,63 @@
+final class com.startapp.android.publish.StartAppAd$2 extends android.content.BroadcastReceiver
+{
+    final android.app.Activity a;
+    final com.startapp.android.publish.splash.SplashHideListener b;
+
+    void <init>(android.app.Activity, com.startapp.android.publish.splash.SplashHideListener)
+    {
+        com.startapp.android.publish.StartAppAd$2 r0;
+        android.app.Activity $r1;
+        com.startapp.android.publish.splash.SplashHideListener $r2;
+
+        r0 := @this: com.startapp.android.publish.StartAppAd$2;
+
+        $r1 := @parameter0: android.app.Activity;
+
+        $r2 := @parameter1: com.startapp.android.publish.splash.SplashHideListener;
+
+        r0.<com.startapp.android.publish.StartAppAd$2: android.app.Activity a> = $r1;
+
+        r0.<com.startapp.android.publish.StartAppAd$2: com.startapp.android.publish.splash.SplashHideListener b> = $r2;
+
+        specialinvoke r0.<android.content.BroadcastReceiver: void <init>()>();
+
+        return;
+    }
+
+    public void onReceive(android.content.Context, android.content.Intent)
+    {
+        com.startapp.android.publish.StartAppAd$2 r0;
+        android.content.Context $r1;
+        android.content.Intent $r2;
+        com.startapp.android.publish.i.l $r3;
+        android.app.Activity $r4;
+        com.startapp.android.publish.splash.SplashHideListener $r5;
+
+        r0 := @this: com.startapp.android.publish.StartAppAd$2;
+
+        $r1 := @parameter0: android.content.Context;
+
+        $r2 := @parameter1: android.content.Intent;
+
+        $r4 = r0.<com.startapp.android.publish.StartAppAd$2: android.app.Activity a>;
+
+        staticinvoke <com.startapp.android.publish.i.x: void a(android.app.Activity,boolean)>($r4, 0);
+
+        $r5 = r0.<com.startapp.android.publish.StartAppAd$2: com.startapp.android.publish.splash.SplashHideListener b>;
+
+        if $r5 == null goto label1;
+
+        $r5 = r0.<com.startapp.android.publish.StartAppAd$2: com.startapp.android.publish.splash.SplashHideListener b>;
+
+        interfaceinvoke $r5.<com.startapp.android.publish.splash.SplashHideListener: void splashHidden()>();
+
+     label1:
+        $r4 = r0.<com.startapp.android.publish.StartAppAd$2: android.app.Activity a>;
+
+        $r3 = staticinvoke <com.startapp.android.publish.i.l: com.startapp.android.publish.i.l a(android.content.Context)>($r4);
+
+        virtualinvoke $r3.<com.startapp.android.publish.i.l: void a(android.content.BroadcastReceiver)>(r0);
+
+        return;
+    }
+}

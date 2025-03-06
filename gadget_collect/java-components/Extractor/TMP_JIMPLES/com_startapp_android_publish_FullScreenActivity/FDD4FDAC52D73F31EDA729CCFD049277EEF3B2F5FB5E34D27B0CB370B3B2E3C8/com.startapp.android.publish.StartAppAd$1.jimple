@@ -1,0 +1,201 @@
+class com.startapp.android.publish.StartAppAd$1 extends android.content.BroadcastReceiver
+{
+    final com.startapp.android.publish.StartAppAd a;
+
+    void <init>(com.startapp.android.publish.StartAppAd)
+    {
+        com.startapp.android.publish.StartAppAd$1 r0;
+        com.startapp.android.publish.StartAppAd $r1;
+
+        r0 := @this: com.startapp.android.publish.StartAppAd$1;
+
+        $r1 := @parameter0: com.startapp.android.publish.StartAppAd;
+
+        r0.<com.startapp.android.publish.StartAppAd$1: com.startapp.android.publish.StartAppAd a> = $r1;
+
+        specialinvoke r0.<android.content.BroadcastReceiver: void <init>()>();
+
+        return;
+    }
+
+    private void a(android.content.Context)
+    {
+        com.startapp.android.publish.StartAppAd$1 r0;
+        android.content.Context $r1;
+        com.startapp.android.publish.i.l $r2;
+
+        r0 := @this: com.startapp.android.publish.StartAppAd$1;
+
+        $r1 := @parameter0: android.content.Context;
+
+        $r2 = staticinvoke <com.startapp.android.publish.i.l: com.startapp.android.publish.i.l a(android.content.Context)>($r1);
+
+        virtualinvoke $r2.<com.startapp.android.publish.i.l: void a(android.content.BroadcastReceiver)>(r0);
+
+        return;
+    }
+
+    public void onReceive(android.content.Context, android.content.Intent)
+    {
+        com.startapp.android.publish.StartAppAd$1 r0;
+        android.content.Context $r1;
+        android.content.Intent $r2;
+        java.lang.String $r3;
+        boolean $z0;
+        android.os.Bundle $r4;
+        com.startapp.android.publish.StartAppAd $r5;
+        java.io.Serializable $r6;
+        com.startapp.android.publish.AdDisplayListener$NotDisplayedReason $r7;
+        com.startapp.android.publish.AdDisplayListener $r8;
+        com.startapp.android.publish.video.VideoListener $r9;
+        android.os.Handler $r10;
+        android.os.Looper $r11;
+        com.startapp.android.publish.StartAppAd$1$1 $r12;
+
+        r0 := @this: com.startapp.android.publish.StartAppAd$1;
+
+        $r1 := @parameter0: android.content.Context;
+
+        $r2 := @parameter1: android.content.Intent;
+
+        $r3 = virtualinvoke $r2.<android.content.Intent: java.lang.String getAction()>();
+
+        $z0 = virtualinvoke $r3.<java.lang.String: boolean equals(java.lang.Object)>("com.startapp.android.ShowFailedDisplayBroadcastListener");
+
+        if $z0 == 0 goto label4;
+
+        $r4 = virtualinvoke $r2.<android.content.Intent: android.os.Bundle getExtras()>();
+
+        $z0 = virtualinvoke $r4.<android.os.Bundle: boolean containsKey(java.lang.String)>("showFailedReason");
+
+        if $z0 == 0 goto label1;
+
+        $r5 = r0.<com.startapp.android.publish.StartAppAd$1: com.startapp.android.publish.StartAppAd a>;
+
+        $r4 = virtualinvoke $r2.<android.content.Intent: android.os.Bundle getExtras()>();
+
+        $r6 = virtualinvoke $r4.<android.os.Bundle: java.io.Serializable getSerializable(java.lang.String)>("showFailedReason");
+
+        $r7 = (com.startapp.android.publish.AdDisplayListener$NotDisplayedReason) $r6;
+
+        virtualinvoke $r5.<com.startapp.android.publish.StartAppAd: void setNotDisplayedReason(com.startapp.android.publish.AdDisplayListener$NotDisplayedReason)>($r7);
+
+     label1:
+        $r5 = r0.<com.startapp.android.publish.StartAppAd$1: com.startapp.android.publish.StartAppAd a>;
+
+        $r8 = staticinvoke <com.startapp.android.publish.StartAppAd: com.startapp.android.publish.AdDisplayListener access$000(com.startapp.android.publish.StartAppAd)>($r5);
+
+        if $r8 == null goto label2;
+
+        $r5 = r0.<com.startapp.android.publish.StartAppAd$1: com.startapp.android.publish.StartAppAd a>;
+
+        $r8 = staticinvoke <com.startapp.android.publish.StartAppAd: com.startapp.android.publish.AdDisplayListener access$000(com.startapp.android.publish.StartAppAd)>($r5);
+
+        $r5 = r0.<com.startapp.android.publish.StartAppAd$1: com.startapp.android.publish.StartAppAd a>;
+
+        interfaceinvoke $r8.<com.startapp.android.publish.AdDisplayListener: void adNotDisplayed(com.startapp.android.publish.Ad)>($r5);
+
+     label2:
+        specialinvoke r0.<com.startapp.android.publish.StartAppAd$1: void a(android.content.Context)>($r1);
+
+     label3:
+        $r5 = r0.<com.startapp.android.publish.StartAppAd$1: com.startapp.android.publish.StartAppAd a>;
+
+        staticinvoke <com.startapp.android.publish.StartAppAd: com.startapp.android.publish.g access$202(com.startapp.android.publish.StartAppAd,com.startapp.android.publish.g)>($r5, null);
+
+        return;
+
+     label4:
+        $r3 = virtualinvoke $r2.<android.content.Intent: java.lang.String getAction()>();
+
+        $z0 = virtualinvoke $r3.<java.lang.String: boolean equals(java.lang.Object)>("com.startapp.android.ShowDisplayBroadcastListener");
+
+        if $z0 == 0 goto label5;
+
+        $r5 = r0.<com.startapp.android.publish.StartAppAd$1: com.startapp.android.publish.StartAppAd a>;
+
+        $r8 = staticinvoke <com.startapp.android.publish.StartAppAd: com.startapp.android.publish.AdDisplayListener access$000(com.startapp.android.publish.StartAppAd)>($r5);
+
+        if $r8 == null goto label3;
+
+        $r5 = r0.<com.startapp.android.publish.StartAppAd$1: com.startapp.android.publish.StartAppAd a>;
+
+        $r8 = staticinvoke <com.startapp.android.publish.StartAppAd: com.startapp.android.publish.AdDisplayListener access$000(com.startapp.android.publish.StartAppAd)>($r5);
+
+        $r5 = r0.<com.startapp.android.publish.StartAppAd$1: com.startapp.android.publish.StartAppAd a>;
+
+        interfaceinvoke $r8.<com.startapp.android.publish.AdDisplayListener: void adDisplayed(com.startapp.android.publish.Ad)>($r5);
+
+        goto label3;
+
+     label5:
+        $r3 = virtualinvoke $r2.<android.content.Intent: java.lang.String getAction()>();
+
+        $z0 = virtualinvoke $r3.<java.lang.String: boolean equals(java.lang.Object)>("com.startapp.android.OnClickCallback");
+
+        if $z0 == 0 goto label6;
+
+        $r5 = r0.<com.startapp.android.publish.StartAppAd$1: com.startapp.android.publish.StartAppAd a>;
+
+        $r8 = staticinvoke <com.startapp.android.publish.StartAppAd: com.startapp.android.publish.AdDisplayListener access$000(com.startapp.android.publish.StartAppAd)>($r5);
+
+        if $r8 == null goto label3;
+
+        $r5 = r0.<com.startapp.android.publish.StartAppAd$1: com.startapp.android.publish.StartAppAd a>;
+
+        $r8 = staticinvoke <com.startapp.android.publish.StartAppAd: com.startapp.android.publish.AdDisplayListener access$000(com.startapp.android.publish.StartAppAd)>($r5);
+
+        $r5 = r0.<com.startapp.android.publish.StartAppAd$1: com.startapp.android.publish.StartAppAd a>;
+
+        interfaceinvoke $r8.<com.startapp.android.publish.AdDisplayListener: void adClicked(com.startapp.android.publish.Ad)>($r5);
+
+        goto label3;
+
+     label6:
+        $r3 = virtualinvoke $r2.<android.content.Intent: java.lang.String getAction()>();
+
+        $z0 = virtualinvoke $r3.<java.lang.String: boolean equals(java.lang.Object)>("com.startapp.android.OnVideoCompleted");
+
+        if $z0 == 0 goto label7;
+
+        $r5 = r0.<com.startapp.android.publish.StartAppAd$1: com.startapp.android.publish.StartAppAd a>;
+
+        $r9 = staticinvoke <com.startapp.android.publish.StartAppAd: com.startapp.android.publish.video.VideoListener access$100(com.startapp.android.publish.StartAppAd)>($r5);
+
+        if $r9 == null goto label3;
+
+        $r10 = new android.os.Handler;
+
+        $r11 = staticinvoke <android.os.Looper: android.os.Looper getMainLooper()>();
+
+        specialinvoke $r10.<android.os.Handler: void <init>(android.os.Looper)>($r11);
+
+        $r12 = new com.startapp.android.publish.StartAppAd$1$1;
+
+        specialinvoke $r12.<com.startapp.android.publish.StartAppAd$1$1: void <init>(com.startapp.android.publish.StartAppAd$1)>(r0);
+
+        virtualinvoke $r10.<android.os.Handler: boolean post(java.lang.Runnable)>($r12);
+
+        goto label3;
+
+     label7:
+        $r5 = r0.<com.startapp.android.publish.StartAppAd$1: com.startapp.android.publish.StartAppAd a>;
+
+        $r8 = staticinvoke <com.startapp.android.publish.StartAppAd: com.startapp.android.publish.AdDisplayListener access$000(com.startapp.android.publish.StartAppAd)>($r5);
+
+        if $r8 == null goto label8;
+
+        $r5 = r0.<com.startapp.android.publish.StartAppAd$1: com.startapp.android.publish.StartAppAd a>;
+
+        $r8 = staticinvoke <com.startapp.android.publish.StartAppAd: com.startapp.android.publish.AdDisplayListener access$000(com.startapp.android.publish.StartAppAd)>($r5);
+
+        $r5 = r0.<com.startapp.android.publish.StartAppAd$1: com.startapp.android.publish.StartAppAd a>;
+
+        interfaceinvoke $r8.<com.startapp.android.publish.AdDisplayListener: void adHidden(com.startapp.android.publish.Ad)>($r5);
+
+     label8:
+        specialinvoke r0.<com.startapp.android.publish.StartAppAd$1: void a(android.content.Context)>($r1);
+
+        goto label3;
+    }
+}

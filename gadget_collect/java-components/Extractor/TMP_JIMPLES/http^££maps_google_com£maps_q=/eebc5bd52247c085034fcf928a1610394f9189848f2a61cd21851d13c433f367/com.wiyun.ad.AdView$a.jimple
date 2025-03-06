@@ -1,0 +1,155 @@
+final class com.wiyun.ad.AdView$a extends java.lang.Object implements java.lang.Runnable
+{
+    final com.wiyun.ad.AdView a;
+    private com.wiyun.ad.a b;
+    private int c;
+
+    public void <init>(com.wiyun.ad.AdView, com.wiyun.ad.a, int)
+    {
+        com.wiyun.ad.AdView$a r0;
+        com.wiyun.ad.AdView $r1;
+        com.wiyun.ad.a $r2;
+        int $i0;
+
+        r0 := @this: com.wiyun.ad.AdView$a;
+
+        $r1 := @parameter0: com.wiyun.ad.AdView;
+
+        $r2 := @parameter1: com.wiyun.ad.a;
+
+        $i0 := @parameter2: int;
+
+        r0.<com.wiyun.ad.AdView$a: com.wiyun.ad.AdView a> = $r1;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        r0.<com.wiyun.ad.AdView$a: com.wiyun.ad.a b> = $r2;
+
+        r0.<com.wiyun.ad.AdView$a: int c> = $i0;
+
+        return;
+    }
+
+    static com.wiyun.ad.a a(com.wiyun.ad.AdView$a)
+    {
+        com.wiyun.ad.AdView$a $r0;
+        com.wiyun.ad.a r1;
+
+        $r0 := @parameter0: com.wiyun.ad.AdView$a;
+
+        r1 = $r0.<com.wiyun.ad.AdView$a: com.wiyun.ad.a b>;
+
+        return r1;
+    }
+
+    static com.wiyun.ad.AdView b(com.wiyun.ad.AdView$a)
+    {
+        com.wiyun.ad.AdView$a $r0;
+        com.wiyun.ad.AdView r1;
+
+        $r0 := @parameter0: com.wiyun.ad.AdView$a;
+
+        r1 = $r0.<com.wiyun.ad.AdView$a: com.wiyun.ad.AdView a>;
+
+        return r1;
+    }
+
+    public void run()
+    {
+        com.wiyun.ad.AdView$a r0;
+        float $f0, $f1, $f2;
+        com.wiyun.ad.AdView $r1;
+        com.wiyun.ad.a $r2;
+        int $i0;
+        com.wiyun.ad.h $r3;
+        boolean $z0;
+        android.view.animation.DecelerateInterpolator $r4;
+        com.wiyun.ad.AdView$a$1 $r5;
+
+        r0 := @this: com.wiyun.ad.AdView$a;
+
+        $r1 = r0.<com.wiyun.ad.AdView$a: com.wiyun.ad.AdView a>;
+
+        $r2 = staticinvoke <com.wiyun.ad.AdView: com.wiyun.ad.a a(com.wiyun.ad.AdView)>($r1);
+
+        virtualinvoke $r2.<com.wiyun.ad.a: void setVisibility(int)>(8);
+
+        $r2 = r0.<com.wiyun.ad.AdView$a: com.wiyun.ad.a b>;
+
+        virtualinvoke $r2.<com.wiyun.ad.a: void setVisibility(int)>(0);
+
+        $r1 = r0.<com.wiyun.ad.AdView$a: com.wiyun.ad.AdView a>;
+
+        $i0 = virtualinvoke $r1.<com.wiyun.ad.AdView: int getWidth()>();
+
+        $f0 = (float) $i0;
+
+        $f0 = $f0 / 2.0F;
+
+        $r1 = r0.<com.wiyun.ad.AdView$a: com.wiyun.ad.AdView a>;
+
+        $i0 = virtualinvoke $r1.<com.wiyun.ad.AdView: int getHeight()>();
+
+        $f1 = (float) $i0;
+
+        $f1 = $f1 / 2.0F;
+
+        $i0 = r0.<com.wiyun.ad.AdView$a: int c>;
+
+        if $i0 != 2 goto label3;
+
+        $r1 = r0.<com.wiyun.ad.AdView$a: com.wiyun.ad.AdView a>;
+
+        $i0 = virtualinvoke $r1.<com.wiyun.ad.AdView: int getHeight()>();
+
+     label1:
+        $f2 = (float) $i0;
+
+        $f2 = -0.4F * $f2;
+
+        $r3 = new com.wiyun.ad.h;
+
+        $i0 = r0.<com.wiyun.ad.AdView$a: int c>;
+
+        if $i0 == 2 goto label4;
+
+        $z0 = 1;
+
+     label2:
+        specialinvoke $r3.<com.wiyun.ad.h: void <init>(float,float,float,float,float,boolean,boolean)>(90.0F, 0.0F, $f0, $f1, $f2, 0, $z0);
+
+        virtualinvoke $r3.<com.wiyun.ad.h: void setDuration(long)>(700L);
+
+        virtualinvoke $r3.<com.wiyun.ad.h: void setFillAfter(boolean)>(1);
+
+        $r4 = new android.view.animation.DecelerateInterpolator;
+
+        specialinvoke $r4.<android.view.animation.DecelerateInterpolator: void <init>()>();
+
+        virtualinvoke $r3.<com.wiyun.ad.h: void setInterpolator(android.view.animation.Interpolator)>($r4);
+
+        $r5 = new com.wiyun.ad.AdView$a$1;
+
+        specialinvoke $r5.<com.wiyun.ad.AdView$a$1: void <init>(com.wiyun.ad.AdView$a)>(r0);
+
+        virtualinvoke $r3.<com.wiyun.ad.h: void setAnimationListener(android.view.animation.Animation$AnimationListener)>($r5);
+
+        $r1 = r0.<com.wiyun.ad.AdView$a: com.wiyun.ad.AdView a>;
+
+        virtualinvoke $r1.<com.wiyun.ad.AdView: void startAnimation(android.view.animation.Animation)>($r3);
+
+        return;
+
+     label3:
+        $r1 = r0.<com.wiyun.ad.AdView$a: com.wiyun.ad.AdView a>;
+
+        $i0 = virtualinvoke $r1.<com.wiyun.ad.AdView: int getWidth()>();
+
+        goto label1;
+
+     label4:
+        $z0 = 0;
+
+        goto label2;
+    }
+}

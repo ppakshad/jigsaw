@@ -1,0 +1,44 @@
+class com.heyzap.sdk.PreMarketDialog$2 extends java.lang.Object implements android.view.View$OnClickListener
+{
+    final com.heyzap.sdk.PreMarketDialog this$0;
+
+    void <init>(com.heyzap.sdk.PreMarketDialog)
+    {
+        com.heyzap.sdk.PreMarketDialog$2 r0;
+        com.heyzap.sdk.PreMarketDialog $r1;
+
+        r0 := @this: com.heyzap.sdk.PreMarketDialog$2;
+
+        $r1 := @parameter0: com.heyzap.sdk.PreMarketDialog;
+
+        r0.<com.heyzap.sdk.PreMarketDialog$2: com.heyzap.sdk.PreMarketDialog this$0> = $r1;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public void onClick(android.view.View)
+    {
+        com.heyzap.sdk.PreMarketDialog$2 r0;
+        android.view.View $r1;
+        android.content.Context $r2;
+        com.heyzap.sdk.PreMarketDialog $r3;
+
+        r0 := @this: com.heyzap.sdk.PreMarketDialog$2;
+
+        $r1 := @parameter0: android.view.View;
+
+        $r3 = r0.<com.heyzap.sdk.PreMarketDialog$2: com.heyzap.sdk.PreMarketDialog this$0>;
+
+        $r2 = virtualinvoke $r3.<com.heyzap.sdk.PreMarketDialog: android.content.Context getContext()>();
+
+        staticinvoke <com.heyzap.sdk.HeyzapAnalytics: void trackEvent(android.content.Context,java.lang.String)>($r2, "skip-button-clicked");
+
+        $r3 = r0.<com.heyzap.sdk.PreMarketDialog$2: com.heyzap.sdk.PreMarketDialog this$0>;
+
+        virtualinvoke $r3.<com.heyzap.sdk.PreMarketDialog: void hide()>();
+
+        return;
+    }
+}

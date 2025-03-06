@@ -1,0 +1,868 @@
+public class com.startapp.android.publish.model.AdDetails extends java.lang.Object implements android.os.Parcelable, java.io.Serializable
+{
+    public static final android.os.Parcelable$Creator CREATOR;
+    private static final long serialVersionUID;
+    private java.lang.String adId;
+    private boolean app;
+    private java.lang.String appPresencePackage;
+    private java.lang.String category;
+    private java.lang.String clickUrl;
+    private java.lang.String closeUrl;
+    private java.lang.Long delayImpressionInSeconds;
+    private java.lang.String description;
+    private java.lang.String imageUrl;
+    private java.lang.String installs;
+    private java.lang.String intentDetails;
+    private java.lang.String intentPackageName;
+    private int minAppVersion;
+    private java.lang.String packageName;
+    private float rating;
+    private java.lang.String secondaryImageUrl;
+    private boolean smartRedirect;
+    private boolean startappBrowserEnabled;
+    private java.lang.String template;
+    private java.lang.String title;
+    private java.lang.String trackingClickUrl;
+    private java.lang.String trackingUrl;
+    private java.lang.Long ttl;
+
+    static void <clinit>()
+    {
+        com.startapp.android.publish.model.AdDetails$1 $r0;
+
+        <com.startapp.android.publish.model.AdDetails: long serialVersionUID> = 1L;
+
+        $r0 = new com.startapp.android.publish.model.AdDetails$1;
+
+        specialinvoke $r0.<com.startapp.android.publish.model.AdDetails$1: void <init>()>();
+
+        <com.startapp.android.publish.model.AdDetails: android.os.Parcelable$Creator CREATOR> = $r0;
+
+        return;
+    }
+
+    public void <init>()
+    {
+        com.startapp.android.publish.model.AdDetails r0;
+
+        r0 := @this: com.startapp.android.publish.model.AdDetails;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        r0.<com.startapp.android.publish.model.AdDetails: float rating> = 5.0F;
+
+        return;
+    }
+
+    public void <init>(android.os.Parcel)
+    {
+        com.startapp.android.publish.model.AdDetails r0;
+        android.os.Parcel $r1;
+        java.lang.String $r2;
+        float $f0;
+        int $i0, $i1;
+        long $l2;
+        java.lang.Long $r3;
+        byte $b3;
+
+        r0 := @this: com.startapp.android.publish.model.AdDetails;
+
+        $r1 := @parameter0: android.os.Parcel;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        r0.<com.startapp.android.publish.model.AdDetails: float rating> = 5.0F;
+
+        $r2 = virtualinvoke $r1.<android.os.Parcel: java.lang.String readString()>();
+
+        r0.<com.startapp.android.publish.model.AdDetails: java.lang.String adId> = $r2;
+
+        $r2 = virtualinvoke $r1.<android.os.Parcel: java.lang.String readString()>();
+
+        r0.<com.startapp.android.publish.model.AdDetails: java.lang.String clickUrl> = $r2;
+
+        $r2 = virtualinvoke $r1.<android.os.Parcel: java.lang.String readString()>();
+
+        r0.<com.startapp.android.publish.model.AdDetails: java.lang.String trackingUrl> = $r2;
+
+        $r2 = virtualinvoke $r1.<android.os.Parcel: java.lang.String readString()>();
+
+        r0.<com.startapp.android.publish.model.AdDetails: java.lang.String trackingClickUrl> = $r2;
+
+        $r2 = virtualinvoke $r1.<android.os.Parcel: java.lang.String readString()>();
+
+        r0.<com.startapp.android.publish.model.AdDetails: java.lang.String closeUrl> = $r2;
+
+        $r2 = virtualinvoke $r1.<android.os.Parcel: java.lang.String readString()>();
+
+        r0.<com.startapp.android.publish.model.AdDetails: java.lang.String title> = $r2;
+
+        $r2 = virtualinvoke $r1.<android.os.Parcel: java.lang.String readString()>();
+
+        r0.<com.startapp.android.publish.model.AdDetails: java.lang.String description> = $r2;
+
+        $r2 = virtualinvoke $r1.<android.os.Parcel: java.lang.String readString()>();
+
+        r0.<com.startapp.android.publish.model.AdDetails: java.lang.String imageUrl> = $r2;
+
+        $r2 = virtualinvoke $r1.<android.os.Parcel: java.lang.String readString()>();
+
+        r0.<com.startapp.android.publish.model.AdDetails: java.lang.String secondaryImageUrl> = $r2;
+
+        $f0 = virtualinvoke $r1.<android.os.Parcel: float readFloat()>();
+
+        r0.<com.startapp.android.publish.model.AdDetails: float rating> = $f0;
+
+        $i0 = virtualinvoke $r1.<android.os.Parcel: int readInt()>();
+
+        $i1 = virtualinvoke $r1.<android.os.Parcel: int readInt()>();
+
+        r0.<com.startapp.android.publish.model.AdDetails: boolean smartRedirect> = 0;
+
+        if $i0 != 1 goto label1;
+
+        r0.<com.startapp.android.publish.model.AdDetails: boolean smartRedirect> = 1;
+
+     label1:
+        r0.<com.startapp.android.publish.model.AdDetails: boolean startappBrowserEnabled> = 1;
+
+        if $i1 != 0 goto label2;
+
+        r0.<com.startapp.android.publish.model.AdDetails: boolean startappBrowserEnabled> = 0;
+
+     label2:
+        $r2 = virtualinvoke $r1.<android.os.Parcel: java.lang.String readString()>();
+
+        r0.<com.startapp.android.publish.model.AdDetails: java.lang.String template> = $r2;
+
+        $r2 = virtualinvoke $r1.<android.os.Parcel: java.lang.String readString()>();
+
+        r0.<com.startapp.android.publish.model.AdDetails: java.lang.String packageName> = $r2;
+
+        $r2 = virtualinvoke $r1.<android.os.Parcel: java.lang.String readString()>();
+
+        r0.<com.startapp.android.publish.model.AdDetails: java.lang.String appPresencePackage> = $r2;
+
+        $r2 = virtualinvoke $r1.<android.os.Parcel: java.lang.String readString()>();
+
+        r0.<com.startapp.android.publish.model.AdDetails: java.lang.String intentPackageName> = $r2;
+
+        $r2 = virtualinvoke $r1.<android.os.Parcel: java.lang.String readString()>();
+
+        r0.<com.startapp.android.publish.model.AdDetails: java.lang.String intentDetails> = $r2;
+
+        $i0 = virtualinvoke $r1.<android.os.Parcel: int readInt()>();
+
+        r0.<com.startapp.android.publish.model.AdDetails: int minAppVersion> = $i0;
+
+        $r2 = virtualinvoke $r1.<android.os.Parcel: java.lang.String readString()>();
+
+        r0.<com.startapp.android.publish.model.AdDetails: java.lang.String installs> = $r2;
+
+        $r2 = virtualinvoke $r1.<android.os.Parcel: java.lang.String readString()>();
+
+        r0.<com.startapp.android.publish.model.AdDetails: java.lang.String category> = $r2;
+
+        $i0 = virtualinvoke $r1.<android.os.Parcel: int readInt()>();
+
+        r0.<com.startapp.android.publish.model.AdDetails: boolean app> = 0;
+
+        if $i0 != 1 goto label3;
+
+        r0.<com.startapp.android.publish.model.AdDetails: boolean app> = 1;
+
+     label3:
+        $l2 = virtualinvoke $r1.<android.os.Parcel: long readLong()>();
+
+        $r3 = staticinvoke <java.lang.Long: java.lang.Long valueOf(long)>($l2);
+
+        r0.<com.startapp.android.publish.model.AdDetails: java.lang.Long ttl> = $r3;
+
+        $r3 = r0.<com.startapp.android.publish.model.AdDetails: java.lang.Long ttl>;
+
+        $l2 = virtualinvoke $r3.<java.lang.Long: long longValue()>();
+
+        $b3 = $l2 cmp -1L;
+
+        if $b3 != 0 goto label4;
+
+        r0.<com.startapp.android.publish.model.AdDetails: java.lang.Long ttl> = null;
+
+     label4:
+        $l2 = virtualinvoke $r1.<android.os.Parcel: long readLong()>();
+
+        $r3 = staticinvoke <java.lang.Long: java.lang.Long valueOf(long)>($l2);
+
+        r0.<com.startapp.android.publish.model.AdDetails: java.lang.Long delayImpressionInSeconds> = $r3;
+
+        $r3 = r0.<com.startapp.android.publish.model.AdDetails: java.lang.Long delayImpressionInSeconds>;
+
+        $l2 = virtualinvoke $r3.<java.lang.Long: long longValue()>();
+
+        $b3 = $l2 cmp -1L;
+
+        if $b3 != 0 goto label5;
+
+        r0.<com.startapp.android.publish.model.AdDetails: java.lang.Long delayImpressionInSeconds> = null;
+
+     label5:
+        return;
+    }
+
+    public int describeContents()
+    {
+        com.startapp.android.publish.model.AdDetails r0;
+
+        r0 := @this: com.startapp.android.publish.model.AdDetails;
+
+        return 0;
+    }
+
+    public java.lang.String getAdId()
+    {
+        com.startapp.android.publish.model.AdDetails r0;
+        java.lang.String r1;
+
+        r0 := @this: com.startapp.android.publish.model.AdDetails;
+
+        r1 = r0.<com.startapp.android.publish.model.AdDetails: java.lang.String adId>;
+
+        return r1;
+    }
+
+    public java.lang.String getAppPresencePackage()
+    {
+        com.startapp.android.publish.model.AdDetails r0;
+        java.lang.String r1;
+
+        r0 := @this: com.startapp.android.publish.model.AdDetails;
+
+        r1 = r0.<com.startapp.android.publish.model.AdDetails: java.lang.String appPresencePackage>;
+
+        return r1;
+    }
+
+    public java.lang.String getCategory()
+    {
+        com.startapp.android.publish.model.AdDetails r0;
+        java.lang.String r1;
+
+        r0 := @this: com.startapp.android.publish.model.AdDetails;
+
+        r1 = r0.<com.startapp.android.publish.model.AdDetails: java.lang.String category>;
+
+        return r1;
+    }
+
+    public java.lang.String getClickUrl()
+    {
+        com.startapp.android.publish.model.AdDetails r0;
+        java.lang.String r1;
+
+        r0 := @this: com.startapp.android.publish.model.AdDetails;
+
+        r1 = r0.<com.startapp.android.publish.model.AdDetails: java.lang.String clickUrl>;
+
+        return r1;
+    }
+
+    public java.lang.Long getDelayImpressionInSeconds()
+    {
+        com.startapp.android.publish.model.AdDetails r0;
+        java.lang.Long r1;
+
+        r0 := @this: com.startapp.android.publish.model.AdDetails;
+
+        r1 = r0.<com.startapp.android.publish.model.AdDetails: java.lang.Long delayImpressionInSeconds>;
+
+        return r1;
+    }
+
+    public java.lang.String getDescription()
+    {
+        com.startapp.android.publish.model.AdDetails r0;
+        java.lang.String r1;
+
+        r0 := @this: com.startapp.android.publish.model.AdDetails;
+
+        r1 = r0.<com.startapp.android.publish.model.AdDetails: java.lang.String description>;
+
+        return r1;
+    }
+
+    public java.lang.String getImageUrl()
+    {
+        com.startapp.android.publish.model.AdDetails r0;
+        java.lang.String r1;
+
+        r0 := @this: com.startapp.android.publish.model.AdDetails;
+
+        r1 = r0.<com.startapp.android.publish.model.AdDetails: java.lang.String imageUrl>;
+
+        return r1;
+    }
+
+    public java.lang.String getInstalls()
+    {
+        com.startapp.android.publish.model.AdDetails r0;
+        java.lang.String r1;
+
+        r0 := @this: com.startapp.android.publish.model.AdDetails;
+
+        r1 = r0.<com.startapp.android.publish.model.AdDetails: java.lang.String installs>;
+
+        return r1;
+    }
+
+    public java.lang.String getIntentDetails()
+    {
+        com.startapp.android.publish.model.AdDetails r0;
+        java.lang.String r1;
+
+        r0 := @this: com.startapp.android.publish.model.AdDetails;
+
+        r1 = r0.<com.startapp.android.publish.model.AdDetails: java.lang.String intentDetails>;
+
+        return r1;
+    }
+
+    public java.lang.String getIntentPackageName()
+    {
+        com.startapp.android.publish.model.AdDetails r0;
+        java.lang.String r1;
+
+        r0 := @this: com.startapp.android.publish.model.AdDetails;
+
+        r1 = r0.<com.startapp.android.publish.model.AdDetails: java.lang.String intentPackageName>;
+
+        return r1;
+    }
+
+    public int getMinAppVersion()
+    {
+        com.startapp.android.publish.model.AdDetails r0;
+        int i0;
+
+        r0 := @this: com.startapp.android.publish.model.AdDetails;
+
+        i0 = r0.<com.startapp.android.publish.model.AdDetails: int minAppVersion>;
+
+        return i0;
+    }
+
+    public java.lang.String getPackageName()
+    {
+        com.startapp.android.publish.model.AdDetails r0;
+        java.lang.String r1;
+
+        r0 := @this: com.startapp.android.publish.model.AdDetails;
+
+        r1 = r0.<com.startapp.android.publish.model.AdDetails: java.lang.String packageName>;
+
+        return r1;
+    }
+
+    public float getRating()
+    {
+        com.startapp.android.publish.model.AdDetails r0;
+        float f0;
+
+        r0 := @this: com.startapp.android.publish.model.AdDetails;
+
+        f0 = r0.<com.startapp.android.publish.model.AdDetails: float rating>;
+
+        return f0;
+    }
+
+    public java.lang.String getSecondaryImageUrl()
+    {
+        com.startapp.android.publish.model.AdDetails r0;
+        java.lang.String r1;
+
+        r0 := @this: com.startapp.android.publish.model.AdDetails;
+
+        r1 = r0.<com.startapp.android.publish.model.AdDetails: java.lang.String secondaryImageUrl>;
+
+        return r1;
+    }
+
+    public java.lang.String getTemplate()
+    {
+        com.startapp.android.publish.model.AdDetails r0;
+        java.lang.String r1;
+
+        r0 := @this: com.startapp.android.publish.model.AdDetails;
+
+        r1 = r0.<com.startapp.android.publish.model.AdDetails: java.lang.String template>;
+
+        return r1;
+    }
+
+    public java.lang.String getTitle()
+    {
+        com.startapp.android.publish.model.AdDetails r0;
+        java.lang.String r1;
+
+        r0 := @this: com.startapp.android.publish.model.AdDetails;
+
+        r1 = r0.<com.startapp.android.publish.model.AdDetails: java.lang.String title>;
+
+        return r1;
+    }
+
+    public java.lang.String getTrackingClickUrl()
+    {
+        com.startapp.android.publish.model.AdDetails r0;
+        java.lang.String r1;
+
+        r0 := @this: com.startapp.android.publish.model.AdDetails;
+
+        r1 = r0.<com.startapp.android.publish.model.AdDetails: java.lang.String trackingClickUrl>;
+
+        return r1;
+    }
+
+    public java.lang.String getTrackingCloseUrl()
+    {
+        com.startapp.android.publish.model.AdDetails r0;
+        java.lang.String r1;
+
+        r0 := @this: com.startapp.android.publish.model.AdDetails;
+
+        r1 = r0.<com.startapp.android.publish.model.AdDetails: java.lang.String closeUrl>;
+
+        return r1;
+    }
+
+    public java.lang.String getTrackingUrl()
+    {
+        com.startapp.android.publish.model.AdDetails r0;
+        java.lang.String r1;
+
+        r0 := @this: com.startapp.android.publish.model.AdDetails;
+
+        r1 = r0.<com.startapp.android.publish.model.AdDetails: java.lang.String trackingUrl>;
+
+        return r1;
+    }
+
+    public java.lang.Long getTtl()
+    {
+        com.startapp.android.publish.model.AdDetails r0;
+        java.lang.Long r1;
+
+        r0 := @this: com.startapp.android.publish.model.AdDetails;
+
+        r1 = r0.<com.startapp.android.publish.model.AdDetails: java.lang.Long ttl>;
+
+        return r1;
+    }
+
+    public boolean isApp()
+    {
+        com.startapp.android.publish.model.AdDetails r0;
+        boolean z0;
+
+        r0 := @this: com.startapp.android.publish.model.AdDetails;
+
+        z0 = r0.<com.startapp.android.publish.model.AdDetails: boolean app>;
+
+        return z0;
+    }
+
+    public boolean isCPE()
+    {
+        com.startapp.android.publish.model.AdDetails r0;
+        java.lang.String $r1;
+
+        r0 := @this: com.startapp.android.publish.model.AdDetails;
+
+        $r1 = r0.<com.startapp.android.publish.model.AdDetails: java.lang.String intentPackageName>;
+
+        if $r1 == null goto label1;
+
+        return 1;
+
+     label1:
+        return 0;
+    }
+
+    public boolean isSmartRedirect()
+    {
+        com.startapp.android.publish.model.AdDetails r0;
+        boolean z0;
+
+        r0 := @this: com.startapp.android.publish.model.AdDetails;
+
+        z0 = r0.<com.startapp.android.publish.model.AdDetails: boolean smartRedirect>;
+
+        return z0;
+    }
+
+    public boolean isStartappBrowserEnabled()
+    {
+        com.startapp.android.publish.model.AdDetails r0;
+        boolean z0;
+
+        r0 := @this: com.startapp.android.publish.model.AdDetails;
+
+        z0 = r0.<com.startapp.android.publish.model.AdDetails: boolean startappBrowserEnabled>;
+
+        return z0;
+    }
+
+    public void setMinAppVersion(int)
+    {
+        com.startapp.android.publish.model.AdDetails r0;
+        int $i0;
+
+        r0 := @this: com.startapp.android.publish.model.AdDetails;
+
+        $i0 := @parameter0: int;
+
+        r0.<com.startapp.android.publish.model.AdDetails: int minAppVersion> = $i0;
+
+        return;
+    }
+
+    public void setStartappBrowserEnabled(boolean)
+    {
+        com.startapp.android.publish.model.AdDetails r0;
+        boolean $z0;
+
+        r0 := @this: com.startapp.android.publish.model.AdDetails;
+
+        $z0 := @parameter0: boolean;
+
+        r0.<com.startapp.android.publish.model.AdDetails: boolean startappBrowserEnabled> = $z0;
+
+        return;
+    }
+
+    public java.lang.String toString()
+    {
+        com.startapp.android.publish.model.AdDetails r0;
+        java.lang.StringBuilder $r1;
+        java.lang.String $r2;
+        float $f0;
+        boolean $z0;
+        int $i0;
+        java.lang.Long $r3;
+
+        r0 := @this: com.startapp.android.publish.model.AdDetails;
+
+        $r1 = new java.lang.StringBuilder;
+
+        specialinvoke $r1.<java.lang.StringBuilder: void <init>()>();
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("AdDetails [adId=");
+
+        $r2 = r0.<com.startapp.android.publish.model.AdDetails: java.lang.String adId>;
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r2);
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(", clickUrl=");
+
+        $r2 = r0.<com.startapp.android.publish.model.AdDetails: java.lang.String clickUrl>;
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r2);
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(", trackingUrl=");
+
+        $r2 = r0.<com.startapp.android.publish.model.AdDetails: java.lang.String trackingUrl>;
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r2);
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(", trackingClickUrl=");
+
+        $r2 = r0.<com.startapp.android.publish.model.AdDetails: java.lang.String trackingClickUrl>;
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r2);
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(", closeUrl=");
+
+        $r2 = r0.<com.startapp.android.publish.model.AdDetails: java.lang.String closeUrl>;
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r2);
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(", title=");
+
+        $r2 = r0.<com.startapp.android.publish.model.AdDetails: java.lang.String title>;
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r2);
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(", description=");
+
+        $r2 = r0.<com.startapp.android.publish.model.AdDetails: java.lang.String description>;
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r2);
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(", imageUrl=");
+
+        $r2 = r0.<com.startapp.android.publish.model.AdDetails: java.lang.String imageUrl>;
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r2);
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(", secondaryImageUrl=");
+
+        $r2 = r0.<com.startapp.android.publish.model.AdDetails: java.lang.String secondaryImageUrl>;
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r2);
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(", rating=");
+
+        $f0 = r0.<com.startapp.android.publish.model.AdDetails: float rating>;
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(float)>($f0);
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(", smartRedirect=");
+
+        $z0 = r0.<com.startapp.android.publish.model.AdDetails: boolean smartRedirect>;
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(boolean)>($z0);
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(", template=");
+
+        $r2 = r0.<com.startapp.android.publish.model.AdDetails: java.lang.String template>;
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r2);
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(", packageName=");
+
+        $r2 = r0.<com.startapp.android.publish.model.AdDetails: java.lang.String packageName>;
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r2);
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(", appPresencePackage=");
+
+        $r2 = r0.<com.startapp.android.publish.model.AdDetails: java.lang.String appPresencePackage>;
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r2);
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(", intentDetails=");
+
+        $r2 = r0.<com.startapp.android.publish.model.AdDetails: java.lang.String intentDetails>;
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r2);
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(", intentPackageName=");
+
+        $r2 = r0.<com.startapp.android.publish.model.AdDetails: java.lang.String intentPackageName>;
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r2);
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(", minAppVersion=");
+
+        $i0 = r0.<com.startapp.android.publish.model.AdDetails: int minAppVersion>;
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>($i0);
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(", startappBrowserEnabled=");
+
+        $z0 = r0.<com.startapp.android.publish.model.AdDetails: boolean startappBrowserEnabled>;
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(boolean)>($z0);
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(", ttl=");
+
+        $r3 = r0.<com.startapp.android.publish.model.AdDetails: java.lang.Long ttl>;
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($r3);
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(", app=");
+
+        $z0 = r0.<com.startapp.android.publish.model.AdDetails: boolean app>;
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(boolean)>($z0);
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(", installs=");
+
+        $r2 = r0.<com.startapp.android.publish.model.AdDetails: java.lang.String installs>;
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r2);
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(", category=");
+
+        $r2 = r0.<com.startapp.android.publish.model.AdDetails: java.lang.String category>;
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r2);
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(", delayImpressionInSeconds=");
+
+        $r3 = r0.<com.startapp.android.publish.model.AdDetails: java.lang.Long delayImpressionInSeconds>;
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($r3);
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("]");
+
+        $r2 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        return $r2;
+    }
+
+    public void writeToParcel(android.os.Parcel, int)
+    {
+        com.startapp.android.publish.model.AdDetails r0;
+        android.os.Parcel $r1;
+        int $i0;
+        byte $b1, $b2, $b3;
+        java.lang.String $r2;
+        float $f0;
+        boolean $z0;
+        java.lang.Long $r3;
+        long $l4;
+
+        r0 := @this: com.startapp.android.publish.model.AdDetails;
+
+        $r1 := @parameter0: android.os.Parcel;
+
+        $i0 := @parameter1: int;
+
+        $b1 = 1;
+
+        $r2 = r0.<com.startapp.android.publish.model.AdDetails: java.lang.String adId>;
+
+        virtualinvoke $r1.<android.os.Parcel: void writeString(java.lang.String)>($r2);
+
+        $r2 = r0.<com.startapp.android.publish.model.AdDetails: java.lang.String clickUrl>;
+
+        virtualinvoke $r1.<android.os.Parcel: void writeString(java.lang.String)>($r2);
+
+        $r2 = r0.<com.startapp.android.publish.model.AdDetails: java.lang.String trackingUrl>;
+
+        virtualinvoke $r1.<android.os.Parcel: void writeString(java.lang.String)>($r2);
+
+        $r2 = r0.<com.startapp.android.publish.model.AdDetails: java.lang.String trackingClickUrl>;
+
+        virtualinvoke $r1.<android.os.Parcel: void writeString(java.lang.String)>($r2);
+
+        $r2 = r0.<com.startapp.android.publish.model.AdDetails: java.lang.String closeUrl>;
+
+        virtualinvoke $r1.<android.os.Parcel: void writeString(java.lang.String)>($r2);
+
+        $r2 = r0.<com.startapp.android.publish.model.AdDetails: java.lang.String title>;
+
+        virtualinvoke $r1.<android.os.Parcel: void writeString(java.lang.String)>($r2);
+
+        $r2 = r0.<com.startapp.android.publish.model.AdDetails: java.lang.String description>;
+
+        virtualinvoke $r1.<android.os.Parcel: void writeString(java.lang.String)>($r2);
+
+        $r2 = r0.<com.startapp.android.publish.model.AdDetails: java.lang.String imageUrl>;
+
+        virtualinvoke $r1.<android.os.Parcel: void writeString(java.lang.String)>($r2);
+
+        $r2 = r0.<com.startapp.android.publish.model.AdDetails: java.lang.String secondaryImageUrl>;
+
+        virtualinvoke $r1.<android.os.Parcel: void writeString(java.lang.String)>($r2);
+
+        $f0 = r0.<com.startapp.android.publish.model.AdDetails: float rating>;
+
+        virtualinvoke $r1.<android.os.Parcel: void writeFloat(float)>($f0);
+
+        $z0 = r0.<com.startapp.android.publish.model.AdDetails: boolean smartRedirect>;
+
+        if $z0 == 0 goto label9;
+
+        $b2 = 1;
+
+     label1:
+        $z0 = r0.<com.startapp.android.publish.model.AdDetails: boolean startappBrowserEnabled>;
+
+        if $z0 != 0 goto label8;
+
+        $b3 = 0;
+
+     label2:
+        virtualinvoke $r1.<android.os.Parcel: void writeInt(int)>($b2);
+
+        virtualinvoke $r1.<android.os.Parcel: void writeInt(int)>($b3);
+
+        $r2 = r0.<com.startapp.android.publish.model.AdDetails: java.lang.String template>;
+
+        virtualinvoke $r1.<android.os.Parcel: void writeString(java.lang.String)>($r2);
+
+        $r2 = r0.<com.startapp.android.publish.model.AdDetails: java.lang.String packageName>;
+
+        virtualinvoke $r1.<android.os.Parcel: void writeString(java.lang.String)>($r2);
+
+        $r2 = r0.<com.startapp.android.publish.model.AdDetails: java.lang.String appPresencePackage>;
+
+        virtualinvoke $r1.<android.os.Parcel: void writeString(java.lang.String)>($r2);
+
+        $r2 = r0.<com.startapp.android.publish.model.AdDetails: java.lang.String intentPackageName>;
+
+        virtualinvoke $r1.<android.os.Parcel: void writeString(java.lang.String)>($r2);
+
+        $r2 = r0.<com.startapp.android.publish.model.AdDetails: java.lang.String intentDetails>;
+
+        virtualinvoke $r1.<android.os.Parcel: void writeString(java.lang.String)>($r2);
+
+        $i0 = r0.<com.startapp.android.publish.model.AdDetails: int minAppVersion>;
+
+        virtualinvoke $r1.<android.os.Parcel: void writeInt(int)>($i0);
+
+        $r2 = r0.<com.startapp.android.publish.model.AdDetails: java.lang.String installs>;
+
+        virtualinvoke $r1.<android.os.Parcel: void writeString(java.lang.String)>($r2);
+
+        $r2 = r0.<com.startapp.android.publish.model.AdDetails: java.lang.String category>;
+
+        virtualinvoke $r1.<android.os.Parcel: void writeString(java.lang.String)>($r2);
+
+        $z0 = r0.<com.startapp.android.publish.model.AdDetails: boolean app>;
+
+        if $z0 == 0 goto label7;
+
+     label3:
+        virtualinvoke $r1.<android.os.Parcel: void writeInt(int)>($b1);
+
+        $r3 = r0.<com.startapp.android.publish.model.AdDetails: java.lang.Long ttl>;
+
+        if $r3 == null goto label5;
+
+        $r3 = r0.<com.startapp.android.publish.model.AdDetails: java.lang.Long ttl>;
+
+        $l4 = virtualinvoke $r3.<java.lang.Long: long longValue()>();
+
+        virtualinvoke $r1.<android.os.Parcel: void writeLong(long)>($l4);
+
+     label4:
+        $r3 = r0.<com.startapp.android.publish.model.AdDetails: java.lang.Long delayImpressionInSeconds>;
+
+        if $r3 == null goto label6;
+
+        $r3 = r0.<com.startapp.android.publish.model.AdDetails: java.lang.Long delayImpressionInSeconds>;
+
+        $l4 = virtualinvoke $r3.<java.lang.Long: long longValue()>();
+
+        virtualinvoke $r1.<android.os.Parcel: void writeLong(long)>($l4);
+
+        return;
+
+     label5:
+        virtualinvoke $r1.<android.os.Parcel: void writeLong(long)>(-1L);
+
+        goto label4;
+
+     label6:
+        virtualinvoke $r1.<android.os.Parcel: void writeLong(long)>(-1L);
+
+        return;
+
+     label7:
+        $b1 = 0;
+
+        goto label3;
+
+     label8:
+        $b3 = 1;
+
+        goto label2;
+
+     label9:
+        $b2 = 0;
+
+        goto label1;
+    }
+}

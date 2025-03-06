@@ -1,0 +1,67 @@
+public class org.codehaus.jackson.map.introspect.BasicClassIntrospector$SetterMethodFilter extends java.lang.Object implements org.codehaus.jackson.map.introspect.MethodFilter
+{
+    public static final org.codehaus.jackson.map.introspect.BasicClassIntrospector$SetterMethodFilter instance;
+
+    static void <clinit>()
+    {
+        org.codehaus.jackson.map.introspect.BasicClassIntrospector$SetterMethodFilter $r0;
+
+        $r0 = new org.codehaus.jackson.map.introspect.BasicClassIntrospector$SetterMethodFilter;
+
+        specialinvoke $r0.<org.codehaus.jackson.map.introspect.BasicClassIntrospector$SetterMethodFilter: void <init>()>();
+
+        <org.codehaus.jackson.map.introspect.BasicClassIntrospector$SetterMethodFilter: org.codehaus.jackson.map.introspect.BasicClassIntrospector$SetterMethodFilter instance> = $r0;
+
+        return;
+    }
+
+    public void <init>()
+    {
+        org.codehaus.jackson.map.introspect.BasicClassIntrospector$SetterMethodFilter r0;
+
+        r0 := @this: org.codehaus.jackson.map.introspect.BasicClassIntrospector$SetterMethodFilter;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public boolean includeMethod(java.lang.reflect.Method)
+    {
+        org.codehaus.jackson.map.introspect.BasicClassIntrospector$SetterMethodFilter r0;
+        java.lang.reflect.Method $r1;
+        int i0;
+        boolean $z0;
+        java.lang.Class[] $r2;
+
+        r0 := @this: org.codehaus.jackson.map.introspect.BasicClassIntrospector$SetterMethodFilter;
+
+        $r1 := @parameter0: java.lang.reflect.Method;
+
+        i0 = virtualinvoke $r1.<java.lang.reflect.Method: int getModifiers()>();
+
+        $z0 = staticinvoke <java.lang.reflect.Modifier: boolean isStatic(int)>(i0);
+
+        if $z0 == 0 goto label1;
+
+        return 0;
+
+     label1:
+        $r2 = virtualinvoke $r1.<java.lang.reflect.Method: java.lang.Class[] getParameterTypes()>();
+
+        i0 = lengthof $r2;
+
+        lookupswitch(i0)
+        {
+            case 1: goto label3;
+            case 2: goto label3;
+            default: goto label2;
+        };
+
+     label2:
+        return 0;
+
+     label3:
+        return 1;
+    }
+}

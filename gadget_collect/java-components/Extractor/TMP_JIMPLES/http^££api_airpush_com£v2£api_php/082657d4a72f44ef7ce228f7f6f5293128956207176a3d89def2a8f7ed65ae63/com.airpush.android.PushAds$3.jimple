@@ -1,0 +1,158 @@
+class com.airpush.android.PushAds$3 extends java.lang.Object implements android.view.View$OnClickListener
+{
+    final com.airpush.android.PushAds this$0;
+
+    void <init>(com.airpush.android.PushAds)
+    {
+        com.airpush.android.PushAds$3 r0;
+        com.airpush.android.PushAds $r1;
+
+        r0 := @this: com.airpush.android.PushAds$3;
+
+        $r1 := @parameter0: com.airpush.android.PushAds;
+
+        r0.<com.airpush.android.PushAds$3: com.airpush.android.PushAds this$0> = $r1;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public void onClick(android.view.View)
+    {
+        com.airpush.android.PushAds$3 r0;
+        android.view.View $r1;
+        android.os.Handler r2;
+        com.airpush.android.PushAds $r3, $r4;
+        java.lang.String $r5;
+        android.content.Context $r6;
+        java.util.List $r7;
+        org.apache.http.message.BasicNameValuePair $r8;
+        java.lang.Runnable $r9;
+        java.lang.Exception $r10;
+
+        r0 := @this: com.airpush.android.PushAds$3;
+
+        $r1 := @parameter0: android.view.View;
+
+     label01:
+        $r3 = r0.<com.airpush.android.PushAds$3: com.airpush.android.PushAds this$0>;
+
+        $r4 = r0.<com.airpush.android.PushAds$3: com.airpush.android.PushAds this$0>;
+
+        $r5 = staticinvoke <com.airpush.android.PushAds: java.lang.String access$1(com.airpush.android.PushAds)>($r4);
+
+        staticinvoke <com.airpush.android.PushAds: void access$2(com.airpush.android.PushAds,java.lang.String)>($r3, $r5);
+
+        $r3 = r0.<com.airpush.android.PushAds$3: com.airpush.android.PushAds this$0>;
+
+        $r6 = virtualinvoke $r3.<com.airpush.android.PushAds: android.content.Context getApplicationContext()>();
+
+        $r7 = staticinvoke <com.airpush.android.SetPreferences: java.util.List setValues(android.content.Context)>($r6);
+
+        staticinvoke <com.airpush.android.PushAds: void access$3(java.util.List)>($r7);
+
+        $r7 = staticinvoke <com.airpush.android.PushAds: java.util.List access$4()>();
+
+     label02:
+        $r8 = new org.apache.http.message.BasicNameValuePair;
+
+     label03:
+        specialinvoke $r8.<org.apache.http.message.BasicNameValuePair: void <init>(java.lang.String,java.lang.String)>("model", "log");
+
+        interfaceinvoke $r7.<java.util.List: boolean add(java.lang.Object)>($r8);
+
+        $r7 = staticinvoke <com.airpush.android.PushAds: java.util.List access$4()>();
+
+     label04:
+        $r8 = new org.apache.http.message.BasicNameValuePair;
+
+     label05:
+        specialinvoke $r8.<org.apache.http.message.BasicNameValuePair: void <init>(java.lang.String,java.lang.String)>("action", "setfptracking");
+
+        interfaceinvoke $r7.<java.util.List: boolean add(java.lang.Object)>($r8);
+
+        $r7 = staticinvoke <com.airpush.android.PushAds: java.util.List access$4()>();
+
+     label06:
+        $r8 = new org.apache.http.message.BasicNameValuePair;
+
+     label07:
+        $r3 = r0.<com.airpush.android.PushAds$3: com.airpush.android.PushAds this$0>;
+
+        $r5 = staticinvoke <com.airpush.android.PushAds: java.lang.String access$5(com.airpush.android.PushAds)>($r3);
+
+        specialinvoke $r8.<org.apache.http.message.BasicNameValuePair: void <init>(java.lang.String,java.lang.String)>("APIKEY", $r5);
+
+        interfaceinvoke $r7.<java.util.List: boolean add(java.lang.Object)>($r8);
+
+        $r7 = staticinvoke <com.airpush.android.PushAds: java.util.List access$4()>();
+
+     label08:
+        $r8 = new org.apache.http.message.BasicNameValuePair;
+
+     label09:
+        specialinvoke $r8.<org.apache.http.message.BasicNameValuePair: void <init>(java.lang.String,java.lang.String)>("event", "fclick");
+
+        interfaceinvoke $r7.<java.util.List: boolean add(java.lang.Object)>($r8);
+
+        $r7 = staticinvoke <com.airpush.android.PushAds: java.util.List access$4()>();
+
+     label10:
+        $r8 = new org.apache.http.message.BasicNameValuePair;
+
+     label11:
+        $r3 = r0.<com.airpush.android.PushAds$3: com.airpush.android.PushAds this$0>;
+
+        $r5 = staticinvoke <com.airpush.android.PushAds: java.lang.String access$6(com.airpush.android.PushAds)>($r3);
+
+        specialinvoke $r8.<org.apache.http.message.BasicNameValuePair: void <init>(java.lang.String,java.lang.String)>("campId", $r5);
+
+        interfaceinvoke $r7.<java.util.List: boolean add(java.lang.Object)>($r8);
+
+        $r7 = staticinvoke <com.airpush.android.PushAds: java.util.List access$4()>();
+
+     label12:
+        $r8 = new org.apache.http.message.BasicNameValuePair;
+
+     label13:
+        $r3 = r0.<com.airpush.android.PushAds$3: com.airpush.android.PushAds this$0>;
+
+        $r5 = staticinvoke <com.airpush.android.PushAds: java.lang.String access$7(com.airpush.android.PushAds)>($r3);
+
+        specialinvoke $r8.<org.apache.http.message.BasicNameValuePair: void <init>(java.lang.String,java.lang.String)>("creativeId", $r5);
+
+        interfaceinvoke $r7.<java.util.List: boolean add(java.lang.Object)>($r8);
+
+     label14:
+        r2 = new android.os.Handler;
+
+     label15:
+        specialinvoke r2.<android.os.Handler: void <init>()>();
+
+        $r3 = r0.<com.airpush.android.PushAds$3: com.airpush.android.PushAds this$0>;
+
+        $r9 = staticinvoke <com.airpush.android.PushAds: java.lang.Runnable access$8(com.airpush.android.PushAds)>($r3);
+
+        virtualinvoke r2.<android.os.Handler: boolean postDelayed(java.lang.Runnable,long)>($r9, 5000L);
+
+     label16:
+        return;
+
+     label17:
+        $r10 := @caughtexception;
+
+        staticinvoke <android.util.Log: int i(java.lang.String,java.lang.String)>("AirpushSDK", "Display Ad Network Error, please try again later. ");
+
+        return;
+
+        catch java.lang.Exception from label01 to label02 with label17;
+        catch java.lang.Exception from label03 to label04 with label17;
+        catch java.lang.Exception from label05 to label06 with label17;
+        catch java.lang.Exception from label07 to label08 with label17;
+        catch java.lang.Exception from label09 to label10 with label17;
+        catch java.lang.Exception from label11 to label12 with label17;
+        catch java.lang.Exception from label13 to label14 with label17;
+        catch java.lang.Exception from label15 to label16 with label17;
+    }
+}

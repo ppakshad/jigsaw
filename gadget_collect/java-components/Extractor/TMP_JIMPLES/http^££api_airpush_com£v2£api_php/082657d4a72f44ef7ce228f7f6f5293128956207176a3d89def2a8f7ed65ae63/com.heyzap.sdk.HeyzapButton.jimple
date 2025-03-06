@@ -1,0 +1,163 @@
+public class com.heyzap.sdk.HeyzapButton extends android.widget.ImageButton
+{
+    private java.lang.String checkinMessage;
+
+    public void <init>(android.content.Context)
+    {
+        com.heyzap.sdk.HeyzapButton r0;
+        android.content.Context $r1;
+
+        r0 := @this: com.heyzap.sdk.HeyzapButton;
+
+        $r1 := @parameter0: android.content.Context;
+
+        specialinvoke r0.<android.widget.ImageButton: void <init>(android.content.Context)>($r1);
+
+        r0.<com.heyzap.sdk.HeyzapButton: java.lang.String checkinMessage> = "";
+
+        specialinvoke r0.<com.heyzap.sdk.HeyzapButton: void init(android.content.Context,android.util.AttributeSet)>($r1, null);
+
+        return;
+    }
+
+    public void <init>(android.content.Context, android.util.AttributeSet)
+    {
+        com.heyzap.sdk.HeyzapButton r0;
+        android.content.Context $r1;
+        android.util.AttributeSet $r2;
+
+        r0 := @this: com.heyzap.sdk.HeyzapButton;
+
+        $r1 := @parameter0: android.content.Context;
+
+        $r2 := @parameter1: android.util.AttributeSet;
+
+        specialinvoke r0.<android.widget.ImageButton: void <init>(android.content.Context,android.util.AttributeSet)>($r1, $r2);
+
+        r0.<com.heyzap.sdk.HeyzapButton: java.lang.String checkinMessage> = "";
+
+        specialinvoke r0.<com.heyzap.sdk.HeyzapButton: void init(android.content.Context,android.util.AttributeSet)>($r1, $r2);
+
+        return;
+    }
+
+    public void <init>(android.content.Context, android.util.AttributeSet, int)
+    {
+        com.heyzap.sdk.HeyzapButton r0;
+        android.content.Context $r1;
+        android.util.AttributeSet $r2;
+        int $i0;
+
+        r0 := @this: com.heyzap.sdk.HeyzapButton;
+
+        $r1 := @parameter0: android.content.Context;
+
+        $r2 := @parameter1: android.util.AttributeSet;
+
+        $i0 := @parameter2: int;
+
+        specialinvoke r0.<android.widget.ImageButton: void <init>(android.content.Context,android.util.AttributeSet,int)>($r1, $r2, $i0);
+
+        r0.<com.heyzap.sdk.HeyzapButton: java.lang.String checkinMessage> = "";
+
+        specialinvoke r0.<com.heyzap.sdk.HeyzapButton: void init(android.content.Context,android.util.AttributeSet)>($r1, $r2);
+
+        return;
+    }
+
+    static java.lang.String access$100(com.heyzap.sdk.HeyzapButton)
+    {
+        com.heyzap.sdk.HeyzapButton $r0;
+        java.lang.String r1;
+
+        $r0 := @parameter0: com.heyzap.sdk.HeyzapButton;
+
+        r1 = $r0.<com.heyzap.sdk.HeyzapButton: java.lang.String checkinMessage>;
+
+        return r1;
+    }
+
+    private void init(android.content.Context, android.util.AttributeSet)
+    {
+        com.heyzap.sdk.HeyzapButton r0;
+        android.content.Context $r1;
+        android.util.AttributeSet $r2;
+        java.lang.String $r3, $r4;
+        boolean $z0;
+        com.heyzap.sdk.HeyzapButton$ButtonOnClickListener $r5;
+
+        r0 := @this: com.heyzap.sdk.HeyzapButton;
+
+        $r1 := @parameter0: android.content.Context;
+
+        $r2 := @parameter1: android.util.AttributeSet;
+
+        $z0 = staticinvoke <com.heyzap.sdk.Utils: boolean androidVersionSupported()>();
+
+        if $z0 != 0 goto label1;
+
+        virtualinvoke r0.<com.heyzap.sdk.HeyzapButton: void setVisibility(int)>(4);
+
+        return;
+
+     label1:
+        if $r2 == null goto label2;
+
+        $r4 = interfaceinvoke $r2.<android.util.AttributeSet: java.lang.String getAttributeValue(java.lang.String,java.lang.String)>(null, "checkinMessage");
+
+        $r3 = r0.<com.heyzap.sdk.HeyzapButton: java.lang.String checkinMessage>;
+
+        if $r3 == null goto label2;
+
+        r0.<com.heyzap.sdk.HeyzapButton: java.lang.String checkinMessage> = $r4;
+
+     label2:
+        staticinvoke <com.heyzap.sdk.HeyzapLib: void sendNotification(android.content.Context)>($r1);
+
+        virtualinvoke r0.<com.heyzap.sdk.HeyzapButton: void setBackgroundColor(int)>(0);
+
+        virtualinvoke r0.<com.heyzap.sdk.HeyzapButton: void setAdjustViewBounds(boolean)>(1);
+
+        virtualinvoke r0.<com.heyzap.sdk.HeyzapButton: void drawableStateChanged()>();
+
+        $r5 = new com.heyzap.sdk.HeyzapButton$ButtonOnClickListener;
+
+        specialinvoke $r5.<com.heyzap.sdk.HeyzapButton$ButtonOnClickListener: void <init>(com.heyzap.sdk.HeyzapButton,com.heyzap.sdk.HeyzapButton$1)>(r0, null);
+
+        virtualinvoke r0.<com.heyzap.sdk.HeyzapButton: void setOnClickListener(android.view.View$OnClickListener)>($r5);
+
+        staticinvoke <com.heyzap.sdk.HeyzapAnalytics: void trackEvent(android.content.Context,java.lang.String)>($r1, "checkin-button-shown");
+
+        staticinvoke <com.heyzap.sdk.HeyzapLib: void broadcastEnableSDK(android.content.Context)>($r1);
+
+        staticinvoke <com.heyzap.sdk.Drawables: void setImageDrawable(android.content.Context,android.widget.ImageView,java.lang.String)>($r1, r0, "heyzap_button.png");
+
+        return;
+    }
+
+    public java.lang.String getCheckinMessage()
+    {
+        com.heyzap.sdk.HeyzapButton r0;
+        java.lang.String r1;
+
+        r0 := @this: com.heyzap.sdk.HeyzapButton;
+
+        r1 = r0.<com.heyzap.sdk.HeyzapButton: java.lang.String checkinMessage>;
+
+        return r1;
+    }
+
+    public void setCheckinMessage(java.lang.String)
+    {
+        com.heyzap.sdk.HeyzapButton r0;
+        java.lang.String $r1;
+
+        r0 := @this: com.heyzap.sdk.HeyzapButton;
+
+        $r1 := @parameter0: java.lang.String;
+
+        r0.<com.heyzap.sdk.HeyzapButton: java.lang.String checkinMessage> = $r1;
+
+        return;
+    }
+}

@@ -1,0 +1,74 @@
+public class com.startapp.android.publish.a.j extends com.startapp.android.publish.a.d
+{
+    private static final long serialVersionUID;
+
+    public void <init>(android.content.Context)
+    {
+        com.startapp.android.publish.a.j r0;
+        android.content.Context $r1;
+        com.startapp.android.publish.model.AdPreferences$Placement $r2;
+
+        r0 := @this: com.startapp.android.publish.a.j;
+
+        $r1 := @parameter0: android.content.Context;
+
+        $r2 = <com.startapp.android.publish.model.AdPreferences$Placement: com.startapp.android.publish.model.AdPreferences$Placement INAPP_RETURN>;
+
+        specialinvoke r0.<com.startapp.android.publish.a.d: void <init>(android.content.Context,com.startapp.android.publish.model.AdPreferences$Placement)>($r1, $r2);
+
+        return;
+    }
+
+    protected long getFallbackAdCacheTtl()
+    {
+        com.startapp.android.publish.a.j r0;
+        com.startapp.android.publish.model.MetaData $r1;
+        com.startapp.android.publish.model.ACMConfig $r2;
+        long $l0;
+
+        r0 := @this: com.startapp.android.publish.a.j;
+
+        $r1 = staticinvoke <com.startapp.android.publish.model.MetaData: com.startapp.android.publish.model.MetaData getInstance()>();
+
+        $r2 = virtualinvoke $r1.<com.startapp.android.publish.model.MetaData: com.startapp.android.publish.model.ACMConfig getACMConfig()>();
+
+        $l0 = virtualinvoke $r2.<com.startapp.android.publish.model.ACMConfig: long getReturnAdCacheTTL()>();
+
+        return $l0;
+    }
+
+    protected void loadAds(com.startapp.android.publish.model.AdPreferences, com.startapp.android.publish.model.SodaPreferences, com.startapp.android.publish.AdEventListener)
+    {
+        com.startapp.android.publish.a.j r0;
+        com.startapp.android.publish.model.AdPreferences $r1;
+        com.startapp.android.publish.model.SodaPreferences $r2;
+        com.startapp.android.publish.AdEventListener $r3;
+        com.startapp.android.publish.f.m $r4;
+        android.content.Context $r5;
+
+        r0 := @this: com.startapp.android.publish.a.j;
+
+        $r1 := @parameter0: com.startapp.android.publish.model.AdPreferences;
+
+        $r2 := @parameter1: com.startapp.android.publish.model.SodaPreferences;
+
+        $r3 := @parameter2: com.startapp.android.publish.AdEventListener;
+
+        $r4 = new com.startapp.android.publish.f.m;
+
+        $r5 = r0.<com.startapp.android.publish.a.j: android.content.Context context>;
+
+        specialinvoke $r4.<com.startapp.android.publish.f.m: void <init>(android.content.Context,com.startapp.android.publish.a.c,com.startapp.android.publish.model.AdPreferences,com.startapp.android.publish.model.SodaPreferences,com.startapp.android.publish.AdEventListener)>($r5, r0, $r1, $r2, $r3);
+
+        virtualinvoke $r4.<com.startapp.android.publish.f.m: void c()>();
+
+        return;
+    }
+
+    public static void <clinit>()
+    {
+        <com.startapp.android.publish.a.j: long serialVersionUID> = 1L;
+
+        return;
+    }
+}

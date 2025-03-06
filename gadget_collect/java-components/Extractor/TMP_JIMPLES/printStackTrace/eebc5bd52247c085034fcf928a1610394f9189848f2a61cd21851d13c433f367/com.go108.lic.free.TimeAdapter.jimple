@@ -1,0 +1,103 @@
+class com.go108.lic.free.TimeAdapter extends android.widget.ArrayAdapter
+{
+    private java.lang.String[] list;
+
+    public void <init>(android.content.Context, int, java.lang.String[])
+    {
+        android.content.Context $r1;
+        com.go108.lic.free.TimeAdapter r0;
+        int $i0;
+        java.lang.String[] $r2;
+
+        r0 := @this: com.go108.lic.free.TimeAdapter;
+
+        $r1 := @parameter0: android.content.Context;
+
+        $i0 := @parameter1: int;
+
+        $r2 := @parameter2: java.lang.String[];
+
+        specialinvoke r0.<android.widget.ArrayAdapter: void <init>(android.content.Context,int)>($r1, $i0);
+
+        r0.<com.go108.lic.free.TimeAdapter: java.lang.String[] list> = $r2;
+
+        return;
+    }
+
+    public android.view.View getView(int, android.view.View, android.view.ViewGroup)
+    {
+        android.content.Context $r3;
+        android.view.LayoutInflater $r5;
+        java.lang.String[] $r10;
+        android.view.ViewGroup $r1;
+        com.go108.lic.free.TimeAdapter$ViewHolder r7;
+        android.widget.TextView $r9;
+        com.go108.lic.free.TimeAdapter r0;
+        int $i0;
+        android.view.View $r2, $r6, $r8;
+        java.lang.Object $r12;
+        java.lang.String $r11;
+        android.app.Activity r4;
+
+        r0 := @this: com.go108.lic.free.TimeAdapter;
+
+        $i0 := @parameter0: int;
+
+        $r2 := @parameter1: android.view.View;
+
+        $r1 := @parameter2: android.view.ViewGroup;
+
+        $r3 = virtualinvoke r0.<com.go108.lic.free.TimeAdapter: android.content.Context getContext()>();
+
+        r4 = (android.app.Activity) $r3;
+
+        if $r2 != null goto label2;
+
+        $r5 = virtualinvoke r4.<android.app.Activity: android.view.LayoutInflater getLayoutInflater()>();
+
+        $r6 = virtualinvoke $r5.<android.view.LayoutInflater: android.view.View inflate(int,android.view.ViewGroup)>(2130903041, null);
+
+        $r2 = $r6;
+
+        r7 = new com.go108.lic.free.TimeAdapter$ViewHolder;
+
+        specialinvoke r7.<com.go108.lic.free.TimeAdapter$ViewHolder: void <init>()>();
+
+        $r8 = virtualinvoke $r6.<android.view.View: android.view.View findViewById(int)>(2131296258);
+
+        $r9 = (android.widget.TextView) $r8;
+
+        r7.<com.go108.lic.free.TimeAdapter$ViewHolder: android.widget.TextView val> = $r9;
+
+        virtualinvoke $r6.<android.view.View: void setTag(java.lang.Object)>(r7);
+
+     label1:
+        $r10 = r0.<com.go108.lic.free.TimeAdapter: java.lang.String[] list>;
+
+        $r11 = $r10[$i0];
+
+        if $r11 == null goto label3;
+
+        $r9 = r7.<com.go108.lic.free.TimeAdapter$ViewHolder: android.widget.TextView val>;
+
+        $r10 = r0.<com.go108.lic.free.TimeAdapter: java.lang.String[] list>;
+
+        $r11 = $r10[$i0];
+
+        $r11 = virtualinvoke $r11.<java.lang.String: java.lang.String toString()>();
+
+        virtualinvoke $r9.<android.widget.TextView: void setText(java.lang.CharSequence)>($r11);
+
+        return $r2;
+
+     label2:
+        $r12 = virtualinvoke $r2.<android.view.View: java.lang.Object getTag()>();
+
+        r7 = (com.go108.lic.free.TimeAdapter$ViewHolder) $r12;
+
+        goto label1;
+
+     label3:
+        return $r2;
+    }
+}

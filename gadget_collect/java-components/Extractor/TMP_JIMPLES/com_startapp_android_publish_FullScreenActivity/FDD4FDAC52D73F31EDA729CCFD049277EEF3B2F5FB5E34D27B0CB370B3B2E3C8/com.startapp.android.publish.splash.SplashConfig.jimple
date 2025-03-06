@@ -1,0 +1,1119 @@
+public class com.startapp.android.publish.splash.SplashConfig extends java.lang.Object implements java.io.Serializable
+{
+    private static long DEFAULT_MAX_LOAD;
+    private static final int INT_EMPTY_VALUE;
+    private static final java.lang.String STRING_EMPTY_VALUE;
+    private static final java.lang.String VALUE_DEFAULT_HTML_BG_COLOR;
+    private static final java.lang.String VALUE_DEFAULT_HTML_FONT_COLOR;
+    private static final java.lang.String VALUE_DEFAULT_HTML_LOADING_TYPE;
+    private static final boolean VALUE_DEFAULT_HTML_SPLASH;
+    private static final com.startapp.android.publish.splash.SplashConfig$MaxAdDisplayTime VALUE_DEFAULT_MAXADDISPLAY;
+    private static final long VALUE_DEFAULT_MAXLOAD;
+    private static final com.startapp.android.publish.splash.SplashConfig$MinSplashTime VALUE_DEFAULT_MINSPLASHTIME;
+    private static final com.startapp.android.publish.splash.SplashConfig$Orientation VALUE_DEFAULT_ORIENTATION;
+    private static final com.startapp.android.publish.splash.SplashConfig$Theme VALUE_DEFAULT_THEME;
+    private static final long serialVersionUID;
+    private java.lang.String appName;
+    private int customScreen;
+    private com.startapp.android.publish.splash.SplashConfig$MaxAdDisplayTime defaultMaxAdDisplayTime;
+    private java.lang.Long defaultMaxLoadTime;
+    private com.startapp.android.publish.splash.SplashConfig$MinSplashTime defaultMinSplashTime;
+    private com.startapp.android.publish.splash.SplashConfig$Orientation defaultOrientation;
+    private com.startapp.android.publish.splash.SplashConfig$Theme defaultTheme;
+    private transient java.lang.String errMsg;
+    private boolean forceNative;
+    private boolean htmlSplash;
+    private transient android.graphics.drawable.Drawable logo;
+    private byte[] logoByteArray;
+    private int logoRes;
+    private java.lang.String splashBgColor;
+    private java.lang.String splashFontColor;
+    private java.lang.String splashLoadingType;
+
+    static void <clinit>()
+    {
+        com.startapp.android.publish.splash.SplashConfig$Theme $r0;
+        com.startapp.android.publish.splash.SplashConfig$MinSplashTime $r1;
+        long $l0;
+        com.startapp.android.publish.splash.SplashConfig$MaxAdDisplayTime $r2;
+        com.startapp.android.publish.splash.SplashConfig$Orientation $r3;
+
+        <com.startapp.android.publish.splash.SplashConfig: long serialVersionUID> = 1L;
+
+        <com.startapp.android.publish.splash.SplashConfig: boolean VALUE_DEFAULT_HTML_SPLASH> = 1;
+
+        <com.startapp.android.publish.splash.SplashConfig: java.lang.String VALUE_DEFAULT_HTML_LOADING_TYPE> = "LoadingDots";
+
+        <com.startapp.android.publish.splash.SplashConfig: java.lang.String VALUE_DEFAULT_HTML_FONT_COLOR> = "ffffff";
+
+        <com.startapp.android.publish.splash.SplashConfig: java.lang.String VALUE_DEFAULT_HTML_BG_COLOR> = "#066CAA";
+
+        <com.startapp.android.publish.splash.SplashConfig: java.lang.String STRING_EMPTY_VALUE> = "";
+
+        <com.startapp.android.publish.splash.SplashConfig: int INT_EMPTY_VALUE> = -1;
+
+        <com.startapp.android.publish.splash.SplashConfig: long DEFAULT_MAX_LOAD> = 0L;
+
+        <com.startapp.android.publish.splash.SplashConfig: long DEFAULT_MAX_LOAD> = 7500L;
+
+        $r0 = <com.startapp.android.publish.splash.SplashConfig$Theme: com.startapp.android.publish.splash.SplashConfig$Theme OCEAN>;
+
+        <com.startapp.android.publish.splash.SplashConfig: com.startapp.android.publish.splash.SplashConfig$Theme VALUE_DEFAULT_THEME> = $r0;
+
+        $r1 = <com.startapp.android.publish.splash.SplashConfig$MinSplashTime: com.startapp.android.publish.splash.SplashConfig$MinSplashTime REGULAR>;
+
+        <com.startapp.android.publish.splash.SplashConfig: com.startapp.android.publish.splash.SplashConfig$MinSplashTime VALUE_DEFAULT_MINSPLASHTIME> = $r1;
+
+        $l0 = <com.startapp.android.publish.splash.SplashConfig: long DEFAULT_MAX_LOAD>;
+
+        <com.startapp.android.publish.splash.SplashConfig: long VALUE_DEFAULT_MAXLOAD> = $l0;
+
+        $r2 = <com.startapp.android.publish.splash.SplashConfig$MaxAdDisplayTime: com.startapp.android.publish.splash.SplashConfig$MaxAdDisplayTime FOR_EVER>;
+
+        <com.startapp.android.publish.splash.SplashConfig: com.startapp.android.publish.splash.SplashConfig$MaxAdDisplayTime VALUE_DEFAULT_MAXADDISPLAY> = $r2;
+
+        $r3 = <com.startapp.android.publish.splash.SplashConfig$Orientation: com.startapp.android.publish.splash.SplashConfig$Orientation AUTO>;
+
+        <com.startapp.android.publish.splash.SplashConfig: com.startapp.android.publish.splash.SplashConfig$Orientation VALUE_DEFAULT_ORIENTATION> = $r3;
+
+        return;
+    }
+
+    public void <init>()
+    {
+        com.startapp.android.publish.splash.SplashConfig r0;
+        java.lang.Long $r1;
+        com.startapp.android.publish.splash.SplashConfig$Theme $r2;
+        com.startapp.android.publish.splash.SplashConfig$MinSplashTime $r3;
+        long $l0;
+        com.startapp.android.publish.splash.SplashConfig$MaxAdDisplayTime $r4;
+        com.startapp.android.publish.splash.SplashConfig$Orientation $r5;
+
+        r0 := @this: com.startapp.android.publish.splash.SplashConfig;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        r0.<com.startapp.android.publish.splash.SplashConfig: boolean forceNative> = 0;
+
+        r0.<com.startapp.android.publish.splash.SplashConfig: int customScreen> = -1;
+
+        r0.<com.startapp.android.publish.splash.SplashConfig: java.lang.String appName> = "";
+
+        r0.<com.startapp.android.publish.splash.SplashConfig: android.graphics.drawable.Drawable logo> = null;
+
+        r0.<com.startapp.android.publish.splash.SplashConfig: byte[] logoByteArray> = null;
+
+        r0.<com.startapp.android.publish.splash.SplashConfig: int logoRes> = -1;
+
+        $r2 = <com.startapp.android.publish.splash.SplashConfig: com.startapp.android.publish.splash.SplashConfig$Theme VALUE_DEFAULT_THEME>;
+
+        r0.<com.startapp.android.publish.splash.SplashConfig: com.startapp.android.publish.splash.SplashConfig$Theme defaultTheme> = $r2;
+
+        $r3 = <com.startapp.android.publish.splash.SplashConfig: com.startapp.android.publish.splash.SplashConfig$MinSplashTime VALUE_DEFAULT_MINSPLASHTIME>;
+
+        r0.<com.startapp.android.publish.splash.SplashConfig: com.startapp.android.publish.splash.SplashConfig$MinSplashTime defaultMinSplashTime> = $r3;
+
+        $l0 = <com.startapp.android.publish.splash.SplashConfig: long VALUE_DEFAULT_MAXLOAD>;
+
+        $r1 = staticinvoke <java.lang.Long: java.lang.Long valueOf(long)>($l0);
+
+        r0.<com.startapp.android.publish.splash.SplashConfig: java.lang.Long defaultMaxLoadTime> = $r1;
+
+        $r4 = <com.startapp.android.publish.splash.SplashConfig: com.startapp.android.publish.splash.SplashConfig$MaxAdDisplayTime VALUE_DEFAULT_MAXADDISPLAY>;
+
+        r0.<com.startapp.android.publish.splash.SplashConfig: com.startapp.android.publish.splash.SplashConfig$MaxAdDisplayTime defaultMaxAdDisplayTime> = $r4;
+
+        $r5 = <com.startapp.android.publish.splash.SplashConfig: com.startapp.android.publish.splash.SplashConfig$Orientation VALUE_DEFAULT_ORIENTATION>;
+
+        r0.<com.startapp.android.publish.splash.SplashConfig: com.startapp.android.publish.splash.SplashConfig$Orientation defaultOrientation> = $r5;
+
+        r0.<com.startapp.android.publish.splash.SplashConfig: boolean htmlSplash> = 1;
+
+        r0.<com.startapp.android.publish.splash.SplashConfig: java.lang.String splashBgColor> = "#066CAA";
+
+        r0.<com.startapp.android.publish.splash.SplashConfig: java.lang.String splashFontColor> = "ffffff";
+
+        r0.<com.startapp.android.publish.splash.SplashConfig: java.lang.String splashLoadingType> = "LoadingDots";
+
+        r0.<com.startapp.android.publish.splash.SplashConfig: java.lang.String errMsg> = "";
+
+        return;
+    }
+
+    private static void applyDefaultSplashConfig(com.startapp.android.publish.splash.SplashConfig, android.content.Context)
+    {
+        com.startapp.android.publish.splash.SplashConfig $r0, $r2;
+        android.content.Context $r1;
+        com.startapp.android.publish.splash.SplashConfig$Theme $r3;
+        com.startapp.android.publish.splash.SplashConfig$MinSplashTime $r4;
+        java.lang.Long $r5;
+        long $l0;
+        com.startapp.android.publish.splash.SplashConfig$MaxAdDisplayTime $r6;
+        com.startapp.android.publish.splash.SplashConfig$Orientation $r7;
+        java.lang.String $r8;
+        boolean $z0;
+
+        $r0 := @parameter0: com.startapp.android.publish.splash.SplashConfig;
+
+        $r1 := @parameter1: android.content.Context;
+
+        $r2 = staticinvoke <com.startapp.android.publish.splash.SplashConfig: com.startapp.android.publish.splash.SplashConfig getDefaultSplashConfig()>();
+
+        $r3 = virtualinvoke $r0.<com.startapp.android.publish.splash.SplashConfig: com.startapp.android.publish.splash.SplashConfig$Theme getTheme()>();
+
+        if $r3 != null goto label1;
+
+        $r3 = virtualinvoke $r2.<com.startapp.android.publish.splash.SplashConfig: com.startapp.android.publish.splash.SplashConfig$Theme getTheme()>();
+
+        virtualinvoke $r0.<com.startapp.android.publish.splash.SplashConfig: com.startapp.android.publish.splash.SplashConfig setTheme(com.startapp.android.publish.splash.SplashConfig$Theme)>($r3);
+
+     label1:
+        $r4 = virtualinvoke $r0.<com.startapp.android.publish.splash.SplashConfig: com.startapp.android.publish.splash.SplashConfig$MinSplashTime getMinSplashTime()>();
+
+        if $r4 != null goto label2;
+
+        $r4 = virtualinvoke $r2.<com.startapp.android.publish.splash.SplashConfig: com.startapp.android.publish.splash.SplashConfig$MinSplashTime getMinSplashTime()>();
+
+        virtualinvoke $r0.<com.startapp.android.publish.splash.SplashConfig: com.startapp.android.publish.splash.SplashConfig setMinSplashTime(com.startapp.android.publish.splash.SplashConfig$MinSplashTime)>($r4);
+
+     label2:
+        $r5 = virtualinvoke $r0.<com.startapp.android.publish.splash.SplashConfig: java.lang.Long getMaxLoadAdTimeout()>();
+
+        if $r5 != null goto label3;
+
+        $r5 = virtualinvoke $r2.<com.startapp.android.publish.splash.SplashConfig: java.lang.Long getMaxLoadAdTimeout()>();
+
+        $l0 = virtualinvoke $r5.<java.lang.Long: long longValue()>();
+
+        virtualinvoke $r0.<com.startapp.android.publish.splash.SplashConfig: com.startapp.android.publish.splash.SplashConfig setMaxLoadAdTimeout(long)>($l0);
+
+     label3:
+        $r6 = virtualinvoke $r0.<com.startapp.android.publish.splash.SplashConfig: com.startapp.android.publish.splash.SplashConfig$MaxAdDisplayTime getMaxAdDisplayTime()>();
+
+        if $r6 != null goto label4;
+
+        $r6 = virtualinvoke $r2.<com.startapp.android.publish.splash.SplashConfig: com.startapp.android.publish.splash.SplashConfig$MaxAdDisplayTime getMaxAdDisplayTime()>();
+
+        virtualinvoke $r0.<com.startapp.android.publish.splash.SplashConfig: com.startapp.android.publish.splash.SplashConfig setMaxAdDisplayTime(com.startapp.android.publish.splash.SplashConfig$MaxAdDisplayTime)>($r6);
+
+     label4:
+        $r7 = virtualinvoke $r0.<com.startapp.android.publish.splash.SplashConfig: com.startapp.android.publish.splash.SplashConfig$Orientation getOrientation()>();
+
+        if $r7 != null goto label5;
+
+        $r7 = virtualinvoke $r2.<com.startapp.android.publish.splash.SplashConfig: com.startapp.android.publish.splash.SplashConfig$Orientation getOrientation()>();
+
+        virtualinvoke $r0.<com.startapp.android.publish.splash.SplashConfig: com.startapp.android.publish.splash.SplashConfig setOrientation(com.startapp.android.publish.splash.SplashConfig$Orientation)>($r7);
+
+     label5:
+        $r8 = virtualinvoke $r0.<com.startapp.android.publish.splash.SplashConfig: java.lang.String getLoadingType()>();
+
+        if $r8 != null goto label6;
+
+        $r8 = virtualinvoke $r2.<com.startapp.android.publish.splash.SplashConfig: java.lang.String getLoadingType()>();
+
+        virtualinvoke $r0.<com.startapp.android.publish.splash.SplashConfig: com.startapp.android.publish.splash.SplashConfig setLoadingType(java.lang.String)>($r8);
+
+     label6:
+        $r8 = virtualinvoke $r0.<com.startapp.android.publish.splash.SplashConfig: java.lang.String getAppName()>();
+
+        $z0 = virtualinvoke $r8.<java.lang.String: boolean equals(java.lang.Object)>("");
+
+        if $z0 == 0 goto label7;
+
+        $r8 = staticinvoke <com.startapp.android.publish.i.x: java.lang.String a(android.content.Context,java.lang.String)>($r1, "Welcome!");
+
+        virtualinvoke $r0.<com.startapp.android.publish.splash.SplashConfig: com.startapp.android.publish.splash.SplashConfig setAppName(java.lang.String)>($r8);
+
+     label7:
+        return;
+    }
+
+    public static com.startapp.android.publish.splash.SplashConfig getDefaultSplashConfig()
+    {
+        com.startapp.android.publish.splash.SplashConfig $r0, $r2;
+        com.startapp.android.publish.splash.SplashConfig$Theme $r1;
+        com.startapp.android.publish.splash.SplashConfig$MinSplashTime $r3;
+        long $l0;
+        com.startapp.android.publish.splash.SplashConfig$MaxAdDisplayTime $r4;
+        com.startapp.android.publish.splash.SplashConfig$Orientation $r5;
+
+        $r0 = new com.startapp.android.publish.splash.SplashConfig;
+
+        specialinvoke $r0.<com.startapp.android.publish.splash.SplashConfig: void <init>()>();
+
+        $r1 = <com.startapp.android.publish.splash.SplashConfig: com.startapp.android.publish.splash.SplashConfig$Theme VALUE_DEFAULT_THEME>;
+
+        $r2 = virtualinvoke $r0.<com.startapp.android.publish.splash.SplashConfig: com.startapp.android.publish.splash.SplashConfig setTheme(com.startapp.android.publish.splash.SplashConfig$Theme)>($r1);
+
+        $r3 = <com.startapp.android.publish.splash.SplashConfig: com.startapp.android.publish.splash.SplashConfig$MinSplashTime VALUE_DEFAULT_MINSPLASHTIME>;
+
+        $r2 = virtualinvoke $r2.<com.startapp.android.publish.splash.SplashConfig: com.startapp.android.publish.splash.SplashConfig setMinSplashTime(com.startapp.android.publish.splash.SplashConfig$MinSplashTime)>($r3);
+
+        $l0 = <com.startapp.android.publish.splash.SplashConfig: long VALUE_DEFAULT_MAXLOAD>;
+
+        $r2 = virtualinvoke $r2.<com.startapp.android.publish.splash.SplashConfig: com.startapp.android.publish.splash.SplashConfig setMaxLoadAdTimeout(long)>($l0);
+
+        $r4 = <com.startapp.android.publish.splash.SplashConfig: com.startapp.android.publish.splash.SplashConfig$MaxAdDisplayTime VALUE_DEFAULT_MAXADDISPLAY>;
+
+        $r2 = virtualinvoke $r2.<com.startapp.android.publish.splash.SplashConfig: com.startapp.android.publish.splash.SplashConfig setMaxAdDisplayTime(com.startapp.android.publish.splash.SplashConfig$MaxAdDisplayTime)>($r4);
+
+        $r5 = <com.startapp.android.publish.splash.SplashConfig: com.startapp.android.publish.splash.SplashConfig$Orientation VALUE_DEFAULT_ORIENTATION>;
+
+        $r2 = virtualinvoke $r2.<com.startapp.android.publish.splash.SplashConfig: com.startapp.android.publish.splash.SplashConfig setOrientation(com.startapp.android.publish.splash.SplashConfig$Orientation)>($r5);
+
+        $r2 = virtualinvoke $r2.<com.startapp.android.publish.splash.SplashConfig: com.startapp.android.publish.splash.SplashConfig setLoadingType(java.lang.String)>("LoadingDots");
+
+        virtualinvoke $r2.<com.startapp.android.publish.splash.SplashConfig: com.startapp.android.publish.splash.SplashConfig setAppName(java.lang.String)>("");
+
+        return $r0;
+    }
+
+    private void setErrorMsg(java.lang.String)
+    {
+        com.startapp.android.publish.splash.SplashConfig r0;
+        java.lang.String $r1;
+
+        r0 := @this: com.startapp.android.publish.splash.SplashConfig;
+
+        $r1 := @parameter0: java.lang.String;
+
+        r0.<com.startapp.android.publish.splash.SplashConfig: java.lang.String errMsg> = $r1;
+
+        return;
+    }
+
+    private com.startapp.android.publish.splash.SplashConfig setLogo(android.graphics.drawable.Drawable)
+    {
+        com.startapp.android.publish.splash.SplashConfig r0;
+        android.graphics.drawable.Drawable $r1;
+
+        r0 := @this: com.startapp.android.publish.splash.SplashConfig;
+
+        $r1 := @parameter0: android.graphics.drawable.Drawable;
+
+        r0.<com.startapp.android.publish.splash.SplashConfig: android.graphics.drawable.Drawable logo> = $r1;
+
+        return r0;
+    }
+
+    private void setSplashColorsByTheme(com.startapp.android.publish.splash.SplashConfig$Theme)
+    {
+        com.startapp.android.publish.splash.SplashConfig r0;
+        com.startapp.android.publish.splash.SplashConfig$Theme $r1;
+        int $i0;
+        java.lang.String $r2, $r3;
+        int[] $r4;
+
+        r0 := @this: com.startapp.android.publish.splash.SplashConfig;
+
+        $r1 := @parameter0: com.startapp.android.publish.splash.SplashConfig$Theme;
+
+        $r2 = "#066CAA";
+
+        $r3 = "ffffff";
+
+        $r4 = <com.startapp.android.publish.splash.SplashConfig$1: int[] $SwitchMap$com$startapp$android$publish$splash$SplashConfig$Theme>;
+
+        $i0 = virtualinvoke $r1.<com.startapp.android.publish.splash.SplashConfig$Theme: int ordinal()>();
+
+        $i0 = $r4[$i0];
+
+        lookupswitch($i0)
+        {
+            case 1: goto label2;
+            case 2: goto label3;
+            case 3: goto label4;
+            case 4: goto label5;
+            case 5: goto label6;
+            case 6: goto label7;
+            default: goto label1;
+        };
+
+     label1:
+        r0.<com.startapp.android.publish.splash.SplashConfig: java.lang.String splashBgColor> = $r2;
+
+        r0.<com.startapp.android.publish.splash.SplashConfig: java.lang.String splashFontColor> = $r3;
+
+        return;
+
+     label2:
+        $r3 = "#FFFFFF";
+
+        $r2 = "#066CAA";
+
+        goto label1;
+
+     label3:
+        $r3 = "#333333";
+
+        $r2 = "#a3d4e5";
+
+        goto label1;
+
+     label4:
+        $r3 = "#333333";
+
+        $r2 = "#E3E3E3";
+
+        goto label1;
+
+     label5:
+        $r3 = "#FFFFFF";
+
+        $r2 = "#FF6600";
+
+        goto label1;
+
+     label6:
+        $r3 = "#33B5E5";
+
+        $r2 = "#2F353F";
+
+        goto label1;
+
+     label7:
+        $r3 = "#063D51";
+
+        $r2 = "#237C9A";
+
+        goto label1;
+    }
+
+    public java.lang.String getAppName()
+    {
+        com.startapp.android.publish.splash.SplashConfig r0;
+        java.lang.String r1;
+
+        r0 := @this: com.startapp.android.publish.splash.SplashConfig;
+
+        r1 = r0.<com.startapp.android.publish.splash.SplashConfig: java.lang.String appName>;
+
+        return r1;
+    }
+
+    public java.lang.String getBgColor()
+    {
+        com.startapp.android.publish.splash.SplashConfig r0;
+        java.lang.String r1;
+
+        r0 := @this: com.startapp.android.publish.splash.SplashConfig;
+
+        r1 = r0.<com.startapp.android.publish.splash.SplashConfig: java.lang.String splashBgColor>;
+
+        return r1;
+    }
+
+    public int getCustomScreen()
+    {
+        com.startapp.android.publish.splash.SplashConfig r0;
+        int i0;
+
+        r0 := @this: com.startapp.android.publish.splash.SplashConfig;
+
+        i0 = r0.<com.startapp.android.publish.splash.SplashConfig: int customScreen>;
+
+        return i0;
+    }
+
+    public java.lang.String getErrorMessage()
+    {
+        com.startapp.android.publish.splash.SplashConfig r0;
+        java.lang.String r1;
+
+        r0 := @this: com.startapp.android.publish.splash.SplashConfig;
+
+        r1 = r0.<com.startapp.android.publish.splash.SplashConfig: java.lang.String errMsg>;
+
+        return r1;
+    }
+
+    public java.lang.String getFontColor()
+    {
+        com.startapp.android.publish.splash.SplashConfig r0;
+        java.lang.String r1;
+
+        r0 := @this: com.startapp.android.publish.splash.SplashConfig;
+
+        r1 = r0.<com.startapp.android.publish.splash.SplashConfig: java.lang.String splashFontColor>;
+
+        return r1;
+    }
+
+    protected android.view.View getLayout(android.content.Context)
+    {
+        com.startapp.android.publish.splash.SplashConfig r0;
+        android.content.Context $r1;
+        int[] $r2;
+        com.startapp.android.publish.splash.SplashConfig$Theme $r3;
+        int $i0;
+        android.view.View $r4;
+        java.lang.Object $r5;
+        android.view.LayoutInflater $r6;
+        android.content.res.Resources$NotFoundException $r7;
+        android.view.InflateException $r8;
+        java.lang.Exception $r9;
+        com.startapp.android.publish.d.b$a $r10;
+        java.lang.String $r11;
+
+        r0 := @this: com.startapp.android.publish.splash.SplashConfig;
+
+        $r1 := @parameter0: android.content.Context;
+
+        $r2 = <com.startapp.android.publish.splash.SplashConfig$1: int[] $SwitchMap$com$startapp$android$publish$splash$SplashConfig$Theme>;
+
+        $r3 = virtualinvoke r0.<com.startapp.android.publish.splash.SplashConfig: com.startapp.android.publish.splash.SplashConfig$Theme getTheme()>();
+
+        $i0 = virtualinvoke $r3.<com.startapp.android.publish.splash.SplashConfig$Theme: int ordinal()>();
+
+        $i0 = $r2[$i0];
+
+        lookupswitch($i0)
+        {
+            case 7: goto label2;
+            default: goto label1;
+        };
+
+     label1:
+        $r4 = staticinvoke <com.startapp.android.publish.splash.e: android.view.View a(android.content.Context,com.startapp.android.publish.splash.SplashConfig)>($r1, r0);
+
+        return $r4;
+
+     label2:
+        $r5 = virtualinvoke $r1.<android.content.Context: java.lang.Object getSystemService(java.lang.String)>("layout_inflater");
+
+     label3:
+        $r6 = (android.view.LayoutInflater) $r5;
+
+     label4:
+        $i0 = virtualinvoke r0.<com.startapp.android.publish.splash.SplashConfig: int getCustomScreen()>();
+
+        $r4 = virtualinvoke $r6.<android.view.LayoutInflater: android.view.View inflate(int,android.view.ViewGroup)>($i0, null);
+
+     label5:
+        return $r4;
+
+     label6:
+        $r7 := @caughtexception;
+
+        $r7 = new android.content.res.Resources$NotFoundException;
+
+        specialinvoke $r7.<android.content.res.Resources$NotFoundException: void <init>(java.lang.String)>("StartApp: Can\'t find Custom layout resource");
+
+        throw $r7;
+
+     label7:
+        $r8 := @caughtexception;
+
+        $r8 = new android.view.InflateException;
+
+        specialinvoke $r8.<android.view.InflateException: void <init>(java.lang.String)>("StartApp: Can\'t inflate layout in Custom mode, Are you sure layout resource is valid?");
+
+        throw $r8;
+
+     label8:
+        $r9 := @caughtexception;
+
+        $r10 = <com.startapp.android.publish.d.b$a: com.startapp.android.publish.d.b$a b>;
+
+        $r11 = virtualinvoke $r9.<java.lang.Exception: java.lang.String getMessage()>();
+
+        staticinvoke <com.startapp.android.publish.d.d: void a(android.content.Context,com.startapp.android.publish.d.b$a,java.lang.String,java.lang.String,java.lang.String)>($r1, $r10, "SplashConfig.getLayout - System service failed", $r11, "");
+
+        return null;
+
+        catch android.content.res.Resources$NotFoundException from label2 to label3 with label6;
+        catch android.content.res.Resources$NotFoundException from label4 to label5 with label6;
+        catch android.view.InflateException from label2 to label3 with label7;
+        catch android.view.InflateException from label4 to label5 with label7;
+        catch java.lang.Exception from label2 to label5 with label8;
+    }
+
+    public java.lang.String getLoadingType()
+    {
+        com.startapp.android.publish.splash.SplashConfig r0;
+        java.lang.String r1;
+
+        r0 := @this: com.startapp.android.publish.splash.SplashConfig;
+
+        r1 = r0.<com.startapp.android.publish.splash.SplashConfig: java.lang.String splashLoadingType>;
+
+        return r1;
+    }
+
+    public android.graphics.drawable.Drawable getLogo()
+    {
+        com.startapp.android.publish.splash.SplashConfig r0;
+        android.graphics.drawable.Drawable r1;
+
+        r0 := @this: com.startapp.android.publish.splash.SplashConfig;
+
+        r1 = r0.<com.startapp.android.publish.splash.SplashConfig: android.graphics.drawable.Drawable logo>;
+
+        return r1;
+    }
+
+    public byte[] getLogoByteArray()
+    {
+        com.startapp.android.publish.splash.SplashConfig r0;
+        byte[] r1;
+
+        r0 := @this: com.startapp.android.publish.splash.SplashConfig;
+
+        r1 = r0.<com.startapp.android.publish.splash.SplashConfig: byte[] logoByteArray>;
+
+        return r1;
+    }
+
+    public int getLogoRes()
+    {
+        com.startapp.android.publish.splash.SplashConfig r0;
+        int i0;
+
+        r0 := @this: com.startapp.android.publish.splash.SplashConfig;
+
+        i0 = r0.<com.startapp.android.publish.splash.SplashConfig: int logoRes>;
+
+        return i0;
+    }
+
+    public com.startapp.android.publish.splash.SplashConfig$MaxAdDisplayTime getMaxAdDisplayTime()
+    {
+        com.startapp.android.publish.splash.SplashConfig r0;
+        com.startapp.android.publish.splash.SplashConfig$MaxAdDisplayTime r1;
+
+        r0 := @this: com.startapp.android.publish.splash.SplashConfig;
+
+        r1 = r0.<com.startapp.android.publish.splash.SplashConfig: com.startapp.android.publish.splash.SplashConfig$MaxAdDisplayTime defaultMaxAdDisplayTime>;
+
+        return r1;
+    }
+
+    protected java.lang.Long getMaxLoadAdTimeout()
+    {
+        com.startapp.android.publish.splash.SplashConfig r0;
+        java.lang.Long r1;
+
+        r0 := @this: com.startapp.android.publish.splash.SplashConfig;
+
+        r1 = r0.<com.startapp.android.publish.splash.SplashConfig: java.lang.Long defaultMaxLoadTime>;
+
+        return r1;
+    }
+
+    public com.startapp.android.publish.splash.SplashConfig$MinSplashTime getMinSplashTime()
+    {
+        com.startapp.android.publish.splash.SplashConfig r0;
+        com.startapp.android.publish.splash.SplashConfig$MinSplashTime r1;
+
+        r0 := @this: com.startapp.android.publish.splash.SplashConfig;
+
+        r1 = r0.<com.startapp.android.publish.splash.SplashConfig: com.startapp.android.publish.splash.SplashConfig$MinSplashTime defaultMinSplashTime>;
+
+        return r1;
+    }
+
+    public com.startapp.android.publish.splash.SplashConfig$Orientation getOrientation()
+    {
+        com.startapp.android.publish.splash.SplashConfig r0;
+        com.startapp.android.publish.splash.SplashConfig$Orientation r1;
+
+        r0 := @this: com.startapp.android.publish.splash.SplashConfig;
+
+        r1 = r0.<com.startapp.android.publish.splash.SplashConfig: com.startapp.android.publish.splash.SplashConfig$Orientation defaultOrientation>;
+
+        return r1;
+    }
+
+    protected com.startapp.android.publish.splash.SplashConfig$Theme getTheme()
+    {
+        com.startapp.android.publish.splash.SplashConfig r0;
+        com.startapp.android.publish.splash.SplashConfig$Theme r1;
+
+        r0 := @this: com.startapp.android.publish.splash.SplashConfig;
+
+        r1 = r0.<com.startapp.android.publish.splash.SplashConfig: com.startapp.android.publish.splash.SplashConfig$Theme defaultTheme>;
+
+        return r1;
+    }
+
+    protected com.startapp.android.publish.splash.b initSplashHtml(android.app.Activity)
+    {
+        com.startapp.android.publish.splash.SplashConfig r0;
+        android.app.Activity $r1;
+        com.startapp.android.publish.splash.SplashConfig$Theme $r2;
+        com.startapp.android.publish.splash.b $r3;
+
+        r0 := @this: com.startapp.android.publish.splash.SplashConfig;
+
+        $r1 := @parameter0: android.app.Activity;
+
+        $r2 = virtualinvoke r0.<com.startapp.android.publish.splash.SplashConfig: com.startapp.android.publish.splash.SplashConfig$Theme getTheme()>();
+
+        specialinvoke r0.<com.startapp.android.publish.splash.SplashConfig: void setSplashColorsByTheme(com.startapp.android.publish.splash.SplashConfig$Theme)>($r2);
+
+        $r3 = new com.startapp.android.publish.splash.b;
+
+        specialinvoke $r3.<com.startapp.android.publish.splash.b: void <init>(android.app.Activity)>($r1);
+
+        virtualinvoke $r3.<com.startapp.android.publish.splash.b: void b(com.startapp.android.publish.splash.SplashConfig)>(r0);
+
+        virtualinvoke $r3.<com.startapp.android.publish.splash.b: void a(com.startapp.android.publish.splash.SplashConfig)>(r0);
+
+        return $r3;
+    }
+
+    protected void initSplashLogo(android.app.Activity)
+    {
+        com.startapp.android.publish.splash.SplashConfig r0;
+        android.app.Activity $r1;
+        android.graphics.drawable.Drawable $r2;
+        int $i0;
+        byte[] $r3;
+        android.graphics.Bitmap $r4;
+        android.graphics.drawable.BitmapDrawable $r5;
+        android.content.res.Resources $r6;
+
+        r0 := @this: com.startapp.android.publish.splash.SplashConfig;
+
+        $r1 := @parameter0: android.app.Activity;
+
+        $r2 = virtualinvoke r0.<com.startapp.android.publish.splash.SplashConfig: android.graphics.drawable.Drawable getLogo()>();
+
+        if $r2 != null goto label1;
+
+        $i0 = virtualinvoke r0.<com.startapp.android.publish.splash.SplashConfig: int getLogoRes()>();
+
+        if $i0 != -1 goto label1;
+
+        $r3 = virtualinvoke r0.<com.startapp.android.publish.splash.SplashConfig: byte[] getLogoByteArray()>();
+
+        if $r3 == null goto label1;
+
+        $r3 = virtualinvoke r0.<com.startapp.android.publish.splash.SplashConfig: byte[] getLogoByteArray()>();
+
+        $i0 = lengthof $r3;
+
+        $r4 = staticinvoke <android.graphics.BitmapFactory: android.graphics.Bitmap decodeByteArray(byte[],int,int)>($r3, 0, $i0);
+
+        $r5 = new android.graphics.drawable.BitmapDrawable;
+
+        $r6 = virtualinvoke $r1.<android.app.Activity: android.content.res.Resources getResources()>();
+
+        specialinvoke $r5.<android.graphics.drawable.BitmapDrawable: void <init>(android.content.res.Resources,android.graphics.Bitmap)>($r6, $r4);
+
+        specialinvoke r0.<com.startapp.android.publish.splash.SplashConfig: com.startapp.android.publish.splash.SplashConfig setLogo(android.graphics.drawable.Drawable)>($r5);
+
+     label1:
+        return;
+    }
+
+    public boolean isHtmlSplash()
+    {
+        com.startapp.android.publish.splash.SplashConfig r0;
+        boolean $z0;
+
+        r0 := @this: com.startapp.android.publish.splash.SplashConfig;
+
+        $z0 = r0.<com.startapp.android.publish.splash.SplashConfig: boolean forceNative>;
+
+        if $z0 == 0 goto label1;
+
+        return 0;
+
+     label1:
+        $z0 = r0.<com.startapp.android.publish.splash.SplashConfig: boolean htmlSplash>;
+
+        return $z0;
+    }
+
+    boolean isUserDefinedSplash()
+    {
+        com.startapp.android.publish.splash.SplashConfig r0;
+        com.startapp.android.publish.splash.SplashConfig$Theme $r1, $r2;
+        int $i0;
+
+        r0 := @this: com.startapp.android.publish.splash.SplashConfig;
+
+        $r1 = virtualinvoke r0.<com.startapp.android.publish.splash.SplashConfig: com.startapp.android.publish.splash.SplashConfig$Theme getTheme()>();
+
+        $r2 = <com.startapp.android.publish.splash.SplashConfig$Theme: com.startapp.android.publish.splash.SplashConfig$Theme USER_DEFINED>;
+
+        if $r1 == $r2 goto label1;
+
+        $i0 = virtualinvoke r0.<com.startapp.android.publish.splash.SplashConfig: int getCustomScreen()>();
+
+        if $i0 == -1 goto label2;
+
+     label1:
+        return 1;
+
+     label2:
+        return 0;
+    }
+
+    public com.startapp.android.publish.splash.SplashConfig setAppName(java.lang.String)
+    {
+        com.startapp.android.publish.splash.SplashConfig r0;
+        java.lang.String $r1;
+
+        r0 := @this: com.startapp.android.publish.splash.SplashConfig;
+
+        $r1 := @parameter0: java.lang.String;
+
+        r0.<com.startapp.android.publish.splash.SplashConfig: java.lang.String appName> = $r1;
+
+        return r0;
+    }
+
+    public com.startapp.android.publish.splash.SplashConfig setCustomScreen(int)
+    {
+        com.startapp.android.publish.splash.SplashConfig r0;
+        int $i0;
+
+        r0 := @this: com.startapp.android.publish.splash.SplashConfig;
+
+        $i0 := @parameter0: int;
+
+        r0.<com.startapp.android.publish.splash.SplashConfig: int customScreen> = $i0;
+
+        return r0;
+    }
+
+    public void setDefaults(android.content.Context)
+    {
+        com.startapp.android.publish.splash.SplashConfig r0, $r3, $r4;
+        android.content.Context $r1;
+        com.startapp.android.publish.model.MetaData $r2;
+        com.startapp.android.publish.splash.SplashConfig$MaxAdDisplayTime $r5;
+        java.lang.Long $r6;
+        long $l0;
+        com.startapp.android.publish.splash.SplashConfig$MinSplashTime $r7;
+        com.startapp.android.publish.splash.SplashConfig$Orientation $r8;
+        com.startapp.android.publish.splash.SplashConfig$Theme $r9;
+        int $i1;
+        android.content.pm.ApplicationInfo $r10;
+        java.lang.String $r11;
+        boolean $z0;
+
+        r0 := @this: com.startapp.android.publish.splash.SplashConfig;
+
+        $r1 := @parameter0: android.content.Context;
+
+        $r2 = staticinvoke <com.startapp.android.publish.model.MetaData: com.startapp.android.publish.model.MetaData getInstance()>();
+
+        $r3 = virtualinvoke $r2.<com.startapp.android.publish.model.MetaData: com.startapp.android.publish.splash.SplashConfig getSplashConfig()>();
+
+        $r4 = $r3;
+
+        if $r3 != null goto label8;
+
+        $r4 = staticinvoke <com.startapp.android.publish.splash.SplashConfig: com.startapp.android.publish.splash.SplashConfig getDefaultSplashConfig()>();
+
+     label1:
+        staticinvoke <com.startapp.android.publish.splash.SplashConfig: void applyDefaultSplashConfig(com.startapp.android.publish.splash.SplashConfig,android.content.Context)>($r4, $r1);
+
+        $r5 = virtualinvoke r0.<com.startapp.android.publish.splash.SplashConfig: com.startapp.android.publish.splash.SplashConfig$MaxAdDisplayTime getMaxAdDisplayTime()>();
+
+        if $r5 != null goto label2;
+
+        $r5 = virtualinvoke $r4.<com.startapp.android.publish.splash.SplashConfig: com.startapp.android.publish.splash.SplashConfig$MaxAdDisplayTime getMaxAdDisplayTime()>();
+
+        virtualinvoke r0.<com.startapp.android.publish.splash.SplashConfig: com.startapp.android.publish.splash.SplashConfig setMaxAdDisplayTime(com.startapp.android.publish.splash.SplashConfig$MaxAdDisplayTime)>($r5);
+
+     label2:
+        $r6 = virtualinvoke r0.<com.startapp.android.publish.splash.SplashConfig: java.lang.Long getMaxLoadAdTimeout()>();
+
+        if $r6 != null goto label3;
+
+        $r6 = virtualinvoke $r4.<com.startapp.android.publish.splash.SplashConfig: java.lang.Long getMaxLoadAdTimeout()>();
+
+        $l0 = virtualinvoke $r6.<java.lang.Long: long longValue()>();
+
+        virtualinvoke r0.<com.startapp.android.publish.splash.SplashConfig: com.startapp.android.publish.splash.SplashConfig setMaxLoadAdTimeout(long)>($l0);
+
+     label3:
+        $r7 = virtualinvoke r0.<com.startapp.android.publish.splash.SplashConfig: com.startapp.android.publish.splash.SplashConfig$MinSplashTime getMinSplashTime()>();
+
+        if $r7 != null goto label4;
+
+        $r7 = virtualinvoke $r4.<com.startapp.android.publish.splash.SplashConfig: com.startapp.android.publish.splash.SplashConfig$MinSplashTime getMinSplashTime()>();
+
+        virtualinvoke r0.<com.startapp.android.publish.splash.SplashConfig: com.startapp.android.publish.splash.SplashConfig setMinSplashTime(com.startapp.android.publish.splash.SplashConfig$MinSplashTime)>($r7);
+
+     label4:
+        $r8 = virtualinvoke r0.<com.startapp.android.publish.splash.SplashConfig: com.startapp.android.publish.splash.SplashConfig$Orientation getOrientation()>();
+
+        if $r8 != null goto label5;
+
+        $r8 = virtualinvoke $r4.<com.startapp.android.publish.splash.SplashConfig: com.startapp.android.publish.splash.SplashConfig$Orientation getOrientation()>();
+
+        virtualinvoke r0.<com.startapp.android.publish.splash.SplashConfig: com.startapp.android.publish.splash.SplashConfig setOrientation(com.startapp.android.publish.splash.SplashConfig$Orientation)>($r8);
+
+     label5:
+        $r9 = virtualinvoke r0.<com.startapp.android.publish.splash.SplashConfig: com.startapp.android.publish.splash.SplashConfig$Theme getTheme()>();
+
+        if $r9 != null goto label6;
+
+        $r9 = virtualinvoke $r4.<com.startapp.android.publish.splash.SplashConfig: com.startapp.android.publish.splash.SplashConfig$Theme getTheme()>();
+
+        virtualinvoke r0.<com.startapp.android.publish.splash.SplashConfig: com.startapp.android.publish.splash.SplashConfig setTheme(com.startapp.android.publish.splash.SplashConfig$Theme)>($r9);
+
+     label6:
+        $i1 = virtualinvoke r0.<com.startapp.android.publish.splash.SplashConfig: int getLogoRes()>();
+
+        if $i1 != -1 goto label7;
+
+        $r10 = virtualinvoke $r1.<android.content.Context: android.content.pm.ApplicationInfo getApplicationInfo()>();
+
+        $i1 = $r10.<android.content.pm.ApplicationInfo: int icon>;
+
+        virtualinvoke r0.<com.startapp.android.publish.splash.SplashConfig: com.startapp.android.publish.splash.SplashConfig setLogo(int)>($i1);
+
+     label7:
+        $r11 = virtualinvoke r0.<com.startapp.android.publish.splash.SplashConfig: java.lang.String getAppName()>();
+
+        if $r11 != "" goto label9;
+
+        $r11 = virtualinvoke $r4.<com.startapp.android.publish.splash.SplashConfig: java.lang.String getAppName()>();
+
+        virtualinvoke r0.<com.startapp.android.publish.splash.SplashConfig: com.startapp.android.publish.splash.SplashConfig setAppName(java.lang.String)>($r11);
+
+        return;
+
+     label8:
+        $z0 = virtualinvoke $r3.<com.startapp.android.publish.splash.SplashConfig: boolean isHtmlSplash()>();
+
+        virtualinvoke r0.<com.startapp.android.publish.splash.SplashConfig: com.startapp.android.publish.splash.SplashConfig setHtmlSplash(boolean)>($z0);
+
+        goto label1;
+
+     label9:
+        return;
+    }
+
+    protected com.startapp.android.publish.splash.SplashConfig setHtmlSplash(boolean)
+    {
+        com.startapp.android.publish.splash.SplashConfig r0;
+        boolean $z0;
+
+        r0 := @this: com.startapp.android.publish.splash.SplashConfig;
+
+        $z0 := @parameter0: boolean;
+
+        r0.<com.startapp.android.publish.splash.SplashConfig: boolean htmlSplash> = $z0;
+
+        return r0;
+    }
+
+    public com.startapp.android.publish.splash.SplashConfig setLoadingType(java.lang.String)
+    {
+        com.startapp.android.publish.splash.SplashConfig r0;
+        java.lang.String $r1;
+
+        r0 := @this: com.startapp.android.publish.splash.SplashConfig;
+
+        $r1 := @parameter0: java.lang.String;
+
+        r0.<com.startapp.android.publish.splash.SplashConfig: java.lang.String splashLoadingType> = $r1;
+
+        return r0;
+    }
+
+    public com.startapp.android.publish.splash.SplashConfig setLogo(int)
+    {
+        com.startapp.android.publish.splash.SplashConfig r0;
+        int $i0;
+
+        r0 := @this: com.startapp.android.publish.splash.SplashConfig;
+
+        $i0 := @parameter0: int;
+
+        r0.<com.startapp.android.publish.splash.SplashConfig: int logoRes> = $i0;
+
+        return r0;
+    }
+
+    public com.startapp.android.publish.splash.SplashConfig setLogo(byte[])
+    {
+        com.startapp.android.publish.splash.SplashConfig r0;
+        byte[] $r1;
+
+        r0 := @this: com.startapp.android.publish.splash.SplashConfig;
+
+        $r1 := @parameter0: byte[];
+
+        r0.<com.startapp.android.publish.splash.SplashConfig: byte[] logoByteArray> = $r1;
+
+        return r0;
+    }
+
+    public com.startapp.android.publish.splash.SplashConfig setMaxAdDisplayTime(com.startapp.android.publish.splash.SplashConfig$MaxAdDisplayTime)
+    {
+        com.startapp.android.publish.splash.SplashConfig r0;
+        com.startapp.android.publish.splash.SplashConfig$MaxAdDisplayTime $r1;
+
+        r0 := @this: com.startapp.android.publish.splash.SplashConfig;
+
+        $r1 := @parameter0: com.startapp.android.publish.splash.SplashConfig$MaxAdDisplayTime;
+
+        r0.<com.startapp.android.publish.splash.SplashConfig: com.startapp.android.publish.splash.SplashConfig$MaxAdDisplayTime defaultMaxAdDisplayTime> = $r1;
+
+        return r0;
+    }
+
+    protected com.startapp.android.publish.splash.SplashConfig setMaxLoadAdTimeout(long)
+    {
+        com.startapp.android.publish.splash.SplashConfig r0;
+        long $l0;
+        java.lang.Long $r1;
+
+        r0 := @this: com.startapp.android.publish.splash.SplashConfig;
+
+        $l0 := @parameter0: long;
+
+        $r1 = staticinvoke <java.lang.Long: java.lang.Long valueOf(long)>($l0);
+
+        r0.<com.startapp.android.publish.splash.SplashConfig: java.lang.Long defaultMaxLoadTime> = $r1;
+
+        return r0;
+    }
+
+    public com.startapp.android.publish.splash.SplashConfig setMinSplashTime(com.startapp.android.publish.splash.SplashConfig$MinSplashTime)
+    {
+        com.startapp.android.publish.splash.SplashConfig r0;
+        com.startapp.android.publish.splash.SplashConfig$MinSplashTime $r1;
+
+        r0 := @this: com.startapp.android.publish.splash.SplashConfig;
+
+        $r1 := @parameter0: com.startapp.android.publish.splash.SplashConfig$MinSplashTime;
+
+        r0.<com.startapp.android.publish.splash.SplashConfig: com.startapp.android.publish.splash.SplashConfig$MinSplashTime defaultMinSplashTime> = $r1;
+
+        return r0;
+    }
+
+    public com.startapp.android.publish.splash.SplashConfig setOrientation(com.startapp.android.publish.splash.SplashConfig$Orientation)
+    {
+        com.startapp.android.publish.splash.SplashConfig r0;
+        com.startapp.android.publish.splash.SplashConfig$Orientation $r1;
+
+        r0 := @this: com.startapp.android.publish.splash.SplashConfig;
+
+        $r1 := @parameter0: com.startapp.android.publish.splash.SplashConfig$Orientation;
+
+        r0.<com.startapp.android.publish.splash.SplashConfig: com.startapp.android.publish.splash.SplashConfig$Orientation defaultOrientation> = $r1;
+
+        return r0;
+    }
+
+    public com.startapp.android.publish.splash.SplashConfig setTheme(com.startapp.android.publish.splash.SplashConfig$Theme)
+    {
+        com.startapp.android.publish.splash.SplashConfig r0;
+        com.startapp.android.publish.splash.SplashConfig$Theme $r1;
+
+        r0 := @this: com.startapp.android.publish.splash.SplashConfig;
+
+        $r1 := @parameter0: com.startapp.android.publish.splash.SplashConfig$Theme;
+
+        r0.<com.startapp.android.publish.splash.SplashConfig: com.startapp.android.publish.splash.SplashConfig$Theme defaultTheme> = $r1;
+
+        return r0;
+    }
+
+    protected boolean validate(android.content.Context)
+    {
+        com.startapp.android.publish.splash.SplashConfig r0;
+        android.content.Context $r1;
+        int[] $r2;
+        com.startapp.android.publish.splash.SplashConfig$Theme $r3;
+        int $i0;
+        java.lang.String $r4;
+        boolean $z0;
+        android.graphics.drawable.Drawable $r5;
+        byte[] $r6;
+        android.content.pm.ApplicationInfo $r7;
+        android.content.res.Resources $r8;
+
+        r0 := @this: com.startapp.android.publish.splash.SplashConfig;
+
+        $r1 := @parameter0: android.content.Context;
+
+        $r2 = <com.startapp.android.publish.splash.SplashConfig$1: int[] $SwitchMap$com$startapp$android$publish$splash$SplashConfig$Theme>;
+
+        $r3 = virtualinvoke r0.<com.startapp.android.publish.splash.SplashConfig: com.startapp.android.publish.splash.SplashConfig$Theme getTheme()>();
+
+        $i0 = virtualinvoke $r3.<com.startapp.android.publish.splash.SplashConfig$Theme: int ordinal()>();
+
+        $i0 = $r2[$i0];
+
+        lookupswitch($i0)
+        {
+            case 7: goto label3;
+            default: goto label1;
+        };
+
+     label1:
+        $r4 = virtualinvoke r0.<com.startapp.android.publish.splash.SplashConfig: java.lang.String getAppName()>();
+
+        $z0 = virtualinvoke $r4.<java.lang.String: boolean equals(java.lang.Object)>("");
+
+        if $z0 == 0 goto label2;
+
+        $r4 = staticinvoke <com.startapp.android.publish.i.x: java.lang.String a(android.content.Context,java.lang.String)>($r1, "Welcome!");
+
+        virtualinvoke r0.<com.startapp.android.publish.splash.SplashConfig: com.startapp.android.publish.splash.SplashConfig setAppName(java.lang.String)>($r4);
+
+     label2:
+        $r5 = virtualinvoke r0.<com.startapp.android.publish.splash.SplashConfig: android.graphics.drawable.Drawable getLogo()>();
+
+        if $r5 != null goto label5;
+
+        $r6 = virtualinvoke r0.<com.startapp.android.publish.splash.SplashConfig: byte[] getLogoByteArray()>();
+
+        if $r6 != null goto label5;
+
+        $i0 = virtualinvoke r0.<com.startapp.android.publish.splash.SplashConfig: int getLogoRes()>();
+
+        if $i0 != -1 goto label4;
+
+        $r7 = virtualinvoke $r1.<android.content.Context: android.content.pm.ApplicationInfo getApplicationInfo()>();
+
+        $i0 = $r7.<android.content.pm.ApplicationInfo: int icon>;
+
+        virtualinvoke r0.<com.startapp.android.publish.splash.SplashConfig: com.startapp.android.publish.splash.SplashConfig setLogo(int)>($i0);
+
+        $r8 = virtualinvoke $r1.<android.content.Context: android.content.res.Resources getResources()>();
+
+        $r7 = virtualinvoke $r1.<android.content.Context: android.content.pm.ApplicationInfo getApplicationInfo()>();
+
+        $i0 = $r7.<android.content.pm.ApplicationInfo: int icon>;
+
+        $r5 = virtualinvoke $r8.<android.content.res.Resources: android.graphics.drawable.Drawable getDrawable(int)>($i0);
+
+        specialinvoke r0.<com.startapp.android.publish.splash.SplashConfig: com.startapp.android.publish.splash.SplashConfig setLogo(android.graphics.drawable.Drawable)>($r5);
+
+        return 1;
+
+     label3:
+        $i0 = virtualinvoke r0.<com.startapp.android.publish.splash.SplashConfig: int getCustomScreen()>();
+
+        if $i0 != -1 goto label5;
+
+        specialinvoke r0.<com.startapp.android.publish.splash.SplashConfig: void setErrorMsg(java.lang.String)>("StartApp: Exception getting custom screen resource id, make sure it is set");
+
+        return 0;
+
+     label4:
+        $r8 = virtualinvoke $r1.<android.content.Context: android.content.res.Resources getResources()>();
+
+        $i0 = virtualinvoke r0.<com.startapp.android.publish.splash.SplashConfig: int getLogoRes()>();
+
+        $r5 = virtualinvoke $r8.<android.content.res.Resources: android.graphics.drawable.Drawable getDrawable(int)>($i0);
+
+        specialinvoke r0.<com.startapp.android.publish.splash.SplashConfig: com.startapp.android.publish.splash.SplashConfig setLogo(android.graphics.drawable.Drawable)>($r5);
+
+     label5:
+        return 1;
+    }
+}

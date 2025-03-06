@@ -1,0 +1,297 @@
+public abstract class com.startapp.android.publish.b.d extends java.lang.Object
+{
+    protected com.startapp.android.publish.b.f a;
+    private android.os.Handler b;
+    private java.lang.Long c;
+    private boolean d;
+
+    public void <init>(com.startapp.android.publish.b.f)
+    {
+        com.startapp.android.publish.b.d r0;
+        com.startapp.android.publish.b.f $r1;
+
+        r0 := @this: com.startapp.android.publish.b.d;
+
+        $r1 := @parameter0: com.startapp.android.publish.b.f;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        r0.<com.startapp.android.publish.b.d: android.os.Handler b> = null;
+
+        r0.<com.startapp.android.publish.b.d: java.lang.Long c> = null;
+
+        r0.<com.startapp.android.publish.b.d: boolean d> = 0;
+
+        r0.<com.startapp.android.publish.b.d: com.startapp.android.publish.b.f a> = $r1;
+
+        return;
+    }
+
+    private void j()
+    {
+        com.startapp.android.publish.b.d r0;
+        android.os.Handler $r1;
+
+        r0 := @this: com.startapp.android.publish.b.d;
+
+        $r1 = r0.<com.startapp.android.publish.b.d: android.os.Handler b>;
+
+        if $r1 == null goto label1;
+
+        $r1 = r0.<com.startapp.android.publish.b.d: android.os.Handler b>;
+
+        virtualinvoke $r1.<android.os.Handler: void removeCallbacksAndMessages(java.lang.Object)>(null);
+
+     label1:
+        return;
+    }
+
+    private void k()
+    {
+        com.startapp.android.publish.b.d r0;
+
+        r0 := @this: com.startapp.android.publish.b.d;
+
+        r0.<com.startapp.android.publish.b.d: java.lang.Long c> = null;
+
+        r0.<com.startapp.android.publish.b.d: boolean d> = 0;
+
+        return;
+    }
+
+    public void a()
+    {
+        com.startapp.android.publish.b.d r0;
+        java.lang.String $r1, $r5;
+        java.lang.StringBuilder $r2;
+        com.startapp.android.publish.b.f $r3;
+        com.startapp.android.publish.model.AdPreferences$Placement $r4;
+
+        r0 := @this: com.startapp.android.publish.b.d;
+
+        $r1 = virtualinvoke r0.<com.startapp.android.publish.b.d: java.lang.String e()>();
+
+        $r2 = new java.lang.StringBuilder;
+
+        specialinvoke $r2.<java.lang.StringBuilder: void <init>()>();
+
+        $r2 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Resetting for ");
+
+        $r3 = r0.<com.startapp.android.publish.b.d: com.startapp.android.publish.b.f a>;
+
+        $r4 = virtualinvoke $r3.<com.startapp.android.publish.b.f: com.startapp.android.publish.model.AdPreferences$Placement d()>();
+
+        $r2 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($r4);
+
+        $r5 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <com.startapp.android.publish.i.n: void a(java.lang.String,int,java.lang.String)>($r1, 4, $r5);
+
+        virtualinvoke r0.<com.startapp.android.publish.b.d: void g()>();
+
+        return;
+    }
+
+    protected void b()
+    {
+        com.startapp.android.publish.b.d r0;
+        java.lang.String $r1, $r5;
+        java.lang.StringBuilder $r2;
+        com.startapp.android.publish.b.f $r3;
+        com.startapp.android.publish.model.AdPreferences$Placement $r4;
+
+        r0 := @this: com.startapp.android.publish.b.d;
+
+        $r1 = virtualinvoke r0.<com.startapp.android.publish.b.d: java.lang.String e()>();
+
+        $r2 = new java.lang.StringBuilder;
+
+        specialinvoke $r2.<java.lang.StringBuilder: void <init>()>();
+
+        $r2 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Time reached, reloading ");
+
+        $r3 = r0.<com.startapp.android.publish.b.d: com.startapp.android.publish.b.f a>;
+
+        $r4 = virtualinvoke $r3.<com.startapp.android.publish.b.f: com.startapp.android.publish.model.AdPreferences$Placement d()>();
+
+        $r2 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($r4);
+
+        $r5 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <com.startapp.android.publish.i.n: void a(java.lang.String,int,java.lang.String)>($r1, 3, $r5);
+
+        specialinvoke r0.<com.startapp.android.publish.b.d: void k()>();
+
+        $r3 = r0.<com.startapp.android.publish.b.d: com.startapp.android.publish.b.f a>;
+
+        virtualinvoke $r3.<com.startapp.android.publish.b.f: void b(boolean)>(1);
+
+        return;
+    }
+
+    protected abstract boolean c();
+
+    protected abstract long d();
+
+    protected java.lang.String e()
+    {
+        com.startapp.android.publish.b.d r0;
+
+        r0 := @this: com.startapp.android.publish.b.d;
+
+        return "CacheScheduledTask";
+    }
+
+    public void f()
+    {
+        com.startapp.android.publish.b.d r0;
+        boolean $z0;
+        java.lang.Long $r1;
+        long $l0;
+        android.os.Handler $r2;
+        android.os.Looper $r3, $r4;
+        byte $b1;
+        java.lang.String $r5, $r9;
+        java.lang.StringBuilder $r6;
+        com.startapp.android.publish.b.f $r7;
+        com.startapp.android.publish.model.AdPreferences$Placement $r8;
+        com.startapp.android.publish.b.d$1 $r10;
+
+        r0 := @this: com.startapp.android.publish.b.d;
+
+        $z0 = r0.<com.startapp.android.publish.b.d: boolean d>;
+
+        if $z0 != 0 goto label7;
+
+        $r1 = r0.<com.startapp.android.publish.b.d: java.lang.Long c>;
+
+        if $r1 != null goto label1;
+
+        $l0 = staticinvoke <java.lang.System: long currentTimeMillis()>();
+
+        $r1 = staticinvoke <java.lang.Long: java.lang.Long valueOf(long)>($l0);
+
+        r0.<com.startapp.android.publish.b.d: java.lang.Long c> = $r1;
+
+     label1:
+        $z0 = virtualinvoke r0.<com.startapp.android.publish.b.d: boolean c()>();
+
+        if $z0 == 0 goto label6;
+
+        $r2 = r0.<com.startapp.android.publish.b.d: android.os.Handler b>;
+
+        if $r2 != null goto label3;
+
+        $r3 = staticinvoke <android.os.Looper: android.os.Looper myLooper()>();
+
+        $r4 = $r3;
+
+        $r2 = new android.os.Handler;
+
+        if $r3 == null goto label4;
+
+     label2:
+        specialinvoke $r2.<android.os.Handler: void <init>(android.os.Looper)>($r4);
+
+        r0.<com.startapp.android.publish.b.d: android.os.Handler b> = $r2;
+
+     label3:
+        $l0 = virtualinvoke r0.<com.startapp.android.publish.b.d: long d()>();
+
+        $b1 = $l0 cmp 0L;
+
+        if $b1 < 0 goto label5;
+
+        r0.<com.startapp.android.publish.b.d: boolean d> = 1;
+
+        $r5 = virtualinvoke r0.<com.startapp.android.publish.b.d: java.lang.String e()>();
+
+        $r6 = new java.lang.StringBuilder;
+
+        specialinvoke $r6.<java.lang.StringBuilder: void <init>()>();
+
+        $r6 = virtualinvoke $r6.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Started for ");
+
+        $r7 = r0.<com.startapp.android.publish.b.d: com.startapp.android.publish.b.f a>;
+
+        $r8 = virtualinvoke $r7.<com.startapp.android.publish.b.f: com.startapp.android.publish.model.AdPreferences$Placement d()>();
+
+        $r6 = virtualinvoke $r6.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($r8);
+
+        $r6 = virtualinvoke $r6.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" - scheduled to: ");
+
+        $r6 = virtualinvoke $r6.<java.lang.StringBuilder: java.lang.StringBuilder append(long)>($l0);
+
+        $r9 = virtualinvoke $r6.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <com.startapp.android.publish.i.n: void a(java.lang.String,int,java.lang.String)>($r5, 4, $r9);
+
+        $r2 = r0.<com.startapp.android.publish.b.d: android.os.Handler b>;
+
+        $r10 = new com.startapp.android.publish.b.d$1;
+
+        specialinvoke $r10.<com.startapp.android.publish.b.d$1: void <init>(com.startapp.android.publish.b.d)>(r0);
+
+        virtualinvoke $r2.<android.os.Handler: boolean postDelayed(java.lang.Runnable,long)>($r10, $l0);
+
+        return;
+
+     label4:
+        $r4 = staticinvoke <android.os.Looper: android.os.Looper getMainLooper()>();
+
+        goto label2;
+
+     label5:
+        $r5 = virtualinvoke r0.<com.startapp.android.publish.b.d: java.lang.String e()>();
+
+        staticinvoke <com.startapp.android.publish.i.n: void a(java.lang.String,int,java.lang.String)>($r5, 3, "Can\'t start, scheduled time < 0");
+
+        return;
+
+     label6:
+        $r5 = virtualinvoke r0.<com.startapp.android.publish.b.d: java.lang.String e()>();
+
+        staticinvoke <com.startapp.android.publish.i.n: void a(java.lang.String,int,java.lang.String)>($r5, 3, "Not allowed");
+
+     label7:
+        return;
+    }
+
+    public void g()
+    {
+        com.startapp.android.publish.b.d r0;
+
+        r0 := @this: com.startapp.android.publish.b.d;
+
+        specialinvoke r0.<com.startapp.android.publish.b.d: void j()>();
+
+        specialinvoke r0.<com.startapp.android.publish.b.d: void k()>();
+
+        return;
+    }
+
+    public void h()
+    {
+        com.startapp.android.publish.b.d r0;
+
+        r0 := @this: com.startapp.android.publish.b.d;
+
+        specialinvoke r0.<com.startapp.android.publish.b.d: void j()>();
+
+        r0.<com.startapp.android.publish.b.d: boolean d> = 0;
+
+        return;
+    }
+
+    protected final java.lang.Long i()
+    {
+        com.startapp.android.publish.b.d r0;
+        java.lang.Long r1;
+
+        r0 := @this: com.startapp.android.publish.b.d;
+
+        r1 = r0.<com.startapp.android.publish.b.d: java.lang.Long c>;
+
+        return r1;
+    }
+}

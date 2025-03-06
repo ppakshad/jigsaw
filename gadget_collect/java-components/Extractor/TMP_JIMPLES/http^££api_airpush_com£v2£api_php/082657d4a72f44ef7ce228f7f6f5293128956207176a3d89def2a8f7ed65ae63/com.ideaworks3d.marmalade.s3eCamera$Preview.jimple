@@ -1,0 +1,164 @@
+class com.ideaworks3d.marmalade.s3eCamera$Preview extends android.view.SurfaceView implements android.view.SurfaceHolder$Callback
+{
+    final com.ideaworks3d.marmalade.s3eCamera this$0;
+
+    void <init>(com.ideaworks3d.marmalade.s3eCamera, android.content.Context)
+    {
+        com.ideaworks3d.marmalade.s3eCamera$Preview r0;
+        com.ideaworks3d.marmalade.s3eCamera $r1;
+        android.content.Context $r2;
+        android.view.SurfaceHolder $r3;
+
+        r0 := @this: com.ideaworks3d.marmalade.s3eCamera$Preview;
+
+        $r1 := @parameter0: com.ideaworks3d.marmalade.s3eCamera;
+
+        $r2 := @parameter1: android.content.Context;
+
+        r0.<com.ideaworks3d.marmalade.s3eCamera$Preview: com.ideaworks3d.marmalade.s3eCamera this$0> = $r1;
+
+        specialinvoke r0.<android.view.SurfaceView: void <init>(android.content.Context)>($r2);
+
+        $r3 = virtualinvoke r0.<com.ideaworks3d.marmalade.s3eCamera$Preview: android.view.SurfaceHolder getHolder()>();
+
+        interfaceinvoke $r3.<android.view.SurfaceHolder: void addCallback(android.view.SurfaceHolder$Callback)>(r0);
+
+        interfaceinvoke $r3.<android.view.SurfaceHolder: void setType(int)>(3);
+
+        return;
+    }
+
+    public void surfaceChanged(android.view.SurfaceHolder, int, int, int)
+    {
+        com.ideaworks3d.marmalade.s3eCamera$Preview r0;
+        android.view.SurfaceHolder $r1;
+        int $i0, $i1, $i2;
+        android.hardware.Camera $r2;
+        com.ideaworks3d.marmalade.s3eCamera $r3;
+
+        r0 := @this: com.ideaworks3d.marmalade.s3eCamera$Preview;
+
+        $r1 := @parameter0: android.view.SurfaceHolder;
+
+        $i0 := @parameter1: int;
+
+        $i1 := @parameter2: int;
+
+        $i2 := @parameter3: int;
+
+        $r3 = r0.<com.ideaworks3d.marmalade.s3eCamera$Preview: com.ideaworks3d.marmalade.s3eCamera this$0>;
+
+        virtualinvoke $r3.<com.ideaworks3d.marmalade.s3eCamera: void setCameraParameters()>();
+
+        $r3 = r0.<com.ideaworks3d.marmalade.s3eCamera$Preview: com.ideaworks3d.marmalade.s3eCamera this$0>;
+
+        $r2 = staticinvoke <com.ideaworks3d.marmalade.s3eCamera: android.hardware.Camera access$000(com.ideaworks3d.marmalade.s3eCamera)>($r3);
+
+        virtualinvoke $r2.<android.hardware.Camera: void startPreview()>();
+
+        return;
+    }
+
+    public void surfaceCreated(android.view.SurfaceHolder)
+    {
+        com.ideaworks3d.marmalade.s3eCamera$Preview r0;
+        android.view.SurfaceHolder $r1;
+        com.ideaworks3d.marmalade.s3eCamera $r2;
+        android.hardware.Camera $r3;
+        java.lang.Exception $r4;
+
+        r0 := @this: com.ideaworks3d.marmalade.s3eCamera$Preview;
+
+        $r1 := @parameter0: android.view.SurfaceHolder;
+
+        $r2 = r0.<com.ideaworks3d.marmalade.s3eCamera$Preview: com.ideaworks3d.marmalade.s3eCamera this$0>;
+
+        $r3 = staticinvoke <com.ideaworks3d.marmalade.s3eCamera: android.hardware.Camera access$000(com.ideaworks3d.marmalade.s3eCamera)>($r2);
+
+        if $r3 != null goto label1;
+
+        $r2 = r0.<com.ideaworks3d.marmalade.s3eCamera$Preview: com.ideaworks3d.marmalade.s3eCamera this$0>;
+
+        $r3 = staticinvoke <android.hardware.Camera: android.hardware.Camera open()>();
+
+        staticinvoke <com.ideaworks3d.marmalade.s3eCamera: android.hardware.Camera access$002(com.ideaworks3d.marmalade.s3eCamera,android.hardware.Camera)>($r2, $r3);
+
+     label1:
+        $r2 = r0.<com.ideaworks3d.marmalade.s3eCamera$Preview: com.ideaworks3d.marmalade.s3eCamera this$0>;
+
+        $r3 = staticinvoke <com.ideaworks3d.marmalade.s3eCamera: android.hardware.Camera access$000(com.ideaworks3d.marmalade.s3eCamera)>($r2);
+
+        virtualinvoke $r3.<android.hardware.Camera: void setPreviewDisplay(android.view.SurfaceHolder)>($r1);
+
+        $r2 = r0.<com.ideaworks3d.marmalade.s3eCamera$Preview: com.ideaworks3d.marmalade.s3eCamera this$0>;
+
+        $r3 = staticinvoke <com.ideaworks3d.marmalade.s3eCamera: android.hardware.Camera access$000(com.ideaworks3d.marmalade.s3eCamera)>($r2);
+
+        $r2 = r0.<com.ideaworks3d.marmalade.s3eCamera$Preview: com.ideaworks3d.marmalade.s3eCamera this$0>;
+
+        virtualinvoke $r3.<android.hardware.Camera: void setPreviewCallback(android.hardware.Camera$PreviewCallback)>($r2);
+
+     label2:
+        return;
+
+     label3:
+        $r4 := @caughtexception;
+
+        $r2 = r0.<com.ideaworks3d.marmalade.s3eCamera$Preview: com.ideaworks3d.marmalade.s3eCamera this$0>;
+
+        $r3 = staticinvoke <com.ideaworks3d.marmalade.s3eCamera: android.hardware.Camera access$000(com.ideaworks3d.marmalade.s3eCamera)>($r2);
+
+        virtualinvoke $r3.<android.hardware.Camera: void release()>();
+
+        $r2 = r0.<com.ideaworks3d.marmalade.s3eCamera$Preview: com.ideaworks3d.marmalade.s3eCamera this$0>;
+
+        staticinvoke <com.ideaworks3d.marmalade.s3eCamera: android.hardware.Camera access$002(com.ideaworks3d.marmalade.s3eCamera,android.hardware.Camera)>($r2, null);
+
+        return;
+
+        catch java.lang.Exception from label1 to label2 with label3;
+    }
+
+    public void surfaceDestroyed(android.view.SurfaceHolder)
+    {
+        com.ideaworks3d.marmalade.s3eCamera$Preview r0;
+        android.view.SurfaceHolder $r1;
+        com.ideaworks3d.marmalade.s3eCamera $r2;
+        android.hardware.Camera $r3;
+
+        r0 := @this: com.ideaworks3d.marmalade.s3eCamera$Preview;
+
+        $r1 := @parameter0: android.view.SurfaceHolder;
+
+        $r2 = r0.<com.ideaworks3d.marmalade.s3eCamera$Preview: com.ideaworks3d.marmalade.s3eCamera this$0>;
+
+        $r3 = staticinvoke <com.ideaworks3d.marmalade.s3eCamera: android.hardware.Camera access$000(com.ideaworks3d.marmalade.s3eCamera)>($r2);
+
+        if $r3 == null goto label1;
+
+        $r2 = r0.<com.ideaworks3d.marmalade.s3eCamera$Preview: com.ideaworks3d.marmalade.s3eCamera this$0>;
+
+        $r3 = staticinvoke <com.ideaworks3d.marmalade.s3eCamera: android.hardware.Camera access$000(com.ideaworks3d.marmalade.s3eCamera)>($r2);
+
+        virtualinvoke $r3.<android.hardware.Camera: void setPreviewCallback(android.hardware.Camera$PreviewCallback)>(null);
+
+        $r2 = r0.<com.ideaworks3d.marmalade.s3eCamera$Preview: com.ideaworks3d.marmalade.s3eCamera this$0>;
+
+        $r3 = staticinvoke <com.ideaworks3d.marmalade.s3eCamera: android.hardware.Camera access$000(com.ideaworks3d.marmalade.s3eCamera)>($r2);
+
+        virtualinvoke $r3.<android.hardware.Camera: void stopPreview()>();
+
+        $r2 = r0.<com.ideaworks3d.marmalade.s3eCamera$Preview: com.ideaworks3d.marmalade.s3eCamera this$0>;
+
+        $r3 = staticinvoke <com.ideaworks3d.marmalade.s3eCamera: android.hardware.Camera access$000(com.ideaworks3d.marmalade.s3eCamera)>($r2);
+
+        virtualinvoke $r3.<android.hardware.Camera: void release()>();
+
+        $r2 = r0.<com.ideaworks3d.marmalade.s3eCamera$Preview: com.ideaworks3d.marmalade.s3eCamera this$0>;
+
+        staticinvoke <com.ideaworks3d.marmalade.s3eCamera: android.hardware.Camera access$002(com.ideaworks3d.marmalade.s3eCamera,android.hardware.Camera)>($r2, null);
+
+     label1:
+        return;
+    }
+}

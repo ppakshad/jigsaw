@@ -1,0 +1,231 @@
+public class com.ideaworks3d.marmalade.s3eTest extends java.lang.Object
+{
+    private android.os.Handler m_Handler;
+    java.lang.Thread thread;
+
+    public void <init>()
+    {
+        com.ideaworks3d.marmalade.s3eTest r0;
+        com.ideaworks3d.marmalade.s3eTest$1 $r1;
+        com.ideaworks3d.marmalade.LoaderThread $r2;
+        com.ideaworks3d.marmalade.LoaderActivity $r3;
+
+        r0 := @this: com.ideaworks3d.marmalade.s3eTest;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        $r3 = <com.ideaworks3d.marmalade.LoaderActivity: com.ideaworks3d.marmalade.LoaderActivity m_Activity>;
+
+        $r2 = virtualinvoke $r3.<com.ideaworks3d.marmalade.LoaderActivity: com.ideaworks3d.marmalade.LoaderThread LoaderThread()>();
+
+        $r1 = new com.ideaworks3d.marmalade.s3eTest$1;
+
+        specialinvoke $r1.<com.ideaworks3d.marmalade.s3eTest$1: void <init>(com.ideaworks3d.marmalade.s3eTest)>(r0);
+
+        virtualinvoke $r2.<com.ideaworks3d.marmalade.LoaderThread: void runOnOSThread(java.lang.Runnable)>($r1);
+
+        return;
+    }
+
+    static android.os.Handler access$002(com.ideaworks3d.marmalade.s3eTest, android.os.Handler)
+    {
+        com.ideaworks3d.marmalade.s3eTest $r0;
+        android.os.Handler $r1;
+
+        $r0 := @parameter0: com.ideaworks3d.marmalade.s3eTest;
+
+        $r1 := @parameter1: android.os.Handler;
+
+        $r0.<com.ideaworks3d.marmalade.s3eTest: android.os.Handler m_Handler> = $r1;
+
+        return $r1;
+    }
+
+    public void PostResume()
+    {
+        com.ideaworks3d.marmalade.s3eTest r0;
+        com.ideaworks3d.marmalade.s3eTest$3 $r1;
+        android.os.Handler $r2;
+
+        r0 := @this: com.ideaworks3d.marmalade.s3eTest;
+
+        staticinvoke <com.ideaworks3d.marmalade.LoaderAPI: void trace(java.lang.String)>("PostResume");
+
+        $r2 = r0.<com.ideaworks3d.marmalade.s3eTest: android.os.Handler m_Handler>;
+
+        $r1 = new com.ideaworks3d.marmalade.s3eTest$3;
+
+        specialinvoke $r1.<com.ideaworks3d.marmalade.s3eTest$3: void <init>(com.ideaworks3d.marmalade.s3eTest)>(r0);
+
+        virtualinvoke $r2.<android.os.Handler: boolean post(java.lang.Runnable)>($r1);
+
+        return;
+    }
+
+    public void PostRotate(int, int)
+    {
+        com.ideaworks3d.marmalade.s3eTest r0;
+        int $i0, $i1;
+        com.ideaworks3d.marmalade.s3eTest$6 $r1;
+        android.os.Handler $r2;
+
+        r0 := @this: com.ideaworks3d.marmalade.s3eTest;
+
+        $i0 := @parameter0: int;
+
+        $i1 := @parameter1: int;
+
+        staticinvoke <com.ideaworks3d.marmalade.LoaderAPI: void trace(java.lang.String)>("PostRotate");
+
+        $r2 = r0.<com.ideaworks3d.marmalade.s3eTest: android.os.Handler m_Handler>;
+
+        $r1 = new com.ideaworks3d.marmalade.s3eTest$6;
+
+        specialinvoke $r1.<com.ideaworks3d.marmalade.s3eTest$6: void <init>(com.ideaworks3d.marmalade.s3eTest,int,int)>(r0, $i0, $i1);
+
+        virtualinvoke $r2.<android.os.Handler: boolean post(java.lang.Runnable)>($r1);
+
+        return;
+    }
+
+    public void PostSetFocus(boolean)
+    {
+        com.ideaworks3d.marmalade.s3eTest r0;
+        boolean $z0;
+        com.ideaworks3d.marmalade.s3eTest$4 $r1;
+        android.os.Handler $r2;
+
+        r0 := @this: com.ideaworks3d.marmalade.s3eTest;
+
+        $z0 := @parameter0: boolean;
+
+        staticinvoke <com.ideaworks3d.marmalade.LoaderAPI: void trace(java.lang.String)>("PostSetFocus");
+
+        $r2 = r0.<com.ideaworks3d.marmalade.s3eTest: android.os.Handler m_Handler>;
+
+        $r1 = new com.ideaworks3d.marmalade.s3eTest$4;
+
+        specialinvoke $r1.<com.ideaworks3d.marmalade.s3eTest$4: void <init>(com.ideaworks3d.marmalade.s3eTest,boolean)>(r0, $z0);
+
+        virtualinvoke $r2.<android.os.Handler: boolean post(java.lang.Runnable)>($r1);
+
+        return;
+    }
+
+    public void PostSuspend()
+    {
+        com.ideaworks3d.marmalade.s3eTest r0;
+        com.ideaworks3d.marmalade.s3eTest$2 $r1;
+        android.os.Handler $r2;
+
+        r0 := @this: com.ideaworks3d.marmalade.s3eTest;
+
+        staticinvoke <com.ideaworks3d.marmalade.LoaderAPI: void trace(java.lang.String)>("PostSuspend");
+
+        $r2 = r0.<com.ideaworks3d.marmalade.s3eTest: android.os.Handler m_Handler>;
+
+        $r1 = new com.ideaworks3d.marmalade.s3eTest$2;
+
+        specialinvoke $r1.<com.ideaworks3d.marmalade.s3eTest$2: void <init>(com.ideaworks3d.marmalade.s3eTest)>(r0);
+
+        virtualinvoke $r2.<android.os.Handler: boolean post(java.lang.Runnable)>($r1);
+
+        return;
+    }
+
+    public void PostSuspendResume(int, int)
+    {
+        com.ideaworks3d.marmalade.s3eTest r0;
+        int $i0, $i1;
+        com.ideaworks3d.marmalade.s3eTest$5 $r1;
+        java.lang.Thread $r2;
+
+        r0 := @this: com.ideaworks3d.marmalade.s3eTest;
+
+        $i0 := @parameter0: int;
+
+        $i1 := @parameter1: int;
+
+        $r2 = new java.lang.Thread;
+
+        $r1 = new com.ideaworks3d.marmalade.s3eTest$5;
+
+        specialinvoke $r1.<com.ideaworks3d.marmalade.s3eTest$5: void <init>(com.ideaworks3d.marmalade.s3eTest,int,int)>(r0, $i1, $i0);
+
+        specialinvoke $r2.<java.lang.Thread: void <init>(java.lang.Runnable)>($r1);
+
+        r0.<com.ideaworks3d.marmalade.s3eTest: java.lang.Thread thread> = $r2;
+
+        $r2 = r0.<com.ideaworks3d.marmalade.s3eTest: java.lang.Thread thread>;
+
+        virtualinvoke $r2.<java.lang.Thread: void start()>();
+
+        return;
+    }
+
+    public boolean QueryThreadFinished()
+    {
+        com.ideaworks3d.marmalade.s3eTest r0;
+        java.lang.Thread $r1;
+
+        r0 := @this: com.ideaworks3d.marmalade.s3eTest;
+
+        $r1 = r0.<com.ideaworks3d.marmalade.s3eTest: java.lang.Thread thread>;
+
+        if $r1 != null goto label1;
+
+        return 1;
+
+     label1:
+        return 0;
+    }
+
+    public int[] TakeScreenShot(int[])
+    {
+        com.ideaworks3d.marmalade.s3eTest r0;
+        int[] $r1, $r6;
+        com.ideaworks3d.marmalade.LoaderActivity $r2;
+        android.view.Window $r3;
+        android.view.View $r4;
+        android.graphics.Bitmap $r5;
+        int $i0, $i1, $i2;
+
+        r0 := @this: com.ideaworks3d.marmalade.s3eTest;
+
+        $r1 := @parameter0: int[];
+
+        staticinvoke <com.ideaworks3d.marmalade.LoaderAPI: void trace(java.lang.String)>("TakeScreenShot");
+
+        $r2 = staticinvoke <com.ideaworks3d.marmalade.LoaderAPI: com.ideaworks3d.marmalade.LoaderActivity getActivity()>();
+
+        $r3 = virtualinvoke $r2.<com.ideaworks3d.marmalade.LoaderActivity: android.view.Window getWindow()>();
+
+        $r4 = virtualinvoke $r3.<android.view.Window: android.view.View getDecorView()>();
+
+        $r4 = virtualinvoke $r4.<android.view.View: android.view.View findViewById(int)>(16908290);
+
+        virtualinvoke $r4.<android.view.View: void setDrawingCacheEnabled(boolean)>(1);
+
+        $r5 = virtualinvoke $r4.<android.view.View: android.graphics.Bitmap getDrawingCache()>();
+
+        $r5 = staticinvoke <android.graphics.Bitmap: android.graphics.Bitmap createBitmap(android.graphics.Bitmap)>($r5);
+
+        $i0 = virtualinvoke $r5.<android.graphics.Bitmap: int getWidth()>();
+
+        $i1 = virtualinvoke $r5.<android.graphics.Bitmap: int getHeight()>();
+
+        $i2 = $i0 * $i1;
+
+        $r6 = newarray (int)[$i2];
+
+        virtualinvoke $r5.<android.graphics.Bitmap: void getPixels(int[],int,int,int,int,int,int)>($r6, 0, $i0, 0, 0, $i0, $i1);
+
+        $r1[0] = $i0;
+
+        $r1[1] = $i1;
+
+        virtualinvoke $r4.<android.view.View: void setDrawingCacheEnabled(boolean)>(0);
+
+        return $r6;
+    }
+}

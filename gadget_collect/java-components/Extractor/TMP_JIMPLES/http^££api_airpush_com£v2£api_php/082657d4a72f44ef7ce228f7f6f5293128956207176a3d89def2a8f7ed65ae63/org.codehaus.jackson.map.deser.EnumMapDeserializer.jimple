@@ -1,0 +1,167 @@
+public final class org.codehaus.jackson.map.deser.EnumMapDeserializer extends org.codehaus.jackson.map.deser.StdDeserializer
+{
+    final org.codehaus.jackson.map.deser.EnumResolver _enumResolver;
+    final org.codehaus.jackson.map.JsonDeserializer _valueDeserializer;
+
+    public void <init>(org.codehaus.jackson.map.deser.EnumResolver, org.codehaus.jackson.map.JsonDeserializer)
+    {
+        org.codehaus.jackson.map.deser.EnumMapDeserializer r0;
+        org.codehaus.jackson.map.deser.EnumResolver r1;
+        org.codehaus.jackson.map.JsonDeserializer r2;
+
+        r0 := @this: org.codehaus.jackson.map.deser.EnumMapDeserializer;
+
+        r1 := @parameter0: org.codehaus.jackson.map.deser.EnumResolver;
+
+        r2 := @parameter1: org.codehaus.jackson.map.JsonDeserializer;
+
+        specialinvoke r0.<org.codehaus.jackson.map.deser.StdDeserializer: void <init>(java.lang.Class)>(class "Ljava/util/EnumMap;");
+
+        r0.<org.codehaus.jackson.map.deser.EnumMapDeserializer: org.codehaus.jackson.map.deser.EnumResolver _enumResolver> = r1;
+
+        r0.<org.codehaus.jackson.map.deser.EnumMapDeserializer: org.codehaus.jackson.map.JsonDeserializer _valueDeserializer> = r2;
+
+        return;
+    }
+
+    private java.util.EnumMap constructMap()
+    {
+        org.codehaus.jackson.map.deser.EnumMapDeserializer r0;
+        java.lang.Class $r1;
+        org.codehaus.jackson.map.deser.EnumResolver $r2;
+        java.util.EnumMap $r3;
+
+        r0 := @this: org.codehaus.jackson.map.deser.EnumMapDeserializer;
+
+        $r2 = r0.<org.codehaus.jackson.map.deser.EnumMapDeserializer: org.codehaus.jackson.map.deser.EnumResolver _enumResolver>;
+
+        $r1 = virtualinvoke $r2.<org.codehaus.jackson.map.deser.EnumResolver: java.lang.Class getEnumClass()>();
+
+        $r3 = new java.util.EnumMap;
+
+        specialinvoke $r3.<java.util.EnumMap: void <init>(java.lang.Class)>($r1);
+
+        return $r3;
+    }
+
+    public volatile java.lang.Object deserialize(org.codehaus.jackson.JsonParser, org.codehaus.jackson.map.DeserializationContext) throws java.io.IOException, org.codehaus.jackson.JsonProcessingException
+    {
+        org.codehaus.jackson.map.deser.EnumMapDeserializer r0;
+        org.codehaus.jackson.JsonParser $r1;
+        org.codehaus.jackson.map.DeserializationContext $r2;
+        java.util.EnumMap $r3;
+
+        r0 := @this: org.codehaus.jackson.map.deser.EnumMapDeserializer;
+
+        $r1 := @parameter0: org.codehaus.jackson.JsonParser;
+
+        $r2 := @parameter1: org.codehaus.jackson.map.DeserializationContext;
+
+        $r3 = virtualinvoke r0.<org.codehaus.jackson.map.deser.EnumMapDeserializer: java.util.EnumMap deserialize(org.codehaus.jackson.JsonParser,org.codehaus.jackson.map.DeserializationContext)>($r1, $r2);
+
+        return $r3;
+    }
+
+    public java.util.EnumMap deserialize(org.codehaus.jackson.JsonParser, org.codehaus.jackson.map.DeserializationContext) throws java.io.IOException, org.codehaus.jackson.JsonProcessingException
+    {
+        org.codehaus.jackson.map.deser.EnumMapDeserializer r0;
+        org.codehaus.jackson.JsonParser $r1;
+        org.codehaus.jackson.map.DeserializationContext $r2;
+        org.codehaus.jackson.JsonToken $r3, $r4;
+        org.codehaus.jackson.map.JsonMappingException $r5;
+        java.util.EnumMap $r6;
+        java.lang.String $r7;
+        org.codehaus.jackson.map.deser.EnumResolver $r8;
+        java.lang.Enum $r9;
+        java.lang.Class $r10;
+        java.lang.Object r11;
+        org.codehaus.jackson.map.JsonDeserializer $r12;
+
+        r0 := @this: org.codehaus.jackson.map.deser.EnumMapDeserializer;
+
+        $r1 := @parameter0: org.codehaus.jackson.JsonParser;
+
+        $r2 := @parameter1: org.codehaus.jackson.map.DeserializationContext;
+
+        $r3 = virtualinvoke $r1.<org.codehaus.jackson.JsonParser: org.codehaus.jackson.JsonToken getCurrentToken()>();
+
+        $r4 = <org.codehaus.jackson.JsonToken: org.codehaus.jackson.JsonToken START_OBJECT>;
+
+        if $r3 == $r4 goto label1;
+
+        $r5 = virtualinvoke $r2.<org.codehaus.jackson.map.DeserializationContext: org.codehaus.jackson.map.JsonMappingException mappingException(java.lang.Class)>(class "Ljava/util/EnumMap;");
+
+        throw $r5;
+
+     label1:
+        $r6 = specialinvoke r0.<org.codehaus.jackson.map.deser.EnumMapDeserializer: java.util.EnumMap constructMap()>();
+
+     label2:
+        $r3 = virtualinvoke $r1.<org.codehaus.jackson.JsonParser: org.codehaus.jackson.JsonToken nextToken()>();
+
+        $r4 = <org.codehaus.jackson.JsonToken: org.codehaus.jackson.JsonToken END_OBJECT>;
+
+        if $r3 == $r4 goto label6;
+
+        $r7 = virtualinvoke $r1.<org.codehaus.jackson.JsonParser: java.lang.String getCurrentName()>();
+
+        $r8 = r0.<org.codehaus.jackson.map.deser.EnumMapDeserializer: org.codehaus.jackson.map.deser.EnumResolver _enumResolver>;
+
+        $r9 = virtualinvoke $r8.<org.codehaus.jackson.map.deser.EnumResolver: java.lang.Enum findEnum(java.lang.String)>($r7);
+
+        if $r9 != null goto label3;
+
+        $r8 = r0.<org.codehaus.jackson.map.deser.EnumMapDeserializer: org.codehaus.jackson.map.deser.EnumResolver _enumResolver>;
+
+        $r10 = virtualinvoke $r8.<org.codehaus.jackson.map.deser.EnumResolver: java.lang.Class getEnumClass()>();
+
+        $r5 = virtualinvoke $r2.<org.codehaus.jackson.map.DeserializationContext: org.codehaus.jackson.map.JsonMappingException weirdStringException(java.lang.Class,java.lang.String)>($r10, "value not one of declared Enum instance names");
+
+        throw $r5;
+
+     label3:
+        $r3 = virtualinvoke $r1.<org.codehaus.jackson.JsonParser: org.codehaus.jackson.JsonToken nextToken()>();
+
+        $r4 = <org.codehaus.jackson.JsonToken: org.codehaus.jackson.JsonToken VALUE_NULL>;
+
+        if $r3 != $r4 goto label5;
+
+        r11 = null;
+
+     label4:
+        virtualinvoke $r6.<java.util.EnumMap: java.lang.Object put(java.lang.Enum,java.lang.Object)>($r9, r11);
+
+        goto label2;
+
+     label5:
+        $r12 = r0.<org.codehaus.jackson.map.deser.EnumMapDeserializer: org.codehaus.jackson.map.JsonDeserializer _valueDeserializer>;
+
+        r11 = virtualinvoke $r12.<org.codehaus.jackson.map.JsonDeserializer: java.lang.Object deserialize(org.codehaus.jackson.JsonParser,org.codehaus.jackson.map.DeserializationContext)>($r1, $r2);
+
+        goto label4;
+
+     label6:
+        return $r6;
+    }
+
+    public java.lang.Object deserializeWithType(org.codehaus.jackson.JsonParser, org.codehaus.jackson.map.DeserializationContext, org.codehaus.jackson.map.TypeDeserializer) throws java.io.IOException, org.codehaus.jackson.JsonProcessingException
+    {
+        org.codehaus.jackson.map.deser.EnumMapDeserializer r0;
+        org.codehaus.jackson.JsonParser $r1;
+        org.codehaus.jackson.map.DeserializationContext $r2;
+        org.codehaus.jackson.map.TypeDeserializer $r3;
+        java.lang.Object $r4;
+
+        r0 := @this: org.codehaus.jackson.map.deser.EnumMapDeserializer;
+
+        $r1 := @parameter0: org.codehaus.jackson.JsonParser;
+
+        $r2 := @parameter1: org.codehaus.jackson.map.DeserializationContext;
+
+        $r3 := @parameter2: org.codehaus.jackson.map.TypeDeserializer;
+
+        $r4 = virtualinvoke $r3.<org.codehaus.jackson.map.TypeDeserializer: java.lang.Object deserializeTypedFromObject(org.codehaus.jackson.JsonParser,org.codehaus.jackson.map.DeserializationContext)>($r1, $r2);
+
+        return $r4;
+    }
+}

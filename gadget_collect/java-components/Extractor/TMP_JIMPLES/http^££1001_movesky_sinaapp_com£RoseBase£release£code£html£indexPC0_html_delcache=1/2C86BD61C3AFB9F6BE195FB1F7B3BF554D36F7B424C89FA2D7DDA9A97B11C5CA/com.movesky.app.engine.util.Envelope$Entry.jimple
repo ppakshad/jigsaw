@@ -1,0 +1,67 @@
+abstract class com.movesky.app.engine.util.Envelope$Entry extends java.lang.Object
+{
+    public final float endTime;
+    public final float length;
+
+    public void <init>(float, float)
+    {
+        com.movesky.app.engine.util.Envelope$Entry r0;
+        float $f0, $f1;
+
+        r0 := @this: com.movesky.app.engine.util.Envelope$Entry;
+
+        $f0 := @parameter0: float;
+
+        $f1 := @parameter1: float;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        r0.<com.movesky.app.engine.util.Envelope$Entry: float endTime> = $f0;
+
+        r0.<com.movesky.app.engine.util.Envelope$Entry: float length> = $f1;
+
+        return;
+    }
+
+    public final boolean coversTime(float)
+    {
+        com.movesky.app.engine.util.Envelope$Entry r0;
+        float $f0, $f1, $f2;
+        byte $b0;
+
+        r0 := @this: com.movesky.app.engine.util.Envelope$Entry;
+
+        $f0 := @parameter0: float;
+
+        $f1 = r0.<com.movesky.app.engine.util.Envelope$Entry: float endTime>;
+
+        $b0 = $f0 cmpg $f1;
+
+        if $b0 >= 0 goto label1;
+
+        $f2 = r0.<com.movesky.app.engine.util.Envelope$Entry: float endTime>;
+
+        $f1 = r0.<com.movesky.app.engine.util.Envelope$Entry: float length>;
+
+        $f1 = $f2 - $f1;
+
+        $b0 = $f0 cmpl $f1;
+
+        if $b0 > 0 goto label2;
+
+     label1:
+        $f1 = r0.<com.movesky.app.engine.util.Envelope$Entry: float endTime>;
+
+        $b0 = $f0 cmpl $f1;
+
+        if $b0 != 0 goto label3;
+
+     label2:
+        return 1;
+
+     label3:
+        return 0;
+    }
+
+    public abstract double getValueAtTime(float);
+}

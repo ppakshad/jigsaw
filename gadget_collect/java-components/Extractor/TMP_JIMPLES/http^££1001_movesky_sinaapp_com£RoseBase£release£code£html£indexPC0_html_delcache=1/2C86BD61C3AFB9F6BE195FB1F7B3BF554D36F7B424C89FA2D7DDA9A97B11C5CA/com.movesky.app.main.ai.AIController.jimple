@@ -1,0 +1,824 @@
+public class com.movesky.app.main.ai.AIController extends java.lang.Object
+{
+    com.movesky.app.engine.util.Point m_center_stick;
+    com.movesky.app.main.ai.DefensiveAI m_defensive;
+    java.util.EnumMap m_entities;
+    java.util.EnumMap m_flocks;
+    private float m_fraction_to_update;
+    java.util.EnumMap m_last_updated;
+    com.movesky.app.main.ai.OffensiveAI m_offensive;
+    com.movesky.app.main.Team[] m_teams;
+    private com.movesky.app.engine.fastgraph.LineOfSightTester m_tester;
+    com.movesky.app.main.ai.UberAI m_uber;
+    java.util.ArrayList m_units;
+    com.movesky.app.engine.util.Point m_vec_result;
+    com.movesky.app.engine.util.Point m_wall;
+    com.movesky.app.engine.util.Point m_wall_to_player;
+
+    public void <init>()
+    {
+        com.movesky.app.main.ai.AIController r0;
+        int $i0, $i1;
+        com.movesky.app.main.Team $r1;
+        com.movesky.app.main.ai.DefensiveAI $r2;
+        com.movesky.app.main.ai.OffensiveAI $r3;
+        com.movesky.app.main.ai.UberAI $r4;
+        com.movesky.app.engine.util.Point $r5;
+        java.util.ArrayList $r6;
+        java.util.EnumMap $r7;
+        com.movesky.app.main.Team[] $r8;
+        com.movesky.app.engine.ai.FlockRulesCalculator $r9;
+        java.lang.Integer $r10;
+
+        r0 := @this: com.movesky.app.main.ai.AIController;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        r0.<com.movesky.app.main.ai.AIController: float m_fraction_to_update> = 1.0F;
+
+        $r2 = new com.movesky.app.main.ai.DefensiveAI;
+
+        specialinvoke $r2.<com.movesky.app.main.ai.DefensiveAI: void <init>()>();
+
+        r0.<com.movesky.app.main.ai.AIController: com.movesky.app.main.ai.DefensiveAI m_defensive> = $r2;
+
+        $r3 = new com.movesky.app.main.ai.OffensiveAI;
+
+        specialinvoke $r3.<com.movesky.app.main.ai.OffensiveAI: void <init>()>();
+
+        r0.<com.movesky.app.main.ai.AIController: com.movesky.app.main.ai.OffensiveAI m_offensive> = $r3;
+
+        $r4 = new com.movesky.app.main.ai.UberAI;
+
+        specialinvoke $r4.<com.movesky.app.main.ai.UberAI: void <init>()>();
+
+        r0.<com.movesky.app.main.ai.AIController: com.movesky.app.main.ai.UberAI m_uber> = $r4;
+
+        $r5 = new com.movesky.app.engine.util.Point;
+
+        specialinvoke $r5.<com.movesky.app.engine.util.Point: void <init>()>();
+
+        r0.<com.movesky.app.main.ai.AIController: com.movesky.app.engine.util.Point m_center_stick> = $r5;
+
+        $r5 = new com.movesky.app.engine.util.Point;
+
+        specialinvoke $r5.<com.movesky.app.engine.util.Point: void <init>()>();
+
+        r0.<com.movesky.app.main.ai.AIController: com.movesky.app.engine.util.Point m_wall> = $r5;
+
+        $r5 = new com.movesky.app.engine.util.Point;
+
+        specialinvoke $r5.<com.movesky.app.engine.util.Point: void <init>()>();
+
+        r0.<com.movesky.app.main.ai.AIController: com.movesky.app.engine.util.Point m_wall_to_player> = $r5;
+
+        $r5 = new com.movesky.app.engine.util.Point;
+
+        specialinvoke $r5.<com.movesky.app.engine.util.Point: void <init>()>();
+
+        r0.<com.movesky.app.main.ai.AIController: com.movesky.app.engine.util.Point m_vec_result> = $r5;
+
+        $r6 = new java.util.ArrayList;
+
+        specialinvoke $r6.<java.util.ArrayList: void <init>()>();
+
+        r0.<com.movesky.app.main.ai.AIController: java.util.ArrayList m_units> = $r6;
+
+        $r7 = new java.util.EnumMap;
+
+        specialinvoke $r7.<java.util.EnumMap: void <init>(java.lang.Class)>(class "Lcom/movesky/app/main/Team;");
+
+        r0.<com.movesky.app.main.ai.AIController: java.util.EnumMap m_flocks> = $r7;
+
+        $r7 = new java.util.EnumMap;
+
+        specialinvoke $r7.<java.util.EnumMap: void <init>(java.lang.Class)>(class "Lcom/movesky/app/main/Team;");
+
+        r0.<com.movesky.app.main.ai.AIController: java.util.EnumMap m_last_updated> = $r7;
+
+        $r7 = new java.util.EnumMap;
+
+        specialinvoke $r7.<java.util.EnumMap: void <init>(java.lang.Class)>(class "Lcom/movesky/app/main/Team;");
+
+        r0.<com.movesky.app.main.ai.AIController: java.util.EnumMap m_entities> = $r7;
+
+        $r8 = staticinvoke <com.movesky.app.main.Team: com.movesky.app.main.Team[] values()>();
+
+        r0.<com.movesky.app.main.ai.AIController: com.movesky.app.main.Team[] m_teams> = $r8;
+
+        $r8 = r0.<com.movesky.app.main.ai.AIController: com.movesky.app.main.Team[] m_teams>;
+
+        $i0 = lengthof $r8;
+
+        $i1 = 0;
+
+     label1:
+        if $i1 >= $i0 goto label2;
+
+        $r1 = $r8[$i1];
+
+        $r7 = r0.<com.movesky.app.main.ai.AIController: java.util.EnumMap m_flocks>;
+
+        $r9 = new com.movesky.app.engine.ai.FlockRulesCalculator;
+
+        specialinvoke $r9.<com.movesky.app.engine.ai.FlockRulesCalculator: void <init>()>();
+
+        virtualinvoke $r7.<java.util.EnumMap: java.lang.Object put(java.lang.Enum,java.lang.Object)>($r1, $r9);
+
+        $r7 = r0.<com.movesky.app.main.ai.AIController: java.util.EnumMap m_last_updated>;
+
+        $r10 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>(0);
+
+        virtualinvoke $r7.<java.util.EnumMap: java.lang.Object put(java.lang.Enum,java.lang.Object)>($r1, $r10);
+
+        $r7 = r0.<com.movesky.app.main.ai.AIController: java.util.EnumMap m_entities>;
+
+        $r6 = new java.util.ArrayList;
+
+        specialinvoke $r6.<java.util.ArrayList: void <init>()>();
+
+        virtualinvoke $r7.<java.util.EnumMap: java.lang.Object put(java.lang.Enum,java.lang.Object)>($r1, $r6);
+
+        $i1 = $i1 + 1;
+
+        goto label1;
+
+     label2:
+        return;
+    }
+
+    private com.movesky.app.engine.util.Point getTurnVector(com.movesky.app.main.units.Unit, com.movesky.app.engine.fastgraph.Wall, float)
+    {
+        com.movesky.app.main.ai.AIController r0;
+        com.movesky.app.main.units.Unit $r1;
+        com.movesky.app.engine.fastgraph.Wall $r2;
+        float $f0, $f1, $f2, $f3;
+        com.movesky.app.engine.util.Point $r3, $r4, $r5;
+
+        r0 := @this: com.movesky.app.main.ai.AIController;
+
+        $r1 := @parameter0: com.movesky.app.main.units.Unit;
+
+        $r2 := @parameter1: com.movesky.app.engine.fastgraph.Wall;
+
+        $f0 := @parameter2: float;
+
+        $f1 = virtualinvoke $r1.<com.movesky.app.main.units.Unit: float getX()>();
+
+        $f2 = virtualinvoke $r1.<com.movesky.app.main.units.Unit: float getY()>();
+
+        $r3 = r0.<com.movesky.app.main.ai.AIController: com.movesky.app.engine.util.Point m_center_stick>;
+
+        $f3 = staticinvoke <android.util.FloatMath: float cos(float)>($f0);
+
+        $f3 = $f3 * 15.0F;
+
+        $r3.<com.movesky.app.engine.util.Point: float x> = $f3;
+
+        $r3 = r0.<com.movesky.app.main.ai.AIController: com.movesky.app.engine.util.Point m_center_stick>;
+
+        $f0 = staticinvoke <android.util.FloatMath: float sin(float)>($f0);
+
+        $f0 = $f0 * 15.0F;
+
+        $r3.<com.movesky.app.engine.util.Point: float y> = $f0;
+
+        $r3 = r0.<com.movesky.app.main.ai.AIController: com.movesky.app.engine.util.Point m_wall>;
+
+        $r4 = $r2.<com.movesky.app.engine.fastgraph.Wall: com.movesky.app.engine.util.Point b>;
+
+        $f0 = $r4.<com.movesky.app.engine.util.Point: float x>;
+
+        $r4 = $r2.<com.movesky.app.engine.fastgraph.Wall: com.movesky.app.engine.util.Point a>;
+
+        $f3 = $r4.<com.movesky.app.engine.util.Point: float x>;
+
+        $f0 = $f0 - $f3;
+
+        $r3.<com.movesky.app.engine.util.Point: float x> = $f0;
+
+        $r3 = r0.<com.movesky.app.main.ai.AIController: com.movesky.app.engine.util.Point m_wall>;
+
+        $r4 = $r2.<com.movesky.app.engine.fastgraph.Wall: com.movesky.app.engine.util.Point b>;
+
+        $f0 = $r4.<com.movesky.app.engine.util.Point: float y>;
+
+        $r4 = $r2.<com.movesky.app.engine.fastgraph.Wall: com.movesky.app.engine.util.Point a>;
+
+        $f3 = $r4.<com.movesky.app.engine.util.Point: float y>;
+
+        $f0 = $f0 - $f3;
+
+        $r3.<com.movesky.app.engine.util.Point: float y> = $f0;
+
+        $r3 = r0.<com.movesky.app.main.ai.AIController: com.movesky.app.engine.util.Point m_wall_to_player>;
+
+        $r4 = $r2.<com.movesky.app.engine.fastgraph.Wall: com.movesky.app.engine.util.Point a>;
+
+        $f0 = $r4.<com.movesky.app.engine.util.Point: float x>;
+
+        $f0 = $f1 - $f0;
+
+        $r3.<com.movesky.app.engine.util.Point: float x> = $f0;
+
+        $r3 = r0.<com.movesky.app.main.ai.AIController: com.movesky.app.engine.util.Point m_wall_to_player>;
+
+        $r4 = $r2.<com.movesky.app.engine.fastgraph.Wall: com.movesky.app.engine.util.Point a>;
+
+        $f0 = $r4.<com.movesky.app.engine.util.Point: float y>;
+
+        $f0 = $f2 - $f0;
+
+        $r3.<com.movesky.app.engine.util.Point: float y> = $f0;
+
+        $r3 = r0.<com.movesky.app.main.ai.AIController: com.movesky.app.engine.util.Point m_wall>;
+
+        $r4 = r0.<com.movesky.app.main.ai.AIController: com.movesky.app.engine.util.Point m_center_stick>;
+
+        $r5 = r0.<com.movesky.app.main.ai.AIController: com.movesky.app.engine.util.Point m_vec_result>;
+
+        staticinvoke <com.movesky.app.engine.util.MathUtils: void getProjection(com.movesky.app.engine.util.Point,com.movesky.app.engine.util.Point,com.movesky.app.engine.util.Point)>($r3, $r4, $r5);
+
+        $r3 = r0.<com.movesky.app.main.ai.AIController: com.movesky.app.engine.util.Point m_vec_result>;
+
+        return $r3;
+    }
+
+    private void update(java.util.ArrayList, com.movesky.app.engine.ai.FlockRulesCalculator, com.movesky.app.main.Team)
+    {
+        com.movesky.app.main.ai.AIController r0;
+        java.util.ArrayList $r1;
+        com.movesky.app.engine.ai.FlockRulesCalculator $r2;
+        com.movesky.app.main.Team $r3;
+        float $f0, $f1, $f2, $f3, $f4, $f5, $f6, $f7, $f8, $f9, $f10, $f11;
+        int $i0, $i1, $i2, $i3, $i4;
+        java.util.EnumMap $r4;
+        java.lang.Object $r5;
+        java.lang.Integer $r6;
+        com.movesky.app.main.units.Unit $r7;
+        com.movesky.app.main.units.UnitType $r8, $r9;
+        com.movesky.app.main.ai.DefensiveAI $r10;
+        com.movesky.app.main.ai.OffensiveAI $r11;
+        com.movesky.app.main.ai.UberAI $r12;
+        com.movesky.app.engine.fastgraph.LineOfSightTester $r13;
+        boolean $z0;
+        com.movesky.app.engine.fastgraph.Wall $r14, $r15;
+        com.movesky.app.engine.util.Point $r16;
+        byte $b5;
+
+        r0 := @this: com.movesky.app.main.ai.AIController;
+
+        $r1 := @parameter0: java.util.ArrayList;
+
+        $r2 := @parameter1: com.movesky.app.engine.ai.FlockRulesCalculator;
+
+        $r3 := @parameter2: com.movesky.app.main.Team;
+
+        $i0 = virtualinvoke $r1.<java.util.ArrayList: int size()>();
+
+        $f1 = (float) $i0;
+
+        $f2 = r0.<com.movesky.app.main.ai.AIController: float m_fraction_to_update>;
+
+        $f1 = $f1 * $f2;
+
+        $f1 = $f1 + 1.0F;
+
+        $i1 = (int) $f1;
+
+        if $i0 != 0 goto label01;
+
+        return;
+
+     label01:
+        $r4 = r0.<com.movesky.app.main.ai.AIController: java.util.EnumMap m_last_updated>;
+
+        $r5 = virtualinvoke $r4.<java.util.EnumMap: java.lang.Object get(java.lang.Object)>($r3);
+
+        $r6 = (java.lang.Integer) $r5;
+
+        $i2 = virtualinvoke $r6.<java.lang.Integer: int intValue()>();
+
+        $i3 = $i2;
+
+        $i4 = $i0 + -1;
+
+        if $i2 <= $i4 goto label02;
+
+        $i3 = 0;
+
+     label02:
+        if $i1 <= 0 goto label08;
+
+        $r5 = virtualinvoke $r1.<java.util.ArrayList: java.lang.Object get(int)>($i3);
+
+        $r7 = (com.movesky.app.main.units.Unit) $r5;
+
+        $r8 = virtualinvoke $r7.<com.movesky.app.main.units.Unit: com.movesky.app.main.units.UnitType getType()>();
+
+        $r9 = <com.movesky.app.main.units.UnitType: com.movesky.app.main.units.UnitType DEFENDING>;
+
+        if $r8 != $r9 goto label05;
+
+        $r10 = r0.<com.movesky.app.main.ai.AIController: com.movesky.app.main.ai.DefensiveAI m_defensive>;
+
+        virtualinvoke $r10.<com.movesky.app.main.ai.DefensiveAI: void update(com.movesky.app.main.units.Unit,com.movesky.app.main.ai.AIController,com.movesky.app.engine.ai.FlockRulesCalculator)>($r7, r0, $r2);
+
+     label03:
+        $i1 = $i1 + -1;
+
+        $i2 = $i0 + -1;
+
+        if $i3 < $i2 goto label07;
+
+        $i3 = 0;
+
+     label04:
+        goto label02;
+
+     label05:
+        $r8 = virtualinvoke $r7.<com.movesky.app.main.units.Unit: com.movesky.app.main.units.UnitType getType()>();
+
+        $r9 = <com.movesky.app.main.units.UnitType: com.movesky.app.main.units.UnitType ATTACKING>;
+
+        if $r8 != $r9 goto label06;
+
+        $r11 = r0.<com.movesky.app.main.ai.AIController: com.movesky.app.main.ai.OffensiveAI m_offensive>;
+
+        virtualinvoke $r11.<com.movesky.app.main.ai.OffensiveAI: void update(com.movesky.app.main.units.Unit,com.movesky.app.main.ai.AIController,com.movesky.app.engine.ai.FlockRulesCalculator)>($r7, r0, $r2);
+
+        goto label03;
+
+     label06:
+        $r8 = virtualinvoke $r7.<com.movesky.app.main.units.Unit: com.movesky.app.main.units.UnitType getType()>();
+
+        $r9 = <com.movesky.app.main.units.UnitType: com.movesky.app.main.units.UnitType UBER>;
+
+        if $r8 != $r9 goto label03;
+
+        $r12 = r0.<com.movesky.app.main.ai.AIController: com.movesky.app.main.ai.UberAI m_uber>;
+
+        virtualinvoke $r12.<com.movesky.app.main.ai.UberAI: void update(com.movesky.app.main.units.Unit,com.movesky.app.main.ai.AIController,com.movesky.app.engine.ai.FlockRulesCalculator)>($r7, r0, $r2);
+
+        goto label03;
+
+     label07:
+        $i3 = $i3 + 1;
+
+        goto label04;
+
+     label08:
+        $i1 = $i0 + -1;
+
+        if $i3 <= $i1 goto label13;
+
+        $r4 = r0.<com.movesky.app.main.ai.AIController: java.util.EnumMap m_last_updated>;
+
+        $r6 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>(0);
+
+        virtualinvoke $r4.<java.util.EnumMap: java.lang.Object put(java.lang.Enum,java.lang.Object)>($r3, $r6);
+
+     label09:
+        $r13 = r0.<com.movesky.app.main.ai.AIController: com.movesky.app.engine.fastgraph.LineOfSightTester m_tester>;
+
+        if $r13 == null goto label22;
+
+        $i3 = 0;
+
+     label10:
+        if $i3 >= $i0 goto label22;
+
+        $r5 = virtualinvoke $r1.<java.util.ArrayList: java.lang.Object get(int)>($i3);
+
+        $r7 = (com.movesky.app.main.units.Unit) $r5;
+
+        $f1 = virtualinvoke $r7.<com.movesky.app.main.units.Unit: float getX()>();
+
+        $f2 = virtualinvoke $r7.<com.movesky.app.main.units.Unit: float getY()>();
+
+        $f3 = virtualinvoke $r7.<com.movesky.app.main.units.Unit: float getHeading()>();
+
+        $z0 = 0;
+
+        $i1 = 0;
+
+        $f4 = $f3;
+
+     label11:
+        if $z0 != 0 goto label12;
+
+        if $i1 <= 100 goto label14;
+
+        $f4 = $f3 + 3.1415927F;
+
+     label12:
+        $f1 = virtualinvoke $r7.<com.movesky.app.main.units.Unit: float getSpeed()>();
+
+        virtualinvoke $r7.<com.movesky.app.main.units.Unit: void setVelocity(float,float)>($f1, $f4);
+
+        $i3 = $i3 + 1;
+
+        goto label10;
+
+     label13:
+        $r4 = r0.<com.movesky.app.main.ai.AIController: java.util.EnumMap m_last_updated>;
+
+        $r6 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>($i3);
+
+        virtualinvoke $r4.<java.util.EnumMap: java.lang.Object put(java.lang.Enum,java.lang.Object)>($r3, $r6);
+
+        goto label09;
+
+     label14:
+        $f0 = staticinvoke <android.util.FloatMath: float cos(float)>($f4);
+
+        $f0 = 3.0F * $f0;
+
+        $f5 = $f0 + $f1;
+
+        $f0 = staticinvoke <android.util.FloatMath: float sin(float)>($f4);
+
+        $f0 = 3.0F * $f0;
+
+        $f6 = $f0 + $f2;
+
+        $f0 = $f4 - 1.5707964F;
+
+        $f0 = staticinvoke <android.util.FloatMath: float cos(float)>($f0);
+
+        $f7 = 6.0F * $f0;
+
+        $f0 = $f4 - 1.5707964F;
+
+        $f0 = staticinvoke <android.util.FloatMath: float sin(float)>($f0);
+
+        $f8 = 6.0F * $f0;
+
+        $f9 = $f5 + $f7;
+
+        $f0 = $f6 + $f8;
+
+        $f10 = 0.5235988F + $f4;
+
+        $f10 = staticinvoke <android.util.FloatMath: float cos(float)>($f10);
+
+        $f10 = 12.0F * $f10;
+
+        $f10 = $f10 + $f9;
+
+        $f11 = 0.5235988F + $f4;
+
+        $f11 = staticinvoke <android.util.FloatMath: float sin(float)>($f11);
+
+        $f11 = 12.0F * $f11;
+
+        $f11 = $f11 + $f0;
+
+        $f5 = $f5 - $f7;
+
+        $f6 = $f6 - $f8;
+
+        $f7 = $f4 - 0.5235988F;
+
+        $f7 = staticinvoke <android.util.FloatMath: float cos(float)>($f7);
+
+        $f7 = 12.0F * $f7;
+
+        $f7 = $f7 + $f5;
+
+        $f8 = $f4 - 0.5235988F;
+
+        $f8 = staticinvoke <android.util.FloatMath: float sin(float)>($f8);
+
+        $f8 = 12.0F * $f8;
+
+        $f8 = $f8 + $f6;
+
+        $r13 = r0.<com.movesky.app.main.ai.AIController: com.movesky.app.engine.fastgraph.LineOfSightTester m_tester>;
+
+        $r14 = virtualinvoke $r13.<com.movesky.app.engine.fastgraph.LineOfSightTester: com.movesky.app.engine.fastgraph.Wall isLineOfSightClear(float,float,float,float)>($f5, $f6, $f7, $f8);
+
+        $r13 = r0.<com.movesky.app.main.ai.AIController: com.movesky.app.engine.fastgraph.LineOfSightTester m_tester>;
+
+        $r15 = virtualinvoke $r13.<com.movesky.app.engine.fastgraph.LineOfSightTester: com.movesky.app.engine.fastgraph.Wall isLineOfSightClear(float,float,float,float)>($f9, $f0, $f10, $f11);
+
+        if $r14 != null goto label16;
+
+        if $r15 != null goto label16;
+
+        $z0 = 1;
+
+     label15:
+        goto label11;
+
+     label16:
+        if $r14 == null goto label20;
+
+        specialinvoke r0.<com.movesky.app.main.ai.AIController: com.movesky.app.engine.util.Point getTurnVector(com.movesky.app.main.units.Unit,com.movesky.app.engine.fastgraph.Wall,float)>($r7, $r14, $f4);
+
+     label17:
+        $r16 = r0.<com.movesky.app.main.ai.AIController: com.movesky.app.engine.util.Point m_vec_result>;
+
+        $f0 = $r16.<com.movesky.app.engine.util.Point: float x>;
+
+        $b5 = $f0 cmpl 0.0F;
+
+        if $b5 != 0 goto label18;
+
+        $r16 = r0.<com.movesky.app.main.ai.AIController: com.movesky.app.engine.util.Point m_vec_result>;
+
+        $f0 = $r16.<com.movesky.app.engine.util.Point: float y>;
+
+        $b5 = $f0 cmpl 0.0F;
+
+        if $b5 != 0 goto label18;
+
+        $r16 = r0.<com.movesky.app.main.ai.AIController: com.movesky.app.engine.util.Point m_vec_result>;
+
+        $r16.<com.movesky.app.engine.util.Point: float x> = 0.01F;
+
+        $r16 = r0.<com.movesky.app.main.ai.AIController: com.movesky.app.engine.util.Point m_vec_result>;
+
+        $r16.<com.movesky.app.engine.util.Point: float y> = 0.01F;
+
+     label18:
+        $r16 = r0.<com.movesky.app.main.ai.AIController: com.movesky.app.engine.util.Point m_vec_result>;
+
+        $f0 = $r16.<com.movesky.app.engine.util.Point: float x>;
+
+        $r16 = r0.<com.movesky.app.main.ai.AIController: com.movesky.app.engine.util.Point m_vec_result>;
+
+        $f9 = $r16.<com.movesky.app.engine.util.Point: float y>;
+
+        $f0 = staticinvoke <com.movesky.app.engine.util.MathUtils: float getAngle(float,float,float,float)>(0.0F, 0.0F, $f0, $f9);
+
+        $f0 = staticinvoke <com.movesky.app.engine.util.MathUtils: float normalizeAngle(float,float)>($f0, $f3);
+
+        $f0 = $f0 - $f3;
+
+        $b5 = $f0 cmpl 0.0F;
+
+        if $b5 <= 0 goto label21;
+
+        $f4 = 0.08F + $f4;
+
+     label19:
+        $i1 = $i1 + 1;
+
+        goto label15;
+
+     label20:
+        if $r15 == null goto label17;
+
+        specialinvoke r0.<com.movesky.app.main.ai.AIController: com.movesky.app.engine.util.Point getTurnVector(com.movesky.app.main.units.Unit,com.movesky.app.engine.fastgraph.Wall,float)>($r7, $r15, $f4);
+
+        goto label17;
+
+     label21:
+        $f4 = $f4 - 0.08F;
+
+        goto label19;
+
+     label22:
+        return;
+    }
+
+    public void addEntity(com.movesky.app.main.units.Unit)
+    {
+        com.movesky.app.main.ai.AIController r0;
+        com.movesky.app.main.units.Unit $r1;
+        java.util.ArrayList $r2;
+        java.util.EnumMap $r3;
+        com.movesky.app.main.Team $r4;
+        java.lang.Object $r5;
+        com.movesky.app.engine.ai.FlockRulesCalculator $r6;
+
+        r0 := @this: com.movesky.app.main.ai.AIController;
+
+        $r1 := @parameter0: com.movesky.app.main.units.Unit;
+
+        $r2 = r0.<com.movesky.app.main.ai.AIController: java.util.ArrayList m_units>;
+
+        virtualinvoke $r2.<java.util.ArrayList: boolean add(java.lang.Object)>($r1);
+
+        $r3 = r0.<com.movesky.app.main.ai.AIController: java.util.EnumMap m_entities>;
+
+        $r4 = virtualinvoke $r1.<com.movesky.app.main.units.Unit: com.movesky.app.main.Team getTeam()>();
+
+        $r5 = virtualinvoke $r3.<java.util.EnumMap: java.lang.Object get(java.lang.Object)>($r4);
+
+        $r2 = (java.util.ArrayList) $r5;
+
+        virtualinvoke $r2.<java.util.ArrayList: boolean add(java.lang.Object)>($r1);
+
+        $r3 = r0.<com.movesky.app.main.ai.AIController: java.util.EnumMap m_flocks>;
+
+        $r4 = virtualinvoke $r1.<com.movesky.app.main.units.Unit: com.movesky.app.main.Team getTeam()>();
+
+        $r5 = virtualinvoke $r3.<java.util.EnumMap: java.lang.Object get(java.lang.Object)>($r4);
+
+        $r6 = (com.movesky.app.engine.ai.FlockRulesCalculator) $r5;
+
+        virtualinvoke $r6.<com.movesky.app.engine.ai.FlockRulesCalculator: void addObject(com.movesky.app.engine.entity.Movable)>($r1);
+
+        return;
+    }
+
+    public java.util.ArrayList getEnemies(com.movesky.app.main.units.Unit)
+    {
+        com.movesky.app.main.ai.AIController r0;
+        com.movesky.app.main.units.Unit $r1;
+        java.util.EnumMap $r2;
+        com.movesky.app.main.Team $r3;
+        java.lang.Object $r4;
+        java.util.ArrayList $r5;
+
+        r0 := @this: com.movesky.app.main.ai.AIController;
+
+        $r1 := @parameter0: com.movesky.app.main.units.Unit;
+
+        $r2 = r0.<com.movesky.app.main.ai.AIController: java.util.EnumMap m_entities>;
+
+        $r3 = virtualinvoke $r1.<com.movesky.app.main.units.Unit: com.movesky.app.main.Team getTeam()>();
+
+        $r3 = virtualinvoke $r3.<com.movesky.app.main.Team: com.movesky.app.main.Team getOppositeTeam()>();
+
+        $r4 = virtualinvoke $r2.<java.util.EnumMap: java.lang.Object get(java.lang.Object)>($r3);
+
+        $r5 = (java.util.ArrayList) $r4;
+
+        return $r5;
+    }
+
+    public float getHeight()
+    {
+        com.movesky.app.main.ai.AIController r0;
+
+        r0 := @this: com.movesky.app.main.ai.AIController;
+
+        return 530.0F;
+    }
+
+    public java.util.List getUnits()
+    {
+        com.movesky.app.main.ai.AIController r0;
+        java.util.ArrayList r1;
+
+        r0 := @this: com.movesky.app.main.ai.AIController;
+
+        r1 = r0.<com.movesky.app.main.ai.AIController: java.util.ArrayList m_units>;
+
+        return r1;
+    }
+
+    public float getWidth()
+    {
+        com.movesky.app.main.ai.AIController r0;
+
+        r0 := @this: com.movesky.app.main.ai.AIController;
+
+        return 320.0F;
+    }
+
+    public void removeEntity(com.movesky.app.main.units.Unit)
+    {
+        com.movesky.app.main.ai.AIController r0;
+        com.movesky.app.main.units.Unit $r1;
+        java.util.ArrayList $r2;
+        java.util.EnumMap $r3;
+        com.movesky.app.main.Team $r4;
+        java.lang.Object $r5;
+        com.movesky.app.engine.ai.FlockRulesCalculator $r6;
+
+        r0 := @this: com.movesky.app.main.ai.AIController;
+
+        $r1 := @parameter0: com.movesky.app.main.units.Unit;
+
+        $r2 = r0.<com.movesky.app.main.ai.AIController: java.util.ArrayList m_units>;
+
+        virtualinvoke $r2.<java.util.ArrayList: boolean remove(java.lang.Object)>($r1);
+
+        $r3 = r0.<com.movesky.app.main.ai.AIController: java.util.EnumMap m_entities>;
+
+        $r4 = virtualinvoke $r1.<com.movesky.app.main.units.Unit: com.movesky.app.main.Team getTeam()>();
+
+        $r5 = virtualinvoke $r3.<java.util.EnumMap: java.lang.Object get(java.lang.Object)>($r4);
+
+        $r2 = (java.util.ArrayList) $r5;
+
+        virtualinvoke $r2.<java.util.ArrayList: boolean remove(java.lang.Object)>($r1);
+
+        $r3 = r0.<com.movesky.app.main.ai.AIController: java.util.EnumMap m_flocks>;
+
+        $r4 = virtualinvoke $r1.<com.movesky.app.main.units.Unit: com.movesky.app.main.Team getTeam()>();
+
+        $r5 = virtualinvoke $r3.<java.util.EnumMap: java.lang.Object get(java.lang.Object)>($r4);
+
+        $r6 = (com.movesky.app.engine.ai.FlockRulesCalculator) $r5;
+
+        virtualinvoke $r6.<com.movesky.app.engine.ai.FlockRulesCalculator: void removeObject(com.movesky.app.engine.entity.Movable)>($r1);
+
+        return;
+    }
+
+    public void setPathfinder(com.movesky.app.engine.ai.Pathfinder, com.movesky.app.engine.ai.ConnectedGraph, com.movesky.app.engine.fastgraph.LineOfSightTester, com.movesky.app.main.GridAcceleration)
+    {
+        com.movesky.app.main.ai.AIController r0;
+        com.movesky.app.engine.ai.Pathfinder $r1;
+        com.movesky.app.engine.ai.ConnectedGraph $r2;
+        com.movesky.app.engine.fastgraph.LineOfSightTester $r3;
+        com.movesky.app.main.GridAcceleration $r4;
+        com.movesky.app.main.ai.DefensiveAI $r5;
+        com.movesky.app.main.ai.OffensiveAI $r6;
+        com.movesky.app.main.ai.UberAI $r7;
+
+        r0 := @this: com.movesky.app.main.ai.AIController;
+
+        $r1 := @parameter0: com.movesky.app.engine.ai.Pathfinder;
+
+        $r2 := @parameter1: com.movesky.app.engine.ai.ConnectedGraph;
+
+        $r3 := @parameter2: com.movesky.app.engine.fastgraph.LineOfSightTester;
+
+        $r4 := @parameter3: com.movesky.app.main.GridAcceleration;
+
+        r0.<com.movesky.app.main.ai.AIController: com.movesky.app.engine.fastgraph.LineOfSightTester m_tester> = $r3;
+
+        $r5 = r0.<com.movesky.app.main.ai.AIController: com.movesky.app.main.ai.DefensiveAI m_defensive>;
+
+        virtualinvoke $r5.<com.movesky.app.main.ai.DefensiveAI: void setPathfinder(com.movesky.app.engine.ai.Pathfinder,com.movesky.app.engine.ai.ConnectedGraph,com.movesky.app.engine.fastgraph.LineOfSightTester,com.movesky.app.main.GridAcceleration)>($r1, $r2, $r3, $r4);
+
+        $r6 = r0.<com.movesky.app.main.ai.AIController: com.movesky.app.main.ai.OffensiveAI m_offensive>;
+
+        virtualinvoke $r6.<com.movesky.app.main.ai.OffensiveAI: void setPathfinder(com.movesky.app.engine.ai.Pathfinder,com.movesky.app.engine.ai.ConnectedGraph,com.movesky.app.engine.fastgraph.LineOfSightTester,com.movesky.app.main.GridAcceleration)>($r1, $r2, $r3, $r4);
+
+        $r7 = r0.<com.movesky.app.main.ai.AIController: com.movesky.app.main.ai.UberAI m_uber>;
+
+        virtualinvoke $r7.<com.movesky.app.main.ai.UberAI: void setPathfinder(com.movesky.app.engine.ai.Pathfinder,com.movesky.app.engine.ai.ConnectedGraph,com.movesky.app.engine.fastgraph.LineOfSightTester,com.movesky.app.main.GridAcceleration)>($r1, $r2, $r3, $r4);
+
+        return;
+    }
+
+    public void setUpdateFraction(float)
+    {
+        com.movesky.app.main.ai.AIController r0;
+        float $f0;
+
+        r0 := @this: com.movesky.app.main.ai.AIController;
+
+        $f0 := @parameter0: float;
+
+        goto label1;
+
+     label1:
+        r0.<com.movesky.app.main.ai.AIController: float m_fraction_to_update> = $f0;
+
+        return;
+    }
+
+    public void update()
+    {
+        com.movesky.app.main.ai.AIController r0;
+        com.movesky.app.main.Team[] $r1;
+        int $i0, $i1;
+        com.movesky.app.main.Team $r2;
+        java.util.EnumMap $r3;
+        java.lang.Object $r4;
+        java.util.ArrayList $r5;
+        com.movesky.app.engine.ai.FlockRulesCalculator $r6;
+
+        r0 := @this: com.movesky.app.main.ai.AIController;
+
+        $r1 = r0.<com.movesky.app.main.ai.AIController: com.movesky.app.main.Team[] m_teams>;
+
+        $i0 = lengthof $r1;
+
+        $i1 = 0;
+
+     label1:
+        if $i1 >= $i0 goto label2;
+
+        $r2 = $r1[$i1];
+
+        $r3 = r0.<com.movesky.app.main.ai.AIController: java.util.EnumMap m_entities>;
+
+        $r4 = virtualinvoke $r3.<java.util.EnumMap: java.lang.Object get(java.lang.Object)>($r2);
+
+        $r5 = (java.util.ArrayList) $r4;
+
+        $r3 = r0.<com.movesky.app.main.ai.AIController: java.util.EnumMap m_flocks>;
+
+        $r4 = virtualinvoke $r3.<java.util.EnumMap: java.lang.Object get(java.lang.Object)>($r2);
+
+        $r6 = (com.movesky.app.engine.ai.FlockRulesCalculator) $r4;
+
+        specialinvoke r0.<com.movesky.app.main.ai.AIController: void update(java.util.ArrayList,com.movesky.app.engine.ai.FlockRulesCalculator,com.movesky.app.main.Team)>($r5, $r6, $r2);
+
+        $i1 = $i1 + 1;
+
+        goto label1;
+
+     label2:
+        return;
+    }
+}

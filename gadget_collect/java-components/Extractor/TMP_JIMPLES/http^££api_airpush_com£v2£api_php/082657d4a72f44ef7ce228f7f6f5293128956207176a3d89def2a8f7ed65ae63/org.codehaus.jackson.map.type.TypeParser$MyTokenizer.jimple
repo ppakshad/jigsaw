@@ -1,0 +1,147 @@
+final class org.codehaus.jackson.map.type.TypeParser$MyTokenizer extends java.util.StringTokenizer
+{
+    protected int _index;
+    protected final java.lang.String _input;
+    protected java.lang.String _pushbackToken;
+
+    public void <init>(java.lang.String)
+    {
+        org.codehaus.jackson.map.type.TypeParser$MyTokenizer r0;
+        java.lang.String $r1;
+
+        r0 := @this: org.codehaus.jackson.map.type.TypeParser$MyTokenizer;
+
+        $r1 := @parameter0: java.lang.String;
+
+        specialinvoke r0.<java.util.StringTokenizer: void <init>(java.lang.String,java.lang.String,boolean)>($r1, "<,>", 1);
+
+        r0.<org.codehaus.jackson.map.type.TypeParser$MyTokenizer: java.lang.String _input> = $r1;
+
+        return;
+    }
+
+    public java.lang.String getAllInput()
+    {
+        org.codehaus.jackson.map.type.TypeParser$MyTokenizer r0;
+        java.lang.String r1;
+
+        r0 := @this: org.codehaus.jackson.map.type.TypeParser$MyTokenizer;
+
+        r1 = r0.<org.codehaus.jackson.map.type.TypeParser$MyTokenizer: java.lang.String _input>;
+
+        return r1;
+    }
+
+    public java.lang.String getRemainingInput()
+    {
+        org.codehaus.jackson.map.type.TypeParser$MyTokenizer r0;
+        int $i0;
+        java.lang.String $r1;
+
+        r0 := @this: org.codehaus.jackson.map.type.TypeParser$MyTokenizer;
+
+        $r1 = r0.<org.codehaus.jackson.map.type.TypeParser$MyTokenizer: java.lang.String _input>;
+
+        $i0 = r0.<org.codehaus.jackson.map.type.TypeParser$MyTokenizer: int _index>;
+
+        $r1 = virtualinvoke $r1.<java.lang.String: java.lang.String substring(int)>($i0);
+
+        return $r1;
+    }
+
+    public java.lang.String getUsedInput()
+    {
+        org.codehaus.jackson.map.type.TypeParser$MyTokenizer r0;
+        int $i0;
+        java.lang.String $r1;
+
+        r0 := @this: org.codehaus.jackson.map.type.TypeParser$MyTokenizer;
+
+        $r1 = r0.<org.codehaus.jackson.map.type.TypeParser$MyTokenizer: java.lang.String _input>;
+
+        $i0 = r0.<org.codehaus.jackson.map.type.TypeParser$MyTokenizer: int _index>;
+
+        $r1 = virtualinvoke $r1.<java.lang.String: java.lang.String substring(int,int)>(0, $i0);
+
+        return $r1;
+    }
+
+    public boolean hasMoreTokens()
+    {
+        org.codehaus.jackson.map.type.TypeParser$MyTokenizer r0;
+        boolean $z0;
+        java.lang.String $r1;
+
+        r0 := @this: org.codehaus.jackson.map.type.TypeParser$MyTokenizer;
+
+        $r1 = r0.<org.codehaus.jackson.map.type.TypeParser$MyTokenizer: java.lang.String _pushbackToken>;
+
+        if $r1 != null goto label1;
+
+        $z0 = specialinvoke r0.<java.util.StringTokenizer: boolean hasMoreTokens()>();
+
+        if $z0 == 0 goto label2;
+
+     label1:
+        return 1;
+
+     label2:
+        return 0;
+    }
+
+    public java.lang.String nextToken()
+    {
+        org.codehaus.jackson.map.type.TypeParser$MyTokenizer r0;
+        java.lang.String $r1;
+        int $i0, $i1;
+
+        r0 := @this: org.codehaus.jackson.map.type.TypeParser$MyTokenizer;
+
+        $r1 = r0.<org.codehaus.jackson.map.type.TypeParser$MyTokenizer: java.lang.String _pushbackToken>;
+
+        if $r1 == null goto label2;
+
+        $r1 = r0.<org.codehaus.jackson.map.type.TypeParser$MyTokenizer: java.lang.String _pushbackToken>;
+
+        r0.<org.codehaus.jackson.map.type.TypeParser$MyTokenizer: java.lang.String _pushbackToken> = null;
+
+     label1:
+        $i0 = r0.<org.codehaus.jackson.map.type.TypeParser$MyTokenizer: int _index>;
+
+        $i1 = virtualinvoke $r1.<java.lang.String: int length()>();
+
+        $i0 = $i0 + $i1;
+
+        r0.<org.codehaus.jackson.map.type.TypeParser$MyTokenizer: int _index> = $i0;
+
+        return $r1;
+
+     label2:
+        $r1 = specialinvoke r0.<java.util.StringTokenizer: java.lang.String nextToken()>();
+
+        goto label1;
+    }
+
+    public void pushBack(java.lang.String)
+    {
+        org.codehaus.jackson.map.type.TypeParser$MyTokenizer r0;
+        java.lang.String $r1;
+        int $i0, $i1;
+
+        r0 := @this: org.codehaus.jackson.map.type.TypeParser$MyTokenizer;
+
+        $r1 := @parameter0: java.lang.String;
+
+        r0.<org.codehaus.jackson.map.type.TypeParser$MyTokenizer: java.lang.String _pushbackToken> = $r1;
+
+        $i1 = r0.<org.codehaus.jackson.map.type.TypeParser$MyTokenizer: int _index>;
+
+        $i0 = virtualinvoke $r1.<java.lang.String: int length()>();
+
+        $i0 = $i1 - $i0;
+
+        r0.<org.codehaus.jackson.map.type.TypeParser$MyTokenizer: int _index> = $i0;
+
+        return;
+    }
+}

@@ -1,0 +1,198 @@
+public class org.codehaus.jackson.map.type.HierarchicType extends java.lang.Object
+{
+    protected final java.lang.reflect.Type _actualType;
+    protected final java.lang.reflect.ParameterizedType _genericType;
+    protected final java.lang.Class _rawClass;
+    protected org.codehaus.jackson.map.type.HierarchicType _subType;
+    protected org.codehaus.jackson.map.type.HierarchicType _superType;
+
+    public void <init>(java.lang.reflect.Type)
+    {
+        org.codehaus.jackson.map.type.HierarchicType r0;
+        java.lang.reflect.Type r1;
+        boolean $z0;
+        java.lang.Class r2;
+        java.lang.reflect.ParameterizedType r3;
+        java.lang.IllegalArgumentException $r4;
+        java.lang.StringBuilder $r5;
+        java.lang.String $r6;
+
+        r0 := @this: org.codehaus.jackson.map.type.HierarchicType;
+
+        r1 := @parameter0: java.lang.reflect.Type;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        r0.<org.codehaus.jackson.map.type.HierarchicType: java.lang.reflect.Type _actualType> = r1;
+
+        $z0 = r1 instanceof java.lang.Class;
+
+        if $z0 == 0 goto label1;
+
+        r2 = (java.lang.Class) r1;
+
+        r0.<org.codehaus.jackson.map.type.HierarchicType: java.lang.Class _rawClass> = r2;
+
+        r0.<org.codehaus.jackson.map.type.HierarchicType: java.lang.reflect.ParameterizedType _genericType> = null;
+
+        return;
+
+     label1:
+        $z0 = r1 instanceof java.lang.reflect.ParameterizedType;
+
+        if $z0 == 0 goto label2;
+
+        r3 = (java.lang.reflect.ParameterizedType) r1;
+
+        r0.<org.codehaus.jackson.map.type.HierarchicType: java.lang.reflect.ParameterizedType _genericType> = r3;
+
+        r3 = r0.<org.codehaus.jackson.map.type.HierarchicType: java.lang.reflect.ParameterizedType _genericType>;
+
+        r1 = interfaceinvoke r3.<java.lang.reflect.ParameterizedType: java.lang.reflect.Type getRawType()>();
+
+        r2 = (java.lang.Class) r1;
+
+        r0.<org.codehaus.jackson.map.type.HierarchicType: java.lang.Class _rawClass> = r2;
+
+        return;
+
+     label2:
+        $r4 = new java.lang.IllegalArgumentException;
+
+        $r5 = new java.lang.StringBuilder;
+
+        specialinvoke $r5.<java.lang.StringBuilder: void <init>()>();
+
+        $r5 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Type ");
+
+        r2 = virtualinvoke r1.<java.lang.Object: java.lang.Class getClass()>();
+
+        $r6 = virtualinvoke r2.<java.lang.Class: java.lang.String getName()>();
+
+        $r5 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r6);
+
+        $r5 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" can not be used to construct HierarchicType");
+
+        $r6 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke $r4.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>($r6);
+
+        throw $r4;
+    }
+
+    public java.lang.reflect.ParameterizedType asGeneric()
+    {
+        org.codehaus.jackson.map.type.HierarchicType r0;
+        java.lang.reflect.ParameterizedType r1;
+
+        r0 := @this: org.codehaus.jackson.map.type.HierarchicType;
+
+        r1 = r0.<org.codehaus.jackson.map.type.HierarchicType: java.lang.reflect.ParameterizedType _genericType>;
+
+        return r1;
+    }
+
+    public java.lang.Class getRawClass()
+    {
+        org.codehaus.jackson.map.type.HierarchicType r0;
+        java.lang.Class r1;
+
+        r0 := @this: org.codehaus.jackson.map.type.HierarchicType;
+
+        r1 = r0.<org.codehaus.jackson.map.type.HierarchicType: java.lang.Class _rawClass>;
+
+        return r1;
+    }
+
+    public org.codehaus.jackson.map.type.HierarchicType getSubType()
+    {
+        org.codehaus.jackson.map.type.HierarchicType r0;
+
+        r0 := @this: org.codehaus.jackson.map.type.HierarchicType;
+
+        r0 = r0.<org.codehaus.jackson.map.type.HierarchicType: org.codehaus.jackson.map.type.HierarchicType _subType>;
+
+        return r0;
+    }
+
+    public org.codehaus.jackson.map.type.HierarchicType getSuperType()
+    {
+        org.codehaus.jackson.map.type.HierarchicType r0;
+
+        r0 := @this: org.codehaus.jackson.map.type.HierarchicType;
+
+        r0 = r0.<org.codehaus.jackson.map.type.HierarchicType: org.codehaus.jackson.map.type.HierarchicType _superType>;
+
+        return r0;
+    }
+
+    public boolean isGeneric()
+    {
+        org.codehaus.jackson.map.type.HierarchicType r0;
+        java.lang.reflect.ParameterizedType $r1;
+
+        r0 := @this: org.codehaus.jackson.map.type.HierarchicType;
+
+        $r1 = r0.<org.codehaus.jackson.map.type.HierarchicType: java.lang.reflect.ParameterizedType _genericType>;
+
+        if $r1 == null goto label1;
+
+        return 1;
+
+     label1:
+        return 0;
+    }
+
+    public void setSubType(org.codehaus.jackson.map.type.HierarchicType)
+    {
+        org.codehaus.jackson.map.type.HierarchicType r0, $r1;
+
+        r0 := @this: org.codehaus.jackson.map.type.HierarchicType;
+
+        $r1 := @parameter0: org.codehaus.jackson.map.type.HierarchicType;
+
+        r0.<org.codehaus.jackson.map.type.HierarchicType: org.codehaus.jackson.map.type.HierarchicType _subType> = $r1;
+
+        return;
+    }
+
+    public void setSuperType(org.codehaus.jackson.map.type.HierarchicType)
+    {
+        org.codehaus.jackson.map.type.HierarchicType r0, $r1;
+
+        r0 := @this: org.codehaus.jackson.map.type.HierarchicType;
+
+        $r1 := @parameter0: org.codehaus.jackson.map.type.HierarchicType;
+
+        r0.<org.codehaus.jackson.map.type.HierarchicType: org.codehaus.jackson.map.type.HierarchicType _superType> = $r1;
+
+        return;
+    }
+
+    public java.lang.String toString()
+    {
+        org.codehaus.jackson.map.type.HierarchicType r0;
+        java.lang.reflect.ParameterizedType $r1;
+        java.lang.String $r2;
+        java.lang.Class $r3;
+
+        r0 := @this: org.codehaus.jackson.map.type.HierarchicType;
+
+        $r1 = r0.<org.codehaus.jackson.map.type.HierarchicType: java.lang.reflect.ParameterizedType _genericType>;
+
+        if $r1 == null goto label1;
+
+        $r1 = r0.<org.codehaus.jackson.map.type.HierarchicType: java.lang.reflect.ParameterizedType _genericType>;
+
+        $r2 = virtualinvoke $r1.<java.lang.Object: java.lang.String toString()>();
+
+        return $r2;
+
+     label1:
+        $r3 = r0.<org.codehaus.jackson.map.type.HierarchicType: java.lang.Class _rawClass>;
+
+        $r2 = virtualinvoke $r3.<java.lang.Class: java.lang.String getName()>();
+
+        return $r2;
+    }
+}

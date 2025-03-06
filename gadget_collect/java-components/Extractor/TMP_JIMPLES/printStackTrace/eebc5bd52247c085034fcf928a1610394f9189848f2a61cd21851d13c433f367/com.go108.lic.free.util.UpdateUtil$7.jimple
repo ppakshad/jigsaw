@@ -1,0 +1,52 @@
+class com.go108.lic.free.util.UpdateUtil$7 extends java.lang.Object implements android.content.DialogInterface$OnClickListener
+{
+    final com.go108.lic.free.util.UpdateUtil this$0;
+
+    void <init>(com.go108.lic.free.util.UpdateUtil)
+    {
+        com.go108.lic.free.util.UpdateUtil$7 r0;
+        com.go108.lic.free.util.UpdateUtil $r1;
+
+        r0 := @this: com.go108.lic.free.util.UpdateUtil$7;
+
+        $r1 := @parameter0: com.go108.lic.free.util.UpdateUtil;
+
+        r0.<com.go108.lic.free.util.UpdateUtil$7: com.go108.lic.free.util.UpdateUtil this$0> = $r1;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public void onClick(android.content.DialogInterface, int)
+    {
+        com.go108.lic.free.util.UpdateUtil$7 r0;
+        com.go108.lic.free.util.UpdateAlertDB $r3;
+        com.go108.lic.free.util.UpdateUtil $r2;
+        int $i0;
+        android.content.DialogInterface $r1;
+
+        r0 := @this: com.go108.lic.free.util.UpdateUtil$7;
+
+        $r1 := @parameter0: android.content.DialogInterface;
+
+        $i0 := @parameter1: int;
+
+        interfaceinvoke $r1.<android.content.DialogInterface: void cancel()>();
+
+        $r2 = r0.<com.go108.lic.free.util.UpdateUtil$7: com.go108.lic.free.util.UpdateUtil this$0>;
+
+        $r3 = staticinvoke <com.go108.lic.free.util.UpdateUtil: com.go108.lic.free.util.UpdateAlertDB access$11(com.go108.lic.free.util.UpdateUtil)>($r2);
+
+        if $r3 == null goto label1;
+
+        $r2 = r0.<com.go108.lic.free.util.UpdateUtil$7: com.go108.lic.free.util.UpdateUtil this$0>;
+
+        $r3 = staticinvoke <com.go108.lic.free.util.UpdateUtil: com.go108.lic.free.util.UpdateAlertDB access$11(com.go108.lic.free.util.UpdateUtil)>($r2);
+
+        virtualinvoke $r3.<com.go108.lic.free.util.UpdateAlertDB: long insert()>();
+
+     label1:
+        return;
+    }
+}

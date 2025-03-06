@@ -1,0 +1,31 @@
+class com.squareup.picasso.Utils$PicassoThreadFactory extends java.lang.Object implements java.util.concurrent.ThreadFactory
+{
+
+    void <init>()
+    {
+        com.squareup.picasso.Utils$PicassoThreadFactory r0;
+
+        r0 := @this: com.squareup.picasso.Utils$PicassoThreadFactory;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public java.lang.Thread newThread(java.lang.Runnable)
+    {
+        com.squareup.picasso.Utils$PicassoThreadFactory r0;
+        java.lang.Runnable $r1;
+        com.squareup.picasso.Utils$PicassoThread $r2;
+
+        r0 := @this: com.squareup.picasso.Utils$PicassoThreadFactory;
+
+        $r1 := @parameter0: java.lang.Runnable;
+
+        $r2 = new com.squareup.picasso.Utils$PicassoThread;
+
+        specialinvoke $r2.<com.squareup.picasso.Utils$PicassoThread: void <init>(java.lang.Runnable)>($r1);
+
+        return $r2;
+    }
+}

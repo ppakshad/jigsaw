@@ -1,0 +1,54 @@
+Using TensorFlow backend.
+WARNING: 02-27 18:40:45: mntd_run_meta.py:88 * 125371264005952 Running with configuration:
+{'backdoor_target_model_type': 'pytorch',
+ 'benign_target_model_type': 'pytorch',
+ 'clf': 'MLP',
+ 'debug_mode': 'queryset-100-most-0-few-1-target-y-all-0-pattern-all-1',
+ 'half_training': 1,
+ 'jumbo_max_troj_size': 100,
+ 'load_exist': True,
+ 'method': 'optimization-subset-expand-type0',
+ 'no_qt': True,
+ 'subset_family': 'leadbolt',
+ 'target_max_troj_size': 0,
+ 'task': 'apg',
+ 'train_num': 2048,
+ 'troj_type': 'Subset',
+ 'trojan_part': None,
+ 'trojan_size': None}
+CRITICAL: 02-27 18:40:45: mntd_run_meta.py:91 * 125371264005952 debug_setting: queryset-100-most-0-few-1-target-y-all-0-pattern-all-1
+INFO: 02-27 18:40:45: mntd_run_meta.py:106 * 125371264005952 args.no_qt: True
+INFO: 02-27 18:40:45: mntd_run_meta.py:275 * 125371264005952 clean_shadow_path: ./models/mntd/shadow_model_ckpt/apg_MLP/models/shadow_benign
+INFO: 02-27 18:40:45: mntd_run_meta.py:276 * 125371264005952 jumbo_shadow_path: ./models/mntd/shadow_model_ckpt/apg_MLP/models/random_size_5_100
+INFO: 02-27 18:40:45: mntd_run_meta.py:277 * 125371264005952 meta_model_save_path: ./models/mntd/meta_classifier_ckpt_2048/MLP/apg_size_5_100_no_qt.model
+INFO: 02-27 18:40:45: mntd_run_meta.py:115 * 125371264005952 Task: apg; Trojan type: Subset; input size: (10000,); class num: 1
+INFO: 02-27 18:40:45: mntd_run_meta.py:296 * 125371264005952 len(train_dataset): 4096
+INFO: 02-27 18:40:45: mntd_run_meta.py:297 * 125371264005952 len(val_dataset): 512
+INFO: 02-27 18:40:45: mntd_run_meta.py:298 * 125371264005952 train_dataset[0]: ('./models/mntd/shadow_model_ckpt/apg_MLP/models/random_size_5_100/shadow_jumbo_0.model', 1)
+INFO: 02-27 18:40:45: mntd_run_meta.py:299 * 125371264005952 train_dataset[1]: ('./models/mntd/shadow_model_ckpt/apg_MLP/models/shadow_benign/shadow_benign_0.model', 0)
+INFO: 02-27 18:40:45: mntd_run_meta.py:300 * 125371264005952 val_dataset[0]: ('./models/mntd/shadow_model_ckpt/apg_MLP/models/random_size_5_100/shadow_jumbo_2048.model', 1)
+INFO: 02-27 18:40:45: mntd_run_meta.py:301 * 125371264005952 val_dataset[1]: ('./models/mntd/shadow_model_ckpt/apg_MLP/models/shadow_benign/shadow_benign_2048.model', 0)
+INFO: 02-27 18:40:45: mntd_run_meta.py:335 * 125371264005952 test_dataset[0]: ('models/mntd/target_model_ckpt/leadbolt/apg/models/target_trojSubset_0.model', 1)
+INFO: 02-27 18:40:45: mntd_run_meta.py:336 * 125371264005952 test_dataset[1]: ('./models/mntd/shadow_model_ckpt/apg_MLP/models/256_target_benign_remove_leadbolt/target_benign_0.model', 0)
+INFO: 02-27 18:40:45: mntd_run_meta.py:348 * 125371264005952 REPORT_FOLDER: report/mntd/MLP_shadow_2048/optimization-subset-expand-type0_leadbolt/pytorch
+INFO: 02-27 18:40:45: mntd_run_meta.py:364 * 125371264005952 experiment_name: apg_no_qt_size_100_trainnum_2048_typeSubset
+INFO: 02-27 18:40:45: mntd_run_meta.py:365 * 125371264005952 report_path: report/mntd/MLP_shadow_2048/optimization-subset-expand-type0_leadbolt/pytorch/apg_no_qt_size_100_trainnum_2048_typeSubset.txt
+THCudaCheck FAIL file=/pytorch/aten/src/THC/THCGeneral.cpp line=51 error=38 : no CUDA-capable device is detected
+Traceback (most recent call last):
+  File "mntd_run_meta.py", line 385, in <module>
+    main()
+  File "mntd_run_meta.py", line 135, in main
+    shadow_model = Model(gpu=GPU)
+  File "/home/puya/Desktop/jigsawpuzzle/mntd_model_lib/apg_mlp_model.py", line 30, in __init__
+    self.cuda()
+  File "/home/puya/anaconda3/envs/backdoor/lib/python3.6/site-packages/torch/nn/modules/module.py", line 265, in cuda
+    return self._apply(lambda t: t.cuda(device))
+  File "/home/puya/anaconda3/envs/backdoor/lib/python3.6/site-packages/torch/nn/modules/module.py", line 193, in _apply
+    module._apply(fn)
+  File "/home/puya/anaconda3/envs/backdoor/lib/python3.6/site-packages/torch/nn/modules/module.py", line 199, in _apply
+    param.data = fn(param.data)
+  File "/home/puya/anaconda3/envs/backdoor/lib/python3.6/site-packages/torch/nn/modules/module.py", line 265, in <lambda>
+    return self._apply(lambda t: t.cuda(device))
+  File "/home/puya/anaconda3/envs/backdoor/lib/python3.6/site-packages/torch/cuda/__init__.py", line 163, in _lazy_init
+    torch._C._cuda_init()
+RuntimeError: cuda runtime error (38) : no CUDA-capable device is detected at /pytorch/aten/src/THC/THCGeneral.cpp:51

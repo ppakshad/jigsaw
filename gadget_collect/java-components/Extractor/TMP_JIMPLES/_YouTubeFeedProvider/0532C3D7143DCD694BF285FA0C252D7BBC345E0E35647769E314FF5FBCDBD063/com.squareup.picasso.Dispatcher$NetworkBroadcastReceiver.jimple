@@ -1,0 +1,143 @@
+class com.squareup.picasso.Dispatcher$NetworkBroadcastReceiver extends android.content.BroadcastReceiver
+{
+    static final java.lang.String EXTRA_AIRPLANE_STATE;
+    private final com.squareup.picasso.Dispatcher dispatcher;
+
+    void <init>(com.squareup.picasso.Dispatcher)
+    {
+        com.squareup.picasso.Dispatcher$NetworkBroadcastReceiver r0;
+        com.squareup.picasso.Dispatcher $r1;
+
+        r0 := @this: com.squareup.picasso.Dispatcher$NetworkBroadcastReceiver;
+
+        $r1 := @parameter0: com.squareup.picasso.Dispatcher;
+
+        specialinvoke r0.<android.content.BroadcastReceiver: void <init>()>();
+
+        r0.<com.squareup.picasso.Dispatcher$NetworkBroadcastReceiver: com.squareup.picasso.Dispatcher dispatcher> = $r1;
+
+        return;
+    }
+
+    public void onReceive(android.content.Context, android.content.Intent)
+    {
+        com.squareup.picasso.Dispatcher$NetworkBroadcastReceiver r0;
+        android.content.Context $r1;
+        android.content.Intent $r2;
+        java.lang.String $r3, $r4;
+        boolean $z0;
+        com.squareup.picasso.Dispatcher $r5;
+        java.lang.Object $r6;
+        android.net.ConnectivityManager $r7;
+        android.net.NetworkInfo $r8;
+
+        r0 := @this: com.squareup.picasso.Dispatcher$NetworkBroadcastReceiver;
+
+        $r1 := @parameter0: android.content.Context;
+
+        $r2 := @parameter1: android.content.Intent;
+
+        if $r2 != null goto label1;
+
+        return;
+
+     label1:
+        $r3 = virtualinvoke $r2.<android.content.Intent: java.lang.String getAction()>();
+
+        $r4 = "android.intent.action.AIRPLANE_MODE";
+
+        $z0 = virtualinvoke $r4.<java.lang.String: boolean equals(java.lang.Object)>($r3);
+
+        if $z0 == 0 goto label2;
+
+        $z0 = virtualinvoke $r2.<android.content.Intent: boolean hasExtra(java.lang.String)>("state");
+
+        if $z0 == 0 goto label3;
+
+        $r5 = r0.<com.squareup.picasso.Dispatcher$NetworkBroadcastReceiver: com.squareup.picasso.Dispatcher dispatcher>;
+
+        $z0 = virtualinvoke $r2.<android.content.Intent: boolean getBooleanExtra(java.lang.String,boolean)>("state", 0);
+
+        virtualinvoke $r5.<com.squareup.picasso.Dispatcher: void dispatchAirplaneModeChange(boolean)>($z0);
+
+        return;
+
+     label2:
+        $r4 = "android.net.conn.CONNECTIVITY_CHANGE";
+
+        $z0 = virtualinvoke $r4.<java.lang.String: boolean equals(java.lang.Object)>($r3);
+
+        if $z0 == 0 goto label3;
+
+        $r6 = staticinvoke <com.squareup.picasso.Utils: java.lang.Object getService(android.content.Context,java.lang.String)>($r1, "connectivity");
+
+        $r7 = (android.net.ConnectivityManager) $r6;
+
+        $r5 = r0.<com.squareup.picasso.Dispatcher$NetworkBroadcastReceiver: com.squareup.picasso.Dispatcher dispatcher>;
+
+        $r8 = virtualinvoke $r7.<android.net.ConnectivityManager: android.net.NetworkInfo getActiveNetworkInfo()>();
+
+        virtualinvoke $r5.<com.squareup.picasso.Dispatcher: void dispatchNetworkStateChange(android.net.NetworkInfo)>($r8);
+
+     label3:
+        return;
+    }
+
+    void register()
+    {
+        com.squareup.picasso.Dispatcher$NetworkBroadcastReceiver r0;
+        android.content.IntentFilter $r1;
+        com.squareup.picasso.Dispatcher $r2;
+        boolean $z0;
+        android.content.Context $r3;
+
+        r0 := @this: com.squareup.picasso.Dispatcher$NetworkBroadcastReceiver;
+
+        $r1 = new android.content.IntentFilter;
+
+        specialinvoke $r1.<android.content.IntentFilter: void <init>()>();
+
+        virtualinvoke $r1.<android.content.IntentFilter: void addAction(java.lang.String)>("android.intent.action.AIRPLANE_MODE");
+
+        $r2 = r0.<com.squareup.picasso.Dispatcher$NetworkBroadcastReceiver: com.squareup.picasso.Dispatcher dispatcher>;
+
+        $z0 = $r2.<com.squareup.picasso.Dispatcher: boolean scansNetworkChanges>;
+
+        if $z0 == 0 goto label1;
+
+        virtualinvoke $r1.<android.content.IntentFilter: void addAction(java.lang.String)>("android.net.conn.CONNECTIVITY_CHANGE");
+
+     label1:
+        $r2 = r0.<com.squareup.picasso.Dispatcher$NetworkBroadcastReceiver: com.squareup.picasso.Dispatcher dispatcher>;
+
+        $r3 = $r2.<com.squareup.picasso.Dispatcher: android.content.Context context>;
+
+        virtualinvoke $r3.<android.content.Context: android.content.Intent registerReceiver(android.content.BroadcastReceiver,android.content.IntentFilter)>(r0, $r1);
+
+        return;
+    }
+
+    void unregister()
+    {
+        com.squareup.picasso.Dispatcher$NetworkBroadcastReceiver r0;
+        com.squareup.picasso.Dispatcher $r1;
+        android.content.Context $r2;
+
+        r0 := @this: com.squareup.picasso.Dispatcher$NetworkBroadcastReceiver;
+
+        $r1 = r0.<com.squareup.picasso.Dispatcher$NetworkBroadcastReceiver: com.squareup.picasso.Dispatcher dispatcher>;
+
+        $r2 = $r1.<com.squareup.picasso.Dispatcher: android.content.Context context>;
+
+        virtualinvoke $r2.<android.content.Context: void unregisterReceiver(android.content.BroadcastReceiver)>(r0);
+
+        return;
+    }
+
+    public static void <clinit>()
+    {
+        <com.squareup.picasso.Dispatcher$NetworkBroadcastReceiver: java.lang.String EXTRA_AIRPLANE_STATE> = "state";
+
+        return;
+    }
+}

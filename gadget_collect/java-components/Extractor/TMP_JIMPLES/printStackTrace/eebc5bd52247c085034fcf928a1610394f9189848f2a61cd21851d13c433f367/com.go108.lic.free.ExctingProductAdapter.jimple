@@ -1,0 +1,159 @@
+public class com.go108.lic.free.ExctingProductAdapter extends android.widget.ArrayAdapter
+{
+    java.util.Set checkedTracks;
+    private java.util.List list;
+
+    public void <init>(android.content.Context, int, java.util.List)
+    {
+        java.util.HashSet $r3;
+        android.content.Context $r1;
+        com.go108.lic.free.ExctingProductAdapter r0;
+        java.util.List r2;
+        int $i0;
+
+        r0 := @this: com.go108.lic.free.ExctingProductAdapter;
+
+        $r1 := @parameter0: android.content.Context;
+
+        $i0 := @parameter1: int;
+
+        r2 := @parameter2: java.util.List;
+
+        specialinvoke r0.<android.widget.ArrayAdapter: void <init>(android.content.Context,int,java.util.List)>($r1, $i0, r2);
+
+        $r3 = new java.util.HashSet;
+
+        specialinvoke $r3.<java.util.HashSet: void <init>()>();
+
+        r0.<com.go108.lic.free.ExctingProductAdapter: java.util.Set checkedTracks> = $r3;
+
+        r0.<com.go108.lic.free.ExctingProductAdapter: java.util.List list> = r2;
+
+        return;
+    }
+
+    public java.util.Set getCheckedTracks()
+    {
+        java.util.Set r1;
+        com.go108.lic.free.ExctingProductAdapter r0;
+
+        r0 := @this: com.go108.lic.free.ExctingProductAdapter;
+
+        r1 = r0.<com.go108.lic.free.ExctingProductAdapter: java.util.Set checkedTracks>;
+
+        return r1;
+    }
+
+    public android.view.View getView(int, android.view.View, android.view.ViewGroup)
+    {
+        android.content.Context $r6;
+        android.widget.ImageView r12;
+        int $i0;
+        android.view.View $r2, $r9, $r11;
+        java.lang.String $r14;
+        com.go108.lic.free.ExctingProductAdapter r1;
+        android.view.LayoutInflater $r8;
+        com.go108.lic.free.ExctingProductAdapter$ViewHolder r10;
+        android.view.ViewGroup $r0;
+        java.util.List $r3;
+        android.widget.TextView r13;
+        com.go108.lic.free.ExctingProductBean r5;
+        java.lang.Object $r4;
+        android.app.Activity r7;
+
+        r1 := @this: com.go108.lic.free.ExctingProductAdapter;
+
+        $i0 := @parameter0: int;
+
+        $r2 := @parameter1: android.view.View;
+
+        $r0 := @parameter2: android.view.ViewGroup;
+
+        $r3 = r1.<com.go108.lic.free.ExctingProductAdapter: java.util.List list>;
+
+        $r4 = interfaceinvoke $r3.<java.util.List: java.lang.Object get(int)>($i0);
+
+        r5 = (com.go108.lic.free.ExctingProductBean) $r4;
+
+        $r6 = virtualinvoke r1.<com.go108.lic.free.ExctingProductAdapter: android.content.Context getContext()>();
+
+        r7 = (android.app.Activity) $r6;
+
+        if $r2 != null goto label2;
+
+        $r8 = virtualinvoke r7.<android.app.Activity: android.view.LayoutInflater getLayoutInflater()>();
+
+        $r9 = virtualinvoke $r8.<android.view.LayoutInflater: android.view.View inflate(int,android.view.ViewGroup)>(2130903052, null);
+
+        $r2 = $r9;
+
+        r10 = new com.go108.lic.free.ExctingProductAdapter$ViewHolder;
+
+        specialinvoke r10.<com.go108.lic.free.ExctingProductAdapter$ViewHolder: void <init>()>();
+
+        $r11 = virtualinvoke $r9.<android.view.View: android.view.View findViewById(int)>(2131296325);
+
+        r12 = (android.widget.ImageView) $r11;
+
+        r10.<com.go108.lic.free.ExctingProductAdapter$ViewHolder: android.widget.ImageView icon> = r12;
+
+        $r11 = virtualinvoke $r9.<android.view.View: android.view.View findViewById(int)>(2131296326);
+
+        r13 = (android.widget.TextView) $r11;
+
+        r10.<com.go108.lic.free.ExctingProductAdapter$ViewHolder: android.widget.TextView content> = r13;
+
+        $r11 = virtualinvoke $r9.<android.view.View: android.view.View findViewById(int)>(2131296327);
+
+        r13 = (android.widget.TextView) $r11;
+
+        r10.<com.go108.lic.free.ExctingProductAdapter$ViewHolder: android.widget.TextView productName> = r13;
+
+        $r11 = virtualinvoke $r9.<android.view.View: android.view.View findViewById(int)>(2131296328);
+
+        r13 = (android.widget.TextView) $r11;
+
+        r10.<com.go108.lic.free.ExctingProductAdapter$ViewHolder: android.widget.TextView linkPath> = r13;
+
+        virtualinvoke $r9.<android.view.View: void setTag(java.lang.Object)>(r10);
+
+     label1:
+        if r5 == null goto label3;
+
+        r12 = r10.<com.go108.lic.free.ExctingProductAdapter$ViewHolder: android.widget.ImageView icon>;
+
+        $i0 = virtualinvoke r5.<com.go108.lic.free.ExctingProductBean: int getImgResource()>();
+
+        virtualinvoke r12.<android.widget.ImageView: void setImageResource(int)>($i0);
+
+        r13 = r10.<com.go108.lic.free.ExctingProductAdapter$ViewHolder: android.widget.TextView content>;
+
+        $r14 = virtualinvoke r5.<com.go108.lic.free.ExctingProductBean: java.lang.String getContent()>();
+
+        virtualinvoke r13.<android.widget.TextView: void setText(java.lang.CharSequence)>($r14);
+
+        r13 = r10.<com.go108.lic.free.ExctingProductAdapter$ViewHolder: android.widget.TextView productName>;
+
+        $r14 = virtualinvoke r5.<com.go108.lic.free.ExctingProductBean: java.lang.String getProductName()>();
+
+        virtualinvoke r13.<android.widget.TextView: void setText(java.lang.CharSequence)>($r14);
+
+        r13 = r10.<com.go108.lic.free.ExctingProductAdapter$ViewHolder: android.widget.TextView linkPath>;
+
+        $r14 = virtualinvoke r5.<com.go108.lic.free.ExctingProductBean: java.lang.String getLinkPath()>();
+
+        virtualinvoke r13.<android.widget.TextView: void setText(java.lang.CharSequence)>($r14);
+
+        return $r2;
+
+     label2:
+        $r4 = virtualinvoke $r2.<android.view.View: java.lang.Object getTag()>();
+
+        r10 = (com.go108.lic.free.ExctingProductAdapter$ViewHolder) $r4;
+
+        goto label1;
+
+     label3:
+        return $r2;
+    }
+}

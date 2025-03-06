@@ -1,0 +1,80 @@
+final class com.squareup.picasso.PicassoExecutorService$PicassoFutureTask extends java.util.concurrent.FutureTask implements java.lang.Comparable
+{
+    private final com.squareup.picasso.BitmapHunter hunter;
+
+    public void <init>(com.squareup.picasso.BitmapHunter)
+    {
+        com.squareup.picasso.PicassoExecutorService$PicassoFutureTask r0;
+        com.squareup.picasso.BitmapHunter $r1;
+
+        r0 := @this: com.squareup.picasso.PicassoExecutorService$PicassoFutureTask;
+
+        $r1 := @parameter0: com.squareup.picasso.BitmapHunter;
+
+        specialinvoke r0.<java.util.concurrent.FutureTask: void <init>(java.lang.Runnable,java.lang.Object)>($r1, null);
+
+        r0.<com.squareup.picasso.PicassoExecutorService$PicassoFutureTask: com.squareup.picasso.BitmapHunter hunter> = $r1;
+
+        return;
+    }
+
+    public final int compareTo(com.squareup.picasso.PicassoExecutorService$PicassoFutureTask)
+    {
+        com.squareup.picasso.PicassoExecutorService$PicassoFutureTask r0, $r1;
+        com.squareup.picasso.BitmapHunter $r2;
+        com.squareup.picasso.Picasso$Priority $r3, $r4;
+        int $i0, $i1;
+
+        r0 := @this: com.squareup.picasso.PicassoExecutorService$PicassoFutureTask;
+
+        $r1 := @parameter0: com.squareup.picasso.PicassoExecutorService$PicassoFutureTask;
+
+        $r2 = r0.<com.squareup.picasso.PicassoExecutorService$PicassoFutureTask: com.squareup.picasso.BitmapHunter hunter>;
+
+        $r3 = virtualinvoke $r2.<com.squareup.picasso.BitmapHunter: com.squareup.picasso.Picasso$Priority getPriority()>();
+
+        $r2 = $r1.<com.squareup.picasso.PicassoExecutorService$PicassoFutureTask: com.squareup.picasso.BitmapHunter hunter>;
+
+        $r4 = virtualinvoke $r2.<com.squareup.picasso.BitmapHunter: com.squareup.picasso.Picasso$Priority getPriority()>();
+
+        if $r3 != $r4 goto label1;
+
+        $r2 = r0.<com.squareup.picasso.PicassoExecutorService$PicassoFutureTask: com.squareup.picasso.BitmapHunter hunter>;
+
+        $i0 = $r2.<com.squareup.picasso.BitmapHunter: int sequence>;
+
+        $r2 = $r1.<com.squareup.picasso.PicassoExecutorService$PicassoFutureTask: com.squareup.picasso.BitmapHunter hunter>;
+
+        $i1 = $r2.<com.squareup.picasso.BitmapHunter: int sequence>;
+
+        $i0 = $i0 - $i1;
+
+        return $i0;
+
+     label1:
+        $i0 = virtualinvoke $r4.<com.squareup.picasso.Picasso$Priority: int ordinal()>();
+
+        $i1 = virtualinvoke $r3.<com.squareup.picasso.Picasso$Priority: int ordinal()>();
+
+        $i0 = $i0 - $i1;
+
+        return $i0;
+    }
+
+    public final volatile int compareTo(java.lang.Object)
+    {
+        com.squareup.picasso.PicassoExecutorService$PicassoFutureTask r0, $r2;
+        int $i0;
+        java.lang.Object $r1;
+
+        r0 := @this: com.squareup.picasso.PicassoExecutorService$PicassoFutureTask;
+
+        $r1 := @parameter0: java.lang.Object;
+
+        $r2 = (com.squareup.picasso.PicassoExecutorService$PicassoFutureTask) $r1;
+
+        $i0 = virtualinvoke r0.<com.squareup.picasso.PicassoExecutorService$PicassoFutureTask: int compareTo(com.squareup.picasso.PicassoExecutorService$PicassoFutureTask)>($r2);
+
+        return $i0;
+    }
+}

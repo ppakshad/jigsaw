@@ -1,0 +1,52 @@
+public final class com.metrictrade.and.ar extends com.metrictrade.and.ak
+{
+
+    public void <init>(com.metrictrade.and.ak, int, int)
+    {
+        com.metrictrade.and.ar r0;
+        com.metrictrade.and.ak $r1;
+        int $i0, $i1, $i2, $i3, $i4;
+        java.lang.Object $r2;
+
+        r0 := @this: com.metrictrade.and.ar;
+
+        $r1 := @parameter0: com.metrictrade.and.ak;
+
+        $i0 := @parameter1: int;
+
+        $i1 := @parameter2: int;
+
+        $i3 = staticinvoke <java.lang.Math: int max(int,int)>($i1, 50);
+
+        specialinvoke r0.<com.metrictrade.and.ak: void <init>(int)>($i3);
+
+        $i3 = 0;
+
+     label1:
+        if $i3 < $i1 goto label2;
+
+        return;
+
+     label2:
+        $i2 = $i3 + $i0;
+
+        if $i2 < 0 goto label3;
+
+        $i4 = $i3 + $i0;
+
+        $i2 = $r1.<com.metrictrade.and.ak: int a>;
+
+        if $i4 >= $i2 goto label3;
+
+        $i2 = $i3 + $i0;
+
+        $r2 = virtualinvoke $r1.<com.metrictrade.and.ak: java.lang.Object a(int)>($i2);
+
+        virtualinvoke r0.<com.metrictrade.and.ar: boolean c(java.lang.Object)>($r2);
+
+     label3:
+        $i3 = $i3 + 1;
+
+        goto label1;
+    }
+}

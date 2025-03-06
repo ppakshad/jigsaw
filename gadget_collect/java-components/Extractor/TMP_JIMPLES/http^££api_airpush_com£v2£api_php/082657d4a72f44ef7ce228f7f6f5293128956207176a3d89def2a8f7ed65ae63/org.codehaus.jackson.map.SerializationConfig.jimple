@@ -1,0 +1,1006 @@
+public class org.codehaus.jackson.map.SerializationConfig extends java.lang.Object implements org.codehaus.jackson.map.MapperConfig
+{
+    protected static final int DEFAULT_FEATURE_FLAGS;
+    protected org.codehaus.jackson.map.AnnotationIntrospector _annotationIntrospector;
+    protected org.codehaus.jackson.map.ClassIntrospector _classIntrospector;
+    protected java.text.DateFormat _dateFormat;
+    protected int _featureFlags;
+    protected org.codehaus.jackson.map.ser.FilterProvider _filterProvider;
+    protected java.util.HashMap _mixInAnnotations;
+    protected boolean _mixInAnnotationsShared;
+    protected org.codehaus.jackson.map.annotate.JsonSerialize$Inclusion _serializationInclusion;
+    protected java.lang.Class _serializationView;
+    protected org.codehaus.jackson.map.jsontype.SubtypeResolver _subtypeResolver;
+    protected final org.codehaus.jackson.map.jsontype.TypeResolverBuilder _typer;
+    protected org.codehaus.jackson.map.introspect.VisibilityChecker _visibilityChecker;
+
+    static void <clinit>()
+    {
+        int $i0;
+
+        $i0 = staticinvoke <org.codehaus.jackson.map.SerializationConfig$Feature: int collectDefaults()>();
+
+        <org.codehaus.jackson.map.SerializationConfig: int DEFAULT_FEATURE_FLAGS> = $i0;
+
+        return;
+    }
+
+    public void <init>(org.codehaus.jackson.map.ClassIntrospector, org.codehaus.jackson.map.AnnotationIntrospector, org.codehaus.jackson.map.introspect.VisibilityChecker, org.codehaus.jackson.map.jsontype.SubtypeResolver)
+    {
+        org.codehaus.jackson.map.SerializationConfig r0;
+        org.codehaus.jackson.map.ClassIntrospector r1;
+        org.codehaus.jackson.map.AnnotationIntrospector $r2;
+        org.codehaus.jackson.map.introspect.VisibilityChecker r3;
+        org.codehaus.jackson.map.jsontype.SubtypeResolver $r4;
+        int $i0;
+        org.codehaus.jackson.map.util.StdDateFormat $r5;
+
+        r0 := @this: org.codehaus.jackson.map.SerializationConfig;
+
+        r1 := @parameter0: org.codehaus.jackson.map.ClassIntrospector;
+
+        $r2 := @parameter1: org.codehaus.jackson.map.AnnotationIntrospector;
+
+        r3 := @parameter2: org.codehaus.jackson.map.introspect.VisibilityChecker;
+
+        $r4 := @parameter3: org.codehaus.jackson.map.jsontype.SubtypeResolver;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        $i0 = <org.codehaus.jackson.map.SerializationConfig: int DEFAULT_FEATURE_FLAGS>;
+
+        r0.<org.codehaus.jackson.map.SerializationConfig: int _featureFlags> = $i0;
+
+        $r5 = <org.codehaus.jackson.map.util.StdDateFormat: org.codehaus.jackson.map.util.StdDateFormat instance>;
+
+        r0.<org.codehaus.jackson.map.SerializationConfig: java.text.DateFormat _dateFormat> = $r5;
+
+        r0.<org.codehaus.jackson.map.SerializationConfig: org.codehaus.jackson.map.annotate.JsonSerialize$Inclusion _serializationInclusion> = null;
+
+        r0.<org.codehaus.jackson.map.SerializationConfig: org.codehaus.jackson.map.ClassIntrospector _classIntrospector> = r1;
+
+        r0.<org.codehaus.jackson.map.SerializationConfig: org.codehaus.jackson.map.AnnotationIntrospector _annotationIntrospector> = $r2;
+
+        r0.<org.codehaus.jackson.map.SerializationConfig: org.codehaus.jackson.map.jsontype.TypeResolverBuilder _typer> = null;
+
+        r0.<org.codehaus.jackson.map.SerializationConfig: org.codehaus.jackson.map.introspect.VisibilityChecker _visibilityChecker> = r3;
+
+        r0.<org.codehaus.jackson.map.SerializationConfig: org.codehaus.jackson.map.jsontype.SubtypeResolver _subtypeResolver> = $r4;
+
+        r0.<org.codehaus.jackson.map.SerializationConfig: org.codehaus.jackson.map.ser.FilterProvider _filterProvider> = null;
+
+        return;
+    }
+
+    protected void <init>(org.codehaus.jackson.map.SerializationConfig, java.util.HashMap, org.codehaus.jackson.map.jsontype.TypeResolverBuilder, org.codehaus.jackson.map.introspect.VisibilityChecker, org.codehaus.jackson.map.jsontype.SubtypeResolver, org.codehaus.jackson.map.ser.FilterProvider)
+    {
+        org.codehaus.jackson.map.SerializationConfig r0, $r1;
+        java.util.HashMap r2;
+        org.codehaus.jackson.map.jsontype.TypeResolverBuilder r3;
+        org.codehaus.jackson.map.introspect.VisibilityChecker r4;
+        org.codehaus.jackson.map.jsontype.SubtypeResolver $r5;
+        org.codehaus.jackson.map.ser.FilterProvider $r6;
+        int $i0;
+        org.codehaus.jackson.map.util.StdDateFormat $r7;
+        org.codehaus.jackson.map.ClassIntrospector $r8;
+        org.codehaus.jackson.map.AnnotationIntrospector $r9;
+        java.text.DateFormat $r10;
+        org.codehaus.jackson.map.annotate.JsonSerialize$Inclusion $r11;
+        java.lang.Class $r12;
+
+        r0 := @this: org.codehaus.jackson.map.SerializationConfig;
+
+        $r1 := @parameter0: org.codehaus.jackson.map.SerializationConfig;
+
+        r2 := @parameter1: java.util.HashMap;
+
+        r3 := @parameter2: org.codehaus.jackson.map.jsontype.TypeResolverBuilder;
+
+        r4 := @parameter3: org.codehaus.jackson.map.introspect.VisibilityChecker;
+
+        $r5 := @parameter4: org.codehaus.jackson.map.jsontype.SubtypeResolver;
+
+        $r6 := @parameter5: org.codehaus.jackson.map.ser.FilterProvider;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        $i0 = <org.codehaus.jackson.map.SerializationConfig: int DEFAULT_FEATURE_FLAGS>;
+
+        r0.<org.codehaus.jackson.map.SerializationConfig: int _featureFlags> = $i0;
+
+        $r7 = <org.codehaus.jackson.map.util.StdDateFormat: org.codehaus.jackson.map.util.StdDateFormat instance>;
+
+        r0.<org.codehaus.jackson.map.SerializationConfig: java.text.DateFormat _dateFormat> = $r7;
+
+        r0.<org.codehaus.jackson.map.SerializationConfig: org.codehaus.jackson.map.annotate.JsonSerialize$Inclusion _serializationInclusion> = null;
+
+        $r8 = $r1.<org.codehaus.jackson.map.SerializationConfig: org.codehaus.jackson.map.ClassIntrospector _classIntrospector>;
+
+        r0.<org.codehaus.jackson.map.SerializationConfig: org.codehaus.jackson.map.ClassIntrospector _classIntrospector> = $r8;
+
+        $r9 = $r1.<org.codehaus.jackson.map.SerializationConfig: org.codehaus.jackson.map.AnnotationIntrospector _annotationIntrospector>;
+
+        r0.<org.codehaus.jackson.map.SerializationConfig: org.codehaus.jackson.map.AnnotationIntrospector _annotationIntrospector> = $r9;
+
+        $i0 = $r1.<org.codehaus.jackson.map.SerializationConfig: int _featureFlags>;
+
+        r0.<org.codehaus.jackson.map.SerializationConfig: int _featureFlags> = $i0;
+
+        $r10 = $r1.<org.codehaus.jackson.map.SerializationConfig: java.text.DateFormat _dateFormat>;
+
+        r0.<org.codehaus.jackson.map.SerializationConfig: java.text.DateFormat _dateFormat> = $r10;
+
+        $r11 = $r1.<org.codehaus.jackson.map.SerializationConfig: org.codehaus.jackson.map.annotate.JsonSerialize$Inclusion _serializationInclusion>;
+
+        r0.<org.codehaus.jackson.map.SerializationConfig: org.codehaus.jackson.map.annotate.JsonSerialize$Inclusion _serializationInclusion> = $r11;
+
+        $r12 = $r1.<org.codehaus.jackson.map.SerializationConfig: java.lang.Class _serializationView>;
+
+        r0.<org.codehaus.jackson.map.SerializationConfig: java.lang.Class _serializationView> = $r12;
+
+        r0.<org.codehaus.jackson.map.SerializationConfig: java.util.HashMap _mixInAnnotations> = r2;
+
+        r0.<org.codehaus.jackson.map.SerializationConfig: org.codehaus.jackson.map.jsontype.TypeResolverBuilder _typer> = r3;
+
+        r0.<org.codehaus.jackson.map.SerializationConfig: org.codehaus.jackson.map.introspect.VisibilityChecker _visibilityChecker> = r4;
+
+        r0.<org.codehaus.jackson.map.SerializationConfig: org.codehaus.jackson.map.jsontype.SubtypeResolver _subtypeResolver> = $r5;
+
+        r0.<org.codehaus.jackson.map.SerializationConfig: org.codehaus.jackson.map.ser.FilterProvider _filterProvider> = $r6;
+
+        return;
+    }
+
+    protected void <init>(org.codehaus.jackson.map.SerializationConfig, org.codehaus.jackson.map.ser.FilterProvider)
+    {
+        org.codehaus.jackson.map.SerializationConfig r0, $r1;
+        org.codehaus.jackson.map.ser.FilterProvider $r2;
+        int $i0;
+        org.codehaus.jackson.map.util.StdDateFormat $r3;
+        org.codehaus.jackson.map.ClassIntrospector $r4;
+        org.codehaus.jackson.map.AnnotationIntrospector $r5;
+        java.text.DateFormat $r6;
+        org.codehaus.jackson.map.annotate.JsonSerialize$Inclusion $r7;
+        java.lang.Class $r8;
+        java.util.HashMap $r9;
+        org.codehaus.jackson.map.jsontype.TypeResolverBuilder $r10;
+        org.codehaus.jackson.map.introspect.VisibilityChecker $r11;
+        org.codehaus.jackson.map.jsontype.SubtypeResolver $r12;
+
+        r0 := @this: org.codehaus.jackson.map.SerializationConfig;
+
+        $r1 := @parameter0: org.codehaus.jackson.map.SerializationConfig;
+
+        $r2 := @parameter1: org.codehaus.jackson.map.ser.FilterProvider;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        $i0 = <org.codehaus.jackson.map.SerializationConfig: int DEFAULT_FEATURE_FLAGS>;
+
+        r0.<org.codehaus.jackson.map.SerializationConfig: int _featureFlags> = $i0;
+
+        $r3 = <org.codehaus.jackson.map.util.StdDateFormat: org.codehaus.jackson.map.util.StdDateFormat instance>;
+
+        r0.<org.codehaus.jackson.map.SerializationConfig: java.text.DateFormat _dateFormat> = $r3;
+
+        r0.<org.codehaus.jackson.map.SerializationConfig: org.codehaus.jackson.map.annotate.JsonSerialize$Inclusion _serializationInclusion> = null;
+
+        $r4 = $r1.<org.codehaus.jackson.map.SerializationConfig: org.codehaus.jackson.map.ClassIntrospector _classIntrospector>;
+
+        r0.<org.codehaus.jackson.map.SerializationConfig: org.codehaus.jackson.map.ClassIntrospector _classIntrospector> = $r4;
+
+        $r5 = $r1.<org.codehaus.jackson.map.SerializationConfig: org.codehaus.jackson.map.AnnotationIntrospector _annotationIntrospector>;
+
+        r0.<org.codehaus.jackson.map.SerializationConfig: org.codehaus.jackson.map.AnnotationIntrospector _annotationIntrospector> = $r5;
+
+        $i0 = $r1.<org.codehaus.jackson.map.SerializationConfig: int _featureFlags>;
+
+        r0.<org.codehaus.jackson.map.SerializationConfig: int _featureFlags> = $i0;
+
+        $r6 = $r1.<org.codehaus.jackson.map.SerializationConfig: java.text.DateFormat _dateFormat>;
+
+        r0.<org.codehaus.jackson.map.SerializationConfig: java.text.DateFormat _dateFormat> = $r6;
+
+        $r7 = $r1.<org.codehaus.jackson.map.SerializationConfig: org.codehaus.jackson.map.annotate.JsonSerialize$Inclusion _serializationInclusion>;
+
+        r0.<org.codehaus.jackson.map.SerializationConfig: org.codehaus.jackson.map.annotate.JsonSerialize$Inclusion _serializationInclusion> = $r7;
+
+        $r8 = $r1.<org.codehaus.jackson.map.SerializationConfig: java.lang.Class _serializationView>;
+
+        r0.<org.codehaus.jackson.map.SerializationConfig: java.lang.Class _serializationView> = $r8;
+
+        $r9 = $r1.<org.codehaus.jackson.map.SerializationConfig: java.util.HashMap _mixInAnnotations>;
+
+        r0.<org.codehaus.jackson.map.SerializationConfig: java.util.HashMap _mixInAnnotations> = $r9;
+
+        $r10 = $r1.<org.codehaus.jackson.map.SerializationConfig: org.codehaus.jackson.map.jsontype.TypeResolverBuilder _typer>;
+
+        r0.<org.codehaus.jackson.map.SerializationConfig: org.codehaus.jackson.map.jsontype.TypeResolverBuilder _typer> = $r10;
+
+        $r11 = $r1.<org.codehaus.jackson.map.SerializationConfig: org.codehaus.jackson.map.introspect.VisibilityChecker _visibilityChecker>;
+
+        r0.<org.codehaus.jackson.map.SerializationConfig: org.codehaus.jackson.map.introspect.VisibilityChecker _visibilityChecker> = $r11;
+
+        $r12 = $r1.<org.codehaus.jackson.map.SerializationConfig: org.codehaus.jackson.map.jsontype.SubtypeResolver _subtypeResolver>;
+
+        r0.<org.codehaus.jackson.map.SerializationConfig: org.codehaus.jackson.map.jsontype.SubtypeResolver _subtypeResolver> = $r12;
+
+        r0.<org.codehaus.jackson.map.SerializationConfig: org.codehaus.jackson.map.ser.FilterProvider _filterProvider> = $r2;
+
+        return;
+    }
+
+    public void addMixInAnnotations(java.lang.Class, java.lang.Class)
+    {
+        org.codehaus.jackson.map.SerializationConfig r0;
+        java.lang.Class r1, r2;
+        org.codehaus.jackson.map.type.ClassKey $r3;
+        java.util.HashMap $r4;
+        boolean $z0;
+
+        r0 := @this: org.codehaus.jackson.map.SerializationConfig;
+
+        r1 := @parameter0: java.lang.Class;
+
+        r2 := @parameter1: java.lang.Class;
+
+        $r4 = r0.<org.codehaus.jackson.map.SerializationConfig: java.util.HashMap _mixInAnnotations>;
+
+        if $r4 == null goto label1;
+
+        $z0 = r0.<org.codehaus.jackson.map.SerializationConfig: boolean _mixInAnnotationsShared>;
+
+        if $z0 == 0 goto label2;
+
+     label1:
+        r0.<org.codehaus.jackson.map.SerializationConfig: boolean _mixInAnnotationsShared> = 0;
+
+        $r4 = new java.util.HashMap;
+
+        specialinvoke $r4.<java.util.HashMap: void <init>()>();
+
+        r0.<org.codehaus.jackson.map.SerializationConfig: java.util.HashMap _mixInAnnotations> = $r4;
+
+     label2:
+        $r4 = r0.<org.codehaus.jackson.map.SerializationConfig: java.util.HashMap _mixInAnnotations>;
+
+        $r3 = new org.codehaus.jackson.map.type.ClassKey;
+
+        specialinvoke $r3.<org.codehaus.jackson.map.type.ClassKey: void <init>(java.lang.Class)>(r1);
+
+        virtualinvoke $r4.<java.util.HashMap: java.lang.Object put(java.lang.Object,java.lang.Object)>($r3, r2);
+
+        return;
+    }
+
+    public void appendAnnotationIntrospector(org.codehaus.jackson.map.AnnotationIntrospector)
+    {
+        org.codehaus.jackson.map.SerializationConfig r0;
+        org.codehaus.jackson.map.AnnotationIntrospector $r1, $r2;
+
+        r0 := @this: org.codehaus.jackson.map.SerializationConfig;
+
+        $r1 := @parameter0: org.codehaus.jackson.map.AnnotationIntrospector;
+
+        $r2 = r0.<org.codehaus.jackson.map.SerializationConfig: org.codehaus.jackson.map.AnnotationIntrospector _annotationIntrospector>;
+
+        $r1 = staticinvoke <org.codehaus.jackson.map.AnnotationIntrospector$Pair: org.codehaus.jackson.map.AnnotationIntrospector create(org.codehaus.jackson.map.AnnotationIntrospector,org.codehaus.jackson.map.AnnotationIntrospector)>($r2, $r1);
+
+        r0.<org.codehaus.jackson.map.SerializationConfig: org.codehaus.jackson.map.AnnotationIntrospector _annotationIntrospector> = $r1;
+
+        return;
+    }
+
+    public volatile org.codehaus.jackson.map.MapperConfig createUnshared(org.codehaus.jackson.map.jsontype.TypeResolverBuilder, org.codehaus.jackson.map.introspect.VisibilityChecker, org.codehaus.jackson.map.jsontype.SubtypeResolver)
+    {
+        org.codehaus.jackson.map.SerializationConfig r0;
+        org.codehaus.jackson.map.jsontype.TypeResolverBuilder $r1;
+        org.codehaus.jackson.map.introspect.VisibilityChecker $r2;
+        org.codehaus.jackson.map.jsontype.SubtypeResolver $r3;
+
+        r0 := @this: org.codehaus.jackson.map.SerializationConfig;
+
+        $r1 := @parameter0: org.codehaus.jackson.map.jsontype.TypeResolverBuilder;
+
+        $r2 := @parameter1: org.codehaus.jackson.map.introspect.VisibilityChecker;
+
+        $r3 := @parameter2: org.codehaus.jackson.map.jsontype.SubtypeResolver;
+
+        r0 = virtualinvoke r0.<org.codehaus.jackson.map.SerializationConfig: org.codehaus.jackson.map.SerializationConfig createUnshared(org.codehaus.jackson.map.jsontype.TypeResolverBuilder,org.codehaus.jackson.map.introspect.VisibilityChecker,org.codehaus.jackson.map.jsontype.SubtypeResolver)>($r1, $r2, $r3);
+
+        return r0;
+    }
+
+    public org.codehaus.jackson.map.SerializationConfig createUnshared(org.codehaus.jackson.map.jsontype.TypeResolverBuilder, org.codehaus.jackson.map.introspect.VisibilityChecker, org.codehaus.jackson.map.jsontype.SubtypeResolver)
+    {
+        org.codehaus.jackson.map.SerializationConfig r0, $r5;
+        org.codehaus.jackson.map.jsontype.TypeResolverBuilder r1;
+        org.codehaus.jackson.map.introspect.VisibilityChecker r2;
+        org.codehaus.jackson.map.jsontype.SubtypeResolver $r3;
+        java.util.HashMap r4;
+
+        r0 := @this: org.codehaus.jackson.map.SerializationConfig;
+
+        r1 := @parameter0: org.codehaus.jackson.map.jsontype.TypeResolverBuilder;
+
+        r2 := @parameter1: org.codehaus.jackson.map.introspect.VisibilityChecker;
+
+        $r3 := @parameter2: org.codehaus.jackson.map.jsontype.SubtypeResolver;
+
+        r4 = r0.<org.codehaus.jackson.map.SerializationConfig: java.util.HashMap _mixInAnnotations>;
+
+        r0.<org.codehaus.jackson.map.SerializationConfig: boolean _mixInAnnotationsShared> = 1;
+
+        $r5 = new org.codehaus.jackson.map.SerializationConfig;
+
+        specialinvoke $r5.<org.codehaus.jackson.map.SerializationConfig: void <init>(org.codehaus.jackson.map.SerializationConfig,java.util.HashMap,org.codehaus.jackson.map.jsontype.TypeResolverBuilder,org.codehaus.jackson.map.introspect.VisibilityChecker,org.codehaus.jackson.map.jsontype.SubtypeResolver,org.codehaus.jackson.map.ser.FilterProvider)>(r0, r4, r1, r2, $r3, null);
+
+        return $r5;
+    }
+
+    public org.codehaus.jackson.map.SerializationConfig createUnshared(org.codehaus.jackson.map.jsontype.TypeResolverBuilder, org.codehaus.jackson.map.introspect.VisibilityChecker, org.codehaus.jackson.map.jsontype.SubtypeResolver, org.codehaus.jackson.map.ser.FilterProvider)
+    {
+        org.codehaus.jackson.map.SerializationConfig r0, $r6;
+        org.codehaus.jackson.map.jsontype.TypeResolverBuilder r1;
+        org.codehaus.jackson.map.introspect.VisibilityChecker r2;
+        org.codehaus.jackson.map.jsontype.SubtypeResolver $r3;
+        org.codehaus.jackson.map.ser.FilterProvider $r4;
+        java.util.HashMap r5;
+
+        r0 := @this: org.codehaus.jackson.map.SerializationConfig;
+
+        r1 := @parameter0: org.codehaus.jackson.map.jsontype.TypeResolverBuilder;
+
+        r2 := @parameter1: org.codehaus.jackson.map.introspect.VisibilityChecker;
+
+        $r3 := @parameter2: org.codehaus.jackson.map.jsontype.SubtypeResolver;
+
+        $r4 := @parameter3: org.codehaus.jackson.map.ser.FilterProvider;
+
+        r5 = r0.<org.codehaus.jackson.map.SerializationConfig: java.util.HashMap _mixInAnnotations>;
+
+        r0.<org.codehaus.jackson.map.SerializationConfig: boolean _mixInAnnotationsShared> = 1;
+
+        $r6 = new org.codehaus.jackson.map.SerializationConfig;
+
+        specialinvoke $r6.<org.codehaus.jackson.map.SerializationConfig: void <init>(org.codehaus.jackson.map.SerializationConfig,java.util.HashMap,org.codehaus.jackson.map.jsontype.TypeResolverBuilder,org.codehaus.jackson.map.introspect.VisibilityChecker,org.codehaus.jackson.map.jsontype.SubtypeResolver,org.codehaus.jackson.map.ser.FilterProvider)>(r0, r5, r1, r2, $r3, $r4);
+
+        return $r6;
+    }
+
+    public void disable(org.codehaus.jackson.map.SerializationConfig$Feature)
+    {
+        org.codehaus.jackson.map.SerializationConfig r0;
+        org.codehaus.jackson.map.SerializationConfig$Feature $r1;
+        int $i0, $i1;
+
+        r0 := @this: org.codehaus.jackson.map.SerializationConfig;
+
+        $r1 := @parameter0: org.codehaus.jackson.map.SerializationConfig$Feature;
+
+        $i1 = r0.<org.codehaus.jackson.map.SerializationConfig: int _featureFlags>;
+
+        $i0 = virtualinvoke $r1.<org.codehaus.jackson.map.SerializationConfig$Feature: int getMask()>();
+
+        $i0 = $i0 ^ -1;
+
+        $i1 = $i1 & $i0;
+
+        r0.<org.codehaus.jackson.map.SerializationConfig: int _featureFlags> = $i1;
+
+        return;
+    }
+
+    public void enable(org.codehaus.jackson.map.SerializationConfig$Feature)
+    {
+        org.codehaus.jackson.map.SerializationConfig r0;
+        org.codehaus.jackson.map.SerializationConfig$Feature $r1;
+        int $i0, $i1;
+
+        r0 := @this: org.codehaus.jackson.map.SerializationConfig;
+
+        $r1 := @parameter0: org.codehaus.jackson.map.SerializationConfig$Feature;
+
+        $i1 = r0.<org.codehaus.jackson.map.SerializationConfig: int _featureFlags>;
+
+        $i0 = virtualinvoke $r1.<org.codehaus.jackson.map.SerializationConfig$Feature: int getMask()>();
+
+        $i0 = $i1 | $i0;
+
+        r0.<org.codehaus.jackson.map.SerializationConfig: int _featureFlags> = $i0;
+
+        return;
+    }
+
+    public java.lang.Class findMixInClassFor(java.lang.Class)
+    {
+        java.lang.Class r0;
+        org.codehaus.jackson.map.type.ClassKey $r1;
+        java.lang.Object $r2;
+        org.codehaus.jackson.map.SerializationConfig r3;
+        java.util.HashMap $r4;
+
+        r3 := @this: org.codehaus.jackson.map.SerializationConfig;
+
+        r0 := @parameter0: java.lang.Class;
+
+        $r4 = r3.<org.codehaus.jackson.map.SerializationConfig: java.util.HashMap _mixInAnnotations>;
+
+        if $r4 != null goto label1;
+
+        return null;
+
+     label1:
+        $r4 = r3.<org.codehaus.jackson.map.SerializationConfig: java.util.HashMap _mixInAnnotations>;
+
+        $r1 = new org.codehaus.jackson.map.type.ClassKey;
+
+        specialinvoke $r1.<org.codehaus.jackson.map.type.ClassKey: void <init>(java.lang.Class)>(r0);
+
+        $r2 = virtualinvoke $r4.<java.util.HashMap: java.lang.Object get(java.lang.Object)>($r1);
+
+        r0 = (java.lang.Class) $r2;
+
+        return r0;
+    }
+
+    public void fromAnnotations(java.lang.Class)
+    {
+        org.codehaus.jackson.map.SerializationConfig r0;
+        java.lang.Class r1;
+        org.codehaus.jackson.map.AnnotationIntrospector $r2;
+        org.codehaus.jackson.map.introspect.AnnotatedClass $r3;
+        org.codehaus.jackson.map.introspect.VisibilityChecker $r4;
+        org.codehaus.jackson.map.annotate.JsonSerialize$Inclusion $r5, $r6;
+        org.codehaus.jackson.map.annotate.JsonSerialize$Typing $r7, $r9;
+        org.codehaus.jackson.map.SerializationConfig$Feature $r8;
+        boolean $z0;
+
+        r0 := @this: org.codehaus.jackson.map.SerializationConfig;
+
+        r1 := @parameter0: java.lang.Class;
+
+        $r2 = r0.<org.codehaus.jackson.map.SerializationConfig: org.codehaus.jackson.map.AnnotationIntrospector _annotationIntrospector>;
+
+        $r3 = staticinvoke <org.codehaus.jackson.map.introspect.AnnotatedClass: org.codehaus.jackson.map.introspect.AnnotatedClass construct(java.lang.Class,org.codehaus.jackson.map.AnnotationIntrospector,org.codehaus.jackson.map.ClassIntrospector$MixInResolver)>(r1, $r2, null);
+
+        $r2 = r0.<org.codehaus.jackson.map.SerializationConfig: org.codehaus.jackson.map.AnnotationIntrospector _annotationIntrospector>;
+
+        $r4 = r0.<org.codehaus.jackson.map.SerializationConfig: org.codehaus.jackson.map.introspect.VisibilityChecker _visibilityChecker>;
+
+        $r4 = virtualinvoke $r2.<org.codehaus.jackson.map.AnnotationIntrospector: org.codehaus.jackson.map.introspect.VisibilityChecker findAutoDetectVisibility(org.codehaus.jackson.map.introspect.AnnotatedClass,org.codehaus.jackson.map.introspect.VisibilityChecker)>($r3, $r4);
+
+        r0.<org.codehaus.jackson.map.SerializationConfig: org.codehaus.jackson.map.introspect.VisibilityChecker _visibilityChecker> = $r4;
+
+        $r2 = r0.<org.codehaus.jackson.map.SerializationConfig: org.codehaus.jackson.map.AnnotationIntrospector _annotationIntrospector>;
+
+        $r5 = virtualinvoke $r2.<org.codehaus.jackson.map.AnnotationIntrospector: org.codehaus.jackson.map.annotate.JsonSerialize$Inclusion findSerializationInclusion(org.codehaus.jackson.map.introspect.Annotated,org.codehaus.jackson.map.annotate.JsonSerialize$Inclusion)>($r3, null);
+
+        $r6 = r0.<org.codehaus.jackson.map.SerializationConfig: org.codehaus.jackson.map.annotate.JsonSerialize$Inclusion _serializationInclusion>;
+
+        if $r5 == $r6 goto label1;
+
+        virtualinvoke r0.<org.codehaus.jackson.map.SerializationConfig: void setSerializationInclusion(org.codehaus.jackson.map.annotate.JsonSerialize$Inclusion)>($r5);
+
+     label1:
+        $r2 = r0.<org.codehaus.jackson.map.SerializationConfig: org.codehaus.jackson.map.AnnotationIntrospector _annotationIntrospector>;
+
+        $r7 = virtualinvoke $r2.<org.codehaus.jackson.map.AnnotationIntrospector: org.codehaus.jackson.map.annotate.JsonSerialize$Typing findSerializationTyping(org.codehaus.jackson.map.introspect.Annotated)>($r3);
+
+        if $r7 == null goto label4;
+
+        $r8 = <org.codehaus.jackson.map.SerializationConfig$Feature: org.codehaus.jackson.map.SerializationConfig$Feature USE_STATIC_TYPING>;
+
+        $r9 = <org.codehaus.jackson.map.annotate.JsonSerialize$Typing: org.codehaus.jackson.map.annotate.JsonSerialize$Typing STATIC>;
+
+        if $r7 != $r9 goto label3;
+
+        $z0 = 1;
+
+     label2:
+        virtualinvoke r0.<org.codehaus.jackson.map.SerializationConfig: void set(org.codehaus.jackson.map.SerializationConfig$Feature,boolean)>($r8, $z0);
+
+        return;
+
+     label3:
+        $z0 = 0;
+
+        goto label2;
+
+     label4:
+        return;
+    }
+
+    public org.codehaus.jackson.map.AnnotationIntrospector getAnnotationIntrospector()
+    {
+        org.codehaus.jackson.map.SerializationConfig r0;
+        org.codehaus.jackson.map.SerializationConfig$Feature $r1;
+        boolean $z0;
+        org.codehaus.jackson.map.AnnotationIntrospector $r2;
+
+        r0 := @this: org.codehaus.jackson.map.SerializationConfig;
+
+        $r1 = <org.codehaus.jackson.map.SerializationConfig$Feature: org.codehaus.jackson.map.SerializationConfig$Feature USE_ANNOTATIONS>;
+
+        $z0 = virtualinvoke r0.<org.codehaus.jackson.map.SerializationConfig: boolean isEnabled(org.codehaus.jackson.map.SerializationConfig$Feature)>($r1);
+
+        if $z0 == 0 goto label1;
+
+        $r2 = r0.<org.codehaus.jackson.map.SerializationConfig: org.codehaus.jackson.map.AnnotationIntrospector _annotationIntrospector>;
+
+        return $r2;
+
+     label1:
+        $r2 = staticinvoke <org.codehaus.jackson.map.AnnotationIntrospector: org.codehaus.jackson.map.AnnotationIntrospector nopInstance()>();
+
+        return $r2;
+    }
+
+    public java.text.DateFormat getDateFormat()
+    {
+        org.codehaus.jackson.map.SerializationConfig r0;
+        java.text.DateFormat r1;
+
+        r0 := @this: org.codehaus.jackson.map.SerializationConfig;
+
+        r1 = r0.<org.codehaus.jackson.map.SerializationConfig: java.text.DateFormat _dateFormat>;
+
+        return r1;
+    }
+
+    public org.codehaus.jackson.map.jsontype.TypeResolverBuilder getDefaultTyper(org.codehaus.jackson.type.JavaType)
+    {
+        org.codehaus.jackson.map.SerializationConfig r0;
+        org.codehaus.jackson.type.JavaType $r1;
+        org.codehaus.jackson.map.jsontype.TypeResolverBuilder r2;
+
+        r0 := @this: org.codehaus.jackson.map.SerializationConfig;
+
+        $r1 := @parameter0: org.codehaus.jackson.type.JavaType;
+
+        r2 = r0.<org.codehaus.jackson.map.SerializationConfig: org.codehaus.jackson.map.jsontype.TypeResolverBuilder _typer>;
+
+        return r2;
+    }
+
+    public org.codehaus.jackson.map.introspect.VisibilityChecker getDefaultVisibilityChecker()
+    {
+        org.codehaus.jackson.map.SerializationConfig r0;
+        org.codehaus.jackson.map.introspect.VisibilityChecker r1;
+
+        r0 := @this: org.codehaus.jackson.map.SerializationConfig;
+
+        r1 = r0.<org.codehaus.jackson.map.SerializationConfig: org.codehaus.jackson.map.introspect.VisibilityChecker _visibilityChecker>;
+
+        return r1;
+    }
+
+    public org.codehaus.jackson.map.ser.FilterProvider getFilterProvider()
+    {
+        org.codehaus.jackson.map.SerializationConfig r0;
+        org.codehaus.jackson.map.ser.FilterProvider r1;
+
+        r0 := @this: org.codehaus.jackson.map.SerializationConfig;
+
+        r1 = r0.<org.codehaus.jackson.map.SerializationConfig: org.codehaus.jackson.map.ser.FilterProvider _filterProvider>;
+
+        return r1;
+    }
+
+    public org.codehaus.jackson.map.annotate.JsonSerialize$Inclusion getSerializationInclusion()
+    {
+        org.codehaus.jackson.map.SerializationConfig r0;
+        boolean $z0;
+        org.codehaus.jackson.map.annotate.JsonSerialize$Inclusion $r1;
+        org.codehaus.jackson.map.SerializationConfig$Feature $r2;
+
+        r0 := @this: org.codehaus.jackson.map.SerializationConfig;
+
+        $r1 = r0.<org.codehaus.jackson.map.SerializationConfig: org.codehaus.jackson.map.annotate.JsonSerialize$Inclusion _serializationInclusion>;
+
+        if $r1 == null goto label1;
+
+        $r1 = r0.<org.codehaus.jackson.map.SerializationConfig: org.codehaus.jackson.map.annotate.JsonSerialize$Inclusion _serializationInclusion>;
+
+        return $r1;
+
+     label1:
+        $r2 = <org.codehaus.jackson.map.SerializationConfig$Feature: org.codehaus.jackson.map.SerializationConfig$Feature WRITE_NULL_PROPERTIES>;
+
+        $z0 = virtualinvoke r0.<org.codehaus.jackson.map.SerializationConfig: boolean isEnabled(org.codehaus.jackson.map.SerializationConfig$Feature)>($r2);
+
+        if $z0 == 0 goto label2;
+
+        $r1 = <org.codehaus.jackson.map.annotate.JsonSerialize$Inclusion: org.codehaus.jackson.map.annotate.JsonSerialize$Inclusion ALWAYS>;
+
+        return $r1;
+
+     label2:
+        $r1 = <org.codehaus.jackson.map.annotate.JsonSerialize$Inclusion: org.codehaus.jackson.map.annotate.JsonSerialize$Inclusion NON_NULL>;
+
+        return $r1;
+    }
+
+    public java.lang.Class getSerializationView()
+    {
+        org.codehaus.jackson.map.SerializationConfig r0;
+        java.lang.Class r1;
+
+        r0 := @this: org.codehaus.jackson.map.SerializationConfig;
+
+        r1 = r0.<org.codehaus.jackson.map.SerializationConfig: java.lang.Class _serializationView>;
+
+        return r1;
+    }
+
+    public org.codehaus.jackson.map.jsontype.SubtypeResolver getSubtypeResolver()
+    {
+        org.codehaus.jackson.map.SerializationConfig r0;
+        org.codehaus.jackson.map.jsontype.SubtypeResolver $r1;
+        org.codehaus.jackson.map.jsontype.impl.StdSubtypeResolver $r2;
+
+        r0 := @this: org.codehaus.jackson.map.SerializationConfig;
+
+        $r1 = r0.<org.codehaus.jackson.map.SerializationConfig: org.codehaus.jackson.map.jsontype.SubtypeResolver _subtypeResolver>;
+
+        if $r1 != null goto label1;
+
+        $r2 = new org.codehaus.jackson.map.jsontype.impl.StdSubtypeResolver;
+
+        specialinvoke $r2.<org.codehaus.jackson.map.jsontype.impl.StdSubtypeResolver: void <init>()>();
+
+        r0.<org.codehaus.jackson.map.SerializationConfig: org.codehaus.jackson.map.jsontype.SubtypeResolver _subtypeResolver> = $r2;
+
+     label1:
+        $r1 = r0.<org.codehaus.jackson.map.SerializationConfig: org.codehaus.jackson.map.jsontype.SubtypeResolver _subtypeResolver>;
+
+        return $r1;
+    }
+
+    public void insertAnnotationIntrospector(org.codehaus.jackson.map.AnnotationIntrospector)
+    {
+        org.codehaus.jackson.map.SerializationConfig r0;
+        org.codehaus.jackson.map.AnnotationIntrospector $r1, $r2;
+
+        r0 := @this: org.codehaus.jackson.map.SerializationConfig;
+
+        $r1 := @parameter0: org.codehaus.jackson.map.AnnotationIntrospector;
+
+        $r2 = r0.<org.codehaus.jackson.map.SerializationConfig: org.codehaus.jackson.map.AnnotationIntrospector _annotationIntrospector>;
+
+        $r1 = staticinvoke <org.codehaus.jackson.map.AnnotationIntrospector$Pair: org.codehaus.jackson.map.AnnotationIntrospector create(org.codehaus.jackson.map.AnnotationIntrospector,org.codehaus.jackson.map.AnnotationIntrospector)>($r1, $r2);
+
+        r0.<org.codehaus.jackson.map.SerializationConfig: org.codehaus.jackson.map.AnnotationIntrospector _annotationIntrospector> = $r1;
+
+        return;
+    }
+
+    public org.codehaus.jackson.map.BeanDescription introspect(org.codehaus.jackson.type.JavaType)
+    {
+        org.codehaus.jackson.map.SerializationConfig r0;
+        org.codehaus.jackson.type.JavaType $r1;
+        org.codehaus.jackson.map.BeanDescription $r2;
+        org.codehaus.jackson.map.ClassIntrospector $r3;
+
+        r0 := @this: org.codehaus.jackson.map.SerializationConfig;
+
+        $r1 := @parameter0: org.codehaus.jackson.type.JavaType;
+
+        $r3 = r0.<org.codehaus.jackson.map.SerializationConfig: org.codehaus.jackson.map.ClassIntrospector _classIntrospector>;
+
+        $r2 = virtualinvoke $r3.<org.codehaus.jackson.map.ClassIntrospector: org.codehaus.jackson.map.BeanDescription forSerialization(org.codehaus.jackson.map.SerializationConfig,org.codehaus.jackson.type.JavaType,org.codehaus.jackson.map.ClassIntrospector$MixInResolver)>(r0, $r1, r0);
+
+        return $r2;
+    }
+
+    public org.codehaus.jackson.map.BeanDescription introspectClassAnnotations(java.lang.Class)
+    {
+        org.codehaus.jackson.map.SerializationConfig r0;
+        java.lang.Class r1;
+        org.codehaus.jackson.map.BeanDescription $r2;
+        org.codehaus.jackson.map.ClassIntrospector $r3;
+
+        r0 := @this: org.codehaus.jackson.map.SerializationConfig;
+
+        r1 := @parameter0: java.lang.Class;
+
+        $r3 = r0.<org.codehaus.jackson.map.SerializationConfig: org.codehaus.jackson.map.ClassIntrospector _classIntrospector>;
+
+        $r2 = virtualinvoke $r3.<org.codehaus.jackson.map.ClassIntrospector: org.codehaus.jackson.map.BeanDescription forClassAnnotations(org.codehaus.jackson.map.MapperConfig,java.lang.Class,org.codehaus.jackson.map.ClassIntrospector$MixInResolver)>(r0, r1, r0);
+
+        return $r2;
+    }
+
+    public org.codehaus.jackson.map.BeanDescription introspectDirectClassAnnotations(java.lang.Class)
+    {
+        org.codehaus.jackson.map.SerializationConfig r0;
+        java.lang.Class r1;
+        org.codehaus.jackson.map.BeanDescription $r2;
+        org.codehaus.jackson.map.ClassIntrospector $r3;
+
+        r0 := @this: org.codehaus.jackson.map.SerializationConfig;
+
+        r1 := @parameter0: java.lang.Class;
+
+        $r3 = r0.<org.codehaus.jackson.map.SerializationConfig: org.codehaus.jackson.map.ClassIntrospector _classIntrospector>;
+
+        $r2 = virtualinvoke $r3.<org.codehaus.jackson.map.ClassIntrospector: org.codehaus.jackson.map.BeanDescription forDirectClassAnnotations(org.codehaus.jackson.map.MapperConfig,java.lang.Class,org.codehaus.jackson.map.ClassIntrospector$MixInResolver)>(r0, r1, r0);
+
+        return $r2;
+    }
+
+    public final boolean isEnabled(org.codehaus.jackson.map.SerializationConfig$Feature)
+    {
+        org.codehaus.jackson.map.SerializationConfig r0;
+        org.codehaus.jackson.map.SerializationConfig$Feature $r1;
+        int $i0, $i1;
+
+        r0 := @this: org.codehaus.jackson.map.SerializationConfig;
+
+        $r1 := @parameter0: org.codehaus.jackson.map.SerializationConfig$Feature;
+
+        $i1 = r0.<org.codehaus.jackson.map.SerializationConfig: int _featureFlags>;
+
+        $i0 = virtualinvoke $r1.<org.codehaus.jackson.map.SerializationConfig$Feature: int getMask()>();
+
+        $i0 = $i1 & $i0;
+
+        if $i0 == 0 goto label1;
+
+        return 1;
+
+     label1:
+        return 0;
+    }
+
+    public void set(org.codehaus.jackson.map.SerializationConfig$Feature, boolean)
+    {
+        org.codehaus.jackson.map.SerializationConfig r0;
+        org.codehaus.jackson.map.SerializationConfig$Feature $r1;
+        boolean $z0;
+
+        r0 := @this: org.codehaus.jackson.map.SerializationConfig;
+
+        $r1 := @parameter0: org.codehaus.jackson.map.SerializationConfig$Feature;
+
+        $z0 := @parameter1: boolean;
+
+        if $z0 == 0 goto label1;
+
+        virtualinvoke r0.<org.codehaus.jackson.map.SerializationConfig: void enable(org.codehaus.jackson.map.SerializationConfig$Feature)>($r1);
+
+        return;
+
+     label1:
+        virtualinvoke r0.<org.codehaus.jackson.map.SerializationConfig: void disable(org.codehaus.jackson.map.SerializationConfig$Feature)>($r1);
+
+        return;
+    }
+
+    public void setAnnotationIntrospector(org.codehaus.jackson.map.AnnotationIntrospector)
+    {
+        org.codehaus.jackson.map.SerializationConfig r0;
+        org.codehaus.jackson.map.AnnotationIntrospector $r1;
+
+        r0 := @this: org.codehaus.jackson.map.SerializationConfig;
+
+        $r1 := @parameter0: org.codehaus.jackson.map.AnnotationIntrospector;
+
+        r0.<org.codehaus.jackson.map.SerializationConfig: org.codehaus.jackson.map.AnnotationIntrospector _annotationIntrospector> = $r1;
+
+        return;
+    }
+
+    public void setDateFormat(java.text.DateFormat)
+    {
+        org.codehaus.jackson.map.SerializationConfig r0;
+        java.text.DateFormat $r1;
+        org.codehaus.jackson.map.SerializationConfig$Feature $r2;
+        boolean $z0;
+
+        r0 := @this: org.codehaus.jackson.map.SerializationConfig;
+
+        $r1 := @parameter0: java.text.DateFormat;
+
+        r0.<org.codehaus.jackson.map.SerializationConfig: java.text.DateFormat _dateFormat> = $r1;
+
+        $r2 = <org.codehaus.jackson.map.SerializationConfig$Feature: org.codehaus.jackson.map.SerializationConfig$Feature WRITE_DATES_AS_TIMESTAMPS>;
+
+        if $r1 != null goto label2;
+
+        $z0 = 1;
+
+     label1:
+        virtualinvoke r0.<org.codehaus.jackson.map.SerializationConfig: void set(org.codehaus.jackson.map.SerializationConfig$Feature,boolean)>($r2, $z0);
+
+        return;
+
+     label2:
+        $z0 = 0;
+
+        goto label1;
+    }
+
+    public void setIntrospector(org.codehaus.jackson.map.ClassIntrospector)
+    {
+        org.codehaus.jackson.map.SerializationConfig r0;
+        org.codehaus.jackson.map.ClassIntrospector r1;
+
+        r0 := @this: org.codehaus.jackson.map.SerializationConfig;
+
+        r1 := @parameter0: org.codehaus.jackson.map.ClassIntrospector;
+
+        r0.<org.codehaus.jackson.map.SerializationConfig: org.codehaus.jackson.map.ClassIntrospector _classIntrospector> = r1;
+
+        return;
+    }
+
+    public void setMixInAnnotations(java.util.Map)
+    {
+        org.codehaus.jackson.map.SerializationConfig r0;
+        java.util.Map r1;
+        org.codehaus.jackson.map.type.ClassKey $r2;
+        java.util.HashMap r3;
+        int $i0;
+        java.util.Set $r4;
+        java.util.Iterator $r5;
+        boolean $z0;
+        java.lang.Object $r6;
+        java.util.Map$Entry r7;
+        java.lang.Class $r8;
+
+        r0 := @this: org.codehaus.jackson.map.SerializationConfig;
+
+        r1 := @parameter0: java.util.Map;
+
+        r3 = null;
+
+        if r1 == null goto label2;
+
+        $i0 = interfaceinvoke r1.<java.util.Map: int size()>();
+
+        if $i0 <= 0 goto label2;
+
+        r3 = new java.util.HashMap;
+
+        $i0 = interfaceinvoke r1.<java.util.Map: int size()>();
+
+        specialinvoke r3.<java.util.HashMap: void <init>(int)>($i0);
+
+        $r4 = interfaceinvoke r1.<java.util.Map: java.util.Set entrySet()>();
+
+        $r5 = interfaceinvoke $r4.<java.util.Set: java.util.Iterator iterator()>();
+
+     label1:
+        $z0 = interfaceinvoke $r5.<java.util.Iterator: boolean hasNext()>();
+
+        if $z0 == 0 goto label2;
+
+        $r6 = interfaceinvoke $r5.<java.util.Iterator: java.lang.Object next()>();
+
+        r7 = (java.util.Map$Entry) $r6;
+
+        $r2 = new org.codehaus.jackson.map.type.ClassKey;
+
+        $r6 = interfaceinvoke r7.<java.util.Map$Entry: java.lang.Object getKey()>();
+
+        $r8 = (java.lang.Class) $r6;
+
+        specialinvoke $r2.<org.codehaus.jackson.map.type.ClassKey: void <init>(java.lang.Class)>($r8);
+
+        $r6 = interfaceinvoke r7.<java.util.Map$Entry: java.lang.Object getValue()>();
+
+        virtualinvoke r3.<java.util.HashMap: java.lang.Object put(java.lang.Object,java.lang.Object)>($r2, $r6);
+
+        goto label1;
+
+     label2:
+        r0.<org.codehaus.jackson.map.SerializationConfig: boolean _mixInAnnotationsShared> = 0;
+
+        r0.<org.codehaus.jackson.map.SerializationConfig: java.util.HashMap _mixInAnnotations> = r3;
+
+        return;
+    }
+
+    public void setSerializationInclusion(org.codehaus.jackson.map.annotate.JsonSerialize$Inclusion)
+    {
+        org.codehaus.jackson.map.SerializationConfig r0;
+        org.codehaus.jackson.map.annotate.JsonSerialize$Inclusion $r1, $r2;
+        org.codehaus.jackson.map.SerializationConfig$Feature $r3;
+
+        r0 := @this: org.codehaus.jackson.map.SerializationConfig;
+
+        $r1 := @parameter0: org.codehaus.jackson.map.annotate.JsonSerialize$Inclusion;
+
+        r0.<org.codehaus.jackson.map.SerializationConfig: org.codehaus.jackson.map.annotate.JsonSerialize$Inclusion _serializationInclusion> = $r1;
+
+        $r2 = <org.codehaus.jackson.map.annotate.JsonSerialize$Inclusion: org.codehaus.jackson.map.annotate.JsonSerialize$Inclusion NON_NULL>;
+
+        if $r1 != $r2 goto label1;
+
+        $r3 = <org.codehaus.jackson.map.SerializationConfig$Feature: org.codehaus.jackson.map.SerializationConfig$Feature WRITE_NULL_PROPERTIES>;
+
+        virtualinvoke r0.<org.codehaus.jackson.map.SerializationConfig: void disable(org.codehaus.jackson.map.SerializationConfig$Feature)>($r3);
+
+        return;
+
+     label1:
+        $r3 = <org.codehaus.jackson.map.SerializationConfig$Feature: org.codehaus.jackson.map.SerializationConfig$Feature WRITE_NULL_PROPERTIES>;
+
+        virtualinvoke r0.<org.codehaus.jackson.map.SerializationConfig: void enable(org.codehaus.jackson.map.SerializationConfig$Feature)>($r3);
+
+        return;
+    }
+
+    public void setSerializationView(java.lang.Class)
+    {
+        org.codehaus.jackson.map.SerializationConfig r0;
+        java.lang.Class r1;
+
+        r0 := @this: org.codehaus.jackson.map.SerializationConfig;
+
+        r1 := @parameter0: java.lang.Class;
+
+        r0.<org.codehaus.jackson.map.SerializationConfig: java.lang.Class _serializationView> = r1;
+
+        return;
+    }
+
+    public void setSubtypeResolver(org.codehaus.jackson.map.jsontype.SubtypeResolver)
+    {
+        org.codehaus.jackson.map.SerializationConfig r0;
+        org.codehaus.jackson.map.jsontype.SubtypeResolver $r1;
+
+        r0 := @this: org.codehaus.jackson.map.SerializationConfig;
+
+        $r1 := @parameter0: org.codehaus.jackson.map.jsontype.SubtypeResolver;
+
+        r0.<org.codehaus.jackson.map.SerializationConfig: org.codehaus.jackson.map.jsontype.SubtypeResolver _subtypeResolver> = $r1;
+
+        return;
+    }
+
+    public java.lang.String toString()
+    {
+        org.codehaus.jackson.map.SerializationConfig r0;
+        java.lang.StringBuilder $r1;
+        int $i0;
+        java.lang.String $r2;
+
+        r0 := @this: org.codehaus.jackson.map.SerializationConfig;
+
+        $r1 = new java.lang.StringBuilder;
+
+        specialinvoke $r1.<java.lang.StringBuilder: void <init>()>();
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("[SerializationConfig: flags=0x");
+
+        $i0 = r0.<org.codehaus.jackson.map.SerializationConfig: int _featureFlags>;
+
+        $r2 = staticinvoke <java.lang.Integer: java.lang.String toHexString(int)>($i0);
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r2);
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("]");
+
+        $r2 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        return $r2;
+    }
+
+    public org.codehaus.jackson.map.SerializationConfig withFilters(org.codehaus.jackson.map.ser.FilterProvider)
+    {
+        org.codehaus.jackson.map.SerializationConfig r0, $r2;
+        org.codehaus.jackson.map.ser.FilterProvider $r1;
+
+        r0 := @this: org.codehaus.jackson.map.SerializationConfig;
+
+        $r1 := @parameter0: org.codehaus.jackson.map.ser.FilterProvider;
+
+        $r2 = new org.codehaus.jackson.map.SerializationConfig;
+
+        specialinvoke $r2.<org.codehaus.jackson.map.SerializationConfig: void <init>(org.codehaus.jackson.map.SerializationConfig,org.codehaus.jackson.map.ser.FilterProvider)>(r0, $r1);
+
+        return $r2;
+    }
+}

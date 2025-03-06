@@ -1,0 +1,1547 @@
+public class com.airpush.android.SetPreferences extends java.lang.Object
+{
+    private static java.lang.String android_id;
+    private static java.lang.String apikey;
+    private static java.lang.String appId;
+    private static java.lang.String carrier;
+    private static java.lang.String city;
+    private static java.lang.String connectionType;
+    private static java.lang.String country;
+    private static android.content.Context ctx;
+    private static java.lang.String dte;
+    private static int icon;
+    protected static java.lang.String imei;
+    private static java.lang.String ip;
+    protected static org.json.JSONObject json;
+    private static java.lang.String jsonstr;
+    private static java.lang.String lat;
+    private static java.lang.String lon;
+    private static java.lang.String manufacturer;
+    private static java.lang.String networkOperator;
+    private static java.lang.String packageName;
+    private static java.lang.String phonemodel;
+    protected static java.lang.String postValues;
+    private static java.lang.String s;
+    private static java.lang.String sdkversion;
+    private static java.lang.String state;
+    private static boolean testMode;
+    private static java.lang.String token;
+    private static java.lang.String user_agent;
+    protected static java.util.List values;
+    private static java.lang.String version;
+    private boolean doPush;
+    private boolean doSearch;
+    private java.lang.String encodedAsp;
+    private java.lang.String imeinumber;
+    private java.lang.String jsonString;
+    private boolean searchIconTestMode;
+    private boolean showAd;
+    private boolean showDialog;
+
+    static void <clinit>()
+    {
+        <com.airpush.android.SetPreferences: org.json.JSONObject json> = null;
+
+        <com.airpush.android.SetPreferences: java.lang.String sdkversion> = "4.02";
+
+        <com.airpush.android.SetPreferences: java.lang.String country> = "unknown";
+
+        <com.airpush.android.SetPreferences: java.lang.String city> = "unknown";
+
+        <com.airpush.android.SetPreferences: java.lang.String state> = "unknown";
+
+        <com.airpush.android.SetPreferences: java.lang.String imei> = "0";
+
+        <com.airpush.android.SetPreferences: java.lang.String dte> = "00";
+
+        <com.airpush.android.SetPreferences: java.lang.String packageName> = "invalid";
+
+        <com.airpush.android.SetPreferences: java.lang.String version> = "0";
+
+        <com.airpush.android.SetPreferences: java.lang.String carrier> = "0";
+
+        <com.airpush.android.SetPreferences: java.lang.String networkOperator> = "0";
+
+        <com.airpush.android.SetPreferences: java.lang.String phonemodel> = "0";
+
+        <com.airpush.android.SetPreferences: java.lang.String manufacturer> = "0";
+
+        <com.airpush.android.SetPreferences: java.lang.String appId> = "0";
+
+        <com.airpush.android.SetPreferences: java.lang.String apikey> = "0";
+
+        <com.airpush.android.SetPreferences: java.lang.String ip> = "0";
+
+        <com.airpush.android.SetPreferences: java.lang.String token> = "0";
+
+        <com.airpush.android.SetPreferences: java.lang.String lon> = "0";
+
+        <com.airpush.android.SetPreferences: java.lang.String lat> = "0";
+
+        return;
+    }
+
+    public void <init>()
+    {
+        com.airpush.android.SetPreferences r0;
+
+        r0 := @this: com.airpush.android.SetPreferences;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        r0.<com.airpush.android.SetPreferences: java.lang.String jsonString> = "0";
+
+        r0.<com.airpush.android.SetPreferences: java.lang.String imeinumber> = "0";
+
+        return;
+    }
+
+    static void access$0(java.lang.String)
+    {
+        java.lang.String $r0;
+
+        $r0 := @parameter0: java.lang.String;
+
+        <com.airpush.android.SetPreferences: java.lang.String lon> = $r0;
+
+        return;
+    }
+
+    static void access$1(java.lang.String)
+    {
+        java.lang.String $r0;
+
+        $r0 := @parameter0: java.lang.String;
+
+        <com.airpush.android.SetPreferences: java.lang.String lat> = $r0;
+
+        return;
+    }
+
+    private static java.lang.String getApiKey(java.lang.String)
+    {
+        java.lang.String $r0;
+        org.json.JSONObject $r1;
+        org.json.JSONException $r2;
+
+        $r0 := @parameter0: java.lang.String;
+
+        $r1 = new org.json.JSONObject;
+
+     label1:
+        specialinvoke $r1.<org.json.JSONObject: void <init>(java.lang.String)>($r0);
+
+     label2:
+        <com.airpush.android.SetPreferences: org.json.JSONObject json> = $r1;
+
+        $r1 = <com.airpush.android.SetPreferences: org.json.JSONObject json>;
+
+     label3:
+        $r0 = virtualinvoke $r1.<org.json.JSONObject: java.lang.String getString(java.lang.String)>("authkey");
+
+     label4:
+        return $r0;
+
+     label5:
+        $r2 := @caughtexception;
+
+        return "invalid key";
+
+        catch org.json.JSONException from label1 to label2 with label5;
+        catch org.json.JSONException from label3 to label4 with label5;
+    }
+
+    private static java.lang.String getAppId(java.lang.String)
+    {
+        java.lang.String $r0;
+        org.json.JSONObject $r1;
+        org.json.JSONException $r2;
+
+        $r0 := @parameter0: java.lang.String;
+
+        $r1 = new org.json.JSONObject;
+
+     label1:
+        specialinvoke $r1.<org.json.JSONObject: void <init>(java.lang.String)>($r0);
+
+     label2:
+        <com.airpush.android.SetPreferences: org.json.JSONObject json> = $r1;
+
+        $r1 = <com.airpush.android.SetPreferences: org.json.JSONObject json>;
+
+     label3:
+        $r0 = virtualinvoke $r1.<org.json.JSONObject: java.lang.String getString(java.lang.String)>("appid");
+
+     label4:
+        return $r0;
+
+     label5:
+        $r2 := @caughtexception;
+
+        return "invalid Id";
+
+        catch org.json.JSONException from label1 to label2 with label5;
+        catch org.json.JSONException from label3 to label4 with label5;
+    }
+
+    private java.lang.String getConnectionType()
+    {
+        com.airpush.android.SetPreferences r0;
+        android.content.Context $r1;
+        java.lang.Object $r2;
+        android.net.ConnectivityManager r3;
+        android.net.NetworkInfo $r4;
+        java.lang.String $r5;
+        boolean $z0;
+
+        r0 := @this: com.airpush.android.SetPreferences;
+
+        $r1 = <com.airpush.android.SetPreferences: android.content.Context ctx>;
+
+        $r2 = virtualinvoke $r1.<android.content.Context: java.lang.Object getSystemService(java.lang.String)>("connectivity");
+
+        r3 = (android.net.ConnectivityManager) $r2;
+
+        $r4 = virtualinvoke r3.<android.net.ConnectivityManager: android.net.NetworkInfo getActiveNetworkInfo()>();
+
+        $r5 = virtualinvoke $r4.<android.net.NetworkInfo: java.lang.String getTypeName()>();
+
+        $z0 = virtualinvoke $r5.<java.lang.String: boolean equals(java.lang.Object)>("WIFI");
+
+        if $z0 == 0 goto label1;
+
+        return "1";
+
+     label1:
+        return "0";
+    }
+
+    private static void getDataSharedprefrences(android.content.Context)
+    {
+        android.content.Context $r0;
+        java.util.Date r1;
+        android.content.SharedPreferences $r2;
+        boolean $z0;
+        java.lang.String $r3;
+        int $i0;
+        java.lang.StringBuilder $r4;
+        java.lang.Exception $r5;
+
+        $r0 := @parameter0: android.content.Context;
+
+     label01:
+        $r2 = virtualinvoke $r0.<android.content.Context: android.content.SharedPreferences getSharedPreferences(java.lang.String,int)>("dataPrefs", 1);
+
+        $z0 = virtualinvoke $r2.<java.lang.Object: boolean equals(java.lang.Object)>(null);
+
+     label02:
+        if $z0 != 0 goto label41;
+
+     label03:
+        $r2 = virtualinvoke $r0.<android.content.Context: android.content.SharedPreferences getSharedPreferences(java.lang.String,int)>("dataPrefs", 1);
+
+        $r3 = interfaceinvoke $r2.<android.content.SharedPreferences: java.lang.String getString(java.lang.String,java.lang.String)>("appId", "invalid");
+
+     label04:
+        <com.airpush.android.SetPreferences: java.lang.String appId> = $r3;
+
+     label05:
+        $r3 = interfaceinvoke $r2.<android.content.SharedPreferences: java.lang.String getString(java.lang.String,java.lang.String)>("apikey", "airpush");
+
+     label06:
+        <com.airpush.android.SetPreferences: java.lang.String apikey> = $r3;
+
+     label07:
+        $r3 = interfaceinvoke $r2.<android.content.SharedPreferences: java.lang.String getString(java.lang.String,java.lang.String)>("imei", "invalid");
+
+     label08:
+        <com.airpush.android.SetPreferences: java.lang.String imei> = $r3;
+
+     label09:
+        $r3 = interfaceinvoke $r2.<android.content.SharedPreferences: java.lang.String getString(java.lang.String,java.lang.String)>("token", "invalid");
+
+     label10:
+        <com.airpush.android.SetPreferences: java.lang.String token> = $r3;
+
+        r1 = new java.util.Date;
+
+     label11:
+        specialinvoke r1.<java.util.Date: void <init>()>();
+
+        $r3 = virtualinvoke r1.<java.util.Date: java.lang.String toString()>();
+
+     label12:
+        <com.airpush.android.SetPreferences: java.lang.String dte> = $r3;
+
+     label13:
+        $r3 = interfaceinvoke $r2.<android.content.SharedPreferences: java.lang.String getString(java.lang.String,java.lang.String)>("packageName", "invalid");
+
+     label14:
+        <com.airpush.android.SetPreferences: java.lang.String packageName> = $r3;
+
+     label15:
+        $r3 = interfaceinvoke $r2.<android.content.SharedPreferences: java.lang.String getString(java.lang.String,java.lang.String)>("version", "invalid");
+
+     label16:
+        <com.airpush.android.SetPreferences: java.lang.String version> = $r3;
+
+     label17:
+        $r3 = interfaceinvoke $r2.<android.content.SharedPreferences: java.lang.String getString(java.lang.String,java.lang.String)>("carrier", "invalid");
+
+     label18:
+        <com.airpush.android.SetPreferences: java.lang.String carrier> = $r3;
+
+     label19:
+        $r3 = interfaceinvoke $r2.<android.content.SharedPreferences: java.lang.String getString(java.lang.String,java.lang.String)>("networkOperator", "invalid");
+
+     label20:
+        <com.airpush.android.SetPreferences: java.lang.String networkOperator> = $r3;
+
+     label21:
+        $r3 = interfaceinvoke $r2.<android.content.SharedPreferences: java.lang.String getString(java.lang.String,java.lang.String)>("phoneModel", "invalid");
+
+     label22:
+        <com.airpush.android.SetPreferences: java.lang.String phonemodel> = $r3;
+
+     label23:
+        $r3 = interfaceinvoke $r2.<android.content.SharedPreferences: java.lang.String getString(java.lang.String,java.lang.String)>("manufacturer", "invalid");
+
+     label24:
+        <com.airpush.android.SetPreferences: java.lang.String manufacturer> = $r3;
+
+     label25:
+        $r3 = interfaceinvoke $r2.<android.content.SharedPreferences: java.lang.String getString(java.lang.String,java.lang.String)>("longitude", "invalid");
+
+     label26:
+        <com.airpush.android.SetPreferences: java.lang.String lon> = $r3;
+
+     label27:
+        $r3 = interfaceinvoke $r2.<android.content.SharedPreferences: java.lang.String getString(java.lang.String,java.lang.String)>("latitude", "invalid");
+
+     label28:
+        <com.airpush.android.SetPreferences: java.lang.String lat> = $r3;
+
+     label29:
+        $r3 = interfaceinvoke $r2.<android.content.SharedPreferences: java.lang.String getString(java.lang.String,java.lang.String)>("sdkversion", "4.02");
+
+     label30:
+        <com.airpush.android.SetPreferences: java.lang.String sdkversion> = $r3;
+
+     label31:
+        $r3 = interfaceinvoke $r2.<android.content.SharedPreferences: java.lang.String getString(java.lang.String,java.lang.String)>("connectionType", "0");
+
+     label32:
+        <com.airpush.android.SetPreferences: java.lang.String connectionType> = $r3;
+
+     label33:
+        $z0 = interfaceinvoke $r2.<android.content.SharedPreferences: boolean getBoolean(java.lang.String,boolean)>("testMode", 0);
+
+     label34:
+        <com.airpush.android.SetPreferences: boolean testMode> = $z0;
+
+     label35:
+        $r3 = interfaceinvoke $r2.<android.content.SharedPreferences: java.lang.String getString(java.lang.String,java.lang.String)>("useragent", "Default");
+
+     label36:
+        <com.airpush.android.SetPreferences: java.lang.String user_agent> = $r3;
+
+     label37:
+        $i0 = interfaceinvoke $r2.<android.content.SharedPreferences: int getInt(java.lang.String,int)>("icon", 17301514);
+
+     label38:
+        <com.airpush.android.SetPreferences: int icon> = $i0;
+
+     label39:
+        $r3 = interfaceinvoke $r2.<android.content.SharedPreferences: java.lang.String getString(java.lang.String,java.lang.String)>("android_id", "Android_id");
+
+     label40:
+        <com.airpush.android.SetPreferences: java.lang.String android_id> = $r3;
+
+        return;
+
+     label41:
+        $r0 = <com.airpush.android.SetPreferences: android.content.Context ctx>;
+
+     label42:
+        $r3 = virtualinvoke $r0.<android.content.Context: java.lang.String getPackageName()>();
+
+     label43:
+        <com.airpush.android.SetPreferences: java.lang.String packageName> = $r3;
+
+        $r4 = new java.lang.StringBuilder;
+
+     label44:
+        specialinvoke $r4.<java.lang.StringBuilder: void <init>(java.lang.String)>("http://api.airpush.com/model/user/getappinfo.php?packageName=");
+
+     label45:
+        $r3 = <com.airpush.android.SetPreferences: java.lang.String packageName>;
+
+     label46:
+        $r4 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r3);
+
+        $r3 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.String toString()>();
+
+     label47:
+        $r0 = <com.airpush.android.SetPreferences: android.content.Context ctx>;
+
+     label48:
+        $r3 = staticinvoke <com.airpush.android.HttpPostData: java.lang.String postData2(java.lang.String,java.lang.String,java.lang.String,android.content.Context)>($r3, "default", "default", $r0);
+
+     label49:
+        <com.airpush.android.SetPreferences: java.lang.String jsonstr> = $r3;
+
+        $r3 = <com.airpush.android.SetPreferences: java.lang.String jsonstr>;
+
+     label50:
+        $r3 = staticinvoke <com.airpush.android.SetPreferences: java.lang.String getAppId(java.lang.String)>($r3);
+
+     label51:
+        <com.airpush.android.SetPreferences: java.lang.String appId> = $r3;
+
+        $r3 = <com.airpush.android.SetPreferences: java.lang.String jsonstr>;
+
+     label52:
+        $r3 = staticinvoke <com.airpush.android.SetPreferences: java.lang.String getApiKey(java.lang.String)>($r3);
+
+     label53:
+        <com.airpush.android.SetPreferences: java.lang.String apikey> = $r3;
+
+        return;
+
+     label54:
+        $r5 := @caughtexception;
+
+        return;
+
+        catch java.lang.Exception from label01 to label02 with label54;
+        catch java.lang.Exception from label03 to label04 with label54;
+        catch java.lang.Exception from label05 to label06 with label54;
+        catch java.lang.Exception from label07 to label08 with label54;
+        catch java.lang.Exception from label09 to label10 with label54;
+        catch java.lang.Exception from label11 to label12 with label54;
+        catch java.lang.Exception from label13 to label14 with label54;
+        catch java.lang.Exception from label15 to label16 with label54;
+        catch java.lang.Exception from label17 to label18 with label54;
+        catch java.lang.Exception from label19 to label20 with label54;
+        catch java.lang.Exception from label21 to label22 with label54;
+        catch java.lang.Exception from label23 to label24 with label54;
+        catch java.lang.Exception from label25 to label26 with label54;
+        catch java.lang.Exception from label27 to label28 with label54;
+        catch java.lang.Exception from label29 to label30 with label54;
+        catch java.lang.Exception from label31 to label32 with label54;
+        catch java.lang.Exception from label33 to label34 with label54;
+        catch java.lang.Exception from label35 to label36 with label54;
+        catch java.lang.Exception from label37 to label38 with label54;
+        catch java.lang.Exception from label39 to label40 with label54;
+        catch java.lang.Exception from label42 to label43 with label54;
+        catch java.lang.Exception from label44 to label45 with label54;
+        catch java.lang.Exception from label46 to label47 with label54;
+        catch java.lang.Exception from label48 to label49 with label54;
+        catch java.lang.Exception from label50 to label51 with label54;
+        catch java.lang.Exception from label52 to label53 with label54;
+    }
+
+    private void getLocation(android.content.Context)
+    {
+        com.airpush.android.SetPreferences r0;
+        android.content.Context $r1;
+        com.airpush.android.SetPreferences$MyLocationListener r2;
+        android.content.pm.PackageManager $r3;
+        java.lang.String $r4;
+        int $i0;
+        java.lang.Object $r5;
+        android.location.LocationManager r6;
+        android.location.Location $r7;
+        double $d0;
+
+        r0 := @this: com.airpush.android.SetPreferences;
+
+        $r1 := @parameter0: android.content.Context;
+
+        $r3 = virtualinvoke $r1.<android.content.Context: android.content.pm.PackageManager getPackageManager()>();
+
+        $r4 = virtualinvoke $r1.<android.content.Context: java.lang.String getPackageName()>();
+
+        $i0 = virtualinvoke $r3.<android.content.pm.PackageManager: int checkPermission(java.lang.String,java.lang.String)>("android.permission.ACCESS_COARSE_LOCATION", $r4);
+
+        if $i0 != 0 goto label2;
+
+        $r3 = virtualinvoke $r1.<android.content.Context: android.content.pm.PackageManager getPackageManager()>();
+
+        $r4 = virtualinvoke $r1.<android.content.Context: java.lang.String getPackageName()>();
+
+        $i0 = virtualinvoke $r3.<android.content.pm.PackageManager: int checkPermission(java.lang.String,java.lang.String)>("android.permission.ACCESS_FINE_LOCATION", $r4);
+
+        if $i0 != 0 goto label2;
+
+        $r5 = virtualinvoke $r1.<android.content.Context: java.lang.Object getSystemService(java.lang.String)>("location");
+
+        r6 = (android.location.LocationManager) $r5;
+
+        $r7 = virtualinvoke r6.<android.location.LocationManager: android.location.Location getLastKnownLocation(java.lang.String)>("network");
+
+        if $r7 != null goto label1;
+
+        r2 = new com.airpush.android.SetPreferences$MyLocationListener;
+
+        specialinvoke r2.<com.airpush.android.SetPreferences$MyLocationListener: void <init>(com.airpush.android.SetPreferences)>(r0);
+
+        virtualinvoke r6.<android.location.LocationManager: void requestLocationUpdates(java.lang.String,long,float,android.location.LocationListener)>("network", 0L, 0.0F, r2);
+
+        return;
+
+     label1:
+        $d0 = virtualinvoke $r7.<android.location.Location: double getLongitude()>();
+
+        $r4 = staticinvoke <java.lang.String: java.lang.String valueOf(double)>($d0);
+
+        <com.airpush.android.SetPreferences: java.lang.String lon> = $r4;
+
+        $d0 = virtualinvoke $r7.<android.location.Location: double getLatitude()>();
+
+        $r4 = staticinvoke <java.lang.String: java.lang.String valueOf(double)>($d0);
+
+        <com.airpush.android.SetPreferences: java.lang.String lat> = $r4;
+
+     label2:
+        return;
+    }
+
+    public static boolean isEnabled(android.content.Context)
+    {
+        android.content.Context $r0;
+        android.content.SharedPreferences $r1;
+        boolean $z0;
+
+        $r0 := @parameter0: android.content.Context;
+
+        $r1 = virtualinvoke $r0.<android.content.Context: android.content.SharedPreferences getSharedPreferences(java.lang.String,int)>("sdkPrefs", 1);
+
+        $z0 = virtualinvoke $r1.<java.lang.Object: boolean equals(java.lang.Object)>(null);
+
+        if $z0 != 0 goto label1;
+
+        $r1 = virtualinvoke $r0.<android.content.Context: android.content.SharedPreferences getSharedPreferences(java.lang.String,int)>("sdkPrefs", 1);
+
+        $z0 = interfaceinvoke $r1.<android.content.SharedPreferences: boolean contains(java.lang.String)>("SDKEnabled");
+
+        if $z0 == 0 goto label1;
+
+        $z0 = interfaceinvoke $r1.<android.content.SharedPreferences: boolean getBoolean(java.lang.String,boolean)>("SDKEnabled", 0);
+
+        return $z0;
+
+     label1:
+        return 1;
+    }
+
+    protected static java.util.List setValues(android.content.Context)
+    {
+        android.content.Context $r0;
+        java.util.ArrayList $r1;
+        java.util.List $r2;
+        org.apache.http.message.BasicNameValuePair $r3;
+        java.lang.String $r4;
+        java.lang.StringBuilder $r5;
+        java.lang.Exception $r6;
+
+        $r0 := @parameter0: android.content.Context;
+
+     label01:
+        staticinvoke <com.airpush.android.SetPreferences: void getDataSharedprefrences(android.content.Context)>($r0);
+
+     label02:
+        $r1 = new java.util.ArrayList;
+
+     label03:
+        specialinvoke $r1.<java.util.ArrayList: void <init>()>();
+
+     label04:
+        <com.airpush.android.SetPreferences: java.util.List values> = $r1;
+
+        $r2 = <com.airpush.android.SetPreferences: java.util.List values>;
+
+        $r3 = new org.apache.http.message.BasicNameValuePair;
+
+        $r4 = <com.airpush.android.SetPreferences: java.lang.String apikey>;
+
+     label05:
+        specialinvoke $r3.<org.apache.http.message.BasicNameValuePair: void <init>(java.lang.String,java.lang.String)>("apikey", $r4);
+
+        interfaceinvoke $r2.<java.util.List: boolean add(java.lang.Object)>($r3);
+
+     label06:
+        $r2 = <com.airpush.android.SetPreferences: java.util.List values>;
+
+        $r3 = new org.apache.http.message.BasicNameValuePair;
+
+        $r4 = <com.airpush.android.SetPreferences: java.lang.String appId>;
+
+     label07:
+        specialinvoke $r3.<org.apache.http.message.BasicNameValuePair: void <init>(java.lang.String,java.lang.String)>("appId", $r4);
+
+        interfaceinvoke $r2.<java.util.List: boolean add(java.lang.Object)>($r3);
+
+     label08:
+        $r2 = <com.airpush.android.SetPreferences: java.util.List values>;
+
+        $r3 = new org.apache.http.message.BasicNameValuePair;
+
+        $r4 = <com.airpush.android.SetPreferences: java.lang.String imei>;
+
+     label09:
+        specialinvoke $r3.<org.apache.http.message.BasicNameValuePair: void <init>(java.lang.String,java.lang.String)>("imei", $r4);
+
+        interfaceinvoke $r2.<java.util.List: boolean add(java.lang.Object)>($r3);
+
+     label10:
+        $r2 = <com.airpush.android.SetPreferences: java.util.List values>;
+
+        $r3 = new org.apache.http.message.BasicNameValuePair;
+
+        $r4 = <com.airpush.android.SetPreferences: java.lang.String token>;
+
+     label11:
+        specialinvoke $r3.<org.apache.http.message.BasicNameValuePair: void <init>(java.lang.String,java.lang.String)>("token", $r4);
+
+        interfaceinvoke $r2.<java.util.List: boolean add(java.lang.Object)>($r3);
+
+     label12:
+        $r2 = <com.airpush.android.SetPreferences: java.util.List values>;
+
+        $r3 = new org.apache.http.message.BasicNameValuePair;
+
+        $r4 = <com.airpush.android.SetPreferences: java.lang.String dte>;
+
+     label13:
+        specialinvoke $r3.<org.apache.http.message.BasicNameValuePair: void <init>(java.lang.String,java.lang.String)>("request_timestamp", $r4);
+
+        interfaceinvoke $r2.<java.util.List: boolean add(java.lang.Object)>($r3);
+
+     label14:
+        $r2 = <com.airpush.android.SetPreferences: java.util.List values>;
+
+        $r3 = new org.apache.http.message.BasicNameValuePair;
+
+        $r4 = <com.airpush.android.SetPreferences: java.lang.String packageName>;
+
+     label15:
+        specialinvoke $r3.<org.apache.http.message.BasicNameValuePair: void <init>(java.lang.String,java.lang.String)>("packageName", $r4);
+
+        interfaceinvoke $r2.<java.util.List: boolean add(java.lang.Object)>($r3);
+
+     label16:
+        $r2 = <com.airpush.android.SetPreferences: java.util.List values>;
+
+        $r3 = new org.apache.http.message.BasicNameValuePair;
+
+        $r4 = <com.airpush.android.SetPreferences: java.lang.String version>;
+
+     label17:
+        specialinvoke $r3.<org.apache.http.message.BasicNameValuePair: void <init>(java.lang.String,java.lang.String)>("version", $r4);
+
+        interfaceinvoke $r2.<java.util.List: boolean add(java.lang.Object)>($r3);
+
+     label18:
+        $r2 = <com.airpush.android.SetPreferences: java.util.List values>;
+
+        $r3 = new org.apache.http.message.BasicNameValuePair;
+
+        $r4 = <com.airpush.android.SetPreferences: java.lang.String carrier>;
+
+     label19:
+        specialinvoke $r3.<org.apache.http.message.BasicNameValuePair: void <init>(java.lang.String,java.lang.String)>("carrier", $r4);
+
+        interfaceinvoke $r2.<java.util.List: boolean add(java.lang.Object)>($r3);
+
+     label20:
+        $r2 = <com.airpush.android.SetPreferences: java.util.List values>;
+
+        $r3 = new org.apache.http.message.BasicNameValuePair;
+
+        $r4 = <com.airpush.android.SetPreferences: java.lang.String networkOperator>;
+
+     label21:
+        specialinvoke $r3.<org.apache.http.message.BasicNameValuePair: void <init>(java.lang.String,java.lang.String)>("networkOperator", $r4);
+
+        interfaceinvoke $r2.<java.util.List: boolean add(java.lang.Object)>($r3);
+
+     label22:
+        $r2 = <com.airpush.android.SetPreferences: java.util.List values>;
+
+        $r3 = new org.apache.http.message.BasicNameValuePair;
+
+        $r4 = <com.airpush.android.SetPreferences: java.lang.String phonemodel>;
+
+     label23:
+        specialinvoke $r3.<org.apache.http.message.BasicNameValuePair: void <init>(java.lang.String,java.lang.String)>("phoneModel", $r4);
+
+        interfaceinvoke $r2.<java.util.List: boolean add(java.lang.Object)>($r3);
+
+     label24:
+        $r2 = <com.airpush.android.SetPreferences: java.util.List values>;
+
+        $r3 = new org.apache.http.message.BasicNameValuePair;
+
+        $r4 = <com.airpush.android.SetPreferences: java.lang.String manufacturer>;
+
+     label25:
+        specialinvoke $r3.<org.apache.http.message.BasicNameValuePair: void <init>(java.lang.String,java.lang.String)>("manufacturer", $r4);
+
+        interfaceinvoke $r2.<java.util.List: boolean add(java.lang.Object)>($r3);
+
+     label26:
+        $r2 = <com.airpush.android.SetPreferences: java.util.List values>;
+
+        $r3 = new org.apache.http.message.BasicNameValuePair;
+
+        $r4 = <com.airpush.android.SetPreferences: java.lang.String lon>;
+
+     label27:
+        specialinvoke $r3.<org.apache.http.message.BasicNameValuePair: void <init>(java.lang.String,java.lang.String)>("longitude", $r4);
+
+        interfaceinvoke $r2.<java.util.List: boolean add(java.lang.Object)>($r3);
+
+     label28:
+        $r2 = <com.airpush.android.SetPreferences: java.util.List values>;
+
+        $r3 = new org.apache.http.message.BasicNameValuePair;
+
+        $r4 = <com.airpush.android.SetPreferences: java.lang.String lat>;
+
+     label29:
+        specialinvoke $r3.<org.apache.http.message.BasicNameValuePair: void <init>(java.lang.String,java.lang.String)>("latitude", $r4);
+
+        interfaceinvoke $r2.<java.util.List: boolean add(java.lang.Object)>($r3);
+
+     label30:
+        $r2 = <com.airpush.android.SetPreferences: java.util.List values>;
+
+        $r3 = new org.apache.http.message.BasicNameValuePair;
+
+        $r4 = <com.airpush.android.SetPreferences: java.lang.String sdkversion>;
+
+     label31:
+        specialinvoke $r3.<org.apache.http.message.BasicNameValuePair: void <init>(java.lang.String,java.lang.String)>("sdkversion", $r4);
+
+        interfaceinvoke $r2.<java.util.List: boolean add(java.lang.Object)>($r3);
+
+     label32:
+        $r2 = <com.airpush.android.SetPreferences: java.util.List values>;
+
+        $r3 = new org.apache.http.message.BasicNameValuePair;
+
+        $r4 = <com.airpush.android.SetPreferences: java.lang.String connectionType>;
+
+     label33:
+        specialinvoke $r3.<org.apache.http.message.BasicNameValuePair: void <init>(java.lang.String,java.lang.String)>("wifi", $r4);
+
+        interfaceinvoke $r2.<java.util.List: boolean add(java.lang.Object)>($r3);
+
+     label34:
+        $r2 = <com.airpush.android.SetPreferences: java.util.List values>;
+
+        $r3 = new org.apache.http.message.BasicNameValuePair;
+
+        $r4 = <com.airpush.android.SetPreferences: java.lang.String user_agent>;
+
+     label35:
+        specialinvoke $r3.<org.apache.http.message.BasicNameValuePair: void <init>(java.lang.String,java.lang.String)>("useragent", $r4);
+
+        interfaceinvoke $r2.<java.util.List: boolean add(java.lang.Object)>($r3);
+
+     label36:
+        $r2 = <com.airpush.android.SetPreferences: java.util.List values>;
+
+        $r3 = new org.apache.http.message.BasicNameValuePair;
+
+        $r4 = <com.airpush.android.SetPreferences: java.lang.String android_id>;
+
+     label37:
+        specialinvoke $r3.<org.apache.http.message.BasicNameValuePair: void <init>(java.lang.String,java.lang.String)>("android_id", $r4);
+
+        interfaceinvoke $r2.<java.util.List: boolean add(java.lang.Object)>($r3);
+
+     label38:
+        $r2 = <com.airpush.android.SetPreferences: java.util.List values>;
+
+        $r3 = new org.apache.http.message.BasicNameValuePair;
+
+        $r4 = <com.airpush.android.SetPreferences: java.lang.String lon>;
+
+     label39:
+        specialinvoke $r3.<org.apache.http.message.BasicNameValuePair: void <init>(java.lang.String,java.lang.String)>("longitude", $r4);
+
+        interfaceinvoke $r2.<java.util.List: boolean add(java.lang.Object)>($r3);
+
+     label40:
+        $r2 = <com.airpush.android.SetPreferences: java.util.List values>;
+
+        $r3 = new org.apache.http.message.BasicNameValuePair;
+
+        $r4 = <com.airpush.android.SetPreferences: java.lang.String lat>;
+
+     label41:
+        specialinvoke $r3.<org.apache.http.message.BasicNameValuePair: void <init>(java.lang.String,java.lang.String)>("latitude", $r4);
+
+        interfaceinvoke $r2.<java.util.List: boolean add(java.lang.Object)>($r3);
+
+     label42:
+        $r5 = new java.lang.StringBuilder;
+
+     label43:
+        specialinvoke $r5.<java.lang.StringBuilder: void <init>(java.lang.String)>("http://api.airpush.com/v2/api.php?apikey=");
+
+     label44:
+        $r4 = <com.airpush.android.SetPreferences: java.lang.String apikey>;
+
+     label45:
+        $r5 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r4);
+
+        $r5 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("&appId=");
+
+     label46:
+        $r4 = <com.airpush.android.SetPreferences: java.lang.String appId>;
+
+     label47:
+        $r5 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r4);
+
+        $r5 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("&imei=");
+
+     label48:
+        $r4 = <com.airpush.android.SetPreferences: java.lang.String imei>;
+
+     label49:
+        $r5 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r4);
+
+        $r5 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("&token=");
+
+     label50:
+        $r4 = <com.airpush.android.SetPreferences: java.lang.String token>;
+
+     label51:
+        $r5 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r4);
+
+        $r5 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("&request_timestamp=");
+
+     label52:
+        $r4 = <com.airpush.android.SetPreferences: java.lang.String dte>;
+
+     label53:
+        $r5 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r4);
+
+        $r5 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("&packageName=");
+
+     label54:
+        $r4 = <com.airpush.android.SetPreferences: java.lang.String packageName>;
+
+     label55:
+        $r5 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r4);
+
+        $r5 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("&version=");
+
+     label56:
+        $r4 = <com.airpush.android.SetPreferences: java.lang.String version>;
+
+     label57:
+        $r5 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r4);
+
+        $r5 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("&carrier=");
+
+     label58:
+        $r4 = <com.airpush.android.SetPreferences: java.lang.String carrier>;
+
+     label59:
+        $r5 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r4);
+
+        $r5 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("&networkOperator=");
+
+     label60:
+        $r4 = <com.airpush.android.SetPreferences: java.lang.String networkOperator>;
+
+     label61:
+        $r5 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r4);
+
+        $r5 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("&phoneModel=");
+
+     label62:
+        $r4 = <com.airpush.android.SetPreferences: java.lang.String phonemodel>;
+
+     label63:
+        $r5 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r4);
+
+        $r5 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("&manufacturer=");
+
+     label64:
+        $r4 = <com.airpush.android.SetPreferences: java.lang.String manufacturer>;
+
+     label65:
+        $r5 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r4);
+
+        $r5 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("&longitude=");
+
+     label66:
+        $r4 = <com.airpush.android.SetPreferences: java.lang.String lon>;
+
+     label67:
+        $r5 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r4);
+
+        $r5 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("&latitude=");
+
+     label68:
+        $r4 = <com.airpush.android.SetPreferences: java.lang.String lat>;
+
+     label69:
+        $r5 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r4);
+
+        $r5 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("&sdkversion=");
+
+     label70:
+        $r4 = <com.airpush.android.SetPreferences: java.lang.String sdkversion>;
+
+     label71:
+        $r5 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r4);
+
+        $r5 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("&wifi=");
+
+     label72:
+        $r4 = <com.airpush.android.SetPreferences: java.lang.String connectionType>;
+
+     label73:
+        $r5 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r4);
+
+        $r5 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("&useragent=");
+
+     label74:
+        $r4 = <com.airpush.android.SetPreferences: java.lang.String user_agent>;
+
+     label75:
+        $r5 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r4);
+
+        $r4 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.String toString()>();
+
+     label76:
+        <com.airpush.android.SetPreferences: java.lang.String postValues> = $r4;
+
+     label77:
+        $r2 = <com.airpush.android.SetPreferences: java.util.List values>;
+
+        return $r2;
+
+     label78:
+        $r6 := @caughtexception;
+
+        goto label77;
+
+        catch java.lang.Exception from label01 to label02 with label78;
+        catch java.lang.Exception from label03 to label04 with label78;
+        catch java.lang.Exception from label05 to label06 with label78;
+        catch java.lang.Exception from label07 to label08 with label78;
+        catch java.lang.Exception from label09 to label10 with label78;
+        catch java.lang.Exception from label11 to label12 with label78;
+        catch java.lang.Exception from label13 to label14 with label78;
+        catch java.lang.Exception from label15 to label16 with label78;
+        catch java.lang.Exception from label17 to label18 with label78;
+        catch java.lang.Exception from label19 to label20 with label78;
+        catch java.lang.Exception from label21 to label22 with label78;
+        catch java.lang.Exception from label23 to label24 with label78;
+        catch java.lang.Exception from label25 to label26 with label78;
+        catch java.lang.Exception from label27 to label28 with label78;
+        catch java.lang.Exception from label29 to label30 with label78;
+        catch java.lang.Exception from label31 to label32 with label78;
+        catch java.lang.Exception from label33 to label34 with label78;
+        catch java.lang.Exception from label35 to label36 with label78;
+        catch java.lang.Exception from label37 to label38 with label78;
+        catch java.lang.Exception from label39 to label40 with label78;
+        catch java.lang.Exception from label41 to label42 with label78;
+        catch java.lang.Exception from label43 to label44 with label78;
+        catch java.lang.Exception from label45 to label46 with label78;
+        catch java.lang.Exception from label47 to label48 with label78;
+        catch java.lang.Exception from label49 to label50 with label78;
+        catch java.lang.Exception from label51 to label52 with label78;
+        catch java.lang.Exception from label53 to label54 with label78;
+        catch java.lang.Exception from label55 to label56 with label78;
+        catch java.lang.Exception from label57 to label58 with label78;
+        catch java.lang.Exception from label59 to label60 with label78;
+        catch java.lang.Exception from label61 to label62 with label78;
+        catch java.lang.Exception from label63 to label64 with label78;
+        catch java.lang.Exception from label65 to label66 with label78;
+        catch java.lang.Exception from label67 to label68 with label78;
+        catch java.lang.Exception from label69 to label70 with label78;
+        catch java.lang.Exception from label71 to label72 with label78;
+        catch java.lang.Exception from label73 to label74 with label78;
+        catch java.lang.Exception from label75 to label76 with label78;
+    }
+
+    protected void setPreferences(android.content.Context, java.lang.String, java.lang.String, boolean, boolean, boolean, boolean)
+    {
+        com.airpush.android.SetPreferences r0;
+        android.content.Context $r1;
+        java.lang.String $r2, $r3;
+        boolean $z0, $z1, $z2, $z3, $z4;
+        java.util.Date r4;
+        android.webkit.WebView $r5;
+        android.webkit.WebSettings $r6;
+        java.lang.StringBuilder $r7;
+        java.lang.Object $r8;
+        android.telephony.TelephonyManager r9;
+        java.security.MessageDigest $r10;
+        byte[] $r11;
+        int $i0;
+        java.math.BigInteger $r12;
+        android.content.ContentResolver $r13;
+        java.lang.Throwable $r14;
+
+        r0 := @this: com.airpush.android.SetPreferences;
+
+        $r1 := @parameter0: android.content.Context;
+
+        $r2 := @parameter1: java.lang.String;
+
+        $r3 := @parameter2: java.lang.String;
+
+        $z0 := @parameter3: boolean;
+
+        $z1 := @parameter4: boolean;
+
+        $z2 := @parameter5: boolean;
+
+        $z3 := @parameter6: boolean;
+
+        <com.airpush.android.SetPreferences: android.content.Context ctx> = $r1;
+
+        <com.airpush.android.SetPreferences: java.lang.String appId> = $r2;
+
+        <com.airpush.android.SetPreferences: java.lang.String apikey> = $r3;
+
+        $z4 = r0.<com.airpush.android.SetPreferences: boolean showDialog>;
+
+        r0.<com.airpush.android.SetPreferences: boolean showDialog> = $z4;
+
+        r0.<com.airpush.android.SetPreferences: boolean doPush> = $z3;
+
+        r0.<com.airpush.android.SetPreferences: boolean doSearch> = $z1;
+
+        r0.<com.airpush.android.SetPreferences: boolean searchIconTestMode> = $z2;
+
+        <com.airpush.android.SetPreferences: boolean testMode> = $z0;
+
+        $r5 = new android.webkit.WebView;
+
+        $r1 = <com.airpush.android.SetPreferences: android.content.Context ctx>;
+
+        specialinvoke $r5.<android.webkit.WebView: void <init>(android.content.Context)>($r1);
+
+        $r6 = virtualinvoke $r5.<android.webkit.WebView: android.webkit.WebSettings getSettings()>();
+
+        $r2 = virtualinvoke $r6.<android.webkit.WebSettings: java.lang.String getUserAgentString()>();
+
+        <com.airpush.android.SetPreferences: java.lang.String user_agent> = $r2;
+
+        $r7 = new java.lang.StringBuilder;
+
+        specialinvoke $r7.<java.lang.StringBuilder: void <init>(java.lang.String)>("User Agent : ");
+
+        $z0 = r0.<com.airpush.android.SetPreferences: boolean doPush>;
+
+        $r7 = virtualinvoke $r7.<java.lang.StringBuilder: java.lang.StringBuilder append(boolean)>($z0);
+
+        $r2 = virtualinvoke $r7.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <android.util.Log: int i(java.lang.String,java.lang.String)>("User Agent", $r2);
+
+        $r2 = specialinvoke r0.<com.airpush.android.SetPreferences: java.lang.String getConnectionType()>();
+
+        <com.airpush.android.SetPreferences: java.lang.String connectionType> = $r2;
+
+        $r1 = <com.airpush.android.SetPreferences: android.content.Context ctx>;
+
+        specialinvoke r0.<com.airpush.android.SetPreferences: void getLocation(android.content.Context)>($r1);
+
+        $r1 = <com.airpush.android.SetPreferences: android.content.Context ctx>;
+
+        $r8 = virtualinvoke $r1.<android.content.Context: java.lang.Object getSystemService(java.lang.String)>("phone");
+
+        r9 = (android.telephony.TelephonyManager) $r8;
+
+        $r2 = virtualinvoke r9.<android.telephony.TelephonyManager: java.lang.String getDeviceId()>();
+
+        r0.<com.airpush.android.SetPreferences: java.lang.String imeinumber> = $r2;
+
+     label01:
+        $r10 = staticinvoke <java.security.MessageDigest: java.security.MessageDigest getInstance(java.lang.String)>("MD5");
+
+     label02:
+        $r2 = r0.<com.airpush.android.SetPreferences: java.lang.String imeinumber>;
+
+     label03:
+        $r11 = virtualinvoke $r2.<java.lang.String: byte[] getBytes()>();
+
+     label04:
+        $r2 = r0.<com.airpush.android.SetPreferences: java.lang.String imeinumber>;
+
+     label05:
+        $i0 = virtualinvoke $r2.<java.lang.String: int length()>();
+
+        virtualinvoke $r10.<java.security.MessageDigest: void update(byte[],int,int)>($r11, 0, $i0);
+
+     label06:
+        $r12 = new java.math.BigInteger;
+
+     label07:
+        $r11 = virtualinvoke $r10.<java.security.MessageDigest: byte[] digest()>();
+
+        specialinvoke $r12.<java.math.BigInteger: void <init>(int,byte[])>(1, $r11);
+
+        $r2 = virtualinvoke $r12.<java.math.BigInteger: java.lang.String toString(int)>(16);
+
+     label08:
+        <com.airpush.android.SetPreferences: java.lang.String imei> = $r2;
+
+        r4 = new java.util.Date;
+
+     label09:
+        specialinvoke r4.<java.util.Date: void <init>()>();
+
+        $r2 = virtualinvoke r4.<java.util.Date: java.lang.String toString()>();
+
+     label10:
+        <com.airpush.android.SetPreferences: java.lang.String dte> = $r2;
+
+        $r2 = <android.os.Build: java.lang.String MODEL>;
+
+        <com.airpush.android.SetPreferences: java.lang.String phonemodel> = $r2;
+
+        $r2 = <android.os.Build: java.lang.String MANUFACTURER>;
+
+        <com.airpush.android.SetPreferences: java.lang.String manufacturer> = $r2;
+
+     label11:
+        $r2 = virtualinvoke r9.<android.telephony.TelephonyManager: java.lang.String getNetworkOperatorName()>();
+
+     label12:
+        <com.airpush.android.SetPreferences: java.lang.String networkOperator> = $r2;
+
+     label13:
+        $r2 = virtualinvoke r9.<android.telephony.TelephonyManager: java.lang.String getSimOperatorName()>();
+
+     label14:
+        <com.airpush.android.SetPreferences: java.lang.String carrier> = $r2;
+
+        $r2 = <android.os.Build$VERSION: java.lang.String SDK>;
+
+        <com.airpush.android.SetPreferences: java.lang.String version> = $r2;
+
+        $r1 = <com.airpush.android.SetPreferences: android.content.Context ctx>;
+
+     label15:
+        $r13 = virtualinvoke $r1.<android.content.Context: android.content.ContentResolver getContentResolver()>();
+
+        $r2 = staticinvoke <android.provider.Settings$Secure: java.lang.String getString(android.content.ContentResolver,java.lang.String)>($r13, "android_id");
+
+     label16:
+        <com.airpush.android.SetPreferences: java.lang.String android_id> = $r2;
+
+        $r1 = <com.airpush.android.SetPreferences: android.content.Context ctx>;
+
+     label17:
+        $r2 = virtualinvoke $r1.<android.content.Context: java.lang.String getPackageName()>();
+
+     label18:
+        <com.airpush.android.SetPreferences: java.lang.String packageName> = $r2;
+
+        $r7 = new java.lang.StringBuilder;
+
+        $r2 = <com.airpush.android.SetPreferences: java.lang.String imei>;
+
+     label19:
+        $r2 = staticinvoke <java.lang.String: java.lang.String valueOf(java.lang.Object)>($r2);
+
+        specialinvoke $r7.<java.lang.StringBuilder: void <init>(java.lang.String)>($r2);
+
+     label20:
+        $r2 = <com.airpush.android.SetPreferences: java.lang.String appId>;
+
+     label21:
+        $r7 = virtualinvoke $r7.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r2);
+
+     label22:
+        $r2 = <com.airpush.android.SetPreferences: java.lang.String dte>;
+
+     label23:
+        $r7 = virtualinvoke $r7.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r2);
+
+        $r2 = virtualinvoke $r7.<java.lang.StringBuilder: java.lang.String toString()>();
+
+     label24:
+        <com.airpush.android.SetPreferences: java.lang.String token> = $r2;
+
+     label25:
+        $r10 = staticinvoke <java.security.MessageDigest: java.security.MessageDigest getInstance(java.lang.String)>("MD5");
+
+     label26:
+        $r2 = <com.airpush.android.SetPreferences: java.lang.String token>;
+
+     label27:
+        $r11 = virtualinvoke $r2.<java.lang.String: byte[] getBytes()>();
+
+     label28:
+        $r2 = <com.airpush.android.SetPreferences: java.lang.String token>;
+
+     label29:
+        $i0 = virtualinvoke $r2.<java.lang.String: int length()>();
+
+        virtualinvoke $r10.<java.security.MessageDigest: void update(byte[],int,int)>($r11, 0, $i0);
+
+     label30:
+        $r12 = new java.math.BigInteger;
+
+     label31:
+        $r11 = virtualinvoke $r10.<java.security.MessageDigest: byte[] digest()>();
+
+        specialinvoke $r12.<java.math.BigInteger: void <init>(int,byte[])>(1, $r11);
+
+        $r2 = virtualinvoke $r12.<java.math.BigInteger: java.lang.String toString(int)>(16);
+
+     label32:
+        <com.airpush.android.SetPreferences: java.lang.String token> = $r2;
+
+     label33:
+        virtualinvoke r0.<com.airpush.android.SetPreferences: void setSharedPreferences()>();
+
+     label34:
+        return;
+
+     label35:
+        $r14 := @caughtexception;
+
+        staticinvoke <android.util.Log: int i(java.lang.String,java.lang.String)>("AirpushSDK", "IMEI conversion Error ");
+
+        return;
+
+        catch java.security.NoSuchAlgorithmException from label01 to label02 with label35;
+        catch java.security.NoSuchAlgorithmException from label03 to label04 with label35;
+        catch java.security.NoSuchAlgorithmException from label05 to label06 with label35;
+        catch java.security.NoSuchAlgorithmException from label07 to label08 with label35;
+        catch java.security.NoSuchAlgorithmException from label09 to label10 with label35;
+        catch java.security.NoSuchAlgorithmException from label11 to label12 with label35;
+        catch java.security.NoSuchAlgorithmException from label13 to label14 with label35;
+        catch java.security.NoSuchAlgorithmException from label15 to label16 with label35;
+        catch java.security.NoSuchAlgorithmException from label17 to label18 with label35;
+        catch java.security.NoSuchAlgorithmException from label19 to label20 with label35;
+        catch java.security.NoSuchAlgorithmException from label21 to label22 with label35;
+        catch java.security.NoSuchAlgorithmException from label23 to label24 with label35;
+        catch java.security.NoSuchAlgorithmException from label25 to label26 with label35;
+        catch java.security.NoSuchAlgorithmException from label27 to label28 with label35;
+        catch java.security.NoSuchAlgorithmException from label29 to label30 with label35;
+        catch java.security.NoSuchAlgorithmException from label31 to label32 with label35;
+        catch java.security.NoSuchAlgorithmException from label33 to label34 with label35;
+    }
+
+    protected void setSharedPreferences()
+    {
+        com.airpush.android.SetPreferences r0;
+        java.util.Date r1;
+        java.lang.String $r2;
+        android.content.Context $r3;
+        android.content.SharedPreferences $r4;
+        android.content.SharedPreferences$Editor $r5;
+        boolean $z0;
+        int $i0;
+        java.lang.StringBuilder $r6;
+        java.lang.Exception $r7;
+
+        r0 := @this: com.airpush.android.SetPreferences;
+
+        r1 = new java.util.Date;
+
+     label01:
+        specialinvoke r1.<java.util.Date: void <init>()>();
+
+        $r2 = virtualinvoke r1.<java.util.Date: java.lang.String toString()>();
+
+     label02:
+        <com.airpush.android.SetPreferences: java.lang.String dte> = $r2;
+
+        $r3 = <com.airpush.android.SetPreferences: android.content.Context ctx>;
+
+     label03:
+        $r4 = virtualinvoke $r3.<android.content.Context: android.content.SharedPreferences getSharedPreferences(java.lang.String,int)>("dataPrefs", 2);
+
+        $r5 = interfaceinvoke $r4.<android.content.SharedPreferences: android.content.SharedPreferences$Editor edit()>();
+
+     label04:
+        $r2 = <com.airpush.android.SetPreferences: java.lang.String apikey>;
+
+     label05:
+        interfaceinvoke $r5.<android.content.SharedPreferences$Editor: android.content.SharedPreferences$Editor putString(java.lang.String,java.lang.String)>("apikey", $r2);
+
+     label06:
+        $r2 = <com.airpush.android.SetPreferences: java.lang.String appId>;
+
+     label07:
+        interfaceinvoke $r5.<android.content.SharedPreferences$Editor: android.content.SharedPreferences$Editor putString(java.lang.String,java.lang.String)>("appId", $r2);
+
+     label08:
+        $r2 = <com.airpush.android.SetPreferences: java.lang.String imei>;
+
+     label09:
+        interfaceinvoke $r5.<android.content.SharedPreferences$Editor: android.content.SharedPreferences$Editor putString(java.lang.String,java.lang.String)>("imei", $r2);
+
+     label10:
+        $r2 = <com.airpush.android.SetPreferences: java.lang.String connectionType>;
+
+     label11:
+        interfaceinvoke $r5.<android.content.SharedPreferences$Editor: android.content.SharedPreferences$Editor putString(java.lang.String,java.lang.String)>("connectionType", $r2);
+
+     label12:
+        $r2 = <com.airpush.android.SetPreferences: java.lang.String token>;
+
+     label13:
+        interfaceinvoke $r5.<android.content.SharedPreferences$Editor: android.content.SharedPreferences$Editor putString(java.lang.String,java.lang.String)>("token", $r2);
+
+     label14:
+        $r2 = <com.airpush.android.SetPreferences: java.lang.String dte>;
+
+     label15:
+        interfaceinvoke $r5.<android.content.SharedPreferences$Editor: android.content.SharedPreferences$Editor putString(java.lang.String,java.lang.String)>("request_timestamp", $r2);
+
+     label16:
+        $r2 = <com.airpush.android.SetPreferences: java.lang.String packageName>;
+
+     label17:
+        interfaceinvoke $r5.<android.content.SharedPreferences$Editor: android.content.SharedPreferences$Editor putString(java.lang.String,java.lang.String)>("packageName", $r2);
+
+     label18:
+        $r2 = <com.airpush.android.SetPreferences: java.lang.String version>;
+
+     label19:
+        interfaceinvoke $r5.<android.content.SharedPreferences$Editor: android.content.SharedPreferences$Editor putString(java.lang.String,java.lang.String)>("version", $r2);
+
+     label20:
+        $r2 = <com.airpush.android.SetPreferences: java.lang.String carrier>;
+
+     label21:
+        interfaceinvoke $r5.<android.content.SharedPreferences$Editor: android.content.SharedPreferences$Editor putString(java.lang.String,java.lang.String)>("carrier", $r2);
+
+     label22:
+        $r2 = <com.airpush.android.SetPreferences: java.lang.String networkOperator>;
+
+     label23:
+        interfaceinvoke $r5.<android.content.SharedPreferences$Editor: android.content.SharedPreferences$Editor putString(java.lang.String,java.lang.String)>("networkOperator", $r2);
+
+     label24:
+        $r2 = <com.airpush.android.SetPreferences: java.lang.String phonemodel>;
+
+     label25:
+        interfaceinvoke $r5.<android.content.SharedPreferences$Editor: android.content.SharedPreferences$Editor putString(java.lang.String,java.lang.String)>("phoneModel", $r2);
+
+     label26:
+        $r2 = <com.airpush.android.SetPreferences: java.lang.String manufacturer>;
+
+     label27:
+        interfaceinvoke $r5.<android.content.SharedPreferences$Editor: android.content.SharedPreferences$Editor putString(java.lang.String,java.lang.String)>("manufacturer", $r2);
+
+     label28:
+        $r2 = <com.airpush.android.SetPreferences: java.lang.String lon>;
+
+     label29:
+        interfaceinvoke $r5.<android.content.SharedPreferences$Editor: android.content.SharedPreferences$Editor putString(java.lang.String,java.lang.String)>("longitude", $r2);
+
+     label30:
+        $r2 = <com.airpush.android.SetPreferences: java.lang.String lat>;
+
+     label31:
+        interfaceinvoke $r5.<android.content.SharedPreferences$Editor: android.content.SharedPreferences$Editor putString(java.lang.String,java.lang.String)>("latitude", $r2);
+
+        interfaceinvoke $r5.<android.content.SharedPreferences$Editor: android.content.SharedPreferences$Editor putString(java.lang.String,java.lang.String)>("sdkversion", "4.02");
+
+     label32:
+        $r2 = <com.airpush.android.SetPreferences: java.lang.String android_id>;
+
+     label33:
+        interfaceinvoke $r5.<android.content.SharedPreferences$Editor: android.content.SharedPreferences$Editor putString(java.lang.String,java.lang.String)>("android_id", $r2);
+
+        $z0 = r0.<com.airpush.android.SetPreferences: boolean showDialog>;
+
+        interfaceinvoke $r5.<android.content.SharedPreferences$Editor: android.content.SharedPreferences$Editor putBoolean(java.lang.String,boolean)>("showDialog", $z0);
+
+        $z0 = r0.<com.airpush.android.SetPreferences: boolean showAd>;
+
+        interfaceinvoke $r5.<android.content.SharedPreferences$Editor: android.content.SharedPreferences$Editor putBoolean(java.lang.String,boolean)>("showAd", $z0);
+
+     label34:
+        $z0 = <com.airpush.android.SetPreferences: boolean testMode>;
+
+     label35:
+        interfaceinvoke $r5.<android.content.SharedPreferences$Editor: android.content.SharedPreferences$Editor putBoolean(java.lang.String,boolean)>("testMode", $z0);
+
+        $z0 = r0.<com.airpush.android.SetPreferences: boolean doPush>;
+
+        interfaceinvoke $r5.<android.content.SharedPreferences$Editor: android.content.SharedPreferences$Editor putBoolean(java.lang.String,boolean)>("doPush", $z0);
+
+        $z0 = r0.<com.airpush.android.SetPreferences: boolean doSearch>;
+
+        interfaceinvoke $r5.<android.content.SharedPreferences$Editor: android.content.SharedPreferences$Editor putBoolean(java.lang.String,boolean)>("doSearch", $z0);
+
+        $z0 = r0.<com.airpush.android.SetPreferences: boolean searchIconTestMode>;
+
+        interfaceinvoke $r5.<android.content.SharedPreferences$Editor: android.content.SharedPreferences$Editor putBoolean(java.lang.String,boolean)>("searchIconTestMode", $z0);
+
+     label36:
+        $i0 = <com.airpush.android.SetPreferences: int icon>;
+
+     label37:
+        interfaceinvoke $r5.<android.content.SharedPreferences$Editor: android.content.SharedPreferences$Editor putInt(java.lang.String,int)>("icon", $i0);
+
+     label38:
+        $r2 = <com.airpush.android.SetPreferences: java.lang.String user_agent>;
+
+     label39:
+        interfaceinvoke $r5.<android.content.SharedPreferences$Editor: android.content.SharedPreferences$Editor putString(java.lang.String,java.lang.String)>("useragent", $r2);
+
+     label40:
+        $r6 = new java.lang.StringBuilder;
+
+        $r2 = <com.airpush.android.SetPreferences: java.lang.String appId>;
+
+     label41:
+        $r2 = staticinvoke <java.lang.String: java.lang.String valueOf(java.lang.Object)>($r2);
+
+        specialinvoke $r6.<java.lang.StringBuilder: void <init>(java.lang.String)>($r2);
+
+        $r2 = r0.<com.airpush.android.SetPreferences: java.lang.String imeinumber>;
+
+        $r6 = virtualinvoke $r6.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r2);
+
+     label42:
+        $r2 = <com.airpush.android.SetPreferences: java.lang.String connectionType>;
+
+     label43:
+        $r6 = virtualinvoke $r6.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r2);
+
+     label44:
+        $r2 = <com.airpush.android.SetPreferences: java.lang.String token>;
+
+     label45:
+        $r6 = virtualinvoke $r6.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r2);
+
+     label46:
+        $r2 = <com.airpush.android.SetPreferences: java.lang.String dte>;
+
+     label47:
+        $r6 = virtualinvoke $r6.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r2);
+
+     label48:
+        $r2 = <com.airpush.android.SetPreferences: java.lang.String packageName>;
+
+     label49:
+        $r6 = virtualinvoke $r6.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r2);
+
+     label50:
+        $r2 = <com.airpush.android.SetPreferences: java.lang.String version>;
+
+     label51:
+        $r6 = virtualinvoke $r6.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r2);
+
+     label52:
+        $r2 = <com.airpush.android.SetPreferences: java.lang.String carrier>;
+
+     label53:
+        $r6 = virtualinvoke $r6.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r2);
+
+     label54:
+        $r2 = <com.airpush.android.SetPreferences: java.lang.String networkOperator>;
+
+     label55:
+        $r6 = virtualinvoke $r6.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r2);
+
+     label56:
+        $r2 = <com.airpush.android.SetPreferences: java.lang.String phonemodel>;
+
+     label57:
+        $r6 = virtualinvoke $r6.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r2);
+
+     label58:
+        $r2 = <com.airpush.android.SetPreferences: java.lang.String manufacturer>;
+
+     label59:
+        $r6 = virtualinvoke $r6.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r2);
+
+     label60:
+        $r2 = <com.airpush.android.SetPreferences: java.lang.String lon>;
+
+     label61:
+        $r6 = virtualinvoke $r6.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r2);
+
+     label62:
+        $r2 = <com.airpush.android.SetPreferences: java.lang.String lat>;
+
+     label63:
+        $r6 = virtualinvoke $r6.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r2);
+
+     label64:
+        $r2 = <com.airpush.android.SetPreferences: java.lang.String user_agent>;
+
+     label65:
+        $r6 = virtualinvoke $r6.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r2);
+
+        $r2 = virtualinvoke $r6.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        $r2 = staticinvoke <com.airpush.android.Base64: java.lang.String encodeString(java.lang.String)>($r2);
+
+        r0.<com.airpush.android.SetPreferences: java.lang.String encodedAsp> = $r2;
+
+        $r2 = r0.<com.airpush.android.SetPreferences: java.lang.String encodedAsp>;
+
+        interfaceinvoke $r5.<android.content.SharedPreferences$Editor: android.content.SharedPreferences$Editor putString(java.lang.String,java.lang.String)>("asp", $r2);
+
+        $r2 = r0.<com.airpush.android.SetPreferences: java.lang.String imeinumber>;
+
+        interfaceinvoke $r5.<android.content.SharedPreferences$Editor: android.content.SharedPreferences$Editor putString(java.lang.String,java.lang.String)>("imeinumber", $r2);
+
+        interfaceinvoke $r5.<android.content.SharedPreferences$Editor: boolean commit()>();
+
+     label66:
+        return;
+
+     label67:
+        $r7 := @caughtexception;
+
+        return;
+
+        catch java.lang.Exception from label01 to label02 with label67;
+        catch java.lang.Exception from label03 to label04 with label67;
+        catch java.lang.Exception from label05 to label06 with label67;
+        catch java.lang.Exception from label07 to label08 with label67;
+        catch java.lang.Exception from label09 to label10 with label67;
+        catch java.lang.Exception from label11 to label12 with label67;
+        catch java.lang.Exception from label13 to label14 with label67;
+        catch java.lang.Exception from label15 to label16 with label67;
+        catch java.lang.Exception from label17 to label18 with label67;
+        catch java.lang.Exception from label19 to label20 with label67;
+        catch java.lang.Exception from label21 to label22 with label67;
+        catch java.lang.Exception from label23 to label24 with label67;
+        catch java.lang.Exception from label25 to label26 with label67;
+        catch java.lang.Exception from label27 to label28 with label67;
+        catch java.lang.Exception from label29 to label30 with label67;
+        catch java.lang.Exception from label31 to label32 with label67;
+        catch java.lang.Exception from label33 to label34 with label67;
+        catch java.lang.Exception from label35 to label36 with label67;
+        catch java.lang.Exception from label37 to label38 with label67;
+        catch java.lang.Exception from label39 to label40 with label67;
+        catch java.lang.Exception from label41 to label42 with label67;
+        catch java.lang.Exception from label43 to label44 with label67;
+        catch java.lang.Exception from label45 to label46 with label67;
+        catch java.lang.Exception from label47 to label48 with label67;
+        catch java.lang.Exception from label49 to label50 with label67;
+        catch java.lang.Exception from label51 to label52 with label67;
+        catch java.lang.Exception from label53 to label54 with label67;
+        catch java.lang.Exception from label55 to label56 with label67;
+        catch java.lang.Exception from label57 to label58 with label67;
+        catch java.lang.Exception from label59 to label60 with label67;
+        catch java.lang.Exception from label61 to label62 with label67;
+        catch java.lang.Exception from label63 to label64 with label67;
+        catch java.lang.Exception from label65 to label66 with label67;
+    }
+}

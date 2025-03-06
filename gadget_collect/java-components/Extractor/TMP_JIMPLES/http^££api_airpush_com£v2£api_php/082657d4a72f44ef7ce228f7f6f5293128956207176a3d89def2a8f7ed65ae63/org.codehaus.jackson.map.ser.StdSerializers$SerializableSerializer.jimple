@@ -1,0 +1,263 @@
+public final class org.codehaus.jackson.map.ser.StdSerializers$SerializableSerializer extends org.codehaus.jackson.map.ser.SerializerBase
+{
+    protected static final org.codehaus.jackson.map.ser.StdSerializers$SerializableSerializer instance;
+
+    static void <clinit>()
+    {
+        org.codehaus.jackson.map.ser.StdSerializers$SerializableSerializer $r0;
+
+        $r0 = new org.codehaus.jackson.map.ser.StdSerializers$SerializableSerializer;
+
+        specialinvoke $r0.<org.codehaus.jackson.map.ser.StdSerializers$SerializableSerializer: void <init>()>();
+
+        <org.codehaus.jackson.map.ser.StdSerializers$SerializableSerializer: org.codehaus.jackson.map.ser.StdSerializers$SerializableSerializer instance> = $r0;
+
+        return;
+    }
+
+    private void <init>()
+    {
+        org.codehaus.jackson.map.ser.StdSerializers$SerializableSerializer r0;
+
+        r0 := @this: org.codehaus.jackson.map.ser.StdSerializers$SerializableSerializer;
+
+        specialinvoke r0.<org.codehaus.jackson.map.ser.SerializerBase: void <init>(java.lang.Class)>(class "Lorg/codehaus/jackson/map/JsonSerializable;");
+
+        return;
+    }
+
+    public org.codehaus.jackson.JsonNode getSchema(org.codehaus.jackson.map.SerializerProvider, java.lang.reflect.Type) throws org.codehaus.jackson.map.JsonMappingException
+    {
+        org.codehaus.jackson.map.SerializerProvider $r0;
+        java.lang.reflect.Type $r1;
+        org.codehaus.jackson.map.ser.StdSerializers$SerializableSerializer r2;
+        java.lang.String $r3, r5, r6, r7, $r12;
+        org.codehaus.jackson.node.ObjectNode $r4;
+        org.codehaus.jackson.type.JavaType $r8;
+        java.lang.Class $r9;
+        boolean $z0;
+        java.lang.'annotation'.Annotation $r10;
+        org.codehaus.jackson.schema.JsonSerializableSchema r11;
+        org.codehaus.jackson.map.ObjectMapper $r13;
+        java.lang.Object $r14;
+        org.codehaus.jackson.JsonNode r15;
+        java.lang.Throwable $r16, $r18;
+        java.lang.IllegalStateException $r17;
+
+        r2 := @this: org.codehaus.jackson.map.ser.StdSerializers$SerializableSerializer;
+
+        $r0 := @parameter0: org.codehaus.jackson.map.SerializerProvider;
+
+        $r1 := @parameter1: java.lang.reflect.Type;
+
+        $r3 = "##irrelevant";
+
+        $r4 = virtualinvoke r2.<org.codehaus.jackson.map.ser.StdSerializers$SerializableSerializer: org.codehaus.jackson.node.ObjectNode createObjectNode()>();
+
+        r5 = "any";
+
+        r6 = null;
+
+        r7 = null;
+
+        if $r1 == null goto label02;
+
+        $r8 = staticinvoke <org.codehaus.jackson.map.type.TypeFactory: org.codehaus.jackson.type.JavaType type(java.lang.reflect.Type)>($r1);
+
+        $r9 = virtualinvoke $r8.<org.codehaus.jackson.type.JavaType: java.lang.Class getRawClass()>();
+
+        $z0 = virtualinvoke $r9.<java.lang.Class: boolean isAnnotationPresent(java.lang.Class)>(class "Lorg/codehaus/jackson/schema/JsonSerializableSchema;");
+
+        if $z0 == 0 goto label02;
+
+        $r10 = virtualinvoke $r9.<java.lang.Class: java.lang.'annotation'.Annotation getAnnotation(java.lang.Class)>(class "Lorg/codehaus/jackson/schema/JsonSerializableSchema;");
+
+        r11 = (org.codehaus.jackson.schema.JsonSerializableSchema) $r10;
+
+        r5 = interfaceinvoke r11.<org.codehaus.jackson.schema.JsonSerializableSchema: java.lang.String schemaType()>();
+
+        $r12 = interfaceinvoke r11.<org.codehaus.jackson.schema.JsonSerializableSchema: java.lang.String schemaObjectPropertiesDefinition()>();
+
+        $z0 = virtualinvoke $r3.<java.lang.String: boolean equals(java.lang.Object)>($r12);
+
+        if $z0 != 0 goto label01;
+
+        r6 = interfaceinvoke r11.<org.codehaus.jackson.schema.JsonSerializableSchema: java.lang.String schemaObjectPropertiesDefinition()>();
+
+     label01:
+        $r12 = interfaceinvoke r11.<org.codehaus.jackson.schema.JsonSerializableSchema: java.lang.String schemaItemDefinition()>();
+
+        $z0 = virtualinvoke $r3.<java.lang.String: boolean equals(java.lang.Object)>($r12);
+
+        if $z0 != 0 goto label02;
+
+        r7 = interfaceinvoke r11.<org.codehaus.jackson.schema.JsonSerializableSchema: java.lang.String schemaItemDefinition()>();
+
+     label02:
+        virtualinvoke $r4.<org.codehaus.jackson.node.ObjectNode: void put(java.lang.String,java.lang.String)>("type", r5);
+
+        if r6 == null goto label06;
+
+        $r13 = new org.codehaus.jackson.map.ObjectMapper;
+
+     label03:
+        specialinvoke $r13.<org.codehaus.jackson.map.ObjectMapper: void <init>()>();
+
+        $r14 = virtualinvoke $r13.<org.codehaus.jackson.map.ObjectMapper: java.lang.Object readValue(java.lang.String,java.lang.Class)>(r6, class "Lorg/codehaus/jackson/JsonNode;");
+
+     label04:
+        r15 = (org.codehaus.jackson.JsonNode) $r14;
+
+     label05:
+        virtualinvoke $r4.<org.codehaus.jackson.node.ObjectNode: org.codehaus.jackson.JsonNode put(java.lang.String,org.codehaus.jackson.JsonNode)>("properties", r15);
+
+     label06:
+        if r7 == null goto label10;
+
+        $r13 = new org.codehaus.jackson.map.ObjectMapper;
+
+     label07:
+        specialinvoke $r13.<org.codehaus.jackson.map.ObjectMapper: void <init>()>();
+
+        $r14 = virtualinvoke $r13.<org.codehaus.jackson.map.ObjectMapper: java.lang.Object readValue(java.lang.String,java.lang.Class)>(r7, class "Lorg/codehaus/jackson/JsonNode;");
+
+     label08:
+        r15 = (org.codehaus.jackson.JsonNode) $r14;
+
+     label09:
+        virtualinvoke $r4.<org.codehaus.jackson.node.ObjectNode: org.codehaus.jackson.JsonNode put(java.lang.String,org.codehaus.jackson.JsonNode)>("items", r15);
+
+     label10:
+        virtualinvoke $r4.<org.codehaus.jackson.node.ObjectNode: void put(java.lang.String,boolean)>("optional", 1);
+
+        return $r4;
+
+     label11:
+        $r16 := @caughtexception;
+
+        $r17 = new java.lang.IllegalStateException;
+
+        specialinvoke $r17.<java.lang.IllegalStateException: void <init>(java.lang.Throwable)>($r16);
+
+        throw $r17;
+
+     label12:
+        $r18 := @caughtexception;
+
+        $r17 = new java.lang.IllegalStateException;
+
+        specialinvoke $r17.<java.lang.IllegalStateException: void <init>(java.lang.Throwable)>($r18);
+
+        throw $r17;
+
+        catch java.io.IOException from label03 to label04 with label11;
+        catch java.io.IOException from label05 to label06 with label11;
+        catch java.io.IOException from label07 to label08 with label12;
+        catch java.io.IOException from label09 to label10 with label12;
+    }
+
+    public volatile void serialize(java.lang.Object, org.codehaus.jackson.JsonGenerator, org.codehaus.jackson.map.SerializerProvider) throws java.io.IOException, org.codehaus.jackson.JsonGenerationException
+    {
+        org.codehaus.jackson.map.ser.StdSerializers$SerializableSerializer r0;
+        org.codehaus.jackson.JsonGenerator $r1;
+        org.codehaus.jackson.map.SerializerProvider $r2;
+        java.lang.Object $r3;
+        org.codehaus.jackson.map.JsonSerializable $r4;
+
+        r0 := @this: org.codehaus.jackson.map.ser.StdSerializers$SerializableSerializer;
+
+        $r3 := @parameter0: java.lang.Object;
+
+        $r1 := @parameter1: org.codehaus.jackson.JsonGenerator;
+
+        $r2 := @parameter2: org.codehaus.jackson.map.SerializerProvider;
+
+        $r4 = (org.codehaus.jackson.map.JsonSerializable) $r3;
+
+        virtualinvoke r0.<org.codehaus.jackson.map.ser.StdSerializers$SerializableSerializer: void serialize(org.codehaus.jackson.map.JsonSerializable,org.codehaus.jackson.JsonGenerator,org.codehaus.jackson.map.SerializerProvider)>($r4, $r1, $r2);
+
+        return;
+    }
+
+    public void serialize(org.codehaus.jackson.map.JsonSerializable, org.codehaus.jackson.JsonGenerator, org.codehaus.jackson.map.SerializerProvider) throws java.io.IOException, org.codehaus.jackson.JsonGenerationException
+    {
+        org.codehaus.jackson.map.ser.StdSerializers$SerializableSerializer r0;
+        org.codehaus.jackson.map.JsonSerializable $r1;
+        org.codehaus.jackson.JsonGenerator $r2;
+        org.codehaus.jackson.map.SerializerProvider $r3;
+
+        r0 := @this: org.codehaus.jackson.map.ser.StdSerializers$SerializableSerializer;
+
+        $r1 := @parameter0: org.codehaus.jackson.map.JsonSerializable;
+
+        $r2 := @parameter1: org.codehaus.jackson.JsonGenerator;
+
+        $r3 := @parameter2: org.codehaus.jackson.map.SerializerProvider;
+
+        interfaceinvoke $r1.<org.codehaus.jackson.map.JsonSerializable: void serialize(org.codehaus.jackson.JsonGenerator,org.codehaus.jackson.map.SerializerProvider)>($r2, $r3);
+
+        return;
+    }
+
+    public volatile void serializeWithType(java.lang.Object, org.codehaus.jackson.JsonGenerator, org.codehaus.jackson.map.SerializerProvider, org.codehaus.jackson.map.TypeSerializer) throws java.io.IOException, org.codehaus.jackson.JsonProcessingException
+    {
+        org.codehaus.jackson.map.ser.StdSerializers$SerializableSerializer r0;
+        org.codehaus.jackson.JsonGenerator $r1;
+        org.codehaus.jackson.map.SerializerProvider $r2;
+        org.codehaus.jackson.map.TypeSerializer $r3;
+        java.lang.Object $r4;
+        org.codehaus.jackson.map.JsonSerializable $r5;
+
+        r0 := @this: org.codehaus.jackson.map.ser.StdSerializers$SerializableSerializer;
+
+        $r4 := @parameter0: java.lang.Object;
+
+        $r1 := @parameter1: org.codehaus.jackson.JsonGenerator;
+
+        $r2 := @parameter2: org.codehaus.jackson.map.SerializerProvider;
+
+        $r3 := @parameter3: org.codehaus.jackson.map.TypeSerializer;
+
+        $r5 = (org.codehaus.jackson.map.JsonSerializable) $r4;
+
+        virtualinvoke r0.<org.codehaus.jackson.map.ser.StdSerializers$SerializableSerializer: void serializeWithType(org.codehaus.jackson.map.JsonSerializable,org.codehaus.jackson.JsonGenerator,org.codehaus.jackson.map.SerializerProvider,org.codehaus.jackson.map.TypeSerializer)>($r5, $r1, $r2, $r3);
+
+        return;
+    }
+
+    public final void serializeWithType(org.codehaus.jackson.map.JsonSerializable, org.codehaus.jackson.JsonGenerator, org.codehaus.jackson.map.SerializerProvider, org.codehaus.jackson.map.TypeSerializer) throws java.io.IOException, org.codehaus.jackson.JsonGenerationException
+    {
+        org.codehaus.jackson.map.ser.StdSerializers$SerializableSerializer r0;
+        org.codehaus.jackson.JsonGenerator $r1;
+        org.codehaus.jackson.map.SerializerProvider $r2;
+        org.codehaus.jackson.map.TypeSerializer $r3;
+        boolean $z0;
+        org.codehaus.jackson.map.JsonSerializable r4;
+        org.codehaus.jackson.map.JsonSerializableWithType r5;
+
+        r0 := @this: org.codehaus.jackson.map.ser.StdSerializers$SerializableSerializer;
+
+        r4 := @parameter0: org.codehaus.jackson.map.JsonSerializable;
+
+        $r1 := @parameter1: org.codehaus.jackson.JsonGenerator;
+
+        $r2 := @parameter2: org.codehaus.jackson.map.SerializerProvider;
+
+        $r3 := @parameter3: org.codehaus.jackson.map.TypeSerializer;
+
+        $z0 = r4 instanceof org.codehaus.jackson.map.JsonSerializableWithType;
+
+        if $z0 == 0 goto label1;
+
+        r5 = (org.codehaus.jackson.map.JsonSerializableWithType) r4;
+
+        interfaceinvoke r5.<org.codehaus.jackson.map.JsonSerializableWithType: void serializeWithType(org.codehaus.jackson.JsonGenerator,org.codehaus.jackson.map.SerializerProvider,org.codehaus.jackson.map.TypeSerializer)>($r1, $r2, $r3);
+
+        return;
+
+     label1:
+        virtualinvoke r0.<org.codehaus.jackson.map.ser.StdSerializers$SerializableSerializer: void serialize(org.codehaus.jackson.map.JsonSerializable,org.codehaus.jackson.JsonGenerator,org.codehaus.jackson.map.SerializerProvider)>(r4, $r1, $r2);
+
+        return;
+    }
+}

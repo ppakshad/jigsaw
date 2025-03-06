@@ -1,0 +1,353 @@
+class com.squareup.picasso.MediaStoreRequestHandler extends com.squareup.picasso.ContentStreamRequestHandler
+{
+    private static final java.lang.String[] CONTENT_ORIENTATION;
+
+    static void <clinit>()
+    {
+        java.lang.String[] $r0;
+
+        $r0 = newarray (java.lang.String)[1];
+
+        $r0[0] = "orientation";
+
+        <com.squareup.picasso.MediaStoreRequestHandler: java.lang.String[] CONTENT_ORIENTATION> = $r0;
+
+        return;
+    }
+
+    void <init>(android.content.Context)
+    {
+        com.squareup.picasso.MediaStoreRequestHandler r0;
+        android.content.Context $r1;
+
+        r0 := @this: com.squareup.picasso.MediaStoreRequestHandler;
+
+        $r1 := @parameter0: android.content.Context;
+
+        specialinvoke r0.<com.squareup.picasso.ContentStreamRequestHandler: void <init>(android.content.Context)>($r1);
+
+        return;
+    }
+
+    static int getExifOrientation(android.content.ContentResolver, android.net.Uri)
+    {
+        android.content.ContentResolver $r0;
+        android.net.Uri $r1;
+        java.lang.String[] $r2;
+        android.database.Cursor $r3, $r4;
+        boolean $z0;
+        int $i0;
+        java.lang.RuntimeException $r5, $r7;
+        java.lang.Throwable $r6;
+
+        $r0 := @parameter0: android.content.ContentResolver;
+
+        $r1 := @parameter1: android.net.Uri;
+
+     label01:
+        $r2 = <com.squareup.picasso.MediaStoreRequestHandler: java.lang.String[] CONTENT_ORIENTATION>;
+
+     label02:
+        $r3 = virtualinvoke $r0.<android.content.ContentResolver: android.database.Cursor query(android.net.Uri,java.lang.String[],java.lang.String,java.lang.String[],java.lang.String)>($r1, $r2, null, null, null);
+
+     label03:
+        $r4 = $r3;
+
+        if $r3 == null goto label06;
+
+     label04:
+        $z0 = interfaceinvoke $r3.<android.database.Cursor: boolean moveToFirst()>();
+
+     label05:
+        if $z0 != 0 goto label08;
+
+     label06:
+        if $r3 == null goto label07;
+
+        interfaceinvoke $r3.<android.database.Cursor: void close()>();
+
+     label07:
+        return 0;
+
+     label08:
+        $i0 = interfaceinvoke $r3.<android.database.Cursor: int getInt(int)>(0);
+
+     label09:
+        if $r3 == null goto label18;
+
+        interfaceinvoke $r3.<android.database.Cursor: void close()>();
+
+        return $i0;
+
+     label10:
+        $r5 := @caughtexception;
+
+        $r3 = null;
+
+     label11:
+        if $r3 == null goto label12;
+
+        interfaceinvoke $r3.<android.database.Cursor: void close()>();
+
+     label12:
+        return 0;
+
+     label13:
+        $r6 := @caughtexception;
+
+        $r4 = null;
+
+     label14:
+        if $r4 == null goto label15;
+
+        interfaceinvoke $r4.<android.database.Cursor: void close()>();
+
+     label15:
+        throw $r6;
+
+     label16:
+        $r6 := @caughtexception;
+
+        goto label14;
+
+     label17:
+        $r7 := @caughtexception;
+
+        goto label11;
+
+     label18:
+        return $i0;
+
+        catch java.lang.RuntimeException from label02 to label03 with label10;
+        catch java.lang.Throwable from label01 to label03 with label13;
+        catch java.lang.RuntimeException from label04 to label05 with label17;
+        catch java.lang.Throwable from label04 to label05 with label16;
+        catch java.lang.RuntimeException from label08 to label09 with label17;
+        catch java.lang.Throwable from label08 to label09 with label16;
+    }
+
+    static com.squareup.picasso.MediaStoreRequestHandler$PicassoKind getPicassoKind(int, int)
+    {
+        int $i0, $i1, $i2;
+        com.squareup.picasso.MediaStoreRequestHandler$PicassoKind $r0;
+
+        $i0 := @parameter0: int;
+
+        $i1 := @parameter1: int;
+
+        $r0 = <com.squareup.picasso.MediaStoreRequestHandler$PicassoKind: com.squareup.picasso.MediaStoreRequestHandler$PicassoKind MICRO>;
+
+        $i2 = $r0.<com.squareup.picasso.MediaStoreRequestHandler$PicassoKind: int width>;
+
+        if $i0 > $i2 goto label1;
+
+        $r0 = <com.squareup.picasso.MediaStoreRequestHandler$PicassoKind: com.squareup.picasso.MediaStoreRequestHandler$PicassoKind MICRO>;
+
+        $i2 = $r0.<com.squareup.picasso.MediaStoreRequestHandler$PicassoKind: int height>;
+
+        if $i1 > $i2 goto label1;
+
+        $r0 = <com.squareup.picasso.MediaStoreRequestHandler$PicassoKind: com.squareup.picasso.MediaStoreRequestHandler$PicassoKind MICRO>;
+
+        return $r0;
+
+     label1:
+        $r0 = <com.squareup.picasso.MediaStoreRequestHandler$PicassoKind: com.squareup.picasso.MediaStoreRequestHandler$PicassoKind MINI>;
+
+        $i2 = $r0.<com.squareup.picasso.MediaStoreRequestHandler$PicassoKind: int width>;
+
+        if $i0 > $i2 goto label2;
+
+        $r0 = <com.squareup.picasso.MediaStoreRequestHandler$PicassoKind: com.squareup.picasso.MediaStoreRequestHandler$PicassoKind MINI>;
+
+        $i0 = $r0.<com.squareup.picasso.MediaStoreRequestHandler$PicassoKind: int height>;
+
+        if $i1 > $i0 goto label2;
+
+        $r0 = <com.squareup.picasso.MediaStoreRequestHandler$PicassoKind: com.squareup.picasso.MediaStoreRequestHandler$PicassoKind MINI>;
+
+        return $r0;
+
+     label2:
+        $r0 = <com.squareup.picasso.MediaStoreRequestHandler$PicassoKind: com.squareup.picasso.MediaStoreRequestHandler$PicassoKind FULL>;
+
+        return $r0;
+    }
+
+    public boolean canHandleRequest(com.squareup.picasso.Request)
+    {
+        com.squareup.picasso.MediaStoreRequestHandler r0;
+        com.squareup.picasso.Request $r1;
+        android.net.Uri $r2;
+        java.lang.String $r3, $r4;
+        boolean $z0;
+
+        r0 := @this: com.squareup.picasso.MediaStoreRequestHandler;
+
+        $r1 := @parameter0: com.squareup.picasso.Request;
+
+        $r2 = $r1.<com.squareup.picasso.Request: android.net.Uri uri>;
+
+        $r3 = "content";
+
+        $r4 = virtualinvoke $r2.<android.net.Uri: java.lang.String getScheme()>();
+
+        $z0 = virtualinvoke $r3.<java.lang.String: boolean equals(java.lang.Object)>($r4);
+
+        if $z0 == 0 goto label1;
+
+        $r3 = "media";
+
+        $r4 = virtualinvoke $r2.<android.net.Uri: java.lang.String getAuthority()>();
+
+        $z0 = virtualinvoke $r3.<java.lang.String: boolean equals(java.lang.Object)>($r4);
+
+        if $z0 == 0 goto label1;
+
+        return 1;
+
+     label1:
+        return 0;
+    }
+
+    public com.squareup.picasso.RequestHandler$Result load(com.squareup.picasso.Request, int) throws java.io.IOException
+    {
+        com.squareup.picasso.MediaStoreRequestHandler r0;
+        com.squareup.picasso.Request $r1;
+        int $i0, $i1, $i2, $i4, $i5;
+        android.content.Context $r2;
+        android.content.ContentResolver $r3;
+        android.net.Uri $r4;
+        java.lang.String $r5;
+        boolean $z0, $z1;
+        com.squareup.picasso.MediaStoreRequestHandler$PicassoKind $r6, $r7;
+        com.squareup.picasso.RequestHandler$Result $r8;
+        java.io.InputStream $r9;
+        com.squareup.picasso.Picasso$LoadedFrom $r10;
+        long $l3;
+        android.graphics.BitmapFactory$Options $r11;
+        android.graphics.Bitmap $r12;
+
+        r0 := @this: com.squareup.picasso.MediaStoreRequestHandler;
+
+        $r1 := @parameter0: com.squareup.picasso.Request;
+
+        $i0 := @parameter1: int;
+
+        $r2 = r0.<com.squareup.picasso.MediaStoreRequestHandler: android.content.Context context>;
+
+        $r3 = virtualinvoke $r2.<android.content.Context: android.content.ContentResolver getContentResolver()>();
+
+        $r4 = $r1.<com.squareup.picasso.Request: android.net.Uri uri>;
+
+        $i0 = staticinvoke <com.squareup.picasso.MediaStoreRequestHandler: int getExifOrientation(android.content.ContentResolver,android.net.Uri)>($r3, $r4);
+
+        $r4 = $r1.<com.squareup.picasso.Request: android.net.Uri uri>;
+
+        $r5 = virtualinvoke $r3.<android.content.ContentResolver: java.lang.String getType(android.net.Uri)>($r4);
+
+        if $r5 == null goto label2;
+
+        $z0 = virtualinvoke $r5.<java.lang.String: boolean startsWith(java.lang.String)>("video/");
+
+        if $z0 == 0 goto label2;
+
+        $z0 = 1;
+
+     label1:
+        $z1 = virtualinvoke $r1.<com.squareup.picasso.Request: boolean hasSize()>();
+
+        if $z1 == 0 goto label8;
+
+        $i1 = $r1.<com.squareup.picasso.Request: int targetWidth>;
+
+        $i2 = $r1.<com.squareup.picasso.Request: int targetHeight>;
+
+        $r6 = staticinvoke <com.squareup.picasso.MediaStoreRequestHandler: com.squareup.picasso.MediaStoreRequestHandler$PicassoKind getPicassoKind(int,int)>($i1, $i2);
+
+        if $z0 != 0 goto label3;
+
+        $r7 = <com.squareup.picasso.MediaStoreRequestHandler$PicassoKind: com.squareup.picasso.MediaStoreRequestHandler$PicassoKind FULL>;
+
+        if $r6 != $r7 goto label3;
+
+        $r8 = new com.squareup.picasso.RequestHandler$Result;
+
+        $r9 = virtualinvoke r0.<com.squareup.picasso.MediaStoreRequestHandler: java.io.InputStream getInputStream(com.squareup.picasso.Request)>($r1);
+
+        $r10 = <com.squareup.picasso.Picasso$LoadedFrom: com.squareup.picasso.Picasso$LoadedFrom DISK>;
+
+        specialinvoke $r8.<com.squareup.picasso.RequestHandler$Result: void <init>(android.graphics.Bitmap,java.io.InputStream,com.squareup.picasso.Picasso$LoadedFrom,int)>(null, $r9, $r10, $i0);
+
+        return $r8;
+
+     label2:
+        $z0 = 0;
+
+        goto label1;
+
+     label3:
+        $r4 = $r1.<com.squareup.picasso.Request: android.net.Uri uri>;
+
+        $l3 = staticinvoke <android.content.ContentUris: long parseId(android.net.Uri)>($r4);
+
+        $r11 = staticinvoke <com.squareup.picasso.MediaStoreRequestHandler: android.graphics.BitmapFactory$Options createBitmapOptions(com.squareup.picasso.Request)>($r1);
+
+        $r11.<android.graphics.BitmapFactory$Options: boolean inJustDecodeBounds> = 1;
+
+        $i1 = $r1.<com.squareup.picasso.Request: int targetWidth>;
+
+        $i2 = $r1.<com.squareup.picasso.Request: int targetHeight>;
+
+        $i4 = $r6.<com.squareup.picasso.MediaStoreRequestHandler$PicassoKind: int width>;
+
+        $i5 = $r6.<com.squareup.picasso.MediaStoreRequestHandler$PicassoKind: int height>;
+
+        staticinvoke <com.squareup.picasso.MediaStoreRequestHandler: void calculateInSampleSize(int,int,int,int,android.graphics.BitmapFactory$Options,com.squareup.picasso.Request)>($i1, $i2, $i4, $i5, $r11, $r1);
+
+        if $z0 == 0 goto label7;
+
+        $r7 = <com.squareup.picasso.MediaStoreRequestHandler$PicassoKind: com.squareup.picasso.MediaStoreRequestHandler$PicassoKind FULL>;
+
+        if $r6 != $r7 goto label6;
+
+        $i1 = 1;
+
+     label4:
+        $r12 = staticinvoke <android.provider.MediaStore$Video$Thumbnails: android.graphics.Bitmap getThumbnail(android.content.ContentResolver,long,int,android.graphics.BitmapFactory$Options)>($r3, $l3, $i1, $r11);
+
+     label5:
+        if $r12 == null goto label8;
+
+        $r8 = new com.squareup.picasso.RequestHandler$Result;
+
+        $r10 = <com.squareup.picasso.Picasso$LoadedFrom: com.squareup.picasso.Picasso$LoadedFrom DISK>;
+
+        specialinvoke $r8.<com.squareup.picasso.RequestHandler$Result: void <init>(android.graphics.Bitmap,java.io.InputStream,com.squareup.picasso.Picasso$LoadedFrom,int)>($r12, null, $r10, $i0);
+
+        return $r8;
+
+     label6:
+        $i1 = $r6.<com.squareup.picasso.MediaStoreRequestHandler$PicassoKind: int androidKind>;
+
+        goto label4;
+
+     label7:
+        $i1 = $r6.<com.squareup.picasso.MediaStoreRequestHandler$PicassoKind: int androidKind>;
+
+        $r12 = staticinvoke <android.provider.MediaStore$Images$Thumbnails: android.graphics.Bitmap getThumbnail(android.content.ContentResolver,long,int,android.graphics.BitmapFactory$Options)>($r3, $l3, $i1, $r11);
+
+        goto label5;
+
+     label8:
+        $r8 = new com.squareup.picasso.RequestHandler$Result;
+
+        $r9 = virtualinvoke r0.<com.squareup.picasso.MediaStoreRequestHandler: java.io.InputStream getInputStream(com.squareup.picasso.Request)>($r1);
+
+        $r10 = <com.squareup.picasso.Picasso$LoadedFrom: com.squareup.picasso.Picasso$LoadedFrom DISK>;
+
+        specialinvoke $r8.<com.squareup.picasso.RequestHandler$Result: void <init>(android.graphics.Bitmap,java.io.InputStream,com.squareup.picasso.Picasso$LoadedFrom,int)>(null, $r9, $r10, $i0);
+
+        return $r8;
+    }
+}

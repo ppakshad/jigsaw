@@ -1,0 +1,96 @@
+class com.wiyun.ad.AdView$7 extends java.lang.Thread
+{
+    final com.wiyun.ad.AdView a;
+
+    void <init>(com.wiyun.ad.AdView)
+    {
+        com.wiyun.ad.AdView$7 r0;
+        com.wiyun.ad.AdView $r1;
+
+        r0 := @this: com.wiyun.ad.AdView$7;
+
+        $r1 := @parameter0: com.wiyun.ad.AdView;
+
+        r0.<com.wiyun.ad.AdView$7: com.wiyun.ad.AdView a> = $r1;
+
+        specialinvoke r0.<java.lang.Thread: void <init>()>();
+
+        return;
+    }
+
+    static com.wiyun.ad.AdView a(com.wiyun.ad.AdView$7)
+    {
+        com.wiyun.ad.AdView$7 $r0;
+        com.wiyun.ad.AdView r1;
+
+        $r0 := @parameter0: com.wiyun.ad.AdView$7;
+
+        r1 = $r0.<com.wiyun.ad.AdView$7: com.wiyun.ad.AdView a>;
+
+        return r1;
+    }
+
+    public void run()
+    {
+        com.wiyun.ad.AdView$7 r0;
+        com.wiyun.ad.AdView $r1, $r3;
+        android.content.Context $r2;
+        com.wiyun.ad.i $r4;
+        android.os.Handler $r5;
+        com.wiyun.ad.AdView$7$1 $r6;
+        java.lang.Exception $r7;
+
+        r0 := @this: com.wiyun.ad.AdView$7;
+
+     label1:
+        $r1 = r0.<com.wiyun.ad.AdView$7: com.wiyun.ad.AdView a>;
+
+        $r2 = virtualinvoke $r1.<com.wiyun.ad.AdView: android.content.Context getContext()>();
+
+        $r1 = r0.<com.wiyun.ad.AdView$7: com.wiyun.ad.AdView a>;
+
+        $r3 = r0.<com.wiyun.ad.AdView$7: com.wiyun.ad.AdView a>;
+
+        $r4 = staticinvoke <com.wiyun.ad.b: com.wiyun.ad.i a(android.content.Context,com.wiyun.ad.AdView)>($r2, $r3);
+
+        staticinvoke <com.wiyun.ad.AdView: void a(com.wiyun.ad.AdView,com.wiyun.ad.i)>($r1, $r4);
+
+        $r1 = r0.<com.wiyun.ad.AdView$7: com.wiyun.ad.AdView a>;
+
+        $r5 = virtualinvoke $r1.<com.wiyun.ad.AdView: android.os.Handler getHandler()>();
+
+     label2:
+        if $r5 == null goto label5;
+
+        $r6 = new com.wiyun.ad.AdView$7$1;
+
+     label3:
+        specialinvoke $r6.<com.wiyun.ad.AdView$7$1: void <init>(com.wiyun.ad.AdView$7)>(r0);
+
+        virtualinvoke $r5.<android.os.Handler: boolean post(java.lang.Runnable)>($r6);
+
+     label4:
+        return;
+
+     label5:
+        staticinvoke <java.lang.Thread: void sleep(long)>(100L);
+
+        $r1 = r0.<com.wiyun.ad.AdView$7: com.wiyun.ad.AdView a>;
+
+        $r5 = virtualinvoke $r1.<com.wiyun.ad.AdView: android.os.Handler getHandler()>();
+
+     label6:
+        goto label2;
+
+     label7:
+        $r7 := @caughtexception;
+
+        staticinvoke <android.util.Log: int e(java.lang.String,java.lang.String,java.lang.Throwable)>("WiYun", "Unhandled exception requesting a fresh ad.", $r7);
+
+        return;
+
+        catch java.lang.Exception from label1 to label2 with label7;
+        catch java.lang.Exception from label3 to label4 with label7;
+        catch java.lang.Exception from label5 to label6 with label7;
+    }
+}

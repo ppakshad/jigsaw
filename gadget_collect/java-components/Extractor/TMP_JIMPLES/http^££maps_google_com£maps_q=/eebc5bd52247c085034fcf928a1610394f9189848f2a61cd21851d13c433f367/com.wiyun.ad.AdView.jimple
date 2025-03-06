@@ -1,0 +1,2426 @@
+public class com.wiyun.ad.AdView extends android.widget.FrameLayout implements android.view.View$OnClickListener
+{
+    public static final int AD_TYPE_BANNER;
+    public static final int AD_TYPE_FULL_SCREEN;
+    public static final int AD_TYPE_TEXT;
+    public static final int TRANSITION_BOTTOM_PUSH;
+    public static final int TRANSITION_FADE;
+    public static final int TRANSITION_FLIP_X;
+    public static final int TRANSITION_FLIP_Y;
+    public static final int TRANSITION_LEFT_PUSH;
+    public static final int TRANSITION_RANDOM;
+    public static final int TRANSITION_RIGHT_PUSH;
+    public static final int TRANSITION_TOP_PUSH;
+    private com.wiyun.ad.a a;
+    private boolean b;
+    private boolean c;
+    private int d;
+    private int e;
+    private java.util.Timer f;
+    private int g;
+    private int h;
+    private boolean i;
+    private boolean j;
+    private int k;
+    private boolean l;
+    private int m;
+    private java.lang.String n;
+    private java.lang.String o;
+    private java.lang.String p;
+    private boolean q;
+    private com.wiyun.ad.AdView$AdListener r;
+    private com.wiyun.ad.t s;
+    private boolean t;
+    private boolean u;
+    private android.widget.LinearLayout v;
+    private com.wiyun.ad.i w;
+    private android.view.View x;
+    private android.view.View y;
+    private android.graphics.drawable.Drawable z;
+
+    public void <init>(android.content.Context)
+    {
+        com.wiyun.ad.AdView r0;
+        android.content.Context $r1;
+
+        r0 := @this: com.wiyun.ad.AdView;
+
+        $r1 := @parameter0: android.content.Context;
+
+        specialinvoke r0.<com.wiyun.ad.AdView: void <init>(android.content.Context,android.util.AttributeSet,int)>($r1, null, 0);
+
+        return;
+    }
+
+    public void <init>(android.content.Context, android.util.AttributeSet)
+    {
+        com.wiyun.ad.AdView r0;
+        android.content.Context $r1;
+        android.util.AttributeSet $r2;
+
+        r0 := @this: com.wiyun.ad.AdView;
+
+        $r1 := @parameter0: android.content.Context;
+
+        $r2 := @parameter1: android.util.AttributeSet;
+
+        specialinvoke r0.<com.wiyun.ad.AdView: void <init>(android.content.Context,android.util.AttributeSet,int)>($r1, $r2, 0);
+
+        return;
+    }
+
+    public void <init>(android.content.Context, android.util.AttributeSet, int)
+    {
+        com.wiyun.ad.AdView r0;
+        android.content.Context $r1, $r7;
+        android.util.AttributeSet $r2;
+        int $i0, $i1;
+        java.io.File $r3;
+        java.lang.StringBuilder $r4;
+        java.lang.String $r5, $r6;
+        boolean $z0;
+        java.io.File[] $r8;
+        long $l2, $l3;
+        android.widget.Toast $r9;
+        byte $b4;
+
+        r0 := @this: com.wiyun.ad.AdView;
+
+        $r1 := @parameter0: android.content.Context;
+
+        $r2 := @parameter1: android.util.AttributeSet;
+
+        $i0 := @parameter2: int;
+
+        specialinvoke r0.<android.widget.FrameLayout: void <init>(android.content.Context,android.util.AttributeSet,int)>($r1, $r2, $i0);
+
+        r0.<com.wiyun.ad.AdView: int g> = 0;
+
+        r0.<com.wiyun.ad.AdView: int h> = 0;
+
+        r0.<com.wiyun.ad.AdView: int m> = 2;
+
+        r0.<com.wiyun.ad.AdView: java.lang.String n> = "*/*";
+
+        virtualinvoke r0.<com.wiyun.ad.AdView: void setFocusable(boolean)>(1);
+
+        virtualinvoke r0.<com.wiyun.ad.AdView: void setDescendantFocusability(int)>(262144);
+
+        virtualinvoke r0.<com.wiyun.ad.AdView: void setClickable(boolean)>(1);
+
+        r0.<com.wiyun.ad.AdView: int d> = 0;
+
+        if $r2 == null goto label04;
+
+        $r4 = new java.lang.StringBuilder;
+
+        specialinvoke $r4.<java.lang.StringBuilder: void <init>(java.lang.String)>("http://schemas.android.com/apk/res/");
+
+        $r5 = virtualinvoke $r1.<android.content.Context: java.lang.String getPackageName()>();
+
+        $r4 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r5);
+
+        $r5 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        $i0 = interfaceinvoke $r2.<android.util.AttributeSet: int getAttributeUnsignedIntValue(java.lang.String,java.lang.String,int)>($r5, "textColor", 0);
+
+        $i1 = interfaceinvoke $r2.<android.util.AttributeSet: int getAttributeUnsignedIntValue(java.lang.String,java.lang.String,int)>($r5, "backgroundColor", 0);
+
+        if $i0 == 0 goto label01;
+
+        virtualinvoke r0.<com.wiyun.ad.AdView: void setTextColor(int)>($i0);
+
+     label01:
+        if $i1 == 0 goto label02;
+
+        virtualinvoke r0.<com.wiyun.ad.AdView: void setBackgroundColor(int)>($i1);
+
+     label02:
+        $r6 = interfaceinvoke $r2.<android.util.AttributeSet: java.lang.String getAttributeValue(java.lang.String,java.lang.String)>($r5, "resId");
+
+        r0.<com.wiyun.ad.AdView: java.lang.String o> = $r6;
+
+        $r6 = r0.<com.wiyun.ad.AdView: java.lang.String o>;
+
+        if $r6 == null goto label03;
+
+        $r6 = r0.<com.wiyun.ad.AdView: java.lang.String o>;
+
+        $r6 = virtualinvoke $r6.<java.lang.String: java.lang.String trim()>();
+
+        r0.<com.wiyun.ad.AdView: java.lang.String o> = $r6;
+
+     label03:
+        $z0 = interfaceinvoke $r2.<android.util.AttributeSet: boolean getAttributeBooleanValue(java.lang.String,java.lang.String,boolean)>($r5, "testMode", 0);
+
+        r0.<com.wiyun.ad.AdView: boolean l> = $z0;
+
+        $i0 = interfaceinvoke $r2.<android.util.AttributeSet: int getAttributeIntValue(java.lang.String,java.lang.String,int)>($r5, "testAdType", 2);
+
+        r0.<com.wiyun.ad.AdView: int m> = $i0;
+
+        $z0 = interfaceinvoke $r2.<android.util.AttributeSet: boolean getAttributeBooleanValue(java.lang.String,java.lang.String,boolean)>($r5, "showLoadingHint", 0);
+
+        r0.<com.wiyun.ad.AdView: boolean q> = $z0;
+
+        $i0 = interfaceinvoke $r2.<android.util.AttributeSet: int getAttributeIntValue(java.lang.String,java.lang.String,int)>($r5, "refreshInterval", 0);
+
+        virtualinvoke r0.<com.wiyun.ad.AdView: void setRefreshInterval(int)>($i0);
+
+        $z0 = virtualinvoke r0.<com.wiyun.ad.AdView: boolean isGoneIfFail()>();
+
+        $z0 = interfaceinvoke $r2.<android.util.AttributeSet: boolean getAttributeBooleanValue(java.lang.String,java.lang.String,boolean)>($r5, "goneIfFail", $z0);
+
+        virtualinvoke r0.<com.wiyun.ad.AdView: void setGoneIfFail(boolean)>($z0);
+
+        $i0 = interfaceinvoke $r2.<android.util.AttributeSet: int getAttributeIntValue(java.lang.String,java.lang.String,int)>($r5, "transition", 1);
+
+        r0.<com.wiyun.ad.AdView: int k> = $i0;
+
+        $z0 = interfaceinvoke $r2.<android.util.AttributeSet: boolean getAttributeBooleanValue(java.lang.String,java.lang.String,boolean)>($r5, "autoStart", 0);
+
+        r0.<com.wiyun.ad.AdView: boolean j> = $z0;
+
+     label04:
+        $r7 = virtualinvoke r0.<com.wiyun.ad.AdView: android.content.Context getContext()>();
+
+        $r3 = virtualinvoke $r7.<android.content.Context: java.io.File getCacheDir()>();
+
+        $r8 = virtualinvoke $r3.<java.io.File: java.io.File[] listFiles()>();
+
+        if $r8 == null goto label06;
+
+        $l2 = staticinvoke <java.lang.System: long currentTimeMillis()>();
+
+        $i0 = lengthof $r8;
+
+        $i1 = 0;
+
+     label05:
+        if $i1 < $i0 goto label10;
+
+     label06:
+        $i0 = virtualinvoke $r1.<android.content.Context: int checkCallingOrSelfPermission(java.lang.String)>("android.permission.INTERNET");
+
+        if $i0 == 0 goto label07;
+
+        $r9 = staticinvoke <android.widget.Toast: android.widget.Toast makeText(android.content.Context,java.lang.CharSequence,int)>($r1, "you must add INTERNET permission", 0);
+
+        virtualinvoke $r9.<android.widget.Toast: void show()>();
+
+     label07:
+        $i0 = virtualinvoke $r1.<android.content.Context: int checkCallingOrSelfPermission(java.lang.String)>("android.permission.READ_PHONE_STATE");
+
+        if $i0 == 0 goto label08;
+
+        $r9 = staticinvoke <android.widget.Toast: android.widget.Toast makeText(android.content.Context,java.lang.CharSequence,int)>($r1, "you must add READ_PHONE_STATE permission", 0);
+
+        virtualinvoke $r9.<android.widget.Toast: void show()>();
+
+     label08:
+        $i0 = virtualinvoke $r1.<android.content.Context: int checkCallingOrSelfPermission(java.lang.String)>("android.permission.ACCESS_WIFI_STATE");
+
+        if $i0 == 0 goto label09;
+
+        $r9 = staticinvoke <android.widget.Toast: android.widget.Toast makeText(android.content.Context,java.lang.CharSequence,int)>($r1, "you must add ACCESS_WIFI_STATE permission", 0);
+
+        virtualinvoke $r9.<android.widget.Toast: void show()>();
+
+     label09:
+        $i0 = virtualinvoke $r1.<android.content.Context: int checkCallingOrSelfPermission(java.lang.String)>("android.permission.WRITE_EXTERNAL_STORAGE");
+
+        if $i0 == 0 goto label12;
+
+        $r9 = staticinvoke <android.widget.Toast: android.widget.Toast makeText(android.content.Context,java.lang.CharSequence,int)>($r1, "you must add WRITE_EXTERNAL_STORAGE permission", 0);
+
+        virtualinvoke $r9.<android.widget.Toast: void show()>();
+
+        return;
+
+     label10:
+        $r3 = $r8[$i1];
+
+        $l3 = virtualinvoke $r3.<java.io.File: long lastModified()>();
+
+        $l3 = $l3 - $l2;
+
+        $b4 = $l3 cmp 86400000L;
+
+        if $b4 <= 0 goto label11;
+
+        virtualinvoke $r3.<java.io.File: boolean delete()>();
+
+     label11:
+        $i1 = $i1 + 1;
+
+        goto label05;
+
+     label12:
+        return;
+    }
+
+    static com.wiyun.ad.a a(com.wiyun.ad.AdView)
+    {
+        com.wiyun.ad.AdView $r0;
+        com.wiyun.ad.a r1;
+
+        $r0 := @parameter0: com.wiyun.ad.AdView;
+
+        r1 = $r0.<com.wiyun.ad.AdView: com.wiyun.ad.a a>;
+
+        return r1;
+    }
+
+    private void a(android.widget.LinearLayout)
+    {
+        com.wiyun.ad.AdView r0;
+        android.widget.LinearLayout $r1;
+        boolean $z0;
+        android.view.animation.TranslateAnimation $r2;
+        android.view.animation.DecelerateInterpolator $r3;
+        com.wiyun.ad.AdView$4 $r4;
+
+        r0 := @this: com.wiyun.ad.AdView;
+
+        $r1 := @parameter0: android.widget.LinearLayout;
+
+        $z0 = r0.<com.wiyun.ad.AdView: boolean t>;
+
+        if $z0 == 0 goto label1;
+
+        return;
+
+     label1:
+        r0.<com.wiyun.ad.AdView: boolean t> = 1;
+
+        $r2 = new android.view.animation.TranslateAnimation;
+
+        specialinvoke $r2.<android.view.animation.TranslateAnimation: void <init>(int,float,int,float,int,float,int,float)>(0, 0.0F, 0, 0.0F, 1, 0.0F, 1, -1.0F);
+
+        virtualinvoke $r2.<android.view.animation.TranslateAnimation: void setDuration(long)>(200L);
+
+        virtualinvoke $r2.<android.view.animation.TranslateAnimation: void setFillAfter(boolean)>(1);
+
+        $r3 = new android.view.animation.DecelerateInterpolator;
+
+        specialinvoke $r3.<android.view.animation.DecelerateInterpolator: void <init>()>();
+
+        virtualinvoke $r2.<android.view.animation.TranslateAnimation: void setInterpolator(android.view.animation.Interpolator)>($r3);
+
+        $r4 = new com.wiyun.ad.AdView$4;
+
+        specialinvoke $r4.<com.wiyun.ad.AdView$4: void <init>(com.wiyun.ad.AdView,android.widget.LinearLayout)>(r0, $r1);
+
+        virtualinvoke $r2.<android.view.animation.TranslateAnimation: void setAnimationListener(android.view.animation.Animation$AnimationListener)>($r4);
+
+        virtualinvoke $r1.<android.widget.LinearLayout: void startAnimation(android.view.animation.Animation)>($r2);
+
+        return;
+    }
+
+    static void a(com.wiyun.ad.AdView, android.view.View)
+    {
+        com.wiyun.ad.AdView $r0;
+        android.view.View $r1;
+
+        $r0 := @parameter0: com.wiyun.ad.AdView;
+
+        $r1 := @parameter1: android.view.View;
+
+        $r0.<com.wiyun.ad.AdView: android.view.View x> = $r1;
+
+        return;
+    }
+
+    static void a(com.wiyun.ad.AdView, android.widget.LinearLayout)
+    {
+        com.wiyun.ad.AdView $r0;
+        android.widget.LinearLayout $r1;
+
+        $r0 := @parameter0: com.wiyun.ad.AdView;
+
+        $r1 := @parameter1: android.widget.LinearLayout;
+
+        specialinvoke $r0.<com.wiyun.ad.AdView: void a(android.widget.LinearLayout)>($r1);
+
+        return;
+    }
+
+    static void a(com.wiyun.ad.AdView, com.wiyun.ad.a)
+    {
+        com.wiyun.ad.AdView $r0;
+        com.wiyun.ad.a $r1;
+
+        $r0 := @parameter0: com.wiyun.ad.AdView;
+
+        $r1 := @parameter1: com.wiyun.ad.a;
+
+        $r0.<com.wiyun.ad.AdView: com.wiyun.ad.a a> = $r1;
+
+        return;
+    }
+
+    static void a(com.wiyun.ad.AdView, com.wiyun.ad.i)
+    {
+        com.wiyun.ad.AdView $r0;
+        com.wiyun.ad.i $r1;
+
+        $r0 := @parameter0: com.wiyun.ad.AdView;
+
+        $r1 := @parameter1: com.wiyun.ad.i;
+
+        $r0.<com.wiyun.ad.AdView: com.wiyun.ad.i w> = $r1;
+
+        return;
+    }
+
+    static void a(com.wiyun.ad.AdView, boolean)
+    {
+        com.wiyun.ad.AdView $r0;
+        boolean $z0;
+
+        $r0 := @parameter0: com.wiyun.ad.AdView;
+
+        $z0 := @parameter1: boolean;
+
+        $r0.<com.wiyun.ad.AdView: boolean c> = $z0;
+
+        return;
+    }
+
+    private void a(com.wiyun.ad.a)
+    {
+        com.wiyun.ad.AdView r0;
+        com.wiyun.ad.a $r1;
+        android.view.animation.AlphaAnimation $r2;
+        android.view.animation.AccelerateInterpolator $r3;
+
+        r0 := @this: com.wiyun.ad.AdView;
+
+        $r1 := @parameter0: com.wiyun.ad.a;
+
+        r0.<com.wiyun.ad.AdView: com.wiyun.ad.a a> = $r1;
+
+        $r2 = new android.view.animation.AlphaAnimation;
+
+        specialinvoke $r2.<android.view.animation.AlphaAnimation: void <init>(float,float)>(0.0F, 1.0F);
+
+        virtualinvoke $r2.<android.view.animation.AlphaAnimation: void setDuration(long)>(350L);
+
+        virtualinvoke $r2.<android.view.animation.AlphaAnimation: void startNow()>();
+
+        virtualinvoke $r2.<android.view.animation.AlphaAnimation: void setFillAfter(boolean)>(1);
+
+        $r3 = new android.view.animation.AccelerateInterpolator;
+
+        specialinvoke $r3.<android.view.animation.AccelerateInterpolator: void <init>()>();
+
+        virtualinvoke $r2.<android.view.animation.AlphaAnimation: void setInterpolator(android.view.animation.Interpolator)>($r3);
+
+        virtualinvoke r0.<com.wiyun.ad.AdView: void startAnimation(android.view.animation.Animation)>($r2);
+
+        return;
+    }
+
+    private void a(com.wiyun.ad.a, int)
+    {
+        com.wiyun.ad.AdView r0;
+        com.wiyun.ad.a $r1, $r6;
+        int $i0;
+        android.view.animation.TranslateAnimation $r2, $r3;
+        android.view.animation.DecelerateInterpolator $r4;
+        com.wiyun.ad.AdView$5 $r5;
+
+        r0 := @this: com.wiyun.ad.AdView;
+
+        $r1 := @parameter0: com.wiyun.ad.a;
+
+        $i0 := @parameter1: int;
+
+        lookupswitch($i0)
+        {
+            case 3: goto label3;
+            case 4: goto label4;
+            case 5: goto label5;
+            case 6: goto label6;
+            default: goto label1;
+        };
+
+     label1:
+        $r2 = null;
+
+        $r3 = null;
+
+     label2:
+        virtualinvoke $r2.<android.view.animation.TranslateAnimation: void setDuration(long)>(700L);
+
+        virtualinvoke $r2.<android.view.animation.TranslateAnimation: void setFillAfter(boolean)>(1);
+
+        $r4 = new android.view.animation.DecelerateInterpolator;
+
+        specialinvoke $r4.<android.view.animation.DecelerateInterpolator: void <init>()>();
+
+        virtualinvoke $r2.<android.view.animation.TranslateAnimation: void setInterpolator(android.view.animation.Interpolator)>($r4);
+
+        virtualinvoke $r3.<android.view.animation.TranslateAnimation: void setDuration(long)>(700L);
+
+        virtualinvoke $r3.<android.view.animation.TranslateAnimation: void setFillAfter(boolean)>(1);
+
+        $r4 = new android.view.animation.DecelerateInterpolator;
+
+        specialinvoke $r4.<android.view.animation.DecelerateInterpolator: void <init>()>();
+
+        virtualinvoke $r3.<android.view.animation.TranslateAnimation: void setInterpolator(android.view.animation.Interpolator)>($r4);
+
+        $r5 = new com.wiyun.ad.AdView$5;
+
+        specialinvoke $r5.<com.wiyun.ad.AdView$5: void <init>(com.wiyun.ad.AdView,com.wiyun.ad.a)>(r0, $r1);
+
+        virtualinvoke $r3.<android.view.animation.TranslateAnimation: void setAnimationListener(android.view.animation.Animation$AnimationListener)>($r5);
+
+        $r6 = r0.<com.wiyun.ad.AdView: com.wiyun.ad.a a>;
+
+        virtualinvoke $r6.<com.wiyun.ad.a: void startAnimation(android.view.animation.Animation)>($r2);
+
+        virtualinvoke $r1.<com.wiyun.ad.a: void startAnimation(android.view.animation.Animation)>($r3);
+
+        return;
+
+     label3:
+        $r2 = new android.view.animation.TranslateAnimation;
+
+        specialinvoke $r2.<android.view.animation.TranslateAnimation: void <init>(int,float,int,float,int,float,int,float)>(1, 0.0F, 1, 1.0F, 1, 0.0F, 1, 0.0F);
+
+        $r3 = new android.view.animation.TranslateAnimation;
+
+        specialinvoke $r3.<android.view.animation.TranslateAnimation: void <init>(int,float,int,float,int,float,int,float)>(1, -1.0F, 1, 0.0F, 1, 0.0F, 1, 0.0F);
+
+        goto label2;
+
+     label4:
+        $r2 = new android.view.animation.TranslateAnimation;
+
+        specialinvoke $r2.<android.view.animation.TranslateAnimation: void <init>(int,float,int,float,int,float,int,float)>(1, 0.0F, 1, -1.0F, 1, 0.0F, 1, 0.0F);
+
+        $r3 = new android.view.animation.TranslateAnimation;
+
+        specialinvoke $r3.<android.view.animation.TranslateAnimation: void <init>(int,float,int,float,int,float,int,float)>(1, 1.0F, 1, 0.0F, 1, 0.0F, 1, 0.0F);
+
+        goto label2;
+
+     label5:
+        $r2 = new android.view.animation.TranslateAnimation;
+
+        specialinvoke $r2.<android.view.animation.TranslateAnimation: void <init>(int,float,int,float,int,float,int,float)>(1, 0.0F, 1, 0.0F, 1, 0.0F, 1, 1.0F);
+
+        $r3 = new android.view.animation.TranslateAnimation;
+
+        specialinvoke $r3.<android.view.animation.TranslateAnimation: void <init>(int,float,int,float,int,float,int,float)>(1, 0.0F, 1, 0.0F, 1, -1.0F, 1, 0.0F);
+
+        goto label2;
+
+     label6:
+        $r2 = new android.view.animation.TranslateAnimation;
+
+        specialinvoke $r2.<android.view.animation.TranslateAnimation: void <init>(int,float,int,float,int,float,int,float)>(1, 0.0F, 1, 0.0F, 1, 0.0F, 1, -1.0F);
+
+        $r3 = new android.view.animation.TranslateAnimation;
+
+        specialinvoke $r3.<android.view.animation.TranslateAnimation: void <init>(int,float,int,float,int,float,int,float)>(1, 0.0F, 1, 0.0F, 1, 1.0F, 1, 0.0F);
+
+        goto label2;
+    }
+
+    private void a(boolean)
+    {
+        com.wiyun.ad.AdView r0;
+        boolean $z0;
+        com.wiyun.ad.AdView$3 $r1;
+        int $i0;
+        java.util.Timer $r2;
+        long $l1, $l2;
+        java.lang.Throwable $r3;
+
+        r0 := @this: com.wiyun.ad.AdView;
+
+        $z0 := @parameter0: boolean;
+
+        entermonitor r0;
+
+        if $z0 == 0 goto label4;
+
+     label1:
+        $i0 = r0.<com.wiyun.ad.AdView: int e>;
+
+        if $i0 <= 0 goto label4;
+
+        $r2 = r0.<com.wiyun.ad.AdView: java.util.Timer f>;
+
+        if $r2 != null goto label2;
+
+        $r2 = new java.util.Timer;
+
+        specialinvoke $r2.<java.util.Timer: void <init>()>();
+
+        r0.<com.wiyun.ad.AdView: java.util.Timer f> = $r2;
+
+        $r2 = r0.<com.wiyun.ad.AdView: java.util.Timer f>;
+
+        $r1 = new com.wiyun.ad.AdView$3;
+
+        specialinvoke $r1.<com.wiyun.ad.AdView$3: void <init>(com.wiyun.ad.AdView)>(r0);
+
+        $i0 = r0.<com.wiyun.ad.AdView: int e>;
+
+        $i0 = $i0 * 1000;
+
+        $l1 = (long) $i0;
+
+        $i0 = r0.<com.wiyun.ad.AdView: int e>;
+
+        $i0 = $i0 * 1000;
+
+        $l2 = (long) $i0;
+
+        virtualinvoke $r2.<java.util.Timer: void schedule(java.util.TimerTask,long,long)>($r1, $l1, $l2);
+
+     label2:
+        exitmonitor r0;
+
+     label3:
+        return;
+
+     label4:
+        $r2 = r0.<com.wiyun.ad.AdView: java.util.Timer f>;
+
+        if $r2 == null goto label2;
+
+        $r2 = r0.<com.wiyun.ad.AdView: java.util.Timer f>;
+
+        virtualinvoke $r2.<java.util.Timer: void cancel()>();
+
+        r0.<com.wiyun.ad.AdView: java.util.Timer f> = null;
+
+        goto label2;
+
+     label5:
+        $r3 := @caughtexception;
+
+        exitmonitor r0;
+
+     label6:
+        throw $r3;
+
+        catch java.lang.Throwable from label1 to label3 with label5;
+        catch java.lang.Throwable from label4 to label6 with label5;
+    }
+
+    static void b(com.wiyun.ad.AdView)
+    {
+        com.wiyun.ad.AdView $r0;
+
+        $r0 := @parameter0: com.wiyun.ad.AdView;
+
+        specialinvoke $r0.<com.wiyun.ad.AdView: void f()>();
+
+        return;
+    }
+
+    static void b(com.wiyun.ad.AdView, boolean)
+    {
+        com.wiyun.ad.AdView $r0;
+        boolean $z0;
+
+        $r0 := @parameter0: com.wiyun.ad.AdView;
+
+        $z0 := @parameter1: boolean;
+
+        $r0.<com.wiyun.ad.AdView: boolean t> = $z0;
+
+        return;
+    }
+
+    private void b(com.wiyun.ad.a)
+    {
+        com.wiyun.ad.AdView r0;
+        com.wiyun.ad.a $r1;
+        boolean $z0;
+        int $i0;
+        long $l1;
+
+        r0 := @this: com.wiyun.ad.AdView;
+
+        $r1 := @parameter0: com.wiyun.ad.a;
+
+        $z0 = r0.<com.wiyun.ad.AdView: boolean c>;
+
+        if $z0 == 0 goto label1;
+
+        return;
+
+     label1:
+        r0.<com.wiyun.ad.AdView: boolean c> = 1;
+
+        $i0 = r0.<com.wiyun.ad.AdView: int k>;
+
+        if $i0 != 0 goto label2;
+
+        $l1 = staticinvoke <android.os.SystemClock: long uptimeMillis()>();
+
+        $l1 = $l1 / 1000L;
+
+        $i0 = (int) $l1;
+
+        $i0 = staticinvoke <java.lang.Math: int abs(int)>($i0);
+
+        $i0 = $i0 % 7;
+
+        $i0 = $i0 + 1;
+
+     label2:
+        lookupswitch($i0)
+        {
+            case 3: goto label4;
+            case 4: goto label4;
+            case 5: goto label4;
+            case 6: goto label4;
+            case 7: goto label5;
+            default: goto label3;
+        };
+
+     label3:
+        specialinvoke r0.<com.wiyun.ad.AdView: void b(com.wiyun.ad.a,int)>($r1, $i0);
+
+        return;
+
+     label4:
+        specialinvoke r0.<com.wiyun.ad.AdView: void a(com.wiyun.ad.a,int)>($r1, $i0);
+
+        return;
+
+     label5:
+        specialinvoke r0.<com.wiyun.ad.AdView: void c(com.wiyun.ad.a)>($r1);
+
+        return;
+    }
+
+    private void b(com.wiyun.ad.a, int)
+    {
+        com.wiyun.ad.AdView r0;
+        com.wiyun.ad.a $r1;
+        int $i0, $i1;
+        float $f0, $f1, $f2;
+        com.wiyun.ad.h $r2;
+        boolean $z0;
+        android.view.animation.AccelerateInterpolator $r3;
+        com.wiyun.ad.AdView$8 $r4;
+
+        r0 := @this: com.wiyun.ad.AdView;
+
+        $r1 := @parameter0: com.wiyun.ad.a;
+
+        $i0 := @parameter1: int;
+
+        virtualinvoke $r1.<com.wiyun.ad.a: void setVisibility(int)>(8);
+
+        $i1 = virtualinvoke r0.<com.wiyun.ad.AdView: int getWidth()>();
+
+        $f0 = (float) $i1;
+
+        $f0 = $f0 / 2.0F;
+
+        $i1 = virtualinvoke r0.<com.wiyun.ad.AdView: int getHeight()>();
+
+        $f1 = (float) $i1;
+
+        $f1 = $f1 / 2.0F;
+
+        if $i0 != 2 goto label3;
+
+        $i1 = virtualinvoke r0.<com.wiyun.ad.AdView: int getHeight()>();
+
+     label1:
+        $f2 = (float) $i1;
+
+        $f2 = -0.4F * $f2;
+
+        $r2 = new com.wiyun.ad.h;
+
+        if $i0 == 2 goto label4;
+
+        $z0 = 1;
+
+     label2:
+        specialinvoke $r2.<com.wiyun.ad.h: void <init>(float,float,float,float,float,boolean,boolean)>(0.0F, -90.0F, $f0, $f1, $f2, 1, $z0);
+
+        virtualinvoke $r2.<com.wiyun.ad.h: void setDuration(long)>(700L);
+
+        virtualinvoke $r2.<com.wiyun.ad.h: void setFillAfter(boolean)>(1);
+
+        $r3 = new android.view.animation.AccelerateInterpolator;
+
+        specialinvoke $r3.<android.view.animation.AccelerateInterpolator: void <init>()>();
+
+        virtualinvoke $r2.<com.wiyun.ad.h: void setInterpolator(android.view.animation.Interpolator)>($r3);
+
+        $r4 = new com.wiyun.ad.AdView$8;
+
+        specialinvoke $r4.<com.wiyun.ad.AdView$8: void <init>(com.wiyun.ad.AdView,com.wiyun.ad.a,int)>(r0, $r1, $i0);
+
+        virtualinvoke $r2.<com.wiyun.ad.h: void setAnimationListener(android.view.animation.Animation$AnimationListener)>($r4);
+
+        virtualinvoke r0.<com.wiyun.ad.AdView: void startAnimation(android.view.animation.Animation)>($r2);
+
+        return;
+
+     label3:
+        $i1 = virtualinvoke r0.<com.wiyun.ad.AdView: int getWidth()>();
+
+        goto label1;
+
+     label4:
+        $z0 = 0;
+
+        goto label2;
+    }
+
+    static void c(com.wiyun.ad.AdView)
+    {
+        com.wiyun.ad.AdView $r0;
+
+        $r0 := @parameter0: com.wiyun.ad.AdView;
+
+        specialinvoke $r0.<com.wiyun.ad.AdView: void e()>();
+
+        return;
+    }
+
+    private void c(com.wiyun.ad.a)
+    {
+        com.wiyun.ad.AdView r0;
+        com.wiyun.ad.a $r1, $r6;
+        android.view.animation.AlphaAnimation $r2, $r4;
+        android.view.animation.AccelerateInterpolator $r3;
+        com.wiyun.ad.AdView$6 $r5;
+
+        r0 := @this: com.wiyun.ad.AdView;
+
+        $r1 := @parameter0: com.wiyun.ad.a;
+
+        $r2 = new android.view.animation.AlphaAnimation;
+
+        specialinvoke $r2.<android.view.animation.AlphaAnimation: void <init>(float,float)>(1.0F, 0.0F);
+
+        virtualinvoke $r2.<android.view.animation.AlphaAnimation: void setDuration(long)>(700L);
+
+        virtualinvoke $r2.<android.view.animation.AlphaAnimation: void setFillAfter(boolean)>(1);
+
+        $r3 = new android.view.animation.AccelerateInterpolator;
+
+        specialinvoke $r3.<android.view.animation.AccelerateInterpolator: void <init>()>();
+
+        virtualinvoke $r2.<android.view.animation.AlphaAnimation: void setInterpolator(android.view.animation.Interpolator)>($r3);
+
+        $r4 = new android.view.animation.AlphaAnimation;
+
+        specialinvoke $r4.<android.view.animation.AlphaAnimation: void <init>(float,float)>(0.0F, 1.0F);
+
+        virtualinvoke $r4.<android.view.animation.AlphaAnimation: void setDuration(long)>(700L);
+
+        virtualinvoke $r4.<android.view.animation.AlphaAnimation: void setFillAfter(boolean)>(1);
+
+        $r3 = new android.view.animation.AccelerateInterpolator;
+
+        specialinvoke $r3.<android.view.animation.AccelerateInterpolator: void <init>()>();
+
+        virtualinvoke $r4.<android.view.animation.AlphaAnimation: void setInterpolator(android.view.animation.Interpolator)>($r3);
+
+        $r5 = new com.wiyun.ad.AdView$6;
+
+        specialinvoke $r5.<com.wiyun.ad.AdView$6: void <init>(com.wiyun.ad.AdView,com.wiyun.ad.a)>(r0, $r1);
+
+        virtualinvoke $r4.<android.view.animation.AlphaAnimation: void setAnimationListener(android.view.animation.Animation$AnimationListener)>($r5);
+
+        $r6 = r0.<com.wiyun.ad.AdView: com.wiyun.ad.a a>;
+
+        virtualinvoke $r6.<com.wiyun.ad.a: void startAnimation(android.view.animation.Animation)>($r2);
+
+        virtualinvoke $r1.<com.wiyun.ad.a: void startAnimation(android.view.animation.Animation)>($r4);
+
+        return;
+    }
+
+    static int d(com.wiyun.ad.AdView)
+    {
+        com.wiyun.ad.AdView $r0;
+        int $i0;
+
+        $r0 := @parameter0: com.wiyun.ad.AdView;
+
+        $i0 = specialinvoke $r0.<android.widget.FrameLayout: int getVisibility()>();
+
+        return $i0;
+    }
+
+    static com.wiyun.ad.i e(com.wiyun.ad.AdView)
+    {
+        com.wiyun.ad.AdView $r0;
+        com.wiyun.ad.i r1;
+
+        $r0 := @parameter0: com.wiyun.ad.AdView;
+
+        r1 = $r0.<com.wiyun.ad.AdView: com.wiyun.ad.i w>;
+
+        return r1;
+    }
+
+    private void e()
+    {
+        com.wiyun.ad.AdView r0;
+        com.wiyun.ad.t $r1;
+        android.view.ViewParent $r2;
+        com.wiyun.ad.a $r3, $r12;
+        com.wiyun.ad.i $r4, $r5;
+        boolean $z0;
+        android.content.Context $r6;
+        com.wiyun.ad.AdView$AdListener $r7;
+        int $i0, $i1, $i2;
+        android.view.View $r8;
+        java.lang.Exception $r9, $r11, $r13;
+        java.lang.Throwable $r10;
+
+        r0 := @this: com.wiyun.ad.AdView;
+
+        $r1 = r0.<com.wiyun.ad.AdView: com.wiyun.ad.t s>;
+
+        if $r1 == null goto label01;
+
+        $r1 = r0.<com.wiyun.ad.AdView: com.wiyun.ad.t s>;
+
+        $r2 = virtualinvoke $r1.<com.wiyun.ad.t: android.view.ViewParent getParent()>();
+
+        if $r2 == null goto label01;
+
+        $r1 = r0.<com.wiyun.ad.AdView: com.wiyun.ad.t s>;
+
+        virtualinvoke $r1.<com.wiyun.ad.t: void a(boolean)>(0);
+
+        $r1 = r0.<com.wiyun.ad.AdView: com.wiyun.ad.t s>;
+
+        virtualinvoke r0.<com.wiyun.ad.AdView: void removeView(android.view.View)>($r1);
+
+     label01:
+        $r3 = r0.<com.wiyun.ad.AdView: com.wiyun.ad.a a>;
+
+        if $r3 == null goto label02;
+
+        $r3 = r0.<com.wiyun.ad.AdView: com.wiyun.ad.a a>;
+
+        virtualinvoke $r3.<com.wiyun.ad.a: void setVisibility(int)>(0);
+
+     label02:
+        $r4 = r0.<com.wiyun.ad.AdView: com.wiyun.ad.i w>;
+
+        if $r4 == null goto label51;
+
+        entermonitor r0;
+
+     label03:
+        $r3 = r0.<com.wiyun.ad.AdView: com.wiyun.ad.a a>;
+
+        if $r3 == null goto label07;
+
+        $r4 = r0.<com.wiyun.ad.AdView: com.wiyun.ad.i w>;
+
+        $r3 = r0.<com.wiyun.ad.AdView: com.wiyun.ad.a a>;
+
+        $r5 = virtualinvoke $r3.<com.wiyun.ad.a: com.wiyun.ad.i a()>();
+
+        $z0 = virtualinvoke $r4.<com.wiyun.ad.i: boolean equals(java.lang.Object)>($r5);
+
+        if $z0 == 0 goto label07;
+
+        $r3 = r0.<com.wiyun.ad.AdView: com.wiyun.ad.a a>;
+
+        $r2 = virtualinvoke $r3.<com.wiyun.ad.a: android.view.ViewParent getParent()>();
+
+        if $r2 != null goto label04;
+
+        $r3 = r0.<com.wiyun.ad.AdView: com.wiyun.ad.a a>;
+
+        virtualinvoke r0.<com.wiyun.ad.AdView: void addView(android.view.View)>($r3);
+
+     label04:
+        $r4 = r0.<com.wiyun.ad.AdView: com.wiyun.ad.i w>;
+
+        virtualinvoke $r4.<com.wiyun.ad.i: void a()>();
+
+     label05:
+        exitmonitor r0;
+
+     label06:
+        r0.<com.wiyun.ad.AdView: boolean b> = 0;
+
+        return;
+
+     label07:
+        $r3 = r0.<com.wiyun.ad.AdView: com.wiyun.ad.a a>;
+
+        if $r3 != null goto label28;
+
+        $z0 = 1;
+
+     label08:
+        $r3 = new com.wiyun.ad.a;
+
+        $r6 = virtualinvoke r0.<com.wiyun.ad.AdView: android.content.Context getContext()>();
+
+        $r4 = r0.<com.wiyun.ad.AdView: com.wiyun.ad.i w>;
+
+        $r7 = r0.<com.wiyun.ad.AdView: com.wiyun.ad.AdView$AdListener r>;
+
+        specialinvoke $r3.<com.wiyun.ad.a: void <init>(android.content.Context,com.wiyun.ad.i,com.wiyun.ad.AdView$AdListener)>($r6, $r4, $r7);
+
+        $i0 = virtualinvoke r0.<com.wiyun.ad.AdView: int getBackgroundColor()>();
+
+        $i1 = $i0;
+
+        if $i0 != 0 goto label09;
+
+        $r4 = r0.<com.wiyun.ad.AdView: com.wiyun.ad.i w>;
+
+        $i1 = $r4.<com.wiyun.ad.i: int k>;
+
+     label09:
+        if $i1 != 0 goto label10;
+
+        $i1 = -16777216;
+
+     label10:
+        $i0 = virtualinvoke r0.<com.wiyun.ad.AdView: int getTextColor()>();
+
+        $i2 = $i0;
+
+        if $i0 != 0 goto label11;
+
+        $r4 = r0.<com.wiyun.ad.AdView: com.wiyun.ad.i w>;
+
+        $i2 = $r4.<com.wiyun.ad.i: int h>;
+
+     label11:
+        if $i2 != 0 goto label12;
+
+        $i2 = -1;
+
+     label12:
+        virtualinvoke $r3.<com.wiyun.ad.a: void setBackgroundColor(int)>($i1);
+
+        virtualinvoke $r3.<com.wiyun.ad.a: void a(int)>($i2);
+
+        $i1 = staticinvoke <com.wiyun.ad.AdView: int d(com.wiyun.ad.AdView)>(r0);
+
+        virtualinvoke $r3.<com.wiyun.ad.a: void setVisibility(int)>($i1);
+
+     label13:
+        $r7 = r0.<com.wiyun.ad.AdView: com.wiyun.ad.AdView$AdListener r>;
+
+     label14:
+        if $r7 == null goto label16;
+
+     label15:
+        $r7 = r0.<com.wiyun.ad.AdView: com.wiyun.ad.AdView$AdListener r>;
+
+        interfaceinvoke $r7.<com.wiyun.ad.AdView$AdListener: void onAdLoaded()>();
+
+     label16:
+        virtualinvoke r0.<com.wiyun.ad.AdView: void addView(android.view.View)>($r3);
+
+        $r4 = r0.<com.wiyun.ad.AdView: com.wiyun.ad.i w>;
+
+        $i0 = $r4.<com.wiyun.ad.i: int d>;
+
+     label17:
+        if $i0 != 3 goto label21;
+
+     label18:
+        $r8 = r0.<com.wiyun.ad.AdView: android.view.View y>;
+
+     label19:
+        if $r8 != null goto label21;
+
+     label20:
+        $r8 = specialinvoke r0.<com.wiyun.ad.AdView: android.view.View g()>();
+
+        r0.<com.wiyun.ad.AdView: android.view.View y> = $r8;
+
+     label21:
+        if $i1 != 0 goto label41;
+
+        if $z0 == 0 goto label32;
+
+     label22:
+        specialinvoke r0.<com.wiyun.ad.AdView: void a(com.wiyun.ad.a)>($r3);
+
+     label23:
+        goto label05;
+
+     label24:
+        $r9 := @caughtexception;
+
+     label25:
+        staticinvoke <android.util.Log: int e(java.lang.String,java.lang.String,java.lang.Throwable)>("WiYun", "Unhandled exception placing AdContainer into AdView.", $r9);
+
+        goto label05;
+
+     label26:
+        $r10 := @caughtexception;
+
+        exitmonitor r0;
+
+     label27:
+        throw $r10;
+
+     label28:
+        $z0 = 0;
+
+        goto label08;
+
+     label29:
+        $r11 := @caughtexception;
+
+     label30:
+        staticinvoke <android.util.Log: int w(java.lang.String,java.lang.String,java.lang.Throwable)>("WiYun", "Unhandled exception raised in your AdListener.onAdLoaded().", $r11);
+
+     label31:
+        goto label16;
+
+     label32:
+        $z0 = r0.<com.wiyun.ad.AdView: boolean q>;
+
+     label33:
+        if $z0 == 0 goto label39;
+
+     label34:
+        $r12 = r0.<com.wiyun.ad.AdView: com.wiyun.ad.a a>;
+
+        virtualinvoke r0.<com.wiyun.ad.AdView: void removeView(android.view.View)>($r12);
+
+        specialinvoke r0.<com.wiyun.ad.AdView: void f()>();
+
+        $r12 = r0.<com.wiyun.ad.AdView: com.wiyun.ad.a a>;
+
+        $r4 = virtualinvoke $r12.<com.wiyun.ad.a: com.wiyun.ad.i a()>();
+
+     label35:
+        if $r4 == null goto label37;
+
+     label36:
+        $r12 = r0.<com.wiyun.ad.AdView: com.wiyun.ad.a a>;
+
+        $r4 = virtualinvoke $r12.<com.wiyun.ad.a: com.wiyun.ad.i a()>();
+
+        virtualinvoke $r4.<com.wiyun.ad.i: void a()>();
+
+     label37:
+        specialinvoke r0.<com.wiyun.ad.AdView: void a(com.wiyun.ad.a)>($r3);
+
+     label38:
+        goto label05;
+
+     label39:
+        specialinvoke r0.<com.wiyun.ad.AdView: void b(com.wiyun.ad.a)>($r3);
+
+     label40:
+        goto label05;
+
+     label41:
+        $r12 = r0.<com.wiyun.ad.AdView: com.wiyun.ad.a a>;
+
+     label42:
+        if $r12 == null goto label44;
+
+     label43:
+        $r12 = r0.<com.wiyun.ad.AdView: com.wiyun.ad.a a>;
+
+        virtualinvoke r0.<com.wiyun.ad.AdView: void removeView(android.view.View)>($r12);
+
+     label44:
+        specialinvoke r0.<com.wiyun.ad.AdView: void f()>();
+
+        $r12 = r0.<com.wiyun.ad.AdView: com.wiyun.ad.a a>;
+
+     label45:
+        if $r12 == null goto label49;
+
+     label46:
+        $r12 = r0.<com.wiyun.ad.AdView: com.wiyun.ad.a a>;
+
+        $r4 = virtualinvoke $r12.<com.wiyun.ad.a: com.wiyun.ad.i a()>();
+
+     label47:
+        if $r4 == null goto label49;
+
+     label48:
+        $r12 = r0.<com.wiyun.ad.AdView: com.wiyun.ad.a a>;
+
+        $r4 = virtualinvoke $r12.<com.wiyun.ad.a: com.wiyun.ad.i a()>();
+
+        virtualinvoke $r4.<com.wiyun.ad.i: void a()>();
+
+     label49:
+        r0.<com.wiyun.ad.AdView: com.wiyun.ad.a a> = $r3;
+
+     label50:
+        goto label05;
+
+     label51:
+        $r3 = r0.<com.wiyun.ad.AdView: com.wiyun.ad.a a>;
+
+        if $r3 == null goto label52;
+
+        $r3 = r0.<com.wiyun.ad.AdView: com.wiyun.ad.a a>;
+
+        $r2 = virtualinvoke $r3.<com.wiyun.ad.a: android.view.ViewParent getParent()>();
+
+        if $r2 != null goto label52;
+
+        $r3 = r0.<com.wiyun.ad.AdView: com.wiyun.ad.a a>;
+
+        virtualinvoke r0.<com.wiyun.ad.AdView: void addView(android.view.View)>($r3);
+
+     label52:
+        $r7 = r0.<com.wiyun.ad.AdView: com.wiyun.ad.AdView$AdListener r>;
+
+        if $r7 == null goto label06;
+
+     label53:
+        $r7 = r0.<com.wiyun.ad.AdView: com.wiyun.ad.AdView$AdListener r>;
+
+        interfaceinvoke $r7.<com.wiyun.ad.AdView$AdListener: void onAdLoadFailed()>();
+
+     label54:
+        goto label06;
+
+     label55:
+        $r13 := @caughtexception;
+
+        staticinvoke <android.util.Log: int w(java.lang.String,java.lang.String,java.lang.Throwable)>("WiYun", "Unhandled exception raised in your AdListener.onLoadAdFailed().", $r13);
+
+        goto label06;
+
+        catch java.lang.Throwable from label03 to label06 with label26;
+        catch java.lang.Throwable from label07 to label13 with label26;
+        catch java.lang.Exception from label13 to label14 with label24;
+        catch java.lang.Throwable from label13 to label14 with label26;
+        catch java.lang.Exception from label15 to label16 with label29;
+        catch java.lang.Throwable from label15 to label16 with label26;
+        catch java.lang.Exception from label16 to label17 with label24;
+        catch java.lang.Exception from label18 to label19 with label24;
+        catch java.lang.Exception from label20 to label21 with label24;
+        catch java.lang.Exception from label22 to label23 with label24;
+        catch java.lang.Throwable from label16 to label23 with label26;
+        catch java.lang.Throwable from label25 to label27 with label26;
+        catch java.lang.Exception from label30 to label31 with label24;
+        catch java.lang.Exception from label32 to label33 with label24;
+        catch java.lang.Exception from label34 to label35 with label24;
+        catch java.lang.Exception from label36 to label38 with label24;
+        catch java.lang.Exception from label39 to label40 with label24;
+        catch java.lang.Exception from label41 to label42 with label24;
+        catch java.lang.Exception from label43 to label45 with label24;
+        catch java.lang.Exception from label46 to label47 with label24;
+        catch java.lang.Exception from label48 to label50 with label24;
+        catch java.lang.Throwable from label30 to label50 with label26;
+        catch java.lang.Exception from label53 to label54 with label55;
+    }
+
+    static com.wiyun.ad.AdView$AdListener f(com.wiyun.ad.AdView)
+    {
+        com.wiyun.ad.AdView $r0;
+        com.wiyun.ad.AdView$AdListener r1;
+
+        $r0 := @parameter0: com.wiyun.ad.AdView;
+
+        r1 = $r0.<com.wiyun.ad.AdView: com.wiyun.ad.AdView$AdListener r>;
+
+        return r1;
+    }
+
+    private void f()
+    {
+        com.wiyun.ad.AdView r0;
+        com.wiyun.ad.i $r1;
+        int $i0;
+        android.view.View $r2;
+        android.graphics.drawable.Drawable $r3;
+
+        r0 := @this: com.wiyun.ad.AdView;
+
+        $r1 = r0.<com.wiyun.ad.AdView: com.wiyun.ad.i w>;
+
+        if $r1 == null goto label1;
+
+        $r1 = r0.<com.wiyun.ad.AdView: com.wiyun.ad.i w>;
+
+        $i0 = $r1.<com.wiyun.ad.i: int d>;
+
+        if $i0 == 3 goto label1;
+
+        $r2 = r0.<com.wiyun.ad.AdView: android.view.View y>;
+
+        if $r2 == null goto label1;
+
+        $r2 = r0.<com.wiyun.ad.AdView: android.view.View y>;
+
+        virtualinvoke r0.<com.wiyun.ad.AdView: void removeView(android.view.View)>($r2);
+
+        r0.<com.wiyun.ad.AdView: android.view.View y> = null;
+
+        $r3 = r0.<com.wiyun.ad.AdView: android.graphics.drawable.Drawable z>;
+
+        if $r3 == null goto label1;
+
+        $r3 = r0.<com.wiyun.ad.AdView: android.graphics.drawable.Drawable z>;
+
+        virtualinvoke $r3.<android.graphics.drawable.Drawable: void setCallback(android.graphics.drawable.Drawable$Callback)>(null);
+
+        r0.<com.wiyun.ad.AdView: android.graphics.drawable.Drawable z> = null;
+
+     label1:
+        return;
+    }
+
+    private android.view.View g()
+    {
+        com.wiyun.ad.AdView r0;
+        android.graphics.drawable.Drawable $r1;
+        byte[] $r2, $r3, $r4;
+        android.widget.Button $r5;
+        android.content.Context $r6;
+        android.widget.FrameLayout$LayoutParams $r7;
+
+        r0 := @this: com.wiyun.ad.AdView;
+
+        $r1 = r0.<com.wiyun.ad.AdView: android.graphics.drawable.Drawable z>;
+
+        if $r1 != null goto label1;
+
+        $r2 = <com.wiyun.ad.c: byte[] c>;
+
+        $r3 = <com.wiyun.ad.c: byte[] a>;
+
+        $r4 = <com.wiyun.ad.c: byte[] b>;
+
+        $r1 = staticinvoke <com.wiyun.ad.s: android.graphics.drawable.Drawable a(byte[],byte[],byte[])>($r2, $r3, $r4);
+
+        r0.<com.wiyun.ad.AdView: android.graphics.drawable.Drawable z> = $r1;
+
+     label1:
+        $r5 = new android.widget.Button;
+
+        $r6 = virtualinvoke r0.<com.wiyun.ad.AdView: android.content.Context getContext()>();
+
+        specialinvoke $r5.<android.widget.Button: void <init>(android.content.Context)>($r6);
+
+        $r1 = r0.<com.wiyun.ad.AdView: android.graphics.drawable.Drawable z>;
+
+        virtualinvoke $r5.<android.widget.Button: void setBackgroundDrawable(android.graphics.drawable.Drawable)>($r1);
+
+        virtualinvoke $r5.<android.widget.Button: void setOnClickListener(android.view.View$OnClickListener)>(r0);
+
+        $r7 = new android.widget.FrameLayout$LayoutParams;
+
+        specialinvoke $r7.<android.widget.FrameLayout$LayoutParams: void <init>(int,int)>(-2, -2);
+
+        $r7.<android.widget.FrameLayout$LayoutParams: int gravity> = 53;
+
+        virtualinvoke r0.<com.wiyun.ad.AdView: void addView(android.view.View,android.view.ViewGroup$LayoutParams)>($r5, $r7);
+
+        return $r5;
+    }
+
+    private void h()
+    {
+        com.wiyun.ad.AdView r0;
+        boolean $z0;
+        android.content.Context $r1;
+        int $i0;
+        java.io.File $r2, $r3;
+
+        r0 := @this: com.wiyun.ad.AdView;
+
+        $z0 = staticinvoke <com.wiyun.ad.f: boolean a()>();
+
+        if $z0 == 0 goto label1;
+
+        $r1 = virtualinvoke r0.<com.wiyun.ad.AdView: android.content.Context getContext()>();
+
+        $i0 = virtualinvoke $r1.<android.content.Context: int checkCallingOrSelfPermission(java.lang.String)>("android.permission.WRITE_EXTERNAL_STORAGE");
+
+        if $i0 != 0 goto label1;
+
+        $r2 = new java.io.File;
+
+        $r3 = staticinvoke <android.os.Environment: java.io.File getExternalStorageDirectory()>();
+
+        specialinvoke $r2.<java.io.File: void <init>(java.io.File,java.lang.String)>($r3, ".wiad_cache");
+
+        staticinvoke <com.wiyun.ad.f: boolean a(java.io.File)>($r2);
+
+     label1:
+        return;
+    }
+
+    void a()
+    {
+        com.wiyun.ad.AdView r0;
+        android.widget.LinearLayout $r1;
+        com.wiyun.ad.a $r2;
+
+        r0 := @this: com.wiyun.ad.AdView;
+
+        $r1 = r0.<com.wiyun.ad.AdView: android.widget.LinearLayout v>;
+
+        if $r1 == null goto label1;
+
+        $r1 = r0.<com.wiyun.ad.AdView: android.widget.LinearLayout v>;
+
+        virtualinvoke r0.<com.wiyun.ad.AdView: void removeView(android.view.View)>($r1);
+
+        r0.<com.wiyun.ad.AdView: android.widget.LinearLayout v> = null;
+
+        $r2 = r0.<com.wiyun.ad.AdView: com.wiyun.ad.a a>;
+
+        if $r2 == null goto label1;
+
+        $r2 = r0.<com.wiyun.ad.AdView: com.wiyun.ad.a a>;
+
+        virtualinvoke $r2.<com.wiyun.ad.a: void setVisibility(int)>(0);
+
+     label1:
+        r0.<com.wiyun.ad.AdView: boolean u> = 0;
+
+        return;
+    }
+
+    void a(int)
+    {
+        int $i0;
+        android.view.View $r0;
+        com.wiyun.ad.AdView r1;
+        android.widget.LinearLayout $r2;
+        android.widget.ProgressBar r3;
+
+        r1 := @this: com.wiyun.ad.AdView;
+
+        $i0 := @parameter0: int;
+
+        $r2 = r1.<com.wiyun.ad.AdView: android.widget.LinearLayout v>;
+
+        if $r2 == null goto label1;
+
+        $r2 = r1.<com.wiyun.ad.AdView: android.widget.LinearLayout v>;
+
+        $r0 = virtualinvoke $r2.<android.widget.LinearLayout: android.view.View findViewById(int)>(65536);
+
+        r3 = (android.widget.ProgressBar) $r0;
+
+        if r3 == null goto label1;
+
+        virtualinvoke r3.<android.widget.ProgressBar: void setProgress(int)>($i0);
+
+     label1:
+        return;
+    }
+
+    void a(int, java.lang.String)
+    {
+        com.wiyun.ad.AdView r0;
+        int $i0;
+        java.lang.String $r1, $r11;
+        android.widget.LinearLayout $r2;
+        boolean $z0;
+        android.content.Context $r3;
+        android.graphics.drawable.GradientDrawable $r4;
+        android.graphics.drawable.GradientDrawable$Orientation $r5;
+        int[] $r6;
+        android.widget.TextView $r7;
+        android.graphics.Typeface $r8;
+        android.widget.LinearLayout$LayoutParams $r9;
+        java.lang.StringBuilder $r10;
+        android.widget.SeekBar $r12;
+        android.widget.FrameLayout$LayoutParams $r13;
+        com.wiyun.ad.a $r14;
+        java.lang.Exception $r15;
+
+        r0 := @this: com.wiyun.ad.AdView;
+
+        $i0 := @parameter0: int;
+
+        $r1 := @parameter1: java.lang.String;
+
+        $r2 = r0.<com.wiyun.ad.AdView: android.widget.LinearLayout v>;
+
+        if $r2 == null goto label1;
+
+        return;
+
+     label1:
+        $z0 = r0.<com.wiyun.ad.AdView: boolean u>;
+
+        if $z0 != 0 goto label7;
+
+        r0.<com.wiyun.ad.AdView: boolean u> = 1;
+
+        $r2 = new android.widget.LinearLayout;
+
+        $r3 = virtualinvoke r0.<com.wiyun.ad.AdView: android.content.Context getContext()>();
+
+        specialinvoke $r2.<android.widget.LinearLayout: void <init>(android.content.Context)>($r3);
+
+        r0.<com.wiyun.ad.AdView: android.widget.LinearLayout v> = $r2;
+
+        virtualinvoke $r2.<android.widget.LinearLayout: void setGravity(int)>(16);
+
+        virtualinvoke $r2.<android.widget.LinearLayout: void setOrientation(int)>(1);
+
+        virtualinvoke $r2.<android.widget.LinearLayout: void setPadding(int,int,int,int)>(10, 0, 12, 0);
+
+        $r4 = new android.graphics.drawable.GradientDrawable;
+
+        $r5 = <android.graphics.drawable.GradientDrawable$Orientation: android.graphics.drawable.GradientDrawable$Orientation TOP_BOTTOM>;
+
+        $r6 = newarray (int)[2];
+
+        $r6[0] = -3879462;
+
+        $r6[1] = -7167046;
+
+        specialinvoke $r4.<android.graphics.drawable.GradientDrawable: void <init>(android.graphics.drawable.GradientDrawable$Orientation,int[])>($r5, $r6);
+
+        virtualinvoke $r2.<android.widget.LinearLayout: void setBackgroundDrawable(android.graphics.drawable.Drawable)>($r4);
+
+        $r7 = new android.widget.TextView;
+
+        $r3 = virtualinvoke r0.<com.wiyun.ad.AdView: android.content.Context getContext()>();
+
+        specialinvoke $r7.<android.widget.TextView: void <init>(android.content.Context)>($r3);
+
+        $r3 = virtualinvoke r0.<com.wiyun.ad.AdView: android.content.Context getContext()>();
+
+        virtualinvoke $r7.<android.widget.TextView: void setTextAppearance(android.content.Context,int)>($r3, 16973895);
+
+        $r8 = <android.graphics.Typeface: android.graphics.Typeface DEFAULT_BOLD>;
+
+        virtualinvoke $r7.<android.widget.TextView: void setTypeface(android.graphics.Typeface)>($r8);
+
+        virtualinvoke $r7.<android.widget.TextView: void setSingleLine(boolean)>(1);
+
+        $r9 = new android.widget.LinearLayout$LayoutParams;
+
+        specialinvoke $r9.<android.widget.LinearLayout$LayoutParams: void <init>(int,int)>(-1, -2);
+
+        virtualinvoke $r7.<android.widget.TextView: void setLayoutParams(android.view.ViewGroup$LayoutParams)>($r9);
+
+        $r10 = new java.lang.StringBuilder;
+
+        $r11 = staticinvoke <com.wiyun.ad.s: java.lang.String a(java.lang.String)>("downloading");
+
+        $r11 = staticinvoke <java.lang.String: java.lang.String valueOf(java.lang.Object)>($r11);
+
+        specialinvoke $r10.<java.lang.StringBuilder: void <init>(java.lang.String)>($r11);
+
+        $r10 = virtualinvoke $r10.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" ");
+
+        $r10 = virtualinvoke $r10.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r1);
+
+        $r1 = virtualinvoke $r10.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        virtualinvoke $r7.<android.widget.TextView: void setText(java.lang.CharSequence)>($r1);
+
+        virtualinvoke $r2.<android.widget.LinearLayout: void addView(android.view.View)>($r7);
+
+        $r12 = new android.widget.SeekBar;
+
+     label2:
+        $r3 = virtualinvoke r0.<com.wiyun.ad.AdView: android.content.Context getContext()>();
+
+        specialinvoke $r12.<android.widget.SeekBar: void <init>(android.content.Context)>($r3);
+
+        virtualinvoke $r12.<android.widget.SeekBar: void setThumb(android.graphics.drawable.Drawable)>(null);
+
+        virtualinvoke $r12.<android.widget.SeekBar: void setId(int)>(65536);
+
+        virtualinvoke $r12.<android.widget.SeekBar: void setMax(int)>($i0);
+
+        virtualinvoke $r12.<android.widget.SeekBar: void setProgress(int)>(0);
+
+     label3:
+        $r9 = new android.widget.LinearLayout$LayoutParams;
+
+     label4:
+        specialinvoke $r9.<android.widget.LinearLayout$LayoutParams: void <init>(int,int)>(-1, -2);
+
+        virtualinvoke $r12.<android.widget.SeekBar: void setLayoutParams(android.view.ViewGroup$LayoutParams)>($r9);
+
+        virtualinvoke $r2.<android.widget.LinearLayout: void addView(android.view.View)>($r12);
+
+     label5:
+        $r13 = new android.widget.FrameLayout$LayoutParams;
+
+        $i0 = virtualinvoke r0.<com.wiyun.ad.AdView: int getHeight()>();
+
+        specialinvoke $r13.<android.widget.FrameLayout$LayoutParams: void <init>(int,int)>(-1, $i0);
+
+        virtualinvoke r0.<com.wiyun.ad.AdView: void addView(android.view.View,android.view.ViewGroup$LayoutParams)>($r2, $r13);
+
+        $r14 = r0.<com.wiyun.ad.AdView: com.wiyun.ad.a a>;
+
+        if $r14 == null goto label7;
+
+        $r14 = r0.<com.wiyun.ad.AdView: com.wiyun.ad.a a>;
+
+        virtualinvoke $r14.<com.wiyun.ad.a: void setVisibility(int)>(4);
+
+        return;
+
+     label6:
+        $r15 := @caughtexception;
+
+        goto label5;
+
+     label7:
+        return;
+
+        catch java.lang.Exception from label2 to label3 with label6;
+        catch java.lang.Exception from label4 to label5 with label6;
+    }
+
+    void b()
+    {
+        com.wiyun.ad.AdView r0;
+        android.widget.EditText $r1;
+        boolean $z0;
+        android.widget.LinearLayout $r2;
+        android.content.Context $r3;
+        android.graphics.drawable.GradientDrawable $r4;
+        android.graphics.drawable.GradientDrawable$Orientation $r5;
+        int[] $r6;
+        android.graphics.Typeface $r7;
+        com.wiyun.ad.i $r8;
+        java.lang.String $r9;
+        android.widget.LinearLayout$LayoutParams $r10;
+        com.wiyun.ad.AdView$2 $r11;
+        com.wiyun.ad.AdView$1 $r12;
+        android.widget.FrameLayout$LayoutParams $r13;
+        int $i0;
+        android.view.animation.TranslateAnimation $r14;
+        android.view.animation.DecelerateInterpolator $r15;
+        com.wiyun.ad.AdView$9 $r16;
+
+        r0 := @this: com.wiyun.ad.AdView;
+
+        $z0 = r0.<com.wiyun.ad.AdView: boolean t>;
+
+        if $z0 == 0 goto label1;
+
+        return;
+
+     label1:
+        r0.<com.wiyun.ad.AdView: boolean t> = 1;
+
+        $r2 = new android.widget.LinearLayout;
+
+        $r3 = virtualinvoke r0.<com.wiyun.ad.AdView: android.content.Context getContext()>();
+
+        specialinvoke $r2.<android.widget.LinearLayout: void <init>(android.content.Context)>($r3);
+
+        virtualinvoke $r2.<android.widget.LinearLayout: void setGravity(int)>(16);
+
+        virtualinvoke $r2.<android.widget.LinearLayout: void setOrientation(int)>(0);
+
+        virtualinvoke $r2.<android.widget.LinearLayout: void setPadding(int,int,int,int)>(5, 5, 0, 0);
+
+        $r4 = new android.graphics.drawable.GradientDrawable;
+
+        $r5 = <android.graphics.drawable.GradientDrawable$Orientation: android.graphics.drawable.GradientDrawable$Orientation TOP_BOTTOM>;
+
+        $r6 = newarray (int)[2];
+
+        $r6[0] = -3879462;
+
+        $r6[1] = -7167046;
+
+        specialinvoke $r4.<android.graphics.drawable.GradientDrawable: void <init>(android.graphics.drawable.GradientDrawable$Orientation,int[])>($r5, $r6);
+
+        virtualinvoke $r2.<android.widget.LinearLayout: void setBackgroundDrawable(android.graphics.drawable.Drawable)>($r4);
+
+        $r1 = new android.widget.EditText;
+
+        $r3 = virtualinvoke r0.<com.wiyun.ad.AdView: android.content.Context getContext()>();
+
+        specialinvoke $r1.<android.widget.EditText: void <init>(android.content.Context)>($r3);
+
+        $r3 = virtualinvoke r0.<com.wiyun.ad.AdView: android.content.Context getContext()>();
+
+        virtualinvoke $r1.<android.widget.EditText: void setTextAppearance(android.content.Context,int)>($r3, 16973895);
+
+        $r7 = <android.graphics.Typeface: android.graphics.Typeface DEFAULT_BOLD>;
+
+        virtualinvoke $r1.<android.widget.EditText: void setTypeface(android.graphics.Typeface)>($r7);
+
+        virtualinvoke $r1.<android.widget.EditText: void setSingleLine(boolean)>(1);
+
+        $r8 = r0.<com.wiyun.ad.AdView: com.wiyun.ad.i w>;
+
+        $r9 = $r8.<com.wiyun.ad.i: java.lang.String g>;
+
+        virtualinvoke $r1.<android.widget.EditText: void setHint(java.lang.CharSequence)>($r9);
+
+        $r10 = new android.widget.LinearLayout$LayoutParams;
+
+        specialinvoke $r10.<android.widget.LinearLayout$LayoutParams: void <init>(int,int)>(-1, -2);
+
+        $r10.<android.widget.LinearLayout$LayoutParams: float weight> = 1.0F;
+
+        virtualinvoke $r1.<android.widget.EditText: void setLayoutParams(android.view.ViewGroup$LayoutParams)>($r10);
+
+        virtualinvoke $r2.<android.widget.LinearLayout: void addView(android.view.View)>($r1);
+
+        $r11 = new com.wiyun.ad.AdView$2;
+
+        specialinvoke $r11.<com.wiyun.ad.AdView$2: void <init>(com.wiyun.ad.AdView,android.widget.LinearLayout)>(r0, $r2);
+
+        virtualinvoke $r1.<android.widget.EditText: void setOnKeyListener(android.view.View$OnKeyListener)>($r11);
+
+        $r12 = new com.wiyun.ad.AdView$1;
+
+        specialinvoke $r12.<com.wiyun.ad.AdView$1: void <init>(com.wiyun.ad.AdView,android.widget.LinearLayout)>(r0, $r2);
+
+        virtualinvoke $r1.<android.widget.EditText: void setOnFocusChangeListener(android.view.View$OnFocusChangeListener)>($r12);
+
+        $r13 = new android.widget.FrameLayout$LayoutParams;
+
+        $i0 = virtualinvoke r0.<com.wiyun.ad.AdView: int getHeight()>();
+
+        specialinvoke $r13.<android.widget.FrameLayout$LayoutParams: void <init>(int,int)>(-1, $i0);
+
+        virtualinvoke r0.<com.wiyun.ad.AdView: void addView(android.view.View,android.view.ViewGroup$LayoutParams)>($r2, $r13);
+
+        $r14 = new android.view.animation.TranslateAnimation;
+
+        specialinvoke $r14.<android.view.animation.TranslateAnimation: void <init>(int,float,int,float,int,float,int,float)>(0, 0.0F, 0, 0.0F, 1, -1.0F, 1, 0.0F);
+
+        virtualinvoke $r14.<android.view.animation.TranslateAnimation: void setDuration(long)>(200L);
+
+        virtualinvoke $r14.<android.view.animation.TranslateAnimation: void setFillAfter(boolean)>(1);
+
+        $r15 = new android.view.animation.DecelerateInterpolator;
+
+        specialinvoke $r15.<android.view.animation.DecelerateInterpolator: void <init>()>();
+
+        virtualinvoke $r14.<android.view.animation.TranslateAnimation: void setInterpolator(android.view.animation.Interpolator)>($r15);
+
+        $r16 = new com.wiyun.ad.AdView$9;
+
+        specialinvoke $r16.<com.wiyun.ad.AdView$9: void <init>(com.wiyun.ad.AdView,android.widget.EditText)>(r0, $r1);
+
+        virtualinvoke $r14.<android.view.animation.TranslateAnimation: void setAnimationListener(android.view.animation.Animation$AnimationListener)>($r16);
+
+        virtualinvoke $r1.<android.widget.EditText: void startAnimation(android.view.animation.Animation)>($r14);
+
+        r0.<com.wiyun.ad.AdView: android.view.View x> = $r1;
+
+        return;
+    }
+
+    java.lang.String c()
+    {
+        com.wiyun.ad.AdView r0;
+        java.lang.String r1;
+
+        r0 := @this: com.wiyun.ad.AdView;
+
+        r1 = r0.<com.wiyun.ad.AdView: java.lang.String n>;
+
+        return r1;
+    }
+
+    java.lang.String d()
+    {
+        com.wiyun.ad.AdView r0;
+        java.lang.String r1;
+
+        r0 := @this: com.wiyun.ad.AdView;
+
+        r1 = r0.<com.wiyun.ad.AdView: java.lang.String p>;
+
+        return r1;
+    }
+
+    public int getBackgroundColor()
+    {
+        com.wiyun.ad.AdView r0;
+        int i0;
+
+        r0 := @this: com.wiyun.ad.AdView;
+
+        i0 = r0.<com.wiyun.ad.AdView: int g>;
+
+        return i0;
+    }
+
+    public int getRefreshInterval()
+    {
+        com.wiyun.ad.AdView r0;
+        int i0;
+
+        r0 := @this: com.wiyun.ad.AdView;
+
+        i0 = r0.<com.wiyun.ad.AdView: int e>;
+
+        return i0;
+    }
+
+    public java.lang.String getResId()
+    {
+        com.wiyun.ad.AdView r0;
+        java.lang.String r1;
+
+        r0 := @this: com.wiyun.ad.AdView;
+
+        r1 = r0.<com.wiyun.ad.AdView: java.lang.String o>;
+
+        return r1;
+    }
+
+    public int getTestAdType()
+    {
+        com.wiyun.ad.AdView r0;
+        int i0;
+
+        r0 := @this: com.wiyun.ad.AdView;
+
+        i0 = r0.<com.wiyun.ad.AdView: int m>;
+
+        return i0;
+    }
+
+    public int getTextColor()
+    {
+        com.wiyun.ad.AdView r0;
+        int i0;
+
+        r0 := @this: com.wiyun.ad.AdView;
+
+        i0 = r0.<com.wiyun.ad.AdView: int h>;
+
+        return i0;
+    }
+
+    public int getTransitionType()
+    {
+        com.wiyun.ad.AdView r0;
+        int i0;
+
+        r0 := @this: com.wiyun.ad.AdView;
+
+        i0 = r0.<com.wiyun.ad.AdView: int k>;
+
+        return i0;
+    }
+
+    public int getVisibility()
+    {
+        com.wiyun.ad.AdView r0;
+        boolean $z0;
+        int $i0;
+
+        r0 := @this: com.wiyun.ad.AdView;
+
+        $z0 = virtualinvoke r0.<com.wiyun.ad.AdView: boolean hasAd()>();
+
+        if $z0 != 0 goto label3;
+
+        $z0 = r0.<com.wiyun.ad.AdView: boolean i>;
+
+        if $z0 == 0 goto label2;
+
+        $z0 = r0.<com.wiyun.ad.AdView: boolean b>;
+
+        if $z0 == 0 goto label1;
+
+        $z0 = r0.<com.wiyun.ad.AdView: boolean q>;
+
+        if $z0 == 0 goto label1;
+
+        $i0 = specialinvoke r0.<android.widget.FrameLayout: int getVisibility()>();
+
+        return $i0;
+
+     label1:
+        return 8;
+
+     label2:
+        $i0 = specialinvoke r0.<android.widget.FrameLayout: int getVisibility()>();
+
+        return $i0;
+
+     label3:
+        $i0 = specialinvoke r0.<android.widget.FrameLayout: int getVisibility()>();
+
+        return $i0;
+    }
+
+    public boolean hasAd()
+    {
+        com.wiyun.ad.AdView r0;
+        com.wiyun.ad.a $r1;
+
+        r0 := @this: com.wiyun.ad.AdView;
+
+        $r1 = r0.<com.wiyun.ad.AdView: com.wiyun.ad.a a>;
+
+        if $r1 == null goto label1;
+
+        return 1;
+
+     label1:
+        return 0;
+    }
+
+    public boolean isGoneIfFail()
+    {
+        com.wiyun.ad.AdView r0;
+        boolean z0;
+
+        r0 := @this: com.wiyun.ad.AdView;
+
+        z0 = r0.<com.wiyun.ad.AdView: boolean i>;
+
+        return z0;
+    }
+
+    public boolean isShowLoadingHint()
+    {
+        com.wiyun.ad.AdView r0;
+        boolean z0;
+
+        r0 := @this: com.wiyun.ad.AdView;
+
+        z0 = r0.<com.wiyun.ad.AdView: boolean q>;
+
+        return z0;
+    }
+
+    public boolean isTestMode()
+    {
+        com.wiyun.ad.AdView r0;
+        boolean z0;
+
+        r0 := @this: com.wiyun.ad.AdView;
+
+        z0 = r0.<com.wiyun.ad.AdView: boolean l>;
+
+        return z0;
+    }
+
+    protected void onAttachedToWindow()
+    {
+        com.wiyun.ad.AdView r0;
+        android.content.Context $r1;
+        boolean $z0;
+
+        r0 := @this: com.wiyun.ad.AdView;
+
+        specialinvoke r0.<android.widget.FrameLayout: void onAttachedToWindow()>();
+
+        $r1 = virtualinvoke r0.<com.wiyun.ad.AdView: android.content.Context getContext()>();
+
+        staticinvoke <com.wiyun.ad.l: void a(android.content.Context,com.wiyun.ad.l$a)>($r1, null);
+
+        specialinvoke r0.<com.wiyun.ad.AdView: void h()>();
+
+        $z0 = r0.<com.wiyun.ad.AdView: boolean j>;
+
+        if $z0 == 0 goto label1;
+
+        virtualinvoke r0.<com.wiyun.ad.AdView: void requestAd()>();
+
+     label1:
+        return;
+    }
+
+    public void onClick(android.view.View)
+    {
+        com.wiyun.ad.AdView r0;
+        android.view.View $r1;
+        com.wiyun.ad.AdView$AdListener $r2;
+
+        r0 := @this: com.wiyun.ad.AdView;
+
+        $r1 := @parameter0: android.view.View;
+
+        $r2 = r0.<com.wiyun.ad.AdView: com.wiyun.ad.AdView$AdListener r>;
+
+        if $r2 == null goto label1;
+
+        $r2 = r0.<com.wiyun.ad.AdView: com.wiyun.ad.AdView$AdListener r>;
+
+        interfaceinvoke $r2.<com.wiyun.ad.AdView$AdListener: void onExitButtonClicked()>();
+
+     label1:
+        return;
+    }
+
+    protected void onDetachedFromWindow()
+    {
+        com.wiyun.ad.AdView r0;
+
+        r0 := @this: com.wiyun.ad.AdView;
+
+        staticinvoke <com.wiyun.ad.l: void a()>();
+
+        <com.wiyun.ad.b: boolean a> = 0;
+
+        specialinvoke r0.<android.widget.FrameLayout: void onDetachedFromWindow()>();
+
+        return;
+    }
+
+    public void onWindowFocusChanged(boolean)
+    {
+        com.wiyun.ad.AdView r0;
+        boolean $z0;
+
+        r0 := @this: com.wiyun.ad.AdView;
+
+        $z0 := @parameter0: boolean;
+
+        specialinvoke r0.<com.wiyun.ad.AdView: void a(boolean)>($z0);
+
+        return;
+    }
+
+    public void requestAd()
+    {
+        com.wiyun.ad.AdView r0;
+        long $l0;
+        int $i1, $i2;
+        boolean $z0;
+        com.wiyun.ad.t $r1;
+        java.lang.String $r2;
+        android.content.Context $r3;
+        android.view.View $r4;
+        com.wiyun.ad.a $r5;
+        android.view.ViewParent $r6;
+        android.widget.FrameLayout$LayoutParams $r7;
+        com.wiyun.ad.AdView$7 $r8;
+
+        r0 := @this: com.wiyun.ad.AdView;
+
+        $l0 = staticinvoke <java.lang.System: long currentTimeMillis()>();
+
+        $l0 = $l0 / 1000L;
+
+        $i1 = (int) $l0;
+
+        $z0 = r0.<com.wiyun.ad.AdView: boolean b>;
+
+        if $z0 != 0 goto label6;
+
+        $z0 = r0.<com.wiyun.ad.AdView: boolean c>;
+
+        if $z0 != 0 goto label6;
+
+        $i2 = r0.<com.wiyun.ad.AdView: int d>;
+
+        $i2 = $i1 - $i2;
+
+        if $i2 < 30 goto label6;
+
+        r0.<com.wiyun.ad.AdView: com.wiyun.ad.i w> = null;
+
+        r0.<com.wiyun.ad.AdView: boolean b> = 1;
+
+        r0.<com.wiyun.ad.AdView: int d> = $i1;
+
+        $z0 = r0.<com.wiyun.ad.AdView: boolean q>;
+
+        if $z0 == 0 goto label5;
+
+        $r1 = r0.<com.wiyun.ad.AdView: com.wiyun.ad.t s>;
+
+        if $r1 != null goto label1;
+
+        $r1 = new com.wiyun.ad.t;
+
+        $r2 = staticinvoke <com.wiyun.ad.s: java.lang.String a()>();
+
+        $r3 = virtualinvoke r0.<com.wiyun.ad.AdView: android.content.Context getContext()>();
+
+        specialinvoke $r1.<com.wiyun.ad.t: void <init>(java.lang.String,int,android.content.Context)>($r2, 1, $r3);
+
+        r0.<com.wiyun.ad.AdView: com.wiyun.ad.t s> = $r1;
+
+        $r1 = r0.<com.wiyun.ad.AdView: com.wiyun.ad.t s>;
+
+        virtualinvoke $r1.<com.wiyun.ad.t: void a(int)>(-1);
+
+        $r1 = r0.<com.wiyun.ad.AdView: com.wiyun.ad.t s>;
+
+        virtualinvoke $r1.<com.wiyun.ad.t: void a(float)>(16.0F);
+
+     label1:
+        $r4 = r0.<com.wiyun.ad.AdView: android.view.View x>;
+
+        if $r4 == null goto label2;
+
+        $r4 = r0.<com.wiyun.ad.AdView: android.view.View x>;
+
+        virtualinvoke r0.<com.wiyun.ad.AdView: void removeView(android.view.View)>($r4);
+
+        r0.<com.wiyun.ad.AdView: android.view.View x> = null;
+
+     label2:
+        $r5 = r0.<com.wiyun.ad.AdView: com.wiyun.ad.a a>;
+
+        if $r5 == null goto label3;
+
+        $r5 = r0.<com.wiyun.ad.AdView: com.wiyun.ad.a a>;
+
+        virtualinvoke $r5.<com.wiyun.ad.a: void setVisibility(int)>(4);
+
+     label3:
+        $r1 = r0.<com.wiyun.ad.AdView: com.wiyun.ad.t s>;
+
+        $r6 = virtualinvoke $r1.<com.wiyun.ad.t: android.view.ViewParent getParent()>();
+
+        if $r6 != null goto label4;
+
+        $r1 = r0.<com.wiyun.ad.AdView: com.wiyun.ad.t s>;
+
+        $r7 = new android.widget.FrameLayout$LayoutParams;
+
+        specialinvoke $r7.<android.widget.FrameLayout$LayoutParams: void <init>(int,int)>(-1, -1);
+
+        virtualinvoke r0.<com.wiyun.ad.AdView: void addView(android.view.View,android.view.ViewGroup$LayoutParams)>($r1, $r7);
+
+     label4:
+        $r1 = r0.<com.wiyun.ad.AdView: com.wiyun.ad.t s>;
+
+        virtualinvoke $r1.<com.wiyun.ad.t: void a(boolean)>(1);
+
+     label5:
+        $r8 = new com.wiyun.ad.AdView$7;
+
+        specialinvoke $r8.<com.wiyun.ad.AdView$7: void <init>(com.wiyun.ad.AdView)>(r0);
+
+        virtualinvoke $r8.<com.wiyun.ad.AdView$7: void start()>();
+
+     label6:
+        return;
+    }
+
+    public void setBackgroundColor(int)
+    {
+        com.wiyun.ad.AdView r0;
+        int $i0;
+        com.wiyun.ad.a $r1;
+
+        r0 := @this: com.wiyun.ad.AdView;
+
+        $i0 := @parameter0: int;
+
+        specialinvoke r0.<android.widget.FrameLayout: void setBackgroundColor(int)>($i0);
+
+        r0.<com.wiyun.ad.AdView: int g> = $i0;
+
+        $r1 = r0.<com.wiyun.ad.AdView: com.wiyun.ad.a a>;
+
+        if $r1 == null goto label1;
+
+        $r1 = r0.<com.wiyun.ad.AdView: com.wiyun.ad.a a>;
+
+        virtualinvoke $r1.<com.wiyun.ad.a: void setBackgroundColor(int)>($i0);
+
+     label1:
+        virtualinvoke r0.<com.wiyun.ad.AdView: void invalidate()>();
+
+        return;
+    }
+
+    public void setGoneIfFail(boolean)
+    {
+        com.wiyun.ad.AdView r0;
+        boolean $z0;
+
+        r0 := @this: com.wiyun.ad.AdView;
+
+        $z0 := @parameter0: boolean;
+
+        r0.<com.wiyun.ad.AdView: boolean i> = $z0;
+
+        return;
+    }
+
+    public void setListener(com.wiyun.ad.AdView$AdListener)
+    {
+        com.wiyun.ad.AdView r0;
+        com.wiyun.ad.AdView$AdListener $r1;
+        java.lang.Throwable $r2;
+
+        r0 := @this: com.wiyun.ad.AdView;
+
+        $r1 := @parameter0: com.wiyun.ad.AdView$AdListener;
+
+        entermonitor r0;
+
+     label1:
+        r0.<com.wiyun.ad.AdView: com.wiyun.ad.AdView$AdListener r> = $r1;
+
+        exitmonitor r0;
+
+     label2:
+        return;
+
+     label3:
+        $r2 := @caughtexception;
+
+        exitmonitor r0;
+
+     label4:
+        throw $r2;
+
+        catch java.lang.Throwable from label1 to label2 with label3;
+        catch java.lang.Throwable from label3 to label4 with label3;
+    }
+
+    public void setRefreshInterval(int)
+    {
+        com.wiyun.ad.AdView r0;
+        int $i0;
+        java.lang.StringBuilder $r1;
+        java.lang.String $r2;
+
+        r0 := @this: com.wiyun.ad.AdView;
+
+        $i0 := @parameter0: int;
+
+        if $i0 > 0 goto label2;
+
+        $i0 = 0;
+
+     label1:
+        r0.<com.wiyun.ad.AdView: int e> = $i0;
+
+        if $i0 != 0 goto label4;
+
+        specialinvoke r0.<com.wiyun.ad.AdView: void a(boolean)>(0);
+
+        return;
+
+     label2:
+        if $i0 >= 30 goto label3;
+
+        $r1 = new java.lang.StringBuilder;
+
+        specialinvoke $r1.<java.lang.StringBuilder: void <init>(java.lang.String)>("AdView.setRefreshInterval(");
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>($i0);
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(") seconds must be >= ");
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>(30);
+
+        $r2 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <com.wiyun.ad.m: void a(java.lang.String)>($r2);
+
+     label3:
+        goto label1;
+
+     label4:
+        specialinvoke r0.<com.wiyun.ad.AdView: void a(boolean)>(1);
+
+        return;
+    }
+
+    public void setResId(java.lang.String)
+    {
+        com.wiyun.ad.AdView r0;
+        java.lang.String $r1;
+
+        r0 := @this: com.wiyun.ad.AdView;
+
+        $r1 := @parameter0: java.lang.String;
+
+        r0.<com.wiyun.ad.AdView: java.lang.String o> = $r1;
+
+        return;
+    }
+
+    public void setShowLoadingHint(boolean)
+    {
+        com.wiyun.ad.AdView r0;
+        boolean $z0;
+
+        r0 := @this: com.wiyun.ad.AdView;
+
+        $z0 := @parameter0: boolean;
+
+        r0.<com.wiyun.ad.AdView: boolean q> = $z0;
+
+        return;
+    }
+
+    public void setTestAdType(int)
+    {
+        com.wiyun.ad.AdView r0;
+        int $i0;
+
+        r0 := @this: com.wiyun.ad.AdView;
+
+        $i0 := @parameter0: int;
+
+        r0.<com.wiyun.ad.AdView: int m> = $i0;
+
+        return;
+    }
+
+    public void setTestMode(boolean)
+    {
+        com.wiyun.ad.AdView r0;
+        boolean $z0;
+
+        r0 := @this: com.wiyun.ad.AdView;
+
+        $z0 := @parameter0: boolean;
+
+        r0.<com.wiyun.ad.AdView: boolean l> = $z0;
+
+        return;
+    }
+
+    public void setTextColor(int)
+    {
+        com.wiyun.ad.AdView r0;
+        int $i0;
+        com.wiyun.ad.a $r1;
+
+        r0 := @this: com.wiyun.ad.AdView;
+
+        $i0 := @parameter0: int;
+
+        r0.<com.wiyun.ad.AdView: int h> = $i0;
+
+        $r1 = r0.<com.wiyun.ad.AdView: com.wiyun.ad.a a>;
+
+        if $r1 == null goto label1;
+
+        $r1 = r0.<com.wiyun.ad.AdView: com.wiyun.ad.a a>;
+
+        virtualinvoke $r1.<com.wiyun.ad.a: void a(int)>($i0);
+
+     label1:
+        virtualinvoke r0.<com.wiyun.ad.AdView: void invalidate()>();
+
+        return;
+    }
+
+    public void setTransitionType(int)
+    {
+        com.wiyun.ad.AdView r0;
+        int $i0;
+
+        r0 := @this: com.wiyun.ad.AdView;
+
+        $i0 := @parameter0: int;
+
+        r0.<com.wiyun.ad.AdView: int k> = $i0;
+
+        return;
+    }
+
+    public void setVisibility(int)
+    {
+        com.wiyun.ad.AdView r0;
+        int $i0, $i1, $i2;
+        android.view.View $r1;
+        java.lang.Throwable $r2;
+
+        r0 := @this: com.wiyun.ad.AdView;
+
+        $i0 := @parameter0: int;
+
+        $i1 = specialinvoke r0.<android.widget.FrameLayout: int getVisibility()>();
+
+        if $i1 == $i0 goto label7;
+
+        entermonitor r0;
+
+     label1:
+        $i1 = virtualinvoke r0.<com.wiyun.ad.AdView: int getChildCount()>();
+
+        $i2 = 0;
+
+     label2:
+        if $i2 < $i1 goto label4;
+
+        specialinvoke r0.<android.widget.FrameLayout: void setVisibility(int)>($i0);
+
+        exitmonitor r0;
+
+     label3:
+        return;
+
+     label4:
+        $r1 = virtualinvoke r0.<com.wiyun.ad.AdView: android.view.View getChildAt(int)>($i2);
+
+        virtualinvoke $r1.<android.view.View: void setVisibility(int)>($i0);
+
+        $i2 = $i2 + 1;
+
+        goto label2;
+
+     label5:
+        $r2 := @caughtexception;
+
+        exitmonitor r0;
+
+     label6:
+        throw $r2;
+
+     label7:
+        return;
+
+        catch java.lang.Throwable from label1 to label3 with label5;
+        catch java.lang.Throwable from label4 to label6 with label5;
+    }
+
+    public static void <clinit>()
+    {
+        <com.wiyun.ad.AdView: int TRANSITION_TOP_PUSH> = 5;
+
+        <com.wiyun.ad.AdView: int TRANSITION_RIGHT_PUSH> = 4;
+
+        <com.wiyun.ad.AdView: int TRANSITION_RANDOM> = 0;
+
+        <com.wiyun.ad.AdView: int TRANSITION_LEFT_PUSH> = 3;
+
+        <com.wiyun.ad.AdView: int TRANSITION_FLIP_Y> = 2;
+
+        <com.wiyun.ad.AdView: int TRANSITION_FLIP_X> = 1;
+
+        <com.wiyun.ad.AdView: int TRANSITION_FADE> = 7;
+
+        <com.wiyun.ad.AdView: int TRANSITION_BOTTOM_PUSH> = 6;
+
+        <com.wiyun.ad.AdView: int AD_TYPE_TEXT> = 1;
+
+        <com.wiyun.ad.AdView: int AD_TYPE_FULL_SCREEN> = 3;
+
+        <com.wiyun.ad.AdView: int AD_TYPE_BANNER> = 2;
+
+        return;
+    }
+}

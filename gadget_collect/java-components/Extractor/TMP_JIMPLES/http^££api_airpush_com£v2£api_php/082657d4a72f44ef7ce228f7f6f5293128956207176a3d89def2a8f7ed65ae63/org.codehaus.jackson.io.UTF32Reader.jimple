@@ -1,0 +1,564 @@
+public final class org.codehaus.jackson.io.UTF32Reader extends org.codehaus.jackson.io.BaseReader
+{
+    final boolean mBigEndian;
+    int mByteCount;
+    int mCharCount;
+    char mSurrogate;
+
+    public void <init>(org.codehaus.jackson.io.IOContext, java.io.InputStream, byte[], int, int, boolean)
+    {
+        org.codehaus.jackson.io.UTF32Reader r0;
+        org.codehaus.jackson.io.IOContext $r1;
+        java.io.InputStream $r2;
+        byte[] $r3;
+        int $i0, $i1;
+        boolean $z0;
+
+        r0 := @this: org.codehaus.jackson.io.UTF32Reader;
+
+        $r1 := @parameter0: org.codehaus.jackson.io.IOContext;
+
+        $r2 := @parameter1: java.io.InputStream;
+
+        $r3 := @parameter2: byte[];
+
+        $i0 := @parameter3: int;
+
+        $i1 := @parameter4: int;
+
+        $z0 := @parameter5: boolean;
+
+        specialinvoke r0.<org.codehaus.jackson.io.BaseReader: void <init>(org.codehaus.jackson.io.IOContext,java.io.InputStream,byte[],int,int)>($r1, $r2, $r3, $i0, $i1);
+
+        r0.<org.codehaus.jackson.io.UTF32Reader: char mSurrogate> = 0;
+
+        r0.<org.codehaus.jackson.io.UTF32Reader: int mCharCount> = 0;
+
+        r0.<org.codehaus.jackson.io.UTF32Reader: int mByteCount> = 0;
+
+        r0.<org.codehaus.jackson.io.UTF32Reader: boolean mBigEndian> = $z0;
+
+        return;
+    }
+
+    private boolean loadMore(int) throws java.io.IOException
+    {
+        org.codehaus.jackson.io.UTF32Reader r0;
+        int $i0, $i1, $i2;
+        byte[] $r1, $r2;
+        byte $b3;
+        java.io.InputStream $r3;
+
+        r0 := @this: org.codehaus.jackson.io.UTF32Reader;
+
+        $i0 := @parameter0: int;
+
+        $i1 = r0.<org.codehaus.jackson.io.UTF32Reader: int mByteCount>;
+
+        $i2 = r0.<org.codehaus.jackson.io.UTF32Reader: int _length>;
+
+        $i2 = $i2 - $i0;
+
+        $i1 = $i1 + $i2;
+
+        r0.<org.codehaus.jackson.io.UTF32Reader: int mByteCount> = $i1;
+
+        if $i0 <= 0 goto label07;
+
+        $i1 = r0.<org.codehaus.jackson.io.UTF32Reader: int _ptr>;
+
+        if $i1 <= 0 goto label03;
+
+        $i1 = 0;
+
+     label01:
+        if $i1 >= $i0 goto label02;
+
+        $r1 = r0.<org.codehaus.jackson.io.UTF32Reader: byte[] _buffer>;
+
+        $r2 = r0.<org.codehaus.jackson.io.UTF32Reader: byte[] _buffer>;
+
+        $i2 = r0.<org.codehaus.jackson.io.UTF32Reader: int _ptr>;
+
+        $i2 = $i2 + $i1;
+
+        $b3 = $r2[$i2];
+
+        $r1[$i1] = $b3;
+
+        $i1 = $i1 + 1;
+
+        goto label01;
+
+     label02:
+        r0.<org.codehaus.jackson.io.UTF32Reader: int _ptr> = 0;
+
+     label03:
+        r0.<org.codehaus.jackson.io.UTF32Reader: int _length> = $i0;
+
+     label04:
+        $i0 = r0.<org.codehaus.jackson.io.UTF32Reader: int _length>;
+
+        if $i0 >= 4 goto label10;
+
+        $r3 = r0.<org.codehaus.jackson.io.UTF32Reader: java.io.InputStream _in>;
+
+        $r1 = r0.<org.codehaus.jackson.io.UTF32Reader: byte[] _buffer>;
+
+        $i0 = r0.<org.codehaus.jackson.io.UTF32Reader: int _length>;
+
+        $r2 = r0.<org.codehaus.jackson.io.UTF32Reader: byte[] _buffer>;
+
+        $i2 = lengthof $r2;
+
+        $i1 = r0.<org.codehaus.jackson.io.UTF32Reader: int _length>;
+
+        $i1 = $i2 - $i1;
+
+        $i0 = virtualinvoke $r3.<java.io.InputStream: int read(byte[],int,int)>($r1, $i0, $i1);
+
+        if $i0 >= 1 goto label06;
+
+        if $i0 >= 0 goto label05;
+
+        virtualinvoke r0.<org.codehaus.jackson.io.UTF32Reader: void freeBuffers()>();
+
+        $i1 = r0.<org.codehaus.jackson.io.UTF32Reader: int _length>;
+
+        specialinvoke r0.<org.codehaus.jackson.io.UTF32Reader: void reportUnexpectedEOF(int,int)>($i1, 4);
+
+     label05:
+        virtualinvoke r0.<org.codehaus.jackson.io.UTF32Reader: void reportStrangeStream()>();
+
+     label06:
+        $i1 = r0.<org.codehaus.jackson.io.UTF32Reader: int _length>;
+
+        $i0 = $i1 + $i0;
+
+        r0.<org.codehaus.jackson.io.UTF32Reader: int _length> = $i0;
+
+        goto label04;
+
+     label07:
+        r0.<org.codehaus.jackson.io.UTF32Reader: int _ptr> = 0;
+
+        $r3 = r0.<org.codehaus.jackson.io.UTF32Reader: java.io.InputStream _in>;
+
+        $r1 = r0.<org.codehaus.jackson.io.UTF32Reader: byte[] _buffer>;
+
+        $i0 = virtualinvoke $r3.<java.io.InputStream: int read(byte[])>($r1);
+
+        if $i0 >= 1 goto label09;
+
+        r0.<org.codehaus.jackson.io.UTF32Reader: int _length> = 0;
+
+        if $i0 >= 0 goto label08;
+
+        virtualinvoke r0.<org.codehaus.jackson.io.UTF32Reader: void freeBuffers()>();
+
+        return 0;
+
+     label08:
+        virtualinvoke r0.<org.codehaus.jackson.io.UTF32Reader: void reportStrangeStream()>();
+
+     label09:
+        r0.<org.codehaus.jackson.io.UTF32Reader: int _length> = $i0;
+
+        goto label04;
+
+     label10:
+        return 1;
+    }
+
+    private void reportInvalid(int, int, java.lang.String) throws java.io.IOException
+    {
+        org.codehaus.jackson.io.UTF32Reader r0;
+        int $i0, $i1, i2, $i3;
+        java.lang.String $r1, $r4;
+        java.io.CharConversionException $r2;
+        java.lang.StringBuilder $r3;
+
+        r0 := @this: org.codehaus.jackson.io.UTF32Reader;
+
+        $i0 := @parameter0: int;
+
+        $i1 := @parameter1: int;
+
+        $r1 := @parameter2: java.lang.String;
+
+        i2 = r0.<org.codehaus.jackson.io.UTF32Reader: int mByteCount>;
+
+        $i3 = r0.<org.codehaus.jackson.io.UTF32Reader: int _ptr>;
+
+        i2 = i2 + $i3;
+
+        i2 = i2 - 1;
+
+        $i3 = r0.<org.codehaus.jackson.io.UTF32Reader: int mCharCount>;
+
+        $i1 = $i3 + $i1;
+
+        $r2 = new java.io.CharConversionException;
+
+        $r3 = new java.lang.StringBuilder;
+
+        specialinvoke $r3.<java.lang.StringBuilder: void <init>()>();
+
+        $r3 = virtualinvoke $r3.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Invalid UTF-32 character 0x");
+
+        $r4 = staticinvoke <java.lang.Integer: java.lang.String toHexString(int)>($i0);
+
+        $r3 = virtualinvoke $r3.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r4);
+
+        $r3 = virtualinvoke $r3.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r1);
+
+        $r3 = virtualinvoke $r3.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" at char #");
+
+        $r3 = virtualinvoke $r3.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>($i1);
+
+        $r3 = virtualinvoke $r3.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(", byte #");
+
+        $r3 = virtualinvoke $r3.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>(i2);
+
+        $r3 = virtualinvoke $r3.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(")");
+
+        $r1 = virtualinvoke $r3.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke $r2.<java.io.CharConversionException: void <init>(java.lang.String)>($r1);
+
+        throw $r2;
+    }
+
+    private void reportUnexpectedEOF(int, int) throws java.io.IOException
+    {
+        org.codehaus.jackson.io.UTF32Reader r0;
+        int $i0, $i1, i2, i3;
+        java.io.CharConversionException $r1;
+        java.lang.StringBuilder $r2;
+        java.lang.String $r3;
+
+        r0 := @this: org.codehaus.jackson.io.UTF32Reader;
+
+        $i0 := @parameter0: int;
+
+        $i1 := @parameter1: int;
+
+        i2 = r0.<org.codehaus.jackson.io.UTF32Reader: int mByteCount>;
+
+        i2 = i2 + $i0;
+
+        i3 = r0.<org.codehaus.jackson.io.UTF32Reader: int mCharCount>;
+
+        $r1 = new java.io.CharConversionException;
+
+        $r2 = new java.lang.StringBuilder;
+
+        specialinvoke $r2.<java.lang.StringBuilder: void <init>()>();
+
+        $r2 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Unexpected EOF in the middle of a 4-byte UTF-32 char: got ");
+
+        $r2 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>($i0);
+
+        $r2 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(", needed ");
+
+        $r2 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>($i1);
+
+        $r2 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(", at char #");
+
+        $r2 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>(i3);
+
+        $r2 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(", byte #");
+
+        $r2 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>(i2);
+
+        $r2 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(")");
+
+        $r3 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke $r1.<java.io.CharConversionException: void <init>(java.lang.String)>($r3);
+
+        throw $r1;
+    }
+
+    public volatile void close() throws java.io.IOException
+    {
+        org.codehaus.jackson.io.UTF32Reader r0;
+
+        r0 := @this: org.codehaus.jackson.io.UTF32Reader;
+
+        specialinvoke r0.<org.codehaus.jackson.io.BaseReader: void close()>();
+
+        return;
+    }
+
+    public volatile int read() throws java.io.IOException
+    {
+        org.codehaus.jackson.io.UTF32Reader r0;
+        int $i0;
+
+        r0 := @this: org.codehaus.jackson.io.UTF32Reader;
+
+        $i0 = specialinvoke r0.<org.codehaus.jackson.io.BaseReader: int read()>();
+
+        return $i0;
+    }
+
+    public int read(char[], int, int) throws java.io.IOException
+    {
+        org.codehaus.jackson.io.UTF32Reader r0;
+        char[] $r1;
+        int $i0, i1, i2, $i3, $i6, $i7;
+        byte[] $r2;
+        char $c4;
+        boolean $z0;
+        byte $b5;
+        java.lang.StringBuilder $r3;
+        java.lang.String $r4;
+
+        r0 := @this: org.codehaus.jackson.io.UTF32Reader;
+
+        $r1 := @parameter0: char[];
+
+        $i0 := @parameter1: int;
+
+        $i3 := @parameter2: int;
+
+        $r2 = r0.<org.codehaus.jackson.io.UTF32Reader: byte[] _buffer>;
+
+        if $r2 != null goto label01;
+
+        return -1;
+
+     label01:
+        if $i3 >= 1 goto label02;
+
+        return $i3;
+
+     label02:
+        if $i0 < 0 goto label03;
+
+        i1 = $i0 + $i3;
+
+        i2 = lengthof $r1;
+
+        if i1 <= i2 goto label04;
+
+     label03:
+        virtualinvoke r0.<org.codehaus.jackson.io.UTF32Reader: void reportBounds(char[],int,int)>($r1, $i0, $i3);
+
+     label04:
+        $i3 = $i3 + $i0;
+
+        $c4 = r0.<org.codehaus.jackson.io.UTF32Reader: char mSurrogate>;
+
+        if $c4 == 0 goto label09;
+
+        i1 = $i0 + 1;
+
+        $c4 = r0.<org.codehaus.jackson.io.UTF32Reader: char mSurrogate>;
+
+        $r1[$i0] = $c4;
+
+        r0.<org.codehaus.jackson.io.UTF32Reader: char mSurrogate> = 0;
+
+     label05:
+        if i1 >= $i3 goto label13;
+
+        i2 = r0.<org.codehaus.jackson.io.UTF32Reader: int _ptr>;
+
+        $z0 = r0.<org.codehaus.jackson.io.UTF32Reader: boolean mBigEndian>;
+
+        if $z0 == 0 goto label10;
+
+        $r2 = r0.<org.codehaus.jackson.io.UTF32Reader: byte[] _buffer>;
+
+        $b5 = $r2[i2];
+
+        $i6 = $b5 << 24;
+
+        $r2 = r0.<org.codehaus.jackson.io.UTF32Reader: byte[] _buffer>;
+
+        $i7 = i2 + 1;
+
+        $b5 = $r2[$i7];
+
+        $i7 = $b5 & 255;
+
+        $i7 = $i7 << 16;
+
+        $i6 = $i6 | $i7;
+
+        $r2 = r0.<org.codehaus.jackson.io.UTF32Reader: byte[] _buffer>;
+
+        $i7 = i2 + 2;
+
+        $b5 = $r2[$i7];
+
+        $i7 = $b5 & 255;
+
+        $i7 = $i7 << 8;
+
+        $i6 = $i6 | $i7;
+
+        $r2 = r0.<org.codehaus.jackson.io.UTF32Reader: byte[] _buffer>;
+
+        i2 = i2 + 3;
+
+        $b5 = $r2[i2];
+
+        i2 = $b5 & 255;
+
+        $i6 = $i6 | i2;
+
+     label06:
+        i2 = r0.<org.codehaus.jackson.io.UTF32Reader: int _ptr>;
+
+        i2 = i2 + 4;
+
+        r0.<org.codehaus.jackson.io.UTF32Reader: int _ptr> = i2;
+
+        if $i6 <= 65535 goto label11;
+
+        if $i6 <= 1114111 goto label07;
+
+        i2 = i1 - $i0;
+
+        $r3 = new java.lang.StringBuilder;
+
+        specialinvoke $r3.<java.lang.StringBuilder: void <init>()>();
+
+        $r3 = virtualinvoke $r3.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("(above ");
+
+        $r4 = staticinvoke <java.lang.Integer: java.lang.String toHexString(int)>(1114111);
+
+        $r3 = virtualinvoke $r3.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r4);
+
+        $r3 = virtualinvoke $r3.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(") ");
+
+        $r4 = virtualinvoke $r3.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke r0.<org.codehaus.jackson.io.UTF32Reader: void reportInvalid(int,int,java.lang.String)>($i6, i2, $r4);
+
+     label07:
+        $i6 = $i6 - 65536;
+
+        i2 = i1 + 1;
+
+        $i7 = $i6 >> 10;
+
+        $i7 = 55296 + $i7;
+
+        $c4 = (char) $i7;
+
+        $r1[i1] = $c4;
+
+        i1 = $i6 & 1023;
+
+        $i6 = 56320 | i1;
+
+        if i2 < $i3 goto label12;
+
+        $c4 = (char) $i6;
+
+        r0.<org.codehaus.jackson.io.UTF32Reader: char mSurrogate> = $c4;
+
+     label08:
+        $i0 = i2 - $i0;
+
+        $i3 = r0.<org.codehaus.jackson.io.UTF32Reader: int mCharCount>;
+
+        $i3 = $i3 + $i0;
+
+        r0.<org.codehaus.jackson.io.UTF32Reader: int mCharCount> = $i3;
+
+        return $i0;
+
+     label09:
+        i1 = r0.<org.codehaus.jackson.io.UTF32Reader: int _length>;
+
+        i2 = r0.<org.codehaus.jackson.io.UTF32Reader: int _ptr>;
+
+        i1 = i1 - i2;
+
+        if i1 >= 4 goto label14;
+
+        $z0 = specialinvoke r0.<org.codehaus.jackson.io.UTF32Reader: boolean loadMore(int)>(i1);
+
+        if $z0 != 0 goto label14;
+
+        return -1;
+
+     label10:
+        $r2 = r0.<org.codehaus.jackson.io.UTF32Reader: byte[] _buffer>;
+
+        $b5 = $r2[i2];
+
+        $i6 = $b5 & 255;
+
+        $r2 = r0.<org.codehaus.jackson.io.UTF32Reader: byte[] _buffer>;
+
+        $i7 = i2 + 1;
+
+        $b5 = $r2[$i7];
+
+        $i7 = $b5 & 255;
+
+        $i7 = $i7 << 8;
+
+        $i6 = $i6 | $i7;
+
+        $r2 = r0.<org.codehaus.jackson.io.UTF32Reader: byte[] _buffer>;
+
+        $i7 = i2 + 2;
+
+        $b5 = $r2[$i7];
+
+        $i7 = $b5 & 255;
+
+        $i7 = $i7 << 16;
+
+        $i6 = $i6 | $i7;
+
+        $r2 = r0.<org.codehaus.jackson.io.UTF32Reader: byte[] _buffer>;
+
+        i2 = i2 + 3;
+
+        $b5 = $r2[i2];
+
+        i2 = $b5 << 24;
+
+        $i6 = $i6 | i2;
+
+        goto label06;
+
+     label11:
+        i2 = i1;
+
+     label12:
+        i1 = i2 + 1;
+
+        $c4 = (char) $i6;
+
+        $r1[i2] = $c4;
+
+        i2 = r0.<org.codehaus.jackson.io.UTF32Reader: int _ptr>;
+
+        $i6 = r0.<org.codehaus.jackson.io.UTF32Reader: int _length>;
+
+        if i2 < $i6 goto label05;
+
+        i2 = i1;
+
+        goto label08;
+
+     label13:
+        i2 = i1;
+
+        goto label08;
+
+     label14:
+        i1 = $i0;
+
+        goto label05;
+    }
+}

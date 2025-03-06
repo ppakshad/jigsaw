@@ -1,0 +1,150 @@
+public final class org.codehaus.jackson.map.deser.StdDeserializer$StringDeserializer extends org.codehaus.jackson.map.deser.StdScalarDeserializer
+{
+
+    public void <init>()
+    {
+        org.codehaus.jackson.map.deser.StdDeserializer$StringDeserializer r0;
+
+        r0 := @this: org.codehaus.jackson.map.deser.StdDeserializer$StringDeserializer;
+
+        specialinvoke r0.<org.codehaus.jackson.map.deser.StdScalarDeserializer: void <init>(java.lang.Class)>(class "Ljava/lang/String;");
+
+        return;
+    }
+
+    public volatile java.lang.Object deserialize(org.codehaus.jackson.JsonParser, org.codehaus.jackson.map.DeserializationContext) throws java.io.IOException, org.codehaus.jackson.JsonProcessingException
+    {
+        org.codehaus.jackson.map.deser.StdDeserializer$StringDeserializer r0;
+        org.codehaus.jackson.JsonParser $r1;
+        org.codehaus.jackson.map.DeserializationContext $r2;
+        java.lang.String $r3;
+
+        r0 := @this: org.codehaus.jackson.map.deser.StdDeserializer$StringDeserializer;
+
+        $r1 := @parameter0: org.codehaus.jackson.JsonParser;
+
+        $r2 := @parameter1: org.codehaus.jackson.map.DeserializationContext;
+
+        $r3 = virtualinvoke r0.<org.codehaus.jackson.map.deser.StdDeserializer$StringDeserializer: java.lang.String deserialize(org.codehaus.jackson.JsonParser,org.codehaus.jackson.map.DeserializationContext)>($r1, $r2);
+
+        return $r3;
+    }
+
+    public java.lang.String deserialize(org.codehaus.jackson.JsonParser, org.codehaus.jackson.map.DeserializationContext) throws java.io.IOException, org.codehaus.jackson.JsonProcessingException
+    {
+        org.codehaus.jackson.map.deser.StdDeserializer$StringDeserializer r0;
+        org.codehaus.jackson.JsonParser $r1;
+        org.codehaus.jackson.map.DeserializationContext $r2;
+        org.codehaus.jackson.JsonToken $r3, $r4;
+        java.lang.String $r5;
+        java.lang.Object $r6;
+        boolean $z0;
+        org.codehaus.jackson.Base64Variant $r7;
+        byte[] r8;
+        java.lang.Class $r9;
+        org.codehaus.jackson.map.JsonMappingException $r10;
+
+        r0 := @this: org.codehaus.jackson.map.deser.StdDeserializer$StringDeserializer;
+
+        $r1 := @parameter0: org.codehaus.jackson.JsonParser;
+
+        $r2 := @parameter1: org.codehaus.jackson.map.DeserializationContext;
+
+        $r3 = virtualinvoke $r1.<org.codehaus.jackson.JsonParser: org.codehaus.jackson.JsonToken getCurrentToken()>();
+
+        $r4 = <org.codehaus.jackson.JsonToken: org.codehaus.jackson.JsonToken VALUE_STRING>;
+
+        if $r3 != $r4 goto label1;
+
+        $r5 = virtualinvoke $r1.<org.codehaus.jackson.JsonParser: java.lang.String getText()>();
+
+        return $r5;
+
+     label1:
+        $r4 = <org.codehaus.jackson.JsonToken: org.codehaus.jackson.JsonToken VALUE_EMBEDDED_OBJECT>;
+
+        if $r3 != $r4 goto label4;
+
+        $r6 = virtualinvoke $r1.<org.codehaus.jackson.JsonParser: java.lang.Object getEmbeddedObject()>();
+
+        if $r6 != null goto label2;
+
+        return null;
+
+     label2:
+        $z0 = $r6 instanceof byte[];
+
+        if $z0 == 0 goto label3;
+
+        $r7 = staticinvoke <org.codehaus.jackson.Base64Variants: org.codehaus.jackson.Base64Variant getDefaultVariant()>();
+
+        r8 = (byte[]) $r6;
+
+        $r5 = virtualinvoke $r7.<org.codehaus.jackson.Base64Variant: java.lang.String encode(byte[],boolean)>(r8, 0);
+
+        return $r5;
+
+     label3:
+        $r5 = virtualinvoke $r6.<java.lang.Object: java.lang.String toString()>();
+
+        return $r5;
+
+     label4:
+        $z0 = virtualinvoke $r3.<org.codehaus.jackson.JsonToken: boolean isScalarValue()>();
+
+        if $z0 == 0 goto label5;
+
+        $r5 = virtualinvoke $r1.<org.codehaus.jackson.JsonParser: java.lang.String getText()>();
+
+        return $r5;
+
+     label5:
+        $r9 = r0.<org.codehaus.jackson.map.deser.StdDeserializer$StringDeserializer: java.lang.Class _valueClass>;
+
+        $r10 = virtualinvoke $r2.<org.codehaus.jackson.map.DeserializationContext: org.codehaus.jackson.map.JsonMappingException mappingException(java.lang.Class)>($r9);
+
+        throw $r10;
+    }
+
+    public volatile java.lang.Object deserializeWithType(org.codehaus.jackson.JsonParser, org.codehaus.jackson.map.DeserializationContext, org.codehaus.jackson.map.TypeDeserializer) throws java.io.IOException, org.codehaus.jackson.JsonProcessingException
+    {
+        org.codehaus.jackson.map.deser.StdDeserializer$StringDeserializer r0;
+        org.codehaus.jackson.JsonParser $r1;
+        org.codehaus.jackson.map.DeserializationContext $r2;
+        org.codehaus.jackson.map.TypeDeserializer $r3;
+        java.lang.String $r4;
+
+        r0 := @this: org.codehaus.jackson.map.deser.StdDeserializer$StringDeserializer;
+
+        $r1 := @parameter0: org.codehaus.jackson.JsonParser;
+
+        $r2 := @parameter1: org.codehaus.jackson.map.DeserializationContext;
+
+        $r3 := @parameter2: org.codehaus.jackson.map.TypeDeserializer;
+
+        $r4 = virtualinvoke r0.<org.codehaus.jackson.map.deser.StdDeserializer$StringDeserializer: java.lang.String deserializeWithType(org.codehaus.jackson.JsonParser,org.codehaus.jackson.map.DeserializationContext,org.codehaus.jackson.map.TypeDeserializer)>($r1, $r2, $r3);
+
+        return $r4;
+    }
+
+    public java.lang.String deserializeWithType(org.codehaus.jackson.JsonParser, org.codehaus.jackson.map.DeserializationContext, org.codehaus.jackson.map.TypeDeserializer) throws java.io.IOException, org.codehaus.jackson.JsonProcessingException
+    {
+        org.codehaus.jackson.map.deser.StdDeserializer$StringDeserializer r0;
+        org.codehaus.jackson.JsonParser $r1;
+        org.codehaus.jackson.map.DeserializationContext $r2;
+        org.codehaus.jackson.map.TypeDeserializer $r3;
+        java.lang.String $r4;
+
+        r0 := @this: org.codehaus.jackson.map.deser.StdDeserializer$StringDeserializer;
+
+        $r1 := @parameter0: org.codehaus.jackson.JsonParser;
+
+        $r2 := @parameter1: org.codehaus.jackson.map.DeserializationContext;
+
+        $r3 := @parameter2: org.codehaus.jackson.map.TypeDeserializer;
+
+        $r4 = virtualinvoke r0.<org.codehaus.jackson.map.deser.StdDeserializer$StringDeserializer: java.lang.String deserialize(org.codehaus.jackson.JsonParser,org.codehaus.jackson.map.DeserializationContext)>($r1, $r2);
+
+        return $r4;
+    }
+}

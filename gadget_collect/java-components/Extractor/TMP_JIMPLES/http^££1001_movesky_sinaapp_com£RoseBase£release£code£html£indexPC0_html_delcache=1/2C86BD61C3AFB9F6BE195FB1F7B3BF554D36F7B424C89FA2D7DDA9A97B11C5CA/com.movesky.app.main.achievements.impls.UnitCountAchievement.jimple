@@ -1,0 +1,66 @@
+public class com.movesky.app.main.achievements.impls.UnitCountAchievement extends com.movesky.app.main.achievements.BBTHAchievement
+{
+    private int m_unit_threshold;
+
+    public void <init>(com.movesky.app.engine.achievements.AchievementInfo, int)
+    {
+        com.movesky.app.main.achievements.impls.UnitCountAchievement r0;
+        com.movesky.app.engine.achievements.AchievementInfo $r1;
+        int $i0;
+
+        r0 := @this: com.movesky.app.main.achievements.impls.UnitCountAchievement;
+
+        $r1 := @parameter0: com.movesky.app.engine.achievements.AchievementInfo;
+
+        $i0 := @parameter1: int;
+
+        specialinvoke r0.<com.movesky.app.main.achievements.BBTHAchievement: void <init>(com.movesky.app.engine.achievements.AchievementInfo)>($r1);
+
+        r0.<com.movesky.app.main.achievements.impls.UnitCountAchievement: int m_unit_threshold> = 25;
+
+        return;
+    }
+
+    public void unitCreated(com.movesky.app.main.achievements.events.UnitCreatedEvent)
+    {
+        com.movesky.app.main.achievements.impls.UnitCountAchievement r0;
+        com.movesky.app.main.achievements.events.UnitCreatedEvent $r1;
+        com.movesky.app.main.Player $r2;
+        java.util.List $r3;
+        int $i0, $i1;
+        com.movesky.app.engine.achievements.Achievements $r4;
+        com.movesky.app.engine.achievements.AchievementInfo $r5;
+
+        r0 := @this: com.movesky.app.main.achievements.impls.UnitCountAchievement;
+
+        $r1 := @parameter0: com.movesky.app.main.achievements.events.UnitCreatedEvent;
+
+        $r2 = virtualinvoke $r1.<com.movesky.app.main.achievements.events.UnitCreatedEvent: com.movesky.app.main.Player getLocalPlayer()>();
+
+        $r3 = virtualinvoke $r2.<com.movesky.app.main.Player: java.util.List getUnits()>();
+
+        $i0 = interfaceinvoke $r3.<java.util.List: int size()>();
+
+        $i1 = r0.<com.movesky.app.main.achievements.impls.UnitCountAchievement: int m_unit_threshold>;
+
+        if $i0 < $i1 goto label1;
+
+        $r4 = <com.movesky.app.engine.achievements.Achievements: com.movesky.app.engine.achievements.Achievements INSTANCE>;
+
+        $r5 = r0.<com.movesky.app.main.achievements.impls.UnitCountAchievement: com.movesky.app.engine.achievements.AchievementInfo achievementInfo>;
+
+        virtualinvoke $r4.<com.movesky.app.engine.achievements.Achievements: boolean increment(com.movesky.app.engine.achievements.AchievementInfo)>($r5);
+
+     label1:
+        return;
+    }
+
+    public boolean usesUnitCreated()
+    {
+        com.movesky.app.main.achievements.impls.UnitCountAchievement r0;
+
+        r0 := @this: com.movesky.app.main.achievements.impls.UnitCountAchievement;
+
+        return 1;
+    }
+}

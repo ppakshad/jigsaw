@@ -1,0 +1,567 @@
+class com.movesky.app.main.InteractiveTutorial$DrawWallStep extends com.movesky.app.main.InteractiveTutorial$Step
+{
+    private boolean dontTapOnBeatTrack;
+    private boolean isDragging;
+    private boolean isTooShort;
+    java.lang.String tapfurtherrighttocreateawall_1;
+    java.lang.String tapfurtherrighttocreateawall_2;
+    final com.movesky.app.main.InteractiveTutorial this$0;
+    java.lang.String whenabeathasatailyoucandrag_1;
+    java.lang.String whenabeathasatailyoucandrag_2;
+    java.lang.String whenabeathasatailyoucandrag_3;
+    java.lang.String youneedtodragyourfingeraway_1;
+    java.lang.String youneedtodragyourfingeraway_2;
+    java.lang.String youneedtodragyourfingeraway_3;
+
+    public void <init>(com.movesky.app.main.InteractiveTutorial)
+    {
+        com.movesky.app.main.InteractiveTutorial$DrawWallStep r0;
+        com.movesky.app.main.InteractiveTutorial $r1;
+        com.movesky.app.engine.core.GameActivity $r2;
+        java.lang.String $r3;
+        java.util.List $r4;
+        int $i0, $i1;
+        float $f0;
+        com.movesky.app.engine.sound.Beat $r5;
+
+        r0 := @this: com.movesky.app.main.InteractiveTutorial$DrawWallStep;
+
+        $r1 := @parameter0: com.movesky.app.main.InteractiveTutorial;
+
+        r0.<com.movesky.app.main.InteractiveTutorial$DrawWallStep: com.movesky.app.main.InteractiveTutorial this$0> = $r1;
+
+        specialinvoke r0.<com.movesky.app.main.InteractiveTutorial$Step: void <init>(com.movesky.app.main.InteractiveTutorial,com.movesky.app.main.InteractiveTutorial$1)>($r1, null);
+
+        $r2 = <com.movesky.app.engine.core.GameActivity: com.movesky.app.engine.core.GameActivity instance>;
+
+        $r3 = virtualinvoke $r2.<com.movesky.app.engine.core.GameActivity: java.lang.String getString(java.lang.String)>("R.string.youneedtodragyourfingeraway_1");
+
+        r0.<com.movesky.app.main.InteractiveTutorial$DrawWallStep: java.lang.String youneedtodragyourfingeraway_1> = $r3;
+
+        $r2 = <com.movesky.app.engine.core.GameActivity: com.movesky.app.engine.core.GameActivity instance>;
+
+        $r3 = virtualinvoke $r2.<com.movesky.app.engine.core.GameActivity: java.lang.String getString(java.lang.String)>("R.string.youneedtodragyourfingeraway_2");
+
+        r0.<com.movesky.app.main.InteractiveTutorial$DrawWallStep: java.lang.String youneedtodragyourfingeraway_2> = $r3;
+
+        $r2 = <com.movesky.app.engine.core.GameActivity: com.movesky.app.engine.core.GameActivity instance>;
+
+        $r3 = virtualinvoke $r2.<com.movesky.app.engine.core.GameActivity: java.lang.String getString(java.lang.String)>("R.string.youneedtodragyourfingeraway_3");
+
+        r0.<com.movesky.app.main.InteractiveTutorial$DrawWallStep: java.lang.String youneedtodragyourfingeraway_3> = $r3;
+
+        $r2 = <com.movesky.app.engine.core.GameActivity: com.movesky.app.engine.core.GameActivity instance>;
+
+        $r3 = virtualinvoke $r2.<com.movesky.app.engine.core.GameActivity: java.lang.String getString(java.lang.String)>("R.string.tapfurtherrighttocreateawall_1");
+
+        r0.<com.movesky.app.main.InteractiveTutorial$DrawWallStep: java.lang.String tapfurtherrighttocreateawall_1> = $r3;
+
+        $r2 = <com.movesky.app.engine.core.GameActivity: com.movesky.app.engine.core.GameActivity instance>;
+
+        $r3 = virtualinvoke $r2.<com.movesky.app.engine.core.GameActivity: java.lang.String getString(java.lang.String)>("R.string.tapfurtherrighttocreateawall_2");
+
+        r0.<com.movesky.app.main.InteractiveTutorial$DrawWallStep: java.lang.String tapfurtherrighttocreateawall_2> = $r3;
+
+        $r2 = <com.movesky.app.engine.core.GameActivity: com.movesky.app.engine.core.GameActivity instance>;
+
+        $r3 = virtualinvoke $r2.<com.movesky.app.engine.core.GameActivity: java.lang.String getString(java.lang.String)>("R.string.whenabeathasatailyoucandrag_1");
+
+        r0.<com.movesky.app.main.InteractiveTutorial$DrawWallStep: java.lang.String whenabeathasatailyoucandrag_1> = $r3;
+
+        $r2 = <com.movesky.app.engine.core.GameActivity: com.movesky.app.engine.core.GameActivity instance>;
+
+        $r3 = virtualinvoke $r2.<com.movesky.app.engine.core.GameActivity: java.lang.String getString(java.lang.String)>("R.string.whenabeathasatailyoucandrag_2");
+
+        r0.<com.movesky.app.main.InteractiveTutorial$DrawWallStep: java.lang.String whenabeathasatailyoucandrag_2> = $r3;
+
+        $r2 = <com.movesky.app.engine.core.GameActivity: com.movesky.app.engine.core.GameActivity instance>;
+
+        $r3 = virtualinvoke $r2.<com.movesky.app.engine.core.GameActivity: java.lang.String getString(java.lang.String)>("R.string.whenabeathasatailyoucandrag_3");
+
+        r0.<com.movesky.app.main.InteractiveTutorial$DrawWallStep: java.lang.String whenabeathasatailyoucandrag_3> = $r3;
+
+        $r4 = staticinvoke <com.movesky.app.main.InteractiveTutorial: java.util.List access$100(com.movesky.app.main.InteractiveTutorial)>($r1);
+
+        interfaceinvoke $r4.<java.util.List: void clear()>();
+
+        $i0 = 0;
+
+     label1:
+        if $i0 >= 4 goto label2;
+
+        $r4 = staticinvoke <com.movesky.app.main.InteractiveTutorial: java.util.List access$100(com.movesky.app.main.InteractiveTutorial)>($r1);
+
+        $i1 = $i0 * 2000;
+
+        $f0 = (float) $i1;
+
+        $r5 = staticinvoke <com.movesky.app.engine.sound.Beat: com.movesky.app.engine.sound.Beat hold(float,float)>(1000.0F, $f0);
+
+        interfaceinvoke $r4.<java.util.List: boolean add(java.lang.Object)>($r5);
+
+        $i0 = $i0 + 1;
+
+        goto label1;
+
+     label2:
+        staticinvoke <com.movesky.app.main.InteractiveTutorial: float access$302(com.movesky.app.main.InteractiveTutorial,float)>($r1, -6.0F);
+
+        return;
+    }
+
+    public void onDraw(android.graphics.Canvas)
+    {
+        com.movesky.app.main.InteractiveTutorial$DrawWallStep r0;
+        android.graphics.Canvas $r1;
+        android.graphics.Paint $r2;
+        android.graphics.Paint$Align $r3;
+        boolean $z0;
+        java.lang.String $r4;
+        float $f0, $f1, $f2, $f3;
+
+        r0 := @this: com.movesky.app.main.InteractiveTutorial$DrawWallStep;
+
+        $r1 := @parameter0: android.graphics.Canvas;
+
+        $r2 = staticinvoke <com.movesky.app.main.InteractiveTutorial: android.graphics.Paint access$200()>();
+
+        virtualinvoke $r2.<android.graphics.Paint: void setColor(int)>(-1);
+
+        $r2 = staticinvoke <com.movesky.app.main.InteractiveTutorial: android.graphics.Paint access$200()>();
+
+        virtualinvoke $r2.<android.graphics.Paint: void setTextSize(float)>(15.0F);
+
+        $r2 = staticinvoke <com.movesky.app.main.InteractiveTutorial: android.graphics.Paint access$200()>();
+
+        $r3 = <android.graphics.Paint$Align: android.graphics.Paint$Align CENTER>;
+
+        virtualinvoke $r2.<android.graphics.Paint: void setTextAlign(android.graphics.Paint$Align)>($r3);
+
+        $z0 = r0.<com.movesky.app.main.InteractiveTutorial$DrawWallStep: boolean isTooShort>;
+
+        if $z0 == 0 goto label1;
+
+        $r4 = r0.<com.movesky.app.main.InteractiveTutorial$DrawWallStep: java.lang.String youneedtodragyourfingeraway_1>;
+
+        $f0 = 424.0F - 17.0F;
+
+        $r2 = staticinvoke <com.movesky.app.main.InteractiveTutorial: android.graphics.Paint access$200()>();
+
+        virtualinvoke $r1.<android.graphics.Canvas: void drawText(java.lang.String,float,float,android.graphics.Paint)>($r4, 185.0F, $f0, $r2);
+
+        $r4 = r0.<com.movesky.app.main.InteractiveTutorial$DrawWallStep: java.lang.String youneedtodragyourfingeraway_2>;
+
+        $r2 = staticinvoke <com.movesky.app.main.InteractiveTutorial: android.graphics.Paint access$200()>();
+
+        virtualinvoke $r1.<android.graphics.Canvas: void drawText(java.lang.String,float,float,android.graphics.Paint)>($r4, 185.0F, 424.0F, $r2);
+
+        $r4 = r0.<com.movesky.app.main.InteractiveTutorial$DrawWallStep: java.lang.String youneedtodragyourfingeraway_3>;
+
+        $f0 = 424.0F + 17.0F;
+
+        $r2 = staticinvoke <com.movesky.app.main.InteractiveTutorial: android.graphics.Paint access$200()>();
+
+        virtualinvoke $r1.<android.graphics.Canvas: void drawText(java.lang.String,float,float,android.graphics.Paint)>($r4, 185.0F, $f0, $r2);
+
+        return;
+
+     label1:
+        $z0 = r0.<com.movesky.app.main.InteractiveTutorial$DrawWallStep: boolean dontTapOnBeatTrack>;
+
+        if $z0 == 0 goto label2;
+
+        $r4 = r0.<com.movesky.app.main.InteractiveTutorial$DrawWallStep: java.lang.String tapfurtherrighttocreateawall_1>;
+
+        $f0 = 424.0F - 8.0F;
+
+        $r2 = staticinvoke <com.movesky.app.main.InteractiveTutorial: android.graphics.Paint access$200()>();
+
+        virtualinvoke $r1.<android.graphics.Canvas: void drawText(java.lang.String,float,float,android.graphics.Paint)>($r4, 185.0F, $f0, $r2);
+
+        $r4 = r0.<com.movesky.app.main.InteractiveTutorial$DrawWallStep: java.lang.String tapfurtherrighttocreateawall_2>;
+
+        $f0 = 424.0F + 8.0F;
+
+        $r2 = staticinvoke <com.movesky.app.main.InteractiveTutorial: android.graphics.Paint access$200()>();
+
+        virtualinvoke $r1.<android.graphics.Canvas: void drawText(java.lang.String,float,float,android.graphics.Paint)>($r4, 185.0F, $f0, $r2);
+
+        $f0 = 185.0F - 25.0F;
+
+        $f1 = 424.0F + 25.0F;
+
+        $f2 = 185.0F + 25.0F;
+
+        $f3 = 424.0F + 25.0F;
+
+        staticinvoke <com.movesky.app.main.InteractiveTutorial: void drawArrow(android.graphics.Canvas,float,float,float,float,float)>($r1, $f0, $f1, $f2, $f3, 5.0F);
+
+        return;
+
+     label2:
+        $r4 = r0.<com.movesky.app.main.InteractiveTutorial$DrawWallStep: java.lang.String whenabeathasatailyoucandrag_1>;
+
+        $f0 = 424.0F - 17.0F;
+
+        $r2 = staticinvoke <com.movesky.app.main.InteractiveTutorial: android.graphics.Paint access$200()>();
+
+        virtualinvoke $r1.<android.graphics.Canvas: void drawText(java.lang.String,float,float,android.graphics.Paint)>($r4, 185.0F, $f0, $r2);
+
+        $r4 = r0.<com.movesky.app.main.InteractiveTutorial$DrawWallStep: java.lang.String whenabeathasatailyoucandrag_2>;
+
+        $r2 = staticinvoke <com.movesky.app.main.InteractiveTutorial: android.graphics.Paint access$200()>();
+
+        virtualinvoke $r1.<android.graphics.Canvas: void drawText(java.lang.String,float,float,android.graphics.Paint)>($r4, 185.0F, 424.0F, $r2);
+
+        $r4 = r0.<com.movesky.app.main.InteractiveTutorial$DrawWallStep: java.lang.String whenabeathasatailyoucandrag_3>;
+
+        $f0 = 424.0F + 17.0F;
+
+        $r2 = staticinvoke <com.movesky.app.main.InteractiveTutorial: android.graphics.Paint access$200()>();
+
+        virtualinvoke $r1.<android.graphics.Canvas: void drawText(java.lang.String,float,float,android.graphics.Paint)>($r4, 185.0F, $f0, $r2);
+
+        return;
+    }
+
+    public void onTouchDown(float, float)
+    {
+        com.movesky.app.main.InteractiveTutorial$DrawWallStep r0;
+        float $f0, $f1, $f2;
+        byte $b0;
+        int $i1, $i2;
+        com.movesky.app.main.InteractiveTutorial $r1, $r5, $r6;
+        java.util.List $r2;
+        java.lang.Object $r3;
+        com.movesky.app.engine.sound.Beat $r4;
+        boolean $z0;
+
+        r0 := @this: com.movesky.app.main.InteractiveTutorial$DrawWallStep;
+
+        $f0 := @parameter0: float;
+
+        $f1 := @parameter1: float;
+
+        $b0 = $f0 cmpg 50.0F;
+
+        if $b0 >= 0 goto label1;
+
+        r0.<com.movesky.app.main.InteractiveTutorial$DrawWallStep: boolean dontTapOnBeatTrack> = 1;
+
+        return;
+
+     label1:
+        r0.<com.movesky.app.main.InteractiveTutorial$DrawWallStep: boolean dontTapOnBeatTrack> = 0;
+
+        $i1 = 0;
+
+     label2:
+        $r1 = r0.<com.movesky.app.main.InteractiveTutorial$DrawWallStep: com.movesky.app.main.InteractiveTutorial this$0>;
+
+        $r2 = staticinvoke <com.movesky.app.main.InteractiveTutorial: java.util.List access$100(com.movesky.app.main.InteractiveTutorial)>($r1);
+
+        $i2 = interfaceinvoke $r2.<java.util.List: int size()>();
+
+        if $i1 >= $i2 goto label4;
+
+        $r1 = r0.<com.movesky.app.main.InteractiveTutorial$DrawWallStep: com.movesky.app.main.InteractiveTutorial this$0>;
+
+        $r2 = staticinvoke <com.movesky.app.main.InteractiveTutorial: java.util.List access$100(com.movesky.app.main.InteractiveTutorial)>($r1);
+
+        $r3 = interfaceinvoke $r2.<java.util.List: java.lang.Object get(int)>($i1);
+
+        $r4 = (com.movesky.app.engine.sound.Beat) $r3;
+
+        $r1 = r0.<com.movesky.app.main.InteractiveTutorial$DrawWallStep: com.movesky.app.main.InteractiveTutorial this$0>;
+
+        $f2 = staticinvoke <com.movesky.app.main.InteractiveTutorial: float access$300(com.movesky.app.main.InteractiveTutorial)>($r1);
+
+        $f2 = $f2 * 1000.0F;
+
+        $i2 = (int) $f2;
+
+        $z0 = virtualinvoke $r4.<com.movesky.app.engine.sound.Beat: boolean onTouchDown(int)>($i2);
+
+        if $z0 == 0 goto label3;
+
+        r0.<com.movesky.app.main.InteractiveTutorial$DrawWallStep: boolean isDragging> = 1;
+
+        $r1 = r0.<com.movesky.app.main.InteractiveTutorial$DrawWallStep: com.movesky.app.main.InteractiveTutorial this$0>;
+
+        $r5 = r0.<com.movesky.app.main.InteractiveTutorial$DrawWallStep: com.movesky.app.main.InteractiveTutorial this$0>;
+
+        $r6 = r0.<com.movesky.app.main.InteractiveTutorial$DrawWallStep: com.movesky.app.main.InteractiveTutorial this$0>;
+
+        $f2 = staticinvoke <com.movesky.app.main.InteractiveTutorial: float access$1100(com.movesky.app.main.InteractiveTutorial,float)>($r6, $f0);
+
+        $f2 = staticinvoke <com.movesky.app.main.InteractiveTutorial: float access$1002(com.movesky.app.main.InteractiveTutorial,float)>($r5, $f2);
+
+        staticinvoke <com.movesky.app.main.InteractiveTutorial: float access$902(com.movesky.app.main.InteractiveTutorial,float)>($r1, $f2);
+
+        $r1 = r0.<com.movesky.app.main.InteractiveTutorial$DrawWallStep: com.movesky.app.main.InteractiveTutorial this$0>;
+
+        $r5 = r0.<com.movesky.app.main.InteractiveTutorial$DrawWallStep: com.movesky.app.main.InteractiveTutorial this$0>;
+
+        $r6 = r0.<com.movesky.app.main.InteractiveTutorial$DrawWallStep: com.movesky.app.main.InteractiveTutorial this$0>;
+
+        $f2 = staticinvoke <com.movesky.app.main.InteractiveTutorial: float access$1400(com.movesky.app.main.InteractiveTutorial,float)>($r6, $f1);
+
+        $f2 = staticinvoke <com.movesky.app.main.InteractiveTutorial: float access$1302(com.movesky.app.main.InteractiveTutorial,float)>($r5, $f2);
+
+        staticinvoke <com.movesky.app.main.InteractiveTutorial: float access$1202(com.movesky.app.main.InteractiveTutorial,float)>($r1, $f2);
+
+     label3:
+        $i1 = $i1 + 1;
+
+        goto label2;
+
+     label4:
+        return;
+    }
+
+    public void onTouchMove(float, float)
+    {
+        com.movesky.app.main.InteractiveTutorial$DrawWallStep r0;
+        float $f0, $f1;
+        boolean $z0;
+        com.movesky.app.main.InteractiveTutorial $r1, $r2;
+
+        r0 := @this: com.movesky.app.main.InteractiveTutorial$DrawWallStep;
+
+        $f0 := @parameter0: float;
+
+        $f1 := @parameter1: float;
+
+        $z0 = r0.<com.movesky.app.main.InteractiveTutorial$DrawWallStep: boolean isDragging>;
+
+        if $z0 == 0 goto label1;
+
+        $r1 = r0.<com.movesky.app.main.InteractiveTutorial$DrawWallStep: com.movesky.app.main.InteractiveTutorial this$0>;
+
+        $r2 = r0.<com.movesky.app.main.InteractiveTutorial$DrawWallStep: com.movesky.app.main.InteractiveTutorial this$0>;
+
+        $f0 = staticinvoke <com.movesky.app.main.InteractiveTutorial: float access$1100(com.movesky.app.main.InteractiveTutorial,float)>($r2, $f0);
+
+        staticinvoke <com.movesky.app.main.InteractiveTutorial: float access$1002(com.movesky.app.main.InteractiveTutorial,float)>($r1, $f0);
+
+        $r1 = r0.<com.movesky.app.main.InteractiveTutorial$DrawWallStep: com.movesky.app.main.InteractiveTutorial this$0>;
+
+        $r2 = r0.<com.movesky.app.main.InteractiveTutorial$DrawWallStep: com.movesky.app.main.InteractiveTutorial this$0>;
+
+        $f0 = staticinvoke <com.movesky.app.main.InteractiveTutorial: float access$1400(com.movesky.app.main.InteractiveTutorial,float)>($r2, $f1);
+
+        staticinvoke <com.movesky.app.main.InteractiveTutorial: float access$1302(com.movesky.app.main.InteractiveTutorial,float)>($r1, $f0);
+
+     label1:
+        return;
+    }
+
+    public void onTouchUp(float, float)
+    {
+        com.movesky.app.main.InteractiveTutorial$DrawWallStep r0;
+        float $f0, $f1, $f2, $f3;
+        int $i0, $i2;
+        boolean $z0;
+        com.movesky.app.main.InteractiveTutorial $r1, $r2;
+        com.movesky.app.engine.fastgraph.Wall $r3;
+        com.movesky.app.main.Team $r4;
+        byte $b1;
+        java.util.List $r5;
+        com.movesky.app.engine.sound.Beat $r6;
+        com.movesky.app.main.InteractiveTutorial$WallBlockStep $r7;
+
+        r0 := @this: com.movesky.app.main.InteractiveTutorial$DrawWallStep;
+
+        $f0 := @parameter0: float;
+
+        $f1 := @parameter1: float;
+
+        $i0 = 0;
+
+        $z0 = r0.<com.movesky.app.main.InteractiveTutorial$DrawWallStep: boolean isDragging>;
+
+        if $z0 == 0 goto label5;
+
+        $r1 = r0.<com.movesky.app.main.InteractiveTutorial$DrawWallStep: com.movesky.app.main.InteractiveTutorial this$0>;
+
+        $r2 = r0.<com.movesky.app.main.InteractiveTutorial$DrawWallStep: com.movesky.app.main.InteractiveTutorial this$0>;
+
+        $f0 = staticinvoke <com.movesky.app.main.InteractiveTutorial: float access$1100(com.movesky.app.main.InteractiveTutorial,float)>($r2, $f0);
+
+        staticinvoke <com.movesky.app.main.InteractiveTutorial: float access$1002(com.movesky.app.main.InteractiveTutorial,float)>($r1, $f0);
+
+        $r1 = r0.<com.movesky.app.main.InteractiveTutorial$DrawWallStep: com.movesky.app.main.InteractiveTutorial this$0>;
+
+        $r2 = r0.<com.movesky.app.main.InteractiveTutorial$DrawWallStep: com.movesky.app.main.InteractiveTutorial this$0>;
+
+        $f0 = staticinvoke <com.movesky.app.main.InteractiveTutorial: float access$1400(com.movesky.app.main.InteractiveTutorial,float)>($r2, $f1);
+
+        staticinvoke <com.movesky.app.main.InteractiveTutorial: float access$1302(com.movesky.app.main.InteractiveTutorial,float)>($r1, $f0);
+
+        $r3 = new com.movesky.app.engine.fastgraph.Wall;
+
+        $r1 = r0.<com.movesky.app.main.InteractiveTutorial$DrawWallStep: com.movesky.app.main.InteractiveTutorial this$0>;
+
+        $f0 = staticinvoke <com.movesky.app.main.InteractiveTutorial: float access$900(com.movesky.app.main.InteractiveTutorial)>($r1);
+
+        $r1 = r0.<com.movesky.app.main.InteractiveTutorial$DrawWallStep: com.movesky.app.main.InteractiveTutorial this$0>;
+
+        $f1 = staticinvoke <com.movesky.app.main.InteractiveTutorial: float access$1200(com.movesky.app.main.InteractiveTutorial)>($r1);
+
+        $r1 = r0.<com.movesky.app.main.InteractiveTutorial$DrawWallStep: com.movesky.app.main.InteractiveTutorial this$0>;
+
+        $f2 = staticinvoke <com.movesky.app.main.InteractiveTutorial: float access$1000(com.movesky.app.main.InteractiveTutorial)>($r1);
+
+        $r1 = r0.<com.movesky.app.main.InteractiveTutorial$DrawWallStep: com.movesky.app.main.InteractiveTutorial this$0>;
+
+        $f3 = staticinvoke <com.movesky.app.main.InteractiveTutorial: float access$1300(com.movesky.app.main.InteractiveTutorial)>($r1);
+
+        specialinvoke $r3.<com.movesky.app.engine.fastgraph.Wall: void <init>(float,float,float,float)>($f0, $f1, $f2, $f3);
+
+        $r1 = r0.<com.movesky.app.main.InteractiveTutorial$DrawWallStep: com.movesky.app.main.InteractiveTutorial this$0>;
+
+        $r4 = staticinvoke <com.movesky.app.main.InteractiveTutorial: com.movesky.app.main.Team access$700(com.movesky.app.main.InteractiveTutorial)>($r1);
+
+        staticinvoke <com.movesky.app.main.YSSimulation: void generateParticlesForWall(com.movesky.app.engine.fastgraph.Wall,com.movesky.app.main.Team)>($r3, $r4);
+
+        $r1 = r0.<com.movesky.app.main.InteractiveTutorial$DrawWallStep: com.movesky.app.main.InteractiveTutorial this$0>;
+
+        $f0 = staticinvoke <com.movesky.app.main.InteractiveTutorial: float access$900(com.movesky.app.main.InteractiveTutorial)>($r1);
+
+        $r1 = r0.<com.movesky.app.main.InteractiveTutorial$DrawWallStep: com.movesky.app.main.InteractiveTutorial this$0>;
+
+        $f1 = staticinvoke <com.movesky.app.main.InteractiveTutorial: float access$1200(com.movesky.app.main.InteractiveTutorial)>($r1);
+
+        $r1 = r0.<com.movesky.app.main.InteractiveTutorial$DrawWallStep: com.movesky.app.main.InteractiveTutorial this$0>;
+
+        $f2 = staticinvoke <com.movesky.app.main.InteractiveTutorial: float access$1000(com.movesky.app.main.InteractiveTutorial)>($r1);
+
+        $r1 = r0.<com.movesky.app.main.InteractiveTutorial$DrawWallStep: com.movesky.app.main.InteractiveTutorial this$0>;
+
+        $f3 = staticinvoke <com.movesky.app.main.InteractiveTutorial: float access$1300(com.movesky.app.main.InteractiveTutorial)>($r1);
+
+        $f0 = staticinvoke <com.movesky.app.engine.util.MathUtils: float getDist(float,float,float,float)>($f0, $f1, $f2, $f3);
+
+        $b1 = $f0 cmpg 30.0F;
+
+        if $b1 >= 0 goto label3;
+
+        $z0 = 1;
+
+     label1:
+        r0.<com.movesky.app.main.InteractiveTutorial$DrawWallStep: boolean isTooShort> = $z0;
+
+        r0.<com.movesky.app.main.InteractiveTutorial$DrawWallStep: boolean isDragging> = 0;
+
+        $z0 = r0.<com.movesky.app.main.InteractiveTutorial$DrawWallStep: boolean isTooShort>;
+
+        if $z0 == 0 goto label4;
+
+     label2:
+        $r1 = r0.<com.movesky.app.main.InteractiveTutorial$DrawWallStep: com.movesky.app.main.InteractiveTutorial this$0>;
+
+        $r5 = staticinvoke <com.movesky.app.main.InteractiveTutorial: java.util.List access$100(com.movesky.app.main.InteractiveTutorial)>($r1);
+
+        $i2 = interfaceinvoke $r5.<java.util.List: int size()>();
+
+        if $i0 >= $i2 goto label5;
+
+        $r1 = r0.<com.movesky.app.main.InteractiveTutorial$DrawWallStep: com.movesky.app.main.InteractiveTutorial this$0>;
+
+        $r5 = staticinvoke <com.movesky.app.main.InteractiveTutorial: java.util.List access$100(com.movesky.app.main.InteractiveTutorial)>($r1);
+
+        $i2 = $i0 * 2000;
+
+        $f0 = (float) $i2;
+
+        $r6 = staticinvoke <com.movesky.app.engine.sound.Beat: com.movesky.app.engine.sound.Beat hold(float,float)>(1000.0F, $f0);
+
+        interfaceinvoke $r5.<java.util.List: java.lang.Object set(int,java.lang.Object)>($i0, $r6);
+
+        $i0 = $i0 + 1;
+
+        goto label2;
+
+     label3:
+        $z0 = 0;
+
+        goto label1;
+
+     label4:
+        $r1 = r0.<com.movesky.app.main.InteractiveTutorial$DrawWallStep: com.movesky.app.main.InteractiveTutorial this$0>;
+
+        $r7 = new com.movesky.app.main.InteractiveTutorial$WallBlockStep;
+
+        $r2 = r0.<com.movesky.app.main.InteractiveTutorial$DrawWallStep: com.movesky.app.main.InteractiveTutorial this$0>;
+
+        specialinvoke $r7.<com.movesky.app.main.InteractiveTutorial$WallBlockStep: void <init>(com.movesky.app.main.InteractiveTutorial,com.movesky.app.main.InteractiveTutorial$1)>($r2, null);
+
+        virtualinvoke $r1.<com.movesky.app.main.InteractiveTutorial: void transition(com.movesky.app.main.InteractiveTutorial$Step)>($r7);
+
+     label5:
+        return;
+    }
+
+    public void onUpdate(float)
+    {
+        com.movesky.app.main.InteractiveTutorial$DrawWallStep r0;
+        float $f0;
+        int $i0, $i1;
+        com.movesky.app.main.InteractiveTutorial $r1;
+        java.util.List $r2;
+        java.lang.Object $r3;
+        com.movesky.app.engine.sound.Beat $r4;
+        boolean $z0;
+        byte $b2;
+
+        r0 := @this: com.movesky.app.main.InteractiveTutorial$DrawWallStep;
+
+        $f0 := @parameter0: float;
+
+        $i0 = 0;
+
+     label1:
+        $r1 = r0.<com.movesky.app.main.InteractiveTutorial$DrawWallStep: com.movesky.app.main.InteractiveTutorial this$0>;
+
+        $r2 = staticinvoke <com.movesky.app.main.InteractiveTutorial: java.util.List access$100(com.movesky.app.main.InteractiveTutorial)>($r1);
+
+        $i1 = interfaceinvoke $r2.<java.util.List: int size()>();
+
+        if $i0 >= $i1 goto label3;
+
+        $r1 = r0.<com.movesky.app.main.InteractiveTutorial$DrawWallStep: com.movesky.app.main.InteractiveTutorial this$0>;
+
+        $r2 = staticinvoke <com.movesky.app.main.InteractiveTutorial: java.util.List access$100(com.movesky.app.main.InteractiveTutorial)>($r1);
+
+        $r3 = interfaceinvoke $r2.<java.util.List: java.lang.Object get(int)>($i0);
+
+        $r4 = (com.movesky.app.engine.sound.Beat) $r3;
+
+        $z0 = virtualinvoke $r4.<com.movesky.app.engine.sound.Beat: boolean isTapped()>();
+
+        if $z0 == 0 goto label2;
+
+        return;
+
+     label2:
+        $i0 = $i0 + 1;
+
+        goto label1;
+
+     label3:
+        $r1 = r0.<com.movesky.app.main.InteractiveTutorial$DrawWallStep: com.movesky.app.main.InteractiveTutorial this$0>;
+
+        $f0 = staticinvoke <com.movesky.app.main.InteractiveTutorial: float access$300(com.movesky.app.main.InteractiveTutorial)>($r1);
+
+        $b2 = $f0 cmpl 2.0F;
+
+        if $b2 <= 0 goto label4;
+
+        $r1 = r0.<com.movesky.app.main.InteractiveTutorial$DrawWallStep: com.movesky.app.main.InteractiveTutorial this$0>;
+
+        staticinvoke <com.movesky.app.main.InteractiveTutorial: float access$302(com.movesky.app.main.InteractiveTutorial,float)>($r1, 0.0F);
+
+     label4:
+        return;
+    }
+}

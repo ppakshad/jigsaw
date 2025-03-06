@@ -1,0 +1,684 @@
+class com.ideaworks3d.marmalade.LoaderGL extends java.lang.Object
+{
+    private static final int EGL_CONTEXT_CLIENT_VERSION;
+    private static final int EGL_DEPTH_ENCODING_NV;
+    private boolean m_DoneInit;
+    javax.microedition.khronos.egl.EGL10 m_Egl;
+    javax.microedition.khronos.egl.EGLConfig[] m_EglConfigs;
+    javax.microedition.khronos.egl.EGLContext m_EglContext;
+    javax.microedition.khronos.egl.EGLDisplay m_EglDisplay;
+    javax.microedition.khronos.egl.EGLSurface m_EglSurface;
+    private int m_GLVersion;
+    private boolean m_Started;
+
+    void <init>()
+    {
+        com.ideaworks3d.marmalade.LoaderGL r0;
+
+        r0 := @this: com.ideaworks3d.marmalade.LoaderGL;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    private static int CopySettingsWithValues(com.ideaworks3d.marmalade.LoaderGL$ConfigSetting[], int[])
+    {
+        com.ideaworks3d.marmalade.LoaderGL$ConfigSetting[] $r0;
+        int[] $r1;
+        int $i0, $i1, $i2, $i3, $i4;
+        com.ideaworks3d.marmalade.LoaderGL$ConfigSetting $r2;
+        boolean $z0;
+
+        $r0 := @parameter0: com.ideaworks3d.marmalade.LoaderGL$ConfigSetting[];
+
+        $r1 := @parameter1: int[];
+
+        $i1 = 0;
+
+        $i0 = lengthof $r0;
+
+        $i2 = 0;
+
+     label1:
+        if $i1 >= $i0 goto label3;
+
+        $r2 = $r0[$i1];
+
+        $z0 = virtualinvoke $r2.<com.ideaworks3d.marmalade.LoaderGL$ConfigSetting: boolean HasValue()>();
+
+        if $z0 == 0 goto label2;
+
+        $i3 = $i2 * 2;
+
+        $i4 = virtualinvoke $r2.<com.ideaworks3d.marmalade.LoaderGL$ConfigSetting: int GetSetting()>();
+
+        $r1[$i3] = $i4;
+
+        $i3 = $i2 * 2;
+
+        $i3 = $i3 + 1;
+
+        $i4 = virtualinvoke $r2.<com.ideaworks3d.marmalade.LoaderGL$ConfigSetting: int GetValue()>();
+
+        $r1[$i3] = $i4;
+
+        $i2 = $i2 + 1;
+
+     label2:
+        $i1 = $i1 + 1;
+
+        goto label1;
+
+     label3:
+        return $i2;
+    }
+
+    private static int CountSettingsWithValue(com.ideaworks3d.marmalade.LoaderGL$ConfigSetting[])
+    {
+        com.ideaworks3d.marmalade.LoaderGL$ConfigSetting[] $r0;
+        int $i0, $i1, $i2;
+        boolean $z0;
+        com.ideaworks3d.marmalade.LoaderGL$ConfigSetting $r1;
+
+        $r0 := @parameter0: com.ideaworks3d.marmalade.LoaderGL$ConfigSetting[];
+
+        $i1 = 0;
+
+        $i0 = lengthof $r0;
+
+        $i2 = 0;
+
+     label1:
+        if $i1 >= $i0 goto label3;
+
+        $r1 = $r0[$i1];
+
+        $z0 = virtualinvoke $r1.<com.ideaworks3d.marmalade.LoaderGL$ConfigSetting: boolean HasValue()>();
+
+        if $z0 == 0 goto label2;
+
+        $i2 = $i2 + 1;
+
+     label2:
+        $i1 = $i1 + 1;
+
+        goto label1;
+
+     label3:
+        return $i2;
+    }
+
+    private int[] CreateSpecFromSettings(com.ideaworks3d.marmalade.LoaderGL$ConfigSetting[])
+    {
+        com.ideaworks3d.marmalade.LoaderGL r0;
+        com.ideaworks3d.marmalade.LoaderGL$ConfigSetting[] $r1;
+        int $i0, $i1, $i2;
+        int[] $r2;
+
+        r0 := @this: com.ideaworks3d.marmalade.LoaderGL;
+
+        $r1 := @parameter0: com.ideaworks3d.marmalade.LoaderGL$ConfigSetting[];
+
+        $i0 = staticinvoke <com.ideaworks3d.marmalade.LoaderGL: int CountSettingsWithValue(com.ideaworks3d.marmalade.LoaderGL$ConfigSetting[])>($r1);
+
+        $i1 = $i0;
+
+        $i2 = r0.<com.ideaworks3d.marmalade.LoaderGL: int m_GLVersion>;
+
+        if $i2 != 2 goto label1;
+
+        $i1 = $i0 + 1;
+
+     label1:
+        $i0 = $i1 * 2;
+
+        $i0 = $i0 + 1;
+
+        $r2 = newarray (int)[$i0];
+
+        $i0 = staticinvoke <com.ideaworks3d.marmalade.LoaderGL: int CopySettingsWithValues(com.ideaworks3d.marmalade.LoaderGL$ConfigSetting[],int[])>($r1, $r2);
+
+        $i1 = $i0;
+
+        $i2 = r0.<com.ideaworks3d.marmalade.LoaderGL: int m_GLVersion>;
+
+        if $i2 != 2 goto label2;
+
+        $i1 = $i0 * 2;
+
+        $r2[$i1] = 12352;
+
+        $i1 = $i0 * 2;
+
+        $i1 = $i1 + 1;
+
+        $r2[$i1] = 4;
+
+        $i1 = $i0 + 1;
+
+     label2:
+        $i0 = $i1 * 2;
+
+        $r2[$i0] = 12344;
+
+        return $r2;
+    }
+
+    private void chooseConfigs()
+    {
+        com.ideaworks3d.marmalade.LoaderGL r0;
+        int[] $r1, $r4;
+        com.ideaworks3d.marmalade.LoaderGL$ConfigSetting[] $r2;
+        com.ideaworks3d.marmalade.LoaderGL$ConfigSetting $r3;
+        int $i0, $i1;
+        javax.microedition.khronos.egl.EGL10 $r5;
+        javax.microedition.khronos.egl.EGLDisplay $r6;
+        javax.microedition.khronos.egl.EGLConfig[] $r7;
+        javax.microedition.khronos.egl.EGLConfig $r8;
+        java.lang.RuntimeException $r9;
+
+        r0 := @this: com.ideaworks3d.marmalade.LoaderGL;
+
+        $r2 = newarray (com.ideaworks3d.marmalade.LoaderGL$ConfigSetting)[11];
+
+        $r3 = new com.ideaworks3d.marmalade.LoaderGL$ConfigSetting;
+
+        specialinvoke $r3.<com.ideaworks3d.marmalade.LoaderGL$ConfigSetting: void <init>(com.ideaworks3d.marmalade.LoaderGL,java.lang.String,int)>(r0, "EGL_BUFFER_SIZE", 12320);
+
+        $r2[0] = $r3;
+
+        $r3 = new com.ideaworks3d.marmalade.LoaderGL$ConfigSetting;
+
+        specialinvoke $r3.<com.ideaworks3d.marmalade.LoaderGL$ConfigSetting: void <init>(com.ideaworks3d.marmalade.LoaderGL,java.lang.String,int)>(r0, "EGL_DEPTH_ENCODING_NV", 12514);
+
+        $r2[1] = $r3;
+
+        $r3 = new com.ideaworks3d.marmalade.LoaderGL$ConfigSetting;
+
+        specialinvoke $r3.<com.ideaworks3d.marmalade.LoaderGL$ConfigSetting: void <init>(com.ideaworks3d.marmalade.LoaderGL,java.lang.String,int)>(r0, "EGL_DEPTH_SIZE", 12325);
+
+        $r2[2] = $r3;
+
+        $r3 = new com.ideaworks3d.marmalade.LoaderGL$ConfigSetting;
+
+        specialinvoke $r3.<com.ideaworks3d.marmalade.LoaderGL$ConfigSetting: void <init>(com.ideaworks3d.marmalade.LoaderGL,java.lang.String,int)>(r0, "EGL_SURFACE_TYPE", 12339);
+
+        $r2[3] = $r3;
+
+        $r3 = new com.ideaworks3d.marmalade.LoaderGL$ConfigSetting;
+
+        specialinvoke $r3.<com.ideaworks3d.marmalade.LoaderGL$ConfigSetting: void <init>(com.ideaworks3d.marmalade.LoaderGL,java.lang.String,int)>(r0, "EGL_RED_SIZE", 12324);
+
+        $r2[4] = $r3;
+
+        $r3 = new com.ideaworks3d.marmalade.LoaderGL$ConfigSetting;
+
+        specialinvoke $r3.<com.ideaworks3d.marmalade.LoaderGL$ConfigSetting: void <init>(com.ideaworks3d.marmalade.LoaderGL,java.lang.String,int)>(r0, "EGL_GREEN_SIZE", 12323);
+
+        $r2[5] = $r3;
+
+        $r3 = new com.ideaworks3d.marmalade.LoaderGL$ConfigSetting;
+
+        specialinvoke $r3.<com.ideaworks3d.marmalade.LoaderGL$ConfigSetting: void <init>(com.ideaworks3d.marmalade.LoaderGL,java.lang.String,int)>(r0, "EGL_BLUE_SIZE", 12322);
+
+        $r2[6] = $r3;
+
+        $r3 = new com.ideaworks3d.marmalade.LoaderGL$ConfigSetting;
+
+        specialinvoke $r3.<com.ideaworks3d.marmalade.LoaderGL$ConfigSetting: void <init>(com.ideaworks3d.marmalade.LoaderGL,java.lang.String,int)>(r0, "EGL_ALPHA_SIZE", 12321);
+
+        $r2[7] = $r3;
+
+        $r3 = new com.ideaworks3d.marmalade.LoaderGL$ConfigSetting;
+
+        specialinvoke $r3.<com.ideaworks3d.marmalade.LoaderGL$ConfigSetting: void <init>(com.ideaworks3d.marmalade.LoaderGL,java.lang.String,int)>(r0, "EGL_STENCIL_SIZE", 12326);
+
+        $r2[8] = $r3;
+
+        $r3 = new com.ideaworks3d.marmalade.LoaderGL$ConfigSetting;
+
+        specialinvoke $r3.<com.ideaworks3d.marmalade.LoaderGL$ConfigSetting: void <init>(com.ideaworks3d.marmalade.LoaderGL,java.lang.String,int)>(r0, "EGL_SAMPLE_BUFFERS", 12338);
+
+        $r2[9] = $r3;
+
+        $r3 = new com.ideaworks3d.marmalade.LoaderGL$ConfigSetting;
+
+        specialinvoke $r3.<com.ideaworks3d.marmalade.LoaderGL$ConfigSetting: void <init>(com.ideaworks3d.marmalade.LoaderGL,java.lang.String,int)>(r0, "EGL_SAMPLES", 12337);
+
+        $r2[10] = $r3;
+
+        $r4 = newarray (int)[1];
+
+        $i0 = 0;
+
+     label1:
+        $r1 = specialinvoke r0.<com.ideaworks3d.marmalade.LoaderGL: int[] CreateSpecFromSettings(com.ideaworks3d.marmalade.LoaderGL$ConfigSetting[])>($r2);
+
+        $r5 = r0.<com.ideaworks3d.marmalade.LoaderGL: javax.microedition.khronos.egl.EGL10 m_Egl>;
+
+        $r6 = r0.<com.ideaworks3d.marmalade.LoaderGL: javax.microedition.khronos.egl.EGLDisplay m_EglDisplay>;
+
+        interfaceinvoke $r5.<javax.microedition.khronos.egl.EGL10: boolean eglChooseConfig(javax.microedition.khronos.egl.EGLDisplay,int[],javax.microedition.khronos.egl.EGLConfig[],int,int[])>($r6, $r1, null, 0, $r4);
+
+        $i1 = $r4[0];
+
+        if $i1 == 0 goto label2;
+
+        $i0 = $r4[0];
+
+        $r7 = newarray (javax.microedition.khronos.egl.EGLConfig)[$i0];
+
+        r0.<com.ideaworks3d.marmalade.LoaderGL: javax.microedition.khronos.egl.EGLConfig[] m_EglConfigs> = $r7;
+
+        $r5 = r0.<com.ideaworks3d.marmalade.LoaderGL: javax.microedition.khronos.egl.EGL10 m_Egl>;
+
+        $r6 = r0.<com.ideaworks3d.marmalade.LoaderGL: javax.microedition.khronos.egl.EGLDisplay m_EglDisplay>;
+
+        $r7 = r0.<com.ideaworks3d.marmalade.LoaderGL: javax.microedition.khronos.egl.EGLConfig[] m_EglConfigs>;
+
+        interfaceinvoke $r5.<javax.microedition.khronos.egl.EGL10: boolean eglChooseConfig(javax.microedition.khronos.egl.EGLDisplay,int[],javax.microedition.khronos.egl.EGLConfig[],int,int[])>($r6, $r1, $r7, $i0, $r4);
+
+        $r7 = r0.<com.ideaworks3d.marmalade.LoaderGL: javax.microedition.khronos.egl.EGLConfig[] m_EglConfigs>;
+
+        $r8 = $r7[0];
+
+        $r5 = r0.<com.ideaworks3d.marmalade.LoaderGL: javax.microedition.khronos.egl.EGL10 m_Egl>;
+
+        $r6 = r0.<com.ideaworks3d.marmalade.LoaderGL: javax.microedition.khronos.egl.EGLDisplay m_EglDisplay>;
+
+        specialinvoke r0.<com.ideaworks3d.marmalade.LoaderGL: int findConfigAttrib(javax.microedition.khronos.egl.EGL10,javax.microedition.khronos.egl.EGLDisplay,javax.microedition.khronos.egl.EGLConfig,int,int)>($r5, $r6, $r8, 12324, 0);
+
+        $r5 = r0.<com.ideaworks3d.marmalade.LoaderGL: javax.microedition.khronos.egl.EGL10 m_Egl>;
+
+        $r6 = r0.<com.ideaworks3d.marmalade.LoaderGL: javax.microedition.khronos.egl.EGLDisplay m_EglDisplay>;
+
+        specialinvoke r0.<com.ideaworks3d.marmalade.LoaderGL: int findConfigAttrib(javax.microedition.khronos.egl.EGL10,javax.microedition.khronos.egl.EGLDisplay,javax.microedition.khronos.egl.EGLConfig,int,int)>($r5, $r6, $r8, 12323, 0);
+
+        $r5 = r0.<com.ideaworks3d.marmalade.LoaderGL: javax.microedition.khronos.egl.EGL10 m_Egl>;
+
+        $r6 = r0.<com.ideaworks3d.marmalade.LoaderGL: javax.microedition.khronos.egl.EGLDisplay m_EglDisplay>;
+
+        specialinvoke r0.<com.ideaworks3d.marmalade.LoaderGL: int findConfigAttrib(javax.microedition.khronos.egl.EGL10,javax.microedition.khronos.egl.EGLDisplay,javax.microedition.khronos.egl.EGLConfig,int,int)>($r5, $r6, $r8, 12322, 0);
+
+        $r5 = r0.<com.ideaworks3d.marmalade.LoaderGL: javax.microedition.khronos.egl.EGL10 m_Egl>;
+
+        $r6 = r0.<com.ideaworks3d.marmalade.LoaderGL: javax.microedition.khronos.egl.EGLDisplay m_EglDisplay>;
+
+        specialinvoke r0.<com.ideaworks3d.marmalade.LoaderGL: int findConfigAttrib(javax.microedition.khronos.egl.EGL10,javax.microedition.khronos.egl.EGLDisplay,javax.microedition.khronos.egl.EGLConfig,int,int)>($r5, $r6, $r8, 12321, 0);
+
+        $r5 = r0.<com.ideaworks3d.marmalade.LoaderGL: javax.microedition.khronos.egl.EGL10 m_Egl>;
+
+        $r6 = r0.<com.ideaworks3d.marmalade.LoaderGL: javax.microedition.khronos.egl.EGLDisplay m_EglDisplay>;
+
+        specialinvoke r0.<com.ideaworks3d.marmalade.LoaderGL: int findConfigAttrib(javax.microedition.khronos.egl.EGL10,javax.microedition.khronos.egl.EGLDisplay,javax.microedition.khronos.egl.EGLConfig,int,int)>($r5, $r6, $r8, 12325, 0);
+
+        $r5 = r0.<com.ideaworks3d.marmalade.LoaderGL: javax.microedition.khronos.egl.EGL10 m_Egl>;
+
+        $r6 = r0.<com.ideaworks3d.marmalade.LoaderGL: javax.microedition.khronos.egl.EGLDisplay m_EglDisplay>;
+
+        specialinvoke r0.<com.ideaworks3d.marmalade.LoaderGL: int findConfigAttrib(javax.microedition.khronos.egl.EGL10,javax.microedition.khronos.egl.EGLDisplay,javax.microedition.khronos.egl.EGLConfig,int,int)>($r5, $r6, $r8, 12352, 0);
+
+        $r5 = r0.<com.ideaworks3d.marmalade.LoaderGL: javax.microedition.khronos.egl.EGL10 m_Egl>;
+
+        $r6 = r0.<com.ideaworks3d.marmalade.LoaderGL: javax.microedition.khronos.egl.EGLDisplay m_EglDisplay>;
+
+        specialinvoke r0.<com.ideaworks3d.marmalade.LoaderGL: int findConfigAttrib(javax.microedition.khronos.egl.EGL10,javax.microedition.khronos.egl.EGLDisplay,javax.microedition.khronos.egl.EGLConfig,int,int)>($r5, $r6, $r8, 12327, 12344);
+
+        return;
+
+     label2:
+        $i1 = lengthof $r2;
+
+        if $i0 >= $i1 goto label3;
+
+        $r3 = $r2[$i0];
+
+        virtualinvoke $r3.<com.ideaworks3d.marmalade.LoaderGL$ConfigSetting: void SetValueToDefault()>();
+
+        $i0 = $i0 + 1;
+
+        goto label1;
+
+     label3:
+        $r9 = new java.lang.RuntimeException;
+
+        specialinvoke $r9.<java.lang.RuntimeException: void <init>(java.lang.String)>("Failed to choose an EGL config");
+
+        throw $r9;
+    }
+
+    private int findConfigAttrib(javax.microedition.khronos.egl.EGL10, javax.microedition.khronos.egl.EGLDisplay, javax.microedition.khronos.egl.EGLConfig, int, int)
+    {
+        com.ideaworks3d.marmalade.LoaderGL r0;
+        javax.microedition.khronos.egl.EGL10 $r1;
+        javax.microedition.khronos.egl.EGLDisplay $r2;
+        javax.microedition.khronos.egl.EGLConfig $r3;
+        int $i0, $i1;
+        boolean $z0;
+        int[] $r4;
+
+        r0 := @this: com.ideaworks3d.marmalade.LoaderGL;
+
+        $r1 := @parameter0: javax.microedition.khronos.egl.EGL10;
+
+        $r2 := @parameter1: javax.microedition.khronos.egl.EGLDisplay;
+
+        $r3 := @parameter2: javax.microedition.khronos.egl.EGLConfig;
+
+        $i0 := @parameter3: int;
+
+        $i1 := @parameter4: int;
+
+        $r4 = newarray (int)[1];
+
+        $z0 = interfaceinvoke $r1.<javax.microedition.khronos.egl.EGL10: boolean eglGetConfigAttrib(javax.microedition.khronos.egl.EGLDisplay,javax.microedition.khronos.egl.EGLConfig,int,int[])>($r2, $r3, $i0, $r4);
+
+        if $z0 == 0 goto label1;
+
+        $i0 = $r4[0];
+
+        return $i0;
+
+     label1:
+        return $i1;
+    }
+
+    private void stop()
+    {
+        com.ideaworks3d.marmalade.LoaderGL r0;
+        javax.microedition.khronos.egl.EGLSurface $r1, $r5;
+        javax.microedition.khronos.egl.EGLContext $r2;
+        javax.microedition.khronos.egl.EGL10 $r3;
+        javax.microedition.khronos.egl.EGLDisplay $r4;
+
+        r0 := @this: com.ideaworks3d.marmalade.LoaderGL;
+
+        r0.<com.ideaworks3d.marmalade.LoaderGL: boolean m_Started> = 0;
+
+        $r1 = r0.<com.ideaworks3d.marmalade.LoaderGL: javax.microedition.khronos.egl.EGLSurface m_EglSurface>;
+
+        if $r1 == null goto label1;
+
+        $r3 = r0.<com.ideaworks3d.marmalade.LoaderGL: javax.microedition.khronos.egl.EGL10 m_Egl>;
+
+        $r4 = r0.<com.ideaworks3d.marmalade.LoaderGL: javax.microedition.khronos.egl.EGLDisplay m_EglDisplay>;
+
+        $r5 = <javax.microedition.khronos.egl.EGL10: javax.microedition.khronos.egl.EGLSurface EGL_NO_SURFACE>;
+
+        $r1 = <javax.microedition.khronos.egl.EGL10: javax.microedition.khronos.egl.EGLSurface EGL_NO_SURFACE>;
+
+        $r2 = <javax.microedition.khronos.egl.EGL10: javax.microedition.khronos.egl.EGLContext EGL_NO_CONTEXT>;
+
+        interfaceinvoke $r3.<javax.microedition.khronos.egl.EGL10: boolean eglMakeCurrent(javax.microedition.khronos.egl.EGLDisplay,javax.microedition.khronos.egl.EGLSurface,javax.microedition.khronos.egl.EGLSurface,javax.microedition.khronos.egl.EGLContext)>($r4, $r5, $r1, $r2);
+
+        $r3 = r0.<com.ideaworks3d.marmalade.LoaderGL: javax.microedition.khronos.egl.EGL10 m_Egl>;
+
+        $r4 = r0.<com.ideaworks3d.marmalade.LoaderGL: javax.microedition.khronos.egl.EGLDisplay m_EglDisplay>;
+
+        $r1 = r0.<com.ideaworks3d.marmalade.LoaderGL: javax.microedition.khronos.egl.EGLSurface m_EglSurface>;
+
+        interfaceinvoke $r3.<javax.microedition.khronos.egl.EGL10: boolean eglDestroySurface(javax.microedition.khronos.egl.EGLDisplay,javax.microedition.khronos.egl.EGLSurface)>($r4, $r1);
+
+        r0.<com.ideaworks3d.marmalade.LoaderGL: javax.microedition.khronos.egl.EGLSurface m_EglSurface> = null;
+
+     label1:
+        return;
+    }
+
+    public void init()
+    {
+        com.ideaworks3d.marmalade.LoaderGL r0;
+        javax.microedition.khronos.egl.EGL $r1;
+        javax.microedition.khronos.egl.EGL10 $r2;
+        java.lang.Object $r3;
+        javax.microedition.khronos.egl.EGLDisplay $r4;
+        int[] $r5;
+        int $i0;
+        javax.microedition.khronos.egl.EGLConfig[] $r6;
+        javax.microedition.khronos.egl.EGLConfig $r7;
+        javax.microedition.khronos.egl.EGLContext $r8;
+
+        r0 := @this: com.ideaworks3d.marmalade.LoaderGL;
+
+        $r1 = staticinvoke <javax.microedition.khronos.egl.EGLContext: javax.microedition.khronos.egl.EGL getEGL()>();
+
+        $r2 = (javax.microedition.khronos.egl.EGL10) $r1;
+
+        r0.<com.ideaworks3d.marmalade.LoaderGL: javax.microedition.khronos.egl.EGL10 m_Egl> = $r2;
+
+        $r2 = r0.<com.ideaworks3d.marmalade.LoaderGL: javax.microedition.khronos.egl.EGL10 m_Egl>;
+
+        $r3 = <javax.microedition.khronos.egl.EGL10: java.lang.Object EGL_DEFAULT_DISPLAY>;
+
+        $r4 = interfaceinvoke $r2.<javax.microedition.khronos.egl.EGL10: javax.microedition.khronos.egl.EGLDisplay eglGetDisplay(java.lang.Object)>($r3);
+
+        r0.<com.ideaworks3d.marmalade.LoaderGL: javax.microedition.khronos.egl.EGLDisplay m_EglDisplay> = $r4;
+
+        $r5 = newarray (int)[2];
+
+        $r2 = r0.<com.ideaworks3d.marmalade.LoaderGL: javax.microedition.khronos.egl.EGL10 m_Egl>;
+
+        $r4 = r0.<com.ideaworks3d.marmalade.LoaderGL: javax.microedition.khronos.egl.EGLDisplay m_EglDisplay>;
+
+        interfaceinvoke $r2.<javax.microedition.khronos.egl.EGL10: boolean eglInitialize(javax.microedition.khronos.egl.EGLDisplay,int[])>($r4, $r5);
+
+        specialinvoke r0.<com.ideaworks3d.marmalade.LoaderGL: void chooseConfigs()>();
+
+        $r5 = null;
+
+        $i0 = r0.<com.ideaworks3d.marmalade.LoaderGL: int m_GLVersion>;
+
+        if $i0 != 2 goto label1;
+
+        $r5 = newarray (int)[3];
+
+        $r5[0] = 12440;
+
+        $i0 = r0.<com.ideaworks3d.marmalade.LoaderGL: int m_GLVersion>;
+
+        $r5[1] = $i0;
+
+        $r5[2] = 12344;
+
+     label1:
+        $r2 = r0.<com.ideaworks3d.marmalade.LoaderGL: javax.microedition.khronos.egl.EGL10 m_Egl>;
+
+        $r4 = r0.<com.ideaworks3d.marmalade.LoaderGL: javax.microedition.khronos.egl.EGLDisplay m_EglDisplay>;
+
+        $r6 = r0.<com.ideaworks3d.marmalade.LoaderGL: javax.microedition.khronos.egl.EGLConfig[] m_EglConfigs>;
+
+        $r7 = $r6[0];
+
+        $r8 = <javax.microedition.khronos.egl.EGL10: javax.microedition.khronos.egl.EGLContext EGL_NO_CONTEXT>;
+
+        $r8 = interfaceinvoke $r2.<javax.microedition.khronos.egl.EGL10: javax.microedition.khronos.egl.EGLContext eglCreateContext(javax.microedition.khronos.egl.EGLDisplay,javax.microedition.khronos.egl.EGLConfig,javax.microedition.khronos.egl.EGLContext,int[])>($r4, $r7, $r8, $r5);
+
+        r0.<com.ideaworks3d.marmalade.LoaderGL: javax.microedition.khronos.egl.EGLContext m_EglContext> = $r8;
+
+        r0.<com.ideaworks3d.marmalade.LoaderGL: boolean m_DoneInit> = 1;
+
+        return;
+    }
+
+    public javax.microedition.khronos.opengles.GL restartGL(android.view.SurfaceHolder)
+    {
+        com.ideaworks3d.marmalade.LoaderGL r0;
+        android.view.SurfaceHolder $r1;
+        javax.microedition.khronos.opengles.GL $r2;
+        int $i0;
+
+        r0 := @this: com.ideaworks3d.marmalade.LoaderGL;
+
+        $r1 := @parameter0: android.view.SurfaceHolder;
+
+        specialinvoke r0.<com.ideaworks3d.marmalade.LoaderGL: void stop()>();
+
+        $i0 = r0.<com.ideaworks3d.marmalade.LoaderGL: int m_GLVersion>;
+
+        $r2 = virtualinvoke r0.<com.ideaworks3d.marmalade.LoaderGL: javax.microedition.khronos.opengles.GL startGL(android.view.SurfaceHolder,int)>($r1, $i0);
+
+        return $r2;
+    }
+
+    public javax.microedition.khronos.opengles.GL startGL(android.view.SurfaceHolder, int)
+    {
+        com.ideaworks3d.marmalade.LoaderGL r0;
+        android.view.SurfaceHolder $r1;
+        int $i0;
+        javax.microedition.khronos.egl.EGLContext $r2;
+        boolean $z0;
+        javax.microedition.khronos.egl.EGL10 $r3;
+        javax.microedition.khronos.egl.EGLDisplay $r4;
+        javax.microedition.khronos.egl.EGLConfig[] $r5;
+        javax.microedition.khronos.egl.EGLConfig $r6;
+        javax.microedition.khronos.egl.EGLSurface $r7, $r8;
+        javax.microedition.khronos.opengles.GL $r9;
+
+        r0 := @this: com.ideaworks3d.marmalade.LoaderGL;
+
+        $r1 := @parameter0: android.view.SurfaceHolder;
+
+        $i0 := @parameter1: int;
+
+        if $i0 == 0 goto label1;
+
+        r0.<com.ideaworks3d.marmalade.LoaderGL: int m_GLVersion> = $i0;
+
+     label1:
+        $z0 = r0.<com.ideaworks3d.marmalade.LoaderGL: boolean m_DoneInit>;
+
+        if $z0 != 0 goto label2;
+
+        virtualinvoke r0.<com.ideaworks3d.marmalade.LoaderGL: void init()>();
+
+     label2:
+        $r3 = r0.<com.ideaworks3d.marmalade.LoaderGL: javax.microedition.khronos.egl.EGL10 m_Egl>;
+
+        $r4 = r0.<com.ideaworks3d.marmalade.LoaderGL: javax.microedition.khronos.egl.EGLDisplay m_EglDisplay>;
+
+        $r5 = r0.<com.ideaworks3d.marmalade.LoaderGL: javax.microedition.khronos.egl.EGLConfig[] m_EglConfigs>;
+
+        $r6 = $r5[0];
+
+        $r7 = interfaceinvoke $r3.<javax.microedition.khronos.egl.EGL10: javax.microedition.khronos.egl.EGLSurface eglCreateWindowSurface(javax.microedition.khronos.egl.EGLDisplay,javax.microedition.khronos.egl.EGLConfig,java.lang.Object,int[])>($r4, $r6, $r1, null);
+
+        r0.<com.ideaworks3d.marmalade.LoaderGL: javax.microedition.khronos.egl.EGLSurface m_EglSurface> = $r7;
+
+        $r3 = r0.<com.ideaworks3d.marmalade.LoaderGL: javax.microedition.khronos.egl.EGL10 m_Egl>;
+
+        $r4 = r0.<com.ideaworks3d.marmalade.LoaderGL: javax.microedition.khronos.egl.EGLDisplay m_EglDisplay>;
+
+        $r7 = r0.<com.ideaworks3d.marmalade.LoaderGL: javax.microedition.khronos.egl.EGLSurface m_EglSurface>;
+
+        $r8 = r0.<com.ideaworks3d.marmalade.LoaderGL: javax.microedition.khronos.egl.EGLSurface m_EglSurface>;
+
+        $r2 = r0.<com.ideaworks3d.marmalade.LoaderGL: javax.microedition.khronos.egl.EGLContext m_EglContext>;
+
+        interfaceinvoke $r3.<javax.microedition.khronos.egl.EGL10: boolean eglMakeCurrent(javax.microedition.khronos.egl.EGLDisplay,javax.microedition.khronos.egl.EGLSurface,javax.microedition.khronos.egl.EGLSurface,javax.microedition.khronos.egl.EGLContext)>($r4, $r7, $r8, $r2);
+
+        r0.<com.ideaworks3d.marmalade.LoaderGL: boolean m_Started> = 1;
+
+        $r2 = r0.<com.ideaworks3d.marmalade.LoaderGL: javax.microedition.khronos.egl.EGLContext m_EglContext>;
+
+        $r9 = virtualinvoke $r2.<javax.microedition.khronos.egl.EGLContext: javax.microedition.khronos.opengles.GL getGL()>();
+
+        return $r9;
+    }
+
+    public boolean started()
+    {
+        com.ideaworks3d.marmalade.LoaderGL r0;
+        boolean z0;
+
+        r0 := @this: com.ideaworks3d.marmalade.LoaderGL;
+
+        z0 = r0.<com.ideaworks3d.marmalade.LoaderGL: boolean m_Started>;
+
+        return z0;
+    }
+
+    public void stopGL()
+    {
+        com.ideaworks3d.marmalade.LoaderGL r0;
+
+        r0 := @this: com.ideaworks3d.marmalade.LoaderGL;
+
+        specialinvoke r0.<com.ideaworks3d.marmalade.LoaderGL: void stop()>();
+
+        virtualinvoke r0.<com.ideaworks3d.marmalade.LoaderGL: void term()>();
+
+        return;
+    }
+
+    public void swap()
+    {
+        com.ideaworks3d.marmalade.LoaderGL r0;
+        javax.microedition.khronos.egl.EGL10 $r1;
+        javax.microedition.khronos.egl.EGLDisplay $r2;
+        javax.microedition.khronos.egl.EGLSurface $r3;
+
+        r0 := @this: com.ideaworks3d.marmalade.LoaderGL;
+
+        $r1 = r0.<com.ideaworks3d.marmalade.LoaderGL: javax.microedition.khronos.egl.EGL10 m_Egl>;
+
+        $r2 = r0.<com.ideaworks3d.marmalade.LoaderGL: javax.microedition.khronos.egl.EGLDisplay m_EglDisplay>;
+
+        $r3 = r0.<com.ideaworks3d.marmalade.LoaderGL: javax.microedition.khronos.egl.EGLSurface m_EglSurface>;
+
+        interfaceinvoke $r1.<javax.microedition.khronos.egl.EGL10: boolean eglSwapBuffers(javax.microedition.khronos.egl.EGLDisplay,javax.microedition.khronos.egl.EGLSurface)>($r2, $r3);
+
+        return;
+    }
+
+    public void term()
+    {
+        com.ideaworks3d.marmalade.LoaderGL r0;
+        javax.microedition.khronos.egl.EGLContext $r1;
+        javax.microedition.khronos.egl.EGL10 $r2;
+        javax.microedition.khronos.egl.EGLDisplay $r3;
+
+        r0 := @this: com.ideaworks3d.marmalade.LoaderGL;
+
+        $r1 = r0.<com.ideaworks3d.marmalade.LoaderGL: javax.microedition.khronos.egl.EGLContext m_EglContext>;
+
+        if $r1 == null goto label1;
+
+        $r2 = r0.<com.ideaworks3d.marmalade.LoaderGL: javax.microedition.khronos.egl.EGL10 m_Egl>;
+
+        $r3 = r0.<com.ideaworks3d.marmalade.LoaderGL: javax.microedition.khronos.egl.EGLDisplay m_EglDisplay>;
+
+        $r1 = r0.<com.ideaworks3d.marmalade.LoaderGL: javax.microedition.khronos.egl.EGLContext m_EglContext>;
+
+        interfaceinvoke $r2.<javax.microedition.khronos.egl.EGL10: boolean eglDestroyContext(javax.microedition.khronos.egl.EGLDisplay,javax.microedition.khronos.egl.EGLContext)>($r3, $r1);
+
+        r0.<com.ideaworks3d.marmalade.LoaderGL: javax.microedition.khronos.egl.EGLContext m_EglContext> = null;
+
+     label1:
+        $r3 = r0.<com.ideaworks3d.marmalade.LoaderGL: javax.microedition.khronos.egl.EGLDisplay m_EglDisplay>;
+
+        if $r3 == null goto label2;
+
+        $r2 = r0.<com.ideaworks3d.marmalade.LoaderGL: javax.microedition.khronos.egl.EGL10 m_Egl>;
+
+        $r3 = r0.<com.ideaworks3d.marmalade.LoaderGL: javax.microedition.khronos.egl.EGLDisplay m_EglDisplay>;
+
+        interfaceinvoke $r2.<javax.microedition.khronos.egl.EGL10: boolean eglTerminate(javax.microedition.khronos.egl.EGLDisplay)>($r3);
+
+        r0.<com.ideaworks3d.marmalade.LoaderGL: javax.microedition.khronos.egl.EGLDisplay m_EglDisplay> = null;
+
+     label2:
+        r0.<com.ideaworks3d.marmalade.LoaderGL: boolean m_DoneInit> = 0;
+
+        return;
+    }
+
+    public static void <clinit>()
+    {
+        <com.ideaworks3d.marmalade.LoaderGL: int EGL_DEPTH_ENCODING_NV> = 12514;
+
+        <com.ideaworks3d.marmalade.LoaderGL: int EGL_CONTEXT_CLIENT_VERSION> = 12440;
+
+        return;
+    }
+}

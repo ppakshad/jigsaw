@@ -1,0 +1,239 @@
+class com.earingdisplayideas.mortalmen.f extends android.webkit.WebViewClient
+{
+    final com.earingdisplayideas.mortalmen.MainActivity a;
+
+    void <init>(com.earingdisplayideas.mortalmen.MainActivity)
+    {
+        com.earingdisplayideas.mortalmen.f r0;
+        com.earingdisplayideas.mortalmen.MainActivity $r1;
+
+        r0 := @this: com.earingdisplayideas.mortalmen.f;
+
+        $r1 := @parameter0: com.earingdisplayideas.mortalmen.MainActivity;
+
+        r0.<com.earingdisplayideas.mortalmen.f: com.earingdisplayideas.mortalmen.MainActivity a> = $r1;
+
+        specialinvoke r0.<android.webkit.WebViewClient: void <init>()>();
+
+        return;
+    }
+
+    public java.lang.Boolean a(java.lang.String)
+    {
+        com.earingdisplayideas.mortalmen.f r0;
+        java.lang.String $r1;
+        boolean $z0;
+        com.earingdisplayideas.mortalmen.MainActivity $r2;
+        android.webkit.WebView $r3;
+        android.content.Context $r4;
+        android.content.Intent $r5;
+        android.net.Uri $r6;
+        java.lang.Boolean $r7;
+        android.content.ActivityNotFoundException $r8;
+
+        r0 := @this: com.earingdisplayideas.mortalmen.f;
+
+        $r1 := @parameter0: java.lang.String;
+
+        $z0 = virtualinvoke $r1.<java.lang.String: boolean startsWith(java.lang.String)>("market://");
+
+        if $z0 == 0 goto label06;
+
+        $r2 = r0.<com.earingdisplayideas.mortalmen.f: com.earingdisplayideas.mortalmen.MainActivity a>;
+
+        $r3 = $r2.<com.earingdisplayideas.mortalmen.MainActivity: android.webkit.WebView a>;
+
+     label01:
+        $r4 = virtualinvoke $r3.<android.webkit.WebView: android.content.Context getContext()>();
+
+     label02:
+        $r5 = new android.content.Intent;
+
+     label03:
+        $r6 = staticinvoke <android.net.Uri: android.net.Uri parse(java.lang.String)>($r1);
+
+        specialinvoke $r5.<android.content.Intent: void <init>(java.lang.String,android.net.Uri)>("android.intent.action.VIEW", $r6);
+
+        virtualinvoke $r4.<android.content.Context: void startActivity(android.content.Intent)>($r5);
+
+     label04:
+        $r7 = staticinvoke <java.lang.Boolean: java.lang.Boolean valueOf(boolean)>(1);
+
+        return $r7;
+
+     label05:
+        $r8 := @caughtexception;
+
+        virtualinvoke $r8.<android.content.ActivityNotFoundException: void printStackTrace()>();
+
+        goto label04;
+
+     label06:
+        $z0 = virtualinvoke $r1.<java.lang.String: boolean startsWith(java.lang.String)>("tel:");
+
+        if $z0 == 0 goto label07;
+
+        $r5 = new android.content.Intent;
+
+        $r6 = staticinvoke <android.net.Uri: android.net.Uri parse(java.lang.String)>($r1);
+
+        specialinvoke $r5.<android.content.Intent: void <init>(java.lang.String,android.net.Uri)>("android.intent.action.DIAL", $r6);
+
+        $r2 = r0.<com.earingdisplayideas.mortalmen.f: com.earingdisplayideas.mortalmen.MainActivity a>;
+
+        virtualinvoke $r2.<com.earingdisplayideas.mortalmen.MainActivity: void startActivity(android.content.Intent)>($r5);
+
+        $r7 = staticinvoke <java.lang.Boolean: java.lang.Boolean valueOf(boolean)>(1);
+
+        return $r7;
+
+     label07:
+        $z0 = virtualinvoke $r1.<java.lang.String: boolean startsWith(java.lang.String)>("geo:");
+
+        if $z0 == 0 goto label08;
+
+        $r5 = new android.content.Intent;
+
+        $r6 = staticinvoke <android.net.Uri: android.net.Uri parse(java.lang.String)>($r1);
+
+        specialinvoke $r5.<android.content.Intent: void <init>(java.lang.String,android.net.Uri)>("android.intent.action.DIAL", $r6);
+
+        $r2 = r0.<com.earingdisplayideas.mortalmen.f: com.earingdisplayideas.mortalmen.MainActivity a>;
+
+        virtualinvoke $r2.<com.earingdisplayideas.mortalmen.MainActivity: void startActivity(android.content.Intent)>($r5);
+
+        $r7 = staticinvoke <java.lang.Boolean: java.lang.Boolean valueOf(boolean)>(1);
+
+        return $r7;
+
+     label08:
+        $z0 = virtualinvoke $r1.<java.lang.String: boolean startsWith(java.lang.String)>("sms:");
+
+        if $z0 == 0 goto label09;
+
+        $r5 = new android.content.Intent;
+
+        $r6 = staticinvoke <android.net.Uri: android.net.Uri parse(java.lang.String)>($r1);
+
+        specialinvoke $r5.<android.content.Intent: void <init>(java.lang.String,android.net.Uri)>("android.intent.action.DIAL", $r6);
+
+        $r2 = r0.<com.earingdisplayideas.mortalmen.f: com.earingdisplayideas.mortalmen.MainActivity a>;
+
+        virtualinvoke $r2.<com.earingdisplayideas.mortalmen.MainActivity: void startActivity(android.content.Intent)>($r5);
+
+        $r7 = staticinvoke <java.lang.Boolean: java.lang.Boolean valueOf(boolean)>(1);
+
+        return $r7;
+
+     label09:
+        $z0 = virtualinvoke $r1.<java.lang.String: boolean startsWith(java.lang.String)>("mailto:");
+
+        if $z0 == 0 goto label10;
+
+        $r5 = new android.content.Intent;
+
+        $r6 = staticinvoke <android.net.Uri: android.net.Uri parse(java.lang.String)>($r1);
+
+        specialinvoke $r5.<android.content.Intent: void <init>(java.lang.String,android.net.Uri)>("android.intent.action.SENDTO", $r6);
+
+        $r2 = r0.<com.earingdisplayideas.mortalmen.f: com.earingdisplayideas.mortalmen.MainActivity a>;
+
+        virtualinvoke $r2.<com.earingdisplayideas.mortalmen.MainActivity: void startActivity(android.content.Intent)>($r5);
+
+        $r7 = staticinvoke <java.lang.Boolean: java.lang.Boolean valueOf(boolean)>(1);
+
+        return $r7;
+
+     label10:
+        $z0 = virtualinvoke $r1.<java.lang.String: boolean contains(java.lang.CharSequence)>("flipkart.com");
+
+        if $z0 == 0 goto label11;
+
+        $r5 = new android.content.Intent;
+
+        $r6 = staticinvoke <android.net.Uri: android.net.Uri parse(java.lang.String)>($r1);
+
+        specialinvoke $r5.<android.content.Intent: void <init>(java.lang.String,android.net.Uri)>("android.intent.action.VIEW", $r6);
+
+        $r2 = r0.<com.earingdisplayideas.mortalmen.f: com.earingdisplayideas.mortalmen.MainActivity a>;
+
+        virtualinvoke $r2.<com.earingdisplayideas.mortalmen.MainActivity: void startActivity(android.content.Intent)>($r5);
+
+        $r7 = staticinvoke <java.lang.Boolean: java.lang.Boolean valueOf(boolean)>(1);
+
+        return $r7;
+
+     label11:
+        $r7 = staticinvoke <java.lang.Boolean: java.lang.Boolean valueOf(boolean)>(0);
+
+        return $r7;
+
+        catch android.content.ActivityNotFoundException from label01 to label02 with label05;
+        catch android.content.ActivityNotFoundException from label03 to label04 with label05;
+    }
+
+    public void onPageFinished(android.webkit.WebView, java.lang.String)
+    {
+        com.earingdisplayideas.mortalmen.f r0;
+        android.webkit.WebView $r1;
+        java.lang.String $r2;
+
+        r0 := @this: com.earingdisplayideas.mortalmen.f;
+
+        $r1 := @parameter0: android.webkit.WebView;
+
+        $r2 := @parameter1: java.lang.String;
+
+        return;
+    }
+
+    public void onReceivedError(android.webkit.WebView, int, java.lang.String, java.lang.String)
+    {
+        com.earingdisplayideas.mortalmen.f r0;
+        android.webkit.WebView $r1;
+        int $i0;
+        java.lang.String $r2, $r3;
+
+        r0 := @this: com.earingdisplayideas.mortalmen.f;
+
+        $r1 := @parameter0: android.webkit.WebView;
+
+        $i0 := @parameter1: int;
+
+        $r2 := @parameter2: java.lang.String;
+
+        $r3 := @parameter3: java.lang.String;
+
+        virtualinvoke $r1.<android.webkit.WebView: void loadUrl(java.lang.String)>("file:///android_asset/404r.html");
+
+        return;
+    }
+
+    public boolean shouldOverrideUrlLoading(android.webkit.WebView, java.lang.String)
+    {
+        com.earingdisplayideas.mortalmen.f r0;
+        android.webkit.WebView $r1;
+        java.lang.String $r2;
+        java.lang.Boolean $r3;
+        boolean $z0;
+
+        r0 := @this: com.earingdisplayideas.mortalmen.f;
+
+        $r1 := @parameter0: android.webkit.WebView;
+
+        $r2 := @parameter1: java.lang.String;
+
+        $r3 = virtualinvoke r0.<com.earingdisplayideas.mortalmen.f: java.lang.Boolean a(java.lang.String)>($r2);
+
+        $z0 = virtualinvoke $r3.<java.lang.Boolean: boolean booleanValue()>();
+
+        if $z0 == 0 goto label1;
+
+        return 1;
+
+     label1:
+        virtualinvoke $r1.<android.webkit.WebView: void loadUrl(java.lang.String)>($r2);
+
+        return 0;
+    }
+}

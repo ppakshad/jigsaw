@@ -1,0 +1,87 @@
+public class com.apperhand.common.dto.protocol.ShortcutRequest extends com.apperhand.common.dto.protocol.BaseRequest
+{
+    private static final long serialVersionUID;
+    private java.lang.Boolean supportLauncher;
+
+    public void <init>()
+    {
+        com.apperhand.common.dto.protocol.ShortcutRequest r0;
+
+        r0 := @this: com.apperhand.common.dto.protocol.ShortcutRequest;
+
+        specialinvoke r0.<com.apperhand.common.dto.protocol.BaseRequest: void <init>()>();
+
+        return;
+    }
+
+    public java.lang.Boolean getSupportLauncher()
+    {
+        com.apperhand.common.dto.protocol.ShortcutRequest r0;
+        java.lang.Boolean r1;
+
+        r0 := @this: com.apperhand.common.dto.protocol.ShortcutRequest;
+
+        r1 = r0.<com.apperhand.common.dto.protocol.ShortcutRequest: java.lang.Boolean supportLauncher>;
+
+        return r1;
+    }
+
+    public void setSupportLauncher(java.lang.Boolean)
+    {
+        com.apperhand.common.dto.protocol.ShortcutRequest r0;
+        java.lang.Boolean $r1;
+
+        r0 := @this: com.apperhand.common.dto.protocol.ShortcutRequest;
+
+        $r1 := @parameter0: java.lang.Boolean;
+
+        r0.<com.apperhand.common.dto.protocol.ShortcutRequest: java.lang.Boolean supportLauncher> = $r1;
+
+        return;
+    }
+
+    public java.lang.String toString()
+    {
+        com.apperhand.common.dto.protocol.ShortcutRequest r0;
+        java.lang.StringBuilder $r1;
+        java.lang.Boolean $r2;
+        com.apperhand.common.dto.ApplicationDetails $r3;
+        java.util.Map $r4;
+        java.lang.String $r5;
+
+        r0 := @this: com.apperhand.common.dto.protocol.ShortcutRequest;
+
+        $r1 = new java.lang.StringBuilder;
+
+        specialinvoke $r1.<java.lang.StringBuilder: void <init>(java.lang.String)>("ShortcutRequest [supportLauncher=");
+
+        $r2 = r0.<com.apperhand.common.dto.protocol.ShortcutRequest: java.lang.Boolean supportLauncher>;
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($r2);
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(", applicationDetails=");
+
+        $r3 = r0.<com.apperhand.common.dto.protocol.ShortcutRequest: com.apperhand.common.dto.ApplicationDetails applicationDetails>;
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($r3);
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(", parameters=");
+
+        $r4 = r0.<com.apperhand.common.dto.protocol.ShortcutRequest: java.util.Map parameters>;
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($r4);
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("]");
+
+        $r5 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        return $r5;
+    }
+
+    public static void <clinit>()
+    {
+        <com.apperhand.common.dto.protocol.ShortcutRequest: long serialVersionUID> = 4000774634315675368L;
+
+        return;
+    }
+}

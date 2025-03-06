@@ -1,0 +1,492 @@
+final class com.movesky.app.engine.core.GameView extends android.view.View implements java.lang.Runnable
+{
+    private android.graphics.RectF clipRect;
+    private com.movesky.app.engine.core.Game game;
+    private android.os.Handler handler;
+    private float offsetX;
+    private float offsetY;
+    private long prevTime;
+    private float scaleX;
+    private float scaleY;
+    private float secondsUntilNextNetworkTick;
+    private float secondsUntilNextTick;
+    private boolean useClipRect;
+
+    public void <init>(android.content.Context, com.movesky.app.engine.core.Game)
+    {
+        com.movesky.app.engine.core.GameView r0;
+        android.content.Context $r1;
+        com.movesky.app.engine.core.Game $r2;
+        android.os.Handler $r3;
+        android.graphics.RectF $r4;
+
+        r0 := @this: com.movesky.app.engine.core.GameView;
+
+        $r1 := @parameter0: android.content.Context;
+
+        $r2 := @parameter1: com.movesky.app.engine.core.Game;
+
+        specialinvoke r0.<android.view.View: void <init>(android.content.Context)>($r1);
+
+        r0.<com.movesky.app.engine.core.GameView: com.movesky.app.engine.core.Game game> = $r2;
+
+        $r3 = new android.os.Handler;
+
+        specialinvoke $r3.<android.os.Handler: void <init>()>();
+
+        r0.<com.movesky.app.engine.core.GameView: android.os.Handler handler> = $r3;
+
+        $r4 = new android.graphics.RectF;
+
+        specialinvoke $r4.<android.graphics.RectF: void <init>()>();
+
+        r0.<com.movesky.app.engine.core.GameView: android.graphics.RectF clipRect> = $r4;
+
+        return;
+    }
+
+    private void updateFrameRate(float)
+    {
+        com.movesky.app.engine.core.GameView r0;
+        float $f0, $f1, $f2;
+        com.movesky.app.engine.core.Game $r1;
+        boolean $z0;
+        byte $b0;
+        int $i1;
+
+        r0 := @this: com.movesky.app.engine.core.GameView;
+
+        $f0 := @parameter0: float;
+
+        $r1 = r0.<com.movesky.app.engine.core.GameView: com.movesky.app.engine.core.Game game>;
+
+        $z0 = virtualinvoke $r1.<com.movesky.app.engine.core.Game: boolean lockUpdateToDraw()>();
+
+        if $z0 == 0 goto label3;
+
+        $r1 = r0.<com.movesky.app.engine.core.GameView: com.movesky.app.engine.core.Game game>;
+
+        virtualinvoke $r1.<com.movesky.app.engine.core.Game: void onUpdate(float)>($f0);
+
+     label1:
+        $r1 = r0.<com.movesky.app.engine.core.GameView: com.movesky.app.engine.core.Game game>;
+
+        $f1 = virtualinvoke $r1.<com.movesky.app.engine.core.Game: float getNetworkUpdateDelay()>();
+
+        $f2 = r0.<com.movesky.app.engine.core.GameView: float secondsUntilNextNetworkTick>;
+
+        $f0 = $f2 + $f0;
+
+        r0.<com.movesky.app.engine.core.GameView: float secondsUntilNextNetworkTick> = $f0;
+
+     label2:
+        $f0 = r0.<com.movesky.app.engine.core.GameView: float secondsUntilNextNetworkTick>;
+
+        $b0 = $f0 cmpl 0.0F;
+
+        if $b0 <= 0 goto label5;
+
+        $r1 = r0.<com.movesky.app.engine.core.GameView: com.movesky.app.engine.core.Game game>;
+
+        virtualinvoke $r1.<com.movesky.app.engine.core.Game: void onNetworkUpdate()>();
+
+        $f0 = r0.<com.movesky.app.engine.core.GameView: float secondsUntilNextNetworkTick>;
+
+        $f0 = $f0 - $f1;
+
+        r0.<com.movesky.app.engine.core.GameView: float secondsUntilNextNetworkTick> = $f0;
+
+        goto label2;
+
+     label3:
+        $i1 = 0;
+
+        $r1 = r0.<com.movesky.app.engine.core.GameView: com.movesky.app.engine.core.Game game>;
+
+        $f1 = virtualinvoke $r1.<com.movesky.app.engine.core.Game: float getUpdateDelay()>();
+
+        $f2 = r0.<com.movesky.app.engine.core.GameView: float secondsUntilNextTick>;
+
+        $f2 = $f2 + $f0;
+
+        r0.<com.movesky.app.engine.core.GameView: float secondsUntilNextTick> = $f2;
+
+     label4:
+        $i1 = $i1 + 1;
+
+        if $i1 > 10 goto label1;
+
+        $f2 = r0.<com.movesky.app.engine.core.GameView: float secondsUntilNextTick>;
+
+        $b0 = $f2 cmpl 0.0F;
+
+        if $b0 <= 0 goto label1;
+
+        $r1 = r0.<com.movesky.app.engine.core.GameView: com.movesky.app.engine.core.Game game>;
+
+        virtualinvoke $r1.<com.movesky.app.engine.core.Game: void onUpdate(float)>($f1);
+
+        $f2 = r0.<com.movesky.app.engine.core.GameView: float secondsUntilNextTick>;
+
+        $f2 = $f2 - $f1;
+
+        r0.<com.movesky.app.engine.core.GameView: float secondsUntilNextTick> = $f2;
+
+        goto label4;
+
+     label5:
+        return;
+    }
+
+    private void updateTransform()
+    {
+        com.movesky.app.engine.core.GameView r0;
+        float $f0, $f1, $f2, $f3, $f4, $f5;
+        int $i0;
+        com.movesky.app.engine.core.Game $r1;
+        boolean $z0;
+        byte $b1;
+        android.graphics.RectF $r2;
+
+        r0 := @this: com.movesky.app.engine.core.GameView;
+
+        $i0 = virtualinvoke r0.<com.movesky.app.engine.core.GameView: int getWidth()>();
+
+        $f0 = (float) $i0;
+
+        $i0 = virtualinvoke r0.<com.movesky.app.engine.core.GameView: int getHeight()>();
+
+        $f1 = (float) $i0;
+
+        $r1 = r0.<com.movesky.app.engine.core.GameView: com.movesky.app.engine.core.Game game>;
+
+        $f2 = virtualinvoke $r1.<com.movesky.app.engine.core.Game: float getWidth()>();
+
+        $r1 = r0.<com.movesky.app.engine.core.GameView: com.movesky.app.engine.core.Game game>;
+
+        $f3 = virtualinvoke $r1.<com.movesky.app.engine.core.Game: float getHeight()>();
+
+        $r1 = r0.<com.movesky.app.engine.core.GameView: com.movesky.app.engine.core.Game game>;
+
+        $z0 = virtualinvoke $r1.<com.movesky.app.engine.core.Game: boolean stretchToFillScreen()>();
+
+        if $z0 == 0 goto label1;
+
+        r0.<com.movesky.app.engine.core.GameView: float offsetY> = 0.0F;
+
+        r0.<com.movesky.app.engine.core.GameView: float offsetX> = 0.0F;
+
+        $f4 = $f0 / $f2;
+
+        r0.<com.movesky.app.engine.core.GameView: float scaleX> = $f4;
+
+        $f3 = $f1 / $f3;
+
+        r0.<com.movesky.app.engine.core.GameView: float scaleY> = $f3;
+
+        r0.<com.movesky.app.engine.core.GameView: boolean useClipRect> = 0;
+
+        return;
+
+     label1:
+        $f4 = $f2 * $f1;
+
+        $f5 = $f0 * $f3;
+
+        $b1 = $f4 cmpl $f5;
+
+        if $b1 <= 0 goto label5;
+
+        $z0 = 1;
+
+     label2:
+        if $z0 == 0 goto label6;
+
+        $f4 = $f0 / $f2;
+
+     label3:
+        if $z0 == 0 goto label7;
+
+        $f5 = $f3 * $f4;
+
+        $f5 = $f1 - $f5;
+
+        $f5 = $f5 / 2.0F;
+
+        $r2 = r0.<com.movesky.app.engine.core.GameView: android.graphics.RectF clipRect>;
+
+        $r2.<android.graphics.RectF: float left> = 0.0F;
+
+        $r2 = r0.<com.movesky.app.engine.core.GameView: android.graphics.RectF clipRect>;
+
+        $r2.<android.graphics.RectF: float top> = $f5;
+
+        $r2 = r0.<com.movesky.app.engine.core.GameView: android.graphics.RectF clipRect>;
+
+        $r2.<android.graphics.RectF: float right> = $f0;
+
+        $r2 = r0.<com.movesky.app.engine.core.GameView: android.graphics.RectF clipRect>;
+
+        $f5 = $f1 - $f5;
+
+        $r2.<android.graphics.RectF: float bottom> = $f5;
+
+     label4:
+        r0.<com.movesky.app.engine.core.GameView: boolean useClipRect> = 1;
+
+        $f0 = $f0 / 2.0F;
+
+        $f2 = $f2 / 2.0F;
+
+        $f2 = $f2 * $f4;
+
+        $f2 = $f0 - $f2;
+
+        r0.<com.movesky.app.engine.core.GameView: float offsetX> = $f2;
+
+        $f1 = $f1 / 2.0F;
+
+        $f3 = $f3 / 2.0F;
+
+        $f3 = $f3 * $f4;
+
+        $f3 = $f1 - $f3;
+
+        r0.<com.movesky.app.engine.core.GameView: float offsetY> = $f3;
+
+        r0.<com.movesky.app.engine.core.GameView: float scaleY> = $f4;
+
+        r0.<com.movesky.app.engine.core.GameView: float scaleX> = $f4;
+
+        return;
+
+     label5:
+        $z0 = 0;
+
+        goto label2;
+
+     label6:
+        $f4 = $f1 / $f3;
+
+        goto label3;
+
+     label7:
+        $f5 = $f2 * $f4;
+
+        $f5 = $f0 - $f5;
+
+        $f5 = $f5 / 2.0F;
+
+        $r2 = r0.<com.movesky.app.engine.core.GameView: android.graphics.RectF clipRect>;
+
+        $r2.<android.graphics.RectF: float left> = $f5;
+
+        $r2 = r0.<com.movesky.app.engine.core.GameView: android.graphics.RectF clipRect>;
+
+        $r2.<android.graphics.RectF: float top> = 0.0F;
+
+        $r2 = r0.<com.movesky.app.engine.core.GameView: android.graphics.RectF clipRect>;
+
+        $f5 = $f0 - $f5;
+
+        $r2.<android.graphics.RectF: float right> = $f5;
+
+        $r2 = r0.<com.movesky.app.engine.core.GameView: android.graphics.RectF clipRect>;
+
+        $r2.<android.graphics.RectF: float bottom> = $f1;
+
+        goto label4;
+    }
+
+    protected void onDraw(android.graphics.Canvas)
+    {
+        com.movesky.app.engine.core.GameView r0;
+        android.graphics.Canvas $r1;
+        boolean $z0;
+        android.graphics.RectF $r2;
+        float $f0, $f1;
+        com.movesky.app.engine.core.Game $r3;
+
+        r0 := @this: com.movesky.app.engine.core.GameView;
+
+        $r1 := @parameter0: android.graphics.Canvas;
+
+        specialinvoke r0.<com.movesky.app.engine.core.GameView: void updateTransform()>();
+
+        $z0 = r0.<com.movesky.app.engine.core.GameView: boolean useClipRect>;
+
+        if $z0 == 0 goto label1;
+
+        $r2 = r0.<com.movesky.app.engine.core.GameView: android.graphics.RectF clipRect>;
+
+        virtualinvoke $r1.<android.graphics.Canvas: boolean clipRect(android.graphics.RectF)>($r2);
+
+     label1:
+        $f0 = r0.<com.movesky.app.engine.core.GameView: float offsetX>;
+
+        $f1 = r0.<com.movesky.app.engine.core.GameView: float offsetY>;
+
+        virtualinvoke $r1.<android.graphics.Canvas: void translate(float,float)>($f0, $f1);
+
+        $f0 = r0.<com.movesky.app.engine.core.GameView: float scaleX>;
+
+        $f1 = r0.<com.movesky.app.engine.core.GameView: float scaleY>;
+
+        virtualinvoke $r1.<android.graphics.Canvas: void scale(float,float)>($f0, $f1);
+
+        $r3 = r0.<com.movesky.app.engine.core.GameView: com.movesky.app.engine.core.Game game>;
+
+        virtualinvoke $r3.<com.movesky.app.engine.core.Game: void onDraw(android.graphics.Canvas)>($r1);
+
+        return;
+    }
+
+    public void onStart()
+    {
+        com.movesky.app.engine.core.GameView r0;
+        long $l0;
+
+        r0 := @this: com.movesky.app.engine.core.GameView;
+
+        $l0 = staticinvoke <java.lang.System: long currentTimeMillis()>();
+
+        r0.<com.movesky.app.engine.core.GameView: long prevTime> = $l0;
+
+        virtualinvoke r0.<com.movesky.app.engine.core.GameView: void run()>();
+
+        return;
+    }
+
+    public void onStop()
+    {
+        com.movesky.app.engine.core.GameView r0;
+        android.os.Handler $r1;
+
+        r0 := @this: com.movesky.app.engine.core.GameView;
+
+        $r1 = r0.<com.movesky.app.engine.core.GameView: android.os.Handler handler>;
+
+        virtualinvoke $r1.<android.os.Handler: void removeCallbacks(java.lang.Runnable)>(r0);
+
+        return;
+    }
+
+    public boolean onTouchEvent(android.view.MotionEvent)
+    {
+        com.movesky.app.engine.core.GameView r0;
+        android.view.MotionEvent $r1;
+        float $f0, $f1, $f2;
+        int $i0;
+        com.movesky.app.engine.core.Game $r2;
+
+        r0 := @this: com.movesky.app.engine.core.GameView;
+
+        $r1 := @parameter0: android.view.MotionEvent;
+
+        $f0 = virtualinvoke $r1.<android.view.MotionEvent: float getX(int)>(0);
+
+        $f1 = r0.<com.movesky.app.engine.core.GameView: float offsetX>;
+
+        $f0 = $f0 - $f1;
+
+        $f1 = r0.<com.movesky.app.engine.core.GameView: float scaleX>;
+
+        $f0 = $f0 / $f1;
+
+        $f1 = virtualinvoke $r1.<android.view.MotionEvent: float getY(int)>(0);
+
+        $f2 = r0.<com.movesky.app.engine.core.GameView: float offsetY>;
+
+        $f1 = $f1 - $f2;
+
+        $f2 = r0.<com.movesky.app.engine.core.GameView: float scaleY>;
+
+        $f1 = $f1 / $f2;
+
+        $i0 = virtualinvoke $r1.<android.view.MotionEvent: int getAction()>();
+
+        lookupswitch($i0)
+        {
+            case 0: goto label2;
+            case 1: goto label4;
+            case 2: goto label3;
+            case 3: goto label4;
+            default: goto label1;
+        };
+
+     label1:
+        return 1;
+
+     label2:
+        $r2 = r0.<com.movesky.app.engine.core.GameView: com.movesky.app.engine.core.Game game>;
+
+        virtualinvoke $r2.<com.movesky.app.engine.core.Game: void onTouchDown(float,float)>($f0, $f1);
+
+        goto label1;
+
+     label3:
+        $r2 = r0.<com.movesky.app.engine.core.GameView: com.movesky.app.engine.core.Game game>;
+
+        virtualinvoke $r2.<com.movesky.app.engine.core.Game: void onTouchMove(float,float)>($f0, $f1);
+
+        goto label1;
+
+     label4:
+        $r2 = r0.<com.movesky.app.engine.core.GameView: com.movesky.app.engine.core.Game game>;
+
+        virtualinvoke $r2.<com.movesky.app.engine.core.Game: void onTouchUp(float,float)>($f0, $f1);
+
+        goto label1;
+    }
+
+    public void run()
+    {
+        com.movesky.app.engine.core.GameView r0;
+        long $l0, $l1, $l2;
+        float $f0;
+        com.movesky.app.engine.core.Game $r1;
+        android.os.Handler $r2;
+
+        r0 := @this: com.movesky.app.engine.core.GameView;
+
+        $l0 = staticinvoke <java.lang.System: long currentTimeMillis()>();
+
+        $l1 = r0.<com.movesky.app.engine.core.GameView: long prevTime>;
+
+        $l1 = $l0 - $l1;
+
+        $f0 = (float) $l1;
+
+        $f0 = $f0 * 0.001F;
+
+        specialinvoke r0.<com.movesky.app.engine.core.GameView: void updateFrameRate(float)>($f0);
+
+        r0.<com.movesky.app.engine.core.GameView: long prevTime> = $l0;
+
+        virtualinvoke r0.<com.movesky.app.engine.core.GameView: void invalidate()>();
+
+        $r1 = r0.<com.movesky.app.engine.core.GameView: com.movesky.app.engine.core.Game game>;
+
+        $f0 = virtualinvoke $r1.<com.movesky.app.engine.core.Game: float getDrawDelay()>();
+
+        $f0 = $f0 * 1000.0F;
+
+        $l1 = (long) $f0;
+
+        $l0 = $l0 + $l1;
+
+        $l2 = staticinvoke <java.lang.System: long currentTimeMillis()>();
+
+        $l0 = $l0 - $l2;
+
+        $r2 = r0.<com.movesky.app.engine.core.GameView: android.os.Handler handler>;
+
+        $l1 = staticinvoke <java.lang.Math: long min(long,long)>($l1, $l0);
+
+        $l1 = staticinvoke <java.lang.Math: long max(long,long)>(1L, $l1);
+
+        virtualinvoke $r2.<android.os.Handler: boolean postDelayed(java.lang.Runnable,long)>(r0, $l1);
+
+        return;
+    }
+}

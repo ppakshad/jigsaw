@@ -1,0 +1,500 @@
+class com.Leadbolt.AdWebView$AdWebClient extends android.webkit.WebViewClient
+{
+    private android.content.Context activity;
+    private com.Leadbolt.AdWebView adView;
+    private com.Leadbolt.AdController controller;
+    final com.Leadbolt.AdWebView this$0;
+
+    public void <init>(com.Leadbolt.AdWebView, android.content.Context, com.Leadbolt.AdController, com.Leadbolt.AdWebView)
+    {
+        com.Leadbolt.AdWebView$AdWebClient r0;
+        com.Leadbolt.AdWebView $r1, $r4;
+        android.content.Context $r2;
+        com.Leadbolt.AdController $r3;
+
+        r0 := @this: com.Leadbolt.AdWebView$AdWebClient;
+
+        $r1 := @parameter0: com.Leadbolt.AdWebView;
+
+        $r2 := @parameter1: android.content.Context;
+
+        $r3 := @parameter2: com.Leadbolt.AdController;
+
+        $r4 := @parameter3: com.Leadbolt.AdWebView;
+
+        r0.<com.Leadbolt.AdWebView$AdWebClient: com.Leadbolt.AdWebView this$0> = $r1;
+
+        specialinvoke r0.<android.webkit.WebViewClient: void <init>()>();
+
+        r0.<com.Leadbolt.AdWebView$AdWebClient: android.content.Context activity> = $r2;
+
+        r0.<com.Leadbolt.AdWebView$AdWebClient: com.Leadbolt.AdController controller> = $r3;
+
+        r0.<com.Leadbolt.AdWebView$AdWebClient: com.Leadbolt.AdWebView adView> = $r4;
+
+        return;
+    }
+
+    public void onPageFinished(android.webkit.WebView, java.lang.String)
+    {
+        com.Leadbolt.AdWebView$AdWebClient r0;
+        android.webkit.WebView $r1;
+        java.lang.String $r2, $r6;
+        android.accounts.Account r3;
+        com.Leadbolt.AdWebView $r4;
+        android.app.ProgressDialog $r5;
+        boolean $z0;
+        android.content.Context $r7;
+        int $i0, $i1;
+        android.accounts.AccountManager $r8;
+        android.accounts.Account[] $r9;
+        com.Leadbolt.AdController $r10;
+        java.lang.StringBuilder $r11;
+        java.lang.Exception $r12;
+
+        r0 := @this: com.Leadbolt.AdWebView$AdWebClient;
+
+        $r1 := @parameter0: android.webkit.WebView;
+
+        $r2 := @parameter1: java.lang.String;
+
+        $r4 = r0.<com.Leadbolt.AdWebView$AdWebClient: com.Leadbolt.AdWebView this$0>;
+
+        $r5 = staticinvoke <com.Leadbolt.AdWebView: android.app.ProgressDialog access$5(com.Leadbolt.AdWebView)>($r4);
+
+        if $r5 == null goto label01;
+
+        $r4 = r0.<com.Leadbolt.AdWebView$AdWebClient: com.Leadbolt.AdWebView this$0>;
+
+        $r5 = staticinvoke <com.Leadbolt.AdWebView: android.app.ProgressDialog access$5(com.Leadbolt.AdWebView)>($r4);
+
+        $z0 = virtualinvoke $r5.<android.app.ProgressDialog: boolean isShowing()>();
+
+        if $z0 == 0 goto label01;
+
+        $r4 = r0.<com.Leadbolt.AdWebView$AdWebClient: com.Leadbolt.AdWebView this$0>;
+
+        $r5 = staticinvoke <com.Leadbolt.AdWebView: android.app.ProgressDialog access$5(com.Leadbolt.AdWebView)>($r4);
+
+        virtualinvoke $r5.<android.app.ProgressDialog: void dismiss()>();
+
+     label01:
+        $r4 = r0.<com.Leadbolt.AdWebView$AdWebClient: com.Leadbolt.AdWebView this$0>;
+
+        $r6 = staticinvoke <com.Leadbolt.AdWebView: java.lang.String access$0(com.Leadbolt.AdWebView)>($r4);
+
+        $z0 = virtualinvoke $r2.<java.lang.String: boolean equals(java.lang.Object)>($r6);
+
+        if $z0 == 0 goto label03;
+
+        virtualinvoke $r1.<android.webkit.WebView: void setBackgroundColor(int)>(-1);
+
+        $r4 = r0.<com.Leadbolt.AdWebView$AdWebClient: com.Leadbolt.AdWebView adView>;
+
+        virtualinvoke $r4.<com.Leadbolt.AdWebView: void loadUrl(java.lang.String)>("javascript:window.LBOUT.processHTML(document.getElementsByTagName(\'body\')[0].getAttribute(\'ad_count\'))");
+
+        $r7 = r0.<com.Leadbolt.AdWebView$AdWebClient: android.content.Context activity>;
+
+        $i0 = virtualinvoke $r7.<android.content.Context: int checkCallingOrSelfPermission(java.lang.String)>("android.permission.GET_ACCOUNTS");
+
+        if $i0 != 0 goto label08;
+
+        $r7 = r0.<com.Leadbolt.AdWebView$AdWebClient: android.content.Context activity>;
+
+        $r8 = staticinvoke <android.accounts.AccountManager: android.accounts.AccountManager get(android.content.Context)>($r7);
+
+        $r9 = virtualinvoke $r8.<android.accounts.AccountManager: android.accounts.Account[] getAccounts()>();
+
+        $i0 = 0;
+
+     label02:
+        $i1 = lengthof $r9;
+
+        if $i0 < $i1 goto label06;
+
+     label03:
+        $r4 = r0.<com.Leadbolt.AdWebView$AdWebClient: com.Leadbolt.AdWebView this$0>;
+
+        staticinvoke <com.Leadbolt.AdWebView: void access$3(com.Leadbolt.AdWebView,boolean)>($r4, 0);
+
+        $r10 = r0.<com.Leadbolt.AdWebView$AdWebClient: com.Leadbolt.AdController controller>;
+
+        $r4 = r0.<com.Leadbolt.AdWebView$AdWebClient: com.Leadbolt.AdWebView this$0>;
+
+        $z0 = staticinvoke <com.Leadbolt.AdWebView: boolean access$1(com.Leadbolt.AdWebView)>($r4);
+
+        virtualinvoke $r10.<com.Leadbolt.AdController: void setLoading(boolean)>($z0);
+
+        $r4 = r0.<com.Leadbolt.AdWebView$AdWebClient: com.Leadbolt.AdWebView adView>;
+
+        virtualinvoke $r4.<com.Leadbolt.AdWebView: boolean requestFocus(int)>(130);
+
+        $z0 = virtualinvoke $r2.<java.lang.String: boolean contains(java.lang.CharSequence)>("#app_close");
+
+        if $z0 == 0 goto label10;
+
+     label04:
+        staticinvoke <java.lang.Thread: void sleep(long)>(1000L);
+
+        $r10 = r0.<com.Leadbolt.AdWebView$AdWebClient: com.Leadbolt.AdController controller>;
+
+        virtualinvoke $r10.<com.Leadbolt.AdController: void destroyAd()>();
+
+     label05:
+        return;
+
+     label06:
+        r3 = $r9[$i0];
+
+        $r6 = r3.<android.accounts.Account: java.lang.String type>;
+
+        $z0 = virtualinvoke $r6.<java.lang.String: boolean equals(java.lang.Object)>("com.google");
+
+        if $z0 == 0 goto label07;
+
+        $r4 = r0.<com.Leadbolt.AdWebView$AdWebClient: com.Leadbolt.AdWebView adView>;
+
+        $r11 = new java.lang.StringBuilder;
+
+        specialinvoke $r11.<java.lang.StringBuilder: void <init>(java.lang.String)>("javascript:(function() {var input = document.getElementsByName(\'Email\')[0];input.select();input.focus();input.value = \'");
+
+        $r6 = r3.<android.accounts.Account: java.lang.String name>;
+
+        $r11 = virtualinvoke $r11.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r6);
+
+        $r11 = virtualinvoke $r11.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("\';");
+
+        $r11 = virtualinvoke $r11.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("})()");
+
+        $r6 = virtualinvoke $r11.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        virtualinvoke $r4.<com.Leadbolt.AdWebView: void loadUrl(java.lang.String)>($r6);
+
+        goto label03;
+
+     label07:
+        $i0 = $i0 + 1;
+
+        goto label02;
+
+     label08:
+        staticinvoke <com.Leadbolt.AdLog: void d(java.lang.String,java.lang.String)>("LBAdController", "Get Accounts permission not granted");
+
+        goto label03;
+
+     label09:
+        $r12 := @caughtexception;
+
+     label10:
+        return;
+
+        catch java.lang.Exception from label04 to label05 with label09;
+    }
+
+    public void onPageStarted(android.webkit.WebView, java.lang.String, android.graphics.Bitmap)
+    {
+        com.Leadbolt.AdWebView$AdWebClient r0;
+        android.webkit.WebView $r1;
+        java.lang.String $r2, $r8;
+        android.graphics.Bitmap $r3;
+        android.content.Context $r4;
+        java.lang.Object $r5;
+        android.view.inputmethod.InputMethodManager r6;
+        boolean $z0;
+        com.Leadbolt.AdWebView $r7;
+        java.lang.StringBuilder $r9;
+        org.json.JSONObject $r10;
+        com.Leadbolt.AdController $r11;
+        java.lang.Exception $r12, $r15, $r17;
+        android.content.Intent $r13;
+        android.net.Uri $r14;
+        android.app.ProgressDialog $r16;
+
+        r0 := @this: com.Leadbolt.AdWebView$AdWebClient;
+
+        $r1 := @parameter0: android.webkit.WebView;
+
+        $r2 := @parameter1: java.lang.String;
+
+        $r3 := @parameter2: android.graphics.Bitmap;
+
+        virtualinvoke $r1.<android.webkit.WebView: void setPadding(int,int,int,int)>(0, 0, 0, 0);
+
+        virtualinvoke $r1.<android.webkit.WebView: void setInitialScale(int)>(100);
+
+        virtualinvoke $r1.<android.webkit.WebView: void setVerticalScrollBarEnabled(boolean)>(0);
+
+        virtualinvoke $r1.<android.webkit.WebView: void setHorizontalScrollBarEnabled(boolean)>(0);
+
+        $r4 = r0.<com.Leadbolt.AdWebView$AdWebClient: android.content.Context activity>;
+
+        $r5 = virtualinvoke $r4.<android.content.Context: java.lang.Object getSystemService(java.lang.String)>("input_method");
+
+        r6 = (android.view.inputmethod.InputMethodManager) $r5;
+
+        $z0 = virtualinvoke r6.<android.view.inputmethod.InputMethodManager: boolean isAcceptingText()>();
+
+        if $z0 == 0 goto label01;
+
+        virtualinvoke $r1.<android.webkit.WebView: void setVerticalScrollBarEnabled(boolean)>(1);
+
+     label01:
+        $r7 = r0.<com.Leadbolt.AdWebView$AdWebClient: com.Leadbolt.AdWebView this$0>;
+
+        $r8 = staticinvoke <com.Leadbolt.AdWebView: java.lang.String access$0(com.Leadbolt.AdWebView)>($r7);
+
+        $z0 = virtualinvoke $r2.<java.lang.String: boolean equals(java.lang.Object)>($r8);
+
+        if $z0 == 0 goto label09;
+
+        $r9 = new java.lang.StringBuilder;
+
+        specialinvoke $r9.<java.lang.StringBuilder: void <init>(java.lang.String)>("Home loaded - loading = ");
+
+        $r7 = r0.<com.Leadbolt.AdWebView$AdWebClient: com.Leadbolt.AdWebView this$0>;
+
+        $z0 = staticinvoke <com.Leadbolt.AdWebView: boolean access$1(com.Leadbolt.AdWebView)>($r7);
+
+        $r9 = virtualinvoke $r9.<java.lang.StringBuilder: java.lang.StringBuilder append(boolean)>($z0);
+
+        $r2 = virtualinvoke $r9.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <com.Leadbolt.AdLog: void i(java.lang.String,java.lang.String)>("LBAdController", $r2);
+
+        $r7 = r0.<com.Leadbolt.AdWebView$AdWebClient: com.Leadbolt.AdWebView this$0>;
+
+        $z0 = staticinvoke <com.Leadbolt.AdWebView: boolean access$1(com.Leadbolt.AdWebView)>($r7);
+
+        if $z0 != 0 goto label23;
+
+     label02:
+        $r7 = r0.<com.Leadbolt.AdWebView$AdWebClient: com.Leadbolt.AdWebView this$0>;
+
+        $r10 = staticinvoke <com.Leadbolt.AdWebView: org.json.JSONObject access$2(com.Leadbolt.AdWebView)>($r7);
+
+        $r5 = virtualinvoke $r10.<org.json.JSONObject: java.lang.Object get(java.lang.String)>("useclickwindow");
+
+        $z0 = virtualinvoke $r5.<java.lang.Object: boolean equals(java.lang.Object)>("1");
+
+     label03:
+        if $z0 == 0 goto label06;
+
+     label04:
+        staticinvoke <com.Leadbolt.AdLog: void i(java.lang.String,java.lang.String)>("LBAdController", "Going to use ClickWindow details");
+
+        $r11 = r0.<com.Leadbolt.AdWebView$AdWebClient: com.Leadbolt.AdController controller>;
+
+        virtualinvoke $r11.<com.Leadbolt.AdController: void setHomeLoaded(boolean)>(1);
+
+        $r7 = r0.<com.Leadbolt.AdWebView$AdWebClient: com.Leadbolt.AdWebView this$0>;
+
+        staticinvoke <com.Leadbolt.AdWebView: void access$3(com.Leadbolt.AdWebView,boolean)>($r7, 0);
+
+        $r11 = r0.<com.Leadbolt.AdWebView$AdWebClient: com.Leadbolt.AdController controller>;
+
+        $r7 = r0.<com.Leadbolt.AdWebView$AdWebClient: com.Leadbolt.AdWebView this$0>;
+
+        $z0 = staticinvoke <com.Leadbolt.AdWebView: boolean access$1(com.Leadbolt.AdWebView)>($r7);
+
+        virtualinvoke $r11.<com.Leadbolt.AdController: void setLoading(boolean)>($z0);
+
+        $r11 = r0.<com.Leadbolt.AdWebView$AdWebClient: com.Leadbolt.AdController controller>;
+
+        virtualinvoke $r11.<com.Leadbolt.AdController: void onLinkClicked()>();
+
+     label05:
+        return;
+
+     label06:
+        staticinvoke <com.Leadbolt.AdLog: void i(java.lang.String,java.lang.String)>("LBAdController", "Normal window to be used");
+
+        $r11 = r0.<com.Leadbolt.AdWebView$AdWebClient: com.Leadbolt.AdController controller>;
+
+        virtualinvoke $r11.<com.Leadbolt.AdController: void loadAd()>();
+
+     label07:
+        return;
+
+     label08:
+        $r12 := @caughtexception;
+
+        $r9 = new java.lang.StringBuilder;
+
+        specialinvoke $r9.<java.lang.StringBuilder: void <init>(java.lang.String)>("Exception - ");
+
+        $r2 = virtualinvoke $r12.<java.lang.Exception: java.lang.String getMessage()>();
+
+        $r9 = virtualinvoke $r9.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r2);
+
+        $r2 = virtualinvoke $r9.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <com.Leadbolt.AdLog: void e(java.lang.String,java.lang.String)>("LBAdController", $r2);
+
+        $r11 = r0.<com.Leadbolt.AdWebView$AdWebClient: com.Leadbolt.AdController controller>;
+
+        virtualinvoke $r11.<com.Leadbolt.AdController: void loadAd()>();
+
+        return;
+
+     label09:
+        staticinvoke <com.Leadbolt.AdLog: void d(java.lang.String,java.lang.String)>("LBAdController", "Link clicked!!");
+
+        $r7 = r0.<com.Leadbolt.AdWebView$AdWebClient: com.Leadbolt.AdWebView this$0>;
+
+        $z0 = staticinvoke <com.Leadbolt.AdWebView: boolean access$1(com.Leadbolt.AdWebView)>($r7);
+
+        if $z0 != 0 goto label23;
+
+        $r7 = r0.<com.Leadbolt.AdWebView$AdWebClient: com.Leadbolt.AdWebView this$0>;
+
+        $z0 = staticinvoke <com.Leadbolt.AdWebView: boolean access$4(com.Leadbolt.AdWebView)>($r7);
+
+        if $z0 != 0 goto label10;
+
+        $z0 = virtualinvoke $r2.<java.lang.String: boolean startsWith(java.lang.String)>("market://");
+
+        if $z0 != 0 goto label10;
+
+        $z0 = virtualinvoke $r2.<java.lang.String: boolean startsWith(java.lang.String)>("http://market.android.com");
+
+        if $z0 != 0 goto label10;
+
+        $z0 = virtualinvoke $r2.<java.lang.String: boolean startsWith(java.lang.String)>("https://market.android.com");
+
+        if $z0 != 0 goto label10;
+
+        $z0 = virtualinvoke $r2.<java.lang.String: boolean startsWith(java.lang.String)>("https://play.google.com/");
+
+        if $z0 != 0 goto label10;
+
+        $z0 = virtualinvoke $r2.<java.lang.String: boolean startsWith(java.lang.String)>("http://play.google.com/");
+
+        if $z0 == 0 goto label17;
+
+     label10:
+        staticinvoke <com.Leadbolt.AdLog: void i(java.lang.String,java.lang.String)>("LBAdController", "Opening URL natively");
+
+        virtualinvoke $r1.<android.webkit.WebView: void stopLoading()>();
+
+     label11:
+        $r7 = r0.<com.Leadbolt.AdWebView$AdWebClient: com.Leadbolt.AdWebView this$0>;
+
+        $r10 = staticinvoke <com.Leadbolt.AdWebView: org.json.JSONObject access$2(com.Leadbolt.AdWebView)>($r7);
+
+        $r8 = virtualinvoke $r10.<org.json.JSONObject: java.lang.String getString(java.lang.String)>("clickhelpurl");
+
+        virtualinvoke $r1.<android.webkit.WebView: void loadUrl(java.lang.String)>($r8);
+
+     label12:
+        $r4 = r0.<com.Leadbolt.AdWebView$AdWebClient: android.content.Context activity>;
+
+     label13:
+        $r13 = new android.content.Intent;
+
+     label14:
+        $r14 = staticinvoke <android.net.Uri: android.net.Uri parse(java.lang.String)>($r2);
+
+        specialinvoke $r13.<android.content.Intent: void <init>(java.lang.String,android.net.Uri)>("android.intent.action.VIEW", $r14);
+
+        virtualinvoke $r4.<android.content.Context: void startActivity(android.content.Intent)>($r13);
+
+     label15:
+        return;
+
+     label16:
+        $r15 := @caughtexception;
+
+        $r11 = r0.<com.Leadbolt.AdWebView$AdWebClient: com.Leadbolt.AdController controller>;
+
+        virtualinvoke $r11.<com.Leadbolt.AdController: void destroyAd()>();
+
+        return;
+
+     label17:
+        $z0 = virtualinvoke $r2.<java.lang.String: boolean contains(java.lang.CharSequence)>("usenative=1");
+
+        if $z0 == 0 goto label18;
+
+        virtualinvoke $r1.<android.webkit.WebView: void stopLoading()>();
+
+        $r4 = r0.<com.Leadbolt.AdWebView$AdWebClient: android.content.Context activity>;
+
+        $r13 = new android.content.Intent;
+
+        $r14 = staticinvoke <android.net.Uri: android.net.Uri parse(java.lang.String)>($r2);
+
+        specialinvoke $r13.<android.content.Intent: void <init>(java.lang.String,android.net.Uri)>("android.intent.action.VIEW", $r14);
+
+        virtualinvoke $r4.<android.content.Context: void startActivity(android.content.Intent)>($r13);
+
+        return;
+
+     label18:
+        $z0 = virtualinvoke $r2.<java.lang.String: boolean startsWith(java.lang.String)>("tel:");
+
+        if $z0 == 0 goto label19;
+
+        $r11 = r0.<com.Leadbolt.AdWebView$AdWebClient: com.Leadbolt.AdController controller>;
+
+        virtualinvoke $r11.<com.Leadbolt.AdController: void destroyAd()>();
+
+        $r4 = r0.<com.Leadbolt.AdWebView$AdWebClient: android.content.Context activity>;
+
+        $r13 = new android.content.Intent;
+
+        $r14 = staticinvoke <android.net.Uri: android.net.Uri parse(java.lang.String)>($r2);
+
+        specialinvoke $r13.<android.content.Intent: void <init>(java.lang.String,android.net.Uri)>("android.intent.action.VIEW", $r14);
+
+        virtualinvoke $r4.<android.content.Context: void startActivity(android.content.Intent)>($r13);
+
+        return;
+
+     label19:
+        $r7 = r0.<com.Leadbolt.AdWebView$AdWebClient: com.Leadbolt.AdWebView this$0>;
+
+        $r16 = staticinvoke <com.Leadbolt.AdWebView: android.app.ProgressDialog access$5(com.Leadbolt.AdWebView)>($r7);
+
+        if $r16 == null goto label20;
+
+        $r7 = r0.<com.Leadbolt.AdWebView$AdWebClient: com.Leadbolt.AdWebView this$0>;
+
+        $r16 = staticinvoke <com.Leadbolt.AdWebView: android.app.ProgressDialog access$5(com.Leadbolt.AdWebView)>($r7);
+
+        $z0 = virtualinvoke $r16.<android.app.ProgressDialog: boolean isShowing()>();
+
+        if $z0 != 0 goto label21;
+
+     label20:
+        $r7 = r0.<com.Leadbolt.AdWebView$AdWebClient: com.Leadbolt.AdWebView this$0>;
+
+        $r4 = r0.<com.Leadbolt.AdWebView$AdWebClient: android.content.Context activity>;
+
+        $r16 = staticinvoke <android.app.ProgressDialog: android.app.ProgressDialog show(android.content.Context,java.lang.CharSequence,java.lang.CharSequence,boolean)>($r4, "", "Loading....Please wait!", 1);
+
+        staticinvoke <com.Leadbolt.AdWebView: void access$6(com.Leadbolt.AdWebView,android.app.ProgressDialog)>($r7, $r16);
+
+     label21:
+        $r11 = r0.<com.Leadbolt.AdWebView$AdWebClient: com.Leadbolt.AdController controller>;
+
+        virtualinvoke $r11.<com.Leadbolt.AdController: void onLinkClicked()>();
+
+        return;
+
+     label22:
+        $r17 := @caughtexception;
+
+        goto label12;
+
+     label23:
+        return;
+
+        catch java.lang.Exception from label02 to label03 with label08;
+        catch java.lang.Exception from label04 to label05 with label08;
+        catch java.lang.Exception from label06 to label07 with label08;
+        catch java.lang.Exception from label10 to label11 with label16;
+        catch java.lang.Exception from label11 to label12 with label22;
+        catch java.lang.Exception from label12 to label13 with label16;
+        catch java.lang.Exception from label14 to label15 with label16;
+    }
+}

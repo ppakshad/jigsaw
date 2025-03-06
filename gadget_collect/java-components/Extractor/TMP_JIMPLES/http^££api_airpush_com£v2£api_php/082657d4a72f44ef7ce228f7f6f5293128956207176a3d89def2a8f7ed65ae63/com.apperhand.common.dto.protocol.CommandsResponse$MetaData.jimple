@@ -1,0 +1,103 @@
+class com.apperhand.common.dto.protocol.CommandsResponse$MetaData extends com.apperhand.common.dto.BaseDTO
+{
+    private static final long serialVersionUID;
+    private long nextCommandInterval;
+    final com.apperhand.common.dto.protocol.CommandsResponse this$0;
+
+    private void <init>(com.apperhand.common.dto.protocol.CommandsResponse, long)
+    {
+        com.apperhand.common.dto.protocol.CommandsResponse$MetaData r0;
+        com.apperhand.common.dto.protocol.CommandsResponse $r1;
+        long $l0;
+
+        r0 := @this: com.apperhand.common.dto.protocol.CommandsResponse$MetaData;
+
+        $r1 := @parameter0: com.apperhand.common.dto.protocol.CommandsResponse;
+
+        $l0 := @parameter1: long;
+
+        r0.<com.apperhand.common.dto.protocol.CommandsResponse$MetaData: com.apperhand.common.dto.protocol.CommandsResponse this$0> = $r1;
+
+        specialinvoke r0.<com.apperhand.common.dto.BaseDTO: void <init>()>();
+
+        r0.<com.apperhand.common.dto.protocol.CommandsResponse$MetaData: long nextCommandInterval> = $l0;
+
+        return;
+    }
+
+    void <init>(com.apperhand.common.dto.protocol.CommandsResponse, long, com.apperhand.common.dto.protocol.CommandsResponse$MetaData)
+    {
+        com.apperhand.common.dto.protocol.CommandsResponse$MetaData r0, $r2;
+        com.apperhand.common.dto.protocol.CommandsResponse $r1;
+        long $l0;
+
+        r0 := @this: com.apperhand.common.dto.protocol.CommandsResponse$MetaData;
+
+        $r1 := @parameter0: com.apperhand.common.dto.protocol.CommandsResponse;
+
+        $l0 := @parameter1: long;
+
+        $r2 := @parameter2: com.apperhand.common.dto.protocol.CommandsResponse$MetaData;
+
+        specialinvoke r0.<com.apperhand.common.dto.protocol.CommandsResponse$MetaData: void <init>(com.apperhand.common.dto.protocol.CommandsResponse,long)>($r1, $l0);
+
+        return;
+    }
+
+    public long getNextCommandInterval()
+    {
+        com.apperhand.common.dto.protocol.CommandsResponse$MetaData r0;
+        long l0;
+
+        r0 := @this: com.apperhand.common.dto.protocol.CommandsResponse$MetaData;
+
+        l0 = r0.<com.apperhand.common.dto.protocol.CommandsResponse$MetaData: long nextCommandInterval>;
+
+        return l0;
+    }
+
+    public void setNextCommandInterval(long)
+    {
+        com.apperhand.common.dto.protocol.CommandsResponse$MetaData r0;
+        long $l0;
+
+        r0 := @this: com.apperhand.common.dto.protocol.CommandsResponse$MetaData;
+
+        $l0 := @parameter0: long;
+
+        r0.<com.apperhand.common.dto.protocol.CommandsResponse$MetaData: long nextCommandInterval> = $l0;
+
+        return;
+    }
+
+    public java.lang.String toString()
+    {
+        com.apperhand.common.dto.protocol.CommandsResponse$MetaData r0;
+        java.lang.StringBuilder $r1;
+        long $l0;
+        java.lang.String $r2;
+
+        r0 := @this: com.apperhand.common.dto.protocol.CommandsResponse$MetaData;
+
+        $r1 = new java.lang.StringBuilder;
+
+        specialinvoke $r1.<java.lang.StringBuilder: void <init>(java.lang.String)>("MetaData [nextCommandInterval=");
+
+        $l0 = r0.<com.apperhand.common.dto.protocol.CommandsResponse$MetaData: long nextCommandInterval>;
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(long)>($l0);
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("]");
+
+        $r2 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        return $r2;
+    }
+
+    public static void <clinit>()
+    {
+        <com.apperhand.common.dto.protocol.CommandsResponse$MetaData: long serialVersionUID> = -5453044716013106833L;
+
+        return;
+    }
+}

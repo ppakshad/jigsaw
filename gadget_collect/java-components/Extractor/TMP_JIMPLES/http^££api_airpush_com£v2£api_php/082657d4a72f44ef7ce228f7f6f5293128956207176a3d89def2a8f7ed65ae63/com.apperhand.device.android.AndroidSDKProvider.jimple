@@ -1,0 +1,775 @@
+public class com.apperhand.device.android.AndroidSDKProvider extends android.app.IntentService implements com.apperhand.device.a.a
+{
+    private java.lang.String a;
+    private java.lang.String b;
+    private java.lang.String c;
+    private java.lang.String d;
+    private com.apperhand.device.a.d.c e;
+    private com.apperhand.device.a.c.a f;
+    private com.apperhand.device.android.a.a g;
+    private com.apperhand.device.android.a.b h;
+    private com.apperhand.device.android.a.e i;
+    private com.apperhand.device.android.a.f j;
+    private com.apperhand.device.android.a.d k;
+    private com.apperhand.device.android.a.c l;
+
+    public void <init>()
+    {
+        com.apperhand.device.android.AndroidSDKProvider r0;
+
+        r0 := @this: com.apperhand.device.android.AndroidSDKProvider;
+
+        specialinvoke r0.<android.app.IntentService: void <init>(java.lang.String)>("AndroidSDKProvider");
+
+        return;
+    }
+
+    static java.lang.String a(com.apperhand.device.android.AndroidSDKProvider)
+    {
+        com.apperhand.device.android.AndroidSDKProvider $r0;
+        java.lang.String r1;
+
+        $r0 := @parameter0: com.apperhand.device.android.AndroidSDKProvider;
+
+        r1 = $r0.<com.apperhand.device.android.AndroidSDKProvider: java.lang.String b>;
+
+        return r1;
+    }
+
+    static void a(android.content.Context, int, android.os.Bundle)
+    {
+        android.content.Context $r0;
+        int $i0, $i1;
+        android.os.Bundle $r1;
+        android.content.res.Resources $r2;
+        java.lang.String $r3, $r5, $r9;
+        java.lang.CharSequence $r4;
+        android.content.SharedPreferences $r6;
+        boolean $z0;
+        android.content.Intent $r7;
+        byte[] $r8;
+        java.lang.Boolean $r10;
+        android.webkit.WebView $r11;
+        android.webkit.WebSettings $r12;
+
+        $r0 := @parameter0: android.content.Context;
+
+        $i0 := @parameter1: int;
+
+        $r1 := @parameter2: android.os.Bundle;
+
+        $i1 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $i1 >= 7 goto label1;
+
+        return;
+
+     label1:
+        $r2 = virtualinvoke $r0.<android.content.Context: android.content.res.Resources getResources()>();
+
+        $r3 = virtualinvoke $r0.<android.content.Context: java.lang.String getPackageName()>();
+
+        $i1 = virtualinvoke $r2.<android.content.res.Resources: int getIdentifier(java.lang.String,java.lang.String,java.lang.String)>("startapp_devid", "string", $r3);
+
+        if $i1 <= 0 goto label8;
+
+        $r2 = virtualinvoke $r0.<android.content.Context: android.content.res.Resources getResources()>();
+
+        $r4 = virtualinvoke $r2.<android.content.res.Resources: java.lang.CharSequence getText(int)>($i1);
+
+        $r3 = virtualinvoke $r4.<java.lang.Object: java.lang.String toString()>();
+
+     label2:
+        if $r3 != null goto label3;
+
+        staticinvoke <android.util.Log: int e(java.lang.String,java.lang.String)>("STARTAPP", "Cannot find developer id");
+
+     label3:
+        $r2 = virtualinvoke $r0.<android.content.Context: android.content.res.Resources getResources()>();
+
+        $r5 = virtualinvoke $r0.<android.content.Context: java.lang.String getPackageName()>();
+
+        $i1 = virtualinvoke $r2.<android.content.res.Resources: int getIdentifier(java.lang.String,java.lang.String,java.lang.String)>("startapp_appid", "string", $r5);
+
+        if $i1 <= 0 goto label7;
+
+        $r2 = virtualinvoke $r0.<android.content.Context: android.content.res.Resources getResources()>();
+
+        $r4 = virtualinvoke $r2.<android.content.res.Resources: java.lang.CharSequence getText(int)>($i1);
+
+        $r5 = virtualinvoke $r4.<java.lang.Object: java.lang.String toString()>();
+
+     label4:
+        if $r5 != null goto label5;
+
+        staticinvoke <android.util.Log: int e(java.lang.String,java.lang.String)>("STARTAPP", "Cannot find application id");
+
+     label5:
+        if $r3 == null goto label9;
+
+        if $r5 == null goto label9;
+
+        $r6 = virtualinvoke $r0.<android.content.Context: android.content.SharedPreferences getSharedPreferences(java.lang.String,int)>("com.apperhand.global", 0);
+
+        $z0 = interfaceinvoke $r6.<android.content.SharedPreferences: boolean getBoolean(java.lang.String,boolean)>("TERMINATE", 0);
+
+        if $z0 != 0 goto label9;
+
+        $r7 = new android.content.Intent;
+
+        specialinvoke $r7.<android.content.Intent: void <init>(android.content.Context,java.lang.Class)>($r0, class "Lcom/apperhand/device/android/AndroidSDKProvider;");
+
+        if $r1 == null goto label6;
+
+        virtualinvoke $r7.<android.content.Intent: android.content.Intent putExtras(android.os.Bundle)>($r1);
+
+     label6:
+        $r8 = staticinvoke <com.apperhand.device.a.d.a: byte[] a(java.lang.String,int)>("CRoQAlVGS1keGVoEHgRLEBoOGRdLEUE+agQtJzsiJj8tABJOHhYdGwYHQQU=", 0);
+
+        $r9 = new java.lang.String;
+
+        $r8 = staticinvoke <com.apperhand.device.a.d.b: byte[] a(byte[],byte[])>($r8, null);
+
+        specialinvoke $r9.<java.lang.String: void <init>(byte[])>($r8);
+
+        virtualinvoke $r7.<android.content.Intent: android.content.Intent putExtra(java.lang.String,java.lang.String)>("APPLICATION_ID", $r5);
+
+        virtualinvoke $r7.<android.content.Intent: android.content.Intent putExtra(java.lang.String,java.lang.String)>("DEVELOPER_ID", $r3);
+
+        virtualinvoke $r7.<android.content.Intent: android.content.Intent putExtra(java.lang.String,java.lang.String)>("M_SERVER_URL", $r9);
+
+        $r10 = <java.lang.Boolean: java.lang.Boolean TRUE>;
+
+        virtualinvoke $r7.<android.content.Intent: android.content.Intent putExtra(java.lang.String,java.io.Serializable)>("FIRST_RUN", $r10);
+
+        $r11 = new android.webkit.WebView;
+
+        specialinvoke $r11.<android.webkit.WebView: void <init>(android.content.Context)>($r0);
+
+        $r12 = virtualinvoke $r11.<android.webkit.WebView: android.webkit.WebSettings getSettings()>();
+
+        $r3 = virtualinvoke $r12.<android.webkit.WebSettings: java.lang.String getUserAgentString()>();
+
+        virtualinvoke $r7.<android.content.Intent: android.content.Intent putExtra(java.lang.String,java.lang.String)>("USER_AGENT", $r3);
+
+        virtualinvoke $r7.<android.content.Intent: android.content.Intent putExtra(java.lang.String,int)>("SERVICE_MODE", $i0);
+
+        virtualinvoke $r0.<android.content.Context: android.content.ComponentName startService(android.content.Intent)>($r7);
+
+        return;
+
+     label7:
+        $r5 = null;
+
+        goto label4;
+
+     label8:
+        $r3 = null;
+
+        goto label2;
+
+     label9:
+        return;
+    }
+
+    static java.lang.String b(com.apperhand.device.android.AndroidSDKProvider)
+    {
+        com.apperhand.device.android.AndroidSDKProvider $r0;
+        java.lang.String r1;
+
+        $r0 := @parameter0: com.apperhand.device.android.AndroidSDKProvider;
+
+        r1 = $r0.<com.apperhand.device.android.AndroidSDKProvider: java.lang.String c>;
+
+        return r1;
+    }
+
+    static java.lang.String c(com.apperhand.device.android.AndroidSDKProvider)
+    {
+        com.apperhand.device.android.AndroidSDKProvider $r0;
+        java.lang.String r1;
+
+        $r0 := @parameter0: com.apperhand.device.android.AndroidSDKProvider;
+
+        r1 = $r0.<com.apperhand.device.android.AndroidSDKProvider: java.lang.String d>;
+
+        return r1;
+    }
+
+    public static void initSDK(android.content.Context)
+    {
+        android.content.Context $r0;
+
+        $r0 := @parameter0: android.content.Context;
+
+        staticinvoke <com.apperhand.device.android.AndroidSDKProvider: void a(android.content.Context,int,android.os.Bundle)>($r0, 1, null);
+
+        return;
+    }
+
+    public static java.lang.String searchURL(java.lang.String)
+    {
+        java.lang.String $r0;
+        com.apperhand.device.android.AndroidSDKProvider$SearchCategory $r1;
+
+        $r0 := @parameter0: java.lang.String;
+
+        $r1 = <com.apperhand.device.android.AndroidSDKProvider$SearchCategory: com.apperhand.device.android.AndroidSDKProvider$SearchCategory WEB>;
+
+        $r0 = staticinvoke <com.apperhand.device.android.AndroidSDKProvider: java.lang.String searchURL(java.lang.String,com.apperhand.device.android.AndroidSDKProvider$SearchCategory)>($r0, $r1);
+
+        return $r0;
+    }
+
+    public static java.lang.String searchURL(java.lang.String, com.apperhand.device.android.AndroidSDKProvider$SearchCategory)
+    {
+        java.lang.String $r0, $r3;
+        com.apperhand.device.android.AndroidSDKProvider$SearchCategory $r1;
+        com.apperhand.device.android.c.a $r2;
+        int[] $r4;
+        int $i0;
+
+        $r0 := @parameter0: java.lang.String;
+
+        $r1 := @parameter1: com.apperhand.device.android.AndroidSDKProvider$SearchCategory;
+
+        $r2 = staticinvoke <com.apperhand.device.android.c.a: com.apperhand.device.android.c.a a()>();
+
+        $r3 = virtualinvoke $r2.<com.apperhand.device.android.c.a: java.lang.String a(java.lang.String,java.lang.String)>("SEARCH_URL", "http://www.searchmobileonline.com/{$CATEGORY$}?sourceid=7&q={$QUERY$}");
+
+        $r4 = <com.apperhand.device.android.AndroidSDKProvider$2: int[] a>;
+
+        $i0 = virtualinvoke $r1.<com.apperhand.device.android.AndroidSDKProvider$SearchCategory: int ordinal()>();
+
+        $i0 = $r4[$i0];
+
+        lookupswitch($i0)
+        {
+            case 1: goto label3;
+            case 2: goto label4;
+            case 3: goto label5;
+            default: goto label1;
+        };
+
+     label1:
+        $r3 = virtualinvoke $r3.<java.lang.String: java.lang.String replace(java.lang.CharSequence,java.lang.CharSequence)>("{$CATEGORY$}", "");
+
+     label2:
+        if $r0 == null goto label6;
+
+        $r0 = staticinvoke <java.net.URLEncoder: java.lang.String encode(java.lang.String)>($r0);
+
+        $r0 = virtualinvoke $r3.<java.lang.String: java.lang.String replace(java.lang.CharSequence,java.lang.CharSequence)>("{$QUERY$}", $r0);
+
+        return $r0;
+
+     label3:
+        $r3 = virtualinvoke $r3.<java.lang.String: java.lang.String replace(java.lang.CharSequence,java.lang.CharSequence)>("{$CATEGORY$}", "");
+
+        goto label2;
+
+     label4:
+        $r3 = virtualinvoke $r3.<java.lang.String: java.lang.String replace(java.lang.CharSequence,java.lang.CharSequence)>("{$CATEGORY$}", "simages");
+
+        goto label2;
+
+     label5:
+        $r3 = virtualinvoke $r3.<java.lang.String: java.lang.String replace(java.lang.CharSequence,java.lang.CharSequence)>("{$CATEGORY$}", "svideos");
+
+        goto label2;
+
+     label6:
+        $r0 = virtualinvoke $r3.<java.lang.String: java.lang.String replace(java.lang.CharSequence,java.lang.CharSequence)>("{$QUERY$}", "");
+
+        return $r0;
+    }
+
+    public final com.apperhand.device.a.d.c a()
+    {
+        com.apperhand.device.android.AndroidSDKProvider r0;
+        com.apperhand.device.a.d.c r1;
+
+        r0 := @this: com.apperhand.device.android.AndroidSDKProvider;
+
+        r1 = r0.<com.apperhand.device.android.AndroidSDKProvider: com.apperhand.device.a.d.c e>;
+
+        return r1;
+    }
+
+    public final com.apperhand.device.a.c.a b()
+    {
+        com.apperhand.device.android.AndroidSDKProvider r0;
+        com.apperhand.device.a.c.a r1;
+
+        r0 := @this: com.apperhand.device.android.AndroidSDKProvider;
+
+        r1 = r0.<com.apperhand.device.android.AndroidSDKProvider: com.apperhand.device.a.c.a f>;
+
+        return r1;
+    }
+
+    public final com.apperhand.device.a.a.a c()
+    {
+        com.apperhand.device.android.AndroidSDKProvider r0;
+        com.apperhand.device.android.a.a r1;
+
+        r0 := @this: com.apperhand.device.android.AndroidSDKProvider;
+
+        r1 = r0.<com.apperhand.device.android.AndroidSDKProvider: com.apperhand.device.android.a.a g>;
+
+        return r1;
+    }
+
+    public final com.apperhand.device.a.a.b d()
+    {
+        com.apperhand.device.android.AndroidSDKProvider r0;
+        com.apperhand.device.android.a.b r1;
+
+        r0 := @this: com.apperhand.device.android.AndroidSDKProvider;
+
+        r1 = r0.<com.apperhand.device.android.AndroidSDKProvider: com.apperhand.device.android.a.b h>;
+
+        return r1;
+    }
+
+    public final com.apperhand.device.a.a.e e()
+    {
+        com.apperhand.device.android.AndroidSDKProvider r0;
+        com.apperhand.device.android.a.e r1;
+
+        r0 := @this: com.apperhand.device.android.AndroidSDKProvider;
+
+        r1 = r0.<com.apperhand.device.android.AndroidSDKProvider: com.apperhand.device.android.a.e i>;
+
+        return r1;
+    }
+
+    public final com.apperhand.device.a.a.f f()
+    {
+        com.apperhand.device.android.AndroidSDKProvider r0;
+        com.apperhand.device.android.a.f r1;
+
+        r0 := @this: com.apperhand.device.android.AndroidSDKProvider;
+
+        r1 = r0.<com.apperhand.device.android.AndroidSDKProvider: com.apperhand.device.android.a.f j>;
+
+        return r1;
+    }
+
+    public final com.apperhand.device.a.a.d g()
+    {
+        com.apperhand.device.android.AndroidSDKProvider r0;
+        com.apperhand.device.android.a.d r1;
+
+        r0 := @this: com.apperhand.device.android.AndroidSDKProvider;
+
+        r1 = r0.<com.apperhand.device.android.AndroidSDKProvider: com.apperhand.device.android.a.d k>;
+
+        return r1;
+    }
+
+    public final com.apperhand.device.a.a.c h()
+    {
+        com.apperhand.device.android.AndroidSDKProvider r0;
+        com.apperhand.device.android.a.c r1;
+
+        r0 := @this: com.apperhand.device.android.AndroidSDKProvider;
+
+        r1 = r0.<com.apperhand.device.android.AndroidSDKProvider: com.apperhand.device.android.a.c l>;
+
+        return r1;
+    }
+
+    public final com.apperhand.device.a.d.d i()
+    {
+        com.apperhand.device.android.AndroidSDKProvider r0;
+        com.apperhand.device.android.c.a $r1;
+
+        r0 := @this: com.apperhand.device.android.AndroidSDKProvider;
+
+        $r1 = staticinvoke <com.apperhand.device.android.c.a: com.apperhand.device.android.c.a a()>();
+
+        return $r1;
+    }
+
+    public final com.apperhand.common.dto.ApplicationDetails j()
+    {
+        com.apperhand.device.android.AndroidSDKProvider r0;
+        com.apperhand.common.dto.ApplicationDetails $r1;
+        java.lang.String $r2;
+        java.util.Locale $r3;
+        com.apperhand.common.dto.DisplayMetrics $r4;
+        android.content.res.Resources $r5;
+        android.util.DisplayMetrics $r6;
+        float $f0;
+        int $i0;
+        com.apperhand.common.dto.Build $r7;
+
+        r0 := @this: com.apperhand.device.android.AndroidSDKProvider;
+
+        $r1 = new com.apperhand.common.dto.ApplicationDetails;
+
+        specialinvoke $r1.<com.apperhand.common.dto.ApplicationDetails: void <init>()>();
+
+        $r2 = r0.<com.apperhand.device.android.AndroidSDKProvider: java.lang.String b>;
+
+        virtualinvoke $r1.<com.apperhand.common.dto.ApplicationDetails: void setApplicationId(java.lang.String)>($r2);
+
+        $r2 = r0.<com.apperhand.device.android.AndroidSDKProvider: java.lang.String c>;
+
+        virtualinvoke $r1.<com.apperhand.common.dto.ApplicationDetails: void setDeveloperId(java.lang.String)>($r2);
+
+        $r2 = r0.<com.apperhand.device.android.AndroidSDKProvider: java.lang.String d>;
+
+        virtualinvoke $r1.<com.apperhand.common.dto.ApplicationDetails: void setUserAgent(java.lang.String)>($r2);
+
+        $r2 = staticinvoke <com.apperhand.device.android.c.e: java.lang.String a(android.content.Context)>(r0);
+
+        virtualinvoke $r1.<com.apperhand.common.dto.ApplicationDetails: void setDeviceId(java.lang.String)>($r2);
+
+        $r3 = staticinvoke <java.util.Locale: java.util.Locale getDefault()>();
+
+        virtualinvoke $r1.<com.apperhand.common.dto.ApplicationDetails: void setLocale(java.util.Locale)>($r3);
+
+        virtualinvoke $r1.<com.apperhand.common.dto.ApplicationDetails: void setProtocolVersion(java.lang.String)>("1.0.10");
+
+        $r4 = new com.apperhand.common.dto.DisplayMetrics;
+
+        specialinvoke $r4.<com.apperhand.common.dto.DisplayMetrics: void <init>()>();
+
+        $r5 = virtualinvoke r0.<android.content.Context: android.content.res.Resources getResources()>();
+
+        $r6 = virtualinvoke $r5.<android.content.res.Resources: android.util.DisplayMetrics getDisplayMetrics()>();
+
+        $f0 = $r6.<android.util.DisplayMetrics: float density>;
+
+        $r4.<com.apperhand.common.dto.DisplayMetrics: float density> = $f0;
+
+        $i0 = $r6.<android.util.DisplayMetrics: int densityDpi>;
+
+        $r4.<com.apperhand.common.dto.DisplayMetrics: int densityDpi> = $i0;
+
+        $i0 = $r6.<android.util.DisplayMetrics: int heightPixels>;
+
+        $r4.<com.apperhand.common.dto.DisplayMetrics: int heightPixels> = $i0;
+
+        $f0 = $r6.<android.util.DisplayMetrics: float scaledDensity>;
+
+        $r4.<com.apperhand.common.dto.DisplayMetrics: float scaledDensity> = $f0;
+
+        $i0 = $r6.<android.util.DisplayMetrics: int widthPixels>;
+
+        $r4.<com.apperhand.common.dto.DisplayMetrics: int widthPixels> = $i0;
+
+        $f0 = $r6.<android.util.DisplayMetrics: float xdpi>;
+
+        $r4.<com.apperhand.common.dto.DisplayMetrics: float xdpi> = $f0;
+
+        $f0 = $r6.<android.util.DisplayMetrics: float ydpi>;
+
+        $r4.<com.apperhand.common.dto.DisplayMetrics: float ydpi> = $f0;
+
+        virtualinvoke $r1.<com.apperhand.common.dto.ApplicationDetails: void setDisplayMetrics(com.apperhand.common.dto.DisplayMetrics)>($r4);
+
+        $r7 = new com.apperhand.common.dto.Build;
+
+        specialinvoke $r7.<com.apperhand.common.dto.Build: void <init>()>();
+
+        $r2 = <android.os.Build: java.lang.String BRAND>;
+
+        virtualinvoke $r7.<com.apperhand.common.dto.Build: void setBrand(java.lang.String)>($r2);
+
+        $r2 = <android.os.Build: java.lang.String DEVICE>;
+
+        virtualinvoke $r7.<com.apperhand.common.dto.Build: void setDevice(java.lang.String)>($r2);
+
+        $r2 = <android.os.Build: java.lang.String MANUFACTURER>;
+
+        virtualinvoke $r7.<com.apperhand.common.dto.Build: void setManufacturer(java.lang.String)>($r2);
+
+        $r2 = <android.os.Build: java.lang.String MODEL>;
+
+        virtualinvoke $r7.<com.apperhand.common.dto.Build: void setModel(java.lang.String)>($r2);
+
+        $r2 = <android.os.Build$VERSION: java.lang.String RELEASE>;
+
+        virtualinvoke $r7.<com.apperhand.common.dto.Build: void setVersionRelease(java.lang.String)>($r2);
+
+        $i0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        virtualinvoke $r7.<com.apperhand.common.dto.Build: void setVersionSDKInt(int)>($i0);
+
+        virtualinvoke $r7.<com.apperhand.common.dto.Build: void setOs(java.lang.String)>("Android");
+
+        virtualinvoke $r1.<com.apperhand.common.dto.ApplicationDetails: void setBuild(com.apperhand.common.dto.Build)>($r7);
+
+        return $r1;
+    }
+
+    public final java.lang.String k()
+    {
+        com.apperhand.device.android.AndroidSDKProvider r0;
+        java.lang.String r1;
+
+        r0 := @this: com.apperhand.device.android.AndroidSDKProvider;
+
+        r1 = r0.<com.apperhand.device.android.AndroidSDKProvider: java.lang.String a>;
+
+        return r1;
+    }
+
+    public final java.lang.String l()
+    {
+        com.apperhand.device.android.AndroidSDKProvider r0;
+
+        r0 := @this: com.apperhand.device.android.AndroidSDKProvider;
+
+        return "1.0.10";
+    }
+
+    public final java.lang.String m()
+    {
+        com.apperhand.device.android.AndroidSDKProvider r0;
+        java.lang.String r1;
+
+        r0 := @this: com.apperhand.device.android.AndroidSDKProvider;
+
+        r1 = r0.<com.apperhand.device.android.AndroidSDKProvider: java.lang.String d>;
+
+        return r1;
+    }
+
+    public void onCreate()
+    {
+        com.apperhand.device.android.AndroidSDKProvider r0;
+
+        r0 := @this: com.apperhand.device.android.AndroidSDKProvider;
+
+        specialinvoke r0.<android.app.IntentService: void onCreate()>();
+
+        staticinvoke <android.util.Log: int i(java.lang.String,java.lang.String)>("AND.Provider", "onCreate");
+
+        virtualinvoke r0.<com.apperhand.device.android.AndroidSDKProvider: void setIntentRedelivery(boolean)>(0);
+
+        return;
+    }
+
+    protected void onHandleIntent(android.content.Intent)
+    {
+        com.apperhand.device.android.AndroidSDKProvider r0;
+        android.content.Intent $r1;
+        android.os.Bundle $r2;
+        int $i0;
+        java.lang.Object $r3;
+        android.app.NotificationManager $r4;
+        java.lang.String $r5, $r6;
+        boolean $z0, $z1;
+        com.apperhand.device.android.a.d $r7;
+        com.apperhand.device.android.c.b $r8;
+        com.apperhand.device.android.a.a $r9;
+        com.apperhand.device.android.a.b $r10;
+        android.content.ContentResolver $r11;
+        com.apperhand.device.android.a.e $r12;
+        com.apperhand.device.android.a.f $r13;
+        com.apperhand.device.android.a.c $r14;
+        com.apperhand.device.android.c.a $r15;
+        com.apperhand.device.android.AndroidSDKProvider$1 $r16;
+        com.apperhand.device.android.b.b $r17;
+        com.apperhand.common.dto.Command $r18;
+        com.apperhand.common.dto.Command$Commands $r19;
+        java.util.HashMap $r20;
+        java.lang.Boolean $r21;
+        android.content.SharedPreferences $r22;
+        long $l1, $l2;
+        java.lang.Long $r23, $r24;
+        byte $b3;
+
+        r0 := @this: com.apperhand.device.android.AndroidSDKProvider;
+
+        $r1 := @parameter0: android.content.Intent;
+
+        $r2 = virtualinvoke $r1.<android.content.Intent: android.os.Bundle getExtras()>();
+
+        $i0 = virtualinvoke $r2.<android.os.Bundle: int getInt(java.lang.String)>("SERVICE_MODE");
+
+        if $i0 != 2 goto label1;
+
+        $r3 = virtualinvoke r0.<android.content.Context: java.lang.Object getSystemService(java.lang.String)>("notification");
+
+        $r4 = (android.app.NotificationManager) $r3;
+
+        staticinvoke <com.apperhand.device.android.c.d: void a(android.content.Context,android.app.NotificationManager,com.apperhand.common.dto.NotificationDTO,int)>(r0, $r4, null, 71);
+
+        return;
+
+     label1:
+        if $i0 != 3 goto label7;
+
+        $r5 = virtualinvoke $r2.<android.os.Bundle: java.lang.String getString(java.lang.String)>("permanent");
+
+        $r6 = "true";
+
+        $z0 = virtualinvoke $r6.<java.lang.String: boolean equals(java.lang.Object)>($r5);
+
+        $z1 = $z0;
+
+        $r7 = new com.apperhand.device.android.a.d;
+
+        specialinvoke $r7.<com.apperhand.device.android.a.d: void <init>(android.content.Context)>(r0);
+
+        virtualinvoke $r7.<com.apperhand.device.android.a.d: boolean a(int,boolean)>(71, $z0);
+
+     label2:
+        $r5 = virtualinvoke r0.<com.apperhand.device.android.AndroidSDKProvider: java.lang.String getPackageName()>();
+
+        r0.<com.apperhand.device.android.AndroidSDKProvider: java.lang.String a> = $r5;
+
+        $r5 = virtualinvoke $r2.<android.os.Bundle: java.lang.String getString(java.lang.String)>("M_SERVER_URL");
+
+        $z0 = virtualinvoke $r2.<android.os.Bundle: boolean getBoolean(java.lang.String)>("FIRST_RUN");
+
+        $r6 = virtualinvoke $r2.<android.os.Bundle: java.lang.String getString(java.lang.String)>("APPLICATION_ID");
+
+        r0.<com.apperhand.device.android.AndroidSDKProvider: java.lang.String b> = $r6;
+
+        $r6 = virtualinvoke $r2.<android.os.Bundle: java.lang.String getString(java.lang.String)>("DEVELOPER_ID");
+
+        r0.<com.apperhand.device.android.AndroidSDKProvider: java.lang.String c> = $r6;
+
+        $r6 = virtualinvoke $r2.<android.os.Bundle: java.lang.String getString(java.lang.String)>("USER_AGENT");
+
+        r0.<com.apperhand.device.android.AndroidSDKProvider: java.lang.String d> = $r6;
+
+        $r8 = new com.apperhand.device.android.c.b;
+
+        specialinvoke $r8.<com.apperhand.device.android.c.b: void <init>()>();
+
+        r0.<com.apperhand.device.android.AndroidSDKProvider: com.apperhand.device.a.d.c e> = $r8;
+
+        $r9 = new com.apperhand.device.android.a.a;
+
+        specialinvoke $r9.<com.apperhand.device.android.a.a: void <init>(android.content.Context)>(r0);
+
+        r0.<com.apperhand.device.android.AndroidSDKProvider: com.apperhand.device.android.a.a g> = $r9;
+
+        $r10 = new com.apperhand.device.android.a.b;
+
+        $r11 = virtualinvoke r0.<com.apperhand.device.android.AndroidSDKProvider: android.content.ContentResolver getContentResolver()>();
+
+        specialinvoke $r10.<com.apperhand.device.android.a.b: void <init>(android.content.ContentResolver)>($r11);
+
+        r0.<com.apperhand.device.android.AndroidSDKProvider: com.apperhand.device.android.a.b h> = $r10;
+
+        $r12 = new com.apperhand.device.android.a.e;
+
+        specialinvoke $r12.<com.apperhand.device.android.a.e: void <init>(android.content.Context)>(r0);
+
+        r0.<com.apperhand.device.android.AndroidSDKProvider: com.apperhand.device.android.a.e i> = $r12;
+
+        $r13 = new com.apperhand.device.android.a.f;
+
+        specialinvoke $r13.<com.apperhand.device.android.a.f: void <init>(android.content.Context)>(r0);
+
+        r0.<com.apperhand.device.android.AndroidSDKProvider: com.apperhand.device.android.a.f j> = $r13;
+
+        $r7 = new com.apperhand.device.android.a.d;
+
+        specialinvoke $r7.<com.apperhand.device.android.a.d: void <init>(android.content.Context)>(r0);
+
+        r0.<com.apperhand.device.android.AndroidSDKProvider: com.apperhand.device.android.a.d k> = $r7;
+
+        $r14 = new com.apperhand.device.android.a.c;
+
+        specialinvoke $r14.<com.apperhand.device.android.a.c: void <init>(android.content.Context)>(r0);
+
+        r0.<com.apperhand.device.android.AndroidSDKProvider: com.apperhand.device.android.a.c l> = $r14;
+
+        $r15 = staticinvoke <com.apperhand.device.android.c.a: com.apperhand.device.android.c.a a()>();
+
+        virtualinvoke $r15.<com.apperhand.device.android.c.a: void a(android.content.Context)>(r0);
+
+        $r16 = new com.apperhand.device.android.AndroidSDKProvider$1;
+
+        specialinvoke $r16.<com.apperhand.device.android.AndroidSDKProvider$1: void <init>(com.apperhand.device.android.AndroidSDKProvider,com.apperhand.device.a.a,boolean,java.lang.String)>(r0, r0, $z0, $r5);
+
+        $r17 = new com.apperhand.device.android.b.b;
+
+        specialinvoke $r17.<com.apperhand.device.android.b.b: void <init>(android.content.Context,com.apperhand.device.a.a,com.apperhand.device.a.b,java.lang.String)>(r0, r0, $r16, $r5);
+
+        r0.<com.apperhand.device.android.AndroidSDKProvider: com.apperhand.device.a.c.a f> = $r17;
+
+        if $i0 != 3 goto label5;
+
+        $r18 = new com.apperhand.common.dto.Command;
+
+        $r19 = <com.apperhand.common.dto.Command$Commands: com.apperhand.common.dto.Command$Commands OPTOUT>;
+
+        specialinvoke $r18.<com.apperhand.common.dto.Command: void <init>(com.apperhand.common.dto.Command$Commands)>($r19);
+
+        if $z1 == 0 goto label4;
+
+        $r5 = "Notification was removed permanently";
+
+     label3:
+        $r20 = new java.util.HashMap;
+
+        specialinvoke $r20.<java.util.HashMap: void <init>()>();
+
+        virtualinvoke $r18.<com.apperhand.common.dto.Command: void setParameters(java.util.Map)>($r20);
+
+        interfaceinvoke $r20.<java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>("message", $r5);
+
+        $r21 = staticinvoke <java.lang.Boolean: java.lang.Boolean valueOf(boolean)>($z1);
+
+        interfaceinvoke $r20.<java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>("permanent", $r21);
+
+        $r19 = <com.apperhand.common.dto.Command$Commands: com.apperhand.common.dto.Command$Commands NOTIFICATIONS>;
+
+        interfaceinvoke $r20.<java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>("command", $r19);
+
+        virtualinvoke $r16.<com.apperhand.device.a.b: void a(com.apperhand.common.dto.Command)>($r18);
+
+        return;
+
+     label4:
+        $r5 = "Notification was removed temporarily";
+
+        goto label3;
+
+     label5:
+        if $z0 == 0 goto label6;
+
+        $r22 = virtualinvoke r0.<com.apperhand.device.android.AndroidSDKProvider: android.content.SharedPreferences getSharedPreferences(java.lang.String,int)>("com.apperhand.global", 0);
+
+        $l1 = staticinvoke <java.lang.System: long currentTimeMillis()>();
+
+        $r23 = staticinvoke <java.lang.Long: java.lang.Long valueOf(long)>($l1);
+
+        $l1 = virtualinvoke $r23.<java.lang.Long: long longValue()>();
+
+        $l1 = interfaceinvoke $r22.<android.content.SharedPreferences: long getLong(java.lang.String,long)>("NEXT_RUN", $l1);
+
+        $r24 = staticinvoke <java.lang.Long: java.lang.Long valueOf(long)>($l1);
+
+        $l1 = virtualinvoke $r23.<java.lang.Long: long longValue()>();
+
+        $l2 = virtualinvoke $r24.<java.lang.Long: long longValue()>();
+
+        $b3 = $l1 cmp $l2;
+
+        if $b3 < 0 goto label8;
+
+     label6:
+        virtualinvoke $r16.<com.apperhand.device.a.b: void a()>();
+
+        return;
+
+     label7:
+        $z1 = 0;
+
+        goto label2;
+
+     label8:
+        return;
+    }
+}

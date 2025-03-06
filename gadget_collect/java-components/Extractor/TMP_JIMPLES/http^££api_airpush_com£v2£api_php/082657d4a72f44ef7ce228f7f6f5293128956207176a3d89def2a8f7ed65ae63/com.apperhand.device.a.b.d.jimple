@@ -1,0 +1,227 @@
+public final class com.apperhand.device.a.b.d extends com.apperhand.device.a.b.b
+{
+    private com.apperhand.device.a.a.c g;
+
+    public void <init>(com.apperhand.device.a.b, com.apperhand.device.a.a, java.lang.String, com.apperhand.common.dto.Command)
+    {
+        com.apperhand.device.a.b.d r0;
+        com.apperhand.device.a.b $r1;
+        com.apperhand.device.a.a $r2;
+        java.lang.String $r3;
+        com.apperhand.common.dto.Command $r4;
+        com.apperhand.common.dto.Command$Commands $r5;
+        com.apperhand.device.a.a.c $r6;
+
+        r0 := @this: com.apperhand.device.a.b.d;
+
+        $r1 := @parameter0: com.apperhand.device.a.b;
+
+        $r2 := @parameter1: com.apperhand.device.a.a;
+
+        $r3 := @parameter2: java.lang.String;
+
+        $r4 := @parameter3: com.apperhand.common.dto.Command;
+
+        $r5 = virtualinvoke $r4.<com.apperhand.common.dto.Command: com.apperhand.common.dto.Command$Commands getCommand()>();
+
+        specialinvoke r0.<com.apperhand.device.a.b.b: void <init>(com.apperhand.device.a.b,com.apperhand.device.a.a,java.lang.String,com.apperhand.common.dto.Command$Commands)>($r1, $r2, $r3, $r5);
+
+        $r6 = interfaceinvoke $r2.<com.apperhand.device.a.a: com.apperhand.device.a.a.c h()>();
+
+        r0.<com.apperhand.device.a.b.d: com.apperhand.device.a.a.c g> = $r6;
+
+        return;
+    }
+
+    private com.apperhand.common.dto.protocol.BaseResponse a(com.apperhand.common.dto.protocol.HomepageRequest)
+    {
+        com.apperhand.common.dto.protocol.HomepageRequest $r0;
+        java.lang.String $r1;
+        com.apperhand.device.a.b.d r2;
+        com.apperhand.device.a.a $r3;
+        com.apperhand.device.a.c.a $r4;
+        com.apperhand.common.dto.Command$Commands $r5;
+        com.apperhand.common.dto.protocol.BaseResponse $r6;
+        com.apperhand.common.dto.protocol.HomepageResponse $r7;
+        com.apperhand.device.a.d.f $r8;
+        com.apperhand.device.a.d.c $r9;
+        com.apperhand.device.a.d.c$a $r10;
+
+        r2 := @this: com.apperhand.device.a.b.d;
+
+        $r0 := @parameter0: com.apperhand.common.dto.protocol.HomepageRequest;
+
+        $r3 = r2.<com.apperhand.device.a.b.d: com.apperhand.device.a.a e>;
+
+     label1:
+        $r4 = interfaceinvoke $r3.<com.apperhand.device.a.a: com.apperhand.device.a.c.a b()>();
+
+     label2:
+        $r5 = <com.apperhand.common.dto.Command$Commands: com.apperhand.common.dto.Command$Commands HOMEPAGE>;
+
+     label3:
+        $r6 = interfaceinvoke $r4.<com.apperhand.device.a.c.a: com.apperhand.common.dto.protocol.BaseResponse a(java.lang.Object,com.apperhand.common.dto.Command$Commands,java.lang.Class)>($r0, $r5, class "Lcom/apperhand/common/dto/protocol/HomepageResponse;");
+
+     label4:
+        $r7 = (com.apperhand.common.dto.protocol.HomepageResponse) $r6;
+
+        return $r7;
+
+     label5:
+        $r8 := @caughtexception;
+
+        $r3 = r2.<com.apperhand.device.a.b.d: com.apperhand.device.a.a e>;
+
+        $r9 = interfaceinvoke $r3.<com.apperhand.device.a.a: com.apperhand.device.a.d.c a()>();
+
+        $r10 = <com.apperhand.device.a.d.c$a: com.apperhand.device.a.d.c$a b>;
+
+        $r1 = r2.<com.apperhand.device.a.b.d: java.lang.String a>;
+
+        interfaceinvoke $r9.<com.apperhand.device.a.d.c: void a(com.apperhand.device.a.d.c$a,java.lang.String,java.lang.String,java.lang.Throwable)>($r10, $r1, "Unable to handle Homepage command!!!!", $r8);
+
+        return null;
+
+        catch com.apperhand.device.a.d.f from label1 to label2 with label5;
+        catch com.apperhand.device.a.d.f from label3 to label4 with label5;
+    }
+
+    protected final com.apperhand.common.dto.protocol.BaseResponse a() throws com.apperhand.device.a.d.f
+    {
+        com.apperhand.device.a.b.d r0;
+        com.apperhand.common.dto.protocol.HomepageRequest $r1;
+        com.apperhand.device.a.a $r2;
+        com.apperhand.common.dto.ApplicationDetails $r3;
+        com.apperhand.common.dto.protocol.BaseResponse $r4;
+
+        r0 := @this: com.apperhand.device.a.b.d;
+
+        $r1 = new com.apperhand.common.dto.protocol.HomepageRequest;
+
+        specialinvoke $r1.<com.apperhand.common.dto.protocol.HomepageRequest: void <init>()>();
+
+        $r2 = r0.<com.apperhand.device.a.b.d: com.apperhand.device.a.a e>;
+
+        $r3 = interfaceinvoke $r2.<com.apperhand.device.a.a: com.apperhand.common.dto.ApplicationDetails j()>();
+
+        virtualinvoke $r1.<com.apperhand.common.dto.protocol.HomepageRequest: void setApplicationDetails(com.apperhand.common.dto.ApplicationDetails)>($r3);
+
+        $r4 = specialinvoke r0.<com.apperhand.device.a.b.d: com.apperhand.common.dto.protocol.BaseResponse a(com.apperhand.common.dto.protocol.HomepageRequest)>($r1);
+
+        return $r4;
+    }
+
+    protected final java.util.Map a(com.apperhand.common.dto.protocol.BaseResponse) throws com.apperhand.device.a.d.f
+    {
+        com.apperhand.device.a.b.d r0;
+        com.apperhand.common.dto.protocol.BaseResponse $r1;
+        com.apperhand.common.dto.protocol.HomepageResponse $r2;
+        com.apperhand.device.a.a.c $r3;
+        com.apperhand.common.dto.Homepage $r4;
+        boolean $z0;
+        java.util.HashMap $r5;
+        java.lang.Boolean $r6;
+
+        r0 := @this: com.apperhand.device.a.b.d;
+
+        $r1 := @parameter0: com.apperhand.common.dto.protocol.BaseResponse;
+
+        $r2 = (com.apperhand.common.dto.protocol.HomepageResponse) $r1;
+
+        if $r2 == null goto label1;
+
+        $r3 = r0.<com.apperhand.device.a.b.d: com.apperhand.device.a.a.c g>;
+
+        $r4 = virtualinvoke $r2.<com.apperhand.common.dto.protocol.HomepageResponse: com.apperhand.common.dto.Homepage getHomepage()>();
+
+        $z0 = interfaceinvoke $r3.<com.apperhand.device.a.a.c: boolean a(com.apperhand.common.dto.Homepage)>($r4);
+
+        $r5 = new java.util.HashMap;
+
+        specialinvoke $r5.<java.util.HashMap: void <init>(int)>(1);
+
+        $r6 = staticinvoke <java.lang.Boolean: java.lang.Boolean valueOf(boolean)>($z0);
+
+        interfaceinvoke $r5.<java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>("output_flag", $r6);
+
+        return $r5;
+
+     label1:
+        return null;
+    }
+
+    protected final void a(java.util.Map) throws com.apperhand.device.a.d.f
+    {
+        com.apperhand.device.a.b.d r0;
+        java.util.Map $r1;
+        java.lang.Object $r2;
+        java.lang.Boolean $r3;
+        boolean $z0;
+        com.apperhand.common.dto.protocol.CommandStatusRequest $r4;
+        com.apperhand.common.dto.Command$Commands $r5;
+        com.apperhand.common.dto.CommandStatus$Status $r6;
+        java.lang.String $r7;
+        java.util.List $r8;
+
+        r0 := @this: com.apperhand.device.a.b.d;
+
+        $r1 := @parameter0: java.util.Map;
+
+        if $r1 == null goto label7;
+
+        $r2 = interfaceinvoke $r1.<java.util.Map: java.lang.Object get(java.lang.Object)>("output_flag");
+
+        $r3 = (java.lang.Boolean) $r2;
+
+        if $r3 == null goto label4;
+
+        $r2 = interfaceinvoke $r1.<java.util.Map: java.lang.Object get(java.lang.Object)>("output_flag");
+
+        $r3 = (java.lang.Boolean) $r2;
+
+        $z0 = virtualinvoke $r3.<java.lang.Boolean: boolean booleanValue()>();
+
+     label1:
+        $r4 = specialinvoke r0.<com.apperhand.device.a.b.b: com.apperhand.common.dto.protocol.CommandStatusRequest b()>();
+
+        $r5 = <com.apperhand.common.dto.Command$Commands: com.apperhand.common.dto.Command$Commands HOMEPAGE>;
+
+        if $z0 == 0 goto label5;
+
+        $r6 = <com.apperhand.common.dto.CommandStatus$Status: com.apperhand.common.dto.CommandStatus$Status SUCCESS>;
+
+     label2:
+        if $z0 == 0 goto label6;
+
+        $r7 = "Sababa";
+
+     label3:
+        $r8 = virtualinvoke r0.<com.apperhand.device.a.b.d: java.util.List a(com.apperhand.common.dto.Command$Commands,com.apperhand.common.dto.CommandStatus$Status,java.lang.String,java.util.Map)>($r5, $r6, $r7, null);
+
+        virtualinvoke $r4.<com.apperhand.common.dto.protocol.CommandStatusRequest: void setStatuses(java.util.List)>($r8);
+
+        virtualinvoke r0.<com.apperhand.device.a.b.d: void a(com.apperhand.common.dto.protocol.CommandStatusRequest)>($r4);
+
+        return;
+
+     label4:
+        $z0 = 0;
+
+        goto label1;
+
+     label5:
+        $r6 = <com.apperhand.common.dto.CommandStatus$Status: com.apperhand.common.dto.CommandStatus$Status FAILURE>;
+
+        goto label2;
+
+     label6:
+        $r7 = "Didn\'t attemp to change the homepage";
+
+        goto label3;
+
+     label7:
+        $z0 = 0;
+
+        goto label1;
+    }
+}

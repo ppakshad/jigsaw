@@ -1,0 +1,162 @@
+public class com.apperhand.common.dto.CommandStatus extends com.apperhand.common.dto.Command
+{
+    private static final long serialVersionUID;
+    private java.lang.String message;
+    private com.apperhand.common.dto.CommandStatus$Status status;
+
+    public void <init>()
+    {
+        com.apperhand.common.dto.CommandStatus r0;
+
+        r0 := @this: com.apperhand.common.dto.CommandStatus;
+
+        specialinvoke r0.<com.apperhand.common.dto.Command: void <init>()>();
+
+        return;
+    }
+
+    public void <init>(com.apperhand.common.dto.CommandStatus$Status, java.lang.String, com.apperhand.common.dto.Command$Commands, java.lang.String)
+    {
+        com.apperhand.common.dto.CommandStatus r0;
+        com.apperhand.common.dto.CommandStatus$Status $r1;
+        java.lang.String $r2, $r4;
+        com.apperhand.common.dto.Command$Commands $r3;
+
+        r0 := @this: com.apperhand.common.dto.CommandStatus;
+
+        $r1 := @parameter0: com.apperhand.common.dto.CommandStatus$Status;
+
+        $r2 := @parameter1: java.lang.String;
+
+        $r3 := @parameter2: com.apperhand.common.dto.Command$Commands;
+
+        $r4 := @parameter3: java.lang.String;
+
+        specialinvoke r0.<com.apperhand.common.dto.Command: void <init>(com.apperhand.common.dto.Command$Commands,java.lang.String)>($r3, $r4);
+
+        r0.<com.apperhand.common.dto.CommandStatus: com.apperhand.common.dto.CommandStatus$Status status> = $r1;
+
+        r0.<com.apperhand.common.dto.CommandStatus: java.lang.String message> = $r2;
+
+        return;
+    }
+
+    public java.lang.String getMessage()
+    {
+        com.apperhand.common.dto.CommandStatus r0;
+        java.lang.String r1;
+
+        r0 := @this: com.apperhand.common.dto.CommandStatus;
+
+        r1 = r0.<com.apperhand.common.dto.CommandStatus: java.lang.String message>;
+
+        return r1;
+    }
+
+    public com.apperhand.common.dto.CommandStatus$Status getStatus()
+    {
+        com.apperhand.common.dto.CommandStatus r0;
+        com.apperhand.common.dto.CommandStatus$Status r1;
+
+        r0 := @this: com.apperhand.common.dto.CommandStatus;
+
+        r1 = r0.<com.apperhand.common.dto.CommandStatus: com.apperhand.common.dto.CommandStatus$Status status>;
+
+        return r1;
+    }
+
+    public void setMessage(java.lang.String)
+    {
+        com.apperhand.common.dto.CommandStatus r0;
+        java.lang.String $r1;
+
+        r0 := @this: com.apperhand.common.dto.CommandStatus;
+
+        $r1 := @parameter0: java.lang.String;
+
+        r0.<com.apperhand.common.dto.CommandStatus: java.lang.String message> = $r1;
+
+        return;
+    }
+
+    public void setStatus(com.apperhand.common.dto.CommandStatus$Status)
+    {
+        com.apperhand.common.dto.CommandStatus r0;
+        com.apperhand.common.dto.CommandStatus$Status $r1;
+
+        r0 := @this: com.apperhand.common.dto.CommandStatus;
+
+        $r1 := @parameter0: com.apperhand.common.dto.CommandStatus$Status;
+
+        r0.<com.apperhand.common.dto.CommandStatus: com.apperhand.common.dto.CommandStatus$Status status> = $r1;
+
+        return;
+    }
+
+    public java.lang.String toString()
+    {
+        com.apperhand.common.dto.CommandStatus r0;
+        java.lang.StringBuilder $r1;
+        com.apperhand.common.dto.CommandStatus$Status $r2;
+        java.lang.String $r3;
+        int $i0;
+
+        r0 := @this: com.apperhand.common.dto.CommandStatus;
+
+        $r1 = new java.lang.StringBuilder;
+
+        specialinvoke $r1.<java.lang.StringBuilder: void <init>(java.lang.String)>("CommandStatus [status=");
+
+        $r2 = r0.<com.apperhand.common.dto.CommandStatus: com.apperhand.common.dto.CommandStatus$Status status>;
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($r2);
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(", message=");
+
+        $r3 = r0.<com.apperhand.common.dto.CommandStatus: java.lang.String message>;
+
+        if $r3 == null goto label3;
+
+        $r3 = r0.<com.apperhand.common.dto.CommandStatus: java.lang.String message>;
+
+        $i0 = virtualinvoke $r3.<java.lang.String: int length()>();
+
+        if $i0 <= 200 goto label2;
+
+        $r3 = r0.<com.apperhand.common.dto.CommandStatus: java.lang.String message>;
+
+        $r3 = virtualinvoke $r3.<java.lang.String: java.lang.String substring(int,int)>(0, 200);
+
+     label1:
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r3);
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(", command=");
+
+        $r3 = specialinvoke r0.<com.apperhand.common.dto.Command: java.lang.String toString()>();
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r3);
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("]");
+
+        $r3 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        return $r3;
+
+     label2:
+        $r3 = r0.<com.apperhand.common.dto.CommandStatus: java.lang.String message>;
+
+        goto label1;
+
+     label3:
+        $r3 = "null";
+
+        goto label1;
+    }
+
+    public static void <clinit>()
+    {
+        <com.apperhand.common.dto.CommandStatus: long serialVersionUID> = 4005495549492869561L;
+
+        return;
+    }
+}

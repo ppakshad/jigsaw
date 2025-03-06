@@ -1,0 +1,1690 @@
+public class com.squareup.picasso.RequestCreator extends java.lang.Object
+{
+    private static final java.util.concurrent.atomic.AtomicInteger nextId;
+    private final com.squareup.picasso.Request$Builder data;
+    private boolean deferred;
+    private android.graphics.drawable.Drawable errorDrawable;
+    private int errorResId;
+    private int memoryPolicy;
+    private int networkPolicy;
+    private boolean noFade;
+    private final com.squareup.picasso.Picasso picasso;
+    private android.graphics.drawable.Drawable placeholderDrawable;
+    private int placeholderResId;
+    private boolean setPlaceholder;
+    private java.lang.Object tag;
+
+    static void <clinit>()
+    {
+        java.util.concurrent.atomic.AtomicInteger $r0;
+
+        $r0 = new java.util.concurrent.atomic.AtomicInteger;
+
+        specialinvoke $r0.<java.util.concurrent.atomic.AtomicInteger: void <init>()>();
+
+        <com.squareup.picasso.RequestCreator: java.util.concurrent.atomic.AtomicInteger nextId> = $r0;
+
+        return;
+    }
+
+    void <init>()
+    {
+        com.squareup.picasso.RequestCreator r0;
+        com.squareup.picasso.Request$Builder $r1;
+
+        r0 := @this: com.squareup.picasso.RequestCreator;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        r0.<com.squareup.picasso.RequestCreator: boolean setPlaceholder> = 1;
+
+        r0.<com.squareup.picasso.RequestCreator: com.squareup.picasso.Picasso picasso> = null;
+
+        $r1 = new com.squareup.picasso.Request$Builder;
+
+        specialinvoke $r1.<com.squareup.picasso.Request$Builder: void <init>(android.net.Uri,int,android.graphics.Bitmap$Config)>(null, 0, null);
+
+        r0.<com.squareup.picasso.RequestCreator: com.squareup.picasso.Request$Builder data> = $r1;
+
+        return;
+    }
+
+    void <init>(com.squareup.picasso.Picasso, android.net.Uri, int)
+    {
+        com.squareup.picasso.RequestCreator r0;
+        com.squareup.picasso.Picasso $r1;
+        android.net.Uri $r2;
+        int $i0;
+        boolean $z0;
+        java.lang.IllegalStateException $r3;
+        com.squareup.picasso.Request$Builder $r4;
+        android.graphics.Bitmap$Config $r5;
+
+        r0 := @this: com.squareup.picasso.RequestCreator;
+
+        $r1 := @parameter0: com.squareup.picasso.Picasso;
+
+        $r2 := @parameter1: android.net.Uri;
+
+        $i0 := @parameter2: int;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        r0.<com.squareup.picasso.RequestCreator: boolean setPlaceholder> = 1;
+
+        $z0 = $r1.<com.squareup.picasso.Picasso: boolean shutdown>;
+
+        if $z0 == 0 goto label1;
+
+        $r3 = new java.lang.IllegalStateException;
+
+        specialinvoke $r3.<java.lang.IllegalStateException: void <init>(java.lang.String)>("Picasso instance already shut down. Cannot submit new requests.");
+
+        throw $r3;
+
+     label1:
+        r0.<com.squareup.picasso.RequestCreator: com.squareup.picasso.Picasso picasso> = $r1;
+
+        $r4 = new com.squareup.picasso.Request$Builder;
+
+        $r5 = $r1.<com.squareup.picasso.Picasso: android.graphics.Bitmap$Config defaultBitmapConfig>;
+
+        specialinvoke $r4.<com.squareup.picasso.Request$Builder: void <init>(android.net.Uri,int,android.graphics.Bitmap$Config)>($r2, $i0, $r5);
+
+        r0.<com.squareup.picasso.RequestCreator: com.squareup.picasso.Request$Builder data> = $r4;
+
+        return;
+    }
+
+    private com.squareup.picasso.Request createRequest(long)
+    {
+        com.squareup.picasso.RequestCreator r0;
+        long $l0;
+        java.util.concurrent.atomic.AtomicInteger $r1;
+        int $i1;
+        com.squareup.picasso.Request$Builder $r2;
+        com.squareup.picasso.Request $r3, $r7;
+        com.squareup.picasso.Picasso $r4;
+        boolean $z0;
+        java.lang.String $r5, $r6;
+        java.lang.StringBuilder $r8;
+
+        r0 := @this: com.squareup.picasso.RequestCreator;
+
+        $l0 := @parameter0: long;
+
+        $r1 = <com.squareup.picasso.RequestCreator: java.util.concurrent.atomic.AtomicInteger nextId>;
+
+        $i1 = virtualinvoke $r1.<java.util.concurrent.atomic.AtomicInteger: int getAndIncrement()>();
+
+        $r2 = r0.<com.squareup.picasso.RequestCreator: com.squareup.picasso.Request$Builder data>;
+
+        $r3 = virtualinvoke $r2.<com.squareup.picasso.Request$Builder: com.squareup.picasso.Request build()>();
+
+        $r3.<com.squareup.picasso.Request: int id> = $i1;
+
+        $r3.<com.squareup.picasso.Request: long started> = $l0;
+
+        $r4 = r0.<com.squareup.picasso.RequestCreator: com.squareup.picasso.Picasso picasso>;
+
+        $z0 = $r4.<com.squareup.picasso.Picasso: boolean loggingEnabled>;
+
+        if $z0 == 0 goto label1;
+
+        $r5 = virtualinvoke $r3.<com.squareup.picasso.Request: java.lang.String plainId()>();
+
+        $r6 = virtualinvoke $r3.<com.squareup.picasso.Request: java.lang.String toString()>();
+
+        staticinvoke <com.squareup.picasso.Utils: void log(java.lang.String,java.lang.String,java.lang.String,java.lang.String)>("Main", "created", $r5, $r6);
+
+     label1:
+        $r4 = r0.<com.squareup.picasso.RequestCreator: com.squareup.picasso.Picasso picasso>;
+
+        $r7 = virtualinvoke $r4.<com.squareup.picasso.Picasso: com.squareup.picasso.Request transformRequest(com.squareup.picasso.Request)>($r3);
+
+        if $r7 == $r3 goto label2;
+
+        $r7.<com.squareup.picasso.Request: int id> = $i1;
+
+        $r7.<com.squareup.picasso.Request: long started> = $l0;
+
+        if $z0 == 0 goto label2;
+
+        $r5 = virtualinvoke $r7.<com.squareup.picasso.Request: java.lang.String logId()>();
+
+        $r8 = new java.lang.StringBuilder;
+
+        specialinvoke $r8.<java.lang.StringBuilder: void <init>(java.lang.String)>("into ");
+
+        $r8 = virtualinvoke $r8.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($r7);
+
+        $r6 = virtualinvoke $r8.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <com.squareup.picasso.Utils: void log(java.lang.String,java.lang.String,java.lang.String,java.lang.String)>("Main", "changed", $r5, $r6);
+
+     label2:
+        return $r7;
+    }
+
+    private android.graphics.drawable.Drawable getPlaceholderDrawable()
+    {
+        com.squareup.picasso.RequestCreator r0;
+        int $i0;
+        com.squareup.picasso.Picasso $r1;
+        android.content.Context $r2;
+        android.content.res.Resources $r3;
+        android.graphics.drawable.Drawable $r4;
+
+        r0 := @this: com.squareup.picasso.RequestCreator;
+
+        $i0 = r0.<com.squareup.picasso.RequestCreator: int placeholderResId>;
+
+        if $i0 == 0 goto label1;
+
+        $r1 = r0.<com.squareup.picasso.RequestCreator: com.squareup.picasso.Picasso picasso>;
+
+        $r2 = $r1.<com.squareup.picasso.Picasso: android.content.Context context>;
+
+        $r3 = virtualinvoke $r2.<android.content.Context: android.content.res.Resources getResources()>();
+
+        $i0 = r0.<com.squareup.picasso.RequestCreator: int placeholderResId>;
+
+        $r4 = virtualinvoke $r3.<android.content.res.Resources: android.graphics.drawable.Drawable getDrawable(int)>($i0);
+
+        return $r4;
+
+     label1:
+        $r4 = r0.<com.squareup.picasso.RequestCreator: android.graphics.drawable.Drawable placeholderDrawable>;
+
+        return $r4;
+    }
+
+    private void performRemoteViewInto(com.squareup.picasso.RemoteViewsAction)
+    {
+        com.squareup.picasso.RequestCreator r0;
+        com.squareup.picasso.RemoteViewsAction $r1;
+        int $i0;
+        boolean $z0;
+        com.squareup.picasso.Picasso $r2;
+        java.lang.String $r3;
+        android.graphics.Bitmap $r4;
+        com.squareup.picasso.Picasso$LoadedFrom $r5;
+
+        r0 := @this: com.squareup.picasso.RequestCreator;
+
+        $r1 := @parameter0: com.squareup.picasso.RemoteViewsAction;
+
+        $i0 = r0.<com.squareup.picasso.RequestCreator: int memoryPolicy>;
+
+        $z0 = staticinvoke <com.squareup.picasso.MemoryPolicy: boolean shouldReadFromMemoryCache(int)>($i0);
+
+        if $z0 == 0 goto label1;
+
+        $r2 = r0.<com.squareup.picasso.RequestCreator: com.squareup.picasso.Picasso picasso>;
+
+        $r3 = virtualinvoke $r1.<com.squareup.picasso.RemoteViewsAction: java.lang.String getKey()>();
+
+        $r4 = virtualinvoke $r2.<com.squareup.picasso.Picasso: android.graphics.Bitmap quickMemoryCacheCheck(java.lang.String)>($r3);
+
+        if $r4 == null goto label1;
+
+        $r5 = <com.squareup.picasso.Picasso$LoadedFrom: com.squareup.picasso.Picasso$LoadedFrom MEMORY>;
+
+        virtualinvoke $r1.<com.squareup.picasso.RemoteViewsAction: void complete(android.graphics.Bitmap,com.squareup.picasso.Picasso$LoadedFrom)>($r4, $r5);
+
+        return;
+
+     label1:
+        $i0 = r0.<com.squareup.picasso.RequestCreator: int placeholderResId>;
+
+        if $i0 == 0 goto label2;
+
+        $i0 = r0.<com.squareup.picasso.RequestCreator: int placeholderResId>;
+
+        virtualinvoke $r1.<com.squareup.picasso.RemoteViewsAction: void setImageResource(int)>($i0);
+
+     label2:
+        $r2 = r0.<com.squareup.picasso.RequestCreator: com.squareup.picasso.Picasso picasso>;
+
+        virtualinvoke $r2.<com.squareup.picasso.Picasso: void enqueueAndSubmit(com.squareup.picasso.Action)>($r1);
+
+        return;
+    }
+
+    public com.squareup.picasso.RequestCreator centerCrop()
+    {
+        com.squareup.picasso.RequestCreator r0;
+        com.squareup.picasso.Request$Builder $r1;
+
+        r0 := @this: com.squareup.picasso.RequestCreator;
+
+        $r1 = r0.<com.squareup.picasso.RequestCreator: com.squareup.picasso.Request$Builder data>;
+
+        virtualinvoke $r1.<com.squareup.picasso.Request$Builder: com.squareup.picasso.Request$Builder centerCrop()>();
+
+        return r0;
+    }
+
+    public com.squareup.picasso.RequestCreator centerInside()
+    {
+        com.squareup.picasso.RequestCreator r0;
+        com.squareup.picasso.Request$Builder $r1;
+
+        r0 := @this: com.squareup.picasso.RequestCreator;
+
+        $r1 = r0.<com.squareup.picasso.RequestCreator: com.squareup.picasso.Request$Builder data>;
+
+        virtualinvoke $r1.<com.squareup.picasso.Request$Builder: com.squareup.picasso.Request$Builder centerInside()>();
+
+        return r0;
+    }
+
+    public com.squareup.picasso.RequestCreator config(android.graphics.Bitmap$Config)
+    {
+        com.squareup.picasso.RequestCreator r0;
+        android.graphics.Bitmap$Config $r1;
+        com.squareup.picasso.Request$Builder $r2;
+
+        r0 := @this: com.squareup.picasso.RequestCreator;
+
+        $r1 := @parameter0: android.graphics.Bitmap$Config;
+
+        $r2 = r0.<com.squareup.picasso.RequestCreator: com.squareup.picasso.Request$Builder data>;
+
+        virtualinvoke $r2.<com.squareup.picasso.Request$Builder: com.squareup.picasso.Request$Builder config(android.graphics.Bitmap$Config)>($r1);
+
+        return r0;
+    }
+
+    public com.squareup.picasso.RequestCreator error(int)
+    {
+        com.squareup.picasso.RequestCreator r0;
+        int $i0;
+        java.lang.IllegalArgumentException $r1;
+        android.graphics.drawable.Drawable $r2;
+        java.lang.IllegalStateException $r3;
+
+        r0 := @this: com.squareup.picasso.RequestCreator;
+
+        $i0 := @parameter0: int;
+
+        if $i0 != 0 goto label1;
+
+        $r1 = new java.lang.IllegalArgumentException;
+
+        specialinvoke $r1.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>("Error image resource invalid.");
+
+        throw $r1;
+
+     label1:
+        $r2 = r0.<com.squareup.picasso.RequestCreator: android.graphics.drawable.Drawable errorDrawable>;
+
+        if $r2 == null goto label2;
+
+        $r3 = new java.lang.IllegalStateException;
+
+        specialinvoke $r3.<java.lang.IllegalStateException: void <init>(java.lang.String)>("Error image already set.");
+
+        throw $r3;
+
+     label2:
+        r0.<com.squareup.picasso.RequestCreator: int errorResId> = $i0;
+
+        return r0;
+    }
+
+    public com.squareup.picasso.RequestCreator error(android.graphics.drawable.Drawable)
+    {
+        com.squareup.picasso.RequestCreator r0;
+        android.graphics.drawable.Drawable $r1;
+        java.lang.IllegalArgumentException $r2;
+        int $i0;
+        java.lang.IllegalStateException $r3;
+
+        r0 := @this: com.squareup.picasso.RequestCreator;
+
+        $r1 := @parameter0: android.graphics.drawable.Drawable;
+
+        if $r1 != null goto label1;
+
+        $r2 = new java.lang.IllegalArgumentException;
+
+        specialinvoke $r2.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>("Error image may not be null.");
+
+        throw $r2;
+
+     label1:
+        $i0 = r0.<com.squareup.picasso.RequestCreator: int errorResId>;
+
+        if $i0 == 0 goto label2;
+
+        $r3 = new java.lang.IllegalStateException;
+
+        specialinvoke $r3.<java.lang.IllegalStateException: void <init>(java.lang.String)>("Error image already set.");
+
+        throw $r3;
+
+     label2:
+        r0.<com.squareup.picasso.RequestCreator: android.graphics.drawable.Drawable errorDrawable> = $r1;
+
+        return r0;
+    }
+
+    public void fetch()
+    {
+        com.squareup.picasso.RequestCreator r0;
+
+        r0 := @this: com.squareup.picasso.RequestCreator;
+
+        virtualinvoke r0.<com.squareup.picasso.RequestCreator: void fetch(com.squareup.picasso.Callback)>(null);
+
+        return;
+    }
+
+    public void fetch(com.squareup.picasso.Callback)
+    {
+        com.squareup.picasso.RequestCreator r0;
+        com.squareup.picasso.Callback $r1;
+        java.lang.Object $r2;
+        long $l0;
+        boolean $z0;
+        java.lang.IllegalStateException $r3;
+        com.squareup.picasso.Request$Builder $r4;
+        com.squareup.picasso.Picasso$Priority $r5;
+        com.squareup.picasso.Request $r6;
+        java.lang.StringBuilder $r7;
+        java.lang.String $r8, $r12;
+        com.squareup.picasso.Picasso $r9;
+        android.graphics.Bitmap $r10;
+        com.squareup.picasso.Picasso$LoadedFrom $r11;
+        com.squareup.picasso.FetchAction $r13;
+        int $i1, $i2;
+
+        r0 := @this: com.squareup.picasso.RequestCreator;
+
+        $r1 := @parameter0: com.squareup.picasso.Callback;
+
+        $l0 = staticinvoke <java.lang.System: long nanoTime()>();
+
+        $z0 = r0.<com.squareup.picasso.RequestCreator: boolean deferred>;
+
+        if $z0 == 0 goto label1;
+
+        $r3 = new java.lang.IllegalStateException;
+
+        specialinvoke $r3.<java.lang.IllegalStateException: void <init>(java.lang.String)>("Fit cannot be used with fetch.");
+
+        throw $r3;
+
+     label1:
+        $r4 = r0.<com.squareup.picasso.RequestCreator: com.squareup.picasso.Request$Builder data>;
+
+        $z0 = virtualinvoke $r4.<com.squareup.picasso.Request$Builder: boolean hasImage()>();
+
+        if $z0 == 0 goto label5;
+
+        $r4 = r0.<com.squareup.picasso.RequestCreator: com.squareup.picasso.Request$Builder data>;
+
+        $z0 = virtualinvoke $r4.<com.squareup.picasso.Request$Builder: boolean hasPriority()>();
+
+        if $z0 != 0 goto label2;
+
+        $r4 = r0.<com.squareup.picasso.RequestCreator: com.squareup.picasso.Request$Builder data>;
+
+        $r5 = <com.squareup.picasso.Picasso$Priority: com.squareup.picasso.Picasso$Priority LOW>;
+
+        virtualinvoke $r4.<com.squareup.picasso.Request$Builder: com.squareup.picasso.Request$Builder priority(com.squareup.picasso.Picasso$Priority)>($r5);
+
+     label2:
+        $r6 = specialinvoke r0.<com.squareup.picasso.RequestCreator: com.squareup.picasso.Request createRequest(long)>($l0);
+
+        $r7 = new java.lang.StringBuilder;
+
+        specialinvoke $r7.<java.lang.StringBuilder: void <init>()>();
+
+        $r8 = staticinvoke <com.squareup.picasso.Utils: java.lang.String createKey(com.squareup.picasso.Request,java.lang.StringBuilder)>($r6, $r7);
+
+        $r9 = r0.<com.squareup.picasso.RequestCreator: com.squareup.picasso.Picasso picasso>;
+
+        $r10 = virtualinvoke $r9.<com.squareup.picasso.Picasso: android.graphics.Bitmap quickMemoryCacheCheck(java.lang.String)>($r8);
+
+        if $r10 == null goto label4;
+
+        $r9 = r0.<com.squareup.picasso.RequestCreator: com.squareup.picasso.Picasso picasso>;
+
+        $z0 = $r9.<com.squareup.picasso.Picasso: boolean loggingEnabled>;
+
+        if $z0 == 0 goto label3;
+
+        $r8 = virtualinvoke $r6.<com.squareup.picasso.Request: java.lang.String plainId()>();
+
+        $r7 = new java.lang.StringBuilder;
+
+        specialinvoke $r7.<java.lang.StringBuilder: void <init>(java.lang.String)>("from ");
+
+        $r11 = <com.squareup.picasso.Picasso$LoadedFrom: com.squareup.picasso.Picasso$LoadedFrom MEMORY>;
+
+        $r7 = virtualinvoke $r7.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($r11);
+
+        $r12 = virtualinvoke $r7.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <com.squareup.picasso.Utils: void log(java.lang.String,java.lang.String,java.lang.String,java.lang.String)>("Main", "completed", $r8, $r12);
+
+     label3:
+        if $r1 == null goto label5;
+
+        interfaceinvoke $r1.<com.squareup.picasso.Callback: void onSuccess()>();
+
+        return;
+
+     label4:
+        $r13 = new com.squareup.picasso.FetchAction;
+
+        $r9 = r0.<com.squareup.picasso.RequestCreator: com.squareup.picasso.Picasso picasso>;
+
+        $i1 = r0.<com.squareup.picasso.RequestCreator: int memoryPolicy>;
+
+        $i2 = r0.<com.squareup.picasso.RequestCreator: int networkPolicy>;
+
+        $r2 = r0.<com.squareup.picasso.RequestCreator: java.lang.Object tag>;
+
+        specialinvoke $r13.<com.squareup.picasso.FetchAction: void <init>(com.squareup.picasso.Picasso,com.squareup.picasso.Request,int,int,java.lang.Object,java.lang.String,com.squareup.picasso.Callback)>($r9, $r6, $i1, $i2, $r2, $r8, $r1);
+
+        $r9 = r0.<com.squareup.picasso.RequestCreator: com.squareup.picasso.Picasso picasso>;
+
+        virtualinvoke $r9.<com.squareup.picasso.Picasso: void submit(com.squareup.picasso.Action)>($r13);
+
+     label5:
+        return;
+    }
+
+    public com.squareup.picasso.RequestCreator fit()
+    {
+        com.squareup.picasso.RequestCreator r0;
+
+        r0 := @this: com.squareup.picasso.RequestCreator;
+
+        r0.<com.squareup.picasso.RequestCreator: boolean deferred> = 1;
+
+        return r0;
+    }
+
+    public android.graphics.Bitmap get() throws java.io.IOException
+    {
+        com.squareup.picasso.RequestCreator r0;
+        java.lang.Object $r1;
+        long $l0;
+        boolean $z0;
+        java.lang.IllegalStateException $r2;
+        com.squareup.picasso.Request$Builder $r3;
+        com.squareup.picasso.Request $r4;
+        java.lang.StringBuilder $r5;
+        java.lang.String $r6;
+        com.squareup.picasso.GetAction $r7;
+        com.squareup.picasso.Picasso $r8, $r9;
+        int $i1, $i2;
+        com.squareup.picasso.Dispatcher $r10;
+        com.squareup.picasso.Cache $r11;
+        com.squareup.picasso.Stats $r12;
+        com.squareup.picasso.BitmapHunter $r13;
+        android.graphics.Bitmap $r14;
+
+        r0 := @this: com.squareup.picasso.RequestCreator;
+
+        $l0 = staticinvoke <java.lang.System: long nanoTime()>();
+
+        staticinvoke <com.squareup.picasso.Utils: void checkNotMain()>();
+
+        $z0 = r0.<com.squareup.picasso.RequestCreator: boolean deferred>;
+
+        if $z0 == 0 goto label1;
+
+        $r2 = new java.lang.IllegalStateException;
+
+        specialinvoke $r2.<java.lang.IllegalStateException: void <init>(java.lang.String)>("Fit cannot be used with get.");
+
+        throw $r2;
+
+     label1:
+        $r3 = r0.<com.squareup.picasso.RequestCreator: com.squareup.picasso.Request$Builder data>;
+
+        $z0 = virtualinvoke $r3.<com.squareup.picasso.Request$Builder: boolean hasImage()>();
+
+        if $z0 != 0 goto label2;
+
+        return null;
+
+     label2:
+        $r4 = specialinvoke r0.<com.squareup.picasso.RequestCreator: com.squareup.picasso.Request createRequest(long)>($l0);
+
+        $r5 = new java.lang.StringBuilder;
+
+        specialinvoke $r5.<java.lang.StringBuilder: void <init>()>();
+
+        $r6 = staticinvoke <com.squareup.picasso.Utils: java.lang.String createKey(com.squareup.picasso.Request,java.lang.StringBuilder)>($r4, $r5);
+
+        $r7 = new com.squareup.picasso.GetAction;
+
+        $r8 = r0.<com.squareup.picasso.RequestCreator: com.squareup.picasso.Picasso picasso>;
+
+        $i1 = r0.<com.squareup.picasso.RequestCreator: int memoryPolicy>;
+
+        $i2 = r0.<com.squareup.picasso.RequestCreator: int networkPolicy>;
+
+        $r1 = r0.<com.squareup.picasso.RequestCreator: java.lang.Object tag>;
+
+        specialinvoke $r7.<com.squareup.picasso.GetAction: void <init>(com.squareup.picasso.Picasso,com.squareup.picasso.Request,int,int,java.lang.Object,java.lang.String)>($r8, $r4, $i1, $i2, $r1, $r6);
+
+        $r8 = r0.<com.squareup.picasso.RequestCreator: com.squareup.picasso.Picasso picasso>;
+
+        $r9 = r0.<com.squareup.picasso.RequestCreator: com.squareup.picasso.Picasso picasso>;
+
+        $r10 = $r9.<com.squareup.picasso.Picasso: com.squareup.picasso.Dispatcher dispatcher>;
+
+        $r9 = r0.<com.squareup.picasso.RequestCreator: com.squareup.picasso.Picasso picasso>;
+
+        $r11 = $r9.<com.squareup.picasso.Picasso: com.squareup.picasso.Cache cache>;
+
+        $r9 = r0.<com.squareup.picasso.RequestCreator: com.squareup.picasso.Picasso picasso>;
+
+        $r12 = $r9.<com.squareup.picasso.Picasso: com.squareup.picasso.Stats stats>;
+
+        $r13 = staticinvoke <com.squareup.picasso.BitmapHunter: com.squareup.picasso.BitmapHunter forRequest(com.squareup.picasso.Picasso,com.squareup.picasso.Dispatcher,com.squareup.picasso.Cache,com.squareup.picasso.Stats,com.squareup.picasso.Action)>($r8, $r10, $r11, $r12, $r7);
+
+        $r14 = virtualinvoke $r13.<com.squareup.picasso.BitmapHunter: android.graphics.Bitmap hunt()>();
+
+        return $r14;
+    }
+
+    public void into(android.widget.ImageView)
+    {
+        com.squareup.picasso.RequestCreator r0;
+        android.widget.ImageView $r1;
+
+        r0 := @this: com.squareup.picasso.RequestCreator;
+
+        $r1 := @parameter0: android.widget.ImageView;
+
+        virtualinvoke r0.<com.squareup.picasso.RequestCreator: void into(android.widget.ImageView,com.squareup.picasso.Callback)>($r1, null);
+
+        return;
+    }
+
+    public void into(android.widget.ImageView, com.squareup.picasso.Callback)
+    {
+        com.squareup.picasso.RequestCreator r0;
+        android.widget.ImageView $r1;
+        com.squareup.picasso.Callback $r2;
+        int $i0, $i2, $i3;
+        android.graphics.drawable.Drawable $r3;
+        java.lang.Object $r4;
+        boolean $z0, $z1;
+        long $l1;
+        java.lang.IllegalArgumentException $r5;
+        com.squareup.picasso.Request$Builder $r6;
+        com.squareup.picasso.Picasso $r7;
+        java.lang.IllegalStateException $r8;
+        com.squareup.picasso.DeferredRequestCreator $r9;
+        com.squareup.picasso.Request $r10;
+        java.lang.String $r11, $r16;
+        android.graphics.Bitmap $r12;
+        android.content.Context $r13;
+        com.squareup.picasso.Picasso$LoadedFrom $r14;
+        java.lang.StringBuilder $r15;
+        com.squareup.picasso.ImageViewAction $r17;
+
+        r0 := @this: com.squareup.picasso.RequestCreator;
+
+        $r1 := @parameter0: android.widget.ImageView;
+
+        $r2 := @parameter1: com.squareup.picasso.Callback;
+
+        $l1 = staticinvoke <java.lang.System: long nanoTime()>();
+
+        staticinvoke <com.squareup.picasso.Utils: void checkMain()>();
+
+        if $r1 != null goto label01;
+
+        $r5 = new java.lang.IllegalArgumentException;
+
+        specialinvoke $r5.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>("Target must not be null.");
+
+        throw $r5;
+
+     label01:
+        $r6 = r0.<com.squareup.picasso.RequestCreator: com.squareup.picasso.Request$Builder data>;
+
+        $z0 = virtualinvoke $r6.<com.squareup.picasso.Request$Builder: boolean hasImage()>();
+
+        if $z0 != 0 goto label02;
+
+        $r7 = r0.<com.squareup.picasso.RequestCreator: com.squareup.picasso.Picasso picasso>;
+
+        virtualinvoke $r7.<com.squareup.picasso.Picasso: void cancelRequest(android.widget.ImageView)>($r1);
+
+        $z0 = r0.<com.squareup.picasso.RequestCreator: boolean setPlaceholder>;
+
+        if $z0 == 0 goto label11;
+
+        $r3 = specialinvoke r0.<com.squareup.picasso.RequestCreator: android.graphics.drawable.Drawable getPlaceholderDrawable()>();
+
+        staticinvoke <com.squareup.picasso.PicassoDrawable: void setPlaceholder(android.widget.ImageView,android.graphics.drawable.Drawable)>($r1, $r3);
+
+        return;
+
+     label02:
+        $z0 = r0.<com.squareup.picasso.RequestCreator: boolean deferred>;
+
+        if $z0 == 0 goto label07;
+
+        $r6 = r0.<com.squareup.picasso.RequestCreator: com.squareup.picasso.Request$Builder data>;
+
+        $z0 = virtualinvoke $r6.<com.squareup.picasso.Request$Builder: boolean hasSize()>();
+
+        if $z0 == 0 goto label03;
+
+        $r8 = new java.lang.IllegalStateException;
+
+        specialinvoke $r8.<java.lang.IllegalStateException: void <init>(java.lang.String)>("Fit cannot be used with resize.");
+
+        throw $r8;
+
+     label03:
+        $i0 = virtualinvoke $r1.<android.widget.ImageView: int getWidth()>();
+
+        $i2 = virtualinvoke $r1.<android.widget.ImageView: int getHeight()>();
+
+        if $i0 == 0 goto label04;
+
+        if $i2 != 0 goto label06;
+
+     label04:
+        $z0 = r0.<com.squareup.picasso.RequestCreator: boolean setPlaceholder>;
+
+        if $z0 == 0 goto label05;
+
+        $r3 = specialinvoke r0.<com.squareup.picasso.RequestCreator: android.graphics.drawable.Drawable getPlaceholderDrawable()>();
+
+        staticinvoke <com.squareup.picasso.PicassoDrawable: void setPlaceholder(android.widget.ImageView,android.graphics.drawable.Drawable)>($r1, $r3);
+
+     label05:
+        $r7 = r0.<com.squareup.picasso.RequestCreator: com.squareup.picasso.Picasso picasso>;
+
+        $r9 = new com.squareup.picasso.DeferredRequestCreator;
+
+        specialinvoke $r9.<com.squareup.picasso.DeferredRequestCreator: void <init>(com.squareup.picasso.RequestCreator,android.widget.ImageView,com.squareup.picasso.Callback)>(r0, $r1, $r2);
+
+        virtualinvoke $r7.<com.squareup.picasso.Picasso: void defer(android.widget.ImageView,com.squareup.picasso.DeferredRequestCreator)>($r1, $r9);
+
+        return;
+
+     label06:
+        $r6 = r0.<com.squareup.picasso.RequestCreator: com.squareup.picasso.Request$Builder data>;
+
+        virtualinvoke $r6.<com.squareup.picasso.Request$Builder: com.squareup.picasso.Request$Builder resize(int,int)>($i0, $i2);
+
+     label07:
+        $r10 = specialinvoke r0.<com.squareup.picasso.RequestCreator: com.squareup.picasso.Request createRequest(long)>($l1);
+
+        $r11 = staticinvoke <com.squareup.picasso.Utils: java.lang.String createKey(com.squareup.picasso.Request)>($r10);
+
+        $i0 = r0.<com.squareup.picasso.RequestCreator: int memoryPolicy>;
+
+        $z0 = staticinvoke <com.squareup.picasso.MemoryPolicy: boolean shouldReadFromMemoryCache(int)>($i0);
+
+        if $z0 == 0 goto label09;
+
+        $r7 = r0.<com.squareup.picasso.RequestCreator: com.squareup.picasso.Picasso picasso>;
+
+        $r12 = virtualinvoke $r7.<com.squareup.picasso.Picasso: android.graphics.Bitmap quickMemoryCacheCheck(java.lang.String)>($r11);
+
+        if $r12 == null goto label09;
+
+        $r7 = r0.<com.squareup.picasso.RequestCreator: com.squareup.picasso.Picasso picasso>;
+
+        virtualinvoke $r7.<com.squareup.picasso.Picasso: void cancelRequest(android.widget.ImageView)>($r1);
+
+        $r7 = r0.<com.squareup.picasso.RequestCreator: com.squareup.picasso.Picasso picasso>;
+
+        $r13 = $r7.<com.squareup.picasso.Picasso: android.content.Context context>;
+
+        $r14 = <com.squareup.picasso.Picasso$LoadedFrom: com.squareup.picasso.Picasso$LoadedFrom MEMORY>;
+
+        $z0 = r0.<com.squareup.picasso.RequestCreator: boolean noFade>;
+
+        $r7 = r0.<com.squareup.picasso.RequestCreator: com.squareup.picasso.Picasso picasso>;
+
+        $z1 = $r7.<com.squareup.picasso.Picasso: boolean indicatorsEnabled>;
+
+        staticinvoke <com.squareup.picasso.PicassoDrawable: void setBitmap(android.widget.ImageView,android.content.Context,android.graphics.Bitmap,com.squareup.picasso.Picasso$LoadedFrom,boolean,boolean)>($r1, $r13, $r12, $r14, $z0, $z1);
+
+        $r7 = r0.<com.squareup.picasso.RequestCreator: com.squareup.picasso.Picasso picasso>;
+
+        $z0 = $r7.<com.squareup.picasso.Picasso: boolean loggingEnabled>;
+
+        if $z0 == 0 goto label08;
+
+        $r11 = virtualinvoke $r10.<com.squareup.picasso.Request: java.lang.String plainId()>();
+
+        $r15 = new java.lang.StringBuilder;
+
+        specialinvoke $r15.<java.lang.StringBuilder: void <init>(java.lang.String)>("from ");
+
+        $r14 = <com.squareup.picasso.Picasso$LoadedFrom: com.squareup.picasso.Picasso$LoadedFrom MEMORY>;
+
+        $r15 = virtualinvoke $r15.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($r14);
+
+        $r16 = virtualinvoke $r15.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <com.squareup.picasso.Utils: void log(java.lang.String,java.lang.String,java.lang.String,java.lang.String)>("Main", "completed", $r11, $r16);
+
+     label08:
+        if $r2 == null goto label11;
+
+        interfaceinvoke $r2.<com.squareup.picasso.Callback: void onSuccess()>();
+
+        return;
+
+     label09:
+        $z0 = r0.<com.squareup.picasso.RequestCreator: boolean setPlaceholder>;
+
+        if $z0 == 0 goto label10;
+
+        $r3 = specialinvoke r0.<com.squareup.picasso.RequestCreator: android.graphics.drawable.Drawable getPlaceholderDrawable()>();
+
+        staticinvoke <com.squareup.picasso.PicassoDrawable: void setPlaceholder(android.widget.ImageView,android.graphics.drawable.Drawable)>($r1, $r3);
+
+     label10:
+        $r17 = new com.squareup.picasso.ImageViewAction;
+
+        $r7 = r0.<com.squareup.picasso.RequestCreator: com.squareup.picasso.Picasso picasso>;
+
+        $i2 = r0.<com.squareup.picasso.RequestCreator: int memoryPolicy>;
+
+        $i3 = r0.<com.squareup.picasso.RequestCreator: int networkPolicy>;
+
+        $i0 = r0.<com.squareup.picasso.RequestCreator: int errorResId>;
+
+        $r3 = r0.<com.squareup.picasso.RequestCreator: android.graphics.drawable.Drawable errorDrawable>;
+
+        $r4 = r0.<com.squareup.picasso.RequestCreator: java.lang.Object tag>;
+
+        $z0 = r0.<com.squareup.picasso.RequestCreator: boolean noFade>;
+
+        specialinvoke $r17.<com.squareup.picasso.ImageViewAction: void <init>(com.squareup.picasso.Picasso,android.widget.ImageView,com.squareup.picasso.Request,int,int,int,android.graphics.drawable.Drawable,java.lang.String,java.lang.Object,com.squareup.picasso.Callback,boolean)>($r7, $r1, $r10, $i2, $i3, $i0, $r3, $r11, $r4, $r2, $z0);
+
+        $r7 = r0.<com.squareup.picasso.RequestCreator: com.squareup.picasso.Picasso picasso>;
+
+        virtualinvoke $r7.<com.squareup.picasso.Picasso: void enqueueAndSubmit(com.squareup.picasso.Action)>($r17);
+
+     label11:
+        return;
+    }
+
+    public void into(android.widget.RemoteViews, int, int, android.app.Notification)
+    {
+        com.squareup.picasso.RequestCreator r0;
+        android.widget.RemoteViews $r1;
+        int $i0, $i1, $i2, $i3, $i4;
+        android.app.Notification $r2;
+        java.lang.Object $r3;
+        long $l5;
+        java.lang.IllegalArgumentException $r4;
+        boolean $z0;
+        java.lang.IllegalStateException $r5;
+        android.graphics.drawable.Drawable $r6;
+        com.squareup.picasso.Request $r7;
+        java.lang.StringBuilder $r8;
+        java.lang.String $r9;
+        com.squareup.picasso.RemoteViewsAction$NotificationAction $r10;
+        com.squareup.picasso.Picasso $r11;
+
+        r0 := @this: com.squareup.picasso.RequestCreator;
+
+        $r1 := @parameter0: android.widget.RemoteViews;
+
+        $i0 := @parameter1: int;
+
+        $i1 := @parameter2: int;
+
+        $r2 := @parameter3: android.app.Notification;
+
+        $l5 = staticinvoke <java.lang.System: long nanoTime()>();
+
+        if $r1 != null goto label1;
+
+        $r4 = new java.lang.IllegalArgumentException;
+
+        specialinvoke $r4.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>("RemoteViews must not be null.");
+
+        throw $r4;
+
+     label1:
+        if $r2 != null goto label2;
+
+        $r4 = new java.lang.IllegalArgumentException;
+
+        specialinvoke $r4.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>("Notification must not be null.");
+
+        throw $r4;
+
+     label2:
+        $z0 = r0.<com.squareup.picasso.RequestCreator: boolean deferred>;
+
+        if $z0 == 0 goto label3;
+
+        $r5 = new java.lang.IllegalStateException;
+
+        specialinvoke $r5.<java.lang.IllegalStateException: void <init>(java.lang.String)>("Fit cannot be used with RemoteViews.");
+
+        throw $r5;
+
+     label3:
+        $r6 = r0.<com.squareup.picasso.RequestCreator: android.graphics.drawable.Drawable placeholderDrawable>;
+
+        if $r6 != null goto label4;
+
+        $i2 = r0.<com.squareup.picasso.RequestCreator: int placeholderResId>;
+
+        if $i2 != 0 goto label4;
+
+        $r6 = r0.<com.squareup.picasso.RequestCreator: android.graphics.drawable.Drawable errorDrawable>;
+
+        if $r6 == null goto label5;
+
+     label4:
+        $r4 = new java.lang.IllegalArgumentException;
+
+        specialinvoke $r4.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>("Cannot use placeholder or error drawables with remote views.");
+
+        throw $r4;
+
+     label5:
+        $r7 = specialinvoke r0.<com.squareup.picasso.RequestCreator: com.squareup.picasso.Request createRequest(long)>($l5);
+
+        $r8 = new java.lang.StringBuilder;
+
+        specialinvoke $r8.<java.lang.StringBuilder: void <init>()>();
+
+        $r9 = staticinvoke <com.squareup.picasso.Utils: java.lang.String createKey(com.squareup.picasso.Request,java.lang.StringBuilder)>($r7, $r8);
+
+        $r10 = new com.squareup.picasso.RemoteViewsAction$NotificationAction;
+
+        $r11 = r0.<com.squareup.picasso.RequestCreator: com.squareup.picasso.Picasso picasso>;
+
+        $i2 = r0.<com.squareup.picasso.RequestCreator: int memoryPolicy>;
+
+        $i3 = r0.<com.squareup.picasso.RequestCreator: int networkPolicy>;
+
+        $r3 = r0.<com.squareup.picasso.RequestCreator: java.lang.Object tag>;
+
+        $i4 = r0.<com.squareup.picasso.RequestCreator: int errorResId>;
+
+        specialinvoke $r10.<com.squareup.picasso.RemoteViewsAction$NotificationAction: void <init>(com.squareup.picasso.Picasso,com.squareup.picasso.Request,android.widget.RemoteViews,int,int,android.app.Notification,int,int,java.lang.String,java.lang.Object,int)>($r11, $r7, $r1, $i0, $i1, $r2, $i2, $i3, $r9, $r3, $i4);
+
+        specialinvoke r0.<com.squareup.picasso.RequestCreator: void performRemoteViewInto(com.squareup.picasso.RemoteViewsAction)>($r10);
+
+        return;
+    }
+
+    public void into(android.widget.RemoteViews, int, int[])
+    {
+        com.squareup.picasso.RequestCreator r0;
+        android.widget.RemoteViews $r1;
+        int $i0, $i1, $i2, $i3;
+        int[] $r2;
+        java.lang.Object $r3;
+        long $l4;
+        java.lang.IllegalArgumentException $r4;
+        boolean $z0;
+        java.lang.IllegalStateException $r5;
+        android.graphics.drawable.Drawable $r6;
+        com.squareup.picasso.Request $r7;
+        java.lang.StringBuilder $r8;
+        java.lang.String $r9;
+        com.squareup.picasso.RemoteViewsAction$AppWidgetAction $r10;
+        com.squareup.picasso.Picasso $r11;
+
+        r0 := @this: com.squareup.picasso.RequestCreator;
+
+        $r1 := @parameter0: android.widget.RemoteViews;
+
+        $i0 := @parameter1: int;
+
+        $r2 := @parameter2: int[];
+
+        $l4 = staticinvoke <java.lang.System: long nanoTime()>();
+
+        if $r1 != null goto label1;
+
+        $r4 = new java.lang.IllegalArgumentException;
+
+        specialinvoke $r4.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>("remoteViews must not be null.");
+
+        throw $r4;
+
+     label1:
+        if $r2 != null goto label2;
+
+        $r4 = new java.lang.IllegalArgumentException;
+
+        specialinvoke $r4.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>("appWidgetIds must not be null.");
+
+        throw $r4;
+
+     label2:
+        $z0 = r0.<com.squareup.picasso.RequestCreator: boolean deferred>;
+
+        if $z0 == 0 goto label3;
+
+        $r5 = new java.lang.IllegalStateException;
+
+        specialinvoke $r5.<java.lang.IllegalStateException: void <init>(java.lang.String)>("Fit cannot be used with remote views.");
+
+        throw $r5;
+
+     label3:
+        $r6 = r0.<com.squareup.picasso.RequestCreator: android.graphics.drawable.Drawable placeholderDrawable>;
+
+        if $r6 != null goto label4;
+
+        $i1 = r0.<com.squareup.picasso.RequestCreator: int placeholderResId>;
+
+        if $i1 != 0 goto label4;
+
+        $r6 = r0.<com.squareup.picasso.RequestCreator: android.graphics.drawable.Drawable errorDrawable>;
+
+        if $r6 == null goto label5;
+
+     label4:
+        $r4 = new java.lang.IllegalArgumentException;
+
+        specialinvoke $r4.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>("Cannot use placeholder or error drawables with remote views.");
+
+        throw $r4;
+
+     label5:
+        $r7 = specialinvoke r0.<com.squareup.picasso.RequestCreator: com.squareup.picasso.Request createRequest(long)>($l4);
+
+        $r8 = new java.lang.StringBuilder;
+
+        specialinvoke $r8.<java.lang.StringBuilder: void <init>()>();
+
+        $r9 = staticinvoke <com.squareup.picasso.Utils: java.lang.String createKey(com.squareup.picasso.Request,java.lang.StringBuilder)>($r7, $r8);
+
+        $r10 = new com.squareup.picasso.RemoteViewsAction$AppWidgetAction;
+
+        $r11 = r0.<com.squareup.picasso.RequestCreator: com.squareup.picasso.Picasso picasso>;
+
+        $i1 = r0.<com.squareup.picasso.RequestCreator: int memoryPolicy>;
+
+        $i2 = r0.<com.squareup.picasso.RequestCreator: int networkPolicy>;
+
+        $r3 = r0.<com.squareup.picasso.RequestCreator: java.lang.Object tag>;
+
+        $i3 = r0.<com.squareup.picasso.RequestCreator: int errorResId>;
+
+        specialinvoke $r10.<com.squareup.picasso.RemoteViewsAction$AppWidgetAction: void <init>(com.squareup.picasso.Picasso,com.squareup.picasso.Request,android.widget.RemoteViews,int,int[],int,int,java.lang.String,java.lang.Object,int)>($r11, $r7, $r1, $i0, $r2, $i1, $i2, $r9, $r3, $i3);
+
+        specialinvoke r0.<com.squareup.picasso.RequestCreator: void performRemoteViewInto(com.squareup.picasso.RemoteViewsAction)>($r10);
+
+        return;
+    }
+
+    public void into(com.squareup.picasso.Target)
+    {
+        com.squareup.picasso.RequestCreator r0;
+        com.squareup.picasso.Target $r1;
+        int $i0, $i1, $i2;
+        android.graphics.drawable.Drawable $r2;
+        java.lang.Object $r3;
+        long $l3;
+        java.lang.IllegalArgumentException $r4;
+        boolean $z0;
+        java.lang.IllegalStateException $r5;
+        com.squareup.picasso.Request$Builder $r6;
+        com.squareup.picasso.Picasso $r7;
+        com.squareup.picasso.Request $r8;
+        java.lang.String $r9;
+        android.graphics.Bitmap $r10;
+        com.squareup.picasso.Picasso$LoadedFrom $r11;
+        com.squareup.picasso.TargetAction $r12;
+
+        r0 := @this: com.squareup.picasso.RequestCreator;
+
+        $r1 := @parameter0: com.squareup.picasso.Target;
+
+        $r2 = null;
+
+        $l3 = staticinvoke <java.lang.System: long nanoTime()>();
+
+        staticinvoke <com.squareup.picasso.Utils: void checkMain()>();
+
+        if $r1 != null goto label1;
+
+        $r4 = new java.lang.IllegalArgumentException;
+
+        specialinvoke $r4.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>("Target must not be null.");
+
+        throw $r4;
+
+     label1:
+        $z0 = r0.<com.squareup.picasso.RequestCreator: boolean deferred>;
+
+        if $z0 == 0 goto label2;
+
+        $r5 = new java.lang.IllegalStateException;
+
+        specialinvoke $r5.<java.lang.IllegalStateException: void <init>(java.lang.String)>("Fit cannot be used with a Target.");
+
+        throw $r5;
+
+     label2:
+        $r6 = r0.<com.squareup.picasso.RequestCreator: com.squareup.picasso.Request$Builder data>;
+
+        $z0 = virtualinvoke $r6.<com.squareup.picasso.Request$Builder: boolean hasImage()>();
+
+        if $z0 != 0 goto label4;
+
+        $r7 = r0.<com.squareup.picasso.RequestCreator: com.squareup.picasso.Picasso picasso>;
+
+        virtualinvoke $r7.<com.squareup.picasso.Picasso: void cancelRequest(com.squareup.picasso.Target)>($r1);
+
+        $z0 = r0.<com.squareup.picasso.RequestCreator: boolean setPlaceholder>;
+
+        if $z0 == 0 goto label3;
+
+        $r2 = specialinvoke r0.<com.squareup.picasso.RequestCreator: android.graphics.drawable.Drawable getPlaceholderDrawable()>();
+
+     label3:
+        interfaceinvoke $r1.<com.squareup.picasso.Target: void onPrepareLoad(android.graphics.drawable.Drawable)>($r2);
+
+        return;
+
+     label4:
+        $r8 = specialinvoke r0.<com.squareup.picasso.RequestCreator: com.squareup.picasso.Request createRequest(long)>($l3);
+
+        $r9 = staticinvoke <com.squareup.picasso.Utils: java.lang.String createKey(com.squareup.picasso.Request)>($r8);
+
+        $i0 = r0.<com.squareup.picasso.RequestCreator: int memoryPolicy>;
+
+        $z0 = staticinvoke <com.squareup.picasso.MemoryPolicy: boolean shouldReadFromMemoryCache(int)>($i0);
+
+        if $z0 == 0 goto label5;
+
+        $r7 = r0.<com.squareup.picasso.RequestCreator: com.squareup.picasso.Picasso picasso>;
+
+        $r10 = virtualinvoke $r7.<com.squareup.picasso.Picasso: android.graphics.Bitmap quickMemoryCacheCheck(java.lang.String)>($r9);
+
+        if $r10 == null goto label5;
+
+        $r7 = r0.<com.squareup.picasso.RequestCreator: com.squareup.picasso.Picasso picasso>;
+
+        virtualinvoke $r7.<com.squareup.picasso.Picasso: void cancelRequest(com.squareup.picasso.Target)>($r1);
+
+        $r11 = <com.squareup.picasso.Picasso$LoadedFrom: com.squareup.picasso.Picasso$LoadedFrom MEMORY>;
+
+        interfaceinvoke $r1.<com.squareup.picasso.Target: void onBitmapLoaded(android.graphics.Bitmap,com.squareup.picasso.Picasso$LoadedFrom)>($r10, $r11);
+
+        return;
+
+     label5:
+        $z0 = r0.<com.squareup.picasso.RequestCreator: boolean setPlaceholder>;
+
+        if $z0 == 0 goto label6;
+
+        $r2 = specialinvoke r0.<com.squareup.picasso.RequestCreator: android.graphics.drawable.Drawable getPlaceholderDrawable()>();
+
+     label6:
+        interfaceinvoke $r1.<com.squareup.picasso.Target: void onPrepareLoad(android.graphics.drawable.Drawable)>($r2);
+
+        $r12 = new com.squareup.picasso.TargetAction;
+
+        $r7 = r0.<com.squareup.picasso.RequestCreator: com.squareup.picasso.Picasso picasso>;
+
+        $i0 = r0.<com.squareup.picasso.RequestCreator: int memoryPolicy>;
+
+        $i1 = r0.<com.squareup.picasso.RequestCreator: int networkPolicy>;
+
+        $r2 = r0.<com.squareup.picasso.RequestCreator: android.graphics.drawable.Drawable errorDrawable>;
+
+        $r3 = r0.<com.squareup.picasso.RequestCreator: java.lang.Object tag>;
+
+        $i2 = r0.<com.squareup.picasso.RequestCreator: int errorResId>;
+
+        specialinvoke $r12.<com.squareup.picasso.TargetAction: void <init>(com.squareup.picasso.Picasso,com.squareup.picasso.Target,com.squareup.picasso.Request,int,int,android.graphics.drawable.Drawable,java.lang.String,java.lang.Object,int)>($r7, $r1, $r8, $i0, $i1, $r2, $r9, $r3, $i2);
+
+        $r7 = r0.<com.squareup.picasso.RequestCreator: com.squareup.picasso.Picasso picasso>;
+
+        virtualinvoke $r7.<com.squareup.picasso.Picasso: void enqueueAndSubmit(com.squareup.picasso.Action)>($r12);
+
+        return;
+    }
+
+    public transient com.squareup.picasso.RequestCreator memoryPolicy(com.squareup.picasso.MemoryPolicy, com.squareup.picasso.MemoryPolicy[])
+    {
+        com.squareup.picasso.RequestCreator r0;
+        com.squareup.picasso.MemoryPolicy $r1;
+        com.squareup.picasso.MemoryPolicy[] $r2;
+        int $i0, $i1, $i2, $i3;
+        java.lang.IllegalArgumentException $r3;
+
+        r0 := @this: com.squareup.picasso.RequestCreator;
+
+        $r1 := @parameter0: com.squareup.picasso.MemoryPolicy;
+
+        $r2 := @parameter1: com.squareup.picasso.MemoryPolicy[];
+
+        if $r1 != null goto label1;
+
+        $r3 = new java.lang.IllegalArgumentException;
+
+        specialinvoke $r3.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>("Memory policy cannot be null.");
+
+        throw $r3;
+
+     label1:
+        $i1 = r0.<com.squareup.picasso.RequestCreator: int memoryPolicy>;
+
+        $i2 = $r1.<com.squareup.picasso.MemoryPolicy: int index>;
+
+        $i1 = $i1 | $i2;
+
+        r0.<com.squareup.picasso.RequestCreator: int memoryPolicy> = $i1;
+
+        if $r2 != null goto label2;
+
+        $r3 = new java.lang.IllegalArgumentException;
+
+        specialinvoke $r3.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>("Memory policy cannot be null.");
+
+        throw $r3;
+
+     label2:
+        $i1 = lengthof $r2;
+
+        if $i1 <= 0 goto label5;
+
+        $i1 = lengthof $r2;
+
+        $i2 = 0;
+
+     label3:
+        if $i2 >= $i1 goto label5;
+
+        $r1 = $r2[$i2];
+
+        if $r1 != null goto label4;
+
+        $r3 = new java.lang.IllegalArgumentException;
+
+        specialinvoke $r3.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>("Memory policy cannot be null.");
+
+        throw $r3;
+
+     label4:
+        $i0 = r0.<com.squareup.picasso.RequestCreator: int memoryPolicy>;
+
+        $i3 = $r1.<com.squareup.picasso.MemoryPolicy: int index>;
+
+        $i0 = $i3 | $i0;
+
+        r0.<com.squareup.picasso.RequestCreator: int memoryPolicy> = $i0;
+
+        $i2 = $i2 + 1;
+
+        goto label3;
+
+     label5:
+        return r0;
+    }
+
+    public transient com.squareup.picasso.RequestCreator networkPolicy(com.squareup.picasso.NetworkPolicy, com.squareup.picasso.NetworkPolicy[])
+    {
+        com.squareup.picasso.RequestCreator r0;
+        com.squareup.picasso.NetworkPolicy $r1;
+        com.squareup.picasso.NetworkPolicy[] $r2;
+        int $i0, $i1, $i2, $i3;
+        java.lang.IllegalArgumentException $r3;
+
+        r0 := @this: com.squareup.picasso.RequestCreator;
+
+        $r1 := @parameter0: com.squareup.picasso.NetworkPolicy;
+
+        $r2 := @parameter1: com.squareup.picasso.NetworkPolicy[];
+
+        if $r1 != null goto label1;
+
+        $r3 = new java.lang.IllegalArgumentException;
+
+        specialinvoke $r3.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>("Network policy cannot be null.");
+
+        throw $r3;
+
+     label1:
+        $i1 = r0.<com.squareup.picasso.RequestCreator: int networkPolicy>;
+
+        $i2 = $r1.<com.squareup.picasso.NetworkPolicy: int index>;
+
+        $i1 = $i1 | $i2;
+
+        r0.<com.squareup.picasso.RequestCreator: int networkPolicy> = $i1;
+
+        if $r2 != null goto label2;
+
+        $r3 = new java.lang.IllegalArgumentException;
+
+        specialinvoke $r3.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>("Network policy cannot be null.");
+
+        throw $r3;
+
+     label2:
+        $i1 = lengthof $r2;
+
+        if $i1 <= 0 goto label5;
+
+        $i1 = lengthof $r2;
+
+        $i2 = 0;
+
+     label3:
+        if $i2 >= $i1 goto label5;
+
+        $r1 = $r2[$i2];
+
+        if $r1 != null goto label4;
+
+        $r3 = new java.lang.IllegalArgumentException;
+
+        specialinvoke $r3.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>("Network policy cannot be null.");
+
+        throw $r3;
+
+     label4:
+        $i0 = r0.<com.squareup.picasso.RequestCreator: int networkPolicy>;
+
+        $i3 = $r1.<com.squareup.picasso.NetworkPolicy: int index>;
+
+        $i0 = $i3 | $i0;
+
+        r0.<com.squareup.picasso.RequestCreator: int networkPolicy> = $i0;
+
+        $i2 = $i2 + 1;
+
+        goto label3;
+
+     label5:
+        return r0;
+    }
+
+    public com.squareup.picasso.RequestCreator noFade()
+    {
+        com.squareup.picasso.RequestCreator r0;
+
+        r0 := @this: com.squareup.picasso.RequestCreator;
+
+        r0.<com.squareup.picasso.RequestCreator: boolean noFade> = 1;
+
+        return r0;
+    }
+
+    public com.squareup.picasso.RequestCreator noPlaceholder()
+    {
+        com.squareup.picasso.RequestCreator r0;
+        int $i0;
+        java.lang.IllegalStateException $r1;
+        android.graphics.drawable.Drawable $r2;
+
+        r0 := @this: com.squareup.picasso.RequestCreator;
+
+        $i0 = r0.<com.squareup.picasso.RequestCreator: int placeholderResId>;
+
+        if $i0 == 0 goto label1;
+
+        $r1 = new java.lang.IllegalStateException;
+
+        specialinvoke $r1.<java.lang.IllegalStateException: void <init>(java.lang.String)>("Placeholder resource already set.");
+
+        throw $r1;
+
+     label1:
+        $r2 = r0.<com.squareup.picasso.RequestCreator: android.graphics.drawable.Drawable placeholderDrawable>;
+
+        if $r2 == null goto label2;
+
+        $r1 = new java.lang.IllegalStateException;
+
+        specialinvoke $r1.<java.lang.IllegalStateException: void <init>(java.lang.String)>("Placeholder image already set.");
+
+        throw $r1;
+
+     label2:
+        r0.<com.squareup.picasso.RequestCreator: boolean setPlaceholder> = 0;
+
+        return r0;
+    }
+
+    public com.squareup.picasso.RequestCreator onlyScaleDown()
+    {
+        com.squareup.picasso.RequestCreator r0;
+        com.squareup.picasso.Request$Builder $r1;
+
+        r0 := @this: com.squareup.picasso.RequestCreator;
+
+        $r1 = r0.<com.squareup.picasso.RequestCreator: com.squareup.picasso.Request$Builder data>;
+
+        virtualinvoke $r1.<com.squareup.picasso.Request$Builder: com.squareup.picasso.Request$Builder onlyScaleDown()>();
+
+        return r0;
+    }
+
+    public com.squareup.picasso.RequestCreator placeholder(int)
+    {
+        com.squareup.picasso.RequestCreator r0;
+        int $i0;
+        boolean $z0;
+        java.lang.IllegalStateException $r1;
+        java.lang.IllegalArgumentException $r2;
+        android.graphics.drawable.Drawable $r3;
+
+        r0 := @this: com.squareup.picasso.RequestCreator;
+
+        $i0 := @parameter0: int;
+
+        $z0 = r0.<com.squareup.picasso.RequestCreator: boolean setPlaceholder>;
+
+        if $z0 != 0 goto label1;
+
+        $r1 = new java.lang.IllegalStateException;
+
+        specialinvoke $r1.<java.lang.IllegalStateException: void <init>(java.lang.String)>("Already explicitly declared as no placeholder.");
+
+        throw $r1;
+
+     label1:
+        if $i0 != 0 goto label2;
+
+        $r2 = new java.lang.IllegalArgumentException;
+
+        specialinvoke $r2.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>("Placeholder image resource invalid.");
+
+        throw $r2;
+
+     label2:
+        $r3 = r0.<com.squareup.picasso.RequestCreator: android.graphics.drawable.Drawable placeholderDrawable>;
+
+        if $r3 == null goto label3;
+
+        $r1 = new java.lang.IllegalStateException;
+
+        specialinvoke $r1.<java.lang.IllegalStateException: void <init>(java.lang.String)>("Placeholder image already set.");
+
+        throw $r1;
+
+     label3:
+        r0.<com.squareup.picasso.RequestCreator: int placeholderResId> = $i0;
+
+        return r0;
+    }
+
+    public com.squareup.picasso.RequestCreator placeholder(android.graphics.drawable.Drawable)
+    {
+        com.squareup.picasso.RequestCreator r0;
+        android.graphics.drawable.Drawable $r1;
+        boolean $z0;
+        java.lang.IllegalStateException $r2;
+        int $i0;
+
+        r0 := @this: com.squareup.picasso.RequestCreator;
+
+        $r1 := @parameter0: android.graphics.drawable.Drawable;
+
+        $z0 = r0.<com.squareup.picasso.RequestCreator: boolean setPlaceholder>;
+
+        if $z0 != 0 goto label1;
+
+        $r2 = new java.lang.IllegalStateException;
+
+        specialinvoke $r2.<java.lang.IllegalStateException: void <init>(java.lang.String)>("Already explicitly declared as no placeholder.");
+
+        throw $r2;
+
+     label1:
+        $i0 = r0.<com.squareup.picasso.RequestCreator: int placeholderResId>;
+
+        if $i0 == 0 goto label2;
+
+        $r2 = new java.lang.IllegalStateException;
+
+        specialinvoke $r2.<java.lang.IllegalStateException: void <init>(java.lang.String)>("Placeholder image already set.");
+
+        throw $r2;
+
+     label2:
+        r0.<com.squareup.picasso.RequestCreator: android.graphics.drawable.Drawable placeholderDrawable> = $r1;
+
+        return r0;
+    }
+
+    public com.squareup.picasso.RequestCreator priority(com.squareup.picasso.Picasso$Priority)
+    {
+        com.squareup.picasso.RequestCreator r0;
+        com.squareup.picasso.Picasso$Priority $r1;
+        com.squareup.picasso.Request$Builder $r2;
+
+        r0 := @this: com.squareup.picasso.RequestCreator;
+
+        $r1 := @parameter0: com.squareup.picasso.Picasso$Priority;
+
+        $r2 = r0.<com.squareup.picasso.RequestCreator: com.squareup.picasso.Request$Builder data>;
+
+        virtualinvoke $r2.<com.squareup.picasso.Request$Builder: com.squareup.picasso.Request$Builder priority(com.squareup.picasso.Picasso$Priority)>($r1);
+
+        return r0;
+    }
+
+    public com.squareup.picasso.RequestCreator resize(int, int)
+    {
+        com.squareup.picasso.RequestCreator r0;
+        int $i0, $i1;
+        com.squareup.picasso.Request$Builder $r1;
+
+        r0 := @this: com.squareup.picasso.RequestCreator;
+
+        $i0 := @parameter0: int;
+
+        $i1 := @parameter1: int;
+
+        $r1 = r0.<com.squareup.picasso.RequestCreator: com.squareup.picasso.Request$Builder data>;
+
+        virtualinvoke $r1.<com.squareup.picasso.Request$Builder: com.squareup.picasso.Request$Builder resize(int,int)>($i0, $i1);
+
+        return r0;
+    }
+
+    public com.squareup.picasso.RequestCreator resizeDimen(int, int)
+    {
+        com.squareup.picasso.RequestCreator r0;
+        int $i0, $i1;
+        com.squareup.picasso.Picasso $r1;
+        android.content.Context $r2;
+        android.content.res.Resources $r3;
+
+        r0 := @this: com.squareup.picasso.RequestCreator;
+
+        $i0 := @parameter0: int;
+
+        $i1 := @parameter1: int;
+
+        $r1 = r0.<com.squareup.picasso.RequestCreator: com.squareup.picasso.Picasso picasso>;
+
+        $r2 = $r1.<com.squareup.picasso.Picasso: android.content.Context context>;
+
+        $r3 = virtualinvoke $r2.<android.content.Context: android.content.res.Resources getResources()>();
+
+        $i0 = virtualinvoke $r3.<android.content.res.Resources: int getDimensionPixelSize(int)>($i0);
+
+        $i1 = virtualinvoke $r3.<android.content.res.Resources: int getDimensionPixelSize(int)>($i1);
+
+        r0 = virtualinvoke r0.<com.squareup.picasso.RequestCreator: com.squareup.picasso.RequestCreator resize(int,int)>($i0, $i1);
+
+        return r0;
+    }
+
+    public com.squareup.picasso.RequestCreator rotate(float)
+    {
+        com.squareup.picasso.RequestCreator r0;
+        float $f0;
+        com.squareup.picasso.Request$Builder $r1;
+
+        r0 := @this: com.squareup.picasso.RequestCreator;
+
+        $f0 := @parameter0: float;
+
+        $r1 = r0.<com.squareup.picasso.RequestCreator: com.squareup.picasso.Request$Builder data>;
+
+        virtualinvoke $r1.<com.squareup.picasso.Request$Builder: com.squareup.picasso.Request$Builder rotate(float)>($f0);
+
+        return r0;
+    }
+
+    public com.squareup.picasso.RequestCreator rotate(float, float, float)
+    {
+        com.squareup.picasso.RequestCreator r0;
+        float $f0, $f1, $f2;
+        com.squareup.picasso.Request$Builder $r1;
+
+        r0 := @this: com.squareup.picasso.RequestCreator;
+
+        $f0 := @parameter0: float;
+
+        $f1 := @parameter1: float;
+
+        $f2 := @parameter2: float;
+
+        $r1 = r0.<com.squareup.picasso.RequestCreator: com.squareup.picasso.Request$Builder data>;
+
+        virtualinvoke $r1.<com.squareup.picasso.Request$Builder: com.squareup.picasso.Request$Builder rotate(float,float,float)>($f0, $f1, $f2);
+
+        return r0;
+    }
+
+    public com.squareup.picasso.RequestCreator skipMemoryCache()
+    {
+        com.squareup.picasso.RequestCreator r0;
+        com.squareup.picasso.MemoryPolicy $r1, $r2;
+        com.squareup.picasso.MemoryPolicy[] $r3;
+
+        r0 := @this: com.squareup.picasso.RequestCreator;
+
+        $r2 = <com.squareup.picasso.MemoryPolicy: com.squareup.picasso.MemoryPolicy NO_CACHE>;
+
+        $r3 = newarray (com.squareup.picasso.MemoryPolicy)[1];
+
+        $r1 = <com.squareup.picasso.MemoryPolicy: com.squareup.picasso.MemoryPolicy NO_STORE>;
+
+        $r3[0] = $r1;
+
+        r0 = virtualinvoke r0.<com.squareup.picasso.RequestCreator: com.squareup.picasso.RequestCreator memoryPolicy(com.squareup.picasso.MemoryPolicy,com.squareup.picasso.MemoryPolicy[])>($r2, $r3);
+
+        return r0;
+    }
+
+    public com.squareup.picasso.RequestCreator stableKey(java.lang.String)
+    {
+        com.squareup.picasso.RequestCreator r0;
+        java.lang.String $r1;
+        com.squareup.picasso.Request$Builder $r2;
+
+        r0 := @this: com.squareup.picasso.RequestCreator;
+
+        $r1 := @parameter0: java.lang.String;
+
+        $r2 = r0.<com.squareup.picasso.RequestCreator: com.squareup.picasso.Request$Builder data>;
+
+        virtualinvoke $r2.<com.squareup.picasso.Request$Builder: com.squareup.picasso.Request$Builder stableKey(java.lang.String)>($r1);
+
+        return r0;
+    }
+
+    public com.squareup.picasso.RequestCreator tag(java.lang.Object)
+    {
+        com.squareup.picasso.RequestCreator r0;
+        java.lang.Object $r1, $r3;
+        java.lang.IllegalArgumentException $r2;
+        java.lang.IllegalStateException $r4;
+
+        r0 := @this: com.squareup.picasso.RequestCreator;
+
+        $r1 := @parameter0: java.lang.Object;
+
+        if $r1 != null goto label1;
+
+        $r2 = new java.lang.IllegalArgumentException;
+
+        specialinvoke $r2.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>("Tag invalid.");
+
+        throw $r2;
+
+     label1:
+        $r3 = r0.<com.squareup.picasso.RequestCreator: java.lang.Object tag>;
+
+        if $r3 == null goto label2;
+
+        $r4 = new java.lang.IllegalStateException;
+
+        specialinvoke $r4.<java.lang.IllegalStateException: void <init>(java.lang.String)>("Tag already set.");
+
+        throw $r4;
+
+     label2:
+        r0.<com.squareup.picasso.RequestCreator: java.lang.Object tag> = $r1;
+
+        return r0;
+    }
+
+    public com.squareup.picasso.RequestCreator transform(com.squareup.picasso.Transformation)
+    {
+        com.squareup.picasso.RequestCreator r0;
+        com.squareup.picasso.Transformation $r1;
+        com.squareup.picasso.Request$Builder $r2;
+
+        r0 := @this: com.squareup.picasso.RequestCreator;
+
+        $r1 := @parameter0: com.squareup.picasso.Transformation;
+
+        $r2 = r0.<com.squareup.picasso.RequestCreator: com.squareup.picasso.Request$Builder data>;
+
+        virtualinvoke $r2.<com.squareup.picasso.Request$Builder: com.squareup.picasso.Request$Builder transform(com.squareup.picasso.Transformation)>($r1);
+
+        return r0;
+    }
+
+    public com.squareup.picasso.RequestCreator transform(java.util.List)
+    {
+        com.squareup.picasso.RequestCreator r0;
+        java.util.List $r1;
+        com.squareup.picasso.Request$Builder $r2;
+
+        r0 := @this: com.squareup.picasso.RequestCreator;
+
+        $r1 := @parameter0: java.util.List;
+
+        $r2 = r0.<com.squareup.picasso.RequestCreator: com.squareup.picasso.Request$Builder data>;
+
+        virtualinvoke $r2.<com.squareup.picasso.Request$Builder: com.squareup.picasso.Request$Builder transform(java.util.List)>($r1);
+
+        return r0;
+    }
+
+    com.squareup.picasso.RequestCreator unfit()
+    {
+        com.squareup.picasso.RequestCreator r0;
+
+        r0 := @this: com.squareup.picasso.RequestCreator;
+
+        r0.<com.squareup.picasso.RequestCreator: boolean deferred> = 0;
+
+        return r0;
+    }
+}

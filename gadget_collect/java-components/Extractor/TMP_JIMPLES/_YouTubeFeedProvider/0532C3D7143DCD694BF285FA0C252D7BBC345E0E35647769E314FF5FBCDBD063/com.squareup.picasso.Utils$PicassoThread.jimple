@@ -1,0 +1,30 @@
+class com.squareup.picasso.Utils$PicassoThread extends java.lang.Thread
+{
+
+    public void <init>(java.lang.Runnable)
+    {
+        com.squareup.picasso.Utils$PicassoThread r0;
+        java.lang.Runnable $r1;
+
+        r0 := @this: com.squareup.picasso.Utils$PicassoThread;
+
+        $r1 := @parameter0: java.lang.Runnable;
+
+        specialinvoke r0.<java.lang.Thread: void <init>(java.lang.Runnable)>($r1);
+
+        return;
+    }
+
+    public void run()
+    {
+        com.squareup.picasso.Utils$PicassoThread r0;
+
+        r0 := @this: com.squareup.picasso.Utils$PicassoThread;
+
+        staticinvoke <android.os.Process: void setThreadPriority(int)>(10);
+
+        specialinvoke r0.<java.lang.Thread: void run()>();
+
+        return;
+    }
+}

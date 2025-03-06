@@ -1,0 +1,77 @@
+class AuxModule$2 extends java.lang.Object implements java.lang.Runnable
+{
+    final AuxModule this$0;
+
+    void <init>(AuxModule)
+    {
+        AuxModule$2 r0;
+        AuxModule $r1;
+
+        r0 := @this: AuxModule$2;
+
+        $r1 := @parameter0: AuxModule;
+
+        r0.<AuxModule$2: AuxModule this$0> = $r1;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public void run()
+    {
+        AuxModule$2 r0;
+        com.ideaworks3d.marmalade.LoaderActivity $r1;
+        AuxModule $r2;
+        android.webkit.WebView $r3;
+        android.widget.FrameLayout $r4;
+        java.lang.String $r5;
+
+        r0 := @this: AuxModule$2;
+
+        $r2 = r0.<AuxModule$2: AuxModule this$0>;
+
+        $r3 = $r2.<AuxModule: android.webkit.WebView _webview>;
+
+        if $r3 != null goto label1;
+
+        $r2 = r0.<AuxModule$2: AuxModule this$0>;
+
+        $r3 = new android.webkit.WebView;
+
+        $r1 = <com.ideaworks3d.marmalade.LoaderActivity: com.ideaworks3d.marmalade.LoaderActivity m_Activity>;
+
+        specialinvoke $r3.<android.webkit.WebView: void <init>(android.content.Context)>($r1);
+
+        $r2.<AuxModule: android.webkit.WebView _webview> = $r3;
+
+        $r1 = <com.ideaworks3d.marmalade.LoaderActivity: com.ideaworks3d.marmalade.LoaderActivity m_Activity>;
+
+        $r4 = $r1.<com.ideaworks3d.marmalade.LoaderActivity: android.widget.FrameLayout m_FrameLayout>;
+
+        $r2 = r0.<AuxModule$2: AuxModule this$0>;
+
+        $r3 = $r2.<AuxModule: android.webkit.WebView _webview>;
+
+        virtualinvoke $r4.<android.widget.FrameLayout: void addView(android.view.View)>($r3);
+
+     label1:
+        $r2 = r0.<AuxModule$2: AuxModule this$0>;
+
+        $r3 = $r2.<AuxModule: android.webkit.WebView _webview>;
+
+        virtualinvoke $r3.<android.webkit.WebView: void setVisibility(int)>(0);
+
+        $r2 = r0.<AuxModule$2: AuxModule this$0>;
+
+        $r3 = $r2.<AuxModule: android.webkit.WebView _webview>;
+
+        $r2 = r0.<AuxModule$2: AuxModule this$0>;
+
+        $r5 = $r2.<AuxModule: java.lang.String _ulrMoreGames>;
+
+        virtualinvoke $r3.<android.webkit.WebView: void loadUrl(java.lang.String)>($r5);
+
+        return;
+    }
+}

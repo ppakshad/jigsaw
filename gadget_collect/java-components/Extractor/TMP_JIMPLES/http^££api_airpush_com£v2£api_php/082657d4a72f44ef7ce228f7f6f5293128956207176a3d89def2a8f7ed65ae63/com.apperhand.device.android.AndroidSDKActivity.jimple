@@ -1,0 +1,45 @@
+public class com.apperhand.device.android.AndroidSDKActivity extends android.app.Activity
+{
+
+    public void <init>()
+    {
+        com.apperhand.device.android.AndroidSDKActivity r0;
+
+        r0 := @this: com.apperhand.device.android.AndroidSDKActivity;
+
+        specialinvoke r0.<android.app.Activity: void <init>()>();
+
+        return;
+    }
+
+    protected void onCreate(android.os.Bundle)
+    {
+        com.apperhand.device.android.AndroidSDKActivity r0;
+        android.os.Bundle $r1;
+        android.content.Intent $r2;
+
+        r0 := @this: com.apperhand.device.android.AndroidSDKActivity;
+
+        $r1 := @parameter0: android.os.Bundle;
+
+        specialinvoke r0.<android.app.Activity: void onCreate(android.os.Bundle)>($r1);
+
+        $r2 = virtualinvoke r0.<com.apperhand.device.android.AndroidSDKActivity: android.content.Intent getIntent()>();
+
+        if $r2 == null goto label2;
+
+        $r1 = virtualinvoke $r2.<android.content.Intent: android.os.Bundle getExtras()>();
+
+     label1:
+        staticinvoke <com.apperhand.device.android.AndroidSDKProvider: void a(android.content.Context,int,android.os.Bundle)>(r0, 3, $r1);
+
+        virtualinvoke r0.<com.apperhand.device.android.AndroidSDKActivity: void finish()>();
+
+        return;
+
+     label2:
+        $r1 = null;
+
+        goto label1;
+    }
+}

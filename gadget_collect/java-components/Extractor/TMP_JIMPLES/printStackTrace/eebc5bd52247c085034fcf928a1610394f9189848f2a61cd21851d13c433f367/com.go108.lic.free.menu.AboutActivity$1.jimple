@@ -1,0 +1,62 @@
+class com.go108.lic.free.menu.AboutActivity$1 extends java.lang.Object implements android.content.DialogInterface$OnClickListener
+{
+    final com.go108.lic.free.menu.AboutActivity this$0;
+
+    void <init>(com.go108.lic.free.menu.AboutActivity)
+    {
+        com.go108.lic.free.menu.AboutActivity$1 r0;
+        com.go108.lic.free.menu.AboutActivity $r1;
+
+        r0 := @this: com.go108.lic.free.menu.AboutActivity$1;
+
+        $r1 := @parameter0: com.go108.lic.free.menu.AboutActivity;
+
+        r0.<com.go108.lic.free.menu.AboutActivity$1: com.go108.lic.free.menu.AboutActivity this$0> = $r1;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public void onClick(android.content.DialogInterface, int)
+    {
+        android.net.Uri $r6;
+        android.content.Intent r2;
+        int $i0;
+        com.go108.lic.free.menu.AboutActivity$1 r0;
+        com.go108.lic.free.menu.AboutActivity $r4;
+        java.lang.StringBuilder $r3;
+        java.lang.String $r5;
+        android.content.DialogInterface $r1;
+
+        r0 := @this: com.go108.lic.free.menu.AboutActivity$1;
+
+        $r1 := @parameter0: android.content.DialogInterface;
+
+        $i0 := @parameter1: int;
+
+        r2 = new android.content.Intent;
+
+        $r3 = new java.lang.StringBuilder;
+
+        specialinvoke $r3.<java.lang.StringBuilder: void <init>(java.lang.String)>("tel:");
+
+        $r4 = r0.<com.go108.lic.free.menu.AboutActivity$1: com.go108.lic.free.menu.AboutActivity this$0>;
+
+        $r5 = staticinvoke <com.go108.lic.free.menu.AboutActivity: java.lang.String access$0(com.go108.lic.free.menu.AboutActivity)>($r4);
+
+        $r3 = virtualinvoke $r3.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r5);
+
+        $r5 = virtualinvoke $r3.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        $r6 = staticinvoke <android.net.Uri: android.net.Uri parse(java.lang.String)>($r5);
+
+        specialinvoke r2.<android.content.Intent: void <init>(java.lang.String,android.net.Uri)>("android.intent.action.CALL", $r6);
+
+        $r4 = r0.<com.go108.lic.free.menu.AboutActivity$1: com.go108.lic.free.menu.AboutActivity this$0>;
+
+        virtualinvoke $r4.<com.go108.lic.free.menu.AboutActivity: void startActivity(android.content.Intent)>(r2);
+
+        return;
+    }
+}

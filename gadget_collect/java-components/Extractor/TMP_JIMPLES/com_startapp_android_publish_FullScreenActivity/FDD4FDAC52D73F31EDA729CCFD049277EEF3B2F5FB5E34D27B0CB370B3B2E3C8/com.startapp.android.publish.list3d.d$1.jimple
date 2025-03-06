@@ -1,0 +1,72 @@
+class com.startapp.android.publish.list3d.d$1 extends android.graphics.drawable.ShapeDrawable
+{
+    final com.startapp.android.publish.list3d.d a;
+
+    void <init>(com.startapp.android.publish.list3d.d, android.graphics.drawable.shapes.Shape)
+    {
+        com.startapp.android.publish.list3d.d$1 r0;
+        com.startapp.android.publish.list3d.d $r1;
+        android.graphics.drawable.shapes.Shape $r2;
+
+        r0 := @this: com.startapp.android.publish.list3d.d$1;
+
+        $r1 := @parameter0: com.startapp.android.publish.list3d.d;
+
+        $r2 := @parameter1: android.graphics.drawable.shapes.Shape;
+
+        r0.<com.startapp.android.publish.list3d.d$1: com.startapp.android.publish.list3d.d a> = $r1;
+
+        specialinvoke r0.<android.graphics.drawable.ShapeDrawable: void <init>(android.graphics.drawable.shapes.Shape)>($r2);
+
+        return;
+    }
+
+    protected void onDraw(android.graphics.drawable.shapes.Shape, android.graphics.Canvas, android.graphics.Paint)
+    {
+        com.startapp.android.publish.list3d.d$1 r0;
+        android.graphics.drawable.shapes.Shape $r1;
+        android.graphics.Canvas $r2;
+        android.graphics.Paint $r3;
+        android.graphics.Shader$TileMode $r4;
+        float $f0;
+        android.graphics.LinearGradient $r5;
+        android.graphics.EmbossMaskFilter $r6;
+        float[] $r7;
+
+        r0 := @this: com.startapp.android.publish.list3d.d$1;
+
+        $r1 := @parameter0: android.graphics.drawable.shapes.Shape;
+
+        $r2 := @parameter1: android.graphics.Canvas;
+
+        $r3 := @parameter2: android.graphics.Paint;
+
+        $r5 = new android.graphics.LinearGradient;
+
+        $f0 = virtualinvoke $r1.<android.graphics.drawable.shapes.Shape: float getWidth()>();
+
+        $r4 = <android.graphics.Shader$TileMode: android.graphics.Shader$TileMode REPEAT>;
+
+        specialinvoke $r5.<android.graphics.LinearGradient: void <init>(float,float,float,float,int,int,android.graphics.Shader$TileMode)>(0.0F, 0.0F, $f0, 0.0F, -15626493, -15485690, $r4);
+
+        virtualinvoke $r3.<android.graphics.Paint: android.graphics.Shader setShader(android.graphics.Shader)>($r5);
+
+        $r6 = new android.graphics.EmbossMaskFilter;
+
+        $r7 = newarray (float)[3];
+
+        $r7[0] = 1.0F;
+
+        $r7[1] = 1.0F;
+
+        $r7[2] = 1.0F;
+
+        specialinvoke $r6.<android.graphics.EmbossMaskFilter: void <init>(float[],float,float,float)>($r7, 0.4F, 5.0F, 3.0F);
+
+        virtualinvoke $r3.<android.graphics.Paint: android.graphics.MaskFilter setMaskFilter(android.graphics.MaskFilter)>($r6);
+
+        specialinvoke r0.<android.graphics.drawable.ShapeDrawable: void onDraw(android.graphics.drawable.shapes.Shape,android.graphics.Canvas,android.graphics.Paint)>($r1, $r2, $r3);
+
+        return;
+    }
+}

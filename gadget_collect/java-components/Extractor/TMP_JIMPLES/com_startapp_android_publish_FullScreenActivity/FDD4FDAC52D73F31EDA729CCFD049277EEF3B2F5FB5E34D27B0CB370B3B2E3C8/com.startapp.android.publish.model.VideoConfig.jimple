@@ -1,0 +1,236 @@
+public class com.startapp.android.publish.model.VideoConfig extends java.lang.Object implements java.io.Serializable
+{
+    private static final long serialVersionUID;
+    private com.startapp.android.publish.model.VideoConfig$BackMode backMode;
+    private int maxCachedVideos;
+    private int maxTimeForCachingIndicator;
+    private long minAvailableStorageRequired;
+    private int minTimeForCachingIndicator;
+    private int nativePlayerProbability;
+    private boolean progressive;
+    private int progressiveBufferInPercentage;
+    private int progressiveInitialBufferInPercentage;
+    private int progressiveMinBufferToPlayFromCache;
+    private int rewardGrantPercentage;
+    private int videoErrorsThreshold;
+    private boolean videoFallback;
+
+    public void <init>()
+    {
+        com.startapp.android.publish.model.VideoConfig r0;
+        com.startapp.android.publish.model.VideoConfig$BackMode $r1;
+
+        r0 := @this: com.startapp.android.publish.model.VideoConfig;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        r0.<com.startapp.android.publish.model.VideoConfig: int maxCachedVideos> = 3;
+
+        r0.<com.startapp.android.publish.model.VideoConfig: long minAvailableStorageRequired> = 20L;
+
+        r0.<com.startapp.android.publish.model.VideoConfig: int rewardGrantPercentage> = 100;
+
+        r0.<com.startapp.android.publish.model.VideoConfig: int videoErrorsThreshold> = 2;
+
+        $r1 = <com.startapp.android.publish.model.VideoConfig$BackMode: com.startapp.android.publish.model.VideoConfig$BackMode DISABLED>;
+
+        r0.<com.startapp.android.publish.model.VideoConfig: com.startapp.android.publish.model.VideoConfig$BackMode backMode> = $r1;
+
+        r0.<com.startapp.android.publish.model.VideoConfig: int nativePlayerProbability> = 100;
+
+        r0.<com.startapp.android.publish.model.VideoConfig: int minTimeForCachingIndicator> = 1;
+
+        r0.<com.startapp.android.publish.model.VideoConfig: int maxTimeForCachingIndicator> = 10;
+
+        r0.<com.startapp.android.publish.model.VideoConfig: boolean videoFallback> = 0;
+
+        r0.<com.startapp.android.publish.model.VideoConfig: boolean progressive> = 0;
+
+        r0.<com.startapp.android.publish.model.VideoConfig: int progressiveBufferInPercentage> = 20;
+
+        r0.<com.startapp.android.publish.model.VideoConfig: int progressiveInitialBufferInPercentage> = 5;
+
+        r0.<com.startapp.android.publish.model.VideoConfig: int progressiveMinBufferToPlayFromCache> = 30;
+
+        return;
+    }
+
+    public com.startapp.android.publish.model.VideoConfig$BackMode getBackMode()
+    {
+        com.startapp.android.publish.model.VideoConfig r0;
+        com.startapp.android.publish.model.VideoConfig$BackMode r1;
+
+        r0 := @this: com.startapp.android.publish.model.VideoConfig;
+
+        r1 = r0.<com.startapp.android.publish.model.VideoConfig: com.startapp.android.publish.model.VideoConfig$BackMode backMode>;
+
+        return r1;
+    }
+
+    public int getMaxCachedVideos()
+    {
+        com.startapp.android.publish.model.VideoConfig r0;
+        int i0;
+
+        r0 := @this: com.startapp.android.publish.model.VideoConfig;
+
+        i0 = r0.<com.startapp.android.publish.model.VideoConfig: int maxCachedVideos>;
+
+        return i0;
+    }
+
+    public long getMaxTimeForCachingIndicator()
+    {
+        com.startapp.android.publish.model.VideoConfig r0;
+        long $l0;
+        java.util.concurrent.TimeUnit $r1;
+        int $i1;
+
+        r0 := @this: com.startapp.android.publish.model.VideoConfig;
+
+        $r1 = <java.util.concurrent.TimeUnit: java.util.concurrent.TimeUnit SECONDS>;
+
+        $i1 = r0.<com.startapp.android.publish.model.VideoConfig: int maxTimeForCachingIndicator>;
+
+        $l0 = (long) $i1;
+
+        $l0 = virtualinvoke $r1.<java.util.concurrent.TimeUnit: long toMillis(long)>($l0);
+
+        return $l0;
+    }
+
+    public long getMinAvailableStorageRequired()
+    {
+        com.startapp.android.publish.model.VideoConfig r0;
+        long l0;
+
+        r0 := @this: com.startapp.android.publish.model.VideoConfig;
+
+        l0 = r0.<com.startapp.android.publish.model.VideoConfig: long minAvailableStorageRequired>;
+
+        return l0;
+    }
+
+    public long getMinTimeForCachingIndicator()
+    {
+        com.startapp.android.publish.model.VideoConfig r0;
+        long $l0;
+        java.util.concurrent.TimeUnit $r1;
+        int $i1;
+
+        r0 := @this: com.startapp.android.publish.model.VideoConfig;
+
+        $r1 = <java.util.concurrent.TimeUnit: java.util.concurrent.TimeUnit SECONDS>;
+
+        $i1 = r0.<com.startapp.android.publish.model.VideoConfig: int minTimeForCachingIndicator>;
+
+        $l0 = (long) $i1;
+
+        $l0 = virtualinvoke $r1.<java.util.concurrent.TimeUnit: long toMillis(long)>($l0);
+
+        return $l0;
+    }
+
+    public int getNativePlayerProbability()
+    {
+        com.startapp.android.publish.model.VideoConfig r0;
+        int i0;
+
+        r0 := @this: com.startapp.android.publish.model.VideoConfig;
+
+        i0 = r0.<com.startapp.android.publish.model.VideoConfig: int nativePlayerProbability>;
+
+        return i0;
+    }
+
+    public int getProgressiveBufferInPercentage()
+    {
+        com.startapp.android.publish.model.VideoConfig r0;
+        int i0;
+
+        r0 := @this: com.startapp.android.publish.model.VideoConfig;
+
+        i0 = r0.<com.startapp.android.publish.model.VideoConfig: int progressiveBufferInPercentage>;
+
+        return i0;
+    }
+
+    public int getProgressiveInitialBufferInPercentage()
+    {
+        com.startapp.android.publish.model.VideoConfig r0;
+        int i0;
+
+        r0 := @this: com.startapp.android.publish.model.VideoConfig;
+
+        i0 = r0.<com.startapp.android.publish.model.VideoConfig: int progressiveInitialBufferInPercentage>;
+
+        return i0;
+    }
+
+    public int getProgressiveMinBufferToPlayFromCache()
+    {
+        com.startapp.android.publish.model.VideoConfig r0;
+        int i0;
+
+        r0 := @this: com.startapp.android.publish.model.VideoConfig;
+
+        i0 = r0.<com.startapp.android.publish.model.VideoConfig: int progressiveMinBufferToPlayFromCache>;
+
+        return i0;
+    }
+
+    public int getRewardGrantPercentage()
+    {
+        com.startapp.android.publish.model.VideoConfig r0;
+        int i0;
+
+        r0 := @this: com.startapp.android.publish.model.VideoConfig;
+
+        i0 = r0.<com.startapp.android.publish.model.VideoConfig: int rewardGrantPercentage>;
+
+        return i0;
+    }
+
+    public int getVideoErrorsThreshold()
+    {
+        com.startapp.android.publish.model.VideoConfig r0;
+        int i0;
+
+        r0 := @this: com.startapp.android.publish.model.VideoConfig;
+
+        i0 = r0.<com.startapp.android.publish.model.VideoConfig: int videoErrorsThreshold>;
+
+        return i0;
+    }
+
+    public boolean isProgressive()
+    {
+        com.startapp.android.publish.model.VideoConfig r0;
+        boolean z0;
+
+        r0 := @this: com.startapp.android.publish.model.VideoConfig;
+
+        z0 = r0.<com.startapp.android.publish.model.VideoConfig: boolean progressive>;
+
+        return z0;
+    }
+
+    public boolean isVideoFallback()
+    {
+        com.startapp.android.publish.model.VideoConfig r0;
+        boolean z0;
+
+        r0 := @this: com.startapp.android.publish.model.VideoConfig;
+
+        z0 = r0.<com.startapp.android.publish.model.VideoConfig: boolean videoFallback>;
+
+        return z0;
+    }
+
+    public static void <clinit>()
+    {
+        <com.startapp.android.publish.model.VideoConfig: long serialVersionUID> = 1L;
+
+        return;
+    }
+}

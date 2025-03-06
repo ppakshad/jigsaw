@@ -1,0 +1,375 @@
+public class com.movesky.app.main.YSGame extends com.movesky.app.engine.core.Game implements com.movesky.app.engine.ui.UINavigationEventListener
+{
+    public static float AI_DIFFICULTY;
+    public static final int AWESOME_GREEN;
+    public static final float CONTENT_TOP;
+    public static final boolean DEBUG;
+    public static final com.movesky.app.engine.ui.UISwipeTransition FROM_LEFT_TRANSITION;
+    public static final com.movesky.app.engine.ui.UISwipeTransition FROM_RIGHT_TRANSITION;
+    public static final float HEIGHT;
+    private static final int NUM_PARTICLES;
+    public static final com.movesky.app.engine.particles.ParticleSystem PARTICLES;
+    public static final android.graphics.Paint PARTICLE_PAINT;
+    private static final float PARTICLE_THRESHOLD;
+    public static boolean SHOW_TUTORIAL;
+    public static int SOUND_CALIBRATION;
+    public static boolean TITLE_SCREEN_MUSIC;
+    public static final float TITLE_TOP;
+    public static final float WIDTH;
+    private static com.movesky.app.engine.sound.MusicPlayer musicPlayer;
+    private com.movesky.app.engine.ui.UINavigationController navController;
+
+    static void <clinit>()
+    {
+        int $i0;
+        com.movesky.app.engine.particles.ParticleSystem $r0;
+        android.graphics.Paint $r1;
+        com.movesky.app.engine.ui.UISwipeTransition $r2;
+        com.movesky.app.engine.ui.UISwipeTransition$Direction $r3;
+
+        <com.movesky.app.main.YSGame: float WIDTH> = 320.0F;
+
+        <com.movesky.app.main.YSGame: float TITLE_TOP> = 40.0F;
+
+        <com.movesky.app.main.YSGame: float PARTICLE_THRESHOLD> = 0.5F;
+
+        <com.movesky.app.main.YSGame: int NUM_PARTICLES> = 1000;
+
+        <com.movesky.app.main.YSGame: float HEIGHT> = 530.0F;
+
+        <com.movesky.app.main.YSGame: boolean DEBUG> = 0;
+
+        <com.movesky.app.main.YSGame: float CONTENT_TOP> = 110.0F;
+
+        <com.movesky.app.main.YSGame: float AI_DIFFICULTY> = 0.0F;
+
+        <com.movesky.app.main.YSGame: boolean SHOW_TUTORIAL> = 1;
+
+        <com.movesky.app.main.YSGame: boolean TITLE_SCREEN_MUSIC> = 1;
+
+        <com.movesky.app.main.YSGame: float AI_DIFFICULTY> = 0.75F;
+
+        <com.movesky.app.main.YSGame: int SOUND_CALIBRATION> = 0;
+
+        $i0 = staticinvoke <android.graphics.Color: int rgb(int,int,int)>(159, 228, 74);
+
+        <com.movesky.app.main.YSGame: int AWESOME_GREEN> = $i0;
+
+        $r0 = new com.movesky.app.engine.particles.ParticleSystem;
+
+        specialinvoke $r0.<com.movesky.app.engine.particles.ParticleSystem: void <init>(int,float)>(1000, 0.5F);
+
+        <com.movesky.app.main.YSGame: com.movesky.app.engine.particles.ParticleSystem PARTICLES> = $r0;
+
+        $r1 = new android.graphics.Paint;
+
+        specialinvoke $r1.<android.graphics.Paint: void <init>()>();
+
+        <com.movesky.app.main.YSGame: android.graphics.Paint PARTICLE_PAINT> = $r1;
+
+        $r1 = <com.movesky.app.main.YSGame: android.graphics.Paint PARTICLE_PAINT>;
+
+        virtualinvoke $r1.<android.graphics.Paint: void setStrokeWidth(float)>(2.0F);
+
+        $r1 = <com.movesky.app.main.YSGame: android.graphics.Paint PARTICLE_PAINT>;
+
+        virtualinvoke $r1.<android.graphics.Paint: void setAntiAlias(boolean)>(1);
+
+        $r2 = new com.movesky.app.engine.ui.UISwipeTransition;
+
+        $r3 = <com.movesky.app.engine.ui.UISwipeTransition$Direction: com.movesky.app.engine.ui.UISwipeTransition$Direction FROM_RIGHT>;
+
+        specialinvoke $r2.<com.movesky.app.engine.ui.UISwipeTransition: void <init>(float,com.movesky.app.engine.ui.UISwipeTransition$Direction,float)>(320.0F, $r3, 0.3F);
+
+        <com.movesky.app.main.YSGame: com.movesky.app.engine.ui.UISwipeTransition FROM_RIGHT_TRANSITION> = $r2;
+
+        $r2 = new com.movesky.app.engine.ui.UISwipeTransition;
+
+        $r3 = <com.movesky.app.engine.ui.UISwipeTransition$Direction: com.movesky.app.engine.ui.UISwipeTransition$Direction FROM_LEFT>;
+
+        specialinvoke $r2.<com.movesky.app.engine.ui.UISwipeTransition: void <init>(float,com.movesky.app.engine.ui.UISwipeTransition$Direction,float)>(320.0F, $r3, 0.3F);
+
+        <com.movesky.app.main.YSGame: com.movesky.app.engine.ui.UISwipeTransition FROM_LEFT_TRANSITION> = $r2;
+
+        return;
+    }
+
+    public void <init>(android.app.Activity)
+    {
+        com.movesky.app.main.YSGame r0;
+        android.app.Activity $r1;
+        com.movesky.app.engine.ui.UINavigationController $r2, $r7;
+        android.content.SharedPreferences $r3;
+        boolean $z0;
+        float $f0;
+        int $i0;
+        com.movesky.app.engine.achievements.Achievements $r4;
+        com.movesky.app.main.achievements.BBTHAchievementManager $r5;
+        com.movesky.app.main.TitleScreen $r6;
+
+        r0 := @this: com.movesky.app.main.YSGame;
+
+        $r1 := @parameter0: android.app.Activity;
+
+        specialinvoke r0.<com.movesky.app.engine.core.Game: void <init>()>();
+
+        staticinvoke <com.movesky.app.main.YSGame: void stopTitleMusic()>();
+
+        $r2 = new com.movesky.app.engine.ui.UINavigationController;
+
+        specialinvoke $r2.<com.movesky.app.engine.ui.UINavigationController: void <init>()>();
+
+        r0.<com.movesky.app.main.YSGame: com.movesky.app.engine.ui.UINavigationController navController> = $r2;
+
+        $r2 = r0.<com.movesky.app.main.YSGame: com.movesky.app.engine.ui.UINavigationController navController>;
+
+        r0.<com.movesky.app.main.YSGame: com.movesky.app.engine.core.GameScreen currentScreen> = $r2;
+
+        $r3 = virtualinvoke $r1.<android.app.Activity: android.content.SharedPreferences getSharedPreferences(java.lang.String,int)>("game_settings", 0);
+
+        $z0 = interfaceinvoke $r3.<android.content.SharedPreferences: boolean getBoolean(java.lang.String,boolean)>("showTutorial", 1);
+
+        <com.movesky.app.main.YSGame: boolean SHOW_TUTORIAL> = $z0;
+
+        $z0 = interfaceinvoke $r3.<android.content.SharedPreferences: boolean getBoolean(java.lang.String,boolean)>("titleScreenMusic", 1);
+
+        <com.movesky.app.main.YSGame: boolean TITLE_SCREEN_MUSIC> = $z0;
+
+        $f0 = interfaceinvoke $r3.<android.content.SharedPreferences: float getFloat(java.lang.String,float)>("aiDifficulty", 0.75F);
+
+        <com.movesky.app.main.YSGame: float AI_DIFFICULTY> = $f0;
+
+        $i0 = interfaceinvoke $r3.<android.content.SharedPreferences: int getInt(java.lang.String,int)>("soundCalibration", 0);
+
+        <com.movesky.app.main.YSGame: int SOUND_CALIBRATION> = $i0;
+
+        $r4 = <com.movesky.app.engine.achievements.Achievements: com.movesky.app.engine.achievements.Achievements INSTANCE>;
+
+        virtualinvoke $r4.<com.movesky.app.engine.achievements.Achievements: void initialize(android.content.Context)>($r1);
+
+        $r5 = <com.movesky.app.main.achievements.BBTHAchievementManager: com.movesky.app.main.achievements.BBTHAchievementManager INSTANCE>;
+
+        virtualinvoke $r5.<com.movesky.app.main.achievements.BBTHAchievementManager: void initialize()>();
+
+        $r2 = r0.<com.movesky.app.main.YSGame: com.movesky.app.engine.ui.UINavigationController navController>;
+
+        $r6 = new com.movesky.app.main.TitleScreen;
+
+        $r7 = r0.<com.movesky.app.main.YSGame: com.movesky.app.engine.ui.UINavigationController navController>;
+
+        specialinvoke $r6.<com.movesky.app.main.TitleScreen: void <init>(com.movesky.app.engine.ui.UINavigationController)>($r7);
+
+        virtualinvoke $r2.<com.movesky.app.engine.ui.UINavigationController: void push(com.movesky.app.engine.ui.UIView)>($r6);
+
+        $r2 = r0.<com.movesky.app.main.YSGame: com.movesky.app.engine.ui.UINavigationController navController>;
+
+        virtualinvoke $r2.<com.movesky.app.engine.ui.UINavigationController: void setNavListener(com.movesky.app.engine.ui.UINavigationEventListener)>(r0);
+
+        staticinvoke <com.movesky.app.main.YSGame: void startTitleMusic()>();
+
+        return;
+    }
+
+    public static void startTitleMusic()
+    {
+        com.movesky.app.engine.core.GameActivity $r0;
+        boolean $z0;
+        com.movesky.app.engine.sound.MusicPlayer $r1;
+
+        $r1 = <com.movesky.app.main.YSGame: com.movesky.app.engine.sound.MusicPlayer musicPlayer>;
+
+        if $r1 != null goto label1;
+
+        $r1 = new com.movesky.app.engine.sound.MusicPlayer;
+
+        $r0 = <com.movesky.app.engine.core.GameActivity: com.movesky.app.engine.core.GameActivity instance>;
+
+        specialinvoke $r1.<com.movesky.app.engine.sound.MusicPlayer: void <init>(android.content.Context,int)>($r0, 1000);
+
+        <com.movesky.app.main.YSGame: com.movesky.app.engine.sound.MusicPlayer musicPlayer> = $r1;
+
+        $r1 = <com.movesky.app.main.YSGame: com.movesky.app.engine.sound.MusicPlayer musicPlayer>;
+
+        virtualinvoke $r1.<com.movesky.app.engine.sound.MusicPlayer: void loop()>();
+
+        return;
+
+     label1:
+        $r1 = <com.movesky.app.main.YSGame: com.movesky.app.engine.sound.MusicPlayer musicPlayer>;
+
+        $z0 = virtualinvoke $r1.<com.movesky.app.engine.sound.MusicPlayer: boolean isLooping()>();
+
+        if $z0 != 0 goto label2;
+
+        $r1 = <com.movesky.app.main.YSGame: com.movesky.app.engine.sound.MusicPlayer musicPlayer>;
+
+        virtualinvoke $r1.<com.movesky.app.engine.sound.MusicPlayer: void loop()>();
+
+     label2:
+        return;
+    }
+
+    public static void stopTitleMusic()
+    {
+        com.movesky.app.engine.sound.MusicPlayer $r0;
+
+        $r0 = <com.movesky.app.main.YSGame: com.movesky.app.engine.sound.MusicPlayer musicPlayer>;
+
+        if $r0 == null goto label1;
+
+        $r0 = <com.movesky.app.main.YSGame: com.movesky.app.engine.sound.MusicPlayer musicPlayer>;
+
+        virtualinvoke $r0.<com.movesky.app.engine.sound.MusicPlayer: void stop()>();
+
+        $r0 = <com.movesky.app.main.YSGame: com.movesky.app.engine.sound.MusicPlayer musicPlayer>;
+
+        virtualinvoke $r0.<com.movesky.app.engine.sound.MusicPlayer: void release()>();
+
+        <com.movesky.app.main.YSGame: com.movesky.app.engine.sound.MusicPlayer musicPlayer> = null;
+
+     label1:
+        return;
+    }
+
+    public float getDrawDelay()
+    {
+        com.movesky.app.main.YSGame r0;
+
+        r0 := @this: com.movesky.app.main.YSGame;
+
+        return 0.016666668F;
+    }
+
+    public float getHeight()
+    {
+        com.movesky.app.main.YSGame r0;
+
+        r0 := @this: com.movesky.app.main.YSGame;
+
+        return 530.0F;
+    }
+
+    public float getWidth()
+    {
+        com.movesky.app.main.YSGame r0;
+
+        r0 := @this: com.movesky.app.main.YSGame;
+
+        return 320.0F;
+    }
+
+    public void onBackPressed()
+    {
+        com.movesky.app.main.YSGame r0;
+        com.movesky.app.engine.ui.UISwipeTransition $r1;
+        boolean $z0;
+        com.movesky.app.engine.ui.UINavigationController $r2;
+        com.movesky.app.engine.core.GameActivity $r3;
+
+        r0 := @this: com.movesky.app.main.YSGame;
+
+        $r2 = r0.<com.movesky.app.main.YSGame: com.movesky.app.engine.ui.UINavigationController navController>;
+
+        $r1 = <com.movesky.app.main.YSGame: com.movesky.app.engine.ui.UISwipeTransition FROM_LEFT_TRANSITION>;
+
+        $z0 = virtualinvoke $r2.<com.movesky.app.engine.ui.UINavigationController: boolean pop(com.movesky.app.engine.ui.UISwipeTransition)>($r1);
+
+        if $z0 != 0 goto label1;
+
+        staticinvoke <com.movesky.app.main.YSGame: void stopTitleMusic()>();
+
+        $r3 = <com.movesky.app.engine.core.GameActivity: com.movesky.app.engine.core.GameActivity instance>;
+
+        virtualinvoke $r3.<com.movesky.app.engine.core.GameActivity: void finish()>();
+
+     label1:
+        return;
+    }
+
+    public void onScreenHidden(com.movesky.app.engine.ui.UIView)
+    {
+        com.movesky.app.main.YSGame r0;
+        com.movesky.app.engine.ui.UIView $r1;
+
+        r0 := @this: com.movesky.app.main.YSGame;
+
+        $r1 := @parameter0: com.movesky.app.engine.ui.UIView;
+
+        return;
+    }
+
+    public void onScreenShown(com.movesky.app.engine.ui.UIView)
+    {
+        com.movesky.app.main.YSGame r0;
+        com.movesky.app.engine.ui.UIView $r1;
+        boolean $z0;
+
+        r0 := @this: com.movesky.app.main.YSGame;
+
+        $r1 := @parameter0: com.movesky.app.engine.ui.UIView;
+
+        if $r1 != null goto label1;
+
+        staticinvoke <com.movesky.app.main.YSGame: void stopTitleMusic()>();
+
+        return;
+
+     label1:
+        $z0 = <com.movesky.app.main.YSGame: boolean TITLE_SCREEN_MUSIC>;
+
+        if $z0 == 0 goto label2;
+
+        $z0 = virtualinvoke $r1.<com.movesky.app.engine.ui.UIView: boolean shouldPlayMenuMusic()>();
+
+        if $z0 == 0 goto label2;
+
+        staticinvoke <com.movesky.app.main.YSGame: void startTitleMusic()>();
+
+        return;
+
+     label2:
+        staticinvoke <com.movesky.app.main.YSGame: void stopTitleMusic()>();
+
+        return;
+    }
+
+    public void onStop()
+    {
+        com.movesky.app.main.YSGame r0;
+        com.movesky.app.engine.achievements.Achievements $r1;
+        com.movesky.app.engine.ui.UINavigationController $r2;
+
+        r0 := @this: com.movesky.app.main.YSGame;
+
+        $r1 = <com.movesky.app.engine.achievements.Achievements: com.movesky.app.engine.achievements.Achievements INSTANCE>;
+
+        virtualinvoke $r1.<com.movesky.app.engine.achievements.Achievements: void commit()>();
+
+        staticinvoke <com.movesky.app.main.YSGame: void stopTitleMusic()>();
+
+        $r2 = r0.<com.movesky.app.main.YSGame: com.movesky.app.engine.ui.UINavigationController navController>;
+
+        virtualinvoke $r2.<com.movesky.app.engine.ui.UINavigationController: void onStop()>();
+
+        return;
+    }
+
+    public void onUpdate(float)
+    {
+        com.movesky.app.main.YSGame r0;
+        float $f0;
+        com.movesky.app.engine.particles.ParticleSystem $r1;
+
+        r0 := @this: com.movesky.app.main.YSGame;
+
+        $f0 := @parameter0: float;
+
+        $r1 = <com.movesky.app.main.YSGame: com.movesky.app.engine.particles.ParticleSystem PARTICLES>;
+
+        virtualinvoke $r1.<com.movesky.app.engine.particles.ParticleSystem: void tick(float)>($f0);
+
+        specialinvoke r0.<com.movesky.app.engine.core.Game: void onUpdate(float)>($f0);
+
+        return;
+    }
+}

@@ -1,0 +1,88 @@
+public class org.codehaus.jackson.map.deser.EnumDeserializer$FactoryBasedDeserializer extends org.codehaus.jackson.map.deser.StdScalarDeserializer
+{
+    protected final java.lang.Class _enumClass;
+    protected final java.lang.reflect.Method _factory;
+
+    public void <init>(java.lang.Class, org.codehaus.jackson.map.introspect.AnnotatedMethod)
+    {
+        org.codehaus.jackson.map.deser.EnumDeserializer$FactoryBasedDeserializer r0;
+        java.lang.Class r1;
+        org.codehaus.jackson.map.introspect.AnnotatedMethod $r2;
+        java.lang.reflect.Method $r3;
+
+        r0 := @this: org.codehaus.jackson.map.deser.EnumDeserializer$FactoryBasedDeserializer;
+
+        r1 := @parameter0: java.lang.Class;
+
+        $r2 := @parameter1: org.codehaus.jackson.map.introspect.AnnotatedMethod;
+
+        specialinvoke r0.<org.codehaus.jackson.map.deser.StdScalarDeserializer: void <init>(java.lang.Class)>(class "Ljava/lang/Enum;");
+
+        r0.<org.codehaus.jackson.map.deser.EnumDeserializer$FactoryBasedDeserializer: java.lang.Class _enumClass> = r1;
+
+        $r3 = virtualinvoke $r2.<org.codehaus.jackson.map.introspect.AnnotatedMethod: java.lang.reflect.Method getAnnotated()>();
+
+        r0.<org.codehaus.jackson.map.deser.EnumDeserializer$FactoryBasedDeserializer: java.lang.reflect.Method _factory> = $r3;
+
+        return;
+    }
+
+    public java.lang.Object deserialize(org.codehaus.jackson.JsonParser, org.codehaus.jackson.map.DeserializationContext) throws java.io.IOException, org.codehaus.jackson.JsonProcessingException
+    {
+        org.codehaus.jackson.map.deser.EnumDeserializer$FactoryBasedDeserializer r0;
+        org.codehaus.jackson.JsonParser $r1;
+        org.codehaus.jackson.map.DeserializationContext $r2;
+        java.lang.Class $r3;
+        org.codehaus.jackson.JsonToken $r4, $r5;
+        org.codehaus.jackson.map.JsonMappingException $r6;
+        java.lang.String $r7;
+        java.lang.reflect.Method $r8;
+        java.lang.Object[] $r9;
+        java.lang.Object $r10;
+        java.lang.Exception $r11;
+
+        r0 := @this: org.codehaus.jackson.map.deser.EnumDeserializer$FactoryBasedDeserializer;
+
+        $r1 := @parameter0: org.codehaus.jackson.JsonParser;
+
+        $r2 := @parameter1: org.codehaus.jackson.map.DeserializationContext;
+
+        $r4 = virtualinvoke $r1.<org.codehaus.jackson.JsonParser: org.codehaus.jackson.JsonToken getCurrentToken()>();
+
+        $r5 = <org.codehaus.jackson.JsonToken: org.codehaus.jackson.JsonToken VALUE_STRING>;
+
+        if $r4 == $r5 goto label1;
+
+        $r3 = r0.<org.codehaus.jackson.map.deser.EnumDeserializer$FactoryBasedDeserializer: java.lang.Class _enumClass>;
+
+        $r6 = virtualinvoke $r2.<org.codehaus.jackson.map.DeserializationContext: org.codehaus.jackson.map.JsonMappingException mappingException(java.lang.Class)>($r3);
+
+        throw $r6;
+
+     label1:
+        $r7 = virtualinvoke $r1.<org.codehaus.jackson.JsonParser: java.lang.String getText()>();
+
+     label2:
+        $r8 = r0.<org.codehaus.jackson.map.deser.EnumDeserializer$FactoryBasedDeserializer: java.lang.reflect.Method _factory>;
+
+        $r3 = r0.<org.codehaus.jackson.map.deser.EnumDeserializer$FactoryBasedDeserializer: java.lang.Class _enumClass>;
+
+        $r9 = newarray (java.lang.Object)[1];
+
+        $r9[0] = $r7;
+
+        $r10 = virtualinvoke $r8.<java.lang.reflect.Method: java.lang.Object invoke(java.lang.Object,java.lang.Object[])>($r3, $r9);
+
+     label3:
+        return $r10;
+
+     label4:
+        $r11 := @caughtexception;
+
+        staticinvoke <org.codehaus.jackson.map.util.ClassUtil: void unwrapAndThrowAsIAE(java.lang.Throwable)>($r11);
+
+        return null;
+
+        catch java.lang.Exception from label2 to label3 with label4;
+    }
+}

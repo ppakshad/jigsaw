@@ -1,0 +1,178 @@
+class com.ideaworks3d.marmalade.LoaderGL$ConfigSetting extends java.lang.Object
+{
+    private int mDefault;
+    private java.lang.String mName;
+    private int mSetting;
+    private int mValue;
+    final com.ideaworks3d.marmalade.LoaderGL this$0;
+
+    public void <init>(com.ideaworks3d.marmalade.LoaderGL, java.lang.String, int)
+    {
+        com.ideaworks3d.marmalade.LoaderGL$ConfigSetting r0;
+        com.ideaworks3d.marmalade.LoaderGL $r1;
+        java.lang.String $r2;
+        int $i0;
+
+        r0 := @this: com.ideaworks3d.marmalade.LoaderGL$ConfigSetting;
+
+        $r1 := @parameter0: com.ideaworks3d.marmalade.LoaderGL;
+
+        $r2 := @parameter1: java.lang.String;
+
+        $i0 := @parameter2: int;
+
+        r0.<com.ideaworks3d.marmalade.LoaderGL$ConfigSetting: com.ideaworks3d.marmalade.LoaderGL this$0> = $r1;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        specialinvoke r0.<com.ideaworks3d.marmalade.LoaderGL$ConfigSetting: void Construct(java.lang.String,int,int)>($r2, $i0, -1);
+
+        return;
+    }
+
+    public void <init>(com.ideaworks3d.marmalade.LoaderGL, java.lang.String, int, int)
+    {
+        com.ideaworks3d.marmalade.LoaderGL$ConfigSetting r0;
+        com.ideaworks3d.marmalade.LoaderGL $r1;
+        java.lang.String $r2;
+        int $i0, $i1;
+
+        r0 := @this: com.ideaworks3d.marmalade.LoaderGL$ConfigSetting;
+
+        $r1 := @parameter0: com.ideaworks3d.marmalade.LoaderGL;
+
+        $r2 := @parameter1: java.lang.String;
+
+        $i0 := @parameter2: int;
+
+        $i1 := @parameter3: int;
+
+        r0.<com.ideaworks3d.marmalade.LoaderGL$ConfigSetting: com.ideaworks3d.marmalade.LoaderGL this$0> = $r1;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        specialinvoke r0.<com.ideaworks3d.marmalade.LoaderGL$ConfigSetting: void Construct(java.lang.String,int,int)>($r2, $i0, $i1);
+
+        return;
+    }
+
+    private void Construct(java.lang.String, int, int)
+    {
+        com.ideaworks3d.marmalade.LoaderGL$ConfigSetting r0;
+        java.lang.String $r1;
+        int $i0, $i1;
+        int[] $r2;
+
+        r0 := @this: com.ideaworks3d.marmalade.LoaderGL$ConfigSetting;
+
+        $r1 := @parameter0: java.lang.String;
+
+        $i0 := @parameter1: int;
+
+        $i1 := @parameter2: int;
+
+        r0.<com.ideaworks3d.marmalade.LoaderGL$ConfigSetting: java.lang.String mName> = $r1;
+
+        r0.<com.ideaworks3d.marmalade.LoaderGL$ConfigSetting: int mSetting> = $i0;
+
+        r0.<com.ideaworks3d.marmalade.LoaderGL$ConfigSetting: int mDefault> = $i1;
+
+        $r2 = newarray (int)[1];
+
+        $r2[0] = -1;
+
+        $i0 = staticinvoke <com.ideaworks3d.marmalade.LoaderAPI: int s3eConfigGetInt(java.lang.String,java.lang.String,int[])>("GL", $r1, $r2);
+
+        if $i0 != 0 goto label1;
+
+        $i0 = $r2[0];
+
+        r0.<com.ideaworks3d.marmalade.LoaderGL$ConfigSetting: int mValue> = $i0;
+
+        return;
+
+     label1:
+        r0.<com.ideaworks3d.marmalade.LoaderGL$ConfigSetting: int mValue> = $i1;
+
+        return;
+    }
+
+    public int GetDefault()
+    {
+        com.ideaworks3d.marmalade.LoaderGL$ConfigSetting r0;
+        int i0;
+
+        r0 := @this: com.ideaworks3d.marmalade.LoaderGL$ConfigSetting;
+
+        i0 = r0.<com.ideaworks3d.marmalade.LoaderGL$ConfigSetting: int mDefault>;
+
+        return i0;
+    }
+
+    public java.lang.String GetName()
+    {
+        com.ideaworks3d.marmalade.LoaderGL$ConfigSetting r0;
+        java.lang.String r1;
+
+        r0 := @this: com.ideaworks3d.marmalade.LoaderGL$ConfigSetting;
+
+        r1 = r0.<com.ideaworks3d.marmalade.LoaderGL$ConfigSetting: java.lang.String mName>;
+
+        return r1;
+    }
+
+    public int GetSetting()
+    {
+        com.ideaworks3d.marmalade.LoaderGL$ConfigSetting r0;
+        int i0;
+
+        r0 := @this: com.ideaworks3d.marmalade.LoaderGL$ConfigSetting;
+
+        i0 = r0.<com.ideaworks3d.marmalade.LoaderGL$ConfigSetting: int mSetting>;
+
+        return i0;
+    }
+
+    public int GetValue()
+    {
+        com.ideaworks3d.marmalade.LoaderGL$ConfigSetting r0;
+        int i0;
+
+        r0 := @this: com.ideaworks3d.marmalade.LoaderGL$ConfigSetting;
+
+        i0 = r0.<com.ideaworks3d.marmalade.LoaderGL$ConfigSetting: int mValue>;
+
+        return i0;
+    }
+
+    public boolean HasValue()
+    {
+        com.ideaworks3d.marmalade.LoaderGL$ConfigSetting r0;
+        int $i0;
+
+        r0 := @this: com.ideaworks3d.marmalade.LoaderGL$ConfigSetting;
+
+        $i0 = r0.<com.ideaworks3d.marmalade.LoaderGL$ConfigSetting: int mValue>;
+
+        if $i0 == -1 goto label1;
+
+        return 1;
+
+     label1:
+        return 0;
+    }
+
+    public void SetValueToDefault()
+    {
+        com.ideaworks3d.marmalade.LoaderGL$ConfigSetting r0;
+        int $i0;
+
+        r0 := @this: com.ideaworks3d.marmalade.LoaderGL$ConfigSetting;
+
+        $i0 = r0.<com.ideaworks3d.marmalade.LoaderGL$ConfigSetting: int mDefault>;
+
+        r0.<com.ideaworks3d.marmalade.LoaderGL$ConfigSetting: int mValue> = $i0;
+
+        return;
+    }
+}

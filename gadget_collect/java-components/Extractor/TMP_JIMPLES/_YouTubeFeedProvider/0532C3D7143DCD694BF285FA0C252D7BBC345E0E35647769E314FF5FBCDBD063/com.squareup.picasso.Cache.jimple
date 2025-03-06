@@ -1,0 +1,29 @@
+public interface  com.squareup.picasso.Cache extends java.lang.Object
+{
+    public static final com.squareup.picasso.Cache NONE;
+
+    static void <clinit>()
+    {
+        com.squareup.picasso.Cache$1 $r0;
+
+        $r0 = new com.squareup.picasso.Cache$1;
+
+        specialinvoke $r0.<com.squareup.picasso.Cache$1: void <init>()>();
+
+        <com.squareup.picasso.Cache: com.squareup.picasso.Cache NONE> = $r0;
+
+        return;
+    }
+
+    public abstract void clear();
+
+    public abstract void clearKeyUri(java.lang.String);
+
+    public abstract android.graphics.Bitmap get(java.lang.String);
+
+    public abstract int maxSize();
+
+    public abstract void set(java.lang.String, android.graphics.Bitmap);
+
+    public abstract int size();
+}

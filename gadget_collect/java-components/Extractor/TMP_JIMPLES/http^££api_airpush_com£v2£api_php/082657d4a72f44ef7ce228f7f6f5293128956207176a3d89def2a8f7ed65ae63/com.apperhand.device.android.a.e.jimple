@@ -1,0 +1,1152 @@
+public final class com.apperhand.device.android.a.e extends java.lang.Object implements com.apperhand.device.a.a.e
+{
+    private static final java.util.Map a;
+    private android.content.Context b;
+    private com.apperhand.device.android.a.e$a c;
+    private java.util.List d;
+
+    static void <clinit>()
+    {
+        java.util.HashMap $r0;
+
+        $r0 = new java.util.HashMap;
+
+        specialinvoke $r0.<java.util.HashMap: void <init>()>();
+
+        <com.apperhand.device.android.a.e: java.util.Map a> = $r0;
+
+        interfaceinvoke $r0.<java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>("com.motorola.blur.home", "com.android.launcher");
+
+        return;
+    }
+
+    public void <init>(android.content.Context)
+    {
+        com.apperhand.device.android.a.e r0;
+        android.content.Context $r1;
+        java.util.ArrayList $r2;
+
+        r0 := @this: com.apperhand.device.android.a.e;
+
+        $r1 := @parameter0: android.content.Context;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        r0.<com.apperhand.device.android.a.e: com.apperhand.device.android.a.e$a c> = null;
+
+        $r2 = new java.util.ArrayList;
+
+        specialinvoke $r2.<java.util.ArrayList: void <init>()>();
+
+        r0.<com.apperhand.device.android.a.e: java.util.List d> = $r2;
+
+        r0.<com.apperhand.device.android.a.e: android.content.Context b> = $r1;
+
+        return;
+    }
+
+    private android.database.Cursor a(com.apperhand.device.android.a.e$a)
+    {
+        com.apperhand.device.android.a.e r0;
+        com.apperhand.device.android.a.e$a $r1;
+        android.database.Cursor $r2, $r7;
+        java.lang.String $r3, $r8;
+        android.net.Uri $r4;
+        android.content.Context $r5;
+        android.content.ContentResolver $r6;
+        boolean $z0;
+        java.lang.Throwable $r9, $r10;
+
+        r0 := @this: com.apperhand.device.android.a.e;
+
+        $r1 := @parameter0: com.apperhand.device.android.a.e$a;
+
+        $r2 = null;
+
+        if $r1 != null goto label01;
+
+        return null;
+
+     label01:
+        $r3 = $r1.<com.apperhand.device.android.a.e$a: java.lang.String a>;
+
+        $r3 = staticinvoke <com.apperhand.device.android.a.e: java.lang.String a(java.lang.String)>($r3);
+
+     label02:
+        $r4 = staticinvoke <android.net.Uri: android.net.Uri parse(java.lang.String)>($r3);
+
+     label03:
+        $r5 = r0.<com.apperhand.device.android.a.e: android.content.Context b>;
+
+     label04:
+        $r6 = virtualinvoke $r5.<android.content.Context: android.content.ContentResolver getContentResolver()>();
+
+        $r7 = virtualinvoke $r6.<android.content.ContentResolver: android.database.Cursor query(android.net.Uri,java.lang.String[],java.lang.String,java.lang.String[],java.lang.String)>($r4, null, null, null, null);
+
+     label05:
+        $r2 = $r7;
+
+     label06:
+        if $r2 != null goto label12;
+
+        $r3 = $r1.<com.apperhand.device.android.a.e$a: java.lang.String b>;
+
+        if $r3 == null goto label12;
+
+        $r3 = $r1.<com.apperhand.device.android.a.e$a: java.lang.String b>;
+
+        $r8 = $r1.<com.apperhand.device.android.a.e$a: java.lang.String a>;
+
+        $z0 = virtualinvoke $r3.<java.lang.String: boolean equals(java.lang.Object)>($r8);
+
+        if $z0 != 0 goto label12;
+
+        $r3 = $r1.<com.apperhand.device.android.a.e$a: java.lang.String b>;
+
+        $r3 = staticinvoke <com.apperhand.device.android.a.e: java.lang.String a(java.lang.String)>($r3);
+
+     label07:
+        $r4 = staticinvoke <android.net.Uri: android.net.Uri parse(java.lang.String)>($r3);
+
+     label08:
+        $r5 = r0.<com.apperhand.device.android.a.e: android.content.Context b>;
+
+     label09:
+        $r6 = virtualinvoke $r5.<android.content.Context: android.content.ContentResolver getContentResolver()>();
+
+        $r7 = virtualinvoke $r6.<android.content.ContentResolver: android.database.Cursor query(android.net.Uri,java.lang.String[],java.lang.String,java.lang.String[],java.lang.String)>($r4, null, null, null, null);
+
+     label10:
+        return $r7;
+
+     label11:
+        $r9 := @caughtexception;
+
+     label12:
+        return $r2;
+
+     label13:
+        $r10 := @caughtexception;
+
+        goto label06;
+
+        catch java.lang.SecurityException from label02 to label03 with label13;
+        catch java.lang.SecurityException from label04 to label05 with label13;
+        catch java.lang.SecurityException from label07 to label08 with label11;
+        catch java.lang.SecurityException from label09 to label10 with label11;
+    }
+
+    private static java.lang.String a(java.lang.String)
+    {
+        java.lang.String $r0;
+        java.lang.StringBuilder $r1;
+
+        $r0 := @parameter0: java.lang.String;
+
+        $r1 = new java.lang.StringBuilder;
+
+        specialinvoke $r1.<java.lang.StringBuilder: void <init>()>();
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("content://");
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r0);
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(".settings/favorites?notify=false");
+
+        $r0 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        return $r0;
+    }
+
+    private static java.util.List a(android.database.Cursor) throws java.lang.Exception
+    {
+        android.database.Cursor $r0;
+        java.util.ArrayList $r1;
+        int $i0, $i1, $i2, $i3, $i5;
+        boolean $z0;
+        com.apperhand.common.dto.Shortcut $r2;
+        long $l4;
+        java.lang.String $r3, $r4;
+        java.lang.Throwable $r5;
+
+        $r0 := @parameter0: android.database.Cursor;
+
+        $r1 = new java.util.ArrayList;
+
+        specialinvoke $r1.<java.util.ArrayList: void <init>()>();
+
+     label01:
+        $i0 = interfaceinvoke $r0.<android.database.Cursor: int getColumnIndex(java.lang.String)>("_id");
+
+        $i1 = interfaceinvoke $r0.<android.database.Cursor: int getColumnIndex(java.lang.String)>("title");
+
+        $i2 = interfaceinvoke $r0.<android.database.Cursor: int getColumnIndex(java.lang.String)>("intent");
+
+        $i3 = interfaceinvoke $r0.<android.database.Cursor: int getColumnIndex(java.lang.String)>("screen");
+
+     label02:
+        $z0 = interfaceinvoke $r0.<android.database.Cursor: boolean moveToNext()>();
+
+     label03:
+        if $z0 == 0 goto label15;
+
+     label04:
+        $r2 = new com.apperhand.common.dto.Shortcut;
+
+        specialinvoke $r2.<com.apperhand.common.dto.Shortcut: void <init>()>();
+
+        $l4 = interfaceinvoke $r0.<android.database.Cursor: long getLong(int)>($i0);
+
+        virtualinvoke $r2.<com.apperhand.common.dto.Shortcut: void setId(long)>($l4);
+
+        $r3 = interfaceinvoke $r0.<android.database.Cursor: java.lang.String getString(int)>($i1);
+
+        virtualinvoke $r2.<com.apperhand.common.dto.Shortcut: void setName(java.lang.String)>($r3);
+
+        $r3 = interfaceinvoke $r0.<android.database.Cursor: java.lang.String getString(int)>($i2);
+
+     label05:
+        $r4 = $r3;
+
+        if $r3 == null goto label12;
+
+     label06:
+        $z0 = virtualinvoke $r3.<java.lang.String: boolean equals(java.lang.Object)>("");
+
+     label07:
+        if $z0 != 0 goto label12;
+
+     label08:
+        $i5 = virtualinvoke $r3.<java.lang.String: int indexOf(java.lang.String)>("#");
+
+     label09:
+        if $i5 <= 0 goto label12;
+
+     label10:
+        $i5 = virtualinvoke $r3.<java.lang.String: int indexOf(java.lang.String)>("#");
+
+        $r3 = virtualinvoke $r3.<java.lang.String: java.lang.String substring(int,int)>(0, $i5);
+
+     label11:
+        $r4 = $r3;
+
+     label12:
+        virtualinvoke $r2.<com.apperhand.common.dto.Shortcut: void setLink(java.lang.String)>($r4);
+
+        $i5 = interfaceinvoke $r0.<android.database.Cursor: int getInt(int)>($i3);
+
+        virtualinvoke $r2.<com.apperhand.common.dto.Shortcut: void setScreen(int)>($i5);
+
+        interfaceinvoke $r1.<java.util.List: boolean add(java.lang.Object)>($r2);
+
+     label13:
+        goto label02;
+
+     label14:
+        $r5 := @caughtexception;
+
+        interfaceinvoke $r0.<android.database.Cursor: void close()>();
+
+        throw $r5;
+
+     label15:
+        interfaceinvoke $r0.<android.database.Cursor: void close()>();
+
+        return $r1;
+
+        catch java.lang.Throwable from label01 to label03 with label14;
+        catch java.lang.Throwable from label04 to label05 with label14;
+        catch java.lang.Throwable from label06 to label07 with label14;
+        catch java.lang.Throwable from label08 to label09 with label14;
+        catch java.lang.Throwable from label10 to label11 with label14;
+        catch java.lang.Throwable from label12 to label13 with label14;
+    }
+
+    private static boolean a(android.database.Cursor, com.apperhand.common.dto.Shortcut) throws java.lang.Exception
+    {
+        android.database.Cursor $r0;
+        com.apperhand.common.dto.Shortcut $r1;
+        int $i0, $i1;
+        java.lang.String $r2, $r3;
+        boolean $z0;
+
+        $r0 := @parameter0: android.database.Cursor;
+
+        $r1 := @parameter1: com.apperhand.common.dto.Shortcut;
+
+        if $r0 != null goto label1;
+
+        return 0;
+
+     label1:
+        $i0 = interfaceinvoke $r0.<android.database.Cursor: int getColumnIndex(java.lang.String)>("intent");
+
+        $r2 = virtualinvoke $r1.<com.apperhand.common.dto.Shortcut: java.lang.String getLink()>();
+
+        $r2 = staticinvoke <com.apperhand.device.a.d.b: java.lang.String a(java.lang.String)>($r2);
+
+     label2:
+        $z0 = interfaceinvoke $r0.<android.database.Cursor: boolean moveToNext()>();
+
+        if $z0 == 0 goto label3;
+
+        $r3 = interfaceinvoke $r0.<android.database.Cursor: java.lang.String getString(int)>($i0);
+
+        if $r3 == null goto label2;
+
+        $i1 = virtualinvoke $r3.<java.lang.String: int indexOf(java.lang.String)>($r2);
+
+        if $i1 < 0 goto label2;
+
+        return 1;
+
+     label3:
+        return 0;
+    }
+
+    private static void b(java.util.List)
+    {
+        java.util.List $r0;
+        java.util.Iterator $r1;
+        boolean $z0;
+        java.lang.Object $r2;
+        android.database.Cursor $r3;
+
+        $r0 := @parameter0: java.util.List;
+
+        $r1 = interfaceinvoke $r0.<java.util.List: java.util.Iterator iterator()>();
+
+     label1:
+        $z0 = interfaceinvoke $r1.<java.util.Iterator: boolean hasNext()>();
+
+        if $z0 == 0 goto label2;
+
+        $r2 = interfaceinvoke $r1.<java.util.Iterator: java.lang.Object next()>();
+
+        $r3 = (android.database.Cursor) $r2;
+
+        if $r3 == null goto label1;
+
+        interfaceinvoke $r3.<android.database.Cursor: void close()>();
+
+        goto label1;
+
+     label2:
+        return;
+    }
+
+    private java.util.List d()
+    {
+        com.apperhand.device.android.a.e r0;
+        java.util.ArrayList $r1;
+        java.util.List $r2;
+        java.util.Iterator $r3;
+        boolean $z0;
+        java.lang.Object $r4;
+        com.apperhand.device.android.a.e$a $r5;
+        android.database.Cursor $r6;
+
+        r0 := @this: com.apperhand.device.android.a.e;
+
+        $r1 = new java.util.ArrayList;
+
+        specialinvoke $r1.<java.util.ArrayList: void <init>()>();
+
+        $r2 = r0.<com.apperhand.device.android.a.e: java.util.List d>;
+
+        $r3 = interfaceinvoke $r2.<java.util.List: java.util.Iterator iterator()>();
+
+     label1:
+        $z0 = interfaceinvoke $r3.<java.util.Iterator: boolean hasNext()>();
+
+        if $z0 == 0 goto label2;
+
+        $r4 = interfaceinvoke $r3.<java.util.Iterator: java.lang.Object next()>();
+
+        $r5 = (com.apperhand.device.android.a.e$a) $r4;
+
+        $r6 = specialinvoke r0.<com.apperhand.device.android.a.e: android.database.Cursor a(com.apperhand.device.android.a.e$a)>($r5);
+
+        interfaceinvoke $r1.<java.util.List: boolean add(java.lang.Object)>($r6);
+
+        goto label1;
+
+     label2:
+        return $r1;
+    }
+
+    public final int a(java.lang.String, long)
+    {
+        com.apperhand.device.android.a.e r0;
+        java.lang.String $r1, $r4;
+        long $l0;
+        float $f0;
+        byte $b1;
+        com.apperhand.device.android.a.e$a $r2;
+        android.database.Cursor $r3;
+        int $i2, $i3;
+        boolean $z0;
+        java.lang.Exception $r5;
+        java.lang.Throwable $r6, $r7;
+
+        r0 := @this: com.apperhand.device.android.a.e;
+
+        $r1 := @parameter0: java.lang.String;
+
+        $l0 := @parameter1: long;
+
+        $f0 = (float) $l0;
+
+        $b1 = $f0 cmpl 0.0F;
+
+        if $b1 <= 0 goto label02;
+
+        $l0 = 1000L * $l0;
+
+     label01:
+        staticinvoke <java.lang.Thread: void sleep(long)>($l0);
+
+     label02:
+        $r2 = r0.<com.apperhand.device.android.a.e: com.apperhand.device.android.a.e$a c>;
+
+        if $r2 == null goto label16;
+
+        $r2 = r0.<com.apperhand.device.android.a.e: com.apperhand.device.android.a.e$a c>;
+
+        $r3 = specialinvoke r0.<com.apperhand.device.android.a.e: android.database.Cursor a(com.apperhand.device.android.a.e$a)>($r2);
+
+        if $r3 == null goto label16;
+
+        if $r3 == null goto label12;
+
+     label03:
+        $i2 = interfaceinvoke $r3.<android.database.Cursor: int getColumnIndex(java.lang.String)>("screen");
+
+        $i3 = interfaceinvoke $r3.<android.database.Cursor: int getColumnIndex(java.lang.String)>("title");
+
+     label04:
+        $z0 = interfaceinvoke $r3.<android.database.Cursor: boolean moveToNext()>();
+
+     label05:
+        if $z0 == 0 goto label12;
+
+     label06:
+        $r4 = interfaceinvoke $r3.<android.database.Cursor: java.lang.String getString(int)>($i3);
+
+     label07:
+        if $r4 == null goto label04;
+
+     label08:
+        $z0 = virtualinvoke $r4.<java.lang.String: boolean equals(java.lang.Object)>($r1);
+
+     label09:
+        if $z0 == 0 goto label04;
+
+     label10:
+        $i2 = interfaceinvoke $r3.<android.database.Cursor: int getInt(int)>($i2);
+
+     label11:
+        interfaceinvoke $r3.<android.database.Cursor: void close()>();
+
+        return $i2;
+
+     label12:
+        $i2 = -999;
+
+        goto label11;
+
+     label13:
+        $r5 := @caughtexception;
+
+        interfaceinvoke $r3.<android.database.Cursor: void close()>();
+
+        return -999;
+
+     label14:
+        $r6 := @caughtexception;
+
+        interfaceinvoke $r3.<android.database.Cursor: void close()>();
+
+        throw $r6;
+
+     label15:
+        $r7 := @caughtexception;
+
+        goto label02;
+
+     label16:
+        return -999;
+
+        catch java.lang.InterruptedException from label01 to label02 with label15;
+        catch java.lang.Exception from label03 to label05 with label13;
+        catch java.lang.Exception from label06 to label07 with label13;
+        catch java.lang.Exception from label08 to label09 with label13;
+        catch java.lang.Exception from label10 to label11 with label13;
+        catch java.lang.Throwable from label03 to label05 with label14;
+        catch java.lang.Throwable from label06 to label07 with label14;
+        catch java.lang.Throwable from label08 to label09 with label14;
+        catch java.lang.Throwable from label10 to label11 with label14;
+    }
+
+    public final com.apperhand.common.dto.CommandInformation a(java.util.List)
+    {
+        com.apperhand.device.android.a.e r0;
+        java.util.List $r1, $r7, $r12, $r17;
+        com.apperhand.common.dto.CommandInformation $r2;
+        java.lang.StringBuffer $r3, $r6;
+        java.util.ArrayList $r4;
+        com.apperhand.common.dto.Command$Commands $r5;
+        java.lang.String $r8, $r21;
+        java.util.Iterator $r9, $r18, $r20;
+        int $i0, $i1;
+        boolean $z0;
+        java.lang.Object $r10;
+        android.database.Cursor $r11;
+        com.apperhand.device.android.a.e$a $r13;
+        java.lang.Throwable $r14;
+        java.lang.Exception $r15;
+        java.lang.String[] $r16;
+        com.apperhand.common.dto.Shortcut $r19;
+        com.apperhand.common.dto.AssetInformation $r22;
+        com.apperhand.common.dto.AssetInformation$State $r23;
+        java.util.HashMap $r24;
+
+        r0 := @this: com.apperhand.device.android.a.e;
+
+        $r1 := @parameter0: java.util.List;
+
+        $r2 = new com.apperhand.common.dto.CommandInformation;
+
+        $r5 = <com.apperhand.common.dto.Command$Commands: com.apperhand.common.dto.Command$Commands SHORTCUTS>;
+
+        specialinvoke $r2.<com.apperhand.common.dto.CommandInformation: void <init>(com.apperhand.common.dto.Command$Commands)>($r5);
+
+        $r3 = new java.lang.StringBuffer;
+
+        specialinvoke $r3.<java.lang.StringBuffer: void <init>()>();
+
+        $r6 = virtualinvoke $r3.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.String)>("Launchers = [");
+
+        $r7 = r0.<com.apperhand.device.android.a.e: java.util.List d>;
+
+        $r8 = virtualinvoke $r7.<java.lang.Object: java.lang.String toString()>();
+
+        $r6 = virtualinvoke $r6.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.String)>($r8);
+
+        virtualinvoke $r6.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.String)>("]#NL#");
+
+        $r4 = new java.util.ArrayList;
+
+        specialinvoke $r4.<java.util.ArrayList: void <init>()>();
+
+        virtualinvoke $r2.<com.apperhand.common.dto.CommandInformation: void setAssets(java.util.List)>($r4);
+
+        virtualinvoke $r2.<com.apperhand.common.dto.CommandInformation: void setValid(boolean)>(1);
+
+        $r7 = specialinvoke r0.<com.apperhand.device.android.a.e: java.util.List d()>();
+
+     label01:
+        $r9 = interfaceinvoke $r7.<java.util.List: java.util.Iterator iterator()>();
+
+     label02:
+        $i0 = 0;
+
+     label03:
+        $z0 = interfaceinvoke $r9.<java.util.Iterator: boolean hasNext()>();
+
+     label04:
+        if $z0 == 0 goto label33;
+
+     label05:
+        $r10 = interfaceinvoke $r9.<java.util.Iterator: java.lang.Object next()>();
+
+        $r11 = (android.database.Cursor) $r10;
+
+        $r12 = r0.<com.apperhand.device.android.a.e: java.util.List d>;
+
+        $r10 = interfaceinvoke $r12.<java.util.List: java.lang.Object get(int)>($i0);
+
+        $r13 = (com.apperhand.device.android.a.e$a) $r10;
+
+     label06:
+        if $r11 == null goto label31;
+
+     label07:
+        $r12 = staticinvoke <com.apperhand.device.android.a.e: java.util.List a(android.database.Cursor)>($r11);
+
+     label08:
+        if $r12 != null goto label15;
+
+     label09:
+        $r6 = virtualinvoke $r3.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.String)>("Success reading cursor of ");
+
+        $r6 = virtualinvoke $r6.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>($r13);
+
+        virtualinvoke $r6.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.String)>(", but the cursor is empty#NL#");
+
+        virtualinvoke $r2.<com.apperhand.common.dto.CommandInformation: void setValid(boolean)>(0);
+
+     label10:
+        goto label03;
+
+     label11:
+        $r14 := @caughtexception;
+
+        staticinvoke <com.apperhand.device.android.a.e: void b(java.util.List)>($r7);
+
+        $r8 = virtualinvoke $r3.<java.lang.StringBuffer: java.lang.String toString()>();
+
+        virtualinvoke $r2.<com.apperhand.common.dto.CommandInformation: void setMessage(java.lang.String)>($r8);
+
+        throw $r14;
+
+     label12:
+        $r15 := @caughtexception;
+
+     label13:
+        $r6 = virtualinvoke $r3.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.String)>("Error reading cursor of ");
+
+        $r6 = virtualinvoke $r6.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>($r13);
+
+        $r8 = virtualinvoke $r15.<java.lang.Exception: java.lang.String getMessage()>();
+
+        $r6 = virtualinvoke $r6.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.String)>($r8);
+
+        virtualinvoke $r6.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.String)>("#NL#");
+
+        virtualinvoke $r2.<com.apperhand.common.dto.CommandInformation: void setValid(boolean)>(0);
+
+     label14:
+        goto label03;
+
+     label15:
+        $r16 = interfaceinvoke $r11.<android.database.Cursor: java.lang.String[] getColumnNames()>();
+
+     label16:
+        if $r16 == null goto label30;
+
+     label17:
+        $r17 = staticinvoke <java.util.Arrays: java.util.List asList(java.lang.Object[])>($r16);
+
+        $r8 = virtualinvoke $r17.<java.lang.Object: java.lang.String toString()>();
+
+     label18:
+        $r6 = virtualinvoke $r3.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.String)>("Success reading cursor of ");
+
+        $r6 = virtualinvoke $r6.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>($r13);
+
+        $r6 = virtualinvoke $r6.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.String)>(" with columns ");
+
+        $r6 = virtualinvoke $r6.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.String)>($r8);
+
+        virtualinvoke $r6.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.String)>("#NL#");
+
+        $r18 = interfaceinvoke $r12.<java.util.List: java.util.Iterator iterator()>();
+
+     label19:
+        $z0 = interfaceinvoke $r18.<java.util.Iterator: boolean hasNext()>();
+
+     label20:
+        if $z0 == 0 goto label32;
+
+     label21:
+        $r10 = interfaceinvoke $r18.<java.util.Iterator: java.lang.Object next()>();
+
+        $r19 = (com.apperhand.common.dto.Shortcut) $r10;
+
+        $r20 = interfaceinvoke $r1.<java.util.List: java.util.Iterator iterator()>();
+
+     label22:
+        $z0 = interfaceinvoke $r20.<java.util.Iterator: boolean hasNext()>();
+
+     label23:
+        if $z0 == 0 goto label19;
+
+     label24:
+        $r10 = interfaceinvoke $r20.<java.util.Iterator: java.lang.Object next()>();
+
+        $r8 = (java.lang.String) $r10;
+
+        $r21 = virtualinvoke $r19.<com.apperhand.common.dto.Shortcut: java.lang.String getLink()>();
+
+     label25:
+        if $r21 == null goto label22;
+
+     label26:
+        $i1 = virtualinvoke $r21.<java.lang.String: int indexOf(java.lang.String)>($r8);
+
+     label27:
+        if $i1 == -1 goto label22;
+
+     label28:
+        $r22 = new com.apperhand.common.dto.AssetInformation;
+
+        specialinvoke $r22.<com.apperhand.common.dto.AssetInformation: void <init>()>();
+
+        virtualinvoke $r22.<com.apperhand.common.dto.AssetInformation: void setUrl(java.lang.String)>($r21);
+
+        $i1 = virtualinvoke $r19.<com.apperhand.common.dto.Shortcut: int getScreen()>();
+
+        virtualinvoke $r22.<com.apperhand.common.dto.AssetInformation: void setPosition(int)>($i1);
+
+        $r23 = <com.apperhand.common.dto.AssetInformation$State: com.apperhand.common.dto.AssetInformation$State EXIST>;
+
+        virtualinvoke $r22.<com.apperhand.common.dto.AssetInformation: void setState(com.apperhand.common.dto.AssetInformation$State)>($r23);
+
+        interfaceinvoke $r4.<java.util.List: boolean add(java.lang.Object)>($r22);
+
+        $r24 = new java.util.HashMap;
+
+        specialinvoke $r24.<java.util.HashMap: void <init>()>();
+
+        interfaceinvoke $r24.<java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>("Launcher", $r13);
+
+        virtualinvoke $r22.<com.apperhand.common.dto.AssetInformation: void setParameters(java.util.Map)>($r24);
+
+     label29:
+        goto label22;
+
+     label30:
+        $r8 = "Unknown";
+
+        goto label18;
+
+     label31:
+        $r6 = virtualinvoke $r3.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.String)>("Couldn\'t check ");
+
+        $r8 = virtualinvoke $r13.<com.apperhand.device.android.a.e$a: java.lang.String toString()>();
+
+        $r6 = virtualinvoke $r6.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.String)>($r8);
+
+        virtualinvoke $r6.<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.String)>("#NL#");
+
+        virtualinvoke $r2.<com.apperhand.common.dto.CommandInformation: void setValid(boolean)>(0);
+
+     label32:
+        $i0 = $i0 + 1;
+
+        goto label03;
+
+     label33:
+        staticinvoke <com.apperhand.device.android.a.e: void b(java.util.List)>($r7);
+
+        $r8 = virtualinvoke $r3.<java.lang.StringBuffer: java.lang.String toString()>();
+
+        virtualinvoke $r2.<com.apperhand.common.dto.CommandInformation: void setMessage(java.lang.String)>($r8);
+
+        return $r2;
+
+        catch java.lang.Throwable from label01 to label02 with label11;
+        catch java.lang.Throwable from label03 to label04 with label11;
+        catch java.lang.Throwable from label05 to label06 with label11;
+        catch java.lang.Exception from label07 to label08 with label12;
+        catch java.lang.Throwable from label07 to label08 with label11;
+        catch java.lang.Throwable from label09 to label10 with label11;
+        catch java.lang.Throwable from label13 to label14 with label11;
+        catch java.lang.Throwable from label15 to label16 with label11;
+        catch java.lang.Throwable from label17 to label18 with label11;
+        catch java.lang.Throwable from label18 to label20 with label11;
+        catch java.lang.Throwable from label21 to label23 with label11;
+        catch java.lang.Throwable from label24 to label25 with label11;
+        catch java.lang.Throwable from label26 to label27 with label11;
+        catch java.lang.Throwable from label28 to label29 with label11;
+        catch java.lang.Throwable from label31 to label32 with label11;
+    }
+
+    public final void a()
+    {
+        com.apperhand.device.android.a.e r0;
+        com.apperhand.device.android.a.e$a $r1;
+        java.lang.String $r2;
+        android.content.Intent $r3;
+        android.content.Context $r4;
+        android.content.pm.PackageManager $r5;
+        java.util.List $r6, $r7;
+        java.util.Iterator $r8;
+        boolean $z0;
+        java.lang.Object $r9;
+        android.content.pm.ResolveInfo $r10;
+        android.content.pm.ActivityInfo $r11;
+        java.util.Map $r12;
+        java.util.ArrayList $r13, $r14;
+        int $i0;
+
+        r0 := @this: com.apperhand.device.android.a.e;
+
+        $r3 = new android.content.Intent;
+
+        specialinvoke $r3.<android.content.Intent: void <init>()>();
+
+        virtualinvoke $r3.<android.content.Intent: android.content.Intent setAction(java.lang.String)>("android.intent.action.MAIN");
+
+        virtualinvoke $r3.<android.content.Intent: android.content.Intent addCategory(java.lang.String)>("android.intent.category.HOME");
+
+        $r4 = r0.<com.apperhand.device.android.a.e: android.content.Context b>;
+
+        $r5 = virtualinvoke $r4.<android.content.Context: android.content.pm.PackageManager getPackageManager()>();
+
+        $r6 = virtualinvoke $r5.<android.content.pm.PackageManager: java.util.List queryIntentActivities(android.content.Intent,int)>($r3, 0);
+
+        $r7 = r0.<com.apperhand.device.android.a.e: java.util.List d>;
+
+        interfaceinvoke $r7.<java.util.List: void clear()>();
+
+        r0.<com.apperhand.device.android.a.e: com.apperhand.device.android.a.e$a c> = null;
+
+        $r8 = interfaceinvoke $r6.<java.util.List: java.util.Iterator iterator()>();
+
+     label1:
+        $z0 = interfaceinvoke $r8.<java.util.Iterator: boolean hasNext()>();
+
+        if $z0 == 0 goto label7;
+
+        $r9 = interfaceinvoke $r8.<java.util.Iterator: java.lang.Object next()>();
+
+        $r10 = (android.content.pm.ResolveInfo) $r9;
+
+        $r1 = new com.apperhand.device.android.a.e$a;
+
+        specialinvoke $r1.<com.apperhand.device.android.a.e$a: void <init>()>();
+
+        $r6 = r0.<com.apperhand.device.android.a.e: java.util.List d>;
+
+        interfaceinvoke $r6.<java.util.List: boolean add(java.lang.Object)>($r1);
+
+        $r11 = $r10.<android.content.pm.ResolveInfo: android.content.pm.ActivityInfo activityInfo>;
+
+        $r12 = <com.apperhand.device.android.a.e: java.util.Map a>;
+
+        $r2 = $r11.<android.content.pm.ActivityInfo: java.lang.String packageName>;
+
+        $r9 = interfaceinvoke $r12.<java.util.Map: java.lang.Object get(java.lang.Object)>($r2);
+
+        $r2 = (java.lang.String) $r9;
+
+        if $r2 == null goto label5;
+
+        $r1.<com.apperhand.device.android.a.e$a: java.lang.String a> = $r2;
+
+     label2:
+        $r13 = new java.util.ArrayList;
+
+        specialinvoke $r13.<java.util.ArrayList: void <init>()>();
+
+        $r14 = new java.util.ArrayList;
+
+        specialinvoke $r14.<java.util.ArrayList: void <init>()>();
+
+        $r2 = $r11.<android.content.pm.ActivityInfo: java.lang.String packageName>;
+
+        virtualinvoke $r5.<android.content.pm.PackageManager: int getPreferredActivities(java.util.List,java.util.List,java.lang.String)>($r14, $r13, $r2);
+
+        $i0 = interfaceinvoke $r13.<java.util.List: int size()>();
+
+        if $i0 <= 0 goto label6;
+
+        $z0 = 1;
+
+     label3:
+        $r1.<com.apperhand.device.android.a.e$a: boolean c> = $z0;
+
+        $z0 = $r1.<com.apperhand.device.android.a.e$a: boolean c>;
+
+        if $z0 == 0 goto label4;
+
+        r0.<com.apperhand.device.android.a.e: com.apperhand.device.android.a.e$a c> = $r1;
+
+     label4:
+        $r2 = $r11.<android.content.pm.ActivityInfo: java.lang.String name>;
+
+        $i0 = virtualinvoke $r2.<java.lang.String: int lastIndexOf(java.lang.String)>(".");
+
+        if $i0 <= 0 goto label1;
+
+        $r2 = virtualinvoke $r2.<java.lang.String: java.lang.String substring(int,int)>(0, $i0);
+
+        $r1.<com.apperhand.device.android.a.e$a: java.lang.String b> = $r2;
+
+        goto label1;
+
+     label5:
+        $r2 = $r11.<android.content.pm.ActivityInfo: java.lang.String packageName>;
+
+        $r1.<com.apperhand.device.android.a.e$a: java.lang.String a> = $r2;
+
+        goto label2;
+
+     label6:
+        $z0 = 0;
+
+        goto label3;
+
+     label7:
+        $r6 = r0.<com.apperhand.device.android.a.e: java.util.List d>;
+
+        $i0 = interfaceinvoke $r6.<java.util.List: int size()>();
+
+        if $i0 != 1 goto label8;
+
+        $r6 = r0.<com.apperhand.device.android.a.e: java.util.List d>;
+
+        $r9 = interfaceinvoke $r6.<java.util.List: java.lang.Object get(int)>(0);
+
+        $r1 = (com.apperhand.device.android.a.e$a) $r9;
+
+        r0.<com.apperhand.device.android.a.e: com.apperhand.device.android.a.e$a c> = $r1;
+
+        $r1 = r0.<com.apperhand.device.android.a.e: com.apperhand.device.android.a.e$a c>;
+
+        $r1.<com.apperhand.device.android.a.e$a: boolean c> = 1;
+
+     label8:
+        return;
+    }
+
+    public final boolean a(com.apperhand.common.dto.Shortcut) throws com.apperhand.device.a.d.f
+    {
+        com.apperhand.common.dto.Shortcut $r0;
+        com.apperhand.device.android.a.e r1;
+        com.apperhand.device.android.a.e$a $r2;
+        android.database.Cursor $r3;
+        boolean $z0;
+        java.lang.Exception $r4, $r8;
+        java.util.List $r5;
+        java.util.Iterator $r6;
+        java.lang.Object $r7;
+        java.lang.Throwable $r9;
+
+        r1 := @this: com.apperhand.device.android.a.e;
+
+        $r0 := @parameter0: com.apperhand.common.dto.Shortcut;
+
+        $r2 = r1.<com.apperhand.device.android.a.e: com.apperhand.device.android.a.e$a c>;
+
+        if $r2 == null goto label05;
+
+        $r2 = r1.<com.apperhand.device.android.a.e: com.apperhand.device.android.a.e$a c>;
+
+        $r3 = specialinvoke r1.<com.apperhand.device.android.a.e: android.database.Cursor a(com.apperhand.device.android.a.e$a)>($r2);
+
+        if $r3 == null goto label04;
+
+     label01:
+        $z0 = staticinvoke <com.apperhand.device.android.a.e: boolean a(android.database.Cursor,com.apperhand.common.dto.Shortcut)>($r3, $r0);
+
+     label02:
+        interfaceinvoke $r3.<android.database.Cursor: void close()>();
+
+        return $z0;
+
+     label03:
+        $r4 := @caughtexception;
+
+        $z0 = 1;
+
+        goto label02;
+
+     label04:
+        return 0;
+
+     label05:
+        $r5 = specialinvoke r1.<com.apperhand.device.android.a.e: java.util.List d()>();
+
+     label06:
+        $r6 = interfaceinvoke $r5.<java.util.List: java.util.Iterator iterator()>();
+
+     label07:
+        $z0 = interfaceinvoke $r6.<java.util.Iterator: boolean hasNext()>();
+
+     label08:
+        if $z0 == 0 goto label13;
+
+     label09:
+        $r7 = interfaceinvoke $r6.<java.util.Iterator: java.lang.Object next()>();
+
+        $r3 = (android.database.Cursor) $r7;
+
+     label10:
+        $z0 = staticinvoke <com.apperhand.device.android.a.e: boolean a(android.database.Cursor,com.apperhand.common.dto.Shortcut)>($r3, $r0);
+
+     label11:
+        if $z0 == 0 goto label07;
+
+        staticinvoke <com.apperhand.device.android.a.e: void b(java.util.List)>($r5);
+
+        return 1;
+
+     label12:
+        $r8 := @caughtexception;
+
+        $z0 = 1;
+
+        goto label11;
+
+     label13:
+        staticinvoke <com.apperhand.device.android.a.e: void b(java.util.List)>($r5);
+
+        return 0;
+
+     label14:
+        $r9 := @caughtexception;
+
+        staticinvoke <com.apperhand.device.android.a.e: void b(java.util.List)>($r5);
+
+        throw $r9;
+
+        catch java.lang.Exception from label01 to label02 with label03;
+        catch java.lang.Throwable from label06 to label08 with label14;
+        catch java.lang.Throwable from label09 to label10 with label14;
+        catch java.lang.Exception from label10 to label11 with label12;
+        catch java.lang.Throwable from label10 to label11 with label14;
+    }
+
+    public final java.lang.String b()
+    {
+        com.apperhand.device.android.a.e r0;
+        java.lang.String $r1;
+        java.util.List $r2;
+
+        r0 := @this: com.apperhand.device.android.a.e;
+
+        $r2 = r0.<com.apperhand.device.android.a.e: java.util.List d>;
+
+        $r1 = virtualinvoke $r2.<java.lang.Object: java.lang.String toString()>();
+
+        return $r1;
+    }
+
+    public final void b(com.apperhand.common.dto.Shortcut)
+    {
+        com.apperhand.device.android.a.e r0;
+        com.apperhand.common.dto.Shortcut $r1;
+        java.lang.String $r2, $r3;
+        byte[] $r4;
+        android.content.Intent $r5, $r7;
+        android.net.Uri $r6;
+        int $i0;
+        android.graphics.Bitmap $r8;
+        android.content.Context $r9;
+
+        r0 := @this: com.apperhand.device.android.a.e;
+
+        $r1 := @parameter0: com.apperhand.common.dto.Shortcut;
+
+        $r2 = virtualinvoke $r1.<com.apperhand.common.dto.Shortcut: java.lang.String getName()>();
+
+        $r3 = virtualinvoke $r1.<com.apperhand.common.dto.Shortcut: java.lang.String getLink()>();
+
+        $r4 = virtualinvoke $r1.<com.apperhand.common.dto.Shortcut: byte[] getIcon()>();
+
+        $r5 = new android.content.Intent;
+
+        $r6 = staticinvoke <android.net.Uri: android.net.Uri parse(java.lang.String)>($r3);
+
+        specialinvoke $r5.<android.content.Intent: void <init>(java.lang.String,android.net.Uri)>("android.intent.action.VIEW", $r6);
+
+        virtualinvoke $r5.<android.content.Intent: android.content.Intent addFlags(int)>(268435456);
+
+        virtualinvoke $r5.<android.content.Intent: android.content.Intent addFlags(int)>(67108864);
+
+        $r7 = new android.content.Intent;
+
+        specialinvoke $r7.<android.content.Intent: void <init>()>();
+
+        virtualinvoke $r7.<android.content.Intent: android.content.Intent putExtra(java.lang.String,android.os.Parcelable)>("android.intent.extra.shortcut.INTENT", $r5);
+
+        virtualinvoke $r7.<android.content.Intent: android.content.Intent putExtra(java.lang.String,java.lang.String)>("android.intent.extra.shortcut.NAME", $r2);
+
+        if $r4 != null goto label2;
+
+        $r4 = newarray (byte)[0];
+
+        $i0 = lengthof $r4;
+
+        $r8 = staticinvoke <android.graphics.BitmapFactory: android.graphics.Bitmap decodeByteArray(byte[],int,int)>($r4, 0, $i0);
+
+        virtualinvoke $r7.<android.content.Intent: android.content.Intent putExtra(java.lang.String,android.os.Parcelable)>("android.intent.extra.shortcut.ICON", $r8);
+
+     label1:
+        virtualinvoke $r7.<android.content.Intent: android.content.Intent setAction(java.lang.String)>("com.android.launcher.action.INSTALL_SHORTCUT");
+
+        $r9 = r0.<com.apperhand.device.android.a.e: android.content.Context b>;
+
+        virtualinvoke $r9.<android.content.Context: void sendBroadcast(android.content.Intent)>($r7);
+
+        return;
+
+     label2:
+        $i0 = lengthof $r4;
+
+        $r8 = staticinvoke <android.graphics.BitmapFactory: android.graphics.Bitmap decodeByteArray(byte[],int,int)>($r4, 0, $i0);
+
+        virtualinvoke $r7.<android.content.Intent: android.content.Intent putExtra(java.lang.String,android.os.Parcelable)>("android.intent.extra.shortcut.ICON", $r8);
+
+        goto label1;
+    }
+
+    public final boolean c()
+    {
+        com.apperhand.device.android.a.e r0;
+        com.apperhand.device.android.a.e$a $r1;
+        android.database.Cursor $r2;
+        java.util.List $r3;
+        int $i0;
+        java.util.Iterator $r4;
+        boolean $z0;
+        java.lang.Object $r5;
+
+        r0 := @this: com.apperhand.device.android.a.e;
+
+        $r1 = r0.<com.apperhand.device.android.a.e: com.apperhand.device.android.a.e$a c>;
+
+        if $r1 == null goto label2;
+
+        $r1 = r0.<com.apperhand.device.android.a.e: com.apperhand.device.android.a.e$a c>;
+
+        $r2 = specialinvoke r0.<com.apperhand.device.android.a.e: android.database.Cursor a(com.apperhand.device.android.a.e$a)>($r1);
+
+        if $r2 == null goto label1;
+
+        interfaceinvoke $r2.<android.database.Cursor: void close()>();
+
+        return 1;
+
+     label1:
+        return 0;
+
+     label2:
+        $r3 = specialinvoke r0.<com.apperhand.device.android.a.e: java.util.List d()>();
+
+        $i0 = interfaceinvoke $r3.<java.util.List: int size()>();
+
+        if $i0 > 0 goto label3;
+
+        return 0;
+
+     label3:
+        $r4 = interfaceinvoke $r3.<java.util.List: java.util.Iterator iterator()>();
+
+     label4:
+        $z0 = interfaceinvoke $r4.<java.util.Iterator: boolean hasNext()>();
+
+        if $z0 == 0 goto label6;
+
+        $r5 = interfaceinvoke $r4.<java.util.Iterator: java.lang.Object next()>();
+
+        $r2 = (android.database.Cursor) $r5;
+
+        if $r2 != null goto label4;
+
+        $z0 = 0;
+
+     label5:
+        staticinvoke <com.apperhand.device.android.a.e: void b(java.util.List)>($r3);
+
+        return $z0;
+
+     label6:
+        $z0 = 1;
+
+        goto label5;
+    }
+}

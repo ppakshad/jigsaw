@@ -1,0 +1,136 @@
+class com.movesky.app.engine.net.bluetooth.Bluetooth$CheckPreviousConnectionState extends com.movesky.app.engine.net.bluetooth.Bluetooth$StateBase
+{
+    final com.movesky.app.engine.net.bluetooth.Bluetooth this$0;
+
+    private void <init>(com.movesky.app.engine.net.bluetooth.Bluetooth)
+    {
+        com.movesky.app.engine.net.bluetooth.Bluetooth$CheckPreviousConnectionState r0;
+        com.movesky.app.engine.net.bluetooth.Bluetooth $r1;
+
+        r0 := @this: com.movesky.app.engine.net.bluetooth.Bluetooth$CheckPreviousConnectionState;
+
+        $r1 := @parameter0: com.movesky.app.engine.net.bluetooth.Bluetooth;
+
+        r0.<com.movesky.app.engine.net.bluetooth.Bluetooth$CheckPreviousConnectionState: com.movesky.app.engine.net.bluetooth.Bluetooth this$0> = $r1;
+
+        specialinvoke r0.<com.movesky.app.engine.net.bluetooth.Bluetooth$StateBase: void <init>(com.movesky.app.engine.net.bluetooth.Bluetooth$1)>(null);
+
+        return;
+    }
+
+    void <init>(com.movesky.app.engine.net.bluetooth.Bluetooth, com.movesky.app.engine.net.bluetooth.Bluetooth$1)
+    {
+        com.movesky.app.engine.net.bluetooth.Bluetooth$CheckPreviousConnectionState r0;
+        com.movesky.app.engine.net.bluetooth.Bluetooth $r1;
+        com.movesky.app.engine.net.bluetooth.Bluetooth$1 $r2;
+
+        r0 := @this: com.movesky.app.engine.net.bluetooth.Bluetooth$CheckPreviousConnectionState;
+
+        $r1 := @parameter0: com.movesky.app.engine.net.bluetooth.Bluetooth;
+
+        $r2 := @parameter1: com.movesky.app.engine.net.bluetooth.Bluetooth$1;
+
+        specialinvoke r0.<com.movesky.app.engine.net.bluetooth.Bluetooth$CheckPreviousConnectionState: void <init>(com.movesky.app.engine.net.bluetooth.Bluetooth)>($r1);
+
+        return;
+    }
+
+    public com.movesky.app.engine.net.bluetooth.State getState()
+    {
+        com.movesky.app.engine.net.bluetooth.Bluetooth$CheckPreviousConnectionState r0;
+        com.movesky.app.engine.net.bluetooth.State r1;
+
+        r0 := @this: com.movesky.app.engine.net.bluetooth.Bluetooth$CheckPreviousConnectionState;
+
+        r1 = <com.movesky.app.engine.net.bluetooth.State: com.movesky.app.engine.net.bluetooth.State CHECK_PREVIOUS_CONNECTION>;
+
+        return r1;
+    }
+
+    public void run() throws java.lang.InterruptedException
+    {
+        com.movesky.app.engine.net.bluetooth.Bluetooth$CheckPreviousConnectionState r0;
+        com.movesky.app.engine.net.bluetooth.Bluetooth $r1, $r9;
+        android.content.SharedPreferences $r2;
+        java.lang.String $r3;
+        android.bluetooth.BluetoothAdapter $r4;
+        android.bluetooth.BluetoothDevice $r5;
+        com.movesky.app.engine.net.bluetooth.Bluetooth$ConnectedState $r6;
+        java.util.UUID $r7;
+        android.bluetooth.BluetoothSocket $r8;
+        com.movesky.app.engine.net.bluetooth.Bluetooth$DisconnectedState $r10;
+        java.lang.Throwable $r11;
+
+        r0 := @this: com.movesky.app.engine.net.bluetooth.Bluetooth$CheckPreviousConnectionState;
+
+        $r1 = r0.<com.movesky.app.engine.net.bluetooth.Bluetooth$CheckPreviousConnectionState: com.movesky.app.engine.net.bluetooth.Bluetooth this$0>;
+
+        $r2 = staticinvoke <com.movesky.app.engine.net.bluetooth.Bluetooth: android.content.SharedPreferences access$1000(com.movesky.app.engine.net.bluetooth.Bluetooth)>($r1);
+
+        $r3 = interfaceinvoke $r2.<android.content.SharedPreferences: java.lang.String getString(java.lang.String,java.lang.String)>("prevDeviceAddress", null);
+
+        if $r3 == null goto label8;
+
+        $r1 = r0.<com.movesky.app.engine.net.bluetooth.Bluetooth$CheckPreviousConnectionState: com.movesky.app.engine.net.bluetooth.Bluetooth this$0>;
+
+        $r4 = staticinvoke <com.movesky.app.engine.net.bluetooth.Bluetooth: android.bluetooth.BluetoothAdapter access$800(com.movesky.app.engine.net.bluetooth.Bluetooth)>($r1);
+
+        $r5 = virtualinvoke $r4.<android.bluetooth.BluetoothAdapter: android.bluetooth.BluetoothDevice getRemoteDevice(java.lang.String)>($r3);
+
+        if $r5 == null goto label8;
+
+        $r1 = r0.<com.movesky.app.engine.net.bluetooth.Bluetooth$CheckPreviousConnectionState: com.movesky.app.engine.net.bluetooth.Bluetooth this$0>;
+
+     label1:
+        $r6 = staticinvoke <com.movesky.app.engine.net.bluetooth.Bluetooth: com.movesky.app.engine.net.bluetooth.Bluetooth$ConnectedState access$1100(com.movesky.app.engine.net.bluetooth.Bluetooth)>($r1);
+
+        $r7 = staticinvoke <com.movesky.app.engine.net.bluetooth.Bluetooth: java.util.UUID access$1200()>();
+
+        $r8 = virtualinvoke $r5.<android.bluetooth.BluetoothDevice: android.bluetooth.BluetoothSocket createRfcommSocketToServiceRecord(java.util.UUID)>($r7);
+
+     label2:
+        $r6.<com.movesky.app.engine.net.bluetooth.Bluetooth$ConnectedState: android.bluetooth.BluetoothSocket socket> = $r8;
+
+        $r1 = r0.<com.movesky.app.engine.net.bluetooth.Bluetooth$CheckPreviousConnectionState: com.movesky.app.engine.net.bluetooth.Bluetooth this$0>;
+
+     label3:
+        $r6 = staticinvoke <com.movesky.app.engine.net.bluetooth.Bluetooth: com.movesky.app.engine.net.bluetooth.Bluetooth$ConnectedState access$1100(com.movesky.app.engine.net.bluetooth.Bluetooth)>($r1);
+
+     label4:
+        $r8 = $r6.<com.movesky.app.engine.net.bluetooth.Bluetooth$ConnectedState: android.bluetooth.BluetoothSocket socket>;
+
+     label5:
+        virtualinvoke $r8.<android.bluetooth.BluetoothSocket: void connect()>();
+
+     label6:
+        $r1 = r0.<com.movesky.app.engine.net.bluetooth.Bluetooth$CheckPreviousConnectionState: com.movesky.app.engine.net.bluetooth.Bluetooth this$0>;
+
+        $r9 = r0.<com.movesky.app.engine.net.bluetooth.Bluetooth$CheckPreviousConnectionState: com.movesky.app.engine.net.bluetooth.Bluetooth this$0>;
+
+     label7:
+        $r6 = staticinvoke <com.movesky.app.engine.net.bluetooth.Bluetooth: com.movesky.app.engine.net.bluetooth.Bluetooth$ConnectedState access$1100(com.movesky.app.engine.net.bluetooth.Bluetooth)>($r9);
+
+        virtualinvoke $r1.<com.movesky.app.engine.net.bluetooth.Bluetooth: void transition(com.movesky.app.engine.net.bluetooth.Bluetooth$StateBase)>($r6);
+
+     label8:
+        $r1 = r0.<com.movesky.app.engine.net.bluetooth.Bluetooth$CheckPreviousConnectionState: com.movesky.app.engine.net.bluetooth.Bluetooth this$0>;
+
+        $r9 = r0.<com.movesky.app.engine.net.bluetooth.Bluetooth$CheckPreviousConnectionState: com.movesky.app.engine.net.bluetooth.Bluetooth this$0>;
+
+        $r10 = staticinvoke <com.movesky.app.engine.net.bluetooth.Bluetooth: com.movesky.app.engine.net.bluetooth.Bluetooth$DisconnectedState access$1300(com.movesky.app.engine.net.bluetooth.Bluetooth)>($r9);
+
+        virtualinvoke $r1.<com.movesky.app.engine.net.bluetooth.Bluetooth: void transition(com.movesky.app.engine.net.bluetooth.Bluetooth$StateBase)>($r10);
+
+        return;
+
+     label9:
+        $r11 := @caughtexception;
+
+        goto label8;
+
+        catch java.io.IOException from label1 to label2 with label9;
+        catch java.io.IOException from label3 to label4 with label9;
+        catch java.io.IOException from label5 to label6 with label9;
+        catch java.io.IOException from label7 to label8 with label9;
+    }
+}

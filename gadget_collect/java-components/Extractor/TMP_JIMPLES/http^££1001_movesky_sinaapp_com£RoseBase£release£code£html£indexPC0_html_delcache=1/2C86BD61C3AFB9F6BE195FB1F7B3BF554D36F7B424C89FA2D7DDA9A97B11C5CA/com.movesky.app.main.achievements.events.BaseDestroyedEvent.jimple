@@ -1,0 +1,68 @@
+public class com.movesky.app.main.achievements.events.BaseDestroyedEvent extends com.movesky.app.main.achievements.events.BBTHAchievementEvent
+{
+    com.movesky.app.main.Player destroyedBaseOwner;
+    com.movesky.app.main.BeatTrack track;
+
+    public void <init>(com.movesky.app.main.YSSimulation, boolean, float)
+    {
+        com.movesky.app.main.achievements.events.BaseDestroyedEvent r0;
+        com.movesky.app.main.YSSimulation $r1;
+        boolean $z0;
+        float $f0;
+
+        r0 := @this: com.movesky.app.main.achievements.events.BaseDestroyedEvent;
+
+        $r1 := @parameter0: com.movesky.app.main.YSSimulation;
+
+        $z0 := @parameter1: boolean;
+
+        $f0 := @parameter2: float;
+
+        specialinvoke r0.<com.movesky.app.main.achievements.events.BBTHAchievementEvent: void <init>(com.movesky.app.main.YSSimulation,boolean,float)>($r1, $z0, $f0);
+
+        return;
+    }
+
+    public com.movesky.app.main.BeatTrack getBeatTrack()
+    {
+        com.movesky.app.main.achievements.events.BaseDestroyedEvent r0;
+        com.movesky.app.main.BeatTrack r1;
+
+        r0 := @this: com.movesky.app.main.achievements.events.BaseDestroyedEvent;
+
+        r1 = r0.<com.movesky.app.main.achievements.events.BaseDestroyedEvent: com.movesky.app.main.BeatTrack track>;
+
+        return r1;
+    }
+
+    public com.movesky.app.main.Player getDestroyedBaseOwner()
+    {
+        com.movesky.app.main.achievements.events.BaseDestroyedEvent r0;
+        com.movesky.app.main.Player r1;
+
+        r0 := @this: com.movesky.app.main.achievements.events.BaseDestroyedEvent;
+
+        r1 = r0.<com.movesky.app.main.achievements.events.BaseDestroyedEvent: com.movesky.app.main.Player destroyedBaseOwner>;
+
+        return r1;
+    }
+
+    public void set(com.movesky.app.main.Player, com.movesky.app.main.BeatTrack)
+    {
+        com.movesky.app.main.achievements.events.BaseDestroyedEvent r0;
+        com.movesky.app.main.Player $r1;
+        com.movesky.app.main.BeatTrack $r2;
+
+        r0 := @this: com.movesky.app.main.achievements.events.BaseDestroyedEvent;
+
+        $r1 := @parameter0: com.movesky.app.main.Player;
+
+        $r2 := @parameter1: com.movesky.app.main.BeatTrack;
+
+        r0.<com.movesky.app.main.achievements.events.BaseDestroyedEvent: com.movesky.app.main.Player destroyedBaseOwner> = $r1;
+
+        r0.<com.movesky.app.main.achievements.events.BaseDestroyedEvent: com.movesky.app.main.BeatTrack track> = $r2;
+
+        return;
+    }
+}

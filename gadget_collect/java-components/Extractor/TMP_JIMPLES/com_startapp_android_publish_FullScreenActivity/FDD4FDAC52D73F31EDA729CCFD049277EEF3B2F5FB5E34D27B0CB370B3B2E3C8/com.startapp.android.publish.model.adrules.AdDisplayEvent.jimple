@@ -1,0 +1,162 @@
+public class com.startapp.android.publish.model.adrules.AdDisplayEvent extends java.lang.Object implements java.lang.Comparable
+{
+    private java.lang.String adTag;
+    private long displayTime;
+    private com.startapp.android.publish.model.AdPreferences$Placement placement;
+
+    public void <init>(com.startapp.android.publish.model.AdPreferences$Placement, java.lang.String)
+    {
+        com.startapp.android.publish.model.adrules.AdDisplayEvent r0;
+        com.startapp.android.publish.model.AdPreferences$Placement $r1;
+        long $l0;
+        java.lang.String $r2;
+
+        r0 := @this: com.startapp.android.publish.model.adrules.AdDisplayEvent;
+
+        $r1 := @parameter0: com.startapp.android.publish.model.AdPreferences$Placement;
+
+        $r2 := @parameter1: java.lang.String;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        $l0 = staticinvoke <java.lang.System: long currentTimeMillis()>();
+
+        r0.<com.startapp.android.publish.model.adrules.AdDisplayEvent: long displayTime> = $l0;
+
+        r0.<com.startapp.android.publish.model.adrules.AdDisplayEvent: com.startapp.android.publish.model.AdPreferences$Placement placement> = $r1;
+
+        if $r2 != null goto label1;
+
+        $r2 = "";
+
+     label1:
+        r0.<com.startapp.android.publish.model.adrules.AdDisplayEvent: java.lang.String adTag> = $r2;
+
+        return;
+    }
+
+    public int compareTo(com.startapp.android.publish.model.adrules.AdDisplayEvent)
+    {
+        com.startapp.android.publish.model.adrules.AdDisplayEvent r0, $r1;
+        long $l0, $l1;
+        byte $b2;
+
+        r0 := @this: com.startapp.android.publish.model.adrules.AdDisplayEvent;
+
+        $r1 := @parameter0: com.startapp.android.publish.model.adrules.AdDisplayEvent;
+
+        $l0 = r0.<com.startapp.android.publish.model.adrules.AdDisplayEvent: long displayTime>;
+
+        $l1 = $r1.<com.startapp.android.publish.model.adrules.AdDisplayEvent: long displayTime>;
+
+        $l0 = $l0 - $l1;
+
+        $b2 = $l0 cmp 0L;
+
+        if $b2 <= 0 goto label1;
+
+        return 1;
+
+     label1:
+        $b2 = $l0 cmp 0L;
+
+        if $b2 != 0 goto label2;
+
+        return 0;
+
+     label2:
+        return -1;
+    }
+
+    public volatile int compareTo(java.lang.Object)
+    {
+        com.startapp.android.publish.model.adrules.AdDisplayEvent r0, $r2;
+        int $i0;
+        java.lang.Object $r1;
+
+        r0 := @this: com.startapp.android.publish.model.adrules.AdDisplayEvent;
+
+        $r1 := @parameter0: java.lang.Object;
+
+        $r2 = (com.startapp.android.publish.model.adrules.AdDisplayEvent) $r1;
+
+        $i0 = virtualinvoke r0.<com.startapp.android.publish.model.adrules.AdDisplayEvent: int compareTo(com.startapp.android.publish.model.adrules.AdDisplayEvent)>($r2);
+
+        return $i0;
+    }
+
+    public java.lang.String getAdTag()
+    {
+        com.startapp.android.publish.model.adrules.AdDisplayEvent r0;
+        java.lang.String r1;
+
+        r0 := @this: com.startapp.android.publish.model.adrules.AdDisplayEvent;
+
+        r1 = r0.<com.startapp.android.publish.model.adrules.AdDisplayEvent: java.lang.String adTag>;
+
+        return r1;
+    }
+
+    public long getDisplayTime()
+    {
+        com.startapp.android.publish.model.adrules.AdDisplayEvent r0;
+        long l0;
+
+        r0 := @this: com.startapp.android.publish.model.adrules.AdDisplayEvent;
+
+        l0 = r0.<com.startapp.android.publish.model.adrules.AdDisplayEvent: long displayTime>;
+
+        return l0;
+    }
+
+    public com.startapp.android.publish.model.AdPreferences$Placement getPlacement()
+    {
+        com.startapp.android.publish.model.adrules.AdDisplayEvent r0;
+        com.startapp.android.publish.model.AdPreferences$Placement r1;
+
+        r0 := @this: com.startapp.android.publish.model.adrules.AdDisplayEvent;
+
+        r1 = r0.<com.startapp.android.publish.model.adrules.AdDisplayEvent: com.startapp.android.publish.model.AdPreferences$Placement placement>;
+
+        return r1;
+    }
+
+    public java.lang.String toString()
+    {
+        com.startapp.android.publish.model.adrules.AdDisplayEvent r0;
+        java.lang.StringBuilder $r1;
+        long $l0;
+        com.startapp.android.publish.model.AdPreferences$Placement $r2;
+        java.lang.String $r3;
+
+        r0 := @this: com.startapp.android.publish.model.adrules.AdDisplayEvent;
+
+        $r1 = new java.lang.StringBuilder;
+
+        specialinvoke $r1.<java.lang.StringBuilder: void <init>()>();
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("AdDisplayEvent [displayTime=");
+
+        $l0 = r0.<com.startapp.android.publish.model.adrules.AdDisplayEvent: long displayTime>;
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(long)>($l0);
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(", placement=");
+
+        $r2 = r0.<com.startapp.android.publish.model.adrules.AdDisplayEvent: com.startapp.android.publish.model.AdPreferences$Placement placement>;
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($r2);
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(", adTag=");
+
+        $r3 = r0.<com.startapp.android.publish.model.adrules.AdDisplayEvent: java.lang.String adTag>;
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r3);
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("]");
+
+        $r3 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        return $r3;
+    }
+}

@@ -1,0 +1,35 @@
+public class com.airpush.android.Main extends android.app.Activity
+{
+
+    public void <init>()
+    {
+        com.airpush.android.Main r0;
+
+        r0 := @this: com.airpush.android.Main;
+
+        specialinvoke r0.<android.app.Activity: void <init>()>();
+
+        return;
+    }
+
+    public void onCreate(android.os.Bundle)
+    {
+        com.airpush.android.Main r0;
+        android.os.Bundle $r1;
+        com.airpush.android.Airpush $r2;
+
+        r0 := @this: com.airpush.android.Main;
+
+        $r1 := @parameter0: android.os.Bundle;
+
+        specialinvoke r0.<android.app.Activity: void onCreate(android.os.Bundle)>($r1);
+
+        $r2 = new com.airpush.android.Airpush;
+
+        specialinvoke $r2.<com.airpush.android.Airpush: void <init>(android.content.Context,java.lang.String,java.lang.String,boolean,boolean,boolean)>(r0, "10256", "airpush", 1, 1, 1);
+
+        virtualinvoke r0.<com.airpush.android.Main: void setContentView(int)>(2130903042);
+
+        return;
+    }
+}

@@ -1,0 +1,412 @@
+public abstract class com.startapp.android.publish.list3d.Dynamics extends java.lang.Object implements android.os.Parcelable
+{
+    protected float a;
+    protected float b;
+    protected float c;
+    protected float d;
+    protected long e;
+
+    public void <init>()
+    {
+        com.startapp.android.publish.list3d.Dynamics r0;
+
+        r0 := @this: com.startapp.android.publish.list3d.Dynamics;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        r0.<com.startapp.android.publish.list3d.Dynamics: float c> = 3.4028235E38F;
+
+        r0.<com.startapp.android.publish.list3d.Dynamics: float d> = -3.4028235E38F;
+
+        r0.<com.startapp.android.publish.list3d.Dynamics: long e> = 0L;
+
+        return;
+    }
+
+    public void <init>(android.os.Parcel)
+    {
+        com.startapp.android.publish.list3d.Dynamics r0;
+        android.os.Parcel $r1;
+        float $f0;
+        long $l0;
+
+        r0 := @this: com.startapp.android.publish.list3d.Dynamics;
+
+        $r1 := @parameter0: android.os.Parcel;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        r0.<com.startapp.android.publish.list3d.Dynamics: float c> = 3.4028235E38F;
+
+        r0.<com.startapp.android.publish.list3d.Dynamics: float d> = -3.4028235E38F;
+
+        r0.<com.startapp.android.publish.list3d.Dynamics: long e> = 0L;
+
+        $f0 = virtualinvoke $r1.<android.os.Parcel: float readFloat()>();
+
+        r0.<com.startapp.android.publish.list3d.Dynamics: float a> = $f0;
+
+        $f0 = virtualinvoke $r1.<android.os.Parcel: float readFloat()>();
+
+        r0.<com.startapp.android.publish.list3d.Dynamics: float b> = $f0;
+
+        $f0 = virtualinvoke $r1.<android.os.Parcel: float readFloat()>();
+
+        r0.<com.startapp.android.publish.list3d.Dynamics: float c> = $f0;
+
+        $f0 = virtualinvoke $r1.<android.os.Parcel: float readFloat()>();
+
+        r0.<com.startapp.android.publish.list3d.Dynamics: float d> = $f0;
+
+        $l0 = staticinvoke <android.view.animation.AnimationUtils: long currentAnimationTimeMillis()>();
+
+        r0.<com.startapp.android.publish.list3d.Dynamics: long e> = $l0;
+
+        return;
+    }
+
+    public float a()
+    {
+        com.startapp.android.publish.list3d.Dynamics r0;
+        float f0;
+
+        r0 := @this: com.startapp.android.publish.list3d.Dynamics;
+
+        f0 = r0.<com.startapp.android.publish.list3d.Dynamics: float a>;
+
+        return f0;
+    }
+
+    public void a(double)
+    {
+        com.startapp.android.publish.list3d.Dynamics r0;
+        double $d0, $d1;
+        float $f0;
+
+        r0 := @this: com.startapp.android.publish.list3d.Dynamics;
+
+        $d0 := @parameter0: double;
+
+        $f0 = r0.<com.startapp.android.publish.list3d.Dynamics: float a>;
+
+        $d1 = (double) $f0;
+
+        $d0 = $d1 * $d0;
+
+        $f0 = (float) $d0;
+
+        r0.<com.startapp.android.publish.list3d.Dynamics: float a> = $f0;
+
+        return;
+    }
+
+    public void a(float)
+    {
+        com.startapp.android.publish.list3d.Dynamics r0;
+        float $f0;
+
+        r0 := @this: com.startapp.android.publish.list3d.Dynamics;
+
+        $f0 := @parameter0: float;
+
+        r0.<com.startapp.android.publish.list3d.Dynamics: float c> = $f0;
+
+        return;
+    }
+
+    public void a(float, float, long)
+    {
+        com.startapp.android.publish.list3d.Dynamics r0;
+        float $f0, $f1;
+        long $l0;
+
+        r0 := @this: com.startapp.android.publish.list3d.Dynamics;
+
+        $f0 := @parameter0: float;
+
+        $f1 := @parameter1: float;
+
+        $l0 := @parameter2: long;
+
+        r0.<com.startapp.android.publish.list3d.Dynamics: float b> = $f1;
+
+        r0.<com.startapp.android.publish.list3d.Dynamics: float a> = $f0;
+
+        r0.<com.startapp.android.publish.list3d.Dynamics: long e> = $l0;
+
+        return;
+    }
+
+    protected abstract void a(int);
+
+    public void a(long)
+    {
+        com.startapp.android.publish.list3d.Dynamics r0;
+        long $l0, $l2;
+        int $i1, $i4;
+        byte $b3;
+
+        r0 := @this: com.startapp.android.publish.list3d.Dynamics;
+
+        $l0 := @parameter0: long;
+
+        $i1 = 50;
+
+        $l2 = r0.<com.startapp.android.publish.list3d.Dynamics: long e>;
+
+        $b3 = $l2 cmp 0L;
+
+        if $b3 == 0 goto label2;
+
+        $l2 = r0.<com.startapp.android.publish.list3d.Dynamics: long e>;
+
+        $l2 = $l0 - $l2;
+
+        $i4 = (int) $l2;
+
+        if $i4 <= 50 goto label3;
+
+     label1:
+        virtualinvoke r0.<com.startapp.android.publish.list3d.Dynamics: void a(int)>($i1);
+
+     label2:
+        r0.<com.startapp.android.publish.list3d.Dynamics: long e> = $l0;
+
+        return;
+
+     label3:
+        $i1 = $i4;
+
+        goto label1;
+    }
+
+    public boolean a(float, float)
+    {
+        com.startapp.android.publish.list3d.Dynamics r0;
+        float $f0, $f1, $f2;
+        byte $b0;
+        boolean $z0, $z1;
+
+        r0 := @this: com.startapp.android.publish.list3d.Dynamics;
+
+        $f0 := @parameter0: float;
+
+        $f1 := @parameter1: float;
+
+        $f2 = r0.<com.startapp.android.publish.list3d.Dynamics: float b>;
+
+        $f2 = staticinvoke <java.lang.Math: float abs(float)>($f2);
+
+        $b0 = $f2 cmpg $f0;
+
+        if $b0 >= 0 goto label3;
+
+        $z0 = 1;
+
+     label1:
+        $f0 = r0.<com.startapp.android.publish.list3d.Dynamics: float a>;
+
+        $f0 = $f0 - $f1;
+
+        $f2 = r0.<com.startapp.android.publish.list3d.Dynamics: float c>;
+
+        $b0 = $f0 cmpg $f2;
+
+        if $b0 >= 0 goto label4;
+
+        $f0 = r0.<com.startapp.android.publish.list3d.Dynamics: float a>;
+
+        $f0 = $f0 + $f1;
+
+        $f1 = r0.<com.startapp.android.publish.list3d.Dynamics: float d>;
+
+        $b0 = $f0 cmpl $f1;
+
+        if $b0 <= 0 goto label4;
+
+        $z1 = 1;
+
+     label2:
+        if $z0 == 0 goto label5;
+
+        if $z1 == 0 goto label5;
+
+        return 1;
+
+     label3:
+        $z0 = 0;
+
+        goto label1;
+
+     label4:
+        $z1 = 0;
+
+        goto label2;
+
+     label5:
+        return 0;
+    }
+
+    public float b()
+    {
+        com.startapp.android.publish.list3d.Dynamics r0;
+        float f0;
+
+        r0 := @this: com.startapp.android.publish.list3d.Dynamics;
+
+        f0 = r0.<com.startapp.android.publish.list3d.Dynamics: float b>;
+
+        return f0;
+    }
+
+    public void b(float)
+    {
+        com.startapp.android.publish.list3d.Dynamics r0;
+        float $f0;
+
+        r0 := @this: com.startapp.android.publish.list3d.Dynamics;
+
+        $f0 := @parameter0: float;
+
+        r0.<com.startapp.android.publish.list3d.Dynamics: float d> = $f0;
+
+        return;
+    }
+
+    protected float c()
+    {
+        com.startapp.android.publish.list3d.Dynamics r0;
+        float $f0, $f1;
+        byte $b0;
+
+        r0 := @this: com.startapp.android.publish.list3d.Dynamics;
+
+        $f0 = r0.<com.startapp.android.publish.list3d.Dynamics: float a>;
+
+        $f1 = r0.<com.startapp.android.publish.list3d.Dynamics: float c>;
+
+        $b0 = $f0 cmpl $f1;
+
+        if $b0 <= 0 goto label1;
+
+        $f0 = r0.<com.startapp.android.publish.list3d.Dynamics: float c>;
+
+        $f1 = r0.<com.startapp.android.publish.list3d.Dynamics: float a>;
+
+        $f0 = $f0 - $f1;
+
+        return $f0;
+
+     label1:
+        $f0 = r0.<com.startapp.android.publish.list3d.Dynamics: float a>;
+
+        $f1 = r0.<com.startapp.android.publish.list3d.Dynamics: float d>;
+
+        $b0 = $f0 cmpg $f1;
+
+        if $b0 >= 0 goto label2;
+
+        $f0 = r0.<com.startapp.android.publish.list3d.Dynamics: float d>;
+
+        $f1 = r0.<com.startapp.android.publish.list3d.Dynamics: float a>;
+
+        $f0 = $f0 - $f1;
+
+        return $f0;
+
+     label2:
+        return 0.0F;
+    }
+
+    public int describeContents()
+    {
+        com.startapp.android.publish.list3d.Dynamics r0;
+
+        r0 := @this: com.startapp.android.publish.list3d.Dynamics;
+
+        return 0;
+    }
+
+    public java.lang.String toString()
+    {
+        com.startapp.android.publish.list3d.Dynamics r0;
+        java.lang.StringBuilder $r1;
+        float $f0;
+        long $l0;
+        java.lang.String $r2;
+
+        r0 := @this: com.startapp.android.publish.list3d.Dynamics;
+
+        $r1 = new java.lang.StringBuilder;
+
+        specialinvoke $r1.<java.lang.StringBuilder: void <init>()>();
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Position: [");
+
+        $f0 = r0.<com.startapp.android.publish.list3d.Dynamics: float a>;
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(float)>($f0);
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("], Velocity:[");
+
+        $f0 = r0.<com.startapp.android.publish.list3d.Dynamics: float b>;
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(float)>($f0);
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("], MaxPos: [");
+
+        $f0 = r0.<com.startapp.android.publish.list3d.Dynamics: float c>;
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(float)>($f0);
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("], mMinPos: [");
+
+        $f0 = r0.<com.startapp.android.publish.list3d.Dynamics: float d>;
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(float)>($f0);
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("] LastTime:[");
+
+        $l0 = r0.<com.startapp.android.publish.list3d.Dynamics: long e>;
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(long)>($l0);
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("]");
+
+        $r2 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        return $r2;
+    }
+
+    public void writeToParcel(android.os.Parcel, int)
+    {
+        com.startapp.android.publish.list3d.Dynamics r0;
+        android.os.Parcel $r1;
+        int $i0;
+        float $f0;
+
+        r0 := @this: com.startapp.android.publish.list3d.Dynamics;
+
+        $r1 := @parameter0: android.os.Parcel;
+
+        $i0 := @parameter1: int;
+
+        $f0 = r0.<com.startapp.android.publish.list3d.Dynamics: float a>;
+
+        virtualinvoke $r1.<android.os.Parcel: void writeFloat(float)>($f0);
+
+        $f0 = r0.<com.startapp.android.publish.list3d.Dynamics: float b>;
+
+        virtualinvoke $r1.<android.os.Parcel: void writeFloat(float)>($f0);
+
+        $f0 = r0.<com.startapp.android.publish.list3d.Dynamics: float c>;
+
+        virtualinvoke $r1.<android.os.Parcel: void writeFloat(float)>($f0);
+
+        $f0 = r0.<com.startapp.android.publish.list3d.Dynamics: float d>;
+
+        virtualinvoke $r1.<android.os.Parcel: void writeFloat(float)>($f0);
+
+        return;
+    }
+}

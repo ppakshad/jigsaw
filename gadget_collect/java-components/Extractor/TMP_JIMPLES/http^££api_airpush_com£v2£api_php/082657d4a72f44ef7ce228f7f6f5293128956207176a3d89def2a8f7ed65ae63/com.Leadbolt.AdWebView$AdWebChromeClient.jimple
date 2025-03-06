@@ -1,0 +1,123 @@
+class com.Leadbolt.AdWebView$AdWebChromeClient extends android.webkit.WebChromeClient
+{
+    private android.content.Context ctx;
+    final com.Leadbolt.AdWebView this$0;
+
+    public void <init>(com.Leadbolt.AdWebView, android.content.Context)
+    {
+        com.Leadbolt.AdWebView$AdWebChromeClient r0;
+        com.Leadbolt.AdWebView $r1;
+        android.content.Context $r2;
+
+        r0 := @this: com.Leadbolt.AdWebView$AdWebChromeClient;
+
+        $r1 := @parameter0: com.Leadbolt.AdWebView;
+
+        $r2 := @parameter1: android.content.Context;
+
+        r0.<com.Leadbolt.AdWebView$AdWebChromeClient: com.Leadbolt.AdWebView this$0> = $r1;
+
+        specialinvoke r0.<android.webkit.WebChromeClient: void <init>()>();
+
+        r0.<com.Leadbolt.AdWebView$AdWebChromeClient: android.content.Context ctx> = $r2;
+
+        return;
+    }
+
+    public boolean onJsAlert(android.webkit.WebView, java.lang.String, java.lang.String, android.webkit.JsResult)
+    {
+        com.Leadbolt.AdWebView$AdWebChromeClient r0;
+        android.webkit.WebView $r1;
+        java.lang.String $r2, $r3;
+        android.webkit.JsResult $r4;
+        com.Leadbolt.AdWebView$AdWebChromeClient$1 $r5;
+        android.app.AlertDialog$Builder $r6;
+        android.content.Context $r7;
+        android.app.AlertDialog $r8;
+
+        r0 := @this: com.Leadbolt.AdWebView$AdWebChromeClient;
+
+        $r1 := @parameter0: android.webkit.WebView;
+
+        $r2 := @parameter1: java.lang.String;
+
+        $r3 := @parameter2: java.lang.String;
+
+        $r4 := @parameter3: android.webkit.JsResult;
+
+        $r6 = new android.app.AlertDialog$Builder;
+
+        $r7 = r0.<com.Leadbolt.AdWebView$AdWebChromeClient: android.content.Context ctx>;
+
+        specialinvoke $r6.<android.app.AlertDialog$Builder: void <init>(android.content.Context)>($r7);
+
+        $r6 = virtualinvoke $r6.<android.app.AlertDialog$Builder: android.app.AlertDialog$Builder setTitle(java.lang.CharSequence)>("Alert");
+
+        $r6 = virtualinvoke $r6.<android.app.AlertDialog$Builder: android.app.AlertDialog$Builder setMessage(java.lang.CharSequence)>($r3);
+
+        $r5 = new com.Leadbolt.AdWebView$AdWebChromeClient$1;
+
+        specialinvoke $r5.<com.Leadbolt.AdWebView$AdWebChromeClient$1: void <init>(com.Leadbolt.AdWebView$AdWebChromeClient,android.webkit.JsResult)>(r0, $r4);
+
+        $r6 = virtualinvoke $r6.<android.app.AlertDialog$Builder: android.app.AlertDialog$Builder setPositiveButton(int,android.content.DialogInterface$OnClickListener)>(17039370, $r5);
+
+        $r6 = virtualinvoke $r6.<android.app.AlertDialog$Builder: android.app.AlertDialog$Builder setCancelable(boolean)>(0);
+
+        $r8 = virtualinvoke $r6.<android.app.AlertDialog$Builder: android.app.AlertDialog create()>();
+
+        virtualinvoke $r8.<android.app.AlertDialog: void show()>();
+
+        return 1;
+    }
+
+    public boolean onJsConfirm(android.webkit.WebView, java.lang.String, java.lang.String, android.webkit.JsResult)
+    {
+        com.Leadbolt.AdWebView$AdWebChromeClient r0;
+        android.webkit.WebView $r1;
+        java.lang.String $r2, $r3;
+        android.webkit.JsResult $r4;
+        android.app.AlertDialog$Builder $r5;
+        android.content.Context $r6;
+        com.Leadbolt.AdWebView$AdWebChromeClient$2 $r7;
+        com.Leadbolt.AdWebView$AdWebChromeClient$3 $r8;
+        android.app.AlertDialog $r9;
+
+        r0 := @this: com.Leadbolt.AdWebView$AdWebChromeClient;
+
+        $r1 := @parameter0: android.webkit.WebView;
+
+        $r2 := @parameter1: java.lang.String;
+
+        $r3 := @parameter2: java.lang.String;
+
+        $r4 := @parameter3: android.webkit.JsResult;
+
+        $r5 = new android.app.AlertDialog$Builder;
+
+        $r6 = r0.<com.Leadbolt.AdWebView$AdWebChromeClient: android.content.Context ctx>;
+
+        specialinvoke $r5.<android.app.AlertDialog$Builder: void <init>(android.content.Context)>($r6);
+
+        $r5 = virtualinvoke $r5.<android.app.AlertDialog$Builder: android.app.AlertDialog$Builder setTitle(java.lang.CharSequence)>("Confirm");
+
+        $r5 = virtualinvoke $r5.<android.app.AlertDialog$Builder: android.app.AlertDialog$Builder setMessage(java.lang.CharSequence)>($r3);
+
+        $r7 = new com.Leadbolt.AdWebView$AdWebChromeClient$2;
+
+        specialinvoke $r7.<com.Leadbolt.AdWebView$AdWebChromeClient$2: void <init>(com.Leadbolt.AdWebView$AdWebChromeClient,android.webkit.JsResult)>(r0, $r4);
+
+        $r5 = virtualinvoke $r5.<android.app.AlertDialog$Builder: android.app.AlertDialog$Builder setPositiveButton(int,android.content.DialogInterface$OnClickListener)>(17039370, $r7);
+
+        $r8 = new com.Leadbolt.AdWebView$AdWebChromeClient$3;
+
+        specialinvoke $r8.<com.Leadbolt.AdWebView$AdWebChromeClient$3: void <init>(com.Leadbolt.AdWebView$AdWebChromeClient,android.webkit.JsResult)>(r0, $r4);
+
+        $r5 = virtualinvoke $r5.<android.app.AlertDialog$Builder: android.app.AlertDialog$Builder setNegativeButton(int,android.content.DialogInterface$OnClickListener)>(17039360, $r8);
+
+        $r9 = virtualinvoke $r5.<android.app.AlertDialog$Builder: android.app.AlertDialog create()>();
+
+        virtualinvoke $r9.<android.app.AlertDialog: void show()>();
+
+        return 1;
+    }
+}

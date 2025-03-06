@@ -1,0 +1,155 @@
+public class org.codehaus.jackson.map.ObjectMapper$DefaultTypeResolverBuilder extends org.codehaus.jackson.map.jsontype.impl.StdTypeResolverBuilder
+{
+    protected final org.codehaus.jackson.map.ObjectMapper$DefaultTyping _appliesFor;
+
+    public void <init>(org.codehaus.jackson.map.ObjectMapper$DefaultTyping)
+    {
+        org.codehaus.jackson.map.ObjectMapper$DefaultTypeResolverBuilder r0;
+        org.codehaus.jackson.map.ObjectMapper$DefaultTyping $r1;
+
+        r0 := @this: org.codehaus.jackson.map.ObjectMapper$DefaultTypeResolverBuilder;
+
+        $r1 := @parameter0: org.codehaus.jackson.map.ObjectMapper$DefaultTyping;
+
+        specialinvoke r0.<org.codehaus.jackson.map.jsontype.impl.StdTypeResolverBuilder: void <init>()>();
+
+        r0.<org.codehaus.jackson.map.ObjectMapper$DefaultTypeResolverBuilder: org.codehaus.jackson.map.ObjectMapper$DefaultTyping _appliesFor> = $r1;
+
+        return;
+    }
+
+    public org.codehaus.jackson.map.TypeDeserializer buildTypeDeserializer(org.codehaus.jackson.type.JavaType, java.util.Collection, org.codehaus.jackson.map.BeanProperty)
+    {
+        org.codehaus.jackson.map.ObjectMapper$DefaultTypeResolverBuilder r0;
+        org.codehaus.jackson.type.JavaType $r1;
+        java.util.Collection r2;
+        org.codehaus.jackson.map.BeanProperty $r3;
+        boolean $z0;
+        org.codehaus.jackson.map.TypeDeserializer $r4;
+
+        r0 := @this: org.codehaus.jackson.map.ObjectMapper$DefaultTypeResolverBuilder;
+
+        $r1 := @parameter0: org.codehaus.jackson.type.JavaType;
+
+        r2 := @parameter1: java.util.Collection;
+
+        $r3 := @parameter2: org.codehaus.jackson.map.BeanProperty;
+
+        $z0 = virtualinvoke r0.<org.codehaus.jackson.map.ObjectMapper$DefaultTypeResolverBuilder: boolean useForType(org.codehaus.jackson.type.JavaType)>($r1);
+
+        if $z0 == 0 goto label1;
+
+        $r4 = specialinvoke r0.<org.codehaus.jackson.map.jsontype.impl.StdTypeResolverBuilder: org.codehaus.jackson.map.TypeDeserializer buildTypeDeserializer(org.codehaus.jackson.type.JavaType,java.util.Collection,org.codehaus.jackson.map.BeanProperty)>($r1, r2, $r3);
+
+        return $r4;
+
+     label1:
+        return null;
+    }
+
+    public org.codehaus.jackson.map.TypeSerializer buildTypeSerializer(org.codehaus.jackson.type.JavaType, java.util.Collection, org.codehaus.jackson.map.BeanProperty)
+    {
+        org.codehaus.jackson.map.ObjectMapper$DefaultTypeResolverBuilder r0;
+        org.codehaus.jackson.type.JavaType $r1;
+        java.util.Collection r2;
+        org.codehaus.jackson.map.BeanProperty $r3;
+        boolean $z0;
+        org.codehaus.jackson.map.TypeSerializer $r4;
+
+        r0 := @this: org.codehaus.jackson.map.ObjectMapper$DefaultTypeResolverBuilder;
+
+        $r1 := @parameter0: org.codehaus.jackson.type.JavaType;
+
+        r2 := @parameter1: java.util.Collection;
+
+        $r3 := @parameter2: org.codehaus.jackson.map.BeanProperty;
+
+        $z0 = virtualinvoke r0.<org.codehaus.jackson.map.ObjectMapper$DefaultTypeResolverBuilder: boolean useForType(org.codehaus.jackson.type.JavaType)>($r1);
+
+        if $z0 == 0 goto label1;
+
+        $r4 = specialinvoke r0.<org.codehaus.jackson.map.jsontype.impl.StdTypeResolverBuilder: org.codehaus.jackson.map.TypeSerializer buildTypeSerializer(org.codehaus.jackson.type.JavaType,java.util.Collection,org.codehaus.jackson.map.BeanProperty)>($r1, r2, $r3);
+
+        return $r4;
+
+     label1:
+        return null;
+    }
+
+    public boolean useForType(org.codehaus.jackson.type.JavaType)
+    {
+        org.codehaus.jackson.map.ObjectMapper$DefaultTypeResolverBuilder r0;
+        org.codehaus.jackson.type.JavaType $r1;
+        int[] $r2;
+        org.codehaus.jackson.map.ObjectMapper$DefaultTyping $r3;
+        int $i0;
+        java.lang.Class $r4;
+        boolean $z0;
+
+        r0 := @this: org.codehaus.jackson.map.ObjectMapper$DefaultTypeResolverBuilder;
+
+        $r1 := @parameter0: org.codehaus.jackson.type.JavaType;
+
+        $r2 = <org.codehaus.jackson.map.ObjectMapper$2: int[] $SwitchMap$org$codehaus$jackson$map$ObjectMapper$DefaultTyping>;
+
+        $r3 = r0.<org.codehaus.jackson.map.ObjectMapper$DefaultTypeResolverBuilder: org.codehaus.jackson.map.ObjectMapper$DefaultTyping _appliesFor>;
+
+        $i0 = virtualinvoke $r3.<org.codehaus.jackson.map.ObjectMapper$DefaultTyping: int ordinal()>();
+
+        $i0 = $r2[$i0];
+
+        lookupswitch($i0)
+        {
+            case 1: goto label2;
+            case 2: goto label3;
+            case 3: goto label6;
+            default: goto label1;
+        };
+
+     label1:
+        $r4 = virtualinvoke $r1.<org.codehaus.jackson.type.JavaType: java.lang.Class getRawClass()>();
+
+        if $r4 != class "Ljava/lang/Object;" goto label8;
+
+        return 1;
+
+     label2:
+        $z0 = virtualinvoke $r1.<org.codehaus.jackson.type.JavaType: boolean isArrayType()>();
+
+        if $z0 == 0 goto label3;
+
+        $r1 = virtualinvoke $r1.<org.codehaus.jackson.type.JavaType: org.codehaus.jackson.type.JavaType getContentType()>();
+
+     label3:
+        $r4 = virtualinvoke $r1.<org.codehaus.jackson.type.JavaType: java.lang.Class getRawClass()>();
+
+        if $r4 == class "Ljava/lang/Object;" goto label4;
+
+        $z0 = virtualinvoke $r1.<org.codehaus.jackson.type.JavaType: boolean isConcrete()>();
+
+        if $z0 != 0 goto label5;
+
+     label4:
+        return 1;
+
+     label5:
+        return 0;
+
+     label6:
+        $z0 = virtualinvoke $r1.<org.codehaus.jackson.type.JavaType: boolean isArrayType()>();
+
+        if $z0 == 0 goto label7;
+
+        $r1 = virtualinvoke $r1.<org.codehaus.jackson.type.JavaType: org.codehaus.jackson.type.JavaType getContentType()>();
+
+     label7:
+        $z0 = virtualinvoke $r1.<org.codehaus.jackson.type.JavaType: boolean isFinal()>();
+
+        if $z0 != 0 goto label8;
+
+        return 1;
+
+     label8:
+        return 0;
+    }
+}

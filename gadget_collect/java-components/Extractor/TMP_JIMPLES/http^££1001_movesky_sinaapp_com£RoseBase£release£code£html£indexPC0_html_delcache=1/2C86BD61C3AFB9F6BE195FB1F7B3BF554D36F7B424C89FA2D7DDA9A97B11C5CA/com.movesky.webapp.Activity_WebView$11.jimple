@@ -1,0 +1,121 @@
+class com.movesky.webapp.Activity_WebView$11 extends android.webkit.WebViewClient
+{
+    final com.movesky.webapp.Activity_WebView this$0;
+
+    void <init>(com.movesky.webapp.Activity_WebView)
+    {
+        com.movesky.webapp.Activity_WebView$11 r0;
+        com.movesky.webapp.Activity_WebView $r1;
+
+        r0 := @this: com.movesky.webapp.Activity_WebView$11;
+
+        $r1 := @parameter0: com.movesky.webapp.Activity_WebView;
+
+        r0.<com.movesky.webapp.Activity_WebView$11: com.movesky.webapp.Activity_WebView this$0> = $r1;
+
+        specialinvoke r0.<android.webkit.WebViewClient: void <init>()>();
+
+        return;
+    }
+
+    public void onPageFinished(android.webkit.WebView, java.lang.String)
+    {
+        com.movesky.webapp.Activity_WebView$11 r0;
+        android.webkit.WebView $r1;
+        java.lang.String $r2;
+        android.content.Context $r3;
+
+        r0 := @this: com.movesky.webapp.Activity_WebView$11;
+
+        $r1 := @parameter0: android.webkit.WebView;
+
+        $r2 := @parameter1: java.lang.String;
+
+        specialinvoke r0.<android.webkit.WebViewClient: void onPageFinished(android.webkit.WebView,java.lang.String)>($r1, $r2);
+
+        $r3 = <com.movesky.webapp.Activity_WebView: android.content.Context m_ct>;
+
+        staticinvoke <com.movesky.webapp.YSHtml: void SendLog(android.content.Context,java.lang.String,java.lang.String)>($r3, "***onPageFinished", $r2);
+
+        return;
+    }
+
+    public void onPageStarted(android.webkit.WebView, java.lang.String, android.graphics.Bitmap)
+    {
+        com.movesky.webapp.Activity_WebView$11 r0;
+        android.webkit.WebView $r1;
+        java.lang.String $r2;
+        android.graphics.Bitmap $r3;
+
+        r0 := @this: com.movesky.webapp.Activity_WebView$11;
+
+        $r1 := @parameter0: android.webkit.WebView;
+
+        $r2 := @parameter1: java.lang.String;
+
+        $r3 := @parameter2: android.graphics.Bitmap;
+
+        specialinvoke r0.<android.webkit.WebViewClient: void onPageStarted(android.webkit.WebView,java.lang.String,android.graphics.Bitmap)>($r1, $r2, $r3);
+
+        return;
+    }
+
+    public void onReceivedError(android.webkit.WebView, int, java.lang.String, java.lang.String)
+    {
+        com.movesky.webapp.Activity_WebView$11 r0;
+        android.webkit.WebView $r1;
+        int $i0;
+        java.lang.String $r2, $r3;
+        android.content.Context $r4;
+
+        r0 := @this: com.movesky.webapp.Activity_WebView$11;
+
+        $r1 := @parameter0: android.webkit.WebView;
+
+        $i0 := @parameter1: int;
+
+        $r2 := @parameter2: java.lang.String;
+
+        $r3 := @parameter3: java.lang.String;
+
+        specialinvoke r0.<android.webkit.WebViewClient: void onReceivedError(android.webkit.WebView,int,java.lang.String,java.lang.String)>($r1, $i0, $r2, $r3);
+
+        $r4 = <com.movesky.webapp.Activity_WebView: android.content.Context m_ct>;
+
+        staticinvoke <com.movesky.webapp.YSHtml: void SendLog(android.content.Context,java.lang.String,java.lang.String)>($r4, "\u540c\u6b65\u5931\u8d25\uff0c\u8bf7\u7a0d\u5019\u518d\u8bd5", "");
+
+        return;
+    }
+
+    public boolean shouldOverrideUrlLoading(android.webkit.WebView, java.lang.String)
+    {
+        com.movesky.webapp.Activity_WebView$11 r0;
+        android.webkit.WebView $r1;
+        java.lang.String $r2, $r4;
+        android.content.Context $r3;
+        boolean $z0;
+
+        r0 := @this: com.movesky.webapp.Activity_WebView$11;
+
+        $r1 := @parameter0: android.webkit.WebView;
+
+        $r2 := @parameter1: java.lang.String;
+
+        $r3 = <com.movesky.webapp.Activity_WebView: android.content.Context m_ct>;
+
+        staticinvoke <com.movesky.webapp.YSHtml: void SendLog(android.content.Context,java.lang.String,java.lang.String)>($r3, "***UrlLoading url=", $r2);
+
+        $r4 = virtualinvoke $r2.<java.lang.String: java.lang.String substring(int,int)>(0, 4);
+
+        $z0 = virtualinvoke $r4.<java.lang.String: boolean equals(java.lang.Object)>("cmd:");
+
+        if $z0 != 1 goto label1;
+
+        $r3 = <com.movesky.webapp.Activity_WebView: android.content.Context m_ct>;
+
+        staticinvoke <com.movesky.webapp.YSHtml: java.lang.String UrlLoad(android.content.Context,android.webkit.WebView,java.lang.String)>($r3, $r1, $r2);
+
+     label1:
+        return 1;
+    }
+}

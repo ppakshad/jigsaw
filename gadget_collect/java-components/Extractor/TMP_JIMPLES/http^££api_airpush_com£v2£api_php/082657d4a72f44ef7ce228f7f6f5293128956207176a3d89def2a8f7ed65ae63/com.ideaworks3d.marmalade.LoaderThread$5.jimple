@@ -1,0 +1,72 @@
+class com.ideaworks3d.marmalade.LoaderThread$5 extends java.lang.Object
+{
+    static final int[] $SwitchMap$com$ideaworks3d$marmalade$LoaderThread$AudioState;
+
+    static void <clinit>()
+    {
+        com.ideaworks3d.marmalade.LoaderThread$AudioState[] $r0;
+        int $i0;
+        int[] $r1;
+        com.ideaworks3d.marmalade.LoaderThread$AudioState $r2;
+        java.lang.NoSuchFieldError $r3, $r4, $r5;
+
+        $r0 = staticinvoke <com.ideaworks3d.marmalade.LoaderThread$AudioState: com.ideaworks3d.marmalade.LoaderThread$AudioState[] values()>();
+
+        $i0 = lengthof $r0;
+
+        $r1 = newarray (int)[$i0];
+
+        <com.ideaworks3d.marmalade.LoaderThread$5: int[] $SwitchMap$com$ideaworks3d$marmalade$LoaderThread$AudioState> = $r1;
+
+     label1:
+        $r1 = <com.ideaworks3d.marmalade.LoaderThread$5: int[] $SwitchMap$com$ideaworks3d$marmalade$LoaderThread$AudioState>;
+
+        $r2 = <com.ideaworks3d.marmalade.LoaderThread$AudioState: com.ideaworks3d.marmalade.LoaderThread$AudioState Started>;
+
+        $i0 = virtualinvoke $r2.<com.ideaworks3d.marmalade.LoaderThread$AudioState: int ordinal()>();
+
+     label2:
+        $r1[$i0] = 1;
+
+     label3:
+        $r1 = <com.ideaworks3d.marmalade.LoaderThread$5: int[] $SwitchMap$com$ideaworks3d$marmalade$LoaderThread$AudioState>;
+
+        $r2 = <com.ideaworks3d.marmalade.LoaderThread$AudioState: com.ideaworks3d.marmalade.LoaderThread$AudioState Paused>;
+
+        $i0 = virtualinvoke $r2.<com.ideaworks3d.marmalade.LoaderThread$AudioState: int ordinal()>();
+
+     label4:
+        $r1[$i0] = 2;
+
+     label5:
+        $r1 = <com.ideaworks3d.marmalade.LoaderThread$5: int[] $SwitchMap$com$ideaworks3d$marmalade$LoaderThread$AudioState>;
+
+        $r2 = <com.ideaworks3d.marmalade.LoaderThread$AudioState: com.ideaworks3d.marmalade.LoaderThread$AudioState Error>;
+
+        $i0 = virtualinvoke $r2.<com.ideaworks3d.marmalade.LoaderThread$AudioState: int ordinal()>();
+
+     label6:
+        $r1[$i0] = 3;
+
+        return;
+
+     label7:
+        $r3 := @caughtexception;
+
+        return;
+
+     label8:
+        $r4 := @caughtexception;
+
+        goto label5;
+
+     label9:
+        $r5 := @caughtexception;
+
+        goto label3;
+
+        catch java.lang.NoSuchFieldError from label1 to label2 with label9;
+        catch java.lang.NoSuchFieldError from label3 to label4 with label8;
+        catch java.lang.NoSuchFieldError from label5 to label6 with label7;
+    }
+}

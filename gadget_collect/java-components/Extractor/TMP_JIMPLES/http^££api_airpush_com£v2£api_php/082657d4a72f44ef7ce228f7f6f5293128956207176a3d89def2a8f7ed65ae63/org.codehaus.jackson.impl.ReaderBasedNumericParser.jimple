@@ -1,0 +1,593 @@
+public abstract class org.codehaus.jackson.impl.ReaderBasedNumericParser extends org.codehaus.jackson.impl.ReaderBasedParserBase
+{
+
+    public void <init>(org.codehaus.jackson.io.IOContext, int, java.io.Reader)
+    {
+        org.codehaus.jackson.impl.ReaderBasedNumericParser r0;
+        org.codehaus.jackson.io.IOContext $r1;
+        int $i0;
+        java.io.Reader $r2;
+
+        r0 := @this: org.codehaus.jackson.impl.ReaderBasedNumericParser;
+
+        $r1 := @parameter0: org.codehaus.jackson.io.IOContext;
+
+        $i0 := @parameter1: int;
+
+        $r2 := @parameter2: java.io.Reader;
+
+        specialinvoke r0.<org.codehaus.jackson.impl.ReaderBasedParserBase: void <init>(org.codehaus.jackson.io.IOContext,int,java.io.Reader)>($r1, $i0, $r2);
+
+        return;
+    }
+
+    private final org.codehaus.jackson.JsonToken parseNumberText2(boolean) throws java.io.IOException, org.codehaus.jackson.JsonParseException
+    {
+        org.codehaus.jackson.impl.ReaderBasedNumericParser r0;
+        boolean $z0, z1, $z2;
+        org.codehaus.jackson.util.TextBuffer $r1;
+        char[] $r2, r3;
+        int i0, i1, $i2, $i3, $i5, $i6;
+        char c4, $c7;
+        java.lang.StringBuilder $r4;
+        java.lang.String $r5;
+        org.codehaus.jackson.JsonToken $r6;
+
+        r0 := @this: org.codehaus.jackson.impl.ReaderBasedNumericParser;
+
+        $z0 := @parameter0: boolean;
+
+        $r1 = r0.<org.codehaus.jackson.impl.ReaderBasedNumericParser: org.codehaus.jackson.util.TextBuffer _textBuffer>;
+
+        $r2 = virtualinvoke $r1.<org.codehaus.jackson.util.TextBuffer: char[] emptyAndGetCurrentSegment()>();
+
+        r3 = $r2;
+
+        i0 = 0;
+
+        if $z0 == 0 goto label01;
+
+        $r2[0] = 45;
+
+        i0 = 1;
+
+     label01:
+        i1 = 0;
+
+        z1 = 0;
+
+     label02:
+        $i2 = r0.<org.codehaus.jackson.impl.ReaderBasedNumericParser: int _inputPtr>;
+
+        $i3 = r0.<org.codehaus.jackson.impl.ReaderBasedNumericParser: int _inputEnd>;
+
+        if $i2 < $i3 goto label18;
+
+        $z2 = virtualinvoke r0.<org.codehaus.jackson.impl.ReaderBasedNumericParser: boolean loadMore()>();
+
+        if $z2 != 0 goto label18;
+
+        c4 = 0;
+
+        z1 = 1;
+
+     label03:
+        if i1 != 0 goto label04;
+
+        $r4 = new java.lang.StringBuilder;
+
+        specialinvoke $r4.<java.lang.StringBuilder: void <init>()>();
+
+        $r4 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Missing integer part (next char ");
+
+        $r5 = staticinvoke <org.codehaus.jackson.impl.ReaderBasedNumericParser: java.lang.String _getCharDesc(int)>(c4);
+
+        $r4 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r5);
+
+        $r4 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(")");
+
+        $r5 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        virtualinvoke r0.<org.codehaus.jackson.impl.ReaderBasedNumericParser: void reportInvalidNumber(java.lang.String)>($r5);
+
+     label04:
+        $i2 = 0;
+
+        if c4 != 46 goto label07;
+
+        r3[i0] = c4;
+
+        i0 = i0 + 1;
+
+     label05:
+        $i3 = r0.<org.codehaus.jackson.impl.ReaderBasedNumericParser: int _inputPtr>;
+
+        $i5 = r0.<org.codehaus.jackson.impl.ReaderBasedNumericParser: int _inputEnd>;
+
+        if $i3 < $i5 goto label21;
+
+        $z2 = virtualinvoke r0.<org.codehaus.jackson.impl.ReaderBasedNumericParser: boolean loadMore()>();
+
+        if $z2 != 0 goto label21;
+
+        z1 = 1;
+
+     label06:
+        if $i2 != 0 goto label07;
+
+        virtualinvoke r0.<org.codehaus.jackson.impl.ReaderBasedNumericParser: void reportUnexpectedNumberChar(int,java.lang.String)>(c4, "Decimal point not followed by a digit");
+
+     label07:
+        $i3 = 0;
+
+        if c4 == 101 goto label08;
+
+        if c4 != 69 goto label16;
+
+     label08:
+        $i5 = lengthof r3;
+
+        if i0 < $i5 goto label09;
+
+        $r1 = r0.<org.codehaus.jackson.impl.ReaderBasedNumericParser: org.codehaus.jackson.util.TextBuffer _textBuffer>;
+
+        r3 = virtualinvoke $r1.<org.codehaus.jackson.util.TextBuffer: char[] finishCurrentSegment()>();
+
+        i0 = 0;
+
+     label09:
+        $i5 = i0 + 1;
+
+        r3[i0] = c4;
+
+        i0 = r0.<org.codehaus.jackson.impl.ReaderBasedNumericParser: int _inputPtr>;
+
+        $i6 = r0.<org.codehaus.jackson.impl.ReaderBasedNumericParser: int _inputEnd>;
+
+        if i0 >= $i6 goto label23;
+
+        $r2 = r0.<org.codehaus.jackson.impl.ReaderBasedNumericParser: char[] _inputBuffer>;
+
+        i0 = r0.<org.codehaus.jackson.impl.ReaderBasedNumericParser: int _inputPtr>;
+
+        $i6 = i0 + 1;
+
+        r0.<org.codehaus.jackson.impl.ReaderBasedNumericParser: int _inputPtr> = $i6;
+
+        c4 = $r2[i0];
+
+     label10:
+        if c4 == 45 goto label11;
+
+        if c4 != 43 goto label27;
+
+     label11:
+        i0 = lengthof r3;
+
+        if $i5 < i0 goto label26;
+
+        $r1 = r0.<org.codehaus.jackson.impl.ReaderBasedNumericParser: org.codehaus.jackson.util.TextBuffer _textBuffer>;
+
+        r3 = virtualinvoke $r1.<org.codehaus.jackson.util.TextBuffer: char[] finishCurrentSegment()>();
+
+        $i5 = 0;
+
+     label12:
+        i0 = $i5 + 1;
+
+        r3[$i5] = c4;
+
+        $i5 = r0.<org.codehaus.jackson.impl.ReaderBasedNumericParser: int _inputPtr>;
+
+        $i6 = r0.<org.codehaus.jackson.impl.ReaderBasedNumericParser: int _inputEnd>;
+
+        if $i5 >= $i6 goto label24;
+
+        $r2 = r0.<org.codehaus.jackson.impl.ReaderBasedNumericParser: char[] _inputBuffer>;
+
+        $i5 = r0.<org.codehaus.jackson.impl.ReaderBasedNumericParser: int _inputPtr>;
+
+        $i6 = $i5 + 1;
+
+        r0.<org.codehaus.jackson.impl.ReaderBasedNumericParser: int _inputPtr> = $i6;
+
+        c4 = $r2[$i5];
+
+     label13:
+        if c4 > 57 goto label15;
+
+        if c4 < 48 goto label15;
+
+        $i3 = $i3 + 1;
+
+        $i5 = lengthof r3;
+
+        if i0 < $i5 goto label14;
+
+        $r1 = r0.<org.codehaus.jackson.impl.ReaderBasedNumericParser: org.codehaus.jackson.util.TextBuffer _textBuffer>;
+
+        r3 = virtualinvoke $r1.<org.codehaus.jackson.util.TextBuffer: char[] finishCurrentSegment()>();
+
+        i0 = 0;
+
+     label14:
+        $i5 = i0 + 1;
+
+        r3[i0] = c4;
+
+        i0 = r0.<org.codehaus.jackson.impl.ReaderBasedNumericParser: int _inputPtr>;
+
+        $i6 = r0.<org.codehaus.jackson.impl.ReaderBasedNumericParser: int _inputEnd>;
+
+        if i0 < $i6 goto label25;
+
+        $z2 = virtualinvoke r0.<org.codehaus.jackson.impl.ReaderBasedNumericParser: boolean loadMore()>();
+
+        if $z2 != 0 goto label25;
+
+        z1 = 1;
+
+        i0 = $i5;
+
+     label15:
+        if $i3 != 0 goto label16;
+
+        virtualinvoke r0.<org.codehaus.jackson.impl.ReaderBasedNumericParser: void reportUnexpectedNumberChar(int,java.lang.String)>(c4, "Exponent indicator not followed by a digit");
+
+     label16:
+        if z1 != 0 goto label17;
+
+        $i5 = r0.<org.codehaus.jackson.impl.ReaderBasedNumericParser: int _inputPtr>;
+
+        $i5 = $i5 - 1;
+
+        r0.<org.codehaus.jackson.impl.ReaderBasedNumericParser: int _inputPtr> = $i5;
+
+     label17:
+        $r1 = r0.<org.codehaus.jackson.impl.ReaderBasedNumericParser: org.codehaus.jackson.util.TextBuffer _textBuffer>;
+
+        virtualinvoke $r1.<org.codehaus.jackson.util.TextBuffer: void setCurrentLength(int)>(i0);
+
+        $r6 = virtualinvoke r0.<org.codehaus.jackson.impl.ReaderBasedNumericParser: org.codehaus.jackson.JsonToken reset(boolean,int,int,int)>($z0, i1, $i2, $i3);
+
+        return $r6;
+
+     label18:
+        $r2 = r0.<org.codehaus.jackson.impl.ReaderBasedNumericParser: char[] _inputBuffer>;
+
+        $i2 = r0.<org.codehaus.jackson.impl.ReaderBasedNumericParser: int _inputPtr>;
+
+        $i3 = $i2 + 1;
+
+        r0.<org.codehaus.jackson.impl.ReaderBasedNumericParser: int _inputPtr> = $i3;
+
+        c4 = $r2[$i2];
+
+        if c4 < 48 goto label03;
+
+        if c4 > 57 goto label03;
+
+        i1 = i1 + 1;
+
+        if i1 != 2 goto label19;
+
+        $i2 = i0 - 1;
+
+        $c7 = r3[$i2];
+
+        if $c7 != 48 goto label19;
+
+        virtualinvoke r0.<org.codehaus.jackson.impl.ReaderBasedNumericParser: void reportInvalidNumber(java.lang.String)>("Leading zeroes not allowed");
+
+     label19:
+        $i2 = lengthof r3;
+
+        if i0 < $i2 goto label20;
+
+        $r1 = r0.<org.codehaus.jackson.impl.ReaderBasedNumericParser: org.codehaus.jackson.util.TextBuffer _textBuffer>;
+
+        r3 = virtualinvoke $r1.<org.codehaus.jackson.util.TextBuffer: char[] finishCurrentSegment()>();
+
+        i0 = 0;
+
+     label20:
+        r3[i0] = c4;
+
+        i0 = i0 + 1;
+
+        goto label02;
+
+     label21:
+        $r2 = r0.<org.codehaus.jackson.impl.ReaderBasedNumericParser: char[] _inputBuffer>;
+
+        $i3 = r0.<org.codehaus.jackson.impl.ReaderBasedNumericParser: int _inputPtr>;
+
+        $i5 = $i3 + 1;
+
+        r0.<org.codehaus.jackson.impl.ReaderBasedNumericParser: int _inputPtr> = $i5;
+
+        c4 = $r2[$i3];
+
+        if c4 < 48 goto label06;
+
+        if c4 > 57 goto label06;
+
+        $i2 = $i2 + 1;
+
+        $i3 = lengthof r3;
+
+        if i0 < $i3 goto label22;
+
+        $r1 = r0.<org.codehaus.jackson.impl.ReaderBasedNumericParser: org.codehaus.jackson.util.TextBuffer _textBuffer>;
+
+        r3 = virtualinvoke $r1.<org.codehaus.jackson.util.TextBuffer: char[] finishCurrentSegment()>();
+
+        i0 = 0;
+
+     label22:
+        r3[i0] = c4;
+
+        i0 = i0 + 1;
+
+        goto label05;
+
+     label23:
+        c4 = virtualinvoke r0.<org.codehaus.jackson.impl.ReaderBasedNumericParser: char getNextChar(java.lang.String)>("expected a digit for number exponent");
+
+        goto label10;
+
+     label24:
+        c4 = virtualinvoke r0.<org.codehaus.jackson.impl.ReaderBasedNumericParser: char getNextChar(java.lang.String)>("expected a digit for number exponent");
+
+        goto label13;
+
+     label25:
+        $r2 = r0.<org.codehaus.jackson.impl.ReaderBasedNumericParser: char[] _inputBuffer>;
+
+        i0 = r0.<org.codehaus.jackson.impl.ReaderBasedNumericParser: int _inputPtr>;
+
+        $i6 = i0 + 1;
+
+        r0.<org.codehaus.jackson.impl.ReaderBasedNumericParser: int _inputPtr> = $i6;
+
+        c4 = $r2[i0];
+
+        i0 = $i5;
+
+        goto label13;
+
+     label26:
+        goto label12;
+
+     label27:
+        i0 = $i5;
+
+        goto label13;
+    }
+
+    protected final org.codehaus.jackson.JsonToken parseNumberText(int) throws java.io.IOException, org.codehaus.jackson.JsonParseException
+    {
+        org.codehaus.jackson.impl.ReaderBasedNumericParser r0;
+        int i0, i1, i2, $i3, $i5, i6, i7;
+        boolean z0;
+        org.codehaus.jackson.JsonToken $r1;
+        char[] $r2;
+        char $c4;
+        org.codehaus.jackson.util.TextBuffer $r3;
+
+        r0 := @this: org.codehaus.jackson.impl.ReaderBasedNumericParser;
+
+        i1 := @parameter0: int;
+
+        if i1 != 45 goto label04;
+
+        z0 = 1;
+
+     label01:
+        i2 = r0.<org.codehaus.jackson.impl.ReaderBasedNumericParser: int _inputPtr>;
+
+        i1 = i2 - 1;
+
+        i0 = r0.<org.codehaus.jackson.impl.ReaderBasedNumericParser: int _inputEnd>;
+
+        if z0 == 0 goto label08;
+
+        $i3 = r0.<org.codehaus.jackson.impl.ReaderBasedNumericParser: int _inputEnd>;
+
+        if i2 < $i3 goto label05;
+
+     label02:
+        if z0 == 0 goto label25;
+
+        i1 = i1 + 1;
+
+     label03:
+        r0.<org.codehaus.jackson.impl.ReaderBasedNumericParser: int _inputPtr> = i1;
+
+        $r1 = specialinvoke r0.<org.codehaus.jackson.impl.ReaderBasedNumericParser: org.codehaus.jackson.JsonToken parseNumberText2(boolean)>(z0);
+
+        return $r1;
+
+     label04:
+        z0 = 0;
+
+        goto label01;
+
+     label05:
+        $r2 = r0.<org.codehaus.jackson.impl.ReaderBasedNumericParser: char[] _inputBuffer>;
+
+        $i3 = i2 + 1;
+
+        $c4 = $r2[i2];
+
+        if $c4 > 57 goto label06;
+
+        if $c4 >= 48 goto label07;
+
+     label06:
+        virtualinvoke r0.<org.codehaus.jackson.impl.ReaderBasedNumericParser: void reportUnexpectedNumberChar(int,java.lang.String)>($c4, "expected digit (0-9) to follow minus sign, for valid numeric value");
+
+     label07:
+        i2 = $i3;
+
+     label08:
+        $i3 = 1;
+
+     label09:
+        $i5 = r0.<org.codehaus.jackson.impl.ReaderBasedNumericParser: int _inputEnd>;
+
+        if i2 >= $i5 goto label02;
+
+        $r2 = r0.<org.codehaus.jackson.impl.ReaderBasedNumericParser: char[] _inputBuffer>;
+
+        $i5 = i2 + 1;
+
+        $c4 = $r2[i2];
+
+        if $c4 < 48 goto label10;
+
+        if $c4 <= 57 goto label12;
+
+     label10:
+        i2 = 0;
+
+        if $c4 != 46 goto label16;
+
+     label11:
+        if $i5 < i0 goto label13;
+
+        goto label02;
+
+     label12:
+        $i3 = $i3 + 1;
+
+        if $i3 != 2 goto label27;
+
+        $r2 = r0.<org.codehaus.jackson.impl.ReaderBasedNumericParser: char[] _inputBuffer>;
+
+        i2 = $i5 - 2;
+
+        $c4 = $r2[i2];
+
+        if $c4 != 48 goto label27;
+
+        virtualinvoke r0.<org.codehaus.jackson.impl.ReaderBasedNumericParser: void reportInvalidNumber(java.lang.String)>("Leading zeroes not allowed");
+
+        i2 = $i5;
+
+        goto label09;
+
+     label13:
+        $r2 = r0.<org.codehaus.jackson.impl.ReaderBasedNumericParser: char[] _inputBuffer>;
+
+        i6 = $i5 + 1;
+
+        $c4 = $r2[$i5];
+
+        if $c4 < 48 goto label14;
+
+        if $c4 <= 57 goto label18;
+
+     label14:
+        if i2 != 0 goto label15;
+
+        virtualinvoke r0.<org.codehaus.jackson.impl.ReaderBasedNumericParser: void reportUnexpectedNumberChar(int,java.lang.String)>($c4, "Decimal point not followed by a digit");
+
+     label15:
+        $i5 = i6;
+
+     label16:
+        i6 = 0;
+
+        if $c4 == 101 goto label17;
+
+        if $c4 != 69 goto label24;
+
+     label17:
+        if $i5 < i0 goto label19;
+
+        goto label02;
+
+     label18:
+        i2 = i2 + 1;
+
+        $i5 = i6;
+
+        goto label11;
+
+     label19:
+        $r2 = r0.<org.codehaus.jackson.impl.ReaderBasedNumericParser: char[] _inputBuffer>;
+
+        i7 = $i5 + 1;
+
+        $c4 = $r2[$i5];
+
+        if $c4 == 45 goto label20;
+
+        if $c4 != 43 goto label26;
+
+     label20:
+        if i7 >= i0 goto label02;
+
+        $r2 = r0.<org.codehaus.jackson.impl.ReaderBasedNumericParser: char[] _inputBuffer>;
+
+        $i5 = i7 + 1;
+
+        $c4 = $r2[i7];
+
+     label21:
+        if $c4 > 57 goto label23;
+
+        if $c4 < 48 goto label23;
+
+        i6 = i6 + 1;
+
+        if $i5 < i0 goto label22;
+
+        goto label02;
+
+     label22:
+        $r2 = r0.<org.codehaus.jackson.impl.ReaderBasedNumericParser: char[] _inputBuffer>;
+
+        $c4 = $r2[$i5];
+
+        $i5 = $i5 + 1;
+
+        goto label21;
+
+     label23:
+        if i6 != 0 goto label24;
+
+        virtualinvoke r0.<org.codehaus.jackson.impl.ReaderBasedNumericParser: void reportUnexpectedNumberChar(int,java.lang.String)>($c4, "Exponent indicator not followed by a digit");
+
+     label24:
+        i0 = $i5 + -1;
+
+        r0.<org.codehaus.jackson.impl.ReaderBasedNumericParser: int _inputPtr> = i0;
+
+        i0 = i0 - i1;
+
+        $r3 = r0.<org.codehaus.jackson.impl.ReaderBasedNumericParser: org.codehaus.jackson.util.TextBuffer _textBuffer>;
+
+        $r2 = r0.<org.codehaus.jackson.impl.ReaderBasedNumericParser: char[] _inputBuffer>;
+
+        virtualinvoke $r3.<org.codehaus.jackson.util.TextBuffer: void resetWithShared(char[],int,int)>($r2, i1, i0);
+
+        $r1 = virtualinvoke r0.<org.codehaus.jackson.impl.ReaderBasedNumericParser: org.codehaus.jackson.JsonToken reset(boolean,int,int,int)>(z0, $i3, i2, i6);
+
+        return $r1;
+
+     label25:
+        goto label03;
+
+     label26:
+        $i5 = i7;
+
+        goto label21;
+
+     label27:
+        i2 = $i5;
+
+        goto label09;
+    }
+}

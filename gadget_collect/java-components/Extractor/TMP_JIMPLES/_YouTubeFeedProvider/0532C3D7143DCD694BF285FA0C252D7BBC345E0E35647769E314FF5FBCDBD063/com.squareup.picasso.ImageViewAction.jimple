@@ -1,0 +1,196 @@
+class com.squareup.picasso.ImageViewAction extends com.squareup.picasso.Action
+{
+    com.squareup.picasso.Callback callback;
+
+    void <init>(com.squareup.picasso.Picasso, android.widget.ImageView, com.squareup.picasso.Request, int, int, int, android.graphics.drawable.Drawable, java.lang.String, java.lang.Object, com.squareup.picasso.Callback, boolean)
+    {
+        com.squareup.picasso.ImageViewAction r0;
+        com.squareup.picasso.Picasso $r1;
+        android.widget.ImageView $r2;
+        com.squareup.picasso.Request $r3;
+        int $i0, $i1, $i2;
+        android.graphics.drawable.Drawable $r4;
+        java.lang.String $r5;
+        java.lang.Object $r6;
+        com.squareup.picasso.Callback $r7;
+        boolean $z0;
+
+        r0 := @this: com.squareup.picasso.ImageViewAction;
+
+        $r1 := @parameter0: com.squareup.picasso.Picasso;
+
+        $r2 := @parameter1: android.widget.ImageView;
+
+        $r3 := @parameter2: com.squareup.picasso.Request;
+
+        $i0 := @parameter3: int;
+
+        $i1 := @parameter4: int;
+
+        $i2 := @parameter5: int;
+
+        $r4 := @parameter6: android.graphics.drawable.Drawable;
+
+        $r5 := @parameter7: java.lang.String;
+
+        $r6 := @parameter8: java.lang.Object;
+
+        $r7 := @parameter9: com.squareup.picasso.Callback;
+
+        $z0 := @parameter10: boolean;
+
+        specialinvoke r0.<com.squareup.picasso.Action: void <init>(com.squareup.picasso.Picasso,java.lang.Object,com.squareup.picasso.Request,int,int,int,android.graphics.drawable.Drawable,java.lang.String,java.lang.Object,boolean)>($r1, $r2, $r3, $i0, $i1, $i2, $r4, $r5, $r6, $z0);
+
+        r0.<com.squareup.picasso.ImageViewAction: com.squareup.picasso.Callback callback> = $r7;
+
+        return;
+    }
+
+    void cancel()
+    {
+        com.squareup.picasso.ImageViewAction r0;
+        com.squareup.picasso.Callback $r1;
+
+        r0 := @this: com.squareup.picasso.ImageViewAction;
+
+        specialinvoke r0.<com.squareup.picasso.Action: void cancel()>();
+
+        $r1 = r0.<com.squareup.picasso.ImageViewAction: com.squareup.picasso.Callback callback>;
+
+        if $r1 == null goto label1;
+
+        r0.<com.squareup.picasso.ImageViewAction: com.squareup.picasso.Callback callback> = null;
+
+     label1:
+        return;
+    }
+
+    public void complete(android.graphics.Bitmap, com.squareup.picasso.Picasso$LoadedFrom)
+    {
+        com.squareup.picasso.ImageViewAction r0;
+        android.graphics.Bitmap $r1;
+        com.squareup.picasso.Picasso$LoadedFrom $r2;
+        boolean $z0, $z1;
+        java.lang.AssertionError $r3;
+        java.lang.Object[] $r4;
+        java.lang.String $r5;
+        java.lang.ref.WeakReference $r6;
+        java.lang.Object $r7;
+        android.widget.ImageView $r8;
+        com.squareup.picasso.Picasso $r9;
+        android.content.Context $r10;
+        com.squareup.picasso.Callback $r11;
+
+        r0 := @this: com.squareup.picasso.ImageViewAction;
+
+        $r1 := @parameter0: android.graphics.Bitmap;
+
+        $r2 := @parameter1: com.squareup.picasso.Picasso$LoadedFrom;
+
+        if $r1 != null goto label1;
+
+        $r3 = new java.lang.AssertionError;
+
+        $r4 = newarray (java.lang.Object)[1];
+
+        $r4[0] = r0;
+
+        $r5 = staticinvoke <java.lang.String: java.lang.String format(java.lang.String,java.lang.Object[])>("Attempted to complete action with no result!\n%s", $r4);
+
+        specialinvoke $r3.<java.lang.AssertionError: void <init>(java.lang.Object)>($r5);
+
+        throw $r3;
+
+     label1:
+        $r6 = r0.<com.squareup.picasso.ImageViewAction: java.lang.ref.WeakReference target>;
+
+        $r7 = virtualinvoke $r6.<java.lang.ref.WeakReference: java.lang.Object get()>();
+
+        $r8 = (android.widget.ImageView) $r7;
+
+        if $r8 != null goto label2;
+
+        return;
+
+     label2:
+        $r9 = r0.<com.squareup.picasso.ImageViewAction: com.squareup.picasso.Picasso picasso>;
+
+        $r10 = $r9.<com.squareup.picasso.Picasso: android.content.Context context>;
+
+        $r9 = r0.<com.squareup.picasso.ImageViewAction: com.squareup.picasso.Picasso picasso>;
+
+        $z1 = $r9.<com.squareup.picasso.Picasso: boolean indicatorsEnabled>;
+
+        $z0 = r0.<com.squareup.picasso.ImageViewAction: boolean noFade>;
+
+        staticinvoke <com.squareup.picasso.PicassoDrawable: void setBitmap(android.widget.ImageView,android.content.Context,android.graphics.Bitmap,com.squareup.picasso.Picasso$LoadedFrom,boolean,boolean)>($r8, $r10, $r1, $r2, $z0, $z1);
+
+        $r11 = r0.<com.squareup.picasso.ImageViewAction: com.squareup.picasso.Callback callback>;
+
+        if $r11 == null goto label3;
+
+        $r11 = r0.<com.squareup.picasso.ImageViewAction: com.squareup.picasso.Callback callback>;
+
+        interfaceinvoke $r11.<com.squareup.picasso.Callback: void onSuccess()>();
+
+     label3:
+        return;
+    }
+
+    public void error()
+    {
+        com.squareup.picasso.ImageViewAction r0;
+        java.lang.Object $r1;
+        java.lang.ref.WeakReference $r2;
+        android.widget.ImageView $r3;
+        int $i0;
+        com.squareup.picasso.Callback $r4;
+        android.graphics.drawable.Drawable $r5;
+
+        r0 := @this: com.squareup.picasso.ImageViewAction;
+
+        $r2 = r0.<com.squareup.picasso.ImageViewAction: java.lang.ref.WeakReference target>;
+
+        $r1 = virtualinvoke $r2.<java.lang.ref.WeakReference: java.lang.Object get()>();
+
+        $r3 = (android.widget.ImageView) $r1;
+
+        if $r3 != null goto label1;
+
+        return;
+
+     label1:
+        $i0 = r0.<com.squareup.picasso.ImageViewAction: int errorResId>;
+
+        if $i0 == 0 goto label3;
+
+        $i0 = r0.<com.squareup.picasso.ImageViewAction: int errorResId>;
+
+        virtualinvoke $r3.<android.widget.ImageView: void setImageResource(int)>($i0);
+
+     label2:
+        $r4 = r0.<com.squareup.picasso.ImageViewAction: com.squareup.picasso.Callback callback>;
+
+        if $r4 == null goto label4;
+
+        $r4 = r0.<com.squareup.picasso.ImageViewAction: com.squareup.picasso.Callback callback>;
+
+        interfaceinvoke $r4.<com.squareup.picasso.Callback: void onError()>();
+
+        return;
+
+     label3:
+        $r5 = r0.<com.squareup.picasso.ImageViewAction: android.graphics.drawable.Drawable errorDrawable>;
+
+        if $r5 == null goto label2;
+
+        $r5 = r0.<com.squareup.picasso.ImageViewAction: android.graphics.drawable.Drawable errorDrawable>;
+
+        virtualinvoke $r3.<android.widget.ImageView: void setImageDrawable(android.graphics.drawable.Drawable)>($r5);
+
+        goto label2;
+
+     label4:
+        return;
+    }
+}

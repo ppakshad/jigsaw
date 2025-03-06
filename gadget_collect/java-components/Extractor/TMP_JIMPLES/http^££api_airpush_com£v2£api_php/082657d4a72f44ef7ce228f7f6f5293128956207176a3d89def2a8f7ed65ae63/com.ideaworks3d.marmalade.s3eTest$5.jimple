@@ -1,0 +1,134 @@
+class com.ideaworks3d.marmalade.s3eTest$5 extends java.lang.Object implements java.lang.Runnable
+{
+    final com.ideaworks3d.marmalade.s3eTest this$0;
+    final int val$iterations;
+    final int val$sleepTimeMS;
+
+    void <init>(com.ideaworks3d.marmalade.s3eTest, int, int)
+    {
+        com.ideaworks3d.marmalade.s3eTest$5 r0;
+        com.ideaworks3d.marmalade.s3eTest $r1;
+        int $i0, $i1;
+
+        r0 := @this: com.ideaworks3d.marmalade.s3eTest$5;
+
+        $r1 := @parameter0: com.ideaworks3d.marmalade.s3eTest;
+
+        $i0 := @parameter1: int;
+
+        $i1 := @parameter2: int;
+
+        r0.<com.ideaworks3d.marmalade.s3eTest$5: com.ideaworks3d.marmalade.s3eTest this$0> = $r1;
+
+        r0.<com.ideaworks3d.marmalade.s3eTest$5: int val$iterations> = $i0;
+
+        r0.<com.ideaworks3d.marmalade.s3eTest$5: int val$sleepTimeMS> = $i1;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public void run()
+    {
+        com.ideaworks3d.marmalade.s3eTest$5 r0;
+        int $i0, $i1;
+        com.ideaworks3d.marmalade.s3eTest $r1;
+        long $l2;
+        java.lang.Throwable $r2, $r3;
+
+        r0 := @this: com.ideaworks3d.marmalade.s3eTest$5;
+
+        $i0 = 0;
+
+     label01:
+        $i1 = r0.<com.ideaworks3d.marmalade.s3eTest$5: int val$iterations>;
+
+     label02:
+        if $i0 >= $i1 goto label15;
+
+     label03:
+        $r1 = r0.<com.ideaworks3d.marmalade.s3eTest$5: com.ideaworks3d.marmalade.s3eTest this$0>;
+
+     label04:
+        virtualinvoke $r1.<com.ideaworks3d.marmalade.s3eTest: void PostSuspend()>();
+
+     label05:
+        $r1 = r0.<com.ideaworks3d.marmalade.s3eTest$5: com.ideaworks3d.marmalade.s3eTest this$0>;
+
+     label06:
+        virtualinvoke $r1.<com.ideaworks3d.marmalade.s3eTest: void PostSetFocus(boolean)>(0);
+
+     label07:
+        $i1 = r0.<com.ideaworks3d.marmalade.s3eTest$5: int val$sleepTimeMS>;
+
+     label08:
+        $l2 = (long) $i1;
+
+     label09:
+        staticinvoke <java.lang.Thread: void sleep(long)>($l2);
+
+     label10:
+        $r1 = r0.<com.ideaworks3d.marmalade.s3eTest$5: com.ideaworks3d.marmalade.s3eTest this$0>;
+
+     label11:
+        virtualinvoke $r1.<com.ideaworks3d.marmalade.s3eTest: void PostResume()>();
+
+     label12:
+        $r1 = r0.<com.ideaworks3d.marmalade.s3eTest$5: com.ideaworks3d.marmalade.s3eTest this$0>;
+
+     label13:
+        virtualinvoke $r1.<com.ideaworks3d.marmalade.s3eTest: void PostSetFocus(boolean)>(1);
+
+     label14:
+        $i0 = $i0 + 1;
+
+        goto label01;
+
+     label15:
+        $r1 = r0.<com.ideaworks3d.marmalade.s3eTest$5: com.ideaworks3d.marmalade.s3eTest this$0>;
+
+        virtualinvoke $r1.<com.ideaworks3d.marmalade.s3eTest: void PostResume()>();
+
+        $r1 = r0.<com.ideaworks3d.marmalade.s3eTest$5: com.ideaworks3d.marmalade.s3eTest this$0>;
+
+        $r1.<com.ideaworks3d.marmalade.s3eTest: java.lang.Thread thread> = null;
+
+        return;
+
+     label16:
+        $r2 := @caughtexception;
+
+        $r1 = r0.<com.ideaworks3d.marmalade.s3eTest$5: com.ideaworks3d.marmalade.s3eTest this$0>;
+
+        virtualinvoke $r1.<com.ideaworks3d.marmalade.s3eTest: void PostResume()>();
+
+        $r1 = r0.<com.ideaworks3d.marmalade.s3eTest$5: com.ideaworks3d.marmalade.s3eTest this$0>;
+
+        $r1.<com.ideaworks3d.marmalade.s3eTest: java.lang.Thread thread> = null;
+
+        return;
+
+     label17:
+        $r3 := @caughtexception;
+
+        $r1 = r0.<com.ideaworks3d.marmalade.s3eTest$5: com.ideaworks3d.marmalade.s3eTest this$0>;
+
+        virtualinvoke $r1.<com.ideaworks3d.marmalade.s3eTest: void PostResume()>();
+
+        $r1 = r0.<com.ideaworks3d.marmalade.s3eTest$5: com.ideaworks3d.marmalade.s3eTest this$0>;
+
+        $r1.<com.ideaworks3d.marmalade.s3eTest: java.lang.Thread thread> = null;
+
+        throw $r3;
+
+        catch java.lang.InterruptedException from label04 to label05 with label16;
+        catch java.lang.InterruptedException from label06 to label07 with label16;
+        catch java.lang.InterruptedException from label09 to label10 with label16;
+        catch java.lang.InterruptedException from label11 to label12 with label16;
+        catch java.lang.InterruptedException from label13 to label14 with label16;
+        catch java.lang.Throwable from label01 to label02 with label17;
+        catch java.lang.Throwable from label03 to label08 with label17;
+        catch java.lang.Throwable from label09 to label14 with label17;
+    }
+}

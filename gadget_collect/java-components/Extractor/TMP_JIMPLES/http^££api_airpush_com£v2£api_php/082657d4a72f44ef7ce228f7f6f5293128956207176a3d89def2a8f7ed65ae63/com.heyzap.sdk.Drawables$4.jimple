@@ -1,0 +1,66 @@
+final class com.heyzap.sdk.Drawables$4 extends java.lang.Object implements java.lang.Runnable
+{
+    final android.content.Context val$context;
+    final android.os.Handler val$h;
+    final java.lang.String val$path;
+    final android.widget.ImageView val$view;
+
+    void <init>(android.content.Context, java.lang.String, android.os.Handler, android.widget.ImageView)
+    {
+        com.heyzap.sdk.Drawables$4 r0;
+        android.content.Context $r1;
+        java.lang.String $r2;
+        android.os.Handler $r3;
+        android.widget.ImageView $r4;
+
+        r0 := @this: com.heyzap.sdk.Drawables$4;
+
+        $r1 := @parameter0: android.content.Context;
+
+        $r2 := @parameter1: java.lang.String;
+
+        $r3 := @parameter2: android.os.Handler;
+
+        $r4 := @parameter3: android.widget.ImageView;
+
+        r0.<com.heyzap.sdk.Drawables$4: android.content.Context val$context> = $r1;
+
+        r0.<com.heyzap.sdk.Drawables$4: java.lang.String val$path> = $r2;
+
+        r0.<com.heyzap.sdk.Drawables$4: android.os.Handler val$h> = $r3;
+
+        r0.<com.heyzap.sdk.Drawables$4: android.widget.ImageView val$view> = $r4;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public void run()
+    {
+        com.heyzap.sdk.Drawables$4 r0;
+        com.heyzap.sdk.Drawables$4$1 $r1;
+        android.graphics.drawable.Drawable $r2;
+        android.content.Context $r3;
+        java.lang.String $r4;
+        android.os.Handler $r5;
+
+        r0 := @this: com.heyzap.sdk.Drawables$4;
+
+        $r3 = r0.<com.heyzap.sdk.Drawables$4: android.content.Context val$context>;
+
+        $r4 = r0.<com.heyzap.sdk.Drawables$4: java.lang.String val$path>;
+
+        $r2 = staticinvoke <com.heyzap.sdk.Drawables: android.graphics.drawable.Drawable getDrawable(android.content.Context,java.lang.String)>($r3, $r4);
+
+        $r5 = r0.<com.heyzap.sdk.Drawables$4: android.os.Handler val$h>;
+
+        $r1 = new com.heyzap.sdk.Drawables$4$1;
+
+        specialinvoke $r1.<com.heyzap.sdk.Drawables$4$1: void <init>(com.heyzap.sdk.Drawables$4,android.graphics.drawable.Drawable)>(r0, $r2);
+
+        virtualinvoke $r5.<android.os.Handler: boolean post(java.lang.Runnable)>($r1);
+
+        return;
+    }
+}

@@ -1,0 +1,615 @@
+public class com.ideaworks3d.marmalade.S3EVideoView extends android.widget.VideoView implements android.media.MediaPlayer$OnPreparedListener, android.media.MediaPlayer$OnCompletionListener, android.media.MediaPlayer$OnErrorListener
+{
+    public static final int S3E_VIDEO_FAILED;
+    public static final int S3E_VIDEO_MAX_VOLUME;
+    public static final int S3E_VIDEO_PAUSED;
+    public static final int S3E_VIDEO_PLAYING;
+    public static final int S3E_VIDEO_STOPPED;
+    private boolean m_Fullscreen;
+    private int m_Height;
+    private com.ideaworks3d.marmalade.LoaderActivity m_LoaderActivity;
+    private android.media.MediaPlayer m_MediaPlayer;
+    private java.lang.String m_Path;
+    private int m_Repeats;
+    private android.net.Uri m_Uri;
+    private float m_Volume;
+    private int m_Width;
+
+    public void <init>(com.ideaworks3d.marmalade.LoaderActivity)
+    {
+        com.ideaworks3d.marmalade.S3EVideoView r0;
+        com.ideaworks3d.marmalade.LoaderActivity $r1;
+
+        r0 := @this: com.ideaworks3d.marmalade.S3EVideoView;
+
+        $r1 := @parameter0: com.ideaworks3d.marmalade.LoaderActivity;
+
+        specialinvoke r0.<android.widget.VideoView: void <init>(android.content.Context)>($r1);
+
+        r0.<com.ideaworks3d.marmalade.S3EVideoView: float m_Volume> = 1.0F;
+
+        r0.<com.ideaworks3d.marmalade.S3EVideoView: com.ideaworks3d.marmalade.LoaderActivity m_LoaderActivity> = $r1;
+
+        virtualinvoke r0.<com.ideaworks3d.marmalade.S3EVideoView: void setOnPreparedListener(android.media.MediaPlayer$OnPreparedListener)>(r0);
+
+        virtualinvoke r0.<com.ideaworks3d.marmalade.S3EVideoView: void setOnCompletionListener(android.media.MediaPlayer$OnCompletionListener)>(r0);
+
+        virtualinvoke r0.<com.ideaworks3d.marmalade.S3EVideoView: void setOnErrorListener(android.media.MediaPlayer$OnErrorListener)>(r0);
+
+        return;
+    }
+
+    private static boolean requiresSeparateWindow()
+    {
+        int $i0;
+        java.lang.String $r0;
+
+        $r0 = <android.os.Build$VERSION: java.lang.String SDK>;
+
+        $i0 = staticinvoke <java.lang.Integer: int parseInt(java.lang.String)>($r0);
+
+        if $i0 > 4 goto label1;
+
+        return 1;
+
+     label1:
+        return 0;
+    }
+
+    public void onCompletion(android.media.MediaPlayer)
+    {
+        com.ideaworks3d.marmalade.S3EVideoView r0;
+        android.media.MediaPlayer $r1;
+        int $i0;
+        com.ideaworks3d.marmalade.LoaderActivity $r2;
+        com.ideaworks3d.marmalade.LoaderView $r3;
+        android.net.Uri $r4;
+        java.lang.String $r5;
+
+        r0 := @this: com.ideaworks3d.marmalade.S3EVideoView;
+
+        $r1 := @parameter0: android.media.MediaPlayer;
+
+        r0.<com.ideaworks3d.marmalade.S3EVideoView: android.media.MediaPlayer m_MediaPlayer> = null;
+
+        $i0 = r0.<com.ideaworks3d.marmalade.S3EVideoView: int m_Repeats>;
+
+        $i0 = $i0 - 1;
+
+        r0.<com.ideaworks3d.marmalade.S3EVideoView: int m_Repeats> = $i0;
+
+        $i0 = r0.<com.ideaworks3d.marmalade.S3EVideoView: int m_Repeats>;
+
+        if $i0 > 0 goto label1;
+
+        virtualinvoke r0.<com.ideaworks3d.marmalade.S3EVideoView: void videoStop()>();
+
+        $r2 = r0.<com.ideaworks3d.marmalade.S3EVideoView: com.ideaworks3d.marmalade.LoaderActivity m_LoaderActivity>;
+
+        $r3 = $r2.<com.ideaworks3d.marmalade.LoaderActivity: com.ideaworks3d.marmalade.LoaderView m_View>;
+
+        virtualinvoke $r3.<com.ideaworks3d.marmalade.LoaderView: void videoStopped()>();
+
+        return;
+
+     label1:
+        virtualinvoke r0.<com.ideaworks3d.marmalade.S3EVideoView: void stopPlayback()>();
+
+        $r4 = r0.<com.ideaworks3d.marmalade.S3EVideoView: android.net.Uri m_Uri>;
+
+        if $r4 == null goto label2;
+
+        $r4 = r0.<com.ideaworks3d.marmalade.S3EVideoView: android.net.Uri m_Uri>;
+
+        virtualinvoke r0.<com.ideaworks3d.marmalade.S3EVideoView: void setVideoURI(android.net.Uri)>($r4);
+
+        return;
+
+     label2:
+        $r5 = r0.<com.ideaworks3d.marmalade.S3EVideoView: java.lang.String m_Path>;
+
+        virtualinvoke r0.<com.ideaworks3d.marmalade.S3EVideoView: void setVideoPath(java.lang.String)>($r5);
+
+        return;
+    }
+
+    public boolean onError(android.media.MediaPlayer, int, int)
+    {
+        com.ideaworks3d.marmalade.S3EVideoView r0;
+        android.media.MediaPlayer $r1;
+        int $i0, $i1;
+        com.ideaworks3d.marmalade.LoaderActivity $r2;
+        com.ideaworks3d.marmalade.LoaderView $r3;
+
+        r0 := @this: com.ideaworks3d.marmalade.S3EVideoView;
+
+        $r1 := @parameter0: android.media.MediaPlayer;
+
+        $i0 := @parameter1: int;
+
+        $i1 := @parameter2: int;
+
+        $r2 = r0.<com.ideaworks3d.marmalade.S3EVideoView: com.ideaworks3d.marmalade.LoaderActivity m_LoaderActivity>;
+
+        $r3 = $r2.<com.ideaworks3d.marmalade.LoaderActivity: com.ideaworks3d.marmalade.LoaderView m_View>;
+
+        virtualinvoke $r3.<com.ideaworks3d.marmalade.LoaderView: void videoStopped()>();
+
+        return 1;
+    }
+
+    protected void onMeasure(int, int)
+    {
+        com.ideaworks3d.marmalade.S3EVideoView r0;
+        int $i0, $i1;
+
+        r0 := @this: com.ideaworks3d.marmalade.S3EVideoView;
+
+        $i0 := @parameter0: int;
+
+        $i1 := @parameter1: int;
+
+        specialinvoke r0.<android.widget.VideoView: void onMeasure(int,int)>($i0, $i1);
+
+        $i0 = r0.<com.ideaworks3d.marmalade.S3EVideoView: int m_Width>;
+
+        if $i0 == 0 goto label1;
+
+        $i0 = r0.<com.ideaworks3d.marmalade.S3EVideoView: int m_Height>;
+
+        if $i0 == 0 goto label1;
+
+        $i1 = r0.<com.ideaworks3d.marmalade.S3EVideoView: int m_Width>;
+
+        $i0 = r0.<com.ideaworks3d.marmalade.S3EVideoView: int m_Height>;
+
+        virtualinvoke r0.<com.ideaworks3d.marmalade.S3EVideoView: void setMeasuredDimension(int,int)>($i1, $i0);
+
+     label1:
+        return;
+    }
+
+    public void onPrepared(android.media.MediaPlayer)
+    {
+        com.ideaworks3d.marmalade.S3EVideoView r0;
+        android.media.MediaPlayer $r1;
+        float $f0, $f1;
+
+        r0 := @this: com.ideaworks3d.marmalade.S3EVideoView;
+
+        $r1 := @parameter0: android.media.MediaPlayer;
+
+        r0.<com.ideaworks3d.marmalade.S3EVideoView: android.media.MediaPlayer m_MediaPlayer> = $r1;
+
+        $r1 = r0.<com.ideaworks3d.marmalade.S3EVideoView: android.media.MediaPlayer m_MediaPlayer>;
+
+        $f0 = r0.<com.ideaworks3d.marmalade.S3EVideoView: float m_Volume>;
+
+        $f1 = r0.<com.ideaworks3d.marmalade.S3EVideoView: float m_Volume>;
+
+        virtualinvoke $r1.<android.media.MediaPlayer: void setVolume(float,float)>($f0, $f1);
+
+        virtualinvoke r0.<com.ideaworks3d.marmalade.S3EVideoView: void start()>();
+
+        return;
+    }
+
+    public boolean onTouchEvent(android.view.MotionEvent)
+    {
+        com.ideaworks3d.marmalade.S3EVideoView r0;
+        android.view.MotionEvent $r1;
+        com.ideaworks3d.marmalade.LoaderActivity $r2;
+        com.ideaworks3d.marmalade.LoaderThread $r3;
+        int[] $r4;
+        int $i0;
+        float $f0, $f1;
+        boolean $z0;
+
+        r0 := @this: com.ideaworks3d.marmalade.S3EVideoView;
+
+        $r1 := @parameter0: android.view.MotionEvent;
+
+        $r2 = r0.<com.ideaworks3d.marmalade.S3EVideoView: com.ideaworks3d.marmalade.LoaderActivity m_LoaderActivity>;
+
+        $r3 = virtualinvoke $r2.<com.ideaworks3d.marmalade.LoaderActivity: com.ideaworks3d.marmalade.LoaderThread LoaderThread()>();
+
+        if $r3 == null goto label1;
+
+        $r4 = newarray (int)[2];
+
+        virtualinvoke r0.<com.ideaworks3d.marmalade.S3EVideoView: void getLocationOnScreen(int[])>($r4);
+
+        $i0 = $r4[0];
+
+        $f0 = (float) $i0;
+
+        $i0 = $r4[1];
+
+        $f1 = (float) $i0;
+
+        virtualinvoke $r1.<android.view.MotionEvent: void offsetLocation(float,float)>($f0, $f1);
+
+        $r2 = r0.<com.ideaworks3d.marmalade.S3EVideoView: com.ideaworks3d.marmalade.LoaderActivity m_LoaderActivity>;
+
+        $r3 = virtualinvoke $r2.<com.ideaworks3d.marmalade.LoaderActivity: com.ideaworks3d.marmalade.LoaderThread LoaderThread()>();
+
+        $z0 = virtualinvoke $r3.<com.ideaworks3d.marmalade.LoaderThread: boolean onTouchEvent(android.view.MotionEvent)>($r1);
+
+        return $z0;
+
+     label1:
+        return 0;
+    }
+
+    public void videoAddView(boolean, int, int, int, int)
+    {
+        com.ideaworks3d.marmalade.S3EVideoView r0;
+        boolean $z0, $z1;
+        int $i0, $i1, $i2, $i3, $i4;
+        java.lang.Class $r1, $r8;
+        android.view.WindowManager$LayoutParams $r2;
+        com.ideaworks3d.marmalade.LoaderActivity $r3;
+        android.view.Window $r4;
+        android.view.WindowManager $r5;
+        android.widget.FrameLayout$LayoutParams $r6;
+        android.widget.FrameLayout $r7;
+        java.lang.Class[] $r9;
+        java.lang.reflect.Method $r10;
+        java.lang.Object[] $r11;
+        java.lang.Boolean $r12;
+        java.lang.Exception $r13;
+        android.widget.RelativeLayout$LayoutParams $r14;
+        android.widget.RelativeLayout $r15;
+
+        r0 := @this: com.ideaworks3d.marmalade.S3EVideoView;
+
+        $z0 := @parameter0: boolean;
+
+        $i0 := @parameter1: int;
+
+        $i1 := @parameter2: int;
+
+        $i2 := @parameter3: int;
+
+        $i3 := @parameter4: int;
+
+        r0.<com.ideaworks3d.marmalade.S3EVideoView: boolean m_Fullscreen> = $z0;
+
+        r0.<com.ideaworks3d.marmalade.S3EVideoView: int m_Width> = $i2;
+
+        r0.<com.ideaworks3d.marmalade.S3EVideoView: int m_Height> = $i3;
+
+        $z1 = staticinvoke <com.ideaworks3d.marmalade.S3EVideoView: boolean requiresSeparateWindow()>();
+
+        if $z1 == 0 goto label1;
+
+        $r2 = new android.view.WindowManager$LayoutParams;
+
+        specialinvoke $r2.<android.view.WindowManager$LayoutParams: void <init>()>();
+
+        $i4 = $r2.<android.view.WindowManager$LayoutParams: int flags>;
+
+        $i4 = $i4 | 8;
+
+        $r2.<android.view.WindowManager$LayoutParams: int flags> = $i4;
+
+        $i4 = $r2.<android.view.WindowManager$LayoutParams: int flags>;
+
+        $i4 = $i4 | 512;
+
+        $r2.<android.view.WindowManager$LayoutParams: int flags> = $i4;
+
+        $i4 = $r2.<android.view.WindowManager$LayoutParams: int flags>;
+
+        $i4 = $i4 | 1024;
+
+        $r2.<android.view.WindowManager$LayoutParams: int flags> = $i4;
+
+        $r2.<android.view.WindowManager$LayoutParams: int gravity> = 51;
+
+        $r2.<android.view.WindowManager$LayoutParams: int x> = $i0;
+
+        $r2.<android.view.WindowManager$LayoutParams: int y> = $i1;
+
+        $r2.<android.view.WindowManager$LayoutParams: int width> = $i2;
+
+        $r2.<android.view.WindowManager$LayoutParams: int height> = $i3;
+
+        $r3 = r0.<com.ideaworks3d.marmalade.S3EVideoView: com.ideaworks3d.marmalade.LoaderActivity m_LoaderActivity>;
+
+        $r4 = virtualinvoke $r3.<com.ideaworks3d.marmalade.LoaderActivity: android.view.Window getWindow()>();
+
+        $r5 = virtualinvoke $r4.<android.view.Window: android.view.WindowManager getWindowManager()>();
+
+        interfaceinvoke $r5.<android.view.WindowManager: void addView(android.view.View,android.view.ViewGroup$LayoutParams)>(r0, $r2);
+
+        return;
+
+     label1:
+        if $z0 == 0 goto label7;
+
+        $r6 = new android.widget.FrameLayout$LayoutParams;
+
+        specialinvoke $r6.<android.widget.FrameLayout$LayoutParams: void <init>(int,int,int)>(-1, -1, 17);
+
+        r0.<com.ideaworks3d.marmalade.S3EVideoView: int m_Width> = 0;
+
+        r0.<com.ideaworks3d.marmalade.S3EVideoView: int m_Height> = 0;
+
+        $r3 = r0.<com.ideaworks3d.marmalade.S3EVideoView: com.ideaworks3d.marmalade.LoaderActivity m_LoaderActivity>;
+
+        $r7 = $r3.<com.ideaworks3d.marmalade.LoaderActivity: android.widget.FrameLayout m_FrameLayout>;
+
+        virtualinvoke $r7.<android.widget.FrameLayout: void addView(android.view.View,android.view.ViewGroup$LayoutParams)>(r0, $r6);
+
+     label2:
+        $r8 = virtualinvoke r0.<java.lang.Object: java.lang.Class getClass()>();
+
+        $r9 = newarray (java.lang.Class)[1];
+
+     label3:
+        $r1 = <java.lang.Boolean: java.lang.Class TYPE>;
+
+     label4:
+        $r9[0] = $r1;
+
+        $r10 = virtualinvoke $r8.<java.lang.Class: java.lang.reflect.Method getMethod(java.lang.String,java.lang.Class[])>("setZOrderOnTop", $r9);
+
+        $r11 = newarray (java.lang.Object)[1];
+
+        $r12 = staticinvoke <java.lang.Boolean: java.lang.Boolean valueOf(boolean)>(1);
+
+        $r11[0] = $r12;
+
+        virtualinvoke $r10.<java.lang.reflect.Method: java.lang.Object invoke(java.lang.Object,java.lang.Object[])>(r0, $r11);
+
+     label5:
+        return;
+
+     label6:
+        $r13 := @caughtexception;
+
+        return;
+
+     label7:
+        $r14 = new android.widget.RelativeLayout$LayoutParams;
+
+        specialinvoke $r14.<android.widget.RelativeLayout$LayoutParams: void <init>(int,int)>($i2, $i3);
+
+        $r14.<android.widget.RelativeLayout$LayoutParams: int leftMargin> = $i0;
+
+        $r14.<android.widget.RelativeLayout$LayoutParams: int topMargin> = $i1;
+
+        $r3 = r0.<com.ideaworks3d.marmalade.S3EVideoView: com.ideaworks3d.marmalade.LoaderActivity m_LoaderActivity>;
+
+        $r15 = $r3.<com.ideaworks3d.marmalade.LoaderActivity: android.widget.RelativeLayout m_TopLevel>;
+
+        virtualinvoke $r15.<android.widget.RelativeLayout: void addView(android.view.View,android.view.ViewGroup$LayoutParams)>(r0, $r14);
+
+        goto label2;
+
+        catch java.lang.Exception from label2 to label3 with label6;
+        catch java.lang.Exception from label4 to label5 with label6;
+    }
+
+    public int videoGetPosition()
+    {
+        com.ideaworks3d.marmalade.S3EVideoView r0;
+        int $i0;
+        java.lang.Throwable $r1;
+
+        r0 := @this: com.ideaworks3d.marmalade.S3EVideoView;
+
+     label1:
+        $i0 = virtualinvoke r0.<com.ideaworks3d.marmalade.S3EVideoView: int getCurrentPosition()>();
+
+     label2:
+        return $i0;
+
+     label3:
+        $r1 := @caughtexception;
+
+        return 0;
+
+        catch java.lang.IllegalStateException from label1 to label2 with label3;
+    }
+
+    public void videoPause()
+    {
+        com.ideaworks3d.marmalade.S3EVideoView r0;
+
+        r0 := @this: com.ideaworks3d.marmalade.S3EVideoView;
+
+        virtualinvoke r0.<com.ideaworks3d.marmalade.S3EVideoView: void pause()>();
+
+        return;
+    }
+
+    public int videoPlay(java.lang.String, int, long, long)
+    {
+        com.ideaworks3d.marmalade.S3EVideoView r0;
+        java.lang.String $r1;
+        int $i0;
+        long $l1, $l2;
+        byte $b3;
+        java.lang.StringBuilder $r2;
+        android.net.Uri $r3;
+
+        r0 := @this: com.ideaworks3d.marmalade.S3EVideoView;
+
+        $r1 := @parameter0: java.lang.String;
+
+        $i0 := @parameter1: int;
+
+        $l1 := @parameter2: long;
+
+        $l2 := @parameter3: long;
+
+        r0.<com.ideaworks3d.marmalade.S3EVideoView: int m_Repeats> = $i0;
+
+        $b3 = $l2 cmp 0L;
+
+        if $b3 != 0 goto label2;
+
+        r0.<com.ideaworks3d.marmalade.S3EVideoView: java.lang.String m_Path> = $r1;
+
+        $r1 = r0.<com.ideaworks3d.marmalade.S3EVideoView: java.lang.String m_Path>;
+
+        virtualinvoke r0.<com.ideaworks3d.marmalade.S3EVideoView: void setVideoPath(java.lang.String)>($r1);
+
+     label1:
+        return 0;
+
+     label2:
+        $r2 = new java.lang.StringBuilder;
+
+        specialinvoke $r2.<java.lang.StringBuilder: void <init>()>();
+
+        $r3 = <com.ideaworks3d.marmalade.VFSProvider: android.net.Uri ASSET_URI>;
+
+        $r2 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($r3);
+
+        $r2 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("/");
+
+        $r2 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r1);
+
+        $r2 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("/");
+
+        $r2 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(long)>($l1);
+
+        $r2 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("/");
+
+        $r2 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(long)>($l2);
+
+        $r1 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        $r3 = staticinvoke <android.net.Uri: android.net.Uri parse(java.lang.String)>($r1);
+
+        r0.<com.ideaworks3d.marmalade.S3EVideoView: android.net.Uri m_Uri> = $r3;
+
+        $r3 = r0.<com.ideaworks3d.marmalade.S3EVideoView: android.net.Uri m_Uri>;
+
+        virtualinvoke r0.<com.ideaworks3d.marmalade.S3EVideoView: void setVideoURI(android.net.Uri)>($r3);
+
+        goto label1;
+    }
+
+    public void videoRemoveView()
+    {
+        com.ideaworks3d.marmalade.S3EVideoView r0;
+        boolean $z0;
+        com.ideaworks3d.marmalade.LoaderActivity $r1;
+        android.view.Window $r2;
+        android.view.WindowManager $r3;
+        android.widget.FrameLayout $r4;
+        android.widget.RelativeLayout $r5;
+
+        r0 := @this: com.ideaworks3d.marmalade.S3EVideoView;
+
+        $z0 = staticinvoke <com.ideaworks3d.marmalade.S3EVideoView: boolean requiresSeparateWindow()>();
+
+        if $z0 == 0 goto label1;
+
+        $r1 = r0.<com.ideaworks3d.marmalade.S3EVideoView: com.ideaworks3d.marmalade.LoaderActivity m_LoaderActivity>;
+
+        $r2 = virtualinvoke $r1.<com.ideaworks3d.marmalade.LoaderActivity: android.view.Window getWindow()>();
+
+        $r3 = virtualinvoke $r2.<android.view.Window: android.view.WindowManager getWindowManager()>();
+
+        interfaceinvoke $r3.<android.view.WindowManager: void removeViewImmediate(android.view.View)>(r0);
+
+        return;
+
+     label1:
+        $z0 = r0.<com.ideaworks3d.marmalade.S3EVideoView: boolean m_Fullscreen>;
+
+        if $z0 == 0 goto label2;
+
+        $r1 = r0.<com.ideaworks3d.marmalade.S3EVideoView: com.ideaworks3d.marmalade.LoaderActivity m_LoaderActivity>;
+
+        $r4 = $r1.<com.ideaworks3d.marmalade.LoaderActivity: android.widget.FrameLayout m_FrameLayout>;
+
+        virtualinvoke $r4.<android.widget.FrameLayout: void removeView(android.view.View)>(r0);
+
+        return;
+
+     label2:
+        $r1 = r0.<com.ideaworks3d.marmalade.S3EVideoView: com.ideaworks3d.marmalade.LoaderActivity m_LoaderActivity>;
+
+        $r5 = $r1.<com.ideaworks3d.marmalade.LoaderActivity: android.widget.RelativeLayout m_TopLevel>;
+
+        virtualinvoke $r5.<android.widget.RelativeLayout: void removeView(android.view.View)>(r0);
+
+        return;
+    }
+
+    public void videoResume()
+    {
+        com.ideaworks3d.marmalade.S3EVideoView r0;
+
+        r0 := @this: com.ideaworks3d.marmalade.S3EVideoView;
+
+        virtualinvoke r0.<com.ideaworks3d.marmalade.S3EVideoView: void start()>();
+
+        return;
+    }
+
+    public void videoSetVolume(int)
+    {
+        com.ideaworks3d.marmalade.S3EVideoView r0;
+        int $i0;
+        float $f0, $f1;
+        android.media.MediaPlayer $r1;
+
+        r0 := @this: com.ideaworks3d.marmalade.S3EVideoView;
+
+        $i0 := @parameter0: int;
+
+        $f0 = (float) $i0;
+
+        $f0 = $f0 / 256.0F;
+
+        r0.<com.ideaworks3d.marmalade.S3EVideoView: float m_Volume> = $f0;
+
+        $r1 = r0.<com.ideaworks3d.marmalade.S3EVideoView: android.media.MediaPlayer m_MediaPlayer>;
+
+        if $r1 == null goto label1;
+
+        $r1 = r0.<com.ideaworks3d.marmalade.S3EVideoView: android.media.MediaPlayer m_MediaPlayer>;
+
+        $f1 = r0.<com.ideaworks3d.marmalade.S3EVideoView: float m_Volume>;
+
+        $f0 = r0.<com.ideaworks3d.marmalade.S3EVideoView: float m_Volume>;
+
+        virtualinvoke $r1.<android.media.MediaPlayer: void setVolume(float,float)>($f1, $f0);
+
+     label1:
+        return;
+    }
+
+    public void videoStop()
+    {
+        com.ideaworks3d.marmalade.S3EVideoView r0;
+
+        r0 := @this: com.ideaworks3d.marmalade.S3EVideoView;
+
+        r0.<com.ideaworks3d.marmalade.S3EVideoView: android.media.MediaPlayer m_MediaPlayer> = null;
+
+        virtualinvoke r0.<com.ideaworks3d.marmalade.S3EVideoView: void stopPlayback()>();
+
+        return;
+    }
+
+    public static void <clinit>()
+    {
+        <com.ideaworks3d.marmalade.S3EVideoView: int S3E_VIDEO_PLAYING> = 1;
+
+        <com.ideaworks3d.marmalade.S3EVideoView: int S3E_VIDEO_PAUSED> = 2;
+
+        <com.ideaworks3d.marmalade.S3EVideoView: int S3E_VIDEO_MAX_VOLUME> = 256;
+
+        <com.ideaworks3d.marmalade.S3EVideoView: int S3E_VIDEO_FAILED> = 3;
+
+        return;
+    }
+}

@@ -1,0 +1,65 @@
+public class com.movesky.app.main.achievements.impls.StrategistAchievement extends com.movesky.app.main.achievements.BBTHAchievement
+{
+
+    public void <init>(com.movesky.app.engine.achievements.AchievementInfo)
+    {
+        com.movesky.app.main.achievements.impls.StrategistAchievement r0;
+        com.movesky.app.engine.achievements.AchievementInfo $r1;
+
+        r0 := @this: com.movesky.app.main.achievements.impls.StrategistAchievement;
+
+        $r1 := @parameter0: com.movesky.app.engine.achievements.AchievementInfo;
+
+        specialinvoke r0.<com.movesky.app.main.achievements.BBTHAchievement: void <init>(com.movesky.app.engine.achievements.AchievementInfo)>($r1);
+
+        return;
+    }
+
+    public void gameEnded(com.movesky.app.main.achievements.events.GameEndedEvent)
+    {
+        com.movesky.app.main.achievements.impls.StrategistAchievement r0;
+        com.movesky.app.main.achievements.events.GameEndedEvent $r1;
+        com.movesky.app.main.Player $r2, $r3;
+        int $i0, $i1;
+        com.movesky.app.engine.achievements.Achievements $r4;
+        com.movesky.app.engine.achievements.AchievementInfo $r5;
+
+        r0 := @this: com.movesky.app.main.achievements.impls.StrategistAchievement;
+
+        $r1 := @parameter0: com.movesky.app.main.achievements.events.GameEndedEvent;
+
+        $r2 = virtualinvoke $r1.<com.movesky.app.main.achievements.events.GameEndedEvent: com.movesky.app.main.Player getLocalPlayer()>();
+
+        $r3 = virtualinvoke $r1.<com.movesky.app.main.achievements.events.GameEndedEvent: com.movesky.app.main.Player getWinningPlayer()>();
+
+        if $r2 != $r3 goto label1;
+
+        $r2 = virtualinvoke $r1.<com.movesky.app.main.achievements.events.GameEndedEvent: com.movesky.app.main.Player getLocalPlayer()>();
+
+        $i0 = virtualinvoke $r2.<com.movesky.app.main.Player: int getTotalUnitsCreated()>();
+
+        $r2 = virtualinvoke $r1.<com.movesky.app.main.achievements.events.GameEndedEvent: com.movesky.app.main.Player getRemotePlayer()>();
+
+        $i1 = virtualinvoke $r2.<com.movesky.app.main.Player: int getTotalUnitsCreated()>();
+
+        if $i0 >= $i1 goto label1;
+
+        $r4 = <com.movesky.app.engine.achievements.Achievements: com.movesky.app.engine.achievements.Achievements INSTANCE>;
+
+        $r5 = r0.<com.movesky.app.main.achievements.impls.StrategistAchievement: com.movesky.app.engine.achievements.AchievementInfo achievementInfo>;
+
+        virtualinvoke $r4.<com.movesky.app.engine.achievements.Achievements: boolean increment(com.movesky.app.engine.achievements.AchievementInfo)>($r5);
+
+     label1:
+        return;
+    }
+
+    public boolean usesGameEnded()
+    {
+        com.movesky.app.main.achievements.impls.StrategistAchievement r0;
+
+        r0 := @this: com.movesky.app.main.achievements.impls.StrategistAchievement;
+
+        return 1;
+    }
+}

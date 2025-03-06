@@ -1,0 +1,100 @@
+class com.movesky.webapp.Activity_WebView$8 extends android.webkit.WebChromeClient
+{
+    final com.movesky.webapp.Activity_WebView this$0;
+
+    void <init>(com.movesky.webapp.Activity_WebView)
+    {
+        com.movesky.webapp.Activity_WebView$8 r0;
+        com.movesky.webapp.Activity_WebView $r1;
+
+        r0 := @this: com.movesky.webapp.Activity_WebView$8;
+
+        $r1 := @parameter0: com.movesky.webapp.Activity_WebView;
+
+        r0.<com.movesky.webapp.Activity_WebView$8: com.movesky.webapp.Activity_WebView this$0> = $r1;
+
+        specialinvoke r0.<android.webkit.WebChromeClient: void <init>()>();
+
+        return;
+    }
+
+    public void onConsoleMessage(java.lang.String, int, java.lang.String)
+    {
+        com.movesky.webapp.Activity_WebView$8 r0;
+        java.lang.String $r1, $r2;
+        int $i0;
+        java.lang.Object[] $r3;
+        java.lang.Integer $r4;
+
+        r0 := @this: com.movesky.webapp.Activity_WebView$8;
+
+        $r1 := @parameter0: java.lang.String;
+
+        $i0 := @parameter1: int;
+
+        $r2 := @parameter2: java.lang.String;
+
+        specialinvoke r0.<android.webkit.WebChromeClient: void onConsoleMessage(java.lang.String,int,java.lang.String)>($r1, $i0, $r2);
+
+        $r3 = newarray (java.lang.Object)[3];
+
+        $r3[0] = $r2;
+
+        $r4 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>($i0);
+
+        $r3[1] = $r4;
+
+        $r3[2] = $r1;
+
+        $r1 = staticinvoke <java.lang.String: java.lang.String format(java.lang.String,java.lang.Object[])>("%s[%d]:%s", $r3);
+
+        staticinvoke <android.util.Log: int i(java.lang.String,java.lang.String)>("ZRD", $r1);
+
+        return;
+    }
+
+    public boolean onJsAlert(android.webkit.WebView, java.lang.String, java.lang.String, android.webkit.JsResult)
+    {
+        com.movesky.webapp.Activity_WebView$8 r0;
+        android.webkit.WebView $r1;
+        java.lang.String $r2, $r3;
+        android.webkit.JsResult $r4;
+        com.movesky.webapp.Activity_WebView$8$1 $r5;
+        android.app.AlertDialog$Builder $r6;
+        android.content.Context $r7;
+
+        r0 := @this: com.movesky.webapp.Activity_WebView$8;
+
+        $r1 := @parameter0: android.webkit.WebView;
+
+        $r2 := @parameter1: java.lang.String;
+
+        $r3 := @parameter2: java.lang.String;
+
+        $r4 := @parameter3: android.webkit.JsResult;
+
+        $r6 = new android.app.AlertDialog$Builder;
+
+        $r7 = <com.movesky.webapp.Activity_WebView: android.content.Context m_ct>;
+
+        specialinvoke $r6.<android.app.AlertDialog$Builder: void <init>(android.content.Context)>($r7);
+
+        virtualinvoke $r6.<android.app.AlertDialog$Builder: android.app.AlertDialog$Builder setTitle(java.lang.CharSequence)>("Alert");
+
+        virtualinvoke $r6.<android.app.AlertDialog$Builder: android.app.AlertDialog$Builder setMessage(java.lang.CharSequence)>($r3);
+
+        $r5 = new com.movesky.webapp.Activity_WebView$8$1;
+
+        specialinvoke $r5.<com.movesky.webapp.Activity_WebView$8$1: void <init>(com.movesky.webapp.Activity_WebView$8,android.webkit.JsResult)>(r0, $r4);
+
+        virtualinvoke $r6.<android.app.AlertDialog$Builder: android.app.AlertDialog$Builder setPositiveButton(int,android.content.DialogInterface$OnClickListener)>(17039370, $r5);
+
+        virtualinvoke $r6.<android.app.AlertDialog$Builder: android.app.AlertDialog$Builder setCancelable(boolean)>(0);
+
+        virtualinvoke $r6.<android.app.AlertDialog$Builder: android.app.AlertDialog create()>();
+
+        virtualinvoke $r6.<android.app.AlertDialog$Builder: android.app.AlertDialog show()>();
+
+        return 1;
+    }
+}

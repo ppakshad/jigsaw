@@ -1,0 +1,26 @@
+Using TensorFlow backend.
+WARNING: 02-27 18:40:43: mntd_run_meta.py:88 * 123690431989568 Running with configuration:
+{'backdoor_target_model_type': 'pytorch',
+ 'benign_target_model_type': 'pytorch',
+ 'clf': 'MLP',
+ 'debug_mode': 'queryset-100-most-0-few-1',
+ 'half_training': 1,
+ 'jumbo_max_troj_size': 100,
+ 'load_exist': True,
+ 'method': 'baseline-pytorch',
+ 'no_qt': True,
+ 'subset_family': None,
+ 'target_max_troj_size': 20,
+ 'task': 'apg',
+ 'train_num': 128,
+ 'troj_type': 'Top-benign',
+ 'trojan_part': None,
+ 'trojan_size': None}
+CRITICAL: 02-27 18:40:43: mntd_run_meta.py:91 * 123690431989568 debug_setting: queryset-100-most-0-few-1
+INFO: 02-27 18:40:43: mntd_run_meta.py:106 * 123690431989568 args.no_qt: True
+Traceback (most recent call last):
+  File "mntd_run_meta.py", line 385, in <module>
+    main()
+  File "mntd_run_meta.py", line 110, in main
+    meta_model_save_path = get_shadow_and_meta_model_path(args, TRAIN_NUM, setting,
+UnboundLocalError: local variable 'TRAIN_NUM' referenced before assignment

@@ -1,0 +1,70 @@
+class com.earingdisplayideas.mortalmen.a extends java.lang.Object implements java.lang.Runnable
+{
+    final com.earingdisplayideas.mortalmen.MainActivity a;
+
+    void <init>(com.earingdisplayideas.mortalmen.MainActivity)
+    {
+        com.earingdisplayideas.mortalmen.a r0;
+        com.earingdisplayideas.mortalmen.MainActivity $r1;
+
+        r0 := @this: com.earingdisplayideas.mortalmen.a;
+
+        $r1 := @parameter0: com.earingdisplayideas.mortalmen.MainActivity;
+
+        r0.<com.earingdisplayideas.mortalmen.a: com.earingdisplayideas.mortalmen.MainActivity a> = $r1;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public void run()
+    {
+        com.earingdisplayideas.mortalmen.a r0;
+        com.earingdisplayideas.mortalmen.MainActivity $r1;
+        com.google.android.gms.ads.f $r2;
+        boolean $z0;
+        android.os.Handler $r3;
+        java.lang.Runnable $r4;
+        android.content.res.Resources $r5;
+        int $i0;
+        long $l1;
+
+        r0 := @this: com.earingdisplayideas.mortalmen.a;
+
+        $r1 = r0.<com.earingdisplayideas.mortalmen.a: com.earingdisplayideas.mortalmen.MainActivity a>;
+
+        $r2 = $r1.<com.earingdisplayideas.mortalmen.MainActivity: com.google.android.gms.ads.f e>;
+
+        $z0 = virtualinvoke $r2.<com.google.android.gms.ads.f: boolean a()>();
+
+        if $z0 == 0 goto label1;
+
+        $r1 = r0.<com.earingdisplayideas.mortalmen.a: com.earingdisplayideas.mortalmen.MainActivity a>;
+
+        $r2 = $r1.<com.earingdisplayideas.mortalmen.MainActivity: com.google.android.gms.ads.f e>;
+
+        virtualinvoke $r2.<com.google.android.gms.ads.f: void b()>();
+
+     label1:
+        $r1 = r0.<com.earingdisplayideas.mortalmen.a: com.earingdisplayideas.mortalmen.MainActivity a>;
+
+        $r3 = $r1.<com.earingdisplayideas.mortalmen.MainActivity: android.os.Handler f>;
+
+        $r1 = r0.<com.earingdisplayideas.mortalmen.a: com.earingdisplayideas.mortalmen.MainActivity a>;
+
+        $r4 = $r1.<com.earingdisplayideas.mortalmen.MainActivity: java.lang.Runnable g>;
+
+        $r1 = r0.<com.earingdisplayideas.mortalmen.a: com.earingdisplayideas.mortalmen.MainActivity a>;
+
+        $r5 = virtualinvoke $r1.<com.earingdisplayideas.mortalmen.MainActivity: android.content.res.Resources getResources()>();
+
+        $i0 = virtualinvoke $r5.<android.content.res.Resources: int getInteger(int)>(2131361792);
+
+        $l1 = (long) $i0;
+
+        virtualinvoke $r3.<android.os.Handler: boolean postDelayed(java.lang.Runnable,long)>($r4, $l1);
+
+        return;
+    }
+}

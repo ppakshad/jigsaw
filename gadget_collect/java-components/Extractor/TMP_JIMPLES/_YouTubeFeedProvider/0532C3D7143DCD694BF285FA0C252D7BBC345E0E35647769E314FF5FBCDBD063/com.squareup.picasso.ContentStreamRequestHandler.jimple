@@ -1,0 +1,93 @@
+class com.squareup.picasso.ContentStreamRequestHandler extends com.squareup.picasso.RequestHandler
+{
+    final android.content.Context context;
+
+    void <init>(android.content.Context)
+    {
+        com.squareup.picasso.ContentStreamRequestHandler r0;
+        android.content.Context $r1;
+
+        r0 := @this: com.squareup.picasso.ContentStreamRequestHandler;
+
+        $r1 := @parameter0: android.content.Context;
+
+        specialinvoke r0.<com.squareup.picasso.RequestHandler: void <init>()>();
+
+        r0.<com.squareup.picasso.ContentStreamRequestHandler: android.content.Context context> = $r1;
+
+        return;
+    }
+
+    public boolean canHandleRequest(com.squareup.picasso.Request)
+    {
+        com.squareup.picasso.ContentStreamRequestHandler r0;
+        com.squareup.picasso.Request $r1;
+        java.lang.String $r2, $r4;
+        android.net.Uri $r3;
+        boolean $z0;
+
+        r0 := @this: com.squareup.picasso.ContentStreamRequestHandler;
+
+        $r1 := @parameter0: com.squareup.picasso.Request;
+
+        $r2 = "content";
+
+        $r3 = $r1.<com.squareup.picasso.Request: android.net.Uri uri>;
+
+        $r4 = virtualinvoke $r3.<android.net.Uri: java.lang.String getScheme()>();
+
+        $z0 = virtualinvoke $r2.<java.lang.String: boolean equals(java.lang.Object)>($r4);
+
+        return $z0;
+    }
+
+    java.io.InputStream getInputStream(com.squareup.picasso.Request) throws java.io.FileNotFoundException
+    {
+        com.squareup.picasso.ContentStreamRequestHandler r0;
+        com.squareup.picasso.Request $r1;
+        android.net.Uri $r2;
+        android.content.Context $r3;
+        android.content.ContentResolver $r4;
+        java.io.InputStream $r5;
+
+        r0 := @this: com.squareup.picasso.ContentStreamRequestHandler;
+
+        $r1 := @parameter0: com.squareup.picasso.Request;
+
+        $r3 = r0.<com.squareup.picasso.ContentStreamRequestHandler: android.content.Context context>;
+
+        $r4 = virtualinvoke $r3.<android.content.Context: android.content.ContentResolver getContentResolver()>();
+
+        $r2 = $r1.<com.squareup.picasso.Request: android.net.Uri uri>;
+
+        $r5 = virtualinvoke $r4.<android.content.ContentResolver: java.io.InputStream openInputStream(android.net.Uri)>($r2);
+
+        return $r5;
+    }
+
+    public com.squareup.picasso.RequestHandler$Result load(com.squareup.picasso.Request, int) throws java.io.IOException
+    {
+        com.squareup.picasso.ContentStreamRequestHandler r0;
+        com.squareup.picasso.Request $r1;
+        int $i0;
+        com.squareup.picasso.RequestHandler$Result $r2;
+        com.squareup.picasso.Picasso$LoadedFrom $r3;
+        java.io.InputStream $r4;
+
+        r0 := @this: com.squareup.picasso.ContentStreamRequestHandler;
+
+        $r1 := @parameter0: com.squareup.picasso.Request;
+
+        $i0 := @parameter1: int;
+
+        $r2 = new com.squareup.picasso.RequestHandler$Result;
+
+        $r4 = virtualinvoke r0.<com.squareup.picasso.ContentStreamRequestHandler: java.io.InputStream getInputStream(com.squareup.picasso.Request)>($r1);
+
+        $r3 = <com.squareup.picasso.Picasso$LoadedFrom: com.squareup.picasso.Picasso$LoadedFrom DISK>;
+
+        specialinvoke $r2.<com.squareup.picasso.RequestHandler$Result: void <init>(java.io.InputStream,com.squareup.picasso.Picasso$LoadedFrom)>($r4, $r3);
+
+        return $r2;
+    }
+}

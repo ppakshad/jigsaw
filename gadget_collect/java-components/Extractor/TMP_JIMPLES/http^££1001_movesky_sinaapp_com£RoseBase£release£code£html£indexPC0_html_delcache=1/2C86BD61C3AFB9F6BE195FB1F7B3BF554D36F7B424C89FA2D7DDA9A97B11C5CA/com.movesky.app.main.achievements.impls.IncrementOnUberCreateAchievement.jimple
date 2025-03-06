@@ -1,0 +1,61 @@
+public class com.movesky.app.main.achievements.impls.IncrementOnUberCreateAchievement extends com.movesky.app.main.achievements.BBTHAchievement
+{
+
+    public void <init>(com.movesky.app.engine.achievements.AchievementInfo)
+    {
+        com.movesky.app.main.achievements.impls.IncrementOnUberCreateAchievement r0;
+        com.movesky.app.engine.achievements.AchievementInfo $r1;
+
+        r0 := @this: com.movesky.app.main.achievements.impls.IncrementOnUberCreateAchievement;
+
+        $r1 := @parameter0: com.movesky.app.engine.achievements.AchievementInfo;
+
+        specialinvoke r0.<com.movesky.app.main.achievements.BBTHAchievement: void <init>(com.movesky.app.engine.achievements.AchievementInfo)>($r1);
+
+        return;
+    }
+
+    public void unitCreated(com.movesky.app.main.achievements.events.UnitCreatedEvent)
+    {
+        com.movesky.app.main.achievements.impls.IncrementOnUberCreateAchievement r0;
+        com.movesky.app.main.achievements.events.UnitCreatedEvent $r1;
+        com.movesky.app.main.units.UnitType $r2, $r3;
+        com.movesky.app.main.Player $r4;
+        com.movesky.app.main.Team $r5, $r7;
+        com.movesky.app.main.units.Unit $r6;
+
+        r0 := @this: com.movesky.app.main.achievements.impls.IncrementOnUberCreateAchievement;
+
+        $r1 := @parameter0: com.movesky.app.main.achievements.events.UnitCreatedEvent;
+
+        $r2 = virtualinvoke $r1.<com.movesky.app.main.achievements.events.UnitCreatedEvent: com.movesky.app.main.units.UnitType getUnitType()>();
+
+        $r3 = <com.movesky.app.main.units.UnitType: com.movesky.app.main.units.UnitType UBER>;
+
+        if $r2 != $r3 goto label1;
+
+        $r4 = virtualinvoke $r1.<com.movesky.app.main.achievements.events.UnitCreatedEvent: com.movesky.app.main.Player getLocalPlayer()>();
+
+        $r5 = virtualinvoke $r4.<com.movesky.app.main.Player: com.movesky.app.main.Team getTeam()>();
+
+        $r6 = virtualinvoke $r1.<com.movesky.app.main.achievements.events.UnitCreatedEvent: com.movesky.app.main.units.Unit getUnit()>();
+
+        $r7 = virtualinvoke $r6.<com.movesky.app.main.units.Unit: com.movesky.app.main.Team getTeam()>();
+
+        if $r5 != $r7 goto label1;
+
+        virtualinvoke r0.<com.movesky.app.main.achievements.impls.IncrementOnUberCreateAchievement: void increment()>();
+
+     label1:
+        return;
+    }
+
+    public boolean usesUnitCreated()
+    {
+        com.movesky.app.main.achievements.impls.IncrementOnUberCreateAchievement r0;
+
+        r0 := @this: com.movesky.app.main.achievements.impls.IncrementOnUberCreateAchievement;
+
+        return 1;
+    }
+}

@@ -1,0 +1,4425 @@
+public class com.ideaworks3d.marmalade.LoaderThread extends java.lang.Thread implements android.hardware.SensorEventListener
+{
+    static com.ideaworks3d.marmalade.LoaderThread g_Singleton;
+    public final int S3E_CONTACTS_FIELD_ADDRESS;
+    public final int S3E_CONTACTS_FIELD_DISPLAY_NAME;
+    public final int S3E_CONTACTS_FIELD_EMAIL_ADDR;
+    public final int S3E_CONTACTS_FIELD_HOME_PHONE;
+    public final int S3E_CONTACTS_FIELD_MOBILE_PHONE;
+    public final int S3E_CONTACTS_FIELD_WORK_PHONE;
+    private int[] contactsMap;
+    private android.hardware.Sensor m_Accelerometer;
+    private android.content.res.AssetManager m_Assets;
+    private int m_BatteryLevel;
+    private android.content.BroadcastReceiver m_BatteryLevelReceiver;
+    private boolean m_ChargerConnected;
+    private android.hardware.Sensor m_Compass;
+    private final java.lang.Runnable m_CreateView;
+    private java.io.File m_FileRoot;
+    private int m_FixScreenOrientation;
+    private android.os.Handler m_Handler;
+    private boolean m_HasFocus;
+    private boolean m_IgnoreResizeWhilePaused;
+    private com.ideaworks3d.marmalade.LoaderActivity m_Loader;
+    private com.ideaworks3d.marmalade.LoaderSMSReceiver m_LoaderSMSReceiver;
+    private com.ideaworks3d.marmalade.LoaderLocation m_Location;
+    private com.ideaworks3d.marmalade.LoaderThread$MediaPlayerManager m_MediaPlayerManager;
+    private com.ideaworks3d.marmalade.LoaderThread$MulticastLockFacade m_MulticastLock;
+    private boolean m_NetworkCheckEnabled;
+    private android.content.BroadcastReceiver m_NetworkCheckReceiver;
+    private java.lang.Integer m_OnTouchWait;
+    private android.hardware.Sensor m_Orientation;
+    private int m_OrigScreenOrientation;
+    private java.lang.Boolean m_PauseRequested;
+    private java.lang.Object m_PauseRequestedXX;
+    private java.lang.Boolean m_Paused;
+    java.lang.Object m_ResizeDone;
+    private java.lang.Object m_ResumeRequestedXX;
+    private final java.lang.Runnable m_RunOnOSThread;
+    private android.hardware.SensorManager m_SensorManager;
+    private boolean m_SkipNextChange;
+    private com.ideaworks3d.marmalade.SoundPlayer m_SoundPlayer;
+    private com.ideaworks3d.marmalade.SoundRecord m_SoundRecord;
+    private java.lang.Boolean m_Started;
+    private java.lang.Object m_StartedXX;
+    private java.lang.Boolean m_Terminating;
+    private java.lang.reflect.Method m_TouchEvent;
+    private boolean m_TouchMulti;
+    private boolean m_UseGL;
+    private java.lang.Boolean m_VideoIsPaused;
+    private com.ideaworks3d.marmalade.LoaderView m_View;
+    boolean m_WaitForResizeOnResume;
+    private java.lang.Object m_YieldXX;
+    private java.lang.reflect.Method m_getRotation;
+
+    private void <init>(com.ideaworks3d.marmalade.LoaderActivity, android.content.res.AssetManager, java.io.File)
+    {
+        com.ideaworks3d.marmalade.LoaderThread r0;
+        com.ideaworks3d.marmalade.LoaderActivity $r1;
+        android.content.res.AssetManager $r2;
+        java.io.File $r3, $r17;
+        java.lang.Object $r4;
+        com.ideaworks3d.marmalade.LoaderThread$1 $r5;
+        com.ideaworks3d.marmalade.LoaderThread$2 $r6;
+        android.os.Handler $r7;
+        java.lang.Boolean $r8;
+        java.lang.Integer $r9;
+        com.ideaworks3d.marmalade.LoaderThread$3 $r10;
+        com.ideaworks3d.marmalade.LoaderThread$4 $r11;
+        int $i0;
+        com.ideaworks3d.marmalade.SoundPlayer $r12;
+        com.ideaworks3d.marmalade.LoaderThread$MediaPlayerManager $r13;
+        android.content.BroadcastReceiver $r14;
+        android.content.IntentFilter $r15;
+        android.hardware.SensorManager $r16;
+        boolean $z0;
+        java.lang.Class $r18;
+        java.lang.Class[] $r19;
+        java.lang.reflect.Method $r20;
+        java.lang.Exception $r21, $r22;
+
+        r0 := @this: com.ideaworks3d.marmalade.LoaderThread;
+
+        $r1 := @parameter0: com.ideaworks3d.marmalade.LoaderActivity;
+
+        $r2 := @parameter1: android.content.res.AssetManager;
+
+        $r3 := @parameter2: java.io.File;
+
+        specialinvoke r0.<java.lang.Thread: void <init>()>();
+
+        $r4 = new java.lang.Object;
+
+        specialinvoke $r4.<java.lang.Object: void <init>()>();
+
+        r0.<com.ideaworks3d.marmalade.LoaderThread: java.lang.Object m_ResizeDone> = $r4;
+
+        $r5 = new com.ideaworks3d.marmalade.LoaderThread$1;
+
+        specialinvoke $r5.<com.ideaworks3d.marmalade.LoaderThread$1: void <init>(com.ideaworks3d.marmalade.LoaderThread)>(r0);
+
+        r0.<com.ideaworks3d.marmalade.LoaderThread: android.content.BroadcastReceiver m_BatteryLevelReceiver> = $r5;
+
+        $r6 = new com.ideaworks3d.marmalade.LoaderThread$2;
+
+        specialinvoke $r6.<com.ideaworks3d.marmalade.LoaderThread$2: void <init>(com.ideaworks3d.marmalade.LoaderThread)>(r0);
+
+        r0.<com.ideaworks3d.marmalade.LoaderThread: android.content.BroadcastReceiver m_NetworkCheckReceiver> = $r6;
+
+        r0.<com.ideaworks3d.marmalade.LoaderThread: boolean m_NetworkCheckEnabled> = 0;
+
+        $r7 = new android.os.Handler;
+
+        specialinvoke $r7.<android.os.Handler: void <init>()>();
+
+        r0.<com.ideaworks3d.marmalade.LoaderThread: android.os.Handler m_Handler> = $r7;
+
+        r0.<com.ideaworks3d.marmalade.LoaderThread: boolean m_HasFocus> = 0;
+
+        r0.<com.ideaworks3d.marmalade.LoaderThread: boolean m_UseGL> = 0;
+
+        $r8 = staticinvoke <java.lang.Boolean: java.lang.Boolean valueOf(boolean)>(0);
+
+        r0.<com.ideaworks3d.marmalade.LoaderThread: java.lang.Boolean m_PauseRequested> = $r8;
+
+        $r8 = staticinvoke <java.lang.Boolean: java.lang.Boolean valueOf(boolean)>(0);
+
+        r0.<com.ideaworks3d.marmalade.LoaderThread: java.lang.Boolean m_Paused> = $r8;
+
+        $r4 = new java.lang.Object;
+
+        specialinvoke $r4.<java.lang.Object: void <init>()>();
+
+        r0.<com.ideaworks3d.marmalade.LoaderThread: java.lang.Object m_PauseRequestedXX> = $r4;
+
+        $r4 = new java.lang.Object;
+
+        specialinvoke $r4.<java.lang.Object: void <init>()>();
+
+        r0.<com.ideaworks3d.marmalade.LoaderThread: java.lang.Object m_ResumeRequestedXX> = $r4;
+
+        $r4 = new java.lang.Object;
+
+        specialinvoke $r4.<java.lang.Object: void <init>()>();
+
+        r0.<com.ideaworks3d.marmalade.LoaderThread: java.lang.Object m_YieldXX> = $r4;
+
+        $r8 = staticinvoke <java.lang.Boolean: java.lang.Boolean valueOf(boolean)>(0);
+
+        r0.<com.ideaworks3d.marmalade.LoaderThread: java.lang.Boolean m_Started> = $r8;
+
+        $r8 = staticinvoke <java.lang.Boolean: java.lang.Boolean valueOf(boolean)>(0);
+
+        r0.<com.ideaworks3d.marmalade.LoaderThread: java.lang.Boolean m_Terminating> = $r8;
+
+        $r4 = new java.lang.Object;
+
+        specialinvoke $r4.<java.lang.Object: void <init>()>();
+
+        r0.<com.ideaworks3d.marmalade.LoaderThread: java.lang.Object m_StartedXX> = $r4;
+
+        r0.<com.ideaworks3d.marmalade.LoaderThread: java.lang.reflect.Method m_TouchEvent> = null;
+
+        $r9 = new java.lang.Integer;
+
+        specialinvoke $r9.<java.lang.Integer: void <init>(int)>(0);
+
+        r0.<com.ideaworks3d.marmalade.LoaderThread: java.lang.Integer m_OnTouchWait> = $r9;
+
+        r0.<com.ideaworks3d.marmalade.LoaderThread: boolean m_TouchMulti> = 0;
+
+        r0.<com.ideaworks3d.marmalade.LoaderThread: com.ideaworks3d.marmalade.LoaderThread$MulticastLockFacade m_MulticastLock> = null;
+
+        $r10 = new com.ideaworks3d.marmalade.LoaderThread$3;
+
+        specialinvoke $r10.<com.ideaworks3d.marmalade.LoaderThread$3: void <init>(com.ideaworks3d.marmalade.LoaderThread)>(r0);
+
+        r0.<com.ideaworks3d.marmalade.LoaderThread: java.lang.Runnable m_RunOnOSThread> = $r10;
+
+        $r11 = new com.ideaworks3d.marmalade.LoaderThread$4;
+
+        specialinvoke $r11.<com.ideaworks3d.marmalade.LoaderThread$4: void <init>(com.ideaworks3d.marmalade.LoaderThread)>(r0);
+
+        r0.<com.ideaworks3d.marmalade.LoaderThread: java.lang.Runnable m_CreateView> = $r11;
+
+        r0.<com.ideaworks3d.marmalade.LoaderThread: int[] contactsMap> = null;
+
+        r0.<com.ideaworks3d.marmalade.LoaderThread: int S3E_CONTACTS_FIELD_DISPLAY_NAME> = 0;
+
+        r0.<com.ideaworks3d.marmalade.LoaderThread: int S3E_CONTACTS_FIELD_HOME_PHONE> = 5;
+
+        r0.<com.ideaworks3d.marmalade.LoaderThread: int S3E_CONTACTS_FIELD_MOBILE_PHONE> = 6;
+
+        r0.<com.ideaworks3d.marmalade.LoaderThread: int S3E_CONTACTS_FIELD_WORK_PHONE> = 7;
+
+        r0.<com.ideaworks3d.marmalade.LoaderThread: int S3E_CONTACTS_FIELD_EMAIL_ADDR> = 8;
+
+        r0.<com.ideaworks3d.marmalade.LoaderThread: int S3E_CONTACTS_FIELD_ADDRESS> = 10;
+
+        r0.<com.ideaworks3d.marmalade.LoaderThread: android.content.res.AssetManager m_Assets> = $r2;
+
+        r0.<com.ideaworks3d.marmalade.LoaderThread: com.ideaworks3d.marmalade.LoaderActivity m_Loader> = $r1;
+
+        $i0 = virtualinvoke $r1.<com.ideaworks3d.marmalade.LoaderActivity: int getRequestedOrientation()>();
+
+        r0.<com.ideaworks3d.marmalade.LoaderThread: int m_OrigScreenOrientation> = $i0;
+
+        $i0 = r0.<com.ideaworks3d.marmalade.LoaderThread: int m_OrigScreenOrientation>;
+
+        r0.<com.ideaworks3d.marmalade.LoaderThread: int m_FixScreenOrientation> = $i0;
+
+        r0.<com.ideaworks3d.marmalade.LoaderThread: java.io.File m_FileRoot> = $r3;
+
+        $r12 = new com.ideaworks3d.marmalade.SoundPlayer;
+
+        specialinvoke $r12.<com.ideaworks3d.marmalade.SoundPlayer: void <init>()>();
+
+        r0.<com.ideaworks3d.marmalade.LoaderThread: com.ideaworks3d.marmalade.SoundPlayer m_SoundPlayer> = $r12;
+
+        $r13 = new com.ideaworks3d.marmalade.LoaderThread$MediaPlayerManager;
+
+        specialinvoke $r13.<com.ideaworks3d.marmalade.LoaderThread$MediaPlayerManager: void <init>(com.ideaworks3d.marmalade.LoaderThread)>(r0);
+
+        r0.<com.ideaworks3d.marmalade.LoaderThread: com.ideaworks3d.marmalade.LoaderThread$MediaPlayerManager m_MediaPlayerManager> = $r13;
+
+        $r1 = r0.<com.ideaworks3d.marmalade.LoaderThread: com.ideaworks3d.marmalade.LoaderActivity m_Loader>;
+
+        $r14 = r0.<com.ideaworks3d.marmalade.LoaderThread: android.content.BroadcastReceiver m_BatteryLevelReceiver>;
+
+        $r15 = new android.content.IntentFilter;
+
+        specialinvoke $r15.<android.content.IntentFilter: void <init>(java.lang.String)>("android.intent.action.BATTERY_CHANGED");
+
+        virtualinvoke $r1.<com.ideaworks3d.marmalade.LoaderActivity: android.content.Intent registerReceiver(android.content.BroadcastReceiver,android.content.IntentFilter)>($r14, $r15);
+
+        $r1 = r0.<com.ideaworks3d.marmalade.LoaderThread: com.ideaworks3d.marmalade.LoaderActivity m_Loader>;
+
+        $r4 = virtualinvoke $r1.<com.ideaworks3d.marmalade.LoaderActivity: java.lang.Object getSystemService(java.lang.String)>("sensor");
+
+        $r16 = (android.hardware.SensorManager) $r4;
+
+        r0.<com.ideaworks3d.marmalade.LoaderThread: android.hardware.SensorManager m_SensorManager> = $r16;
+
+        $r3 = new java.io.File;
+
+     label1:
+        $r17 = r0.<com.ideaworks3d.marmalade.LoaderThread: java.io.File m_FileRoot>;
+
+        specialinvoke $r3.<java.io.File: void <init>(java.io.File,java.lang.String)>($r17, "makeramdirectory.txt");
+
+        $z0 = virtualinvoke $r3.<java.io.File: boolean mkdirs()>();
+
+     label2:
+        if $z0 == 0 goto label3;
+
+     label3:
+        virtualinvoke $r3.<java.io.File: boolean delete()>();
+
+     label4:
+        $i0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $i0 < 5 goto label6;
+
+     label5:
+        $r18 = staticinvoke <java.lang.Class: java.lang.Class forName(java.lang.String)>("com.ideaworks3d.marmalade.MultiTouch");
+
+        $r19 = newarray (java.lang.Class)[2];
+
+        $r19[0] = class "Lcom/ideaworks3d/marmalade/LoaderThread;";
+
+        $r19[1] = class "Landroid/view/MotionEvent;";
+
+        $r20 = virtualinvoke $r18.<java.lang.Class: java.lang.reflect.Method getMethod(java.lang.String,java.lang.Class[])>("onTouchEvent", $r19);
+
+        r0.<com.ideaworks3d.marmalade.LoaderThread: java.lang.reflect.Method m_TouchEvent> = $r20;
+
+     label6:
+        specialinvoke r0.<com.ideaworks3d.marmalade.LoaderThread: void initNative()>();
+
+        return;
+
+     label7:
+        $r21 := @caughtexception;
+
+        r0.<com.ideaworks3d.marmalade.LoaderThread: java.lang.reflect.Method m_TouchEvent> = null;
+
+        goto label6;
+
+     label8:
+        $r22 := @caughtexception;
+
+        goto label4;
+
+        catch java.lang.Exception from label1 to label2 with label8;
+        catch java.lang.Exception from label3 to label4 with label8;
+        catch java.lang.Exception from label5 to label6 with label7;
+    }
+
+    static void access$1000(com.ideaworks3d.marmalade.LoaderThread)
+    {
+        com.ideaworks3d.marmalade.LoaderThread $r0;
+
+        $r0 := @parameter0: com.ideaworks3d.marmalade.LoaderThread;
+
+        specialinvoke $r0.<com.ideaworks3d.marmalade.LoaderThread: void runOnOSTickNative()>();
+
+        return;
+    }
+
+    static boolean access$1100(com.ideaworks3d.marmalade.LoaderThread)
+    {
+        com.ideaworks3d.marmalade.LoaderThread $r0;
+        boolean z0;
+
+        $r0 := @parameter0: com.ideaworks3d.marmalade.LoaderThread;
+
+        z0 = $r0.<com.ideaworks3d.marmalade.LoaderThread: boolean m_UseGL>;
+
+        return z0;
+    }
+
+    static com.ideaworks3d.marmalade.LoaderActivity access$1200(com.ideaworks3d.marmalade.LoaderThread)
+    {
+        com.ideaworks3d.marmalade.LoaderThread $r0;
+        com.ideaworks3d.marmalade.LoaderActivity r1;
+
+        $r0 := @parameter0: com.ideaworks3d.marmalade.LoaderThread;
+
+        r1 = $r0.<com.ideaworks3d.marmalade.LoaderThread: com.ideaworks3d.marmalade.LoaderActivity m_Loader>;
+
+        return r1;
+    }
+
+    static java.lang.Runnable access$1300(com.ideaworks3d.marmalade.LoaderThread)
+    {
+        com.ideaworks3d.marmalade.LoaderThread $r0;
+        java.lang.Runnable r1;
+
+        $r0 := @parameter0: com.ideaworks3d.marmalade.LoaderThread;
+
+        r1 = $r0.<com.ideaworks3d.marmalade.LoaderThread: java.lang.Runnable m_CreateView>;
+
+        return r1;
+    }
+
+    static void access$400(com.ideaworks3d.marmalade.LoaderThread, int)
+    {
+        com.ideaworks3d.marmalade.LoaderThread $r0;
+        int $i0;
+
+        $r0 := @parameter0: com.ideaworks3d.marmalade.LoaderThread;
+
+        $i0 := @parameter1: int;
+
+        specialinvoke $r0.<com.ideaworks3d.marmalade.LoaderThread: void audioStoppedNotify(int)>($i0);
+
+        return;
+    }
+
+    static android.content.res.AssetManager access$500(com.ideaworks3d.marmalade.LoaderThread)
+    {
+        com.ideaworks3d.marmalade.LoaderThread $r0;
+        android.content.res.AssetManager r1;
+
+        $r0 := @parameter0: com.ideaworks3d.marmalade.LoaderThread;
+
+        r1 = $r0.<com.ideaworks3d.marmalade.LoaderThread: android.content.res.AssetManager m_Assets>;
+
+        return r1;
+    }
+
+    static int access$602(com.ideaworks3d.marmalade.LoaderThread, int)
+    {
+        com.ideaworks3d.marmalade.LoaderThread $r0;
+        int $i0;
+
+        $r0 := @parameter0: com.ideaworks3d.marmalade.LoaderThread;
+
+        $i0 := @parameter1: int;
+
+        $r0.<com.ideaworks3d.marmalade.LoaderThread: int m_BatteryLevel> = $i0;
+
+        return $i0;
+    }
+
+    static boolean access$700(com.ideaworks3d.marmalade.LoaderThread)
+    {
+        com.ideaworks3d.marmalade.LoaderThread $r0;
+        boolean z0;
+
+        $r0 := @parameter0: com.ideaworks3d.marmalade.LoaderThread;
+
+        z0 = $r0.<com.ideaworks3d.marmalade.LoaderThread: boolean m_ChargerConnected>;
+
+        return z0;
+    }
+
+    static boolean access$702(com.ideaworks3d.marmalade.LoaderThread, boolean)
+    {
+        com.ideaworks3d.marmalade.LoaderThread $r0;
+        boolean $z0;
+
+        $r0 := @parameter0: com.ideaworks3d.marmalade.LoaderThread;
+
+        $z0 := @parameter1: boolean;
+
+        $r0.<com.ideaworks3d.marmalade.LoaderThread: boolean m_ChargerConnected> = $z0;
+
+        return $z0;
+    }
+
+    static void access$800(com.ideaworks3d.marmalade.LoaderThread, boolean)
+    {
+        com.ideaworks3d.marmalade.LoaderThread $r0;
+        boolean $z0;
+
+        $r0 := @parameter0: com.ideaworks3d.marmalade.LoaderThread;
+
+        $z0 := @parameter1: boolean;
+
+        specialinvoke $r0.<com.ideaworks3d.marmalade.LoaderThread: void chargerStateChanged(boolean)>($z0);
+
+        return;
+    }
+
+    static void access$900(com.ideaworks3d.marmalade.LoaderThread, boolean)
+    {
+        com.ideaworks3d.marmalade.LoaderThread $r0;
+        boolean $z0;
+
+        $r0 := @parameter0: com.ideaworks3d.marmalade.LoaderThread;
+
+        $z0 := @parameter1: boolean;
+
+        specialinvoke $r0.<com.ideaworks3d.marmalade.LoaderThread: void networkCheckChanged(boolean)>($z0);
+
+        return;
+    }
+
+    private native void audioStoppedNotify(int);
+
+    private native void chargerStateChanged(boolean);
+
+    private void deviceUnYield()
+    {
+        com.ideaworks3d.marmalade.LoaderThread r0;
+        java.lang.Object $r1, $r2;
+        java.lang.Throwable $r3;
+
+        r0 := @this: com.ideaworks3d.marmalade.LoaderThread;
+
+        $r1 = r0.<com.ideaworks3d.marmalade.LoaderThread: java.lang.Object m_YieldXX>;
+
+        entermonitor $r1;
+
+     label1:
+        $r2 = r0.<com.ideaworks3d.marmalade.LoaderThread: java.lang.Object m_YieldXX>;
+
+        virtualinvoke $r2.<java.lang.Object: void notify()>();
+
+        exitmonitor $r1;
+
+     label2:
+        return;
+
+     label3:
+        $r3 := @caughtexception;
+
+        exitmonitor $r1;
+
+     label4:
+        throw $r3;
+
+        catch java.lang.Throwable from label1 to label2 with label3;
+        catch java.lang.Throwable from label3 to label4 with label3;
+    }
+
+    private void doFixOrientation()
+    {
+        com.ideaworks3d.marmalade.LoaderThread r0;
+        int $i0;
+        com.ideaworks3d.marmalade.LoaderActivity $r1;
+
+        r0 := @this: com.ideaworks3d.marmalade.LoaderThread;
+
+        $i0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $i0 >= 9 goto label2;
+
+        $i0 = r0.<com.ideaworks3d.marmalade.LoaderThread: int m_FixScreenOrientation>;
+
+        if $i0 != 1 goto label1;
+
+        $r1 = r0.<com.ideaworks3d.marmalade.LoaderThread: com.ideaworks3d.marmalade.LoaderActivity m_Loader>;
+
+        virtualinvoke $r1.<com.ideaworks3d.marmalade.LoaderActivity: void setRequestedOrientation(int)>(1);
+
+        return;
+
+     label1:
+        $i0 = r0.<com.ideaworks3d.marmalade.LoaderThread: int m_FixScreenOrientation>;
+
+        if $i0 != 2 goto label2;
+
+        $r1 = r0.<com.ideaworks3d.marmalade.LoaderThread: com.ideaworks3d.marmalade.LoaderActivity m_Loader>;
+
+        virtualinvoke $r1.<com.ideaworks3d.marmalade.LoaderActivity: void setRequestedOrientation(int)>(0);
+
+        return;
+
+     label2:
+        $i0 = r0.<com.ideaworks3d.marmalade.LoaderThread: int m_FixScreenOrientation>;
+
+        if $i0 != 1 goto label3;
+
+        $r1 = r0.<com.ideaworks3d.marmalade.LoaderThread: com.ideaworks3d.marmalade.LoaderActivity m_Loader>;
+
+        virtualinvoke $r1.<com.ideaworks3d.marmalade.LoaderActivity: void setRequestedOrientation(int)>(7);
+
+        return;
+
+     label3:
+        $i0 = r0.<com.ideaworks3d.marmalade.LoaderThread: int m_FixScreenOrientation>;
+
+        if $i0 != 2 goto label4;
+
+        $r1 = r0.<com.ideaworks3d.marmalade.LoaderThread: com.ideaworks3d.marmalade.LoaderActivity m_Loader>;
+
+        virtualinvoke $r1.<com.ideaworks3d.marmalade.LoaderActivity: void setRequestedOrientation(int)>(6);
+
+        return;
+
+     label4:
+        $i0 = r0.<com.ideaworks3d.marmalade.LoaderThread: int m_FixScreenOrientation>;
+
+        if $i0 != 3 goto label5;
+
+        $r1 = r0.<com.ideaworks3d.marmalade.LoaderThread: com.ideaworks3d.marmalade.LoaderActivity m_Loader>;
+
+        virtualinvoke $r1.<com.ideaworks3d.marmalade.LoaderActivity: void setRequestedOrientation(int)>(1);
+
+        return;
+
+     label5:
+        $i0 = r0.<com.ideaworks3d.marmalade.LoaderThread: int m_FixScreenOrientation>;
+
+        if $i0 != 4 goto label6;
+
+        $r1 = r0.<com.ideaworks3d.marmalade.LoaderThread: com.ideaworks3d.marmalade.LoaderActivity m_Loader>;
+
+        virtualinvoke $r1.<com.ideaworks3d.marmalade.LoaderActivity: void setRequestedOrientation(int)>(0);
+
+        return;
+
+     label6:
+        $r1 = r0.<com.ideaworks3d.marmalade.LoaderThread: com.ideaworks3d.marmalade.LoaderActivity m_Loader>;
+
+        $i0 = r0.<com.ideaworks3d.marmalade.LoaderThread: int m_OrigScreenOrientation>;
+
+        virtualinvoke $r1.<com.ideaworks3d.marmalade.LoaderActivity: void setRequestedOrientation(int)>($i0);
+
+        return;
+    }
+
+    private void fixOrientation(int)
+    {
+        com.ideaworks3d.marmalade.LoaderThread r0;
+        int $i0;
+
+        r0 := @this: com.ideaworks3d.marmalade.LoaderThread;
+
+        $i0 := @parameter0: int;
+
+        r0.<com.ideaworks3d.marmalade.LoaderThread: int m_FixScreenOrientation> = $i0;
+
+        $i0 = staticinvoke <com.ideaworks3d.marmalade.LoaderAPI: int s3eConfigGet(java.lang.String,int)>("AndroidIgnoreResizeWhilePaused", 0);
+
+        if $i0 == 0 goto label1;
+
+        r0.<com.ideaworks3d.marmalade.LoaderThread: boolean m_IgnoreResizeWhilePaused> = 1;
+
+     label1:
+        specialinvoke r0.<com.ideaworks3d.marmalade.LoaderThread: void doFixOrientation()>();
+
+        return;
+    }
+
+    private java.lang.String getCardRoot()
+    {
+        com.ideaworks3d.marmalade.LoaderThread r0;
+        java.lang.String $r1;
+        boolean $z0;
+        java.io.File $r2;
+
+        r0 := @this: com.ideaworks3d.marmalade.LoaderThread;
+
+        $r1 = staticinvoke <android.os.Environment: java.lang.String getExternalStorageState()>();
+
+        $z0 = virtualinvoke $r1.<java.lang.String: boolean equals(java.lang.Object)>("mounted");
+
+        if $z0 != 0 goto label1;
+
+        return null;
+
+     label1:
+        $r2 = staticinvoke <android.os.Environment: java.io.File getExternalStorageDirectory()>();
+
+        $r1 = virtualinvoke $r2.<java.io.File: java.lang.String getAbsolutePath()>();
+
+        return $r1;
+    }
+
+    public static com.ideaworks3d.marmalade.LoaderThread getInstance(com.ideaworks3d.marmalade.LoaderActivity, android.content.res.AssetManager, java.io.File, com.ideaworks3d.marmalade.LoaderView)
+    {
+        com.ideaworks3d.marmalade.LoaderActivity $r0;
+        android.content.res.AssetManager $r1;
+        java.io.File $r2;
+        com.ideaworks3d.marmalade.LoaderView $r3, $r5;
+        com.ideaworks3d.marmalade.LoaderThread $r4;
+        java.lang.Throwable $r6;
+
+        $r0 := @parameter0: com.ideaworks3d.marmalade.LoaderActivity;
+
+        $r1 := @parameter1: android.content.res.AssetManager;
+
+        $r2 := @parameter2: java.io.File;
+
+        $r3 := @parameter3: com.ideaworks3d.marmalade.LoaderView;
+
+        $r4 = <com.ideaworks3d.marmalade.LoaderThread: com.ideaworks3d.marmalade.LoaderThread g_Singleton>;
+
+        if $r4 != null goto label2;
+
+        $r4 = new com.ideaworks3d.marmalade.LoaderThread;
+
+        specialinvoke $r4.<com.ideaworks3d.marmalade.LoaderThread: void <init>(com.ideaworks3d.marmalade.LoaderActivity,android.content.res.AssetManager,java.io.File)>($r0, $r1, $r2);
+
+        <com.ideaworks3d.marmalade.LoaderThread: com.ideaworks3d.marmalade.LoaderThread g_Singleton> = $r4;
+
+        $r4 = <com.ideaworks3d.marmalade.LoaderThread: com.ideaworks3d.marmalade.LoaderThread g_Singleton>;
+
+        virtualinvoke $r4.<com.ideaworks3d.marmalade.LoaderThread: void setView(com.ideaworks3d.marmalade.LoaderView)>($r3);
+
+        $r4 = <com.ideaworks3d.marmalade.LoaderThread: com.ideaworks3d.marmalade.LoaderThread g_Singleton>;
+
+        virtualinvoke $r4.<com.ideaworks3d.marmalade.LoaderThread: void start()>();
+
+     label1:
+        $r4 = <com.ideaworks3d.marmalade.LoaderThread: com.ideaworks3d.marmalade.LoaderThread g_Singleton>;
+
+        return $r4;
+
+     label2:
+        $r4 = <com.ideaworks3d.marmalade.LoaderThread: com.ideaworks3d.marmalade.LoaderThread g_Singleton>;
+
+        $r5 = $r4.<com.ideaworks3d.marmalade.LoaderThread: com.ideaworks3d.marmalade.LoaderView m_View>;
+
+        entermonitor $r5;
+
+     label3:
+        $r4 = <com.ideaworks3d.marmalade.LoaderThread: com.ideaworks3d.marmalade.LoaderThread g_Singleton>;
+
+        $r4.<com.ideaworks3d.marmalade.LoaderThread: com.ideaworks3d.marmalade.LoaderActivity m_Loader> = $r0;
+
+        $r4 = <com.ideaworks3d.marmalade.LoaderThread: com.ideaworks3d.marmalade.LoaderThread g_Singleton>;
+
+        virtualinvoke $r4.<com.ideaworks3d.marmalade.LoaderThread: void setView(com.ideaworks3d.marmalade.LoaderView)>($r3);
+
+        exitmonitor $r5;
+
+     label4:
+        goto label1;
+
+     label5:
+        $r6 := @caughtexception;
+
+        exitmonitor $r5;
+
+     label6:
+        throw $r6;
+
+        catch java.lang.Throwable from label3 to label4 with label5;
+        catch java.lang.Throwable from label5 to label6 with label5;
+    }
+
+    private void glInit(int)
+    {
+        com.ideaworks3d.marmalade.LoaderThread r0;
+        int $i0;
+        java.lang.Runnable $r1, $r3;
+        boolean $z0;
+        java.lang.Boolean $r2;
+        android.os.Handler $r4;
+        com.ideaworks3d.marmalade.LoaderView $r5;
+        java.lang.Throwable $r6, $r7;
+
+        r0 := @this: com.ideaworks3d.marmalade.LoaderThread;
+
+        $i0 := @parameter0: int;
+
+        $z0 = r0.<com.ideaworks3d.marmalade.LoaderThread: boolean m_UseGL>;
+
+        if $z0 == 0 goto label01;
+
+        return;
+
+     label01:
+        r0.<com.ideaworks3d.marmalade.LoaderThread: boolean m_UseGL> = 1;
+
+        $r2 = r0.<com.ideaworks3d.marmalade.LoaderThread: java.lang.Boolean m_Paused>;
+
+        $z0 = virtualinvoke $r2.<java.lang.Boolean: boolean booleanValue()>();
+
+        if $z0 != 0 goto label07;
+
+        $r2 = r0.<com.ideaworks3d.marmalade.LoaderThread: java.lang.Boolean m_Terminating>;
+
+        $z0 = virtualinvoke $r2.<java.lang.Boolean: boolean booleanValue()>();
+
+        if $z0 != 0 goto label07;
+
+        $r3 = r0.<com.ideaworks3d.marmalade.LoaderThread: java.lang.Runnable m_CreateView>;
+
+        entermonitor $r3;
+
+     label02:
+        $r4 = r0.<com.ideaworks3d.marmalade.LoaderThread: android.os.Handler m_Handler>;
+
+        $r1 = r0.<com.ideaworks3d.marmalade.LoaderThread: java.lang.Runnable m_CreateView>;
+
+        virtualinvoke $r4.<android.os.Handler: boolean post(java.lang.Runnable)>($r1);
+
+     label03:
+        $r1 = r0.<com.ideaworks3d.marmalade.LoaderThread: java.lang.Runnable m_CreateView>;
+
+     label04:
+        virtualinvoke $r1.<java.lang.Object: void wait()>();
+
+     label05:
+        exitmonitor $r3;
+
+     label06:
+        specialinvoke r0.<com.ideaworks3d.marmalade.LoaderThread: void waitForView()>();
+
+     label07:
+        $r5 = r0.<com.ideaworks3d.marmalade.LoaderThread: com.ideaworks3d.marmalade.LoaderView m_View>;
+
+        virtualinvoke $r5.<com.ideaworks3d.marmalade.LoaderView: boolean glInit(int)>($i0);
+
+        return;
+
+     label08:
+        $r6 := @caughtexception;
+
+     label09:
+        exitmonitor $r3;
+
+     label10:
+        throw $r6;
+
+     label11:
+        $r7 := @caughtexception;
+
+        goto label05;
+
+        catch java.lang.Throwable from label02 to label03 with label08;
+        catch java.lang.InterruptedException from label04 to label05 with label11;
+        catch java.lang.Throwable from label03 to label05 with label08;
+        catch java.lang.Throwable from label05 to label06 with label08;
+        catch java.lang.Throwable from label09 to label10 with label08;
+    }
+
+    private void glReInit()
+    {
+        com.ideaworks3d.marmalade.LoaderThread r0;
+        boolean $z0;
+        com.ideaworks3d.marmalade.LoaderView $r1;
+
+        r0 := @this: com.ideaworks3d.marmalade.LoaderThread;
+
+        $z0 = r0.<com.ideaworks3d.marmalade.LoaderThread: boolean m_UseGL>;
+
+        if $z0 != 0 goto label1;
+
+        return;
+
+     label1:
+        $r1 = r0.<com.ideaworks3d.marmalade.LoaderThread: com.ideaworks3d.marmalade.LoaderView m_View>;
+
+        virtualinvoke $r1.<com.ideaworks3d.marmalade.LoaderView: void glReInit()>();
+
+        return;
+    }
+
+    private void glTerm()
+    {
+        com.ideaworks3d.marmalade.LoaderThread r0;
+        java.lang.Runnable $r1, $r4;
+        boolean $z0;
+        com.ideaworks3d.marmalade.LoaderView $r2;
+        java.lang.Boolean $r3;
+        android.os.Handler $r5;
+        java.lang.Throwable $r6, $r7;
+
+        r0 := @this: com.ideaworks3d.marmalade.LoaderThread;
+
+        $z0 = r0.<com.ideaworks3d.marmalade.LoaderThread: boolean m_UseGL>;
+
+        if $z0 != 0 goto label01;
+
+        return;
+
+     label01:
+        $r2 = r0.<com.ideaworks3d.marmalade.LoaderThread: com.ideaworks3d.marmalade.LoaderView m_View>;
+
+        virtualinvoke $r2.<com.ideaworks3d.marmalade.LoaderView: void glTerm()>();
+
+        r0.<com.ideaworks3d.marmalade.LoaderThread: boolean m_UseGL> = 0;
+
+        $r3 = r0.<com.ideaworks3d.marmalade.LoaderThread: java.lang.Boolean m_Paused>;
+
+        $z0 = virtualinvoke $r3.<java.lang.Boolean: boolean booleanValue()>();
+
+        if $z0 != 0 goto label06;
+
+        $r3 = r0.<com.ideaworks3d.marmalade.LoaderThread: java.lang.Boolean m_Terminating>;
+
+        $z0 = virtualinvoke $r3.<java.lang.Boolean: boolean booleanValue()>();
+
+        if $z0 != 0 goto label06;
+
+        $r4 = r0.<com.ideaworks3d.marmalade.LoaderThread: java.lang.Runnable m_CreateView>;
+
+        entermonitor $r4;
+
+     label02:
+        $r5 = r0.<com.ideaworks3d.marmalade.LoaderThread: android.os.Handler m_Handler>;
+
+        $r1 = r0.<com.ideaworks3d.marmalade.LoaderThread: java.lang.Runnable m_CreateView>;
+
+        virtualinvoke $r5.<android.os.Handler: boolean post(java.lang.Runnable)>($r1);
+
+     label03:
+        $r1 = r0.<com.ideaworks3d.marmalade.LoaderThread: java.lang.Runnable m_CreateView>;
+
+     label04:
+        virtualinvoke $r1.<java.lang.Object: void wait()>();
+
+     label05:
+        exitmonitor $r4;
+
+     label06:
+        $r3 = r0.<com.ideaworks3d.marmalade.LoaderThread: java.lang.Boolean m_Paused>;
+
+        $z0 = virtualinvoke $r3.<java.lang.Boolean: boolean booleanValue()>();
+
+        if $z0 != 0 goto label11;
+
+        specialinvoke r0.<com.ideaworks3d.marmalade.LoaderThread: void waitForView()>();
+
+        return;
+
+     label07:
+        $r6 := @caughtexception;
+
+     label08:
+        exitmonitor $r4;
+
+     label09:
+        throw $r6;
+
+     label10:
+        $r7 := @caughtexception;
+
+        goto label05;
+
+     label11:
+        return;
+
+        catch java.lang.Throwable from label02 to label03 with label07;
+        catch java.lang.InterruptedException from label04 to label05 with label10;
+        catch java.lang.Throwable from label03 to label05 with label07;
+        catch java.lang.Throwable from label05 to label06 with label07;
+        catch java.lang.Throwable from label08 to label09 with label07;
+    }
+
+    private native void initNative();
+
+    private native void networkCheckChanged(boolean);
+
+    private native void onAccelNative(float, float, float);
+
+    private native void onCompassNative(int, float, float, float);
+
+    private native void onPauseNative();
+
+    private native void runNative(java.lang.String, java.lang.String);
+
+    private native void runOnOSThreadNative(java.lang.Runnable);
+
+    private native void runOnOSTickNative();
+
+    private native void setResumed();
+
+    private native void setSuspended();
+
+    private native void setViewNative(com.ideaworks3d.marmalade.LoaderView);
+
+    private native void shutdownNative();
+
+    private void shuttingDown(boolean)
+    {
+        com.ideaworks3d.marmalade.LoaderThread r0;
+        boolean $z0, $z1;
+        java.lang.Object $r1;
+        java.lang.Boolean $r2;
+        com.ideaworks3d.marmalade.SuspendResumeEvent $r3;
+        com.ideaworks3d.marmalade.SuspendResumeEvent$EventType $r4;
+        com.ideaworks3d.marmalade.LoaderActivity $r5;
+        android.content.BroadcastReceiver $r6;
+        java.lang.Throwable $r7;
+
+        r0 := @this: com.ideaworks3d.marmalade.LoaderThread;
+
+        $z0 := @parameter0: boolean;
+
+        $r1 = r0.<com.ideaworks3d.marmalade.LoaderThread: java.lang.Object m_StartedXX>;
+
+        entermonitor $r1;
+
+     label1:
+        $r2 = r0.<com.ideaworks3d.marmalade.LoaderThread: java.lang.Boolean m_Terminating>;
+
+        $z1 = virtualinvoke $r2.<java.lang.Boolean: boolean booleanValue()>();
+
+        if $z1 == 0 goto label3;
+
+        exitmonitor $r1;
+
+     label2:
+        return;
+
+     label3:
+        $r2 = staticinvoke <java.lang.Boolean: java.lang.Boolean valueOf(boolean)>(0);
+
+        r0.<com.ideaworks3d.marmalade.LoaderThread: java.lang.Boolean m_Started> = $r2;
+
+        $r2 = staticinvoke <java.lang.Boolean: java.lang.Boolean valueOf(boolean)>(1);
+
+        r0.<com.ideaworks3d.marmalade.LoaderThread: java.lang.Boolean m_Terminating> = $r2;
+
+        $r2 = staticinvoke <java.lang.Boolean: java.lang.Boolean valueOf(boolean)>(0);
+
+        r0.<com.ideaworks3d.marmalade.LoaderThread: java.lang.Boolean m_PauseRequested> = $r2;
+
+        <com.ideaworks3d.marmalade.LoaderThread: com.ideaworks3d.marmalade.LoaderThread g_Singleton> = null;
+
+        exitmonitor $r1;
+
+     label4:
+        if $z0 == 0 goto label5;
+
+        specialinvoke r0.<com.ideaworks3d.marmalade.LoaderThread: void shutdownNative()>();
+
+     label5:
+        virtualinvoke r0.<com.ideaworks3d.marmalade.LoaderThread: void smsStop()>();
+
+        virtualinvoke r0.<com.ideaworks3d.marmalade.LoaderThread: void accelStop()>();
+
+        $r3 = new com.ideaworks3d.marmalade.SuspendResumeEvent;
+
+        $r4 = <com.ideaworks3d.marmalade.SuspendResumeEvent$EventType: com.ideaworks3d.marmalade.SuspendResumeEvent$EventType SHUTDOWN>;
+
+        specialinvoke $r3.<com.ideaworks3d.marmalade.SuspendResumeEvent: void <init>(com.ideaworks3d.marmalade.SuspendResumeEvent$EventType)>($r4);
+
+        staticinvoke <com.ideaworks3d.marmalade.LoaderAPI: void notifySuspendResumeListeners(com.ideaworks3d.marmalade.SuspendResumeEvent)>($r3);
+
+        $r5 = r0.<com.ideaworks3d.marmalade.LoaderThread: com.ideaworks3d.marmalade.LoaderActivity m_Loader>;
+
+        $z0 = virtualinvoke $r5.<com.ideaworks3d.marmalade.LoaderActivity: boolean isFinishing()>();
+
+        if $z0 != 0 goto label9;
+
+        $r5 = r0.<com.ideaworks3d.marmalade.LoaderThread: com.ideaworks3d.marmalade.LoaderActivity m_Loader>;
+
+        $r6 = r0.<com.ideaworks3d.marmalade.LoaderThread: android.content.BroadcastReceiver m_BatteryLevelReceiver>;
+
+        virtualinvoke $r5.<com.ideaworks3d.marmalade.LoaderActivity: void unregisterReceiver(android.content.BroadcastReceiver)>($r6);
+
+        virtualinvoke r0.<com.ideaworks3d.marmalade.LoaderThread: boolean networkCheckStop()>();
+
+        $r5 = r0.<com.ideaworks3d.marmalade.LoaderThread: com.ideaworks3d.marmalade.LoaderActivity m_Loader>;
+
+        virtualinvoke $r5.<com.ideaworks3d.marmalade.LoaderActivity: void finish()>();
+
+        return;
+
+     label6:
+        $r7 := @caughtexception;
+
+     label7:
+        exitmonitor $r1;
+
+     label8:
+        throw $r7;
+
+     label9:
+        return;
+
+        catch java.lang.Throwable from label1 to label2 with label6;
+        catch java.lang.Throwable from label3 to label4 with label6;
+        catch java.lang.Throwable from label7 to label8 with label6;
+    }
+
+    private native void signalResume();
+
+    private native void signalSuspend();
+
+    private void touchSetWait(int)
+    {
+        com.ideaworks3d.marmalade.LoaderThread r0;
+        int $i0;
+        java.lang.Integer $r1;
+
+        r0 := @this: com.ideaworks3d.marmalade.LoaderThread;
+
+        $i0 := @parameter0: int;
+
+        $r1 = new java.lang.Integer;
+
+        specialinvoke $r1.<java.lang.Integer: void <init>(int)>($i0);
+
+        r0.<com.ideaworks3d.marmalade.LoaderThread: java.lang.Integer m_OnTouchWait> = $r1;
+
+        return;
+    }
+
+    private void waitForView()
+    {
+        com.ideaworks3d.marmalade.LoaderThread r0;
+        com.ideaworks3d.marmalade.LoaderView $r1, $r3;
+        java.lang.Boolean $r2;
+        boolean $z0;
+        java.lang.Throwable $r4;
+
+        r0 := @this: com.ideaworks3d.marmalade.LoaderThread;
+
+     label1:
+        $r1 = r0.<com.ideaworks3d.marmalade.LoaderThread: com.ideaworks3d.marmalade.LoaderView m_View>;
+
+        entermonitor $r1;
+
+     label2:
+        $r2 = r0.<com.ideaworks3d.marmalade.LoaderThread: java.lang.Boolean m_Terminating>;
+
+        $z0 = virtualinvoke $r2.<java.lang.Boolean: boolean booleanValue()>();
+
+        if $z0 != 0 goto label6;
+
+        $r3 = r0.<com.ideaworks3d.marmalade.LoaderThread: com.ideaworks3d.marmalade.LoaderView m_View>;
+
+        $z0 = virtualinvoke $r3.<com.ideaworks3d.marmalade.LoaderView: boolean waitForSurface()>();
+
+        if $z0 != 0 goto label6;
+
+        exitmonitor $r1;
+
+     label3:
+        goto label1;
+
+     label4:
+        $r4 := @caughtexception;
+
+        exitmonitor $r1;
+
+     label5:
+        throw $r4;
+
+     label6:
+        $r3 = r0.<com.ideaworks3d.marmalade.LoaderThread: com.ideaworks3d.marmalade.LoaderView m_View>;
+
+        specialinvoke r0.<com.ideaworks3d.marmalade.LoaderThread: void setViewNative(com.ideaworks3d.marmalade.LoaderView)>($r3);
+
+        exitmonitor $r1;
+
+     label7:
+        return;
+
+        catch java.lang.Throwable from label2 to label3 with label4;
+        catch java.lang.Throwable from label4 to label5 with label4;
+        catch java.lang.Throwable from label6 to label7 with label4;
+    }
+
+    public void accelStart()
+    {
+        com.ideaworks3d.marmalade.LoaderThread r0;
+        android.hardware.Sensor $r1;
+        android.hardware.SensorManager $r2;
+
+        r0 := @this: com.ideaworks3d.marmalade.LoaderThread;
+
+        $r1 = r0.<com.ideaworks3d.marmalade.LoaderThread: android.hardware.Sensor m_Accelerometer>;
+
+        if $r1 != null goto label1;
+
+        $r2 = r0.<com.ideaworks3d.marmalade.LoaderThread: android.hardware.SensorManager m_SensorManager>;
+
+        $r1 = virtualinvoke $r2.<android.hardware.SensorManager: android.hardware.Sensor getDefaultSensor(int)>(1);
+
+        r0.<com.ideaworks3d.marmalade.LoaderThread: android.hardware.Sensor m_Accelerometer> = $r1;
+
+        $r2 = r0.<com.ideaworks3d.marmalade.LoaderThread: android.hardware.SensorManager m_SensorManager>;
+
+        $r1 = r0.<com.ideaworks3d.marmalade.LoaderThread: android.hardware.Sensor m_Accelerometer>;
+
+        virtualinvoke $r2.<android.hardware.SensorManager: boolean registerListener(android.hardware.SensorEventListener,android.hardware.Sensor,int)>(r0, $r1, 1);
+
+     label1:
+        return;
+    }
+
+    public void accelStop()
+    {
+        com.ideaworks3d.marmalade.LoaderThread r0;
+        android.hardware.Sensor $r1;
+        android.hardware.SensorManager $r2;
+
+        r0 := @this: com.ideaworks3d.marmalade.LoaderThread;
+
+        $r1 = r0.<com.ideaworks3d.marmalade.LoaderThread: android.hardware.Sensor m_Accelerometer>;
+
+        if $r1 == null goto label1;
+
+        $r2 = r0.<com.ideaworks3d.marmalade.LoaderThread: android.hardware.SensorManager m_SensorManager>;
+
+        $r1 = r0.<com.ideaworks3d.marmalade.LoaderThread: android.hardware.Sensor m_Accelerometer>;
+
+        virtualinvoke $r2.<android.hardware.SensorManager: void unregisterListener(android.hardware.SensorEventListener,android.hardware.Sensor)>(r0, $r1);
+
+        r0.<com.ideaworks3d.marmalade.LoaderThread: android.hardware.Sensor m_Accelerometer> = null;
+
+     label1:
+        return;
+    }
+
+    public boolean acquireMulticastLock()
+    {
+        com.ideaworks3d.marmalade.LoaderThread r0;
+        java.lang.String $r1;
+        int $i0;
+        com.ideaworks3d.marmalade.LoaderThread$MulticastLockFacade $r2;
+        com.ideaworks3d.marmalade.LoaderActivity $r3;
+        java.lang.Object $r4;
+        android.net.wifi.WifiManager $r5;
+        boolean $z0;
+        java.lang.Exception $r6;
+
+        r0 := @this: com.ideaworks3d.marmalade.LoaderThread;
+
+        $r1 = <android.os.Build$VERSION: java.lang.String SDK>;
+
+        $i0 = staticinvoke <java.lang.Integer: int parseInt(java.lang.String)>($r1);
+
+        if $i0 > 3 goto label1;
+
+        return 0;
+
+     label1:
+        $r2 = r0.<com.ideaworks3d.marmalade.LoaderThread: com.ideaworks3d.marmalade.LoaderThread$MulticastLockFacade m_MulticastLock>;
+
+        if $r2 != null goto label3;
+
+        $r3 = r0.<com.ideaworks3d.marmalade.LoaderThread: com.ideaworks3d.marmalade.LoaderActivity m_Loader>;
+
+        $r4 = virtualinvoke $r3.<com.ideaworks3d.marmalade.LoaderActivity: java.lang.Object getSystemService(java.lang.String)>("wifi");
+
+        $r5 = (android.net.wifi.WifiManager) $r4;
+
+        $r2 = new com.ideaworks3d.marmalade.LoaderThread$MulticastLockFacade;
+
+     label2:
+        specialinvoke $r2.<com.ideaworks3d.marmalade.LoaderThread$MulticastLockFacade: void <init>(com.ideaworks3d.marmalade.LoaderThread,android.net.wifi.WifiManager)>(r0, $r5);
+
+        r0.<com.ideaworks3d.marmalade.LoaderThread: com.ideaworks3d.marmalade.LoaderThread$MulticastLockFacade m_MulticastLock> = $r2;
+
+     label3:
+        $r2 = r0.<com.ideaworks3d.marmalade.LoaderThread: com.ideaworks3d.marmalade.LoaderThread$MulticastLockFacade m_MulticastLock>;
+
+        if $r2 == null goto label5;
+
+        $r2 = r0.<com.ideaworks3d.marmalade.LoaderThread: com.ideaworks3d.marmalade.LoaderThread$MulticastLockFacade m_MulticastLock>;
+
+        virtualinvoke $r2.<com.ideaworks3d.marmalade.LoaderThread$MulticastLockFacade: void acquire()>();
+
+        $r2 = r0.<com.ideaworks3d.marmalade.LoaderThread: com.ideaworks3d.marmalade.LoaderThread$MulticastLockFacade m_MulticastLock>;
+
+        $z0 = virtualinvoke $r2.<com.ideaworks3d.marmalade.LoaderThread$MulticastLockFacade: boolean isHeld()>();
+
+        return $z0;
+
+     label4:
+        $r6 := @caughtexception;
+
+     label5:
+        return 0;
+
+        catch java.lang.Exception from label2 to label3 with label4;
+    }
+
+    public void audioStopAll()
+    {
+        com.ideaworks3d.marmalade.LoaderThread r0;
+        com.ideaworks3d.marmalade.LoaderThread$MediaPlayerManager $r1;
+
+        r0 := @this: com.ideaworks3d.marmalade.LoaderThread;
+
+        $r1 = r0.<com.ideaworks3d.marmalade.LoaderThread: com.ideaworks3d.marmalade.LoaderThread$MediaPlayerManager m_MediaPlayerManager>;
+
+        virtualinvoke $r1.<com.ideaworks3d.marmalade.LoaderThread$MediaPlayerManager: void audioStopAll()>();
+
+        return;
+    }
+
+    public boolean chargerIsConnected()
+    {
+        com.ideaworks3d.marmalade.LoaderThread r0;
+        boolean z0;
+
+        r0 := @this: com.ideaworks3d.marmalade.LoaderThread;
+
+        z0 = r0.<com.ideaworks3d.marmalade.LoaderThread: boolean m_ChargerConnected>;
+
+        return z0;
+    }
+
+    public java.lang.String clipboardGet()
+    {
+        com.ideaworks3d.marmalade.LoaderThread r0;
+        com.ideaworks3d.marmalade.LoaderActivity $r1;
+        java.lang.Object $r2;
+        android.text.ClipboardManager r3;
+        boolean $z0;
+        java.lang.CharSequence $r4;
+        java.lang.String $r5;
+
+        r0 := @this: com.ideaworks3d.marmalade.LoaderThread;
+
+        $r1 = r0.<com.ideaworks3d.marmalade.LoaderThread: com.ideaworks3d.marmalade.LoaderActivity m_Loader>;
+
+        $r2 = virtualinvoke $r1.<com.ideaworks3d.marmalade.LoaderActivity: java.lang.Object getSystemService(java.lang.String)>("clipboard");
+
+        r3 = (android.text.ClipboardManager) $r2;
+
+        $z0 = virtualinvoke r3.<android.text.ClipboardManager: boolean hasText()>();
+
+        if $z0 == 0 goto label1;
+
+        $r4 = virtualinvoke r3.<android.text.ClipboardManager: java.lang.CharSequence getText()>();
+
+        $r5 = virtualinvoke $r4.<java.lang.Object: java.lang.String toString()>();
+
+        return $r5;
+
+     label1:
+        return null;
+    }
+
+    public void clipboardSet(java.lang.String)
+    {
+        java.lang.String $r0;
+        com.ideaworks3d.marmalade.LoaderActivity $r1;
+        java.lang.Object $r2;
+        com.ideaworks3d.marmalade.LoaderThread r3;
+        android.text.ClipboardManager r4;
+
+        r3 := @this: com.ideaworks3d.marmalade.LoaderThread;
+
+        $r0 := @parameter0: java.lang.String;
+
+        $r1 = r3.<com.ideaworks3d.marmalade.LoaderThread: com.ideaworks3d.marmalade.LoaderActivity m_Loader>;
+
+        $r2 = virtualinvoke $r1.<com.ideaworks3d.marmalade.LoaderActivity: java.lang.Object getSystemService(java.lang.String)>("clipboard");
+
+        r4 = (android.text.ClipboardManager) $r2;
+
+        virtualinvoke r4.<android.text.ClipboardManager: void setText(java.lang.CharSequence)>($r0);
+
+        return;
+    }
+
+    public void compassStart()
+    {
+        com.ideaworks3d.marmalade.LoaderThread r0;
+        android.hardware.Sensor $r1;
+        android.hardware.SensorManager $r2;
+
+        r0 := @this: com.ideaworks3d.marmalade.LoaderThread;
+
+        $r1 = r0.<com.ideaworks3d.marmalade.LoaderThread: android.hardware.Sensor m_Compass>;
+
+        if $r1 != null goto label1;
+
+        $r2 = r0.<com.ideaworks3d.marmalade.LoaderThread: android.hardware.SensorManager m_SensorManager>;
+
+        $r1 = virtualinvoke $r2.<android.hardware.SensorManager: android.hardware.Sensor getDefaultSensor(int)>(2);
+
+        r0.<com.ideaworks3d.marmalade.LoaderThread: android.hardware.Sensor m_Compass> = $r1;
+
+        $r2 = r0.<com.ideaworks3d.marmalade.LoaderThread: android.hardware.SensorManager m_SensorManager>;
+
+        $r1 = virtualinvoke $r2.<android.hardware.SensorManager: android.hardware.Sensor getDefaultSensor(int)>(3);
+
+        r0.<com.ideaworks3d.marmalade.LoaderThread: android.hardware.Sensor m_Orientation> = $r1;
+
+        $r2 = r0.<com.ideaworks3d.marmalade.LoaderThread: android.hardware.SensorManager m_SensorManager>;
+
+        $r1 = r0.<com.ideaworks3d.marmalade.LoaderThread: android.hardware.Sensor m_Orientation>;
+
+        virtualinvoke $r2.<android.hardware.SensorManager: boolean registerListener(android.hardware.SensorEventListener,android.hardware.Sensor,int)>(r0, $r1, 1);
+
+        $r2 = r0.<com.ideaworks3d.marmalade.LoaderThread: android.hardware.SensorManager m_SensorManager>;
+
+        $r1 = r0.<com.ideaworks3d.marmalade.LoaderThread: android.hardware.Sensor m_Compass>;
+
+        virtualinvoke $r2.<android.hardware.SensorManager: boolean registerListener(android.hardware.SensorEventListener,android.hardware.Sensor,int)>(r0, $r1, 1);
+
+     label1:
+        return;
+    }
+
+    public void compassStop()
+    {
+        com.ideaworks3d.marmalade.LoaderThread r0;
+        android.hardware.Sensor $r1;
+        android.hardware.SensorManager $r2;
+
+        r0 := @this: com.ideaworks3d.marmalade.LoaderThread;
+
+        $r1 = r0.<com.ideaworks3d.marmalade.LoaderThread: android.hardware.Sensor m_Compass>;
+
+        if $r1 == null goto label1;
+
+        $r2 = r0.<com.ideaworks3d.marmalade.LoaderThread: android.hardware.SensorManager m_SensorManager>;
+
+        $r1 = r0.<com.ideaworks3d.marmalade.LoaderThread: android.hardware.Sensor m_Compass>;
+
+        virtualinvoke $r2.<android.hardware.SensorManager: void unregisterListener(android.hardware.SensorEventListener,android.hardware.Sensor)>(r0, $r1);
+
+        $r2 = r0.<com.ideaworks3d.marmalade.LoaderThread: android.hardware.SensorManager m_SensorManager>;
+
+        $r1 = r0.<com.ideaworks3d.marmalade.LoaderThread: android.hardware.Sensor m_Orientation>;
+
+        virtualinvoke $r2.<android.hardware.SensorManager: void unregisterListener(android.hardware.SensorEventListener,android.hardware.Sensor)>(r0, $r1);
+
+        r0.<com.ideaworks3d.marmalade.LoaderThread: android.hardware.Sensor m_Compass> = null;
+
+     label1:
+        return;
+    }
+
+    public int contactsCreate()
+    {
+        com.ideaworks3d.marmalade.LoaderThread r0;
+        android.net.Uri $r1;
+        android.content.ContentValues $r2;
+        com.ideaworks3d.marmalade.LoaderActivity $r3;
+        android.content.ContentResolver $r4;
+        java.lang.String $r5;
+        int $i0;
+        java.lang.Exception $r6;
+
+        r0 := @this: com.ideaworks3d.marmalade.LoaderThread;
+
+        $r2 = new android.content.ContentValues;
+
+     label1:
+        specialinvoke $r2.<android.content.ContentValues: void <init>()>();
+
+        $r3 = r0.<com.ideaworks3d.marmalade.LoaderThread: com.ideaworks3d.marmalade.LoaderActivity m_Loader>;
+
+        $r4 = virtualinvoke $r3.<com.ideaworks3d.marmalade.LoaderActivity: android.content.ContentResolver getContentResolver()>();
+
+     label2:
+        $r1 = <android.provider.Contacts$People: android.net.Uri CONTENT_URI>;
+
+     label3:
+        $r1 = virtualinvoke $r4.<android.content.ContentResolver: android.net.Uri insert(android.net.Uri,android.content.ContentValues)>($r1, $r2);
+
+        $r5 = virtualinvoke $r1.<android.net.Uri: java.lang.String getLastPathSegment()>();
+
+        $i0 = staticinvoke <java.lang.Integer: int parseInt(java.lang.String)>($r5);
+
+     label4:
+        return $i0;
+
+     label5:
+        $r6 := @caughtexception;
+
+        return -1;
+
+        catch java.lang.Exception from label1 to label2 with label5;
+        catch java.lang.Exception from label3 to label4 with label5;
+    }
+
+    public boolean contactsDelete(int)
+    {
+        com.ideaworks3d.marmalade.LoaderThread r0;
+        int $i0;
+        com.ideaworks3d.marmalade.LoaderActivity $r1;
+        android.content.ContentResolver $r2;
+        android.net.Uri $r3;
+        long $l1;
+        java.lang.Exception $r4;
+
+        r0 := @this: com.ideaworks3d.marmalade.LoaderThread;
+
+        $i0 := @parameter0: int;
+
+     label1:
+        $r1 = r0.<com.ideaworks3d.marmalade.LoaderThread: com.ideaworks3d.marmalade.LoaderActivity m_Loader>;
+
+        $r2 = virtualinvoke $r1.<com.ideaworks3d.marmalade.LoaderActivity: android.content.ContentResolver getContentResolver()>();
+
+     label2:
+        $r3 = <android.provider.Contacts$People: android.net.Uri CONTENT_URI>;
+
+        $l1 = (long) $i0;
+
+     label3:
+        $r3 = staticinvoke <android.content.ContentUris: android.net.Uri withAppendedId(android.net.Uri,long)>($r3, $l1);
+
+        $i0 = virtualinvoke $r2.<android.content.ContentResolver: int delete(android.net.Uri,java.lang.String,java.lang.String[])>($r3, null, null);
+
+     label4:
+        if $i0 == 0 goto label5;
+
+        return 1;
+
+     label5:
+        return 0;
+
+     label6:
+        $r4 := @caughtexception;
+
+        return 0;
+
+        catch java.lang.Exception from label1 to label2 with label6;
+        catch java.lang.Exception from label3 to label4 with label6;
+    }
+
+    public android.database.Cursor contactsGetData(int, int)
+    {
+        com.ideaworks3d.marmalade.LoaderThread r0;
+        int $i0, $i1;
+        com.ideaworks3d.marmalade.LoaderActivity $r1;
+        android.net.Uri $r2;
+        java.lang.String[] $r3;
+        java.lang.StringBuilder $r4;
+        java.lang.String $r5;
+        android.database.Cursor $r6;
+        byte $b2;
+        long $l3;
+
+        r0 := @this: com.ideaworks3d.marmalade.LoaderThread;
+
+        $i0 := @parameter0: int;
+
+        $i1 := @parameter1: int;
+
+        if $i1 != 8 goto label1;
+
+        $r1 = r0.<com.ideaworks3d.marmalade.LoaderThread: com.ideaworks3d.marmalade.LoaderActivity m_Loader>;
+
+        $r2 = <android.provider.Contacts$ContactMethods: android.net.Uri CONTENT_EMAIL_URI>;
+
+        $r3 = newarray (java.lang.String)[1];
+
+        $r3[0] = "data";
+
+        $r4 = new java.lang.StringBuilder;
+
+        specialinvoke $r4.<java.lang.StringBuilder: void <init>()>();
+
+        $r4 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("person = ");
+
+        $r4 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>($i0);
+
+        $r5 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        $r6 = virtualinvoke $r1.<com.ideaworks3d.marmalade.LoaderActivity: android.database.Cursor managedQuery(android.net.Uri,java.lang.String[],java.lang.String,java.lang.String[],java.lang.String)>($r2, $r3, $r5, null, null);
+
+        return $r6;
+
+     label1:
+        if $i1 != 10 goto label2;
+
+        $r1 = r0.<com.ideaworks3d.marmalade.LoaderThread: com.ideaworks3d.marmalade.LoaderActivity m_Loader>;
+
+        $r2 = <android.provider.Contacts$ContactMethods: android.net.Uri CONTENT_URI>;
+
+        $r3 = newarray (java.lang.String)[1];
+
+        $r3[0] = "data";
+
+        $r4 = new java.lang.StringBuilder;
+
+        specialinvoke $r4.<java.lang.StringBuilder: void <init>()>();
+
+        $r4 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("person = ");
+
+        $r4 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>($i0);
+
+        $r4 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" AND ");
+
+        $r4 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("kind");
+
+        $r4 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" = ");
+
+        $r4 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>(2);
+
+        $r5 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        $r6 = virtualinvoke $r1.<com.ideaworks3d.marmalade.LoaderActivity: android.database.Cursor managedQuery(android.net.Uri,java.lang.String[],java.lang.String,java.lang.String[],java.lang.String)>($r2, $r3, $r5, null, null);
+
+        return $r6;
+
+     label2:
+        if $i1 < 5 goto label6;
+
+        if $i1 > 7 goto label6;
+
+        if $i1 != 6 goto label4;
+
+        $b2 = 2;
+
+     label3:
+        $r1 = r0.<com.ideaworks3d.marmalade.LoaderThread: com.ideaworks3d.marmalade.LoaderActivity m_Loader>;
+
+        $r2 = <android.provider.Contacts$Phones: android.net.Uri CONTENT_URI>;
+
+        $r3 = newarray (java.lang.String)[1];
+
+        $r3[0] = "number";
+
+        $r4 = new java.lang.StringBuilder;
+
+        specialinvoke $r4.<java.lang.StringBuilder: void <init>()>();
+
+        $r4 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("person = ");
+
+        $r4 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>($i0);
+
+        $r4 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" AND ");
+
+        $r4 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("type");
+
+        $r4 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" = ");
+
+        $r4 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>($b2);
+
+        $r5 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        $r6 = virtualinvoke $r1.<com.ideaworks3d.marmalade.LoaderActivity: android.database.Cursor managedQuery(android.net.Uri,java.lang.String[],java.lang.String,java.lang.String[],java.lang.String)>($r2, $r3, $r5, null, null);
+
+        return $r6;
+
+     label4:
+        if $i1 != 5 goto label5;
+
+        $b2 = 1;
+
+        goto label3;
+
+     label5:
+        $b2 = 3;
+
+        goto label3;
+
+     label6:
+        if $i1 != 0 goto label7;
+
+        $r1 = r0.<com.ideaworks3d.marmalade.LoaderThread: com.ideaworks3d.marmalade.LoaderActivity m_Loader>;
+
+        $r2 = <android.provider.Contacts$People: android.net.Uri CONTENT_URI>;
+
+        $l3 = (long) $i0;
+
+        $r2 = staticinvoke <android.content.ContentUris: android.net.Uri withAppendedId(android.net.Uri,long)>($r2, $l3);
+
+        $r3 = newarray (java.lang.String)[1];
+
+        $r3[0] = "name";
+
+        $r6 = virtualinvoke $r1.<com.ideaworks3d.marmalade.LoaderActivity: android.database.Cursor managedQuery(android.net.Uri,java.lang.String[],java.lang.String,java.lang.String[],java.lang.String)>($r2, $r3, null, null, null);
+
+        return $r6;
+
+     label7:
+        return null;
+    }
+
+    public java.lang.String contactsGetField(int, int, int)
+    {
+        com.ideaworks3d.marmalade.LoaderThread r0;
+        int $i0, $i1, $i2;
+        android.database.Cursor $r1, $r2;
+        boolean $z0;
+        java.lang.String $r3;
+        java.lang.Exception $r4, $r7;
+        java.lang.Throwable $r5, $r6;
+
+        r0 := @this: com.ideaworks3d.marmalade.LoaderThread;
+
+        $i0 := @parameter0: int;
+
+        $i1 := @parameter1: int;
+
+        $i2 := @parameter2: int;
+
+     label01:
+        $r1 = virtualinvoke r0.<com.ideaworks3d.marmalade.LoaderThread: android.database.Cursor contactsGetData(int,int)>($i0, $i1);
+
+     label02:
+        $r2 = $r1;
+
+        if $r1 != null goto label04;
+
+        if $r1 == null goto label03;
+
+        interfaceinvoke $r1.<android.database.Cursor: void close()>();
+
+     label03:
+        return null;
+
+     label04:
+        $z0 = interfaceinvoke $r1.<android.database.Cursor: boolean moveToPosition(int)>($i2);
+
+     label05:
+        if $z0 == 0 goto label17;
+
+     label06:
+        $r3 = interfaceinvoke $r1.<android.database.Cursor: java.lang.String getString(int)>(0);
+
+     label07:
+        if $r1 == null goto label16;
+
+        interfaceinvoke $r1.<android.database.Cursor: void close()>();
+
+        return $r3;
+
+     label08:
+        $r4 := @caughtexception;
+
+        $r2 = null;
+
+     label09:
+        if $r2 == null goto label15;
+
+        interfaceinvoke $r2.<android.database.Cursor: void close()>();
+
+        return null;
+
+     label10:
+        $r5 := @caughtexception;
+
+        $r1 = null;
+
+     label11:
+        if $r1 == null goto label12;
+
+        interfaceinvoke $r1.<android.database.Cursor: void close()>();
+
+     label12:
+        throw $r5;
+
+     label13:
+        $r6 := @caughtexception;
+
+        $r5 = $r6;
+
+        goto label11;
+
+     label14:
+        $r7 := @caughtexception;
+
+        goto label09;
+
+     label15:
+        return null;
+
+     label16:
+        return $r3;
+
+     label17:
+        $r3 = null;
+
+        goto label07;
+
+        catch java.lang.Exception from label01 to label02 with label08;
+        catch java.lang.Throwable from label01 to label02 with label10;
+        catch java.lang.Exception from label04 to label05 with label14;
+        catch java.lang.Exception from label06 to label07 with label14;
+        catch java.lang.Throwable from label04 to label05 with label13;
+        catch java.lang.Throwable from label06 to label07 with label13;
+    }
+
+    public int contactsGetNumEntries(int, int)
+    {
+        com.ideaworks3d.marmalade.LoaderThread r0;
+        int $i0, $i1, $i2;
+        android.database.Cursor $r1, $r2;
+        boolean $z0;
+        java.lang.String $r3;
+        java.lang.Exception $r4, $r7;
+        java.lang.Throwable $r5, $r6;
+
+        r0 := @this: com.ideaworks3d.marmalade.LoaderThread;
+
+        $i0 := @parameter0: int;
+
+        $i1 := @parameter1: int;
+
+        $r1 = null;
+
+     label01:
+        $r2 = virtualinvoke r0.<com.ideaworks3d.marmalade.LoaderThread: android.database.Cursor contactsGetData(int,int)>($i0, $i1);
+
+     label02:
+        $r1 = $r2;
+
+        if $r2 != null goto label04;
+
+        if $r2 == null goto label03;
+
+        interfaceinvoke $r2.<android.database.Cursor: void close()>();
+
+     label03:
+        return 0;
+
+     label04:
+        $i0 = interfaceinvoke $r2.<android.database.Cursor: int getCount()>();
+
+     label05:
+        $i2 = $i0;
+
+        if $i1 != 0 goto label11;
+
+        if $i0 != 1 goto label11;
+
+     label06:
+        $z0 = interfaceinvoke $r2.<android.database.Cursor: boolean moveToPosition(int)>(0);
+
+     label07:
+        if $z0 == 0 goto label11;
+
+     label08:
+        $r3 = interfaceinvoke $r2.<android.database.Cursor: java.lang.String getString(int)>(0);
+
+     label09:
+        if $r3 != null goto label11;
+
+        if $r2 == null goto label10;
+
+        interfaceinvoke $r2.<android.database.Cursor: void close()>();
+
+     label10:
+        return 0;
+
+     label11:
+        if $r2 == null goto label19;
+
+        interfaceinvoke $r2.<android.database.Cursor: void close()>();
+
+        return $i0;
+
+     label12:
+        $r4 := @caughtexception;
+
+        $i2 = 0;
+
+     label13:
+        if $r1 == null goto label19;
+
+        interfaceinvoke $r1.<android.database.Cursor: void close()>();
+
+        return $i2;
+
+     label14:
+        $r5 := @caughtexception;
+
+        $r1 = null;
+
+     label15:
+        if $r1 == null goto label16;
+
+        interfaceinvoke $r1.<android.database.Cursor: void close()>();
+
+     label16:
+        throw $r5;
+
+     label17:
+        $r6 := @caughtexception;
+
+        $r1 = $r2;
+
+        $r5 = $r6;
+
+        goto label15;
+
+     label18:
+        $r7 := @caughtexception;
+
+        goto label13;
+
+     label19:
+        return $i2;
+
+        catch java.lang.Exception from label01 to label02 with label12;
+        catch java.lang.Throwable from label01 to label02 with label14;
+        catch java.lang.Exception from label04 to label05 with label12;
+        catch java.lang.Throwable from label04 to label05 with label17;
+        catch java.lang.Exception from label06 to label07 with label18;
+        catch java.lang.Exception from label08 to label09 with label18;
+        catch java.lang.Throwable from label06 to label07 with label17;
+        catch java.lang.Throwable from label08 to label09 with label17;
+    }
+
+    public int contactsGetNumRecords()
+    {
+        com.ideaworks3d.marmalade.LoaderThread r0;
+        int[] $r1;
+        int $i0;
+
+        r0 := @this: com.ideaworks3d.marmalade.LoaderThread;
+
+        $r1 = r0.<com.ideaworks3d.marmalade.LoaderThread: int[] contactsMap>;
+
+        if $r1 == null goto label1;
+
+        $r1 = r0.<com.ideaworks3d.marmalade.LoaderThread: int[] contactsMap>;
+
+        $i0 = lengthof $r1;
+
+        return $i0;
+
+     label1:
+        return -1;
+    }
+
+    public int contactsGetUID(int)
+    {
+        com.ideaworks3d.marmalade.LoaderThread r0;
+        int $i0, $i1, $i2;
+        int[] $r1;
+        com.ideaworks3d.marmalade.LoaderActivity $r2;
+        android.content.ContentResolver $r3;
+        android.net.Uri $r4;
+        android.database.Cursor $r5, $r6;
+        boolean $z0;
+        java.lang.Exception $r7, $r10, $r11;
+        java.lang.Throwable $r8, $r9;
+
+        r0 := @this: com.ideaworks3d.marmalade.LoaderThread;
+
+        $i0 := @parameter0: int;
+
+        $r1 = r0.<com.ideaworks3d.marmalade.LoaderThread: int[] contactsMap>;
+
+        if $r1 == null goto label01;
+
+        if $i0 < 0 goto label01;
+
+        $r1 = r0.<com.ideaworks3d.marmalade.LoaderThread: int[] contactsMap>;
+
+        $i1 = lengthof $r1;
+
+        if $i0 < $i1 goto label02;
+
+     label01:
+        return -1;
+
+     label02:
+        $r1 = r0.<com.ideaworks3d.marmalade.LoaderThread: int[] contactsMap>;
+
+        $i1 = $r1[$i0];
+
+        if $i1 == -1 goto label03;
+
+        $r1 = r0.<com.ideaworks3d.marmalade.LoaderThread: int[] contactsMap>;
+
+        $i0 = $r1[$i0];
+
+        return $i0;
+
+     label03:
+        $r2 = r0.<com.ideaworks3d.marmalade.LoaderThread: com.ideaworks3d.marmalade.LoaderActivity m_Loader>;
+
+        $r3 = virtualinvoke $r2.<com.ideaworks3d.marmalade.LoaderActivity: android.content.ContentResolver getContentResolver()>();
+
+     label04:
+        $r4 = <android.provider.Contacts$People: android.net.Uri CONTENT_URI>;
+
+     label05:
+        $r5 = virtualinvoke $r3.<android.content.ContentResolver: android.database.Cursor query(android.net.Uri,java.lang.String[],java.lang.String,java.lang.String[],java.lang.String)>($r4, null, null, null, null);
+
+     label06:
+        $r6 = $r5;
+
+     label07:
+        $z0 = interfaceinvoke $r5.<android.database.Cursor: boolean moveToPosition(int)>($i0);
+
+     label08:
+        if $z0 == 0 goto label23;
+
+     label09:
+        $i1 = interfaceinvoke $r5.<android.database.Cursor: int getColumnIndex(java.lang.String)>("_id");
+
+        $i1 = interfaceinvoke $r5.<android.database.Cursor: int getInt(int)>($i1);
+
+     label10:
+        $i2 = $i1;
+
+     label11:
+        $r1 = r0.<com.ideaworks3d.marmalade.LoaderThread: int[] contactsMap>;
+
+     label12:
+        $r1[$i0] = $i1;
+
+     label13:
+        if $r5 == null goto label22;
+
+        interfaceinvoke $r5.<android.database.Cursor: void close()>();
+
+        return $i2;
+
+     label14:
+        $r7 := @caughtexception;
+
+        $r6 = null;
+
+        $i2 = -1;
+
+     label15:
+        if $r6 == null goto label22;
+
+        interfaceinvoke $r6.<android.database.Cursor: void close()>();
+
+        return $i2;
+
+     label16:
+        $r8 := @caughtexception;
+
+        $r5 = null;
+
+     label17:
+        if $r5 == null goto label18;
+
+        interfaceinvoke $r5.<android.database.Cursor: void close()>();
+
+     label18:
+        throw $r8;
+
+     label19:
+        $r9 := @caughtexception;
+
+        $r8 = $r9;
+
+        goto label17;
+
+     label20:
+        $r10 := @caughtexception;
+
+        $i2 = -1;
+
+        goto label15;
+
+     label21:
+        $r11 := @caughtexception;
+
+        goto label15;
+
+     label22:
+        return $i2;
+
+     label23:
+        $i2 = -1;
+
+        goto label13;
+
+        catch java.lang.Exception from label03 to label04 with label14;
+        catch java.lang.Exception from label05 to label06 with label14;
+        catch java.lang.Throwable from label03 to label06 with label16;
+        catch java.lang.Exception from label07 to label08 with label20;
+        catch java.lang.Exception from label09 to label10 with label20;
+        catch java.lang.Throwable from label07 to label08 with label19;
+        catch java.lang.Throwable from label09 to label10 with label19;
+        catch java.lang.Exception from label11 to label13 with label21;
+        catch java.lang.Throwable from label11 to label12 with label19;
+    }
+
+    public boolean contactsSetField(java.lang.String, int, int, int)
+    {
+        com.ideaworks3d.marmalade.LoaderThread r0;
+        java.lang.String $r1;
+        int $i0, $i1, $i2;
+        android.content.ContentValues $r2;
+        com.ideaworks3d.marmalade.LoaderActivity $r3;
+        android.content.ContentResolver $r4;
+        android.net.Uri $r5, $r7;
+        long $l3;
+        java.lang.Integer $r6;
+        java.lang.String[] $r8;
+        java.lang.StringBuilder $r9;
+        android.database.Cursor $r10, $r11;
+        boolean $z0;
+        byte $b4;
+        java.lang.Exception $r12, $r15;
+        java.lang.Throwable $r13, $r14;
+
+        r0 := @this: com.ideaworks3d.marmalade.LoaderThread;
+
+        $r1 := @parameter0: java.lang.String;
+
+        $i0 := @parameter1: int;
+
+        $i1 := @parameter2: int;
+
+        $i2 := @parameter3: int;
+
+     label01:
+        $r2 = new android.content.ContentValues;
+
+     label02:
+        specialinvoke $r2.<android.content.ContentValues: void <init>()>();
+
+        $r3 = r0.<com.ideaworks3d.marmalade.LoaderThread: com.ideaworks3d.marmalade.LoaderActivity m_Loader>;
+
+        $r4 = virtualinvoke $r3.<com.ideaworks3d.marmalade.LoaderActivity: android.content.ContentResolver getContentResolver()>();
+
+     label03:
+        $r5 = <android.provider.Contacts$People: android.net.Uri CONTENT_URI>;
+
+     label04:
+        $l3 = (long) $i0;
+
+     label05:
+        $r5 = staticinvoke <android.content.ContentUris: android.net.Uri withAppendedId(android.net.Uri,long)>($r5, $l3);
+
+     label06:
+        if $i1 != 8 goto label23;
+
+     label07:
+        $r5 = staticinvoke <android.net.Uri: android.net.Uri withAppendedPath(android.net.Uri,java.lang.String)>($r5, "contact_methods");
+
+        $r6 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>($i0);
+
+        virtualinvoke $r2.<android.content.ContentValues: void put(java.lang.String,java.lang.Integer)>("person", $r6);
+
+        $r6 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>(1);
+
+        virtualinvoke $r2.<android.content.ContentValues: void put(java.lang.String,java.lang.Integer)>("isprimary", $r6);
+
+        $r6 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>(1);
+
+        virtualinvoke $r2.<android.content.ContentValues: void put(java.lang.String,java.lang.Integer)>("kind", $r6);
+
+        $r6 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>(1);
+
+        virtualinvoke $r2.<android.content.ContentValues: void put(java.lang.String,java.lang.Integer)>("type", $r6);
+
+        virtualinvoke $r2.<android.content.ContentValues: void put(java.lang.String,java.lang.String)>("data", $r1);
+
+        $r3 = r0.<com.ideaworks3d.marmalade.LoaderThread: com.ideaworks3d.marmalade.LoaderActivity m_Loader>;
+
+     label08:
+        $r7 = <android.provider.Contacts$ContactMethods: android.net.Uri CONTENT_URI>;
+
+     label09:
+        $r8 = newarray (java.lang.String)[1];
+
+     label10:
+        $r8[0] = "_id";
+
+     label11:
+        $r9 = new java.lang.StringBuilder;
+
+     label12:
+        specialinvoke $r9.<java.lang.StringBuilder: void <init>()>();
+
+        $r9 = virtualinvoke $r9.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("person = ");
+
+        $r9 = virtualinvoke $r9.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>($i0);
+
+        $r1 = virtualinvoke $r9.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        $r10 = virtualinvoke $r3.<com.ideaworks3d.marmalade.LoaderActivity: android.database.Cursor managedQuery(android.net.Uri,java.lang.String[],java.lang.String,java.lang.String[],java.lang.String)>($r7, $r8, $r1, null, null);
+
+     label13:
+        $r11 = $r10;
+
+        if $r10 == null goto label16;
+
+     label14:
+        $i0 = interfaceinvoke $r10.<android.database.Cursor: int getCount()>();
+
+     label15:
+        if $i2 != $i0 goto label19;
+
+     label16:
+        virtualinvoke $r4.<android.content.ContentResolver: android.net.Uri insert(android.net.Uri,android.content.ContentValues)>($r5, $r2);
+
+     label17:
+        $z0 = 1;
+
+     label18:
+        if $r11 == null goto label68;
+
+        interfaceinvoke $r11.<android.database.Cursor: void close()>();
+
+        return $z0;
+
+     label19:
+        $z0 = interfaceinvoke $r10.<android.database.Cursor: boolean moveToPosition(int)>($i2);
+
+     label20:
+        if $z0 == 0 goto label70;
+
+     label21:
+        $r1 = interfaceinvoke $r10.<android.database.Cursor: java.lang.String getString(int)>(0);
+
+        $r5 = staticinvoke <android.net.Uri: android.net.Uri withAppendedPath(android.net.Uri,java.lang.String)>($r5, $r1);
+
+        virtualinvoke $r4.<android.content.ContentResolver: int update(android.net.Uri,android.content.ContentValues,java.lang.String,java.lang.String[])>($r5, $r2, null, null);
+
+     label22:
+        $z0 = 1;
+
+        goto label18;
+
+     label23:
+        if $i1 != 10 goto label39;
+
+     label24:
+        $r5 = staticinvoke <android.net.Uri: android.net.Uri withAppendedPath(android.net.Uri,java.lang.String)>($r5, "contact_methods");
+
+        $r6 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>($i0);
+
+        virtualinvoke $r2.<android.content.ContentValues: void put(java.lang.String,java.lang.Integer)>("person", $r6);
+
+        $r6 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>(1);
+
+        virtualinvoke $r2.<android.content.ContentValues: void put(java.lang.String,java.lang.Integer)>("isprimary", $r6);
+
+        $r6 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>(2);
+
+        virtualinvoke $r2.<android.content.ContentValues: void put(java.lang.String,java.lang.Integer)>("kind", $r6);
+
+        virtualinvoke $r2.<android.content.ContentValues: void put(java.lang.String,java.lang.String)>("data", $r1);
+
+        $r3 = r0.<com.ideaworks3d.marmalade.LoaderThread: com.ideaworks3d.marmalade.LoaderActivity m_Loader>;
+
+     label25:
+        $r7 = <android.provider.Contacts$ContactMethods: android.net.Uri CONTENT_URI>;
+
+     label26:
+        $r8 = newarray (java.lang.String)[1];
+
+     label27:
+        $r8[0] = "_id";
+
+     label28:
+        $r9 = new java.lang.StringBuilder;
+
+     label29:
+        specialinvoke $r9.<java.lang.StringBuilder: void <init>()>();
+
+        $r9 = virtualinvoke $r9.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("person = ");
+
+        $r9 = virtualinvoke $r9.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>($i0);
+
+        $r1 = virtualinvoke $r9.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        $r10 = virtualinvoke $r3.<com.ideaworks3d.marmalade.LoaderActivity: android.database.Cursor managedQuery(android.net.Uri,java.lang.String[],java.lang.String,java.lang.String[],java.lang.String)>($r7, $r8, $r1, null, null);
+
+     label30:
+        $r11 = $r10;
+
+        if $r10 == null goto label33;
+
+     label31:
+        $i0 = interfaceinvoke $r10.<android.database.Cursor: int getCount()>();
+
+     label32:
+        if $i2 != $i0 goto label35;
+
+     label33:
+        virtualinvoke $r4.<android.content.ContentResolver: android.net.Uri insert(android.net.Uri,android.content.ContentValues)>($r5, $r2);
+
+     label34:
+        $z0 = 1;
+
+        goto label18;
+
+     label35:
+        $z0 = interfaceinvoke $r10.<android.database.Cursor: boolean moveToPosition(int)>($i2);
+
+     label36:
+        if $z0 == 0 goto label70;
+
+     label37:
+        $r1 = interfaceinvoke $r10.<android.database.Cursor: java.lang.String getString(int)>(0);
+
+        $r5 = staticinvoke <android.net.Uri: android.net.Uri withAppendedPath(android.net.Uri,java.lang.String)>($r5, $r1);
+
+        virtualinvoke $r4.<android.content.ContentResolver: int update(android.net.Uri,android.content.ContentValues,java.lang.String,java.lang.String[])>($r5, $r2, null, null);
+
+     label38:
+        $z0 = 1;
+
+        goto label18;
+
+     label39:
+        if $i1 < 5 goto label57;
+
+        if $i1 > 7 goto label57;
+
+        if $i1 != 6 goto label51;
+
+        $b4 = 2;
+
+     label40:
+        $r5 = staticinvoke <android.net.Uri: android.net.Uri withAppendedPath(android.net.Uri,java.lang.String)>($r5, "phones");
+
+        $r6 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>($i0);
+
+        virtualinvoke $r2.<android.content.ContentValues: void put(java.lang.String,java.lang.Integer)>("person", $r6);
+
+        $r6 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>(1);
+
+        virtualinvoke $r2.<android.content.ContentValues: void put(java.lang.String,java.lang.Integer)>("isprimary", $r6);
+
+        $r6 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>($b4);
+
+        virtualinvoke $r2.<android.content.ContentValues: void put(java.lang.String,java.lang.Integer)>("type", $r6);
+
+        virtualinvoke $r2.<android.content.ContentValues: void put(java.lang.String,java.lang.String)>("number", $r1);
+
+        $r3 = r0.<com.ideaworks3d.marmalade.LoaderThread: com.ideaworks3d.marmalade.LoaderActivity m_Loader>;
+
+     label41:
+        $r7 = <android.provider.Contacts$Phones: android.net.Uri CONTENT_URI>;
+
+     label42:
+        $r8 = newarray (java.lang.String)[1];
+
+     label43:
+        $r8[0] = "_id";
+
+     label44:
+        $r9 = new java.lang.StringBuilder;
+
+     label45:
+        specialinvoke $r9.<java.lang.StringBuilder: void <init>()>();
+
+        $r9 = virtualinvoke $r9.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("person = ");
+
+        $r9 = virtualinvoke $r9.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>($i0);
+
+        $r9 = virtualinvoke $r9.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" AND ");
+
+        $r9 = virtualinvoke $r9.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("type");
+
+        $r9 = virtualinvoke $r9.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" = ");
+
+        $r9 = virtualinvoke $r9.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>($b4);
+
+        $r1 = virtualinvoke $r9.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        $r10 = virtualinvoke $r3.<com.ideaworks3d.marmalade.LoaderActivity: android.database.Cursor managedQuery(android.net.Uri,java.lang.String[],java.lang.String,java.lang.String[],java.lang.String)>($r7, $r8, $r1, null, null);
+
+     label46:
+        $r11 = $r10;
+
+        if $r10 == null goto label49;
+
+     label47:
+        $i0 = interfaceinvoke $r10.<android.database.Cursor: int getCount()>();
+
+     label48:
+        if $i2 != $i0 goto label53;
+
+     label49:
+        virtualinvoke $r4.<android.content.ContentResolver: android.net.Uri insert(android.net.Uri,android.content.ContentValues)>($r5, $r2);
+
+     label50:
+        $z0 = 1;
+
+        goto label18;
+
+     label51:
+        if $i1 != 5 goto label52;
+
+        $b4 = 1;
+
+        goto label40;
+
+     label52:
+        $b4 = 3;
+
+        goto label40;
+
+     label53:
+        $z0 = interfaceinvoke $r10.<android.database.Cursor: boolean moveToPosition(int)>($i2);
+
+     label54:
+        if $z0 == 0 goto label70;
+
+     label55:
+        $r1 = interfaceinvoke $r10.<android.database.Cursor: java.lang.String getString(int)>(0);
+
+        $r5 = staticinvoke <android.net.Uri: android.net.Uri withAppendedPath(android.net.Uri,java.lang.String)>($r5, $r1);
+
+        virtualinvoke $r4.<android.content.ContentResolver: int update(android.net.Uri,android.content.ContentValues,java.lang.String,java.lang.String[])>($r5, $r2, null, null);
+
+     label56:
+        $z0 = 1;
+
+        goto label18;
+
+     label57:
+        if $i1 != 0 goto label69;
+
+     label58:
+        virtualinvoke $r2.<android.content.ContentValues: void put(java.lang.String,java.lang.String)>("name", $r1);
+
+        virtualinvoke $r4.<android.content.ContentResolver: int update(android.net.Uri,android.content.ContentValues,java.lang.String,java.lang.String[])>($r5, $r2, null, null);
+
+     label59:
+        $z0 = 1;
+
+        $r11 = null;
+
+        goto label18;
+
+     label60:
+        $r12 := @caughtexception;
+
+        $r11 = null;
+
+     label61:
+        if $r11 == null goto label67;
+
+        interfaceinvoke $r11.<android.database.Cursor: void close()>();
+
+        return 0;
+
+     label62:
+        $r13 := @caughtexception;
+
+        $r11 = null;
+
+     label63:
+        if $r11 == null goto label64;
+
+        interfaceinvoke $r11.<android.database.Cursor: void close()>();
+
+     label64:
+        throw $r13;
+
+     label65:
+        $r14 := @caughtexception;
+
+        $r13 = $r14;
+
+        goto label63;
+
+     label66:
+        $r15 := @caughtexception;
+
+        goto label61;
+
+     label67:
+        return 0;
+
+     label68:
+        return $z0;
+
+     label69:
+        $r11 = null;
+
+        $z0 = 0;
+
+        goto label18;
+
+     label70:
+        $z0 = 0;
+
+        goto label18;
+
+        catch java.lang.Exception from label02 to label03 with label60;
+        catch java.lang.Exception from label05 to label06 with label60;
+        catch java.lang.Exception from label07 to label08 with label60;
+        catch java.lang.Exception from label09 to label11 with label60;
+        catch java.lang.Exception from label12 to label13 with label60;
+        catch java.lang.Throwable from label01 to label04 with label62;
+        catch java.lang.Throwable from label05 to label06 with label62;
+        catch java.lang.Throwable from label07 to label10 with label62;
+        catch java.lang.Throwable from label11 to label13 with label62;
+        catch java.lang.Exception from label14 to label15 with label66;
+        catch java.lang.Exception from label16 to label17 with label66;
+        catch java.lang.Throwable from label14 to label15 with label65;
+        catch java.lang.Throwable from label16 to label17 with label65;
+        catch java.lang.Exception from label19 to label20 with label66;
+        catch java.lang.Exception from label21 to label22 with label66;
+        catch java.lang.Throwable from label19 to label20 with label65;
+        catch java.lang.Throwable from label21 to label22 with label65;
+        catch java.lang.Exception from label24 to label25 with label60;
+        catch java.lang.Exception from label26 to label28 with label60;
+        catch java.lang.Exception from label29 to label30 with label60;
+        catch java.lang.Throwable from label24 to label27 with label62;
+        catch java.lang.Throwable from label28 to label30 with label62;
+        catch java.lang.Exception from label31 to label32 with label66;
+        catch java.lang.Exception from label33 to label34 with label66;
+        catch java.lang.Exception from label35 to label36 with label66;
+        catch java.lang.Exception from label37 to label38 with label66;
+        catch java.lang.Throwable from label31 to label32 with label65;
+        catch java.lang.Throwable from label33 to label34 with label65;
+        catch java.lang.Throwable from label35 to label36 with label65;
+        catch java.lang.Throwable from label37 to label38 with label65;
+        catch java.lang.Exception from label40 to label41 with label60;
+        catch java.lang.Exception from label42 to label44 with label60;
+        catch java.lang.Exception from label45 to label46 with label60;
+        catch java.lang.Throwable from label40 to label43 with label62;
+        catch java.lang.Throwable from label44 to label46 with label62;
+        catch java.lang.Exception from label47 to label48 with label66;
+        catch java.lang.Exception from label49 to label50 with label66;
+        catch java.lang.Exception from label53 to label54 with label66;
+        catch java.lang.Exception from label55 to label56 with label66;
+        catch java.lang.Throwable from label47 to label48 with label65;
+        catch java.lang.Throwable from label49 to label50 with label65;
+        catch java.lang.Throwable from label53 to label54 with label65;
+        catch java.lang.Throwable from label55 to label56 with label65;
+        catch java.lang.Exception from label58 to label59 with label60;
+        catch java.lang.Throwable from label58 to label59 with label62;
+    }
+
+    public boolean contactsUpdate()
+    {
+        com.ideaworks3d.marmalade.LoaderThread r0;
+        com.ideaworks3d.marmalade.LoaderActivity $r1;
+        android.content.ContentResolver $r2;
+        android.net.Uri $r3;
+        android.database.Cursor $r4, $r5;
+        int $i0, $i1;
+        int[] $r6;
+        java.lang.Exception $r7, $r10;
+        java.lang.Throwable $r8, $r9;
+
+        r0 := @this: com.ideaworks3d.marmalade.LoaderThread;
+
+     label01:
+        $r1 = r0.<com.ideaworks3d.marmalade.LoaderThread: com.ideaworks3d.marmalade.LoaderActivity m_Loader>;
+
+        $r2 = virtualinvoke $r1.<com.ideaworks3d.marmalade.LoaderActivity: android.content.ContentResolver getContentResolver()>();
+
+     label02:
+        $r3 = <android.provider.Contacts$People: android.net.Uri CONTENT_URI>;
+
+     label03:
+        $r4 = virtualinvoke $r2.<android.content.ContentResolver: android.database.Cursor query(android.net.Uri,java.lang.String[],java.lang.String,java.lang.String[],java.lang.String)>($r3, null, null, null, null);
+
+     label04:
+        $r5 = $r4;
+
+        if $r4 != null goto label06;
+
+        if $r4 == null goto label05;
+
+        interfaceinvoke $r4.<android.database.Cursor: void close()>();
+
+     label05:
+        return 0;
+
+     label06:
+        $i0 = interfaceinvoke $r4.<android.database.Cursor: int getCount()>();
+
+     label07:
+        $r6 = newarray (int)[$i0];
+
+     label08:
+        r0.<com.ideaworks3d.marmalade.LoaderThread: int[] contactsMap> = $r6;
+
+     label09:
+        $i0 = 0;
+
+     label10:
+        $r6 = r0.<com.ideaworks3d.marmalade.LoaderThread: int[] contactsMap>;
+
+     label11:
+        $i1 = lengthof $r6;
+
+     label12:
+        if $i0 >= $i1 goto label16;
+
+     label13:
+        $r6 = r0.<com.ideaworks3d.marmalade.LoaderThread: int[] contactsMap>;
+
+     label14:
+        $r6[$i0] = -1;
+
+     label15:
+        $i0 = $i0 + 1;
+
+        goto label10;
+
+     label16:
+        interfaceinvoke $r4.<android.database.Cursor: void close()>();
+
+     label17:
+        if $r4 == null goto label18;
+
+        interfaceinvoke $r4.<android.database.Cursor: void close()>();
+
+     label18:
+        return 1;
+
+     label19:
+        $r7 := @caughtexception;
+
+        $r5 = null;
+
+     label20:
+        if $r5 == null goto label21;
+
+        interfaceinvoke $r5.<android.database.Cursor: void close()>();
+
+     label21:
+        return 0;
+
+     label22:
+        $r8 := @caughtexception;
+
+        $r4 = null;
+
+     label23:
+        if $r4 == null goto label24;
+
+        interfaceinvoke $r4.<android.database.Cursor: void close()>();
+
+     label24:
+        throw $r8;
+
+     label25:
+        $r9 := @caughtexception;
+
+        $r8 = $r9;
+
+        goto label23;
+
+     label26:
+        $r10 := @caughtexception;
+
+        goto label20;
+
+        catch java.lang.Exception from label01 to label02 with label19;
+        catch java.lang.Exception from label03 to label04 with label19;
+        catch java.lang.Throwable from label01 to label04 with label22;
+        catch java.lang.Exception from label06 to label09 with label26;
+        catch java.lang.Exception from label10 to label12 with label26;
+        catch java.lang.Exception from label13 to label15 with label26;
+        catch java.lang.Exception from label16 to label17 with label26;
+        catch java.lang.Throwable from label06 to label07 with label25;
+        catch java.lang.Throwable from label08 to label09 with label25;
+        catch java.lang.Throwable from label10 to label11 with label25;
+        catch java.lang.Throwable from label13 to label14 with label25;
+        catch java.lang.Throwable from label16 to label17 with label25;
+    }
+
+    public void doPause()
+    {
+        com.ideaworks3d.marmalade.LoaderThread r0;
+        com.ideaworks3d.marmalade.SuspendResumeEvent $r1;
+        com.ideaworks3d.marmalade.SuspendResumeEvent$EventType $r2;
+        com.ideaworks3d.marmalade.LoaderThread$MediaPlayerManager $r3;
+        com.ideaworks3d.marmalade.LoaderView $r4;
+        int $i0;
+        boolean $z0;
+        java.lang.Boolean $r5;
+        com.ideaworks3d.marmalade.SoundPlayer $r6;
+        com.ideaworks3d.marmalade.SoundRecord $r7;
+        com.ideaworks3d.marmalade.LoaderActivity $r8;
+        android.content.BroadcastReceiver $r9;
+        com.ideaworks3d.marmalade.LoaderLocation $r10;
+        android.hardware.Sensor $r11;
+        android.hardware.SensorManager $r12;
+
+        r0 := @this: com.ideaworks3d.marmalade.LoaderThread;
+
+        $r1 = new com.ideaworks3d.marmalade.SuspendResumeEvent;
+
+        $r2 = <com.ideaworks3d.marmalade.SuspendResumeEvent$EventType: com.ideaworks3d.marmalade.SuspendResumeEvent$EventType SUSPEND>;
+
+        specialinvoke $r1.<com.ideaworks3d.marmalade.SuspendResumeEvent: void <init>(com.ideaworks3d.marmalade.SuspendResumeEvent$EventType)>($r2);
+
+        staticinvoke <com.ideaworks3d.marmalade.LoaderAPI: void notifySuspendResumeListeners(com.ideaworks3d.marmalade.SuspendResumeEvent)>($r1);
+
+        $r3 = r0.<com.ideaworks3d.marmalade.LoaderThread: com.ideaworks3d.marmalade.LoaderThread$MediaPlayerManager m_MediaPlayerManager>;
+
+        virtualinvoke $r3.<com.ideaworks3d.marmalade.LoaderThread$MediaPlayerManager: void doPause()>();
+
+        $r4 = r0.<com.ideaworks3d.marmalade.LoaderThread: com.ideaworks3d.marmalade.LoaderView m_View>;
+
+        $i0 = virtualinvoke $r4.<com.ideaworks3d.marmalade.LoaderView: int videoGetStatus()>();
+
+        if $i0 != 2 goto label8;
+
+        $z0 = 1;
+
+     label1:
+        $r5 = staticinvoke <java.lang.Boolean: java.lang.Boolean valueOf(boolean)>($z0);
+
+        r0.<com.ideaworks3d.marmalade.LoaderThread: java.lang.Boolean m_VideoIsPaused> = $r5;
+
+        $r5 = r0.<com.ideaworks3d.marmalade.LoaderThread: java.lang.Boolean m_VideoIsPaused>;
+
+        $z0 = virtualinvoke $r5.<java.lang.Boolean: boolean booleanValue()>();
+
+        if $z0 != 0 goto label2;
+
+        $r4 = r0.<com.ideaworks3d.marmalade.LoaderThread: com.ideaworks3d.marmalade.LoaderView m_View>;
+
+        virtualinvoke $r4.<com.ideaworks3d.marmalade.LoaderView: int videoPause()>();
+
+     label2:
+        $r6 = r0.<com.ideaworks3d.marmalade.LoaderThread: com.ideaworks3d.marmalade.SoundPlayer m_SoundPlayer>;
+
+        virtualinvoke $r6.<com.ideaworks3d.marmalade.SoundPlayer: void pause()>();
+
+        $r7 = r0.<com.ideaworks3d.marmalade.LoaderThread: com.ideaworks3d.marmalade.SoundRecord m_SoundRecord>;
+
+        if $r7 == null goto label3;
+
+        $r7 = r0.<com.ideaworks3d.marmalade.LoaderThread: com.ideaworks3d.marmalade.SoundRecord m_SoundRecord>;
+
+        virtualinvoke $r7.<com.ideaworks3d.marmalade.SoundRecord: int stop()>();
+
+     label3:
+        $r8 = r0.<com.ideaworks3d.marmalade.LoaderThread: com.ideaworks3d.marmalade.LoaderActivity m_Loader>;
+
+        $r9 = r0.<com.ideaworks3d.marmalade.LoaderThread: android.content.BroadcastReceiver m_BatteryLevelReceiver>;
+
+        virtualinvoke $r8.<com.ideaworks3d.marmalade.LoaderActivity: void unregisterReceiver(android.content.BroadcastReceiver)>($r9);
+
+        $z0 = r0.<com.ideaworks3d.marmalade.LoaderThread: boolean m_NetworkCheckEnabled>;
+
+        if $z0 == 0 goto label4;
+
+        $r8 = r0.<com.ideaworks3d.marmalade.LoaderThread: com.ideaworks3d.marmalade.LoaderActivity m_Loader>;
+
+        $r9 = r0.<com.ideaworks3d.marmalade.LoaderThread: android.content.BroadcastReceiver m_NetworkCheckReceiver>;
+
+        virtualinvoke $r8.<com.ideaworks3d.marmalade.LoaderActivity: void unregisterReceiver(android.content.BroadcastReceiver)>($r9);
+
+     label4:
+        $r10 = r0.<com.ideaworks3d.marmalade.LoaderThread: com.ideaworks3d.marmalade.LoaderLocation m_Location>;
+
+        if $r10 == null goto label5;
+
+        $r10 = r0.<com.ideaworks3d.marmalade.LoaderThread: com.ideaworks3d.marmalade.LoaderLocation m_Location>;
+
+        virtualinvoke $r10.<com.ideaworks3d.marmalade.LoaderLocation: boolean locationStop()>();
+
+     label5:
+        $r11 = r0.<com.ideaworks3d.marmalade.LoaderThread: android.hardware.Sensor m_Accelerometer>;
+
+        if $r11 == null goto label6;
+
+        $r12 = r0.<com.ideaworks3d.marmalade.LoaderThread: android.hardware.SensorManager m_SensorManager>;
+
+        $r11 = r0.<com.ideaworks3d.marmalade.LoaderThread: android.hardware.Sensor m_Accelerometer>;
+
+        virtualinvoke $r12.<android.hardware.SensorManager: void unregisterListener(android.hardware.SensorEventListener,android.hardware.Sensor)>(r0, $r11);
+
+     label6:
+        $r11 = r0.<com.ideaworks3d.marmalade.LoaderThread: android.hardware.Sensor m_Compass>;
+
+        if $r11 == null goto label7;
+
+        $r12 = r0.<com.ideaworks3d.marmalade.LoaderThread: android.hardware.SensorManager m_SensorManager>;
+
+        $r11 = r0.<com.ideaworks3d.marmalade.LoaderThread: android.hardware.Sensor m_Compass>;
+
+        virtualinvoke $r12.<android.hardware.SensorManager: void unregisterListener(android.hardware.SensorEventListener,android.hardware.Sensor)>(r0, $r11);
+
+        $r12 = r0.<com.ideaworks3d.marmalade.LoaderThread: android.hardware.SensorManager m_SensorManager>;
+
+        $r11 = r0.<com.ideaworks3d.marmalade.LoaderThread: android.hardware.Sensor m_Orientation>;
+
+        virtualinvoke $r12.<android.hardware.SensorManager: void unregisterListener(android.hardware.SensorEventListener,android.hardware.Sensor)>(r0, $r11);
+
+     label7:
+        $r4 = r0.<com.ideaworks3d.marmalade.LoaderThread: com.ideaworks3d.marmalade.LoaderView m_View>;
+
+        virtualinvoke $r4.<com.ideaworks3d.marmalade.LoaderView: void glTerm()>();
+
+        return;
+
+     label8:
+        $z0 = 0;
+
+        goto label1;
+    }
+
+    public void doResume()
+    {
+        com.ideaworks3d.marmalade.LoaderThread r0;
+        java.lang.Object $r1;
+        com.ideaworks3d.marmalade.LoaderView $r2;
+        boolean $z0;
+        android.hardware.Sensor $r3;
+        android.hardware.SensorManager $r4;
+        com.ideaworks3d.marmalade.LoaderLocation $r5;
+        com.ideaworks3d.marmalade.LoaderActivity $r6;
+        android.content.BroadcastReceiver $r7;
+        android.content.IntentFilter $r8;
+        com.ideaworks3d.marmalade.SoundPlayer $r9;
+        com.ideaworks3d.marmalade.LoaderThread$MediaPlayerManager $r10;
+        java.lang.Boolean $r11;
+        com.ideaworks3d.marmalade.SoundRecord $r12;
+        com.ideaworks3d.marmalade.SuspendResumeEvent $r13;
+        com.ideaworks3d.marmalade.SuspendResumeEvent$EventType $r14;
+        java.lang.Throwable $r15;
+
+        r0 := @this: com.ideaworks3d.marmalade.LoaderThread;
+
+        $r1 = r0.<com.ideaworks3d.marmalade.LoaderThread: java.lang.Object m_ResumeRequestedXX>;
+
+        entermonitor $r1;
+
+     label01:
+        specialinvoke r0.<com.ideaworks3d.marmalade.LoaderThread: void setSuspended()>();
+
+        specialinvoke r0.<com.ideaworks3d.marmalade.LoaderThread: void waitForView()>();
+
+        specialinvoke r0.<com.ideaworks3d.marmalade.LoaderThread: void setResumed()>();
+
+        $r2 = r0.<com.ideaworks3d.marmalade.LoaderThread: com.ideaworks3d.marmalade.LoaderView m_View>;
+
+        $z0 = virtualinvoke $r2.<com.ideaworks3d.marmalade.LoaderView: boolean glInit(int)>(0);
+
+        r0.<com.ideaworks3d.marmalade.LoaderThread: boolean m_UseGL> = $z0;
+
+        exitmonitor $r1;
+
+     label02:
+        $r3 = r0.<com.ideaworks3d.marmalade.LoaderThread: android.hardware.Sensor m_Accelerometer>;
+
+        if $r3 == null goto label03;
+
+        $r4 = r0.<com.ideaworks3d.marmalade.LoaderThread: android.hardware.SensorManager m_SensorManager>;
+
+        $r3 = r0.<com.ideaworks3d.marmalade.LoaderThread: android.hardware.Sensor m_Accelerometer>;
+
+        virtualinvoke $r4.<android.hardware.SensorManager: boolean registerListener(android.hardware.SensorEventListener,android.hardware.Sensor,int)>(r0, $r3, 1);
+
+     label03:
+        $r3 = r0.<com.ideaworks3d.marmalade.LoaderThread: android.hardware.Sensor m_Compass>;
+
+        if $r3 == null goto label04;
+
+        $r4 = r0.<com.ideaworks3d.marmalade.LoaderThread: android.hardware.SensorManager m_SensorManager>;
+
+        $r3 = r0.<com.ideaworks3d.marmalade.LoaderThread: android.hardware.Sensor m_Orientation>;
+
+        virtualinvoke $r4.<android.hardware.SensorManager: boolean registerListener(android.hardware.SensorEventListener,android.hardware.Sensor,int)>(r0, $r3, 1);
+
+        $r4 = r0.<com.ideaworks3d.marmalade.LoaderThread: android.hardware.SensorManager m_SensorManager>;
+
+        $r3 = r0.<com.ideaworks3d.marmalade.LoaderThread: android.hardware.Sensor m_Compass>;
+
+        virtualinvoke $r4.<android.hardware.SensorManager: boolean registerListener(android.hardware.SensorEventListener,android.hardware.Sensor,int)>(r0, $r3, 1);
+
+     label04:
+        $r5 = r0.<com.ideaworks3d.marmalade.LoaderThread: com.ideaworks3d.marmalade.LoaderLocation m_Location>;
+
+        if $r5 == null goto label05;
+
+        $r5 = r0.<com.ideaworks3d.marmalade.LoaderThread: com.ideaworks3d.marmalade.LoaderLocation m_Location>;
+
+        $r6 = r0.<com.ideaworks3d.marmalade.LoaderThread: com.ideaworks3d.marmalade.LoaderActivity m_Loader>;
+
+        virtualinvoke $r5.<com.ideaworks3d.marmalade.LoaderLocation: boolean locationStart(com.ideaworks3d.marmalade.LoaderActivity)>($r6);
+
+     label05:
+        $r6 = r0.<com.ideaworks3d.marmalade.LoaderThread: com.ideaworks3d.marmalade.LoaderActivity m_Loader>;
+
+        $r7 = r0.<com.ideaworks3d.marmalade.LoaderThread: android.content.BroadcastReceiver m_BatteryLevelReceiver>;
+
+        $r8 = new android.content.IntentFilter;
+
+        specialinvoke $r8.<android.content.IntentFilter: void <init>(java.lang.String)>("android.intent.action.BATTERY_CHANGED");
+
+        virtualinvoke $r6.<com.ideaworks3d.marmalade.LoaderActivity: android.content.Intent registerReceiver(android.content.BroadcastReceiver,android.content.IntentFilter)>($r7, $r8);
+
+        $z0 = r0.<com.ideaworks3d.marmalade.LoaderThread: boolean m_NetworkCheckEnabled>;
+
+        if $z0 == 0 goto label06;
+
+        $r6 = r0.<com.ideaworks3d.marmalade.LoaderThread: com.ideaworks3d.marmalade.LoaderActivity m_Loader>;
+
+        $r7 = r0.<com.ideaworks3d.marmalade.LoaderThread: android.content.BroadcastReceiver m_NetworkCheckReceiver>;
+
+        $r8 = new android.content.IntentFilter;
+
+        specialinvoke $r8.<android.content.IntentFilter: void <init>(java.lang.String)>("android.net.conn.CONNECTIVITY_CHANGE");
+
+        virtualinvoke $r6.<com.ideaworks3d.marmalade.LoaderActivity: android.content.Intent registerReceiver(android.content.BroadcastReceiver,android.content.IntentFilter)>($r7, $r8);
+
+     label06:
+        $r9 = r0.<com.ideaworks3d.marmalade.LoaderThread: com.ideaworks3d.marmalade.SoundPlayer m_SoundPlayer>;
+
+        virtualinvoke $r9.<com.ideaworks3d.marmalade.SoundPlayer: void resume()>();
+
+        $r10 = r0.<com.ideaworks3d.marmalade.LoaderThread: com.ideaworks3d.marmalade.LoaderThread$MediaPlayerManager m_MediaPlayerManager>;
+
+        virtualinvoke $r10.<com.ideaworks3d.marmalade.LoaderThread$MediaPlayerManager: void doResume()>();
+
+        $r11 = r0.<com.ideaworks3d.marmalade.LoaderThread: java.lang.Boolean m_VideoIsPaused>;
+
+        $z0 = virtualinvoke $r11.<java.lang.Boolean: boolean booleanValue()>();
+
+        if $z0 != 0 goto label07;
+
+        $r2 = r0.<com.ideaworks3d.marmalade.LoaderThread: com.ideaworks3d.marmalade.LoaderView m_View>;
+
+        virtualinvoke $r2.<com.ideaworks3d.marmalade.LoaderView: int videoResume()>();
+
+     label07:
+        $r12 = r0.<com.ideaworks3d.marmalade.LoaderThread: com.ideaworks3d.marmalade.SoundRecord m_SoundRecord>;
+
+        if $r12 == null goto label08;
+
+        $r12 = r0.<com.ideaworks3d.marmalade.LoaderThread: com.ideaworks3d.marmalade.SoundRecord m_SoundRecord>;
+
+        virtualinvoke $r12.<com.ideaworks3d.marmalade.SoundRecord: int start(int)>(-1);
+
+     label08:
+        $r11 = staticinvoke <java.lang.Boolean: java.lang.Boolean valueOf(boolean)>(0);
+
+        r0.<com.ideaworks3d.marmalade.LoaderThread: java.lang.Boolean m_Paused> = $r11;
+
+        $r13 = new com.ideaworks3d.marmalade.SuspendResumeEvent;
+
+        $r14 = <com.ideaworks3d.marmalade.SuspendResumeEvent$EventType: com.ideaworks3d.marmalade.SuspendResumeEvent$EventType RESUME>;
+
+        specialinvoke $r13.<com.ideaworks3d.marmalade.SuspendResumeEvent: void <init>(com.ideaworks3d.marmalade.SuspendResumeEvent$EventType)>($r14);
+
+        staticinvoke <com.ideaworks3d.marmalade.LoaderAPI: void notifySuspendResumeListeners(com.ideaworks3d.marmalade.SuspendResumeEvent)>($r13);
+
+        virtualinvoke r0.<com.ideaworks3d.marmalade.LoaderThread: void onDoneResume()>();
+
+        return;
+
+     label09:
+        $r15 := @caughtexception;
+
+     label10:
+        exitmonitor $r1;
+
+     label11:
+        throw $r15;
+
+        catch java.lang.Throwable from label01 to label02 with label09;
+        catch java.lang.Throwable from label10 to label11 with label09;
+    }
+
+    public int getBatteryLevel()
+    {
+        com.ideaworks3d.marmalade.LoaderThread r0;
+        int i0;
+
+        r0 := @this: com.ideaworks3d.marmalade.LoaderThread;
+
+        i0 = r0.<com.ideaworks3d.marmalade.LoaderThread: int m_BatteryLevel>;
+
+        return i0;
+    }
+
+    public java.lang.String getDeviceIMSI()
+    {
+        com.ideaworks3d.marmalade.LoaderThread r0;
+        com.ideaworks3d.marmalade.LoaderActivity $r1;
+        java.lang.Object $r2;
+        android.telephony.TelephonyManager r3;
+        java.lang.String $r4;
+
+        r0 := @this: com.ideaworks3d.marmalade.LoaderThread;
+
+        $r1 = r0.<com.ideaworks3d.marmalade.LoaderThread: com.ideaworks3d.marmalade.LoaderActivity m_Loader>;
+
+        $r2 = virtualinvoke $r1.<com.ideaworks3d.marmalade.LoaderActivity: java.lang.Object getSystemService(java.lang.String)>("phone");
+
+        r3 = (android.telephony.TelephonyManager) $r2;
+
+        $r4 = virtualinvoke r3.<android.telephony.TelephonyManager: java.lang.String getSubscriberId()>();
+
+        return $r4;
+    }
+
+    public java.lang.String getDeviceId()
+    {
+        com.ideaworks3d.marmalade.LoaderThread r0;
+        com.ideaworks3d.marmalade.LoaderActivity $r1;
+        java.lang.Object $r2;
+        android.telephony.TelephonyManager $r3;
+        java.lang.String $r4;
+        android.content.ContentResolver $r5;
+        int $i0;
+        java.lang.Class $r6;
+        java.lang.reflect.Field $r7;
+        java.lang.Exception $r8;
+
+        r0 := @this: com.ideaworks3d.marmalade.LoaderThread;
+
+        $r1 = r0.<com.ideaworks3d.marmalade.LoaderThread: com.ideaworks3d.marmalade.LoaderActivity m_Loader>;
+
+        $r2 = virtualinvoke $r1.<com.ideaworks3d.marmalade.LoaderActivity: java.lang.Object getSystemService(java.lang.String)>("phone");
+
+        $r3 = (android.telephony.TelephonyManager) $r2;
+
+        $r4 = virtualinvoke $r3.<android.telephony.TelephonyManager: java.lang.String getDeviceId()>();
+
+        if $r4 == null goto label1;
+
+        if $r4 == "" goto label1;
+
+        return $r4;
+
+     label1:
+        $r1 = r0.<com.ideaworks3d.marmalade.LoaderThread: com.ideaworks3d.marmalade.LoaderActivity m_Loader>;
+
+        $r5 = virtualinvoke $r1.<com.ideaworks3d.marmalade.LoaderActivity: android.content.ContentResolver getContentResolver()>();
+
+        $r4 = staticinvoke <android.provider.Settings$Secure: java.lang.String getString(android.content.ContentResolver,java.lang.String)>($r5, "android_id");
+
+        if $r4 == null goto label2;
+
+        if $r4 != "9774d56d682e549c" goto label7;
+
+     label2:
+        $i0 = <android.os.Build$VERSION: int SDK_INT>;
+
+        if $i0 < 9 goto label6;
+
+        $r6 = class "Landroid/os/Build;";
+
+     label3:
+        $r7 = virtualinvoke $r6.<java.lang.Class: java.lang.reflect.Field getField(java.lang.String)>("SERIAL");
+
+        $r2 = virtualinvoke $r7.<java.lang.reflect.Field: java.lang.Object get(java.lang.Object)>(null);
+
+        $r4 = (java.lang.String) $r2;
+
+     label4:
+        if $r4 == null goto label6;
+
+        return $r4;
+
+     label5:
+        $r8 := @caughtexception;
+
+     label6:
+        return null;
+
+     label7:
+        return $r4;
+
+        catch java.lang.Exception from label3 to label4 with label5;
+    }
+
+    public java.lang.String getDeviceModel()
+    {
+        com.ideaworks3d.marmalade.LoaderThread r0;
+        java.lang.String r1;
+
+        r0 := @this: com.ideaworks3d.marmalade.LoaderThread;
+
+        r1 = <android.os.Build: java.lang.String MODEL>;
+
+        return r1;
+    }
+
+    public java.lang.String getDeviceNumber()
+    {
+        com.ideaworks3d.marmalade.LoaderThread r0;
+        com.ideaworks3d.marmalade.LoaderActivity $r1;
+        java.lang.Object $r2;
+        android.telephony.TelephonyManager r3;
+        java.lang.String $r4;
+
+        r0 := @this: com.ideaworks3d.marmalade.LoaderThread;
+
+        $r1 = r0.<com.ideaworks3d.marmalade.LoaderThread: com.ideaworks3d.marmalade.LoaderActivity m_Loader>;
+
+        $r2 = virtualinvoke $r1.<com.ideaworks3d.marmalade.LoaderActivity: java.lang.Object getSystemService(java.lang.String)>("phone");
+
+        r3 = (android.telephony.TelephonyManager) $r2;
+
+        $r4 = virtualinvoke r3.<android.telephony.TelephonyManager: java.lang.String getLine1Number()>();
+
+        return $r4;
+    }
+
+    public int getNetworkSubType()
+    {
+        com.ideaworks3d.marmalade.LoaderThread r0;
+        com.ideaworks3d.marmalade.LoaderActivity $r1;
+        java.lang.Object $r2;
+        android.net.ConnectivityManager r3;
+        android.net.NetworkInfo $r4;
+        boolean $z0;
+        int $i0;
+
+        r0 := @this: com.ideaworks3d.marmalade.LoaderThread;
+
+        $r1 = r0.<com.ideaworks3d.marmalade.LoaderThread: com.ideaworks3d.marmalade.LoaderActivity m_Loader>;
+
+        $r2 = virtualinvoke $r1.<com.ideaworks3d.marmalade.LoaderActivity: java.lang.Object getSystemService(java.lang.String)>("connectivity");
+
+        r3 = (android.net.ConnectivityManager) $r2;
+
+        $r4 = virtualinvoke r3.<android.net.ConnectivityManager: android.net.NetworkInfo getActiveNetworkInfo()>();
+
+        if $r4 == null goto label1;
+
+        $z0 = virtualinvoke $r4.<android.net.NetworkInfo: boolean isConnected()>();
+
+        if $z0 == 0 goto label1;
+
+        $i0 = virtualinvoke $r4.<android.net.NetworkInfo: int getSubtype()>();
+
+        return $i0;
+
+     label1:
+        return -1;
+    }
+
+    public int getNetworkType()
+    {
+        com.ideaworks3d.marmalade.LoaderThread r0;
+        com.ideaworks3d.marmalade.LoaderActivity $r1;
+        java.lang.Object $r2;
+        android.net.ConnectivityManager r3;
+        android.net.NetworkInfo $r4;
+        boolean $z0;
+        int $i0;
+
+        r0 := @this: com.ideaworks3d.marmalade.LoaderThread;
+
+        $r1 = r0.<com.ideaworks3d.marmalade.LoaderThread: com.ideaworks3d.marmalade.LoaderActivity m_Loader>;
+
+        $r2 = virtualinvoke $r1.<com.ideaworks3d.marmalade.LoaderActivity: java.lang.Object getSystemService(java.lang.String)>("connectivity");
+
+        r3 = (android.net.ConnectivityManager) $r2;
+
+        $r4 = virtualinvoke r3.<android.net.ConnectivityManager: android.net.NetworkInfo getActiveNetworkInfo()>();
+
+        if $r4 == null goto label1;
+
+        $z0 = virtualinvoke $r4.<android.net.NetworkInfo: boolean isConnected()>();
+
+        if $z0 == 0 goto label1;
+
+        $i0 = virtualinvoke $r4.<android.net.NetworkInfo: int getType()>();
+
+        return $i0;
+
+     label1:
+        return -1;
+    }
+
+    public int getOrientation()
+    {
+        com.ideaworks3d.marmalade.LoaderThread r0;
+        com.ideaworks3d.marmalade.LoaderActivity $r1;
+        java.lang.Object $r2;
+        android.view.WindowManager $r3;
+        android.view.Display $r4;
+        java.lang.reflect.Method $r5;
+        java.lang.Class $r6;
+        java.lang.Class[] $r7;
+        java.lang.Object[] $r8;
+        java.lang.Integer r9;
+        int $i0;
+        java.lang.Throwable $r10, $r11;
+        java.lang.Exception $r12;
+
+        r0 := @this: com.ideaworks3d.marmalade.LoaderThread;
+
+        $r1 = r0.<com.ideaworks3d.marmalade.LoaderThread: com.ideaworks3d.marmalade.LoaderActivity m_Loader>;
+
+        $r2 = virtualinvoke $r1.<com.ideaworks3d.marmalade.LoaderActivity: java.lang.Object getSystemService(java.lang.String)>("window");
+
+        $r3 = (android.view.WindowManager) $r2;
+
+        $r4 = interfaceinvoke $r3.<android.view.WindowManager: android.view.Display getDefaultDisplay()>();
+
+        $r5 = r0.<com.ideaworks3d.marmalade.LoaderThread: java.lang.reflect.Method m_getRotation>;
+
+        if $r5 != null goto label3;
+
+        $r6 = virtualinvoke $r4.<java.lang.Object: java.lang.Class getClass()>();
+
+        $r7 = newarray (java.lang.Class)[0];
+
+     label1:
+        $r5 = virtualinvoke $r6.<java.lang.Class: java.lang.reflect.Method getMethod(java.lang.String,java.lang.Class[])>("getRotation", $r7);
+
+     label2:
+        r0.<com.ideaworks3d.marmalade.LoaderThread: java.lang.reflect.Method m_getRotation> = $r5;
+
+     label3:
+        $r5 = r0.<com.ideaworks3d.marmalade.LoaderThread: java.lang.reflect.Method m_getRotation>;
+
+        $r8 = newarray (java.lang.Object)[0];
+
+        $r2 = virtualinvoke $r5.<java.lang.reflect.Method: java.lang.Object invoke(java.lang.Object,java.lang.Object[])>($r4, $r8);
+
+        r9 = (java.lang.Integer) $r2;
+
+        $i0 = virtualinvoke r9.<java.lang.Integer: int intValue()>();
+
+     label4:
+        return $i0;
+
+     label5:
+        $r10 := @caughtexception;
+
+        $r7 = newarray (java.lang.Class)[0];
+
+     label6:
+        $r5 = virtualinvoke $r6.<java.lang.Class: java.lang.reflect.Method getMethod(java.lang.String,java.lang.Class[])>("getOrientation", $r7);
+
+     label7:
+        r0.<com.ideaworks3d.marmalade.LoaderThread: java.lang.reflect.Method m_getRotation> = $r5;
+
+        goto label3;
+
+     label8:
+        $r11 := @caughtexception;
+
+        goto label3;
+
+     label9:
+        $r12 := @caughtexception;
+
+        return 0;
+
+        catch java.lang.NoSuchMethodException from label1 to label2 with label5;
+        catch java.lang.Exception from label3 to label4 with label9;
+        catch java.lang.NoSuchMethodException from label6 to label7 with label8;
+    }
+
+    public boolean getSilentMode()
+    {
+        com.ideaworks3d.marmalade.LoaderThread r0;
+        com.ideaworks3d.marmalade.LoaderActivity $r1;
+        java.lang.Object $r2;
+        android.media.AudioManager r3;
+        int $i0;
+
+        r0 := @this: com.ideaworks3d.marmalade.LoaderThread;
+
+        $r1 = r0.<com.ideaworks3d.marmalade.LoaderThread: com.ideaworks3d.marmalade.LoaderActivity m_Loader>;
+
+        $r2 = virtualinvoke $r1.<com.ideaworks3d.marmalade.LoaderActivity: java.lang.Object getSystemService(java.lang.String)>("audio");
+
+        r3 = (android.media.AudioManager) $r2;
+
+        $i0 = virtualinvoke r3.<android.media.AudioManager: int getRingerMode()>();
+
+        if $i0 != 2 goto label1;
+
+        return 0;
+
+     label1:
+        return 1;
+    }
+
+    public boolean getStarted()
+    {
+        com.ideaworks3d.marmalade.LoaderThread r0;
+        boolean $z0;
+        java.lang.Boolean $r1;
+
+        r0 := @this: com.ideaworks3d.marmalade.LoaderThread;
+
+        $r1 = r0.<com.ideaworks3d.marmalade.LoaderThread: java.lang.Boolean m_Started>;
+
+        $z0 = virtualinvoke $r1.<java.lang.Boolean: boolean booleanValue()>();
+
+        return $z0;
+    }
+
+    public boolean hasMultitouch()
+    {
+        com.ideaworks3d.marmalade.LoaderThread r0;
+        com.ideaworks3d.marmalade.LoaderActivity $r1;
+        android.content.pm.PackageManager $r2;
+        java.lang.Class $r3;
+        java.lang.Class[] $r4;
+        java.lang.reflect.Method $r5;
+        java.lang.Object[] $r6;
+        java.lang.Object $r7;
+        java.lang.Boolean r8;
+        boolean $z0;
+        java.lang.Exception $r9;
+
+        r0 := @this: com.ideaworks3d.marmalade.LoaderThread;
+
+        $r1 = r0.<com.ideaworks3d.marmalade.LoaderThread: com.ideaworks3d.marmalade.LoaderActivity m_Loader>;
+
+        $r2 = virtualinvoke $r1.<com.ideaworks3d.marmalade.LoaderActivity: android.content.pm.PackageManager getPackageManager()>();
+
+        $r3 = class "Landroid/content/pm/PackageManager;";
+
+     label1:
+        $r4 = newarray (java.lang.Class)[1];
+
+        $r4[0] = class "Ljava/lang/String;";
+
+        $r5 = virtualinvoke $r3.<java.lang.Class: java.lang.reflect.Method getMethod(java.lang.String,java.lang.Class[])>("hasSystemFeature", $r4);
+
+        $r6 = newarray (java.lang.Object)[1];
+
+        $r6[0] = "android.hardware.touchscreen.multitouch";
+
+        $r7 = virtualinvoke $r5.<java.lang.reflect.Method: java.lang.Object invoke(java.lang.Object,java.lang.Object[])>($r2, $r6);
+
+        r8 = (java.lang.Boolean) $r7;
+
+        $z0 = virtualinvoke r8.<java.lang.Boolean: boolean booleanValue()>();
+
+     label2:
+        return $z0;
+
+     label3:
+        $r9 := @caughtexception;
+
+        return 0;
+
+        catch java.lang.Exception from label1 to label2 with label3;
+    }
+
+    public boolean launchBrowser(java.lang.String)
+    {
+        com.ideaworks3d.marmalade.LoaderThread r0;
+        java.lang.String $r1;
+        android.content.Intent $r2;
+        android.net.Uri $r3;
+        boolean $z0;
+        com.ideaworks3d.marmalade.LoaderActivity $r4;
+        android.content.ActivityNotFoundException $r5;
+
+        r0 := @this: com.ideaworks3d.marmalade.LoaderThread;
+
+        $r1 := @parameter0: java.lang.String;
+
+     label01:
+        $r3 = staticinvoke <android.net.Uri: android.net.Uri parse(java.lang.String)>($r1);
+
+     label02:
+        $r2 = new android.content.Intent;
+
+     label03:
+        specialinvoke $r2.<android.content.Intent: void <init>()>();
+
+        virtualinvoke $r2.<android.content.Intent: android.content.Intent setData(android.net.Uri)>($r3);
+
+        $z0 = virtualinvoke $r1.<java.lang.String: boolean startsWith(java.lang.String)>("vfstore");
+
+     label04:
+        if $z0 != 0 goto label06;
+
+     label05:
+        virtualinvoke $r2.<android.content.Intent: android.content.Intent setAction(java.lang.String)>("android.intent.action.VIEW");
+
+     label06:
+        virtualinvoke $r2.<android.content.Intent: android.content.Intent addFlags(int)>(337641472);
+
+     label07:
+        $r4 = r0.<com.ideaworks3d.marmalade.LoaderThread: com.ideaworks3d.marmalade.LoaderActivity m_Loader>;
+
+     label08:
+        virtualinvoke $r4.<com.ideaworks3d.marmalade.LoaderActivity: void startActivity(android.content.Intent)>($r2);
+
+     label09:
+        return 1;
+
+     label10:
+        $r5 := @caughtexception;
+
+        return 0;
+
+        catch android.content.ActivityNotFoundException from label01 to label02 with label10;
+        catch android.content.ActivityNotFoundException from label03 to label04 with label10;
+        catch android.content.ActivityNotFoundException from label05 to label07 with label10;
+        catch android.content.ActivityNotFoundException from label08 to label09 with label10;
+    }
+
+    public boolean locationGpsData()
+    {
+        com.ideaworks3d.marmalade.LoaderThread r0;
+        boolean $z0;
+        com.ideaworks3d.marmalade.LoaderLocation $r1;
+
+        r0 := @this: com.ideaworks3d.marmalade.LoaderThread;
+
+        $r1 = r0.<com.ideaworks3d.marmalade.LoaderThread: com.ideaworks3d.marmalade.LoaderLocation m_Location>;
+
+        if $r1 == null goto label1;
+
+        $r1 = r0.<com.ideaworks3d.marmalade.LoaderThread: com.ideaworks3d.marmalade.LoaderLocation m_Location>;
+
+        $z0 = virtualinvoke $r1.<com.ideaworks3d.marmalade.LoaderLocation: boolean locationGpsData()>();
+
+        return $z0;
+
+     label1:
+        return 0;
+    }
+
+    public boolean locationStart()
+    {
+        com.ideaworks3d.marmalade.LoaderThread r0;
+        com.ideaworks3d.marmalade.LoaderActivity $r1;
+        boolean $z0;
+        com.ideaworks3d.marmalade.LoaderLocation $r2;
+
+        r0 := @this: com.ideaworks3d.marmalade.LoaderThread;
+
+        $r2 = r0.<com.ideaworks3d.marmalade.LoaderThread: com.ideaworks3d.marmalade.LoaderLocation m_Location>;
+
+        if $r2 == null goto label1;
+
+        return 0;
+
+     label1:
+        $r2 = new com.ideaworks3d.marmalade.LoaderLocation;
+
+        specialinvoke $r2.<com.ideaworks3d.marmalade.LoaderLocation: void <init>()>();
+
+        r0.<com.ideaworks3d.marmalade.LoaderThread: com.ideaworks3d.marmalade.LoaderLocation m_Location> = $r2;
+
+        $r2 = r0.<com.ideaworks3d.marmalade.LoaderThread: com.ideaworks3d.marmalade.LoaderLocation m_Location>;
+
+        $r1 = r0.<com.ideaworks3d.marmalade.LoaderThread: com.ideaworks3d.marmalade.LoaderActivity m_Loader>;
+
+        $z0 = virtualinvoke $r2.<com.ideaworks3d.marmalade.LoaderLocation: boolean locationStart(com.ideaworks3d.marmalade.LoaderActivity)>($r1);
+
+        return $z0;
+    }
+
+    public boolean locationStop()
+    {
+        com.ideaworks3d.marmalade.LoaderThread r0;
+        boolean $z0;
+        com.ideaworks3d.marmalade.LoaderLocation $r1;
+
+        r0 := @this: com.ideaworks3d.marmalade.LoaderThread;
+
+        $r1 = r0.<com.ideaworks3d.marmalade.LoaderThread: com.ideaworks3d.marmalade.LoaderLocation m_Location>;
+
+        if $r1 != null goto label1;
+
+        return 0;
+
+     label1:
+        $r1 = r0.<com.ideaworks3d.marmalade.LoaderThread: com.ideaworks3d.marmalade.LoaderLocation m_Location>;
+
+        $z0 = virtualinvoke $r1.<com.ideaworks3d.marmalade.LoaderLocation: boolean locationStop()>();
+
+        r0.<com.ideaworks3d.marmalade.LoaderThread: com.ideaworks3d.marmalade.LoaderLocation m_Location> = null;
+
+        return $z0;
+    }
+
+    public boolean networkCheckStart()
+    {
+        com.ideaworks3d.marmalade.LoaderThread r0;
+        android.content.BroadcastReceiver $r1;
+        android.content.IntentFilter $r2;
+        boolean $z0;
+        com.ideaworks3d.marmalade.LoaderActivity $r3;
+
+        r0 := @this: com.ideaworks3d.marmalade.LoaderThread;
+
+        $z0 = r0.<com.ideaworks3d.marmalade.LoaderThread: boolean m_NetworkCheckEnabled>;
+
+        if $z0 == 0 goto label1;
+
+        return 1;
+
+     label1:
+        r0.<com.ideaworks3d.marmalade.LoaderThread: boolean m_NetworkCheckEnabled> = 1;
+
+        $r3 = r0.<com.ideaworks3d.marmalade.LoaderThread: com.ideaworks3d.marmalade.LoaderActivity m_Loader>;
+
+        $r1 = r0.<com.ideaworks3d.marmalade.LoaderThread: android.content.BroadcastReceiver m_NetworkCheckReceiver>;
+
+        $r2 = new android.content.IntentFilter;
+
+        specialinvoke $r2.<android.content.IntentFilter: void <init>(java.lang.String)>("android.net.conn.CONNECTIVITY_CHANGE");
+
+        virtualinvoke $r3.<com.ideaworks3d.marmalade.LoaderActivity: android.content.Intent registerReceiver(android.content.BroadcastReceiver,android.content.IntentFilter)>($r1, $r2);
+
+        return 1;
+    }
+
+    public boolean networkCheckStop()
+    {
+        com.ideaworks3d.marmalade.LoaderThread r0;
+        android.content.BroadcastReceiver $r1;
+        boolean $z0;
+        com.ideaworks3d.marmalade.LoaderActivity $r2;
+
+        r0 := @this: com.ideaworks3d.marmalade.LoaderThread;
+
+        $z0 = r0.<com.ideaworks3d.marmalade.LoaderThread: boolean m_NetworkCheckEnabled>;
+
+        if $z0 != 0 goto label1;
+
+        return 1;
+
+     label1:
+        r0.<com.ideaworks3d.marmalade.LoaderThread: boolean m_NetworkCheckEnabled> = 0;
+
+        $r2 = r0.<com.ideaworks3d.marmalade.LoaderThread: com.ideaworks3d.marmalade.LoaderActivity m_Loader>;
+
+        $r1 = r0.<com.ideaworks3d.marmalade.LoaderThread: android.content.BroadcastReceiver m_NetworkCheckReceiver>;
+
+        virtualinvoke $r2.<com.ideaworks3d.marmalade.LoaderActivity: void unregisterReceiver(android.content.BroadcastReceiver)>($r1);
+
+        return 1;
+    }
+
+    public void onAccuracyChanged(android.hardware.Sensor, int)
+    {
+        com.ideaworks3d.marmalade.LoaderThread r0;
+        android.hardware.Sensor $r1;
+        int $i0;
+
+        r0 := @this: com.ideaworks3d.marmalade.LoaderThread;
+
+        $r1 := @parameter0: android.hardware.Sensor;
+
+        $i0 := @parameter1: int;
+
+        return;
+    }
+
+    public void onDestroy()
+    {
+        com.ideaworks3d.marmalade.LoaderThread r0;
+        java.lang.Throwable $r1;
+
+        r0 := @this: com.ideaworks3d.marmalade.LoaderThread;
+
+        specialinvoke r0.<com.ideaworks3d.marmalade.LoaderThread: void shuttingDown(boolean)>(1);
+
+        virtualinvoke r0.<com.ideaworks3d.marmalade.LoaderThread: void interrupt()>();
+
+     label1:
+        virtualinvoke r0.<com.ideaworks3d.marmalade.LoaderThread: void join()>();
+
+     label2:
+        return;
+
+     label3:
+        $r1 := @caughtexception;
+
+        return;
+
+        catch java.lang.InterruptedException from label1 to label2 with label3;
+    }
+
+    public void onDoneResume()
+    {
+        com.ideaworks3d.marmalade.LoaderThread r0;
+
+        r0 := @this: com.ideaworks3d.marmalade.LoaderThread;
+
+        return;
+    }
+
+    public void onFocusChanged(boolean)
+    {
+        com.ideaworks3d.marmalade.LoaderThread r0;
+        boolean $z0, $z1;
+        com.ideaworks3d.marmalade.LoaderActivity $r1;
+        com.ideaworks3d.marmalade.LoaderView $r2;
+
+        r0 := @this: com.ideaworks3d.marmalade.LoaderThread;
+
+        $z0 := @parameter0: boolean;
+
+        r0.<com.ideaworks3d.marmalade.LoaderThread: boolean m_HasFocus> = $z0;
+
+        if $z0 != 0 goto label1;
+
+        $r1 = r0.<com.ideaworks3d.marmalade.LoaderThread: com.ideaworks3d.marmalade.LoaderActivity m_Loader>;
+
+        $z1 = $r1.<com.ideaworks3d.marmalade.LoaderActivity: boolean m_IgnoreFocusLoss>;
+
+        if $z1 == 0 goto label1;
+
+        return;
+
+     label1:
+        $r2 = r0.<com.ideaworks3d.marmalade.LoaderThread: com.ideaworks3d.marmalade.LoaderView m_View>;
+
+        $z1 = $r2.<com.ideaworks3d.marmalade.LoaderView: boolean m_InputTextRunning>;
+
+        if $z1 != 0 goto label4;
+
+        $r2 = r0.<com.ideaworks3d.marmalade.LoaderThread: com.ideaworks3d.marmalade.LoaderView m_View>;
+
+        $z1 = $r2.<com.ideaworks3d.marmalade.LoaderView: boolean m_ErrorRunning>;
+
+        if $z1 != 0 goto label4;
+
+        if $z0 == 0 goto label2;
+
+        $r1 = r0.<com.ideaworks3d.marmalade.LoaderThread: com.ideaworks3d.marmalade.LoaderActivity m_Loader>;
+
+        $z1 = $r1.<com.ideaworks3d.marmalade.LoaderActivity: boolean m_ActivityPaused>;
+
+        if $z1 != 0 goto label4;
+
+     label2:
+        if $z0 == 0 goto label3;
+
+        virtualinvoke r0.<com.ideaworks3d.marmalade.LoaderThread: void onResume()>();
+
+        return;
+
+     label3:
+        virtualinvoke r0.<com.ideaworks3d.marmalade.LoaderThread: void onPause()>();
+
+     label4:
+        return;
+    }
+
+    public native void onMotionEvent(int, int, int, int);
+
+    public void onPause()
+    {
+        com.ideaworks3d.marmalade.LoaderThread r0;
+        java.lang.Boolean $r1;
+        boolean $z0;
+        java.lang.Object $r2, $r4;
+        java.lang.Throwable $r3, $r5;
+
+        r0 := @this: com.ideaworks3d.marmalade.LoaderThread;
+
+        $r1 = r0.<com.ideaworks3d.marmalade.LoaderThread: java.lang.Boolean m_Terminating>;
+
+        $z0 = virtualinvoke $r1.<java.lang.Boolean: boolean booleanValue()>();
+
+        if $z0 == 0 goto label01;
+
+        return;
+
+     label01:
+        $r1 = r0.<com.ideaworks3d.marmalade.LoaderThread: java.lang.Boolean m_Started>;
+
+        $z0 = virtualinvoke $r1.<java.lang.Boolean: boolean booleanValue()>();
+
+        if $z0 != 0 goto label02;
+
+        $r1 = staticinvoke <java.lang.Boolean: java.lang.Boolean valueOf(boolean)>(1);
+
+        r0.<com.ideaworks3d.marmalade.LoaderThread: java.lang.Boolean m_PauseRequested> = $r1;
+
+        return;
+
+     label02:
+        $r2 = r0.<com.ideaworks3d.marmalade.LoaderThread: java.lang.Object m_PauseRequestedXX>;
+
+        entermonitor $r2;
+
+     label03:
+        $r1 = r0.<com.ideaworks3d.marmalade.LoaderThread: java.lang.Boolean m_Paused>;
+
+        $z0 = virtualinvoke $r1.<java.lang.Boolean: boolean booleanValue()>();
+
+        if $z0 != 0 goto label04;
+
+        $r1 = r0.<com.ideaworks3d.marmalade.LoaderThread: java.lang.Boolean m_PauseRequested>;
+
+        $z0 = virtualinvoke $r1.<java.lang.Boolean: boolean booleanValue()>();
+
+        if $z0 == 0 goto label08;
+
+     label04:
+        exitmonitor $r2;
+
+     label05:
+        return;
+
+     label06:
+        $r3 := @caughtexception;
+
+        exitmonitor $r2;
+
+     label07:
+        throw $r3;
+
+     label08:
+        $r1 = staticinvoke <java.lang.Boolean: java.lang.Boolean valueOf(boolean)>(1);
+
+        r0.<com.ideaworks3d.marmalade.LoaderThread: java.lang.Boolean m_PauseRequested> = $r1;
+
+        $r4 = r0.<com.ideaworks3d.marmalade.LoaderThread: java.lang.Object m_ResumeRequestedXX>;
+
+        entermonitor $r4;
+
+     label09:
+        $r1 = staticinvoke <java.lang.Boolean: java.lang.Boolean valueOf(boolean)>(1);
+
+        r0.<com.ideaworks3d.marmalade.LoaderThread: java.lang.Boolean m_PauseRequested> = $r1;
+
+        $r1 = staticinvoke <java.lang.Boolean: java.lang.Boolean valueOf(boolean)>(1);
+
+        r0.<com.ideaworks3d.marmalade.LoaderThread: java.lang.Boolean m_Paused> = $r1;
+
+        specialinvoke r0.<com.ideaworks3d.marmalade.LoaderThread: void signalSuspend()>();
+
+        exitmonitor $r4;
+
+     label10:
+        exitmonitor $r2;
+
+     label11:
+        return;
+
+     label12:
+        $r5 := @caughtexception;
+
+     label13:
+        exitmonitor $r4;
+
+     label14:
+        throw $r5;
+
+     label15:
+        nop;
+
+        catch java.lang.Throwable from label03 to label05 with label06;
+        catch java.lang.Throwable from label06 to label07 with label06;
+        catch java.lang.Throwable from label08 to label09 with label06;
+        catch java.lang.Throwable from label09 to label10 with label12;
+        catch java.lang.Throwable from label10 to label11 with label06;
+        catch java.lang.Throwable from label13 to label14 with label12;
+        catch java.lang.Throwable from label14 to label15 with label06;
+    }
+
+    public void onResume()
+    {
+        com.ideaworks3d.marmalade.LoaderThread r0;
+        java.lang.Boolean $r1;
+        boolean $z0;
+
+        r0 := @this: com.ideaworks3d.marmalade.LoaderThread;
+
+        $r1 = staticinvoke <java.lang.Boolean: java.lang.Boolean valueOf(boolean)>(0);
+
+        r0.<com.ideaworks3d.marmalade.LoaderThread: java.lang.Boolean m_PauseRequested> = $r1;
+
+        $z0 = r0.<com.ideaworks3d.marmalade.LoaderThread: boolean m_HasFocus>;
+
+        if $z0 == 0 goto label1;
+
+        $r1 = r0.<com.ideaworks3d.marmalade.LoaderThread: java.lang.Boolean m_Paused>;
+
+        virtualinvoke $r1.<java.lang.Boolean: boolean booleanValue()>();
+
+        specialinvoke r0.<com.ideaworks3d.marmalade.LoaderThread: void signalResume()>();
+
+     label1:
+        return;
+    }
+
+    public void onSensorChanged(android.hardware.SensorEvent)
+    {
+        com.ideaworks3d.marmalade.LoaderThread r0;
+        android.hardware.SensorEvent $r1;
+        int $i0;
+        android.hardware.Sensor $r2;
+        float[] $r3;
+        float $f0, $f1, $f2;
+
+        r0 := @this: com.ideaworks3d.marmalade.LoaderThread;
+
+        $r1 := @parameter0: android.hardware.SensorEvent;
+
+        $r2 = $r1.<android.hardware.SensorEvent: android.hardware.Sensor sensor>;
+
+        $i0 = virtualinvoke $r2.<android.hardware.Sensor: int getType()>();
+
+        if $i0 != 1 goto label1;
+
+        $r3 = $r1.<android.hardware.SensorEvent: float[] values>;
+
+        $f0 = $r3[0];
+
+        $r3 = $r1.<android.hardware.SensorEvent: float[] values>;
+
+        $f1 = $r3[1];
+
+        $r3 = $r1.<android.hardware.SensorEvent: float[] values>;
+
+        $f2 = $r3[2];
+
+        specialinvoke r0.<com.ideaworks3d.marmalade.LoaderThread: void onAccelNative(float,float,float)>($f0, $f1, $f2);
+
+        return;
+
+     label1:
+        if $i0 != 2 goto label2;
+
+        $r3 = $r1.<android.hardware.SensorEvent: float[] values>;
+
+        $f0 = $r3[0];
+
+        $r3 = $r1.<android.hardware.SensorEvent: float[] values>;
+
+        $f1 = $r3[1];
+
+        $r3 = $r1.<android.hardware.SensorEvent: float[] values>;
+
+        $f2 = $r3[2];
+
+        specialinvoke r0.<com.ideaworks3d.marmalade.LoaderThread: void onCompassNative(int,float,float,float)>(0, $f0, $f1, $f2);
+
+        return;
+
+     label2:
+        if $i0 != 3 goto label3;
+
+        $r3 = $r1.<android.hardware.SensorEvent: float[] values>;
+
+        $f0 = $r3[0];
+
+        $r3 = $r1.<android.hardware.SensorEvent: float[] values>;
+
+        $f1 = $r3[1];
+
+        $r3 = $r1.<android.hardware.SensorEvent: float[] values>;
+
+        $f2 = $r3[2];
+
+        specialinvoke r0.<com.ideaworks3d.marmalade.LoaderThread: void onCompassNative(int,float,float,float)>(1, $f0, $f1, $f2);
+
+     label3:
+        return;
+    }
+
+    public boolean onTouchEvent(android.view.MotionEvent)
+    {
+        com.ideaworks3d.marmalade.LoaderThread r0;
+        android.view.MotionEvent $r1;
+        java.lang.reflect.Method $r2;
+        java.lang.Object[] $r3;
+        java.lang.Integer $r4, $r5, $r6;
+        int $i0, $i2, $i3;
+        long $l1;
+        float $f0;
+        byte $b4;
+        java.lang.Throwable $r7, $r8;
+        java.lang.Exception $r9;
+
+        r0 := @this: com.ideaworks3d.marmalade.LoaderThread;
+
+        $r1 := @parameter0: android.view.MotionEvent;
+
+        $r2 = r0.<com.ideaworks3d.marmalade.LoaderThread: java.lang.reflect.Method m_TouchEvent>;
+
+        if $r2 == null goto label09;
+
+     label01:
+        $r2 = r0.<com.ideaworks3d.marmalade.LoaderThread: java.lang.reflect.Method m_TouchEvent>;
+
+        $r3 = newarray (java.lang.Object)[2];
+
+        $r3[0] = r0;
+
+        $r3[1] = $r1;
+
+        virtualinvoke $r2.<java.lang.reflect.Method: java.lang.Object invoke(java.lang.Object,java.lang.Object[])>(null, $r3);
+
+     label02:
+        $r4 = r0.<com.ideaworks3d.marmalade.LoaderThread: java.lang.Integer m_OnTouchWait>;
+
+        $i0 = virtualinvoke $r4.<java.lang.Integer: int intValue()>();
+
+        if $i0 <= 0 goto label20;
+
+        $r4 = r0.<com.ideaworks3d.marmalade.LoaderThread: java.lang.Integer m_OnTouchWait>;
+
+        entermonitor $r4;
+
+     label03:
+        $r5 = r0.<com.ideaworks3d.marmalade.LoaderThread: java.lang.Integer m_OnTouchWait>;
+
+        $r6 = r0.<com.ideaworks3d.marmalade.LoaderThread: java.lang.Integer m_OnTouchWait>;
+
+     label04:
+        $i0 = virtualinvoke $r6.<java.lang.Integer: int intValue()>();
+
+     label05:
+        $l1 = (long) $i0;
+
+     label06:
+        virtualinvoke $r5.<java.lang.Object: void wait(long)>($l1);
+
+     label07:
+        exitmonitor $r4;
+
+     label08:
+        return 1;
+
+     label09:
+        $f0 = virtualinvoke $r1.<android.view.MotionEvent: float getX()>();
+
+        $i0 = (int) $f0;
+
+        $f0 = virtualinvoke $r1.<android.view.MotionEvent: float getY()>();
+
+        $i2 = (int) $f0;
+
+        $i3 = virtualinvoke $r1.<android.view.MotionEvent: int getAction()>();
+
+        $i3 = $i3 & 255;
+
+        lookupswitch($i3)
+        {
+            case 0: goto label12;
+            case 1: goto label13;
+            case 2: goto label14;
+            default: goto label10;
+        };
+
+     label10:
+        $b4 = 0;
+
+     label11:
+        $i3 = $b4 + 3;
+
+        virtualinvoke r0.<com.ideaworks3d.marmalade.LoaderThread: void onMotionEvent(int,int,int,int)>(0, $i3, $i0, $i2);
+
+        goto label02;
+
+     label12:
+        $b4 = 1;
+
+        goto label11;
+
+     label13:
+        $b4 = 2;
+
+        goto label11;
+
+     label14:
+        $b4 = 3;
+
+        goto label11;
+
+     label15:
+        $r7 := @caughtexception;
+
+     label16:
+        exitmonitor $r4;
+
+     label17:
+        throw $r7;
+
+     label18:
+        $r8 := @caughtexception;
+
+        goto label07;
+
+     label19:
+        $r9 := @caughtexception;
+
+        goto label02;
+
+     label20:
+        return 1;
+
+        catch java.lang.Exception from label01 to label02 with label19;
+        catch java.lang.InterruptedException from label04 to label05 with label18;
+        catch java.lang.InterruptedException from label06 to label07 with label18;
+        catch java.lang.Throwable from label03 to label07 with label15;
+        catch java.lang.Throwable from label07 to label08 with label15;
+        catch java.lang.Throwable from label16 to label17 with label15;
+    }
+
+    public int recordStart(int)
+    {
+        com.ideaworks3d.marmalade.LoaderThread r0;
+        int $i0;
+        com.ideaworks3d.marmalade.SoundRecord $r1;
+
+        r0 := @this: com.ideaworks3d.marmalade.LoaderThread;
+
+        $i0 := @parameter0: int;
+
+        $r1 = r0.<com.ideaworks3d.marmalade.LoaderThread: com.ideaworks3d.marmalade.SoundRecord m_SoundRecord>;
+
+        if $r1 != null goto label1;
+
+        $r1 = new com.ideaworks3d.marmalade.SoundRecord;
+
+        specialinvoke $r1.<com.ideaworks3d.marmalade.SoundRecord: void <init>()>();
+
+        r0.<com.ideaworks3d.marmalade.LoaderThread: com.ideaworks3d.marmalade.SoundRecord m_SoundRecord> = $r1;
+
+        $r1 = r0.<com.ideaworks3d.marmalade.LoaderThread: com.ideaworks3d.marmalade.SoundRecord m_SoundRecord>;
+
+        $i0 = virtualinvoke $r1.<com.ideaworks3d.marmalade.SoundRecord: int start(int)>($i0);
+
+        return $i0;
+
+     label1:
+        return 0;
+    }
+
+    public int recordStop()
+    {
+        com.ideaworks3d.marmalade.LoaderThread r0;
+        int $i0;
+        com.ideaworks3d.marmalade.SoundRecord $r1;
+
+        r0 := @this: com.ideaworks3d.marmalade.LoaderThread;
+
+        $r1 = r0.<com.ideaworks3d.marmalade.LoaderThread: com.ideaworks3d.marmalade.SoundRecord m_SoundRecord>;
+
+        if $r1 == null goto label1;
+
+        $r1 = r0.<com.ideaworks3d.marmalade.LoaderThread: com.ideaworks3d.marmalade.SoundRecord m_SoundRecord>;
+
+        $i0 = virtualinvoke $r1.<com.ideaworks3d.marmalade.SoundRecord: int stop()>();
+
+        r0.<com.ideaworks3d.marmalade.LoaderThread: com.ideaworks3d.marmalade.SoundRecord m_SoundRecord> = null;
+
+        return $i0;
+
+     label1:
+        return 1;
+    }
+
+    public boolean releaseMulticastLock()
+    {
+        com.ideaworks3d.marmalade.LoaderThread r0;
+        com.ideaworks3d.marmalade.LoaderThread$MulticastLockFacade $r1;
+
+        r0 := @this: com.ideaworks3d.marmalade.LoaderThread;
+
+        $r1 = r0.<com.ideaworks3d.marmalade.LoaderThread: com.ideaworks3d.marmalade.LoaderThread$MulticastLockFacade m_MulticastLock>;
+
+        if $r1 == null goto label1;
+
+        $r1 = r0.<com.ideaworks3d.marmalade.LoaderThread: com.ideaworks3d.marmalade.LoaderThread$MulticastLockFacade m_MulticastLock>;
+
+        virtualinvoke $r1.<com.ideaworks3d.marmalade.LoaderThread$MulticastLockFacade: void release()>();
+
+        r0.<com.ideaworks3d.marmalade.LoaderThread: com.ideaworks3d.marmalade.LoaderThread$MulticastLockFacade m_MulticastLock> = null;
+
+        return 1;
+
+     label1:
+        return 0;
+    }
+
+    native void resumeAppThreads();
+
+    public void run()
+    {
+        com.ideaworks3d.marmalade.LoaderThread r0;
+        java.lang.Boolean $r1;
+        java.io.File $r2;
+        java.lang.String $r3, $r5;
+        com.ideaworks3d.marmalade.LoaderActivity $r4;
+
+        r0 := @this: com.ideaworks3d.marmalade.LoaderThread;
+
+        specialinvoke r0.<com.ideaworks3d.marmalade.LoaderThread: void waitForView()>();
+
+        $r1 = staticinvoke <java.lang.Boolean: java.lang.Boolean valueOf(boolean)>(1);
+
+        r0.<com.ideaworks3d.marmalade.LoaderThread: java.lang.Boolean m_Started> = $r1;
+
+        $r2 = r0.<com.ideaworks3d.marmalade.LoaderThread: java.io.File m_FileRoot>;
+
+        $r3 = virtualinvoke $r2.<java.io.File: java.lang.String getAbsolutePath()>();
+
+        $r4 = r0.<com.ideaworks3d.marmalade.LoaderThread: com.ideaworks3d.marmalade.LoaderActivity m_Loader>;
+
+        $r5 = virtualinvoke $r4.<com.ideaworks3d.marmalade.LoaderActivity: java.lang.String getPackageResourcePath()>();
+
+        specialinvoke r0.<com.ideaworks3d.marmalade.LoaderThread: void runNative(java.lang.String,java.lang.String)>($r3, $r5);
+
+        specialinvoke r0.<com.ideaworks3d.marmalade.LoaderThread: void shuttingDown(boolean)>(0);
+
+        return;
+    }
+
+    public void runOnOSSignal()
+    {
+        com.ideaworks3d.marmalade.LoaderThread r0;
+        android.os.Handler $r1;
+        java.lang.Runnable $r2;
+
+        r0 := @this: com.ideaworks3d.marmalade.LoaderThread;
+
+        $r1 = r0.<com.ideaworks3d.marmalade.LoaderThread: android.os.Handler m_Handler>;
+
+        $r2 = r0.<com.ideaworks3d.marmalade.LoaderThread: java.lang.Runnable m_RunOnOSThread>;
+
+        virtualinvoke $r1.<android.os.Handler: boolean post(java.lang.Runnable)>($r2);
+
+        return;
+    }
+
+    public void runOnOSThread(java.lang.Runnable)
+    {
+        com.ideaworks3d.marmalade.LoaderThread r0;
+        java.lang.Runnable $r1;
+
+        r0 := @this: com.ideaworks3d.marmalade.LoaderThread;
+
+        $r1 := @parameter0: java.lang.Runnable;
+
+        specialinvoke r0.<com.ideaworks3d.marmalade.LoaderThread: void runOnOSThreadNative(java.lang.Runnable)>($r1);
+
+        return;
+    }
+
+    public void runRunnable(java.lang.Runnable)
+    {
+        com.ideaworks3d.marmalade.LoaderThread r0;
+        java.lang.Runnable $r1;
+
+        r0 := @this: com.ideaworks3d.marmalade.LoaderThread;
+
+        $r1 := @parameter0: java.lang.Runnable;
+
+        interfaceinvoke $r1.<java.lang.Runnable: void run()>();
+
+        return;
+    }
+
+    public boolean sendEmail(java.lang.String, java.lang.String, java.lang.String)
+    {
+        com.ideaworks3d.marmalade.LoaderThread r0;
+        java.lang.String $r1, $r2, $r3;
+        android.content.Intent $r4;
+        java.lang.String[] $r5;
+        com.ideaworks3d.marmalade.LoaderActivity $r6;
+        android.content.ActivityNotFoundException $r7;
+
+        r0 := @this: com.ideaworks3d.marmalade.LoaderThread;
+
+        $r1 := @parameter0: java.lang.String;
+
+        $r2 := @parameter1: java.lang.String;
+
+        $r3 := @parameter2: java.lang.String;
+
+     label1:
+        $r5 = virtualinvoke $r1.<java.lang.String: java.lang.String[] split(java.lang.String)>(",\\s*");
+
+     label2:
+        $r4 = new android.content.Intent;
+
+     label3:
+        specialinvoke $r4.<android.content.Intent: void <init>()>();
+
+        virtualinvoke $r4.<android.content.Intent: android.content.Intent setAction(java.lang.String)>("android.intent.action.SEND");
+
+        virtualinvoke $r4.<android.content.Intent: android.content.Intent setType(java.lang.String)>("plain/text");
+
+        virtualinvoke $r4.<android.content.Intent: android.content.Intent putExtra(java.lang.String,java.lang.String[])>("android.intent.extra.EMAIL", $r5);
+
+        virtualinvoke $r4.<android.content.Intent: android.content.Intent putExtra(java.lang.String,java.lang.String)>("android.intent.extra.SUBJECT", $r2);
+
+        virtualinvoke $r4.<android.content.Intent: android.content.Intent putExtra(java.lang.String,java.lang.String)>("android.intent.extra.TEXT", $r3);
+
+        virtualinvoke $r4.<android.content.Intent: android.content.Intent addFlags(int)>(337641472);
+
+     label4:
+        $r6 = r0.<com.ideaworks3d.marmalade.LoaderThread: com.ideaworks3d.marmalade.LoaderActivity m_Loader>;
+
+     label5:
+        virtualinvoke $r6.<com.ideaworks3d.marmalade.LoaderActivity: void startActivity(android.content.Intent)>($r4);
+
+     label6:
+        return 1;
+
+     label7:
+        $r7 := @caughtexception;
+
+        return 0;
+
+        catch android.content.ActivityNotFoundException from label1 to label2 with label7;
+        catch android.content.ActivityNotFoundException from label3 to label4 with label7;
+        catch android.content.ActivityNotFoundException from label5 to label6 with label7;
+    }
+
+    public void setView(com.ideaworks3d.marmalade.LoaderView)
+    {
+        com.ideaworks3d.marmalade.LoaderThread r0;
+        com.ideaworks3d.marmalade.LoaderView $r1, $r2, $r3;
+        java.lang.Throwable $r4;
+
+        r0 := @this: com.ideaworks3d.marmalade.LoaderThread;
+
+        $r1 := @parameter0: com.ideaworks3d.marmalade.LoaderView;
+
+        $r2 = r0.<com.ideaworks3d.marmalade.LoaderThread: com.ideaworks3d.marmalade.LoaderView m_View>;
+
+        if $r2 == null goto label3;
+
+        $r2 = r0.<com.ideaworks3d.marmalade.LoaderThread: com.ideaworks3d.marmalade.LoaderView m_View>;
+
+        entermonitor $r2;
+
+     label1:
+        $r3 = r0.<com.ideaworks3d.marmalade.LoaderThread: com.ideaworks3d.marmalade.LoaderView m_View>;
+
+        if $r3 == null goto label2;
+
+        $r3 = r0.<com.ideaworks3d.marmalade.LoaderThread: com.ideaworks3d.marmalade.LoaderView m_View>;
+
+        virtualinvoke $r3.<java.lang.Object: void notify()>();
+
+     label2:
+        exitmonitor $r2;
+
+     label3:
+        r0.<com.ideaworks3d.marmalade.LoaderThread: com.ideaworks3d.marmalade.LoaderView m_View> = $r1;
+
+        specialinvoke r0.<com.ideaworks3d.marmalade.LoaderThread: void doFixOrientation()>();
+
+        $r1 = r0.<com.ideaworks3d.marmalade.LoaderThread: com.ideaworks3d.marmalade.LoaderView m_View>;
+
+        specialinvoke r0.<com.ideaworks3d.marmalade.LoaderThread: void setViewNative(com.ideaworks3d.marmalade.LoaderView)>($r1);
+
+        return;
+
+     label4:
+        $r4 := @caughtexception;
+
+     label5:
+        exitmonitor $r2;
+
+     label6:
+        throw $r4;
+
+        catch java.lang.Throwable from label1 to label3 with label4;
+        catch java.lang.Throwable from label5 to label6 with label4;
+    }
+
+    public boolean skipSurfaceChange()
+    {
+        com.ideaworks3d.marmalade.LoaderThread r0;
+        boolean $z0;
+        java.lang.Boolean $r1;
+        int $i0;
+
+        r0 := @this: com.ideaworks3d.marmalade.LoaderThread;
+
+        $z0 = r0.<com.ideaworks3d.marmalade.LoaderThread: boolean m_IgnoreResizeWhilePaused>;
+
+        if $z0 == 0 goto label2;
+
+        $r1 = r0.<com.ideaworks3d.marmalade.LoaderThread: java.lang.Boolean m_Paused>;
+
+        $z0 = virtualinvoke $r1.<java.lang.Boolean: boolean booleanValue()>();
+
+        if $z0 == 0 goto label1;
+
+        $i0 = r0.<com.ideaworks3d.marmalade.LoaderThread: int m_FixScreenOrientation>;
+
+        if $i0 == 0 goto label1;
+
+        r0.<com.ideaworks3d.marmalade.LoaderThread: boolean m_SkipNextChange> = 1;
+
+        return 1;
+
+     label1:
+        $r1 = r0.<com.ideaworks3d.marmalade.LoaderThread: java.lang.Boolean m_Paused>;
+
+        $z0 = virtualinvoke $r1.<java.lang.Boolean: boolean booleanValue()>();
+
+        if $z0 != 0 goto label2;
+
+        $z0 = r0.<com.ideaworks3d.marmalade.LoaderThread: boolean m_SkipNextChange>;
+
+        if $z0 == 0 goto label2;
+
+        r0.<com.ideaworks3d.marmalade.LoaderThread: boolean m_SkipNextChange> = 0;
+
+        return 1;
+
+     label2:
+        return 0;
+    }
+
+    public boolean smsStart()
+    {
+        com.ideaworks3d.marmalade.LoaderThread r0;
+        android.content.IntentFilter $r1;
+        int $i0;
+        com.ideaworks3d.marmalade.LoaderSMSReceiver $r2;
+        java.lang.String $r3;
+        com.ideaworks3d.marmalade.LoaderActivity $r4;
+
+        r0 := @this: com.ideaworks3d.marmalade.LoaderThread;
+
+        $r2 = r0.<com.ideaworks3d.marmalade.LoaderThread: com.ideaworks3d.marmalade.LoaderSMSReceiver m_LoaderSMSReceiver>;
+
+        if $r2 != null goto label1;
+
+        $r3 = <android.os.Build$VERSION: java.lang.String SDK>;
+
+        $i0 = staticinvoke <java.lang.Integer: int parseInt(java.lang.String)>($r3);
+
+        if $i0 <= 3 goto label1;
+
+        $r2 = new com.ideaworks3d.marmalade.LoaderSMSReceiver;
+
+        specialinvoke $r2.<com.ideaworks3d.marmalade.LoaderSMSReceiver: void <init>()>();
+
+        r0.<com.ideaworks3d.marmalade.LoaderThread: com.ideaworks3d.marmalade.LoaderSMSReceiver m_LoaderSMSReceiver> = $r2;
+
+        $r4 = r0.<com.ideaworks3d.marmalade.LoaderThread: com.ideaworks3d.marmalade.LoaderActivity m_Loader>;
+
+        $r2 = r0.<com.ideaworks3d.marmalade.LoaderThread: com.ideaworks3d.marmalade.LoaderSMSReceiver m_LoaderSMSReceiver>;
+
+        $r1 = new android.content.IntentFilter;
+
+        specialinvoke $r1.<android.content.IntentFilter: void <init>(java.lang.String)>("android.provider.Telephony.SMS_RECEIVED");
+
+        virtualinvoke $r4.<com.ideaworks3d.marmalade.LoaderActivity: android.content.Intent registerReceiver(android.content.BroadcastReceiver,android.content.IntentFilter)>($r2, $r1);
+
+        return 1;
+
+     label1:
+        return 0;
+    }
+
+    public void smsStop()
+    {
+        com.ideaworks3d.marmalade.LoaderThread r0;
+        com.ideaworks3d.marmalade.LoaderSMSReceiver $r1;
+        com.ideaworks3d.marmalade.LoaderActivity $r2;
+
+        r0 := @this: com.ideaworks3d.marmalade.LoaderThread;
+
+        $r1 = r0.<com.ideaworks3d.marmalade.LoaderThread: com.ideaworks3d.marmalade.LoaderSMSReceiver m_LoaderSMSReceiver>;
+
+        if $r1 == null goto label1;
+
+        $r2 = r0.<com.ideaworks3d.marmalade.LoaderThread: com.ideaworks3d.marmalade.LoaderActivity m_Loader>;
+
+        $r1 = r0.<com.ideaworks3d.marmalade.LoaderThread: com.ideaworks3d.marmalade.LoaderSMSReceiver m_LoaderSMSReceiver>;
+
+        virtualinvoke $r2.<com.ideaworks3d.marmalade.LoaderActivity: void unregisterReceiver(android.content.BroadcastReceiver)>($r1);
+
+        r0.<com.ideaworks3d.marmalade.LoaderThread: com.ideaworks3d.marmalade.LoaderSMSReceiver m_LoaderSMSReceiver> = null;
+
+     label1:
+        return;
+    }
+
+    public int soundInit(boolean, int)
+    {
+        com.ideaworks3d.marmalade.LoaderThread r0;
+        boolean $z0;
+        int $i0;
+        com.ideaworks3d.marmalade.SoundPlayer $r1;
+
+        r0 := @this: com.ideaworks3d.marmalade.LoaderThread;
+
+        $z0 := @parameter0: boolean;
+
+        $i0 := @parameter1: int;
+
+        $r1 = r0.<com.ideaworks3d.marmalade.LoaderThread: com.ideaworks3d.marmalade.SoundPlayer m_SoundPlayer>;
+
+        $i0 = virtualinvoke $r1.<com.ideaworks3d.marmalade.SoundPlayer: int init(boolean,int)>($z0, $i0);
+
+        return $i0;
+    }
+
+    public void soundSetVolume(int)
+    {
+        com.ideaworks3d.marmalade.LoaderThread r0;
+        int $i0;
+        com.ideaworks3d.marmalade.SoundPlayer $r1;
+
+        r0 := @this: com.ideaworks3d.marmalade.LoaderThread;
+
+        $i0 := @parameter0: int;
+
+        $r1 = r0.<com.ideaworks3d.marmalade.LoaderThread: com.ideaworks3d.marmalade.SoundPlayer m_SoundPlayer>;
+
+        virtualinvoke $r1.<com.ideaworks3d.marmalade.SoundPlayer: void setVolume(int)>($i0);
+
+        return;
+    }
+
+    public void soundStart()
+    {
+        com.ideaworks3d.marmalade.LoaderThread r0;
+        com.ideaworks3d.marmalade.SoundPlayer $r1;
+
+        r0 := @this: com.ideaworks3d.marmalade.LoaderThread;
+
+        $r1 = r0.<com.ideaworks3d.marmalade.LoaderThread: com.ideaworks3d.marmalade.SoundPlayer m_SoundPlayer>;
+
+        virtualinvoke $r1.<com.ideaworks3d.marmalade.SoundPlayer: void start()>();
+
+        return;
+    }
+
+    public void soundStop()
+    {
+        com.ideaworks3d.marmalade.LoaderThread r0;
+        com.ideaworks3d.marmalade.SoundPlayer $r1;
+
+        r0 := @this: com.ideaworks3d.marmalade.LoaderThread;
+
+        $r1 = r0.<com.ideaworks3d.marmalade.LoaderThread: com.ideaworks3d.marmalade.SoundPlayer m_SoundPlayer>;
+
+        virtualinvoke $r1.<com.ideaworks3d.marmalade.SoundPlayer: void stop()>();
+
+        return;
+    }
+
+    native void suspendAppThreads();
+
+    public boolean waitForStartup()
+    {
+        com.ideaworks3d.marmalade.LoaderThread r0;
+        java.lang.Boolean $r1;
+        boolean $z0;
+        java.lang.Object $r2, $r3;
+        java.lang.Throwable $r4, $r5;
+
+        r0 := @this: com.ideaworks3d.marmalade.LoaderThread;
+
+        $r1 = r0.<com.ideaworks3d.marmalade.LoaderThread: java.lang.Boolean m_Started>;
+
+        $z0 = virtualinvoke $r1.<java.lang.Boolean: boolean booleanValue()>();
+
+        if $z0 == 0 goto label01;
+
+        return 1;
+
+     label01:
+        $r1 = r0.<com.ideaworks3d.marmalade.LoaderThread: java.lang.Boolean m_Terminating>;
+
+        $z0 = virtualinvoke $r1.<java.lang.Boolean: boolean booleanValue()>();
+
+        if $z0 == 0 goto label02;
+
+        return 0;
+
+     label02:
+        $r2 = r0.<com.ideaworks3d.marmalade.LoaderThread: java.lang.Object m_StartedXX>;
+
+        entermonitor $r2;
+
+     label03:
+        $r1 = r0.<com.ideaworks3d.marmalade.LoaderThread: java.lang.Boolean m_Started>;
+
+        $z0 = virtualinvoke $r1.<java.lang.Boolean: boolean booleanValue()>();
+
+     label04:
+        if $z0 != 0 goto label07;
+
+     label05:
+        $r3 = r0.<com.ideaworks3d.marmalade.LoaderThread: java.lang.Object m_StartedXX>;
+
+     label06:
+        virtualinvoke $r3.<java.lang.Object: void wait()>();
+
+     label07:
+        exitmonitor $r2;
+
+     label08:
+        return 1;
+
+     label09:
+        $r4 := @caughtexception;
+
+        exitmonitor $r2;
+
+     label10:
+        throw $r4;
+
+     label11:
+        $r5 := @caughtexception;
+
+        goto label07;
+
+        catch java.lang.Throwable from label03 to label04 with label09;
+        catch java.lang.InterruptedException from label06 to label07 with label11;
+        catch java.lang.Throwable from label05 to label07 with label09;
+        catch java.lang.Throwable from label07 to label08 with label09;
+        catch java.lang.Throwable from label09 to label10 with label09;
+    }
+}

@@ -1,0 +1,110 @@
+final enum class com.squareup.picasso.MediaStoreRequestHandler$PicassoKind extends java.lang.Enum
+{
+    private static final com.squareup.picasso.MediaStoreRequestHandler$PicassoKind[] $VALUES;
+    public static final enum com.squareup.picasso.MediaStoreRequestHandler$PicassoKind FULL;
+    public static final enum com.squareup.picasso.MediaStoreRequestHandler$PicassoKind MICRO;
+    public static final enum com.squareup.picasso.MediaStoreRequestHandler$PicassoKind MINI;
+    final int androidKind;
+    final int height;
+    final int width;
+
+    static void <clinit>()
+    {
+        com.squareup.picasso.MediaStoreRequestHandler$PicassoKind $r0;
+        com.squareup.picasso.MediaStoreRequestHandler$PicassoKind[] $r1;
+
+        $r0 = new com.squareup.picasso.MediaStoreRequestHandler$PicassoKind;
+
+        specialinvoke $r0.<com.squareup.picasso.MediaStoreRequestHandler$PicassoKind: void <init>(java.lang.String,int,int,int,int)>("MICRO", 0, 3, 96, 96);
+
+        <com.squareup.picasso.MediaStoreRequestHandler$PicassoKind: com.squareup.picasso.MediaStoreRequestHandler$PicassoKind MICRO> = $r0;
+
+        $r0 = new com.squareup.picasso.MediaStoreRequestHandler$PicassoKind;
+
+        specialinvoke $r0.<com.squareup.picasso.MediaStoreRequestHandler$PicassoKind: void <init>(java.lang.String,int,int,int,int)>("MINI", 1, 1, 512, 384);
+
+        <com.squareup.picasso.MediaStoreRequestHandler$PicassoKind: com.squareup.picasso.MediaStoreRequestHandler$PicassoKind MINI> = $r0;
+
+        $r0 = new com.squareup.picasso.MediaStoreRequestHandler$PicassoKind;
+
+        specialinvoke $r0.<com.squareup.picasso.MediaStoreRequestHandler$PicassoKind: void <init>(java.lang.String,int,int,int,int)>("FULL", 2, 2, -1, -1);
+
+        <com.squareup.picasso.MediaStoreRequestHandler$PicassoKind: com.squareup.picasso.MediaStoreRequestHandler$PicassoKind FULL> = $r0;
+
+        $r1 = newarray (com.squareup.picasso.MediaStoreRequestHandler$PicassoKind)[3];
+
+        $r0 = <com.squareup.picasso.MediaStoreRequestHandler$PicassoKind: com.squareup.picasso.MediaStoreRequestHandler$PicassoKind MICRO>;
+
+        $r1[0] = $r0;
+
+        $r0 = <com.squareup.picasso.MediaStoreRequestHandler$PicassoKind: com.squareup.picasso.MediaStoreRequestHandler$PicassoKind MINI>;
+
+        $r1[1] = $r0;
+
+        $r0 = <com.squareup.picasso.MediaStoreRequestHandler$PicassoKind: com.squareup.picasso.MediaStoreRequestHandler$PicassoKind FULL>;
+
+        $r1[2] = $r0;
+
+        <com.squareup.picasso.MediaStoreRequestHandler$PicassoKind: com.squareup.picasso.MediaStoreRequestHandler$PicassoKind[] $VALUES> = $r1;
+
+        return;
+    }
+
+    private void <init>(java.lang.String, int, int, int, int)
+    {
+        com.squareup.picasso.MediaStoreRequestHandler$PicassoKind r0;
+        java.lang.String $r1;
+        int $i0, $i1, $i2, $i3;
+
+        r0 := @this: com.squareup.picasso.MediaStoreRequestHandler$PicassoKind;
+
+        $r1 := @parameter0: java.lang.String;
+
+        $i0 := @parameter1: int;
+
+        $i1 := @parameter2: int;
+
+        $i2 := @parameter3: int;
+
+        $i3 := @parameter4: int;
+
+        specialinvoke r0.<java.lang.Enum: void <init>(java.lang.String,int)>($r1, $i0);
+
+        r0.<com.squareup.picasso.MediaStoreRequestHandler$PicassoKind: int androidKind> = $i1;
+
+        r0.<com.squareup.picasso.MediaStoreRequestHandler$PicassoKind: int width> = $i2;
+
+        r0.<com.squareup.picasso.MediaStoreRequestHandler$PicassoKind: int height> = $i3;
+
+        return;
+    }
+
+    public static com.squareup.picasso.MediaStoreRequestHandler$PicassoKind valueOf(java.lang.String)
+    {
+        java.lang.String $r0;
+        java.lang.Enum $r1;
+        com.squareup.picasso.MediaStoreRequestHandler$PicassoKind $r2;
+
+        $r0 := @parameter0: java.lang.String;
+
+        $r1 = staticinvoke <java.lang.Enum: java.lang.Enum valueOf(java.lang.Class,java.lang.String)>(class "Lcom/squareup/picasso/MediaStoreRequestHandler$PicassoKind;", $r0);
+
+        $r2 = (com.squareup.picasso.MediaStoreRequestHandler$PicassoKind) $r1;
+
+        return $r2;
+    }
+
+    public static com.squareup.picasso.MediaStoreRequestHandler$PicassoKind[] values()
+    {
+        java.lang.Object $r0;
+        com.squareup.picasso.MediaStoreRequestHandler$PicassoKind[] $r1;
+
+        $r1 = <com.squareup.picasso.MediaStoreRequestHandler$PicassoKind: com.squareup.picasso.MediaStoreRequestHandler$PicassoKind[] $VALUES>;
+
+        $r0 = virtualinvoke $r1.<java.lang.Object: java.lang.Object clone()>();
+
+        $r1 = (com.squareup.picasso.MediaStoreRequestHandler$PicassoKind[]) $r0;
+
+        return $r1;
+    }
+}

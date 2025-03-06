@@ -1,0 +1,89 @@
+public abstract class org.codehaus.jackson.map.DeserializerProvider extends java.lang.Object
+{
+
+    protected void <init>()
+    {
+        org.codehaus.jackson.map.DeserializerProvider r0;
+
+        r0 := @this: org.codehaus.jackson.map.DeserializerProvider;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public abstract int cachedDeserializersCount();
+
+    public final org.codehaus.jackson.map.KeyDeserializer findKeyDeserializer(org.codehaus.jackson.map.DeserializationConfig, org.codehaus.jackson.type.JavaType) throws org.codehaus.jackson.map.JsonMappingException
+    {
+        org.codehaus.jackson.map.DeserializerProvider r0;
+        org.codehaus.jackson.map.DeserializationConfig $r1;
+        org.codehaus.jackson.type.JavaType $r2;
+        org.codehaus.jackson.map.KeyDeserializer $r3;
+
+        r0 := @this: org.codehaus.jackson.map.DeserializerProvider;
+
+        $r1 := @parameter0: org.codehaus.jackson.map.DeserializationConfig;
+
+        $r2 := @parameter1: org.codehaus.jackson.type.JavaType;
+
+        $r3 = virtualinvoke r0.<org.codehaus.jackson.map.DeserializerProvider: org.codehaus.jackson.map.KeyDeserializer findKeyDeserializer(org.codehaus.jackson.map.DeserializationConfig,org.codehaus.jackson.type.JavaType,org.codehaus.jackson.map.BeanProperty)>($r1, $r2, null);
+
+        return $r3;
+    }
+
+    public abstract org.codehaus.jackson.map.KeyDeserializer findKeyDeserializer(org.codehaus.jackson.map.DeserializationConfig, org.codehaus.jackson.type.JavaType, org.codehaus.jackson.map.BeanProperty) throws org.codehaus.jackson.map.JsonMappingException;
+
+    public final org.codehaus.jackson.map.JsonDeserializer findTypedValueDeserializer(org.codehaus.jackson.map.DeserializationConfig, org.codehaus.jackson.type.JavaType) throws org.codehaus.jackson.map.JsonMappingException
+    {
+        org.codehaus.jackson.map.DeserializerProvider r0;
+        org.codehaus.jackson.map.DeserializationConfig $r1;
+        org.codehaus.jackson.type.JavaType $r2;
+        org.codehaus.jackson.map.JsonDeserializer $r3;
+
+        r0 := @this: org.codehaus.jackson.map.DeserializerProvider;
+
+        $r1 := @parameter0: org.codehaus.jackson.map.DeserializationConfig;
+
+        $r2 := @parameter1: org.codehaus.jackson.type.JavaType;
+
+        $r3 = virtualinvoke r0.<org.codehaus.jackson.map.DeserializerProvider: org.codehaus.jackson.map.JsonDeserializer findTypedValueDeserializer(org.codehaus.jackson.map.DeserializationConfig,org.codehaus.jackson.type.JavaType,org.codehaus.jackson.map.BeanProperty)>($r1, $r2, null);
+
+        return $r3;
+    }
+
+    public abstract org.codehaus.jackson.map.JsonDeserializer findTypedValueDeserializer(org.codehaus.jackson.map.DeserializationConfig, org.codehaus.jackson.type.JavaType, org.codehaus.jackson.map.BeanProperty) throws org.codehaus.jackson.map.JsonMappingException;
+
+    public abstract org.codehaus.jackson.map.JsonDeserializer findValueDeserializer(org.codehaus.jackson.map.DeserializationConfig, org.codehaus.jackson.type.JavaType, org.codehaus.jackson.map.BeanProperty) throws org.codehaus.jackson.map.JsonMappingException;
+
+    public final org.codehaus.jackson.map.JsonDeserializer findValueDeserializer(org.codehaus.jackson.map.DeserializationConfig, org.codehaus.jackson.type.JavaType, org.codehaus.jackson.type.JavaType, java.lang.String) throws org.codehaus.jackson.map.JsonMappingException
+    {
+        org.codehaus.jackson.map.DeserializerProvider r0;
+        org.codehaus.jackson.map.DeserializationConfig $r1;
+        org.codehaus.jackson.type.JavaType $r2, $r3;
+        java.lang.String $r4;
+        org.codehaus.jackson.map.JsonDeserializer $r5;
+
+        r0 := @this: org.codehaus.jackson.map.DeserializerProvider;
+
+        $r1 := @parameter0: org.codehaus.jackson.map.DeserializationConfig;
+
+        $r2 := @parameter1: org.codehaus.jackson.type.JavaType;
+
+        $r3 := @parameter2: org.codehaus.jackson.type.JavaType;
+
+        $r4 := @parameter3: java.lang.String;
+
+        $r5 = virtualinvoke r0.<org.codehaus.jackson.map.DeserializerProvider: org.codehaus.jackson.map.JsonDeserializer findValueDeserializer(org.codehaus.jackson.map.DeserializationConfig,org.codehaus.jackson.type.JavaType,org.codehaus.jackson.map.BeanProperty)>($r1, $r2, null);
+
+        return $r5;
+    }
+
+    public abstract void flushCachedDeserializers();
+
+    public abstract boolean hasValueDeserializerFor(org.codehaus.jackson.map.DeserializationConfig, org.codehaus.jackson.type.JavaType);
+
+    public abstract org.codehaus.jackson.map.DeserializerProvider withAdditionalDeserializers(org.codehaus.jackson.map.Deserializers);
+
+    public abstract org.codehaus.jackson.map.DeserializerProvider withDeserializerModifier(org.codehaus.jackson.map.deser.BeanDeserializerModifier);
+}

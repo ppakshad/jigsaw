@@ -1,0 +1,677 @@
+public final class org.codehaus.jackson.util.ByteArrayBuilder extends java.io.OutputStream
+{
+    static final int DEFAULT_BLOCK_ARRAY_SIZE;
+    private static final int INITIAL_BLOCK_SIZE;
+    private static final int MAX_BLOCK_SIZE;
+    private static final byte[] NO_BYTES;
+    private final org.codehaus.jackson.util.BufferRecycler _bufferRecycler;
+    private byte[] _currBlock;
+    private int _currBlockPtr;
+    private final java.util.LinkedList _pastBlocks;
+    private int _pastLen;
+
+    static void <clinit>()
+    {
+        byte[] $r0;
+
+        <org.codehaus.jackson.util.ByteArrayBuilder: int MAX_BLOCK_SIZE> = 262144;
+
+        <org.codehaus.jackson.util.ByteArrayBuilder: int INITIAL_BLOCK_SIZE> = 500;
+
+        <org.codehaus.jackson.util.ByteArrayBuilder: int DEFAULT_BLOCK_ARRAY_SIZE> = 40;
+
+        $r0 = newarray (byte)[0];
+
+        <org.codehaus.jackson.util.ByteArrayBuilder: byte[] NO_BYTES> = $r0;
+
+        return;
+    }
+
+    public void <init>()
+    {
+        org.codehaus.jackson.util.ByteArrayBuilder r0;
+
+        r0 := @this: org.codehaus.jackson.util.ByteArrayBuilder;
+
+        specialinvoke r0.<org.codehaus.jackson.util.ByteArrayBuilder: void <init>(org.codehaus.jackson.util.BufferRecycler)>(null);
+
+        return;
+    }
+
+    public void <init>(int)
+    {
+        org.codehaus.jackson.util.ByteArrayBuilder r0;
+        int $i0;
+
+        r0 := @this: org.codehaus.jackson.util.ByteArrayBuilder;
+
+        $i0 := @parameter0: int;
+
+        specialinvoke r0.<org.codehaus.jackson.util.ByteArrayBuilder: void <init>(org.codehaus.jackson.util.BufferRecycler,int)>(null, $i0);
+
+        return;
+    }
+
+    public void <init>(org.codehaus.jackson.util.BufferRecycler)
+    {
+        org.codehaus.jackson.util.ByteArrayBuilder r0;
+        org.codehaus.jackson.util.BufferRecycler $r1;
+
+        r0 := @this: org.codehaus.jackson.util.ByteArrayBuilder;
+
+        $r1 := @parameter0: org.codehaus.jackson.util.BufferRecycler;
+
+        specialinvoke r0.<org.codehaus.jackson.util.ByteArrayBuilder: void <init>(org.codehaus.jackson.util.BufferRecycler,int)>($r1, 500);
+
+        return;
+    }
+
+    public void <init>(org.codehaus.jackson.util.BufferRecycler, int)
+    {
+        org.codehaus.jackson.util.ByteArrayBuilder r0;
+        org.codehaus.jackson.util.BufferRecycler $r1;
+        int $i0;
+        byte[] $r2;
+        java.util.LinkedList $r3;
+        org.codehaus.jackson.util.BufferRecycler$ByteBufferType $r4;
+
+        r0 := @this: org.codehaus.jackson.util.ByteArrayBuilder;
+
+        $r1 := @parameter0: org.codehaus.jackson.util.BufferRecycler;
+
+        $i0 := @parameter1: int;
+
+        specialinvoke r0.<java.io.OutputStream: void <init>()>();
+
+        $r3 = new java.util.LinkedList;
+
+        specialinvoke $r3.<java.util.LinkedList: void <init>()>();
+
+        r0.<org.codehaus.jackson.util.ByteArrayBuilder: java.util.LinkedList _pastBlocks> = $r3;
+
+        r0.<org.codehaus.jackson.util.ByteArrayBuilder: org.codehaus.jackson.util.BufferRecycler _bufferRecycler> = $r1;
+
+        if $r1 != null goto label1;
+
+        $r2 = newarray (byte)[$i0];
+
+        r0.<org.codehaus.jackson.util.ByteArrayBuilder: byte[] _currBlock> = $r2;
+
+        return;
+
+     label1:
+        $r4 = <org.codehaus.jackson.util.BufferRecycler$ByteBufferType: org.codehaus.jackson.util.BufferRecycler$ByteBufferType WRITE_CONCAT_BUFFER>;
+
+        $r2 = virtualinvoke $r1.<org.codehaus.jackson.util.BufferRecycler: byte[] allocByteBuffer(org.codehaus.jackson.util.BufferRecycler$ByteBufferType)>($r4);
+
+        r0.<org.codehaus.jackson.util.ByteArrayBuilder: byte[] _currBlock> = $r2;
+
+        return;
+    }
+
+    private void _allocMore()
+    {
+        org.codehaus.jackson.util.ByteArrayBuilder r0;
+        int $i0, $i1;
+        byte[] $r1;
+        java.util.LinkedList $r2;
+
+        r0 := @this: org.codehaus.jackson.util.ByteArrayBuilder;
+
+        $i0 = r0.<org.codehaus.jackson.util.ByteArrayBuilder: int _pastLen>;
+
+        $r1 = r0.<org.codehaus.jackson.util.ByteArrayBuilder: byte[] _currBlock>;
+
+        $i1 = lengthof $r1;
+
+        $i0 = $i0 + $i1;
+
+        r0.<org.codehaus.jackson.util.ByteArrayBuilder: int _pastLen> = $i0;
+
+        $i0 = r0.<org.codehaus.jackson.util.ByteArrayBuilder: int _pastLen>;
+
+        $i0 = $i0 >> 1;
+
+        $i0 = staticinvoke <java.lang.Math: int max(int,int)>($i0, 1000);
+
+        $i1 = $i0;
+
+        if $i0 <= 262144 goto label1;
+
+        $i1 = 262144;
+
+     label1:
+        $r2 = r0.<org.codehaus.jackson.util.ByteArrayBuilder: java.util.LinkedList _pastBlocks>;
+
+        $r1 = r0.<org.codehaus.jackson.util.ByteArrayBuilder: byte[] _currBlock>;
+
+        virtualinvoke $r2.<java.util.LinkedList: boolean add(java.lang.Object)>($r1);
+
+        $r1 = newarray (byte)[$i1];
+
+        r0.<org.codehaus.jackson.util.ByteArrayBuilder: byte[] _currBlock> = $r1;
+
+        r0.<org.codehaus.jackson.util.ByteArrayBuilder: int _currBlockPtr> = 0;
+
+        return;
+    }
+
+    public void append(int)
+    {
+        org.codehaus.jackson.util.ByteArrayBuilder r0;
+        int $i0, $i1, $i2;
+        byte[] $r1;
+        byte $b3;
+
+        r0 := @this: org.codehaus.jackson.util.ByteArrayBuilder;
+
+        $i0 := @parameter0: int;
+
+        $i1 = r0.<org.codehaus.jackson.util.ByteArrayBuilder: int _currBlockPtr>;
+
+        $r1 = r0.<org.codehaus.jackson.util.ByteArrayBuilder: byte[] _currBlock>;
+
+        $i2 = lengthof $r1;
+
+        if $i1 < $i2 goto label1;
+
+        specialinvoke r0.<org.codehaus.jackson.util.ByteArrayBuilder: void _allocMore()>();
+
+     label1:
+        $r1 = r0.<org.codehaus.jackson.util.ByteArrayBuilder: byte[] _currBlock>;
+
+        $i1 = r0.<org.codehaus.jackson.util.ByteArrayBuilder: int _currBlockPtr>;
+
+        $i2 = $i1 + 1;
+
+        r0.<org.codehaus.jackson.util.ByteArrayBuilder: int _currBlockPtr> = $i2;
+
+        $b3 = (byte) $i0;
+
+        $r1[$i1] = $b3;
+
+        return;
+    }
+
+    public void appendThreeBytes(int)
+    {
+        org.codehaus.jackson.util.ByteArrayBuilder r0;
+        int $i0, $i1, $i2;
+        byte[] $r1;
+        byte $b3;
+
+        r0 := @this: org.codehaus.jackson.util.ByteArrayBuilder;
+
+        $i0 := @parameter0: int;
+
+        $i1 = r0.<org.codehaus.jackson.util.ByteArrayBuilder: int _currBlockPtr>;
+
+        $i1 = $i1 + 2;
+
+        $r1 = r0.<org.codehaus.jackson.util.ByteArrayBuilder: byte[] _currBlock>;
+
+        $i2 = lengthof $r1;
+
+        if $i1 >= $i2 goto label1;
+
+        $r1 = r0.<org.codehaus.jackson.util.ByteArrayBuilder: byte[] _currBlock>;
+
+        $i1 = r0.<org.codehaus.jackson.util.ByteArrayBuilder: int _currBlockPtr>;
+
+        $i2 = $i1 + 1;
+
+        r0.<org.codehaus.jackson.util.ByteArrayBuilder: int _currBlockPtr> = $i2;
+
+        $i2 = $i0 >> 16;
+
+        $b3 = (byte) $i2;
+
+        $r1[$i1] = $b3;
+
+        $r1 = r0.<org.codehaus.jackson.util.ByteArrayBuilder: byte[] _currBlock>;
+
+        $i1 = r0.<org.codehaus.jackson.util.ByteArrayBuilder: int _currBlockPtr>;
+
+        $i2 = $i1 + 1;
+
+        r0.<org.codehaus.jackson.util.ByteArrayBuilder: int _currBlockPtr> = $i2;
+
+        $i2 = $i0 >> 8;
+
+        $b3 = (byte) $i2;
+
+        $r1[$i1] = $b3;
+
+        $r1 = r0.<org.codehaus.jackson.util.ByteArrayBuilder: byte[] _currBlock>;
+
+        $i1 = r0.<org.codehaus.jackson.util.ByteArrayBuilder: int _currBlockPtr>;
+
+        $i2 = $i1 + 1;
+
+        r0.<org.codehaus.jackson.util.ByteArrayBuilder: int _currBlockPtr> = $i2;
+
+        $b3 = (byte) $i0;
+
+        $r1[$i1] = $b3;
+
+        return;
+
+     label1:
+        $i1 = $i0 >> 16;
+
+        virtualinvoke r0.<org.codehaus.jackson.util.ByteArrayBuilder: void append(int)>($i1);
+
+        $i1 = $i0 >> 8;
+
+        virtualinvoke r0.<org.codehaus.jackson.util.ByteArrayBuilder: void append(int)>($i1);
+
+        virtualinvoke r0.<org.codehaus.jackson.util.ByteArrayBuilder: void append(int)>($i0);
+
+        return;
+    }
+
+    public void appendTwoBytes(int)
+    {
+        org.codehaus.jackson.util.ByteArrayBuilder r0;
+        int $i0, $i1, $i2;
+        byte[] $r1;
+        byte $b3;
+
+        r0 := @this: org.codehaus.jackson.util.ByteArrayBuilder;
+
+        $i0 := @parameter0: int;
+
+        $i1 = r0.<org.codehaus.jackson.util.ByteArrayBuilder: int _currBlockPtr>;
+
+        $i1 = $i1 + 1;
+
+        $r1 = r0.<org.codehaus.jackson.util.ByteArrayBuilder: byte[] _currBlock>;
+
+        $i2 = lengthof $r1;
+
+        if $i1 >= $i2 goto label1;
+
+        $r1 = r0.<org.codehaus.jackson.util.ByteArrayBuilder: byte[] _currBlock>;
+
+        $i1 = r0.<org.codehaus.jackson.util.ByteArrayBuilder: int _currBlockPtr>;
+
+        $i2 = $i1 + 1;
+
+        r0.<org.codehaus.jackson.util.ByteArrayBuilder: int _currBlockPtr> = $i2;
+
+        $i2 = $i0 >> 8;
+
+        $b3 = (byte) $i2;
+
+        $r1[$i1] = $b3;
+
+        $r1 = r0.<org.codehaus.jackson.util.ByteArrayBuilder: byte[] _currBlock>;
+
+        $i1 = r0.<org.codehaus.jackson.util.ByteArrayBuilder: int _currBlockPtr>;
+
+        $i2 = $i1 + 1;
+
+        r0.<org.codehaus.jackson.util.ByteArrayBuilder: int _currBlockPtr> = $i2;
+
+        $b3 = (byte) $i0;
+
+        $r1[$i1] = $b3;
+
+        return;
+
+     label1:
+        $i1 = $i0 >> 8;
+
+        virtualinvoke r0.<org.codehaus.jackson.util.ByteArrayBuilder: void append(int)>($i1);
+
+        virtualinvoke r0.<org.codehaus.jackson.util.ByteArrayBuilder: void append(int)>($i0);
+
+        return;
+    }
+
+    public void close()
+    {
+        org.codehaus.jackson.util.ByteArrayBuilder r0;
+
+        r0 := @this: org.codehaus.jackson.util.ByteArrayBuilder;
+
+        return;
+    }
+
+    public byte[] completeAndCoalesce(int)
+    {
+        org.codehaus.jackson.util.ByteArrayBuilder r0;
+        int $i0;
+        byte[] $r1;
+
+        r0 := @this: org.codehaus.jackson.util.ByteArrayBuilder;
+
+        $i0 := @parameter0: int;
+
+        r0.<org.codehaus.jackson.util.ByteArrayBuilder: int _currBlockPtr> = $i0;
+
+        $r1 = virtualinvoke r0.<org.codehaus.jackson.util.ByteArrayBuilder: byte[] toByteArray()>();
+
+        return $r1;
+    }
+
+    public byte[] finishCurrentSegment()
+    {
+        org.codehaus.jackson.util.ByteArrayBuilder r0;
+        byte[] r1;
+
+        r0 := @this: org.codehaus.jackson.util.ByteArrayBuilder;
+
+        specialinvoke r0.<org.codehaus.jackson.util.ByteArrayBuilder: void _allocMore()>();
+
+        r1 = r0.<org.codehaus.jackson.util.ByteArrayBuilder: byte[] _currBlock>;
+
+        return r1;
+    }
+
+    public void flush()
+    {
+        org.codehaus.jackson.util.ByteArrayBuilder r0;
+
+        r0 := @this: org.codehaus.jackson.util.ByteArrayBuilder;
+
+        return;
+    }
+
+    public byte[] getCurrentSegment()
+    {
+        org.codehaus.jackson.util.ByteArrayBuilder r0;
+        byte[] r1;
+
+        r0 := @this: org.codehaus.jackson.util.ByteArrayBuilder;
+
+        r1 = r0.<org.codehaus.jackson.util.ByteArrayBuilder: byte[] _currBlock>;
+
+        return r1;
+    }
+
+    public int getCurrentSegmentLength()
+    {
+        org.codehaus.jackson.util.ByteArrayBuilder r0;
+        int i0;
+
+        r0 := @this: org.codehaus.jackson.util.ByteArrayBuilder;
+
+        i0 = r0.<org.codehaus.jackson.util.ByteArrayBuilder: int _currBlockPtr>;
+
+        return i0;
+    }
+
+    public void release()
+    {
+        org.codehaus.jackson.util.ByteArrayBuilder r0;
+        org.codehaus.jackson.util.BufferRecycler$ByteBufferType $r1;
+        byte[] $r2;
+        org.codehaus.jackson.util.BufferRecycler $r3;
+
+        r0 := @this: org.codehaus.jackson.util.ByteArrayBuilder;
+
+        virtualinvoke r0.<org.codehaus.jackson.util.ByteArrayBuilder: void reset()>();
+
+        $r3 = r0.<org.codehaus.jackson.util.ByteArrayBuilder: org.codehaus.jackson.util.BufferRecycler _bufferRecycler>;
+
+        if $r3 == null goto label1;
+
+        $r2 = r0.<org.codehaus.jackson.util.ByteArrayBuilder: byte[] _currBlock>;
+
+        if $r2 == null goto label1;
+
+        $r3 = r0.<org.codehaus.jackson.util.ByteArrayBuilder: org.codehaus.jackson.util.BufferRecycler _bufferRecycler>;
+
+        $r1 = <org.codehaus.jackson.util.BufferRecycler$ByteBufferType: org.codehaus.jackson.util.BufferRecycler$ByteBufferType WRITE_CONCAT_BUFFER>;
+
+        $r2 = r0.<org.codehaus.jackson.util.ByteArrayBuilder: byte[] _currBlock>;
+
+        virtualinvoke $r3.<org.codehaus.jackson.util.BufferRecycler: void releaseByteBuffer(org.codehaus.jackson.util.BufferRecycler$ByteBufferType,byte[])>($r1, $r2);
+
+        r0.<org.codehaus.jackson.util.ByteArrayBuilder: byte[] _currBlock> = null;
+
+     label1:
+        return;
+    }
+
+    public void reset()
+    {
+        org.codehaus.jackson.util.ByteArrayBuilder r0;
+        boolean $z0;
+        java.util.LinkedList $r1;
+
+        r0 := @this: org.codehaus.jackson.util.ByteArrayBuilder;
+
+        r0.<org.codehaus.jackson.util.ByteArrayBuilder: int _pastLen> = 0;
+
+        r0.<org.codehaus.jackson.util.ByteArrayBuilder: int _currBlockPtr> = 0;
+
+        $r1 = r0.<org.codehaus.jackson.util.ByteArrayBuilder: java.util.LinkedList _pastBlocks>;
+
+        $z0 = virtualinvoke $r1.<java.util.LinkedList: boolean isEmpty()>();
+
+        if $z0 != 0 goto label1;
+
+        $r1 = r0.<org.codehaus.jackson.util.ByteArrayBuilder: java.util.LinkedList _pastBlocks>;
+
+        virtualinvoke $r1.<java.util.LinkedList: void clear()>();
+
+     label1:
+        return;
+    }
+
+    public byte[] resetAndGetFirstSegment()
+    {
+        org.codehaus.jackson.util.ByteArrayBuilder r0;
+        byte[] r1;
+
+        r0 := @this: org.codehaus.jackson.util.ByteArrayBuilder;
+
+        virtualinvoke r0.<org.codehaus.jackson.util.ByteArrayBuilder: void reset()>();
+
+        r1 = r0.<org.codehaus.jackson.util.ByteArrayBuilder: byte[] _currBlock>;
+
+        return r1;
+    }
+
+    public void setCurrentSegmentLength(int)
+    {
+        org.codehaus.jackson.util.ByteArrayBuilder r0;
+        int $i0;
+
+        r0 := @this: org.codehaus.jackson.util.ByteArrayBuilder;
+
+        $i0 := @parameter0: int;
+
+        r0.<org.codehaus.jackson.util.ByteArrayBuilder: int _currBlockPtr> = $i0;
+
+        return;
+    }
+
+    public byte[] toByteArray()
+    {
+        org.codehaus.jackson.util.ByteArrayBuilder r0;
+        int i0, i1, $i2;
+        byte[] r1, r5;
+        java.util.LinkedList $r2;
+        java.util.Iterator $r3;
+        boolean $z0;
+        java.lang.Object $r4;
+        java.lang.RuntimeException $r6;
+        java.lang.StringBuilder $r7;
+        java.lang.String $r8;
+
+        r0 := @this: org.codehaus.jackson.util.ByteArrayBuilder;
+
+        i1 = r0.<org.codehaus.jackson.util.ByteArrayBuilder: int _pastLen>;
+
+        $i2 = r0.<org.codehaus.jackson.util.ByteArrayBuilder: int _currBlockPtr>;
+
+        i1 = i1 + $i2;
+
+        if i1 != 0 goto label1;
+
+        r1 = <org.codehaus.jackson.util.ByteArrayBuilder: byte[] NO_BYTES>;
+
+        return r1;
+
+     label1:
+        r1 = newarray (byte)[i1];
+
+        $i2 = 0;
+
+        $r2 = r0.<org.codehaus.jackson.util.ByteArrayBuilder: java.util.LinkedList _pastBlocks>;
+
+        $r3 = virtualinvoke $r2.<java.util.LinkedList: java.util.Iterator iterator()>();
+
+     label2:
+        $z0 = interfaceinvoke $r3.<java.util.Iterator: boolean hasNext()>();
+
+        if $z0 == 0 goto label3;
+
+        $r4 = interfaceinvoke $r3.<java.util.Iterator: java.lang.Object next()>();
+
+        r5 = (byte[]) $r4;
+
+        i0 = lengthof r5;
+
+        staticinvoke <java.lang.System: void arraycopy(java.lang.Object,int,java.lang.Object,int,int)>(r5, 0, r1, $i2, i0);
+
+        $i2 = $i2 + i0;
+
+        goto label2;
+
+     label3:
+        r5 = r0.<org.codehaus.jackson.util.ByteArrayBuilder: byte[] _currBlock>;
+
+        i0 = r0.<org.codehaus.jackson.util.ByteArrayBuilder: int _currBlockPtr>;
+
+        staticinvoke <java.lang.System: void arraycopy(java.lang.Object,int,java.lang.Object,int,int)>(r5, 0, r1, $i2, i0);
+
+        i0 = r0.<org.codehaus.jackson.util.ByteArrayBuilder: int _currBlockPtr>;
+
+        $i2 = $i2 + i0;
+
+        if $i2 == i1 goto label4;
+
+        $r6 = new java.lang.RuntimeException;
+
+        $r7 = new java.lang.StringBuilder;
+
+        specialinvoke $r7.<java.lang.StringBuilder: void <init>()>();
+
+        $r7 = virtualinvoke $r7.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Internal error: total len assumed to be ");
+
+        $r7 = virtualinvoke $r7.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>(i1);
+
+        $r7 = virtualinvoke $r7.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(", copied ");
+
+        $r7 = virtualinvoke $r7.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>($i2);
+
+        $r7 = virtualinvoke $r7.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" bytes");
+
+        $r8 = virtualinvoke $r7.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke $r6.<java.lang.RuntimeException: void <init>(java.lang.String)>($r8);
+
+        throw $r6;
+
+     label4:
+        $r2 = r0.<org.codehaus.jackson.util.ByteArrayBuilder: java.util.LinkedList _pastBlocks>;
+
+        $z0 = virtualinvoke $r2.<java.util.LinkedList: boolean isEmpty()>();
+
+        if $z0 != 0 goto label5;
+
+        virtualinvoke r0.<org.codehaus.jackson.util.ByteArrayBuilder: void reset()>();
+
+     label5:
+        return r1;
+    }
+
+    public void write(int)
+    {
+        org.codehaus.jackson.util.ByteArrayBuilder r0;
+        int $i0;
+
+        r0 := @this: org.codehaus.jackson.util.ByteArrayBuilder;
+
+        $i0 := @parameter0: int;
+
+        virtualinvoke r0.<org.codehaus.jackson.util.ByteArrayBuilder: void append(int)>($i0);
+
+        return;
+    }
+
+    public void write(byte[])
+    {
+        org.codehaus.jackson.util.ByteArrayBuilder r0;
+        byte[] $r1;
+        int $i0;
+
+        r0 := @this: org.codehaus.jackson.util.ByteArrayBuilder;
+
+        $r1 := @parameter0: byte[];
+
+        $i0 = lengthof $r1;
+
+        virtualinvoke r0.<org.codehaus.jackson.util.ByteArrayBuilder: void write(byte[],int,int)>($r1, 0, $i0);
+
+        return;
+    }
+
+    public void write(byte[], int, int)
+    {
+        org.codehaus.jackson.util.ByteArrayBuilder r0;
+        byte[] $r1, $r2;
+        int i0, $i1, $i2, $i3;
+
+        r0 := @this: org.codehaus.jackson.util.ByteArrayBuilder;
+
+        $r1 := @parameter0: byte[];
+
+        $i1 := @parameter1: int;
+
+        $i2 := @parameter2: int;
+
+     label1:
+        $r2 = r0.<org.codehaus.jackson.util.ByteArrayBuilder: byte[] _currBlock>;
+
+        i0 = lengthof $r2;
+
+        $i3 = r0.<org.codehaus.jackson.util.ByteArrayBuilder: int _currBlockPtr>;
+
+        i0 = i0 - $i3;
+
+        i0 = staticinvoke <java.lang.Math: int min(int,int)>(i0, $i2);
+
+        if i0 <= 0 goto label2;
+
+        $r2 = r0.<org.codehaus.jackson.util.ByteArrayBuilder: byte[] _currBlock>;
+
+        $i3 = r0.<org.codehaus.jackson.util.ByteArrayBuilder: int _currBlockPtr>;
+
+        staticinvoke <java.lang.System: void arraycopy(java.lang.Object,int,java.lang.Object,int,int)>($r1, $i1, $r2, $i3, i0);
+
+        $i1 = $i1 + i0;
+
+        $i3 = r0.<org.codehaus.jackson.util.ByteArrayBuilder: int _currBlockPtr>;
+
+        $i3 = $i3 + i0;
+
+        r0.<org.codehaus.jackson.util.ByteArrayBuilder: int _currBlockPtr> = $i3;
+
+        $i2 = $i2 - i0;
+
+     label2:
+        if $i2 > 0 goto label3;
+
+        return;
+
+     label3:
+        specialinvoke r0.<org.codehaus.jackson.util.ByteArrayBuilder: void _allocMore()>();
+
+        goto label1;
+    }
+}

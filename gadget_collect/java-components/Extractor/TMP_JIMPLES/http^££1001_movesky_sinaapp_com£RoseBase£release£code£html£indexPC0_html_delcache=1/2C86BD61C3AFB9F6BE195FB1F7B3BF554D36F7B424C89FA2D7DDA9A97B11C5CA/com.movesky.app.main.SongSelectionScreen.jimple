@@ -1,0 +1,154 @@
+public class com.movesky.app.main.SongSelectionScreen extends com.movesky.app.engine.ui.UIScrollView implements com.movesky.app.engine.ui.UIButtonDelegate
+{
+    private com.movesky.app.engine.net.bluetooth.Bluetooth bluetooth;
+    com.movesky.app.engine.ui.UINavigationController controller;
+    private com.movesky.app.main.Team playerTeam;
+    private com.movesky.app.engine.net.simulation.LockStepProtocol protocol;
+    boolean singlePlayer;
+
+    public void <init>(com.movesky.app.engine.ui.UINavigationController, com.movesky.app.main.Team, com.movesky.app.engine.net.bluetooth.Bluetooth, com.movesky.app.engine.net.simulation.LockStepProtocol, boolean)
+    {
+        com.movesky.app.main.SongSelectionScreen r0;
+        com.movesky.app.engine.ui.UINavigationController $r1;
+        com.movesky.app.main.Team $r2;
+        com.movesky.app.engine.net.bluetooth.Bluetooth $r3;
+        com.movesky.app.engine.net.simulation.LockStepProtocol $r4;
+        boolean $z0;
+        com.movesky.app.engine.ui.UILabel $r5;
+        com.movesky.app.engine.ui.Anchor $r6;
+        com.movesky.app.engine.ui.UIButton $r7;
+        float $f0;
+
+        r0 := @this: com.movesky.app.main.SongSelectionScreen;
+
+        $r1 := @parameter0: com.movesky.app.engine.ui.UINavigationController;
+
+        $r2 := @parameter1: com.movesky.app.main.Team;
+
+        $r3 := @parameter2: com.movesky.app.engine.net.bluetooth.Bluetooth;
+
+        $r4 := @parameter3: com.movesky.app.engine.net.simulation.LockStepProtocol;
+
+        $z0 := @parameter4: boolean;
+
+        specialinvoke r0.<com.movesky.app.engine.ui.UIScrollView: void <init>(java.lang.Object)>(null);
+
+        r0.<com.movesky.app.main.SongSelectionScreen: com.movesky.app.engine.ui.UINavigationController controller> = $r1;
+
+        r0.<com.movesky.app.main.SongSelectionScreen: boolean singlePlayer> = $z0;
+
+        r0.<com.movesky.app.main.SongSelectionScreen: com.movesky.app.main.Team playerTeam> = $r2;
+
+        r0.<com.movesky.app.main.SongSelectionScreen: com.movesky.app.engine.net.bluetooth.Bluetooth bluetooth> = $r3;
+
+        r0.<com.movesky.app.main.SongSelectionScreen: com.movesky.app.engine.net.simulation.LockStepProtocol protocol> = $r4;
+
+        virtualinvoke r0.<com.movesky.app.main.SongSelectionScreen: void setSize(float,float)>(320.0F, 530.0F);
+
+        $r5 = new com.movesky.app.engine.ui.UILabel;
+
+        specialinvoke $r5.<com.movesky.app.engine.ui.UILabel: void <init>(java.lang.String,java.lang.Object)>("R.string.songselection", null);
+
+        $r6 = <com.movesky.app.engine.ui.Anchor: com.movesky.app.engine.ui.Anchor TOP_CENTER>;
+
+        virtualinvoke $r5.<com.movesky.app.engine.ui.UILabel: void setAnchor(com.movesky.app.engine.ui.Anchor)>($r6);
+
+        virtualinvoke $r5.<com.movesky.app.engine.ui.UILabel: void setTextSize(float)>(30.0F);
+
+        virtualinvoke $r5.<com.movesky.app.engine.ui.UILabel: void setPosition(float,float)>(160.0F, 40.0F);
+
+        virtualinvoke r0.<com.movesky.app.main.SongSelectionScreen: void addSubview(com.movesky.app.engine.ui.UIView)>($r5);
+
+        virtualinvoke r0.<com.movesky.app.main.SongSelectionScreen: void setScrollsHorizontal(boolean)>(0);
+
+        virtualinvoke r0.<com.movesky.app.main.SongSelectionScreen: void setScrollsVertical(boolean)>(0);
+
+        $r7 = specialinvoke r0.<com.movesky.app.main.SongSelectionScreen: com.movesky.app.engine.ui.UIButton makeButton(int,int)>(11, 0);
+
+        virtualinvoke r0.<com.movesky.app.main.SongSelectionScreen: void addSubview(com.movesky.app.engine.ui.UIView)>($r7);
+
+        $r7 = specialinvoke r0.<com.movesky.app.main.SongSelectionScreen: com.movesky.app.engine.ui.UIButton makeButton(int,int)>(12, 1);
+
+        virtualinvoke r0.<com.movesky.app.main.SongSelectionScreen: void addSubview(com.movesky.app.engine.ui.UIView)>($r7);
+
+        $r7 = specialinvoke r0.<com.movesky.app.main.SongSelectionScreen: com.movesky.app.engine.ui.UIButton makeButton(int,int)>(13, 2);
+
+        virtualinvoke r0.<com.movesky.app.main.SongSelectionScreen: void addSubview(com.movesky.app.engine.ui.UIView)>($r7);
+
+        $r7 = specialinvoke r0.<com.movesky.app.main.SongSelectionScreen: com.movesky.app.engine.ui.UIButton makeButton(int,int)>(14, 3);
+
+        virtualinvoke r0.<com.movesky.app.main.SongSelectionScreen: void addSubview(com.movesky.app.engine.ui.UIView)>($r7);
+
+        $r7 = specialinvoke r0.<com.movesky.app.main.SongSelectionScreen: com.movesky.app.engine.ui.UIButton makeButton(int,int)>(15, 4);
+
+        virtualinvoke r0.<com.movesky.app.main.SongSelectionScreen: void addSubview(com.movesky.app.engine.ui.UIView)>($r7);
+
+        $f0 = 325.0F;
+
+        $f0 = 110.0F + $f0;
+
+        virtualinvoke r0.<com.movesky.app.main.SongSelectionScreen: void setContentRect(float,float,float,float)>(0.0F, 0.0F, 320.0F, $f0);
+
+        return;
+    }
+
+    private com.movesky.app.engine.ui.UIButton makeButton(int, int)
+    {
+        com.movesky.app.main.SongSelectionScreen r0;
+        int $i0, $i1;
+        com.movesky.app.engine.ui.UIButton $r1;
+        java.lang.Integer $r2;
+        com.movesky.app.engine.ui.Anchor $r3;
+        float $f0;
+
+        r0 := @this: com.movesky.app.main.SongSelectionScreen;
+
+        $i0 := @parameter0: int;
+
+        $i1 := @parameter1: int;
+
+        $r1 = new com.movesky.app.engine.ui.UIButton;
+
+        $r2 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>($i0);
+
+        specialinvoke $r1.<com.movesky.app.engine.ui.UIButton: void <init>(int,java.lang.Object)>(999, $r2);
+
+        $r3 = <com.movesky.app.engine.ui.Anchor: com.movesky.app.engine.ui.Anchor TOP_CENTER>;
+
+        virtualinvoke $r1.<com.movesky.app.engine.ui.UIButton: void setAnchor(com.movesky.app.engine.ui.Anchor)>($r3);
+
+        virtualinvoke $r1.<com.movesky.app.engine.ui.UIButton: void setSize(float,float)>(240.0F, 45.0F);
+
+        $i0 = $i1 * 65;
+
+        $f0 = (float) $i0;
+
+        $f0 = 110.0F + $f0;
+
+        virtualinvoke $r1.<com.movesky.app.engine.ui.UIButton: void setPosition(float,float)>(160.0F, $f0);
+
+        virtualinvoke $r1.<com.movesky.app.engine.ui.UIButton: void setButtonDelegate(com.movesky.app.engine.ui.UIButtonDelegate)>(r0);
+
+        return $r1;
+    }
+
+    public void onClick(com.movesky.app.engine.ui.UIButton)
+    {
+        com.movesky.app.main.SongSelectionScreen r0;
+        com.movesky.app.engine.ui.UIButton $r1;
+        com.movesky.app.engine.ui.UINavigationController $r2;
+        com.movesky.app.engine.ui.UISwipeTransition $r3;
+
+        r0 := @this: com.movesky.app.main.SongSelectionScreen;
+
+        $r1 := @parameter0: com.movesky.app.engine.ui.UIButton;
+
+        $r2 = r0.<com.movesky.app.main.SongSelectionScreen: com.movesky.app.engine.ui.UINavigationController controller>;
+
+        $r3 = <com.movesky.app.main.YSGame: com.movesky.app.engine.ui.UISwipeTransition FROM_RIGHT_TRANSITION>;
+
+        virtualinvoke $r2.<com.movesky.app.engine.ui.UINavigationController: boolean pop(com.movesky.app.engine.ui.UISwipeTransition)>($r3);
+
+        return;
+    }
+}

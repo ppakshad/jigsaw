@@ -1,0 +1,702 @@
+public abstract class com.movesky.app.engine.net.simulation.Simulation extends java.lang.Object
+{
+    private float accumulatedSeconds;
+    private final int coarseLag;
+    private int currentCoarseTimestep;
+    private int currentFineTimestep;
+    private com.movesky.app.engine.net.simulation.LockStep currentStep;
+    private final int finePerCoarse;
+    private java.util.PriorityQueue incomingEvents;
+    private java.util.concurrent.PriorityBlockingQueue incomingLocalSteps;
+    private java.util.concurrent.PriorityBlockingQueue incomingRemoteSteps;
+    public final boolean isServer;
+    private int localHash;
+    private int nextID;
+    private com.movesky.app.engine.net.simulation.LockStepProtocol protocol;
+    private int remoteHash;
+    private final float secondsPerFine;
+
+    public void <init>(int, float, int, com.movesky.app.engine.net.simulation.LockStepProtocol, boolean)
+    {
+        com.movesky.app.engine.net.simulation.Simulation r0;
+        int $i0, $i1;
+        float $f0, $f1;
+        com.movesky.app.engine.net.simulation.LockStepProtocol $r1, $r5;
+        boolean $z0;
+        com.movesky.app.engine.net.simulation.LockStep $r2;
+        java.util.concurrent.PriorityBlockingQueue $r3;
+        java.util.PriorityQueue $r4;
+
+        r0 := @this: com.movesky.app.engine.net.simulation.Simulation;
+
+        $i0 := @parameter0: int;
+
+        $f0 := @parameter1: float;
+
+        $i1 := @parameter2: int;
+
+        $r1 := @parameter3: com.movesky.app.engine.net.simulation.LockStepProtocol;
+
+        $z0 := @parameter4: boolean;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        $r3 = new java.util.concurrent.PriorityBlockingQueue;
+
+        specialinvoke $r3.<java.util.concurrent.PriorityBlockingQueue: void <init>()>();
+
+        r0.<com.movesky.app.engine.net.simulation.Simulation: java.util.concurrent.PriorityBlockingQueue incomingRemoteSteps> = $r3;
+
+        $r3 = new java.util.concurrent.PriorityBlockingQueue;
+
+        specialinvoke $r3.<java.util.concurrent.PriorityBlockingQueue: void <init>()>();
+
+        r0.<com.movesky.app.engine.net.simulation.Simulation: java.util.concurrent.PriorityBlockingQueue incomingLocalSteps> = $r3;
+
+        $r4 = new java.util.PriorityQueue;
+
+        specialinvoke $r4.<java.util.PriorityQueue: void <init>()>();
+
+        r0.<com.movesky.app.engine.net.simulation.Simulation: java.util.PriorityQueue incomingEvents> = $r4;
+
+        $r5 = new com.movesky.app.engine.net.simulation.LockStepProtocol;
+
+        specialinvoke $r5.<com.movesky.app.engine.net.simulation.LockStepProtocol: void <init>()>();
+
+        r0.<com.movesky.app.engine.net.simulation.Simulation: com.movesky.app.engine.net.simulation.LockStepProtocol protocol> = $r5;
+
+        $r2 = new com.movesky.app.engine.net.simulation.LockStep;
+
+        specialinvoke $r2.<com.movesky.app.engine.net.simulation.LockStep: void <init>()>();
+
+        r0.<com.movesky.app.engine.net.simulation.Simulation: com.movesky.app.engine.net.simulation.LockStep currentStep> = $r2;
+
+        r0.<com.movesky.app.engine.net.simulation.Simulation: int finePerCoarse> = $i0;
+
+        r0.<com.movesky.app.engine.net.simulation.Simulation: int coarseLag> = $i1;
+
+        $f1 = (float) $i0;
+
+        $f0 = $f0 / $f1;
+
+        r0.<com.movesky.app.engine.net.simulation.Simulation: float secondsPerFine> = $f0;
+
+        r0.<com.movesky.app.engine.net.simulation.Simulation: com.movesky.app.engine.net.simulation.LockStepProtocol protocol> = $r1;
+
+        r0.<com.movesky.app.engine.net.simulation.Simulation: boolean isServer> = $z0;
+
+        $i0 = 0;
+
+     label1:
+        if $i0 >= $i1 goto label2;
+
+        $r2 = new com.movesky.app.engine.net.simulation.LockStep;
+
+        specialinvoke $r2.<com.movesky.app.engine.net.simulation.LockStep: void <init>()>();
+
+        $r2.<com.movesky.app.engine.net.simulation.LockStep: int coarseTime> = $i0;
+
+        $r3 = r0.<com.movesky.app.engine.net.simulation.Simulation: java.util.concurrent.PriorityBlockingQueue incomingRemoteSteps>;
+
+        virtualinvoke $r3.<java.util.concurrent.PriorityBlockingQueue: boolean add(java.lang.Object)>($r2);
+
+        $r3 = r0.<com.movesky.app.engine.net.simulation.Simulation: java.util.concurrent.PriorityBlockingQueue incomingLocalSteps>;
+
+        virtualinvoke $r3.<java.util.concurrent.PriorityBlockingQueue: boolean add(java.lang.Object)>($r2);
+
+        $i0 = $i0 + 1;
+
+        goto label1;
+
+     label2:
+        return;
+    }
+
+    private final void dispatchEvent(com.movesky.app.engine.net.simulation.Event)
+    {
+        com.movesky.app.engine.net.simulation.Simulation r0;
+        com.movesky.app.engine.net.simulation.Event $r1;
+        boolean $z0, $z1, $z2;
+        int $i0;
+        float $f0, $f1;
+
+        r0 := @this: com.movesky.app.engine.net.simulation.Simulation;
+
+        $r1 := @parameter0: com.movesky.app.engine.net.simulation.Event;
+
+        $z0 = 0;
+
+        $i0 = $r1.<com.movesky.app.engine.net.simulation.Event: int flags>;
+
+        $i0 = $i0 & 128;
+
+        if $i0 == 0 goto label03;
+
+        $z1 = 1;
+
+     label01:
+        $i0 = $r1.<com.movesky.app.engine.net.simulation.Event: int type>;
+
+        lookupswitch($i0)
+        {
+            case 0: goto label04;
+            case 1: goto label08;
+            case 2: goto label09;
+            case 3: goto label10;
+            default: goto label02;
+        };
+
+     label02:
+        return;
+
+     label03:
+        $z1 = 0;
+
+        goto label01;
+
+     label04:
+        $f0 = $r1.<com.movesky.app.engine.net.simulation.Event: float x>;
+
+        $f1 = $r1.<com.movesky.app.engine.net.simulation.Event: float y>;
+
+        $i0 = $r1.<com.movesky.app.engine.net.simulation.Event: int flags>;
+
+        $i0 = $i0 & 32;
+
+        if $i0 == 0 goto label07;
+
+        $z2 = 1;
+
+     label05:
+        $i0 = $r1.<com.movesky.app.engine.net.simulation.Event: int flags>;
+
+        $i0 = $i0 & 64;
+
+        if $i0 == 0 goto label06;
+
+        $z0 = 1;
+
+     label06:
+        virtualinvoke r0.<com.movesky.app.engine.net.simulation.Simulation: void simulateTapDown(float,float,boolean,boolean,boolean)>($f0, $f1, $z1, $z2, $z0);
+
+        return;
+
+     label07:
+        $z2 = 0;
+
+        goto label05;
+
+     label08:
+        $f0 = $r1.<com.movesky.app.engine.net.simulation.Event: float x>;
+
+        $f1 = $r1.<com.movesky.app.engine.net.simulation.Event: float y>;
+
+        virtualinvoke r0.<com.movesky.app.engine.net.simulation.Simulation: void simulateTapMove(float,float,boolean)>($f0, $f1, $z1);
+
+        return;
+
+     label09:
+        $f0 = $r1.<com.movesky.app.engine.net.simulation.Event: float x>;
+
+        $f1 = $r1.<com.movesky.app.engine.net.simulation.Event: float y>;
+
+        virtualinvoke r0.<com.movesky.app.engine.net.simulation.Simulation: void simulateTapUp(float,float,boolean)>($f0, $f1, $z1);
+
+        return;
+
+     label10:
+        $f0 = $r1.<com.movesky.app.engine.net.simulation.Event: float x>;
+
+        $f1 = $r1.<com.movesky.app.engine.net.simulation.Event: float y>;
+
+        $i0 = $r1.<com.movesky.app.engine.net.simulation.Event: int code>;
+
+        virtualinvoke r0.<com.movesky.app.engine.net.simulation.Simulation: void simulateCustomEvent(float,float,int,boolean)>($f0, $f1, $i0, $z1);
+
+        return;
+    }
+
+    private final void endCurrentTimestep()
+    {
+        com.movesky.app.engine.net.simulation.Simulation r0;
+        int $i0, $i1;
+        com.movesky.app.engine.net.simulation.LockStep $r1;
+        java.util.concurrent.PriorityBlockingQueue $r2;
+        com.movesky.app.engine.net.simulation.LockStepProtocol $r3;
+
+        r0 := @this: com.movesky.app.engine.net.simulation.Simulation;
+
+        $r1 = r0.<com.movesky.app.engine.net.simulation.Simulation: com.movesky.app.engine.net.simulation.LockStep currentStep>;
+
+        $i0 = virtualinvoke r0.<com.movesky.app.engine.net.simulation.Simulation: int getSimulationSyncHash()>();
+
+        $r1.<com.movesky.app.engine.net.simulation.LockStep: int hash> = $i0;
+
+        $r1 = r0.<com.movesky.app.engine.net.simulation.Simulation: com.movesky.app.engine.net.simulation.LockStep currentStep>;
+
+        $i1 = r0.<com.movesky.app.engine.net.simulation.Simulation: int currentCoarseTimestep>;
+
+        $i0 = r0.<com.movesky.app.engine.net.simulation.Simulation: int coarseLag>;
+
+        $i0 = $i1 + $i0;
+
+        $r1.<com.movesky.app.engine.net.simulation.LockStep: int coarseTime> = $i0;
+
+        $r2 = r0.<com.movesky.app.engine.net.simulation.Simulation: java.util.concurrent.PriorityBlockingQueue incomingLocalSteps>;
+
+        $r1 = r0.<com.movesky.app.engine.net.simulation.Simulation: com.movesky.app.engine.net.simulation.LockStep currentStep>;
+
+        virtualinvoke $r2.<java.util.concurrent.PriorityBlockingQueue: boolean add(java.lang.Object)>($r1);
+
+        $r3 = r0.<com.movesky.app.engine.net.simulation.Simulation: com.movesky.app.engine.net.simulation.LockStepProtocol protocol>;
+
+        $r1 = r0.<com.movesky.app.engine.net.simulation.Simulation: com.movesky.app.engine.net.simulation.LockStep currentStep>;
+
+        virtualinvoke $r3.<com.movesky.app.engine.net.simulation.LockStepProtocol: void writeLockStep(com.movesky.app.engine.net.simulation.LockStep)>($r1);
+
+        $r1 = new com.movesky.app.engine.net.simulation.LockStep;
+
+        specialinvoke $r1.<com.movesky.app.engine.net.simulation.LockStep: void <init>()>();
+
+        r0.<com.movesky.app.engine.net.simulation.Simulation: com.movesky.app.engine.net.simulation.LockStep currentStep> = $r1;
+
+        return;
+    }
+
+    private final com.movesky.app.engine.net.simulation.Event makeEvent(float, float, int, boolean, boolean, int)
+    {
+        com.movesky.app.engine.net.simulation.Simulation r0;
+        float $f0, $f1;
+        int $i0, $i1, $i3, $i4;
+        boolean $z0, $z1, $z2;
+        com.movesky.app.engine.net.simulation.Event $r1;
+        byte $b2, $b6;
+        short $s5;
+
+        r0 := @this: com.movesky.app.engine.net.simulation.Simulation;
+
+        $f0 := @parameter0: float;
+
+        $f1 := @parameter1: float;
+
+        $i0 := @parameter2: int;
+
+        $z0 := @parameter3: boolean;
+
+        $z1 := @parameter4: boolean;
+
+        $i1 := @parameter5: int;
+
+        $b2 = 0;
+
+        $r1 = new com.movesky.app.engine.net.simulation.Event;
+
+        specialinvoke $r1.<com.movesky.app.engine.net.simulation.Event: void <init>()>();
+
+        $i3 = r0.<com.movesky.app.engine.net.simulation.Simulation: int nextID>;
+
+        $i4 = $i3 + 1;
+
+        r0.<com.movesky.app.engine.net.simulation.Simulation: int nextID> = $i4;
+
+        $r1.<com.movesky.app.engine.net.simulation.Event: int id> = $i3;
+
+        $r1.<com.movesky.app.engine.net.simulation.Event: int type> = $i0;
+
+        $z2 = r0.<com.movesky.app.engine.net.simulation.Simulation: boolean isServer>;
+
+        if $z2 == 0 goto label4;
+
+        $s5 = 128;
+
+     label1:
+        if $z0 == 0 goto label5;
+
+        $b6 = 32;
+
+     label2:
+        $i0 = $b6 | $s5;
+
+        if $z1 == 0 goto label3;
+
+        $b2 = 64;
+
+     label3:
+        $i0 = $b2 | $i0;
+
+        $r1.<com.movesky.app.engine.net.simulation.Event: int flags> = $i0;
+
+        $i0 = r0.<com.movesky.app.engine.net.simulation.Simulation: int currentFineTimestep>;
+
+        $i3 = r0.<com.movesky.app.engine.net.simulation.Simulation: int coarseLag>;
+
+        $i4 = r0.<com.movesky.app.engine.net.simulation.Simulation: int finePerCoarse>;
+
+        $i3 = $i3 * $i4;
+
+        $i0 = $i0 + $i3;
+
+        $r1.<com.movesky.app.engine.net.simulation.Event: int fineTime> = $i0;
+
+        $r1.<com.movesky.app.engine.net.simulation.Event: float x> = $f0;
+
+        $r1.<com.movesky.app.engine.net.simulation.Event: float y> = $f1;
+
+        $r1.<com.movesky.app.engine.net.simulation.Event: int code> = $i1;
+
+        return $r1;
+
+     label4:
+        $s5 = 0;
+
+        goto label1;
+
+     label5:
+        $b6 = 0;
+
+        goto label2;
+    }
+
+    protected abstract int getSimulationSyncHash();
+
+    public boolean isSynced()
+    {
+        com.movesky.app.engine.net.simulation.Simulation r0;
+        int $i0, $i1;
+
+        r0 := @this: com.movesky.app.engine.net.simulation.Simulation;
+
+        $i1 = r0.<com.movesky.app.engine.net.simulation.Simulation: int remoteHash>;
+
+        $i0 = r0.<com.movesky.app.engine.net.simulation.Simulation: int localHash>;
+
+        if $i1 != $i0 goto label1;
+
+        return 1;
+
+     label1:
+        return 0;
+    }
+
+    public final void onUpdate(float)
+    {
+        com.movesky.app.engine.net.simulation.Simulation r0;
+        float $f0, $f1;
+        com.movesky.app.engine.net.simulation.LockStepProtocol $r1;
+        com.movesky.app.engine.net.simulation.LockStep $r2, $r5;
+        java.util.concurrent.PriorityBlockingQueue $r3;
+        int $i0, $i2, $i3;
+        byte $b1;
+        boolean $z0;
+        java.lang.Object $r4;
+        java.util.PriorityQueue $r6;
+        com.movesky.app.engine.net.simulation.Event $r7;
+
+        r0 := @this: com.movesky.app.engine.net.simulation.Simulation;
+
+        $f0 := @parameter0: float;
+
+        $f1 = r0.<com.movesky.app.engine.net.simulation.Simulation: float accumulatedSeconds>;
+
+        $f0 = $f1 + $f0;
+
+        r0.<com.movesky.app.engine.net.simulation.Simulation: float accumulatedSeconds> = $f0;
+
+     label01:
+        $r1 = r0.<com.movesky.app.engine.net.simulation.Simulation: com.movesky.app.engine.net.simulation.LockStepProtocol protocol>;
+
+        $r2 = virtualinvoke $r1.<com.movesky.app.engine.net.simulation.LockStepProtocol: com.movesky.app.engine.net.simulation.LockStep readLockStep()>();
+
+        if $r2 == null goto label02;
+
+        $r3 = r0.<com.movesky.app.engine.net.simulation.Simulation: java.util.concurrent.PriorityBlockingQueue incomingRemoteSteps>;
+
+        virtualinvoke $r3.<java.util.concurrent.PriorityBlockingQueue: boolean add(java.lang.Object)>($r2);
+
+        goto label01;
+
+     label02:
+        $i0 = 0;
+
+     label03:
+        if $i0 >= 10 goto label11;
+
+        $f0 = r0.<com.movesky.app.engine.net.simulation.Simulation: float accumulatedSeconds>;
+
+        $b1 = $f0 cmpl 0.0F;
+
+        if $b1 <= 0 goto label11;
+
+        $i2 = r0.<com.movesky.app.engine.net.simulation.Simulation: int currentFineTimestep>;
+
+        $i3 = r0.<com.movesky.app.engine.net.simulation.Simulation: int finePerCoarse>;
+
+        $i2 = $i2 % $i3;
+
+        if $i2 != 0 goto label05;
+
+        $z0 = 1;
+
+     label04:
+        if $z0 == 0 goto label07;
+
+        $r3 = r0.<com.movesky.app.engine.net.simulation.Simulation: java.util.concurrent.PriorityBlockingQueue incomingRemoteSteps>;
+
+        $r4 = virtualinvoke $r3.<java.util.concurrent.PriorityBlockingQueue: java.lang.Object peek()>();
+
+        $r2 = (com.movesky.app.engine.net.simulation.LockStep) $r4;
+
+        $r3 = r0.<com.movesky.app.engine.net.simulation.Simulation: java.util.concurrent.PriorityBlockingQueue incomingLocalSteps>;
+
+        $r4 = virtualinvoke $r3.<java.util.concurrent.PriorityBlockingQueue: java.lang.Object peek()>();
+
+        $r5 = (com.movesky.app.engine.net.simulation.LockStep) $r4;
+
+        if $r5 == null goto label11;
+
+        if $r2 == null goto label11;
+
+        $i2 = $r5.<com.movesky.app.engine.net.simulation.LockStep: int coarseTime>;
+
+        $i3 = r0.<com.movesky.app.engine.net.simulation.Simulation: int currentCoarseTimestep>;
+
+        if $i2 != $i3 goto label11;
+
+        $i2 = $r2.<com.movesky.app.engine.net.simulation.LockStep: int coarseTime>;
+
+        $i3 = r0.<com.movesky.app.engine.net.simulation.Simulation: int currentCoarseTimestep>;
+
+        if $i2 == $i3 goto label06;
+
+        return;
+
+     label05:
+        $z0 = 0;
+
+        goto label04;
+
+     label06:
+        $r3 = r0.<com.movesky.app.engine.net.simulation.Simulation: java.util.concurrent.PriorityBlockingQueue incomingLocalSteps>;
+
+        $r4 = virtualinvoke $r3.<java.util.concurrent.PriorityBlockingQueue: java.lang.Object remove()>();
+
+        $r2 = (com.movesky.app.engine.net.simulation.LockStep) $r4;
+
+        $r3 = r0.<com.movesky.app.engine.net.simulation.Simulation: java.util.concurrent.PriorityBlockingQueue incomingRemoteSteps>;
+
+        $r4 = virtualinvoke $r3.<java.util.concurrent.PriorityBlockingQueue: java.lang.Object remove()>();
+
+        $r5 = (com.movesky.app.engine.net.simulation.LockStep) $r4;
+
+        $r6 = r0.<com.movesky.app.engine.net.simulation.Simulation: java.util.PriorityQueue incomingEvents>;
+
+        virtualinvoke $r2.<com.movesky.app.engine.net.simulation.LockStep: void addEventsToQueue(java.util.PriorityQueue)>($r6);
+
+        $r6 = r0.<com.movesky.app.engine.net.simulation.Simulation: java.util.PriorityQueue incomingEvents>;
+
+        virtualinvoke $r5.<com.movesky.app.engine.net.simulation.LockStep: void addEventsToQueue(java.util.PriorityQueue)>($r6);
+
+        $i2 = $r2.<com.movesky.app.engine.net.simulation.LockStep: int hash>;
+
+        r0.<com.movesky.app.engine.net.simulation.Simulation: int localHash> = $i2;
+
+        $i2 = $r5.<com.movesky.app.engine.net.simulation.LockStep: int hash>;
+
+        r0.<com.movesky.app.engine.net.simulation.Simulation: int remoteHash> = $i2;
+
+     label07:
+        $r6 = r0.<com.movesky.app.engine.net.simulation.Simulation: java.util.PriorityQueue incomingEvents>;
+
+        $r4 = virtualinvoke $r6.<java.util.PriorityQueue: java.lang.Object peek()>();
+
+        $r7 = (com.movesky.app.engine.net.simulation.Event) $r4;
+
+        if $r7 == null goto label08;
+
+        $i2 = $r7.<com.movesky.app.engine.net.simulation.Event: int fineTime>;
+
+        $i3 = r0.<com.movesky.app.engine.net.simulation.Simulation: int currentFineTimestep>;
+
+        if $i2 != $i3 goto label08;
+
+        $r6 = r0.<com.movesky.app.engine.net.simulation.Simulation: java.util.PriorityQueue incomingEvents>;
+
+        $r4 = virtualinvoke $r6.<java.util.PriorityQueue: java.lang.Object remove()>();
+
+        $r7 = (com.movesky.app.engine.net.simulation.Event) $r4;
+
+        specialinvoke r0.<com.movesky.app.engine.net.simulation.Simulation: void dispatchEvent(com.movesky.app.engine.net.simulation.Event)>($r7);
+
+        goto label07;
+
+     label08:
+        if $r7 == null goto label09;
+
+        $i2 = $r7.<com.movesky.app.engine.net.simulation.Event: int fineTime>;
+
+        $i3 = r0.<com.movesky.app.engine.net.simulation.Simulation: int currentFineTimestep>;
+
+        if $i2 >= $i3 goto label09;
+
+        staticinvoke <java.lang.System: void exit(int)>(0);
+
+     label09:
+        $f0 = r0.<com.movesky.app.engine.net.simulation.Simulation: float secondsPerFine>;
+
+        virtualinvoke r0.<com.movesky.app.engine.net.simulation.Simulation: void update(float)>($f0);
+
+        $i2 = r0.<com.movesky.app.engine.net.simulation.Simulation: int currentFineTimestep>;
+
+        $i2 = $i2 + 1;
+
+        r0.<com.movesky.app.engine.net.simulation.Simulation: int currentFineTimestep> = $i2;
+
+        $i3 = r0.<com.movesky.app.engine.net.simulation.Simulation: int finePerCoarse>;
+
+        $i2 = $i2 % $i3;
+
+        if $i2 != 0 goto label10;
+
+        specialinvoke r0.<com.movesky.app.engine.net.simulation.Simulation: void endCurrentTimestep()>();
+
+        $i2 = r0.<com.movesky.app.engine.net.simulation.Simulation: int currentCoarseTimestep>;
+
+        $i2 = $i2 + 1;
+
+        r0.<com.movesky.app.engine.net.simulation.Simulation: int currentCoarseTimestep> = $i2;
+
+     label10:
+        $f0 = r0.<com.movesky.app.engine.net.simulation.Simulation: float accumulatedSeconds>;
+
+        $f1 = r0.<com.movesky.app.engine.net.simulation.Simulation: float secondsPerFine>;
+
+        $f0 = $f0 - $f1;
+
+        r0.<com.movesky.app.engine.net.simulation.Simulation: float accumulatedSeconds> = $f0;
+
+        $i0 = $i0 + 1;
+
+        goto label03;
+
+     label11:
+        return;
+    }
+
+    public final void recordCustomEvent(float, float, int)
+    {
+        com.movesky.app.engine.net.simulation.Simulation r0;
+        float $f0, $f1;
+        int $i0;
+        java.util.ArrayList $r1;
+        com.movesky.app.engine.net.simulation.Event $r2;
+        com.movesky.app.engine.net.simulation.LockStep $r3;
+
+        r0 := @this: com.movesky.app.engine.net.simulation.Simulation;
+
+        $f0 := @parameter0: float;
+
+        $f1 := @parameter1: float;
+
+        $i0 := @parameter2: int;
+
+        $r3 = r0.<com.movesky.app.engine.net.simulation.Simulation: com.movesky.app.engine.net.simulation.LockStep currentStep>;
+
+        $r1 = $r3.<com.movesky.app.engine.net.simulation.LockStep: java.util.ArrayList events>;
+
+        $r2 = specialinvoke r0.<com.movesky.app.engine.net.simulation.Simulation: com.movesky.app.engine.net.simulation.Event makeEvent(float,float,int,boolean,boolean,int)>($f0, $f1, 3, 0, 0, $i0);
+
+        virtualinvoke $r1.<java.util.ArrayList: boolean add(java.lang.Object)>($r2);
+
+        return;
+    }
+
+    public final void recordTapDown(float, float, boolean, boolean)
+    {
+        com.movesky.app.engine.net.simulation.Simulation r0;
+        float $f0, $f1;
+        boolean $z0, $z1;
+        java.util.ArrayList $r1;
+        com.movesky.app.engine.net.simulation.Event $r2;
+        com.movesky.app.engine.net.simulation.LockStep $r3;
+
+        r0 := @this: com.movesky.app.engine.net.simulation.Simulation;
+
+        $f0 := @parameter0: float;
+
+        $f1 := @parameter1: float;
+
+        $z0 := @parameter2: boolean;
+
+        $z1 := @parameter3: boolean;
+
+        $r3 = r0.<com.movesky.app.engine.net.simulation.Simulation: com.movesky.app.engine.net.simulation.LockStep currentStep>;
+
+        $r1 = $r3.<com.movesky.app.engine.net.simulation.LockStep: java.util.ArrayList events>;
+
+        $r2 = specialinvoke r0.<com.movesky.app.engine.net.simulation.Simulation: com.movesky.app.engine.net.simulation.Event makeEvent(float,float,int,boolean,boolean,int)>($f0, $f1, 0, $z0, $z1, 0);
+
+        virtualinvoke $r1.<java.util.ArrayList: boolean add(java.lang.Object)>($r2);
+
+        return;
+    }
+
+    public final void recordTapMove(float, float)
+    {
+        com.movesky.app.engine.net.simulation.Simulation r0;
+        float $f0, $f1;
+        java.util.ArrayList $r1;
+        com.movesky.app.engine.net.simulation.Event $r2;
+        com.movesky.app.engine.net.simulation.LockStep $r3;
+
+        r0 := @this: com.movesky.app.engine.net.simulation.Simulation;
+
+        $f0 := @parameter0: float;
+
+        $f1 := @parameter1: float;
+
+        $r3 = r0.<com.movesky.app.engine.net.simulation.Simulation: com.movesky.app.engine.net.simulation.LockStep currentStep>;
+
+        $r1 = $r3.<com.movesky.app.engine.net.simulation.LockStep: java.util.ArrayList events>;
+
+        $r2 = specialinvoke r0.<com.movesky.app.engine.net.simulation.Simulation: com.movesky.app.engine.net.simulation.Event makeEvent(float,float,int,boolean,boolean,int)>($f0, $f1, 1, 0, 0, 0);
+
+        virtualinvoke $r1.<java.util.ArrayList: boolean add(java.lang.Object)>($r2);
+
+        return;
+    }
+
+    public final void recordTapUp(float, float)
+    {
+        com.movesky.app.engine.net.simulation.Simulation r0;
+        float $f0, $f1;
+        java.util.ArrayList $r1;
+        com.movesky.app.engine.net.simulation.Event $r2;
+        com.movesky.app.engine.net.simulation.LockStep $r3;
+
+        r0 := @this: com.movesky.app.engine.net.simulation.Simulation;
+
+        $f0 := @parameter0: float;
+
+        $f1 := @parameter1: float;
+
+        $r3 = r0.<com.movesky.app.engine.net.simulation.Simulation: com.movesky.app.engine.net.simulation.LockStep currentStep>;
+
+        $r1 = $r3.<com.movesky.app.engine.net.simulation.LockStep: java.util.ArrayList events>;
+
+        $r2 = specialinvoke r0.<com.movesky.app.engine.net.simulation.Simulation: com.movesky.app.engine.net.simulation.Event makeEvent(float,float,int,boolean,boolean,int)>($f0, $f1, 2, 0, 0, 0);
+
+        virtualinvoke $r1.<java.util.ArrayList: boolean add(java.lang.Object)>($r2);
+
+        return;
+    }
+
+    protected abstract void simulateCustomEvent(float, float, int, boolean);
+
+    protected abstract void simulateTapDown(float, float, boolean, boolean, boolean);
+
+    protected abstract void simulateTapMove(float, float, boolean);
+
+    protected abstract void simulateTapUp(float, float, boolean);
+
+    protected abstract void update(float);
+}

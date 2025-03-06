@@ -1,0 +1,268 @@
+public class com.startapp.android.publish.a.g extends com.startapp.android.publish.a.e implements com.startapp.android.publish.g
+{
+    private static java.lang.String a;
+    private static final long serialVersionUID;
+    private final java.lang.String uuid;
+
+    static void <clinit>()
+    {
+        <com.startapp.android.publish.a.g: long serialVersionUID> = 1L;
+
+        <com.startapp.android.publish.a.g: java.lang.String a> = null;
+
+        return;
+    }
+
+    public void <init>(android.content.Context)
+    {
+        com.startapp.android.publish.a.g r0;
+        android.content.Context $r1;
+        com.startapp.android.publish.model.AdPreferences$Placement $r2;
+        java.util.UUID $r3;
+        java.lang.String $r4;
+
+        r0 := @this: com.startapp.android.publish.a.g;
+
+        $r1 := @parameter0: android.content.Context;
+
+        $r2 = <com.startapp.android.publish.model.AdPreferences$Placement: com.startapp.android.publish.model.AdPreferences$Placement INAPP_OFFER_WALL>;
+
+        specialinvoke r0.<com.startapp.android.publish.a.e: void <init>(android.content.Context,com.startapp.android.publish.model.AdPreferences$Placement)>($r1, $r2);
+
+        $r3 = staticinvoke <java.util.UUID: java.util.UUID randomUUID()>();
+
+        $r4 = virtualinvoke $r3.<java.util.UUID: java.lang.String toString()>();
+
+        r0.<com.startapp.android.publish.a.g: java.lang.String uuid> = $r4;
+
+        $r4 = <com.startapp.android.publish.a.g: java.lang.String a>;
+
+        if $r4 != null goto label1;
+
+        $r4 = staticinvoke <com.startapp.android.publish.i.x: java.lang.String f(android.content.Context)>($r1);
+
+        <com.startapp.android.publish.a.g: java.lang.String a> = $r4;
+
+     label1:
+        return;
+    }
+
+    public java.lang.String a()
+    {
+        com.startapp.android.publish.a.g r0;
+        java.lang.String r1;
+
+        r0 := @this: com.startapp.android.publish.a.g;
+
+        r1 = r0.<com.startapp.android.publish.a.g: java.lang.String uuid>;
+
+        return r1;
+    }
+
+    public boolean a(java.lang.String)
+    {
+        com.startapp.android.publish.a.g r0;
+        java.lang.String $r1, $r3;
+        com.startapp.android.publish.list3d.f $r2;
+        com.startapp.android.publish.list3d.e $r4;
+        com.startapp.android.publish.a $r5;
+        boolean $z0, $z1;
+        com.startapp.android.publish.AdDisplayListener$NotDisplayedReason $r6;
+        android.content.Intent $r7;
+        android.content.Context $r8;
+        com.startapp.android.publish.adinformation.b $r9;
+        java.lang.Long $r10;
+        java.lang.Boolean $r11;
+        com.startapp.android.publish.Ad$AdState $r12;
+
+        r0 := @this: com.startapp.android.publish.a.g;
+
+        $r1 := @parameter0: java.lang.String;
+
+        $r2 = staticinvoke <com.startapp.android.publish.list3d.f: com.startapp.android.publish.list3d.f a()>();
+
+        $r3 = r0.<com.startapp.android.publish.a.g: java.lang.String uuid>;
+
+        $r4 = virtualinvoke $r2.<com.startapp.android.publish.list3d.f: com.startapp.android.publish.list3d.e a(java.lang.String)>($r3);
+
+        $r3 = staticinvoke <com.startapp.android.publish.i.x: java.lang.String e()>();
+
+        virtualinvoke $r4.<com.startapp.android.publish.list3d.e: void b(java.lang.String)>($r3);
+
+        $r5 = r0.<com.startapp.android.publish.a.g: com.startapp.android.publish.a activityExtra>;
+
+        if $r5 == null goto label2;
+
+        $r5 = r0.<com.startapp.android.publish.a.g: com.startapp.android.publish.a activityExtra>;
+
+        $z0 = virtualinvoke $r5.<com.startapp.android.publish.a: boolean a()>();
+
+     label1:
+        $z1 = virtualinvoke r0.<com.startapp.android.publish.a.g: boolean hasAdCacheTtlPassed()>();
+
+        if $z1 == 0 goto label3;
+
+        $r6 = <com.startapp.android.publish.AdDisplayListener$NotDisplayedReason: com.startapp.android.publish.AdDisplayListener$NotDisplayedReason AD_EXPIRED>;
+
+        virtualinvoke r0.<com.startapp.android.publish.a.g: void setNotDisplayedReason(com.startapp.android.publish.AdDisplayListener$NotDisplayedReason)>($r6);
+
+        return 0;
+
+     label2:
+        $z0 = 0;
+
+        goto label1;
+
+     label3:
+        $r7 = new android.content.Intent;
+
+        $r8 = r0.<com.startapp.android.publish.a.g: android.content.Context context>;
+
+        specialinvoke $r7.<android.content.Intent: void <init>(android.content.Context,java.lang.Class)>($r8, class "Lcom/startapp/android/publish/list3d/List3DActivity;");
+
+        $r9 = virtualinvoke r0.<com.startapp.android.publish.a.g: com.startapp.android.publish.adinformation.b getAdInfoOverride()>();
+
+        virtualinvoke $r7.<android.content.Intent: android.content.Intent putExtra(java.lang.String,java.io.Serializable)>("adInfoOverride", $r9);
+
+        virtualinvoke $r7.<android.content.Intent: android.content.Intent putExtra(java.lang.String,boolean)>("fullscreen", $z0);
+
+        virtualinvoke $r7.<android.content.Intent: android.content.Intent putExtra(java.lang.String,java.lang.String)>("adTag", $r1);
+
+        $r10 = virtualinvoke r0.<com.startapp.android.publish.a.g: java.lang.Long getLastLoadTime()>();
+
+        virtualinvoke $r7.<android.content.Intent: android.content.Intent putExtra(java.lang.String,java.io.Serializable)>("lastLoadTime", $r10);
+
+        $r10 = virtualinvoke r0.<com.startapp.android.publish.a.g: java.lang.Long getAdCacheTtl()>();
+
+        virtualinvoke $r7.<android.content.Intent: android.content.Intent putExtra(java.lang.String,java.io.Serializable)>("adCacheTtl", $r10);
+
+        $r1 = staticinvoke <com.startapp.android.publish.i.x: java.lang.String f()>();
+
+        virtualinvoke $r7.<android.content.Intent: android.content.Intent putExtra(java.lang.String,java.lang.String)>("position", $r1);
+
+        $r1 = r0.<com.startapp.android.publish.a.g: java.lang.String uuid>;
+
+        virtualinvoke $r7.<android.content.Intent: android.content.Intent putExtra(java.lang.String,java.lang.String)>("listModelUuid", $r1);
+
+        virtualinvoke $r7.<android.content.Intent: android.content.Intent addFlags(int)>(343932928);
+
+        $r8 = r0.<com.startapp.android.publish.a.g: android.content.Context context>;
+
+        virtualinvoke $r8.<android.content.Context: void startActivity(android.content.Intent)>($r7);
+
+        $r11 = <com.startapp.android.publish.e: java.lang.Boolean OVERRIDE_NETWORK>;
+
+        $z0 = virtualinvoke $r11.<java.lang.Boolean: boolean booleanValue()>();
+
+        if $z0 != 0 goto label4;
+
+        $r12 = <com.startapp.android.publish.Ad$AdState: com.startapp.android.publish.Ad$AdState UN_INITIALIZED>;
+
+        virtualinvoke r0.<com.startapp.android.publish.a.g: void setState(com.startapp.android.publish.Ad$AdState)>($r12);
+
+     label4:
+        return 1;
+    }
+
+    public java.lang.Long getAdCacheTtl()
+    {
+        com.startapp.android.publish.a.g r0;
+        java.lang.Long $r1;
+
+        r0 := @this: com.startapp.android.publish.a.g;
+
+        $r1 = specialinvoke r0.<com.startapp.android.publish.a.e: java.lang.Long getAdCacheTtl()>();
+
+        return $r1;
+    }
+
+    public java.lang.Long getLastLoadTime()
+    {
+        com.startapp.android.publish.a.g r0;
+        java.lang.Long $r1;
+
+        r0 := @this: com.startapp.android.publish.a.g;
+
+        $r1 = specialinvoke r0.<com.startapp.android.publish.a.e: java.lang.Long getLastLoadTime()>();
+
+        return $r1;
+    }
+
+    public java.lang.String getLauncherName()
+    {
+        com.startapp.android.publish.a.g r0;
+        java.lang.String r1;
+
+        r0 := @this: com.startapp.android.publish.a.g;
+
+        r1 = <com.startapp.android.publish.a.g: java.lang.String a>;
+
+        return r1;
+    }
+
+    public boolean getVideoCancelCallBack()
+    {
+        com.startapp.android.publish.a.g r0;
+        boolean $z0;
+
+        r0 := @this: com.startapp.android.publish.a.g;
+
+        $z0 = specialinvoke r0.<com.startapp.android.publish.a.e: boolean getVideoCancelCallBack()>();
+
+        return $z0;
+    }
+
+    public boolean hasAdCacheTtlPassed()
+    {
+        com.startapp.android.publish.a.g r0;
+        boolean $z0;
+
+        r0 := @this: com.startapp.android.publish.a.g;
+
+        $z0 = specialinvoke r0.<com.startapp.android.publish.a.e: boolean hasAdCacheTtlPassed()>();
+
+        return $z0;
+    }
+
+    protected void loadAds(com.startapp.android.publish.model.AdPreferences, com.startapp.android.publish.model.SodaPreferences, com.startapp.android.publish.AdEventListener)
+    {
+        com.startapp.android.publish.a.g r0;
+        com.startapp.android.publish.model.AdPreferences $r1;
+        com.startapp.android.publish.model.SodaPreferences $r2;
+        com.startapp.android.publish.AdEventListener $r3;
+        com.startapp.android.publish.f.k $r4;
+        android.content.Context $r5;
+
+        r0 := @this: com.startapp.android.publish.a.g;
+
+        $r1 := @parameter0: com.startapp.android.publish.model.AdPreferences;
+
+        $r2 := @parameter1: com.startapp.android.publish.model.SodaPreferences;
+
+        $r3 := @parameter2: com.startapp.android.publish.AdEventListener;
+
+        $r4 = new com.startapp.android.publish.f.k;
+
+        $r5 = r0.<com.startapp.android.publish.a.g: android.content.Context context>;
+
+        specialinvoke $r4.<com.startapp.android.publish.f.k: void <init>(android.content.Context,com.startapp.android.publish.a.g,com.startapp.android.publish.model.AdPreferences,com.startapp.android.publish.model.SodaPreferences,com.startapp.android.publish.AdEventListener)>($r5, r0, $r1, $r2, $r3);
+
+        virtualinvoke $r4.<com.startapp.android.publish.f.k: void c()>();
+
+        return;
+    }
+
+    public void setVideoCancelCallBack(boolean)
+    {
+        com.startapp.android.publish.a.g r0;
+        boolean $z0;
+
+        r0 := @this: com.startapp.android.publish.a.g;
+
+        $z0 := @parameter0: boolean;
+
+        specialinvoke r0.<com.startapp.android.publish.a.e: void setVideoCancelCallBack(boolean)>($z0);
+
+        return;
+    }
+}

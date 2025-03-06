@@ -1,0 +1,198 @@
+class com.go108.lic.free.util.UpdateUtil$5 extends java.lang.Thread
+{
+    java.io.File file;
+    java.io.FileInputStream fis;
+    int flag;
+    final com.go108.lic.free.util.UpdateUtil this$0;
+
+    void <init>(com.go108.lic.free.util.UpdateUtil)
+    {
+        com.go108.lic.free.util.UpdateUtil $r1;
+        com.go108.lic.free.util.UpdateUtil$5 r0;
+        java.lang.StringBuilder $r3;
+        java.lang.String $r4;
+        java.io.File $r2;
+
+        r0 := @this: com.go108.lic.free.util.UpdateUtil$5;
+
+        $r1 := @parameter0: com.go108.lic.free.util.UpdateUtil;
+
+        r0.<com.go108.lic.free.util.UpdateUtil$5: com.go108.lic.free.util.UpdateUtil this$0> = $r1;
+
+        specialinvoke r0.<java.lang.Thread: void <init>()>();
+
+        r0.<com.go108.lic.free.util.UpdateUtil$5: int flag> = 0;
+
+        $r2 = new java.io.File;
+
+        $r3 = new java.lang.StringBuilder;
+
+        $r4 = staticinvoke <com.go108.lic.free.util.UpdateUtil: java.lang.String access$6()>();
+
+        $r4 = staticinvoke <java.lang.String: java.lang.String valueOf(java.lang.Object)>($r4);
+
+        specialinvoke $r3.<java.lang.StringBuilder: void <init>(java.lang.String)>($r4);
+
+        $r4 = staticinvoke <com.go108.lic.free.util.UpdateUtil: java.lang.String access$7(com.go108.lic.free.util.UpdateUtil)>($r1);
+
+        $r3 = virtualinvoke $r3.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r4);
+
+        $r4 = virtualinvoke $r3.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke $r2.<java.io.File: void <init>(java.lang.String)>($r4);
+
+        r0.<com.go108.lic.free.util.UpdateUtil$5: java.io.File file> = $r2;
+
+        r0.<com.go108.lic.free.util.UpdateUtil$5: java.io.FileInputStream fis> = null;
+
+        return;
+    }
+
+    public void run()
+    {
+        java.lang.Throwable $r6, $r7, $r8;
+        java.lang.Runnable $r3;
+        android.os.Handler $r2;
+        int $i0, $i1;
+        boolean $z0;
+        java.io.IOException $r12;
+        java.io.FileInputStream $r5, $r9;
+        java.io.File $r4;
+        java.io.FileNotFoundException $r11;
+        java.lang.InterruptedException $r10;
+        com.go108.lic.free.util.UpdateUtil $r1;
+        com.go108.lic.free.util.UpdateUtil$5 r0;
+
+        r0 := @this: com.go108.lic.free.util.UpdateUtil$5;
+
+     label01:
+        $i0 = r0.<com.go108.lic.free.util.UpdateUtil$5: int flag>;
+
+        if $i0 < 100 goto label06;
+
+        $r1 = r0.<com.go108.lic.free.util.UpdateUtil$5: com.go108.lic.free.util.UpdateUtil this$0>;
+
+     label02:
+        $r2 = staticinvoke <com.go108.lic.free.util.UpdateUtil: android.os.Handler access$5(com.go108.lic.free.util.UpdateUtil)>($r1);
+
+     label03:
+        $r1 = r0.<com.go108.lic.free.util.UpdateUtil$5: com.go108.lic.free.util.UpdateUtil this$0>;
+
+        $r3 = $r1.<com.go108.lic.free.util.UpdateUtil: java.lang.Runnable update>;
+
+     label04:
+        virtualinvoke $r2.<android.os.Handler: boolean post(java.lang.Runnable)>($r3);
+
+     label05:
+        return;
+
+     label06:
+        staticinvoke <com.go108.lic.free.util.UpdateUtil$5: void sleep(long)>(3000L);
+
+     label07:
+        $r4 = r0.<com.go108.lic.free.util.UpdateUtil$5: java.io.File file>;
+
+     label08:
+        $z0 = virtualinvoke $r4.<java.io.File: boolean exists()>();
+
+     label09:
+        if $z0 == 0 goto label18;
+
+        $r5 = r0.<com.go108.lic.free.util.UpdateUtil$5: java.io.FileInputStream fis>;
+
+        if $r5 != null goto label12;
+
+        $r9 = new java.io.FileInputStream;
+
+        $r4 = r0.<com.go108.lic.free.util.UpdateUtil$5: java.io.File file>;
+
+     label10:
+        specialinvoke $r9.<java.io.FileInputStream: void <init>(java.io.File)>($r4);
+
+     label11:
+        r0.<com.go108.lic.free.util.UpdateUtil$5: java.io.FileInputStream fis> = $r9;
+
+     label12:
+        $r5 = r0.<com.go108.lic.free.util.UpdateUtil$5: java.io.FileInputStream fis>;
+
+     label13:
+        $i0 = virtualinvoke $r5.<java.io.FileInputStream: int available()>();
+
+     label14:
+        $r1 = r0.<com.go108.lic.free.util.UpdateUtil$5: com.go108.lic.free.util.UpdateUtil this$0>;
+
+     label15:
+        $i1 = staticinvoke <com.go108.lic.free.util.UpdateUtil: int access$8(com.go108.lic.free.util.UpdateUtil)>($r1);
+
+     label16:
+        if $i0 < $i1 goto label18;
+
+        r0.<com.go108.lic.free.util.UpdateUtil$5: int flag> = 101;
+
+        $r1 = r0.<com.go108.lic.free.util.UpdateUtil$5: com.go108.lic.free.util.UpdateUtil this$0>;
+
+     label17:
+        staticinvoke <com.go108.lic.free.util.UpdateUtil: void access$9(com.go108.lic.free.util.UpdateUtil,boolean)>($r1, 1);
+
+     label18:
+        $i0 = r0.<com.go108.lic.free.util.UpdateUtil$5: int flag>;
+
+        $i0 = $i0 + 1;
+
+        r0.<com.go108.lic.free.util.UpdateUtil$5: int flag> = $i0;
+
+        goto label01;
+
+     label19:
+        $r6 := @caughtexception;
+
+        $r10 = (java.lang.InterruptedException) $r6;
+
+        virtualinvoke $r10.<java.lang.InterruptedException: void printStackTrace()>();
+
+        return;
+
+     label20:
+        $r7 := @caughtexception;
+
+        $r11 = (java.io.FileNotFoundException) $r7;
+
+        virtualinvoke $r11.<java.io.FileNotFoundException: void printStackTrace()>();
+
+        return;
+
+     label21:
+        $r8 := @caughtexception;
+
+        $r12 = (java.io.IOException) $r8;
+
+        virtualinvoke $r12.<java.io.IOException: void printStackTrace()>();
+
+        return;
+
+        catch java.lang.InterruptedException from label02 to label03 with label19;
+        catch java.lang.InterruptedException from label04 to label05 with label19;
+        catch java.lang.InterruptedException from label06 to label07 with label19;
+        catch java.lang.InterruptedException from label08 to label09 with label19;
+        catch java.lang.InterruptedException from label10 to label11 with label19;
+        catch java.lang.InterruptedException from label13 to label14 with label19;
+        catch java.lang.InterruptedException from label15 to label16 with label19;
+        catch java.lang.InterruptedException from label17 to label18 with label19;
+        catch java.io.FileNotFoundException from label02 to label03 with label20;
+        catch java.io.FileNotFoundException from label04 to label05 with label20;
+        catch java.io.FileNotFoundException from label06 to label07 with label20;
+        catch java.io.FileNotFoundException from label08 to label09 with label20;
+        catch java.io.FileNotFoundException from label10 to label11 with label20;
+        catch java.io.FileNotFoundException from label13 to label14 with label20;
+        catch java.io.FileNotFoundException from label15 to label16 with label20;
+        catch java.io.FileNotFoundException from label17 to label18 with label20;
+        catch java.io.IOException from label02 to label03 with label21;
+        catch java.io.IOException from label04 to label05 with label21;
+        catch java.io.IOException from label06 to label07 with label21;
+        catch java.io.IOException from label08 to label09 with label21;
+        catch java.io.IOException from label10 to label11 with label21;
+        catch java.io.IOException from label13 to label14 with label21;
+        catch java.io.IOException from label15 to label16 with label21;
+        catch java.io.IOException from label17 to label18 with label21;
+    }
+}

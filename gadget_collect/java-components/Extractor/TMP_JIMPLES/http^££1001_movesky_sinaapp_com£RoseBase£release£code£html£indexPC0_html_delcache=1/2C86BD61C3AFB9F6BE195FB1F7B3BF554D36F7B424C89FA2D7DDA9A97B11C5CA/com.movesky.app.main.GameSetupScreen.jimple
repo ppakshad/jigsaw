@@ -1,0 +1,499 @@
+public class com.movesky.app.main.GameSetupScreen extends com.movesky.app.engine.ui.UIView implements com.movesky.app.engine.ui.UIButtonDelegate
+{
+    private com.movesky.app.engine.net.bluetooth.Bluetooth bluetooth;
+    private com.movesky.app.engine.ui.UIButton clientButton;
+    private com.movesky.app.engine.ui.UINavigationController controller;
+    private java.lang.String currentStatus;
+    private com.movesky.app.engine.ui.UILabel deviceNameLabel;
+    private com.movesky.app.engine.ui.UIButton disconnectButton;
+    private com.movesky.app.engine.net.simulation.LockStepProtocol protocol;
+    private com.movesky.app.engine.ui.UIButton serverButton;
+    private com.movesky.app.engine.ui.UILabel statusLabel;
+    private com.movesky.app.engine.ui.UILabel titleLabel;
+
+    public void <init>(com.movesky.app.engine.ui.UINavigationController)
+    {
+        com.movesky.app.main.GameSetupScreen r0;
+        com.movesky.app.engine.ui.UINavigationController $r1;
+        com.movesky.app.engine.net.simulation.LockStepProtocol $r2;
+        com.movesky.app.engine.net.bluetooth.Bluetooth $r3;
+        com.movesky.app.engine.core.GameActivity $r4;
+        com.movesky.app.engine.ui.UIButton $r5;
+        com.movesky.app.engine.ui.Anchor $r6;
+        com.movesky.app.engine.ui.UILabel $r7;
+        android.graphics.Paint$Align $r8;
+
+        r0 := @this: com.movesky.app.main.GameSetupScreen;
+
+        $r1 := @parameter0: com.movesky.app.engine.ui.UINavigationController;
+
+        specialinvoke r0.<com.movesky.app.engine.ui.UIView: void <init>(java.lang.Object)>(null);
+
+        r0.<com.movesky.app.main.GameSetupScreen: java.lang.String currentStatus> = null;
+
+        r0.<com.movesky.app.main.GameSetupScreen: com.movesky.app.engine.ui.UINavigationController controller> = $r1;
+
+        virtualinvoke r0.<com.movesky.app.main.GameSetupScreen: void setSize(float,float)>(320.0F, 530.0F);
+
+        virtualinvoke r0.<com.movesky.app.main.GameSetupScreen: void setPosition(float,float)>(0.0F, 0.0F);
+
+        $r2 = new com.movesky.app.engine.net.simulation.LockStepProtocol;
+
+        specialinvoke $r2.<com.movesky.app.engine.net.simulation.LockStepProtocol: void <init>()>();
+
+        r0.<com.movesky.app.main.GameSetupScreen: com.movesky.app.engine.net.simulation.LockStepProtocol protocol> = $r2;
+
+        $r3 = new com.movesky.app.engine.net.bluetooth.Bluetooth;
+
+        $r4 = <com.movesky.app.engine.core.GameActivity: com.movesky.app.engine.core.GameActivity instance>;
+
+        $r2 = r0.<com.movesky.app.main.GameSetupScreen: com.movesky.app.engine.net.simulation.LockStepProtocol protocol>;
+
+        specialinvoke $r3.<com.movesky.app.engine.net.bluetooth.Bluetooth: void <init>(com.movesky.app.engine.core.GameActivity,com.movesky.app.engine.net.bluetooth.Protocol)>($r4, $r2);
+
+        r0.<com.movesky.app.main.GameSetupScreen: com.movesky.app.engine.net.bluetooth.Bluetooth bluetooth> = $r3;
+
+        $r5 = new com.movesky.app.engine.ui.UIButton;
+
+        specialinvoke $r5.<com.movesky.app.engine.ui.UIButton: void <init>(int,java.lang.Object)>(1000, null);
+
+        r0.<com.movesky.app.main.GameSetupScreen: com.movesky.app.engine.ui.UIButton serverButton> = $r5;
+
+        $r5 = r0.<com.movesky.app.main.GameSetupScreen: com.movesky.app.engine.ui.UIButton serverButton>;
+
+        $r6 = <com.movesky.app.engine.ui.Anchor: com.movesky.app.engine.ui.Anchor TOP_CENTER>;
+
+        virtualinvoke $r5.<com.movesky.app.engine.ui.UIButton: void setAnchor(com.movesky.app.engine.ui.Anchor)>($r6);
+
+        $r5 = r0.<com.movesky.app.main.GameSetupScreen: com.movesky.app.engine.ui.UIButton serverButton>;
+
+        virtualinvoke $r5.<com.movesky.app.engine.ui.UIButton: void setPosition(float,float)>(160.0F, 175.0F);
+
+        $r5 = r0.<com.movesky.app.main.GameSetupScreen: com.movesky.app.engine.ui.UIButton serverButton>;
+
+        virtualinvoke $r5.<com.movesky.app.engine.ui.UIButton: void setSize(float,float)>(240.0F, 45.0F);
+
+        $r5 = r0.<com.movesky.app.main.GameSetupScreen: com.movesky.app.engine.ui.UIButton serverButton>;
+
+        virtualinvoke $r5.<com.movesky.app.engine.ui.UIButton: void setButtonDelegate(com.movesky.app.engine.ui.UIButtonDelegate)>(r0);
+
+        $r5 = r0.<com.movesky.app.main.GameSetupScreen: com.movesky.app.engine.ui.UIButton serverButton>;
+
+        virtualinvoke r0.<com.movesky.app.main.GameSetupScreen: void addSubview(com.movesky.app.engine.ui.UIView)>($r5);
+
+        $r5 = new com.movesky.app.engine.ui.UIButton;
+
+        specialinvoke $r5.<com.movesky.app.engine.ui.UIButton: void <init>(java.lang.String,java.lang.Object)>("R.string.joinagame", null);
+
+        r0.<com.movesky.app.main.GameSetupScreen: com.movesky.app.engine.ui.UIButton clientButton> = $r5;
+
+        $r5 = r0.<com.movesky.app.main.GameSetupScreen: com.movesky.app.engine.ui.UIButton clientButton>;
+
+        $r6 = <com.movesky.app.engine.ui.Anchor: com.movesky.app.engine.ui.Anchor TOP_CENTER>;
+
+        virtualinvoke $r5.<com.movesky.app.engine.ui.UIButton: void setAnchor(com.movesky.app.engine.ui.Anchor)>($r6);
+
+        $r5 = r0.<com.movesky.app.main.GameSetupScreen: com.movesky.app.engine.ui.UIButton clientButton>;
+
+        virtualinvoke $r5.<com.movesky.app.engine.ui.UIButton: void setPosition(float,float)>(160.0F, 240.0F);
+
+        $r5 = r0.<com.movesky.app.main.GameSetupScreen: com.movesky.app.engine.ui.UIButton clientButton>;
+
+        virtualinvoke $r5.<com.movesky.app.engine.ui.UIButton: void setSize(float,float)>(240.0F, 45.0F);
+
+        $r5 = r0.<com.movesky.app.main.GameSetupScreen: com.movesky.app.engine.ui.UIButton clientButton>;
+
+        virtualinvoke $r5.<com.movesky.app.engine.ui.UIButton: void setButtonDelegate(com.movesky.app.engine.ui.UIButtonDelegate)>(r0);
+
+        $r5 = r0.<com.movesky.app.main.GameSetupScreen: com.movesky.app.engine.ui.UIButton clientButton>;
+
+        virtualinvoke r0.<com.movesky.app.main.GameSetupScreen: void addSubview(com.movesky.app.engine.ui.UIView)>($r5);
+
+        $r5 = new com.movesky.app.engine.ui.UIButton;
+
+        specialinvoke $r5.<com.movesky.app.engine.ui.UIButton: void <init>(java.lang.String,java.lang.Object)>("R.string.cancel", null);
+
+        r0.<com.movesky.app.main.GameSetupScreen: com.movesky.app.engine.ui.UIButton disconnectButton> = $r5;
+
+        $r5 = r0.<com.movesky.app.main.GameSetupScreen: com.movesky.app.engine.ui.UIButton disconnectButton>;
+
+        $r6 = <com.movesky.app.engine.ui.Anchor: com.movesky.app.engine.ui.Anchor TOP_CENTER>;
+
+        virtualinvoke $r5.<com.movesky.app.engine.ui.UIButton: void setAnchor(com.movesky.app.engine.ui.Anchor)>($r6);
+
+        $r5 = r0.<com.movesky.app.main.GameSetupScreen: com.movesky.app.engine.ui.UIButton disconnectButton>;
+
+        virtualinvoke $r5.<com.movesky.app.engine.ui.UIButton: void setPosition(float,float)>(160.0F, 305.0F);
+
+        $r5 = r0.<com.movesky.app.main.GameSetupScreen: com.movesky.app.engine.ui.UIButton disconnectButton>;
+
+        virtualinvoke $r5.<com.movesky.app.engine.ui.UIButton: void setSize(float,float)>(240.0F, 45.0F);
+
+        $r5 = r0.<com.movesky.app.main.GameSetupScreen: com.movesky.app.engine.ui.UIButton disconnectButton>;
+
+        virtualinvoke $r5.<com.movesky.app.engine.ui.UIButton: void setButtonDelegate(com.movesky.app.engine.ui.UIButtonDelegate)>(r0);
+
+        $r5 = r0.<com.movesky.app.main.GameSetupScreen: com.movesky.app.engine.ui.UIButton disconnectButton>;
+
+        $r5.<com.movesky.app.engine.ui.UIButton: boolean isDisabled> = 1;
+
+        $r5 = r0.<com.movesky.app.main.GameSetupScreen: com.movesky.app.engine.ui.UIButton disconnectButton>;
+
+        virtualinvoke r0.<com.movesky.app.main.GameSetupScreen: void addSubview(com.movesky.app.engine.ui.UIView)>($r5);
+
+        $r7 = new com.movesky.app.engine.ui.UILabel;
+
+        specialinvoke $r7.<com.movesky.app.engine.ui.UILabel: void <init>(java.lang.String,java.lang.Object)>("R.string.multiplayer", null);
+
+        r0.<com.movesky.app.main.GameSetupScreen: com.movesky.app.engine.ui.UILabel titleLabel> = $r7;
+
+        $r7 = r0.<com.movesky.app.main.GameSetupScreen: com.movesky.app.engine.ui.UILabel titleLabel>;
+
+        virtualinvoke $r7.<com.movesky.app.engine.ui.UILabel: void setTextSize(float)>(30.0F);
+
+        $r7 = r0.<com.movesky.app.main.GameSetupScreen: com.movesky.app.engine.ui.UILabel titleLabel>;
+
+        $r6 = <com.movesky.app.engine.ui.Anchor: com.movesky.app.engine.ui.Anchor TOP_CENTER>;
+
+        virtualinvoke $r7.<com.movesky.app.engine.ui.UILabel: void setAnchor(com.movesky.app.engine.ui.Anchor)>($r6);
+
+        $r7 = r0.<com.movesky.app.main.GameSetupScreen: com.movesky.app.engine.ui.UILabel titleLabel>;
+
+        virtualinvoke $r7.<com.movesky.app.engine.ui.UILabel: void setPosition(float,float)>(160.0F, 40.0F);
+
+        $r7 = r0.<com.movesky.app.main.GameSetupScreen: com.movesky.app.engine.ui.UILabel titleLabel>;
+
+        $r8 = <android.graphics.Paint$Align: android.graphics.Paint$Align CENTER>;
+
+        virtualinvoke $r7.<com.movesky.app.engine.ui.UILabel: void setTextAlign(android.graphics.Paint$Align)>($r8);
+
+        $r7 = r0.<com.movesky.app.main.GameSetupScreen: com.movesky.app.engine.ui.UILabel titleLabel>;
+
+        virtualinvoke r0.<com.movesky.app.main.GameSetupScreen: void addSubview(com.movesky.app.engine.ui.UIView)>($r7);
+
+        $r7 = new com.movesky.app.engine.ui.UILabel;
+
+        specialinvoke $r7.<com.movesky.app.engine.ui.UILabel: void <init>(java.lang.String)>("");
+
+        r0.<com.movesky.app.main.GameSetupScreen: com.movesky.app.engine.ui.UILabel deviceNameLabel> = $r7;
+
+        $r7 = r0.<com.movesky.app.main.GameSetupScreen: com.movesky.app.engine.ui.UILabel deviceNameLabel>;
+
+        virtualinvoke $r7.<com.movesky.app.engine.ui.UILabel: void setWrapText(boolean)>(1);
+
+        $r7 = r0.<com.movesky.app.main.GameSetupScreen: com.movesky.app.engine.ui.UILabel deviceNameLabel>;
+
+        $r6 = <com.movesky.app.engine.ui.Anchor: com.movesky.app.engine.ui.Anchor BOTTOM_CENTER>;
+
+        virtualinvoke $r7.<com.movesky.app.engine.ui.UILabel: void setAnchor(com.movesky.app.engine.ui.Anchor)>($r6);
+
+        $r7 = r0.<com.movesky.app.main.GameSetupScreen: com.movesky.app.engine.ui.UILabel deviceNameLabel>;
+
+        virtualinvoke $r7.<com.movesky.app.engine.ui.UILabel: void setTextSize(float)>(15.0F);
+
+        $r7 = r0.<com.movesky.app.main.GameSetupScreen: com.movesky.app.engine.ui.UILabel deviceNameLabel>;
+
+        virtualinvoke $r7.<com.movesky.app.engine.ui.UILabel: void setPosition(float,float)>(160.0F, 450.0F);
+
+        $r7 = r0.<com.movesky.app.main.GameSetupScreen: com.movesky.app.engine.ui.UILabel deviceNameLabel>;
+
+        virtualinvoke $r7.<com.movesky.app.engine.ui.UILabel: void setLineHeight(float)>(20.0F);
+
+        $r7 = r0.<com.movesky.app.main.GameSetupScreen: com.movesky.app.engine.ui.UILabel deviceNameLabel>;
+
+        virtualinvoke $r7.<com.movesky.app.engine.ui.UILabel: void setSize(float,float)>(320.0F, 0.0F);
+
+        $r7 = r0.<com.movesky.app.main.GameSetupScreen: com.movesky.app.engine.ui.UILabel deviceNameLabel>;
+
+        virtualinvoke r0.<com.movesky.app.main.GameSetupScreen: void addSubview(com.movesky.app.engine.ui.UIView)>($r7);
+
+        $r7 = new com.movesky.app.engine.ui.UILabel;
+
+        specialinvoke $r7.<com.movesky.app.engine.ui.UILabel: void <init>(java.lang.String,java.lang.Object)>("", null);
+
+        r0.<com.movesky.app.main.GameSetupScreen: com.movesky.app.engine.ui.UILabel statusLabel> = $r7;
+
+        $r7 = r0.<com.movesky.app.main.GameSetupScreen: com.movesky.app.engine.ui.UILabel statusLabel>;
+
+        virtualinvoke $r7.<com.movesky.app.engine.ui.UILabel: void setTextSize(float)>(15.0F);
+
+        $r7 = r0.<com.movesky.app.main.GameSetupScreen: com.movesky.app.engine.ui.UILabel statusLabel>;
+
+        virtualinvoke $r7.<com.movesky.app.engine.ui.UILabel: void setItalics(boolean)>(1);
+
+        $r7 = r0.<com.movesky.app.main.GameSetupScreen: com.movesky.app.engine.ui.UILabel statusLabel>;
+
+        $r6 = <com.movesky.app.engine.ui.Anchor: com.movesky.app.engine.ui.Anchor TOP_CENTER>;
+
+        virtualinvoke $r7.<com.movesky.app.engine.ui.UILabel: void setAnchor(com.movesky.app.engine.ui.Anchor)>($r6);
+
+        $r7 = r0.<com.movesky.app.main.GameSetupScreen: com.movesky.app.engine.ui.UILabel statusLabel>;
+
+        virtualinvoke $r7.<com.movesky.app.engine.ui.UILabel: void setPosition(float,float)>(160.0F, 110.0F);
+
+        $r7 = r0.<com.movesky.app.main.GameSetupScreen: com.movesky.app.engine.ui.UILabel statusLabel>;
+
+        virtualinvoke $r7.<com.movesky.app.engine.ui.UILabel: void setSize(float,float)>(310.0F, 10.0F);
+
+        $r7 = r0.<com.movesky.app.main.GameSetupScreen: com.movesky.app.engine.ui.UILabel statusLabel>;
+
+        $r8 = <android.graphics.Paint$Align: android.graphics.Paint$Align CENTER>;
+
+        virtualinvoke $r7.<com.movesky.app.engine.ui.UILabel: void setTextAlign(android.graphics.Paint$Align)>($r8);
+
+        $r7 = r0.<com.movesky.app.main.GameSetupScreen: com.movesky.app.engine.ui.UILabel statusLabel>;
+
+        virtualinvoke $r7.<com.movesky.app.engine.ui.UILabel: void setWrapText(boolean)>(1);
+
+        $r7 = r0.<com.movesky.app.main.GameSetupScreen: com.movesky.app.engine.ui.UILabel statusLabel>;
+
+        virtualinvoke r0.<com.movesky.app.main.GameSetupScreen: void addSubview(com.movesky.app.engine.ui.UIView)>($r7);
+
+        return;
+    }
+
+    public void onActivityResult(int, int)
+    {
+        com.movesky.app.main.GameSetupScreen r0;
+        int $i0, $i1;
+        com.movesky.app.engine.net.bluetooth.Bluetooth $r1;
+
+        r0 := @this: com.movesky.app.main.GameSetupScreen;
+
+        $i0 := @parameter0: int;
+
+        $i1 := @parameter1: int;
+
+        $r1 = r0.<com.movesky.app.main.GameSetupScreen: com.movesky.app.engine.net.bluetooth.Bluetooth bluetooth>;
+
+        virtualinvoke $r1.<com.movesky.app.engine.net.bluetooth.Bluetooth: void onActivityResult(int,int)>($i0, $i1);
+
+        return;
+    }
+
+    public void onClick(com.movesky.app.engine.ui.UIButton)
+    {
+        com.movesky.app.main.GameSetupScreen r0;
+        com.movesky.app.engine.ui.UIButton $r1, $r4;
+        com.movesky.app.engine.net.simulation.LockStepProtocol $r2;
+        com.movesky.app.engine.net.bluetooth.Bluetooth $r3;
+        com.movesky.app.engine.ui.UILabel $r5;
+        com.movesky.app.engine.ui.UINavigationController $r6, $r8;
+        com.movesky.app.main.ServerSelectScreen $r7;
+        com.movesky.app.engine.ui.UISwipeTransition $r9;
+
+        r0 := @this: com.movesky.app.main.GameSetupScreen;
+
+        $r1 := @parameter0: com.movesky.app.engine.ui.UIButton;
+
+        $r4 = r0.<com.movesky.app.main.GameSetupScreen: com.movesky.app.engine.ui.UIButton serverButton>;
+
+        if $r1 != $r4 goto label1;
+
+        $r3 = r0.<com.movesky.app.main.GameSetupScreen: com.movesky.app.engine.net.bluetooth.Bluetooth bluetooth>;
+
+        virtualinvoke $r3.<com.movesky.app.engine.net.bluetooth.Bluetooth: void listen()>();
+
+        $r5 = r0.<com.movesky.app.main.GameSetupScreen: com.movesky.app.engine.ui.UILabel deviceNameLabel>;
+
+        virtualinvoke $r5.<com.movesky.app.engine.ui.UILabel: void setText(java.lang.String)>("GameActivity.instance.getString(R.string.tellotherplayertoconnectto, bluetooth.getLocalName())");
+
+        return;
+
+     label1:
+        $r4 = r0.<com.movesky.app.main.GameSetupScreen: com.movesky.app.engine.ui.UIButton clientButton>;
+
+        if $r1 != $r4 goto label2;
+
+        $r6 = r0.<com.movesky.app.main.GameSetupScreen: com.movesky.app.engine.ui.UINavigationController controller>;
+
+        $r7 = new com.movesky.app.main.ServerSelectScreen;
+
+        $r8 = r0.<com.movesky.app.main.GameSetupScreen: com.movesky.app.engine.ui.UINavigationController controller>;
+
+        $r2 = r0.<com.movesky.app.main.GameSetupScreen: com.movesky.app.engine.net.simulation.LockStepProtocol protocol>;
+
+        $r3 = r0.<com.movesky.app.main.GameSetupScreen: com.movesky.app.engine.net.bluetooth.Bluetooth bluetooth>;
+
+        specialinvoke $r7.<com.movesky.app.main.ServerSelectScreen: void <init>(com.movesky.app.engine.ui.UINavigationController,com.movesky.app.engine.net.simulation.LockStepProtocol,com.movesky.app.engine.net.bluetooth.Bluetooth)>($r8, $r2, $r3);
+
+        $r9 = <com.movesky.app.main.YSGame: com.movesky.app.engine.ui.UISwipeTransition FROM_RIGHT_TRANSITION>;
+
+        virtualinvoke $r6.<com.movesky.app.engine.ui.UINavigationController: void push(com.movesky.app.engine.ui.UIView,com.movesky.app.engine.ui.UISwipeTransition)>($r7, $r9);
+
+        return;
+
+     label2:
+        $r4 = r0.<com.movesky.app.main.GameSetupScreen: com.movesky.app.engine.ui.UIButton disconnectButton>;
+
+        if $r1 != $r4 goto label3;
+
+        $r3 = r0.<com.movesky.app.main.GameSetupScreen: com.movesky.app.engine.net.bluetooth.Bluetooth bluetooth>;
+
+        virtualinvoke $r3.<com.movesky.app.engine.net.bluetooth.Bluetooth: void disconnect()>();
+
+     label3:
+        return;
+    }
+
+    public void onUpdate(float)
+    {
+        com.movesky.app.main.GameSetupScreen r0;
+        float $f0;
+        com.movesky.app.engine.net.simulation.LockStepProtocol $r1;
+        com.movesky.app.engine.ui.UINavigationController $r2, $r11;
+        boolean $z0, $z1, $z2;
+        com.movesky.app.engine.net.bluetooth.Bluetooth $r3;
+        java.lang.String $r4, $r5;
+        com.movesky.app.engine.ui.UILabel $r6;
+        com.movesky.app.engine.net.bluetooth.State $r7, $r8;
+        com.movesky.app.engine.ui.UIButton $r9;
+        com.movesky.app.main.SongSelectionScreen $r10;
+        com.movesky.app.main.Team $r12;
+        com.movesky.app.engine.ui.UISwipeTransition $r13;
+
+        r0 := @this: com.movesky.app.main.GameSetupScreen;
+
+        $f0 := @parameter0: float;
+
+        $z0 = 1;
+
+        $r3 = r0.<com.movesky.app.main.GameSetupScreen: com.movesky.app.engine.net.bluetooth.Bluetooth bluetooth>;
+
+        $r4 = virtualinvoke $r3.<com.movesky.app.engine.net.bluetooth.Bluetooth: java.lang.String getString()>();
+
+        $r5 = r0.<com.movesky.app.main.GameSetupScreen: java.lang.String currentStatus>;
+
+        if $r4 == $r5 goto label02;
+
+        $r6 = r0.<com.movesky.app.main.GameSetupScreen: com.movesky.app.engine.ui.UILabel statusLabel>;
+
+        if $r4 != null goto label07;
+
+        $r5 = "";
+
+     label01:
+        virtualinvoke $r6.<com.movesky.app.engine.ui.UILabel: void setText(java.lang.String)>($r5);
+
+        r0.<com.movesky.app.main.GameSetupScreen: java.lang.String currentStatus> = $r4;
+
+     label02:
+        $r3 = r0.<com.movesky.app.main.GameSetupScreen: com.movesky.app.engine.net.bluetooth.Bluetooth bluetooth>;
+
+        $r7 = virtualinvoke $r3.<com.movesky.app.engine.net.bluetooth.Bluetooth: com.movesky.app.engine.net.bluetooth.State getState()>();
+
+        $r8 = <com.movesky.app.engine.net.bluetooth.State: com.movesky.app.engine.net.bluetooth.State DISCONNECTED>;
+
+        if $r7 != $r8 goto label08;
+
+        $z1 = 1;
+
+     label03:
+        $r9 = r0.<com.movesky.app.main.GameSetupScreen: com.movesky.app.engine.ui.UIButton serverButton>;
+
+        if $z1 != 0 goto label09;
+
+        $z2 = 1;
+
+     label04:
+        $r9.<com.movesky.app.engine.ui.UIButton: boolean isDisabled> = $z2;
+
+        $r9 = r0.<com.movesky.app.main.GameSetupScreen: com.movesky.app.engine.ui.UIButton clientButton>;
+
+        if $z1 != 0 goto label10;
+
+     label05:
+        $r9.<com.movesky.app.engine.ui.UIButton: boolean isDisabled> = $z0;
+
+        $r9 = r0.<com.movesky.app.main.GameSetupScreen: com.movesky.app.engine.ui.UIButton disconnectButton>;
+
+        $r9.<com.movesky.app.engine.ui.UIButton: boolean isDisabled> = $z1;
+
+        $r3 = r0.<com.movesky.app.main.GameSetupScreen: com.movesky.app.engine.net.bluetooth.Bluetooth bluetooth>;
+
+        $r7 = virtualinvoke $r3.<com.movesky.app.engine.net.bluetooth.Bluetooth: com.movesky.app.engine.net.bluetooth.State getState()>();
+
+        $r8 = <com.movesky.app.engine.net.bluetooth.State: com.movesky.app.engine.net.bluetooth.State CONNECTED>;
+
+        if $r7 != $r8 goto label06;
+
+        $r2 = r0.<com.movesky.app.main.GameSetupScreen: com.movesky.app.engine.ui.UINavigationController controller>;
+
+        $r10 = new com.movesky.app.main.SongSelectionScreen;
+
+        $r11 = r0.<com.movesky.app.main.GameSetupScreen: com.movesky.app.engine.ui.UINavigationController controller>;
+
+        $r12 = <com.movesky.app.main.Team: com.movesky.app.main.Team SERVER>;
+
+        $r3 = r0.<com.movesky.app.main.GameSetupScreen: com.movesky.app.engine.net.bluetooth.Bluetooth bluetooth>;
+
+        $r1 = r0.<com.movesky.app.main.GameSetupScreen: com.movesky.app.engine.net.simulation.LockStepProtocol protocol>;
+
+        specialinvoke $r10.<com.movesky.app.main.SongSelectionScreen: void <init>(com.movesky.app.engine.ui.UINavigationController,com.movesky.app.main.Team,com.movesky.app.engine.net.bluetooth.Bluetooth,com.movesky.app.engine.net.simulation.LockStepProtocol,boolean)>($r11, $r12, $r3, $r1, 0);
+
+        virtualinvoke $r2.<com.movesky.app.engine.ui.UINavigationController: void pushUnder(com.movesky.app.engine.ui.UIView)>($r10);
+
+        $r2 = r0.<com.movesky.app.main.GameSetupScreen: com.movesky.app.engine.ui.UINavigationController controller>;
+
+        $r13 = <com.movesky.app.main.YSGame: com.movesky.app.engine.ui.UISwipeTransition FROM_RIGHT_TRANSITION>;
+
+        virtualinvoke $r2.<com.movesky.app.engine.ui.UINavigationController: boolean pop(com.movesky.app.engine.ui.UISwipeTransition)>($r13);
+
+     label06:
+        $r3 = r0.<com.movesky.app.main.GameSetupScreen: com.movesky.app.engine.net.bluetooth.Bluetooth bluetooth>;
+
+        $r7 = virtualinvoke $r3.<com.movesky.app.engine.net.bluetooth.Bluetooth: com.movesky.app.engine.net.bluetooth.State getState()>();
+
+        $r8 = <com.movesky.app.engine.net.bluetooth.State: com.movesky.app.engine.net.bluetooth.State LISTEN_FOR_CONNECTIONS>;
+
+        if $r7 == $r8 goto label11;
+
+        $r6 = r0.<com.movesky.app.main.GameSetupScreen: com.movesky.app.engine.ui.UILabel deviceNameLabel>;
+
+        virtualinvoke $r6.<com.movesky.app.engine.ui.UILabel: void setText(java.lang.String)>("");
+
+        return;
+
+     label07:
+        $r5 = $r4;
+
+        goto label01;
+
+     label08:
+        $z1 = 0;
+
+        goto label03;
+
+     label09:
+        $z2 = 0;
+
+        goto label04;
+
+     label10:
+        $z0 = 0;
+
+        goto label05;
+
+     label11:
+        return;
+    }
+
+    public void willAppear(boolean)
+    {
+        com.movesky.app.main.GameSetupScreen r0;
+        boolean $z0;
+        com.movesky.app.engine.net.bluetooth.Bluetooth $r1;
+
+        r0 := @this: com.movesky.app.main.GameSetupScreen;
+
+        $z0 := @parameter0: boolean;
+
+        specialinvoke r0.<com.movesky.app.engine.ui.UIView: void willAppear(boolean)>($z0);
+
+        $r1 = r0.<com.movesky.app.main.GameSetupScreen: com.movesky.app.engine.net.bluetooth.Bluetooth bluetooth>;
+
+        virtualinvoke $r1.<com.movesky.app.engine.net.bluetooth.Bluetooth: void disconnect()>();
+
+        return;
+    }
+}

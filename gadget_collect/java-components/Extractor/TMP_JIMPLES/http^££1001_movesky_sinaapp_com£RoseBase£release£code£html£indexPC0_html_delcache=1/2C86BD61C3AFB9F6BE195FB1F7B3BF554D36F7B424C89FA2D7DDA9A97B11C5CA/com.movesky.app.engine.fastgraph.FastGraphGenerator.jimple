@@ -1,0 +1,210 @@
+public class com.movesky.app.engine.fastgraph.FastGraphGenerator extends java.lang.Object
+{
+    private static final android.graphics.Paint paint;
+    public final com.movesky.app.engine.ai.ConnectedGraph graph;
+    public float radius;
+    public final java.util.ArrayList walls;
+
+    static void <clinit>()
+    {
+        android.graphics.Paint $r0;
+
+        $r0 = new android.graphics.Paint;
+
+        specialinvoke $r0.<android.graphics.Paint: void <init>()>();
+
+        <com.movesky.app.engine.fastgraph.FastGraphGenerator: android.graphics.Paint paint> = $r0;
+
+        return;
+    }
+
+    public void <init>(float, float, float)
+    {
+        com.movesky.app.engine.fastgraph.FastGraphGenerator r0;
+        float $f0, $f1, $f2;
+        com.movesky.app.engine.ai.ConnectedGraph $r1;
+        java.util.ArrayList $r2;
+        com.movesky.app.engine.fastgraph.Wall $r3;
+
+        r0 := @this: com.movesky.app.engine.fastgraph.FastGraphGenerator;
+
+        $f0 := @parameter0: float;
+
+        $f1 := @parameter1: float;
+
+        $f2 := @parameter2: float;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        $r1 = new com.movesky.app.engine.ai.ConnectedGraph;
+
+        specialinvoke $r1.<com.movesky.app.engine.ai.ConnectedGraph: void <init>()>();
+
+        r0.<com.movesky.app.engine.fastgraph.FastGraphGenerator: com.movesky.app.engine.ai.ConnectedGraph graph> = $r1;
+
+        $r2 = new java.util.ArrayList;
+
+        specialinvoke $r2.<java.util.ArrayList: void <init>()>();
+
+        r0.<com.movesky.app.engine.fastgraph.FastGraphGenerator: java.util.ArrayList walls> = $r2;
+
+        r0.<com.movesky.app.engine.fastgraph.FastGraphGenerator: float radius> = 15.0F;
+
+        $r2 = r0.<com.movesky.app.engine.fastgraph.FastGraphGenerator: java.util.ArrayList walls>;
+
+        $r3 = new com.movesky.app.engine.fastgraph.Wall;
+
+        specialinvoke $r3.<com.movesky.app.engine.fastgraph.Wall: void <init>(float,float,float,float)>(0.0F, 0.0F, 0.0F, 530.0F);
+
+        virtualinvoke $r2.<java.util.ArrayList: boolean add(java.lang.Object)>($r3);
+
+        $r2 = r0.<com.movesky.app.engine.fastgraph.FastGraphGenerator: java.util.ArrayList walls>;
+
+        $r3 = new com.movesky.app.engine.fastgraph.Wall;
+
+        specialinvoke $r3.<com.movesky.app.engine.fastgraph.Wall: void <init>(float,float,float,float)>(320.0F, 0.0F, 320.0F, 530.0F);
+
+        virtualinvoke $r2.<java.util.ArrayList: boolean add(java.lang.Object)>($r3);
+
+        $r2 = r0.<com.movesky.app.engine.fastgraph.FastGraphGenerator: java.util.ArrayList walls>;
+
+        $r3 = new com.movesky.app.engine.fastgraph.Wall;
+
+        specialinvoke $r3.<com.movesky.app.engine.fastgraph.Wall: void <init>(float,float,float,float)>(0.0F, 0.0F, 320.0F, 0.0F);
+
+        virtualinvoke $r2.<java.util.ArrayList: boolean add(java.lang.Object)>($r3);
+
+        $r2 = r0.<com.movesky.app.engine.fastgraph.FastGraphGenerator: java.util.ArrayList walls>;
+
+        $r3 = new com.movesky.app.engine.fastgraph.Wall;
+
+        specialinvoke $r3.<com.movesky.app.engine.fastgraph.Wall: void <init>(float,float,float,float)>(0.0F, 530.0F, 320.0F, 530.0F);
+
+        virtualinvoke $r2.<java.util.ArrayList: boolean add(java.lang.Object)>($r3);
+
+        return;
+    }
+
+    public void compute()
+    {
+        com.movesky.app.engine.fastgraph.FastGraphGenerator r0;
+        java.util.ArrayList $r1, $r2;
+        float $f0;
+        int $i0, $i1;
+        java.lang.Object $r3;
+        com.movesky.app.engine.fastgraph.Wall $r4;
+
+        r0 := @this: com.movesky.app.engine.fastgraph.FastGraphGenerator;
+
+        $r1 = new java.util.ArrayList;
+
+        specialinvoke $r1.<java.util.ArrayList: void <init>()>();
+
+        $r2 = r0.<com.movesky.app.engine.fastgraph.FastGraphGenerator: java.util.ArrayList walls>;
+
+        $i0 = virtualinvoke $r2.<java.util.ArrayList: int size()>();
+
+        $i1 = 0;
+
+     label1:
+        if $i1 >= $i0 goto label2;
+
+        $r2 = r0.<com.movesky.app.engine.fastgraph.FastGraphGenerator: java.util.ArrayList walls>;
+
+        $r3 = virtualinvoke $r2.<java.util.ArrayList: java.lang.Object get(int)>($i1);
+
+        $r4 = (com.movesky.app.engine.fastgraph.Wall) $r3;
+
+        $f0 = r0.<com.movesky.app.engine.fastgraph.FastGraphGenerator: float radius>;
+
+        virtualinvoke $r4.<com.movesky.app.engine.fastgraph.Wall: void addPoints(java.util.ArrayList,float)>($r1, $f0);
+
+        $i1 = $i1 + 1;
+
+        goto label1;
+
+     label2:
+        return;
+    }
+
+    public void draw(android.graphics.Canvas)
+    {
+        com.movesky.app.engine.fastgraph.FastGraphGenerator r0;
+        android.graphics.Canvas $r1;
+        float $f0, $f1, $f2, $f3;
+        android.graphics.Paint $r2;
+        com.movesky.app.engine.ai.ConnectedGraph $r3;
+        java.util.HashMap $r4;
+        java.util.Set $r5;
+        java.util.Iterator $r6, $r10;
+        boolean $z0;
+        java.lang.Object $r7;
+        com.movesky.app.engine.util.Point $r8, $r11;
+        java.util.ArrayList $r9;
+
+        r0 := @this: com.movesky.app.engine.fastgraph.FastGraphGenerator;
+
+        $r1 := @parameter0: android.graphics.Canvas;
+
+        $r2 = <com.movesky.app.engine.fastgraph.FastGraphGenerator: android.graphics.Paint paint>;
+
+        virtualinvoke $r2.<android.graphics.Paint: void setAntiAlias(boolean)>(1);
+
+        $r2 = <com.movesky.app.engine.fastgraph.FastGraphGenerator: android.graphics.Paint paint>;
+
+        virtualinvoke $r2.<android.graphics.Paint: void setColor(int)>(-16711936);
+
+        $r3 = r0.<com.movesky.app.engine.fastgraph.FastGraphGenerator: com.movesky.app.engine.ai.ConnectedGraph graph>;
+
+        $r4 = $r3.<com.movesky.app.engine.ai.ConnectedGraph: java.util.HashMap m_connections>;
+
+        $r5 = virtualinvoke $r4.<java.util.HashMap: java.util.Set keySet()>();
+
+        $r6 = interfaceinvoke $r5.<java.util.Set: java.util.Iterator iterator()>();
+
+     label1:
+        $z0 = interfaceinvoke $r6.<java.util.Iterator: boolean hasNext()>();
+
+        if $z0 == 0 goto label3;
+
+        $r7 = interfaceinvoke $r6.<java.util.Iterator: java.lang.Object next()>();
+
+        $r8 = (com.movesky.app.engine.util.Point) $r7;
+
+        $r3 = r0.<com.movesky.app.engine.fastgraph.FastGraphGenerator: com.movesky.app.engine.ai.ConnectedGraph graph>;
+
+        $r4 = $r3.<com.movesky.app.engine.ai.ConnectedGraph: java.util.HashMap m_connections>;
+
+        $r7 = virtualinvoke $r4.<java.util.HashMap: java.lang.Object get(java.lang.Object)>($r8);
+
+        $r9 = (java.util.ArrayList) $r7;
+
+        $r10 = virtualinvoke $r9.<java.util.ArrayList: java.util.Iterator iterator()>();
+
+     label2:
+        $z0 = interfaceinvoke $r10.<java.util.Iterator: boolean hasNext()>();
+
+        if $z0 == 0 goto label1;
+
+        $r7 = interfaceinvoke $r10.<java.util.Iterator: java.lang.Object next()>();
+
+        $r11 = (com.movesky.app.engine.util.Point) $r7;
+
+        $f3 = $r8.<com.movesky.app.engine.util.Point: float x>;
+
+        $f0 = $r8.<com.movesky.app.engine.util.Point: float y>;
+
+        $f1 = $r11.<com.movesky.app.engine.util.Point: float x>;
+
+        $f2 = $r11.<com.movesky.app.engine.util.Point: float y>;
+
+        $r2 = <com.movesky.app.engine.fastgraph.FastGraphGenerator: android.graphics.Paint paint>;
+
+        virtualinvoke $r1.<android.graphics.Canvas: void drawLine(float,float,float,float,android.graphics.Paint)>($f3, $f0, $f1, $f2, $r2);
+
+        goto label2;
+
+     label3:
+        return;
+    }
+}

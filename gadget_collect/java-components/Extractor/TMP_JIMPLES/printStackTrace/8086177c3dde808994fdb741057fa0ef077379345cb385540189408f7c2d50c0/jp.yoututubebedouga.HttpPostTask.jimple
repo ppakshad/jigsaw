@@ -1,0 +1,379 @@
+public class jp.yoututubebedouga.HttpPostTask extends android.os.AsyncTask
+{
+    private android.app.ProgressDialog dialog;
+    private java.lang.String http_err_msg;
+    private java.lang.String http_ret_msg;
+    private android.app.Activity parent_activity;
+    private java.util.List post_params;
+    private java.lang.String post_url;
+    private java.lang.String request_encoding;
+    private java.lang.String response_encoding;
+    private org.apache.http.client.ResponseHandler response_handler;
+    private android.os.Handler ui_handler;
+
+    public void <init>(android.app.Activity, java.lang.String, android.os.Handler)
+    {
+        jp.yoututubebedouga.HttpPostTask r0;
+        android.os.Handler $r3;
+        java.lang.String $r2;
+        android.app.Activity $r1;
+        java.util.ArrayList $r4;
+
+        r0 := @this: jp.yoututubebedouga.HttpPostTask;
+
+        $r1 := @parameter0: android.app.Activity;
+
+        $r2 := @parameter1: java.lang.String;
+
+        $r3 := @parameter2: android.os.Handler;
+
+        specialinvoke r0.<android.os.AsyncTask: void <init>()>();
+
+        r0.<jp.yoututubebedouga.HttpPostTask: java.lang.String request_encoding> = "UTF-8";
+
+        r0.<jp.yoututubebedouga.HttpPostTask: java.lang.String response_encoding> = "UTF-8";
+
+        r0.<jp.yoututubebedouga.HttpPostTask: android.app.Activity parent_activity> = null;
+
+        r0.<jp.yoututubebedouga.HttpPostTask: java.lang.String post_url> = null;
+
+        r0.<jp.yoututubebedouga.HttpPostTask: android.os.Handler ui_handler> = null;
+
+        r0.<jp.yoututubebedouga.HttpPostTask: java.util.List post_params> = null;
+
+        r0.<jp.yoututubebedouga.HttpPostTask: org.apache.http.client.ResponseHandler response_handler> = null;
+
+        r0.<jp.yoututubebedouga.HttpPostTask: java.lang.String http_err_msg> = null;
+
+        r0.<jp.yoututubebedouga.HttpPostTask: java.lang.String http_ret_msg> = null;
+
+        r0.<jp.yoututubebedouga.HttpPostTask: android.app.ProgressDialog dialog> = null;
+
+        r0.<jp.yoututubebedouga.HttpPostTask: android.app.Activity parent_activity> = $r1;
+
+        r0.<jp.yoututubebedouga.HttpPostTask: java.lang.String post_url> = $r2;
+
+        r0.<jp.yoututubebedouga.HttpPostTask: android.os.Handler ui_handler> = $r3;
+
+        $r4 = new java.util.ArrayList;
+
+        specialinvoke $r4.<java.util.ArrayList: void <init>()>();
+
+        r0.<jp.yoututubebedouga.HttpPostTask: java.util.List post_params> = $r4;
+
+        return;
+    }
+
+    static java.lang.String access$2(jp.yoututubebedouga.HttpPostTask)
+    {
+        java.lang.String r1;
+        jp.yoututubebedouga.HttpPostTask $r0;
+
+        $r0 := @parameter0: jp.yoututubebedouga.HttpPostTask;
+
+        r1 = $r0.<jp.yoututubebedouga.HttpPostTask: java.lang.String response_encoding>;
+
+        return r1;
+    }
+
+    static void access$3(jp.yoututubebedouga.HttpPostTask, java.lang.String)
+    {
+        java.lang.String $r1;
+        jp.yoututubebedouga.HttpPostTask $r0;
+
+        $r0 := @parameter0: jp.yoututubebedouga.HttpPostTask;
+
+        $r1 := @parameter1: java.lang.String;
+
+        $r0.<jp.yoututubebedouga.HttpPostTask: java.lang.String http_ret_msg> = $r1;
+
+        return;
+    }
+
+    static void access$4(jp.yoututubebedouga.HttpPostTask, java.lang.String)
+    {
+        java.lang.String $r1;
+        jp.yoututubebedouga.HttpPostTask $r0;
+
+        $r0 := @parameter0: jp.yoututubebedouga.HttpPostTask;
+
+        $r1 := @parameter1: java.lang.String;
+
+        $r0.<jp.yoututubebedouga.HttpPostTask: java.lang.String http_err_msg> = $r1;
+
+        return;
+    }
+
+    public void addPostParam(java.lang.String, java.lang.String)
+    {
+        org.apache.http.message.BasicNameValuePair $r4;
+        java.util.List $r3;
+        jp.yoututubebedouga.HttpPostTask r0;
+        java.lang.String $r1, $r2;
+
+        r0 := @this: jp.yoututubebedouga.HttpPostTask;
+
+        $r1 := @parameter0: java.lang.String;
+
+        $r2 := @parameter1: java.lang.String;
+
+        $r3 = r0.<jp.yoututubebedouga.HttpPostTask: java.util.List post_params>;
+
+        $r4 = new org.apache.http.message.BasicNameValuePair;
+
+        specialinvoke $r4.<org.apache.http.message.BasicNameValuePair: void <init>(java.lang.String,java.lang.String)>($r1, $r2);
+
+        interfaceinvoke $r3.<java.util.List: boolean add(java.lang.Object)>($r4);
+
+        return;
+    }
+
+    protected transient volatile java.lang.Object doInBackground(java.lang.Object[])
+    {
+        java.lang.Void $r1;
+        java.lang.Object[] $r2;
+        jp.yoututubebedouga.HttpPostTask r0;
+        java.lang.Void[] $r3;
+
+        r0 := @this: jp.yoututubebedouga.HttpPostTask;
+
+        $r2 := @parameter0: java.lang.Object[];
+
+        $r3 = (java.lang.Void[]) $r2;
+
+        $r1 = virtualinvoke r0.<jp.yoututubebedouga.HttpPostTask: java.lang.Void doInBackground(java.lang.Void[])>($r3);
+
+        return $r1;
+    }
+
+    protected transient java.lang.Void doInBackground(java.lang.Void[])
+    {
+        java.lang.Throwable r2, r9, r10, r11;
+        org.apache.http.impl.client.DefaultHttpClient r3, $r15;
+        org.apache.http.client.ClientProtocolException $r20;
+        org.apache.http.client.methods.HttpPost r4, $r13;
+        org.apache.http.client.entity.UrlEncodedFormEntity $r14;
+        java.net.URISyntaxException $r18;
+        org.apache.http.client.methods.HttpUriRequest $r17;
+        java.lang.String $r6;
+        java.net.URI $r12;
+        java.lang.Void[] $r1;
+        org.apache.http.conn.ClientConnectionManager $r7;
+        org.apache.http.HttpEntity $r16;
+        java.io.IOException $r21;
+        java.util.List $r5;
+        jp.yoututubebedouga.HttpPostTask r0;
+        org.apache.http.client.ResponseHandler $r8;
+        java.io.UnsupportedEncodingException $r19;
+
+        r0 := @this: jp.yoututubebedouga.HttpPostTask;
+
+        $r1 := @parameter0: java.lang.Void[];
+
+        $r12 = new java.net.URI;
+
+        $r6 = r0.<jp.yoututubebedouga.HttpPostTask: java.lang.String post_url>;
+
+     label01:
+        specialinvoke $r12.<java.net.URI: void <init>(java.lang.String)>($r6);
+
+     label02:
+        $r13 = new org.apache.http.client.methods.HttpPost;
+
+        r4 = $r13;
+
+        specialinvoke $r13.<org.apache.http.client.methods.HttpPost: void <init>(java.net.URI)>($r12);
+
+        $r14 = new org.apache.http.client.entity.UrlEncodedFormEntity;
+
+        $r5 = r0.<jp.yoututubebedouga.HttpPostTask: java.util.List post_params>;
+
+        $r6 = r0.<jp.yoututubebedouga.HttpPostTask: java.lang.String request_encoding>;
+
+     label03:
+        specialinvoke $r14.<org.apache.http.client.entity.UrlEncodedFormEntity: void <init>(java.util.List,java.lang.String)>($r5, $r6);
+
+     label04:
+        $r16 = (org.apache.http.HttpEntity) $r14;
+
+     label05:
+        virtualinvoke r4.<org.apache.http.client.methods.HttpPost: void setEntity(org.apache.http.HttpEntity)>($r16);
+
+     label06:
+        $r15 = new org.apache.http.impl.client.DefaultHttpClient;
+
+        r3 = $r15;
+
+        specialinvoke $r15.<org.apache.http.impl.client.DefaultHttpClient: void <init>()>();
+
+        $r8 = r0.<jp.yoututubebedouga.HttpPostTask: org.apache.http.client.ResponseHandler response_handler>;
+
+        $r17 = (org.apache.http.client.methods.HttpUriRequest) r4;
+
+     label07:
+        virtualinvoke r3.<org.apache.http.impl.client.DefaultHttpClient: java.lang.Object execute(org.apache.http.client.methods.HttpUriRequest,org.apache.http.client.ResponseHandler)>($r17, $r8);
+
+     label08:
+        $r7 = virtualinvoke r3.<org.apache.http.impl.client.DefaultHttpClient: org.apache.http.conn.ClientConnectionManager getConnectionManager()>();
+
+        interfaceinvoke $r7.<org.apache.http.conn.ClientConnectionManager: void shutdown()>();
+
+        return null;
+
+     label09:
+        r9 := @caughtexception;
+
+        $r18 = (java.net.URISyntaxException) r9;
+
+        virtualinvoke $r18.<java.net.URISyntaxException: void printStackTrace()>();
+
+        r0.<jp.yoututubebedouga.HttpPostTask: java.lang.String http_err_msg> = "\u4e0d\u6b63\u306aURL";
+
+        return null;
+
+     label10:
+        r2 := @caughtexception;
+
+        $r19 = (java.io.UnsupportedEncodingException) r2;
+
+        virtualinvoke $r19.<java.io.UnsupportedEncodingException: void printStackTrace()>();
+
+        r0.<jp.yoututubebedouga.HttpPostTask: java.lang.String http_err_msg> = "\u4e0d\u6b63\u306a\u6587\u5b57\u30b3\u30fc\u30c9";
+
+        return null;
+
+     label11:
+        r10 := @caughtexception;
+
+        $r20 = (org.apache.http.client.ClientProtocolException) r10;
+
+        virtualinvoke $r20.<org.apache.http.client.ClientProtocolException: void printStackTrace()>();
+
+        r0.<jp.yoututubebedouga.HttpPostTask: java.lang.String http_err_msg> = "\u30d7\u30ed\u30c8\u30b3\u30eb\u306e\u30a8\u30e9\u30fc";
+
+        goto label08;
+
+     label12:
+        r11 := @caughtexception;
+
+        $r21 = (java.io.IOException) r11;
+
+        virtualinvoke $r21.<java.io.IOException: void printStackTrace()>();
+
+        r0.<jp.yoututubebedouga.HttpPostTask: java.lang.String http_err_msg> = "IO\u30a8\u30e9\u30fc";
+
+        goto label08;
+
+        catch java.net.URISyntaxException from label01 to label02 with label09;
+        catch java.io.UnsupportedEncodingException from label03 to label04 with label10;
+        catch java.io.UnsupportedEncodingException from label05 to label06 with label10;
+        catch org.apache.http.client.ClientProtocolException from label07 to label08 with label11;
+        catch java.io.IOException from label07 to label08 with label12;
+    }
+
+    protected volatile void onPostExecute(java.lang.Object)
+    {
+        java.lang.Void $r2;
+        java.lang.Object $r1;
+        jp.yoututubebedouga.HttpPostTask r0;
+
+        r0 := @this: jp.yoututubebedouga.HttpPostTask;
+
+        $r1 := @parameter0: java.lang.Object;
+
+        $r2 = (java.lang.Void) $r1;
+
+        virtualinvoke r0.<jp.yoututubebedouga.HttpPostTask: void onPostExecute(java.lang.Void)>($r2);
+
+        return;
+    }
+
+    protected void onPostExecute(java.lang.Void)
+    {
+        java.lang.Void $r1;
+        android.os.Bundle r2;
+        android.os.Message r3;
+        jp.yoututubebedouga.HttpPostTask r0;
+        android.os.Handler $r6;
+        android.app.ProgressDialog $r4;
+        java.lang.String $r5;
+
+        r0 := @this: jp.yoututubebedouga.HttpPostTask;
+
+        $r1 := @parameter0: java.lang.Void;
+
+        $r4 = r0.<jp.yoututubebedouga.HttpPostTask: android.app.ProgressDialog dialog>;
+
+        virtualinvoke $r4.<android.app.ProgressDialog: void dismiss()>();
+
+        r3 = new android.os.Message;
+
+        specialinvoke r3.<android.os.Message: void <init>()>();
+
+        r2 = new android.os.Bundle;
+
+        specialinvoke r2.<android.os.Bundle: void <init>()>();
+
+        $r5 = r0.<jp.yoututubebedouga.HttpPostTask: java.lang.String http_err_msg>;
+
+        if $r5 == null goto label2;
+
+        virtualinvoke r2.<android.os.Bundle: void putBoolean(java.lang.String,boolean)>("http_post_success", 0);
+
+        $r5 = r0.<jp.yoututubebedouga.HttpPostTask: java.lang.String http_err_msg>;
+
+        virtualinvoke r2.<android.os.Bundle: void putString(java.lang.String,java.lang.String)>("http_response", $r5);
+
+     label1:
+        virtualinvoke r3.<android.os.Message: void setData(android.os.Bundle)>(r2);
+
+        $r6 = r0.<jp.yoututubebedouga.HttpPostTask: android.os.Handler ui_handler>;
+
+        virtualinvoke $r6.<android.os.Handler: boolean sendMessage(android.os.Message)>(r3);
+
+        return;
+
+     label2:
+        virtualinvoke r2.<android.os.Bundle: void putBoolean(java.lang.String,boolean)>("http_post_success", 1);
+
+        $r5 = r0.<jp.yoututubebedouga.HttpPostTask: java.lang.String http_ret_msg>;
+
+        virtualinvoke r2.<android.os.Bundle: void putString(java.lang.String,java.lang.String)>("http_response", $r5);
+
+        goto label1;
+    }
+
+    protected void onPreExecute()
+    {
+        jp.yoututubebedouga.HttpPostTask r0;
+        jp.yoututubebedouga.HttpPostTask$1 $r3;
+        android.app.ProgressDialog $r1;
+        android.app.Activity $r2;
+
+        r0 := @this: jp.yoututubebedouga.HttpPostTask;
+
+        $r1 = new android.app.ProgressDialog;
+
+        $r2 = r0.<jp.yoututubebedouga.HttpPostTask: android.app.Activity parent_activity>;
+
+        specialinvoke $r1.<android.app.ProgressDialog: void <init>(android.content.Context)>($r2);
+
+        r0.<jp.yoututubebedouga.HttpPostTask: android.app.ProgressDialog dialog> = $r1;
+
+        $r1 = r0.<jp.yoututubebedouga.HttpPostTask: android.app.ProgressDialog dialog>;
+
+        virtualinvoke $r1.<android.app.ProgressDialog: void setMessage(java.lang.CharSequence)>("\u901a\u4fe1\u4e2d\u30fb\u30fb\u30fb");
+
+        $r1 = r0.<jp.yoututubebedouga.HttpPostTask: android.app.ProgressDialog dialog>;
+
+        virtualinvoke $r1.<android.app.ProgressDialog: void show()>();
+
+        $r3 = new jp.yoututubebedouga.HttpPostTask$1;
+
+        specialinvoke $r3.<jp.yoututubebedouga.HttpPostTask$1: void <init>(jp.yoututubebedouga.HttpPostTask)>(r0);
+
+        r0.<jp.yoututubebedouga.HttpPostTask: org.apache.http.client.ResponseHandler response_handler> = $r3;
+
+        return;
+    }
+}

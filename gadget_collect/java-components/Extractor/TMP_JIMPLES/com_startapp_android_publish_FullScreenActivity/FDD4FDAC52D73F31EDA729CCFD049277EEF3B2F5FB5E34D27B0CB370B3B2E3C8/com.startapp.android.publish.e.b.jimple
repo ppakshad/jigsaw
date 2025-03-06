@@ -1,0 +1,246 @@
+public class com.startapp.android.publish.e.b extends java.io.OutputStream
+{
+    private java.io.OutputStream a;
+
+    public void <init>(java.io.OutputStream)
+    {
+        com.startapp.android.publish.e.b r0;
+        java.io.OutputStream $r1;
+
+        r0 := @this: com.startapp.android.publish.e.b;
+
+        $r1 := @parameter0: java.io.OutputStream;
+
+        specialinvoke r0.<java.io.OutputStream: void <init>()>();
+
+        r0.<com.startapp.android.publish.e.b: java.io.OutputStream a> = $r1;
+
+        return;
+    }
+
+    public final void a(java.lang.Object)
+    {
+        com.startapp.android.publish.e.b r0;
+        java.lang.Object $r1, $r7;
+        int $i0, $i1, $i2;
+        java.lang.Class $r2;
+        java.lang.reflect.Field[] $r3;
+        java.lang.reflect.Field $r5;
+        boolean $z0;
+        java.lang.String $r6;
+        java.lang.Throwable $r8, $r11, $r14;
+        java.lang.Object[] $r9;
+        org.json.JSONException $r10;
+        java.io.OutputStream $r12;
+        byte[] $r13;
+        org.json.JSONObject $r15;
+        java.lang.IllegalArgumentException $r16;
+        java.lang.IllegalAccessException $r17;
+        java.io.IOException $r18;
+
+        r0 := @this: com.startapp.android.publish.e.b;
+
+        $r1 := @parameter0: java.lang.Object;
+
+        $r2 = virtualinvoke $r1.<java.lang.Object: java.lang.Class getClass()>();
+
+        $r3 = virtualinvoke $r2.<java.lang.Class: java.lang.reflect.Field[] getDeclaredFields()>();
+
+        $r15 = new org.json.JSONObject;
+
+        specialinvoke $r15.<org.json.JSONObject: void <init>()>();
+
+        $i0 = lengthof $r3;
+
+        $i1 = 0;
+
+     label01:
+        if $i1 >= $i0 goto label08;
+
+        $r5 = $r3[$i1];
+
+        $i2 = virtualinvoke $r5.<java.lang.reflect.Field: int getModifiers()>();
+
+        $z0 = staticinvoke <java.lang.reflect.Modifier: boolean isStatic(int)>($i2);
+
+        if $z0 == 0 goto label03;
+
+     label02:
+        $i1 = $i1 + 1;
+
+        goto label01;
+
+     label03:
+        virtualinvoke $r5.<java.lang.reflect.Field: void setAccessible(boolean)>(1);
+
+        $r6 = virtualinvoke $r5.<java.lang.reflect.Field: java.lang.String getName()>();
+
+        $r7 = virtualinvoke $r5.<java.lang.reflect.Field: java.lang.Object get(java.lang.Object)>($r1);
+
+        virtualinvoke $r15.<org.json.JSONObject: org.json.JSONObject put(java.lang.String,java.lang.Object)>($r6, $r7);
+
+     label04:
+        goto label02;
+
+     label05:
+        $r8 := @caughtexception;
+
+        $r9 = newarray (java.lang.Object)[2];
+
+        $r6 = virtualinvoke $r5.<java.lang.reflect.Field: java.lang.String getName()>();
+
+        $r9[0] = $r6;
+
+        $r16 = (java.lang.IllegalArgumentException) $r8;
+
+        $r6 = virtualinvoke $r16.<java.lang.IllegalArgumentException: java.lang.String toString()>();
+
+        $r9[1] = $r6;
+
+        $r6 = staticinvoke <java.lang.String: java.lang.String format(java.lang.String,java.lang.Object[])>("Failed serializing field [%s] %s", $r9);
+
+        staticinvoke <com.startapp.android.publish.i.n: void a(java.lang.String,int,java.lang.String)>("JSONOutputStream", 6, $r6);
+
+        goto label02;
+
+     label06:
+        $r10 := @caughtexception;
+
+        $r9 = newarray (java.lang.Object)[2];
+
+        $r6 = virtualinvoke $r5.<java.lang.reflect.Field: java.lang.String getName()>();
+
+        $r9[0] = $r6;
+
+        $r6 = virtualinvoke $r10.<org.json.JSONException: java.lang.String toString()>();
+
+        $r9[1] = $r6;
+
+        $r6 = staticinvoke <java.lang.String: java.lang.String format(java.lang.String,java.lang.Object[])>("Failed serializing field [%s] %s", $r9);
+
+        staticinvoke <com.startapp.android.publish.i.n: void a(java.lang.String,int,java.lang.String)>("JSONOutputStream", 6, $r6);
+
+        goto label02;
+
+     label07:
+        $r11 := @caughtexception;
+
+        $r9 = newarray (java.lang.Object)[2];
+
+        $r6 = virtualinvoke $r5.<java.lang.reflect.Field: java.lang.String getName()>();
+
+        $r9[0] = $r6;
+
+        $r17 = (java.lang.IllegalAccessException) $r11;
+
+        $r6 = virtualinvoke $r17.<java.lang.IllegalAccessException: java.lang.String toString()>();
+
+        $r9[1] = $r6;
+
+        $r6 = staticinvoke <java.lang.String: java.lang.String format(java.lang.String,java.lang.Object[])>("Failed serializing field [%s] %s", $r9);
+
+        staticinvoke <com.startapp.android.publish.i.n: void a(java.lang.String,int,java.lang.String)>("JSONOutputStream", 6, $r6);
+
+        goto label02;
+
+     label08:
+        $r12 = r0.<com.startapp.android.publish.e.b: java.io.OutputStream a>;
+
+        if $r12 == null goto label12;
+
+        $r12 = r0.<com.startapp.android.publish.e.b: java.io.OutputStream a>;
+
+     label09:
+        $r6 = virtualinvoke $r15.<org.json.JSONObject: java.lang.String toString()>();
+
+        $r13 = virtualinvoke $r6.<java.lang.String: byte[] getBytes()>();
+
+        virtualinvoke $r12.<java.io.OutputStream: void write(byte[])>($r13);
+
+     label10:
+        return;
+
+     label11:
+        $r14 := @caughtexception;
+
+        $r9 = newarray (java.lang.Object)[1];
+
+        $r18 = (java.io.IOException) $r14;
+
+        $r6 = virtualinvoke $r18.<java.io.IOException: java.lang.String toString()>();
+
+        $r9[0] = $r6;
+
+        $r6 = staticinvoke <java.lang.String: java.lang.String format(java.lang.String,java.lang.Object[])>("Failed writing to output stream: %s", $r9);
+
+        staticinvoke <com.startapp.android.publish.i.n: void a(java.lang.String,int,java.lang.String)>("JSONOutputStream", 6, $r6);
+
+        return;
+
+     label12:
+        staticinvoke <com.startapp.android.publish.i.n: void a(java.lang.String,int,java.lang.String)>("JSONOutputStream", 6, "Can\'t write to output stream. _os is null.");
+
+        return;
+
+        catch java.lang.IllegalArgumentException from label03 to label04 with label05;
+        catch org.json.JSONException from label03 to label04 with label06;
+        catch java.lang.IllegalAccessException from label03 to label04 with label07;
+        catch java.io.IOException from label09 to label10 with label11;
+    }
+
+    public final void close()
+    {
+        com.startapp.android.publish.e.b r0;
+        java.io.OutputStream $r1;
+        java.lang.Throwable $r2;
+        java.lang.Object[] $r3;
+        java.lang.String $r4;
+        java.io.IOException $r5;
+
+        r0 := @this: com.startapp.android.publish.e.b;
+
+        $r1 = r0.<com.startapp.android.publish.e.b: java.io.OutputStream a>;
+
+        if $r1 == null goto label4;
+
+        $r1 = r0.<com.startapp.android.publish.e.b: java.io.OutputStream a>;
+
+     label1:
+        virtualinvoke $r1.<java.io.OutputStream: void close()>();
+
+     label2:
+        return;
+
+     label3:
+        $r2 := @caughtexception;
+
+        $r3 = newarray (java.lang.Object)[1];
+
+        $r5 = (java.io.IOException) $r2;
+
+        $r4 = virtualinvoke $r5.<java.io.IOException: java.lang.String toString()>();
+
+        $r3[0] = $r4;
+
+        $r4 = staticinvoke <java.lang.String: java.lang.String format(java.lang.String,java.lang.Object[])>("Can\'t close output stream: %s", $r3);
+
+        staticinvoke <com.startapp.android.publish.i.n: void a(java.lang.String,int,java.lang.String)>("JSONOutputStream", 6, $r4);
+
+     label4:
+        return;
+
+        catch java.io.IOException from label1 to label2 with label3;
+    }
+
+    public void write(int)
+    {
+        com.startapp.android.publish.e.b r0;
+        int $i0;
+
+        r0 := @this: com.startapp.android.publish.e.b;
+
+        $i0 := @parameter0: int;
+
+        return;
+    }
+}

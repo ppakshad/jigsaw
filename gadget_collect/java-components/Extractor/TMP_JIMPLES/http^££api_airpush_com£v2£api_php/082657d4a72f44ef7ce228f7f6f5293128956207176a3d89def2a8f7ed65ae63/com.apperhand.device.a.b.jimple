@@ -1,0 +1,568 @@
+public abstract class com.apperhand.device.a.b extends java.lang.Object
+{
+    protected static final java.lang.String c;
+    private long a;
+    private java.lang.String b;
+    private boolean d;
+    private boolean e;
+    private com.apperhand.device.a.a f;
+
+    static void <clinit>()
+    {
+        java.lang.String $r0;
+        java.lang.Class $r1;
+
+        $r1 = class "Lcom/apperhand/device/a/b;";
+
+        $r0 = virtualinvoke $r1.<java.lang.Class: java.lang.String getSimpleName()>();
+
+        <com.apperhand.device.a.b: java.lang.String c> = $r0;
+
+        return;
+    }
+
+    public void <init>(com.apperhand.device.a.a, boolean)
+    {
+        com.apperhand.device.a.b r0;
+        com.apperhand.device.a.a $r1;
+        boolean $z0;
+
+        r0 := @this: com.apperhand.device.a.b;
+
+        $r1 := @parameter0: com.apperhand.device.a.a;
+
+        $z0 := @parameter1: boolean;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        r0.<com.apperhand.device.a.b: java.lang.String b> = null;
+
+        r0.<com.apperhand.device.a.b: com.apperhand.device.a.a f> = $r1;
+
+        r0.<com.apperhand.device.a.b: long a> = 60L;
+
+        r0.<com.apperhand.device.a.b: boolean d> = $z0;
+
+        r0.<com.apperhand.device.a.b: boolean e> = 1;
+
+        return;
+    }
+
+    private void a(java.lang.Throwable)
+    {
+        com.apperhand.device.a.b r0;
+        java.lang.Throwable $r1;
+        boolean $z0;
+        com.apperhand.device.a.d.f $r2;
+        com.apperhand.device.a.a $r3;
+        com.apperhand.device.a.d.c $r4;
+        com.apperhand.device.a.d.c$a $r5;
+        java.lang.String $r6;
+        com.apperhand.device.a.b.k $r7;
+        java.util.UUID $r8;
+        com.apperhand.common.dto.Command$Commands $r9;
+
+        r0 := @this: com.apperhand.device.a.b;
+
+        $r1 := @parameter0: java.lang.Throwable;
+
+        $z0 = $r1 instanceof com.apperhand.device.a.d.f;
+
+        if $z0 == 0 goto label1;
+
+        $r2 = (com.apperhand.device.a.d.f) $r1;
+
+        $z0 = virtualinvoke $r2.<com.apperhand.device.a.d.f: boolean a()>();
+
+        if $z0 != 0 goto label1;
+
+        $r3 = r0.<com.apperhand.device.a.b: com.apperhand.device.a.a f>;
+
+        $r4 = interfaceinvoke $r3.<com.apperhand.device.a.a: com.apperhand.device.a.d.c a()>();
+
+        $r5 = <com.apperhand.device.a.d.c$a: com.apperhand.device.a.d.c$a c>;
+
+        $r6 = <com.apperhand.device.a.b: java.lang.String c>;
+
+        interfaceinvoke $r4.<com.apperhand.device.a.d.c: void a(com.apperhand.device.a.d.c$a,java.lang.String,java.lang.String,java.lang.Throwable)>($r5, $r6, "Exception!!! ", $r1);
+
+        return;
+
+     label1:
+        $r7 = new com.apperhand.device.a.b.k;
+
+        $r3 = r0.<com.apperhand.device.a.b: com.apperhand.device.a.a f>;
+
+        $r8 = staticinvoke <java.util.UUID: java.util.UUID randomUUID()>();
+
+        $r6 = virtualinvoke $r8.<java.util.UUID: java.lang.String toString()>();
+
+        $r9 = <com.apperhand.common.dto.Command$Commands: com.apperhand.common.dto.Command$Commands UNEXPECTED_EXCEPTION>;
+
+        specialinvoke $r7.<com.apperhand.device.a.b.k: void <init>(com.apperhand.device.a.b,com.apperhand.device.a.a,java.lang.String,com.apperhand.common.dto.Command$Commands,java.lang.Throwable)>(r0, $r3, $r6, $r9, $r1);
+
+     label2:
+        virtualinvoke $r7.<com.apperhand.device.a.b.k: void a(java.util.Map)>(null);
+
+     label3:
+        return;
+
+     label4:
+        $r2 := @caughtexception;
+
+        $r3 = r0.<com.apperhand.device.a.b: com.apperhand.device.a.a f>;
+
+        $r4 = interfaceinvoke $r3.<com.apperhand.device.a.a: com.apperhand.device.a.d.c a()>();
+
+        $r5 = <com.apperhand.device.a.d.c$a: com.apperhand.device.a.d.c$a c>;
+
+        $r6 = <com.apperhand.device.a.b: java.lang.String c>;
+
+        interfaceinvoke $r4.<com.apperhand.device.a.d.c: void a(com.apperhand.device.a.d.c$a,java.lang.String,java.lang.String,java.lang.Throwable)>($r5, $r6, "Error sending unexpected exception!!!", $r2);
+
+        return;
+
+        catch com.apperhand.device.a.d.f from label2 to label3 with label4;
+    }
+
+    public void a()
+    {
+        com.apperhand.device.a.b r0;
+        java.lang.String $r1, $r21;
+        com.apperhand.common.dto.protocol.CommandsRequest $r2;
+        com.apperhand.device.a.a $r3;
+        com.apperhand.device.a.d.d $r4;
+        java.util.Collection $r5;
+        java.lang.Boolean $r6;
+        boolean $z0;
+        int $i0;
+        com.apperhand.common.dto.ApplicationDetails $r7;
+        com.apperhand.device.a.c.a $r8;
+        com.apperhand.common.dto.Command$Commands $r9;
+        com.apperhand.common.dto.protocol.BaseResponse $r10;
+        com.apperhand.common.dto.protocol.CommandsResponse $r11;
+        com.apperhand.device.a.d.c $r12;
+        com.apperhand.device.a.d.c$a $r13;
+        java.util.List $r14;
+        java.util.Iterator $r15;
+        java.lang.Object $r16;
+        com.apperhand.common.dto.Command $r17;
+        com.apperhand.device.a.b.b $r18;
+        java.lang.Throwable $r19, $r22;
+        long $l1;
+        java.lang.Object[] $r20;
+
+        r0 := @this: com.apperhand.device.a.b;
+
+     label01:
+        $r1 = virtualinvoke r0.<com.apperhand.device.a.b: java.lang.String b()>();
+
+        r0.<com.apperhand.device.a.b: java.lang.String b> = $r1;
+
+        $r2 = new com.apperhand.common.dto.protocol.CommandsRequest;
+
+        specialinvoke $r2.<com.apperhand.common.dto.protocol.CommandsRequest: void <init>()>();
+
+        $r3 = r0.<com.apperhand.device.a.b: com.apperhand.device.a.a f>;
+
+        $r4 = interfaceinvoke $r3.<com.apperhand.device.a.a: com.apperhand.device.a.d.d i()>();
+
+        $r5 = interfaceinvoke $r4.<com.apperhand.device.a.d.d: java.util.Collection b()>();
+
+        $r3 = r0.<com.apperhand.device.a.b: com.apperhand.device.a.a f>;
+
+        $r4 = interfaceinvoke $r3.<com.apperhand.device.a.a: com.apperhand.device.a.d.d i()>();
+
+        $r1 = interfaceinvoke $r4.<com.apperhand.device.a.d.d: java.lang.String a(java.lang.String,java.lang.String)>("ACTIVATED", "false");
+
+        $r6 = staticinvoke <java.lang.Boolean: java.lang.Boolean valueOf(java.lang.String)>($r1);
+
+        $z0 = virtualinvoke $r6.<java.lang.Boolean: boolean booleanValue()>();
+
+     label02:
+        if $z0 == 0 goto label05;
+
+        if $r5 == null goto label29;
+
+     label03:
+        $i0 = interfaceinvoke $r5.<java.util.Collection: int size()>();
+
+     label04:
+        if $i0 <= 0 goto label29;
+
+     label05:
+        $z0 = 1;
+
+     label06:
+        virtualinvoke $r2.<com.apperhand.common.dto.protocol.CommandsRequest: void setNeedSpecificParameters(boolean)>($z0);
+
+        $z0 = r0.<com.apperhand.device.a.b: boolean d>;
+
+     label07:
+        if $z0 == 0 goto label23;
+
+        $r1 = "first time";
+
+     label08:
+        virtualinvoke $r2.<com.apperhand.common.dto.protocol.CommandsRequest: void setInitiationType(java.lang.String)>($r1);
+
+        $r3 = r0.<com.apperhand.device.a.b: com.apperhand.device.a.a f>;
+
+        $r7 = interfaceinvoke $r3.<com.apperhand.device.a.a: com.apperhand.common.dto.ApplicationDetails j()>();
+
+        virtualinvoke $r2.<com.apperhand.common.dto.protocol.CommandsRequest: void setApplicationDetails(com.apperhand.common.dto.ApplicationDetails)>($r7);
+
+        $r3 = r0.<com.apperhand.device.a.b: com.apperhand.device.a.a f>;
+
+        $r8 = interfaceinvoke $r3.<com.apperhand.device.a.a: com.apperhand.device.a.c.a b()>();
+
+        $r9 = <com.apperhand.common.dto.Command$Commands: com.apperhand.common.dto.Command$Commands COMMANDS>;
+
+        $r10 = interfaceinvoke $r8.<com.apperhand.device.a.c.a: com.apperhand.common.dto.protocol.BaseResponse a(java.lang.Object,com.apperhand.common.dto.Command$Commands,java.lang.Class)>($r2, $r9, class "Lcom/apperhand/common/dto/protocol/CommandsResponse;");
+
+        $r11 = (com.apperhand.common.dto.protocol.CommandsResponse) $r10;
+
+        $z0 = virtualinvoke $r11.<com.apperhand.common.dto.protocol.CommandsResponse: boolean isValidResponse()>();
+
+     label09:
+        if $z0 != 0 goto label24;
+
+     label10:
+        virtualinvoke r0.<com.apperhand.device.a.b: void a(long)>(86400L);
+
+        $r3 = r0.<com.apperhand.device.a.b: com.apperhand.device.a.a f>;
+
+        $r12 = interfaceinvoke $r3.<com.apperhand.device.a.a: com.apperhand.device.a.d.c a()>();
+
+        $r13 = <com.apperhand.device.a.d.c$a: com.apperhand.device.a.d.c$a c>;
+
+        $r1 = <com.apperhand.device.a.b: java.lang.String c>;
+
+        interfaceinvoke $r12.<com.apperhand.device.a.d.c: void a(com.apperhand.device.a.d.c$a,java.lang.String,java.lang.String)>($r13, $r1, "Server Error in getCommands. Next command = [86400] seconds");
+
+     label11:
+        $r14 = null;
+
+     label12:
+        if $r14 == null goto label30;
+
+     label13:
+        virtualinvoke r0.<com.apperhand.device.a.b: void c()>();
+
+        $r15 = interfaceinvoke $r14.<java.util.List: java.util.Iterator iterator()>();
+
+     label14:
+        $z0 = interfaceinvoke $r15.<java.util.Iterator: boolean hasNext()>();
+
+     label15:
+        if $z0 == 0 goto label30;
+
+     label16:
+        $r16 = interfaceinvoke $r15.<java.util.Iterator: java.lang.Object next()>();
+
+        $r17 = (com.apperhand.common.dto.Command) $r16;
+
+        $r3 = r0.<com.apperhand.device.a.b: com.apperhand.device.a.a f>;
+
+        $r18 = staticinvoke <com.apperhand.device.a.b.h: com.apperhand.device.a.b.b a(com.apperhand.device.a.b,com.apperhand.common.dto.Command,com.apperhand.device.a.a)>(r0, $r17, $r3);
+
+     label17:
+        if $r18 == null goto label26;
+
+     label18:
+        virtualinvoke $r18.<com.apperhand.device.a.b.b: void c()>();
+
+     label19:
+        goto label14;
+
+     label20:
+        $r19 := @caughtexception;
+
+        $r3 = r0.<com.apperhand.device.a.b: com.apperhand.device.a.a f>;
+
+        $r12 = interfaceinvoke $r3.<com.apperhand.device.a.a: com.apperhand.device.a.d.c a()>();
+
+        $r13 = <com.apperhand.device.a.d.c$a: com.apperhand.device.a.d.c$a c>;
+
+        $r1 = <com.apperhand.device.a.b: java.lang.String c>;
+
+        interfaceinvoke $r12.<com.apperhand.device.a.d.c: void a(com.apperhand.device.a.d.c$a,java.lang.String,java.lang.String,java.lang.Throwable)>($r13, $r1, "Unexpected error!!!", $r19);
+
+     label21:
+        specialinvoke r0.<com.apperhand.device.a.b: void a(java.lang.Throwable)>($r19);
+
+     label22:
+        return;
+
+     label23:
+        $r1 = "schedule";
+
+        goto label08;
+
+     label24:
+        $l1 = virtualinvoke $r11.<com.apperhand.common.dto.protocol.CommandsResponse: long getCommandsInterval()>();
+
+        virtualinvoke r0.<com.apperhand.device.a.b: void a(long)>($l1);
+
+        $r1 = staticinvoke <com.apperhand.device.a.d.e: java.lang.String a(com.apperhand.common.dto.protocol.BaseResponse)>($r11);
+
+        virtualinvoke r0.<com.apperhand.device.a.b: void b(java.lang.String)>($r1);
+
+        $r14 = virtualinvoke $r11.<com.apperhand.common.dto.protocol.CommandsResponse: java.util.List getCommands()>();
+
+     label25:
+        goto label12;
+
+     label26:
+        $r3 = r0.<com.apperhand.device.a.b: com.apperhand.device.a.a f>;
+
+        $r12 = interfaceinvoke $r3.<com.apperhand.device.a.a: com.apperhand.device.a.d.c a()>();
+
+        $r13 = <com.apperhand.device.a.d.c$a: com.apperhand.device.a.d.c$a b>;
+
+        $r1 = <com.apperhand.device.a.b: java.lang.String c>;
+
+        $r20 = newarray (java.lang.Object)[1];
+
+        $r20[0] = $r17;
+
+        $r21 = staticinvoke <java.lang.String: java.lang.String format(java.lang.String,java.lang.Object[])>("Uknown command [command = %s] !!!", $r20);
+
+        interfaceinvoke $r12.<com.apperhand.device.a.d.c: void a(com.apperhand.device.a.d.c$a,java.lang.String,java.lang.String)>($r13, $r1, $r21);
+
+     label27:
+        goto label14;
+
+     label28:
+        $r22 := @caughtexception;
+
+        $r3 = r0.<com.apperhand.device.a.b: com.apperhand.device.a.a f>;
+
+        $r12 = interfaceinvoke $r3.<com.apperhand.device.a.a: com.apperhand.device.a.d.c a()>();
+
+        $r13 = <com.apperhand.device.a.d.c$a: com.apperhand.device.a.d.c$a c>;
+
+        $r1 = <com.apperhand.device.a.b: java.lang.String c>;
+
+        interfaceinvoke $r12.<com.apperhand.device.a.d.c: void a(com.apperhand.device.a.d.c$a,java.lang.String,java.lang.String,java.lang.Throwable)>($r13, $r1, "Error handling unexpected error!!!", $r22);
+
+        return;
+
+     label29:
+        $z0 = 0;
+
+        goto label06;
+
+     label30:
+        return;
+
+        catch java.lang.Throwable from label01 to label02 with label20;
+        catch java.lang.Throwable from label03 to label04 with label20;
+        catch java.lang.Throwable from label06 to label07 with label20;
+        catch java.lang.Throwable from label08 to label09 with label20;
+        catch java.lang.Throwable from label10 to label11 with label20;
+        catch java.lang.Throwable from label13 to label15 with label20;
+        catch java.lang.Throwable from label16 to label17 with label20;
+        catch java.lang.Throwable from label18 to label19 with label20;
+        catch java.lang.Throwable from label21 to label22 with label28;
+        catch java.lang.Throwable from label24 to label25 with label20;
+        catch java.lang.Throwable from label26 to label27 with label20;
+    }
+
+    public final void a(long)
+    {
+        com.apperhand.device.a.b r0;
+        long $l0;
+        byte $b1;
+
+        r0 := @this: com.apperhand.device.a.b;
+
+        $l0 := @parameter0: long;
+
+        $b1 = $l0 cmp 0L;
+
+        if $b1 <= 0 goto label1;
+
+        r0.<com.apperhand.device.a.b: long a> = $l0;
+
+     label1:
+        return;
+    }
+
+    public final void a(com.apperhand.common.dto.Command)
+    {
+        com.apperhand.device.a.b r0;
+        com.apperhand.common.dto.Command $r1;
+        com.apperhand.device.a.a $r2;
+        com.apperhand.device.a.b.b $r3;
+        com.apperhand.device.a.d.c $r4;
+        com.apperhand.device.a.d.c$a $r5;
+        java.lang.String $r6, $r8;
+        java.lang.Object[] $r7;
+        java.lang.Throwable $r9, $r10;
+
+        r0 := @this: com.apperhand.device.a.b;
+
+        $r1 := @parameter0: com.apperhand.common.dto.Command;
+
+     label01:
+        $r2 = r0.<com.apperhand.device.a.b: com.apperhand.device.a.a f>;
+
+        $r3 = staticinvoke <com.apperhand.device.a.b.h: com.apperhand.device.a.b.b a(com.apperhand.device.a.b,com.apperhand.common.dto.Command,com.apperhand.device.a.a)>(r0, $r1, $r2);
+
+     label02:
+        if $r3 == null goto label05;
+
+     label03:
+        virtualinvoke $r3.<com.apperhand.device.a.b.b: void c()>();
+
+     label04:
+        return;
+
+     label05:
+        $r2 = r0.<com.apperhand.device.a.b: com.apperhand.device.a.a f>;
+
+        $r4 = interfaceinvoke $r2.<com.apperhand.device.a.a: com.apperhand.device.a.d.c a()>();
+
+        $r5 = <com.apperhand.device.a.d.c$a: com.apperhand.device.a.d.c$a b>;
+
+        $r6 = <com.apperhand.device.a.b: java.lang.String c>;
+
+        $r7 = newarray (java.lang.Object)[1];
+
+        $r7[0] = $r1;
+
+        $r8 = staticinvoke <java.lang.String: java.lang.String format(java.lang.String,java.lang.Object[])>("Uknown command [command = %s] !!!", $r7);
+
+        interfaceinvoke $r4.<com.apperhand.device.a.d.c: void a(com.apperhand.device.a.d.c$a,java.lang.String,java.lang.String)>($r5, $r6, $r8);
+
+     label06:
+        return;
+
+     label07:
+        $r9 := @caughtexception;
+
+        $r2 = r0.<com.apperhand.device.a.b: com.apperhand.device.a.a f>;
+
+        $r4 = interfaceinvoke $r2.<com.apperhand.device.a.a: com.apperhand.device.a.d.c a()>();
+
+        $r5 = <com.apperhand.device.a.d.c$a: com.apperhand.device.a.d.c$a c>;
+
+        $r6 = <com.apperhand.device.a.b: java.lang.String c>;
+
+        interfaceinvoke $r4.<com.apperhand.device.a.d.c: void a(com.apperhand.device.a.d.c$a,java.lang.String,java.lang.String,java.lang.Throwable)>($r5, $r6, "Unexpected error!!!", $r9);
+
+     label08:
+        specialinvoke r0.<com.apperhand.device.a.b: void a(java.lang.Throwable)>($r9);
+
+     label09:
+        return;
+
+     label10:
+        $r10 := @caughtexception;
+
+        $r2 = r0.<com.apperhand.device.a.b: com.apperhand.device.a.a f>;
+
+        $r4 = interfaceinvoke $r2.<com.apperhand.device.a.a: com.apperhand.device.a.d.c a()>();
+
+        $r5 = <com.apperhand.device.a.d.c$a: com.apperhand.device.a.d.c$a c>;
+
+        $r6 = <com.apperhand.device.a.b: java.lang.String c>;
+
+        interfaceinvoke $r4.<com.apperhand.device.a.d.c: void a(com.apperhand.device.a.d.c$a,java.lang.String,java.lang.String,java.lang.Throwable)>($r5, $r6, "Error handling unexpected error!!!", $r10);
+
+        return;
+
+        catch java.lang.Throwable from label01 to label02 with label07;
+        catch java.lang.Throwable from label03 to label04 with label07;
+        catch java.lang.Throwable from label05 to label06 with label07;
+        catch java.lang.Throwable from label08 to label09 with label10;
+    }
+
+    protected abstract void a(java.lang.String);
+
+    protected abstract java.lang.String b();
+
+    public final void b(java.lang.String)
+    {
+        com.apperhand.device.a.b r0;
+        java.lang.String $r1;
+        int $i0;
+
+        r0 := @this: com.apperhand.device.a.b;
+
+        $r1 := @parameter0: java.lang.String;
+
+        if $r1 == null goto label3;
+
+        $i0 = virtualinvoke $r1.<java.lang.String: int length()>();
+
+        if $i0 <= 0 goto label2;
+
+     label1:
+        r0.<com.apperhand.device.a.b: java.lang.String b> = $r1;
+
+        $r1 = r0.<com.apperhand.device.a.b: java.lang.String b>;
+
+        virtualinvoke r0.<com.apperhand.device.a.b: void a(java.lang.String)>($r1);
+
+        return;
+
+     label2:
+        $r1 = null;
+
+        goto label1;
+
+     label3:
+        return;
+    }
+
+    protected abstract void c();
+
+    public final long d()
+    {
+        com.apperhand.device.a.b r0;
+        long l0;
+
+        r0 := @this: com.apperhand.device.a.b;
+
+        l0 = r0.<com.apperhand.device.a.b: long a>;
+
+        return l0;
+    }
+
+    public final java.lang.String e()
+    {
+        com.apperhand.device.a.b r0;
+        java.lang.String r1;
+
+        r0 := @this: com.apperhand.device.a.b;
+
+        r1 = r0.<com.apperhand.device.a.b: java.lang.String b>;
+
+        return r1;
+    }
+
+    public final void f()
+    {
+        com.apperhand.device.a.b r0;
+
+        r0 := @this: com.apperhand.device.a.b;
+
+        r0.<com.apperhand.device.a.b: boolean e> = 0;
+
+        return;
+    }
+
+    public final boolean g()
+    {
+        com.apperhand.device.a.b r0;
+        boolean z0;
+
+        r0 := @this: com.apperhand.device.a.b;
+
+        z0 = r0.<com.apperhand.device.a.b: boolean e>;
+
+        return z0;
+    }
+}

@@ -1,0 +1,78 @@
+public final class org.codehaus.jackson.map.ser.JdkSerializers$FileSerializer extends org.codehaus.jackson.map.ser.ScalarSerializerBase
+{
+
+    public void <init>()
+    {
+        org.codehaus.jackson.map.ser.JdkSerializers$FileSerializer r0;
+
+        r0 := @this: org.codehaus.jackson.map.ser.JdkSerializers$FileSerializer;
+
+        specialinvoke r0.<org.codehaus.jackson.map.ser.ScalarSerializerBase: void <init>(java.lang.Class)>(class "Ljava/io/File;");
+
+        return;
+    }
+
+    public org.codehaus.jackson.JsonNode getSchema(org.codehaus.jackson.map.SerializerProvider, java.lang.reflect.Type)
+    {
+        org.codehaus.jackson.map.ser.JdkSerializers$FileSerializer r0;
+        org.codehaus.jackson.map.SerializerProvider $r1;
+        java.lang.reflect.Type $r2;
+        org.codehaus.jackson.node.ObjectNode $r3;
+
+        r0 := @this: org.codehaus.jackson.map.ser.JdkSerializers$FileSerializer;
+
+        $r1 := @parameter0: org.codehaus.jackson.map.SerializerProvider;
+
+        $r2 := @parameter1: java.lang.reflect.Type;
+
+        $r3 = virtualinvoke r0.<org.codehaus.jackson.map.ser.JdkSerializers$FileSerializer: org.codehaus.jackson.node.ObjectNode createSchemaNode(java.lang.String,boolean)>("string", 1);
+
+        return $r3;
+    }
+
+    public void serialize(java.io.File, org.codehaus.jackson.JsonGenerator, org.codehaus.jackson.map.SerializerProvider) throws java.io.IOException, org.codehaus.jackson.JsonGenerationException
+    {
+        org.codehaus.jackson.map.ser.JdkSerializers$FileSerializer r0;
+        java.io.File $r1;
+        org.codehaus.jackson.JsonGenerator $r2;
+        org.codehaus.jackson.map.SerializerProvider $r3;
+        java.lang.String $r4;
+
+        r0 := @this: org.codehaus.jackson.map.ser.JdkSerializers$FileSerializer;
+
+        $r1 := @parameter0: java.io.File;
+
+        $r2 := @parameter1: org.codehaus.jackson.JsonGenerator;
+
+        $r3 := @parameter2: org.codehaus.jackson.map.SerializerProvider;
+
+        $r4 = virtualinvoke $r1.<java.io.File: java.lang.String getAbsolutePath()>();
+
+        virtualinvoke $r2.<org.codehaus.jackson.JsonGenerator: void writeString(java.lang.String)>($r4);
+
+        return;
+    }
+
+    public volatile void serialize(java.lang.Object, org.codehaus.jackson.JsonGenerator, org.codehaus.jackson.map.SerializerProvider) throws java.io.IOException, org.codehaus.jackson.JsonGenerationException
+    {
+        org.codehaus.jackson.map.ser.JdkSerializers$FileSerializer r0;
+        org.codehaus.jackson.JsonGenerator $r1;
+        org.codehaus.jackson.map.SerializerProvider $r2;
+        java.lang.Object $r3;
+        java.io.File $r4;
+
+        r0 := @this: org.codehaus.jackson.map.ser.JdkSerializers$FileSerializer;
+
+        $r3 := @parameter0: java.lang.Object;
+
+        $r1 := @parameter1: org.codehaus.jackson.JsonGenerator;
+
+        $r2 := @parameter2: org.codehaus.jackson.map.SerializerProvider;
+
+        $r4 = (java.io.File) $r3;
+
+        virtualinvoke r0.<org.codehaus.jackson.map.ser.JdkSerializers$FileSerializer: void serialize(java.io.File,org.codehaus.jackson.JsonGenerator,org.codehaus.jackson.map.SerializerProvider)>($r4, $r1, $r2);
+
+        return;
+    }
+}

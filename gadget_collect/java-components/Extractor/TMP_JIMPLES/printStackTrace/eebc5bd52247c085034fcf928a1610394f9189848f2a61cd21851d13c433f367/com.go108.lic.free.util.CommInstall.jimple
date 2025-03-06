@@ -1,0 +1,397 @@
+public class com.go108.lic.free.util.CommInstall extends java.lang.Object
+{
+    private android.app.Activity activity;
+    final android.os.Handler handler;
+    private android.app.ProgressDialog m_Dialog;
+
+    public void <init>(android.app.Activity)
+    {
+        com.go108.lic.free.util.CommInstall r0;
+        com.go108.lic.free.util.CommInstall$1 $r2;
+        android.app.Activity $r1;
+
+        r0 := @this: com.go108.lic.free.util.CommInstall;
+
+        $r1 := @parameter0: android.app.Activity;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        r0.<com.go108.lic.free.util.CommInstall: android.app.Activity activity> = null;
+
+        $r2 = new com.go108.lic.free.util.CommInstall$1;
+
+        specialinvoke $r2.<com.go108.lic.free.util.CommInstall$1: void <init>(com.go108.lic.free.util.CommInstall)>(r0);
+
+        r0.<com.go108.lic.free.util.CommInstall: android.os.Handler handler> = $r2;
+
+        r0.<com.go108.lic.free.util.CommInstall: android.app.Activity activity> = $r1;
+
+        return;
+    }
+
+    static android.app.ProgressDialog access$0(com.go108.lic.free.util.CommInstall)
+    {
+        android.app.ProgressDialog r1;
+        com.go108.lic.free.util.CommInstall $r0;
+
+        $r0 := @parameter0: com.go108.lic.free.util.CommInstall;
+
+        r1 = $r0.<com.go108.lic.free.util.CommInstall: android.app.ProgressDialog m_Dialog>;
+
+        return r1;
+    }
+
+    static void access$1(com.go108.lic.free.util.CommInstall, java.lang.String)
+    {
+        com.go108.lic.free.util.CommInstall $r0;
+        java.lang.String $r1;
+
+        $r0 := @parameter0: com.go108.lic.free.util.CommInstall;
+
+        $r1 := @parameter1: java.lang.String;
+
+        specialinvoke $r0.<com.go108.lic.free.util.CommInstall: void showUpdateProcess(java.lang.String)>($r1);
+
+        return;
+    }
+
+    static void access$2(com.go108.lic.free.util.CommInstall, java.lang.String, java.lang.String) throws java.lang.Exception
+    {
+        com.go108.lic.free.util.CommInstall $r0;
+        java.lang.String $r1, $r2;
+
+        $r0 := @parameter0: com.go108.lic.free.util.CommInstall;
+
+        $r1 := @parameter1: java.lang.String;
+
+        $r2 := @parameter2: java.lang.String;
+
+        specialinvoke $r0.<com.go108.lic.free.util.CommInstall: void doDownloadTheFile(java.lang.String,java.lang.String)>($r1, $r2);
+
+        return;
+    }
+
+    private void doDownloadTheFile(java.lang.String, java.lang.String) throws java.lang.Exception
+    {
+        byte[] $r11;
+        java.net.URL r5;
+        long $l1;
+        java.net.URLConnection $r6;
+        android.os.Handler $r12;
+        int $i0, $i2;
+        java.lang.String $r1, $r2;
+        boolean $z0;
+        com.go108.lic.free.util.CommInstall r0;
+        java.io.FileOutputStream r4;
+        java.lang.RuntimeException $r8;
+        java.io.File r3, $r10;
+        java.lang.Exception $r13;
+        java.lang.StringBuilder $r9;
+        java.io.InputStream $r7;
+
+        r0 := @this: com.go108.lic.free.util.CommInstall;
+
+        $r1 := @parameter0: java.lang.String;
+
+        $r2 := @parameter1: java.lang.String;
+
+        r5 = new java.net.URL;
+
+        specialinvoke r5.<java.net.URL: void <init>(java.lang.String)>($r1);
+
+        $r6 = virtualinvoke r5.<java.net.URL: java.net.URLConnection openConnection()>();
+
+        virtualinvoke $r6.<java.net.URLConnection: void setConnectTimeout(int)>(20000);
+
+        virtualinvoke $r6.<java.net.URLConnection: void setReadTimeout(int)>(20000);
+
+        virtualinvoke $r6.<java.net.URLConnection: void connect()>();
+
+        $i0 = virtualinvoke $r6.<java.net.URLConnection: int getContentLength()>();
+
+        $i0 = $i0 / 1024;
+
+        $l1 = (long) $i0;
+
+        $i0 = 0;
+
+        $r7 = virtualinvoke $r6.<java.net.URLConnection: java.io.InputStream getInputStream()>();
+
+        if $r7 != null goto label1;
+
+        $r8 = new java.lang.RuntimeException;
+
+        specialinvoke $r8.<java.lang.RuntimeException: void <init>(java.lang.String)>("stream is null");
+
+        throw $r8;
+
+     label1:
+        r3 = new java.io.File;
+
+        $r9 = new java.lang.StringBuilder;
+
+        specialinvoke $r9.<java.lang.StringBuilder: void <init>()>();
+
+        $r10 = staticinvoke <android.os.Environment: java.io.File getExternalStorageDirectory()>();
+
+        $r9 = virtualinvoke $r9.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($r10);
+
+        $r9 = virtualinvoke $r9.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("/go108/apk/");
+
+        $r1 = virtualinvoke $r9.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        specialinvoke r3.<java.io.File: void <init>(java.lang.String)>($r1);
+
+        $z0 = virtualinvoke r3.<java.io.File: boolean exists()>();
+
+        if $z0 != 0 goto label2;
+
+        virtualinvoke r3.<java.io.File: boolean mkdirs()>();
+
+     label2:
+        $r9 = new java.lang.StringBuilder;
+
+        specialinvoke $r9.<java.lang.StringBuilder: void <init>()>();
+
+        $r9 = virtualinvoke $r9.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>(r3);
+
+        $r1 = <java.io.File: java.lang.String separator>;
+
+        $r9 = virtualinvoke $r9.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r1);
+
+        $r9 = virtualinvoke $r9.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r2);
+
+        $r9 = virtualinvoke $r9.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(".apk");
+
+        $r1 = virtualinvoke $r9.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        r3 = new java.io.File;
+
+        specialinvoke r3.<java.io.File: void <init>(java.lang.String)>($r1);
+
+        $z0 = virtualinvoke r3.<java.io.File: boolean exists()>();
+
+        if $z0 == 0 goto label3;
+
+        virtualinvoke r3.<java.io.File: boolean delete()>();
+
+     label3:
+        virtualinvoke r3.<java.io.File: boolean createNewFile()>();
+
+        r4 = new java.io.FileOutputStream;
+
+        specialinvoke r4.<java.io.FileOutputStream: void <init>(java.io.File)>(r3);
+
+        $r11 = newarray (byte)[2048];
+
+     label4:
+        $i2 = virtualinvoke $r7.<java.io.InputStream: int read(byte[])>($r11);
+
+        if $i2 > 0 goto label7;
+
+        $r12 = r0.<com.go108.lic.free.util.CommInstall: android.os.Handler handler>;
+
+        staticinvoke <com.go108.lic.free.util.CommInstall: void sendMsg(android.os.Handler,int,java.lang.String)>($r12, 4, "");
+
+        specialinvoke r0.<com.go108.lic.free.util.CommInstall: void openFile(java.io.File)>(r3);
+
+     label5:
+        virtualinvoke $r7.<java.io.InputStream: void close()>();
+
+     label6:
+        return;
+
+     label7:
+        virtualinvoke r4.<java.io.FileOutputStream: void write(byte[],int,int)>($r11, 0, $i2);
+
+        $i0 = $i0 + $i2;
+
+        $r9 = new java.lang.StringBuilder;
+
+        specialinvoke $r9.<java.lang.StringBuilder: void <init>(java.lang.String)>("\u6b63\u5728\u4e0b\u8f7d\u201c");
+
+        $r9 = virtualinvoke $r9.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r2);
+
+        $r9 = virtualinvoke $r9.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("\u201d\n\u5df2\u7ecf\u4e0b\u8f7d:");
+
+        $i2 = $i0 / 1024;
+
+        $r9 = virtualinvoke $r9.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>($i2);
+
+        $r9 = virtualinvoke $r9.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("KB/");
+
+        $r9 = virtualinvoke $r9.<java.lang.StringBuilder: java.lang.StringBuilder append(long)>($l1);
+
+        $r9 = virtualinvoke $r9.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("KB");
+
+        $r1 = virtualinvoke $r9.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        $r12 = r0.<com.go108.lic.free.util.CommInstall: android.os.Handler handler>;
+
+        staticinvoke <com.go108.lic.free.util.CommInstall: void sendMsg(android.os.Handler,int,java.lang.String)>($r12, 1, $r1);
+
+        goto label4;
+
+     label8:
+        $r13 := @caughtexception;
+
+        return;
+
+        catch java.lang.Exception from label5 to label6 with label8;
+    }
+
+    private void openFile(java.io.File)
+    {
+        com.go108.lic.free.util.CommInstall r0;
+        android.net.Uri $r3;
+        android.content.Intent r2;
+        android.app.Activity $r4;
+        java.io.File $r1;
+
+        r0 := @this: com.go108.lic.free.util.CommInstall;
+
+        $r1 := @parameter0: java.io.File;
+
+        r2 = new android.content.Intent;
+
+        specialinvoke r2.<android.content.Intent: void <init>()>();
+
+        virtualinvoke r2.<android.content.Intent: android.content.Intent addFlags(int)>(268435456);
+
+        virtualinvoke r2.<android.content.Intent: android.content.Intent setAction(java.lang.String)>("android.intent.action.VIEW");
+
+        $r3 = staticinvoke <android.net.Uri: android.net.Uri fromFile(java.io.File)>($r1);
+
+        virtualinvoke r2.<android.content.Intent: android.content.Intent setDataAndType(android.net.Uri,java.lang.String)>($r3, "application/vnd.android.package-archive");
+
+        $r4 = r0.<com.go108.lic.free.util.CommInstall: android.app.Activity activity>;
+
+        virtualinvoke $r4.<android.app.Activity: void startActivity(android.content.Intent)>(r2);
+
+        $r4 = r0.<com.go108.lic.free.util.CommInstall: android.app.Activity activity>;
+
+        virtualinvoke $r4.<android.app.Activity: void finish()>();
+
+        return;
+    }
+
+    private static void sendMsg(android.os.Handler, int, java.lang.String)
+    {
+        android.os.Bundle r2;
+        android.os.Message $r3;
+        android.os.Handler $r0;
+        int $i0;
+        java.lang.String $r1;
+
+        $r0 := @parameter0: android.os.Handler;
+
+        $i0 := @parameter1: int;
+
+        $r1 := @parameter2: java.lang.String;
+
+        $r3 = virtualinvoke $r0.<android.os.Handler: android.os.Message obtainMessage()>();
+
+        r2 = new android.os.Bundle;
+
+        specialinvoke r2.<android.os.Bundle: void <init>()>();
+
+        virtualinvoke r2.<android.os.Bundle: void putString(java.lang.String,java.lang.String)>("msg", $r1);
+
+        virtualinvoke r2.<android.os.Bundle: void putInt(java.lang.String,int)>("msgid", $i0);
+
+        virtualinvoke $r3.<android.os.Message: void setData(android.os.Bundle)>(r2);
+
+        virtualinvoke $r0.<android.os.Handler: boolean sendMessage(android.os.Message)>($r3);
+
+        return;
+    }
+
+    private void showUpdateProcess(java.lang.String)
+    {
+        com.go108.lic.free.util.CommInstall$3 $r5;
+        com.go108.lic.free.util.CommInstall r0;
+        android.app.ProgressDialog $r2;
+        java.lang.StringBuilder $r4;
+        java.lang.String $r1;
+        android.app.Activity $r3;
+
+        r0 := @this: com.go108.lic.free.util.CommInstall;
+
+        $r1 := @parameter0: java.lang.String;
+
+        $r2 = new android.app.ProgressDialog;
+
+        $r3 = r0.<com.go108.lic.free.util.CommInstall: android.app.Activity activity>;
+
+        specialinvoke $r2.<android.app.ProgressDialog: void <init>(android.content.Context)>($r3);
+
+        r0.<com.go108.lic.free.util.CommInstall: android.app.ProgressDialog m_Dialog> = $r2;
+
+        $r2 = r0.<com.go108.lic.free.util.CommInstall: android.app.ProgressDialog m_Dialog>;
+
+        $r4 = new java.lang.StringBuilder;
+
+        specialinvoke $r4.<java.lang.StringBuilder: void <init>(java.lang.String)>("\u51c6\u5907\u4e0b\u8f7d\u201c");
+
+        $r4 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r1);
+
+        $r4 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("\u201d");
+
+        $r1 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        virtualinvoke $r2.<android.app.ProgressDialog: void setMessage(java.lang.CharSequence)>($r1);
+
+        $r2 = r0.<com.go108.lic.free.util.CommInstall: android.app.ProgressDialog m_Dialog>;
+
+        virtualinvoke $r2.<android.app.ProgressDialog: void setIndeterminate(boolean)>(1);
+
+        $r2 = r0.<com.go108.lic.free.util.CommInstall: android.app.ProgressDialog m_Dialog>;
+
+        virtualinvoke $r2.<android.app.ProgressDialog: void setCancelable(boolean)>(1);
+
+        $r2 = r0.<com.go108.lic.free.util.CommInstall: android.app.ProgressDialog m_Dialog>;
+
+        $r5 = new com.go108.lic.free.util.CommInstall$3;
+
+        specialinvoke $r5.<com.go108.lic.free.util.CommInstall$3: void <init>(com.go108.lic.free.util.CommInstall)>(r0);
+
+        virtualinvoke $r2.<android.app.ProgressDialog: void setButton(java.lang.CharSequence,android.content.DialogInterface$OnClickListener)>("\u53d6\u6d88", $r5);
+
+        $r2 = r0.<com.go108.lic.free.util.CommInstall: android.app.ProgressDialog m_Dialog>;
+
+        virtualinvoke $r2.<android.app.ProgressDialog: void show()>();
+
+        return;
+    }
+
+    public void downloadAndInstall(java.lang.String, java.lang.String)
+    {
+        com.go108.lic.free.util.CommInstall r0;
+        com.go108.lic.free.util.CommInstall$2 r3;
+        android.os.Handler $r4;
+        java.lang.Thread $r5;
+        java.lang.String $r1, $r2;
+
+        r0 := @this: com.go108.lic.free.util.CommInstall;
+
+        $r1 := @parameter0: java.lang.String;
+
+        $r2 := @parameter1: java.lang.String;
+
+        $r4 = r0.<com.go108.lic.free.util.CommInstall: android.os.Handler handler>;
+
+        staticinvoke <com.go108.lic.free.util.CommInstall: void sendMsg(android.os.Handler,int,java.lang.String)>($r4, 5, $r2);
+
+        r3 = new com.go108.lic.free.util.CommInstall$2;
+
+        specialinvoke r3.<com.go108.lic.free.util.CommInstall$2: void <init>(com.go108.lic.free.util.CommInstall,java.lang.String,java.lang.String)>(r0, $r1, $r2);
+
+        $r5 = new java.lang.Thread;
+
+        specialinvoke $r5.<java.lang.Thread: void <init>(java.lang.Runnable)>(r3);
+
+        virtualinvoke $r5.<java.lang.Thread: void start()>();
+
+        return;
+    }
+}

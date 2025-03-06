@@ -1,0 +1,92 @@
+class com.Wineglas17.WineGlases$MyWebChromeClient extends android.webkit.WebChromeClient
+{
+    final com.Wineglas17.WineGlases this$0;
+
+    private void <init>(com.Wineglas17.WineGlases)
+    {
+        com.Wineglas17.WineGlases$MyWebChromeClient r0;
+        com.Wineglas17.WineGlases $r1;
+
+        r0 := @this: com.Wineglas17.WineGlases$MyWebChromeClient;
+
+        $r1 := @parameter0: com.Wineglas17.WineGlases;
+
+        r0.<com.Wineglas17.WineGlases$MyWebChromeClient: com.Wineglas17.WineGlases this$0> = $r1;
+
+        specialinvoke r0.<android.webkit.WebChromeClient: void <init>()>();
+
+        return;
+    }
+
+    void <init>(com.Wineglas17.WineGlases, com.Wineglas17.WineGlases$1)
+    {
+        com.Wineglas17.WineGlases$MyWebChromeClient r0;
+        com.Wineglas17.WineGlases $r1;
+        com.Wineglas17.WineGlases$1 $r2;
+
+        r0 := @this: com.Wineglas17.WineGlases$MyWebChromeClient;
+
+        $r1 := @parameter0: com.Wineglas17.WineGlases;
+
+        $r2 := @parameter1: com.Wineglas17.WineGlases$1;
+
+        specialinvoke r0.<com.Wineglas17.WineGlases$MyWebChromeClient: void <init>(com.Wineglas17.WineGlases)>($r1);
+
+        return;
+    }
+
+    public void onProgressChanged(android.webkit.WebView, int)
+    {
+        com.Wineglas17.WineGlases$MyWebChromeClient r0;
+        android.webkit.WebView $r1;
+        int $i0;
+        com.Wineglas17.WineGlases $r2;
+        android.app.ProgressDialog $r3;
+        java.lang.StringBuilder $r4;
+        java.lang.String $r5;
+
+        r0 := @this: com.Wineglas17.WineGlases$MyWebChromeClient;
+
+        $r1 := @parameter0: android.webkit.WebView;
+
+        $i0 := @parameter1: int;
+
+        $r2 = r0.<com.Wineglas17.WineGlases$MyWebChromeClient: com.Wineglas17.WineGlases this$0>;
+
+        $r3 = staticinvoke <com.Wineglas17.WineGlases: android.app.ProgressDialog access$200(com.Wineglas17.WineGlases)>($r2);
+
+        if $r3 == null goto label1;
+
+        if $i0 < 99 goto label2;
+
+        $r2 = r0.<com.Wineglas17.WineGlases$MyWebChromeClient: com.Wineglas17.WineGlases this$0>;
+
+        $r3 = staticinvoke <com.Wineglas17.WineGlases: android.app.ProgressDialog access$200(com.Wineglas17.WineGlases)>($r2);
+
+        virtualinvoke $r3.<android.app.ProgressDialog: void dismiss()>();
+
+     label1:
+        specialinvoke r0.<android.webkit.WebChromeClient: void onProgressChanged(android.webkit.WebView,int)>($r1, $i0);
+
+        return;
+
+     label2:
+        $r2 = r0.<com.Wineglas17.WineGlases$MyWebChromeClient: com.Wineglas17.WineGlases this$0>;
+
+        $r3 = staticinvoke <com.Wineglas17.WineGlases: android.app.ProgressDialog access$200(com.Wineglas17.WineGlases)>($r2);
+
+        $r4 = new java.lang.StringBuilder;
+
+        specialinvoke $r4.<java.lang.StringBuilder: void <init>()>();
+
+        $r4 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>($i0);
+
+        $r4 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" % loaded");
+
+        $r5 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        virtualinvoke $r3.<android.app.ProgressDialog: void setMessage(java.lang.CharSequence)>($r5);
+
+        goto label1;
+    }
+}

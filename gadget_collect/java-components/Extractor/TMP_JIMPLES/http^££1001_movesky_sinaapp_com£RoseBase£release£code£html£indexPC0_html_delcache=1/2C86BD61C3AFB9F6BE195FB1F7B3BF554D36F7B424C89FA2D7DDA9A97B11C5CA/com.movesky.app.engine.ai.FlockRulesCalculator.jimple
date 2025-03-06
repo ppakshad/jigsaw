@@ -1,0 +1,584 @@
+public class com.movesky.app.engine.ai.FlockRulesCalculator extends java.lang.Object
+{
+    private static final float FRONT_VIEW_ANGLE;
+    public float m_neighbor_radius;
+    public java.util.ArrayList m_objects;
+    private float m_view_angle;
+
+    public void <init>()
+    {
+        com.movesky.app.engine.ai.FlockRulesCalculator r0;
+        java.util.ArrayList $r1;
+
+        r0 := @this: com.movesky.app.engine.ai.FlockRulesCalculator;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        $r1 = new java.util.ArrayList;
+
+        specialinvoke $r1.<java.util.ArrayList: void <init>()>();
+
+        r0.<com.movesky.app.engine.ai.FlockRulesCalculator: java.util.ArrayList m_objects> = $r1;
+
+        r0.<com.movesky.app.engine.ai.FlockRulesCalculator: float m_neighbor_radius> = 30.0F;
+
+        r0.<com.movesky.app.engine.ai.FlockRulesCalculator: float m_view_angle> = 4.08407F;
+
+        return;
+    }
+
+    private final boolean canSee(com.movesky.app.engine.entity.Movable, com.movesky.app.engine.entity.Movable)
+    {
+        com.movesky.app.engine.ai.FlockRulesCalculator r0;
+        com.movesky.app.engine.entity.Movable $r1, $r2;
+        float $f0, $f1, $f2;
+        byte $b0;
+
+        r0 := @this: com.movesky.app.engine.ai.FlockRulesCalculator;
+
+        $r1 := @parameter0: com.movesky.app.engine.entity.Movable;
+
+        $r2 := @parameter1: com.movesky.app.engine.entity.Movable;
+
+        $f0 = specialinvoke r0.<com.movesky.app.engine.ai.FlockRulesCalculator: float getDistSqr(com.movesky.app.engine.entity.Movable,com.movesky.app.engine.entity.Movable)>($r1, $r2);
+
+        $f1 = r0.<com.movesky.app.engine.ai.FlockRulesCalculator: float m_neighbor_radius>;
+
+        $f2 = r0.<com.movesky.app.engine.ai.FlockRulesCalculator: float m_neighbor_radius>;
+
+        $f1 = $f1 * $f2;
+
+        $b0 = $f0 cmpl $f1;
+
+        if $b0 <= 0 goto label1;
+
+        return 0;
+
+     label1:
+        $f0 = specialinvoke r0.<com.movesky.app.engine.ai.FlockRulesCalculator: float getAngleOffset(com.movesky.app.engine.entity.Movable,com.movesky.app.engine.entity.Movable)>($r1, $r2);
+
+        $f0 = staticinvoke <java.lang.Math: float abs(float)>($f0);
+
+        $f1 = r0.<com.movesky.app.engine.ai.FlockRulesCalculator: float m_view_angle>;
+
+        $f1 = $f1 / 2.0F;
+
+        $b0 = $f0 cmpl $f1;
+
+        if $b0 > 0 goto label2;
+
+        return 1;
+
+     label2:
+        return 0;
+    }
+
+    private final float getAngleOffset(com.movesky.app.engine.entity.Movable, com.movesky.app.engine.entity.Movable)
+    {
+        com.movesky.app.engine.ai.FlockRulesCalculator r0;
+        com.movesky.app.engine.entity.Movable $r1, $r2;
+        float $f0, $f1, $f2, $f3;
+
+        r0 := @this: com.movesky.app.engine.ai.FlockRulesCalculator;
+
+        $r1 := @parameter0: com.movesky.app.engine.entity.Movable;
+
+        $r2 := @parameter1: com.movesky.app.engine.entity.Movable;
+
+        $f0 = interfaceinvoke $r1.<com.movesky.app.engine.entity.Movable: float getX()>();
+
+        $f1 = interfaceinvoke $r1.<com.movesky.app.engine.entity.Movable: float getY()>();
+
+        $f2 = interfaceinvoke $r2.<com.movesky.app.engine.entity.Movable: float getX()>();
+
+        $f3 = interfaceinvoke $r2.<com.movesky.app.engine.entity.Movable: float getY()>();
+
+        $f0 = staticinvoke <com.movesky.app.engine.util.MathUtils: float getAngle(float,float,float,float)>($f0, $f1, $f2, $f3);
+
+        $f1 = interfaceinvoke $r1.<com.movesky.app.engine.entity.Movable: float getHeading()>();
+
+        $f0 = staticinvoke <com.movesky.app.engine.util.MathUtils: float normalizeAngle(float,float)>($f0, $f1);
+
+        $f1 = interfaceinvoke $r1.<com.movesky.app.engine.entity.Movable: float getHeading()>();
+
+        $f0 = $f0 - $f1;
+
+        return $f0;
+    }
+
+    private final float getDistSqr(com.movesky.app.engine.entity.Movable, com.movesky.app.engine.entity.Movable)
+    {
+        com.movesky.app.engine.ai.FlockRulesCalculator r0;
+        com.movesky.app.engine.entity.Movable $r1, $r2;
+        float $f0, $f1, $f2, $f3;
+
+        r0 := @this: com.movesky.app.engine.ai.FlockRulesCalculator;
+
+        $r1 := @parameter0: com.movesky.app.engine.entity.Movable;
+
+        $r2 := @parameter1: com.movesky.app.engine.entity.Movable;
+
+        $f0 = interfaceinvoke $r1.<com.movesky.app.engine.entity.Movable: float getX()>();
+
+        $f1 = interfaceinvoke $r1.<com.movesky.app.engine.entity.Movable: float getY()>();
+
+        $f2 = interfaceinvoke $r2.<com.movesky.app.engine.entity.Movable: float getX()>();
+
+        $f3 = interfaceinvoke $r2.<com.movesky.app.engine.entity.Movable: float getY()>();
+
+        $f0 = staticinvoke <com.movesky.app.engine.util.MathUtils: float getDistSqr(float,float,float,float)>($f0, $f1, $f2, $f3);
+
+        return $f0;
+    }
+
+    public void addObject(com.movesky.app.engine.entity.Movable)
+    {
+        com.movesky.app.engine.ai.FlockRulesCalculator r0;
+        com.movesky.app.engine.entity.Movable $r1;
+        java.util.ArrayList $r2;
+
+        r0 := @this: com.movesky.app.engine.ai.FlockRulesCalculator;
+
+        $r1 := @parameter0: com.movesky.app.engine.entity.Movable;
+
+        $r2 = r0.<com.movesky.app.engine.ai.FlockRulesCalculator: java.util.ArrayList m_objects>;
+
+        virtualinvoke $r2.<java.util.ArrayList: boolean add(java.lang.Object)>($r1);
+
+        return;
+    }
+
+    public void clear()
+    {
+        com.movesky.app.engine.ai.FlockRulesCalculator r0;
+        java.util.ArrayList $r1;
+
+        r0 := @this: com.movesky.app.engine.ai.FlockRulesCalculator;
+
+        $r1 = r0.<com.movesky.app.engine.ai.FlockRulesCalculator: java.util.ArrayList m_objects>;
+
+        virtualinvoke $r1.<java.util.ArrayList: void clear()>();
+
+        return;
+    }
+
+    public void getAlignmentComponent(com.movesky.app.engine.entity.Movable, com.movesky.app.engine.util.Point)
+    {
+        com.movesky.app.engine.ai.FlockRulesCalculator r0;
+        com.movesky.app.engine.entity.Movable $r1, $r5;
+        com.movesky.app.engine.util.Point $r2;
+        java.util.ArrayList $r3;
+        int $i0, $i1;
+        float $f0, $f1, $f2, $f3, $f4;
+        java.lang.Object $r4;
+        boolean $z0;
+        byte $b2;
+
+        r0 := @this: com.movesky.app.engine.ai.FlockRulesCalculator;
+
+        $r1 := @parameter0: com.movesky.app.engine.entity.Movable;
+
+        $r2 := @parameter1: com.movesky.app.engine.util.Point;
+
+        $r3 = r0.<com.movesky.app.engine.ai.FlockRulesCalculator: java.util.ArrayList m_objects>;
+
+        $i0 = virtualinvoke $r3.<java.util.ArrayList: int size()>();
+
+        $i1 = 0;
+
+        $f0 = 0.0F;
+
+        $f1 = 0.0F;
+
+        $f2 = 0.0F;
+
+     label1:
+        if $i1 >= $i0 goto label5;
+
+        $r3 = r0.<com.movesky.app.engine.ai.FlockRulesCalculator: java.util.ArrayList m_objects>;
+
+        $r4 = virtualinvoke $r3.<java.util.ArrayList: java.lang.Object get(int)>($i1);
+
+        $r5 = (com.movesky.app.engine.entity.Movable) $r4;
+
+        if $r5 != $r1 goto label3;
+
+     label2:
+        $i1 = $i1 + 1;
+
+        goto label1;
+
+     label3:
+        $z0 = specialinvoke r0.<com.movesky.app.engine.ai.FlockRulesCalculator: boolean canSee(com.movesky.app.engine.entity.Movable,com.movesky.app.engine.entity.Movable)>($r1, $r5);
+
+        if $z0 != 0 goto label4;
+
+        goto label2;
+
+     label4:
+        $f3 = interfaceinvoke $r5.<com.movesky.app.engine.entity.Movable: float getXVel()>();
+
+        $f2 = $f2 + $f3;
+
+        $f3 = interfaceinvoke $r5.<com.movesky.app.engine.entity.Movable: float getYVel()>();
+
+        $f0 = 1.0F + $f0;
+
+        $f1 = $f1 + $f3;
+
+        goto label2;
+
+     label5:
+        $f4 = interfaceinvoke $r1.<com.movesky.app.engine.entity.Movable: float getXVel()>();
+
+        $f3 = interfaceinvoke $r1.<com.movesky.app.engine.entity.Movable: float getYVel()>();
+
+        $b2 = $f0 cmpl 0.0F;
+
+        if $b2 != 0 goto label6;
+
+        virtualinvoke $r2.<com.movesky.app.engine.util.Point: void set(float,float)>(0.0F, 0.0F);
+
+        return;
+
+     label6:
+        $f2 = $f2 / $f0;
+
+        $f0 = $f1 / $f0;
+
+        $f1 = $f2 - $f4;
+
+        $f0 = $f0 - $f3;
+
+        virtualinvoke $r2.<com.movesky.app.engine.util.Point: void set(float,float)>($f1, $f0);
+
+        return;
+    }
+
+    public void getCohesionComponent(com.movesky.app.engine.entity.Movable, com.movesky.app.engine.util.Point)
+    {
+        com.movesky.app.engine.ai.FlockRulesCalculator r0;
+        com.movesky.app.engine.entity.Movable $r1, $r5;
+        com.movesky.app.engine.util.Point $r2;
+        java.util.ArrayList $r3;
+        int $i0, $i1;
+        float $f0, $f1, $f2, $f3;
+        java.lang.Object $r4;
+        boolean $z0;
+        byte $b2;
+
+        r0 := @this: com.movesky.app.engine.ai.FlockRulesCalculator;
+
+        $r1 := @parameter0: com.movesky.app.engine.entity.Movable;
+
+        $r2 := @parameter1: com.movesky.app.engine.util.Point;
+
+        $r3 = r0.<com.movesky.app.engine.ai.FlockRulesCalculator: java.util.ArrayList m_objects>;
+
+        $i0 = virtualinvoke $r3.<java.util.ArrayList: int size()>();
+
+        $i1 = 0;
+
+        $f0 = 0.0F;
+
+        $f1 = 0.0F;
+
+        $f2 = 0.0F;
+
+     label1:
+        if $i1 >= $i0 goto label5;
+
+        $r3 = r0.<com.movesky.app.engine.ai.FlockRulesCalculator: java.util.ArrayList m_objects>;
+
+        $r4 = virtualinvoke $r3.<java.util.ArrayList: java.lang.Object get(int)>($i1);
+
+        $r5 = (com.movesky.app.engine.entity.Movable) $r4;
+
+        if $r5 != $r1 goto label3;
+
+     label2:
+        $i1 = $i1 + 1;
+
+        goto label1;
+
+     label3:
+        $z0 = specialinvoke r0.<com.movesky.app.engine.ai.FlockRulesCalculator: boolean canSee(com.movesky.app.engine.entity.Movable,com.movesky.app.engine.entity.Movable)>($r1, $r5);
+
+        if $z0 != 0 goto label4;
+
+        goto label2;
+
+     label4:
+        $f3 = interfaceinvoke $r5.<com.movesky.app.engine.entity.Movable: float getX()>();
+
+        $f2 = $f2 + $f3;
+
+        $f3 = interfaceinvoke $r5.<com.movesky.app.engine.entity.Movable: float getY()>();
+
+        $f0 = 1.0F + $f0;
+
+        $f1 = $f1 + $f3;
+
+        goto label2;
+
+     label5:
+        $b2 = $f0 cmpl 0.0F;
+
+        if $b2 != 0 goto label6;
+
+        virtualinvoke $r2.<com.movesky.app.engine.util.Point: void set(float,float)>(0.0F, 0.0F);
+
+        return;
+
+     label6:
+        $f2 = $f2 / $f0;
+
+        $f0 = $f1 / $f0;
+
+        $f1 = interfaceinvoke $r1.<com.movesky.app.engine.entity.Movable: float getX()>();
+
+        $f1 = $f2 - $f1;
+
+        $f2 = interfaceinvoke $r1.<com.movesky.app.engine.entity.Movable: float getY()>();
+
+        $f0 = $f0 - $f2;
+
+        virtualinvoke $r2.<com.movesky.app.engine.util.Point: void set(float,float)>($f1, $f0);
+
+        return;
+    }
+
+    public void getSeparationComponent(com.movesky.app.engine.entity.Movable, float, com.movesky.app.engine.util.Point)
+    {
+        com.movesky.app.engine.ai.FlockRulesCalculator r0;
+        com.movesky.app.engine.entity.Movable $r1, $r5;
+        float $f0, $f1, $f2, $f3, $f4, $f5, $f6, $f7;
+        com.movesky.app.engine.util.Point $r2;
+        java.util.ArrayList $r3;
+        int $i0, $i1;
+        java.lang.Object $r4;
+        boolean $z0;
+        byte $b2;
+
+        r0 := @this: com.movesky.app.engine.ai.FlockRulesCalculator;
+
+        $r1 := @parameter0: com.movesky.app.engine.entity.Movable;
+
+        $f0 := @parameter1: float;
+
+        $r2 := @parameter2: com.movesky.app.engine.util.Point;
+
+        $r3 = r0.<com.movesky.app.engine.ai.FlockRulesCalculator: java.util.ArrayList m_objects>;
+
+        $i0 = virtualinvoke $r3.<java.util.ArrayList: int size()>();
+
+        $i1 = 0;
+
+        $f1 = 0.0F;
+
+        $f2 = 0.0F;
+
+        $f3 = 0.0F;
+
+     label1:
+        if $i1 >= $i0 goto label6;
+
+        $r3 = r0.<com.movesky.app.engine.ai.FlockRulesCalculator: java.util.ArrayList m_objects>;
+
+        $r4 = virtualinvoke $r3.<java.util.ArrayList: java.lang.Object get(int)>($i1);
+
+        $r5 = (com.movesky.app.engine.entity.Movable) $r4;
+
+        if $r5 != $r1 goto label3;
+
+     label2:
+        $i1 = $i1 + 1;
+
+        goto label1;
+
+     label3:
+        $z0 = specialinvoke r0.<com.movesky.app.engine.ai.FlockRulesCalculator: boolean canSee(com.movesky.app.engine.entity.Movable,com.movesky.app.engine.entity.Movable)>($r1, $r5);
+
+        if $z0 != 0 goto label4;
+
+        goto label2;
+
+     label4:
+        $f4 = specialinvoke r0.<com.movesky.app.engine.ai.FlockRulesCalculator: float getDistSqr(com.movesky.app.engine.entity.Movable,com.movesky.app.engine.entity.Movable)>($r1, $r5);
+
+        $f5 = $f0 * $f0;
+
+        $b2 = $f4 cmpl $f5;
+
+        if $b2 <= 0 goto label5;
+
+        goto label2;
+
+     label5:
+        $f5 = interfaceinvoke $r1.<com.movesky.app.engine.entity.Movable: float getX()>();
+
+        $f6 = interfaceinvoke $r5.<com.movesky.app.engine.entity.Movable: float getX()>();
+
+        $f5 = $f5 - $f6;
+
+        $f6 = interfaceinvoke $r1.<com.movesky.app.engine.entity.Movable: float getY()>();
+
+        $f7 = interfaceinvoke $r5.<com.movesky.app.engine.entity.Movable: float getY()>();
+
+        $f6 = $f6 - $f7;
+
+        $f5 = $f5 / $f4;
+
+        $f4 = $f6 / $f4;
+
+        $f1 = 1.0F + $f1;
+
+        $f2 = $f2 + $f4;
+
+        $f3 = $f3 + $f5;
+
+        goto label2;
+
+     label6:
+        $b2 = $f1 cmpl 0.0F;
+
+        if $b2 != 0 goto label7;
+
+        virtualinvoke $r2.<com.movesky.app.engine.util.Point: void set(float,float)>(0.0F, 0.0F);
+
+        return;
+
+     label7:
+        $f0 = $f3 / $f1;
+
+        $f1 = $f2 / $f1;
+
+        virtualinvoke $r2.<com.movesky.app.engine.util.Point: void set(float,float)>($f0, $f1);
+
+        return;
+    }
+
+    public boolean hasLeader(com.movesky.app.engine.entity.Movable)
+    {
+        com.movesky.app.engine.ai.FlockRulesCalculator r0;
+        com.movesky.app.engine.entity.Movable $r1, $r4;
+        java.util.ArrayList $r2;
+        int $i0, $i1;
+        java.lang.Object $r3;
+        boolean $z0;
+        float $f0;
+        byte $b2;
+
+        r0 := @this: com.movesky.app.engine.ai.FlockRulesCalculator;
+
+        $r1 := @parameter0: com.movesky.app.engine.entity.Movable;
+
+        $r2 = r0.<com.movesky.app.engine.ai.FlockRulesCalculator: java.util.ArrayList m_objects>;
+
+        $i0 = virtualinvoke $r2.<java.util.ArrayList: int size()>();
+
+        $i1 = 0;
+
+     label1:
+        if $i1 >= $i0 goto label4;
+
+        $r2 = r0.<com.movesky.app.engine.ai.FlockRulesCalculator: java.util.ArrayList m_objects>;
+
+        $r3 = virtualinvoke $r2.<java.util.ArrayList: java.lang.Object get(int)>($i1);
+
+        $r4 = (com.movesky.app.engine.entity.Movable) $r3;
+
+        if $r4 != $r1 goto label3;
+
+     label2:
+        $i1 = $i1 + 1;
+
+        goto label1;
+
+     label3:
+        $z0 = specialinvoke r0.<com.movesky.app.engine.ai.FlockRulesCalculator: boolean canSee(com.movesky.app.engine.entity.Movable,com.movesky.app.engine.entity.Movable)>($r1, $r4);
+
+        if $z0 == 0 goto label2;
+
+        $f0 = specialinvoke r0.<com.movesky.app.engine.ai.FlockRulesCalculator: float getAngleOffset(com.movesky.app.engine.entity.Movable,com.movesky.app.engine.entity.Movable)>($r1, $r4);
+
+        $f0 = staticinvoke <java.lang.Math: float abs(float)>($f0);
+
+        $b2 = $f0 cmpg 0.7853982F;
+
+        if $b2 >= 0 goto label2;
+
+        return 1;
+
+     label4:
+        return 0;
+    }
+
+    public void removeObject(com.movesky.app.engine.entity.Movable)
+    {
+        com.movesky.app.engine.ai.FlockRulesCalculator r0;
+        com.movesky.app.engine.entity.Movable $r1;
+        java.util.ArrayList $r2;
+
+        r0 := @this: com.movesky.app.engine.ai.FlockRulesCalculator;
+
+        $r1 := @parameter0: com.movesky.app.engine.entity.Movable;
+
+        $r2 = r0.<com.movesky.app.engine.ai.FlockRulesCalculator: java.util.ArrayList m_objects>;
+
+        virtualinvoke $r2.<java.util.ArrayList: boolean remove(java.lang.Object)>($r1);
+
+        return;
+    }
+
+    public void setNeighborRadius(float)
+    {
+        com.movesky.app.engine.ai.FlockRulesCalculator r0;
+        float $f0;
+        byte $b0;
+
+        r0 := @this: com.movesky.app.engine.ai.FlockRulesCalculator;
+
+        $f0 := @parameter0: float;
+
+        $b0 = $f0 cmpg 0.0F;
+
+        if $b0 >= 0 goto label1;
+
+        return;
+
+     label1:
+        r0.<com.movesky.app.engine.ai.FlockRulesCalculator: float m_neighbor_radius> = $f0;
+
+        return;
+    }
+
+    public void setViewAngle(float)
+    {
+        com.movesky.app.engine.ai.FlockRulesCalculator r0;
+        float $f0;
+        byte $b0;
+
+        r0 := @this: com.movesky.app.engine.ai.FlockRulesCalculator;
+
+        $f0 := @parameter0: float;
+
+        $b0 = $f0 cmpg 0.0F;
+
+        if $b0 >= 0 goto label1;
+
+        return;
+
+     label1:
+        r0.<com.movesky.app.engine.ai.FlockRulesCalculator: float m_view_angle> = $f0;
+
+        return;
+    }
+
+    public static void <clinit>()
+    {
+        <com.movesky.app.engine.ai.FlockRulesCalculator: float FRONT_VIEW_ANGLE> = 0.7853982F;
+
+        return;
+    }
+}

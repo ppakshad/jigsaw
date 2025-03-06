@@ -1,0 +1,48 @@
+final class com.heyzap.sdk.HeyzapLib$1 extends java.lang.Object implements java.lang.Runnable
+{
+    final java.lang.String val$appName;
+    final android.content.Context val$context;
+
+    void <init>(android.content.Context, java.lang.String)
+    {
+        com.heyzap.sdk.HeyzapLib$1 r0;
+        android.content.Context $r1;
+        java.lang.String $r2;
+
+        r0 := @this: com.heyzap.sdk.HeyzapLib$1;
+
+        $r1 := @parameter0: android.content.Context;
+
+        $r2 := @parameter1: java.lang.String;
+
+        r0.<com.heyzap.sdk.HeyzapLib$1: android.content.Context val$context> = $r1;
+
+        r0.<com.heyzap.sdk.HeyzapLib$1: java.lang.String val$appName> = $r2;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public void run()
+    {
+        com.heyzap.sdk.HeyzapLib$1 r0;
+        com.heyzap.sdk.PopupToast $r1;
+        java.lang.String $r2;
+        android.content.Context $r3;
+
+        r0 := @this: com.heyzap.sdk.HeyzapLib$1;
+
+        $r1 = new com.heyzap.sdk.PopupToast;
+
+        $r3 = r0.<com.heyzap.sdk.HeyzapLib$1: android.content.Context val$context>;
+
+        $r2 = r0.<com.heyzap.sdk.HeyzapLib$1: java.lang.String val$appName>;
+
+        specialinvoke $r1.<com.heyzap.sdk.PopupToast: void <init>(android.content.Context,java.lang.String)>($r3, $r2);
+
+        virtualinvoke $r1.<com.heyzap.sdk.PopupToast: void show(int)>(8000);
+
+        return;
+    }
+}

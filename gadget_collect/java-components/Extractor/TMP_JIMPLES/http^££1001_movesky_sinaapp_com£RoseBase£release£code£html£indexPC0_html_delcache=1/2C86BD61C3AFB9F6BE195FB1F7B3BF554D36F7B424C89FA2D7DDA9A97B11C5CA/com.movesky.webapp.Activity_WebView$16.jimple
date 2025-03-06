@@ -1,0 +1,84 @@
+class com.movesky.webapp.Activity_WebView$16 extends android.os.Handler
+{
+    final com.movesky.webapp.Activity_WebView this$0;
+    final java.lang.String val$curVer;
+    final android.content.SharedPreferences val$sharedPreferences;
+
+    void <init>(com.movesky.webapp.Activity_WebView, android.content.SharedPreferences, java.lang.String)
+    {
+        com.movesky.webapp.Activity_WebView$16 r0;
+        com.movesky.webapp.Activity_WebView $r1;
+        android.content.SharedPreferences $r2;
+        java.lang.String $r3;
+
+        r0 := @this: com.movesky.webapp.Activity_WebView$16;
+
+        $r1 := @parameter0: com.movesky.webapp.Activity_WebView;
+
+        $r2 := @parameter1: android.content.SharedPreferences;
+
+        $r3 := @parameter2: java.lang.String;
+
+        r0.<com.movesky.webapp.Activity_WebView$16: com.movesky.webapp.Activity_WebView this$0> = $r1;
+
+        r0.<com.movesky.webapp.Activity_WebView$16: android.content.SharedPreferences val$sharedPreferences> = $r2;
+
+        r0.<com.movesky.webapp.Activity_WebView$16: java.lang.String val$curVer> = $r3;
+
+        specialinvoke r0.<android.os.Handler: void <init>()>();
+
+        return;
+    }
+
+    public void handleMessage(android.os.Message)
+    {
+        com.movesky.webapp.Activity_WebView$16 r0;
+        android.os.Message $r1;
+        java.lang.Object $r2;
+        android.os.Bundle $r3;
+        int $i0;
+        java.lang.StringBuilder $r4;
+        java.lang.String $r5;
+        android.content.SharedPreferences $r6;
+        android.content.SharedPreferences$Editor $r7;
+
+        r0 := @this: com.movesky.webapp.Activity_WebView$16;
+
+        $r1 := @parameter0: android.os.Message;
+
+        specialinvoke r0.<android.os.Handler: void handleMessage(android.os.Message)>($r1);
+
+        $r2 = $r1.<android.os.Message: java.lang.Object obj>;
+
+        $r3 = (android.os.Bundle) $r2;
+
+        $i0 = virtualinvoke $r3.<android.os.Bundle: int getInt(java.lang.String)>("RetCode");
+
+        $r4 = new java.lang.StringBuilder;
+
+        specialinvoke $r4.<java.lang.StringBuilder: void <init>()>();
+
+        $r4 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("RetCode = ");
+
+        $r4 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>($i0);
+
+        $r5 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <com.zrd.common.ZrdCommon$ZrdLog: void Log(java.lang.String)>($r5);
+
+        if $i0 != 1 goto label1;
+
+        $r6 = r0.<com.movesky.webapp.Activity_WebView$16: android.content.SharedPreferences val$sharedPreferences>;
+
+        $r7 = interfaceinvoke $r6.<android.content.SharedPreferences: android.content.SharedPreferences$Editor edit()>();
+
+        $r5 = r0.<com.movesky.webapp.Activity_WebView$16: java.lang.String val$curVer>;
+
+        interfaceinvoke $r7.<android.content.SharedPreferences$Editor: android.content.SharedPreferences$Editor putString(java.lang.String,java.lang.String)>("bundleVer", $r5);
+
+        interfaceinvoke $r7.<android.content.SharedPreferences$Editor: boolean commit()>();
+
+     label1:
+        return;
+    }
+}

@@ -1,0 +1,514 @@
+public class com.movesky.app.main.units.UberUnit extends com.movesky.app.main.units.Unit
+{
+    private static final float CHARGE_RATE;
+    private static final float DAMAGE_RATE;
+    private static final float DISCHARGE_RATE;
+    private static final float MAX_POWER_LEVEL;
+    private static final float POWER_CIRCLE_RADIUS;
+    boolean charging;
+    com.movesky.app.main.units.Unit fireTarget;
+    boolean firing;
+    private float[] outline;
+    float powerLevel;
+
+    public void <init>(com.movesky.app.main.units.UnitManager, com.movesky.app.main.Team, android.graphics.Paint, com.movesky.app.engine.particles.ParticleSystem)
+    {
+        com.movesky.app.main.units.UberUnit r0;
+        com.movesky.app.main.units.UnitManager $r1;
+        com.movesky.app.main.Team $r2;
+        android.graphics.Paint $r3;
+        com.movesky.app.engine.particles.ParticleSystem $r4;
+        float[] $r5;
+
+        r0 := @this: com.movesky.app.main.units.UberUnit;
+
+        $r1 := @parameter0: com.movesky.app.main.units.UnitManager;
+
+        $r2 := @parameter1: com.movesky.app.main.Team;
+
+        $r3 := @parameter2: android.graphics.Paint;
+
+        $r4 := @parameter3: com.movesky.app.engine.particles.ParticleSystem;
+
+        specialinvoke r0.<com.movesky.app.main.units.Unit: void <init>(com.movesky.app.main.units.UnitManager,com.movesky.app.main.Team,android.graphics.Paint,com.movesky.app.engine.particles.ParticleSystem)>($r1, $r2, $r3, $r4);
+
+        r0.<com.movesky.app.main.units.UberUnit: boolean charging> = 1;
+
+        $r5 = newarray (float)[12];
+
+        $r5[0] = 0.0F;
+
+        $r5[1] = -15.0F;
+
+        $r5[2] = 10.0F;
+
+        $r5[3] = 10.0F;
+
+        $r5[4] = 10.0F;
+
+        $r5[5] = 10.0F;
+
+        $r5[6] = -10.0F;
+
+        $r5[7] = 10.0F;
+
+        $r5[8] = -10.0F;
+
+        $r5[9] = 10.0F;
+
+        $r5[10] = 0.0F;
+
+        $r5[11] = -15.0F;
+
+        r0.<com.movesky.app.main.units.UberUnit: float[] outline> = $r5;
+
+        return;
+    }
+
+    public void drawChassis(android.graphics.Canvas)
+    {
+        com.movesky.app.main.units.UberUnit r0;
+        android.graphics.Canvas $r1;
+        float $f0, $f1, $f2;
+        float[] $r2;
+        android.graphics.Paint $r3, $r4;
+        boolean $z0;
+        byte $b0;
+        android.graphics.Paint$Style $r5;
+
+        r0 := @this: com.movesky.app.main.units.UberUnit;
+
+        $r1 := @parameter0: android.graphics.Canvas;
+
+        virtualinvoke $r1.<android.graphics.Canvas: int save()>();
+
+        $f0 = virtualinvoke r0.<com.movesky.app.main.units.UberUnit: float getX()>();
+
+        $f1 = virtualinvoke r0.<com.movesky.app.main.units.UberUnit: float getY()>();
+
+        virtualinvoke $r1.<android.graphics.Canvas: void translate(float,float)>($f0, $f1);
+
+        $f0 = virtualinvoke r0.<com.movesky.app.main.units.UberUnit: float getHeading()>();
+
+        $f0 = staticinvoke <com.movesky.app.engine.util.MathUtils: float toDegrees(float)>($f0);
+
+        $f0 = $f0 + 90.0F;
+
+        virtualinvoke $r1.<android.graphics.Canvas: void rotate(float)>($f0);
+
+        $r2 = r0.<com.movesky.app.main.units.UberUnit: float[] outline>;
+
+        $r3 = r0.<com.movesky.app.main.units.UberUnit: android.graphics.Paint paint>;
+
+        virtualinvoke $r1.<android.graphics.Canvas: void drawLines(float[],android.graphics.Paint)>($r2, $r3);
+
+        $r3 = r0.<com.movesky.app.main.units.UberUnit: android.graphics.Paint paint>;
+
+        virtualinvoke $r1.<android.graphics.Canvas: void drawCircle(float,float,float,android.graphics.Paint)>(0.0F, 0.0F, 5.0F, $r3);
+
+        virtualinvoke $r1.<android.graphics.Canvas: void restore()>();
+
+        $z0 = r0.<com.movesky.app.main.units.UberUnit: boolean firing>;
+
+        if $z0 != 0 goto label1;
+
+        $f0 = r0.<com.movesky.app.main.units.UberUnit: float powerLevel>;
+
+        $f0 = $f0 * 5.0F;
+
+        $f0 = $f0 / 9000.0F;
+
+        $b0 = $f0 cmpl 0.0F;
+
+        if $b0 <= 0 goto label1;
+
+        $r3 = <com.movesky.app.main.units.UberUnit: android.graphics.Paint tempPaint>;
+
+        $r4 = r0.<com.movesky.app.main.units.UberUnit: android.graphics.Paint paint>;
+
+        virtualinvoke $r3.<android.graphics.Paint: void set(android.graphics.Paint)>($r4);
+
+        $r3 = r0.<com.movesky.app.main.units.UberUnit: android.graphics.Paint paint>;
+
+        $r5 = <android.graphics.Paint$Style: android.graphics.Paint$Style FILL>;
+
+        virtualinvoke $r3.<android.graphics.Paint: void setStyle(android.graphics.Paint$Style)>($r5);
+
+        $r3 = r0.<com.movesky.app.main.units.UberUnit: android.graphics.Paint paint>;
+
+        virtualinvoke $r3.<android.graphics.Paint: void setColor(int)>(-7829368);
+
+        $f1 = virtualinvoke r0.<com.movesky.app.main.units.UberUnit: float getX()>();
+
+        $f2 = virtualinvoke r0.<com.movesky.app.main.units.UberUnit: float getY()>();
+
+        $r3 = r0.<com.movesky.app.main.units.UberUnit: android.graphics.Paint paint>;
+
+        virtualinvoke $r1.<android.graphics.Canvas: void drawCircle(float,float,float,android.graphics.Paint)>($f1, $f2, $f0, $r3);
+
+        $r3 = r0.<com.movesky.app.main.units.UberUnit: android.graphics.Paint paint>;
+
+        $r4 = <com.movesky.app.main.units.UberUnit: android.graphics.Paint tempPaint>;
+
+        virtualinvoke $r3.<android.graphics.Paint: void set(android.graphics.Paint)>($r4);
+
+     label1:
+        return;
+    }
+
+    public void drawEffects(android.graphics.Canvas)
+    {
+        com.movesky.app.main.units.UberUnit r0;
+        android.graphics.Canvas $r1;
+        float $f0, $f1, $f2, $f3, $f4;
+        boolean $z0;
+        byte $b0;
+        android.graphics.Paint $r2, $r3;
+        android.graphics.Paint$Style $r4;
+        com.movesky.app.main.units.Unit $r5;
+
+        r0 := @this: com.movesky.app.main.units.UberUnit;
+
+        $r1 := @parameter0: android.graphics.Canvas;
+
+        $z0 = r0.<com.movesky.app.main.units.UberUnit: boolean firing>;
+
+        if $z0 == 0 goto label1;
+
+        $f0 = r0.<com.movesky.app.main.units.UberUnit: float powerLevel>;
+
+        $f0 = 5.0F * $f0;
+
+        $f0 = $f0 / 9000.0F;
+
+        $b0 = $f0 cmpl 0.0F;
+
+        if $b0 <= 0 goto label1;
+
+        $r2 = <com.movesky.app.main.units.UberUnit: android.graphics.Paint tempPaint>;
+
+        $r3 = r0.<com.movesky.app.main.units.UberUnit: android.graphics.Paint paint>;
+
+        virtualinvoke $r2.<android.graphics.Paint: void set(android.graphics.Paint)>($r3);
+
+        $r2 = r0.<com.movesky.app.main.units.UberUnit: android.graphics.Paint paint>;
+
+        $r4 = <android.graphics.Paint$Style: android.graphics.Paint$Style FILL>;
+
+        virtualinvoke $r2.<android.graphics.Paint: void setStyle(android.graphics.Paint$Style)>($r4);
+
+        $r2 = r0.<com.movesky.app.main.units.UberUnit: android.graphics.Paint paint>;
+
+        virtualinvoke $r2.<android.graphics.Paint: void setColor(int)>(-7829368);
+
+        $r2 = r0.<com.movesky.app.main.units.UberUnit: android.graphics.Paint paint>;
+
+        virtualinvoke $r2.<android.graphics.Paint: void setStrokeWidth(float)>($f0);
+
+        $f1 = virtualinvoke r0.<com.movesky.app.main.units.UberUnit: float getX()>();
+
+        $f2 = virtualinvoke r0.<com.movesky.app.main.units.UberUnit: float getY()>();
+
+        $r5 = r0.<com.movesky.app.main.units.UberUnit: com.movesky.app.main.units.Unit fireTarget>;
+
+        $f3 = virtualinvoke $r5.<com.movesky.app.main.units.Unit: float getX()>();
+
+        $r5 = r0.<com.movesky.app.main.units.UberUnit: com.movesky.app.main.units.Unit fireTarget>;
+
+        $f4 = virtualinvoke $r5.<com.movesky.app.main.units.Unit: float getY()>();
+
+        $r2 = r0.<com.movesky.app.main.units.UberUnit: android.graphics.Paint paint>;
+
+        virtualinvoke $r1.<android.graphics.Canvas: void drawLine(float,float,float,float,android.graphics.Paint)>($f1, $f2, $f3, $f4, $r2);
+
+        $r5 = r0.<com.movesky.app.main.units.UberUnit: com.movesky.app.main.units.Unit fireTarget>;
+
+        $f1 = virtualinvoke $r5.<com.movesky.app.main.units.Unit: float getX()>();
+
+        $r5 = r0.<com.movesky.app.main.units.UberUnit: com.movesky.app.main.units.Unit fireTarget>;
+
+        $f2 = virtualinvoke $r5.<com.movesky.app.main.units.Unit: float getY()>();
+
+        $f3 = 0.7F * $f0;
+
+        $r2 = r0.<com.movesky.app.main.units.UberUnit: android.graphics.Paint paint>;
+
+        virtualinvoke $r1.<android.graphics.Canvas: void drawCircle(float,float,float,android.graphics.Paint)>($f1, $f2, $f3, $r2);
+
+        $r2 = r0.<com.movesky.app.main.units.UberUnit: android.graphics.Paint paint>;
+
+        virtualinvoke $r2.<android.graphics.Paint: void setColor(int)>(-1);
+
+        $f1 = virtualinvoke r0.<com.movesky.app.main.units.UberUnit: float getX()>();
+
+        $f2 = virtualinvoke r0.<com.movesky.app.main.units.UberUnit: float getY()>();
+
+        $r2 = r0.<com.movesky.app.main.units.UberUnit: android.graphics.Paint paint>;
+
+        virtualinvoke $r1.<android.graphics.Canvas: void drawCircle(float,float,float,android.graphics.Paint)>($f1, $f2, $f0, $r2);
+
+        $r5 = r0.<com.movesky.app.main.units.UberUnit: com.movesky.app.main.units.Unit fireTarget>;
+
+        $f1 = virtualinvoke $r5.<com.movesky.app.main.units.Unit: float getX()>();
+
+        $r5 = r0.<com.movesky.app.main.units.UberUnit: com.movesky.app.main.units.Unit fireTarget>;
+
+        $f2 = virtualinvoke $r5.<com.movesky.app.main.units.Unit: float getY()>();
+
+        $f3 = 0.45F * $f0;
+
+        $r2 = r0.<com.movesky.app.main.units.UberUnit: android.graphics.Paint paint>;
+
+        virtualinvoke $r1.<android.graphics.Canvas: void drawCircle(float,float,float,android.graphics.Paint)>($f1, $f2, $f3, $r2);
+
+        $r2 = r0.<com.movesky.app.main.units.UberUnit: android.graphics.Paint paint>;
+
+        $f0 = 0.5F * $f0;
+
+        virtualinvoke $r2.<android.graphics.Paint: void setStrokeWidth(float)>($f0);
+
+        $f0 = virtualinvoke r0.<com.movesky.app.main.units.UberUnit: float getX()>();
+
+        $f1 = virtualinvoke r0.<com.movesky.app.main.units.UberUnit: float getY()>();
+
+        $r5 = r0.<com.movesky.app.main.units.UberUnit: com.movesky.app.main.units.Unit fireTarget>;
+
+        $f2 = virtualinvoke $r5.<com.movesky.app.main.units.Unit: float getX()>();
+
+        $r5 = r0.<com.movesky.app.main.units.UberUnit: com.movesky.app.main.units.Unit fireTarget>;
+
+        $f3 = virtualinvoke $r5.<com.movesky.app.main.units.Unit: float getY()>();
+
+        $r2 = r0.<com.movesky.app.main.units.UberUnit: android.graphics.Paint paint>;
+
+        virtualinvoke $r1.<android.graphics.Canvas: void drawLine(float,float,float,float,android.graphics.Paint)>($f0, $f1, $f2, $f3, $r2);
+
+        $r2 = r0.<com.movesky.app.main.units.UberUnit: android.graphics.Paint paint>;
+
+        $r3 = <com.movesky.app.main.units.UberUnit: android.graphics.Paint tempPaint>;
+
+        virtualinvoke $r2.<android.graphics.Paint: void set(android.graphics.Paint)>($r3);
+
+     label1:
+        return;
+    }
+
+    public float getRadius()
+    {
+        com.movesky.app.main.units.UberUnit r0;
+
+        r0 := @this: com.movesky.app.main.units.UberUnit;
+
+        return 10.0F;
+    }
+
+    public int getStartingHealth()
+    {
+        com.movesky.app.main.units.UberUnit r0;
+
+        r0 := @this: com.movesky.app.main.units.UberUnit;
+
+        return 450;
+    }
+
+    public com.movesky.app.main.units.UnitType getType()
+    {
+        com.movesky.app.main.units.UberUnit r0;
+        com.movesky.app.main.units.UnitType r1;
+
+        r0 := @this: com.movesky.app.main.units.UberUnit;
+
+        r1 = <com.movesky.app.main.units.UnitType: com.movesky.app.main.units.UnitType UBER>;
+
+        return r1;
+    }
+
+    public void update(float)
+    {
+        com.movesky.app.main.units.UberUnit r0;
+        float $f0, $f1, $f2, $f3, $f4;
+        boolean $z0;
+        java.lang.String $r1;
+        com.movesky.app.main.units.Unit $r2;
+        byte $b0;
+        com.movesky.app.main.units.UnitManager $r3;
+        com.movesky.app.engine.util.Bag $r4;
+        java.util.Iterator $r5;
+        java.lang.Object $r6;
+        com.movesky.app.main.Team $r7, $r8;
+
+        r0 := @this: com.movesky.app.main.units.UberUnit;
+
+        $f0 := @parameter0: float;
+
+        specialinvoke r0.<com.movesky.app.main.units.Unit: void update(float)>($f0);
+
+        $z0 = virtualinvoke r0.<com.movesky.app.main.units.UberUnit: boolean isDead()>();
+
+        if $z0 == 0 goto label1;
+
+        return;
+
+     label1:
+        $z0 = r0.<com.movesky.app.main.units.UberUnit: boolean firing>;
+
+        if $z0 == 0 goto label5;
+
+        $r1 = virtualinvoke r0.<com.movesky.app.main.units.UberUnit: java.lang.String getStateName()>();
+
+        $z0 = virtualinvoke $r1.<java.lang.String: boolean equals(java.lang.Object)>("attacking");
+
+        if $z0 == 0 goto label2;
+
+        $r2 = r0.<com.movesky.app.main.units.UberUnit: com.movesky.app.main.units.Unit fireTarget>;
+
+        $z0 = virtualinvoke $r2.<com.movesky.app.main.units.Unit: boolean isDead()>();
+
+        if $z0 != 0 goto label2;
+
+        $f1 = r0.<com.movesky.app.main.units.UberUnit: float powerLevel>;
+
+        $b0 = $f1 cmpg 0.0F;
+
+        if $b0 >= 0 goto label3;
+
+     label2:
+        $f0 = r0.<com.movesky.app.main.units.UberUnit: float powerLevel>;
+
+        $f0 = staticinvoke <java.lang.Math: float max(float,float)>(0.0F, $f0);
+
+        r0.<com.movesky.app.main.units.UberUnit: float powerLevel> = $f0;
+
+        r0.<com.movesky.app.main.units.UberUnit: boolean charging> = 1;
+
+        r0.<com.movesky.app.main.units.UberUnit: boolean firing> = 0;
+
+        r0.<com.movesky.app.main.units.UberUnit: com.movesky.app.main.units.Unit fireTarget> = null;
+
+        return;
+
+     label3:
+        $f1 = r0.<com.movesky.app.main.units.UberUnit: float powerLevel>;
+
+        $f1 = $f1 - 285.7143F;
+
+        r0.<com.movesky.app.main.units.UberUnit: float powerLevel> = $f1;
+
+        $f0 = 140.0F * $f0;
+
+        $r3 = r0.<com.movesky.app.main.units.UberUnit: com.movesky.app.main.units.UnitManager unitManager>;
+
+        $f1 = virtualinvoke r0.<com.movesky.app.main.units.UberUnit: float getX()>();
+
+        $f2 = virtualinvoke r0.<com.movesky.app.main.units.UberUnit: float getY()>();
+
+        $r2 = r0.<com.movesky.app.main.units.UberUnit: com.movesky.app.main.units.Unit fireTarget>;
+
+        $f3 = virtualinvoke $r2.<com.movesky.app.main.units.Unit: float getX()>();
+
+        $r2 = r0.<com.movesky.app.main.units.UberUnit: com.movesky.app.main.units.Unit fireTarget>;
+
+        $f4 = virtualinvoke $r2.<com.movesky.app.main.units.Unit: float getY()>();
+
+        $r4 = interfaceinvoke $r3.<com.movesky.app.main.units.UnitManager: com.movesky.app.engine.util.Bag getUnitsIntersectingLine(float,float,float,float)>($f1, $f2, $f3, $f4);
+
+        $r5 = virtualinvoke $r4.<com.movesky.app.engine.util.Bag: java.util.Iterator iterator()>();
+
+     label4:
+        $z0 = interfaceinvoke $r5.<java.util.Iterator: boolean hasNext()>();
+
+        if $z0 == 0 goto label9;
+
+        $r6 = interfaceinvoke $r5.<java.util.Iterator: java.lang.Object next()>();
+
+        $r2 = (com.movesky.app.main.units.Unit) $r6;
+
+        $r7 = r0.<com.movesky.app.main.units.UberUnit: com.movesky.app.main.Team team>;
+
+        $r8 = virtualinvoke $r2.<com.movesky.app.main.units.Unit: com.movesky.app.main.Team getTeam()>();
+
+        $z0 = virtualinvoke $r7.<com.movesky.app.main.Team: boolean isEnemy(com.movesky.app.main.Team)>($r8);
+
+        if $z0 == 0 goto label4;
+
+        virtualinvoke $r2.<com.movesky.app.main.units.Unit: void takeDamage(float,com.movesky.app.main.units.Unit)>($f0, r0);
+
+        goto label4;
+
+     label5:
+        $f1 = r0.<com.movesky.app.main.units.UberUnit: float powerLevel>;
+
+        $b0 = $f1 cmpl 9000.0F;
+
+        if $b0 <= 0 goto label8;
+
+        r0.<com.movesky.app.main.units.UberUnit: float powerLevel> = 9000.0F;
+
+        r0.<com.movesky.app.main.units.UberUnit: boolean charging> = 0;
+
+     label6:
+        $z0 = r0.<com.movesky.app.main.units.UberUnit: boolean charging>;
+
+        if $z0 == 0 goto label7;
+
+        $f1 = r0.<com.movesky.app.main.units.UberUnit: float powerLevel>;
+
+        $f0 = 4000.0F * $f0;
+
+        $f0 = $f1 + $f0;
+
+        r0.<com.movesky.app.main.units.UberUnit: float powerLevel> = $f0;
+
+     label7:
+        $z0 = r0.<com.movesky.app.main.units.UberUnit: boolean charging>;
+
+        if $z0 != 0 goto label9;
+
+        $r2 = r0.<com.movesky.app.main.units.UberUnit: com.movesky.app.main.units.Unit target>;
+
+        if $r2 == null goto label9;
+
+        $r2 = r0.<com.movesky.app.main.units.UberUnit: com.movesky.app.main.units.Unit target>;
+
+        $z0 = virtualinvoke $r2.<com.movesky.app.main.units.Unit: boolean isDead()>();
+
+        if $z0 != 0 goto label9;
+
+        $r1 = virtualinvoke r0.<com.movesky.app.main.units.UberUnit: java.lang.String getStateName()>();
+
+        $z0 = virtualinvoke $r1.<java.lang.String: boolean equals(java.lang.Object)>("attacking");
+
+        if $z0 == 0 goto label9;
+
+        r0.<com.movesky.app.main.units.UberUnit: boolean firing> = 1;
+
+        $r2 = r0.<com.movesky.app.main.units.UberUnit: com.movesky.app.main.units.Unit target>;
+
+        r0.<com.movesky.app.main.units.UberUnit: com.movesky.app.main.units.Unit fireTarget> = $r2;
+
+        return;
+
+     label8:
+        r0.<com.movesky.app.main.units.UberUnit: boolean charging> = 1;
+
+        goto label6;
+
+     label9:
+        return;
+    }
+
+    public static void <clinit>()
+    {
+        <com.movesky.app.main.units.UberUnit: float POWER_CIRCLE_RADIUS> = 5.0F;
+
+        <com.movesky.app.main.units.UberUnit: float MAX_POWER_LEVEL> = 9000.0F;
+
+        <com.movesky.app.main.units.UberUnit: float DISCHARGE_RATE> = 285.7143F;
+
+        <com.movesky.app.main.units.UberUnit: float DAMAGE_RATE> = 140.0F;
+
+        <com.movesky.app.main.units.UberUnit: float CHARGE_RATE> = 4000.0F;
+
+        return;
+    }
+}

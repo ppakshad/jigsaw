@@ -1,0 +1,404 @@
+public final class com.apperhand.device.a.b.i extends com.apperhand.device.a.b.b
+{
+    private com.apperhand.device.a.a.e g;
+    private java.lang.String h;
+    private java.lang.String i;
+    private boolean j;
+
+    public void <init>(com.apperhand.device.a.b, com.apperhand.device.a.a, java.lang.String, com.apperhand.common.dto.Command)
+    {
+        com.apperhand.device.a.b.i r0;
+        com.apperhand.device.a.b $r1;
+        com.apperhand.device.a.a $r2;
+        java.lang.String $r3;
+        com.apperhand.common.dto.Command $r4;
+        com.apperhand.common.dto.Command$Commands $r5;
+        com.apperhand.device.a.a.e $r6;
+
+        r0 := @this: com.apperhand.device.a.b.i;
+
+        $r1 := @parameter0: com.apperhand.device.a.b;
+
+        $r2 := @parameter1: com.apperhand.device.a.a;
+
+        $r3 := @parameter2: java.lang.String;
+
+        $r4 := @parameter3: com.apperhand.common.dto.Command;
+
+        $r5 = virtualinvoke $r4.<com.apperhand.common.dto.Command: com.apperhand.common.dto.Command$Commands getCommand()>();
+
+        specialinvoke r0.<com.apperhand.device.a.b.b: void <init>(com.apperhand.device.a.b,com.apperhand.device.a.a,java.lang.String,com.apperhand.common.dto.Command$Commands)>($r1, $r2, $r3, $r5);
+
+        r0.<com.apperhand.device.a.b.i: java.lang.String h> = "";
+
+        r0.<com.apperhand.device.a.b.i: java.lang.String i> = null;
+
+        r0.<com.apperhand.device.a.b.i: boolean j> = 0;
+
+        $r6 = interfaceinvoke $r2.<com.apperhand.device.a.a: com.apperhand.device.a.a.e e()>();
+
+        r0.<com.apperhand.device.a.b.i: com.apperhand.device.a.a.e g> = $r6;
+
+        return;
+    }
+
+    private com.apperhand.common.dto.protocol.BaseResponse a(com.apperhand.common.dto.protocol.ShortcutRequest)
+    {
+        com.apperhand.common.dto.protocol.ShortcutRequest $r0;
+        java.lang.String $r1;
+        com.apperhand.device.a.b.i r2;
+        com.apperhand.device.a.a $r3;
+        com.apperhand.device.a.c.a $r4;
+        com.apperhand.common.dto.Command$Commands $r5;
+        com.apperhand.common.dto.protocol.BaseResponse $r6;
+        com.apperhand.common.dto.protocol.ShortcutResponse $r7;
+        com.apperhand.device.a.d.f $r8;
+        com.apperhand.device.a.d.c $r9;
+        com.apperhand.device.a.d.c$a $r10;
+
+        r2 := @this: com.apperhand.device.a.b.i;
+
+        $r0 := @parameter0: com.apperhand.common.dto.protocol.ShortcutRequest;
+
+        $r3 = r2.<com.apperhand.device.a.b.i: com.apperhand.device.a.a e>;
+
+     label1:
+        $r4 = interfaceinvoke $r3.<com.apperhand.device.a.a: com.apperhand.device.a.c.a b()>();
+
+     label2:
+        $r5 = <com.apperhand.common.dto.Command$Commands: com.apperhand.common.dto.Command$Commands SHORTCUTS>;
+
+     label3:
+        $r6 = interfaceinvoke $r4.<com.apperhand.device.a.c.a: com.apperhand.common.dto.protocol.BaseResponse a(java.lang.Object,com.apperhand.common.dto.Command$Commands,java.lang.Class)>($r0, $r5, class "Lcom/apperhand/common/dto/protocol/ShortcutResponse;");
+
+     label4:
+        $r7 = (com.apperhand.common.dto.protocol.ShortcutResponse) $r6;
+
+        return $r7;
+
+     label5:
+        $r8 := @caughtexception;
+
+        $r3 = r2.<com.apperhand.device.a.b.i: com.apperhand.device.a.a e>;
+
+        $r9 = interfaceinvoke $r3.<com.apperhand.device.a.a: com.apperhand.device.a.d.c a()>();
+
+        $r10 = <com.apperhand.device.a.d.c$a: com.apperhand.device.a.d.c$a b>;
+
+        $r1 = r2.<com.apperhand.device.a.b.i: java.lang.String a>;
+
+        interfaceinvoke $r9.<com.apperhand.device.a.d.c: void a(com.apperhand.device.a.d.c$a,java.lang.String,java.lang.String,java.lang.Throwable)>($r10, $r1, "Unable to handle Shortcut command!!!!", $r8);
+
+        return null;
+
+        catch com.apperhand.device.a.d.f from label1 to label2 with label5;
+        catch com.apperhand.device.a.d.f from label3 to label4 with label5;
+    }
+
+    protected final com.apperhand.common.dto.protocol.BaseResponse a() throws com.apperhand.device.a.d.f
+    {
+        com.apperhand.device.a.b.i r0;
+        com.apperhand.device.a.a.e $r1;
+        com.apperhand.common.dto.protocol.ShortcutRequest $r2;
+        com.apperhand.device.a.a $r3;
+        com.apperhand.common.dto.ApplicationDetails $r4;
+        boolean $z0;
+        java.lang.Boolean $r5;
+        com.apperhand.common.dto.protocol.BaseResponse $r6;
+
+        r0 := @this: com.apperhand.device.a.b.i;
+
+        $r1 = r0.<com.apperhand.device.a.b.i: com.apperhand.device.a.a.e g>;
+
+        interfaceinvoke $r1.<com.apperhand.device.a.a.e: void a()>();
+
+        $r2 = new com.apperhand.common.dto.protocol.ShortcutRequest;
+
+        specialinvoke $r2.<com.apperhand.common.dto.protocol.ShortcutRequest: void <init>()>();
+
+        $r3 = r0.<com.apperhand.device.a.b.i: com.apperhand.device.a.a e>;
+
+        $r4 = interfaceinvoke $r3.<com.apperhand.device.a.a: com.apperhand.common.dto.ApplicationDetails j()>();
+
+        virtualinvoke $r2.<com.apperhand.common.dto.protocol.ShortcutRequest: void setApplicationDetails(com.apperhand.common.dto.ApplicationDetails)>($r4);
+
+        $r1 = r0.<com.apperhand.device.a.b.i: com.apperhand.device.a.a.e g>;
+
+        $z0 = interfaceinvoke $r1.<com.apperhand.device.a.a.e: boolean c()>();
+
+        $r5 = staticinvoke <java.lang.Boolean: java.lang.Boolean valueOf(boolean)>($z0);
+
+        virtualinvoke $r2.<com.apperhand.common.dto.protocol.ShortcutRequest: void setSupportLauncher(java.lang.Boolean)>($r5);
+
+        $r6 = specialinvoke r0.<com.apperhand.device.a.b.i: com.apperhand.common.dto.protocol.BaseResponse a(com.apperhand.common.dto.protocol.ShortcutRequest)>($r2);
+
+        return $r6;
+    }
+
+    protected final java.util.Map a(com.apperhand.common.dto.protocol.BaseResponse) throws com.apperhand.device.a.d.f
+    {
+        com.apperhand.device.a.b.i r0;
+        java.lang.String $r1, $r13;
+        com.apperhand.common.dto.protocol.BaseResponse $r2;
+        com.apperhand.common.dto.protocol.ShortcutResponse $r3;
+        java.util.List $r4;
+        java.util.Iterator $r5;
+        boolean $z0;
+        java.lang.Object $r6;
+        com.apperhand.common.dto.Shortcut $r7;
+        int[] $r8;
+        com.apperhand.common.dto.Status $r9;
+        int $i0;
+        com.apperhand.device.a.d.c $r10;
+        com.apperhand.device.a.d.c$a $r11;
+        java.lang.Object[] $r12;
+        com.apperhand.device.a.a.e $r14;
+        com.apperhand.device.a.d.f $r15;
+
+        r0 := @this: com.apperhand.device.a.b.i;
+
+        $r2 := @parameter0: com.apperhand.common.dto.protocol.BaseResponse;
+
+        $r3 = (com.apperhand.common.dto.protocol.ShortcutResponse) $r2;
+
+        $r4 = virtualinvoke $r3.<com.apperhand.common.dto.protocol.ShortcutResponse: java.util.List getShortcutList()>();
+
+        if $r4 == null goto label10;
+
+        $r5 = interfaceinvoke $r4.<java.util.List: java.util.Iterator iterator()>();
+
+     label01:
+        $z0 = interfaceinvoke $r5.<java.util.Iterator: boolean hasNext()>();
+
+        if $z0 == 0 goto label10;
+
+        $r6 = interfaceinvoke $r5.<java.util.Iterator: java.lang.Object next()>();
+
+        $r7 = (com.apperhand.common.dto.Shortcut) $r6;
+
+        $r8 = <com.apperhand.device.a.b.i$1: int[] a>;
+
+        $r9 = virtualinvoke $r7.<com.apperhand.common.dto.Shortcut: com.apperhand.common.dto.Status getStatus()>();
+
+        $i0 = virtualinvoke $r9.<com.apperhand.common.dto.Status: int ordinal()>();
+
+        $i0 = $r8[$i0];
+
+        lookupswitch($i0)
+        {
+            case 1: goto label03;
+            default: goto label02;
+        };
+
+     label02:
+        $r10 = r0.<com.apperhand.device.a.b.i: com.apperhand.device.a.d.c b>;
+
+        $r11 = <com.apperhand.device.a.d.c$a: com.apperhand.device.a.d.c$a c>;
+
+        $r1 = r0.<com.apperhand.device.a.b.i: java.lang.String a>;
+
+        $r12 = newarray (java.lang.Object)[2];
+
+        $r9 = virtualinvoke $r7.<com.apperhand.common.dto.Shortcut: com.apperhand.common.dto.Status getStatus()>();
+
+        $r12[0] = $r9;
+
+        $r13 = virtualinvoke $r7.<com.apperhand.common.dto.Shortcut: java.lang.String toString()>();
+
+        $r12[1] = $r13;
+
+        $r13 = staticinvoke <java.lang.String: java.lang.String format(java.lang.String,java.lang.Object[])>("Unknown action %s for shortcut %s", $r12);
+
+        interfaceinvoke $r10.<com.apperhand.device.a.d.c: void a(com.apperhand.device.a.d.c$a,java.lang.String,java.lang.String)>($r11, $r1, $r13);
+
+        goto label01;
+
+     label03:
+        $r14 = r0.<com.apperhand.device.a.b.i: com.apperhand.device.a.a.e g>;
+
+     label04:
+        $z0 = interfaceinvoke $r14.<com.apperhand.device.a.a.e: boolean a(com.apperhand.common.dto.Shortcut)>($r7);
+
+     label05:
+        if $z0 != 0 goto label08;
+
+        $r14 = r0.<com.apperhand.device.a.b.i: com.apperhand.device.a.a.e g>;
+
+     label06:
+        interfaceinvoke $r14.<com.apperhand.device.a.a.e: void b(com.apperhand.common.dto.Shortcut)>($r7);
+
+     label07:
+        $r1 = virtualinvoke $r7.<com.apperhand.common.dto.Shortcut: java.lang.String getName()>();
+
+        r0.<com.apperhand.device.a.b.i: java.lang.String i> = $r1;
+
+        goto label01;
+
+     label08:
+        r0.<com.apperhand.device.a.b.i: boolean j> = 1;
+
+        goto label07;
+
+     label09:
+        $r15 := @caughtexception;
+
+        $r1 = virtualinvoke $r15.<com.apperhand.device.a.d.f: java.lang.String getMessage()>();
+
+        r0.<com.apperhand.device.a.b.i: java.lang.String h> = $r1;
+
+        $r14 = r0.<com.apperhand.device.a.b.i: com.apperhand.device.a.a.e g>;
+
+        interfaceinvoke $r14.<com.apperhand.device.a.a.e: void b(com.apperhand.common.dto.Shortcut)>($r7);
+
+        goto label07;
+
+     label10:
+        return null;
+
+        catch com.apperhand.device.a.d.f from label04 to label05 with label09;
+        catch com.apperhand.device.a.d.f from label06 to label07 with label09;
+    }
+
+    protected final void a(java.util.Map) throws com.apperhand.device.a.d.f
+    {
+        com.apperhand.device.a.b.i r0;
+        java.util.Map $r1;
+        com.apperhand.common.dto.protocol.CommandStatusRequest $r2;
+
+        r0 := @this: com.apperhand.device.a.b.i;
+
+        $r1 := @parameter0: java.util.Map;
+
+        $r2 = virtualinvoke r0.<com.apperhand.device.a.b.i: com.apperhand.common.dto.protocol.CommandStatusRequest b()>();
+
+        virtualinvoke r0.<com.apperhand.device.a.b.i: void a(com.apperhand.common.dto.protocol.CommandStatusRequest)>($r2);
+
+        return;
+    }
+
+    protected final com.apperhand.common.dto.protocol.CommandStatusRequest b() throws com.apperhand.device.a.d.f
+    {
+        com.apperhand.device.a.b.i r0;
+        com.apperhand.common.dto.protocol.CommandStatusRequest $r1;
+        boolean $z0, $z1;
+        com.apperhand.device.a.a.e $r2;
+        com.apperhand.common.dto.Command$Commands $r3;
+        com.apperhand.common.dto.CommandStatus$Status $r4;
+        java.lang.StringBuilder $r5;
+        java.lang.String $r6;
+        java.util.List $r7;
+        java.lang.Object[] $r8;
+        java.util.HashMap $r9;
+        int $i0;
+
+        r0 := @this: com.apperhand.device.a.b.i;
+
+        $r1 = specialinvoke r0.<com.apperhand.device.a.b.b: com.apperhand.common.dto.protocol.CommandStatusRequest b()>();
+
+        $z0 = r0.<com.apperhand.device.a.b.i: boolean j>;
+
+        if $z0 != 0 goto label3;
+
+        $z0 = 1;
+
+     label1:
+        $r2 = r0.<com.apperhand.device.a.b.i: com.apperhand.device.a.a.e g>;
+
+        $z1 = interfaceinvoke $r2.<com.apperhand.device.a.a.e: boolean c()>();
+
+        if $z1 != 0 goto label4;
+
+        $r3 = <com.apperhand.common.dto.Command$Commands: com.apperhand.common.dto.Command$Commands SHORTCUTS>;
+
+        $r4 = <com.apperhand.common.dto.CommandStatus$Status: com.apperhand.common.dto.CommandStatus$Status SUCCESS_WITH_WARNING>;
+
+        $r5 = new java.lang.StringBuilder;
+
+        specialinvoke $r5.<java.lang.StringBuilder: void <init>()>();
+
+        $r5 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Trying to used the following : [");
+
+        $r2 = r0.<com.apperhand.device.a.b.i: com.apperhand.device.a.a.e g>;
+
+        $r6 = interfaceinvoke $r2.<com.apperhand.device.a.a.e: java.lang.String b()>();
+
+        $r5 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r6);
+
+        $r5 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("]");
+
+        $r6 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        $r7 = virtualinvoke r0.<com.apperhand.device.a.b.i: java.util.List a(com.apperhand.common.dto.Command$Commands,com.apperhand.common.dto.CommandStatus$Status,java.lang.String,java.util.Map)>($r3, $r4, $r6, null);
+
+     label2:
+        virtualinvoke $r1.<com.apperhand.common.dto.protocol.CommandStatusRequest: void setStatuses(java.util.List)>($r7);
+
+        return $r1;
+
+     label3:
+        $z0 = 0;
+
+        goto label1;
+
+     label4:
+        $r5 = new java.lang.StringBuilder;
+
+        specialinvoke $r5.<java.lang.StringBuilder: void <init>(java.lang.String)>("Sababa!!!");
+
+        $r8 = newarray (java.lang.Object)[1];
+
+        $r2 = r0.<com.apperhand.device.a.b.i: com.apperhand.device.a.a.e g>;
+
+        $r6 = interfaceinvoke $r2.<com.apperhand.device.a.a.e: java.lang.String b()>();
+
+        $r8[0] = $r6;
+
+        $r6 = staticinvoke <java.lang.String: java.lang.String format(java.lang.String,java.lang.Object[])>(", used [%s] as launcher", $r8);
+
+        virtualinvoke $r5.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r6);
+
+        $r6 = r0.<com.apperhand.device.a.b.i: java.lang.String i>;
+
+        if $r6 == null goto label8;
+
+        if $z0 == 0 goto label8;
+
+        $r9 = new java.util.HashMap;
+
+        specialinvoke $r9.<java.util.HashMap: void <init>()>();
+
+        $r2 = r0.<com.apperhand.device.a.b.i: com.apperhand.device.a.a.e g>;
+
+        $r6 = r0.<com.apperhand.device.a.b.i: java.lang.String i>;
+
+        $i0 = interfaceinvoke $r2.<com.apperhand.device.a.a.e: int a(java.lang.String,long)>($r6, 5L);
+
+        $r6 = staticinvoke <java.lang.String: java.lang.String valueOf(int)>($i0);
+
+        interfaceinvoke $r9.<java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>("PARAMETER", $r6);
+
+     label5:
+        $r3 = <com.apperhand.common.dto.Command$Commands: com.apperhand.common.dto.Command$Commands SHORTCUTS>;
+
+        if $z0 == 0 goto label7;
+
+        $r4 = <com.apperhand.common.dto.CommandStatus$Status: com.apperhand.common.dto.CommandStatus$Status SUCCESS>;
+
+     label6:
+        $r6 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        $r7 = virtualinvoke r0.<com.apperhand.device.a.b.i: java.util.List a(com.apperhand.common.dto.Command$Commands,com.apperhand.common.dto.CommandStatus$Status,java.lang.String,java.util.Map)>($r3, $r4, $r6, $r9);
+
+        goto label2;
+
+     label7:
+        $r4 = <com.apperhand.common.dto.CommandStatus$Status: com.apperhand.common.dto.CommandStatus$Status FAILURE>;
+
+        goto label6;
+
+     label8:
+        $r9 = null;
+
+        goto label5;
+    }
+}

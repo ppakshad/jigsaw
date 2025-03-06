@@ -1,0 +1,48 @@
+public class Sliceeebc5bd52247c085034fcf928a1610394f9189848f2a61cd21851d13c433f367service extends java.lang.Object
+{
+
+    public void com_go108_lic_free_util_DownloadFileService()
+    {
+        Sliceeebc5bd52247c085034fcf928a1610394f9189848f2a61cd21851d13c433f367service this;
+        android.os.Bundle r1;
+        com.go108.lic.free.util.UpdateUtil r0;
+        com.go108.lic.free.util.UpdateUtil$5 r3;
+        android.content.Intent r2;
+        java.lang.String $r5;
+        android.app.Activity $r4;
+
+        this := @this: Sliceeebc5bd52247c085034fcf928a1610394f9189848f2a61cd21851d13c433f367service;
+
+        r2 = new android.content.Intent;
+
+        $r4 = r0.<com.go108.lic.free.util.UpdateUtil: android.app.Activity activity>;
+
+        specialinvoke r2.<android.content.Intent: void <init>(android.content.Context,java.lang.Class)>($r4, class "Lcom/go108/lic/free/util/DownloadFileService;");
+
+        r1 = new android.os.Bundle;
+
+        specialinvoke r1.<android.os.Bundle: void <init>()>();
+
+        $r5 = r0.<com.go108.lic.free.util.UpdateUtil: java.lang.String productName>;
+
+        virtualinvoke r1.<android.os.Bundle: void putString(java.lang.String,java.lang.String)>("productName", $r5);
+
+        $r5 = r0.<com.go108.lic.free.util.UpdateUtil: java.lang.String strURL>;
+
+        virtualinvoke r1.<android.os.Bundle: void putString(java.lang.String,java.lang.String)>("path", $r5);
+
+        virtualinvoke r2.<android.content.Intent: android.content.Intent putExtras(android.os.Bundle)>(r1);
+
+        $r4 = r0.<com.go108.lic.free.util.UpdateUtil: android.app.Activity activity>;
+
+        virtualinvoke $r4.<android.app.Activity: android.content.ComponentName startService(android.content.Intent)>(r2);
+
+        r3 = new com.go108.lic.free.util.UpdateUtil$5;
+
+        specialinvoke r3.<com.go108.lic.free.util.UpdateUtil$5: void <init>(com.go108.lic.free.util.UpdateUtil)>(r0);
+
+        virtualinvoke r3.<java.lang.Thread: void start()>();
+
+        return;
+    }
+}

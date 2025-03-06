@@ -1,0 +1,76 @@
+final class com.apperhand.device.android.c.c$2 extends java.lang.Object implements org.apache.http.HttpResponseInterceptor
+{
+
+    void <init>()
+    {
+        com.apperhand.device.android.c.c$2 r0;
+
+        r0 := @this: com.apperhand.device.android.c.c$2;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public final void process(org.apache.http.HttpResponse, org.apache.http.protocol.HttpContext) throws org.apache.http.HttpException, java.io.IOException
+    {
+        com.apperhand.device.android.c.c$2 r0;
+        org.apache.http.HttpResponse $r1;
+        org.apache.http.protocol.HttpContext $r2;
+        org.apache.http.HttpEntity $r3;
+        org.apache.http.Header $r4;
+        org.apache.http.HeaderElement[] $r5;
+        int $i0, $i1;
+        org.apache.http.HeaderElement $r6;
+        java.lang.String $r7;
+        boolean $z0;
+        com.apperhand.device.android.c.c$a $r8;
+
+        r0 := @this: com.apperhand.device.android.c.c$2;
+
+        $r1 := @parameter0: org.apache.http.HttpResponse;
+
+        $r2 := @parameter1: org.apache.http.protocol.HttpContext;
+
+        $r3 = interfaceinvoke $r1.<org.apache.http.HttpResponse: org.apache.http.HttpEntity getEntity()>();
+
+        $r4 = interfaceinvoke $r3.<org.apache.http.HttpEntity: org.apache.http.Header getContentEncoding()>();
+
+        if $r4 == null goto label3;
+
+        $r5 = interfaceinvoke $r4.<org.apache.http.Header: org.apache.http.HeaderElement[] getElements()>();
+
+        $i0 = 0;
+
+     label1:
+        $i1 = lengthof $r5;
+
+        if $i0 >= $i1 goto label3;
+
+        $r6 = $r5[$i0];
+
+        $r7 = interfaceinvoke $r6.<org.apache.http.HeaderElement: java.lang.String getName()>();
+
+        $z0 = virtualinvoke $r7.<java.lang.String: boolean equalsIgnoreCase(java.lang.String)>("gzip");
+
+        if $z0 == 0 goto label2;
+
+        $r8 = new com.apperhand.device.android.c.c$a;
+
+        $r3 = interfaceinvoke $r1.<org.apache.http.HttpResponse: org.apache.http.HttpEntity getEntity()>();
+
+        specialinvoke $r8.<com.apperhand.device.android.c.c$a: void <init>(org.apache.http.HttpEntity)>($r3);
+
+        interfaceinvoke $r1.<org.apache.http.HttpResponse: void setEntity(org.apache.http.HttpEntity)>($r8);
+
+        return;
+
+     label2:
+        $i0 = $i0 + 1;
+
+        goto label1;
+
+     label3:
+        return;
+    }
+}

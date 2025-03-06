@@ -1,0 +1,53 @@
+final class com.movesky.webapp.Activity_Blank$2 extends android.os.Handler
+{
+
+    void <init>()
+    {
+        com.movesky.webapp.Activity_Blank$2 r0;
+
+        r0 := @this: com.movesky.webapp.Activity_Blank$2;
+
+        specialinvoke r0.<android.os.Handler: void <init>()>();
+
+        return;
+    }
+
+    public void handleMessage(android.os.Message)
+    {
+        com.movesky.webapp.Activity_Blank$2 r0;
+        android.os.Message $r1;
+        int $i0;
+        java.util.Timer $r2;
+        android.app.Activity $r3;
+
+        r0 := @this: com.movesky.webapp.Activity_Blank$2;
+
+        $r1 := @parameter0: android.os.Message;
+
+        $i0 = $r1.<android.os.Message: int what>;
+
+        lookupswitch($i0)
+        {
+            case 1: goto label2;
+            default: goto label1;
+        };
+
+     label1:
+        specialinvoke r0.<android.os.Handler: void handleMessage(android.os.Message)>($r1);
+
+        return;
+
+     label2:
+        $r2 = staticinvoke <com.movesky.webapp.Activity_Blank: java.util.Timer access$000()>();
+
+        virtualinvoke $r2.<java.util.Timer: void cancel()>();
+
+        staticinvoke <com.movesky.webapp.Activity_Blank: java.util.Timer access$002(java.util.Timer)>(null);
+
+        $r3 = staticinvoke <com.movesky.webapp.Activity_Blank: android.app.Activity access$100()>();
+
+        virtualinvoke $r3.<android.app.Activity: void finish()>();
+
+        goto label1;
+    }
+}

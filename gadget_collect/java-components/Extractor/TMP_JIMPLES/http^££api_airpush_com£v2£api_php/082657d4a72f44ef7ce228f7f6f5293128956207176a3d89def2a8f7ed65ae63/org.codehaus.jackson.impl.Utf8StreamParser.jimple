@@ -1,0 +1,5895 @@
+public final class org.codehaus.jackson.impl.Utf8StreamParser extends org.codehaus.jackson.impl.StreamBasedParserBase
+{
+    private static final byte BYTE_0;
+    static final byte BYTE_LF;
+    private static final int[] sInputCodesLatin1;
+    private static final int[] sInputCodesUtf8;
+    protected org.codehaus.jackson.ObjectCodec _objectCodec;
+    private int _quad1;
+    protected int[] _quadBuffer;
+    protected final org.codehaus.jackson.sym.BytesToNameCanonicalizer _symbols;
+    protected boolean _tokenIncomplete;
+
+    static void <clinit>()
+    {
+        int[] $r0;
+
+        <org.codehaus.jackson.impl.Utf8StreamParser: byte BYTE_LF> = 10;
+
+        <org.codehaus.jackson.impl.Utf8StreamParser: byte BYTE_0> = 0;
+
+        $r0 = staticinvoke <org.codehaus.jackson.util.CharTypes: int[] getInputCodeUtf8()>();
+
+        <org.codehaus.jackson.impl.Utf8StreamParser: int[] sInputCodesUtf8> = $r0;
+
+        $r0 = staticinvoke <org.codehaus.jackson.util.CharTypes: int[] getInputCodeLatin1()>();
+
+        <org.codehaus.jackson.impl.Utf8StreamParser: int[] sInputCodesLatin1> = $r0;
+
+        return;
+    }
+
+    public void <init>(org.codehaus.jackson.io.IOContext, int, java.io.InputStream, org.codehaus.jackson.ObjectCodec, org.codehaus.jackson.sym.BytesToNameCanonicalizer, byte[], int, int, boolean)
+    {
+        org.codehaus.jackson.impl.Utf8StreamParser r0;
+        org.codehaus.jackson.io.IOContext $r1;
+        int $i0, $i1, $i2;
+        java.io.InputStream $r2;
+        org.codehaus.jackson.ObjectCodec $r3;
+        org.codehaus.jackson.sym.BytesToNameCanonicalizer $r4;
+        byte[] $r5;
+        boolean $z0;
+        int[] $r6;
+        org.codehaus.jackson.JsonParser$Feature $r7;
+
+        r0 := @this: org.codehaus.jackson.impl.Utf8StreamParser;
+
+        $r1 := @parameter0: org.codehaus.jackson.io.IOContext;
+
+        $i0 := @parameter1: int;
+
+        $r2 := @parameter2: java.io.InputStream;
+
+        $r3 := @parameter3: org.codehaus.jackson.ObjectCodec;
+
+        $r4 := @parameter4: org.codehaus.jackson.sym.BytesToNameCanonicalizer;
+
+        $r5 := @parameter5: byte[];
+
+        $i1 := @parameter6: int;
+
+        $i2 := @parameter7: int;
+
+        $z0 := @parameter8: boolean;
+
+        specialinvoke r0.<org.codehaus.jackson.impl.StreamBasedParserBase: void <init>(org.codehaus.jackson.io.IOContext,int,java.io.InputStream,byte[],int,int,boolean)>($r1, $i0, $r2, $r5, $i1, $i2, $z0);
+
+        $r6 = newarray (int)[16];
+
+        r0.<org.codehaus.jackson.impl.Utf8StreamParser: int[] _quadBuffer> = $r6;
+
+        r0.<org.codehaus.jackson.impl.Utf8StreamParser: boolean _tokenIncomplete> = 0;
+
+        r0.<org.codehaus.jackson.impl.Utf8StreamParser: org.codehaus.jackson.ObjectCodec _objectCodec> = $r3;
+
+        r0.<org.codehaus.jackson.impl.Utf8StreamParser: org.codehaus.jackson.sym.BytesToNameCanonicalizer _symbols> = $r4;
+
+        $r7 = <org.codehaus.jackson.JsonParser$Feature: org.codehaus.jackson.JsonParser$Feature CANONICALIZE_FIELD_NAMES>;
+
+        $z0 = virtualinvoke $r7.<org.codehaus.jackson.JsonParser$Feature: boolean enabledIn(int)>($i0);
+
+        if $z0 != 0 goto label1;
+
+        virtualinvoke r0.<org.codehaus.jackson.impl.Utf8StreamParser: void _throwInternal()>();
+
+     label1:
+        return;
+    }
+
+    private final int _decodeUtf8_2(int) throws java.io.IOException, org.codehaus.jackson.JsonParseException
+    {
+        org.codehaus.jackson.impl.Utf8StreamParser r0;
+        int $i0, $i2, $i3;
+        byte b1;
+        byte[] $r1;
+
+        r0 := @this: org.codehaus.jackson.impl.Utf8StreamParser;
+
+        $i0 := @parameter0: int;
+
+        $i2 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _inputPtr>;
+
+        $i3 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _inputEnd>;
+
+        if $i2 < $i3 goto label1;
+
+        virtualinvoke r0.<org.codehaus.jackson.impl.Utf8StreamParser: void loadMoreGuaranteed()>();
+
+     label1:
+        $r1 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: byte[] _inputBuffer>;
+
+        $i3 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _inputPtr>;
+
+        $i2 = $i3 + 1;
+
+        r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _inputPtr> = $i2;
+
+        b1 = $r1[$i3];
+
+        $i2 = b1 & 192;
+
+        if $i2 == 128 goto label2;
+
+        $i2 = b1 & 255;
+
+        $i3 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _inputPtr>;
+
+        virtualinvoke r0.<org.codehaus.jackson.impl.Utf8StreamParser: void _reportInvalidOther(int,int)>($i2, $i3);
+
+     label2:
+        $i0 = $i0 & 31;
+
+        $i0 = $i0 << 6;
+
+        $i2 = b1 & 63;
+
+        $i0 = $i0 | $i2;
+
+        return $i0;
+    }
+
+    private final int _decodeUtf8_3(int) throws java.io.IOException, org.codehaus.jackson.JsonParseException
+    {
+        org.codehaus.jackson.impl.Utf8StreamParser r0;
+        int $i0, $i1, $i2;
+        byte[] $r1;
+        byte b3;
+
+        r0 := @this: org.codehaus.jackson.impl.Utf8StreamParser;
+
+        $i0 := @parameter0: int;
+
+        $i1 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _inputPtr>;
+
+        $i2 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _inputEnd>;
+
+        if $i1 < $i2 goto label1;
+
+        virtualinvoke r0.<org.codehaus.jackson.impl.Utf8StreamParser: void loadMoreGuaranteed()>();
+
+     label1:
+        $i0 = $i0 & 15;
+
+        $r1 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: byte[] _inputBuffer>;
+
+        $i1 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _inputPtr>;
+
+        $i2 = $i1 + 1;
+
+        r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _inputPtr> = $i2;
+
+        b3 = $r1[$i1];
+
+        $i1 = b3 & 192;
+
+        if $i1 == 128 goto label2;
+
+        $i1 = b3 & 255;
+
+        $i2 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _inputPtr>;
+
+        virtualinvoke r0.<org.codehaus.jackson.impl.Utf8StreamParser: void _reportInvalidOther(int,int)>($i1, $i2);
+
+     label2:
+        $i0 = $i0 << 6;
+
+        $i1 = b3 & 63;
+
+        $i0 = $i0 | $i1;
+
+        $i1 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _inputPtr>;
+
+        $i2 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _inputEnd>;
+
+        if $i1 < $i2 goto label3;
+
+        virtualinvoke r0.<org.codehaus.jackson.impl.Utf8StreamParser: void loadMoreGuaranteed()>();
+
+     label3:
+        $r1 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: byte[] _inputBuffer>;
+
+        $i1 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _inputPtr>;
+
+        $i2 = $i1 + 1;
+
+        r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _inputPtr> = $i2;
+
+        b3 = $r1[$i1];
+
+        $i1 = b3 & 192;
+
+        if $i1 == 128 goto label4;
+
+        $i1 = b3 & 255;
+
+        $i2 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _inputPtr>;
+
+        virtualinvoke r0.<org.codehaus.jackson.impl.Utf8StreamParser: void _reportInvalidOther(int,int)>($i1, $i2);
+
+     label4:
+        $i0 = $i0 << 6;
+
+        $i1 = b3 & 63;
+
+        $i0 = $i0 | $i1;
+
+        return $i0;
+    }
+
+    private final int _decodeUtf8_3fast(int) throws java.io.IOException, org.codehaus.jackson.JsonParseException
+    {
+        org.codehaus.jackson.impl.Utf8StreamParser r0;
+        int $i0, $i1, $i2;
+        byte[] $r1;
+        byte b3;
+
+        r0 := @this: org.codehaus.jackson.impl.Utf8StreamParser;
+
+        $i0 := @parameter0: int;
+
+        $i0 = $i0 & 15;
+
+        $r1 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: byte[] _inputBuffer>;
+
+        $i1 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _inputPtr>;
+
+        $i2 = $i1 + 1;
+
+        r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _inputPtr> = $i2;
+
+        b3 = $r1[$i1];
+
+        $i1 = b3 & 192;
+
+        if $i1 == 128 goto label1;
+
+        $i1 = b3 & 255;
+
+        $i2 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _inputPtr>;
+
+        virtualinvoke r0.<org.codehaus.jackson.impl.Utf8StreamParser: void _reportInvalidOther(int,int)>($i1, $i2);
+
+     label1:
+        $i0 = $i0 << 6;
+
+        $i1 = b3 & 63;
+
+        $i0 = $i0 | $i1;
+
+        $r1 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: byte[] _inputBuffer>;
+
+        $i1 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _inputPtr>;
+
+        $i2 = $i1 + 1;
+
+        r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _inputPtr> = $i2;
+
+        b3 = $r1[$i1];
+
+        $i1 = b3 & 192;
+
+        if $i1 == 128 goto label2;
+
+        $i1 = b3 & 255;
+
+        $i2 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _inputPtr>;
+
+        virtualinvoke r0.<org.codehaus.jackson.impl.Utf8StreamParser: void _reportInvalidOther(int,int)>($i1, $i2);
+
+     label2:
+        $i0 = $i0 << 6;
+
+        $i1 = b3 & 63;
+
+        $i0 = $i0 | $i1;
+
+        return $i0;
+    }
+
+    private final int _decodeUtf8_4(int) throws java.io.IOException, org.codehaus.jackson.JsonParseException
+    {
+        org.codehaus.jackson.impl.Utf8StreamParser r0;
+        int $i0, $i1, $i2;
+        byte[] $r1;
+        byte b3;
+
+        r0 := @this: org.codehaus.jackson.impl.Utf8StreamParser;
+
+        $i0 := @parameter0: int;
+
+        $i1 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _inputPtr>;
+
+        $i2 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _inputEnd>;
+
+        if $i1 < $i2 goto label1;
+
+        virtualinvoke r0.<org.codehaus.jackson.impl.Utf8StreamParser: void loadMoreGuaranteed()>();
+
+     label1:
+        $r1 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: byte[] _inputBuffer>;
+
+        $i1 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _inputPtr>;
+
+        $i2 = $i1 + 1;
+
+        r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _inputPtr> = $i2;
+
+        b3 = $r1[$i1];
+
+        $i1 = b3 & 192;
+
+        if $i1 == 128 goto label2;
+
+        $i1 = b3 & 255;
+
+        $i2 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _inputPtr>;
+
+        virtualinvoke r0.<org.codehaus.jackson.impl.Utf8StreamParser: void _reportInvalidOther(int,int)>($i1, $i2);
+
+     label2:
+        $i0 = $i0 & 7;
+
+        $i0 = $i0 << 6;
+
+        $i1 = b3 & 63;
+
+        $i0 = $i0 | $i1;
+
+        $i1 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _inputPtr>;
+
+        $i2 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _inputEnd>;
+
+        if $i1 < $i2 goto label3;
+
+        virtualinvoke r0.<org.codehaus.jackson.impl.Utf8StreamParser: void loadMoreGuaranteed()>();
+
+     label3:
+        $r1 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: byte[] _inputBuffer>;
+
+        $i1 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _inputPtr>;
+
+        $i2 = $i1 + 1;
+
+        r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _inputPtr> = $i2;
+
+        b3 = $r1[$i1];
+
+        $i1 = b3 & 192;
+
+        if $i1 == 128 goto label4;
+
+        $i1 = b3 & 255;
+
+        $i2 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _inputPtr>;
+
+        virtualinvoke r0.<org.codehaus.jackson.impl.Utf8StreamParser: void _reportInvalidOther(int,int)>($i1, $i2);
+
+     label4:
+        $i0 = $i0 << 6;
+
+        $i1 = b3 & 63;
+
+        $i0 = $i0 | $i1;
+
+        $i1 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _inputPtr>;
+
+        $i2 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _inputEnd>;
+
+        if $i1 < $i2 goto label5;
+
+        virtualinvoke r0.<org.codehaus.jackson.impl.Utf8StreamParser: void loadMoreGuaranteed()>();
+
+     label5:
+        $r1 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: byte[] _inputBuffer>;
+
+        $i1 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _inputPtr>;
+
+        $i2 = $i1 + 1;
+
+        r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _inputPtr> = $i2;
+
+        b3 = $r1[$i1];
+
+        $i1 = b3 & 192;
+
+        if $i1 == 128 goto label6;
+
+        $i1 = b3 & 255;
+
+        $i2 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _inputPtr>;
+
+        virtualinvoke r0.<org.codehaus.jackson.impl.Utf8StreamParser: void _reportInvalidOther(int,int)>($i1, $i2);
+
+     label6:
+        $i0 = $i0 << 6;
+
+        $i1 = b3 & 63;
+
+        $i0 = $i0 | $i1;
+
+        $i0 = $i0 - 65536;
+
+        return $i0;
+    }
+
+    private final void _finishString2(char[], int) throws java.io.IOException, org.codehaus.jackson.JsonParseException
+    {
+        org.codehaus.jackson.impl.Utf8StreamParser r0;
+        int[] r1;
+        byte[] r2;
+        char[] $r3;
+        int i0, i1, $i2, $i3, $i5;
+        org.codehaus.jackson.util.TextBuffer $r4;
+        byte $b4;
+        char $c6;
+
+        r0 := @this: org.codehaus.jackson.impl.Utf8StreamParser;
+
+        $r3 := @parameter0: char[];
+
+        i0 := @parameter1: int;
+
+        r1 = <org.codehaus.jackson.impl.Utf8StreamParser: int[] sInputCodesUtf8>;
+
+        r2 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: byte[] _inputBuffer>;
+
+     label01:
+        i1 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _inputPtr>;
+
+        $i2 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _inputEnd>;
+
+        if i1 < $i2 goto label02;
+
+        virtualinvoke r0.<org.codehaus.jackson.impl.Utf8StreamParser: void loadMoreGuaranteed()>();
+
+        i1 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _inputPtr>;
+
+     label02:
+        $i2 = lengthof $r3;
+
+        if i0 < $i2 goto label03;
+
+        $r4 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: org.codehaus.jackson.util.TextBuffer _textBuffer>;
+
+        $r3 = virtualinvoke $r4.<org.codehaus.jackson.util.TextBuffer: char[] finishCurrentSegment()>();
+
+        i0 = 0;
+
+     label03:
+        $i2 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _inputEnd>;
+
+        $i3 = lengthof $r3;
+
+        $i3 = $i3 - i0;
+
+        $i3 = $i3 + i1;
+
+        $i2 = staticinvoke <java.lang.Math: int min(int,int)>($i2, $i3);
+
+     label04:
+        if i1 >= $i2 goto label06;
+
+        $i3 = i1 + 1;
+
+        $b4 = r2[i1];
+
+        i1 = $b4 & 255;
+
+        $i5 = r1[i1];
+
+        if $i5 == 0 goto label05;
+
+        r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _inputPtr> = $i3;
+
+        if i1 != 34 goto label07;
+
+        $r4 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: org.codehaus.jackson.util.TextBuffer _textBuffer>;
+
+        virtualinvoke $r4.<org.codehaus.jackson.util.TextBuffer: void setCurrentLength(int)>(i0);
+
+        return;
+
+     label05:
+        $c6 = (char) i1;
+
+        $r3[i0] = $c6;
+
+        i1 = $i3;
+
+        i0 = i0 + 1;
+
+        goto label04;
+
+     label06:
+        r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _inputPtr> = i1;
+
+        goto label01;
+
+     label07:
+        $i2 = r1[i1];
+
+        lookupswitch($i2)
+        {
+            case 1: goto label11;
+            case 2: goto label12;
+            case 3: goto label13;
+            case 4: goto label15;
+            default: goto label08;
+        };
+
+     label08:
+        if i1 >= 32 goto label17;
+
+        virtualinvoke r0.<org.codehaus.jackson.impl.Utf8StreamParser: void _throwUnquotedSpace(int,java.lang.String)>(i1, "string value");
+
+        $i2 = i0;
+
+     label09:
+        i0 = lengthof $r3;
+
+        if $i2 < i0 goto label10;
+
+        $r4 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: org.codehaus.jackson.util.TextBuffer _textBuffer>;
+
+        $r3 = virtualinvoke $r4.<org.codehaus.jackson.util.TextBuffer: char[] finishCurrentSegment()>();
+
+        $i2 = 0;
+
+     label10:
+        $c6 = (char) i1;
+
+        $r3[$i2] = $c6;
+
+        i0 = $i2 + 1;
+
+        goto label01;
+
+     label11:
+        i1 = virtualinvoke r0.<org.codehaus.jackson.impl.Utf8StreamParser: char _decodeEscaped()>();
+
+        $i2 = i0;
+
+        goto label09;
+
+     label12:
+        i1 = specialinvoke r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _decodeUtf8_2(int)>(i1);
+
+        $i2 = i0;
+
+        goto label09;
+
+     label13:
+        $i2 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _inputEnd>;
+
+        $i3 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _inputPtr>;
+
+        $i2 = $i2 - $i3;
+
+        if $i2 < 2 goto label14;
+
+        i1 = specialinvoke r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _decodeUtf8_3fast(int)>(i1);
+
+        $i2 = i0;
+
+        goto label09;
+
+     label14:
+        i1 = specialinvoke r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _decodeUtf8_3(int)>(i1);
+
+        $i2 = i0;
+
+        goto label09;
+
+     label15:
+        i1 = specialinvoke r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _decodeUtf8_4(int)>(i1);
+
+        $i2 = i0 + 1;
+
+        $i3 = i1 >> 10;
+
+        $i3 = 55296 | $i3;
+
+        $c6 = (char) $i3;
+
+        $r3[i0] = $c6;
+
+        i0 = lengthof $r3;
+
+        if $i2 < i0 goto label16;
+
+        $r4 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: org.codehaus.jackson.util.TextBuffer _textBuffer>;
+
+        $r3 = virtualinvoke $r4.<org.codehaus.jackson.util.TextBuffer: char[] finishCurrentSegment()>();
+
+        $i2 = 0;
+
+     label16:
+        i0 = i1 & 1023;
+
+        i1 = 56320 | i0;
+
+        goto label09;
+
+     label17:
+        virtualinvoke r0.<org.codehaus.jackson.impl.Utf8StreamParser: void _reportInvalidChar(int)>(i1);
+
+        $i2 = i0;
+
+        goto label09;
+    }
+
+    private final org.codehaus.jackson.JsonToken _nextAfterName()
+    {
+        org.codehaus.jackson.impl.Utf8StreamParser r0;
+        org.codehaus.jackson.JsonToken r1, $r2;
+        org.codehaus.jackson.impl.JsonReadContext $r3;
+        int $i0, $i1;
+
+        r0 := @this: org.codehaus.jackson.impl.Utf8StreamParser;
+
+        r0.<org.codehaus.jackson.impl.Utf8StreamParser: boolean _nameCopied> = 0;
+
+        r1 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: org.codehaus.jackson.JsonToken _nextToken>;
+
+        r0.<org.codehaus.jackson.impl.Utf8StreamParser: org.codehaus.jackson.JsonToken _nextToken> = null;
+
+        $r2 = <org.codehaus.jackson.JsonToken: org.codehaus.jackson.JsonToken START_ARRAY>;
+
+        if r1 != $r2 goto label2;
+
+        $r3 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: org.codehaus.jackson.impl.JsonReadContext _parsingContext>;
+
+        $i0 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _tokenInputRow>;
+
+        $i1 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _tokenInputCol>;
+
+        $r3 = virtualinvoke $r3.<org.codehaus.jackson.impl.JsonReadContext: org.codehaus.jackson.impl.JsonReadContext createChildArrayContext(int,int)>($i0, $i1);
+
+        r0.<org.codehaus.jackson.impl.Utf8StreamParser: org.codehaus.jackson.impl.JsonReadContext _parsingContext> = $r3;
+
+     label1:
+        r0.<org.codehaus.jackson.impl.Utf8StreamParser: org.codehaus.jackson.JsonToken _currToken> = r1;
+
+        return r1;
+
+     label2:
+        $r2 = <org.codehaus.jackson.JsonToken: org.codehaus.jackson.JsonToken START_OBJECT>;
+
+        if r1 != $r2 goto label1;
+
+        $r3 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: org.codehaus.jackson.impl.JsonReadContext _parsingContext>;
+
+        $i0 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _tokenInputRow>;
+
+        $i1 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _tokenInputCol>;
+
+        $r3 = virtualinvoke $r3.<org.codehaus.jackson.impl.JsonReadContext: org.codehaus.jackson.impl.JsonReadContext createChildObjectContext(int,int)>($i0, $i1);
+
+        r0.<org.codehaus.jackson.impl.Utf8StreamParser: org.codehaus.jackson.impl.JsonReadContext _parsingContext> = $r3;
+
+        goto label1;
+    }
+
+    private final org.codehaus.jackson.JsonToken _nextTokenNotInObject(int) throws java.io.IOException, org.codehaus.jackson.JsonParseException
+    {
+        org.codehaus.jackson.impl.Utf8StreamParser r0;
+        int $i0, $i1;
+        org.codehaus.jackson.JsonToken $r1;
+        org.codehaus.jackson.impl.JsonReadContext $r2;
+
+        r0 := @this: org.codehaus.jackson.impl.Utf8StreamParser;
+
+        $i0 := @parameter0: int;
+
+        if $i0 != 34 goto label1;
+
+        r0.<org.codehaus.jackson.impl.Utf8StreamParser: boolean _tokenIncomplete> = 1;
+
+        $r1 = <org.codehaus.jackson.JsonToken: org.codehaus.jackson.JsonToken VALUE_STRING>;
+
+        r0.<org.codehaus.jackson.impl.Utf8StreamParser: org.codehaus.jackson.JsonToken _currToken> = $r1;
+
+        return $r1;
+
+     label1:
+        lookupswitch($i0)
+        {
+            case 45: goto label9;
+            case 48: goto label9;
+            case 49: goto label9;
+            case 50: goto label9;
+            case 51: goto label9;
+            case 52: goto label9;
+            case 53: goto label9;
+            case 54: goto label9;
+            case 55: goto label9;
+            case 56: goto label9;
+            case 57: goto label9;
+            case 91: goto label3;
+            case 93: goto label5;
+            case 102: goto label7;
+            case 110: goto label8;
+            case 116: goto label6;
+            case 123: goto label4;
+            case 125: goto label5;
+            default: goto label2;
+        };
+
+     label2:
+        $r1 = virtualinvoke r0.<org.codehaus.jackson.impl.Utf8StreamParser: org.codehaus.jackson.JsonToken _handleUnexpectedValue(int)>($i0);
+
+        r0.<org.codehaus.jackson.impl.Utf8StreamParser: org.codehaus.jackson.JsonToken _currToken> = $r1;
+
+        return $r1;
+
+     label3:
+        $r2 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: org.codehaus.jackson.impl.JsonReadContext _parsingContext>;
+
+        $i0 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _tokenInputRow>;
+
+        $i1 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _tokenInputCol>;
+
+        $r2 = virtualinvoke $r2.<org.codehaus.jackson.impl.JsonReadContext: org.codehaus.jackson.impl.JsonReadContext createChildArrayContext(int,int)>($i0, $i1);
+
+        r0.<org.codehaus.jackson.impl.Utf8StreamParser: org.codehaus.jackson.impl.JsonReadContext _parsingContext> = $r2;
+
+        $r1 = <org.codehaus.jackson.JsonToken: org.codehaus.jackson.JsonToken START_ARRAY>;
+
+        r0.<org.codehaus.jackson.impl.Utf8StreamParser: org.codehaus.jackson.JsonToken _currToken> = $r1;
+
+        return $r1;
+
+     label4:
+        $r2 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: org.codehaus.jackson.impl.JsonReadContext _parsingContext>;
+
+        $i0 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _tokenInputRow>;
+
+        $i1 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _tokenInputCol>;
+
+        $r2 = virtualinvoke $r2.<org.codehaus.jackson.impl.JsonReadContext: org.codehaus.jackson.impl.JsonReadContext createChildObjectContext(int,int)>($i0, $i1);
+
+        r0.<org.codehaus.jackson.impl.Utf8StreamParser: org.codehaus.jackson.impl.JsonReadContext _parsingContext> = $r2;
+
+        $r1 = <org.codehaus.jackson.JsonToken: org.codehaus.jackson.JsonToken START_OBJECT>;
+
+        r0.<org.codehaus.jackson.impl.Utf8StreamParser: org.codehaus.jackson.JsonToken _currToken> = $r1;
+
+        return $r1;
+
+     label5:
+        virtualinvoke r0.<org.codehaus.jackson.impl.Utf8StreamParser: void _reportUnexpectedChar(int,java.lang.String)>($i0, "expected a value");
+
+     label6:
+        $r1 = <org.codehaus.jackson.JsonToken: org.codehaus.jackson.JsonToken VALUE_TRUE>;
+
+        virtualinvoke r0.<org.codehaus.jackson.impl.Utf8StreamParser: void _matchToken(org.codehaus.jackson.JsonToken)>($r1);
+
+        $r1 = <org.codehaus.jackson.JsonToken: org.codehaus.jackson.JsonToken VALUE_TRUE>;
+
+        r0.<org.codehaus.jackson.impl.Utf8StreamParser: org.codehaus.jackson.JsonToken _currToken> = $r1;
+
+        return $r1;
+
+     label7:
+        $r1 = <org.codehaus.jackson.JsonToken: org.codehaus.jackson.JsonToken VALUE_FALSE>;
+
+        virtualinvoke r0.<org.codehaus.jackson.impl.Utf8StreamParser: void _matchToken(org.codehaus.jackson.JsonToken)>($r1);
+
+        $r1 = <org.codehaus.jackson.JsonToken: org.codehaus.jackson.JsonToken VALUE_FALSE>;
+
+        r0.<org.codehaus.jackson.impl.Utf8StreamParser: org.codehaus.jackson.JsonToken _currToken> = $r1;
+
+        return $r1;
+
+     label8:
+        $r1 = <org.codehaus.jackson.JsonToken: org.codehaus.jackson.JsonToken VALUE_NULL>;
+
+        virtualinvoke r0.<org.codehaus.jackson.impl.Utf8StreamParser: void _matchToken(org.codehaus.jackson.JsonToken)>($r1);
+
+        $r1 = <org.codehaus.jackson.JsonToken: org.codehaus.jackson.JsonToken VALUE_NULL>;
+
+        r0.<org.codehaus.jackson.impl.Utf8StreamParser: org.codehaus.jackson.JsonToken _currToken> = $r1;
+
+        return $r1;
+
+     label9:
+        $r1 = virtualinvoke r0.<org.codehaus.jackson.impl.Utf8StreamParser: org.codehaus.jackson.JsonToken parseNumberText(int)>($i0);
+
+        r0.<org.codehaus.jackson.impl.Utf8StreamParser: org.codehaus.jackson.JsonToken _currToken> = $r1;
+
+        return $r1;
+    }
+
+    private final org.codehaus.jackson.JsonToken _parseFloatText(char[], int, int, boolean, int) throws java.io.IOException, org.codehaus.jackson.JsonParseException
+    {
+        org.codehaus.jackson.impl.Utf8StreamParser r0;
+        boolean $z0, z1, $z2;
+        int $i0, i1, $i2, i3, i4, $i6, $i8;
+        char[] $r1;
+        char $c5;
+        org.codehaus.jackson.util.TextBuffer $r2;
+        byte[] $r3;
+        byte $b7;
+        org.codehaus.jackson.JsonToken $r4;
+
+        r0 := @this: org.codehaus.jackson.impl.Utf8StreamParser;
+
+        $r1 := @parameter0: char[];
+
+        i1 := @parameter1: int;
+
+        $i2 := @parameter2: int;
+
+        $z0 := @parameter3: boolean;
+
+        $i0 := @parameter4: int;
+
+        i3 = 0;
+
+        z1 = 0;
+
+        if $i2 != 46 goto label03;
+
+        $c5 = (char) $i2;
+
+        $r1[i1] = $c5;
+
+        i1 = i1 + 1;
+
+     label01:
+        i4 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _inputPtr>;
+
+        $i6 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _inputEnd>;
+
+        if i4 < $i6 goto label15;
+
+        $z2 = virtualinvoke r0.<org.codehaus.jackson.impl.Utf8StreamParser: boolean loadMore()>();
+
+        if $z2 != 0 goto label15;
+
+        z1 = 1;
+
+     label02:
+        if i3 != 0 goto label03;
+
+        virtualinvoke r0.<org.codehaus.jackson.impl.Utf8StreamParser: void reportUnexpectedNumberChar(int,java.lang.String)>($i2, "Decimal point not followed by a digit");
+
+     label03:
+        i4 = 0;
+
+        if $i2 == 101 goto label04;
+
+        if $i2 != 69 goto label13;
+
+     label04:
+        $i6 = lengthof $r1;
+
+        if i1 < $i6 goto label05;
+
+        $r2 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: org.codehaus.jackson.util.TextBuffer _textBuffer>;
+
+        $r1 = virtualinvoke $r2.<org.codehaus.jackson.util.TextBuffer: char[] finishCurrentSegment()>();
+
+        i1 = 0;
+
+     label05:
+        $i6 = i1 + 1;
+
+        $c5 = (char) $i2;
+
+        $r1[i1] = $c5;
+
+        i1 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _inputPtr>;
+
+        $i2 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _inputEnd>;
+
+        if i1 < $i2 goto label06;
+
+        virtualinvoke r0.<org.codehaus.jackson.impl.Utf8StreamParser: void loadMoreGuaranteed()>();
+
+     label06:
+        $r3 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: byte[] _inputBuffer>;
+
+        i1 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _inputPtr>;
+
+        $i2 = i1 + 1;
+
+        r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _inputPtr> = $i2;
+
+        $b7 = $r3[i1];
+
+        $i2 = $b7 & 255;
+
+        if $i2 == 45 goto label07;
+
+        if $i2 != 43 goto label19;
+
+     label07:
+        i1 = lengthof $r1;
+
+        if $i6 < i1 goto label18;
+
+        $r2 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: org.codehaus.jackson.util.TextBuffer _textBuffer>;
+
+        $r1 = virtualinvoke $r2.<org.codehaus.jackson.util.TextBuffer: char[] finishCurrentSegment()>();
+
+        $i6 = 0;
+
+     label08:
+        i1 = $i6 + 1;
+
+        $c5 = (char) $i2;
+
+        $r1[$i6] = $c5;
+
+        $i2 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _inputPtr>;
+
+        $i6 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _inputEnd>;
+
+        if $i2 < $i6 goto label09;
+
+        virtualinvoke r0.<org.codehaus.jackson.impl.Utf8StreamParser: void loadMoreGuaranteed()>();
+
+     label09:
+        $r3 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: byte[] _inputBuffer>;
+
+        $i2 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _inputPtr>;
+
+        $i6 = $i2 + 1;
+
+        r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _inputPtr> = $i6;
+
+        $b7 = $r3[$i2];
+
+        $i2 = $b7 & 255;
+
+     label10:
+        if $i2 > 57 goto label12;
+
+        if $i2 < 48 goto label12;
+
+        i4 = i4 + 1;
+
+        $i6 = lengthof $r1;
+
+        if i1 < $i6 goto label11;
+
+        $r2 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: org.codehaus.jackson.util.TextBuffer _textBuffer>;
+
+        $r1 = virtualinvoke $r2.<org.codehaus.jackson.util.TextBuffer: char[] finishCurrentSegment()>();
+
+        i1 = 0;
+
+     label11:
+        $i6 = i1 + 1;
+
+        $c5 = (char) $i2;
+
+        $r1[i1] = $c5;
+
+        i1 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _inputPtr>;
+
+        $i8 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _inputEnd>;
+
+        if i1 < $i8 goto label17;
+
+        $z2 = virtualinvoke r0.<org.codehaus.jackson.impl.Utf8StreamParser: boolean loadMore()>();
+
+        if $z2 != 0 goto label17;
+
+        z1 = 1;
+
+        i1 = $i6;
+
+     label12:
+        if i4 != 0 goto label13;
+
+        virtualinvoke r0.<org.codehaus.jackson.impl.Utf8StreamParser: void reportUnexpectedNumberChar(int,java.lang.String)>($i2, "Exponent indicator not followed by a digit");
+
+     label13:
+        if z1 != 0 goto label14;
+
+        $i2 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _inputPtr>;
+
+        $i2 = $i2 - 1;
+
+        r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _inputPtr> = $i2;
+
+     label14:
+        $r2 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: org.codehaus.jackson.util.TextBuffer _textBuffer>;
+
+        virtualinvoke $r2.<org.codehaus.jackson.util.TextBuffer: void setCurrentLength(int)>(i1);
+
+        $r4 = virtualinvoke r0.<org.codehaus.jackson.impl.Utf8StreamParser: org.codehaus.jackson.JsonToken resetFloat(boolean,int,int,int)>($z0, $i0, i3, i4);
+
+        return $r4;
+
+     label15:
+        $r3 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: byte[] _inputBuffer>;
+
+        $i2 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _inputPtr>;
+
+        i4 = $i2 + 1;
+
+        r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _inputPtr> = i4;
+
+        $b7 = $r3[$i2];
+
+        $i2 = $b7 & 255;
+
+        if $i2 < 48 goto label02;
+
+        if $i2 > 57 goto label02;
+
+        i3 = i3 + 1;
+
+        i4 = lengthof $r1;
+
+        if i1 < i4 goto label16;
+
+        $r2 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: org.codehaus.jackson.util.TextBuffer _textBuffer>;
+
+        $r1 = virtualinvoke $r2.<org.codehaus.jackson.util.TextBuffer: char[] finishCurrentSegment()>();
+
+        i1 = 0;
+
+     label16:
+        $c5 = (char) $i2;
+
+        $r1[i1] = $c5;
+
+        i1 = i1 + 1;
+
+        goto label01;
+
+     label17:
+        $r3 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: byte[] _inputBuffer>;
+
+        i1 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _inputPtr>;
+
+        $i2 = i1 + 1;
+
+        r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _inputPtr> = $i2;
+
+        $b7 = $r3[i1];
+
+        $i2 = $b7 & 255;
+
+        i1 = $i6;
+
+        goto label10;
+
+     label18:
+        goto label08;
+
+     label19:
+        i1 = $i6;
+
+        goto label10;
+    }
+
+    private final org.codehaus.jackson.JsonToken _parserNumber2(char[], int, boolean, int) throws java.io.IOException, org.codehaus.jackson.JsonParseException
+    {
+        org.codehaus.jackson.impl.Utf8StreamParser r0;
+        boolean $z0, $z1;
+        int i0, i1, i2, $i3;
+        char[] $r1;
+        org.codehaus.jackson.util.TextBuffer $r2;
+        org.codehaus.jackson.JsonToken $r3;
+        byte[] $r4;
+        byte $b4;
+        char $c5;
+
+        r0 := @this: org.codehaus.jackson.impl.Utf8StreamParser;
+
+        $r1 := @parameter0: char[];
+
+        i2 := @parameter1: int;
+
+        $z0 := @parameter2: boolean;
+
+        $i3 := @parameter3: int;
+
+     label1:
+        i0 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _inputPtr>;
+
+        i1 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _inputEnd>;
+
+        if i0 < i1 goto label2;
+
+        $z1 = virtualinvoke r0.<org.codehaus.jackson.impl.Utf8StreamParser: boolean loadMore()>();
+
+        if $z1 != 0 goto label2;
+
+        $r2 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: org.codehaus.jackson.util.TextBuffer _textBuffer>;
+
+        virtualinvoke $r2.<org.codehaus.jackson.util.TextBuffer: void setCurrentLength(int)>(i2);
+
+        $r3 = virtualinvoke r0.<org.codehaus.jackson.impl.Utf8StreamParser: org.codehaus.jackson.JsonToken resetInt(boolean,int)>($z0, $i3);
+
+        return $r3;
+
+     label2:
+        $r4 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: byte[] _inputBuffer>;
+
+        i0 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _inputPtr>;
+
+        i1 = i0 + 1;
+
+        r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _inputPtr> = i1;
+
+        $b4 = $r4[i0];
+
+        i0 = $b4 & 255;
+
+        if i0 > 57 goto label3;
+
+        if i0 >= 48 goto label5;
+
+     label3:
+        if i0 == 46 goto label4;
+
+        if i0 == 101 goto label4;
+
+        if i0 != 69 goto label7;
+
+     label4:
+        $r3 = specialinvoke r0.<org.codehaus.jackson.impl.Utf8StreamParser: org.codehaus.jackson.JsonToken _parseFloatText(char[],int,int,boolean,int)>($r1, i2, i0, $z0, $i3);
+
+        return $r3;
+
+     label5:
+        i1 = lengthof $r1;
+
+        if i2 < i1 goto label6;
+
+        $r2 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: org.codehaus.jackson.util.TextBuffer _textBuffer>;
+
+        $r1 = virtualinvoke $r2.<org.codehaus.jackson.util.TextBuffer: char[] finishCurrentSegment()>();
+
+        i2 = 0;
+
+     label6:
+        $c5 = (char) i0;
+
+        $r1[i2] = $c5;
+
+        $i3 = $i3 + 1;
+
+        i2 = i2 + 1;
+
+        goto label1;
+
+     label7:
+        i0 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _inputPtr>;
+
+        i0 = i0 - 1;
+
+        r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _inputPtr> = i0;
+
+        $r2 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: org.codehaus.jackson.util.TextBuffer _textBuffer>;
+
+        virtualinvoke $r2.<org.codehaus.jackson.util.TextBuffer: void setCurrentLength(int)>(i2);
+
+        $r3 = virtualinvoke r0.<org.codehaus.jackson.impl.Utf8StreamParser: org.codehaus.jackson.JsonToken resetInt(boolean,int)>($z0, $i3);
+
+        return $r3;
+    }
+
+    private void _reportInvalidToken(java.lang.String) throws java.io.IOException, org.codehaus.jackson.JsonParseException
+    {
+        org.codehaus.jackson.impl.Utf8StreamParser r0;
+        java.lang.String $r1;
+        char c0;
+        byte b1;
+        java.lang.StringBuilder r2, $r3;
+        int $i2, $i3;
+        boolean $z0;
+        byte[] $r4;
+
+        r0 := @this: org.codehaus.jackson.impl.Utf8StreamParser;
+
+        $r1 := @parameter0: java.lang.String;
+
+        r2 = new java.lang.StringBuilder;
+
+        specialinvoke r2.<java.lang.StringBuilder: void <init>(java.lang.String)>($r1);
+
+     label1:
+        $i2 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _inputPtr>;
+
+        $i3 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _inputEnd>;
+
+        if $i2 < $i3 goto label3;
+
+        $z0 = virtualinvoke r0.<org.codehaus.jackson.impl.Utf8StreamParser: boolean loadMore()>();
+
+        if $z0 != 0 goto label3;
+
+     label2:
+        $r3 = new java.lang.StringBuilder;
+
+        specialinvoke $r3.<java.lang.StringBuilder: void <init>()>();
+
+        $r3 = virtualinvoke $r3.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Unrecognized token \'");
+
+        $r1 = virtualinvoke r2.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        r2 = virtualinvoke $r3.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r1);
+
+        r2 = virtualinvoke r2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("\': was expecting \'null\', \'true\' or \'false\'");
+
+        $r1 = virtualinvoke r2.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        virtualinvoke r0.<org.codehaus.jackson.impl.Utf8StreamParser: void _reportError(java.lang.String)>($r1);
+
+        return;
+
+     label3:
+        $r4 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: byte[] _inputBuffer>;
+
+        $i3 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _inputPtr>;
+
+        $i2 = $i3 + 1;
+
+        r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _inputPtr> = $i2;
+
+        b1 = $r4[$i3];
+
+        $i2 = virtualinvoke r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _decodeCharForError(int)>(b1);
+
+        c0 = (char) $i2;
+
+        $z0 = staticinvoke <java.lang.Character: boolean isJavaIdentifierPart(char)>(c0);
+
+        if $z0 == 0 goto label2;
+
+        $i2 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _inputPtr>;
+
+        $i2 = $i2 + 1;
+
+        r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _inputPtr> = $i2;
+
+        virtualinvoke r2.<java.lang.StringBuilder: java.lang.StringBuilder append(char)>(c0);
+
+        goto label1;
+    }
+
+    private final void _skipCComment() throws java.io.IOException, org.codehaus.jackson.JsonParseException
+    {
+        org.codehaus.jackson.impl.Utf8StreamParser r0;
+        int i0, i1;
+        int[] $r1;
+        boolean $z0;
+        byte[] $r2;
+        byte $b2;
+
+        r0 := @this: org.codehaus.jackson.impl.Utf8StreamParser;
+
+        $r1 = staticinvoke <org.codehaus.jackson.util.CharTypes: int[] getInputCodeComment()>();
+
+     label1:
+        i0 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _inputPtr>;
+
+        i1 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _inputEnd>;
+
+        if i0 < i1 goto label2;
+
+        $z0 = virtualinvoke r0.<org.codehaus.jackson.impl.Utf8StreamParser: boolean loadMore()>();
+
+        if $z0 == 0 goto label7;
+
+     label2:
+        $r2 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: byte[] _inputBuffer>;
+
+        i1 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _inputPtr>;
+
+        i0 = i1 + 1;
+
+        r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _inputPtr> = i0;
+
+        $b2 = $r2[i1];
+
+        i1 = $b2 & 255;
+
+        i0 = $r1[i1];
+
+        if i0 == 0 goto label1;
+
+        lookupswitch(i0)
+        {
+            case 10: goto label5;
+            case 13: goto label6;
+            case 42: goto label4;
+            default: goto label3;
+        };
+
+     label3:
+        virtualinvoke r0.<org.codehaus.jackson.impl.Utf8StreamParser: void _reportInvalidChar(int)>(i1);
+
+        goto label1;
+
+     label4:
+        $r2 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: byte[] _inputBuffer>;
+
+        i0 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _inputPtr>;
+
+        $b2 = $r2[i0];
+
+        if $b2 != 47 goto label1;
+
+        i0 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _inputPtr>;
+
+        i0 = i0 + 1;
+
+        r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _inputPtr> = i0;
+
+        return;
+
+     label5:
+        virtualinvoke r0.<org.codehaus.jackson.impl.Utf8StreamParser: void _skipLF()>();
+
+        goto label1;
+
+     label6:
+        virtualinvoke r0.<org.codehaus.jackson.impl.Utf8StreamParser: void _skipCR()>();
+
+        goto label1;
+
+     label7:
+        virtualinvoke r0.<org.codehaus.jackson.impl.Utf8StreamParser: void _reportInvalidEOF(java.lang.String)>(" in a comment");
+
+        return;
+    }
+
+    private final void _skipComment() throws java.io.IOException, org.codehaus.jackson.JsonParseException
+    {
+        org.codehaus.jackson.impl.Utf8StreamParser r0;
+        int i0, $i1;
+        org.codehaus.jackson.JsonParser$Feature $r1;
+        boolean $z0;
+        byte[] $r2;
+        byte $b2;
+
+        r0 := @this: org.codehaus.jackson.impl.Utf8StreamParser;
+
+        $r1 = <org.codehaus.jackson.JsonParser$Feature: org.codehaus.jackson.JsonParser$Feature ALLOW_COMMENTS>;
+
+        $z0 = virtualinvoke r0.<org.codehaus.jackson.impl.Utf8StreamParser: boolean isEnabled(org.codehaus.jackson.JsonParser$Feature)>($r1);
+
+        if $z0 != 0 goto label1;
+
+        virtualinvoke r0.<org.codehaus.jackson.impl.Utf8StreamParser: void _reportUnexpectedChar(int,java.lang.String)>(47, "maybe a (non-standard) comment? (not recognized as one since Feature \'ALLOW_COMMENTS\' not enabled for parser)");
+
+     label1:
+        i0 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _inputPtr>;
+
+        $i1 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _inputEnd>;
+
+        if i0 < $i1 goto label2;
+
+        $z0 = virtualinvoke r0.<org.codehaus.jackson.impl.Utf8StreamParser: boolean loadMore()>();
+
+        if $z0 != 0 goto label2;
+
+        virtualinvoke r0.<org.codehaus.jackson.impl.Utf8StreamParser: void _reportInvalidEOF(java.lang.String)>(" in a comment");
+
+     label2:
+        $r2 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: byte[] _inputBuffer>;
+
+        $i1 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _inputPtr>;
+
+        i0 = $i1 + 1;
+
+        r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _inputPtr> = i0;
+
+        $b2 = $r2[$i1];
+
+        i0 = $b2 & 255;
+
+        if i0 != 47 goto label3;
+
+        specialinvoke r0.<org.codehaus.jackson.impl.Utf8StreamParser: void _skipCppComment()>();
+
+        return;
+
+     label3:
+        if i0 != 42 goto label4;
+
+        specialinvoke r0.<org.codehaus.jackson.impl.Utf8StreamParser: void _skipCComment()>();
+
+        return;
+
+     label4:
+        virtualinvoke r0.<org.codehaus.jackson.impl.Utf8StreamParser: void _reportUnexpectedChar(int,java.lang.String)>(i0, "was expecting either \'*\' or \'/\' for a comment");
+
+        return;
+    }
+
+    private final void _skipCppComment() throws java.io.IOException, org.codehaus.jackson.JsonParseException
+    {
+        org.codehaus.jackson.impl.Utf8StreamParser r0;
+        int i0, i1;
+        int[] $r1;
+        boolean $z0;
+        byte[] $r2;
+        byte $b2;
+
+        r0 := @this: org.codehaus.jackson.impl.Utf8StreamParser;
+
+        $r1 = staticinvoke <org.codehaus.jackson.util.CharTypes: int[] getInputCodeComment()>();
+
+     label1:
+        i0 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _inputPtr>;
+
+        i1 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _inputEnd>;
+
+        if i0 < i1 goto label2;
+
+        $z0 = virtualinvoke r0.<org.codehaus.jackson.impl.Utf8StreamParser: boolean loadMore()>();
+
+        if $z0 == 0 goto label6;
+
+     label2:
+        $r2 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: byte[] _inputBuffer>;
+
+        i1 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _inputPtr>;
+
+        i0 = i1 + 1;
+
+        r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _inputPtr> = i0;
+
+        $b2 = $r2[i1];
+
+        i1 = $b2 & 255;
+
+        i0 = $r1[i1];
+
+        if i0 == 0 goto label1;
+
+        lookupswitch(i0)
+        {
+            case 10: goto label4;
+            case 13: goto label5;
+            case 42: goto label1;
+            default: goto label3;
+        };
+
+     label3:
+        virtualinvoke r0.<org.codehaus.jackson.impl.Utf8StreamParser: void _reportInvalidChar(int)>(i1);
+
+        goto label1;
+
+     label4:
+        virtualinvoke r0.<org.codehaus.jackson.impl.Utf8StreamParser: void _skipLF()>();
+
+        return;
+
+     label5:
+        virtualinvoke r0.<org.codehaus.jackson.impl.Utf8StreamParser: void _skipCR()>();
+
+     label6:
+        return;
+    }
+
+    private final void _skipUtf8_2(int) throws java.io.IOException, org.codehaus.jackson.JsonParseException
+    {
+        org.codehaus.jackson.impl.Utf8StreamParser r0;
+        int $i0, $i1;
+        byte[] $r1;
+        byte $b2;
+
+        r0 := @this: org.codehaus.jackson.impl.Utf8StreamParser;
+
+        $i0 := @parameter0: int;
+
+        $i0 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _inputPtr>;
+
+        $i1 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _inputEnd>;
+
+        if $i0 < $i1 goto label1;
+
+        virtualinvoke r0.<org.codehaus.jackson.impl.Utf8StreamParser: void loadMoreGuaranteed()>();
+
+     label1:
+        $r1 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: byte[] _inputBuffer>;
+
+        $i1 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _inputPtr>;
+
+        $i0 = $i1 + 1;
+
+        r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _inputPtr> = $i0;
+
+        $b2 = $r1[$i1];
+
+        $i0 = $b2 & 192;
+
+        if $i0 == 128 goto label2;
+
+        $i0 = $b2 & 255;
+
+        $i1 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _inputPtr>;
+
+        virtualinvoke r0.<org.codehaus.jackson.impl.Utf8StreamParser: void _reportInvalidOther(int,int)>($i0, $i1);
+
+     label2:
+        return;
+    }
+
+    private final void _skipUtf8_3(int) throws java.io.IOException, org.codehaus.jackson.JsonParseException
+    {
+        org.codehaus.jackson.impl.Utf8StreamParser r0;
+        int $i0, $i1;
+        byte[] $r1;
+        byte $b2;
+
+        r0 := @this: org.codehaus.jackson.impl.Utf8StreamParser;
+
+        $i0 := @parameter0: int;
+
+        $i0 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _inputPtr>;
+
+        $i1 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _inputEnd>;
+
+        if $i0 < $i1 goto label1;
+
+        virtualinvoke r0.<org.codehaus.jackson.impl.Utf8StreamParser: void loadMoreGuaranteed()>();
+
+     label1:
+        $r1 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: byte[] _inputBuffer>;
+
+        $i0 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _inputPtr>;
+
+        $i1 = $i0 + 1;
+
+        r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _inputPtr> = $i1;
+
+        $b2 = $r1[$i0];
+
+        $i0 = $b2 & 192;
+
+        if $i0 == 128 goto label2;
+
+        $i0 = $b2 & 255;
+
+        $i1 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _inputPtr>;
+
+        virtualinvoke r0.<org.codehaus.jackson.impl.Utf8StreamParser: void _reportInvalidOther(int,int)>($i0, $i1);
+
+     label2:
+        $i0 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _inputPtr>;
+
+        $i1 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _inputEnd>;
+
+        if $i0 < $i1 goto label3;
+
+        virtualinvoke r0.<org.codehaus.jackson.impl.Utf8StreamParser: void loadMoreGuaranteed()>();
+
+     label3:
+        $r1 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: byte[] _inputBuffer>;
+
+        $i0 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _inputPtr>;
+
+        $i1 = $i0 + 1;
+
+        r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _inputPtr> = $i1;
+
+        $b2 = $r1[$i0];
+
+        $i0 = $b2 & 192;
+
+        if $i0 == 128 goto label4;
+
+        $i0 = $b2 & 255;
+
+        $i1 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _inputPtr>;
+
+        virtualinvoke r0.<org.codehaus.jackson.impl.Utf8StreamParser: void _reportInvalidOther(int,int)>($i0, $i1);
+
+     label4:
+        return;
+    }
+
+    private final void _skipUtf8_4(int) throws java.io.IOException, org.codehaus.jackson.JsonParseException
+    {
+        org.codehaus.jackson.impl.Utf8StreamParser r0;
+        int $i0, $i1;
+        byte[] $r1;
+        byte b2;
+
+        r0 := @this: org.codehaus.jackson.impl.Utf8StreamParser;
+
+        $i0 := @parameter0: int;
+
+        $i0 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _inputPtr>;
+
+        $i1 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _inputEnd>;
+
+        if $i0 < $i1 goto label1;
+
+        virtualinvoke r0.<org.codehaus.jackson.impl.Utf8StreamParser: void loadMoreGuaranteed()>();
+
+     label1:
+        $r1 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: byte[] _inputBuffer>;
+
+        $i0 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _inputPtr>;
+
+        $i1 = $i0 + 1;
+
+        r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _inputPtr> = $i1;
+
+        b2 = $r1[$i0];
+
+        $i0 = b2 & 192;
+
+        if $i0 == 128 goto label2;
+
+        $i0 = b2 & 255;
+
+        $i1 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _inputPtr>;
+
+        virtualinvoke r0.<org.codehaus.jackson.impl.Utf8StreamParser: void _reportInvalidOther(int,int)>($i0, $i1);
+
+     label2:
+        $i0 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _inputPtr>;
+
+        $i1 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _inputEnd>;
+
+        if $i0 < $i1 goto label3;
+
+        virtualinvoke r0.<org.codehaus.jackson.impl.Utf8StreamParser: void loadMoreGuaranteed()>();
+
+     label3:
+        $i0 = b2 & 192;
+
+        if $i0 == 128 goto label4;
+
+        $i0 = b2 & 255;
+
+        $i1 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _inputPtr>;
+
+        virtualinvoke r0.<org.codehaus.jackson.impl.Utf8StreamParser: void _reportInvalidOther(int,int)>($i0, $i1);
+
+     label4:
+        $i0 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _inputPtr>;
+
+        $i1 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _inputEnd>;
+
+        if $i0 < $i1 goto label5;
+
+        virtualinvoke r0.<org.codehaus.jackson.impl.Utf8StreamParser: void loadMoreGuaranteed()>();
+
+     label5:
+        $r1 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: byte[] _inputBuffer>;
+
+        $i0 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _inputPtr>;
+
+        $i1 = $i0 + 1;
+
+        r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _inputPtr> = $i1;
+
+        b2 = $r1[$i0];
+
+        $i0 = b2 & 192;
+
+        if $i0 == 128 goto label6;
+
+        $i0 = b2 & 255;
+
+        $i1 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _inputPtr>;
+
+        virtualinvoke r0.<org.codehaus.jackson.impl.Utf8StreamParser: void _reportInvalidOther(int,int)>($i0, $i1);
+
+     label6:
+        return;
+    }
+
+    private final int _skipWS() throws java.io.IOException, org.codehaus.jackson.JsonParseException
+    {
+        org.codehaus.jackson.impl.Utf8StreamParser r0;
+        int i0, $i1;
+        boolean $z0;
+        byte[] $r1;
+        byte $b2;
+        java.lang.StringBuilder $r2;
+        org.codehaus.jackson.impl.JsonReadContext $r3;
+        java.lang.String $r4;
+        org.codehaus.jackson.JsonParseException $r5;
+
+        r0 := @this: org.codehaus.jackson.impl.Utf8StreamParser;
+
+     label1:
+        i0 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _inputPtr>;
+
+        $i1 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _inputEnd>;
+
+        if i0 < $i1 goto label2;
+
+        $z0 = virtualinvoke r0.<org.codehaus.jackson.impl.Utf8StreamParser: boolean loadMore()>();
+
+        if $z0 == 0 goto label7;
+
+     label2:
+        $r1 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: byte[] _inputBuffer>;
+
+        $i1 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _inputPtr>;
+
+        i0 = $i1 + 1;
+
+        r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _inputPtr> = i0;
+
+        $b2 = $r1[$i1];
+
+        i0 = $b2 & 255;
+
+        if i0 <= 32 goto label4;
+
+        if i0 == 47 goto label3;
+
+        return i0;
+
+     label3:
+        specialinvoke r0.<org.codehaus.jackson.impl.Utf8StreamParser: void _skipComment()>();
+
+        goto label1;
+
+     label4:
+        if i0 == 32 goto label1;
+
+        if i0 != 10 goto label5;
+
+        virtualinvoke r0.<org.codehaus.jackson.impl.Utf8StreamParser: void _skipLF()>();
+
+        goto label1;
+
+     label5:
+        if i0 != 13 goto label6;
+
+        virtualinvoke r0.<org.codehaus.jackson.impl.Utf8StreamParser: void _skipCR()>();
+
+        goto label1;
+
+     label6:
+        if i0 == 9 goto label1;
+
+        virtualinvoke r0.<org.codehaus.jackson.impl.Utf8StreamParser: void _throwInvalidSpace(int)>(i0);
+
+        goto label1;
+
+     label7:
+        $r2 = new java.lang.StringBuilder;
+
+        specialinvoke $r2.<java.lang.StringBuilder: void <init>()>();
+
+        $r2 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Unexpected end-of-input within/between ");
+
+        $r3 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: org.codehaus.jackson.impl.JsonReadContext _parsingContext>;
+
+        $r4 = virtualinvoke $r3.<org.codehaus.jackson.impl.JsonReadContext: java.lang.String getTypeDesc()>();
+
+        $r2 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r4);
+
+        $r2 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" entries");
+
+        $r4 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        $r5 = virtualinvoke r0.<org.codehaus.jackson.impl.Utf8StreamParser: org.codehaus.jackson.JsonParseException _constructError(java.lang.String)>($r4);
+
+        throw $r5;
+    }
+
+    private final int _skipWSOrEnd() throws java.io.IOException, org.codehaus.jackson.JsonParseException
+    {
+        org.codehaus.jackson.impl.Utf8StreamParser r0;
+        int i0, $i1;
+        boolean $z0;
+        byte[] $r1;
+        byte $b2;
+
+        r0 := @this: org.codehaus.jackson.impl.Utf8StreamParser;
+
+     label1:
+        i0 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _inputPtr>;
+
+        $i1 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _inputEnd>;
+
+        if i0 < $i1 goto label2;
+
+        $z0 = virtualinvoke r0.<org.codehaus.jackson.impl.Utf8StreamParser: boolean loadMore()>();
+
+        if $z0 == 0 goto label7;
+
+     label2:
+        $r1 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: byte[] _inputBuffer>;
+
+        $i1 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _inputPtr>;
+
+        i0 = $i1 + 1;
+
+        r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _inputPtr> = i0;
+
+        $b2 = $r1[$i1];
+
+        i0 = $b2 & 255;
+
+        if i0 <= 32 goto label4;
+
+        if i0 == 47 goto label3;
+
+        return i0;
+
+     label3:
+        specialinvoke r0.<org.codehaus.jackson.impl.Utf8StreamParser: void _skipComment()>();
+
+        goto label1;
+
+     label4:
+        if i0 == 32 goto label1;
+
+        if i0 != 10 goto label5;
+
+        virtualinvoke r0.<org.codehaus.jackson.impl.Utf8StreamParser: void _skipLF()>();
+
+        goto label1;
+
+     label5:
+        if i0 != 13 goto label6;
+
+        virtualinvoke r0.<org.codehaus.jackson.impl.Utf8StreamParser: void _skipCR()>();
+
+        goto label1;
+
+     label6:
+        if i0 == 9 goto label1;
+
+        virtualinvoke r0.<org.codehaus.jackson.impl.Utf8StreamParser: void _throwInvalidSpace(int)>(i0);
+
+        goto label1;
+
+     label7:
+        virtualinvoke r0.<org.codehaus.jackson.impl.Utf8StreamParser: void _handleEOF()>();
+
+        return -1;
+    }
+
+    private final void _verifyNoLeadingZeroes() throws java.io.IOException, org.codehaus.jackson.JsonParseException
+    {
+        org.codehaus.jackson.impl.Utf8StreamParser r0;
+        boolean $z0;
+        int $i0, $i1;
+        byte[] $r1;
+        byte $b2;
+
+        r0 := @this: org.codehaus.jackson.impl.Utf8StreamParser;
+
+        $i0 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _inputPtr>;
+
+        $i1 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _inputEnd>;
+
+        if $i0 < $i1 goto label1;
+
+        $z0 = virtualinvoke r0.<org.codehaus.jackson.impl.Utf8StreamParser: boolean loadMore()>();
+
+        if $z0 != 0 goto label1;
+
+        return;
+
+     label1:
+        $r1 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: byte[] _inputBuffer>;
+
+        $i0 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _inputPtr>;
+
+        $b2 = $r1[$i0];
+
+        if $b2 != 0 goto label2;
+
+        virtualinvoke r0.<org.codehaus.jackson.impl.Utf8StreamParser: void reportInvalidNumber(java.lang.String)>("Leading zeroes not allowed");
+
+     label2:
+        return;
+    }
+
+    private final org.codehaus.jackson.sym.Name addName(int[], int, int) throws org.codehaus.jackson.JsonParseException
+    {
+        org.codehaus.jackson.impl.Utf8StreamParser r0;
+        int[] $r1;
+        int $i0, $i1, i2, $i3, $i4, $i5, $i6, i7, i9;
+        java.lang.String r2;
+        org.codehaus.jackson.util.TextBuffer $r3;
+        char[] $r4;
+        byte b8;
+        char $c10;
+        org.codehaus.jackson.sym.BytesToNameCanonicalizer $r5;
+        org.codehaus.jackson.sym.Name $r6;
+
+        r0 := @this: org.codehaus.jackson.impl.Utf8StreamParser;
+
+        $r1 := @parameter0: int[];
+
+        $i0 := @parameter1: int;
+
+        $i1 := @parameter2: int;
+
+        i2 = $i0 << 2;
+
+        i2 = i2 - 4;
+
+        i2 = i2 + $i1;
+
+        if $i1 >= 4 goto label12;
+
+        $i3 = $i0 - 1;
+
+        $i3 = $r1[$i3];
+
+        $i4 = $i0 - 1;
+
+        $i5 = 4 - $i1;
+
+        $i5 = $i5 << 3;
+
+        $i5 = $i3 << $i5;
+
+        $r1[$i4] = $i5;
+
+     label01:
+        $r3 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: org.codehaus.jackson.util.TextBuffer _textBuffer>;
+
+        $r4 = virtualinvoke $r3.<org.codehaus.jackson.util.TextBuffer: char[] emptyAndGetCurrentSegment()>();
+
+        $i4 = 0;
+
+        $i5 = 0;
+
+     label02:
+        if $i4 >= i2 goto label16;
+
+        $i6 = $i4 >> 2;
+
+        $i6 = $r1[$i6];
+
+        i7 = $i4 & 3;
+
+        i7 = 3 - i7;
+
+        i7 = i7 << 3;
+
+        $i6 = $i6 >> i7;
+
+        $i6 = $i6 & 255;
+
+        $i4 = $i4 + 1;
+
+        if $i6 <= 127 goto label18;
+
+        i7 = $i6 & 224;
+
+        if i7 != 192 goto label13;
+
+        $i6 = $i6 & 31;
+
+        b8 = 1;
+
+     label03:
+        i7 = $i4 + b8;
+
+        if i7 <= i2 goto label04;
+
+        virtualinvoke r0.<org.codehaus.jackson.impl.Utf8StreamParser: void _reportInvalidEOF(java.lang.String)>(" in field name");
+
+     label04:
+        i7 = $i4 >> 2;
+
+        i7 = $r1[i7];
+
+        i9 = $i4 & 3;
+
+        i9 = 3 - i9;
+
+        i9 = i9 << 3;
+
+        i7 = i7 >> i9;
+
+        $i4 = $i4 + 1;
+
+        i9 = i7 & 192;
+
+        if i9 == 128 goto label05;
+
+        virtualinvoke r0.<org.codehaus.jackson.impl.Utf8StreamParser: void _reportInvalidOther(int)>(i7);
+
+     label05:
+        $i6 = $i6 << 6;
+
+        i7 = i7 & 63;
+
+        $i6 = $i6 | i7;
+
+        if b8 <= 1 goto label08;
+
+        i7 = $i4 >> 2;
+
+        i7 = $r1[i7];
+
+        i9 = $i4 & 3;
+
+        i9 = 3 - i9;
+
+        i9 = i9 << 3;
+
+        i7 = i7 >> i9;
+
+        $i4 = $i4 + 1;
+
+        i9 = i7 & 192;
+
+        if i9 == 128 goto label06;
+
+        virtualinvoke r0.<org.codehaus.jackson.impl.Utf8StreamParser: void _reportInvalidOther(int)>(i7);
+
+     label06:
+        $i6 = $i6 << 6;
+
+        i7 = i7 & 63;
+
+        $i6 = $i6 | i7;
+
+        if b8 <= 2 goto label08;
+
+        i7 = $i4 >> 2;
+
+        i7 = $r1[i7];
+
+        i9 = $i4 & 3;
+
+        i9 = 3 - i9;
+
+        i9 = i9 << 3;
+
+        i7 = i7 >> i9;
+
+        $i4 = $i4 + 1;
+
+        i9 = i7 & 192;
+
+        if i9 == 128 goto label07;
+
+        i9 = i7 & 255;
+
+        virtualinvoke r0.<org.codehaus.jackson.impl.Utf8StreamParser: void _reportInvalidOther(int)>(i9);
+
+     label07:
+        $i6 = $i6 << 6;
+
+        i7 = i7 & 63;
+
+        $i6 = $i6 | i7;
+
+     label08:
+        if b8 <= 2 goto label18;
+
+        $i6 = $i6 - 65536;
+
+        i7 = lengthof $r4;
+
+        if $i5 < i7 goto label09;
+
+        $r3 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: org.codehaus.jackson.util.TextBuffer _textBuffer>;
+
+        $r4 = virtualinvoke $r3.<org.codehaus.jackson.util.TextBuffer: char[] expandCurrentSegment()>();
+
+     label09:
+        i7 = $i5 + 1;
+
+        i9 = $i6 >> 10;
+
+        i9 = 55296 + i9;
+
+        $c10 = (char) i9;
+
+        $r4[$i5] = $c10;
+
+        $i5 = $i6 & 1023;
+
+        $i6 = 56320 | $i5;
+
+     label10:
+        $i5 = lengthof $r4;
+
+        if i7 < $i5 goto label11;
+
+        $r3 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: org.codehaus.jackson.util.TextBuffer _textBuffer>;
+
+        $r4 = virtualinvoke $r3.<org.codehaus.jackson.util.TextBuffer: char[] expandCurrentSegment()>();
+
+     label11:
+        $i5 = i7 + 1;
+
+        $c10 = (char) $i6;
+
+        $r4[i7] = $c10;
+
+        goto label02;
+
+     label12:
+        $i3 = 0;
+
+        goto label01;
+
+     label13:
+        i7 = $i6 & 240;
+
+        if i7 != 224 goto label14;
+
+        $i6 = $i6 & 15;
+
+        b8 = 2;
+
+        goto label03;
+
+     label14:
+        i7 = $i6 & 248;
+
+        if i7 != 240 goto label15;
+
+        $i6 = $i6 & 7;
+
+        b8 = 3;
+
+        goto label03;
+
+     label15:
+        virtualinvoke r0.<org.codehaus.jackson.impl.Utf8StreamParser: void _reportInvalidInitial(int)>($i6);
+
+        $i6 = 1;
+
+        b8 = 1;
+
+        goto label03;
+
+     label16:
+        r2 = new java.lang.String;
+
+        specialinvoke r2.<java.lang.String: void <init>(char[],int,int)>($r4, 0, $i5);
+
+        if $i1 >= 4 goto label17;
+
+        $i1 = $i0 - 1;
+
+        $r1[$i1] = $i3;
+
+     label17:
+        $r5 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: org.codehaus.jackson.sym.BytesToNameCanonicalizer _symbols>;
+
+        $r6 = virtualinvoke $r5.<org.codehaus.jackson.sym.BytesToNameCanonicalizer: org.codehaus.jackson.sym.Name addName(java.lang.String,int[],int)>(r2, $r1, $i0);
+
+        return $r6;
+
+     label18:
+        i7 = $i5;
+
+        goto label10;
+    }
+
+    private final org.codehaus.jackson.sym.Name findName(int, int) throws org.codehaus.jackson.JsonParseException
+    {
+        org.codehaus.jackson.impl.Utf8StreamParser r0;
+        int $i0, $i1;
+        org.codehaus.jackson.sym.BytesToNameCanonicalizer $r1;
+        org.codehaus.jackson.sym.Name $r2;
+        int[] $r3;
+
+        r0 := @this: org.codehaus.jackson.impl.Utf8StreamParser;
+
+        $i0 := @parameter0: int;
+
+        $i1 := @parameter1: int;
+
+        $r1 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: org.codehaus.jackson.sym.BytesToNameCanonicalizer _symbols>;
+
+        $r2 = virtualinvoke $r1.<org.codehaus.jackson.sym.BytesToNameCanonicalizer: org.codehaus.jackson.sym.Name findName(int)>($i0);
+
+        if $r2 == null goto label1;
+
+        return $r2;
+
+     label1:
+        $r3 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: int[] _quadBuffer>;
+
+        $r3[0] = $i0;
+
+        $r3 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: int[] _quadBuffer>;
+
+        $r2 = specialinvoke r0.<org.codehaus.jackson.impl.Utf8StreamParser: org.codehaus.jackson.sym.Name addName(int[],int,int)>($r3, 1, $i1);
+
+        return $r2;
+    }
+
+    private final org.codehaus.jackson.sym.Name findName(int, int, int) throws org.codehaus.jackson.JsonParseException
+    {
+        org.codehaus.jackson.impl.Utf8StreamParser r0;
+        int $i0, $i1, $i2;
+        org.codehaus.jackson.sym.BytesToNameCanonicalizer $r1;
+        org.codehaus.jackson.sym.Name $r2;
+        int[] $r3;
+
+        r0 := @this: org.codehaus.jackson.impl.Utf8StreamParser;
+
+        $i0 := @parameter0: int;
+
+        $i1 := @parameter1: int;
+
+        $i2 := @parameter2: int;
+
+        $r1 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: org.codehaus.jackson.sym.BytesToNameCanonicalizer _symbols>;
+
+        $r2 = virtualinvoke $r1.<org.codehaus.jackson.sym.BytesToNameCanonicalizer: org.codehaus.jackson.sym.Name findName(int,int)>($i0, $i1);
+
+        if $r2 == null goto label1;
+
+        return $r2;
+
+     label1:
+        $r3 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: int[] _quadBuffer>;
+
+        $r3[0] = $i0;
+
+        $r3 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: int[] _quadBuffer>;
+
+        $r3[1] = $i1;
+
+        $r3 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: int[] _quadBuffer>;
+
+        $r2 = specialinvoke r0.<org.codehaus.jackson.impl.Utf8StreamParser: org.codehaus.jackson.sym.Name addName(int[],int,int)>($r3, 2, $i2);
+
+        return $r2;
+    }
+
+    private final org.codehaus.jackson.sym.Name findName(int[], int, int, int) throws org.codehaus.jackson.JsonParseException
+    {
+        org.codehaus.jackson.impl.Utf8StreamParser r0;
+        int $i0, $i1, $i2, i3;
+        int[] $r1, $r2;
+        org.codehaus.jackson.sym.BytesToNameCanonicalizer $r3;
+        org.codehaus.jackson.sym.Name $r4;
+
+        r0 := @this: org.codehaus.jackson.impl.Utf8StreamParser;
+
+        $r1 := @parameter0: int[];
+
+        $i0 := @parameter1: int;
+
+        $i1 := @parameter2: int;
+
+        $i2 := @parameter3: int;
+
+        i3 = lengthof $r1;
+
+        if $i0 < i3 goto label1;
+
+        i3 = lengthof $r1;
+
+        $r2 = staticinvoke <org.codehaus.jackson.impl.Utf8StreamParser: int[] growArrayBy(int[],int)>($r1, i3);
+
+        $r1 = $r2;
+
+        r0.<org.codehaus.jackson.impl.Utf8StreamParser: int[] _quadBuffer> = $r2;
+
+     label1:
+        i3 = $i0 + 1;
+
+        $r1[$i0] = $i1;
+
+        $r3 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: org.codehaus.jackson.sym.BytesToNameCanonicalizer _symbols>;
+
+        $r4 = virtualinvoke $r3.<org.codehaus.jackson.sym.BytesToNameCanonicalizer: org.codehaus.jackson.sym.Name findName(int[],int)>($r1, i3);
+
+        if $r4 != null goto label2;
+
+        $r4 = specialinvoke r0.<org.codehaus.jackson.impl.Utf8StreamParser: org.codehaus.jackson.sym.Name addName(int[],int,int)>($r1, i3, $i2);
+
+     label2:
+        return $r4;
+    }
+
+    public static int[] growArrayBy(int[], int)
+    {
+        int $i0, i1;
+        int[] $r0, $r1;
+
+        $r0 := @parameter0: int[];
+
+        $i0 := @parameter1: int;
+
+        if $r0 != null goto label1;
+
+        $r0 = newarray (int)[$i0];
+
+        return $r0;
+
+     label1:
+        i1 = lengthof $r0;
+
+        $i0 = i1 + $i0;
+
+        $r1 = newarray (int)[$i0];
+
+        staticinvoke <java.lang.System: void arraycopy(java.lang.Object,int,java.lang.Object,int,int)>($r0, 0, $r1, 0, i1);
+
+        return $r1;
+    }
+
+    private int nextByte() throws java.io.IOException, org.codehaus.jackson.JsonParseException
+    {
+        org.codehaus.jackson.impl.Utf8StreamParser r0;
+        int $i0, $i1;
+        byte[] $r1;
+        byte $b2;
+
+        r0 := @this: org.codehaus.jackson.impl.Utf8StreamParser;
+
+        $i0 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _inputPtr>;
+
+        $i1 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _inputEnd>;
+
+        if $i0 < $i1 goto label1;
+
+        virtualinvoke r0.<org.codehaus.jackson.impl.Utf8StreamParser: void loadMoreGuaranteed()>();
+
+     label1:
+        $r1 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: byte[] _inputBuffer>;
+
+        $i1 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _inputPtr>;
+
+        $i0 = $i1 + 1;
+
+        r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _inputPtr> = $i0;
+
+        $b2 = $r1[$i1];
+
+        $i0 = $b2 & 255;
+
+        return $i0;
+    }
+
+    private final org.codehaus.jackson.sym.Name parseFieldName(int, int, int) throws java.io.IOException, org.codehaus.jackson.JsonParseException
+    {
+        org.codehaus.jackson.impl.Utf8StreamParser r0;
+        int $i0, $i1, $i2;
+        int[] $r1;
+        org.codehaus.jackson.sym.Name $r2;
+
+        r0 := @this: org.codehaus.jackson.impl.Utf8StreamParser;
+
+        $i0 := @parameter0: int;
+
+        $i1 := @parameter1: int;
+
+        $i2 := @parameter2: int;
+
+        $r1 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: int[] _quadBuffer>;
+
+        $r2 = virtualinvoke r0.<org.codehaus.jackson.impl.Utf8StreamParser: org.codehaus.jackson.sym.Name parseEscapedFieldName(int[],int,int,int,int)>($r1, 0, $i0, $i1, $i2);
+
+        return $r2;
+    }
+
+    private final org.codehaus.jackson.sym.Name parseFieldName(int, int, int, int) throws java.io.IOException, org.codehaus.jackson.JsonParseException
+    {
+        org.codehaus.jackson.impl.Utf8StreamParser r0;
+        int $i0, $i1, $i2, $i3;
+        org.codehaus.jackson.sym.Name $r1;
+        int[] $r2;
+
+        r0 := @this: org.codehaus.jackson.impl.Utf8StreamParser;
+
+        $i0 := @parameter0: int;
+
+        $i1 := @parameter1: int;
+
+        $i2 := @parameter2: int;
+
+        $i3 := @parameter3: int;
+
+        $r2 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: int[] _quadBuffer>;
+
+        $r2[0] = $i0;
+
+        $r2 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: int[] _quadBuffer>;
+
+        $r1 = virtualinvoke r0.<org.codehaus.jackson.impl.Utf8StreamParser: org.codehaus.jackson.sym.Name parseEscapedFieldName(int[],int,int,int,int)>($r2, 1, $i1, $i2, $i3);
+
+        return $r1;
+    }
+
+    protected byte[] _decodeBase64(org.codehaus.jackson.Base64Variant) throws java.io.IOException, org.codehaus.jackson.JsonParseException
+    {
+        org.codehaus.jackson.impl.Utf8StreamParser r0;
+        org.codehaus.jackson.Base64Variant $r1;
+        org.codehaus.jackson.util.ByteArrayBuilder $r2;
+        int $i0, $i1, $i3;
+        byte[] $r3;
+        byte $b2;
+        java.lang.IllegalArgumentException $r4;
+        boolean $z0;
+        java.lang.StringBuilder $r5;
+        char $c4;
+        java.lang.String $r6;
+
+        r0 := @this: org.codehaus.jackson.impl.Utf8StreamParser;
+
+        $r1 := @parameter0: org.codehaus.jackson.Base64Variant;
+
+        $r2 = virtualinvoke r0.<org.codehaus.jackson.impl.Utf8StreamParser: org.codehaus.jackson.util.ByteArrayBuilder _getByteArrayBuilder()>();
+
+     label01:
+        $i0 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _inputPtr>;
+
+        $i1 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _inputEnd>;
+
+        if $i0 < $i1 goto label02;
+
+        virtualinvoke r0.<org.codehaus.jackson.impl.Utf8StreamParser: void loadMoreGuaranteed()>();
+
+     label02:
+        $r3 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: byte[] _inputBuffer>;
+
+        $i0 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _inputPtr>;
+
+        $i1 = $i0 + 1;
+
+        r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _inputPtr> = $i1;
+
+        $b2 = $r3[$i0];
+
+        $i1 = $b2 & 255;
+
+        if $i1 <= 32 goto label01;
+
+        $i0 = virtualinvoke $r1.<org.codehaus.jackson.Base64Variant: int decodeBase64Char(int)>($i1);
+
+        if $i0 >= 0 goto label04;
+
+        if $i1 != 34 goto label03;
+
+        $r3 = virtualinvoke $r2.<org.codehaus.jackson.util.ByteArrayBuilder: byte[] toByteArray()>();
+
+        return $r3;
+
+     label03:
+        $r4 = virtualinvoke r0.<org.codehaus.jackson.impl.Utf8StreamParser: java.lang.IllegalArgumentException reportInvalidChar(org.codehaus.jackson.Base64Variant,int,int)>($r1, $i1, 0);
+
+        throw $r4;
+
+     label04:
+        $i1 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _inputPtr>;
+
+        $i3 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _inputEnd>;
+
+        if $i1 < $i3 goto label05;
+
+        virtualinvoke r0.<org.codehaus.jackson.impl.Utf8StreamParser: void loadMoreGuaranteed()>();
+
+     label05:
+        $r3 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: byte[] _inputBuffer>;
+
+        $i1 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _inputPtr>;
+
+        $i3 = $i1 + 1;
+
+        r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _inputPtr> = $i3;
+
+        $b2 = $r3[$i1];
+
+        $i3 = $b2 & 255;
+
+        $i1 = virtualinvoke $r1.<org.codehaus.jackson.Base64Variant: int decodeBase64Char(int)>($i3);
+
+        if $i1 >= 0 goto label06;
+
+        $r4 = virtualinvoke r0.<org.codehaus.jackson.impl.Utf8StreamParser: java.lang.IllegalArgumentException reportInvalidChar(org.codehaus.jackson.Base64Variant,int,int)>($r1, $i3, 1);
+
+        throw $r4;
+
+     label06:
+        $i0 = $i0 << 6;
+
+        $i0 = $i0 | $i1;
+
+        $i1 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _inputPtr>;
+
+        $i3 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _inputEnd>;
+
+        if $i1 < $i3 goto label07;
+
+        virtualinvoke r0.<org.codehaus.jackson.impl.Utf8StreamParser: void loadMoreGuaranteed()>();
+
+     label07:
+        $r3 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: byte[] _inputBuffer>;
+
+        $i1 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _inputPtr>;
+
+        $i3 = $i1 + 1;
+
+        r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _inputPtr> = $i3;
+
+        $b2 = $r3[$i1];
+
+        $i3 = $b2 & 255;
+
+        $i1 = virtualinvoke $r1.<org.codehaus.jackson.Base64Variant: int decodeBase64Char(int)>($i3);
+
+        if $i1 >= 0 goto label11;
+
+        if $i1 == -2 goto label08;
+
+        $r4 = virtualinvoke r0.<org.codehaus.jackson.impl.Utf8StreamParser: java.lang.IllegalArgumentException reportInvalidChar(org.codehaus.jackson.Base64Variant,int,int)>($r1, $i3, 2);
+
+        throw $r4;
+
+     label08:
+        $i1 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _inputPtr>;
+
+        $i3 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _inputEnd>;
+
+        if $i1 < $i3 goto label09;
+
+        virtualinvoke r0.<org.codehaus.jackson.impl.Utf8StreamParser: void loadMoreGuaranteed()>();
+
+     label09:
+        $r3 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: byte[] _inputBuffer>;
+
+        $i1 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _inputPtr>;
+
+        $i3 = $i1 + 1;
+
+        r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _inputPtr> = $i3;
+
+        $b2 = $r3[$i1];
+
+        $i1 = $b2 & 255;
+
+        $z0 = virtualinvoke $r1.<org.codehaus.jackson.Base64Variant: boolean usesPaddingChar(int)>($i1);
+
+        if $z0 != 0 goto label10;
+
+        $r5 = new java.lang.StringBuilder;
+
+        specialinvoke $r5.<java.lang.StringBuilder: void <init>()>();
+
+        $r5 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("expected padding character \'");
+
+        $c4 = virtualinvoke $r1.<org.codehaus.jackson.Base64Variant: char getPaddingChar()>();
+
+        $r5 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.StringBuilder append(char)>($c4);
+
+        $r5 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("\'");
+
+        $r6 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        $r4 = virtualinvoke r0.<org.codehaus.jackson.impl.Utf8StreamParser: java.lang.IllegalArgumentException reportInvalidChar(org.codehaus.jackson.Base64Variant,int,int,java.lang.String)>($r1, $i1, 3, $r6);
+
+        throw $r4;
+
+     label10:
+        $i0 = $i0 >> 4;
+
+        virtualinvoke $r2.<org.codehaus.jackson.util.ByteArrayBuilder: void append(int)>($i0);
+
+        goto label01;
+
+     label11:
+        $i0 = $i0 << 6;
+
+        $i0 = $i0 | $i1;
+
+        $i1 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _inputPtr>;
+
+        $i3 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _inputEnd>;
+
+        if $i1 < $i3 goto label12;
+
+        virtualinvoke r0.<org.codehaus.jackson.impl.Utf8StreamParser: void loadMoreGuaranteed()>();
+
+     label12:
+        $r3 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: byte[] _inputBuffer>;
+
+        $i1 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _inputPtr>;
+
+        $i3 = $i1 + 1;
+
+        r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _inputPtr> = $i3;
+
+        $b2 = $r3[$i1];
+
+        $i3 = $b2 & 255;
+
+        $i1 = virtualinvoke $r1.<org.codehaus.jackson.Base64Variant: int decodeBase64Char(int)>($i3);
+
+        if $i1 >= 0 goto label14;
+
+        if $i1 == -2 goto label13;
+
+        $r4 = virtualinvoke r0.<org.codehaus.jackson.impl.Utf8StreamParser: java.lang.IllegalArgumentException reportInvalidChar(org.codehaus.jackson.Base64Variant,int,int)>($r1, $i3, 3);
+
+        throw $r4;
+
+     label13:
+        $i0 = $i0 >> 2;
+
+        virtualinvoke $r2.<org.codehaus.jackson.util.ByteArrayBuilder: void appendTwoBytes(int)>($i0);
+
+        goto label01;
+
+     label14:
+        $i0 = $i0 << 6;
+
+        $i0 = $i0 | $i1;
+
+        virtualinvoke $r2.<org.codehaus.jackson.util.ByteArrayBuilder: void appendThreeBytes(int)>($i0);
+
+        goto label01;
+    }
+
+    protected int _decodeCharForError(int) throws java.io.IOException, org.codehaus.jackson.JsonParseException
+    {
+        org.codehaus.jackson.impl.Utf8StreamParser r0;
+        int $i0, i1, $i2;
+        byte b3;
+
+        r0 := @this: org.codehaus.jackson.impl.Utf8StreamParser;
+
+        $i0 := @parameter0: int;
+
+        i1 = $i0;
+
+        if $i0 >= 0 goto label8;
+
+        $i2 = $i0 & 224;
+
+        if $i2 != 192 goto label5;
+
+        i1 = $i0 & 31;
+
+        b3 = 1;
+
+     label1:
+        $i0 = specialinvoke r0.<org.codehaus.jackson.impl.Utf8StreamParser: int nextByte()>();
+
+        $i2 = $i0 & 192;
+
+        if $i2 == 128 goto label2;
+
+        $i2 = $i0 & 255;
+
+        virtualinvoke r0.<org.codehaus.jackson.impl.Utf8StreamParser: void _reportInvalidOther(int)>($i2);
+
+     label2:
+        i1 = i1 << 6;
+
+        $i0 = $i0 & 63;
+
+        i1 = i1 | $i0;
+
+        if b3 <= 1 goto label9;
+
+        $i0 = specialinvoke r0.<org.codehaus.jackson.impl.Utf8StreamParser: int nextByte()>();
+
+        $i2 = $i0 & 192;
+
+        if $i2 == 128 goto label3;
+
+        $i2 = $i0 & 255;
+
+        virtualinvoke r0.<org.codehaus.jackson.impl.Utf8StreamParser: void _reportInvalidOther(int)>($i2);
+
+     label3:
+        i1 = i1 << 6;
+
+        $i0 = $i0 & 63;
+
+        i1 = i1 | $i0;
+
+        if b3 <= 2 goto label9;
+
+        $i0 = specialinvoke r0.<org.codehaus.jackson.impl.Utf8StreamParser: int nextByte()>();
+
+        $i2 = $i0 & 192;
+
+        if $i2 == 128 goto label4;
+
+        $i2 = $i0 & 255;
+
+        virtualinvoke r0.<org.codehaus.jackson.impl.Utf8StreamParser: void _reportInvalidOther(int)>($i2);
+
+     label4:
+        i1 = i1 << 6;
+
+        $i0 = $i0 & 63;
+
+        $i0 = i1 | $i0;
+
+        return $i0;
+
+     label5:
+        $i2 = $i0 & 240;
+
+        if $i2 != 224 goto label6;
+
+        i1 = $i0 & 15;
+
+        b3 = 2;
+
+        goto label1;
+
+     label6:
+        $i2 = $i0 & 248;
+
+        if $i2 != 240 goto label7;
+
+        i1 = $i0 & 7;
+
+        b3 = 3;
+
+        goto label1;
+
+     label7:
+        $i0 = $i0 & 255;
+
+        virtualinvoke r0.<org.codehaus.jackson.impl.Utf8StreamParser: void _reportInvalidInitial(int)>($i0);
+
+        b3 = 1;
+
+        goto label1;
+
+     label8:
+        return $i0;
+
+     label9:
+        return i1;
+    }
+
+    protected final char _decodeEscaped() throws java.io.IOException, org.codehaus.jackson.JsonParseException
+    {
+        org.codehaus.jackson.impl.Utf8StreamParser r0;
+        byte b0;
+        int $i1, $i2, $i4, $i5;
+        boolean $z0;
+        byte[] $r1;
+        char $c3;
+
+        r0 := @this: org.codehaus.jackson.impl.Utf8StreamParser;
+
+        $i1 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _inputPtr>;
+
+        $i2 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _inputEnd>;
+
+        if $i1 < $i2 goto label01;
+
+        $z0 = virtualinvoke r0.<org.codehaus.jackson.impl.Utf8StreamParser: boolean loadMore()>();
+
+        if $z0 != 0 goto label01;
+
+        virtualinvoke r0.<org.codehaus.jackson.impl.Utf8StreamParser: void _reportInvalidEOF(java.lang.String)>(" in character escape sequence");
+
+     label01:
+        $r1 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: byte[] _inputBuffer>;
+
+        $i1 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _inputPtr>;
+
+        $i2 = $i1 + 1;
+
+        r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _inputPtr> = $i2;
+
+        b0 = $r1[$i1];
+
+        lookupswitch(b0)
+        {
+            case 34: goto label08;
+            case 47: goto label08;
+            case 92: goto label08;
+            case 98: goto label03;
+            case 102: goto label06;
+            case 110: goto label05;
+            case 114: goto label07;
+            case 116: goto label04;
+            case 117: goto label09;
+            default: goto label02;
+        };
+
+     label02:
+        $i1 = virtualinvoke r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _decodeCharForError(int)>(b0);
+
+        $c3 = (char) $i1;
+
+        $c3 = virtualinvoke r0.<org.codehaus.jackson.impl.Utf8StreamParser: char _handleUnrecognizedCharacterEscape(char)>($c3);
+
+        return $c3;
+
+     label03:
+        return 8;
+
+     label04:
+        return 9;
+
+     label05:
+        return 10;
+
+     label06:
+        return 12;
+
+     label07:
+        return 13;
+
+     label08:
+        $c3 = (char) b0;
+
+        return $c3;
+
+     label09:
+        $i2 = 0;
+
+        $i1 = 0;
+
+     label10:
+        if $i1 >= 4 goto label13;
+
+        $i4 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _inputPtr>;
+
+        $i5 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _inputEnd>;
+
+        if $i4 < $i5 goto label11;
+
+        $z0 = virtualinvoke r0.<org.codehaus.jackson.impl.Utf8StreamParser: boolean loadMore()>();
+
+        if $z0 != 0 goto label11;
+
+        virtualinvoke r0.<org.codehaus.jackson.impl.Utf8StreamParser: void _reportInvalidEOF(java.lang.String)>(" in character escape sequence");
+
+     label11:
+        $r1 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: byte[] _inputBuffer>;
+
+        $i4 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _inputPtr>;
+
+        $i5 = $i4 + 1;
+
+        r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _inputPtr> = $i5;
+
+        b0 = $r1[$i4];
+
+        $i4 = staticinvoke <org.codehaus.jackson.util.CharTypes: int charToHex(int)>(b0);
+
+        if $i4 >= 0 goto label12;
+
+        virtualinvoke r0.<org.codehaus.jackson.impl.Utf8StreamParser: void _reportUnexpectedChar(int,java.lang.String)>(b0, "expected a hex-digit for character escape sequence");
+
+     label12:
+        $i2 = $i2 << 4;
+
+        $i2 = $i2 | $i4;
+
+        $i1 = $i1 + 1;
+
+        goto label10;
+
+     label13:
+        $c3 = (char) $i2;
+
+        return $c3;
+    }
+
+    protected void _finishString() throws java.io.IOException, org.codehaus.jackson.JsonParseException
+    {
+        org.codehaus.jackson.impl.Utf8StreamParser r0;
+        int i0, i1, $i2, $i3, $i5;
+        int[] r1;
+        byte[] r2;
+        org.codehaus.jackson.util.TextBuffer $r3;
+        char[] $r4;
+        byte $b4;
+        char $c6;
+
+        r0 := @this: org.codehaus.jackson.impl.Utf8StreamParser;
+
+        i1 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _inputPtr>;
+
+        $i2 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _inputEnd>;
+
+        if i1 < $i2 goto label1;
+
+        virtualinvoke r0.<org.codehaus.jackson.impl.Utf8StreamParser: void loadMoreGuaranteed()>();
+
+        i1 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _inputPtr>;
+
+     label1:
+        $r3 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: org.codehaus.jackson.util.TextBuffer _textBuffer>;
+
+        $r4 = virtualinvoke $r3.<org.codehaus.jackson.util.TextBuffer: char[] emptyAndGetCurrentSegment()>();
+
+        r1 = <org.codehaus.jackson.impl.Utf8StreamParser: int[] sInputCodesUtf8>;
+
+        $i2 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _inputEnd>;
+
+        i0 = lengthof $r4;
+
+        i0 = i0 + i1;
+
+        $i3 = staticinvoke <java.lang.Math: int min(int,int)>($i2, i0);
+
+        r2 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: byte[] _inputBuffer>;
+
+        $i2 = 0;
+
+     label2:
+        if i1 >= $i3 goto label4;
+
+        $b4 = r2[i1];
+
+        i0 = $b4 & 255;
+
+        $i5 = r1[i0];
+
+        if $i5 == 0 goto label3;
+
+        if i0 != 34 goto label4;
+
+        i1 = i1 + 1;
+
+        r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _inputPtr> = i1;
+
+        $r3 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: org.codehaus.jackson.util.TextBuffer _textBuffer>;
+
+        virtualinvoke $r3.<org.codehaus.jackson.util.TextBuffer: void setCurrentLength(int)>($i2);
+
+        return;
+
+     label3:
+        i1 = i1 + 1;
+
+        $c6 = (char) i0;
+
+        $r4[$i2] = $c6;
+
+        $i2 = $i2 + 1;
+
+        goto label2;
+
+     label4:
+        r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _inputPtr> = i1;
+
+        specialinvoke r0.<org.codehaus.jackson.impl.Utf8StreamParser: void _finishString2(char[],int)>($r4, $i2);
+
+        return;
+    }
+
+    protected final java.lang.String _getText2(org.codehaus.jackson.JsonToken)
+    {
+        org.codehaus.jackson.impl.Utf8StreamParser r0;
+        org.codehaus.jackson.JsonToken $r1;
+        int[] $r2;
+        int $i0;
+        java.lang.String $r3;
+        org.codehaus.jackson.impl.JsonReadContext $r4;
+        org.codehaus.jackson.util.TextBuffer $r5;
+
+        r0 := @this: org.codehaus.jackson.impl.Utf8StreamParser;
+
+        $r1 := @parameter0: org.codehaus.jackson.JsonToken;
+
+        if $r1 != null goto label1;
+
+        return null;
+
+     label1:
+        $r2 = <org.codehaus.jackson.impl.Utf8StreamParser$1: int[] $SwitchMap$org$codehaus$jackson$JsonToken>;
+
+        $i0 = virtualinvoke $r1.<org.codehaus.jackson.JsonToken: int ordinal()>();
+
+        $i0 = $r2[$i0];
+
+        lookupswitch($i0)
+        {
+            case 1: goto label3;
+            case 2: goto label4;
+            case 3: goto label4;
+            case 4: goto label4;
+            default: goto label2;
+        };
+
+     label2:
+        $r3 = virtualinvoke $r1.<org.codehaus.jackson.JsonToken: java.lang.String asString()>();
+
+        return $r3;
+
+     label3:
+        $r4 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: org.codehaus.jackson.impl.JsonReadContext _parsingContext>;
+
+        $r3 = virtualinvoke $r4.<org.codehaus.jackson.impl.JsonReadContext: java.lang.String getCurrentName()>();
+
+        return $r3;
+
+     label4:
+        $r5 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: org.codehaus.jackson.util.TextBuffer _textBuffer>;
+
+        $r3 = virtualinvoke $r5.<org.codehaus.jackson.util.TextBuffer: java.lang.String contentsAsString()>();
+
+        return $r3;
+    }
+
+    protected final org.codehaus.jackson.JsonToken _handleUnexpectedValue(int) throws java.io.IOException, org.codehaus.jackson.JsonParseException
+    {
+        org.codehaus.jackson.impl.Utf8StreamParser r0;
+        int[] r1;
+        byte[] r2;
+        int i0, $i1, $i2, $i3;
+        org.codehaus.jackson.JsonParser$Feature $r3;
+        boolean $z0;
+        org.codehaus.jackson.util.TextBuffer $r4;
+        char[] $r5;
+        byte $b4;
+        char $c5;
+        org.codehaus.jackson.JsonToken r6;
+
+        r0 := @this: org.codehaus.jackson.impl.Utf8StreamParser;
+
+        $i1 := @parameter0: int;
+
+        if $i1 != 39 goto label01;
+
+        $r3 = <org.codehaus.jackson.JsonParser$Feature: org.codehaus.jackson.JsonParser$Feature ALLOW_SINGLE_QUOTES>;
+
+        $z0 = virtualinvoke r0.<org.codehaus.jackson.impl.Utf8StreamParser: boolean isEnabled(org.codehaus.jackson.JsonParser$Feature)>($r3);
+
+        if $z0 != 0 goto label02;
+
+     label01:
+        virtualinvoke r0.<org.codehaus.jackson.impl.Utf8StreamParser: void _reportUnexpectedChar(int,java.lang.String)>($i1, "expected a valid value (number, String, array, object, \'true\', \'false\' or \'null\')");
+
+     label02:
+        $i1 = 0;
+
+        $r4 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: org.codehaus.jackson.util.TextBuffer _textBuffer>;
+
+        $r5 = virtualinvoke $r4.<org.codehaus.jackson.util.TextBuffer: char[] emptyAndGetCurrentSegment()>();
+
+        r1 = <org.codehaus.jackson.impl.Utf8StreamParser: int[] sInputCodesUtf8>;
+
+        r2 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: byte[] _inputBuffer>;
+
+     label03:
+        $i2 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _inputPtr>;
+
+        i0 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _inputEnd>;
+
+        if $i2 < i0 goto label04;
+
+        virtualinvoke r0.<org.codehaus.jackson.impl.Utf8StreamParser: void loadMoreGuaranteed()>();
+
+     label04:
+        $i2 = lengthof $r5;
+
+        if $i1 < $i2 goto label05;
+
+        $r4 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: org.codehaus.jackson.util.TextBuffer _textBuffer>;
+
+        $r5 = virtualinvoke $r4.<org.codehaus.jackson.util.TextBuffer: char[] finishCurrentSegment()>();
+
+        $i1 = 0;
+
+     label05:
+        $i2 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _inputEnd>;
+
+        i0 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _inputPtr>;
+
+        $i3 = lengthof $r5;
+
+        $i3 = $i3 - $i1;
+
+        i0 = i0 + $i3;
+
+        if i0 >= $i2 goto label06;
+
+        $i2 = i0;
+
+     label06:
+        i0 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _inputPtr>;
+
+        if i0 >= $i2 goto label03;
+
+        i0 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _inputPtr>;
+
+        $i3 = i0 + 1;
+
+        r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _inputPtr> = $i3;
+
+        $b4 = r2[i0];
+
+        i0 = $b4 & 255;
+
+        if i0 == 39 goto label07;
+
+        $i3 = r1[i0];
+
+        if $i3 == 0 goto label08;
+
+     label07:
+        if i0 != 39 goto label09;
+
+        $r4 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: org.codehaus.jackson.util.TextBuffer _textBuffer>;
+
+        virtualinvoke $r4.<org.codehaus.jackson.util.TextBuffer: void setCurrentLength(int)>($i1);
+
+        r6 = <org.codehaus.jackson.JsonToken: org.codehaus.jackson.JsonToken VALUE_STRING>;
+
+        return r6;
+
+     label08:
+        $c5 = (char) i0;
+
+        $r5[$i1] = $c5;
+
+        $i1 = $i1 + 1;
+
+        goto label06;
+
+     label09:
+        $i2 = r1[i0];
+
+        lookupswitch($i2)
+        {
+            case 1: goto label14;
+            case 2: goto label15;
+            case 3: goto label16;
+            case 4: goto label18;
+            default: goto label10;
+        };
+
+     label10:
+        if i0 >= 32 goto label11;
+
+        virtualinvoke r0.<org.codehaus.jackson.impl.Utf8StreamParser: void _throwUnquotedSpace(int,java.lang.String)>(i0, "string value");
+
+     label11:
+        virtualinvoke r0.<org.codehaus.jackson.impl.Utf8StreamParser: void _reportInvalidChar(int)>(i0);
+
+     label12:
+        $i2 = lengthof $r5;
+
+        if $i1 < $i2 goto label13;
+
+        $r4 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: org.codehaus.jackson.util.TextBuffer _textBuffer>;
+
+        $r5 = virtualinvoke $r4.<org.codehaus.jackson.util.TextBuffer: char[] finishCurrentSegment()>();
+
+        $i1 = 0;
+
+     label13:
+        $c5 = (char) i0;
+
+        $r5[$i1] = $c5;
+
+        $i1 = $i1 + 1;
+
+        goto label03;
+
+     label14:
+        if i0 == 34 goto label12;
+
+        i0 = virtualinvoke r0.<org.codehaus.jackson.impl.Utf8StreamParser: char _decodeEscaped()>();
+
+        goto label12;
+
+     label15:
+        i0 = specialinvoke r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _decodeUtf8_2(int)>(i0);
+
+        goto label12;
+
+     label16:
+        $i2 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _inputEnd>;
+
+        $i3 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _inputPtr>;
+
+        $i2 = $i2 - $i3;
+
+        if $i2 < 2 goto label17;
+
+        i0 = specialinvoke r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _decodeUtf8_3fast(int)>(i0);
+
+        goto label12;
+
+     label17:
+        i0 = specialinvoke r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _decodeUtf8_3(int)>(i0);
+
+        goto label12;
+
+     label18:
+        $i2 = specialinvoke r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _decodeUtf8_4(int)>(i0);
+
+        i0 = $i1 + 1;
+
+        $i3 = $i2 >> 10;
+
+        $i3 = 55296 | $i3;
+
+        $c5 = (char) $i3;
+
+        $r5[$i1] = $c5;
+
+        $i1 = lengthof $r5;
+
+        if i0 < $i1 goto label20;
+
+        $r4 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: org.codehaus.jackson.util.TextBuffer _textBuffer>;
+
+        $r5 = virtualinvoke $r4.<org.codehaus.jackson.util.TextBuffer: char[] finishCurrentSegment()>();
+
+        $i1 = 0;
+
+     label19:
+        $i2 = $i2 & 1023;
+
+        i0 = 56320 | $i2;
+
+        goto label12;
+
+     label20:
+        $i1 = i0;
+
+        goto label19;
+    }
+
+    protected final org.codehaus.jackson.sym.Name _handleUnusualFieldName(int) throws java.io.IOException, org.codehaus.jackson.JsonParseException
+    {
+        org.codehaus.jackson.impl.Utf8StreamParser r0;
+        int $i0, $i1, i2, i3, i4;
+        org.codehaus.jackson.JsonParser$Feature $r1;
+        boolean $z0;
+        org.codehaus.jackson.sym.Name $r2, r7;
+        int[] $r3, r4, $r8;
+        byte[] $r5;
+        byte $b5;
+        org.codehaus.jackson.sym.BytesToNameCanonicalizer $r6;
+
+        r0 := @this: org.codehaus.jackson.impl.Utf8StreamParser;
+
+        $i0 := @parameter0: int;
+
+        if $i0 != 39 goto label01;
+
+        $r1 = <org.codehaus.jackson.JsonParser$Feature: org.codehaus.jackson.JsonParser$Feature ALLOW_SINGLE_QUOTES>;
+
+        $z0 = virtualinvoke r0.<org.codehaus.jackson.impl.Utf8StreamParser: boolean isEnabled(org.codehaus.jackson.JsonParser$Feature)>($r1);
+
+        if $z0 == 0 goto label01;
+
+        $r2 = virtualinvoke r0.<org.codehaus.jackson.impl.Utf8StreamParser: org.codehaus.jackson.sym.Name _parseApostropheFieldName()>();
+
+        return $r2;
+
+     label01:
+        $r1 = <org.codehaus.jackson.JsonParser$Feature: org.codehaus.jackson.JsonParser$Feature ALLOW_UNQUOTED_FIELD_NAMES>;
+
+        $z0 = virtualinvoke r0.<org.codehaus.jackson.impl.Utf8StreamParser: boolean isEnabled(org.codehaus.jackson.JsonParser$Feature)>($r1);
+
+        if $z0 != 0 goto label02;
+
+        virtualinvoke r0.<org.codehaus.jackson.impl.Utf8StreamParser: void _reportUnexpectedChar(int,java.lang.String)>($i0, "was expecting double-quote to start field name");
+
+     label02:
+        $r3 = staticinvoke <org.codehaus.jackson.util.CharTypes: int[] getInputCodeUtf8JsNames()>();
+
+        $i1 = $r3[$i0];
+
+        if $i1 == 0 goto label03;
+
+        virtualinvoke r0.<org.codehaus.jackson.impl.Utf8StreamParser: void _reportUnexpectedChar(int,java.lang.String)>($i0, "was expecting either valid name character (for unquoted name) or double-quote (for quoted) to start field name");
+
+     label03:
+        r4 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: int[] _quadBuffer>;
+
+        $i1 = 0;
+
+        i2 = 0;
+
+        i3 = 0;
+
+     label04:
+        if i2 >= 4 goto label10;
+
+        i2 = i2 + 1;
+
+        $i1 = $i1 << 8;
+
+        $i1 = $i1 | $i0;
+
+        i4 = i3;
+
+     label05:
+        $i0 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _inputPtr>;
+
+        i3 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _inputEnd>;
+
+        if $i0 < i3 goto label06;
+
+        $z0 = virtualinvoke r0.<org.codehaus.jackson.impl.Utf8StreamParser: boolean loadMore()>();
+
+        if $z0 != 0 goto label06;
+
+        virtualinvoke r0.<org.codehaus.jackson.impl.Utf8StreamParser: void _reportInvalidEOF(java.lang.String)>(" in field name");
+
+     label06:
+        $r5 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: byte[] _inputBuffer>;
+
+        $i0 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _inputPtr>;
+
+        $b5 = $r5[$i0];
+
+        $i0 = $b5 & 255;
+
+        i3 = $r3[$i0];
+
+        if i3 == 0 goto label12;
+
+        if i2 <= 0 goto label08;
+
+        $i0 = lengthof r4;
+
+        if i4 < $i0 goto label07;
+
+        $i0 = lengthof r4;
+
+        $r3 = staticinvoke <org.codehaus.jackson.impl.Utf8StreamParser: int[] growArrayBy(int[],int)>(r4, $i0);
+
+        r4 = $r3;
+
+        r0.<org.codehaus.jackson.impl.Utf8StreamParser: int[] _quadBuffer> = $r3;
+
+     label07:
+        r4[i4] = $i1;
+
+        i4 = i4 + 1;
+
+     label08:
+        $r6 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: org.codehaus.jackson.sym.BytesToNameCanonicalizer _symbols>;
+
+        $r2 = virtualinvoke $r6.<org.codehaus.jackson.sym.BytesToNameCanonicalizer: org.codehaus.jackson.sym.Name findName(int[],int)>(r4, i4);
+
+        r7 = $r2;
+
+        if $r2 != null goto label09;
+
+        r7 = specialinvoke r0.<org.codehaus.jackson.impl.Utf8StreamParser: org.codehaus.jackson.sym.Name addName(int[],int,int)>(r4, i4, i2);
+
+     label09:
+        return r7;
+
+     label10:
+        i2 = lengthof r4;
+
+        if i3 < i2 goto label11;
+
+        i2 = lengthof r4;
+
+        $r8 = staticinvoke <org.codehaus.jackson.impl.Utf8StreamParser: int[] growArrayBy(int[],int)>(r4, i2);
+
+        r4 = $r8;
+
+        r0.<org.codehaus.jackson.impl.Utf8StreamParser: int[] _quadBuffer> = $r8;
+
+     label11:
+        i4 = i3 + 1;
+
+        r4[i3] = $i1;
+
+        $i1 = $i0;
+
+        i2 = 1;
+
+        goto label05;
+
+     label12:
+        i3 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _inputPtr>;
+
+        i3 = i3 + 1;
+
+        r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _inputPtr> = i3;
+
+        i3 = i4;
+
+        goto label04;
+    }
+
+    protected void _matchToken(org.codehaus.jackson.JsonToken) throws java.io.IOException, org.codehaus.jackson.JsonParseException
+    {
+        org.codehaus.jackson.impl.Utf8StreamParser r0;
+        org.codehaus.jackson.JsonToken $r1;
+        int i0, $i1, i2, $i3;
+        byte[] $r2, $r3;
+        byte $b4, $b5;
+        java.lang.String $r4;
+
+        r0 := @this: org.codehaus.jackson.impl.Utf8StreamParser;
+
+        $r1 := @parameter0: org.codehaus.jackson.JsonToken;
+
+        $r2 = virtualinvoke $r1.<org.codehaus.jackson.JsonToken: byte[] asByteArray()>();
+
+        i2 = 1;
+
+        i0 = lengthof $r2;
+
+     label1:
+        if i2 >= i0 goto label4;
+
+        $i1 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _inputPtr>;
+
+        $i3 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _inputEnd>;
+
+        if $i1 < $i3 goto label2;
+
+        virtualinvoke r0.<org.codehaus.jackson.impl.Utf8StreamParser: void loadMoreGuaranteed()>();
+
+     label2:
+        $b4 = $r2[i2];
+
+        $r3 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: byte[] _inputBuffer>;
+
+        $i1 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _inputPtr>;
+
+        $b5 = $r3[$i1];
+
+        if $b4 == $b5 goto label3;
+
+        $r4 = virtualinvoke $r1.<org.codehaus.jackson.JsonToken: java.lang.String asString()>();
+
+        $r4 = virtualinvoke $r4.<java.lang.String: java.lang.String substring(int,int)>(0, i2);
+
+        specialinvoke r0.<org.codehaus.jackson.impl.Utf8StreamParser: void _reportInvalidToken(java.lang.String)>($r4);
+
+     label3:
+        $i1 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _inputPtr>;
+
+        $i1 = $i1 + 1;
+
+        r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _inputPtr> = $i1;
+
+        i2 = i2 + 1;
+
+        goto label1;
+
+     label4:
+        return;
+    }
+
+    protected final org.codehaus.jackson.sym.Name _parseApostropheFieldName() throws java.io.IOException, org.codehaus.jackson.JsonParseException
+    {
+        org.codehaus.jackson.impl.Utf8StreamParser r0;
+        int[] r1, r4, $r7;
+        int $i0, $i1, i3, i4, $i5;
+        boolean $z0;
+        byte[] $r2;
+        byte $b2;
+        org.codehaus.jackson.sym.Name $r3, r6;
+        org.codehaus.jackson.sym.BytesToNameCanonicalizer $r5;
+
+        r0 := @this: org.codehaus.jackson.impl.Utf8StreamParser;
+
+        $i0 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _inputPtr>;
+
+        $i1 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _inputEnd>;
+
+        if $i0 < $i1 goto label01;
+
+        $z0 = virtualinvoke r0.<org.codehaus.jackson.impl.Utf8StreamParser: boolean loadMore()>();
+
+        if $z0 != 0 goto label01;
+
+        virtualinvoke r0.<org.codehaus.jackson.impl.Utf8StreamParser: void _reportInvalidEOF(java.lang.String)>(": was expecting closing \'\'\' for name");
+
+     label01:
+        $r2 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: byte[] _inputBuffer>;
+
+        $i0 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _inputPtr>;
+
+        $i1 = $i0 + 1;
+
+        r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _inputPtr> = $i1;
+
+        $b2 = $r2[$i0];
+
+        $i0 = $b2 & 255;
+
+        if $i0 != 39 goto label02;
+
+        $r3 = staticinvoke <org.codehaus.jackson.sym.BytesToNameCanonicalizer: org.codehaus.jackson.sym.Name getEmptyName()>();
+
+        return $r3;
+
+     label02:
+        r4 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: int[] _quadBuffer>;
+
+        i3 = 0;
+
+        i4 = 0;
+
+        r1 = <org.codehaus.jackson.impl.Utf8StreamParser: int[] sInputCodesLatin1>;
+
+        $i1 = 0;
+
+     label03:
+        if $i0 != 39 goto label07;
+
+        if i4 <= 0 goto label21;
+
+        $i0 = lengthof r4;
+
+        if $i1 < $i0 goto label04;
+
+        $i0 = lengthof r4;
+
+        r1 = staticinvoke <org.codehaus.jackson.impl.Utf8StreamParser: int[] growArrayBy(int[],int)>(r4, $i0);
+
+        r4 = r1;
+
+        r0.<org.codehaus.jackson.impl.Utf8StreamParser: int[] _quadBuffer> = r1;
+
+     label04:
+        $i0 = $i1 + 1;
+
+        r4[$i1] = i3;
+
+     label05:
+        $r5 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: org.codehaus.jackson.sym.BytesToNameCanonicalizer _symbols>;
+
+        $r3 = virtualinvoke $r5.<org.codehaus.jackson.sym.BytesToNameCanonicalizer: org.codehaus.jackson.sym.Name findName(int[],int)>(r4, $i0);
+
+        r6 = $r3;
+
+        if $r3 != null goto label06;
+
+        r6 = specialinvoke r0.<org.codehaus.jackson.impl.Utf8StreamParser: org.codehaus.jackson.sym.Name addName(int[],int,int)>(r4, $i0, i4);
+
+     label06:
+        return r6;
+
+     label07:
+        if $i0 == 34 goto label12;
+
+        $i5 = r1[$i0];
+
+        if $i5 == 0 goto label12;
+
+        if $i0 == 92 goto label15;
+
+        virtualinvoke r0.<org.codehaus.jackson.impl.Utf8StreamParser: void _throwUnquotedSpace(int,java.lang.String)>($i0, "name");
+
+     label08:
+        if $i0 <= 127 goto label12;
+
+        if i4 < 4 goto label10;
+
+        i4 = lengthof r4;
+
+        if $i1 < i4 goto label09;
+
+        i4 = lengthof r4;
+
+        $r7 = staticinvoke <org.codehaus.jackson.impl.Utf8StreamParser: int[] growArrayBy(int[],int)>(r4, i4);
+
+        r4 = $r7;
+
+        r0.<org.codehaus.jackson.impl.Utf8StreamParser: int[] _quadBuffer> = $r7;
+
+     label09:
+        r4[$i1] = i3;
+
+        i3 = 0;
+
+        i4 = 0;
+
+        $i1 = $i1 + 1;
+
+     label10:
+        if $i0 >= 2048 goto label16;
+
+        i3 = i3 << 8;
+
+        $i5 = $i0 >> 6;
+
+        $i5 = $i5 | 192;
+
+        i3 = i3 | $i5;
+
+        i4 = i4 + 1;
+
+        $i5 = $i1;
+
+     label11:
+        $i0 = $i0 & 63;
+
+        $i0 = $i0 | 128;
+
+        $i1 = $i5;
+
+     label12:
+        if i4 >= 4 goto label19;
+
+        i4 = i4 + 1;
+
+        i3 = i3 << 8;
+
+        i3 = i3 | $i0;
+
+        $i5 = $i1;
+
+     label13:
+        $i0 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _inputPtr>;
+
+        $i1 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _inputEnd>;
+
+        if $i0 < $i1 goto label14;
+
+        $z0 = virtualinvoke r0.<org.codehaus.jackson.impl.Utf8StreamParser: boolean loadMore()>();
+
+        if $z0 != 0 goto label14;
+
+        virtualinvoke r0.<org.codehaus.jackson.impl.Utf8StreamParser: void _reportInvalidEOF(java.lang.String)>(" in field name");
+
+     label14:
+        $r2 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: byte[] _inputBuffer>;
+
+        $i0 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _inputPtr>;
+
+        $i1 = $i0 + 1;
+
+        r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _inputPtr> = $i1;
+
+        $b2 = $r2[$i0];
+
+        $i0 = $b2 & 255;
+
+        $i1 = $i5;
+
+        goto label03;
+
+     label15:
+        $i0 = virtualinvoke r0.<org.codehaus.jackson.impl.Utf8StreamParser: char _decodeEscaped()>();
+
+        goto label08;
+
+     label16:
+        i3 = i3 << 8;
+
+        $i5 = $i0 >> 12;
+
+        $i5 = $i5 | 224;
+
+        i3 = i3 | $i5;
+
+        i4 = i4 + 1;
+
+        if i4 < 4 goto label22;
+
+        i4 = lengthof r4;
+
+        if $i1 < i4 goto label17;
+
+        i4 = lengthof r4;
+
+        $r7 = staticinvoke <org.codehaus.jackson.impl.Utf8StreamParser: int[] growArrayBy(int[],int)>(r4, i4);
+
+        r4 = $r7;
+
+        r0.<org.codehaus.jackson.impl.Utf8StreamParser: int[] _quadBuffer> = $r7;
+
+     label17:
+        $i5 = $i1 + 1;
+
+        r4[$i1] = i3;
+
+        i3 = 0;
+
+        i4 = 0;
+
+     label18:
+        $i1 = i3 << 8;
+
+        i3 = $i0 >> 6;
+
+        i3 = i3 & 63;
+
+        i3 = i3 | 128;
+
+        i3 = $i1 | i3;
+
+        i4 = i4 + 1;
+
+        goto label11;
+
+     label19:
+        i4 = lengthof r4;
+
+        if $i1 < i4 goto label20;
+
+        i4 = lengthof r4;
+
+        $r7 = staticinvoke <org.codehaus.jackson.impl.Utf8StreamParser: int[] growArrayBy(int[],int)>(r4, i4);
+
+        r4 = $r7;
+
+        r0.<org.codehaus.jackson.impl.Utf8StreamParser: int[] _quadBuffer> = $r7;
+
+     label20:
+        $i5 = $i1 + 1;
+
+        r4[$i1] = i3;
+
+        i3 = $i0;
+
+        i4 = 1;
+
+        goto label13;
+
+     label21:
+        $i0 = $i1;
+
+        goto label05;
+
+     label22:
+        $i5 = $i1;
+
+        goto label18;
+    }
+
+    protected final org.codehaus.jackson.sym.Name _parseFieldName(int) throws java.io.IOException, org.codehaus.jackson.JsonParseException
+    {
+        org.codehaus.jackson.impl.Utf8StreamParser r0;
+        int[] r1;
+        byte[] r2;
+        int $i0, $i1, $i3;
+        org.codehaus.jackson.sym.Name $r3;
+        byte $b2;
+
+        r0 := @this: org.codehaus.jackson.impl.Utf8StreamParser;
+
+        $i0 := @parameter0: int;
+
+        if $i0 == 34 goto label01;
+
+        $r3 = virtualinvoke r0.<org.codehaus.jackson.impl.Utf8StreamParser: org.codehaus.jackson.sym.Name _handleUnusualFieldName(int)>($i0);
+
+        return $r3;
+
+     label01:
+        $i0 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _inputPtr>;
+
+        $i0 = $i0 + 9;
+
+        $i1 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _inputEnd>;
+
+        if $i0 <= $i1 goto label02;
+
+        $r3 = virtualinvoke r0.<org.codehaus.jackson.impl.Utf8StreamParser: org.codehaus.jackson.sym.Name slowParseFieldName()>();
+
+        return $r3;
+
+     label02:
+        r2 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: byte[] _inputBuffer>;
+
+        r1 = <org.codehaus.jackson.impl.Utf8StreamParser: int[] sInputCodesLatin1>;
+
+        $i0 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _inputPtr>;
+
+        $i1 = $i0 + 1;
+
+        r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _inputPtr> = $i1;
+
+        $b2 = r2[$i0];
+
+        $i0 = $b2 & 255;
+
+        $i1 = r1[$i0];
+
+        if $i1 != 0 goto label11;
+
+        $i1 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _inputPtr>;
+
+        $i3 = $i1 + 1;
+
+        r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _inputPtr> = $i3;
+
+        $b2 = r2[$i1];
+
+        $i1 = $b2 & 255;
+
+        $i3 = r1[$i1];
+
+        if $i3 != 0 goto label09;
+
+        $i0 = $i0 << 8;
+
+        $i0 = $i0 | $i1;
+
+        $i1 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _inputPtr>;
+
+        $i3 = $i1 + 1;
+
+        r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _inputPtr> = $i3;
+
+        $b2 = r2[$i1];
+
+        $i1 = $b2 & 255;
+
+        $i3 = r1[$i1];
+
+        if $i3 != 0 goto label07;
+
+        $i0 = $i0 << 8;
+
+        $i0 = $i0 | $i1;
+
+        $i1 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _inputPtr>;
+
+        $i3 = $i1 + 1;
+
+        r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _inputPtr> = $i3;
+
+        $b2 = r2[$i1];
+
+        $i1 = $b2 & 255;
+
+        $i3 = r1[$i1];
+
+        if $i3 != 0 goto label05;
+
+        $i0 = $i0 << 8;
+
+        $i0 = $i0 | $i1;
+
+        $i1 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _inputPtr>;
+
+        $i3 = $i1 + 1;
+
+        r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _inputPtr> = $i3;
+
+        $b2 = r2[$i1];
+
+        $i1 = $b2 & 255;
+
+        $i3 = r1[$i1];
+
+        if $i3 != 0 goto label03;
+
+        r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _quad1> = $i0;
+
+        $r3 = virtualinvoke r0.<org.codehaus.jackson.impl.Utf8StreamParser: org.codehaus.jackson.sym.Name parseMediumFieldName(int,int[])>($i1, r1);
+
+        return $r3;
+
+     label03:
+        if $i1 != 34 goto label04;
+
+        $r3 = specialinvoke r0.<org.codehaus.jackson.impl.Utf8StreamParser: org.codehaus.jackson.sym.Name findName(int,int)>($i0, 4);
+
+        return $r3;
+
+     label04:
+        $r3 = specialinvoke r0.<org.codehaus.jackson.impl.Utf8StreamParser: org.codehaus.jackson.sym.Name parseFieldName(int,int,int)>($i0, $i1, 4);
+
+        return $r3;
+
+     label05:
+        if $i1 != 34 goto label06;
+
+        $r3 = specialinvoke r0.<org.codehaus.jackson.impl.Utf8StreamParser: org.codehaus.jackson.sym.Name findName(int,int)>($i0, 3);
+
+        return $r3;
+
+     label06:
+        $r3 = specialinvoke r0.<org.codehaus.jackson.impl.Utf8StreamParser: org.codehaus.jackson.sym.Name parseFieldName(int,int,int)>($i0, $i1, 3);
+
+        return $r3;
+
+     label07:
+        if $i1 != 34 goto label08;
+
+        $r3 = specialinvoke r0.<org.codehaus.jackson.impl.Utf8StreamParser: org.codehaus.jackson.sym.Name findName(int,int)>($i0, 2);
+
+        return $r3;
+
+     label08:
+        $r3 = specialinvoke r0.<org.codehaus.jackson.impl.Utf8StreamParser: org.codehaus.jackson.sym.Name parseFieldName(int,int,int)>($i0, $i1, 2);
+
+        return $r3;
+
+     label09:
+        if $i1 != 34 goto label10;
+
+        $r3 = specialinvoke r0.<org.codehaus.jackson.impl.Utf8StreamParser: org.codehaus.jackson.sym.Name findName(int,int)>($i0, 1);
+
+        return $r3;
+
+     label10:
+        $r3 = specialinvoke r0.<org.codehaus.jackson.impl.Utf8StreamParser: org.codehaus.jackson.sym.Name parseFieldName(int,int,int)>($i0, $i1, 1);
+
+        return $r3;
+
+     label11:
+        if $i0 != 34 goto label12;
+
+        $r3 = staticinvoke <org.codehaus.jackson.sym.BytesToNameCanonicalizer: org.codehaus.jackson.sym.Name getEmptyName()>();
+
+        return $r3;
+
+     label12:
+        $r3 = specialinvoke r0.<org.codehaus.jackson.impl.Utf8StreamParser: org.codehaus.jackson.sym.Name parseFieldName(int,int,int)>(0, $i0, 0);
+
+        return $r3;
+    }
+
+    protected void _reportInvalidChar(int) throws org.codehaus.jackson.JsonParseException
+    {
+        org.codehaus.jackson.impl.Utf8StreamParser r0;
+        int $i0;
+
+        r0 := @this: org.codehaus.jackson.impl.Utf8StreamParser;
+
+        $i0 := @parameter0: int;
+
+        if $i0 >= 32 goto label1;
+
+        virtualinvoke r0.<org.codehaus.jackson.impl.Utf8StreamParser: void _throwInvalidSpace(int)>($i0);
+
+     label1:
+        virtualinvoke r0.<org.codehaus.jackson.impl.Utf8StreamParser: void _reportInvalidInitial(int)>($i0);
+
+        return;
+    }
+
+    protected void _reportInvalidInitial(int) throws org.codehaus.jackson.JsonParseException
+    {
+        org.codehaus.jackson.impl.Utf8StreamParser r0;
+        int $i0;
+        java.lang.StringBuilder $r1;
+        java.lang.String $r2;
+
+        r0 := @this: org.codehaus.jackson.impl.Utf8StreamParser;
+
+        $i0 := @parameter0: int;
+
+        $r1 = new java.lang.StringBuilder;
+
+        specialinvoke $r1.<java.lang.StringBuilder: void <init>()>();
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Invalid UTF-8 start byte 0x");
+
+        $r2 = staticinvoke <java.lang.Integer: java.lang.String toHexString(int)>($i0);
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r2);
+
+        $r2 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        virtualinvoke r0.<org.codehaus.jackson.impl.Utf8StreamParser: void _reportError(java.lang.String)>($r2);
+
+        return;
+    }
+
+    protected void _reportInvalidOther(int) throws org.codehaus.jackson.JsonParseException
+    {
+        org.codehaus.jackson.impl.Utf8StreamParser r0;
+        int $i0;
+        java.lang.StringBuilder $r1;
+        java.lang.String $r2;
+
+        r0 := @this: org.codehaus.jackson.impl.Utf8StreamParser;
+
+        $i0 := @parameter0: int;
+
+        $r1 = new java.lang.StringBuilder;
+
+        specialinvoke $r1.<java.lang.StringBuilder: void <init>()>();
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Invalid UTF-8 middle byte 0x");
+
+        $r2 = staticinvoke <java.lang.Integer: java.lang.String toHexString(int)>($i0);
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r2);
+
+        $r2 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        virtualinvoke r0.<org.codehaus.jackson.impl.Utf8StreamParser: void _reportError(java.lang.String)>($r2);
+
+        return;
+    }
+
+    protected void _reportInvalidOther(int, int) throws org.codehaus.jackson.JsonParseException
+    {
+        org.codehaus.jackson.impl.Utf8StreamParser r0;
+        int $i0, $i1;
+
+        r0 := @this: org.codehaus.jackson.impl.Utf8StreamParser;
+
+        $i0 := @parameter0: int;
+
+        $i1 := @parameter1: int;
+
+        r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _inputPtr> = $i1;
+
+        virtualinvoke r0.<org.codehaus.jackson.impl.Utf8StreamParser: void _reportInvalidOther(int)>($i0);
+
+        return;
+    }
+
+    protected final void _skipCR() throws java.io.IOException
+    {
+        org.codehaus.jackson.impl.Utf8StreamParser r0;
+        boolean $z0;
+        int $i0, $i1;
+        byte[] $r1;
+        byte $b2;
+
+        r0 := @this: org.codehaus.jackson.impl.Utf8StreamParser;
+
+        $i0 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _inputPtr>;
+
+        $i1 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _inputEnd>;
+
+        if $i0 < $i1 goto label1;
+
+        $z0 = virtualinvoke r0.<org.codehaus.jackson.impl.Utf8StreamParser: boolean loadMore()>();
+
+        if $z0 == 0 goto label2;
+
+     label1:
+        $r1 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: byte[] _inputBuffer>;
+
+        $i0 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _inputPtr>;
+
+        $b2 = $r1[$i0];
+
+        if $b2 != 10 goto label2;
+
+        $i0 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _inputPtr>;
+
+        $i0 = $i0 + 1;
+
+        r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _inputPtr> = $i0;
+
+     label2:
+        $i0 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _currInputRow>;
+
+        $i0 = $i0 + 1;
+
+        r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _currInputRow> = $i0;
+
+        $i0 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _inputPtr>;
+
+        r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _currInputRowStart> = $i0;
+
+        return;
+    }
+
+    protected final void _skipLF() throws java.io.IOException
+    {
+        org.codehaus.jackson.impl.Utf8StreamParser r0;
+        int $i0;
+
+        r0 := @this: org.codehaus.jackson.impl.Utf8StreamParser;
+
+        $i0 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _currInputRow>;
+
+        $i0 = $i0 + 1;
+
+        r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _currInputRow> = $i0;
+
+        $i0 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _inputPtr>;
+
+        r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _currInputRowStart> = $i0;
+
+        return;
+    }
+
+    protected void _skipString() throws java.io.IOException, org.codehaus.jackson.JsonParseException
+    {
+        org.codehaus.jackson.impl.Utf8StreamParser r0;
+        int i0, i1, i2, $i4;
+        int[] r1;
+        byte[] r2;
+        byte $b3;
+
+        r0 := @this: org.codehaus.jackson.impl.Utf8StreamParser;
+
+        r0.<org.codehaus.jackson.impl.Utf8StreamParser: boolean _tokenIncomplete> = 0;
+
+        r1 = <org.codehaus.jackson.impl.Utf8StreamParser: int[] sInputCodesUtf8>;
+
+        r2 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: byte[] _inputBuffer>;
+
+     label01:
+        i1 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _inputPtr>;
+
+        i2 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _inputEnd>;
+
+        if i1 < i2 goto label11;
+
+        virtualinvoke r0.<org.codehaus.jackson.impl.Utf8StreamParser: void loadMoreGuaranteed()>();
+
+        i2 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _inputEnd>;
+
+        i0 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _inputPtr>;
+
+     label02:
+        if i0 >= i2 goto label03;
+
+        i1 = i0 + 1;
+
+        $b3 = r2[i0];
+
+        i0 = $b3 & 255;
+
+        $i4 = r1[i0];
+
+        if $i4 == 0 goto label11;
+
+        r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _inputPtr> = i1;
+
+        if i0 != 34 goto label04;
+
+        return;
+
+     label03:
+        r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _inputPtr> = i0;
+
+        goto label01;
+
+     label04:
+        i2 = r1[i0];
+
+        lookupswitch(i2)
+        {
+            case 1: goto label06;
+            case 2: goto label07;
+            case 3: goto label08;
+            case 4: goto label09;
+            default: goto label05;
+        };
+
+     label05:
+        if i0 >= 32 goto label10;
+
+        virtualinvoke r0.<org.codehaus.jackson.impl.Utf8StreamParser: void _throwUnquotedSpace(int,java.lang.String)>(i0, "string value");
+
+        goto label01;
+
+     label06:
+        virtualinvoke r0.<org.codehaus.jackson.impl.Utf8StreamParser: char _decodeEscaped()>();
+
+        goto label01;
+
+     label07:
+        specialinvoke r0.<org.codehaus.jackson.impl.Utf8StreamParser: void _skipUtf8_2(int)>(i0);
+
+        goto label01;
+
+     label08:
+        specialinvoke r0.<org.codehaus.jackson.impl.Utf8StreamParser: void _skipUtf8_3(int)>(i0);
+
+        goto label01;
+
+     label09:
+        specialinvoke r0.<org.codehaus.jackson.impl.Utf8StreamParser: void _skipUtf8_4(int)>(i0);
+
+        goto label01;
+
+     label10:
+        virtualinvoke r0.<org.codehaus.jackson.impl.Utf8StreamParser: void _reportInvalidChar(int)>(i0);
+
+        goto label01;
+
+     label11:
+        i0 = i1;
+
+        goto label02;
+    }
+
+    public void close() throws java.io.IOException
+    {
+        org.codehaus.jackson.impl.Utf8StreamParser r0;
+        org.codehaus.jackson.sym.BytesToNameCanonicalizer $r1;
+
+        r0 := @this: org.codehaus.jackson.impl.Utf8StreamParser;
+
+        specialinvoke r0.<org.codehaus.jackson.impl.StreamBasedParserBase: void close()>();
+
+        $r1 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: org.codehaus.jackson.sym.BytesToNameCanonicalizer _symbols>;
+
+        virtualinvoke $r1.<org.codehaus.jackson.sym.BytesToNameCanonicalizer: void release()>();
+
+        return;
+    }
+
+    public byte[] getBinaryValue(org.codehaus.jackson.Base64Variant) throws java.io.IOException, org.codehaus.jackson.JsonParseException
+    {
+        org.codehaus.jackson.impl.Utf8StreamParser r0;
+        org.codehaus.jackson.Base64Variant $r1;
+        org.codehaus.jackson.JsonToken $r2, $r3;
+        byte[] $r4;
+        java.lang.StringBuilder $r5, $r9;
+        java.lang.String $r6;
+        boolean $z0;
+        java.lang.Throwable $r7;
+        org.codehaus.jackson.JsonParseException $r8;
+        java.lang.IllegalArgumentException $r10;
+
+        r0 := @this: org.codehaus.jackson.impl.Utf8StreamParser;
+
+        $r1 := @parameter0: org.codehaus.jackson.Base64Variant;
+
+        $r2 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: org.codehaus.jackson.JsonToken _currToken>;
+
+        $r3 = <org.codehaus.jackson.JsonToken: org.codehaus.jackson.JsonToken VALUE_STRING>;
+
+        if $r2 == $r3 goto label2;
+
+        $r2 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: org.codehaus.jackson.JsonToken _currToken>;
+
+        $r3 = <org.codehaus.jackson.JsonToken: org.codehaus.jackson.JsonToken VALUE_EMBEDDED_OBJECT>;
+
+        if $r2 != $r3 goto label1;
+
+        $r4 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: byte[] _binaryValue>;
+
+        if $r4 != null goto label2;
+
+     label1:
+        $r9 = new java.lang.StringBuilder;
+
+        specialinvoke $r9.<java.lang.StringBuilder: void <init>()>();
+
+        $r5 = virtualinvoke $r9.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Current token (");
+
+        $r2 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: org.codehaus.jackson.JsonToken _currToken>;
+
+        $r5 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($r2);
+
+        $r5 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(") not VALUE_STRING or VALUE_EMBEDDED_OBJECT, can not access as binary");
+
+        $r6 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        virtualinvoke r0.<org.codehaus.jackson.impl.Utf8StreamParser: void _reportError(java.lang.String)>($r6);
+
+     label2:
+        $z0 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: boolean _tokenIncomplete>;
+
+        if $z0 == 0 goto label5;
+
+     label3:
+        $r4 = virtualinvoke r0.<org.codehaus.jackson.impl.Utf8StreamParser: byte[] _decodeBase64(org.codehaus.jackson.Base64Variant)>($r1);
+
+     label4:
+        r0.<org.codehaus.jackson.impl.Utf8StreamParser: byte[] _binaryValue> = $r4;
+
+        r0.<org.codehaus.jackson.impl.Utf8StreamParser: boolean _tokenIncomplete> = 0;
+
+     label5:
+        $r4 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: byte[] _binaryValue>;
+
+        return $r4;
+
+     label6:
+        $r7 := @caughtexception;
+
+        $r9 = new java.lang.StringBuilder;
+
+        specialinvoke $r9.<java.lang.StringBuilder: void <init>()>();
+
+        $r5 = virtualinvoke $r9.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Failed to decode VALUE_STRING as base64 (");
+
+        $r5 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($r1);
+
+        $r5 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("): ");
+
+        $r10 = (java.lang.IllegalArgumentException) $r7;
+
+        $r6 = virtualinvoke $r10.<java.lang.IllegalArgumentException: java.lang.String getMessage()>();
+
+        $r5 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r6);
+
+        $r6 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        $r8 = virtualinvoke r0.<org.codehaus.jackson.impl.Utf8StreamParser: org.codehaus.jackson.JsonParseException _constructError(java.lang.String)>($r6);
+
+        throw $r8;
+
+        catch java.lang.IllegalArgumentException from label3 to label4 with label6;
+    }
+
+    public org.codehaus.jackson.ObjectCodec getCodec()
+    {
+        org.codehaus.jackson.impl.Utf8StreamParser r0;
+        org.codehaus.jackson.ObjectCodec r1;
+
+        r0 := @this: org.codehaus.jackson.impl.Utf8StreamParser;
+
+        r1 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: org.codehaus.jackson.ObjectCodec _objectCodec>;
+
+        return r1;
+    }
+
+    public java.lang.String getText() throws java.io.IOException, org.codehaus.jackson.JsonParseException
+    {
+        org.codehaus.jackson.impl.Utf8StreamParser r0;
+        org.codehaus.jackson.JsonToken r1, $r2;
+        boolean $z0;
+        org.codehaus.jackson.util.TextBuffer $r3;
+        java.lang.String $r4;
+
+        r0 := @this: org.codehaus.jackson.impl.Utf8StreamParser;
+
+        r1 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: org.codehaus.jackson.JsonToken _currToken>;
+
+        $r2 = <org.codehaus.jackson.JsonToken: org.codehaus.jackson.JsonToken VALUE_STRING>;
+
+        if r1 != $r2 goto label2;
+
+        $z0 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: boolean _tokenIncomplete>;
+
+        if $z0 == 0 goto label1;
+
+        r0.<org.codehaus.jackson.impl.Utf8StreamParser: boolean _tokenIncomplete> = 0;
+
+        virtualinvoke r0.<org.codehaus.jackson.impl.Utf8StreamParser: void _finishString()>();
+
+     label1:
+        $r3 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: org.codehaus.jackson.util.TextBuffer _textBuffer>;
+
+        $r4 = virtualinvoke $r3.<org.codehaus.jackson.util.TextBuffer: java.lang.String contentsAsString()>();
+
+        return $r4;
+
+     label2:
+        $r4 = virtualinvoke r0.<org.codehaus.jackson.impl.Utf8StreamParser: java.lang.String _getText2(org.codehaus.jackson.JsonToken)>(r1);
+
+        return $r4;
+    }
+
+    public char[] getTextCharacters() throws java.io.IOException, org.codehaus.jackson.JsonParseException
+    {
+        org.codehaus.jackson.impl.Utf8StreamParser r0;
+        org.codehaus.jackson.JsonToken $r1;
+        int[] $r2;
+        int $i0, $i1;
+        char[] $r3;
+        boolean $z0;
+        org.codehaus.jackson.impl.JsonReadContext $r4;
+        java.lang.String $r5;
+        org.codehaus.jackson.io.IOContext $r6;
+        org.codehaus.jackson.util.TextBuffer $r7;
+
+        r0 := @this: org.codehaus.jackson.impl.Utf8StreamParser;
+
+        $r1 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: org.codehaus.jackson.JsonToken _currToken>;
+
+        if $r1 == null goto label8;
+
+        $r2 = <org.codehaus.jackson.impl.Utf8StreamParser$1: int[] $SwitchMap$org$codehaus$jackson$JsonToken>;
+
+        $r1 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: org.codehaus.jackson.JsonToken _currToken>;
+
+        $i0 = virtualinvoke $r1.<org.codehaus.jackson.JsonToken: int ordinal()>();
+
+        $i0 = $r2[$i0];
+
+        lookupswitch($i0)
+        {
+            case 1: goto label2;
+            case 2: goto label6;
+            case 3: goto label7;
+            case 4: goto label7;
+            default: goto label1;
+        };
+
+     label1:
+        $r1 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: org.codehaus.jackson.JsonToken _currToken>;
+
+        $r3 = virtualinvoke $r1.<org.codehaus.jackson.JsonToken: char[] asCharArray()>();
+
+        return $r3;
+
+     label2:
+        $z0 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: boolean _nameCopied>;
+
+        if $z0 != 0 goto label4;
+
+        $r4 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: org.codehaus.jackson.impl.JsonReadContext _parsingContext>;
+
+        $r5 = virtualinvoke $r4.<org.codehaus.jackson.impl.JsonReadContext: java.lang.String getCurrentName()>();
+
+        $i0 = virtualinvoke $r5.<java.lang.String: int length()>();
+
+        $r3 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: char[] _nameCopyBuffer>;
+
+        if $r3 != null goto label5;
+
+        $r6 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: org.codehaus.jackson.io.IOContext _ioContext>;
+
+        $r3 = virtualinvoke $r6.<org.codehaus.jackson.io.IOContext: char[] allocNameCopyBuffer(int)>($i0);
+
+        r0.<org.codehaus.jackson.impl.Utf8StreamParser: char[] _nameCopyBuffer> = $r3;
+
+     label3:
+        $r3 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: char[] _nameCopyBuffer>;
+
+        virtualinvoke $r5.<java.lang.String: void getChars(int,int,char[],int)>(0, $i0, $r3, 0);
+
+        r0.<org.codehaus.jackson.impl.Utf8StreamParser: boolean _nameCopied> = 1;
+
+     label4:
+        $r3 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: char[] _nameCopyBuffer>;
+
+        return $r3;
+
+     label5:
+        $r3 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: char[] _nameCopyBuffer>;
+
+        $i1 = lengthof $r3;
+
+        if $i1 >= $i0 goto label3;
+
+        $r3 = newarray (char)[$i0];
+
+        r0.<org.codehaus.jackson.impl.Utf8StreamParser: char[] _nameCopyBuffer> = $r3;
+
+        goto label3;
+
+     label6:
+        $z0 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: boolean _tokenIncomplete>;
+
+        if $z0 == 0 goto label7;
+
+        r0.<org.codehaus.jackson.impl.Utf8StreamParser: boolean _tokenIncomplete> = 0;
+
+        virtualinvoke r0.<org.codehaus.jackson.impl.Utf8StreamParser: void _finishString()>();
+
+     label7:
+        $r7 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: org.codehaus.jackson.util.TextBuffer _textBuffer>;
+
+        $r3 = virtualinvoke $r7.<org.codehaus.jackson.util.TextBuffer: char[] getTextBuffer()>();
+
+        return $r3;
+
+     label8:
+        return null;
+    }
+
+    public int getTextLength() throws java.io.IOException, org.codehaus.jackson.JsonParseException
+    {
+        org.codehaus.jackson.impl.Utf8StreamParser r0;
+        org.codehaus.jackson.JsonToken $r1;
+        int[] $r2;
+        int $i0;
+        char[] $r3;
+        org.codehaus.jackson.impl.JsonReadContext $r4;
+        java.lang.String $r5;
+        boolean $z0;
+        org.codehaus.jackson.util.TextBuffer $r6;
+
+        r0 := @this: org.codehaus.jackson.impl.Utf8StreamParser;
+
+        $r1 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: org.codehaus.jackson.JsonToken _currToken>;
+
+        if $r1 == null goto label5;
+
+        $r2 = <org.codehaus.jackson.impl.Utf8StreamParser$1: int[] $SwitchMap$org$codehaus$jackson$JsonToken>;
+
+        $r1 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: org.codehaus.jackson.JsonToken _currToken>;
+
+        $i0 = virtualinvoke $r1.<org.codehaus.jackson.JsonToken: int ordinal()>();
+
+        $i0 = $r2[$i0];
+
+        lookupswitch($i0)
+        {
+            case 1: goto label2;
+            case 2: goto label3;
+            case 3: goto label4;
+            case 4: goto label4;
+            default: goto label1;
+        };
+
+     label1:
+        $r1 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: org.codehaus.jackson.JsonToken _currToken>;
+
+        $r3 = virtualinvoke $r1.<org.codehaus.jackson.JsonToken: char[] asCharArray()>();
+
+        $i0 = lengthof $r3;
+
+        return $i0;
+
+     label2:
+        $r4 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: org.codehaus.jackson.impl.JsonReadContext _parsingContext>;
+
+        $r5 = virtualinvoke $r4.<org.codehaus.jackson.impl.JsonReadContext: java.lang.String getCurrentName()>();
+
+        $i0 = virtualinvoke $r5.<java.lang.String: int length()>();
+
+        return $i0;
+
+     label3:
+        $z0 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: boolean _tokenIncomplete>;
+
+        if $z0 == 0 goto label4;
+
+        r0.<org.codehaus.jackson.impl.Utf8StreamParser: boolean _tokenIncomplete> = 0;
+
+        virtualinvoke r0.<org.codehaus.jackson.impl.Utf8StreamParser: void _finishString()>();
+
+     label4:
+        $r6 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: org.codehaus.jackson.util.TextBuffer _textBuffer>;
+
+        $i0 = virtualinvoke $r6.<org.codehaus.jackson.util.TextBuffer: int size()>();
+
+        return $i0;
+
+     label5:
+        return 0;
+    }
+
+    public int getTextOffset() throws java.io.IOException, org.codehaus.jackson.JsonParseException
+    {
+        org.codehaus.jackson.impl.Utf8StreamParser r0;
+        org.codehaus.jackson.JsonToken $r1;
+        int[] $r2;
+        int $i0;
+        boolean $z0;
+        org.codehaus.jackson.util.TextBuffer $r3;
+
+        r0 := @this: org.codehaus.jackson.impl.Utf8StreamParser;
+
+        $r1 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: org.codehaus.jackson.JsonToken _currToken>;
+
+        if $r1 == null goto label1;
+
+        $r2 = <org.codehaus.jackson.impl.Utf8StreamParser$1: int[] $SwitchMap$org$codehaus$jackson$JsonToken>;
+
+        $r1 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: org.codehaus.jackson.JsonToken _currToken>;
+
+        $i0 = virtualinvoke $r1.<org.codehaus.jackson.JsonToken: int ordinal()>();
+
+        $i0 = $r2[$i0];
+
+        lookupswitch($i0)
+        {
+            case 1: goto label1;
+            case 2: goto label2;
+            case 3: goto label3;
+            case 4: goto label3;
+            default: goto label1;
+        };
+
+     label1:
+        return 0;
+
+     label2:
+        $z0 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: boolean _tokenIncomplete>;
+
+        if $z0 == 0 goto label3;
+
+        r0.<org.codehaus.jackson.impl.Utf8StreamParser: boolean _tokenIncomplete> = 0;
+
+        virtualinvoke r0.<org.codehaus.jackson.impl.Utf8StreamParser: void _finishString()>();
+
+     label3:
+        $r3 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: org.codehaus.jackson.util.TextBuffer _textBuffer>;
+
+        $i0 = virtualinvoke $r3.<org.codehaus.jackson.util.TextBuffer: int getTextOffset()>();
+
+        return $i0;
+    }
+
+    public org.codehaus.jackson.JsonToken nextToken() throws java.io.IOException, org.codehaus.jackson.JsonParseException
+    {
+        org.codehaus.jackson.impl.Utf8StreamParser r0;
+        org.codehaus.jackson.JsonToken $r1, $r2;
+        boolean $z0;
+        int $i0, i1, $i3, $i5;
+        long $l2, $l4;
+        org.codehaus.jackson.impl.JsonReadContext $r3;
+        java.lang.StringBuilder $r4;
+        java.lang.String $r5;
+        org.codehaus.jackson.sym.Name $r6;
+
+        r0 := @this: org.codehaus.jackson.impl.Utf8StreamParser;
+
+        $r1 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: org.codehaus.jackson.JsonToken _currToken>;
+
+        $r2 = <org.codehaus.jackson.JsonToken: org.codehaus.jackson.JsonToken FIELD_NAME>;
+
+        if $r1 != $r2 goto label01;
+
+        $r1 = specialinvoke r0.<org.codehaus.jackson.impl.Utf8StreamParser: org.codehaus.jackson.JsonToken _nextAfterName()>();
+
+        return $r1;
+
+     label01:
+        $z0 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: boolean _tokenIncomplete>;
+
+        if $z0 == 0 goto label02;
+
+        virtualinvoke r0.<org.codehaus.jackson.impl.Utf8StreamParser: void _skipString()>();
+
+     label02:
+        $i0 = specialinvoke r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _skipWSOrEnd()>();
+
+        i1 = $i0;
+
+        if $i0 >= 0 goto label03;
+
+        virtualinvoke r0.<org.codehaus.jackson.impl.Utf8StreamParser: void close()>();
+
+        r0.<org.codehaus.jackson.impl.Utf8StreamParser: org.codehaus.jackson.JsonToken _currToken> = null;
+
+        return null;
+
+     label03:
+        $l2 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: long _currInputProcessed>;
+
+        $i3 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _inputPtr>;
+
+        $l4 = (long) $i3;
+
+        $l2 = $l2 + $l4;
+
+        $l2 = $l2 - 1L;
+
+        r0.<org.codehaus.jackson.impl.Utf8StreamParser: long _tokenInputTotal> = $l2;
+
+        $i3 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _currInputRow>;
+
+        r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _tokenInputRow> = $i3;
+
+        $i3 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _inputPtr>;
+
+        $i5 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _currInputRowStart>;
+
+        $i3 = $i3 - $i5;
+
+        $i3 = $i3 - 1;
+
+        r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _tokenInputCol> = $i3;
+
+        r0.<org.codehaus.jackson.impl.Utf8StreamParser: byte[] _binaryValue> = null;
+
+        if $i0 != 93 goto label05;
+
+        $r3 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: org.codehaus.jackson.impl.JsonReadContext _parsingContext>;
+
+        $z0 = virtualinvoke $r3.<org.codehaus.jackson.impl.JsonReadContext: boolean inArray()>();
+
+        if $z0 != 0 goto label04;
+
+        virtualinvoke r0.<org.codehaus.jackson.impl.Utf8StreamParser: void _reportMismatchedEndMarker(int,char)>($i0, 125);
+
+     label04:
+        $r3 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: org.codehaus.jackson.impl.JsonReadContext _parsingContext>;
+
+        $r3 = virtualinvoke $r3.<org.codehaus.jackson.impl.JsonReadContext: org.codehaus.jackson.impl.JsonReadContext getParent()>();
+
+        r0.<org.codehaus.jackson.impl.Utf8StreamParser: org.codehaus.jackson.impl.JsonReadContext _parsingContext> = $r3;
+
+        $r1 = <org.codehaus.jackson.JsonToken: org.codehaus.jackson.JsonToken END_ARRAY>;
+
+        r0.<org.codehaus.jackson.impl.Utf8StreamParser: org.codehaus.jackson.JsonToken _currToken> = $r1;
+
+        return $r1;
+
+     label05:
+        if $i0 != 125 goto label07;
+
+        $r3 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: org.codehaus.jackson.impl.JsonReadContext _parsingContext>;
+
+        $z0 = virtualinvoke $r3.<org.codehaus.jackson.impl.JsonReadContext: boolean inObject()>();
+
+        if $z0 != 0 goto label06;
+
+        virtualinvoke r0.<org.codehaus.jackson.impl.Utf8StreamParser: void _reportMismatchedEndMarker(int,char)>($i0, 93);
+
+     label06:
+        $r3 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: org.codehaus.jackson.impl.JsonReadContext _parsingContext>;
+
+        $r3 = virtualinvoke $r3.<org.codehaus.jackson.impl.JsonReadContext: org.codehaus.jackson.impl.JsonReadContext getParent()>();
+
+        r0.<org.codehaus.jackson.impl.Utf8StreamParser: org.codehaus.jackson.impl.JsonReadContext _parsingContext> = $r3;
+
+        $r1 = <org.codehaus.jackson.JsonToken: org.codehaus.jackson.JsonToken END_OBJECT>;
+
+        r0.<org.codehaus.jackson.impl.Utf8StreamParser: org.codehaus.jackson.JsonToken _currToken> = $r1;
+
+        return $r1;
+
+     label07:
+        $r3 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: org.codehaus.jackson.impl.JsonReadContext _parsingContext>;
+
+        $z0 = virtualinvoke $r3.<org.codehaus.jackson.impl.JsonReadContext: boolean expectComma()>();
+
+        if $z0 == 0 goto label09;
+
+        if $i0 == 44 goto label08;
+
+        $r4 = new java.lang.StringBuilder;
+
+        specialinvoke $r4.<java.lang.StringBuilder: void <init>()>();
+
+        $r4 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("was expecting comma to separate ");
+
+        $r3 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: org.codehaus.jackson.impl.JsonReadContext _parsingContext>;
+
+        $r5 = virtualinvoke $r3.<org.codehaus.jackson.impl.JsonReadContext: java.lang.String getTypeDesc()>();
+
+        $r4 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r5);
+
+        $r4 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" entries");
+
+        $r5 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        virtualinvoke r0.<org.codehaus.jackson.impl.Utf8StreamParser: void _reportUnexpectedChar(int,java.lang.String)>($i0, $r5);
+
+     label08:
+        i1 = specialinvoke r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _skipWS()>();
+
+     label09:
+        $r3 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: org.codehaus.jackson.impl.JsonReadContext _parsingContext>;
+
+        $z0 = virtualinvoke $r3.<org.codehaus.jackson.impl.JsonReadContext: boolean inObject()>();
+
+        if $z0 != 0 goto label10;
+
+        $r1 = specialinvoke r0.<org.codehaus.jackson.impl.Utf8StreamParser: org.codehaus.jackson.JsonToken _nextTokenNotInObject(int)>(i1);
+
+        return $r1;
+
+     label10:
+        $r6 = virtualinvoke r0.<org.codehaus.jackson.impl.Utf8StreamParser: org.codehaus.jackson.sym.Name _parseFieldName(int)>(i1);
+
+        $r3 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: org.codehaus.jackson.impl.JsonReadContext _parsingContext>;
+
+        $r5 = virtualinvoke $r6.<org.codehaus.jackson.sym.Name: java.lang.String getName()>();
+
+        virtualinvoke $r3.<org.codehaus.jackson.impl.JsonReadContext: void setCurrentName(java.lang.String)>($r5);
+
+        $r1 = <org.codehaus.jackson.JsonToken: org.codehaus.jackson.JsonToken FIELD_NAME>;
+
+        r0.<org.codehaus.jackson.impl.Utf8StreamParser: org.codehaus.jackson.JsonToken _currToken> = $r1;
+
+        $i0 = specialinvoke r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _skipWS()>();
+
+        if $i0 == 58 goto label11;
+
+        virtualinvoke r0.<org.codehaus.jackson.impl.Utf8StreamParser: void _reportUnexpectedChar(int,java.lang.String)>($i0, "was expecting a colon to separate field name and value");
+
+     label11:
+        $i0 = specialinvoke r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _skipWS()>();
+
+        if $i0 != 34 goto label12;
+
+        r0.<org.codehaus.jackson.impl.Utf8StreamParser: boolean _tokenIncomplete> = 1;
+
+        $r1 = <org.codehaus.jackson.JsonToken: org.codehaus.jackson.JsonToken VALUE_STRING>;
+
+        r0.<org.codehaus.jackson.impl.Utf8StreamParser: org.codehaus.jackson.JsonToken _nextToken> = $r1;
+
+        $r1 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: org.codehaus.jackson.JsonToken _currToken>;
+
+        return $r1;
+
+     label12:
+        lookupswitch($i0)
+        {
+            case 45: goto label21;
+            case 48: goto label21;
+            case 49: goto label21;
+            case 50: goto label21;
+            case 51: goto label21;
+            case 52: goto label21;
+            case 53: goto label21;
+            case 54: goto label21;
+            case 55: goto label21;
+            case 56: goto label21;
+            case 57: goto label21;
+            case 91: goto label15;
+            case 93: goto label17;
+            case 102: goto label19;
+            case 110: goto label20;
+            case 116: goto label18;
+            case 123: goto label16;
+            case 125: goto label17;
+            default: goto label13;
+        };
+
+     label13:
+        $r1 = virtualinvoke r0.<org.codehaus.jackson.impl.Utf8StreamParser: org.codehaus.jackson.JsonToken _handleUnexpectedValue(int)>($i0);
+
+     label14:
+        r0.<org.codehaus.jackson.impl.Utf8StreamParser: org.codehaus.jackson.JsonToken _nextToken> = $r1;
+
+        $r1 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: org.codehaus.jackson.JsonToken _currToken>;
+
+        return $r1;
+
+     label15:
+        $r1 = <org.codehaus.jackson.JsonToken: org.codehaus.jackson.JsonToken START_ARRAY>;
+
+        goto label14;
+
+     label16:
+        $r1 = <org.codehaus.jackson.JsonToken: org.codehaus.jackson.JsonToken START_OBJECT>;
+
+        goto label14;
+
+     label17:
+        virtualinvoke r0.<org.codehaus.jackson.impl.Utf8StreamParser: void _reportUnexpectedChar(int,java.lang.String)>($i0, "expected a value");
+
+     label18:
+        $r1 = <org.codehaus.jackson.JsonToken: org.codehaus.jackson.JsonToken VALUE_TRUE>;
+
+        virtualinvoke r0.<org.codehaus.jackson.impl.Utf8StreamParser: void _matchToken(org.codehaus.jackson.JsonToken)>($r1);
+
+        $r1 = <org.codehaus.jackson.JsonToken: org.codehaus.jackson.JsonToken VALUE_TRUE>;
+
+        goto label14;
+
+     label19:
+        $r1 = <org.codehaus.jackson.JsonToken: org.codehaus.jackson.JsonToken VALUE_FALSE>;
+
+        virtualinvoke r0.<org.codehaus.jackson.impl.Utf8StreamParser: void _matchToken(org.codehaus.jackson.JsonToken)>($r1);
+
+        $r1 = <org.codehaus.jackson.JsonToken: org.codehaus.jackson.JsonToken VALUE_FALSE>;
+
+        goto label14;
+
+     label20:
+        $r1 = <org.codehaus.jackson.JsonToken: org.codehaus.jackson.JsonToken VALUE_NULL>;
+
+        virtualinvoke r0.<org.codehaus.jackson.impl.Utf8StreamParser: void _matchToken(org.codehaus.jackson.JsonToken)>($r1);
+
+        $r1 = <org.codehaus.jackson.JsonToken: org.codehaus.jackson.JsonToken VALUE_NULL>;
+
+        goto label14;
+
+     label21:
+        $r1 = virtualinvoke r0.<org.codehaus.jackson.impl.Utf8StreamParser: org.codehaus.jackson.JsonToken parseNumberText(int)>($i0);
+
+        goto label14;
+    }
+
+    protected org.codehaus.jackson.sym.Name parseEscapedFieldName(int[], int, int, int, int) throws java.io.IOException, org.codehaus.jackson.JsonParseException
+    {
+        org.codehaus.jackson.impl.Utf8StreamParser r0;
+        int[] r1, $r2, $r5;
+        int $i0, i1, $i2, $i3, $i4;
+        org.codehaus.jackson.sym.BytesToNameCanonicalizer $r3;
+        org.codehaus.jackson.sym.Name $r4;
+        boolean $z0;
+        byte[] $r6;
+        byte $b5;
+
+        r0 := @this: org.codehaus.jackson.impl.Utf8StreamParser;
+
+        $r2 := @parameter0: int[];
+
+        i1 := @parameter1: int;
+
+        $i2 := @parameter2: int;
+
+        $i0 := @parameter3: int;
+
+        $i3 := @parameter4: int;
+
+        r1 = <org.codehaus.jackson.impl.Utf8StreamParser: int[] sInputCodesLatin1>;
+
+     label01:
+        $i4 = r1[$i0];
+
+        if $i4 == 0 goto label20;
+
+        if $i0 != 34 goto label04;
+
+        if $i3 <= 0 goto label03;
+
+        $i0 = lengthof $r2;
+
+        if i1 < $i0 goto label02;
+
+        $i0 = lengthof $r2;
+
+        r1 = staticinvoke <org.codehaus.jackson.impl.Utf8StreamParser: int[] growArrayBy(int[],int)>($r2, $i0);
+
+        $r2 = r1;
+
+        r0.<org.codehaus.jackson.impl.Utf8StreamParser: int[] _quadBuffer> = r1;
+
+     label02:
+        $r2[i1] = $i2;
+
+        i1 = i1 + 1;
+
+     label03:
+        $r3 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: org.codehaus.jackson.sym.BytesToNameCanonicalizer _symbols>;
+
+        $r4 = virtualinvoke $r3.<org.codehaus.jackson.sym.BytesToNameCanonicalizer: org.codehaus.jackson.sym.Name findName(int[],int)>($r2, i1);
+
+        if $r4 != null goto label21;
+
+        $r4 = specialinvoke r0.<org.codehaus.jackson.impl.Utf8StreamParser: org.codehaus.jackson.sym.Name addName(int[],int,int)>($r2, i1, $i3);
+
+        return $r4;
+
+     label04:
+        if $i0 == 92 goto label12;
+
+        virtualinvoke r0.<org.codehaus.jackson.impl.Utf8StreamParser: void _throwUnquotedSpace(int,java.lang.String)>($i0, "name");
+
+     label05:
+        if $i0 <= 127 goto label20;
+
+        if $i3 < 4 goto label19;
+
+        $i3 = lengthof $r2;
+
+        if i1 < $i3 goto label06;
+
+        $i3 = lengthof $r2;
+
+        $r5 = staticinvoke <org.codehaus.jackson.impl.Utf8StreamParser: int[] growArrayBy(int[],int)>($r2, $i3);
+
+        $r2 = $r5;
+
+        r0.<org.codehaus.jackson.impl.Utf8StreamParser: int[] _quadBuffer> = $r5;
+
+     label06:
+        $i4 = i1 + 1;
+
+        $r2[i1] = $i2;
+
+        $i2 = 0;
+
+        $i3 = 0;
+
+     label07:
+        if $i0 >= 2048 goto label13;
+
+        i1 = $i2 << 8;
+
+        $i2 = $i0 >> 6;
+
+        $i2 = $i2 | 192;
+
+        $i2 = i1 | $i2;
+
+        $i3 = $i3 + 1;
+
+        i1 = $i4;
+
+     label08:
+        $i0 = $i0 & 63;
+
+        $i0 = $i0 | 128;
+
+        $i4 = i1;
+
+     label09:
+        if $i3 >= 4 goto label16;
+
+        $i3 = $i3 + 1;
+
+        i1 = $i2 << 8;
+
+        $i2 = i1 | $i0;
+
+        i1 = $i4;
+
+     label10:
+        $i0 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _inputPtr>;
+
+        $i4 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _inputEnd>;
+
+        if $i0 < $i4 goto label11;
+
+        $z0 = virtualinvoke r0.<org.codehaus.jackson.impl.Utf8StreamParser: boolean loadMore()>();
+
+        if $z0 != 0 goto label11;
+
+        virtualinvoke r0.<org.codehaus.jackson.impl.Utf8StreamParser: void _reportInvalidEOF(java.lang.String)>(" in field name");
+
+     label11:
+        $r6 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: byte[] _inputBuffer>;
+
+        $i4 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _inputPtr>;
+
+        $i0 = $i4 + 1;
+
+        r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _inputPtr> = $i0;
+
+        $b5 = $r6[$i4];
+
+        $i0 = $b5 & 255;
+
+        goto label01;
+
+     label12:
+        $i0 = virtualinvoke r0.<org.codehaus.jackson.impl.Utf8StreamParser: char _decodeEscaped()>();
+
+        goto label05;
+
+     label13:
+        i1 = $i2 << 8;
+
+        $i2 = $i0 >> 12;
+
+        $i2 = $i2 | 224;
+
+        $i2 = i1 | $i2;
+
+        $i3 = $i3 + 1;
+
+        if $i3 < 4 goto label18;
+
+        i1 = lengthof $r2;
+
+        if $i4 < i1 goto label14;
+
+        i1 = lengthof $r2;
+
+        $r5 = staticinvoke <org.codehaus.jackson.impl.Utf8StreamParser: int[] growArrayBy(int[],int)>($r2, i1);
+
+        $r2 = $r5;
+
+        r0.<org.codehaus.jackson.impl.Utf8StreamParser: int[] _quadBuffer> = $r5;
+
+     label14:
+        i1 = $i4 + 1;
+
+        $r2[$i4] = $i2;
+
+        $i2 = 0;
+
+        $i3 = 0;
+
+     label15:
+        $i2 = $i2 << 8;
+
+        $i4 = $i0 >> 6;
+
+        $i4 = $i4 & 63;
+
+        $i4 = $i4 | 128;
+
+        $i2 = $i2 | $i4;
+
+        $i3 = $i3 + 1;
+
+        goto label08;
+
+     label16:
+        i1 = lengthof $r2;
+
+        if $i4 < i1 goto label17;
+
+        i1 = lengthof $r2;
+
+        $r5 = staticinvoke <org.codehaus.jackson.impl.Utf8StreamParser: int[] growArrayBy(int[],int)>($r2, i1);
+
+        $r2 = $r5;
+
+        r0.<org.codehaus.jackson.impl.Utf8StreamParser: int[] _quadBuffer> = $r5;
+
+     label17:
+        i1 = $i4 + 1;
+
+        $r2[$i4] = $i2;
+
+        $i2 = $i0;
+
+        $i3 = 1;
+
+        goto label10;
+
+     label18:
+        i1 = $i4;
+
+        goto label15;
+
+     label19:
+        $i4 = i1;
+
+        goto label07;
+
+     label20:
+        $i4 = i1;
+
+        goto label09;
+
+     label21:
+        return $r4;
+    }
+
+    protected org.codehaus.jackson.sym.Name parseLongFieldName(int) throws java.io.IOException, org.codehaus.jackson.JsonParseException
+    {
+        org.codehaus.jackson.impl.Utf8StreamParser r0;
+        int[] r1, $r4;
+        int i0, $i1, i2, $i3;
+        org.codehaus.jackson.sym.Name $r2;
+        byte[] $r3;
+        byte $b4;
+
+        r0 := @this: org.codehaus.jackson.impl.Utf8StreamParser;
+
+        $i1 := @parameter0: int;
+
+        r1 = <org.codehaus.jackson.impl.Utf8StreamParser: int[] sInputCodesLatin1>;
+
+        i2 = 2;
+
+     label01:
+        $i3 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _inputEnd>;
+
+        i0 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _inputPtr>;
+
+        $i3 = $i3 - i0;
+
+        if $i3 >= 4 goto label02;
+
+        r1 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: int[] _quadBuffer>;
+
+        $r2 = virtualinvoke r0.<org.codehaus.jackson.impl.Utf8StreamParser: org.codehaus.jackson.sym.Name parseEscapedFieldName(int[],int,int,int,int)>(r1, i2, 0, $i1, 0);
+
+        return $r2;
+
+     label02:
+        $r3 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: byte[] _inputBuffer>;
+
+        $i3 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _inputPtr>;
+
+        i0 = $i3 + 1;
+
+        r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _inputPtr> = i0;
+
+        $b4 = $r3[$i3];
+
+        $i3 = $b4 & 255;
+
+        i0 = r1[$i3];
+
+        if i0 == 0 goto label04;
+
+        if $i3 != 34 goto label03;
+
+        r1 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: int[] _quadBuffer>;
+
+        $r2 = specialinvoke r0.<org.codehaus.jackson.impl.Utf8StreamParser: org.codehaus.jackson.sym.Name findName(int[],int,int,int)>(r1, i2, $i1, 1);
+
+        return $r2;
+
+     label03:
+        r1 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: int[] _quadBuffer>;
+
+        $r2 = virtualinvoke r0.<org.codehaus.jackson.impl.Utf8StreamParser: org.codehaus.jackson.sym.Name parseEscapedFieldName(int[],int,int,int,int)>(r1, i2, $i1, $i3, 1);
+
+        return $r2;
+
+     label04:
+        $i1 = $i1 << 8;
+
+        $i1 = $i1 | $i3;
+
+        $r3 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: byte[] _inputBuffer>;
+
+        $i3 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _inputPtr>;
+
+        i0 = $i3 + 1;
+
+        r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _inputPtr> = i0;
+
+        $b4 = $r3[$i3];
+
+        $i3 = $b4 & 255;
+
+        i0 = r1[$i3];
+
+        if i0 == 0 goto label06;
+
+        if $i3 != 34 goto label05;
+
+        r1 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: int[] _quadBuffer>;
+
+        $r2 = specialinvoke r0.<org.codehaus.jackson.impl.Utf8StreamParser: org.codehaus.jackson.sym.Name findName(int[],int,int,int)>(r1, i2, $i1, 2);
+
+        return $r2;
+
+     label05:
+        r1 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: int[] _quadBuffer>;
+
+        $r2 = virtualinvoke r0.<org.codehaus.jackson.impl.Utf8StreamParser: org.codehaus.jackson.sym.Name parseEscapedFieldName(int[],int,int,int,int)>(r1, i2, $i1, $i3, 2);
+
+        return $r2;
+
+     label06:
+        $i1 = $i1 << 8;
+
+        $i1 = $i1 | $i3;
+
+        $r3 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: byte[] _inputBuffer>;
+
+        $i3 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _inputPtr>;
+
+        i0 = $i3 + 1;
+
+        r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _inputPtr> = i0;
+
+        $b4 = $r3[$i3];
+
+        $i3 = $b4 & 255;
+
+        i0 = r1[$i3];
+
+        if i0 == 0 goto label08;
+
+        if $i3 != 34 goto label07;
+
+        r1 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: int[] _quadBuffer>;
+
+        $r2 = specialinvoke r0.<org.codehaus.jackson.impl.Utf8StreamParser: org.codehaus.jackson.sym.Name findName(int[],int,int,int)>(r1, i2, $i1, 3);
+
+        return $r2;
+
+     label07:
+        r1 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: int[] _quadBuffer>;
+
+        $r2 = virtualinvoke r0.<org.codehaus.jackson.impl.Utf8StreamParser: org.codehaus.jackson.sym.Name parseEscapedFieldName(int[],int,int,int,int)>(r1, i2, $i1, $i3, 3);
+
+        return $r2;
+
+     label08:
+        $i1 = $i1 << 8;
+
+        $i1 = $i1 | $i3;
+
+        $r3 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: byte[] _inputBuffer>;
+
+        $i3 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _inputPtr>;
+
+        i0 = $i3 + 1;
+
+        r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _inputPtr> = i0;
+
+        $b4 = $r3[$i3];
+
+        $i3 = $b4 & 255;
+
+        i0 = r1[$i3];
+
+        if i0 == 0 goto label10;
+
+        if $i3 != 34 goto label09;
+
+        r1 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: int[] _quadBuffer>;
+
+        $r2 = specialinvoke r0.<org.codehaus.jackson.impl.Utf8StreamParser: org.codehaus.jackson.sym.Name findName(int[],int,int,int)>(r1, i2, $i1, 4);
+
+        return $r2;
+
+     label09:
+        r1 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: int[] _quadBuffer>;
+
+        $r2 = virtualinvoke r0.<org.codehaus.jackson.impl.Utf8StreamParser: org.codehaus.jackson.sym.Name parseEscapedFieldName(int[],int,int,int,int)>(r1, i2, $i1, $i3, 4);
+
+        return $r2;
+
+     label10:
+        $r4 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: int[] _quadBuffer>;
+
+        i0 = lengthof $r4;
+
+        if i2 < i0 goto label11;
+
+        $r4 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: int[] _quadBuffer>;
+
+        $r4 = staticinvoke <org.codehaus.jackson.impl.Utf8StreamParser: int[] growArrayBy(int[],int)>($r4, i2);
+
+        r0.<org.codehaus.jackson.impl.Utf8StreamParser: int[] _quadBuffer> = $r4;
+
+     label11:
+        $r4 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: int[] _quadBuffer>;
+
+        $r4[i2] = $i1;
+
+        $i1 = $i3;
+
+        i2 = i2 + 1;
+
+        goto label01;
+    }
+
+    protected final org.codehaus.jackson.sym.Name parseMediumFieldName(int, int[]) throws java.io.IOException, org.codehaus.jackson.JsonParseException
+    {
+        org.codehaus.jackson.impl.Utf8StreamParser r0;
+        int[] $r1;
+        int $i0, $i1, $i2;
+        byte[] $r2;
+        byte $b3;
+        org.codehaus.jackson.sym.Name $r3;
+
+        r0 := @this: org.codehaus.jackson.impl.Utf8StreamParser;
+
+        $i0 := @parameter0: int;
+
+        $r1 := @parameter1: int[];
+
+        $r2 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: byte[] _inputBuffer>;
+
+        $i1 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _inputPtr>;
+
+        $i2 = $i1 + 1;
+
+        r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _inputPtr> = $i2;
+
+        $b3 = $r2[$i1];
+
+        $i1 = $b3 & 255;
+
+        $i2 = $r1[$i1];
+
+        if $i2 == 0 goto label2;
+
+        if $i1 != 34 goto label1;
+
+        $i1 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _quad1>;
+
+        $r3 = specialinvoke r0.<org.codehaus.jackson.impl.Utf8StreamParser: org.codehaus.jackson.sym.Name findName(int,int,int)>($i1, $i0, 1);
+
+        return $r3;
+
+     label1:
+        $i2 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _quad1>;
+
+        $r3 = specialinvoke r0.<org.codehaus.jackson.impl.Utf8StreamParser: org.codehaus.jackson.sym.Name parseFieldName(int,int,int,int)>($i2, $i0, $i1, 1);
+
+        return $r3;
+
+     label2:
+        $i0 = $i0 << 8;
+
+        $i0 = $i0 | $i1;
+
+        $r2 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: byte[] _inputBuffer>;
+
+        $i1 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _inputPtr>;
+
+        $i2 = $i1 + 1;
+
+        r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _inputPtr> = $i2;
+
+        $b3 = $r2[$i1];
+
+        $i1 = $b3 & 255;
+
+        $i2 = $r1[$i1];
+
+        if $i2 == 0 goto label4;
+
+        if $i1 != 34 goto label3;
+
+        $i1 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _quad1>;
+
+        $r3 = specialinvoke r0.<org.codehaus.jackson.impl.Utf8StreamParser: org.codehaus.jackson.sym.Name findName(int,int,int)>($i1, $i0, 2);
+
+        return $r3;
+
+     label3:
+        $i2 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _quad1>;
+
+        $r3 = specialinvoke r0.<org.codehaus.jackson.impl.Utf8StreamParser: org.codehaus.jackson.sym.Name parseFieldName(int,int,int,int)>($i2, $i0, $i1, 2);
+
+        return $r3;
+
+     label4:
+        $i0 = $i0 << 8;
+
+        $i0 = $i0 | $i1;
+
+        $r2 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: byte[] _inputBuffer>;
+
+        $i1 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _inputPtr>;
+
+        $i2 = $i1 + 1;
+
+        r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _inputPtr> = $i2;
+
+        $b3 = $r2[$i1];
+
+        $i1 = $b3 & 255;
+
+        $i2 = $r1[$i1];
+
+        if $i2 == 0 goto label6;
+
+        if $i1 != 34 goto label5;
+
+        $i1 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _quad1>;
+
+        $r3 = specialinvoke r0.<org.codehaus.jackson.impl.Utf8StreamParser: org.codehaus.jackson.sym.Name findName(int,int,int)>($i1, $i0, 3);
+
+        return $r3;
+
+     label5:
+        $i2 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _quad1>;
+
+        $r3 = specialinvoke r0.<org.codehaus.jackson.impl.Utf8StreamParser: org.codehaus.jackson.sym.Name parseFieldName(int,int,int,int)>($i2, $i0, $i1, 3);
+
+        return $r3;
+
+     label6:
+        $i0 = $i0 << 8;
+
+        $i0 = $i0 | $i1;
+
+        $r2 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: byte[] _inputBuffer>;
+
+        $i1 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _inputPtr>;
+
+        $i2 = $i1 + 1;
+
+        r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _inputPtr> = $i2;
+
+        $b3 = $r2[$i1];
+
+        $i1 = $b3 & 255;
+
+        $i2 = $r1[$i1];
+
+        if $i2 == 0 goto label8;
+
+        if $i1 != 34 goto label7;
+
+        $i1 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _quad1>;
+
+        $r3 = specialinvoke r0.<org.codehaus.jackson.impl.Utf8StreamParser: org.codehaus.jackson.sym.Name findName(int,int,int)>($i1, $i0, 4);
+
+        return $r3;
+
+     label7:
+        $i2 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _quad1>;
+
+        $r3 = specialinvoke r0.<org.codehaus.jackson.impl.Utf8StreamParser: org.codehaus.jackson.sym.Name parseFieldName(int,int,int,int)>($i2, $i0, $i1, 4);
+
+        return $r3;
+
+     label8:
+        $r1 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: int[] _quadBuffer>;
+
+        $i2 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _quad1>;
+
+        $r1[0] = $i2;
+
+        $r1 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: int[] _quadBuffer>;
+
+        $r1[1] = $i0;
+
+        $r3 = virtualinvoke r0.<org.codehaus.jackson.impl.Utf8StreamParser: org.codehaus.jackson.sym.Name parseLongFieldName(int)>($i1);
+
+        return $r3;
+    }
+
+    protected final org.codehaus.jackson.JsonToken parseNumberText(int) throws java.io.IOException, org.codehaus.jackson.JsonParseException
+    {
+        org.codehaus.jackson.impl.Utf8StreamParser r0;
+        int $i0, i1, $i2, $i5, $i6;
+        org.codehaus.jackson.util.TextBuffer $r1;
+        char[] $r2;
+        boolean z0;
+        byte[] $r3;
+        byte $b3;
+        java.lang.StringBuilder $r4;
+        java.lang.String $r5;
+        char $c4;
+        org.codehaus.jackson.JsonToken $r6;
+
+        r0 := @this: org.codehaus.jackson.impl.Utf8StreamParser;
+
+        $i0 := @parameter0: int;
+
+        $r1 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: org.codehaus.jackson.util.TextBuffer _textBuffer>;
+
+        $r2 = virtualinvoke $r1.<org.codehaus.jackson.util.TextBuffer: char[] emptyAndGetCurrentSegment()>();
+
+        if $i0 != 45 goto label07;
+
+        z0 = 1;
+
+     label01:
+        if z0 == 0 goto label13;
+
+        i1 = 1;
+
+        $r2[0] = 45;
+
+        $i0 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _inputPtr>;
+
+        $i2 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _inputEnd>;
+
+        if $i0 < $i2 goto label02;
+
+        virtualinvoke r0.<org.codehaus.jackson.impl.Utf8StreamParser: void loadMoreGuaranteed()>();
+
+     label02:
+        $r3 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: byte[] _inputBuffer>;
+
+        $i0 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _inputPtr>;
+
+        $i2 = $i0 + 1;
+
+        r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _inputPtr> = $i2;
+
+        $b3 = $r3[$i0];
+
+        $i0 = $b3 & 255;
+
+        if $i0 < 48 goto label03;
+
+        if $i0 <= 57 goto label04;
+
+     label03:
+        $r4 = new java.lang.StringBuilder;
+
+        specialinvoke $r4.<java.lang.StringBuilder: void <init>()>();
+
+        $r4 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Missing integer part (next char ");
+
+        $r5 = staticinvoke <org.codehaus.jackson.impl.Utf8StreamParser: java.lang.String _getCharDesc(int)>($i0);
+
+        $r4 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r5);
+
+        $r4 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(")");
+
+        $r5 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        virtualinvoke r0.<org.codehaus.jackson.impl.Utf8StreamParser: void reportInvalidNumber(java.lang.String)>($r5);
+
+     label04:
+        if $i0 != 48 goto label05;
+
+        specialinvoke r0.<org.codehaus.jackson.impl.Utf8StreamParser: void _verifyNoLeadingZeroes()>();
+
+     label05:
+        $i2 = i1 + 1;
+
+        $c4 = (char) $i0;
+
+        $r2[i1] = $c4;
+
+        $i0 = 1;
+
+        i1 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _inputPtr>;
+
+        $i5 = lengthof $r2;
+
+        i1 = i1 + $i5;
+
+        $i5 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _inputEnd>;
+
+        if i1 <= $i5 goto label06;
+
+        i1 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _inputEnd>;
+
+     label06:
+        $i5 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _inputPtr>;
+
+        if $i5 < i1 goto label08;
+
+        $r6 = specialinvoke r0.<org.codehaus.jackson.impl.Utf8StreamParser: org.codehaus.jackson.JsonToken _parserNumber2(char[],int,boolean,int)>($r2, $i2, z0, $i0);
+
+        return $r6;
+
+     label07:
+        z0 = 0;
+
+        goto label01;
+
+     label08:
+        $r3 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: byte[] _inputBuffer>;
+
+        $i5 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _inputPtr>;
+
+        $i6 = $i5 + 1;
+
+        r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _inputPtr> = $i6;
+
+        $b3 = $r3[$i5];
+
+        $i5 = $b3 & 255;
+
+        if $i5 < 48 goto label09;
+
+        if $i5 <= 57 goto label11;
+
+     label09:
+        if $i5 == 46 goto label10;
+
+        if $i5 == 101 goto label10;
+
+        if $i5 != 69 goto label12;
+
+     label10:
+        $r6 = specialinvoke r0.<org.codehaus.jackson.impl.Utf8StreamParser: org.codehaus.jackson.JsonToken _parseFloatText(char[],int,int,boolean,int)>($r2, $i2, $i5, z0, $i0);
+
+        return $r6;
+
+     label11:
+        $i0 = $i0 + 1;
+
+        $c4 = (char) $i5;
+
+        $r2[$i2] = $c4;
+
+        $i2 = $i2 + 1;
+
+        goto label06;
+
+     label12:
+        i1 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _inputPtr>;
+
+        i1 = i1 - 1;
+
+        r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _inputPtr> = i1;
+
+        $r1 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: org.codehaus.jackson.util.TextBuffer _textBuffer>;
+
+        virtualinvoke $r1.<org.codehaus.jackson.util.TextBuffer: void setCurrentLength(int)>($i2);
+
+        $r6 = virtualinvoke r0.<org.codehaus.jackson.impl.Utf8StreamParser: org.codehaus.jackson.JsonToken resetInt(boolean,int)>(z0, $i0);
+
+        return $r6;
+
+     label13:
+        i1 = 0;
+
+        goto label04;
+    }
+
+    protected java.lang.IllegalArgumentException reportInvalidChar(org.codehaus.jackson.Base64Variant, int, int) throws java.lang.IllegalArgumentException
+    {
+        org.codehaus.jackson.impl.Utf8StreamParser r0;
+        org.codehaus.jackson.Base64Variant $r1;
+        int $i0, $i1;
+        java.lang.IllegalArgumentException $r2;
+
+        r0 := @this: org.codehaus.jackson.impl.Utf8StreamParser;
+
+        $r1 := @parameter0: org.codehaus.jackson.Base64Variant;
+
+        $i0 := @parameter1: int;
+
+        $i1 := @parameter2: int;
+
+        $r2 = virtualinvoke r0.<org.codehaus.jackson.impl.Utf8StreamParser: java.lang.IllegalArgumentException reportInvalidChar(org.codehaus.jackson.Base64Variant,int,int,java.lang.String)>($r1, $i0, $i1, null);
+
+        return $r2;
+    }
+
+    protected java.lang.IllegalArgumentException reportInvalidChar(org.codehaus.jackson.Base64Variant, int, int, java.lang.String) throws java.lang.IllegalArgumentException
+    {
+        org.codehaus.jackson.impl.Utf8StreamParser r0;
+        org.codehaus.jackson.Base64Variant $r1;
+        int $i0, $i1;
+        java.lang.String $r2, $r4;
+        java.lang.StringBuilder $r3;
+        java.lang.IllegalArgumentException $r5;
+        boolean $z0;
+        char $c2;
+
+        r0 := @this: org.codehaus.jackson.impl.Utf8StreamParser;
+
+        $r1 := @parameter0: org.codehaus.jackson.Base64Variant;
+
+        $i0 := @parameter1: int;
+
+        $i1 := @parameter2: int;
+
+        $r2 := @parameter3: java.lang.String;
+
+        if $i0 > 32 goto label3;
+
+        $r3 = new java.lang.StringBuilder;
+
+        specialinvoke $r3.<java.lang.StringBuilder: void <init>()>();
+
+        $r3 = virtualinvoke $r3.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Illegal white space character (code 0x");
+
+        $r4 = staticinvoke <java.lang.Integer: java.lang.String toHexString(int)>($i0);
+
+        $r3 = virtualinvoke $r3.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r4);
+
+        $r3 = virtualinvoke $r3.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(") as character #");
+
+        $i0 = $i1 + 1;
+
+        $r3 = virtualinvoke $r3.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>($i0);
+
+        $r3 = virtualinvoke $r3.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" of 4-char base64 unit: can only used between units");
+
+        $r4 = virtualinvoke $r3.<java.lang.StringBuilder: java.lang.String toString()>();
+
+     label1:
+        if $r2 == null goto label2;
+
+        $r3 = new java.lang.StringBuilder;
+
+        specialinvoke $r3.<java.lang.StringBuilder: void <init>()>();
+
+        $r3 = virtualinvoke $r3.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r4);
+
+        $r3 = virtualinvoke $r3.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(": ");
+
+        $r3 = virtualinvoke $r3.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r2);
+
+        $r4 = virtualinvoke $r3.<java.lang.StringBuilder: java.lang.String toString()>();
+
+     label2:
+        $r5 = new java.lang.IllegalArgumentException;
+
+        specialinvoke $r5.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>($r4);
+
+        return $r5;
+
+     label3:
+        $z0 = virtualinvoke $r1.<org.codehaus.jackson.Base64Variant: boolean usesPaddingChar(int)>($i0);
+
+        if $z0 == 0 goto label4;
+
+        $r3 = new java.lang.StringBuilder;
+
+        specialinvoke $r3.<java.lang.StringBuilder: void <init>()>();
+
+        $r3 = virtualinvoke $r3.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Unexpected padding character (\'");
+
+        $c2 = virtualinvoke $r1.<org.codehaus.jackson.Base64Variant: char getPaddingChar()>();
+
+        $r3 = virtualinvoke $r3.<java.lang.StringBuilder: java.lang.StringBuilder append(char)>($c2);
+
+        $r3 = virtualinvoke $r3.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("\') as character #");
+
+        $i0 = $i1 + 1;
+
+        $r3 = virtualinvoke $r3.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>($i0);
+
+        $r3 = virtualinvoke $r3.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" of 4-char base64 unit: padding only legal as 3rd or 4th character");
+
+        $r4 = virtualinvoke $r3.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        goto label1;
+
+     label4:
+        $z0 = staticinvoke <java.lang.Character: boolean isDefined(int)>($i0);
+
+        if $z0 == 0 goto label5;
+
+        $z0 = staticinvoke <java.lang.Character: boolean isISOControl(int)>($i0);
+
+        if $z0 == 0 goto label6;
+
+     label5:
+        $r3 = new java.lang.StringBuilder;
+
+        specialinvoke $r3.<java.lang.StringBuilder: void <init>()>();
+
+        $r3 = virtualinvoke $r3.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Illegal character (code 0x");
+
+        $r4 = staticinvoke <java.lang.Integer: java.lang.String toHexString(int)>($i0);
+
+        $r3 = virtualinvoke $r3.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r4);
+
+        $r3 = virtualinvoke $r3.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(") in base64 content");
+
+        $r4 = virtualinvoke $r3.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        goto label1;
+
+     label6:
+        $r3 = new java.lang.StringBuilder;
+
+        specialinvoke $r3.<java.lang.StringBuilder: void <init>()>();
+
+        $r3 = virtualinvoke $r3.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Illegal character \'");
+
+        $c2 = (char) $i0;
+
+        $r3 = virtualinvoke $r3.<java.lang.StringBuilder: java.lang.StringBuilder append(char)>($c2);
+
+        $r3 = virtualinvoke $r3.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("\' (code 0x");
+
+        $r4 = staticinvoke <java.lang.Integer: java.lang.String toHexString(int)>($i0);
+
+        $r3 = virtualinvoke $r3.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r4);
+
+        $r3 = virtualinvoke $r3.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(") in base64 content");
+
+        $r4 = virtualinvoke $r3.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        goto label1;
+    }
+
+    public void setCodec(org.codehaus.jackson.ObjectCodec)
+    {
+        org.codehaus.jackson.impl.Utf8StreamParser r0;
+        org.codehaus.jackson.ObjectCodec $r1;
+
+        r0 := @this: org.codehaus.jackson.impl.Utf8StreamParser;
+
+        $r1 := @parameter0: org.codehaus.jackson.ObjectCodec;
+
+        r0.<org.codehaus.jackson.impl.Utf8StreamParser: org.codehaus.jackson.ObjectCodec _objectCodec> = $r1;
+
+        return;
+    }
+
+    protected org.codehaus.jackson.sym.Name slowParseFieldName() throws java.io.IOException, org.codehaus.jackson.JsonParseException
+    {
+        org.codehaus.jackson.impl.Utf8StreamParser r0;
+        int i0, $i1;
+        boolean $z0;
+        byte[] $r1;
+        byte $b2;
+        org.codehaus.jackson.sym.Name $r2;
+        int[] $r3;
+
+        r0 := @this: org.codehaus.jackson.impl.Utf8StreamParser;
+
+        i0 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _inputPtr>;
+
+        $i1 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _inputEnd>;
+
+        if i0 < $i1 goto label1;
+
+        $z0 = virtualinvoke r0.<org.codehaus.jackson.impl.Utf8StreamParser: boolean loadMore()>();
+
+        if $z0 != 0 goto label1;
+
+        virtualinvoke r0.<org.codehaus.jackson.impl.Utf8StreamParser: void _reportInvalidEOF(java.lang.String)>(": was expecting closing \'\"\' for name");
+
+     label1:
+        $r1 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: byte[] _inputBuffer>;
+
+        i0 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _inputPtr>;
+
+        $i1 = i0 + 1;
+
+        r0.<org.codehaus.jackson.impl.Utf8StreamParser: int _inputPtr> = $i1;
+
+        $b2 = $r1[i0];
+
+        i0 = $b2 & 255;
+
+        if i0 != 34 goto label2;
+
+        $r2 = staticinvoke <org.codehaus.jackson.sym.BytesToNameCanonicalizer: org.codehaus.jackson.sym.Name getEmptyName()>();
+
+        return $r2;
+
+     label2:
+        $r3 = r0.<org.codehaus.jackson.impl.Utf8StreamParser: int[] _quadBuffer>;
+
+        $r2 = virtualinvoke r0.<org.codehaus.jackson.impl.Utf8StreamParser: org.codehaus.jackson.sym.Name parseEscapedFieldName(int[],int,int,int,int)>($r3, 0, 0, i0, 0);
+
+        return $r2;
+    }
+}

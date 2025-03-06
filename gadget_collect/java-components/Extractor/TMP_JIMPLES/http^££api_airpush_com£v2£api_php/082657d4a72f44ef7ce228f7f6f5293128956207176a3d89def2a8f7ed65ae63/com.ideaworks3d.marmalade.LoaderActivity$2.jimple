@@ -1,0 +1,83 @@
+class com.ideaworks3d.marmalade.LoaderActivity$2 extends java.lang.Object implements java.lang.Runnable
+{
+    final com.ideaworks3d.marmalade.LoaderActivity this$0;
+    final com.ideaworks3d.marmalade.LoaderActivity$CursorCompleteListener val$completeCallback;
+    final java.lang.String[] val$proj;
+    final android.net.Uri val$uri;
+
+    void <init>(com.ideaworks3d.marmalade.LoaderActivity, android.net.Uri, java.lang.String[], com.ideaworks3d.marmalade.LoaderActivity$CursorCompleteListener)
+    {
+        com.ideaworks3d.marmalade.LoaderActivity$2 r0;
+        com.ideaworks3d.marmalade.LoaderActivity $r1;
+        android.net.Uri $r2;
+        java.lang.String[] $r3;
+        com.ideaworks3d.marmalade.LoaderActivity$CursorCompleteListener $r4;
+
+        r0 := @this: com.ideaworks3d.marmalade.LoaderActivity$2;
+
+        $r1 := @parameter0: com.ideaworks3d.marmalade.LoaderActivity;
+
+        $r2 := @parameter1: android.net.Uri;
+
+        $r3 := @parameter2: java.lang.String[];
+
+        $r4 := @parameter3: com.ideaworks3d.marmalade.LoaderActivity$CursorCompleteListener;
+
+        r0.<com.ideaworks3d.marmalade.LoaderActivity$2: com.ideaworks3d.marmalade.LoaderActivity this$0> = $r1;
+
+        r0.<com.ideaworks3d.marmalade.LoaderActivity$2: android.net.Uri val$uri> = $r2;
+
+        r0.<com.ideaworks3d.marmalade.LoaderActivity$2: java.lang.String[] val$proj> = $r3;
+
+        r0.<com.ideaworks3d.marmalade.LoaderActivity$2: com.ideaworks3d.marmalade.LoaderActivity$CursorCompleteListener val$completeCallback> = $r4;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public void run()
+    {
+        com.ideaworks3d.marmalade.LoaderActivity$2 r0;
+        java.lang.String $r1;
+        int $i0;
+        android.net.Uri $r2;
+        java.lang.String[] $r3;
+        com.ideaworks3d.marmalade.LoaderActivity$CursorCompleteListener $r4;
+        com.ideaworks3d.marmalade.LoaderActivity $r5;
+        android.database.Cursor $r6;
+
+        r0 := @this: com.ideaworks3d.marmalade.LoaderActivity$2;
+
+        $r1 = <android.os.Build$VERSION: java.lang.String SDK>;
+
+        $i0 = staticinvoke <java.lang.Integer: int parseInt(java.lang.String)>($r1);
+
+        if $i0 < 11 goto label1;
+
+        $r2 = r0.<com.ideaworks3d.marmalade.LoaderActivity$2: android.net.Uri val$uri>;
+
+        $r3 = r0.<com.ideaworks3d.marmalade.LoaderActivity$2: java.lang.String[] val$proj>;
+
+        $r4 = r0.<com.ideaworks3d.marmalade.LoaderActivity$2: com.ideaworks3d.marmalade.LoaderActivity$CursorCompleteListener val$completeCallback>;
+
+        staticinvoke <com.ideaworks3d.marmalade.CursorLoaderHelper: boolean getCursor(android.net.Uri,java.lang.String[],com.ideaworks3d.marmalade.LoaderActivity$CursorCompleteListener)>($r2, $r3, $r4);
+
+        return;
+
+     label1:
+        $r5 = r0.<com.ideaworks3d.marmalade.LoaderActivity$2: com.ideaworks3d.marmalade.LoaderActivity this$0>;
+
+        $r2 = r0.<com.ideaworks3d.marmalade.LoaderActivity$2: android.net.Uri val$uri>;
+
+        $r3 = r0.<com.ideaworks3d.marmalade.LoaderActivity$2: java.lang.String[] val$proj>;
+
+        $r6 = virtualinvoke $r5.<com.ideaworks3d.marmalade.LoaderActivity: android.database.Cursor managedQuery(android.net.Uri,java.lang.String[],java.lang.String,java.lang.String[],java.lang.String)>($r2, $r3, null, null, null);
+
+        $r4 = r0.<com.ideaworks3d.marmalade.LoaderActivity$2: com.ideaworks3d.marmalade.LoaderActivity$CursorCompleteListener val$completeCallback>;
+
+        interfaceinvoke $r4.<com.ideaworks3d.marmalade.LoaderActivity$CursorCompleteListener: void cursorLoadComplete(android.database.Cursor)>($r6);
+
+        return;
+    }
+}

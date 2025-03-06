@@ -1,0 +1,88 @@
+public class com.Wineglas17.AdsActivity extends android.app.Activity
+{
+    private static final java.lang.String LOG_TAG;
+    private com.google.android.gms.ads.f interstitialAd;
+
+    public void <init>()
+    {
+        com.Wineglas17.AdsActivity r0;
+
+        r0 := @this: com.Wineglas17.AdsActivity;
+
+        specialinvoke r0.<android.app.Activity: void <init>()>();
+
+        return;
+    }
+
+    static com.google.android.gms.ads.f access$000(com.Wineglas17.AdsActivity)
+    {
+        com.Wineglas17.AdsActivity $r0;
+        com.google.android.gms.ads.f r1;
+
+        $r0 := @parameter0: com.Wineglas17.AdsActivity;
+
+        r1 = $r0.<com.Wineglas17.AdsActivity: com.google.android.gms.ads.f interstitialAd>;
+
+        return r1;
+    }
+
+    protected void onCreate(android.os.Bundle)
+    {
+        com.Wineglas17.AdsActivity r0;
+        android.os.Bundle $r1;
+        com.google.android.gms.ads.f $r2;
+        com.google.android.gms.ads.d $r3;
+        java.lang.String $r4;
+        com.google.android.gms.ads.b $r5;
+        com.Wineglas17.AdsActivity$1 $r6;
+
+        r0 := @this: com.Wineglas17.AdsActivity;
+
+        $r1 := @parameter0: android.os.Bundle;
+
+        specialinvoke r0.<android.app.Activity: void onCreate(android.os.Bundle)>($r1);
+
+        virtualinvoke r0.<com.Wineglas17.AdsActivity: void setContentView(int)>(2130903040);
+
+        $r2 = new com.google.android.gms.ads.f;
+
+        specialinvoke $r2.<com.google.android.gms.ads.f: void <init>(android.content.Context)>(r0);
+
+        r0.<com.Wineglas17.AdsActivity: com.google.android.gms.ads.f interstitialAd> = $r2;
+
+        $r2 = r0.<com.Wineglas17.AdsActivity: com.google.android.gms.ads.f interstitialAd>;
+
+        virtualinvoke $r2.<com.google.android.gms.ads.f: void a(java.lang.String)>("ca-app-pub-3856839316850702/6188675471");
+
+        $r3 = new com.google.android.gms.ads.d;
+
+        specialinvoke $r3.<com.google.android.gms.ads.d: void <init>()>();
+
+        $r4 = <com.google.android.gms.ads.b: java.lang.String DEVICE_ID_EMULATOR>;
+
+        $r3 = virtualinvoke $r3.<com.google.android.gms.ads.d: com.google.android.gms.ads.d b(java.lang.String)>($r4);
+
+        $r5 = virtualinvoke $r3.<com.google.android.gms.ads.d: com.google.android.gms.ads.b a()>();
+
+        $r2 = r0.<com.Wineglas17.AdsActivity: com.google.android.gms.ads.f interstitialAd>;
+
+        virtualinvoke $r2.<com.google.android.gms.ads.f: void a(com.google.android.gms.ads.b)>($r5);
+
+        $r2 = r0.<com.Wineglas17.AdsActivity: com.google.android.gms.ads.f interstitialAd>;
+
+        $r6 = new com.Wineglas17.AdsActivity$1;
+
+        specialinvoke $r6.<com.Wineglas17.AdsActivity$1: void <init>(com.Wineglas17.AdsActivity)>(r0);
+
+        virtualinvoke $r2.<com.google.android.gms.ads.f: void a(com.google.android.gms.ads.a)>($r6);
+
+        return;
+    }
+
+    public static void <clinit>()
+    {
+        <com.Wineglas17.AdsActivity: java.lang.String LOG_TAG> = "Andaired App";
+
+        return;
+    }
+}

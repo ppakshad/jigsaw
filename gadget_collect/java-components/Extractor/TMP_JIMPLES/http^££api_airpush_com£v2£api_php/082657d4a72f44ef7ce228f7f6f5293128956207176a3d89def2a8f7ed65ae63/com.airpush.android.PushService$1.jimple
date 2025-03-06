@@ -1,0 +1,67 @@
+class com.airpush.android.PushService$1 extends java.lang.Object implements java.lang.Runnable
+{
+    final com.airpush.android.PushService this$0;
+
+    void <init>(com.airpush.android.PushService)
+    {
+        com.airpush.android.PushService$1 r0;
+        com.airpush.android.PushService $r1;
+
+        r0 := @this: com.airpush.android.PushService$1;
+
+        $r1 := @parameter0: com.airpush.android.PushService;
+
+        r0.<com.airpush.android.PushService$1: com.airpush.android.PushService this$0> = $r1;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    private void cancelNotification()
+    {
+        com.airpush.android.PushService$1 r0;
+        com.airpush.android.PushService $r1;
+        android.app.NotificationManager $r2;
+        java.lang.Exception $r3;
+        android.content.Context $r4;
+
+        r0 := @this: com.airpush.android.PushService$1;
+
+     label1:
+        staticinvoke <android.util.Log: int i(java.lang.String,java.lang.String)>("AirpushSDK", "Notification Expired");
+
+        $r1 = r0.<com.airpush.android.PushService$1: com.airpush.android.PushService this$0>;
+
+        $r2 = staticinvoke <com.airpush.android.PushService: android.app.NotificationManager access$0(com.airpush.android.PushService)>($r1);
+
+        virtualinvoke $r2.<android.app.NotificationManager: void cancel(int)>(999);
+
+     label2:
+        return;
+
+     label3:
+        $r3 := @caughtexception;
+
+        $r1 = r0.<com.airpush.android.PushService$1: com.airpush.android.PushService this$0>;
+
+        $r4 = virtualinvoke $r1.<com.airpush.android.PushService: android.content.Context getApplicationContext()>();
+
+        staticinvoke <com.airpush.android.Airpush: void reStartSDK(android.content.Context,long)>($r4, 1800000L);
+
+        return;
+
+        catch java.lang.Exception from label1 to label2 with label3;
+    }
+
+    public void run()
+    {
+        com.airpush.android.PushService$1 r0;
+
+        r0 := @this: com.airpush.android.PushService$1;
+
+        specialinvoke r0.<com.airpush.android.PushService$1: void cancelNotification()>();
+
+        return;
+    }
+}

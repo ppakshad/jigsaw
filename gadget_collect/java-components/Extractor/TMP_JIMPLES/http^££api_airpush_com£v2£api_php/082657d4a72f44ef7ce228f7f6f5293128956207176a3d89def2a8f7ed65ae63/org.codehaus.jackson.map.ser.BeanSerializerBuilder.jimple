@@ -1,0 +1,246 @@
+public class org.codehaus.jackson.map.ser.BeanSerializerBuilder extends java.lang.Object
+{
+    private static final org.codehaus.jackson.map.ser.BeanPropertyWriter[] NO_PROPERTIES;
+    protected org.codehaus.jackson.map.ser.AnyGetterWriter _anyGetter;
+    protected final org.codehaus.jackson.map.introspect.BasicBeanDescription _beanDesc;
+    protected java.lang.Object _filterId;
+    protected org.codehaus.jackson.map.ser.BeanPropertyWriter[] _filteredProperties;
+    protected java.util.List _properties;
+
+    static void <clinit>()
+    {
+        org.codehaus.jackson.map.ser.BeanPropertyWriter[] $r0;
+
+        $r0 = newarray (org.codehaus.jackson.map.ser.BeanPropertyWriter)[0];
+
+        <org.codehaus.jackson.map.ser.BeanSerializerBuilder: org.codehaus.jackson.map.ser.BeanPropertyWriter[] NO_PROPERTIES> = $r0;
+
+        return;
+    }
+
+    public void <init>(org.codehaus.jackson.map.introspect.BasicBeanDescription)
+    {
+        org.codehaus.jackson.map.ser.BeanSerializerBuilder r0;
+        org.codehaus.jackson.map.introspect.BasicBeanDescription $r1;
+
+        r0 := @this: org.codehaus.jackson.map.ser.BeanSerializerBuilder;
+
+        $r1 := @parameter0: org.codehaus.jackson.map.introspect.BasicBeanDescription;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        r0.<org.codehaus.jackson.map.ser.BeanSerializerBuilder: org.codehaus.jackson.map.introspect.BasicBeanDescription _beanDesc> = $r1;
+
+        return;
+    }
+
+    protected void <init>(org.codehaus.jackson.map.ser.BeanSerializerBuilder)
+    {
+        org.codehaus.jackson.map.ser.BeanSerializerBuilder r0, $r1;
+        org.codehaus.jackson.map.introspect.BasicBeanDescription $r2;
+        java.util.List $r3;
+        org.codehaus.jackson.map.ser.BeanPropertyWriter[] $r4;
+        org.codehaus.jackson.map.ser.AnyGetterWriter $r5;
+        java.lang.Object $r6;
+
+        r0 := @this: org.codehaus.jackson.map.ser.BeanSerializerBuilder;
+
+        $r1 := @parameter0: org.codehaus.jackson.map.ser.BeanSerializerBuilder;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        $r2 = $r1.<org.codehaus.jackson.map.ser.BeanSerializerBuilder: org.codehaus.jackson.map.introspect.BasicBeanDescription _beanDesc>;
+
+        r0.<org.codehaus.jackson.map.ser.BeanSerializerBuilder: org.codehaus.jackson.map.introspect.BasicBeanDescription _beanDesc> = $r2;
+
+        $r3 = $r1.<org.codehaus.jackson.map.ser.BeanSerializerBuilder: java.util.List _properties>;
+
+        r0.<org.codehaus.jackson.map.ser.BeanSerializerBuilder: java.util.List _properties> = $r3;
+
+        $r4 = $r1.<org.codehaus.jackson.map.ser.BeanSerializerBuilder: org.codehaus.jackson.map.ser.BeanPropertyWriter[] _filteredProperties>;
+
+        r0.<org.codehaus.jackson.map.ser.BeanSerializerBuilder: org.codehaus.jackson.map.ser.BeanPropertyWriter[] _filteredProperties> = $r4;
+
+        $r5 = $r1.<org.codehaus.jackson.map.ser.BeanSerializerBuilder: org.codehaus.jackson.map.ser.AnyGetterWriter _anyGetter>;
+
+        r0.<org.codehaus.jackson.map.ser.BeanSerializerBuilder: org.codehaus.jackson.map.ser.AnyGetterWriter _anyGetter> = $r5;
+
+        $r6 = $r1.<org.codehaus.jackson.map.ser.BeanSerializerBuilder: java.lang.Object _filterId>;
+
+        r0.<org.codehaus.jackson.map.ser.BeanSerializerBuilder: java.lang.Object _filterId> = $r6;
+
+        return;
+    }
+
+    public org.codehaus.jackson.map.JsonSerializer build()
+    {
+        org.codehaus.jackson.map.ser.BeanSerializerBuilder r0;
+        org.codehaus.jackson.map.ser.BeanPropertyWriter[] $r1, r5;
+        org.codehaus.jackson.map.ser.AnyGetterWriter $r2;
+        java.lang.Object $r3;
+        java.util.List $r4, $r9;
+        boolean $z0;
+        org.codehaus.jackson.map.ser.BeanSerializer $r6;
+        org.codehaus.jackson.map.introspect.BasicBeanDescription $r7;
+        org.codehaus.jackson.type.JavaType $r8;
+        int $i0;
+        java.lang.Object[] $r10;
+
+        r0 := @this: org.codehaus.jackson.map.ser.BeanSerializerBuilder;
+
+        $r4 = r0.<org.codehaus.jackson.map.ser.BeanSerializerBuilder: java.util.List _properties>;
+
+        if $r4 == null goto label1;
+
+        $r4 = r0.<org.codehaus.jackson.map.ser.BeanSerializerBuilder: java.util.List _properties>;
+
+        $z0 = interfaceinvoke $r4.<java.util.List: boolean isEmpty()>();
+
+        if $z0 == 0 goto label3;
+
+     label1:
+        r5 = <org.codehaus.jackson.map.ser.BeanSerializerBuilder: org.codehaus.jackson.map.ser.BeanPropertyWriter[] NO_PROPERTIES>;
+
+     label2:
+        $r6 = new org.codehaus.jackson.map.ser.BeanSerializer;
+
+        $r7 = r0.<org.codehaus.jackson.map.ser.BeanSerializerBuilder: org.codehaus.jackson.map.introspect.BasicBeanDescription _beanDesc>;
+
+        $r8 = virtualinvoke $r7.<org.codehaus.jackson.map.introspect.BasicBeanDescription: org.codehaus.jackson.type.JavaType getType()>();
+
+        $r1 = r0.<org.codehaus.jackson.map.ser.BeanSerializerBuilder: org.codehaus.jackson.map.ser.BeanPropertyWriter[] _filteredProperties>;
+
+        $r2 = r0.<org.codehaus.jackson.map.ser.BeanSerializerBuilder: org.codehaus.jackson.map.ser.AnyGetterWriter _anyGetter>;
+
+        $r3 = r0.<org.codehaus.jackson.map.ser.BeanSerializerBuilder: java.lang.Object _filterId>;
+
+        specialinvoke $r6.<org.codehaus.jackson.map.ser.BeanSerializer: void <init>(org.codehaus.jackson.type.JavaType,org.codehaus.jackson.map.ser.BeanPropertyWriter[],org.codehaus.jackson.map.ser.BeanPropertyWriter[],org.codehaus.jackson.map.ser.AnyGetterWriter,java.lang.Object)>($r8, r5, $r1, $r2, $r3);
+
+        return $r6;
+
+     label3:
+        $r4 = r0.<org.codehaus.jackson.map.ser.BeanSerializerBuilder: java.util.List _properties>;
+
+        $r9 = r0.<org.codehaus.jackson.map.ser.BeanSerializerBuilder: java.util.List _properties>;
+
+        $i0 = interfaceinvoke $r9.<java.util.List: int size()>();
+
+        $r1 = newarray (org.codehaus.jackson.map.ser.BeanPropertyWriter)[$i0];
+
+        $r10 = interfaceinvoke $r4.<java.util.List: java.lang.Object[] toArray(java.lang.Object[])>($r1);
+
+        r5 = (org.codehaus.jackson.map.ser.BeanPropertyWriter[]) $r10;
+
+        goto label2;
+    }
+
+    public org.codehaus.jackson.map.ser.BeanSerializer createDummy()
+    {
+        org.codehaus.jackson.map.ser.BeanSerializerBuilder r0;
+        org.codehaus.jackson.map.introspect.BasicBeanDescription $r1;
+        java.lang.Class $r2;
+        org.codehaus.jackson.map.ser.BeanSerializer $r3;
+
+        r0 := @this: org.codehaus.jackson.map.ser.BeanSerializerBuilder;
+
+        $r1 = r0.<org.codehaus.jackson.map.ser.BeanSerializerBuilder: org.codehaus.jackson.map.introspect.BasicBeanDescription _beanDesc>;
+
+        $r2 = virtualinvoke $r1.<org.codehaus.jackson.map.introspect.BasicBeanDescription: java.lang.Class getBeanClass()>();
+
+        $r3 = staticinvoke <org.codehaus.jackson.map.ser.BeanSerializer: org.codehaus.jackson.map.ser.BeanSerializer createDummy(java.lang.Class)>($r2);
+
+        return $r3;
+    }
+
+    public org.codehaus.jackson.map.introspect.BasicBeanDescription getBeanDescription()
+    {
+        org.codehaus.jackson.map.ser.BeanSerializerBuilder r0;
+        org.codehaus.jackson.map.introspect.BasicBeanDescription r1;
+
+        r0 := @this: org.codehaus.jackson.map.ser.BeanSerializerBuilder;
+
+        r1 = r0.<org.codehaus.jackson.map.ser.BeanSerializerBuilder: org.codehaus.jackson.map.introspect.BasicBeanDescription _beanDesc>;
+
+        return r1;
+    }
+
+    public org.codehaus.jackson.map.ser.BeanPropertyWriter[] getFilteredProperties()
+    {
+        org.codehaus.jackson.map.ser.BeanSerializerBuilder r0;
+        org.codehaus.jackson.map.ser.BeanPropertyWriter[] r1;
+
+        r0 := @this: org.codehaus.jackson.map.ser.BeanSerializerBuilder;
+
+        r1 = r0.<org.codehaus.jackson.map.ser.BeanSerializerBuilder: org.codehaus.jackson.map.ser.BeanPropertyWriter[] _filteredProperties>;
+
+        return r1;
+    }
+
+    public java.util.List getProperties()
+    {
+        org.codehaus.jackson.map.ser.BeanSerializerBuilder r0;
+        java.util.List r1;
+
+        r0 := @this: org.codehaus.jackson.map.ser.BeanSerializerBuilder;
+
+        r1 = r0.<org.codehaus.jackson.map.ser.BeanSerializerBuilder: java.util.List _properties>;
+
+        return r1;
+    }
+
+    public void setAnyGetter(org.codehaus.jackson.map.ser.AnyGetterWriter)
+    {
+        org.codehaus.jackson.map.ser.BeanSerializerBuilder r0;
+        org.codehaus.jackson.map.ser.AnyGetterWriter $r1;
+
+        r0 := @this: org.codehaus.jackson.map.ser.BeanSerializerBuilder;
+
+        $r1 := @parameter0: org.codehaus.jackson.map.ser.AnyGetterWriter;
+
+        r0.<org.codehaus.jackson.map.ser.BeanSerializerBuilder: org.codehaus.jackson.map.ser.AnyGetterWriter _anyGetter> = $r1;
+
+        return;
+    }
+
+    public void setFilterId(java.lang.Object)
+    {
+        org.codehaus.jackson.map.ser.BeanSerializerBuilder r0;
+        java.lang.Object $r1;
+
+        r0 := @this: org.codehaus.jackson.map.ser.BeanSerializerBuilder;
+
+        $r1 := @parameter0: java.lang.Object;
+
+        r0.<org.codehaus.jackson.map.ser.BeanSerializerBuilder: java.lang.Object _filterId> = $r1;
+
+        return;
+    }
+
+    public void setFilteredProperties(org.codehaus.jackson.map.ser.BeanPropertyWriter[])
+    {
+        org.codehaus.jackson.map.ser.BeanSerializerBuilder r0;
+        org.codehaus.jackson.map.ser.BeanPropertyWriter[] $r1;
+
+        r0 := @this: org.codehaus.jackson.map.ser.BeanSerializerBuilder;
+
+        $r1 := @parameter0: org.codehaus.jackson.map.ser.BeanPropertyWriter[];
+
+        r0.<org.codehaus.jackson.map.ser.BeanSerializerBuilder: org.codehaus.jackson.map.ser.BeanPropertyWriter[] _filteredProperties> = $r1;
+
+        return;
+    }
+
+    public void setProperties(java.util.List)
+    {
+        org.codehaus.jackson.map.ser.BeanSerializerBuilder r0;
+        java.util.List r1;
+
+        r0 := @this: org.codehaus.jackson.map.ser.BeanSerializerBuilder;
+
+        r1 := @parameter0: java.util.List;
+
+        r0.<org.codehaus.jackson.map.ser.BeanSerializerBuilder: java.util.List _properties> = r1;
+
+        return;
+    }
+}

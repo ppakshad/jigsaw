@@ -1,0 +1,251 @@
+final class org.codehaus.jackson.map.deser.Creator$PropertyBased extends java.lang.Object
+{
+    protected final java.lang.reflect.Constructor _ctor;
+    protected final java.lang.Object[] _defaultValues;
+    protected final java.lang.reflect.Method _factoryMethod;
+    protected final java.util.HashMap _properties;
+
+    public void <init>(org.codehaus.jackson.map.introspect.AnnotatedConstructor, org.codehaus.jackson.map.deser.SettableBeanProperty[], org.codehaus.jackson.map.introspect.AnnotatedMethod, org.codehaus.jackson.map.deser.SettableBeanProperty[])
+    {
+        org.codehaus.jackson.map.deser.Creator$PropertyBased r0;
+        org.codehaus.jackson.map.introspect.AnnotatedConstructor $r1;
+        org.codehaus.jackson.map.deser.SettableBeanProperty[] $r2, $r4;
+        org.codehaus.jackson.map.introspect.AnnotatedMethod $r3;
+        int i0, i1;
+        org.codehaus.jackson.map.deser.SettableBeanProperty r5;
+        java.lang.reflect.Constructor $r6;
+        java.util.HashMap $r7;
+        java.lang.Object[] r8;
+        java.lang.String $r9;
+        org.codehaus.jackson.type.JavaType $r10;
+        boolean $z0;
+        java.lang.Class $r11;
+        java.lang.Object $r12;
+        java.lang.reflect.Method $r13;
+        java.lang.IllegalArgumentException $r14;
+
+        r0 := @this: org.codehaus.jackson.map.deser.Creator$PropertyBased;
+
+        $r1 := @parameter0: org.codehaus.jackson.map.introspect.AnnotatedConstructor;
+
+        $r2 := @parameter1: org.codehaus.jackson.map.deser.SettableBeanProperty[];
+
+        $r3 := @parameter2: org.codehaus.jackson.map.introspect.AnnotatedMethod;
+
+        $r4 := @parameter3: org.codehaus.jackson.map.deser.SettableBeanProperty[];
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        if $r1 == null goto label5;
+
+        $r6 = virtualinvoke $r1.<org.codehaus.jackson.map.introspect.AnnotatedConstructor: java.lang.reflect.Constructor getAnnotated()>();
+
+        r0.<org.codehaus.jackson.map.deser.Creator$PropertyBased: java.lang.reflect.Constructor _ctor> = $r6;
+
+        r0.<org.codehaus.jackson.map.deser.Creator$PropertyBased: java.lang.reflect.Method _factoryMethod> = null;
+
+     label1:
+        $r7 = new java.util.HashMap;
+
+        specialinvoke $r7.<java.util.HashMap: void <init>()>();
+
+        r0.<org.codehaus.jackson.map.deser.Creator$PropertyBased: java.util.HashMap _properties> = $r7;
+
+        r8 = null;
+
+        i1 = 0;
+
+        i0 = lengthof $r2;
+
+     label2:
+        if i1 >= i0 goto label7;
+
+        r5 = $r2[i1];
+
+        $r7 = r0.<org.codehaus.jackson.map.deser.Creator$PropertyBased: java.util.HashMap _properties>;
+
+        $r9 = virtualinvoke r5.<org.codehaus.jackson.map.deser.SettableBeanProperty: java.lang.String getName()>();
+
+        virtualinvoke $r7.<java.util.HashMap: java.lang.Object put(java.lang.Object,java.lang.Object)>($r9, r5);
+
+        $r10 = virtualinvoke r5.<org.codehaus.jackson.map.deser.SettableBeanProperty: org.codehaus.jackson.type.JavaType getType()>();
+
+        $z0 = virtualinvoke $r10.<org.codehaus.jackson.type.JavaType: boolean isPrimitive()>();
+
+        if $z0 == 0 goto label4;
+
+        if r8 != null goto label3;
+
+        r8 = newarray (java.lang.Object)[i0];
+
+     label3:
+        $r10 = virtualinvoke r5.<org.codehaus.jackson.map.deser.SettableBeanProperty: org.codehaus.jackson.type.JavaType getType()>();
+
+        $r11 = virtualinvoke $r10.<org.codehaus.jackson.type.JavaType: java.lang.Class getRawClass()>();
+
+        $r12 = staticinvoke <org.codehaus.jackson.map.util.ClassUtil: java.lang.Object defaultValue(java.lang.Class)>($r11);
+
+        r8[i1] = $r12;
+
+     label4:
+        i1 = i1 + 1;
+
+        goto label2;
+
+     label5:
+        if $r3 == null goto label6;
+
+        r0.<org.codehaus.jackson.map.deser.Creator$PropertyBased: java.lang.reflect.Constructor _ctor> = null;
+
+        $r13 = virtualinvoke $r3.<org.codehaus.jackson.map.introspect.AnnotatedMethod: java.lang.reflect.Method getAnnotated()>();
+
+        r0.<org.codehaus.jackson.map.deser.Creator$PropertyBased: java.lang.reflect.Method _factoryMethod> = $r13;
+
+        $r2 = $r4;
+
+        goto label1;
+
+     label6:
+        $r14 = new java.lang.IllegalArgumentException;
+
+        specialinvoke $r14.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>("Internal error: neither delegating constructor nor factory method passed");
+
+        throw $r14;
+
+     label7:
+        r0.<org.codehaus.jackson.map.deser.Creator$PropertyBased: java.lang.Object[] _defaultValues> = r8;
+
+        return;
+    }
+
+    public java.lang.Object build(org.codehaus.jackson.map.deser.PropertyValueBuffer) throws java.lang.Exception
+    {
+        org.codehaus.jackson.map.deser.Creator$PropertyBased r0;
+        org.codehaus.jackson.map.deser.PropertyValueBuffer $r1;
+        java.lang.reflect.Constructor $r2;
+        java.lang.Object[] $r3;
+        java.lang.Object $r4;
+        org.codehaus.jackson.map.deser.PropertyValue $r5;
+        java.lang.reflect.Method $r6;
+        java.lang.Exception $r7;
+
+        r0 := @this: org.codehaus.jackson.map.deser.Creator$PropertyBased;
+
+        $r1 := @parameter0: org.codehaus.jackson.map.deser.PropertyValueBuffer;
+
+     label1:
+        $r2 = r0.<org.codehaus.jackson.map.deser.Creator$PropertyBased: java.lang.reflect.Constructor _ctor>;
+
+     label2:
+        if $r2 == null goto label6;
+
+     label3:
+        $r2 = r0.<org.codehaus.jackson.map.deser.Creator$PropertyBased: java.lang.reflect.Constructor _ctor>;
+
+        $r3 = r0.<org.codehaus.jackson.map.deser.Creator$PropertyBased: java.lang.Object[] _defaultValues>;
+
+        $r3 = virtualinvoke $r1.<org.codehaus.jackson.map.deser.PropertyValueBuffer: java.lang.Object[] getParameters(java.lang.Object[])>($r3);
+
+        $r4 = virtualinvoke $r2.<java.lang.reflect.Constructor: java.lang.Object newInstance(java.lang.Object[])>($r3);
+
+     label4:
+        $r5 = virtualinvoke $r1.<org.codehaus.jackson.map.deser.PropertyValueBuffer: org.codehaus.jackson.map.deser.PropertyValue buffered()>();
+
+     label5:
+        if $r5 == null goto label9;
+
+        virtualinvoke $r5.<org.codehaus.jackson.map.deser.PropertyValue: void assign(java.lang.Object)>($r4);
+
+        $r5 = $r5.<org.codehaus.jackson.map.deser.PropertyValue: org.codehaus.jackson.map.deser.PropertyValue next>;
+
+        goto label5;
+
+     label6:
+        $r6 = r0.<org.codehaus.jackson.map.deser.Creator$PropertyBased: java.lang.reflect.Method _factoryMethod>;
+
+        $r3 = r0.<org.codehaus.jackson.map.deser.Creator$PropertyBased: java.lang.Object[] _defaultValues>;
+
+        $r3 = virtualinvoke $r1.<org.codehaus.jackson.map.deser.PropertyValueBuffer: java.lang.Object[] getParameters(java.lang.Object[])>($r3);
+
+        $r4 = virtualinvoke $r6.<java.lang.reflect.Method: java.lang.Object invoke(java.lang.Object,java.lang.Object[])>(null, $r3);
+
+     label7:
+        goto label4;
+
+     label8:
+        $r7 := @caughtexception;
+
+        staticinvoke <org.codehaus.jackson.map.util.ClassUtil: void throwRootCause(java.lang.Throwable)>($r7);
+
+        return null;
+
+     label9:
+        return $r4;
+
+        catch java.lang.Exception from label1 to label2 with label8;
+        catch java.lang.Exception from label3 to label4 with label8;
+        catch java.lang.Exception from label6 to label7 with label8;
+    }
+
+    public org.codehaus.jackson.map.deser.SettableBeanProperty findCreatorProperty(java.lang.String)
+    {
+        java.lang.String $r0;
+        java.util.HashMap $r1;
+        java.lang.Object $r2;
+        org.codehaus.jackson.map.deser.Creator$PropertyBased r3;
+        org.codehaus.jackson.map.deser.SettableBeanProperty r4;
+
+        r3 := @this: org.codehaus.jackson.map.deser.Creator$PropertyBased;
+
+        $r0 := @parameter0: java.lang.String;
+
+        $r1 = r3.<org.codehaus.jackson.map.deser.Creator$PropertyBased: java.util.HashMap _properties>;
+
+        $r2 = virtualinvoke $r1.<java.util.HashMap: java.lang.Object get(java.lang.Object)>($r0);
+
+        r4 = (org.codehaus.jackson.map.deser.SettableBeanProperty) $r2;
+
+        return r4;
+    }
+
+    public java.util.Collection properties()
+    {
+        org.codehaus.jackson.map.deser.Creator$PropertyBased r0;
+        java.util.Collection $r1;
+        java.util.HashMap $r2;
+
+        r0 := @this: org.codehaus.jackson.map.deser.Creator$PropertyBased;
+
+        $r2 = r0.<org.codehaus.jackson.map.deser.Creator$PropertyBased: java.util.HashMap _properties>;
+
+        $r1 = virtualinvoke $r2.<java.util.HashMap: java.util.Collection values()>();
+
+        return $r1;
+    }
+
+    public org.codehaus.jackson.map.deser.PropertyValueBuffer startBuilding(org.codehaus.jackson.JsonParser, org.codehaus.jackson.map.DeserializationContext)
+    {
+        org.codehaus.jackson.map.deser.Creator$PropertyBased r0;
+        org.codehaus.jackson.JsonParser $r1;
+        org.codehaus.jackson.map.DeserializationContext $r2;
+        org.codehaus.jackson.map.deser.PropertyValueBuffer $r3;
+        int $i0;
+        java.util.HashMap $r4;
+
+        r0 := @this: org.codehaus.jackson.map.deser.Creator$PropertyBased;
+
+        $r1 := @parameter0: org.codehaus.jackson.JsonParser;
+
+        $r2 := @parameter1: org.codehaus.jackson.map.DeserializationContext;
+
+        $r3 = new org.codehaus.jackson.map.deser.PropertyValueBuffer;
+
+        $r4 = r0.<org.codehaus.jackson.map.deser.Creator$PropertyBased: java.util.HashMap _properties>;
+
+        $i0 = virtualinvoke $r4.<java.util.HashMap: int size()>();
+
+        specialinvoke $r3.<org.codehaus.jackson.map.deser.PropertyValueBuffer: void <init>(org.codehaus.jackson.JsonParser,org.codehaus.jackson.map.DeserializationContext,int)>($r1, $r2, $i0);
+
+        return $r3;
+    }
+}

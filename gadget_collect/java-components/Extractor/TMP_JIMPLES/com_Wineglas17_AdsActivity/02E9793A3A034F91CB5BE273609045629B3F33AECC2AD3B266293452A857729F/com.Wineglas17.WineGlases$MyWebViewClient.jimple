@@ -1,0 +1,54 @@
+class com.Wineglas17.WineGlases$MyWebViewClient extends android.webkit.WebViewClient
+{
+    final com.Wineglas17.WineGlases this$0;
+
+    private void <init>(com.Wineglas17.WineGlases)
+    {
+        com.Wineglas17.WineGlases$MyWebViewClient r0;
+        com.Wineglas17.WineGlases $r1;
+
+        r0 := @this: com.Wineglas17.WineGlases$MyWebViewClient;
+
+        $r1 := @parameter0: com.Wineglas17.WineGlases;
+
+        r0.<com.Wineglas17.WineGlases$MyWebViewClient: com.Wineglas17.WineGlases this$0> = $r1;
+
+        specialinvoke r0.<android.webkit.WebViewClient: void <init>()>();
+
+        return;
+    }
+
+    void <init>(com.Wineglas17.WineGlases, com.Wineglas17.WineGlases$1)
+    {
+        com.Wineglas17.WineGlases$MyWebViewClient r0;
+        com.Wineglas17.WineGlases $r1;
+        com.Wineglas17.WineGlases$1 $r2;
+
+        r0 := @this: com.Wineglas17.WineGlases$MyWebViewClient;
+
+        $r1 := @parameter0: com.Wineglas17.WineGlases;
+
+        $r2 := @parameter1: com.Wineglas17.WineGlases$1;
+
+        specialinvoke r0.<com.Wineglas17.WineGlases$MyWebViewClient: void <init>(com.Wineglas17.WineGlases)>($r1);
+
+        return;
+    }
+
+    public boolean shouldOverrideUrlLoading(android.webkit.WebView, java.lang.String)
+    {
+        com.Wineglas17.WineGlases$MyWebViewClient r0;
+        android.webkit.WebView $r1;
+        java.lang.String $r2;
+
+        r0 := @this: com.Wineglas17.WineGlases$MyWebViewClient;
+
+        $r1 := @parameter0: android.webkit.WebView;
+
+        $r2 := @parameter1: java.lang.String;
+
+        virtualinvoke $r1.<android.webkit.WebView: void loadUrl(java.lang.String)>($r2);
+
+        return 1;
+    }
+}

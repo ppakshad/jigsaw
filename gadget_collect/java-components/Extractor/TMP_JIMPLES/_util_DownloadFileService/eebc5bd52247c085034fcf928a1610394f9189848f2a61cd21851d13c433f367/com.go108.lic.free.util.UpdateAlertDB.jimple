@@ -1,0 +1,166 @@
+public class com.go108.lic.free.util.UpdateAlertDB extends android.database.sqlite.SQLiteOpenHelper
+{
+    private static final java.lang.String DATABASE_NAME;
+    private static final int DATABASE_VERSION;
+    private static final java.lang.String INFO_TABLENAME;
+
+    public void <init>(android.content.Context)
+    {
+        android.content.Context $r1;
+        com.go108.lic.free.util.UpdateAlertDB r0;
+
+        r0 := @this: com.go108.lic.free.util.UpdateAlertDB;
+
+        $r1 := @parameter0: android.content.Context;
+
+        specialinvoke r0.<android.database.sqlite.SQLiteOpenHelper: void <init>(android.content.Context,java.lang.String,android.database.sqlite.SQLiteDatabase$CursorFactory,int)>($r1, "uadb.db", null, 1);
+
+        return;
+    }
+
+    public void delete()
+    {
+        android.database.sqlite.SQLiteDatabase $r2;
+        java.lang.String[] r1;
+        com.go108.lic.free.util.UpdateAlertDB r0;
+
+        r0 := @this: com.go108.lic.free.util.UpdateAlertDB;
+
+        $r2 = virtualinvoke r0.<com.go108.lic.free.util.UpdateAlertDB: android.database.sqlite.SQLiteDatabase getReadableDatabase()>();
+
+        r1 = newarray (java.lang.String)[0];
+
+        virtualinvoke $r2.<android.database.sqlite.SQLiteDatabase: int delete(java.lang.String,java.lang.String,java.lang.String[])>("update_alert", "", r1);
+
+        return;
+    }
+
+    public long insert()
+    {
+        android.database.sqlite.SQLiteDatabase $r2;
+        com.go108.lic.free.util.UpdateAlertDB r0;
+        java.lang.Boolean $r3;
+        long $l0;
+        android.content.ContentValues r1;
+
+        r0 := @this: com.go108.lic.free.util.UpdateAlertDB;
+
+        $r2 = virtualinvoke r0.<com.go108.lic.free.util.UpdateAlertDB: android.database.sqlite.SQLiteDatabase getReadableDatabase()>();
+
+        r1 = new android.content.ContentValues;
+
+        specialinvoke r1.<android.content.ContentValues: void <init>()>();
+
+        $r3 = staticinvoke <java.lang.Boolean: java.lang.Boolean valueOf(boolean)>(1);
+
+        virtualinvoke r1.<android.content.ContentValues: void put(java.lang.String,java.lang.Boolean)>("flag", $r3);
+
+        $l0 = virtualinvoke $r2.<android.database.sqlite.SQLiteDatabase: long insert(java.lang.String,java.lang.String,android.content.ContentValues)>("update_alert", null, r1);
+
+        return $l0;
+    }
+
+    public void onCreate(android.database.sqlite.SQLiteDatabase)
+    {
+        android.database.sqlite.SQLiteDatabase $r1;
+        com.go108.lic.free.util.UpdateAlertDB r0;
+
+        r0 := @this: com.go108.lic.free.util.UpdateAlertDB;
+
+        $r1 := @parameter0: android.database.sqlite.SQLiteDatabase;
+
+        staticinvoke <android.util.Log: int d(java.lang.String,java.lang.String)>("debug", "update_alert is created");
+
+        virtualinvoke $r1.<android.database.sqlite.SQLiteDatabase: void execSQL(java.lang.String)>("CREATE TABLE update_alert (pid INTEGER PRIMARY KEY AUTOINCREMENT, flag BOOLEAN);");
+
+        return;
+    }
+
+    public void onUpgrade(android.database.sqlite.SQLiteDatabase, int, int)
+    {
+        android.database.sqlite.SQLiteDatabase $r1;
+        com.go108.lic.free.util.UpdateAlertDB r0;
+        int $i0, $i1;
+
+        r0 := @this: com.go108.lic.free.util.UpdateAlertDB;
+
+        $r1 := @parameter0: android.database.sqlite.SQLiteDatabase;
+
+        $i0 := @parameter1: int;
+
+        $i1 := @parameter2: int;
+
+        virtualinvoke $r1.<android.database.sqlite.SQLiteDatabase: void execSQL(java.lang.String)>("DROP TABLE IF EXISTS update_alert");
+
+        virtualinvoke r0.<com.go108.lic.free.util.UpdateAlertDB: void onCreate(android.database.sqlite.SQLiteDatabase)>($r1);
+
+        return;
+    }
+
+    public android.database.Cursor select(java.lang.String, java.lang.String[])
+    {
+        android.database.sqlite.SQLiteDatabase $r3;
+        com.go108.lic.free.util.UpdateAlertDB r0;
+        java.lang.String[] $r2;
+        java.lang.String $r1;
+        android.database.Cursor $r4;
+
+        r0 := @this: com.go108.lic.free.util.UpdateAlertDB;
+
+        $r1 := @parameter0: java.lang.String;
+
+        $r2 := @parameter1: java.lang.String[];
+
+        $r3 = virtualinvoke r0.<com.go108.lic.free.util.UpdateAlertDB: android.database.sqlite.SQLiteDatabase getReadableDatabase()>();
+
+        $r4 = virtualinvoke $r3.<android.database.sqlite.SQLiteDatabase: android.database.Cursor query(java.lang.String,java.lang.String[],java.lang.String,java.lang.String[],java.lang.String,java.lang.String,java.lang.String)>("update_alert", null, $r1, $r2, null, null, null);
+
+        return $r4;
+    }
+
+    public void update(int, java.lang.Boolean)
+    {
+        android.database.sqlite.SQLiteDatabase $r4;
+        com.go108.lic.free.util.UpdateAlertDB r0;
+        int $i0;
+        java.lang.Boolean $r1;
+        java.lang.String[] r3;
+        android.content.ContentValues r2;
+        java.lang.String $r5;
+
+        r0 := @this: com.go108.lic.free.util.UpdateAlertDB;
+
+        $i0 := @parameter0: int;
+
+        $r1 := @parameter1: java.lang.Boolean;
+
+        $r4 = virtualinvoke r0.<com.go108.lic.free.util.UpdateAlertDB: android.database.sqlite.SQLiteDatabase getReadableDatabase()>();
+
+        r3 = newarray (java.lang.String)[1];
+
+        $r5 = staticinvoke <java.lang.Integer: java.lang.String toString(int)>($i0);
+
+        r3[0] = $r5;
+
+        r2 = new android.content.ContentValues;
+
+        specialinvoke r2.<android.content.ContentValues: void <init>()>();
+
+        virtualinvoke r2.<android.content.ContentValues: void put(java.lang.String,java.lang.Boolean)>("flag", $r1);
+
+        virtualinvoke $r4.<android.database.sqlite.SQLiteDatabase: int update(java.lang.String,android.content.ContentValues,java.lang.String,java.lang.String[])>("update_alert", r2, "pid = ?", r3);
+
+        return;
+    }
+
+    public static void <clinit>()
+    {
+        <com.go108.lic.free.util.UpdateAlertDB: java.lang.String INFO_TABLENAME> = "update_alert";
+
+        <com.go108.lic.free.util.UpdateAlertDB: int DATABASE_VERSION> = 1;
+
+        <com.go108.lic.free.util.UpdateAlertDB: java.lang.String DATABASE_NAME> = "uadb.db";
+
+        return;
+    }
+}

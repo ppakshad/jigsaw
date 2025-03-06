@@ -1,0 +1,79 @@
+public class com.apperhand.common.dto.protocol.NotificationsResponse extends com.apperhand.common.dto.protocol.BaseResponse
+{
+    private static final long serialVersionUID;
+    private java.util.List notifications;
+
+    public void <init>()
+    {
+        com.apperhand.common.dto.protocol.NotificationsResponse r0;
+
+        r0 := @this: com.apperhand.common.dto.protocol.NotificationsResponse;
+
+        specialinvoke r0.<com.apperhand.common.dto.protocol.BaseResponse: void <init>()>();
+
+        return;
+    }
+
+    public java.util.List getNotifications()
+    {
+        com.apperhand.common.dto.protocol.NotificationsResponse r0;
+        java.util.List r1;
+
+        r0 := @this: com.apperhand.common.dto.protocol.NotificationsResponse;
+
+        r1 = r0.<com.apperhand.common.dto.protocol.NotificationsResponse: java.util.List notifications>;
+
+        return r1;
+    }
+
+    public void setNotifications(java.util.List)
+    {
+        com.apperhand.common.dto.protocol.NotificationsResponse r0;
+        java.util.List r1;
+
+        r0 := @this: com.apperhand.common.dto.protocol.NotificationsResponse;
+
+        r1 := @parameter0: java.util.List;
+
+        r0.<com.apperhand.common.dto.protocol.NotificationsResponse: java.util.List notifications> = r1;
+
+        return;
+    }
+
+    public java.lang.String toString()
+    {
+        com.apperhand.common.dto.protocol.NotificationsResponse r0;
+        java.lang.StringBuilder $r1;
+        java.util.List $r2;
+        java.lang.String $r3;
+
+        r0 := @this: com.apperhand.common.dto.protocol.NotificationsResponse;
+
+        $r1 = new java.lang.StringBuilder;
+
+        specialinvoke $r1.<java.lang.StringBuilder: void <init>(java.lang.String)>("NotificationResponse [notifications=");
+
+        $r2 = r0.<com.apperhand.common.dto.protocol.NotificationsResponse: java.util.List notifications>;
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($r2);
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(", toString()=");
+
+        $r3 = specialinvoke r0.<com.apperhand.common.dto.protocol.BaseResponse: java.lang.String toString()>();
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r3);
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("]");
+
+        $r3 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        return $r3;
+    }
+
+    public static void <clinit>()
+    {
+        <com.apperhand.common.dto.protocol.NotificationsResponse: long serialVersionUID> = 1985755731838717602L;
+
+        return;
+    }
+}

@@ -1,0 +1,484 @@
+class com.heyzap.sdk.PopupToast extends com.heyzap.sdk.ClickableToast
+{
+    private static com.heyzap.sdk.PopupToast previousToastRef;
+    private float density;
+    private java.lang.String gameName;
+    private android.widget.FrameLayout popupView;
+    private android.widget.TextView promptText;
+    private java.lang.Integer windowAnimation;
+
+    public void <init>(android.content.Context, java.lang.String)
+    {
+        com.heyzap.sdk.PopupToast r0;
+        android.content.Context $r1;
+        java.lang.String $r2;
+        android.content.res.Resources $r3;
+        android.util.DisplayMetrics $r4;
+        float $f0;
+        android.widget.FrameLayout $r5;
+        android.view.ViewGroup$LayoutParams $r6;
+        int $i0, $i1, $i2, $i3;
+        android.widget.ImageView $r7;
+        android.widget.FrameLayout$LayoutParams $r8;
+        com.heyzap.sdk.PopupToast$1 $r9;
+        android.widget.TextView $r10;
+        android.graphics.Typeface $r11;
+        com.heyzap.sdk.PopupToast$2 $r12;
+
+        r0 := @this: com.heyzap.sdk.PopupToast;
+
+        $r1 := @parameter0: android.content.Context;
+
+        $r2 := @parameter1: java.lang.String;
+
+        specialinvoke r0.<com.heyzap.sdk.ClickableToast: void <init>(android.content.Context)>($r1);
+
+        r0.<com.heyzap.sdk.PopupToast: float density> = -1.0F;
+
+        staticinvoke <com.heyzap.sdk.PopupToast: void hideOldPopup()>();
+
+        <com.heyzap.sdk.PopupToast: com.heyzap.sdk.PopupToast previousToastRef> = r0;
+
+        staticinvoke <com.heyzap.sdk.HeyzapAnalytics: void trackEvent(android.content.Context,java.lang.String)>($r1, "popup-shown");
+
+        r0.<com.heyzap.sdk.PopupToast: java.lang.String gameName> = $r2;
+
+        $r3 = virtualinvoke $r1.<android.content.Context: android.content.res.Resources getResources()>();
+
+        $r4 = virtualinvoke $r3.<android.content.res.Resources: android.util.DisplayMetrics getDisplayMetrics()>();
+
+        $f0 = $r4.<android.util.DisplayMetrics: float density>;
+
+        $r5 = new android.widget.FrameLayout;
+
+        specialinvoke $r5.<android.widget.FrameLayout: void <init>(android.content.Context)>($r1);
+
+        r0.<com.heyzap.sdk.PopupToast: android.widget.FrameLayout popupView> = $r5;
+
+        $r5 = r0.<com.heyzap.sdk.PopupToast: android.widget.FrameLayout popupView>;
+
+        $r6 = new android.view.ViewGroup$LayoutParams;
+
+        $i0 = staticinvoke <com.heyzap.sdk.Utils: int dpToPx(android.content.Context,int)>($r1, 70);
+
+        specialinvoke $r6.<android.view.ViewGroup$LayoutParams: void <init>(int,int)>(-2, $i0);
+
+        virtualinvoke $r5.<android.widget.FrameLayout: void setLayoutParams(android.view.ViewGroup$LayoutParams)>($r6);
+
+        $r7 = new android.widget.ImageView;
+
+        specialinvoke $r7.<android.widget.ImageView: void <init>(android.content.Context)>($r1);
+
+        $i0 = staticinvoke <com.heyzap.sdk.Utils: int dpToPx(android.content.Context,int)>($r1, 40);
+
+        $r8 = new android.widget.FrameLayout$LayoutParams;
+
+        specialinvoke $r8.<android.widget.FrameLayout$LayoutParams: void <init>(int,int)>($i0, $i0);
+
+        $r8.<android.widget.FrameLayout$LayoutParams: int gravity> = 53;
+
+        virtualinvoke $r7.<android.widget.ImageView: void setLayoutParams(android.view.ViewGroup$LayoutParams)>($r8);
+
+        $r9 = new com.heyzap.sdk.PopupToast$1;
+
+        specialinvoke $r9.<com.heyzap.sdk.PopupToast$1: void <init>(com.heyzap.sdk.PopupToast)>(r0);
+
+        virtualinvoke $r7.<android.widget.ImageView: void setOnClickListener(android.view.View$OnClickListener)>($r9);
+
+        $r10 = new android.widget.TextView;
+
+        specialinvoke $r10.<android.widget.TextView: void <init>(android.content.Context)>($r1);
+
+        r0.<com.heyzap.sdk.PopupToast: android.widget.TextView promptText> = $r10;
+
+        $r8 = new android.widget.FrameLayout$LayoutParams;
+
+        $i0 = staticinvoke <com.heyzap.sdk.Utils: int dpToPx(android.content.Context,int)>($r1, 50);
+
+        specialinvoke $r8.<android.widget.FrameLayout$LayoutParams: void <init>(int,int)>(-2, $i0);
+
+        $i0 = staticinvoke <com.heyzap.sdk.Utils: int dpToPx(android.content.Context,int)>($r1, 75);
+
+        $i1 = staticinvoke <com.heyzap.sdk.Utils: int dpToPx(android.content.Context,int)>($r1, 10);
+
+        $i2 = staticinvoke <com.heyzap.sdk.Utils: int dpToPx(android.content.Context,int)>($r1, 120);
+
+        $i3 = staticinvoke <com.heyzap.sdk.Utils: int dpToPx(android.content.Context,int)>($r1, 10);
+
+        virtualinvoke $r8.<android.widget.FrameLayout$LayoutParams: void setMargins(int,int,int,int)>($i0, $i1, $i2, $i3);
+
+        $r8.<android.widget.FrameLayout$LayoutParams: int gravity> = 19;
+
+        $r10 = r0.<com.heyzap.sdk.PopupToast: android.widget.TextView promptText>;
+
+        virtualinvoke $r10.<android.widget.TextView: void setLayoutParams(android.view.ViewGroup$LayoutParams)>($r8);
+
+        $r10 = r0.<com.heyzap.sdk.PopupToast: android.widget.TextView promptText>;
+
+        virtualinvoke $r10.<android.widget.TextView: void setGravity(int)>(16);
+
+        $r10 = r0.<com.heyzap.sdk.PopupToast: android.widget.TextView promptText>;
+
+        virtualinvoke $r10.<android.widget.TextView: void setTextSize(float)>(12.0F);
+
+        $r10 = r0.<com.heyzap.sdk.PopupToast: android.widget.TextView promptText>;
+
+        virtualinvoke $r10.<android.widget.TextView: void setTextColor(int)>(-1);
+
+        $r10 = r0.<com.heyzap.sdk.PopupToast: android.widget.TextView promptText>;
+
+        $r11 = <android.graphics.Typeface: android.graphics.Typeface DEFAULT_BOLD>;
+
+        virtualinvoke $r10.<android.widget.TextView: void setTypeface(android.graphics.Typeface)>($r11);
+
+        $r10 = r0.<com.heyzap.sdk.PopupToast: android.widget.TextView promptText>;
+
+        $i0 = staticinvoke <android.graphics.Color: int rgb(int,int,int)>(2, 56, 130);
+
+        virtualinvoke $r10.<android.widget.TextView: void setShadowLayer(float,float,float,int)>(0.01F, 0.0F, -1.0F, $i0);
+
+        $r5 = r0.<com.heyzap.sdk.PopupToast: android.widget.FrameLayout popupView>;
+
+        virtualinvoke $r5.<android.widget.FrameLayout: void addView(android.view.View)>($r7);
+
+        $r5 = r0.<com.heyzap.sdk.PopupToast: android.widget.FrameLayout popupView>;
+
+        $r10 = r0.<com.heyzap.sdk.PopupToast: android.widget.TextView promptText>;
+
+        virtualinvoke $r5.<android.widget.FrameLayout: void addView(android.view.View)>($r10);
+
+        $r5 = r0.<com.heyzap.sdk.PopupToast: android.widget.FrameLayout popupView>;
+
+        virtualinvoke r0.<com.heyzap.sdk.PopupToast: void addView(android.view.View)>($r5);
+
+        $r5 = r0.<com.heyzap.sdk.PopupToast: android.widget.FrameLayout popupView>;
+
+        $r12 = new com.heyzap.sdk.PopupToast$2;
+
+        specialinvoke $r12.<com.heyzap.sdk.PopupToast$2: void <init>(com.heyzap.sdk.PopupToast)>(r0);
+
+        virtualinvoke $r5.<android.widget.FrameLayout: void setOnClickListener(android.view.View$OnClickListener)>($r12);
+
+        virtualinvoke r0.<com.heyzap.sdk.PopupToast: void updateLayout()>();
+
+        return;
+    }
+
+    public static void hideOldPopup()
+    {
+        com.heyzap.sdk.PopupToast $r0;
+
+        $r0 = <com.heyzap.sdk.PopupToast: com.heyzap.sdk.PopupToast previousToastRef>;
+
+        if $r0 == null goto label1;
+
+        $r0 = <com.heyzap.sdk.PopupToast: com.heyzap.sdk.PopupToast previousToastRef>;
+
+        virtualinvoke $r0.<com.heyzap.sdk.PopupToast: void hide()>();
+
+     label1:
+        return;
+    }
+
+    public int getAnimation(android.content.Context)
+    {
+        com.heyzap.sdk.PopupToast r0;
+        android.content.Context $r1;
+        java.lang.Integer $r2;
+        int $i0;
+        android.widget.PopupWindow $r3;
+        java.lang.Class $r4;
+        java.lang.reflect.Field $r5;
+        java.lang.Class[] $r6;
+        java.lang.reflect.Method $r7;
+        java.lang.Object[] $r8;
+        java.lang.Object $r9;
+        java.lang.Exception $r10;
+
+        r0 := @this: com.heyzap.sdk.PopupToast;
+
+        $r1 := @parameter0: android.content.Context;
+
+        $r2 = r0.<com.heyzap.sdk.PopupToast: java.lang.Integer windowAnimation>;
+
+        if $r2 == null goto label01;
+
+        $r2 = r0.<com.heyzap.sdk.PopupToast: java.lang.Integer windowAnimation>;
+
+        $i0 = virtualinvoke $r2.<java.lang.Integer: int intValue()>();
+
+        return $i0;
+
+     label01:
+        $r3 = new android.widget.PopupWindow;
+
+        specialinvoke $r3.<android.widget.PopupWindow: void <init>(android.content.Context)>($r1);
+
+        $r4 = class "Landroid/widget/PopupWindow;";
+
+     label02:
+        $r5 = virtualinvoke $r4.<java.lang.Class: java.lang.reflect.Field getDeclaredField(java.lang.String)>("mIsDropdown");
+
+        virtualinvoke $r5.<java.lang.reflect.Field: void setAccessible(boolean)>(1);
+
+        virtualinvoke $r5.<java.lang.reflect.Field: void setBoolean(java.lang.Object,boolean)>($r3, 1);
+
+     label03:
+        $r4 = class "Landroid/widget/PopupWindow;";
+
+     label04:
+        $r5 = virtualinvoke $r4.<java.lang.Class: java.lang.reflect.Field getDeclaredField(java.lang.String)>("mAnimationStyle");
+
+        virtualinvoke $r5.<java.lang.reflect.Field: void setAccessible(boolean)>(1);
+
+        virtualinvoke $r5.<java.lang.reflect.Field: void setInt(java.lang.Object,int)>($r3, -1);
+
+     label05:
+        $r4 = class "Landroid/widget/PopupWindow;";
+
+     label06:
+        $r5 = virtualinvoke $r4.<java.lang.Class: java.lang.reflect.Field getDeclaredField(java.lang.String)>("mAboveAnchor");
+
+        virtualinvoke $r5.<java.lang.reflect.Field: void setAccessible(boolean)>(1);
+
+        virtualinvoke $r5.<java.lang.reflect.Field: void setBoolean(java.lang.Object,boolean)>($r3, 0);
+
+     label07:
+        $r4 = class "Landroid/widget/PopupWindow;";
+
+     label08:
+        $r6 = newarray (java.lang.Class)[0];
+
+        $r7 = virtualinvoke $r4.<java.lang.Class: java.lang.reflect.Method getDeclaredMethod(java.lang.String,java.lang.Class[])>("computeAnimationResource", $r6);
+
+        virtualinvoke $r7.<java.lang.reflect.Method: void setAccessible(boolean)>(1);
+
+        $r8 = newarray (java.lang.Object)[0];
+
+        $r9 = virtualinvoke $r7.<java.lang.reflect.Method: java.lang.Object invoke(java.lang.Object,java.lang.Object[])>($r3, $r8);
+
+        $r2 = (java.lang.Integer) $r9;
+
+        r0.<com.heyzap.sdk.PopupToast: java.lang.Integer windowAnimation> = $r2;
+
+     label09:
+        $r2 = r0.<com.heyzap.sdk.PopupToast: java.lang.Integer windowAnimation>;
+
+        if $r2 != null goto label10;
+
+        $r2 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>(16973828);
+
+        r0.<com.heyzap.sdk.PopupToast: java.lang.Integer windowAnimation> = $r2;
+
+     label10:
+        $r2 = r0.<com.heyzap.sdk.PopupToast: java.lang.Integer windowAnimation>;
+
+        $i0 = virtualinvoke $r2.<java.lang.Integer: int intValue()>();
+
+        return $i0;
+
+     label11:
+        $r10 := @caughtexception;
+
+        goto label09;
+
+        catch java.lang.Exception from label02 to label03 with label11;
+        catch java.lang.Exception from label04 to label05 with label11;
+        catch java.lang.Exception from label06 to label07 with label11;
+        catch java.lang.Exception from label08 to label09 with label11;
+    }
+
+    public android.view.WindowManager$LayoutParams getWmParams()
+    {
+        com.heyzap.sdk.PopupToast r0;
+        android.view.WindowManager$LayoutParams $r1;
+        android.content.Context $r2;
+        int $i0;
+
+        r0 := @this: com.heyzap.sdk.PopupToast;
+
+        $r1 = specialinvoke r0.<com.heyzap.sdk.ClickableToast: android.view.WindowManager$LayoutParams getWmParams()>();
+
+        $r1.<android.view.WindowManager$LayoutParams: int gravity> = 48;
+
+        $r2 = virtualinvoke r0.<com.heyzap.sdk.PopupToast: android.content.Context getContext()>();
+
+        $i0 = virtualinvoke r0.<com.heyzap.sdk.PopupToast: int getAnimation(android.content.Context)>($r2);
+
+        $r1.<android.view.WindowManager$LayoutParams: int windowAnimations> = $i0;
+
+        $i0 = $r1.<android.view.WindowManager$LayoutParams: int flags>;
+
+        $i0 = $i0 | 262400;
+
+        $r1.<android.view.WindowManager$LayoutParams: int flags> = $i0;
+
+        return $r1;
+    }
+
+    public void hide()
+    {
+        com.heyzap.sdk.PopupToast r0;
+
+        r0 := @this: com.heyzap.sdk.PopupToast;
+
+        specialinvoke r0.<com.heyzap.sdk.ClickableToast: void hide()>();
+
+        <com.heyzap.sdk.PopupToast: com.heyzap.sdk.PopupToast previousToastRef> = null;
+
+        return;
+    }
+
+    public void onCheckinClick(android.view.View)
+    {
+        com.heyzap.sdk.PopupToast r0;
+        android.view.View $r1;
+        android.content.Context $r2;
+
+        r0 := @this: com.heyzap.sdk.PopupToast;
+
+        $r1 := @parameter0: android.view.View;
+
+        $r2 = virtualinvoke r0.<com.heyzap.sdk.PopupToast: android.content.Context getContext()>();
+
+        staticinvoke <com.heyzap.sdk.HeyzapAnalytics: void trackEvent(android.content.Context,java.lang.String)>($r2, "popup-clicked");
+
+        $r2 = virtualinvoke r0.<com.heyzap.sdk.PopupToast: android.content.Context getContext()>();
+
+        staticinvoke <com.heyzap.sdk.HeyzapLib: void rawCheckin(android.content.Context,java.lang.String)>($r2, null);
+
+        virtualinvoke r0.<com.heyzap.sdk.PopupToast: void hide()>();
+
+        return;
+    }
+
+    public boolean onTouchEvent(android.view.MotionEvent)
+    {
+        com.heyzap.sdk.PopupToast r0;
+        android.view.MotionEvent $r1;
+        int $i0;
+        boolean $z0;
+
+        r0 := @this: com.heyzap.sdk.PopupToast;
+
+        $r1 := @parameter0: android.view.MotionEvent;
+
+        $i0 = virtualinvoke $r1.<android.view.MotionEvent: int getAction()>();
+
+        if $i0 != 4 goto label1;
+
+        virtualinvoke r0.<com.heyzap.sdk.PopupToast: void hide()>();
+
+     label1:
+        $z0 = specialinvoke r0.<com.heyzap.sdk.ClickableToast: boolean onTouchEvent(android.view.MotionEvent)>($r1);
+
+        return $z0;
+    }
+
+    public void updateLayout()
+    {
+        com.heyzap.sdk.PopupToast r0;
+        boolean $z0;
+        java.lang.String $r1;
+        android.content.Context $r2;
+        android.widget.FrameLayout $r3;
+        int $i0;
+        byte $b1;
+        android.widget.TextView $r4;
+        float $f0;
+        java.lang.StringBuilder $r5;
+
+        r0 := @this: com.heyzap.sdk.PopupToast;
+
+        $z0 = virtualinvoke r0.<com.heyzap.sdk.PopupToast: boolean isNarrow()>();
+
+        if $z0 == 0 goto label6;
+
+        $r1 = "checkin_vert_popdown.png";
+
+     label1:
+        $r2 = virtualinvoke r0.<com.heyzap.sdk.PopupToast: android.content.Context getContext()>();
+
+        $r3 = r0.<com.heyzap.sdk.PopupToast: android.widget.FrameLayout popupView>;
+
+        staticinvoke <com.heyzap.sdk.Drawables: void setBackgroundDrawable(android.content.Context,android.view.View,java.lang.String)>($r2, $r3, $r1);
+
+        if $z0 != 0 goto label2;
+
+        $r1 = r0.<com.heyzap.sdk.PopupToast: java.lang.String gameName>;
+
+        $i0 = virtualinvoke $r1.<java.lang.String: int length()>();
+
+        if $i0 <= 25 goto label7;
+
+     label2:
+        $b1 = 12;
+
+     label3:
+        $r4 = r0.<com.heyzap.sdk.PopupToast: android.widget.TextView promptText>;
+
+        $f0 = (float) $b1;
+
+        virtualinvoke $r4.<android.widget.TextView: void setTextSize(float)>($f0);
+
+        if $z0 == 0 goto label8;
+
+        $b1 = 25;
+
+     label4:
+        if $z0 == 0 goto label9;
+
+        $r1 = r0.<com.heyzap.sdk.PopupToast: java.lang.String gameName>;
+
+        $i0 = virtualinvoke $r1.<java.lang.String: int length()>();
+
+        if $i0 >= 18 goto label9;
+
+        $r1 = "\n";
+
+     label5:
+        $r4 = r0.<com.heyzap.sdk.PopupToast: android.widget.TextView promptText>;
+
+        $r5 = new java.lang.StringBuilder;
+
+        specialinvoke $r5.<java.lang.StringBuilder: void <init>()>();
+
+        $r5 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Welcome to");
+
+        $r5 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r1);
+
+        $r1 = r0.<com.heyzap.sdk.PopupToast: java.lang.String gameName>;
+
+        $r1 = staticinvoke <com.heyzap.sdk.Utils: java.lang.String truncate(java.lang.String,int)>($r1, $b1);
+
+        $r5 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r1);
+
+        $r5 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("!");
+
+        $r1 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        virtualinvoke $r4.<android.widget.TextView: void setText(java.lang.CharSequence)>($r1);
+
+        return;
+
+     label6:
+        $r1 = "checkin_popdown.png";
+
+        goto label1;
+
+     label7:
+        $b1 = 14;
+
+        goto label3;
+
+     label8:
+        $b1 = 40;
+
+        goto label4;
+
+     label9:
+        $r1 = " ";
+
+        goto label5;
+    }
+}

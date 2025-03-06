@@ -1,0 +1,146 @@
+public class com.startapp.android.publish.VideoJsInterface extends com.startapp.android.publish.JsInterface
+{
+    private static final java.lang.String TAG;
+    private java.lang.Runnable replayCallback;
+    private java.lang.Runnable skipCallback;
+    private java.lang.Runnable toggleSoundCallback;
+
+    public void <init>(android.content.Context, java.lang.Runnable, java.lang.Runnable, java.lang.Runnable, java.lang.Runnable, java.lang.Runnable, com.startapp.android.publish.i.v, boolean)
+    {
+        com.startapp.android.publish.VideoJsInterface r0;
+        android.content.Context $r1;
+        java.lang.Runnable $r2, $r3, $r4, $r5, $r6;
+        com.startapp.android.publish.i.v $r7;
+        boolean $z0;
+
+        r0 := @this: com.startapp.android.publish.VideoJsInterface;
+
+        $r1 := @parameter0: android.content.Context;
+
+        $r2 := @parameter1: java.lang.Runnable;
+
+        $r3 := @parameter2: java.lang.Runnable;
+
+        $r4 := @parameter3: java.lang.Runnable;
+
+        $r5 := @parameter4: java.lang.Runnable;
+
+        $r6 := @parameter5: java.lang.Runnable;
+
+        $r7 := @parameter6: com.startapp.android.publish.i.v;
+
+        $z0 := @parameter7: boolean;
+
+        specialinvoke r0.<com.startapp.android.publish.JsInterface: void <init>(android.content.Context,java.lang.Runnable,java.lang.Runnable,com.startapp.android.publish.i.v)>($r1, $r2, $r3, $r7);
+
+        r0.<com.startapp.android.publish.VideoJsInterface: java.lang.Runnable replayCallback> = null;
+
+        r0.<com.startapp.android.publish.VideoJsInterface: java.lang.Runnable skipCallback> = null;
+
+        r0.<com.startapp.android.publish.VideoJsInterface: java.lang.Runnable toggleSoundCallback> = null;
+
+        r0.<com.startapp.android.publish.VideoJsInterface: java.lang.Runnable replayCallback> = $r4;
+
+        r0.<com.startapp.android.publish.VideoJsInterface: java.lang.Runnable skipCallback> = $r5;
+
+        r0.<com.startapp.android.publish.VideoJsInterface: java.lang.Runnable toggleSoundCallback> = $r6;
+
+        r0.<com.startapp.android.publish.VideoJsInterface: boolean inAppBrowserEnabled> = $z0;
+
+        return;
+    }
+
+    public void replayVideo()
+    {
+        com.startapp.android.publish.VideoJsInterface r0;
+        android.os.Looper $r1;
+        java.lang.Runnable $r2;
+        android.os.Handler $r3;
+
+        r0 := @this: com.startapp.android.publish.VideoJsInterface;
+
+        staticinvoke <com.startapp.android.publish.i.n: void a(java.lang.String,int,java.lang.String)>("VideoJsInterface", 3, "replayVideo called");
+
+        $r2 = r0.<com.startapp.android.publish.VideoJsInterface: java.lang.Runnable replayCallback>;
+
+        if $r2 == null goto label1;
+
+        $r3 = new android.os.Handler;
+
+        $r1 = staticinvoke <android.os.Looper: android.os.Looper getMainLooper()>();
+
+        specialinvoke $r3.<android.os.Handler: void <init>(android.os.Looper)>($r1);
+
+        $r2 = r0.<com.startapp.android.publish.VideoJsInterface: java.lang.Runnable replayCallback>;
+
+        virtualinvoke $r3.<android.os.Handler: boolean post(java.lang.Runnable)>($r2);
+
+     label1:
+        return;
+    }
+
+    public void skipVideo()
+    {
+        com.startapp.android.publish.VideoJsInterface r0;
+        android.os.Looper $r1;
+        java.lang.Runnable $r2;
+        android.os.Handler $r3;
+
+        r0 := @this: com.startapp.android.publish.VideoJsInterface;
+
+        staticinvoke <com.startapp.android.publish.i.n: void a(java.lang.String,int,java.lang.String)>("VideoJsInterface", 3, "skipVideo called");
+
+        $r2 = r0.<com.startapp.android.publish.VideoJsInterface: java.lang.Runnable skipCallback>;
+
+        if $r2 == null goto label1;
+
+        $r3 = new android.os.Handler;
+
+        $r1 = staticinvoke <android.os.Looper: android.os.Looper getMainLooper()>();
+
+        specialinvoke $r3.<android.os.Handler: void <init>(android.os.Looper)>($r1);
+
+        $r2 = r0.<com.startapp.android.publish.VideoJsInterface: java.lang.Runnable skipCallback>;
+
+        virtualinvoke $r3.<android.os.Handler: boolean post(java.lang.Runnable)>($r2);
+
+     label1:
+        return;
+    }
+
+    public void toggleSound()
+    {
+        com.startapp.android.publish.VideoJsInterface r0;
+        android.os.Looper $r1;
+        java.lang.Runnable $r2;
+        android.os.Handler $r3;
+
+        r0 := @this: com.startapp.android.publish.VideoJsInterface;
+
+        staticinvoke <com.startapp.android.publish.i.n: void a(java.lang.String,int,java.lang.String)>("VideoJsInterface", 3, "toggleSound called");
+
+        $r2 = r0.<com.startapp.android.publish.VideoJsInterface: java.lang.Runnable toggleSoundCallback>;
+
+        if $r2 == null goto label1;
+
+        $r3 = new android.os.Handler;
+
+        $r1 = staticinvoke <android.os.Looper: android.os.Looper getMainLooper()>();
+
+        specialinvoke $r3.<android.os.Handler: void <init>(android.os.Looper)>($r1);
+
+        $r2 = r0.<com.startapp.android.publish.VideoJsInterface: java.lang.Runnable toggleSoundCallback>;
+
+        virtualinvoke $r3.<android.os.Handler: boolean post(java.lang.Runnable)>($r2);
+
+     label1:
+        return;
+    }
+
+    public static void <clinit>()
+    {
+        <com.startapp.android.publish.VideoJsInterface: java.lang.String TAG> = "VideoJsInterface";
+
+        return;
+    }
+}

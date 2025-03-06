@@ -1,0 +1,68 @@
+public class com.movesky.app.main.achievements.impls.DesperateMeasures extends com.movesky.app.main.achievements.BBTHAchievement
+{
+
+    public void <init>(com.movesky.app.engine.achievements.AchievementInfo)
+    {
+        com.movesky.app.main.achievements.impls.DesperateMeasures r0;
+        com.movesky.app.engine.achievements.AchievementInfo $r1;
+
+        r0 := @this: com.movesky.app.main.achievements.impls.DesperateMeasures;
+
+        $r1 := @parameter0: com.movesky.app.engine.achievements.AchievementInfo;
+
+        specialinvoke r0.<com.movesky.app.main.achievements.BBTHAchievement: void <init>(com.movesky.app.engine.achievements.AchievementInfo)>($r1);
+
+        return;
+    }
+
+    public void baseDestroyed(com.movesky.app.main.achievements.events.BaseDestroyedEvent)
+    {
+        com.movesky.app.main.achievements.impls.DesperateMeasures r0;
+        com.movesky.app.main.achievements.events.BaseDestroyedEvent $r1;
+        com.movesky.app.main.Player $r2, $r3;
+        com.movesky.app.main.BeatTrack $r4;
+        int $i0, $i1;
+        com.movesky.app.engine.achievements.Achievements $r5;
+        com.movesky.app.engine.achievements.AchievementInfo $r6;
+
+        r0 := @this: com.movesky.app.main.achievements.impls.DesperateMeasures;
+
+        $r1 := @parameter0: com.movesky.app.main.achievements.events.BaseDestroyedEvent;
+
+        $r2 = virtualinvoke $r1.<com.movesky.app.main.achievements.events.BaseDestroyedEvent: com.movesky.app.main.Player getLocalPlayer()>();
+
+        $r3 = virtualinvoke $r1.<com.movesky.app.main.achievements.events.BaseDestroyedEvent: com.movesky.app.main.Player getDestroyedBaseOwner()>();
+
+        if $r2 == $r3 goto label1;
+
+        $r4 = virtualinvoke $r1.<com.movesky.app.main.achievements.events.BaseDestroyedEvent: com.movesky.app.main.BeatTrack getBeatTrack()>();
+
+        $i0 = virtualinvoke $r4.<com.movesky.app.main.BeatTrack: int getSongLength()>();
+
+        $r4 = virtualinvoke $r1.<com.movesky.app.main.achievements.events.BaseDestroyedEvent: com.movesky.app.main.BeatTrack getBeatTrack()>();
+
+        $i1 = virtualinvoke $r4.<com.movesky.app.main.BeatTrack: int getCurrPosition()>();
+
+        $i1 = $i1 + 10000;
+
+        if $i0 >= $i1 goto label1;
+
+        $r5 = <com.movesky.app.engine.achievements.Achievements: com.movesky.app.engine.achievements.Achievements INSTANCE>;
+
+        $r6 = r0.<com.movesky.app.main.achievements.impls.DesperateMeasures: com.movesky.app.engine.achievements.AchievementInfo achievementInfo>;
+
+        virtualinvoke $r5.<com.movesky.app.engine.achievements.Achievements: boolean increment(com.movesky.app.engine.achievements.AchievementInfo)>($r6);
+
+     label1:
+        return;
+    }
+
+    public boolean usesBaseDestroyed()
+    {
+        com.movesky.app.main.achievements.impls.DesperateMeasures r0;
+
+        r0 := @this: com.movesky.app.main.achievements.impls.DesperateMeasures;
+
+        return 1;
+    }
+}

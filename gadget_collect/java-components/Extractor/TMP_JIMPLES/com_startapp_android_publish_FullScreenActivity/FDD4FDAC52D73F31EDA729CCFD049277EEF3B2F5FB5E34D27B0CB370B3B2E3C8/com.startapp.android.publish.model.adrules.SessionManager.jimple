@@ -1,0 +1,376 @@
+public class com.startapp.android.publish.model.adrules.SessionManager extends java.lang.Object
+{
+    private static final java.lang.String TAG;
+    private static com.startapp.android.publish.model.adrules.SessionManager instance;
+    private java.util.Map adTagToAdDisplayEvents;
+    private java.util.Map placementToAdDisplayEvents;
+    private com.startapp.android.publish.model.MetaDataRequest$RequestReason reason;
+    private java.util.List sessionAdDisplayEvents;
+    private java.lang.String sessionId;
+    private long sessionStartTime;
+
+    static void <clinit>()
+    {
+        com.startapp.android.publish.model.adrules.SessionManager $r0;
+
+        <com.startapp.android.publish.model.adrules.SessionManager: java.lang.String TAG> = "SessionManager";
+
+        $r0 = new com.startapp.android.publish.model.adrules.SessionManager;
+
+        specialinvoke $r0.<com.startapp.android.publish.model.adrules.SessionManager: void <init>()>();
+
+        <com.startapp.android.publish.model.adrules.SessionManager: com.startapp.android.publish.model.adrules.SessionManager instance> = $r0;
+
+        return;
+    }
+
+    public void <init>()
+    {
+        com.startapp.android.publish.model.adrules.SessionManager r0;
+        java.util.ArrayList $r1;
+        java.util.HashMap $r2;
+        com.startapp.android.publish.model.MetaDataRequest$RequestReason $r3;
+
+        r0 := @this: com.startapp.android.publish.model.adrules.SessionManager;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        $r1 = new java.util.ArrayList;
+
+        specialinvoke $r1.<java.util.ArrayList: void <init>()>();
+
+        r0.<com.startapp.android.publish.model.adrules.SessionManager: java.util.List sessionAdDisplayEvents> = $r1;
+
+        $r2 = new java.util.HashMap;
+
+        specialinvoke $r2.<java.util.HashMap: void <init>()>();
+
+        r0.<com.startapp.android.publish.model.adrules.SessionManager: java.util.Map placementToAdDisplayEvents> = $r2;
+
+        $r2 = new java.util.HashMap;
+
+        specialinvoke $r2.<java.util.HashMap: void <init>()>();
+
+        r0.<com.startapp.android.publish.model.adrules.SessionManager: java.util.Map adTagToAdDisplayEvents> = $r2;
+
+        r0.<com.startapp.android.publish.model.adrules.SessionManager: java.lang.String sessionId> = "";
+
+        r0.<com.startapp.android.publish.model.adrules.SessionManager: long sessionStartTime> = 0L;
+
+        $r3 = <com.startapp.android.publish.model.MetaDataRequest$RequestReason: com.startapp.android.publish.model.MetaDataRequest$RequestReason LAUNCH>;
+
+        r0.<com.startapp.android.publish.model.adrules.SessionManager: com.startapp.android.publish.model.MetaDataRequest$RequestReason reason> = $r3;
+
+        return;
+    }
+
+    public static com.startapp.android.publish.model.adrules.SessionManager getInstance()
+    {
+        com.startapp.android.publish.model.adrules.SessionManager r0;
+
+        r0 = <com.startapp.android.publish.model.adrules.SessionManager: com.startapp.android.publish.model.adrules.SessionManager instance>;
+
+        return r0;
+    }
+
+    public void addAdDisplayEvent(com.startapp.android.publish.model.adrules.AdDisplayEvent)
+    {
+        com.startapp.android.publish.model.adrules.SessionManager r0;
+        com.startapp.android.publish.model.adrules.AdDisplayEvent $r1;
+        java.lang.StringBuilder $r2, $r9;
+        java.lang.String $r3;
+        java.util.List $r4;
+        java.util.Map $r5;
+        com.startapp.android.publish.model.AdPreferences$Placement $r6;
+        java.lang.Object $r7;
+        java.lang.Throwable $r8;
+        java.util.ArrayList $r10;
+
+        r0 := @this: com.startapp.android.publish.model.adrules.SessionManager;
+
+        $r1 := @parameter0: com.startapp.android.publish.model.adrules.AdDisplayEvent;
+
+        entermonitor r0;
+
+     label1:
+        $r9 = new java.lang.StringBuilder;
+
+        specialinvoke $r9.<java.lang.StringBuilder: void <init>()>();
+
+        $r2 = virtualinvoke $r9.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Adding new ");
+
+        $r2 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($r1);
+
+        $r3 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <com.startapp.android.publish.i.n: void a(java.lang.String,int,java.lang.String)>("SessionManager", 3, $r3);
+
+        $r4 = r0.<com.startapp.android.publish.model.adrules.SessionManager: java.util.List sessionAdDisplayEvents>;
+
+        interfaceinvoke $r4.<java.util.List: void add(int,java.lang.Object)>(0, $r1);
+
+        $r5 = r0.<com.startapp.android.publish.model.adrules.SessionManager: java.util.Map placementToAdDisplayEvents>;
+
+        $r6 = virtualinvoke $r1.<com.startapp.android.publish.model.adrules.AdDisplayEvent: com.startapp.android.publish.model.AdPreferences$Placement getPlacement()>();
+
+        $r7 = interfaceinvoke $r5.<java.util.Map: java.lang.Object get(java.lang.Object)>($r6);
+
+        $r7 = (java.util.List) $r7;
+
+        if $r7 != null goto label2;
+
+        $r10 = new java.util.ArrayList;
+
+        $r7 = $r10;
+
+        specialinvoke $r10.<java.util.ArrayList: void <init>()>();
+
+        $r5 = r0.<com.startapp.android.publish.model.adrules.SessionManager: java.util.Map placementToAdDisplayEvents>;
+
+        $r6 = virtualinvoke $r1.<com.startapp.android.publish.model.adrules.AdDisplayEvent: com.startapp.android.publish.model.AdPreferences$Placement getPlacement()>();
+
+        interfaceinvoke $r5.<java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>($r6, $r10);
+
+     label2:
+        $r4 = (java.util.List) $r7;
+
+        interfaceinvoke $r4.<java.util.List: void add(int,java.lang.Object)>(0, $r1);
+
+        $r5 = r0.<com.startapp.android.publish.model.adrules.SessionManager: java.util.Map adTagToAdDisplayEvents>;
+
+        $r3 = virtualinvoke $r1.<com.startapp.android.publish.model.adrules.AdDisplayEvent: java.lang.String getAdTag()>();
+
+        $r7 = interfaceinvoke $r5.<java.util.Map: java.lang.Object get(java.lang.Object)>($r3);
+
+        $r7 = (java.util.List) $r7;
+
+        if $r7 != null goto label3;
+
+        $r10 = new java.util.ArrayList;
+
+        $r7 = $r10;
+
+        specialinvoke $r10.<java.util.ArrayList: void <init>()>();
+
+        $r5 = r0.<com.startapp.android.publish.model.adrules.SessionManager: java.util.Map adTagToAdDisplayEvents>;
+
+        $r3 = virtualinvoke $r1.<com.startapp.android.publish.model.adrules.AdDisplayEvent: java.lang.String getAdTag()>();
+
+        interfaceinvoke $r5.<java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>($r3, $r10);
+
+     label3:
+        $r4 = (java.util.List) $r7;
+
+        interfaceinvoke $r4.<java.util.List: void add(int,java.lang.Object)>(0, $r1);
+
+     label4:
+        exitmonitor r0;
+
+        return;
+
+     label5:
+        $r8 := @caughtexception;
+
+        exitmonitor r0;
+
+        throw $r8;
+
+        catch java.lang.Throwable from label1 to label4 with label5;
+    }
+
+    public java.util.List getAdDisplayEvents()
+    {
+        com.startapp.android.publish.model.adrules.SessionManager r0;
+        java.util.List r1;
+
+        r0 := @this: com.startapp.android.publish.model.adrules.SessionManager;
+
+        r1 = r0.<com.startapp.android.publish.model.adrules.SessionManager: java.util.List sessionAdDisplayEvents>;
+
+        return r1;
+    }
+
+    public java.util.List getAdDisplayEvents(com.startapp.android.publish.model.AdPreferences$Placement)
+    {
+        com.startapp.android.publish.model.adrules.SessionManager r0;
+        com.startapp.android.publish.model.AdPreferences$Placement $r1;
+        java.lang.Object $r2;
+        java.util.Map $r3;
+        java.util.List $r4;
+
+        r0 := @this: com.startapp.android.publish.model.adrules.SessionManager;
+
+        $r1 := @parameter0: com.startapp.android.publish.model.AdPreferences$Placement;
+
+        $r3 = r0.<com.startapp.android.publish.model.adrules.SessionManager: java.util.Map placementToAdDisplayEvents>;
+
+        $r2 = interfaceinvoke $r3.<java.util.Map: java.lang.Object get(java.lang.Object)>($r1);
+
+        $r4 = (java.util.List) $r2;
+
+        return $r4;
+    }
+
+    public java.util.List getAdDisplayEvents(java.lang.String)
+    {
+        com.startapp.android.publish.model.adrules.SessionManager r0;
+        java.lang.String $r1;
+        java.lang.Object $r2;
+        java.util.Map $r3;
+        java.util.List $r4;
+
+        r0 := @this: com.startapp.android.publish.model.adrules.SessionManager;
+
+        $r1 := @parameter0: java.lang.String;
+
+        $r3 = r0.<com.startapp.android.publish.model.adrules.SessionManager: java.util.Map adTagToAdDisplayEvents>;
+
+        $r2 = interfaceinvoke $r3.<java.util.Map: java.lang.Object get(java.lang.Object)>($r1);
+
+        $r4 = (java.util.List) $r2;
+
+        return $r4;
+    }
+
+    public int getNumOfAdsDisplayed()
+    {
+        com.startapp.android.publish.model.adrules.SessionManager r0;
+        int $i0;
+        java.util.List $r1;
+
+        r0 := @this: com.startapp.android.publish.model.adrules.SessionManager;
+
+        $r1 = r0.<com.startapp.android.publish.model.adrules.SessionManager: java.util.List sessionAdDisplayEvents>;
+
+        $i0 = interfaceinvoke $r1.<java.util.List: int size()>();
+
+        return $i0;
+    }
+
+    public java.lang.String getSessionId()
+    {
+        com.startapp.android.publish.model.adrules.SessionManager r0;
+        java.lang.String r1;
+
+        r0 := @this: com.startapp.android.publish.model.adrules.SessionManager;
+
+        r1 = r0.<com.startapp.android.publish.model.adrules.SessionManager: java.lang.String sessionId>;
+
+        return r1;
+    }
+
+    public com.startapp.android.publish.model.MetaDataRequest$RequestReason getSessionRequestReason()
+    {
+        com.startapp.android.publish.model.adrules.SessionManager r0;
+        com.startapp.android.publish.model.MetaDataRequest$RequestReason r1;
+
+        r0 := @this: com.startapp.android.publish.model.adrules.SessionManager;
+
+        r1 = r0.<com.startapp.android.publish.model.adrules.SessionManager: com.startapp.android.publish.model.MetaDataRequest$RequestReason reason>;
+
+        return r1;
+    }
+
+    public long getSessionStartTime()
+    {
+        com.startapp.android.publish.model.adrules.SessionManager r0;
+        long l0;
+
+        r0 := @this: com.startapp.android.publish.model.adrules.SessionManager;
+
+        l0 = r0.<com.startapp.android.publish.model.adrules.SessionManager: long sessionStartTime>;
+
+        return l0;
+    }
+
+    public void startNewSession(android.content.Context, com.startapp.android.publish.model.MetaDataRequest$RequestReason)
+    {
+        com.startapp.android.publish.model.adrules.SessionManager r0;
+        android.content.Context $r1;
+        com.startapp.android.publish.model.MetaDataRequest$RequestReason $r2;
+        java.util.UUID $r3;
+        java.lang.String $r4;
+        long $l0;
+        java.lang.StringBuilder $r5;
+        java.util.List $r6;
+        java.util.Map $r7;
+        com.startapp.android.publish.model.AdPreferences $r8;
+        com.startapp.android.publish.model.MetaData $r9;
+        java.lang.Throwable $r10;
+
+        r0 := @this: com.startapp.android.publish.model.adrules.SessionManager;
+
+        $r1 := @parameter0: android.content.Context;
+
+        $r2 := @parameter1: com.startapp.android.publish.model.MetaDataRequest$RequestReason;
+
+        entermonitor r0;
+
+     label1:
+        $r3 = staticinvoke <java.util.UUID: java.util.UUID randomUUID()>();
+
+        $r4 = virtualinvoke $r3.<java.util.UUID: java.lang.String toString()>();
+
+        r0.<com.startapp.android.publish.model.adrules.SessionManager: java.lang.String sessionId> = $r4;
+
+        $l0 = staticinvoke <java.lang.System: long currentTimeMillis()>();
+
+        r0.<com.startapp.android.publish.model.adrules.SessionManager: long sessionStartTime> = $l0;
+
+        r0.<com.startapp.android.publish.model.adrules.SessionManager: com.startapp.android.publish.model.MetaDataRequest$RequestReason reason> = $r2;
+
+        $r5 = new java.lang.StringBuilder;
+
+        specialinvoke $r5.<java.lang.StringBuilder: void <init>()>();
+
+        $r5 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Starting new session: reason=");
+
+        $r5 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($r2);
+
+        $r5 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" sessionId=");
+
+        $r4 = r0.<com.startapp.android.publish.model.adrules.SessionManager: java.lang.String sessionId>;
+
+        $r5 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r4);
+
+        $r4 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <com.startapp.android.publish.i.n: void a(java.lang.String,int,java.lang.String)>("SessionManager", 3, $r4);
+
+        $r6 = r0.<com.startapp.android.publish.model.adrules.SessionManager: java.util.List sessionAdDisplayEvents>;
+
+        interfaceinvoke $r6.<java.util.List: void clear()>();
+
+        $r7 = r0.<com.startapp.android.publish.model.adrules.SessionManager: java.util.Map placementToAdDisplayEvents>;
+
+        interfaceinvoke $r7.<java.util.Map: void clear()>();
+
+        $r7 = r0.<com.startapp.android.publish.model.adrules.SessionManager: java.util.Map adTagToAdDisplayEvents>;
+
+        interfaceinvoke $r7.<java.util.Map: void clear()>();
+
+        $r8 = new com.startapp.android.publish.model.AdPreferences;
+
+        specialinvoke $r8.<com.startapp.android.publish.model.AdPreferences: void <init>()>();
+
+        staticinvoke <com.startapp.android.publish.i.x: void a(android.content.Context,com.startapp.android.publish.model.AdPreferences)>($r1, $r8);
+
+        $r9 = staticinvoke <com.startapp.android.publish.model.MetaData: com.startapp.android.publish.model.MetaData getInstance()>();
+
+        virtualinvoke $r9.<com.startapp.android.publish.model.MetaData: void loadFromServer(android.content.Context,com.startapp.android.publish.model.AdPreferences,com.startapp.android.publish.model.MetaDataRequest$RequestReason,boolean,com.startapp.android.publish.f.o,boolean)>($r1, $r8, $r2, 0, null, 1);
+
+     label2:
+        exitmonitor r0;
+
+        return;
+
+     label3:
+        $r10 := @caughtexception;
+
+        exitmonitor r0;
+
+        throw $r10;
+
+        catch java.lang.Throwable from label1 to label2 with label3;
+    }
+}

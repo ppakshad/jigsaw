@@ -1,0 +1,138 @@
+public class com.startapp.android.publish.adinformation.b extends java.lang.Object implements java.io.Serializable
+{
+    private static final long serialVersionUID;
+    private boolean enable;
+    private boolean enableOverride;
+    private com.startapp.android.publish.adinformation.AdInformationPositions$Position position;
+    private boolean positionOverride;
+
+    private void <init>()
+    {
+        com.startapp.android.publish.adinformation.b r0;
+        com.startapp.android.publish.adinformation.AdInformationPositions$Position $r1;
+        java.lang.String $r2;
+
+        r0 := @this: com.startapp.android.publish.adinformation.b;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        r0.<com.startapp.android.publish.adinformation.b: boolean enableOverride> = 0;
+
+        r0.<com.startapp.android.publish.adinformation.b: boolean enable> = 1;
+
+        r0.<com.startapp.android.publish.adinformation.b: boolean positionOverride> = 0;
+
+        $r2 = <com.startapp.android.publish.adinformation.AdInformationPositions: java.lang.String a>;
+
+        $r1 = staticinvoke <com.startapp.android.publish.adinformation.AdInformationPositions$Position: com.startapp.android.publish.adinformation.AdInformationPositions$Position getByName(java.lang.String)>($r2);
+
+        r0.<com.startapp.android.publish.adinformation.b: com.startapp.android.publish.adinformation.AdInformationPositions$Position position> = $r1;
+
+        return;
+    }
+
+    public static com.startapp.android.publish.adinformation.b a()
+    {
+        com.startapp.android.publish.adinformation.b $r0;
+
+        $r0 = new com.startapp.android.publish.adinformation.b;
+
+        specialinvoke $r0.<com.startapp.android.publish.adinformation.b: void <init>()>();
+
+        return $r0;
+    }
+
+    public void a(com.startapp.android.publish.adinformation.AdInformationPositions$Position)
+    {
+        com.startapp.android.publish.adinformation.b r0;
+        com.startapp.android.publish.adinformation.AdInformationPositions$Position $r1;
+
+        r0 := @this: com.startapp.android.publish.adinformation.b;
+
+        $r1 := @parameter0: com.startapp.android.publish.adinformation.AdInformationPositions$Position;
+
+        r0.<com.startapp.android.publish.adinformation.b: com.startapp.android.publish.adinformation.AdInformationPositions$Position position> = $r1;
+
+        if $r1 == null goto label1;
+
+        r0.<com.startapp.android.publish.adinformation.b: boolean positionOverride> = 1;
+
+        return;
+
+     label1:
+        r0.<com.startapp.android.publish.adinformation.b: boolean positionOverride> = 0;
+
+        return;
+    }
+
+    public void a(boolean)
+    {
+        com.startapp.android.publish.adinformation.b r0;
+        boolean $z0;
+
+        r0 := @this: com.startapp.android.publish.adinformation.b;
+
+        $z0 := @parameter0: boolean;
+
+        r0.<com.startapp.android.publish.adinformation.b: boolean enable> = $z0;
+
+        r0.<com.startapp.android.publish.adinformation.b: boolean enableOverride> = 1;
+
+        return;
+    }
+
+    public boolean b()
+    {
+        com.startapp.android.publish.adinformation.b r0;
+        boolean z0;
+
+        r0 := @this: com.startapp.android.publish.adinformation.b;
+
+        z0 = r0.<com.startapp.android.publish.adinformation.b: boolean enable>;
+
+        return z0;
+    }
+
+    public com.startapp.android.publish.adinformation.AdInformationPositions$Position c()
+    {
+        com.startapp.android.publish.adinformation.b r0;
+        com.startapp.android.publish.adinformation.AdInformationPositions$Position r1;
+
+        r0 := @this: com.startapp.android.publish.adinformation.b;
+
+        r1 = r0.<com.startapp.android.publish.adinformation.b: com.startapp.android.publish.adinformation.AdInformationPositions$Position position>;
+
+        return r1;
+    }
+
+    public boolean d()
+    {
+        com.startapp.android.publish.adinformation.b r0;
+        boolean z0;
+
+        r0 := @this: com.startapp.android.publish.adinformation.b;
+
+        z0 = r0.<com.startapp.android.publish.adinformation.b: boolean positionOverride>;
+
+        return z0;
+    }
+
+    public boolean e()
+    {
+        com.startapp.android.publish.adinformation.b r0;
+        boolean z0;
+
+        r0 := @this: com.startapp.android.publish.adinformation.b;
+
+        z0 = r0.<com.startapp.android.publish.adinformation.b: boolean enableOverride>;
+
+        return z0;
+    }
+
+    public static void <clinit>()
+    {
+        <com.startapp.android.publish.adinformation.b: long serialVersionUID> = 1L;
+
+        return;
+    }
+}

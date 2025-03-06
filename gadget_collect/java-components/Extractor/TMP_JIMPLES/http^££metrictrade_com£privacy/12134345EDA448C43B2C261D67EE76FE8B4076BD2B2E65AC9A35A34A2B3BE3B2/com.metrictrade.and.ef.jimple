@@ -1,0 +1,169 @@
+public final class com.metrictrade.and.ef extends java.lang.Object
+{
+    byte[] a;
+    int b;
+    public int c;
+
+    void <init>()
+    {
+        com.metrictrade.and.ef r0;
+        byte[] $r1;
+
+        r0 := @this: com.metrictrade.and.ef;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        $r1 = newarray (byte)[32768];
+
+        r0.<com.metrictrade.and.ef: byte[] a> = $r1;
+
+        r0.<com.metrictrade.and.ef: int b> = 0;
+
+        r0.<com.metrictrade.and.ef: int c> = 0;
+
+        return;
+    }
+
+    private void b(int, int)
+    {
+        com.metrictrade.and.ef r0;
+        byte[] $r1, $r2;
+        byte $b4;
+        int $i0, $i1, $i2, $i3;
+
+        r0 := @this: com.metrictrade.and.ef;
+
+        $i3 := @parameter0: int;
+
+        $i2 := @parameter1: int;
+
+     label1:
+        $i0 = $i2 + -1;
+
+        if $i2 > 0 goto label2;
+
+        return;
+
+     label2:
+        $r1 = r0.<com.metrictrade.and.ef: byte[] a>;
+
+        $i1 = r0.<com.metrictrade.and.ef: int b>;
+
+        $i2 = $i1 + 1;
+
+        r0.<com.metrictrade.and.ef: int b> = $i2;
+
+        $r2 = r0.<com.metrictrade.and.ef: byte[] a>;
+
+        $i2 = $i3 + 1;
+
+        $b4 = $r2[$i3];
+
+        $r1[$i1] = $b4;
+
+        $i3 = r0.<com.metrictrade.and.ef: int b>;
+
+        $i3 = $i3 & 32767;
+
+        r0.<com.metrictrade.and.ef: int b> = $i3;
+
+        $i3 = $i2 & 32767;
+
+        $i2 = $i0;
+
+        goto label1;
+    }
+
+    public final void a(int, int)
+    {
+        com.metrictrade.and.ef r0;
+        byte[] $r1, $r2;
+        java.lang.IllegalStateException $r3;
+        byte $b5;
+        int $i0, $i1, $i2, $i3, $i4;
+
+        r0 := @this: com.metrictrade.and.ef;
+
+        $i1 := @parameter0: int;
+
+        $i0 := @parameter1: int;
+
+        $i2 = r0.<com.metrictrade.and.ef: int c>;
+
+        $i2 = $i2 + $i1;
+
+        r0.<com.metrictrade.and.ef: int c> = $i2;
+
+        if $i2 <= 32768 goto label1;
+
+        $r3 = new java.lang.IllegalStateException;
+
+        specialinvoke $r3.<java.lang.IllegalStateException: void <init>(java.lang.String)>("Window full");
+
+        throw $r3;
+
+     label1:
+        $i2 = r0.<com.metrictrade.and.ef: int b>;
+
+        $i2 = $i2 - $i0;
+
+        $i2 = $i2 & 32767;
+
+        $i3 = 32768 - $i1;
+
+        if $i2 > $i3 goto label4;
+
+        $i4 = r0.<com.metrictrade.and.ef: int b>;
+
+        if $i4 >= $i3 goto label4;
+
+        if $i1 > $i0 goto label3;
+
+        $r1 = r0.<com.metrictrade.and.ef: byte[] a>;
+
+        $r2 = r0.<com.metrictrade.and.ef: byte[] a>;
+
+        $i0 = r0.<com.metrictrade.and.ef: int b>;
+
+        staticinvoke <java.lang.System: void arraycopy(java.lang.Object,int,java.lang.Object,int,int)>($r1, $i2, $r2, $i0, $i1);
+
+        $i0 = r0.<com.metrictrade.and.ef: int b>;
+
+        $i1 = $i0 + $i1;
+
+        r0.<com.metrictrade.and.ef: int b> = $i1;
+
+        return;
+
+     label2:
+        $r2 = r0.<com.metrictrade.and.ef: byte[] a>;
+
+        $i1 = r0.<com.metrictrade.and.ef: int b>;
+
+        $i3 = $i1 + 1;
+
+        r0.<com.metrictrade.and.ef: int b> = $i3;
+
+        $r1 = r0.<com.metrictrade.and.ef: byte[] a>;
+
+        $b5 = $r1[$i2];
+
+        $r2[$i1] = $b5;
+
+        $i2 = $i2 + 1;
+
+        $i1 = $i0;
+
+     label3:
+        $i0 = $i1 + -1;
+
+        if $i1 > 0 goto label2;
+
+        return;
+
+     label4:
+        specialinvoke r0.<com.metrictrade.and.ef: void b(int,int)>($i2, $i1);
+
+        return;
+    }
+}

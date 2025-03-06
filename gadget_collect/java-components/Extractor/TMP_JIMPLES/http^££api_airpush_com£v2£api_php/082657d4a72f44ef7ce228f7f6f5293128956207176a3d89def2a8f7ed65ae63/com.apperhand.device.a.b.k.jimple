@@ -1,0 +1,111 @@
+public final class com.apperhand.device.a.b.k extends com.apperhand.device.a.b.b
+{
+    private java.lang.Throwable g;
+
+    public void <init>(com.apperhand.device.a.b, com.apperhand.device.a.a, java.lang.String, com.apperhand.common.dto.Command$Commands, java.lang.Throwable)
+    {
+        com.apperhand.device.a.b.k r0;
+        com.apperhand.device.a.b $r1;
+        com.apperhand.device.a.a $r2;
+        java.lang.String $r3;
+        com.apperhand.common.dto.Command$Commands $r4;
+        java.lang.Throwable $r5;
+
+        r0 := @this: com.apperhand.device.a.b.k;
+
+        $r1 := @parameter0: com.apperhand.device.a.b;
+
+        $r2 := @parameter1: com.apperhand.device.a.a;
+
+        $r3 := @parameter2: java.lang.String;
+
+        $r4 := @parameter3: com.apperhand.common.dto.Command$Commands;
+
+        $r5 := @parameter4: java.lang.Throwable;
+
+        specialinvoke r0.<com.apperhand.device.a.b.b: void <init>(com.apperhand.device.a.b,com.apperhand.device.a.a,java.lang.String,com.apperhand.common.dto.Command$Commands)>($r1, $r2, $r3, $r4);
+
+        r0.<com.apperhand.device.a.b.k: java.lang.Throwable g> = $r5;
+
+        return;
+    }
+
+    protected final com.apperhand.common.dto.protocol.BaseResponse a() throws com.apperhand.device.a.d.f
+    {
+        com.apperhand.device.a.b.k r0;
+
+        r0 := @this: com.apperhand.device.a.b.k;
+
+        return null;
+    }
+
+    protected final java.util.Map a(com.apperhand.common.dto.protocol.BaseResponse) throws com.apperhand.device.a.d.f
+    {
+        com.apperhand.device.a.b.k r0;
+        com.apperhand.common.dto.protocol.BaseResponse $r1;
+
+        r0 := @this: com.apperhand.device.a.b.k;
+
+        $r1 := @parameter0: com.apperhand.common.dto.protocol.BaseResponse;
+
+        return null;
+    }
+
+    public final void a(java.util.Map) throws com.apperhand.device.a.d.f
+    {
+        com.apperhand.device.a.b.k r0;
+        java.util.Map $r1;
+        com.apperhand.common.dto.protocol.CommandStatusRequest $r2;
+
+        r0 := @this: com.apperhand.device.a.b.k;
+
+        $r1 := @parameter0: java.util.Map;
+
+        $r2 = virtualinvoke r0.<com.apperhand.device.a.b.k: com.apperhand.common.dto.protocol.CommandStatusRequest b()>();
+
+        virtualinvoke r0.<com.apperhand.device.a.b.k: void a(com.apperhand.common.dto.protocol.CommandStatusRequest)>($r2);
+
+        return;
+    }
+
+    protected final com.apperhand.common.dto.protocol.CommandStatusRequest b() throws com.apperhand.device.a.d.f
+    {
+        com.apperhand.device.a.b.k r0;
+        com.apperhand.common.dto.protocol.CommandStatusRequest $r1;
+        java.io.StringWriter $r2;
+        java.io.PrintWriter $r3;
+        java.lang.Throwable $r4;
+        com.apperhand.common.dto.Command$Commands $r5;
+        com.apperhand.common.dto.CommandStatus$Status $r6;
+        java.lang.String $r7;
+        java.util.List $r8;
+
+        r0 := @this: com.apperhand.device.a.b.k;
+
+        $r1 = specialinvoke r0.<com.apperhand.device.a.b.b: com.apperhand.common.dto.protocol.CommandStatusRequest b()>();
+
+        $r2 = new java.io.StringWriter;
+
+        specialinvoke $r2.<java.io.StringWriter: void <init>()>();
+
+        $r3 = new java.io.PrintWriter;
+
+        specialinvoke $r3.<java.io.PrintWriter: void <init>(java.io.Writer)>($r2);
+
+        $r4 = r0.<com.apperhand.device.a.b.k: java.lang.Throwable g>;
+
+        virtualinvoke $r4.<java.lang.Throwable: void printStackTrace(java.io.PrintWriter)>($r3);
+
+        $r5 = <com.apperhand.common.dto.Command$Commands: com.apperhand.common.dto.Command$Commands UNEXPECTED_EXCEPTION>;
+
+        $r6 = <com.apperhand.common.dto.CommandStatus$Status: com.apperhand.common.dto.CommandStatus$Status EXCEPTION>;
+
+        $r7 = virtualinvoke $r2.<java.io.StringWriter: java.lang.String toString()>();
+
+        $r8 = virtualinvoke r0.<com.apperhand.device.a.b.k: java.util.List a(com.apperhand.common.dto.Command$Commands,com.apperhand.common.dto.CommandStatus$Status,java.lang.String,java.util.Map)>($r5, $r6, $r7, null);
+
+        virtualinvoke $r1.<com.apperhand.common.dto.protocol.CommandStatusRequest: void setStatuses(java.util.List)>($r8);
+
+        return $r1;
+    }
+}

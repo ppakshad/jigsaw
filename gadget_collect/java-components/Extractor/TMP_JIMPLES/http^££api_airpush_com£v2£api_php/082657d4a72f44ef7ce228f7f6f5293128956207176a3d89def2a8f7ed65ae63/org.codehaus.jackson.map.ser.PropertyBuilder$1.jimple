@@ -1,0 +1,56 @@
+class org.codehaus.jackson.map.ser.PropertyBuilder$1 extends java.lang.Object
+{
+    static final int[] $SwitchMap$org$codehaus$jackson$map$annotate$JsonSerialize$Inclusion;
+
+    static void <clinit>()
+    {
+        org.codehaus.jackson.map.annotate.JsonSerialize$Inclusion[] $r0;
+        int $i0;
+        int[] $r1;
+        org.codehaus.jackson.map.annotate.JsonSerialize$Inclusion $r2;
+        java.lang.NoSuchFieldError $r3, $r4;
+
+        $r0 = staticinvoke <org.codehaus.jackson.map.annotate.JsonSerialize$Inclusion: org.codehaus.jackson.map.annotate.JsonSerialize$Inclusion[] values()>();
+
+        $i0 = lengthof $r0;
+
+        $r1 = newarray (int)[$i0];
+
+        <org.codehaus.jackson.map.ser.PropertyBuilder$1: int[] $SwitchMap$org$codehaus$jackson$map$annotate$JsonSerialize$Inclusion> = $r1;
+
+     label1:
+        $r1 = <org.codehaus.jackson.map.ser.PropertyBuilder$1: int[] $SwitchMap$org$codehaus$jackson$map$annotate$JsonSerialize$Inclusion>;
+
+        $r2 = <org.codehaus.jackson.map.annotate.JsonSerialize$Inclusion: org.codehaus.jackson.map.annotate.JsonSerialize$Inclusion NON_DEFAULT>;
+
+        $i0 = virtualinvoke $r2.<org.codehaus.jackson.map.annotate.JsonSerialize$Inclusion: int ordinal()>();
+
+     label2:
+        $r1[$i0] = 1;
+
+     label3:
+        $r1 = <org.codehaus.jackson.map.ser.PropertyBuilder$1: int[] $SwitchMap$org$codehaus$jackson$map$annotate$JsonSerialize$Inclusion>;
+
+        $r2 = <org.codehaus.jackson.map.annotate.JsonSerialize$Inclusion: org.codehaus.jackson.map.annotate.JsonSerialize$Inclusion NON_NULL>;
+
+        $i0 = virtualinvoke $r2.<org.codehaus.jackson.map.annotate.JsonSerialize$Inclusion: int ordinal()>();
+
+     label4:
+        $r1[$i0] = 2;
+
+        return;
+
+     label5:
+        $r3 := @caughtexception;
+
+        return;
+
+     label6:
+        $r4 := @caughtexception;
+
+        goto label3;
+
+        catch java.lang.NoSuchFieldError from label1 to label2 with label6;
+        catch java.lang.NoSuchFieldError from label3 to label4 with label5;
+    }
+}

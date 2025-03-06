@@ -1,0 +1,99 @@
+class com.ideaworks3d.marmalade.LoaderKeyboard$1 extends java.lang.Object implements java.lang.Runnable
+{
+    final com.ideaworks3d.marmalade.LoaderKeyboard this$0;
+    final android.view.inputmethod.InputMethodManager val$imm;
+    final boolean val$show;
+
+    void <init>(com.ideaworks3d.marmalade.LoaderKeyboard, boolean, android.view.inputmethod.InputMethodManager)
+    {
+        com.ideaworks3d.marmalade.LoaderKeyboard$1 r0;
+        com.ideaworks3d.marmalade.LoaderKeyboard $r1;
+        boolean $z0;
+        android.view.inputmethod.InputMethodManager $r2;
+
+        r0 := @this: com.ideaworks3d.marmalade.LoaderKeyboard$1;
+
+        $r1 := @parameter0: com.ideaworks3d.marmalade.LoaderKeyboard;
+
+        $z0 := @parameter1: boolean;
+
+        $r2 := @parameter2: android.view.inputmethod.InputMethodManager;
+
+        r0.<com.ideaworks3d.marmalade.LoaderKeyboard$1: com.ideaworks3d.marmalade.LoaderKeyboard this$0> = $r1;
+
+        r0.<com.ideaworks3d.marmalade.LoaderKeyboard$1: boolean val$show> = $z0;
+
+        r0.<com.ideaworks3d.marmalade.LoaderKeyboard$1: android.view.inputmethod.InputMethodManager val$imm> = $r2;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public void run()
+    {
+        com.ideaworks3d.marmalade.LoaderKeyboard$1 r0;
+        boolean $z0;
+        com.ideaworks3d.marmalade.LoaderKeyboard $r1;
+        com.ideaworks3d.marmalade.LoaderView $r2;
+        android.view.inputmethod.InputMethodManager $r3;
+        com.ideaworks3d.marmalade.LoaderKeyboard$SoftInputReceiver $r4;
+        android.os.IBinder $r5;
+
+        r0 := @this: com.ideaworks3d.marmalade.LoaderKeyboard$1;
+
+        $z0 = r0.<com.ideaworks3d.marmalade.LoaderKeyboard$1: boolean val$show>;
+
+        if $z0 == 0 goto label1;
+
+        $r1 = r0.<com.ideaworks3d.marmalade.LoaderKeyboard$1: com.ideaworks3d.marmalade.LoaderKeyboard this$0>;
+
+        $r2 = staticinvoke <com.ideaworks3d.marmalade.LoaderKeyboard: com.ideaworks3d.marmalade.LoaderView access$200(com.ideaworks3d.marmalade.LoaderKeyboard)>($r1);
+
+        virtualinvoke $r2.<com.ideaworks3d.marmalade.LoaderView: boolean requestFocus()>();
+
+        $r3 = r0.<com.ideaworks3d.marmalade.LoaderKeyboard$1: android.view.inputmethod.InputMethodManager val$imm>;
+
+        $r1 = r0.<com.ideaworks3d.marmalade.LoaderKeyboard$1: com.ideaworks3d.marmalade.LoaderKeyboard this$0>;
+
+        $r2 = staticinvoke <com.ideaworks3d.marmalade.LoaderKeyboard: com.ideaworks3d.marmalade.LoaderView access$200(com.ideaworks3d.marmalade.LoaderKeyboard)>($r1);
+
+        $r1 = r0.<com.ideaworks3d.marmalade.LoaderKeyboard$1: com.ideaworks3d.marmalade.LoaderKeyboard this$0>;
+
+        $r4 = staticinvoke <com.ideaworks3d.marmalade.LoaderKeyboard: com.ideaworks3d.marmalade.LoaderKeyboard$SoftInputReceiver access$300(com.ideaworks3d.marmalade.LoaderKeyboard)>($r1);
+
+        $z0 = virtualinvoke $r3.<android.view.inputmethod.InputMethodManager: boolean showSoftInput(android.view.View,int,android.os.ResultReceiver)>($r2, 2, $r4);
+
+        if $z0 != 0 goto label2;
+
+        $r3 = r0.<com.ideaworks3d.marmalade.LoaderKeyboard$1: android.view.inputmethod.InputMethodManager val$imm>;
+
+        virtualinvoke $r3.<android.view.inputmethod.InputMethodManager: void toggleSoftInput(int,int)>(0, 0);
+
+        return;
+
+     label1:
+        $r3 = r0.<com.ideaworks3d.marmalade.LoaderKeyboard$1: android.view.inputmethod.InputMethodManager val$imm>;
+
+        $r1 = r0.<com.ideaworks3d.marmalade.LoaderKeyboard$1: com.ideaworks3d.marmalade.LoaderKeyboard this$0>;
+
+        $r2 = staticinvoke <com.ideaworks3d.marmalade.LoaderKeyboard: com.ideaworks3d.marmalade.LoaderView access$200(com.ideaworks3d.marmalade.LoaderKeyboard)>($r1);
+
+        $r5 = virtualinvoke $r2.<com.ideaworks3d.marmalade.LoaderView: android.os.IBinder getWindowToken()>();
+
+        $r1 = r0.<com.ideaworks3d.marmalade.LoaderKeyboard$1: com.ideaworks3d.marmalade.LoaderKeyboard this$0>;
+
+        $r4 = staticinvoke <com.ideaworks3d.marmalade.LoaderKeyboard: com.ideaworks3d.marmalade.LoaderKeyboard$SoftInputReceiver access$300(com.ideaworks3d.marmalade.LoaderKeyboard)>($r1);
+
+        $z0 = virtualinvoke $r3.<android.view.inputmethod.InputMethodManager: boolean hideSoftInputFromWindow(android.os.IBinder,int,android.os.ResultReceiver)>($r5, 0, $r4);
+
+        if $z0 != 0 goto label2;
+
+        $r3 = r0.<com.ideaworks3d.marmalade.LoaderKeyboard$1: android.view.inputmethod.InputMethodManager val$imm>;
+
+        virtualinvoke $r3.<android.view.inputmethod.InputMethodManager: void toggleSoftInput(int,int)>(0, 0);
+
+     label2:
+        return;
+    }
+}

@@ -1,0 +1,223 @@
+public class com.startapp.android.publish.f.h extends java.lang.Object
+{
+    private final android.content.Context a;
+    private final com.startapp.android.publish.model.AdPreferences b;
+    private com.startapp.android.publish.model.MetaDataRequest$RequestReason c;
+    private com.startapp.android.publish.model.MetaData d;
+    private boolean e;
+
+    public void <init>(android.content.Context, com.startapp.android.publish.model.AdPreferences, com.startapp.android.publish.model.MetaDataRequest$RequestReason)
+    {
+        com.startapp.android.publish.f.h r0;
+        android.content.Context $r1;
+        com.startapp.android.publish.model.AdPreferences $r2;
+        com.startapp.android.publish.model.MetaDataRequest$RequestReason $r3;
+
+        r0 := @this: com.startapp.android.publish.f.h;
+
+        $r1 := @parameter0: android.content.Context;
+
+        $r2 := @parameter1: com.startapp.android.publish.model.AdPreferences;
+
+        $r3 := @parameter2: com.startapp.android.publish.model.MetaDataRequest$RequestReason;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        r0.<com.startapp.android.publish.f.h: com.startapp.android.publish.model.MetaData d> = null;
+
+        r0.<com.startapp.android.publish.f.h: boolean e> = 0;
+
+        r0.<com.startapp.android.publish.f.h: android.content.Context a> = $r1;
+
+        r0.<com.startapp.android.publish.f.h: com.startapp.android.publish.model.AdPreferences b> = $r2;
+
+        r0.<com.startapp.android.publish.f.h: com.startapp.android.publish.model.MetaDataRequest$RequestReason c> = $r3;
+
+        return;
+    }
+
+    public void a()
+    {
+        com.startapp.android.publish.f.h r0;
+        java.lang.Thread $r1;
+        com.startapp.android.publish.f.h$1 $r2;
+
+        r0 := @this: com.startapp.android.publish.f.h;
+
+        $r1 = new java.lang.Thread;
+
+        $r2 = new com.startapp.android.publish.f.h$1;
+
+        specialinvoke $r2.<com.startapp.android.publish.f.h$1: void <init>(com.startapp.android.publish.f.h)>(r0);
+
+        specialinvoke $r1.<java.lang.Thread: void <init>(java.lang.Runnable)>($r2);
+
+        virtualinvoke $r1.<java.lang.Thread: void start()>();
+
+        return;
+    }
+
+    protected void a(java.lang.Boolean)
+    {
+        com.startapp.android.publish.f.h r0;
+        java.lang.Boolean $r1;
+        com.startapp.android.publish.model.MetaData $r2;
+        java.lang.Object $r3;
+        boolean $z0;
+        android.content.Context $r4;
+        java.lang.Throwable $r5;
+
+        r0 := @this: com.startapp.android.publish.f.h;
+
+        $r1 := @parameter0: java.lang.Boolean;
+
+        $r3 = staticinvoke <com.startapp.android.publish.model.MetaData: java.lang.Object getLock()>();
+
+        entermonitor $r3;
+
+     label1:
+        $z0 = r0.<com.startapp.android.publish.f.h: boolean e>;
+
+        if $z0 != 0 goto label2;
+
+        $z0 = virtualinvoke $r1.<java.lang.Boolean: boolean booleanValue()>();
+
+        if $z0 == 0 goto label4;
+
+        $r2 = r0.<com.startapp.android.publish.f.h: com.startapp.android.publish.model.MetaData d>;
+
+        if $r2 == null goto label4;
+
+        $r4 = r0.<com.startapp.android.publish.f.h: android.content.Context a>;
+
+        if $r4 == null goto label4;
+
+        $r4 = r0.<com.startapp.android.publish.f.h: android.content.Context a>;
+
+        $r2 = r0.<com.startapp.android.publish.f.h: com.startapp.android.publish.model.MetaData d>;
+
+        staticinvoke <com.startapp.android.publish.model.MetaData: void update(android.content.Context,com.startapp.android.publish.model.MetaData)>($r4, $r2);
+
+     label2:
+        exitmonitor $r3;
+
+     label3:
+        return;
+
+     label4:
+        staticinvoke <com.startapp.android.publish.model.MetaData: void failedLoading()>();
+
+        goto label2;
+
+     label5:
+        $r5 := @caughtexception;
+
+        exitmonitor $r3;
+
+     label6:
+        throw $r5;
+
+        catch java.lang.Throwable from label1 to label3 with label5;
+        catch java.lang.Throwable from label4 to label6 with label5;
+    }
+
+    public void b()
+    {
+        com.startapp.android.publish.f.h r0;
+
+        r0 := @this: com.startapp.android.publish.f.h;
+
+        r0.<com.startapp.android.publish.f.h: boolean e> = 1;
+
+        return;
+    }
+
+    protected java.lang.Boolean c()
+    {
+        com.startapp.android.publish.f.h r0;
+        com.startapp.android.publish.model.MetaDataRequest $r1;
+        android.content.Context $r2;
+        com.startapp.android.publish.model.MetaDataRequest$RequestReason $r3;
+        com.startapp.android.publish.model.AdPreferences $r4;
+        com.startapp.android.publish.e$a $r5;
+        java.lang.String $r6;
+        com.startapp.android.publish.model.BaseResponse $r7;
+        com.startapp.android.publish.model.MetaData $r8;
+        java.lang.Exception $r9;
+        boolean $z0;
+        com.startapp.android.publish.d.b$a $r10;
+        java.lang.Boolean r11;
+
+        r0 := @this: com.startapp.android.publish.f.h;
+
+        staticinvoke <com.startapp.android.publish.i.n: void a(int,java.lang.String)>(3, "Loading MetaData");
+
+        $r1 = new com.startapp.android.publish.model.MetaDataRequest;
+
+        $r2 = r0.<com.startapp.android.publish.f.h: android.content.Context a>;
+
+        $r3 = r0.<com.startapp.android.publish.f.h: com.startapp.android.publish.model.MetaDataRequest$RequestReason c>;
+
+        specialinvoke $r1.<com.startapp.android.publish.model.MetaDataRequest: void <init>(android.content.Context,com.startapp.android.publish.model.MetaDataRequest$RequestReason)>($r2, $r3);
+
+     label1:
+        $r2 = r0.<com.startapp.android.publish.f.h: android.content.Context a>;
+
+        $r4 = r0.<com.startapp.android.publish.f.h: com.startapp.android.publish.model.AdPreferences b>;
+
+        virtualinvoke $r1.<com.startapp.android.publish.model.MetaDataRequest: void fillApplicationDetails(android.content.Context,com.startapp.android.publish.model.AdPreferences)>($r2, $r4);
+
+        staticinvoke <com.startapp.android.publish.i.n: void a(int,java.lang.String)>(3, "Networking MetaData");
+
+        $r2 = r0.<com.startapp.android.publish.f.h: android.content.Context a>;
+
+     label2:
+        $r5 = <com.startapp.android.publish.e$a: com.startapp.android.publish.e$a c>;
+
+     label3:
+        $r6 = staticinvoke <com.startapp.android.publish.e: java.lang.String a(com.startapp.android.publish.e$a)>($r5);
+
+        $r7 = staticinvoke <com.startapp.android.publish.h.c: com.startapp.android.publish.model.BaseResponse a(android.content.Context,java.lang.String,com.startapp.android.publish.model.BaseRequest,java.util.Map,java.lang.Class)>($r2, $r6, $r1, null, class "Lcom/startapp/android/publish/model/MetaData;");
+
+        $r8 = (com.startapp.android.publish.model.MetaData) $r7;
+
+        r0.<com.startapp.android.publish.f.h: com.startapp.android.publish.model.MetaData d> = $r8;
+
+     label4:
+        r11 = <java.lang.Boolean: java.lang.Boolean TRUE>;
+
+        return r11;
+
+     label5:
+        $r9 := @caughtexception;
+
+        staticinvoke <com.startapp.android.publish.i.n: void a(int,java.lang.String,java.lang.Throwable)>(6, "Unable to handle GetMetaData command!!!!", $r9);
+
+        $z0 = $r9 instanceof java.net.UnknownHostException;
+
+        if $z0 == 0 goto label6;
+
+        $r6 = virtualinvoke $r9.<java.lang.Exception: java.lang.String getMessage()>();
+
+        $z0 = virtualinvoke $r6.<java.lang.String: boolean contains(java.lang.CharSequence)>("init.startappexchange.com");
+
+        if $z0 != 0 goto label7;
+
+     label6:
+        $r2 = r0.<com.startapp.android.publish.f.h: android.content.Context a>;
+
+        $r10 = <com.startapp.android.publish.d.b$a: com.startapp.android.publish.d.b$a b>;
+
+        $r6 = virtualinvoke $r9.<java.lang.Exception: java.lang.String getMessage()>();
+
+        staticinvoke <com.startapp.android.publish.d.d: void a(android.content.Context,com.startapp.android.publish.d.b$a,java.lang.String,java.lang.String,java.lang.String)>($r2, $r10, "GetMetaDataAsync.doInBackground - MetaData request failed", $r6, "");
+
+     label7:
+        r11 = <java.lang.Boolean: java.lang.Boolean FALSE>;
+
+        return r11;
+
+        catch java.lang.Exception from label1 to label2 with label5;
+        catch java.lang.Exception from label3 to label4 with label5;
+    }
+}

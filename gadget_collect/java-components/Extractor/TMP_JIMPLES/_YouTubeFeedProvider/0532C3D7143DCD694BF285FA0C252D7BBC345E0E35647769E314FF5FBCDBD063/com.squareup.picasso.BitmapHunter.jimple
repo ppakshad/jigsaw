@@ -1,0 +1,1766 @@
+class com.squareup.picasso.BitmapHunter extends java.lang.Object implements java.lang.Runnable
+{
+    private static final java.lang.Object DECODE_LOCK;
+    private static final com.squareup.picasso.RequestHandler ERRORING_HANDLER;
+    private static final java.lang.ThreadLocal NAME_BUILDER;
+    private static final java.util.concurrent.atomic.AtomicInteger SEQUENCE_GENERATOR;
+    com.squareup.picasso.Action action;
+    java.util.List actions;
+    final com.squareup.picasso.Cache cache;
+    final com.squareup.picasso.Request data;
+    final com.squareup.picasso.Dispatcher dispatcher;
+    java.lang.Exception exception;
+    int exifRotation;
+    java.util.concurrent.Future future;
+    final java.lang.String key;
+    com.squareup.picasso.Picasso$LoadedFrom loadedFrom;
+    final int memoryPolicy;
+    int networkPolicy;
+    final com.squareup.picasso.Picasso picasso;
+    com.squareup.picasso.Picasso$Priority priority;
+    final com.squareup.picasso.RequestHandler requestHandler;
+    android.graphics.Bitmap result;
+    int retryCount;
+    final int sequence;
+    final com.squareup.picasso.Stats stats;
+
+    static void <clinit>()
+    {
+        java.lang.Object $r0;
+        com.squareup.picasso.BitmapHunter$1 $r1;
+        java.util.concurrent.atomic.AtomicInteger $r2;
+        com.squareup.picasso.BitmapHunter$2 $r3;
+
+        $r0 = new java.lang.Object;
+
+        specialinvoke $r0.<java.lang.Object: void <init>()>();
+
+        <com.squareup.picasso.BitmapHunter: java.lang.Object DECODE_LOCK> = $r0;
+
+        $r1 = new com.squareup.picasso.BitmapHunter$1;
+
+        specialinvoke $r1.<com.squareup.picasso.BitmapHunter$1: void <init>()>();
+
+        <com.squareup.picasso.BitmapHunter: java.lang.ThreadLocal NAME_BUILDER> = $r1;
+
+        $r2 = new java.util.concurrent.atomic.AtomicInteger;
+
+        specialinvoke $r2.<java.util.concurrent.atomic.AtomicInteger: void <init>()>();
+
+        <com.squareup.picasso.BitmapHunter: java.util.concurrent.atomic.AtomicInteger SEQUENCE_GENERATOR> = $r2;
+
+        $r3 = new com.squareup.picasso.BitmapHunter$2;
+
+        specialinvoke $r3.<com.squareup.picasso.BitmapHunter$2: void <init>()>();
+
+        <com.squareup.picasso.BitmapHunter: com.squareup.picasso.RequestHandler ERRORING_HANDLER> = $r3;
+
+        return;
+    }
+
+    void <init>(com.squareup.picasso.Picasso, com.squareup.picasso.Dispatcher, com.squareup.picasso.Cache, com.squareup.picasso.Stats, com.squareup.picasso.Action, com.squareup.picasso.RequestHandler)
+    {
+        com.squareup.picasso.BitmapHunter r0;
+        com.squareup.picasso.Picasso $r1;
+        com.squareup.picasso.Dispatcher $r2;
+        com.squareup.picasso.Cache $r3;
+        com.squareup.picasso.Stats $r4;
+        com.squareup.picasso.Action $r5;
+        com.squareup.picasso.RequestHandler $r6;
+        java.util.concurrent.atomic.AtomicInteger $r7;
+        int $i0;
+        java.lang.String $r8;
+        com.squareup.picasso.Request $r9;
+        com.squareup.picasso.Picasso$Priority $r10;
+
+        r0 := @this: com.squareup.picasso.BitmapHunter;
+
+        $r1 := @parameter0: com.squareup.picasso.Picasso;
+
+        $r2 := @parameter1: com.squareup.picasso.Dispatcher;
+
+        $r3 := @parameter2: com.squareup.picasso.Cache;
+
+        $r4 := @parameter3: com.squareup.picasso.Stats;
+
+        $r5 := @parameter4: com.squareup.picasso.Action;
+
+        $r6 := @parameter5: com.squareup.picasso.RequestHandler;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        $r7 = <com.squareup.picasso.BitmapHunter: java.util.concurrent.atomic.AtomicInteger SEQUENCE_GENERATOR>;
+
+        $i0 = virtualinvoke $r7.<java.util.concurrent.atomic.AtomicInteger: int incrementAndGet()>();
+
+        r0.<com.squareup.picasso.BitmapHunter: int sequence> = $i0;
+
+        r0.<com.squareup.picasso.BitmapHunter: com.squareup.picasso.Picasso picasso> = $r1;
+
+        r0.<com.squareup.picasso.BitmapHunter: com.squareup.picasso.Dispatcher dispatcher> = $r2;
+
+        r0.<com.squareup.picasso.BitmapHunter: com.squareup.picasso.Cache cache> = $r3;
+
+        r0.<com.squareup.picasso.BitmapHunter: com.squareup.picasso.Stats stats> = $r4;
+
+        r0.<com.squareup.picasso.BitmapHunter: com.squareup.picasso.Action action> = $r5;
+
+        $r8 = virtualinvoke $r5.<com.squareup.picasso.Action: java.lang.String getKey()>();
+
+        r0.<com.squareup.picasso.BitmapHunter: java.lang.String key> = $r8;
+
+        $r9 = virtualinvoke $r5.<com.squareup.picasso.Action: com.squareup.picasso.Request getRequest()>();
+
+        r0.<com.squareup.picasso.BitmapHunter: com.squareup.picasso.Request data> = $r9;
+
+        $r10 = virtualinvoke $r5.<com.squareup.picasso.Action: com.squareup.picasso.Picasso$Priority getPriority()>();
+
+        r0.<com.squareup.picasso.BitmapHunter: com.squareup.picasso.Picasso$Priority priority> = $r10;
+
+        $i0 = virtualinvoke $r5.<com.squareup.picasso.Action: int getMemoryPolicy()>();
+
+        r0.<com.squareup.picasso.BitmapHunter: int memoryPolicy> = $i0;
+
+        $i0 = virtualinvoke $r5.<com.squareup.picasso.Action: int getNetworkPolicy()>();
+
+        r0.<com.squareup.picasso.BitmapHunter: int networkPolicy> = $i0;
+
+        r0.<com.squareup.picasso.BitmapHunter: com.squareup.picasso.RequestHandler requestHandler> = $r6;
+
+        $i0 = virtualinvoke $r6.<com.squareup.picasso.RequestHandler: int getRetryCount()>();
+
+        r0.<com.squareup.picasso.BitmapHunter: int retryCount> = $i0;
+
+        return;
+    }
+
+    static android.graphics.Bitmap applyCustomTransformations(java.util.List, android.graphics.Bitmap)
+    {
+        java.util.List $r0;
+        android.graphics.Bitmap $r1, $r4;
+        int $i0, $i1;
+        java.lang.Object $r2;
+        com.squareup.picasso.Transformation $r3;
+        java.lang.StringBuilder $r5, $r8;
+        java.lang.String $r6;
+        java.util.Iterator $r7;
+        boolean $z0;
+        java.lang.RuntimeException $r9;
+        android.os.Handler $r10;
+        com.squareup.picasso.BitmapHunter$3 $r11;
+        com.squareup.picasso.BitmapHunter$4 $r12;
+        com.squareup.picasso.BitmapHunter$5 $r13;
+        com.squareup.picasso.BitmapHunter$6 $r14;
+
+        $r0 := @parameter0: java.util.List;
+
+        $r1 := @parameter1: android.graphics.Bitmap;
+
+        $i0 = interfaceinvoke $r0.<java.util.List: int size()>();
+
+        $i1 = 0;
+
+     label01:
+        if $i1 >= $i0 goto label10;
+
+        $r2 = interfaceinvoke $r0.<java.util.List: java.lang.Object get(int)>($i1);
+
+        $r3 = (com.squareup.picasso.Transformation) $r2;
+
+     label02:
+        $r4 = interfaceinvoke $r3.<com.squareup.picasso.Transformation: android.graphics.Bitmap transform(android.graphics.Bitmap)>($r1);
+
+     label03:
+        if $r4 != null goto label07;
+
+        $r5 = new java.lang.StringBuilder;
+
+        specialinvoke $r5.<java.lang.StringBuilder: void <init>(java.lang.String)>("Transformation ");
+
+        $r6 = interfaceinvoke $r3.<com.squareup.picasso.Transformation: java.lang.String key()>();
+
+        $r5 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r6);
+
+        $r5 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" returned null after ");
+
+        $r5 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>($i1);
+
+        $r5 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" previous transformation(s).\n\nTransformation list:\n");
+
+        $r7 = interfaceinvoke $r0.<java.util.List: java.util.Iterator iterator()>();
+
+     label04:
+        $z0 = interfaceinvoke $r7.<java.util.Iterator: boolean hasNext()>();
+
+        if $z0 == 0 goto label06;
+
+        $r2 = interfaceinvoke $r7.<java.util.Iterator: java.lang.Object next()>();
+
+        $r3 = (com.squareup.picasso.Transformation) $r2;
+
+        $r6 = interfaceinvoke $r3.<com.squareup.picasso.Transformation: java.lang.String key()>();
+
+        $r8 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r6);
+
+        virtualinvoke $r8.<java.lang.StringBuilder: java.lang.StringBuilder append(char)>(10);
+
+        goto label04;
+
+     label05:
+        $r9 := @caughtexception;
+
+        $r10 = <com.squareup.picasso.Picasso: android.os.Handler HANDLER>;
+
+        $r11 = new com.squareup.picasso.BitmapHunter$3;
+
+        specialinvoke $r11.<com.squareup.picasso.BitmapHunter$3: void <init>(com.squareup.picasso.Transformation,java.lang.RuntimeException)>($r3, $r9);
+
+        virtualinvoke $r10.<android.os.Handler: boolean post(java.lang.Runnable)>($r11);
+
+        return null;
+
+     label06:
+        $r10 = <com.squareup.picasso.Picasso: android.os.Handler HANDLER>;
+
+        $r12 = new com.squareup.picasso.BitmapHunter$4;
+
+        specialinvoke $r12.<com.squareup.picasso.BitmapHunter$4: void <init>(java.lang.StringBuilder)>($r5);
+
+        virtualinvoke $r10.<android.os.Handler: boolean post(java.lang.Runnable)>($r12);
+
+        return null;
+
+     label07:
+        if $r4 != $r1 goto label08;
+
+        $z0 = virtualinvoke $r1.<android.graphics.Bitmap: boolean isRecycled()>();
+
+        if $z0 == 0 goto label08;
+
+        $r10 = <com.squareup.picasso.Picasso: android.os.Handler HANDLER>;
+
+        $r13 = new com.squareup.picasso.BitmapHunter$5;
+
+        specialinvoke $r13.<com.squareup.picasso.BitmapHunter$5: void <init>(com.squareup.picasso.Transformation)>($r3);
+
+        virtualinvoke $r10.<android.os.Handler: boolean post(java.lang.Runnable)>($r13);
+
+        return null;
+
+     label08:
+        if $r4 == $r1 goto label09;
+
+        $z0 = virtualinvoke $r1.<android.graphics.Bitmap: boolean isRecycled()>();
+
+        if $z0 != 0 goto label09;
+
+        $r10 = <com.squareup.picasso.Picasso: android.os.Handler HANDLER>;
+
+        $r14 = new com.squareup.picasso.BitmapHunter$6;
+
+        specialinvoke $r14.<com.squareup.picasso.BitmapHunter$6: void <init>(com.squareup.picasso.Transformation)>($r3);
+
+        virtualinvoke $r10.<android.os.Handler: boolean post(java.lang.Runnable)>($r14);
+
+        return null;
+
+     label09:
+        $i1 = $i1 + 1;
+
+        $r1 = $r4;
+
+        goto label01;
+
+     label10:
+        return $r1;
+
+        catch java.lang.RuntimeException from label02 to label03 with label05;
+    }
+
+    private com.squareup.picasso.Picasso$Priority computeNewPriority()
+    {
+        com.squareup.picasso.BitmapHunter r0;
+        boolean $z0, $z1;
+        int $i0, $i1, $i2, $i3;
+        com.squareup.picasso.Picasso$Priority $r1, $r5, $r6;
+        java.util.List $r2;
+        com.squareup.picasso.Action $r3;
+        java.lang.Object $r4;
+
+        r0 := @this: com.squareup.picasso.BitmapHunter;
+
+        $z0 = 1;
+
+        $i0 = 0;
+
+        $r1 = <com.squareup.picasso.Picasso$Priority: com.squareup.picasso.Picasso$Priority LOW>;
+
+        $r2 = r0.<com.squareup.picasso.BitmapHunter: java.util.List actions>;
+
+        if $r2 == null goto label03;
+
+        $r2 = r0.<com.squareup.picasso.BitmapHunter: java.util.List actions>;
+
+        $z1 = interfaceinvoke $r2.<java.util.List: boolean isEmpty()>();
+
+        if $z1 != 0 goto label03;
+
+        $z1 = 1;
+
+     label01:
+        $r3 = r0.<com.squareup.picasso.BitmapHunter: com.squareup.picasso.Action action>;
+
+        if $r3 != null goto label02;
+
+        if $z1 == 0 goto label04;
+
+     label02:
+        if $z0 != 0 goto label05;
+
+        return $r1;
+
+     label03:
+        $z1 = 0;
+
+        goto label01;
+
+     label04:
+        $z0 = 0;
+
+        goto label02;
+
+     label05:
+        $r3 = r0.<com.squareup.picasso.BitmapHunter: com.squareup.picasso.Action action>;
+
+        if $r3 == null goto label10;
+
+        $r3 = r0.<com.squareup.picasso.BitmapHunter: com.squareup.picasso.Action action>;
+
+        $r1 = virtualinvoke $r3.<com.squareup.picasso.Action: com.squareup.picasso.Picasso$Priority getPriority()>();
+
+     label06:
+        if $z1 == 0 goto label11;
+
+        $r2 = r0.<com.squareup.picasso.BitmapHunter: java.util.List actions>;
+
+        $i1 = interfaceinvoke $r2.<java.util.List: int size()>();
+
+     label07:
+        if $i0 >= $i1 goto label11;
+
+        $r2 = r0.<com.squareup.picasso.BitmapHunter: java.util.List actions>;
+
+        $r4 = interfaceinvoke $r2.<java.util.List: java.lang.Object get(int)>($i0);
+
+        $r3 = (com.squareup.picasso.Action) $r4;
+
+        $r5 = virtualinvoke $r3.<com.squareup.picasso.Action: com.squareup.picasso.Picasso$Priority getPriority()>();
+
+        $r6 = $r5;
+
+        $i2 = virtualinvoke $r5.<com.squareup.picasso.Picasso$Priority: int ordinal()>();
+
+        $i3 = virtualinvoke $r1.<com.squareup.picasso.Picasso$Priority: int ordinal()>();
+
+        if $i2 <= $i3 goto label09;
+
+     label08:
+        $i0 = $i0 + 1;
+
+        $r1 = $r6;
+
+        goto label07;
+
+     label09:
+        $r6 = $r1;
+
+        goto label08;
+
+     label10:
+        goto label06;
+
+     label11:
+        return $r1;
+    }
+
+    static android.graphics.Bitmap decodeStream(java.io.InputStream, com.squareup.picasso.Request) throws java.io.IOException
+    {
+        java.io.InputStream $r0;
+        com.squareup.picasso.Request $r1;
+        int $i0, $i2;
+        com.squareup.picasso.MarkableInputStream $r2;
+        long $l1;
+        android.graphics.BitmapFactory$Options $r3;
+        boolean $z0, $z1;
+        byte[] $r4;
+        android.graphics.Bitmap $r5;
+        java.io.IOException $r6;
+
+        $r0 := @parameter0: java.io.InputStream;
+
+        $r1 := @parameter1: com.squareup.picasso.Request;
+
+        $r2 = new com.squareup.picasso.MarkableInputStream;
+
+        specialinvoke $r2.<com.squareup.picasso.MarkableInputStream: void <init>(java.io.InputStream)>($r0);
+
+        $l1 = virtualinvoke $r2.<com.squareup.picasso.MarkableInputStream: long savePosition(int)>(65536);
+
+        $r3 = staticinvoke <com.squareup.picasso.RequestHandler: android.graphics.BitmapFactory$Options createBitmapOptions(com.squareup.picasso.Request)>($r1);
+
+        $z0 = staticinvoke <com.squareup.picasso.RequestHandler: boolean requiresInSampleSize(android.graphics.BitmapFactory$Options)>($r3);
+
+        $z1 = staticinvoke <com.squareup.picasso.Utils: boolean isWebPFile(java.io.InputStream)>($r2);
+
+        virtualinvoke $r2.<com.squareup.picasso.MarkableInputStream: void reset(long)>($l1);
+
+        if $z1 == 0 goto label2;
+
+        $r4 = staticinvoke <com.squareup.picasso.Utils: byte[] toByteArray(java.io.InputStream)>($r2);
+
+        if $z0 == 0 goto label1;
+
+        $i0 = lengthof $r4;
+
+        staticinvoke <android.graphics.BitmapFactory: android.graphics.Bitmap decodeByteArray(byte[],int,int,android.graphics.BitmapFactory$Options)>($r4, 0, $i0, $r3);
+
+        $i2 = $r1.<com.squareup.picasso.Request: int targetWidth>;
+
+        $i0 = $r1.<com.squareup.picasso.Request: int targetHeight>;
+
+        staticinvoke <com.squareup.picasso.RequestHandler: void calculateInSampleSize(int,int,android.graphics.BitmapFactory$Options,com.squareup.picasso.Request)>($i2, $i0, $r3, $r1);
+
+     label1:
+        $i0 = lengthof $r4;
+
+        $r5 = staticinvoke <android.graphics.BitmapFactory: android.graphics.Bitmap decodeByteArray(byte[],int,int,android.graphics.BitmapFactory$Options)>($r4, 0, $i0, $r3);
+
+        return $r5;
+
+     label2:
+        if $z0 == 0 goto label3;
+
+        staticinvoke <android.graphics.BitmapFactory: android.graphics.Bitmap decodeStream(java.io.InputStream,android.graphics.Rect,android.graphics.BitmapFactory$Options)>($r2, null, $r3);
+
+        $i0 = $r1.<com.squareup.picasso.Request: int targetWidth>;
+
+        $i2 = $r1.<com.squareup.picasso.Request: int targetHeight>;
+
+        staticinvoke <com.squareup.picasso.RequestHandler: void calculateInSampleSize(int,int,android.graphics.BitmapFactory$Options,com.squareup.picasso.Request)>($i0, $i2, $r3, $r1);
+
+        virtualinvoke $r2.<com.squareup.picasso.MarkableInputStream: void reset(long)>($l1);
+
+     label3:
+        $r5 = staticinvoke <android.graphics.BitmapFactory: android.graphics.Bitmap decodeStream(java.io.InputStream,android.graphics.Rect,android.graphics.BitmapFactory$Options)>($r2, null, $r3);
+
+        if $r5 != null goto label4;
+
+        $r6 = new java.io.IOException;
+
+        specialinvoke $r6.<java.io.IOException: void <init>(java.lang.String)>("Failed to decode stream.");
+
+        throw $r6;
+
+     label4:
+        return $r5;
+    }
+
+    static com.squareup.picasso.BitmapHunter forRequest(com.squareup.picasso.Picasso, com.squareup.picasso.Dispatcher, com.squareup.picasso.Cache, com.squareup.picasso.Stats, com.squareup.picasso.Action)
+    {
+        com.squareup.picasso.Picasso $r0;
+        com.squareup.picasso.Dispatcher $r1;
+        com.squareup.picasso.Cache $r2;
+        com.squareup.picasso.Stats $r3;
+        com.squareup.picasso.Action $r4;
+        com.squareup.picasso.Request $r5;
+        java.util.List $r6;
+        int $i0, $i1;
+        java.lang.Object $r7;
+        com.squareup.picasso.RequestHandler $r8;
+        boolean $z0;
+        com.squareup.picasso.BitmapHunter $r9;
+
+        $r0 := @parameter0: com.squareup.picasso.Picasso;
+
+        $r1 := @parameter1: com.squareup.picasso.Dispatcher;
+
+        $r2 := @parameter2: com.squareup.picasso.Cache;
+
+        $r3 := @parameter3: com.squareup.picasso.Stats;
+
+        $r4 := @parameter4: com.squareup.picasso.Action;
+
+        $r5 = virtualinvoke $r4.<com.squareup.picasso.Action: com.squareup.picasso.Request getRequest()>();
+
+        $r6 = virtualinvoke $r0.<com.squareup.picasso.Picasso: java.util.List getRequestHandlers()>();
+
+        $i0 = 0;
+
+        $i1 = interfaceinvoke $r6.<java.util.List: int size()>();
+
+     label1:
+        if $i0 >= $i1 goto label3;
+
+        $r7 = interfaceinvoke $r6.<java.util.List: java.lang.Object get(int)>($i0);
+
+        $r8 = (com.squareup.picasso.RequestHandler) $r7;
+
+        $z0 = virtualinvoke $r8.<com.squareup.picasso.RequestHandler: boolean canHandleRequest(com.squareup.picasso.Request)>($r5);
+
+        if $z0 == 0 goto label2;
+
+        $r9 = new com.squareup.picasso.BitmapHunter;
+
+        specialinvoke $r9.<com.squareup.picasso.BitmapHunter: void <init>(com.squareup.picasso.Picasso,com.squareup.picasso.Dispatcher,com.squareup.picasso.Cache,com.squareup.picasso.Stats,com.squareup.picasso.Action,com.squareup.picasso.RequestHandler)>($r0, $r1, $r2, $r3, $r4, $r8);
+
+        return $r9;
+
+     label2:
+        $i0 = $i0 + 1;
+
+        goto label1;
+
+     label3:
+        $r9 = new com.squareup.picasso.BitmapHunter;
+
+        $r8 = <com.squareup.picasso.BitmapHunter: com.squareup.picasso.RequestHandler ERRORING_HANDLER>;
+
+        specialinvoke $r9.<com.squareup.picasso.BitmapHunter: void <init>(com.squareup.picasso.Picasso,com.squareup.picasso.Dispatcher,com.squareup.picasso.Cache,com.squareup.picasso.Stats,com.squareup.picasso.Action,com.squareup.picasso.RequestHandler)>($r0, $r1, $r2, $r3, $r4, $r8);
+
+        return $r9;
+    }
+
+    private static boolean shouldResize(boolean, int, int, int, int)
+    {
+        boolean $z0;
+        int $i0, $i1, $i2, $i3;
+
+        $z0 := @parameter0: boolean;
+
+        $i0 := @parameter1: int;
+
+        $i1 := @parameter2: int;
+
+        $i2 := @parameter3: int;
+
+        $i3 := @parameter4: int;
+
+        if $z0 == 0 goto label1;
+
+        if $i0 > $i2 goto label1;
+
+        if $i1 <= $i3 goto label2;
+
+     label1:
+        return 1;
+
+     label2:
+        return 0;
+    }
+
+    static android.graphics.Bitmap transformResult(com.squareup.picasso.Request, android.graphics.Bitmap, int)
+    {
+        com.squareup.picasso.Request $r0;
+        int $i0, $i1, $i2, $i3, $i4, $i6, $i7, $i8, $i9;
+        android.graphics.Matrix $r1;
+        boolean $z0, $z1;
+        android.graphics.Bitmap $r2, $r3;
+        float $f0, $f1, $f2;
+        byte $b5;
+        double $d0;
+
+        $r0 := @parameter0: com.squareup.picasso.Request;
+
+        $r2 := @parameter1: android.graphics.Bitmap;
+
+        $i0 := @parameter2: int;
+
+        $i3 = virtualinvoke $r2.<android.graphics.Bitmap: int getWidth()>();
+
+        $i4 = virtualinvoke $r2.<android.graphics.Bitmap: int getHeight()>();
+
+        $z0 = $r0.<com.squareup.picasso.Request: boolean onlyScaleDown>;
+
+        $r1 = new android.graphics.Matrix;
+
+        specialinvoke $r1.<android.graphics.Matrix: void <init>()>();
+
+        $z1 = virtualinvoke $r0.<com.squareup.picasso.Request: boolean needsMatrixTransform()>();
+
+        if $z1 == 0 goto label17;
+
+        $i1 = $r0.<com.squareup.picasso.Request: int targetWidth>;
+
+        $i2 = $r0.<com.squareup.picasso.Request: int targetHeight>;
+
+        $f0 = $r0.<com.squareup.picasso.Request: float rotationDegrees>;
+
+        $b5 = $f0 cmpl 0.0F;
+
+        if $b5 == 0 goto label01;
+
+        $z1 = $r0.<com.squareup.picasso.Request: boolean hasRotationPivot>;
+
+        if $z1 == 0 goto label06;
+
+        $f1 = $r0.<com.squareup.picasso.Request: float rotationPivotX>;
+
+        $f2 = $r0.<com.squareup.picasso.Request: float rotationPivotY>;
+
+        virtualinvoke $r1.<android.graphics.Matrix: void setRotate(float,float,float)>($f0, $f1, $f2);
+
+     label01:
+        $z1 = $r0.<com.squareup.picasso.Request: boolean centerCrop>;
+
+        if $z1 == 0 goto label08;
+
+        $f0 = (float) $i1;
+
+        $f1 = (float) $i3;
+
+        $f0 = $f0 / $f1;
+
+        $f1 = (float) $i2;
+
+        $f2 = (float) $i4;
+
+        $f1 = $f1 / $f2;
+
+        $b5 = $f0 cmpl $f1;
+
+        if $b5 <= 0 goto label07;
+
+        $f2 = (float) $i4;
+
+        $f1 = $f1 / $f0;
+
+        $f1 = $f1 * $f2;
+
+        $d0 = (double) $f1;
+
+        $d0 = staticinvoke <java.lang.Math: double ceil(double)>($d0);
+
+        $i6 = (int) $d0;
+
+        $i7 = $i4 - $i6;
+
+        $f1 = (float) $i2;
+
+        $f2 = (float) $i6;
+
+        $f1 = $f1 / $f2;
+
+        $i8 = 0;
+
+        $i7 = $i7 / 2;
+
+        $i9 = $i3;
+
+     label02:
+        $z0 = staticinvoke <com.squareup.picasso.BitmapHunter: boolean shouldResize(boolean,int,int,int,int)>($z0, $i3, $i4, $i1, $i2);
+
+        if $z0 == 0 goto label03;
+
+        virtualinvoke $r1.<android.graphics.Matrix: boolean preScale(float,float)>($f0, $f1);
+
+     label03:
+        $i3 = $i9;
+
+        $i1 = $i8;
+
+        $i4 = $i6;
+
+        $i2 = $i7;
+
+     label04:
+        if $i0 == 0 goto label05;
+
+        $f0 = (float) $i0;
+
+        virtualinvoke $r1.<android.graphics.Matrix: boolean preRotate(float)>($f0);
+
+     label05:
+        $r3 = staticinvoke <android.graphics.Bitmap: android.graphics.Bitmap createBitmap(android.graphics.Bitmap,int,int,int,int,android.graphics.Matrix,boolean)>($r2, $i1, $i2, $i3, $i4, $r1, 1);
+
+        if $r3 == $r2 goto label20;
+
+        virtualinvoke $r2.<android.graphics.Bitmap: void recycle()>();
+
+        return $r3;
+
+     label06:
+        virtualinvoke $r1.<android.graphics.Matrix: void setRotate(float)>($f0);
+
+        goto label01;
+
+     label07:
+        $f2 = (float) $i3;
+
+        $f0 = $f0 / $f1;
+
+        $f0 = $f0 * $f2;
+
+        $d0 = (double) $f0;
+
+        $d0 = staticinvoke <java.lang.Math: double ceil(double)>($d0);
+
+        $i6 = (int) $d0;
+
+        $i7 = $i3 - $i6;
+
+        $f0 = (float) $i1;
+
+        $f2 = (float) $i6;
+
+        $f0 = $f0 / $f2;
+
+        $i8 = $i7 / 2;
+
+        $i7 = 0;
+
+        $i9 = $i6;
+
+        $i6 = $i4;
+
+        goto label02;
+
+     label08:
+        $z1 = $r0.<com.squareup.picasso.Request: boolean centerInside>;
+
+        if $z1 == 0 goto label12;
+
+        $f0 = (float) $i1;
+
+        $f1 = (float) $i3;
+
+        $f0 = $f0 / $f1;
+
+        $f1 = (float) $i2;
+
+        $f2 = (float) $i4;
+
+        $f1 = $f1 / $f2;
+
+        $b5 = $f0 cmpg $f1;
+
+        if $b5 >= 0 goto label11;
+
+     label09:
+        $z0 = staticinvoke <com.squareup.picasso.BitmapHunter: boolean shouldResize(boolean,int,int,int,int)>($z0, $i3, $i4, $i1, $i2);
+
+        if $z0 == 0 goto label10;
+
+        virtualinvoke $r1.<android.graphics.Matrix: boolean preScale(float,float)>($f0, $f0);
+
+     label10:
+        $i2 = 0;
+
+        $i1 = 0;
+
+        goto label04;
+
+     label11:
+        $f0 = $f1;
+
+        goto label09;
+
+     label12:
+        if $i1 != 0 goto label13;
+
+        if $i2 == 0 goto label17;
+
+     label13:
+        if $i1 != $i3 goto label14;
+
+        if $i2 == $i4 goto label17;
+
+     label14:
+        if $i1 == 0 goto label18;
+
+        $f0 = (float) $i1;
+
+        $f1 = (float) $i3;
+
+        $f0 = $f0 / $f1;
+
+     label15:
+        if $i2 == 0 goto label19;
+
+        $f1 = (float) $i2;
+
+        $f2 = (float) $i4;
+
+        $f1 = $f1 / $f2;
+
+     label16:
+        $z0 = staticinvoke <com.squareup.picasso.BitmapHunter: boolean shouldResize(boolean,int,int,int,int)>($z0, $i3, $i4, $i1, $i2);
+
+        if $z0 == 0 goto label17;
+
+        virtualinvoke $r1.<android.graphics.Matrix: boolean preScale(float,float)>($f0, $f1);
+
+     label17:
+        $i2 = 0;
+
+        $i1 = 0;
+
+        goto label04;
+
+     label18:
+        $f0 = (float) $i2;
+
+        $f1 = (float) $i4;
+
+        $f0 = $f0 / $f1;
+
+        goto label15;
+
+     label19:
+        $f1 = (float) $i1;
+
+        $f2 = (float) $i3;
+
+        $f1 = $f1 / $f2;
+
+        goto label16;
+
+     label20:
+        return $r2;
+    }
+
+    static void updateThreadName(com.squareup.picasso.Request)
+    {
+        com.squareup.picasso.Request $r0;
+        java.lang.String $r1;
+        java.lang.ThreadLocal $r2;
+        java.lang.Object $r3;
+        java.lang.StringBuilder $r4;
+        int $i0;
+        java.lang.Thread $r5;
+
+        $r0 := @parameter0: com.squareup.picasso.Request;
+
+        $r1 = virtualinvoke $r0.<com.squareup.picasso.Request: java.lang.String getName()>();
+
+        $r2 = <com.squareup.picasso.BitmapHunter: java.lang.ThreadLocal NAME_BUILDER>;
+
+        $r3 = virtualinvoke $r2.<java.lang.ThreadLocal: java.lang.Object get()>();
+
+        $r4 = (java.lang.StringBuilder) $r3;
+
+        $i0 = virtualinvoke $r1.<java.lang.String: int length()>();
+
+        $i0 = $i0 + 8;
+
+        virtualinvoke $r4.<java.lang.StringBuilder: void ensureCapacity(int)>($i0);
+
+        $i0 = virtualinvoke $r4.<java.lang.StringBuilder: int length()>();
+
+        virtualinvoke $r4.<java.lang.StringBuilder: java.lang.StringBuilder replace(int,int,java.lang.String)>(8, $i0, $r1);
+
+        $r5 = staticinvoke <java.lang.Thread: java.lang.Thread currentThread()>();
+
+        $r1 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        virtualinvoke $r5.<java.lang.Thread: void setName(java.lang.String)>($r1);
+
+        return;
+    }
+
+    void attach(com.squareup.picasso.Action)
+    {
+        com.squareup.picasso.BitmapHunter r0;
+        com.squareup.picasso.Action $r1, $r4;
+        com.squareup.picasso.Picasso $r2;
+        boolean $z0;
+        com.squareup.picasso.Request $r3;
+        java.util.List $r5;
+        java.lang.String $r6, $r7;
+        java.util.ArrayList $r8;
+        com.squareup.picasso.Picasso$Priority $r9, $r10;
+        int $i0, $i1;
+
+        r0 := @this: com.squareup.picasso.BitmapHunter;
+
+        $r1 := @parameter0: com.squareup.picasso.Action;
+
+        $r2 = r0.<com.squareup.picasso.BitmapHunter: com.squareup.picasso.Picasso picasso>;
+
+        $z0 = $r2.<com.squareup.picasso.Picasso: boolean loggingEnabled>;
+
+        $r3 = $r1.<com.squareup.picasso.Action: com.squareup.picasso.Request request>;
+
+        $r4 = r0.<com.squareup.picasso.BitmapHunter: com.squareup.picasso.Action action>;
+
+        if $r4 != null goto label3;
+
+        r0.<com.squareup.picasso.BitmapHunter: com.squareup.picasso.Action action> = $r1;
+
+        if $z0 == 0 goto label6;
+
+        $r5 = r0.<com.squareup.picasso.BitmapHunter: java.util.List actions>;
+
+        if $r5 == null goto label1;
+
+        $r5 = r0.<com.squareup.picasso.BitmapHunter: java.util.List actions>;
+
+        $z0 = interfaceinvoke $r5.<java.util.List: boolean isEmpty()>();
+
+        if $z0 == 0 goto label2;
+
+     label1:
+        $r6 = virtualinvoke $r3.<com.squareup.picasso.Request: java.lang.String logId()>();
+
+        staticinvoke <com.squareup.picasso.Utils: void log(java.lang.String,java.lang.String,java.lang.String,java.lang.String)>("Hunter", "joined", $r6, "to empty hunter");
+
+        return;
+
+     label2:
+        $r6 = virtualinvoke $r3.<com.squareup.picasso.Request: java.lang.String logId()>();
+
+        $r7 = staticinvoke <com.squareup.picasso.Utils: java.lang.String getLogIdsForHunter(com.squareup.picasso.BitmapHunter,java.lang.String)>(r0, "to ");
+
+        staticinvoke <com.squareup.picasso.Utils: void log(java.lang.String,java.lang.String,java.lang.String,java.lang.String)>("Hunter", "joined", $r6, $r7);
+
+        return;
+
+     label3:
+        $r5 = r0.<com.squareup.picasso.BitmapHunter: java.util.List actions>;
+
+        if $r5 != null goto label4;
+
+        $r8 = new java.util.ArrayList;
+
+        specialinvoke $r8.<java.util.ArrayList: void <init>(int)>(3);
+
+        r0.<com.squareup.picasso.BitmapHunter: java.util.List actions> = $r8;
+
+     label4:
+        $r5 = r0.<com.squareup.picasso.BitmapHunter: java.util.List actions>;
+
+        interfaceinvoke $r5.<java.util.List: boolean add(java.lang.Object)>($r1);
+
+        if $z0 == 0 goto label5;
+
+        $r6 = virtualinvoke $r3.<com.squareup.picasso.Request: java.lang.String logId()>();
+
+        $r7 = staticinvoke <com.squareup.picasso.Utils: java.lang.String getLogIdsForHunter(com.squareup.picasso.BitmapHunter,java.lang.String)>(r0, "to ");
+
+        staticinvoke <com.squareup.picasso.Utils: void log(java.lang.String,java.lang.String,java.lang.String,java.lang.String)>("Hunter", "joined", $r6, $r7);
+
+     label5:
+        $r9 = virtualinvoke $r1.<com.squareup.picasso.Action: com.squareup.picasso.Picasso$Priority getPriority()>();
+
+        $i0 = virtualinvoke $r9.<com.squareup.picasso.Picasso$Priority: int ordinal()>();
+
+        $r10 = r0.<com.squareup.picasso.BitmapHunter: com.squareup.picasso.Picasso$Priority priority>;
+
+        $i1 = virtualinvoke $r10.<com.squareup.picasso.Picasso$Priority: int ordinal()>();
+
+        if $i0 <= $i1 goto label6;
+
+        r0.<com.squareup.picasso.BitmapHunter: com.squareup.picasso.Picasso$Priority priority> = $r9;
+
+     label6:
+        return;
+    }
+
+    boolean cancel()
+    {
+        com.squareup.picasso.BitmapHunter r0;
+        com.squareup.picasso.Action $r1;
+        java.util.List $r2;
+        boolean $z0;
+        java.util.concurrent.Future $r3;
+
+        r0 := @this: com.squareup.picasso.BitmapHunter;
+
+        $r1 = r0.<com.squareup.picasso.BitmapHunter: com.squareup.picasso.Action action>;
+
+        if $r1 != null goto label2;
+
+        $r2 = r0.<com.squareup.picasso.BitmapHunter: java.util.List actions>;
+
+        if $r2 == null goto label1;
+
+        $r2 = r0.<com.squareup.picasso.BitmapHunter: java.util.List actions>;
+
+        $z0 = interfaceinvoke $r2.<java.util.List: boolean isEmpty()>();
+
+        if $z0 == 0 goto label2;
+
+     label1:
+        $r3 = r0.<com.squareup.picasso.BitmapHunter: java.util.concurrent.Future future>;
+
+        if $r3 == null goto label2;
+
+        $r3 = r0.<com.squareup.picasso.BitmapHunter: java.util.concurrent.Future future>;
+
+        $z0 = interfaceinvoke $r3.<java.util.concurrent.Future: boolean cancel(boolean)>(0);
+
+        if $z0 == 0 goto label2;
+
+        return 1;
+
+     label2:
+        return 0;
+    }
+
+    void detach(com.squareup.picasso.Action)
+    {
+        com.squareup.picasso.BitmapHunter r0;
+        com.squareup.picasso.Action $r1, $r2;
+        boolean $z0;
+        com.squareup.picasso.Picasso$Priority $r3, $r4;
+        com.squareup.picasso.Picasso $r5;
+        com.squareup.picasso.Request $r6;
+        java.lang.String $r7, $r8;
+        java.util.List $r9;
+
+        r0 := @this: com.squareup.picasso.BitmapHunter;
+
+        $r1 := @parameter0: com.squareup.picasso.Action;
+
+        $z0 = 0;
+
+        $r2 = r0.<com.squareup.picasso.BitmapHunter: com.squareup.picasso.Action action>;
+
+        if $r2 != $r1 goto label3;
+
+        r0.<com.squareup.picasso.BitmapHunter: com.squareup.picasso.Action action> = null;
+
+        $z0 = 1;
+
+     label1:
+        if $z0 == 0 goto label2;
+
+        $r3 = virtualinvoke $r1.<com.squareup.picasso.Action: com.squareup.picasso.Picasso$Priority getPriority()>();
+
+        $r4 = r0.<com.squareup.picasso.BitmapHunter: com.squareup.picasso.Picasso$Priority priority>;
+
+        if $r3 != $r4 goto label2;
+
+        $r3 = specialinvoke r0.<com.squareup.picasso.BitmapHunter: com.squareup.picasso.Picasso$Priority computeNewPriority()>();
+
+        r0.<com.squareup.picasso.BitmapHunter: com.squareup.picasso.Picasso$Priority priority> = $r3;
+
+     label2:
+        $r5 = r0.<com.squareup.picasso.BitmapHunter: com.squareup.picasso.Picasso picasso>;
+
+        $z0 = $r5.<com.squareup.picasso.Picasso: boolean loggingEnabled>;
+
+        if $z0 == 0 goto label4;
+
+        $r6 = $r1.<com.squareup.picasso.Action: com.squareup.picasso.Request request>;
+
+        $r7 = virtualinvoke $r6.<com.squareup.picasso.Request: java.lang.String logId()>();
+
+        $r8 = staticinvoke <com.squareup.picasso.Utils: java.lang.String getLogIdsForHunter(com.squareup.picasso.BitmapHunter,java.lang.String)>(r0, "from ");
+
+        staticinvoke <com.squareup.picasso.Utils: void log(java.lang.String,java.lang.String,java.lang.String,java.lang.String)>("Hunter", "removed", $r7, $r8);
+
+        return;
+
+     label3:
+        $r9 = r0.<com.squareup.picasso.BitmapHunter: java.util.List actions>;
+
+        if $r9 == null goto label1;
+
+        $r9 = r0.<com.squareup.picasso.BitmapHunter: java.util.List actions>;
+
+        $z0 = interfaceinvoke $r9.<java.util.List: boolean remove(java.lang.Object)>($r1);
+
+        goto label1;
+
+     label4:
+        return;
+    }
+
+    com.squareup.picasso.Action getAction()
+    {
+        com.squareup.picasso.BitmapHunter r0;
+        com.squareup.picasso.Action r1;
+
+        r0 := @this: com.squareup.picasso.BitmapHunter;
+
+        r1 = r0.<com.squareup.picasso.BitmapHunter: com.squareup.picasso.Action action>;
+
+        return r1;
+    }
+
+    java.util.List getActions()
+    {
+        com.squareup.picasso.BitmapHunter r0;
+        java.util.List r1;
+
+        r0 := @this: com.squareup.picasso.BitmapHunter;
+
+        r1 = r0.<com.squareup.picasso.BitmapHunter: java.util.List actions>;
+
+        return r1;
+    }
+
+    com.squareup.picasso.Request getData()
+    {
+        com.squareup.picasso.BitmapHunter r0;
+        com.squareup.picasso.Request r1;
+
+        r0 := @this: com.squareup.picasso.BitmapHunter;
+
+        r1 = r0.<com.squareup.picasso.BitmapHunter: com.squareup.picasso.Request data>;
+
+        return r1;
+    }
+
+    java.lang.Exception getException()
+    {
+        com.squareup.picasso.BitmapHunter r0;
+        java.lang.Exception r1;
+
+        r0 := @this: com.squareup.picasso.BitmapHunter;
+
+        r1 = r0.<com.squareup.picasso.BitmapHunter: java.lang.Exception exception>;
+
+        return r1;
+    }
+
+    java.lang.String getKey()
+    {
+        com.squareup.picasso.BitmapHunter r0;
+        java.lang.String r1;
+
+        r0 := @this: com.squareup.picasso.BitmapHunter;
+
+        r1 = r0.<com.squareup.picasso.BitmapHunter: java.lang.String key>;
+
+        return r1;
+    }
+
+    com.squareup.picasso.Picasso$LoadedFrom getLoadedFrom()
+    {
+        com.squareup.picasso.BitmapHunter r0;
+        com.squareup.picasso.Picasso$LoadedFrom r1;
+
+        r0 := @this: com.squareup.picasso.BitmapHunter;
+
+        r1 = r0.<com.squareup.picasso.BitmapHunter: com.squareup.picasso.Picasso$LoadedFrom loadedFrom>;
+
+        return r1;
+    }
+
+    int getMemoryPolicy()
+    {
+        com.squareup.picasso.BitmapHunter r0;
+        int i0;
+
+        r0 := @this: com.squareup.picasso.BitmapHunter;
+
+        i0 = r0.<com.squareup.picasso.BitmapHunter: int memoryPolicy>;
+
+        return i0;
+    }
+
+    com.squareup.picasso.Picasso getPicasso()
+    {
+        com.squareup.picasso.BitmapHunter r0;
+        com.squareup.picasso.Picasso r1;
+
+        r0 := @this: com.squareup.picasso.BitmapHunter;
+
+        r1 = r0.<com.squareup.picasso.BitmapHunter: com.squareup.picasso.Picasso picasso>;
+
+        return r1;
+    }
+
+    com.squareup.picasso.Picasso$Priority getPriority()
+    {
+        com.squareup.picasso.BitmapHunter r0;
+        com.squareup.picasso.Picasso$Priority r1;
+
+        r0 := @this: com.squareup.picasso.BitmapHunter;
+
+        r1 = r0.<com.squareup.picasso.BitmapHunter: com.squareup.picasso.Picasso$Priority priority>;
+
+        return r1;
+    }
+
+    android.graphics.Bitmap getResult()
+    {
+        com.squareup.picasso.BitmapHunter r0;
+        android.graphics.Bitmap r1;
+
+        r0 := @this: com.squareup.picasso.BitmapHunter;
+
+        r1 = r0.<com.squareup.picasso.BitmapHunter: android.graphics.Bitmap result>;
+
+        return r1;
+    }
+
+    android.graphics.Bitmap hunt() throws java.io.IOException
+    {
+        com.squareup.picasso.BitmapHunter r0;
+        android.graphics.Bitmap $r1, $r4;
+        int $i0;
+        boolean $z0;
+        com.squareup.picasso.Cache $r2;
+        java.lang.String $r3;
+        com.squareup.picasso.Stats $r5;
+        com.squareup.picasso.Picasso$LoadedFrom $r6;
+        com.squareup.picasso.Picasso $r7;
+        com.squareup.picasso.Request $r8;
+        com.squareup.picasso.NetworkPolicy $r9;
+        com.squareup.picasso.RequestHandler $r10;
+        com.squareup.picasso.RequestHandler$Result $r11;
+        java.io.InputStream $r12;
+        java.lang.Object $r13;
+        java.util.List $r14;
+        java.lang.Throwable $r15, $r16;
+
+        r0 := @this: com.squareup.picasso.BitmapHunter;
+
+        $r1 = null;
+
+        $i0 = r0.<com.squareup.picasso.BitmapHunter: int memoryPolicy>;
+
+        $z0 = staticinvoke <com.squareup.picasso.MemoryPolicy: boolean shouldReadFromMemoryCache(int)>($i0);
+
+        if $z0 == 0 goto label01;
+
+        $r2 = r0.<com.squareup.picasso.BitmapHunter: com.squareup.picasso.Cache cache>;
+
+        $r3 = r0.<com.squareup.picasso.BitmapHunter: java.lang.String key>;
+
+        $r4 = interfaceinvoke $r2.<com.squareup.picasso.Cache: android.graphics.Bitmap get(java.lang.String)>($r3);
+
+        $r1 = $r4;
+
+        if $r4 == null goto label01;
+
+        $r5 = r0.<com.squareup.picasso.BitmapHunter: com.squareup.picasso.Stats stats>;
+
+        virtualinvoke $r5.<com.squareup.picasso.Stats: void dispatchCacheHit()>();
+
+        $r6 = <com.squareup.picasso.Picasso$LoadedFrom: com.squareup.picasso.Picasso$LoadedFrom MEMORY>;
+
+        r0.<com.squareup.picasso.BitmapHunter: com.squareup.picasso.Picasso$LoadedFrom loadedFrom> = $r6;
+
+        $r7 = r0.<com.squareup.picasso.BitmapHunter: com.squareup.picasso.Picasso picasso>;
+
+        $z0 = $r7.<com.squareup.picasso.Picasso: boolean loggingEnabled>;
+
+        if $z0 == 0 goto label16;
+
+        $r8 = r0.<com.squareup.picasso.BitmapHunter: com.squareup.picasso.Request data>;
+
+        $r3 = virtualinvoke $r8.<com.squareup.picasso.Request: java.lang.String logId()>();
+
+        staticinvoke <com.squareup.picasso.Utils: void log(java.lang.String,java.lang.String,java.lang.String,java.lang.String)>("Hunter", "decoded", $r3, "from cache");
+
+        return $r4;
+
+     label01:
+        $r8 = r0.<com.squareup.picasso.BitmapHunter: com.squareup.picasso.Request data>;
+
+        $i0 = r0.<com.squareup.picasso.BitmapHunter: int retryCount>;
+
+        if $i0 != 0 goto label13;
+
+        $r9 = <com.squareup.picasso.NetworkPolicy: com.squareup.picasso.NetworkPolicy OFFLINE>;
+
+        $i0 = $r9.<com.squareup.picasso.NetworkPolicy: int index>;
+
+     label02:
+        $r8.<com.squareup.picasso.Request: int networkPolicy> = $i0;
+
+        $r10 = r0.<com.squareup.picasso.BitmapHunter: com.squareup.picasso.RequestHandler requestHandler>;
+
+        $r8 = r0.<com.squareup.picasso.BitmapHunter: com.squareup.picasso.Request data>;
+
+        $i0 = r0.<com.squareup.picasso.BitmapHunter: int networkPolicy>;
+
+        $r11 = virtualinvoke $r10.<com.squareup.picasso.RequestHandler: com.squareup.picasso.RequestHandler$Result load(com.squareup.picasso.Request,int)>($r8, $i0);
+
+        if $r11 == null goto label05;
+
+        $r6 = virtualinvoke $r11.<com.squareup.picasso.RequestHandler$Result: com.squareup.picasso.Picasso$LoadedFrom getLoadedFrom()>();
+
+        r0.<com.squareup.picasso.BitmapHunter: com.squareup.picasso.Picasso$LoadedFrom loadedFrom> = $r6;
+
+        $i0 = virtualinvoke $r11.<com.squareup.picasso.RequestHandler$Result: int getExifOrientation()>();
+
+        r0.<com.squareup.picasso.BitmapHunter: int exifRotation> = $i0;
+
+        $r4 = virtualinvoke $r11.<com.squareup.picasso.RequestHandler$Result: android.graphics.Bitmap getBitmap()>();
+
+        $r1 = $r4;
+
+        if $r4 != null goto label05;
+
+        $r12 = virtualinvoke $r11.<com.squareup.picasso.RequestHandler$Result: java.io.InputStream getStream()>();
+
+     label03:
+        $r8 = r0.<com.squareup.picasso.BitmapHunter: com.squareup.picasso.Request data>;
+
+        $r1 = staticinvoke <com.squareup.picasso.BitmapHunter: android.graphics.Bitmap decodeStream(java.io.InputStream,com.squareup.picasso.Request)>($r12, $r8);
+
+     label04:
+        staticinvoke <com.squareup.picasso.Utils: void closeQuietly(java.io.InputStream)>($r12);
+
+     label05:
+        if $r1 == null goto label17;
+
+        $r7 = r0.<com.squareup.picasso.BitmapHunter: com.squareup.picasso.Picasso picasso>;
+
+        $z0 = $r7.<com.squareup.picasso.Picasso: boolean loggingEnabled>;
+
+        if $z0 == 0 goto label06;
+
+        $r8 = r0.<com.squareup.picasso.BitmapHunter: com.squareup.picasso.Request data>;
+
+        $r3 = virtualinvoke $r8.<com.squareup.picasso.Request: java.lang.String logId()>();
+
+        staticinvoke <com.squareup.picasso.Utils: void log(java.lang.String,java.lang.String,java.lang.String)>("Hunter", "decoded", $r3);
+
+     label06:
+        $r5 = r0.<com.squareup.picasso.BitmapHunter: com.squareup.picasso.Stats stats>;
+
+        virtualinvoke $r5.<com.squareup.picasso.Stats: void dispatchBitmapDecoded(android.graphics.Bitmap)>($r1);
+
+        $r8 = r0.<com.squareup.picasso.BitmapHunter: com.squareup.picasso.Request data>;
+
+        $z0 = virtualinvoke $r8.<com.squareup.picasso.Request: boolean needsTransformation()>();
+
+        if $z0 != 0 goto label07;
+
+        $i0 = r0.<com.squareup.picasso.BitmapHunter: int exifRotation>;
+
+        if $i0 == 0 goto label17;
+
+     label07:
+        $r13 = <com.squareup.picasso.BitmapHunter: java.lang.Object DECODE_LOCK>;
+
+        entermonitor $r13;
+
+     label08:
+        $r8 = r0.<com.squareup.picasso.BitmapHunter: com.squareup.picasso.Request data>;
+
+        $z0 = virtualinvoke $r8.<com.squareup.picasso.Request: boolean needsMatrixTransform()>();
+
+        if $z0 != 0 goto label09;
+
+        $i0 = r0.<com.squareup.picasso.BitmapHunter: int exifRotation>;
+
+        if $i0 == 0 goto label10;
+
+     label09:
+        $r8 = r0.<com.squareup.picasso.BitmapHunter: com.squareup.picasso.Request data>;
+
+        $i0 = r0.<com.squareup.picasso.BitmapHunter: int exifRotation>;
+
+        $r1 = staticinvoke <com.squareup.picasso.BitmapHunter: android.graphics.Bitmap transformResult(com.squareup.picasso.Request,android.graphics.Bitmap,int)>($r8, $r1, $i0);
+
+        $r7 = r0.<com.squareup.picasso.BitmapHunter: com.squareup.picasso.Picasso picasso>;
+
+        $z0 = $r7.<com.squareup.picasso.Picasso: boolean loggingEnabled>;
+
+        if $z0 == 0 goto label10;
+
+        $r8 = r0.<com.squareup.picasso.BitmapHunter: com.squareup.picasso.Request data>;
+
+        $r3 = virtualinvoke $r8.<com.squareup.picasso.Request: java.lang.String logId()>();
+
+        staticinvoke <com.squareup.picasso.Utils: void log(java.lang.String,java.lang.String,java.lang.String)>("Hunter", "transformed", $r3);
+
+     label10:
+        $r8 = r0.<com.squareup.picasso.BitmapHunter: com.squareup.picasso.Request data>;
+
+        $z0 = virtualinvoke $r8.<com.squareup.picasso.Request: boolean hasCustomTransformations()>();
+
+        if $z0 == 0 goto label11;
+
+        $r8 = r0.<com.squareup.picasso.BitmapHunter: com.squareup.picasso.Request data>;
+
+        $r14 = $r8.<com.squareup.picasso.Request: java.util.List transformations>;
+
+        $r1 = staticinvoke <com.squareup.picasso.BitmapHunter: android.graphics.Bitmap applyCustomTransformations(java.util.List,android.graphics.Bitmap)>($r14, $r1);
+
+        $r7 = r0.<com.squareup.picasso.BitmapHunter: com.squareup.picasso.Picasso picasso>;
+
+        $z0 = $r7.<com.squareup.picasso.Picasso: boolean loggingEnabled>;
+
+        if $z0 == 0 goto label11;
+
+        $r8 = r0.<com.squareup.picasso.BitmapHunter: com.squareup.picasso.Request data>;
+
+        $r3 = virtualinvoke $r8.<com.squareup.picasso.Request: java.lang.String logId()>();
+
+        staticinvoke <com.squareup.picasso.Utils: void log(java.lang.String,java.lang.String,java.lang.String,java.lang.String)>("Hunter", "transformed", $r3, "from custom transformations");
+
+     label11:
+        exitmonitor $r13;
+
+     label12:
+        if $r1 == null goto label17;
+
+        $r5 = r0.<com.squareup.picasso.BitmapHunter: com.squareup.picasso.Stats stats>;
+
+        virtualinvoke $r5.<com.squareup.picasso.Stats: void dispatchBitmapTransformed(android.graphics.Bitmap)>($r1);
+
+        return $r1;
+
+     label13:
+        $i0 = r0.<com.squareup.picasso.BitmapHunter: int networkPolicy>;
+
+        goto label02;
+
+     label14:
+        $r15 := @caughtexception;
+
+        staticinvoke <com.squareup.picasso.Utils: void closeQuietly(java.io.InputStream)>($r12);
+
+        throw $r15;
+
+     label15:
+        $r16 := @caughtexception;
+
+        exitmonitor $r13;
+
+        throw $r16;
+
+     label16:
+        return $r4;
+
+     label17:
+        return $r1;
+
+        catch java.lang.Throwable from label03 to label04 with label14;
+        catch java.lang.Throwable from label08 to label12 with label15;
+    }
+
+    boolean isCancelled()
+    {
+        com.squareup.picasso.BitmapHunter r0;
+        boolean $z0;
+        java.util.concurrent.Future $r1;
+
+        r0 := @this: com.squareup.picasso.BitmapHunter;
+
+        $r1 = r0.<com.squareup.picasso.BitmapHunter: java.util.concurrent.Future future>;
+
+        if $r1 == null goto label1;
+
+        $r1 = r0.<com.squareup.picasso.BitmapHunter: java.util.concurrent.Future future>;
+
+        $z0 = interfaceinvoke $r1.<java.util.concurrent.Future: boolean isCancelled()>();
+
+        if $z0 == 0 goto label1;
+
+        return 1;
+
+     label1:
+        return 0;
+    }
+
+    public void run()
+    {
+        com.squareup.picasso.BitmapHunter r0;
+        com.squareup.picasso.Request $r2;
+        com.squareup.picasso.Picasso $r3;
+        boolean $z0;
+        java.lang.String $r4;
+        android.graphics.Bitmap $r5;
+        com.squareup.picasso.Dispatcher $r6;
+        java.lang.Thread $r7;
+        com.squareup.picasso.Downloader$ResponseException $r8;
+        int $i0;
+        com.squareup.picasso.NetworkRequestHandler$ContentLengthException $r9;
+        java.lang.Throwable $r10, $r17;
+        java.lang.OutOfMemoryError $r11;
+        com.squareup.picasso.Stats $r13;
+        com.squareup.picasso.StatsSnapshot $r14;
+        java.lang.Exception $r16;
+        java.io.StringWriter $r18;
+        java.io.PrintWriter $r19;
+        java.lang.RuntimeException $r20;
+
+        r0 := @this: com.squareup.picasso.BitmapHunter;
+
+     label01:
+        $r2 = r0.<com.squareup.picasso.BitmapHunter: com.squareup.picasso.Request data>;
+
+     label02:
+        staticinvoke <com.squareup.picasso.BitmapHunter: void updateThreadName(com.squareup.picasso.Request)>($r2);
+
+     label03:
+        $r3 = r0.<com.squareup.picasso.BitmapHunter: com.squareup.picasso.Picasso picasso>;
+
+        $z0 = $r3.<com.squareup.picasso.Picasso: boolean loggingEnabled>;
+
+     label04:
+        if $z0 == 0 goto label06;
+
+     label05:
+        $r4 = staticinvoke <com.squareup.picasso.Utils: java.lang.String getLogIdsForHunter(com.squareup.picasso.BitmapHunter)>(r0);
+
+        staticinvoke <com.squareup.picasso.Utils: void log(java.lang.String,java.lang.String,java.lang.String)>("Hunter", "executing", $r4);
+
+     label06:
+        $r5 = virtualinvoke r0.<com.squareup.picasso.BitmapHunter: android.graphics.Bitmap hunt()>();
+
+     label07:
+        r0.<com.squareup.picasso.BitmapHunter: android.graphics.Bitmap result> = $r5;
+
+        $r5 = r0.<com.squareup.picasso.BitmapHunter: android.graphics.Bitmap result>;
+
+     label08:
+        if $r5 != null goto label12;
+
+     label09:
+        $r6 = r0.<com.squareup.picasso.BitmapHunter: com.squareup.picasso.Dispatcher dispatcher>;
+
+     label10:
+        virtualinvoke $r6.<com.squareup.picasso.Dispatcher: void dispatchFailed(com.squareup.picasso.BitmapHunter)>(r0);
+
+     label11:
+        $r7 = staticinvoke <java.lang.Thread: java.lang.Thread currentThread()>();
+
+        virtualinvoke $r7.<java.lang.Thread: void setName(java.lang.String)>("Picasso-Idle");
+
+        return;
+
+     label12:
+        $r6 = r0.<com.squareup.picasso.BitmapHunter: com.squareup.picasso.Dispatcher dispatcher>;
+
+     label13:
+        virtualinvoke $r6.<com.squareup.picasso.Dispatcher: void dispatchComplete(com.squareup.picasso.BitmapHunter)>(r0);
+
+     label14:
+        goto label11;
+
+     label15:
+        $r8 := @caughtexception;
+
+     label16:
+        $z0 = $r8.<com.squareup.picasso.Downloader$ResponseException: boolean localCacheOnly>;
+
+     label17:
+        if $z0 == 0 goto label20;
+
+     label18:
+        $i0 = $r8.<com.squareup.picasso.Downloader$ResponseException: int responseCode>;
+
+     label19:
+        if $i0 == 504 goto label21;
+
+     label20:
+        r0.<com.squareup.picasso.BitmapHunter: java.lang.Exception exception> = $r8;
+
+     label21:
+        $r6 = r0.<com.squareup.picasso.BitmapHunter: com.squareup.picasso.Dispatcher dispatcher>;
+
+        virtualinvoke $r6.<com.squareup.picasso.Dispatcher: void dispatchFailed(com.squareup.picasso.BitmapHunter)>(r0);
+
+     label22:
+        $r7 = staticinvoke <java.lang.Thread: java.lang.Thread currentThread()>();
+
+        virtualinvoke $r7.<java.lang.Thread: void setName(java.lang.String)>("Picasso-Idle");
+
+        return;
+
+     label23:
+        $r9 := @caughtexception;
+
+     label24:
+        r0.<com.squareup.picasso.BitmapHunter: java.lang.Exception exception> = $r9;
+
+        $r6 = r0.<com.squareup.picasso.BitmapHunter: com.squareup.picasso.Dispatcher dispatcher>;
+
+        virtualinvoke $r6.<com.squareup.picasso.Dispatcher: void dispatchRetry(com.squareup.picasso.BitmapHunter)>(r0);
+
+     label25:
+        $r7 = staticinvoke <java.lang.Thread: java.lang.Thread currentThread()>();
+
+        virtualinvoke $r7.<java.lang.Thread: void setName(java.lang.String)>("Picasso-Idle");
+
+        return;
+
+     label26:
+        $r10 := @caughtexception;
+
+     label27:
+        $r16 = (java.lang.Exception) $r10;
+
+        r0.<com.squareup.picasso.BitmapHunter: java.lang.Exception exception> = $r16;
+
+        $r6 = r0.<com.squareup.picasso.BitmapHunter: com.squareup.picasso.Dispatcher dispatcher>;
+
+        virtualinvoke $r6.<com.squareup.picasso.Dispatcher: void dispatchRetry(com.squareup.picasso.BitmapHunter)>(r0);
+
+     label28:
+        $r7 = staticinvoke <java.lang.Thread: java.lang.Thread currentThread()>();
+
+        virtualinvoke $r7.<java.lang.Thread: void setName(java.lang.String)>("Picasso-Idle");
+
+        return;
+
+     label29:
+        $r11 := @caughtexception;
+
+     label30:
+        $r18 = new java.io.StringWriter;
+
+     label31:
+        specialinvoke $r18.<java.io.StringWriter: void <init>()>();
+
+        $r13 = r0.<com.squareup.picasso.BitmapHunter: com.squareup.picasso.Stats stats>;
+
+        $r14 = virtualinvoke $r13.<com.squareup.picasso.Stats: com.squareup.picasso.StatsSnapshot createSnapshot()>();
+
+        $r19 = new java.io.PrintWriter;
+
+     label32:
+        specialinvoke $r19.<java.io.PrintWriter: void <init>(java.io.Writer)>($r18);
+
+        virtualinvoke $r14.<com.squareup.picasso.StatsSnapshot: void dump(java.io.PrintWriter)>($r19);
+
+        $r20 = new java.lang.RuntimeException;
+
+     label33:
+        $r4 = virtualinvoke $r18.<java.io.StringWriter: java.lang.String toString()>();
+
+        specialinvoke $r20.<java.lang.RuntimeException: void <init>(java.lang.String,java.lang.Throwable)>($r4, $r11);
+
+        r0.<com.squareup.picasso.BitmapHunter: java.lang.Exception exception> = $r20;
+
+        $r6 = r0.<com.squareup.picasso.BitmapHunter: com.squareup.picasso.Dispatcher dispatcher>;
+
+        virtualinvoke $r6.<com.squareup.picasso.Dispatcher: void dispatchFailed(com.squareup.picasso.BitmapHunter)>(r0);
+
+     label34:
+        $r7 = staticinvoke <java.lang.Thread: java.lang.Thread currentThread()>();
+
+        virtualinvoke $r7.<java.lang.Thread: void setName(java.lang.String)>("Picasso-Idle");
+
+        return;
+
+     label35:
+        $r16 := @caughtexception;
+
+     label36:
+        r0.<com.squareup.picasso.BitmapHunter: java.lang.Exception exception> = $r16;
+
+        $r6 = r0.<com.squareup.picasso.BitmapHunter: com.squareup.picasso.Dispatcher dispatcher>;
+
+        virtualinvoke $r6.<com.squareup.picasso.Dispatcher: void dispatchFailed(com.squareup.picasso.BitmapHunter)>(r0);
+
+     label37:
+        $r7 = staticinvoke <java.lang.Thread: java.lang.Thread currentThread()>();
+
+        virtualinvoke $r7.<java.lang.Thread: void setName(java.lang.String)>("Picasso-Idle");
+
+        return;
+
+     label38:
+        $r17 := @caughtexception;
+
+        $r7 = staticinvoke <java.lang.Thread: java.lang.Thread currentThread()>();
+
+        virtualinvoke $r7.<java.lang.Thread: void setName(java.lang.String)>("Picasso-Idle");
+
+        throw $r17;
+
+        catch com.squareup.picasso.Downloader$ResponseException from label02 to label03 with label15;
+        catch com.squareup.picasso.Downloader$ResponseException from label05 to label07 with label15;
+        catch com.squareup.picasso.Downloader$ResponseException from label10 to label11 with label15;
+        catch com.squareup.picasso.NetworkRequestHandler$ContentLengthException from label02 to label03 with label23;
+        catch com.squareup.picasso.NetworkRequestHandler$ContentLengthException from label05 to label07 with label23;
+        catch com.squareup.picasso.NetworkRequestHandler$ContentLengthException from label10 to label11 with label23;
+        catch java.io.IOException from label02 to label03 with label26;
+        catch java.io.IOException from label05 to label07 with label26;
+        catch java.io.IOException from label10 to label11 with label26;
+        catch java.lang.OutOfMemoryError from label02 to label03 with label29;
+        catch java.lang.OutOfMemoryError from label05 to label07 with label29;
+        catch java.lang.OutOfMemoryError from label10 to label11 with label29;
+        catch java.lang.Exception from label01 to label04 with label35;
+        catch java.lang.Exception from label05 to label08 with label35;
+        catch java.lang.Exception from label09 to label11 with label35;
+        catch java.lang.Throwable from label01 to label04 with label38;
+        catch java.lang.Throwable from label05 to label08 with label38;
+        catch java.lang.Throwable from label09 to label11 with label38;
+        catch com.squareup.picasso.Downloader$ResponseException from label13 to label14 with label15;
+        catch com.squareup.picasso.NetworkRequestHandler$ContentLengthException from label13 to label14 with label23;
+        catch java.io.IOException from label13 to label14 with label26;
+        catch java.lang.OutOfMemoryError from label13 to label14 with label29;
+        catch java.lang.Exception from label12 to label14 with label35;
+        catch java.lang.Throwable from label12 to label14 with label38;
+        catch java.lang.Throwable from label16 to label17 with label38;
+        catch java.lang.Throwable from label18 to label19 with label38;
+        catch java.lang.Throwable from label20 to label22 with label38;
+        catch java.lang.Throwable from label24 to label25 with label38;
+        catch java.lang.Throwable from label27 to label28 with label38;
+        catch java.lang.Throwable from label30 to label31 with label38;
+        catch java.lang.Throwable from label31 to label32 with label38;
+        catch java.lang.Throwable from label32 to label33 with label38;
+        catch java.lang.Throwable from label33 to label34 with label38;
+        catch java.lang.Throwable from label36 to label37 with label38;
+    }
+
+    boolean shouldRetry(boolean, android.net.NetworkInfo)
+    {
+        com.squareup.picasso.BitmapHunter r0;
+        boolean $z0, $z1;
+        android.net.NetworkInfo $r1;
+        int $i0;
+        com.squareup.picasso.RequestHandler $r2;
+
+        r0 := @this: com.squareup.picasso.BitmapHunter;
+
+        $z0 := @parameter0: boolean;
+
+        $r1 := @parameter1: android.net.NetworkInfo;
+
+        $i0 = r0.<com.squareup.picasso.BitmapHunter: int retryCount>;
+
+        if $i0 <= 0 goto label2;
+
+        $z1 = 1;
+
+     label1:
+        if $z1 != 0 goto label3;
+
+        return 0;
+
+     label2:
+        $z1 = 0;
+
+        goto label1;
+
+     label3:
+        $i0 = r0.<com.squareup.picasso.BitmapHunter: int retryCount>;
+
+        $i0 = $i0 + -1;
+
+        r0.<com.squareup.picasso.BitmapHunter: int retryCount> = $i0;
+
+        $r2 = r0.<com.squareup.picasso.BitmapHunter: com.squareup.picasso.RequestHandler requestHandler>;
+
+        $z0 = virtualinvoke $r2.<com.squareup.picasso.RequestHandler: boolean shouldRetry(boolean,android.net.NetworkInfo)>($z0, $r1);
+
+        return $z0;
+    }
+
+    boolean supportsReplay()
+    {
+        com.squareup.picasso.BitmapHunter r0;
+        boolean $z0;
+        com.squareup.picasso.RequestHandler $r1;
+
+        r0 := @this: com.squareup.picasso.BitmapHunter;
+
+        $r1 = r0.<com.squareup.picasso.BitmapHunter: com.squareup.picasso.RequestHandler requestHandler>;
+
+        $z0 = virtualinvoke $r1.<com.squareup.picasso.RequestHandler: boolean supportsReplay()>();
+
+        return $z0;
+    }
+}

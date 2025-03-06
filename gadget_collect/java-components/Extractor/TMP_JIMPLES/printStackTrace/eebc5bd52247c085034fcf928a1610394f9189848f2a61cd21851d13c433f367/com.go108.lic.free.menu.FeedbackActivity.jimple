@@ -1,0 +1,482 @@
+public class com.go108.lic.free.menu.FeedbackActivity extends android.app.Activity implements android.view.View$OnClickListener, android.view.View$OnFocusChangeListener, android.view.View$OnTouchListener
+{
+    private android.widget.EditText feedbackInput;
+    private android.widget.EditText mobileNo;
+    private android.widget.Button submit;
+
+    public void <init>()
+    {
+        com.go108.lic.free.menu.FeedbackActivity r0;
+
+        r0 := @this: com.go108.lic.free.menu.FeedbackActivity;
+
+        specialinvoke r0.<android.app.Activity: void <init>()>();
+
+        return;
+    }
+
+    static void access$0(com.go108.lic.free.menu.FeedbackActivity)
+    {
+        com.go108.lic.free.menu.FeedbackActivity $r0;
+
+        $r0 := @parameter0: com.go108.lic.free.menu.FeedbackActivity;
+
+        specialinvoke $r0.<com.go108.lic.free.menu.FeedbackActivity: void sendSuggest()>();
+
+        return;
+    }
+
+    private boolean checkSuggest()
+    {
+        com.go108.lic.free.menu.FeedbackActivity r0;
+        java.lang.String $r3, $r4;
+        android.widget.EditText $r1;
+        android.text.Editable $r2;
+        boolean $z0;
+
+        r0 := @this: com.go108.lic.free.menu.FeedbackActivity;
+
+        $r1 = r0.<com.go108.lic.free.menu.FeedbackActivity: android.widget.EditText feedbackInput>;
+
+        $r2 = virtualinvoke $r1.<android.widget.EditText: android.text.Editable getText()>();
+
+        $r3 = interfaceinvoke $r2.<android.text.Editable: java.lang.String toString()>();
+
+        $r3 = virtualinvoke $r3.<java.lang.String: java.lang.String trim()>();
+
+        $r4 = "";
+
+        $z0 = virtualinvoke $r4.<java.lang.String: boolean equals(java.lang.Object)>($r3);
+
+        if $z0 != 0 goto label1;
+
+        return 1;
+
+     label1:
+        return 0;
+    }
+
+    private void sendSuggest()
+    {
+        java.net.HttpURLConnection r12, $r16;
+        java.lang.Throwable $r20;
+        android.content.Context $r2;
+        com.go108.lic.free.util.APNOpera r1, $r24;
+        java.net.URL r14, $r25;
+        android.text.Editable $r6;
+        android.content.ContentResolver $r13;
+        java.net.URLConnection $r15;
+        int $i0;
+        java.lang.String $r3, r4, $r7, $r8, $r9;
+        boolean $z0;
+        com.go108.lic.free.menu.FeedbackActivity r0;
+        java.lang.Exception $r21, $r22;
+        javax.xml.parsers.DocumentBuilder $r18;
+        java.lang.StringBuilder $r10, $r23;
+        javax.xml.parsers.DocumentBuilderFactory $r17;
+        java.io.UnsupportedEncodingException $r26;
+        android.widget.EditText $r5;
+        android.content.res.Resources $r11;
+        java.io.InputStream $r19;
+
+        r0 := @this: com.go108.lic.free.menu.FeedbackActivity;
+
+        $r2 = virtualinvoke r0.<com.go108.lic.free.menu.FeedbackActivity: android.content.Context getApplicationContext()>();
+
+        $r3 = staticinvoke <cn.com.go108.pickinfo.DeviceInfo: java.lang.String getAppName(android.content.Context)>($r2);
+
+        r4 = $r3;
+
+        $r5 = r0.<com.go108.lic.free.menu.FeedbackActivity: android.widget.EditText mobileNo>;
+
+        $r6 = virtualinvoke $r5.<android.widget.EditText: android.text.Editable getText()>();
+
+        $r7 = interfaceinvoke $r6.<android.text.Editable: java.lang.String toString()>();
+
+        $r7 = virtualinvoke $r7.<java.lang.String: java.lang.String trim()>();
+
+        $r5 = r0.<com.go108.lic.free.menu.FeedbackActivity: android.widget.EditText feedbackInput>;
+
+        $r6 = virtualinvoke $r5.<android.widget.EditText: android.text.Editable getText()>();
+
+        $r8 = interfaceinvoke $r6.<android.text.Editable: java.lang.String toString()>();
+
+        $r9 = virtualinvoke $r8.<java.lang.String: java.lang.String trim()>();
+
+        $r8 = $r9;
+
+     label01:
+        $r3 = staticinvoke <java.net.URLEncoder: java.lang.String encode(java.lang.String,java.lang.String)>($r3, "utf-8");
+
+     label02:
+        r4 = $r3;
+
+     label03:
+        $r3 = staticinvoke <java.net.URLEncoder: java.lang.String encode(java.lang.String,java.lang.String)>($r9, "utf-8");
+
+     label04:
+        $r8 = $r3;
+
+     label05:
+        $r23 = new java.lang.StringBuilder;
+
+        $r11 = virtualinvoke r0.<com.go108.lic.free.menu.FeedbackActivity: android.content.res.Resources getResources()>();
+
+        $r3 = virtualinvoke $r11.<android.content.res.Resources: java.lang.String getString(int)>(2131099662);
+
+        $r3 = staticinvoke <java.lang.String: java.lang.String valueOf(java.lang.Object)>($r3);
+
+        specialinvoke $r23.<java.lang.StringBuilder: void <init>(java.lang.String)>($r3);
+
+        $r10 = virtualinvoke $r23.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("client_feedback/*/Client:");
+
+        $r10 = virtualinvoke $r10.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(r4);
+
+        $r10 = virtualinvoke $r10.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("/Mobile:");
+
+        $r10 = virtualinvoke $r10.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r7);
+
+        $r10 = virtualinvoke $r10.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("/Suggest:");
+
+        $r10 = virtualinvoke $r10.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r8);
+
+        $r7 = virtualinvoke $r10.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        r4 = $r7;
+
+        r12 = null;
+
+        $r24 = new com.go108.lic.free.util.APNOpera;
+
+        r1 = $r24;
+
+        $r13 = virtualinvoke r0.<com.go108.lic.free.menu.FeedbackActivity: android.content.ContentResolver getContentResolver()>();
+
+        specialinvoke $r24.<com.go108.lic.free.util.APNOpera: void <init>(android.content.ContentResolver)>($r13);
+
+        $r2 = virtualinvoke r0.<com.go108.lic.free.menu.FeedbackActivity: android.content.Context getApplicationContext()>();
+
+        $r3 = virtualinvoke r1.<com.go108.lic.free.util.APNOpera: java.lang.String getNetworkName(android.content.Context)>($r2);
+
+        $r8 = $r3;
+
+        if $r3 == null goto label06;
+
+        $i0 = virtualinvoke $r3.<java.lang.String: int indexOf(java.lang.String)>("MOBILE");
+
+        if $i0 != 0 goto label06;
+
+        $r8 = virtualinvoke r1.<com.go108.lic.free.util.APNOpera: java.lang.String readCurrentAPN()>();
+
+     label06:
+        if $r8 == null goto label35;
+
+        $r3 = "cmwap";
+
+     label07:
+        $z0 = virtualinvoke $r3.<java.lang.String: boolean equals(java.lang.Object)>($r8);
+
+     label08:
+        if $z0 == 0 goto label26;
+
+     label09:
+        $z0 = virtualinvoke $r7.<java.lang.String: boolean startsWith(java.lang.String)>("http://");
+
+     label10:
+        if $z0 == 0 goto label12;
+
+     label11:
+        r4 = virtualinvoke $r7.<java.lang.String: java.lang.String substring(int)>(7);
+
+     label12:
+        $i0 = virtualinvoke r4.<java.lang.String: int indexOf(int)>(47);
+
+     label13:
+        if $i0 < 0 goto label22;
+
+     label14:
+        $r7 = virtualinvoke r4.<java.lang.String: java.lang.String substring(int,int)>(0, $i0);
+
+     label15:
+        $r23 = new java.lang.StringBuilder;
+
+     label16:
+        specialinvoke $r23.<java.lang.StringBuilder: void <init>(java.lang.String)>("http://10.0.0.172");
+
+        r4 = virtualinvoke r4.<java.lang.String: java.lang.String substring(int)>($i0);
+
+        $r10 = virtualinvoke $r23.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(r4);
+
+        r4 = virtualinvoke $r10.<java.lang.StringBuilder: java.lang.String toString()>();
+
+     label17:
+        $r25 = new java.net.URL;
+
+        r14 = $r25;
+
+     label18:
+        specialinvoke $r25.<java.net.URL: void <init>(java.lang.String)>(r4);
+
+     label19:
+        $r15 = virtualinvoke r14.<java.net.URL: java.net.URLConnection openConnection()>();
+
+        $r16 = (java.net.HttpURLConnection) $r15;
+
+     label20:
+        r12 = $r16;
+
+     label21:
+        virtualinvoke $r16.<java.net.HttpURLConnection: void setRequestProperty(java.lang.String,java.lang.String)>("X-Online-Host", $r7);
+
+        $r17 = staticinvoke <javax.xml.parsers.DocumentBuilderFactory: javax.xml.parsers.DocumentBuilderFactory newInstance()>();
+
+        $r18 = virtualinvoke $r17.<javax.xml.parsers.DocumentBuilderFactory: javax.xml.parsers.DocumentBuilder newDocumentBuilder()>();
+
+        $r19 = virtualinvoke $r16.<java.net.HttpURLConnection: java.io.InputStream getInputStream()>();
+
+        virtualinvoke $r18.<javax.xml.parsers.DocumentBuilder: org.w3c.dom.Document parse(java.io.InputStream)>($r19);
+
+     label22:
+        $r23 = new java.lang.StringBuilder;
+
+     label23:
+        specialinvoke $r23.<java.lang.StringBuilder: void <init>(java.lang.String)>("Response = ");
+
+        $i0 = virtualinvoke r12.<java.net.HttpURLConnection: int getResponseCode()>();
+
+        $r10 = virtualinvoke $r23.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>($i0);
+
+        r4 = virtualinvoke $r10.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <android.util.Log: int d(java.lang.String,java.lang.String)>("debug feedback ", r4);
+
+     label24:
+        return;
+
+     label25:
+        $r20 := @caughtexception;
+
+        $r26 = (java.io.UnsupportedEncodingException) $r20;
+
+        virtualinvoke $r26.<java.io.UnsupportedEncodingException: void printStackTrace()>();
+
+        goto label05;
+
+     label26:
+        $r25 = new java.net.URL;
+
+        r14 = $r25;
+
+     label27:
+        specialinvoke $r25.<java.net.URL: void <init>(java.lang.String)>($r7);
+
+     label28:
+        $r15 = virtualinvoke r14.<java.net.URL: java.net.URLConnection openConnection()>();
+
+        $r16 = (java.net.HttpURLConnection) $r15;
+
+     label29:
+        r12 = $r16;
+
+     label30:
+        $r17 = staticinvoke <javax.xml.parsers.DocumentBuilderFactory: javax.xml.parsers.DocumentBuilderFactory newInstance()>();
+
+        $r18 = virtualinvoke $r17.<javax.xml.parsers.DocumentBuilderFactory: javax.xml.parsers.DocumentBuilder newDocumentBuilder()>();
+
+        $r19 = virtualinvoke $r16.<java.net.HttpURLConnection: java.io.InputStream getInputStream()>();
+
+        virtualinvoke $r18.<javax.xml.parsers.DocumentBuilder: org.w3c.dom.Document parse(java.io.InputStream)>($r19);
+
+     label31:
+        goto label22;
+
+     label32:
+        $r21 := @caughtexception;
+
+     label33:
+        virtualinvoke $r21.<java.lang.Exception: void printStackTrace()>();
+
+        return;
+
+     label34:
+        $r22 := @caughtexception;
+
+        $r21 = $r22;
+
+        goto label33;
+
+     label35:
+        return;
+
+        catch java.io.UnsupportedEncodingException from label01 to label02 with label25;
+        catch java.io.UnsupportedEncodingException from label03 to label04 with label25;
+        catch java.lang.Exception from label07 to label08 with label32;
+        catch java.lang.Exception from label09 to label10 with label32;
+        catch java.lang.Exception from label11 to label12 with label32;
+        catch java.lang.Exception from label12 to label13 with label32;
+        catch java.lang.Exception from label14 to label15 with label32;
+        catch java.lang.Exception from label16 to label17 with label32;
+        catch java.lang.Exception from label18 to label19 with label32;
+        catch java.lang.Exception from label19 to label20 with label34;
+        catch java.lang.Exception from label21 to label22 with label34;
+        catch java.lang.Exception from label23 to label24 with label32;
+        catch java.lang.Exception from label27 to label28 with label32;
+        catch java.lang.Exception from label28 to label29 with label34;
+        catch java.lang.Exception from label30 to label31 with label34;
+    }
+
+    public void onClick(android.view.View)
+    {
+        com.go108.lic.free.menu.FeedbackActivity r0;
+        com.go108.lic.free.menu.FeedbackActivity$1 $r2;
+        int $i0;
+        android.view.View $r1;
+        boolean $z0;
+
+        r0 := @this: com.go108.lic.free.menu.FeedbackActivity;
+
+        $r1 := @parameter0: android.view.View;
+
+        $i0 = virtualinvoke $r1.<android.view.View: int getId()>();
+
+        lookupswitch($i0)
+        {
+            case 2131296270: goto label2;
+            default: goto label1;
+        };
+
+     label1:
+        return;
+
+     label2:
+        $z0 = specialinvoke r0.<com.go108.lic.free.menu.FeedbackActivity: boolean checkSuggest()>();
+
+        if $z0 == 0 goto label3;
+
+        $r2 = new com.go108.lic.free.menu.FeedbackActivity$1;
+
+        specialinvoke $r2.<com.go108.lic.free.menu.FeedbackActivity$1: void <init>(com.go108.lic.free.menu.FeedbackActivity)>(r0);
+
+        virtualinvoke $r2.<com.go108.lic.free.menu.FeedbackActivity$1: void start()>();
+
+        staticinvoke <com.go108.lic.free.menu.SystemShare: void showMessageDIY(android.app.Activity,java.lang.String)>(r0, "\u5341\u5206\u611f\u8c22\u60a8\u7684\u5b9d\u8d35\u5efa\u8bae\uff01");
+
+     label3:
+        virtualinvoke r0.<com.go108.lic.free.menu.FeedbackActivity: void finish()>();
+
+        return;
+    }
+
+    public void onCreate(android.os.Bundle)
+    {
+        com.go108.lic.free.menu.FeedbackActivity r0;
+        android.os.Bundle $r1;
+        android.view.View $r2;
+        android.widget.Button $r4;
+        android.widget.EditText $r3;
+
+        r0 := @this: com.go108.lic.free.menu.FeedbackActivity;
+
+        $r1 := @parameter0: android.os.Bundle;
+
+        specialinvoke r0.<android.app.Activity: void onCreate(android.os.Bundle)>($r1);
+
+        virtualinvoke r0.<com.go108.lic.free.menu.FeedbackActivity: boolean requestWindowFeature(int)>(1);
+
+        virtualinvoke r0.<com.go108.lic.free.menu.FeedbackActivity: void setContentView(int)>(2130903044);
+
+        $r2 = virtualinvoke r0.<com.go108.lic.free.menu.FeedbackActivity: android.view.View findViewById(int)>(2131296268);
+
+        $r3 = (android.widget.EditText) $r2;
+
+        r0.<com.go108.lic.free.menu.FeedbackActivity: android.widget.EditText feedbackInput> = $r3;
+
+        $r2 = virtualinvoke r0.<com.go108.lic.free.menu.FeedbackActivity: android.view.View findViewById(int)>(2131296269);
+
+        $r3 = (android.widget.EditText) $r2;
+
+        r0.<com.go108.lic.free.menu.FeedbackActivity: android.widget.EditText mobileNo> = $r3;
+
+        $r2 = virtualinvoke r0.<com.go108.lic.free.menu.FeedbackActivity: android.view.View findViewById(int)>(2131296270);
+
+        $r4 = (android.widget.Button) $r2;
+
+        r0.<com.go108.lic.free.menu.FeedbackActivity: android.widget.Button submit> = $r4;
+
+        $r4 = r0.<com.go108.lic.free.menu.FeedbackActivity: android.widget.Button submit>;
+
+        virtualinvoke $r4.<android.widget.Button: void setOnClickListener(android.view.View$OnClickListener)>(r0);
+
+        return;
+    }
+
+    public void onFocusChange(android.view.View, boolean)
+    {
+        android.view.View $r1;
+        com.go108.lic.free.menu.FeedbackActivity r0;
+        boolean $z0;
+
+        r0 := @this: com.go108.lic.free.menu.FeedbackActivity;
+
+        $r1 := @parameter0: android.view.View;
+
+        $z0 := @parameter1: boolean;
+
+        return;
+    }
+
+    protected void onPause()
+    {
+        com.go108.lic.free.menu.FeedbackActivity r0;
+
+        r0 := @this: com.go108.lic.free.menu.FeedbackActivity;
+
+        specialinvoke r0.<android.app.Activity: void onPause()>();
+
+        return;
+    }
+
+    protected void onResume()
+    {
+        com.go108.lic.free.menu.FeedbackActivity r0;
+
+        r0 := @this: com.go108.lic.free.menu.FeedbackActivity;
+
+        specialinvoke r0.<android.app.Activity: void onResume()>();
+
+        return;
+    }
+
+    public boolean onTouch(android.view.View, android.view.MotionEvent)
+    {
+        com.go108.lic.free.menu.FeedbackActivity r0;
+        android.view.MotionEvent $r2;
+        int $i0;
+        android.view.View $r1;
+        android.widget.EditText $r3;
+
+        r0 := @this: com.go108.lic.free.menu.FeedbackActivity;
+
+        $r1 := @parameter0: android.view.View;
+
+        $r2 := @parameter1: android.view.MotionEvent;
+
+        $i0 = virtualinvoke $r1.<android.view.View: int getId()>();
+
+        lookupswitch($i0)
+        {
+            case 2131296268: goto label2;
+            default: goto label1;
+        };
+
+     label1:
+        return 0;
+
+     label2:
+        $r3 = r0.<com.go108.lic.free.menu.FeedbackActivity: android.widget.EditText feedbackInput>;
+
+        virtualinvoke $r3.<android.widget.EditText: void setFocusable(boolean)>(1);
+
+        goto label1;
+    }
+}

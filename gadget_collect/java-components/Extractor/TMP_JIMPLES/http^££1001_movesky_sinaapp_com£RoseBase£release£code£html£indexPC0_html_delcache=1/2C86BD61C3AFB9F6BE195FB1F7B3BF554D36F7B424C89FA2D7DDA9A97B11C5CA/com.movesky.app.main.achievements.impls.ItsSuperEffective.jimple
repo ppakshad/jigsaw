@@ -1,0 +1,162 @@
+public class com.movesky.app.main.achievements.impls.ItsSuperEffective extends com.movesky.app.main.achievements.BBTHAchievement
+{
+    java.util.ArrayList hashCodes;
+    java.util.ArrayList kills;
+
+    public void <init>(com.movesky.app.engine.achievements.AchievementInfo)
+    {
+        com.movesky.app.main.achievements.impls.ItsSuperEffective r0;
+        com.movesky.app.engine.achievements.AchievementInfo $r1;
+        java.util.ArrayList $r2;
+
+        r0 := @this: com.movesky.app.main.achievements.impls.ItsSuperEffective;
+
+        $r1 := @parameter0: com.movesky.app.engine.achievements.AchievementInfo;
+
+        specialinvoke r0.<com.movesky.app.main.achievements.BBTHAchievement: void <init>(com.movesky.app.engine.achievements.AchievementInfo)>($r1);
+
+        $r2 = new java.util.ArrayList;
+
+        specialinvoke $r2.<java.util.ArrayList: void <init>()>();
+
+        r0.<com.movesky.app.main.achievements.impls.ItsSuperEffective: java.util.ArrayList hashCodes> = $r2;
+
+        $r2 = new java.util.ArrayList;
+
+        specialinvoke $r2.<java.util.ArrayList: void <init>()>();
+
+        r0.<com.movesky.app.main.achievements.impls.ItsSuperEffective: java.util.ArrayList kills> = $r2;
+
+        return;
+    }
+
+    public void unitDead(com.movesky.app.main.achievements.events.UnitDeadEvent)
+    {
+        com.movesky.app.main.achievements.impls.ItsSuperEffective r0;
+        com.movesky.app.main.achievements.events.UnitDeadEvent $r1;
+        com.movesky.app.main.units.Unit $r2;
+        com.movesky.app.main.Player $r3;
+        com.movesky.app.main.Team $r4, $r5;
+        boolean $z0;
+        int $i0, $i1;
+        java.lang.Integer $r6;
+        java.util.ArrayList $r7;
+        java.lang.Object $r8;
+
+        r0 := @this: com.movesky.app.main.achievements.impls.ItsSuperEffective;
+
+        $r1 := @parameter0: com.movesky.app.main.achievements.events.UnitDeadEvent;
+
+        $r2 = virtualinvoke $r1.<com.movesky.app.main.achievements.events.UnitDeadEvent: com.movesky.app.main.units.Unit getKilledUnit()>();
+
+        $r3 = virtualinvoke $r1.<com.movesky.app.main.achievements.events.UnitDeadEvent: com.movesky.app.main.Player getLocalPlayer()>();
+
+        $r4 = virtualinvoke $r3.<com.movesky.app.main.Player: com.movesky.app.main.Team getTeam()>();
+
+        $r5 = virtualinvoke $r2.<com.movesky.app.main.units.Unit: com.movesky.app.main.Team getTeam()>();
+
+        $z0 = virtualinvoke $r4.<com.movesky.app.main.Team: boolean isEnemy(com.movesky.app.main.Team)>($r5);
+
+        if $z0 == 0 goto label3;
+
+        $r2 = virtualinvoke $r2.<com.movesky.app.main.units.Unit: com.movesky.app.main.units.Unit getKiller()>();
+
+        if $r2 == null goto label3;
+
+        $r5 = virtualinvoke $r2.<com.movesky.app.main.units.Unit: com.movesky.app.main.Team getTeam()>();
+
+        if $r5 != $r4 goto label3;
+
+        $i0 = virtualinvoke $r2.<com.movesky.app.main.units.Unit: int hashCode()>();
+
+        $r6 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>($i0);
+
+        $r7 = r0.<com.movesky.app.main.achievements.impls.ItsSuperEffective: java.util.ArrayList hashCodes>;
+
+        $i1 = virtualinvoke $r7.<java.util.ArrayList: int indexOf(java.lang.Object)>($r6);
+
+        $i0 = $i1;
+
+        if $i1 >= 0 goto label1;
+
+        $r7 = r0.<com.movesky.app.main.achievements.impls.ItsSuperEffective: java.util.ArrayList hashCodes>;
+
+        $i0 = virtualinvoke $r7.<java.util.ArrayList: int size()>();
+
+        $r7 = r0.<com.movesky.app.main.achievements.impls.ItsSuperEffective: java.util.ArrayList hashCodes>;
+
+        virtualinvoke $r7.<java.util.ArrayList: boolean add(java.lang.Object)>($r6);
+
+        $r7 = r0.<com.movesky.app.main.achievements.impls.ItsSuperEffective: java.util.ArrayList kills>;
+
+        $r6 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>(0);
+
+        virtualinvoke $r7.<java.util.ArrayList: boolean add(java.lang.Object)>($r6);
+
+     label1:
+        $r7 = r0.<com.movesky.app.main.achievements.impls.ItsSuperEffective: java.util.ArrayList kills>;
+
+        $r8 = virtualinvoke $r7.<java.util.ArrayList: java.lang.Object get(int)>($i0);
+
+        $r6 = (java.lang.Integer) $r8;
+
+        $i1 = virtualinvoke $r6.<java.lang.Integer: int intValue()>();
+
+        $i1 = $i1 + 1;
+
+        if $i1 < 4 goto label2;
+
+        virtualinvoke r0.<com.movesky.app.main.achievements.impls.ItsSuperEffective: void increment()>();
+
+        return;
+
+     label2:
+        $r7 = r0.<com.movesky.app.main.achievements.impls.ItsSuperEffective: java.util.ArrayList kills>;
+
+        $r6 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>($i1);
+
+        virtualinvoke $r7.<java.util.ArrayList: java.lang.Object set(int,java.lang.Object)>($i0, $r6);
+
+     label3:
+        return;
+    }
+
+    public void update(com.movesky.app.main.achievements.events.UpdateEvent)
+    {
+        com.movesky.app.main.achievements.impls.ItsSuperEffective r0;
+        com.movesky.app.main.achievements.events.UpdateEvent $r1;
+        java.util.ArrayList $r2;
+
+        r0 := @this: com.movesky.app.main.achievements.impls.ItsSuperEffective;
+
+        $r1 := @parameter0: com.movesky.app.main.achievements.events.UpdateEvent;
+
+        $r2 = r0.<com.movesky.app.main.achievements.impls.ItsSuperEffective: java.util.ArrayList hashCodes>;
+
+        virtualinvoke $r2.<java.util.ArrayList: void clear()>();
+
+        $r2 = r0.<com.movesky.app.main.achievements.impls.ItsSuperEffective: java.util.ArrayList kills>;
+
+        virtualinvoke $r2.<java.util.ArrayList: void clear()>();
+
+        return;
+    }
+
+    public boolean usesUnitDead()
+    {
+        com.movesky.app.main.achievements.impls.ItsSuperEffective r0;
+
+        r0 := @this: com.movesky.app.main.achievements.impls.ItsSuperEffective;
+
+        return 1;
+    }
+
+    public boolean usesUpdate()
+    {
+        com.movesky.app.main.achievements.impls.ItsSuperEffective r0;
+
+        r0 := @this: com.movesky.app.main.achievements.impls.ItsSuperEffective;
+
+        return 1;
+    }
+}

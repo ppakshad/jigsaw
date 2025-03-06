@@ -1,0 +1,1120 @@
+public class com.go108.lic.free.PersonModifyActivity extends android.app.Activity implements android.view.View$OnClickListener, android.widget.RadioGroup$OnCheckedChangeListener, android.widget.AdapterView$OnItemSelectedListener
+{
+    private static final int DATE_DIALOG;
+    private static final java.lang.String[] timeList;
+    private android.widget.ArrayAdapter adapterTime;
+    private android.widget.Button btDay;
+    private android.widget.Button btMonth;
+    private android.widget.Button btYear;
+    private android.os.Bundle bundle;
+    private android.database.Cursor cursor;
+    private int day;
+    private android.widget.RadioButton female;
+    private int gender;
+    private android.widget.RadioGroup genderGroup;
+    private android.widget.RadioButton loving;
+    private android.widget.RadioButton male;
+    private android.widget.ImageView modifyImg;
+    private android.widget.TextView modifyName;
+    private android.view.View modifySpace;
+    private int modifyType;
+    private int month;
+    private android.app.DatePickerDialog$OnDateSetListener myDateSetListener;
+    private java.lang.String name;
+    private android.widget.EditText nameInput;
+    private com.go108.lic.free.util.PersonDB personDB;
+    private int personId;
+    private android.widget.RadioButton single;
+    private int state;
+    private android.widget.RadioGroup stateGroup;
+    private android.widget.LinearLayout stateLine;
+    private android.widget.Button submit;
+    private int time;
+    private android.widget.Spinner timePicker;
+    private int year;
+
+    static void <clinit>()
+    {
+        java.lang.String[] $r0;
+
+        <com.go108.lic.free.PersonModifyActivity: int DATE_DIALOG> = 1;
+
+        $r0 = newarray (java.lang.String)[14];
+
+        $r0[0] = "\u672a\u77e5\u65f6\u8fb0                        ";
+
+        $r0[1] = "00:00-00:59(\u65e9\u5b50)         ";
+
+        $r0[2] = "01:00-02:59(\u4e11)          ";
+
+        $r0[3] = "03:00-04:59(\u5bc5)          ";
+
+        $r0[4] = "05:00-06:59(\u536f)          ";
+
+        $r0[5] = "07:00-08:59(\u8fb0)          ";
+
+        $r0[6] = "09:00-10:59(\u5df3)          ";
+
+        $r0[7] = "11:00-12:59(\u5348)          ";
+
+        $r0[8] = "13:00-14:59(\u672a)          ";
+
+        $r0[9] = "15:00-16:59(\u7533)          ";
+
+        $r0[10] = "17:00-18:59(\u9149)          ";
+
+        $r0[11] = "19:00-20:59(\u620c)          ";
+
+        $r0[12] = "21:00-22:59(\u4ea5)          ";
+
+        $r0[13] = "23:00-23:59(\u665a\u5b50)         ";
+
+        <com.go108.lic.free.PersonModifyActivity: java.lang.String[] timeList> = $r0;
+
+        return;
+    }
+
+    public void <init>()
+    {
+        com.go108.lic.free.PersonModifyActivity r0;
+        com.go108.lic.free.PersonModifyActivity$1 $r1;
+
+        r0 := @this: com.go108.lic.free.PersonModifyActivity;
+
+        specialinvoke r0.<android.app.Activity: void <init>()>();
+
+        $r1 = new com.go108.lic.free.PersonModifyActivity$1;
+
+        specialinvoke $r1.<com.go108.lic.free.PersonModifyActivity$1: void <init>(com.go108.lic.free.PersonModifyActivity)>(r0);
+
+        r0.<com.go108.lic.free.PersonModifyActivity: android.app.DatePickerDialog$OnDateSetListener myDateSetListener> = $r1;
+
+        return;
+    }
+
+    static void access$0(com.go108.lic.free.PersonModifyActivity, int)
+    {
+        int $i0;
+        com.go108.lic.free.PersonModifyActivity $r0;
+
+        $r0 := @parameter0: com.go108.lic.free.PersonModifyActivity;
+
+        $i0 := @parameter1: int;
+
+        $r0.<com.go108.lic.free.PersonModifyActivity: int year> = $i0;
+
+        return;
+    }
+
+    static void access$1(com.go108.lic.free.PersonModifyActivity, int)
+    {
+        int $i0;
+        com.go108.lic.free.PersonModifyActivity $r0;
+
+        $r0 := @parameter0: com.go108.lic.free.PersonModifyActivity;
+
+        $i0 := @parameter1: int;
+
+        $r0.<com.go108.lic.free.PersonModifyActivity: int month> = $i0;
+
+        return;
+    }
+
+    static void access$2(com.go108.lic.free.PersonModifyActivity, int)
+    {
+        int $i0;
+        com.go108.lic.free.PersonModifyActivity $r0;
+
+        $r0 := @parameter0: com.go108.lic.free.PersonModifyActivity;
+
+        $i0 := @parameter1: int;
+
+        $r0.<com.go108.lic.free.PersonModifyActivity: int day> = $i0;
+
+        return;
+    }
+
+    static android.widget.Button access$3(com.go108.lic.free.PersonModifyActivity)
+    {
+        com.go108.lic.free.PersonModifyActivity $r0;
+        android.widget.Button r1;
+
+        $r0 := @parameter0: com.go108.lic.free.PersonModifyActivity;
+
+        r1 = $r0.<com.go108.lic.free.PersonModifyActivity: android.widget.Button btYear>;
+
+        return r1;
+    }
+
+    static int access$4(com.go108.lic.free.PersonModifyActivity)
+    {
+        int i0;
+        com.go108.lic.free.PersonModifyActivity $r0;
+
+        $r0 := @parameter0: com.go108.lic.free.PersonModifyActivity;
+
+        i0 = $r0.<com.go108.lic.free.PersonModifyActivity: int year>;
+
+        return i0;
+    }
+
+    static android.widget.Button access$5(com.go108.lic.free.PersonModifyActivity)
+    {
+        com.go108.lic.free.PersonModifyActivity $r0;
+        android.widget.Button r1;
+
+        $r0 := @parameter0: com.go108.lic.free.PersonModifyActivity;
+
+        r1 = $r0.<com.go108.lic.free.PersonModifyActivity: android.widget.Button btMonth>;
+
+        return r1;
+    }
+
+    static int access$6(com.go108.lic.free.PersonModifyActivity)
+    {
+        int i0;
+        com.go108.lic.free.PersonModifyActivity $r0;
+
+        $r0 := @parameter0: com.go108.lic.free.PersonModifyActivity;
+
+        i0 = $r0.<com.go108.lic.free.PersonModifyActivity: int month>;
+
+        return i0;
+    }
+
+    static android.widget.Button access$7(com.go108.lic.free.PersonModifyActivity)
+    {
+        com.go108.lic.free.PersonModifyActivity $r0;
+        android.widget.Button r1;
+
+        $r0 := @parameter0: com.go108.lic.free.PersonModifyActivity;
+
+        r1 = $r0.<com.go108.lic.free.PersonModifyActivity: android.widget.Button btDay>;
+
+        return r1;
+    }
+
+    static int access$8(com.go108.lic.free.PersonModifyActivity)
+    {
+        int i0;
+        com.go108.lic.free.PersonModifyActivity $r0;
+
+        $r0 := @parameter0: com.go108.lic.free.PersonModifyActivity;
+
+        i0 = $r0.<com.go108.lic.free.PersonModifyActivity: int day>;
+
+        return i0;
+    }
+
+    private void updatePerson()
+    {
+        com.go108.lic.free.PersonModifyActivity r0;
+        com.go108.lic.free.util.PersonBean r5;
+        java.lang.String[] $r6;
+        android.text.Editable $r2;
+        byte $b1;
+        int $i0;
+        java.lang.String $r3;
+        android.widget.EditText $r1;
+        com.go108.lic.free.util.PersonDB $r4;
+        android.database.Cursor $r7, $r8;
+
+        r0 := @this: com.go108.lic.free.PersonModifyActivity;
+
+        $r1 = r0.<com.go108.lic.free.PersonModifyActivity: android.widget.EditText nameInput>;
+
+        $r2 = virtualinvoke $r1.<android.widget.EditText: android.text.Editable getText()>();
+
+        $r3 = interfaceinvoke $r2.<android.text.Editable: java.lang.String toString()>();
+
+        $r3 = virtualinvoke $r3.<java.lang.String: java.lang.String trim()>();
+
+        r0.<com.go108.lic.free.PersonModifyActivity: java.lang.String name> = $r3;
+
+        $r4 = new com.go108.lic.free.util.PersonDB;
+
+        specialinvoke $r4.<com.go108.lic.free.util.PersonDB: void <init>(android.content.Context)>(r0);
+
+        r0.<com.go108.lic.free.PersonModifyActivity: com.go108.lic.free.util.PersonDB personDB> = $r4;
+
+        $i0 = r0.<com.go108.lic.free.PersonModifyActivity: int modifyType>;
+
+        if 1 != $i0 goto label2;
+
+        r5 = new com.go108.lic.free.util.PersonBean;
+
+        specialinvoke r5.<com.go108.lic.free.util.PersonBean: void <init>()>();
+
+        $r3 = r0.<com.go108.lic.free.PersonModifyActivity: java.lang.String name>;
+
+        virtualinvoke r5.<com.go108.lic.free.util.PersonBean: void setName(java.lang.String)>($r3);
+
+        $i0 = r0.<com.go108.lic.free.PersonModifyActivity: int gender>;
+
+        $b1 = (byte) $i0;
+
+        virtualinvoke r5.<com.go108.lic.free.util.PersonBean: void setGender(byte)>($b1);
+
+        $i0 = r0.<com.go108.lic.free.PersonModifyActivity: int year>;
+
+        virtualinvoke r5.<com.go108.lic.free.util.PersonBean: void setYear(int)>($i0);
+
+        $i0 = r0.<com.go108.lic.free.PersonModifyActivity: int month>;
+
+        virtualinvoke r5.<com.go108.lic.free.util.PersonBean: void setMonth(int)>($i0);
+
+        $i0 = r0.<com.go108.lic.free.PersonModifyActivity: int day>;
+
+        virtualinvoke r5.<com.go108.lic.free.util.PersonBean: void setDay(int)>($i0);
+
+        $i0 = r0.<com.go108.lic.free.PersonModifyActivity: int time>;
+
+        virtualinvoke r5.<com.go108.lic.free.util.PersonBean: void setTime(int)>($i0);
+
+        $r4 = r0.<com.go108.lic.free.PersonModifyActivity: com.go108.lic.free.util.PersonDB personDB>;
+
+        $i0 = r0.<com.go108.lic.free.PersonModifyActivity: int personId>;
+
+        virtualinvoke $r4.<com.go108.lic.free.util.PersonDB: void modify(int,com.go108.lic.free.util.PersonBean)>($i0, r5);
+
+     label1:
+        virtualinvoke r0.<com.go108.lic.free.PersonModifyActivity: void setResult(int)>(2);
+
+        virtualinvoke r0.<com.go108.lic.free.PersonModifyActivity: void finish()>();
+
+        return;
+
+     label2:
+        $r4 = r0.<com.go108.lic.free.PersonModifyActivity: com.go108.lic.free.util.PersonDB personDB>;
+
+        $r6 = newarray (java.lang.String)[6];
+
+        $i0 = r0.<com.go108.lic.free.PersonModifyActivity: int gender>;
+
+        $r3 = staticinvoke <java.lang.String: java.lang.String valueOf(int)>($i0);
+
+        $r6[0] = $r3;
+
+        $i0 = r0.<com.go108.lic.free.PersonModifyActivity: int year>;
+
+        $r3 = staticinvoke <java.lang.String: java.lang.String valueOf(int)>($i0);
+
+        $r6[1] = $r3;
+
+        $i0 = r0.<com.go108.lic.free.PersonModifyActivity: int month>;
+
+        $r3 = staticinvoke <java.lang.String: java.lang.String valueOf(int)>($i0);
+
+        $r6[2] = $r3;
+
+        $i0 = r0.<com.go108.lic.free.PersonModifyActivity: int day>;
+
+        $r3 = staticinvoke <java.lang.String: java.lang.String valueOf(int)>($i0);
+
+        $r6[3] = $r3;
+
+        $i0 = r0.<com.go108.lic.free.PersonModifyActivity: int state>;
+
+        $r3 = staticinvoke <java.lang.String: java.lang.String valueOf(int)>($i0);
+
+        $r6[4] = $r3;
+
+        $r6[5] = "0";
+
+        $r7 = virtualinvoke $r4.<com.go108.lic.free.util.PersonDB: android.database.Cursor query(java.lang.String,java.lang.String[])>("gender = ? AND year = ? AND month = ? AND day = ? AND love_state = ? AND type = ?", $r6);
+
+        r0.<com.go108.lic.free.PersonModifyActivity: android.database.Cursor cursor> = $r7;
+
+        $r7 = r0.<com.go108.lic.free.PersonModifyActivity: android.database.Cursor cursor>;
+
+        $i0 = interfaceinvoke $r7.<android.database.Cursor: int getCount()>();
+
+        if $i0 != 0 goto label3;
+
+        $r4 = r0.<com.go108.lic.free.PersonModifyActivity: com.go108.lic.free.util.PersonDB personDB>;
+
+        virtualinvoke $r4.<com.go108.lic.free.util.PersonDB: void setNotUsing()>();
+
+        r5 = new com.go108.lic.free.util.PersonBean;
+
+        specialinvoke r5.<com.go108.lic.free.util.PersonBean: void <init>()>();
+
+        $r3 = r0.<com.go108.lic.free.PersonModifyActivity: java.lang.String name>;
+
+        virtualinvoke r5.<com.go108.lic.free.util.PersonBean: void setName(java.lang.String)>($r3);
+
+        $i0 = r0.<com.go108.lic.free.PersonModifyActivity: int gender>;
+
+        $b1 = (byte) $i0;
+
+        virtualinvoke r5.<com.go108.lic.free.util.PersonBean: void setGender(byte)>($b1);
+
+        $i0 = r0.<com.go108.lic.free.PersonModifyActivity: int year>;
+
+        virtualinvoke r5.<com.go108.lic.free.util.PersonBean: void setYear(int)>($i0);
+
+        $i0 = r0.<com.go108.lic.free.PersonModifyActivity: int month>;
+
+        virtualinvoke r5.<com.go108.lic.free.util.PersonBean: void setMonth(int)>($i0);
+
+        $i0 = r0.<com.go108.lic.free.PersonModifyActivity: int day>;
+
+        virtualinvoke r5.<com.go108.lic.free.util.PersonBean: void setDay(int)>($i0);
+
+        $i0 = r0.<com.go108.lic.free.PersonModifyActivity: int time>;
+
+        virtualinvoke r5.<com.go108.lic.free.util.PersonBean: void setTime(int)>($i0);
+
+        $i0 = r0.<com.go108.lic.free.PersonModifyActivity: int state>;
+
+        $b1 = (byte) $i0;
+
+        virtualinvoke r5.<com.go108.lic.free.util.PersonBean: void setLoveState(byte)>($b1);
+
+        $r4 = r0.<com.go108.lic.free.PersonModifyActivity: com.go108.lic.free.util.PersonDB personDB>;
+
+        virtualinvoke $r4.<com.go108.lic.free.util.PersonDB: long insert(com.go108.lic.free.util.PersonBean)>(r5);
+
+        goto label1;
+
+     label3:
+        $r4 = r0.<com.go108.lic.free.PersonModifyActivity: com.go108.lic.free.util.PersonDB personDB>;
+
+        virtualinvoke $r4.<com.go108.lic.free.util.PersonDB: void setNotUsing()>();
+
+        $r7 = r0.<com.go108.lic.free.PersonModifyActivity: android.database.Cursor cursor>;
+
+        interfaceinvoke $r7.<android.database.Cursor: boolean moveToPosition(int)>(0);
+
+        $r7 = r0.<com.go108.lic.free.PersonModifyActivity: android.database.Cursor cursor>;
+
+        $r8 = r0.<com.go108.lic.free.PersonModifyActivity: android.database.Cursor cursor>;
+
+        $i0 = interfaceinvoke $r8.<android.database.Cursor: int getColumnIndex(java.lang.String)>("id");
+
+        $i0 = interfaceinvoke $r7.<android.database.Cursor: int getInt(int)>($i0);
+
+        r0.<com.go108.lic.free.PersonModifyActivity: int personId> = $i0;
+
+        r5 = new com.go108.lic.free.util.PersonBean;
+
+        specialinvoke r5.<com.go108.lic.free.util.PersonBean: void <init>()>();
+
+        $r3 = r0.<com.go108.lic.free.PersonModifyActivity: java.lang.String name>;
+
+        virtualinvoke r5.<com.go108.lic.free.util.PersonBean: void setName(java.lang.String)>($r3);
+
+        $i0 = r0.<com.go108.lic.free.PersonModifyActivity: int gender>;
+
+        $b1 = (byte) $i0;
+
+        virtualinvoke r5.<com.go108.lic.free.util.PersonBean: void setGender(byte)>($b1);
+
+        $i0 = r0.<com.go108.lic.free.PersonModifyActivity: int year>;
+
+        virtualinvoke r5.<com.go108.lic.free.util.PersonBean: void setYear(int)>($i0);
+
+        $i0 = r0.<com.go108.lic.free.PersonModifyActivity: int month>;
+
+        virtualinvoke r5.<com.go108.lic.free.util.PersonBean: void setMonth(int)>($i0);
+
+        $i0 = r0.<com.go108.lic.free.PersonModifyActivity: int day>;
+
+        virtualinvoke r5.<com.go108.lic.free.util.PersonBean: void setDay(int)>($i0);
+
+        $i0 = r0.<com.go108.lic.free.PersonModifyActivity: int time>;
+
+        virtualinvoke r5.<com.go108.lic.free.util.PersonBean: void setTime(int)>($i0);
+
+        $i0 = r0.<com.go108.lic.free.PersonModifyActivity: int state>;
+
+        $b1 = (byte) $i0;
+
+        virtualinvoke r5.<com.go108.lic.free.util.PersonBean: void setLoveState(byte)>($b1);
+
+        virtualinvoke r5.<com.go108.lic.free.util.PersonBean: void setUsing(byte)>(1);
+
+        $r4 = r0.<com.go108.lic.free.PersonModifyActivity: com.go108.lic.free.util.PersonDB personDB>;
+
+        $i0 = r0.<com.go108.lic.free.PersonModifyActivity: int personId>;
+
+        virtualinvoke $r4.<com.go108.lic.free.util.PersonDB: void modify(int,com.go108.lic.free.util.PersonBean)>($i0, r5);
+
+        goto label1;
+    }
+
+    public void onCheckedChanged(android.widget.RadioGroup, int)
+    {
+        int $i0;
+        com.go108.lic.free.PersonModifyActivity r0;
+        android.widget.RadioGroup $r1;
+
+        r0 := @this: com.go108.lic.free.PersonModifyActivity;
+
+        $r1 := @parameter0: android.widget.RadioGroup;
+
+        $i0 := @parameter1: int;
+
+        lookupswitch($i0)
+        {
+            case 2131296310: goto label2;
+            case 2131296311: goto label3;
+            case 2131296318: goto label4;
+            case 2131296319: goto label5;
+            default: goto label1;
+        };
+
+     label1:
+        return;
+
+     label2:
+        r0.<com.go108.lic.free.PersonModifyActivity: int gender> = 1;
+
+        return;
+
+     label3:
+        r0.<com.go108.lic.free.PersonModifyActivity: int gender> = 0;
+
+        return;
+
+     label4:
+        r0.<com.go108.lic.free.PersonModifyActivity: int state> = 1;
+
+        return;
+
+     label5:
+        r0.<com.go108.lic.free.PersonModifyActivity: int state> = 2;
+
+        return;
+    }
+
+    public void onClick(android.view.View)
+    {
+        int $i0;
+        com.go108.lic.free.PersonModifyActivity r0;
+        android.view.View $r1;
+
+        r0 := @this: com.go108.lic.free.PersonModifyActivity;
+
+        $r1 := @parameter0: android.view.View;
+
+        $i0 = virtualinvoke $r1.<android.view.View: int getId()>();
+
+        lookupswitch($i0)
+        {
+            case 2131296312: goto label2;
+            case 2131296313: goto label2;
+            case 2131296314: goto label2;
+            case 2131296321: goto label3;
+            default: goto label1;
+        };
+
+     label1:
+        return;
+
+     label2:
+        virtualinvoke r0.<com.go108.lic.free.PersonModifyActivity: void showDialog(int)>(1);
+
+        return;
+
+     label3:
+        specialinvoke r0.<com.go108.lic.free.PersonModifyActivity: void updatePerson()>();
+
+        return;
+    }
+
+    public void onCreate(android.os.Bundle)
+    {
+        android.widget.LinearLayout $r12;
+        android.os.Bundle $r1;
+        android.widget.ImageView $r5;
+        android.widget.RadioButton $r9;
+        java.lang.String[] $r2;
+        android.content.Intent $r3;
+        android.widget.RadioGroup $r8;
+        com.go108.lic.free.TimeAdapter $r16;
+        int $i0;
+        android.view.View $r4;
+        android.widget.Button $r10;
+        java.lang.String $r14;
+        com.go108.lic.free.PersonModifyActivity r0;
+        android.widget.Spinner $r11;
+        android.widget.ArrayAdapter $r13;
+        android.widget.TextView $r6;
+        android.widget.EditText $r7;
+        com.go108.lic.free.util.PersonDB $r15;
+
+        r0 := @this: com.go108.lic.free.PersonModifyActivity;
+
+        $r1 := @parameter0: android.os.Bundle;
+
+        specialinvoke r0.<android.app.Activity: void onCreate(android.os.Bundle)>($r1);
+
+        virtualinvoke r0.<com.go108.lic.free.PersonModifyActivity: boolean requestWindowFeature(int)>(1);
+
+        virtualinvoke r0.<com.go108.lic.free.PersonModifyActivity: void setContentView(int)>(2130903050);
+
+        $r15 = new com.go108.lic.free.util.PersonDB;
+
+        specialinvoke $r15.<com.go108.lic.free.util.PersonDB: void <init>(android.content.Context)>(r0);
+
+        r0.<com.go108.lic.free.PersonModifyActivity: com.go108.lic.free.util.PersonDB personDB> = $r15;
+
+        $r3 = virtualinvoke r0.<com.go108.lic.free.PersonModifyActivity: android.content.Intent getIntent()>();
+
+        $r1 = virtualinvoke $r3.<android.content.Intent: android.os.Bundle getExtras()>();
+
+        r0.<com.go108.lic.free.PersonModifyActivity: android.os.Bundle bundle> = $r1;
+
+        $r4 = virtualinvoke r0.<com.go108.lic.free.PersonModifyActivity: android.view.View findViewById(int)>(2131296306);
+
+        $r5 = (android.widget.ImageView) $r4;
+
+        r0.<com.go108.lic.free.PersonModifyActivity: android.widget.ImageView modifyImg> = $r5;
+
+        $r4 = virtualinvoke r0.<com.go108.lic.free.PersonModifyActivity: android.view.View findViewById(int)>(2131296320);
+
+        r0.<com.go108.lic.free.PersonModifyActivity: android.view.View modifySpace> = $r4;
+
+        $r4 = virtualinvoke r0.<com.go108.lic.free.PersonModifyActivity: android.view.View findViewById(int)>(2131296307);
+
+        $r6 = (android.widget.TextView) $r4;
+
+        r0.<com.go108.lic.free.PersonModifyActivity: android.widget.TextView modifyName> = $r6;
+
+        $r4 = virtualinvoke r0.<com.go108.lic.free.PersonModifyActivity: android.view.View findViewById(int)>(2131296308);
+
+        $r7 = (android.widget.EditText) $r4;
+
+        r0.<com.go108.lic.free.PersonModifyActivity: android.widget.EditText nameInput> = $r7;
+
+        $r4 = virtualinvoke r0.<com.go108.lic.free.PersonModifyActivity: android.view.View findViewById(int)>(2131296309);
+
+        $r8 = (android.widget.RadioGroup) $r4;
+
+        r0.<com.go108.lic.free.PersonModifyActivity: android.widget.RadioGroup genderGroup> = $r8;
+
+        $r4 = virtualinvoke r0.<com.go108.lic.free.PersonModifyActivity: android.view.View findViewById(int)>(2131296317);
+
+        $r8 = (android.widget.RadioGroup) $r4;
+
+        r0.<com.go108.lic.free.PersonModifyActivity: android.widget.RadioGroup stateGroup> = $r8;
+
+        $r4 = virtualinvoke r0.<com.go108.lic.free.PersonModifyActivity: android.view.View findViewById(int)>(2131296310);
+
+        $r9 = (android.widget.RadioButton) $r4;
+
+        r0.<com.go108.lic.free.PersonModifyActivity: android.widget.RadioButton male> = $r9;
+
+        $r4 = virtualinvoke r0.<com.go108.lic.free.PersonModifyActivity: android.view.View findViewById(int)>(2131296311);
+
+        $r9 = (android.widget.RadioButton) $r4;
+
+        r0.<com.go108.lic.free.PersonModifyActivity: android.widget.RadioButton female> = $r9;
+
+        $r4 = virtualinvoke r0.<com.go108.lic.free.PersonModifyActivity: android.view.View findViewById(int)>(2131296318);
+
+        $r9 = (android.widget.RadioButton) $r4;
+
+        r0.<com.go108.lic.free.PersonModifyActivity: android.widget.RadioButton single> = $r9;
+
+        $r4 = virtualinvoke r0.<com.go108.lic.free.PersonModifyActivity: android.view.View findViewById(int)>(2131296319);
+
+        $r9 = (android.widget.RadioButton) $r4;
+
+        r0.<com.go108.lic.free.PersonModifyActivity: android.widget.RadioButton loving> = $r9;
+
+        $r4 = virtualinvoke r0.<com.go108.lic.free.PersonModifyActivity: android.view.View findViewById(int)>(2131296312);
+
+        $r10 = (android.widget.Button) $r4;
+
+        r0.<com.go108.lic.free.PersonModifyActivity: android.widget.Button btYear> = $r10;
+
+        $r4 = virtualinvoke r0.<com.go108.lic.free.PersonModifyActivity: android.view.View findViewById(int)>(2131296313);
+
+        $r10 = (android.widget.Button) $r4;
+
+        r0.<com.go108.lic.free.PersonModifyActivity: android.widget.Button btMonth> = $r10;
+
+        $r4 = virtualinvoke r0.<com.go108.lic.free.PersonModifyActivity: android.view.View findViewById(int)>(2131296314);
+
+        $r10 = (android.widget.Button) $r4;
+
+        r0.<com.go108.lic.free.PersonModifyActivity: android.widget.Button btDay> = $r10;
+
+        $r4 = virtualinvoke r0.<com.go108.lic.free.PersonModifyActivity: android.view.View findViewById(int)>(2131296321);
+
+        $r10 = (android.widget.Button) $r4;
+
+        r0.<com.go108.lic.free.PersonModifyActivity: android.widget.Button submit> = $r10;
+
+        $r4 = virtualinvoke r0.<com.go108.lic.free.PersonModifyActivity: android.view.View findViewById(int)>(2131296315);
+
+        $r11 = (android.widget.Spinner) $r4;
+
+        r0.<com.go108.lic.free.PersonModifyActivity: android.widget.Spinner timePicker> = $r11;
+
+        $r4 = virtualinvoke r0.<com.go108.lic.free.PersonModifyActivity: android.view.View findViewById(int)>(2131296316);
+
+        $r12 = (android.widget.LinearLayout) $r4;
+
+        r0.<com.go108.lic.free.PersonModifyActivity: android.widget.LinearLayout stateLine> = $r12;
+
+        $r8 = r0.<com.go108.lic.free.PersonModifyActivity: android.widget.RadioGroup genderGroup>;
+
+        virtualinvoke $r8.<android.widget.RadioGroup: void setOnCheckedChangeListener(android.widget.RadioGroup$OnCheckedChangeListener)>(r0);
+
+        $r8 = r0.<com.go108.lic.free.PersonModifyActivity: android.widget.RadioGroup stateGroup>;
+
+        virtualinvoke $r8.<android.widget.RadioGroup: void setOnCheckedChangeListener(android.widget.RadioGroup$OnCheckedChangeListener)>(r0);
+
+        $r10 = r0.<com.go108.lic.free.PersonModifyActivity: android.widget.Button btYear>;
+
+        virtualinvoke $r10.<android.widget.Button: void setOnClickListener(android.view.View$OnClickListener)>(r0);
+
+        $r10 = r0.<com.go108.lic.free.PersonModifyActivity: android.widget.Button btMonth>;
+
+        virtualinvoke $r10.<android.widget.Button: void setOnClickListener(android.view.View$OnClickListener)>(r0);
+
+        $r10 = r0.<com.go108.lic.free.PersonModifyActivity: android.widget.Button btDay>;
+
+        virtualinvoke $r10.<android.widget.Button: void setOnClickListener(android.view.View$OnClickListener)>(r0);
+
+        $r10 = r0.<com.go108.lic.free.PersonModifyActivity: android.widget.Button submit>;
+
+        virtualinvoke $r10.<android.widget.Button: void setOnClickListener(android.view.View$OnClickListener)>(r0);
+
+        $r11 = r0.<com.go108.lic.free.PersonModifyActivity: android.widget.Spinner timePicker>;
+
+        virtualinvoke $r11.<android.widget.Spinner: void setOnItemSelectedListener(android.widget.AdapterView$OnItemSelectedListener)>(r0);
+
+        $r16 = new com.go108.lic.free.TimeAdapter;
+
+        $r2 = <com.go108.lic.free.PersonModifyActivity: java.lang.String[] timeList>;
+
+        specialinvoke $r16.<com.go108.lic.free.TimeAdapter: void <init>(android.content.Context,int,java.lang.String[])>(r0, 2130903041, $r2);
+
+        r0.<com.go108.lic.free.PersonModifyActivity: android.widget.ArrayAdapter adapterTime> = $r16;
+
+        $r13 = r0.<com.go108.lic.free.PersonModifyActivity: android.widget.ArrayAdapter adapterTime>;
+
+        virtualinvoke $r13.<android.widget.ArrayAdapter: void setDropDownViewResource(int)>(17367049);
+
+        $r13 = r0.<com.go108.lic.free.PersonModifyActivity: android.widget.ArrayAdapter adapterTime>;
+
+        virtualinvoke $r13.<android.widget.ArrayAdapter: void add(java.lang.Object)>("\u51fa\u751f\u65f6\u8fb0                         ");
+
+        $r13 = r0.<com.go108.lic.free.PersonModifyActivity: android.widget.ArrayAdapter adapterTime>;
+
+        virtualinvoke $r13.<android.widget.ArrayAdapter: void add(java.lang.Object)>("00:00~00:59(\u65e9\u5b50)         ");
+
+        $r13 = r0.<com.go108.lic.free.PersonModifyActivity: android.widget.ArrayAdapter adapterTime>;
+
+        virtualinvoke $r13.<android.widget.ArrayAdapter: void add(java.lang.Object)>("01:00~02:59(\u4e11)          ");
+
+        $r13 = r0.<com.go108.lic.free.PersonModifyActivity: android.widget.ArrayAdapter adapterTime>;
+
+        virtualinvoke $r13.<android.widget.ArrayAdapter: void add(java.lang.Object)>("03:00~04:59(\u5bc5)          ");
+
+        $r13 = r0.<com.go108.lic.free.PersonModifyActivity: android.widget.ArrayAdapter adapterTime>;
+
+        virtualinvoke $r13.<android.widget.ArrayAdapter: void add(java.lang.Object)>("05:00~06:59(\u536f)          ");
+
+        $r13 = r0.<com.go108.lic.free.PersonModifyActivity: android.widget.ArrayAdapter adapterTime>;
+
+        virtualinvoke $r13.<android.widget.ArrayAdapter: void add(java.lang.Object)>("07:00~08:59(\u8fb0)          ");
+
+        $r13 = r0.<com.go108.lic.free.PersonModifyActivity: android.widget.ArrayAdapter adapterTime>;
+
+        virtualinvoke $r13.<android.widget.ArrayAdapter: void add(java.lang.Object)>("09:00~10:59(\u5df3)          ");
+
+        $r13 = r0.<com.go108.lic.free.PersonModifyActivity: android.widget.ArrayAdapter adapterTime>;
+
+        virtualinvoke $r13.<android.widget.ArrayAdapter: void add(java.lang.Object)>("11:00~12:59(\u5348)          ");
+
+        $r13 = r0.<com.go108.lic.free.PersonModifyActivity: android.widget.ArrayAdapter adapterTime>;
+
+        virtualinvoke $r13.<android.widget.ArrayAdapter: void add(java.lang.Object)>("13:00~14:59(\u672a)          ");
+
+        $r13 = r0.<com.go108.lic.free.PersonModifyActivity: android.widget.ArrayAdapter adapterTime>;
+
+        virtualinvoke $r13.<android.widget.ArrayAdapter: void add(java.lang.Object)>("15:00~16:59(\u7533)          ");
+
+        $r13 = r0.<com.go108.lic.free.PersonModifyActivity: android.widget.ArrayAdapter adapterTime>;
+
+        virtualinvoke $r13.<android.widget.ArrayAdapter: void add(java.lang.Object)>("17:00~18:59(\u9149)          ");
+
+        $r13 = r0.<com.go108.lic.free.PersonModifyActivity: android.widget.ArrayAdapter adapterTime>;
+
+        virtualinvoke $r13.<android.widget.ArrayAdapter: void add(java.lang.Object)>("19:00~20:59(\u620c)          ");
+
+        $r13 = r0.<com.go108.lic.free.PersonModifyActivity: android.widget.ArrayAdapter adapterTime>;
+
+        virtualinvoke $r13.<android.widget.ArrayAdapter: void add(java.lang.Object)>("21:00~22:59(\u4ea5)          ");
+
+        $r13 = r0.<com.go108.lic.free.PersonModifyActivity: android.widget.ArrayAdapter adapterTime>;
+
+        virtualinvoke $r13.<android.widget.ArrayAdapter: void add(java.lang.Object)>("23:00~23:59(\u665a\u5b50)         ");
+
+        $r11 = r0.<com.go108.lic.free.PersonModifyActivity: android.widget.Spinner timePicker>;
+
+        $r13 = r0.<com.go108.lic.free.PersonModifyActivity: android.widget.ArrayAdapter adapterTime>;
+
+        virtualinvoke $r11.<android.widget.Spinner: void setAdapter(android.widget.SpinnerAdapter)>($r13);
+
+        $r1 = r0.<com.go108.lic.free.PersonModifyActivity: android.os.Bundle bundle>;
+
+        if $r1 == null goto label5;
+
+        $r1 = r0.<com.go108.lic.free.PersonModifyActivity: android.os.Bundle bundle>;
+
+        $i0 = virtualinvoke $r1.<android.os.Bundle: int getInt(java.lang.String)>("modifyFlag");
+
+        r0.<com.go108.lic.free.PersonModifyActivity: int modifyType> = $i0;
+
+        $i0 = r0.<com.go108.lic.free.PersonModifyActivity: int modifyType>;
+
+        if 1 != $i0 goto label3;
+
+        $r1 = r0.<com.go108.lic.free.PersonModifyActivity: android.os.Bundle bundle>;
+
+        $i0 = virtualinvoke $r1.<android.os.Bundle: int getInt(java.lang.String)>("taId");
+
+        r0.<com.go108.lic.free.PersonModifyActivity: int personId> = $i0;
+
+        $r1 = r0.<com.go108.lic.free.PersonModifyActivity: android.os.Bundle bundle>;
+
+        $r14 = virtualinvoke $r1.<android.os.Bundle: java.lang.String getString(java.lang.String)>("taName");
+
+        r0.<com.go108.lic.free.PersonModifyActivity: java.lang.String name> = $r14;
+
+        $r1 = r0.<com.go108.lic.free.PersonModifyActivity: android.os.Bundle bundle>;
+
+        $i0 = virtualinvoke $r1.<android.os.Bundle: int getInt(java.lang.String)>("taGender");
+
+        r0.<com.go108.lic.free.PersonModifyActivity: int gender> = $i0;
+
+        $r1 = r0.<com.go108.lic.free.PersonModifyActivity: android.os.Bundle bundle>;
+
+        $i0 = virtualinvoke $r1.<android.os.Bundle: int getInt(java.lang.String)>("taYear");
+
+        r0.<com.go108.lic.free.PersonModifyActivity: int year> = $i0;
+
+        $r1 = r0.<com.go108.lic.free.PersonModifyActivity: android.os.Bundle bundle>;
+
+        $i0 = virtualinvoke $r1.<android.os.Bundle: int getInt(java.lang.String)>("taMonth");
+
+        r0.<com.go108.lic.free.PersonModifyActivity: int month> = $i0;
+
+        $r1 = r0.<com.go108.lic.free.PersonModifyActivity: android.os.Bundle bundle>;
+
+        $i0 = virtualinvoke $r1.<android.os.Bundle: int getInt(java.lang.String)>("taDay");
+
+        r0.<com.go108.lic.free.PersonModifyActivity: int day> = $i0;
+
+        $r1 = r0.<com.go108.lic.free.PersonModifyActivity: android.os.Bundle bundle>;
+
+        $i0 = virtualinvoke $r1.<android.os.Bundle: int getInt(java.lang.String)>("taTime");
+
+        r0.<com.go108.lic.free.PersonModifyActivity: int time> = $i0;
+
+        $r6 = r0.<com.go108.lic.free.PersonModifyActivity: android.widget.TextView modifyName>;
+
+        virtualinvoke $r6.<android.widget.TextView: void setText(java.lang.CharSequence)>("\u6635        \u79f0\uff1a");
+
+        $r5 = r0.<com.go108.lic.free.PersonModifyActivity: android.widget.ImageView modifyImg>;
+
+        virtualinvoke $r5.<android.widget.ImageView: void setBackgroundResource(int)>(2130837578);
+
+        $r4 = r0.<com.go108.lic.free.PersonModifyActivity: android.view.View modifySpace>;
+
+        virtualinvoke $r4.<android.view.View: void setVisibility(int)>(0);
+
+        $r12 = r0.<com.go108.lic.free.PersonModifyActivity: android.widget.LinearLayout stateLine>;
+
+        virtualinvoke $r12.<android.widget.LinearLayout: void setVisibility(int)>(8);
+
+     label1:
+        $r7 = r0.<com.go108.lic.free.PersonModifyActivity: android.widget.EditText nameInput>;
+
+        $r14 = r0.<com.go108.lic.free.PersonModifyActivity: java.lang.String name>;
+
+        virtualinvoke $r7.<android.widget.EditText: void setText(java.lang.CharSequence)>($r14);
+
+        $i0 = r0.<com.go108.lic.free.PersonModifyActivity: int gender>;
+
+        if 1 != $i0 goto label6;
+
+        $r9 = r0.<com.go108.lic.free.PersonModifyActivity: android.widget.RadioButton male>;
+
+        virtualinvoke $r9.<android.widget.RadioButton: void setChecked(boolean)>(1);
+
+     label2:
+        $r10 = r0.<com.go108.lic.free.PersonModifyActivity: android.widget.Button btYear>;
+
+        $i0 = r0.<com.go108.lic.free.PersonModifyActivity: int year>;
+
+        $r14 = staticinvoke <com.go108.lic.free.menu.SystemShare: java.lang.String formateInt(int)>($i0);
+
+        virtualinvoke $r10.<android.widget.Button: void setText(java.lang.CharSequence)>($r14);
+
+        $r10 = r0.<com.go108.lic.free.PersonModifyActivity: android.widget.Button btMonth>;
+
+        $i0 = r0.<com.go108.lic.free.PersonModifyActivity: int month>;
+
+        $r14 = staticinvoke <com.go108.lic.free.menu.SystemShare: java.lang.String formateInt(int)>($i0);
+
+        virtualinvoke $r10.<android.widget.Button: void setText(java.lang.CharSequence)>($r14);
+
+        $r10 = r0.<com.go108.lic.free.PersonModifyActivity: android.widget.Button btDay>;
+
+        $i0 = r0.<com.go108.lic.free.PersonModifyActivity: int day>;
+
+        $r14 = staticinvoke <com.go108.lic.free.menu.SystemShare: java.lang.String formateInt(int)>($i0);
+
+        virtualinvoke $r10.<android.widget.Button: void setText(java.lang.CharSequence)>($r14);
+
+        $i0 = r0.<com.go108.lic.free.PersonModifyActivity: int time>;
+
+        if -1 == $i0 goto label7;
+
+        $r11 = r0.<com.go108.lic.free.PersonModifyActivity: android.widget.Spinner timePicker>;
+
+        $i0 = r0.<com.go108.lic.free.PersonModifyActivity: int time>;
+
+        $i0 = $i0 + 1;
+
+        virtualinvoke $r11.<android.widget.Spinner: void setSelection(int)>($i0);
+
+        return;
+
+     label3:
+        $r1 = r0.<com.go108.lic.free.PersonModifyActivity: android.os.Bundle bundle>;
+
+        $i0 = virtualinvoke $r1.<android.os.Bundle: int getInt(java.lang.String)>("myId");
+
+        r0.<com.go108.lic.free.PersonModifyActivity: int personId> = $i0;
+
+        $r1 = r0.<com.go108.lic.free.PersonModifyActivity: android.os.Bundle bundle>;
+
+        $r14 = virtualinvoke $r1.<android.os.Bundle: java.lang.String getString(java.lang.String)>("myName");
+
+        r0.<com.go108.lic.free.PersonModifyActivity: java.lang.String name> = $r14;
+
+        $r1 = r0.<com.go108.lic.free.PersonModifyActivity: android.os.Bundle bundle>;
+
+        $i0 = virtualinvoke $r1.<android.os.Bundle: int getInt(java.lang.String)>("myGender");
+
+        r0.<com.go108.lic.free.PersonModifyActivity: int gender> = $i0;
+
+        $r1 = r0.<com.go108.lic.free.PersonModifyActivity: android.os.Bundle bundle>;
+
+        $i0 = virtualinvoke $r1.<android.os.Bundle: int getInt(java.lang.String)>("myYear");
+
+        r0.<com.go108.lic.free.PersonModifyActivity: int year> = $i0;
+
+        $r1 = r0.<com.go108.lic.free.PersonModifyActivity: android.os.Bundle bundle>;
+
+        $i0 = virtualinvoke $r1.<android.os.Bundle: int getInt(java.lang.String)>("myMonth");
+
+        r0.<com.go108.lic.free.PersonModifyActivity: int month> = $i0;
+
+        $r1 = r0.<com.go108.lic.free.PersonModifyActivity: android.os.Bundle bundle>;
+
+        $i0 = virtualinvoke $r1.<android.os.Bundle: int getInt(java.lang.String)>("myDay");
+
+        r0.<com.go108.lic.free.PersonModifyActivity: int day> = $i0;
+
+        $r1 = r0.<com.go108.lic.free.PersonModifyActivity: android.os.Bundle bundle>;
+
+        $i0 = virtualinvoke $r1.<android.os.Bundle: int getInt(java.lang.String)>("myTime");
+
+        r0.<com.go108.lic.free.PersonModifyActivity: int time> = $i0;
+
+        $r1 = r0.<com.go108.lic.free.PersonModifyActivity: android.os.Bundle bundle>;
+
+        $i0 = virtualinvoke $r1.<android.os.Bundle: int getInt(java.lang.String)>("loveState");
+
+        r0.<com.go108.lic.free.PersonModifyActivity: int state> = $i0;
+
+        $i0 = r0.<com.go108.lic.free.PersonModifyActivity: int state>;
+
+        if 1 != $i0 goto label4;
+
+        $r9 = r0.<com.go108.lic.free.PersonModifyActivity: android.widget.RadioButton single>;
+
+        virtualinvoke $r9.<android.widget.RadioButton: void setChecked(boolean)>(1);
+
+        goto label1;
+
+     label4:
+        $r9 = r0.<com.go108.lic.free.PersonModifyActivity: android.widget.RadioButton loving>;
+
+        virtualinvoke $r9.<android.widget.RadioButton: void setChecked(boolean)>(1);
+
+        goto label1;
+
+     label5:
+        virtualinvoke r0.<com.go108.lic.free.PersonModifyActivity: void finish()>();
+
+        goto label1;
+
+     label6:
+        $r9 = r0.<com.go108.lic.free.PersonModifyActivity: android.widget.RadioButton female>;
+
+        virtualinvoke $r9.<android.widget.RadioButton: void setChecked(boolean)>(1);
+
+        goto label2;
+
+     label7:
+        $r11 = r0.<com.go108.lic.free.PersonModifyActivity: android.widget.Spinner timePicker>;
+
+        virtualinvoke $r11.<android.widget.Spinner: void setSelection(int)>(0);
+
+        return;
+    }
+
+    protected android.app.Dialog onCreateDialog(int)
+    {
+        com.go108.lic.free.PersonModifyActivity r0;
+        android.app.DatePickerDialog $r2;
+        android.app.DatePickerDialog$OnDateSetListener $r1;
+        int $i0, $i1, $i2;
+
+        r0 := @this: com.go108.lic.free.PersonModifyActivity;
+
+        $i0 := @parameter0: int;
+
+        lookupswitch($i0)
+        {
+            case 1: goto label2;
+            default: goto label1;
+        };
+
+     label1:
+        return null;
+
+     label2:
+        $r2 = new android.app.DatePickerDialog;
+
+        $r1 = r0.<com.go108.lic.free.PersonModifyActivity: android.app.DatePickerDialog$OnDateSetListener myDateSetListener>;
+
+        $i0 = r0.<com.go108.lic.free.PersonModifyActivity: int year>;
+
+        $i1 = r0.<com.go108.lic.free.PersonModifyActivity: int month>;
+
+        $i2 = $i1 - 1;
+
+        $i1 = r0.<com.go108.lic.free.PersonModifyActivity: int day>;
+
+        specialinvoke $r2.<android.app.DatePickerDialog: void <init>(android.content.Context,android.app.DatePickerDialog$OnDateSetListener,int,int,int)>(r0, $r1, $i0, $i2, $i1);
+
+        return $r2;
+    }
+
+    protected void onDestroy()
+    {
+        com.go108.lic.free.PersonModifyActivity r0;
+        com.go108.lic.free.util.PersonDB $r1;
+
+        r0 := @this: com.go108.lic.free.PersonModifyActivity;
+
+        $r1 = r0.<com.go108.lic.free.PersonModifyActivity: com.go108.lic.free.util.PersonDB personDB>;
+
+        virtualinvoke $r1.<com.go108.lic.free.util.PersonDB: void close()>();
+
+        specialinvoke r0.<android.app.Activity: void onDestroy()>();
+
+        return;
+    }
+
+    public void onItemSelected(android.widget.AdapterView, android.view.View, int, long)
+    {
+        com.go108.lic.free.PersonModifyActivity r0;
+        int $i0;
+        android.view.View $r2;
+        long $l1;
+        android.widget.AdapterView r1;
+
+        r0 := @this: com.go108.lic.free.PersonModifyActivity;
+
+        r1 := @parameter0: android.widget.AdapterView;
+
+        $r2 := @parameter1: android.view.View;
+
+        $i0 := @parameter2: int;
+
+        $l1 := @parameter3: long;
+
+        if $i0 != 0 goto label1;
+
+        r0.<com.go108.lic.free.PersonModifyActivity: int time> = -1;
+
+        return;
+
+     label1:
+        $i0 = $i0 - 1;
+
+        r0.<com.go108.lic.free.PersonModifyActivity: int time> = $i0;
+
+        return;
+    }
+
+    public boolean onKeyDown(int, android.view.KeyEvent)
+    {
+        int $i0;
+        com.go108.lic.free.PersonModifyActivity r0;
+        android.view.KeyEvent $r1;
+
+        r0 := @this: com.go108.lic.free.PersonModifyActivity;
+
+        $i0 := @parameter0: int;
+
+        $r1 := @parameter1: android.view.KeyEvent;
+
+        if $i0 != 4 goto label1;
+
+        $i0 = virtualinvoke $r1.<android.view.KeyEvent: int getRepeatCount()>();
+
+        if $i0 != 0 goto label1;
+
+        virtualinvoke r0.<com.go108.lic.free.PersonModifyActivity: void finish()>();
+
+     label1:
+        return 1;
+    }
+
+    public void onNothingSelected(android.widget.AdapterView)
+    {
+        com.go108.lic.free.PersonModifyActivity r0;
+        android.widget.AdapterView r1;
+
+        r0 := @this: com.go108.lic.free.PersonModifyActivity;
+
+        r1 := @parameter0: android.widget.AdapterView;
+
+        return;
+    }
+
+    protected void onPause()
+    {
+        com.go108.lic.free.PersonModifyActivity r0;
+
+        r0 := @this: com.go108.lic.free.PersonModifyActivity;
+
+        specialinvoke r0.<android.app.Activity: void onPause()>();
+
+        return;
+    }
+
+    protected void onResume()
+    {
+        com.go108.lic.free.PersonModifyActivity r0;
+
+        r0 := @this: com.go108.lic.free.PersonModifyActivity;
+
+        specialinvoke r0.<android.app.Activity: void onResume()>();
+
+        return;
+    }
+}

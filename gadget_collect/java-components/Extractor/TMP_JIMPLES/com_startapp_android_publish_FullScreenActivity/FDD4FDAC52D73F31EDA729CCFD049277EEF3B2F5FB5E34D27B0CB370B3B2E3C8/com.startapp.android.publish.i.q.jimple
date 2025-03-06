@@ -1,0 +1,157 @@
+public class com.startapp.android.publish.i.q extends android.widget.LinearLayout
+{
+
+    public void <init>(android.content.Context)
+    {
+        com.startapp.android.publish.i.q r0;
+        android.content.Context $r1;
+
+        r0 := @this: com.startapp.android.publish.i.q;
+
+        $r1 := @parameter0: android.content.Context;
+
+        specialinvoke r0.<android.widget.LinearLayout: void <init>(android.content.Context)>($r1);
+
+        return;
+    }
+
+    private void a(java.lang.String)
+    {
+        com.startapp.android.publish.i.q r0;
+        java.lang.String $r1;
+        android.content.Context $r2;
+        int $i0, $i1, $i2, $i3;
+        android.widget.ImageView $r3;
+        android.graphics.Bitmap $r4;
+
+        r0 := @this: com.startapp.android.publish.i.q;
+
+        $r1 := @parameter0: java.lang.String;
+
+        $r2 = virtualinvoke r0.<com.startapp.android.publish.i.q: android.content.Context getContext()>();
+
+        $i0 = staticinvoke <com.startapp.android.publish.i.w: int a(android.content.Context,int)>($r2, 2);
+
+        $r2 = virtualinvoke r0.<com.startapp.android.publish.i.q: android.content.Context getContext()>();
+
+        $i1 = staticinvoke <com.startapp.android.publish.i.w: int a(android.content.Context,int)>($r2, 5);
+
+        $r3 = new android.widget.ImageView;
+
+        $r2 = virtualinvoke r0.<com.startapp.android.publish.i.q: android.content.Context getContext()>();
+
+        specialinvoke $r3.<android.widget.ImageView: void <init>(android.content.Context)>($r2);
+
+        $r2 = virtualinvoke r0.<com.startapp.android.publish.i.q: android.content.Context getContext()>();
+
+        $r4 = staticinvoke <com.startapp.android.publish.i.f: android.graphics.Bitmap a(android.content.Context,java.lang.String)>($r2, $r1);
+
+        $r2 = virtualinvoke r0.<com.startapp.android.publish.i.q: android.content.Context getContext()>();
+
+        $i2 = staticinvoke <com.startapp.android.publish.i.w: int a(android.content.Context,int)>($r2, 15);
+
+        $r2 = virtualinvoke r0.<com.startapp.android.publish.i.q: android.content.Context getContext()>();
+
+        $i3 = staticinvoke <com.startapp.android.publish.i.w: int a(android.content.Context,int)>($r2, 15);
+
+        $r4 = staticinvoke <android.graphics.Bitmap: android.graphics.Bitmap createScaledBitmap(android.graphics.Bitmap,int,int,boolean)>($r4, $i2, $i3, 1);
+
+        virtualinvoke $r3.<android.widget.ImageView: void setImageBitmap(android.graphics.Bitmap)>($r4);
+
+        virtualinvoke $r3.<android.widget.ImageView: void setPadding(int,int,int,int)>($i0, 0, 0, $i1);
+
+        virtualinvoke r0.<com.startapp.android.publish.i.q: void addView(android.view.View)>($r3);
+
+        return;
+    }
+
+    public void setRating(float)
+    {
+        com.startapp.android.publish.i.q r0;
+        float $f0, $f1;
+        byte $b0, $b3;
+        int $i1, $i2, $i4, $i5;
+        double $d0;
+        boolean $z0;
+
+        r0 := @this: com.startapp.android.publish.i.q;
+
+        $f0 := @parameter0: float;
+
+        $b0 = 1;
+
+        $i1 = 0;
+
+        virtualinvoke r0.<com.startapp.android.publish.i.q: void removeAllViews()>();
+
+        $f0 = $f0 * 2.0F;
+
+        $i2 = staticinvoke <java.lang.Math: int round(float)>($f0);
+
+        $f0 = (float) $i2;
+
+        $f0 = $f0 / 2.0F;
+
+        $d0 = (double) $f0;
+
+        $d0 = staticinvoke <java.lang.Math: double floor(double)>($d0);
+
+        $i2 = (int) $d0;
+
+        $f1 = (float) $i2;
+
+        $f0 = $f0 - $f1;
+
+        $b3 = $f0 cmpl 0.5F;
+
+        if $b3 != 0 goto label4;
+
+        $z0 = 1;
+
+     label1:
+        $i4 = 5 - $i2;
+
+        if $z0 == 0 goto label5;
+
+     label2:
+        $i4 = $i4 - $b0;
+
+        $i5 = 0;
+
+     label3:
+        if $i5 >= $i2 goto label6;
+
+        specialinvoke r0.<com.startapp.android.publish.i.q: void a(java.lang.String)>("filled_star.png");
+
+        $i5 = $i5 + 1;
+
+        goto label3;
+
+     label4:
+        $z0 = 0;
+
+        goto label1;
+
+     label5:
+        $b0 = 0;
+
+        goto label2;
+
+     label6:
+        if $z0 == 0 goto label7;
+
+        specialinvoke r0.<com.startapp.android.publish.i.q: void a(java.lang.String)>("half_star.png");
+
+     label7:
+        if $i1 >= $i4 goto label8;
+
+        specialinvoke r0.<com.startapp.android.publish.i.q: void a(java.lang.String)>("empty_star.png");
+
+        $i1 = $i1 + 1;
+
+        goto label7;
+
+     label8:
+        return;
+    }
+}

@@ -1,0 +1,84 @@
+final enum class AuxModule$EnumMsgType extends java.lang.Enum
+{
+    private static final AuxModule$EnumMsgType[] $VALUES;
+    public static final enum AuxModule$EnumMsgType Ok;
+    public static final enum AuxModule$EnumMsgType YesNo;
+
+    static void <clinit>()
+    {
+        AuxModule$EnumMsgType $r0;
+        AuxModule$EnumMsgType[] $r1;
+
+        $r0 = new AuxModule$EnumMsgType;
+
+        specialinvoke $r0.<AuxModule$EnumMsgType: void <init>(java.lang.String,int)>("Ok", 0);
+
+        <AuxModule$EnumMsgType: AuxModule$EnumMsgType Ok> = $r0;
+
+        $r0 = new AuxModule$EnumMsgType;
+
+        specialinvoke $r0.<AuxModule$EnumMsgType: void <init>(java.lang.String,int)>("YesNo", 1);
+
+        <AuxModule$EnumMsgType: AuxModule$EnumMsgType YesNo> = $r0;
+
+        $r1 = newarray (AuxModule$EnumMsgType)[2];
+
+        $r0 = <AuxModule$EnumMsgType: AuxModule$EnumMsgType Ok>;
+
+        $r1[0] = $r0;
+
+        $r0 = <AuxModule$EnumMsgType: AuxModule$EnumMsgType YesNo>;
+
+        $r1[1] = $r0;
+
+        <AuxModule$EnumMsgType: AuxModule$EnumMsgType[] $VALUES> = $r1;
+
+        return;
+    }
+
+    private void <init>(java.lang.String, int)
+    {
+        AuxModule$EnumMsgType r0;
+        java.lang.String $r1;
+        int $i0;
+
+        r0 := @this: AuxModule$EnumMsgType;
+
+        $r1 := @parameter0: java.lang.String;
+
+        $i0 := @parameter1: int;
+
+        specialinvoke r0.<java.lang.Enum: void <init>(java.lang.String,int)>($r1, $i0);
+
+        return;
+    }
+
+    public static AuxModule$EnumMsgType valueOf(java.lang.String)
+    {
+        java.lang.Enum $r0;
+        java.lang.String $r1;
+        AuxModule$EnumMsgType $r2;
+
+        $r1 := @parameter0: java.lang.String;
+
+        $r0 = staticinvoke <java.lang.Enum: java.lang.Enum valueOf(java.lang.Class,java.lang.String)>(class "LAuxModule$EnumMsgType;", $r1);
+
+        $r2 = (AuxModule$EnumMsgType) $r0;
+
+        return $r2;
+    }
+
+    public static AuxModule$EnumMsgType[] values()
+    {
+        java.lang.Object $r0;
+        AuxModule$EnumMsgType[] $r1;
+
+        $r1 = <AuxModule$EnumMsgType: AuxModule$EnumMsgType[] $VALUES>;
+
+        $r0 = virtualinvoke $r1.<java.lang.Object: java.lang.Object clone()>();
+
+        $r1 = (AuxModule$EnumMsgType[]) $r0;
+
+        return $r1;
+    }
+}

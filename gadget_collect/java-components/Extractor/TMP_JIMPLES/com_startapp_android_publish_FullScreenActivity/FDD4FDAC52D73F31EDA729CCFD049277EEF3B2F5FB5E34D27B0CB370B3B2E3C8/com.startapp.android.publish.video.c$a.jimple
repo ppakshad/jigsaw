@@ -1,0 +1,123 @@
+public final enum class com.startapp.android.publish.video.c$a extends java.lang.Enum
+{
+    public static final enum com.startapp.android.publish.video.c$a a;
+    public static final enum com.startapp.android.publish.video.c$a b;
+    public static final enum com.startapp.android.publish.video.c$a c;
+    public static final enum com.startapp.android.publish.video.c$a d;
+    private static final com.startapp.android.publish.video.c$a[] e;
+    private java.lang.String desctiption;
+
+    static void <clinit>()
+    {
+        com.startapp.android.publish.video.c$a $r0;
+        com.startapp.android.publish.video.c$a[] $r1;
+
+        $r0 = new com.startapp.android.publish.video.c$a;
+
+        specialinvoke $r0.<com.startapp.android.publish.video.c$a: void <init>(java.lang.String,int,java.lang.String)>("ELIGIBLE", 0, "");
+
+        <com.startapp.android.publish.video.c$a: com.startapp.android.publish.video.c$a a> = $r0;
+
+        $r0 = new com.startapp.android.publish.video.c$a;
+
+        specialinvoke $r0.<com.startapp.android.publish.video.c$a: void <init>(java.lang.String,int,java.lang.String)>("INELIGIBLE_NO_STORAGE", 1, "Not enough storage for video");
+
+        <com.startapp.android.publish.video.c$a: com.startapp.android.publish.video.c$a b> = $r0;
+
+        $r0 = new com.startapp.android.publish.video.c$a;
+
+        specialinvoke $r0.<com.startapp.android.publish.video.c$a: void <init>(java.lang.String,int,java.lang.String)>("INELIGIBLE_MISSING_ACTIVITY", 2, "FullScreenActivity not declared in AndroidManifest.xml");
+
+        <com.startapp.android.publish.video.c$a: com.startapp.android.publish.video.c$a c> = $r0;
+
+        $r0 = new com.startapp.android.publish.video.c$a;
+
+        specialinvoke $r0.<com.startapp.android.publish.video.c$a: void <init>(java.lang.String,int,java.lang.String)>("INELIGIBLE_ERRORS_THRESHOLD_REACHED", 3, "Video errors threshold reached.");
+
+        <com.startapp.android.publish.video.c$a: com.startapp.android.publish.video.c$a d> = $r0;
+
+        $r1 = newarray (com.startapp.android.publish.video.c$a)[4];
+
+        $r0 = <com.startapp.android.publish.video.c$a: com.startapp.android.publish.video.c$a a>;
+
+        $r1[0] = $r0;
+
+        $r0 = <com.startapp.android.publish.video.c$a: com.startapp.android.publish.video.c$a b>;
+
+        $r1[1] = $r0;
+
+        $r0 = <com.startapp.android.publish.video.c$a: com.startapp.android.publish.video.c$a c>;
+
+        $r1[2] = $r0;
+
+        $r0 = <com.startapp.android.publish.video.c$a: com.startapp.android.publish.video.c$a d>;
+
+        $r1[3] = $r0;
+
+        <com.startapp.android.publish.video.c$a: com.startapp.android.publish.video.c$a[] e> = $r1;
+
+        return;
+    }
+
+    private void <init>(java.lang.String, int, java.lang.String)
+    {
+        com.startapp.android.publish.video.c$a r0;
+        java.lang.String $r1, $r2;
+        int $i0;
+
+        r0 := @this: com.startapp.android.publish.video.c$a;
+
+        $r1 := @parameter0: java.lang.String;
+
+        $i0 := @parameter1: int;
+
+        $r2 := @parameter2: java.lang.String;
+
+        specialinvoke r0.<java.lang.Enum: void <init>(java.lang.String,int)>($r1, $i0);
+
+        r0.<com.startapp.android.publish.video.c$a: java.lang.String desctiption> = $r2;
+
+        return;
+    }
+
+    public static com.startapp.android.publish.video.c$a valueOf(java.lang.String)
+    {
+        java.lang.String $r0;
+        java.lang.Enum $r1;
+        com.startapp.android.publish.video.c$a $r2;
+
+        $r0 := @parameter0: java.lang.String;
+
+        $r1 = staticinvoke <java.lang.Enum: java.lang.Enum valueOf(java.lang.Class,java.lang.String)>(class "Lcom/startapp/android/publish/video/c$a;", $r0);
+
+        $r2 = (com.startapp.android.publish.video.c$a) $r1;
+
+        return $r2;
+    }
+
+    public static com.startapp.android.publish.video.c$a[] values()
+    {
+        java.lang.Object $r0;
+        com.startapp.android.publish.video.c$a[] $r1;
+
+        $r1 = <com.startapp.android.publish.video.c$a: com.startapp.android.publish.video.c$a[] e>;
+
+        $r0 = virtualinvoke $r1.<java.lang.Object: java.lang.Object clone()>();
+
+        $r1 = (com.startapp.android.publish.video.c$a[]) $r0;
+
+        return $r1;
+    }
+
+    public java.lang.String a()
+    {
+        com.startapp.android.publish.video.c$a r0;
+        java.lang.String r1;
+
+        r0 := @this: com.startapp.android.publish.video.c$a;
+
+        r1 = r0.<com.startapp.android.publish.video.c$a: java.lang.String desctiption>;
+
+        return r1;
+    }
+}

@@ -1,0 +1,406 @@
+class com.squareup.picasso.Stats extends java.lang.Object
+{
+    private static final int BITMAP_DECODE_FINISHED;
+    private static final int BITMAP_TRANSFORMED_FINISHED;
+    private static final int CACHE_HIT;
+    private static final int CACHE_MISS;
+    private static final int DOWNLOAD_FINISHED;
+    private static final java.lang.String STATS_THREAD_NAME;
+    long averageDownloadSize;
+    long averageOriginalBitmapSize;
+    long averageTransformedBitmapSize;
+    final com.squareup.picasso.Cache cache;
+    long cacheHits;
+    long cacheMisses;
+    int downloadCount;
+    final android.os.Handler handler;
+    int originalBitmapCount;
+    final android.os.HandlerThread statsThread;
+    long totalDownloadSize;
+    long totalOriginalBitmapSize;
+    long totalTransformedBitmapSize;
+    int transformedBitmapCount;
+
+    void <init>(com.squareup.picasso.Cache)
+    {
+        com.squareup.picasso.Stats r0;
+        com.squareup.picasso.Cache $r1;
+        android.os.HandlerThread $r2;
+        android.os.Looper $r3;
+        com.squareup.picasso.Stats$StatsHandler $r4;
+
+        r0 := @this: com.squareup.picasso.Stats;
+
+        $r1 := @parameter0: com.squareup.picasso.Cache;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        r0.<com.squareup.picasso.Stats: com.squareup.picasso.Cache cache> = $r1;
+
+        $r2 = new android.os.HandlerThread;
+
+        specialinvoke $r2.<android.os.HandlerThread: void <init>(java.lang.String,int)>("Picasso-Stats", 10);
+
+        r0.<com.squareup.picasso.Stats: android.os.HandlerThread statsThread> = $r2;
+
+        $r2 = r0.<com.squareup.picasso.Stats: android.os.HandlerThread statsThread>;
+
+        virtualinvoke $r2.<android.os.HandlerThread: void start()>();
+
+        $r2 = r0.<com.squareup.picasso.Stats: android.os.HandlerThread statsThread>;
+
+        $r3 = virtualinvoke $r2.<android.os.HandlerThread: android.os.Looper getLooper()>();
+
+        staticinvoke <com.squareup.picasso.Utils: void flushStackLocalLeaks(android.os.Looper)>($r3);
+
+        $r4 = new com.squareup.picasso.Stats$StatsHandler;
+
+        $r2 = r0.<com.squareup.picasso.Stats: android.os.HandlerThread statsThread>;
+
+        $r3 = virtualinvoke $r2.<android.os.HandlerThread: android.os.Looper getLooper()>();
+
+        specialinvoke $r4.<com.squareup.picasso.Stats$StatsHandler: void <init>(android.os.Looper,com.squareup.picasso.Stats)>($r3, r0);
+
+        r0.<com.squareup.picasso.Stats: android.os.Handler handler> = $r4;
+
+        return;
+    }
+
+    private static long getAverage(int, long)
+    {
+        int $i0;
+        long $l1, $l2;
+
+        $i0 := @parameter0: int;
+
+        $l1 := @parameter1: long;
+
+        $l2 = (long) $i0;
+
+        $l1 = $l1 / $l2;
+
+        return $l1;
+    }
+
+    private void processBitmap(android.graphics.Bitmap, int)
+    {
+        com.squareup.picasso.Stats r0;
+        android.graphics.Bitmap $r1;
+        int $i0, $i1;
+        android.os.Handler $r2, $r3;
+        android.os.Message $r4;
+
+        r0 := @this: com.squareup.picasso.Stats;
+
+        $r1 := @parameter0: android.graphics.Bitmap;
+
+        $i0 := @parameter1: int;
+
+        $i1 = staticinvoke <com.squareup.picasso.Utils: int getBitmapBytes(android.graphics.Bitmap)>($r1);
+
+        $r2 = r0.<com.squareup.picasso.Stats: android.os.Handler handler>;
+
+        $r3 = r0.<com.squareup.picasso.Stats: android.os.Handler handler>;
+
+        $r4 = virtualinvoke $r3.<android.os.Handler: android.os.Message obtainMessage(int,int,int)>($i0, $i1, 0);
+
+        virtualinvoke $r2.<android.os.Handler: boolean sendMessage(android.os.Message)>($r4);
+
+        return;
+    }
+
+    com.squareup.picasso.StatsSnapshot createSnapshot()
+    {
+        com.squareup.picasso.Stats r0;
+        com.squareup.picasso.StatsSnapshot $r1;
+        long $l0, $l1, $l2, $l3, $l4, $l7, $l8, $l9, $l13;
+        com.squareup.picasso.Cache $r2;
+        int $i5, $i6, $i10, $i11, $i12;
+
+        r0 := @this: com.squareup.picasso.Stats;
+
+        $r1 = new com.squareup.picasso.StatsSnapshot;
+
+        $r2 = r0.<com.squareup.picasso.Stats: com.squareup.picasso.Cache cache>;
+
+        $i5 = interfaceinvoke $r2.<com.squareup.picasso.Cache: int maxSize()>();
+
+        $r2 = r0.<com.squareup.picasso.Stats: com.squareup.picasso.Cache cache>;
+
+        $i6 = interfaceinvoke $r2.<com.squareup.picasso.Cache: int size()>();
+
+        $l0 = r0.<com.squareup.picasso.Stats: long cacheHits>;
+
+        $l1 = r0.<com.squareup.picasso.Stats: long cacheMisses>;
+
+        $l2 = r0.<com.squareup.picasso.Stats: long totalDownloadSize>;
+
+        $l3 = r0.<com.squareup.picasso.Stats: long totalOriginalBitmapSize>;
+
+        $l4 = r0.<com.squareup.picasso.Stats: long totalTransformedBitmapSize>;
+
+        $l7 = r0.<com.squareup.picasso.Stats: long averageDownloadSize>;
+
+        $l8 = r0.<com.squareup.picasso.Stats: long averageOriginalBitmapSize>;
+
+        $l9 = r0.<com.squareup.picasso.Stats: long averageTransformedBitmapSize>;
+
+        $i10 = r0.<com.squareup.picasso.Stats: int downloadCount>;
+
+        $i11 = r0.<com.squareup.picasso.Stats: int originalBitmapCount>;
+
+        $i12 = r0.<com.squareup.picasso.Stats: int transformedBitmapCount>;
+
+        $l13 = staticinvoke <java.lang.System: long currentTimeMillis()>();
+
+        specialinvoke $r1.<com.squareup.picasso.StatsSnapshot: void <init>(int,int,long,long,long,long,long,long,long,long,int,int,int,long)>($i5, $i6, $l0, $l1, $l2, $l3, $l4, $l7, $l8, $l9, $i10, $i11, $i12, $l13);
+
+        return $r1;
+    }
+
+    void dispatchBitmapDecoded(android.graphics.Bitmap)
+    {
+        com.squareup.picasso.Stats r0;
+        android.graphics.Bitmap $r1;
+
+        r0 := @this: com.squareup.picasso.Stats;
+
+        $r1 := @parameter0: android.graphics.Bitmap;
+
+        specialinvoke r0.<com.squareup.picasso.Stats: void processBitmap(android.graphics.Bitmap,int)>($r1, 2);
+
+        return;
+    }
+
+    void dispatchBitmapTransformed(android.graphics.Bitmap)
+    {
+        com.squareup.picasso.Stats r0;
+        android.graphics.Bitmap $r1;
+
+        r0 := @this: com.squareup.picasso.Stats;
+
+        $r1 := @parameter0: android.graphics.Bitmap;
+
+        specialinvoke r0.<com.squareup.picasso.Stats: void processBitmap(android.graphics.Bitmap,int)>($r1, 3);
+
+        return;
+    }
+
+    void dispatchCacheHit()
+    {
+        com.squareup.picasso.Stats r0;
+        android.os.Handler $r1;
+
+        r0 := @this: com.squareup.picasso.Stats;
+
+        $r1 = r0.<com.squareup.picasso.Stats: android.os.Handler handler>;
+
+        virtualinvoke $r1.<android.os.Handler: boolean sendEmptyMessage(int)>(0);
+
+        return;
+    }
+
+    void dispatchCacheMiss()
+    {
+        com.squareup.picasso.Stats r0;
+        android.os.Handler $r1;
+
+        r0 := @this: com.squareup.picasso.Stats;
+
+        $r1 = r0.<com.squareup.picasso.Stats: android.os.Handler handler>;
+
+        virtualinvoke $r1.<android.os.Handler: boolean sendEmptyMessage(int)>(1);
+
+        return;
+    }
+
+    void dispatchDownloadFinished(long)
+    {
+        com.squareup.picasso.Stats r0;
+        long $l0;
+        android.os.Handler $r1, $r2;
+        java.lang.Long $r3;
+        android.os.Message $r4;
+
+        r0 := @this: com.squareup.picasso.Stats;
+
+        $l0 := @parameter0: long;
+
+        $r1 = r0.<com.squareup.picasso.Stats: android.os.Handler handler>;
+
+        $r2 = r0.<com.squareup.picasso.Stats: android.os.Handler handler>;
+
+        $r3 = staticinvoke <java.lang.Long: java.lang.Long valueOf(long)>($l0);
+
+        $r4 = virtualinvoke $r2.<android.os.Handler: android.os.Message obtainMessage(int,java.lang.Object)>(4, $r3);
+
+        virtualinvoke $r1.<android.os.Handler: boolean sendMessage(android.os.Message)>($r4);
+
+        return;
+    }
+
+    void performBitmapDecoded(long)
+    {
+        com.squareup.picasso.Stats r0;
+        long $l0, $l2;
+        int $i1;
+
+        r0 := @this: com.squareup.picasso.Stats;
+
+        $l0 := @parameter0: long;
+
+        $i1 = r0.<com.squareup.picasso.Stats: int originalBitmapCount>;
+
+        $i1 = $i1 + 1;
+
+        r0.<com.squareup.picasso.Stats: int originalBitmapCount> = $i1;
+
+        $l2 = r0.<com.squareup.picasso.Stats: long totalOriginalBitmapSize>;
+
+        $l0 = $l2 + $l0;
+
+        r0.<com.squareup.picasso.Stats: long totalOriginalBitmapSize> = $l0;
+
+        $i1 = r0.<com.squareup.picasso.Stats: int originalBitmapCount>;
+
+        $l0 = r0.<com.squareup.picasso.Stats: long totalOriginalBitmapSize>;
+
+        $l0 = staticinvoke <com.squareup.picasso.Stats: long getAverage(int,long)>($i1, $l0);
+
+        r0.<com.squareup.picasso.Stats: long averageOriginalBitmapSize> = $l0;
+
+        return;
+    }
+
+    void performBitmapTransformed(long)
+    {
+        com.squareup.picasso.Stats r0;
+        long $l0, $l2;
+        int $i1;
+
+        r0 := @this: com.squareup.picasso.Stats;
+
+        $l0 := @parameter0: long;
+
+        $i1 = r0.<com.squareup.picasso.Stats: int transformedBitmapCount>;
+
+        $i1 = $i1 + 1;
+
+        r0.<com.squareup.picasso.Stats: int transformedBitmapCount> = $i1;
+
+        $l2 = r0.<com.squareup.picasso.Stats: long totalTransformedBitmapSize>;
+
+        $l0 = $l2 + $l0;
+
+        r0.<com.squareup.picasso.Stats: long totalTransformedBitmapSize> = $l0;
+
+        $i1 = r0.<com.squareup.picasso.Stats: int originalBitmapCount>;
+
+        $l0 = r0.<com.squareup.picasso.Stats: long totalTransformedBitmapSize>;
+
+        $l0 = staticinvoke <com.squareup.picasso.Stats: long getAverage(int,long)>($i1, $l0);
+
+        r0.<com.squareup.picasso.Stats: long averageTransformedBitmapSize> = $l0;
+
+        return;
+    }
+
+    void performCacheHit()
+    {
+        com.squareup.picasso.Stats r0;
+        long $l0;
+
+        r0 := @this: com.squareup.picasso.Stats;
+
+        $l0 = r0.<com.squareup.picasso.Stats: long cacheHits>;
+
+        $l0 = $l0 + 1L;
+
+        r0.<com.squareup.picasso.Stats: long cacheHits> = $l0;
+
+        return;
+    }
+
+    void performCacheMiss()
+    {
+        com.squareup.picasso.Stats r0;
+        long $l0;
+
+        r0 := @this: com.squareup.picasso.Stats;
+
+        $l0 = r0.<com.squareup.picasso.Stats: long cacheMisses>;
+
+        $l0 = $l0 + 1L;
+
+        r0.<com.squareup.picasso.Stats: long cacheMisses> = $l0;
+
+        return;
+    }
+
+    void performDownloadFinished(java.lang.Long)
+    {
+        com.squareup.picasso.Stats r0;
+        java.lang.Long $r1;
+        int $i0;
+        long $l1, $l2;
+
+        r0 := @this: com.squareup.picasso.Stats;
+
+        $r1 := @parameter0: java.lang.Long;
+
+        $i0 = r0.<com.squareup.picasso.Stats: int downloadCount>;
+
+        $i0 = $i0 + 1;
+
+        r0.<com.squareup.picasso.Stats: int downloadCount> = $i0;
+
+        $l1 = r0.<com.squareup.picasso.Stats: long totalDownloadSize>;
+
+        $l2 = virtualinvoke $r1.<java.lang.Long: long longValue()>();
+
+        $l1 = $l1 + $l2;
+
+        r0.<com.squareup.picasso.Stats: long totalDownloadSize> = $l1;
+
+        $i0 = r0.<com.squareup.picasso.Stats: int downloadCount>;
+
+        $l1 = r0.<com.squareup.picasso.Stats: long totalDownloadSize>;
+
+        $l1 = staticinvoke <com.squareup.picasso.Stats: long getAverage(int,long)>($i0, $l1);
+
+        r0.<com.squareup.picasso.Stats: long averageDownloadSize> = $l1;
+
+        return;
+    }
+
+    void shutdown()
+    {
+        com.squareup.picasso.Stats r0;
+        android.os.HandlerThread $r1;
+
+        r0 := @this: com.squareup.picasso.Stats;
+
+        $r1 = r0.<com.squareup.picasso.Stats: android.os.HandlerThread statsThread>;
+
+        virtualinvoke $r1.<android.os.HandlerThread: boolean quit()>();
+
+        return;
+    }
+
+    public static void <clinit>()
+    {
+        <com.squareup.picasso.Stats: java.lang.String STATS_THREAD_NAME> = "Picasso-Stats";
+
+        <com.squareup.picasso.Stats: int DOWNLOAD_FINISHED> = 4;
+
+        <com.squareup.picasso.Stats: int CACHE_MISS> = 1;
+
+        <com.squareup.picasso.Stats: int CACHE_HIT> = 0;
+
+        <com.squareup.picasso.Stats: int BITMAP_TRANSFORMED_FINISHED> = 3;
+
+        <com.squareup.picasso.Stats: int BITMAP_DECODE_FINISHED> = 2;
+
+        return;
+    }
+}

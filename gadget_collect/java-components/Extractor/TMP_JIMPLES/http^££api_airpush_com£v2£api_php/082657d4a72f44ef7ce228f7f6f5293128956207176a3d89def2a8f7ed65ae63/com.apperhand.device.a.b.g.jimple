@@ -1,0 +1,176 @@
+public final class com.apperhand.device.a.b.g extends com.apperhand.device.a.b.b
+{
+    java.util.Map g;
+
+    public void <init>(com.apperhand.device.a.b, com.apperhand.device.a.a, java.lang.String, com.apperhand.common.dto.Command)
+    {
+        com.apperhand.device.a.b.g r0;
+        com.apperhand.device.a.b $r1;
+        com.apperhand.device.a.a $r2;
+        java.lang.String $r3;
+        com.apperhand.common.dto.Command $r4;
+        com.apperhand.common.dto.Command$Commands $r5;
+        java.util.Map $r6;
+
+        r0 := @this: com.apperhand.device.a.b.g;
+
+        $r1 := @parameter0: com.apperhand.device.a.b;
+
+        $r2 := @parameter1: com.apperhand.device.a.a;
+
+        $r3 := @parameter2: java.lang.String;
+
+        $r4 := @parameter3: com.apperhand.common.dto.Command;
+
+        $r5 = virtualinvoke $r4.<com.apperhand.common.dto.Command: com.apperhand.common.dto.Command$Commands getCommand()>();
+
+        specialinvoke r0.<com.apperhand.device.a.b.b: void <init>(com.apperhand.device.a.b,com.apperhand.device.a.a,java.lang.String,com.apperhand.common.dto.Command$Commands)>($r1, $r2, $r3, $r5);
+
+        $r6 = virtualinvoke $r4.<com.apperhand.common.dto.Command: java.util.Map getParameters()>();
+
+        r0.<com.apperhand.device.a.b.g: java.util.Map g> = $r6;
+
+        return;
+    }
+
+    private com.apperhand.common.dto.protocol.BaseResponse a(com.apperhand.common.dto.protocol.OptOutRequest)
+    {
+        com.apperhand.common.dto.protocol.OptOutRequest $r0;
+        java.lang.String $r1;
+        com.apperhand.device.a.b.g r2;
+        com.apperhand.device.a.a $r3;
+        com.apperhand.device.a.c.a $r4;
+        com.apperhand.common.dto.Command$Commands $r5;
+        com.apperhand.common.dto.protocol.BaseResponse $r6;
+        com.apperhand.common.dto.protocol.OptOutResponse $r7;
+        com.apperhand.device.a.d.f $r8;
+        com.apperhand.device.a.d.c $r9;
+        com.apperhand.device.a.d.c$a $r10;
+
+        r2 := @this: com.apperhand.device.a.b.g;
+
+        $r0 := @parameter0: com.apperhand.common.dto.protocol.OptOutRequest;
+
+        $r3 = r2.<com.apperhand.device.a.b.g: com.apperhand.device.a.a e>;
+
+     label1:
+        $r4 = interfaceinvoke $r3.<com.apperhand.device.a.a: com.apperhand.device.a.c.a b()>();
+
+     label2:
+        $r5 = <com.apperhand.common.dto.Command$Commands: com.apperhand.common.dto.Command$Commands OPTOUT>;
+
+     label3:
+        $r6 = interfaceinvoke $r4.<com.apperhand.device.a.c.a: com.apperhand.common.dto.protocol.BaseResponse a(java.lang.Object,com.apperhand.common.dto.Command$Commands,java.lang.Class)>($r0, $r5, class "Lcom/apperhand/common/dto/protocol/OptOutResponse;");
+
+     label4:
+        $r7 = (com.apperhand.common.dto.protocol.OptOutResponse) $r6;
+
+        return $r7;
+
+     label5:
+        $r8 := @caughtexception;
+
+        $r3 = r2.<com.apperhand.device.a.b.g: com.apperhand.device.a.a e>;
+
+        $r9 = interfaceinvoke $r3.<com.apperhand.device.a.a: com.apperhand.device.a.d.c a()>();
+
+        $r10 = <com.apperhand.device.a.d.c$a: com.apperhand.device.a.d.c$a b>;
+
+        $r1 = r2.<com.apperhand.device.a.b.g: java.lang.String a>;
+
+        interfaceinvoke $r9.<com.apperhand.device.a.d.c: void a(com.apperhand.device.a.d.c$a,java.lang.String,java.lang.String,java.lang.Throwable)>($r10, $r1, "Unable to handle Optout command!!!!", $r8);
+
+        return null;
+
+        catch com.apperhand.device.a.d.f from label1 to label2 with label5;
+        catch com.apperhand.device.a.d.f from label3 to label4 with label5;
+    }
+
+    protected final com.apperhand.common.dto.protocol.BaseResponse a() throws com.apperhand.device.a.d.f
+    {
+        com.apperhand.device.a.b.g r0;
+        com.apperhand.common.dto.protocol.OptOutRequest $r1;
+        com.apperhand.common.dto.OptOutDetails $r2;
+        com.apperhand.device.a.a $r3;
+        com.apperhand.common.dto.ApplicationDetails $r4;
+        java.util.Map $r5;
+        java.lang.Object $r6;
+        com.apperhand.common.dto.Command$Commands $r7;
+        java.lang.String $r8;
+        java.lang.Boolean $r9;
+        boolean $z0;
+        com.apperhand.common.dto.protocol.BaseResponse $r10;
+
+        r0 := @this: com.apperhand.device.a.b.g;
+
+        $r1 = new com.apperhand.common.dto.protocol.OptOutRequest;
+
+        specialinvoke $r1.<com.apperhand.common.dto.protocol.OptOutRequest: void <init>()>();
+
+        $r3 = r0.<com.apperhand.device.a.b.g: com.apperhand.device.a.a e>;
+
+        $r4 = interfaceinvoke $r3.<com.apperhand.device.a.a: com.apperhand.common.dto.ApplicationDetails j()>();
+
+        virtualinvoke $r1.<com.apperhand.common.dto.protocol.OptOutRequest: void setApplicationDetails(com.apperhand.common.dto.ApplicationDetails)>($r4);
+
+        $r2 = new com.apperhand.common.dto.OptOutDetails;
+
+        specialinvoke $r2.<com.apperhand.common.dto.OptOutDetails: void <init>()>();
+
+        $r5 = r0.<com.apperhand.device.a.b.g: java.util.Map g>;
+
+        $r6 = interfaceinvoke $r5.<java.util.Map: java.lang.Object get(java.lang.Object)>("command");
+
+        $r7 = (com.apperhand.common.dto.Command$Commands) $r6;
+
+        virtualinvoke $r2.<com.apperhand.common.dto.OptOutDetails: void setCommand(com.apperhand.common.dto.Command$Commands)>($r7);
+
+        $r5 = r0.<com.apperhand.device.a.b.g: java.util.Map g>;
+
+        $r6 = interfaceinvoke $r5.<java.util.Map: java.lang.Object get(java.lang.Object)>("message");
+
+        $r8 = (java.lang.String) $r6;
+
+        virtualinvoke $r2.<com.apperhand.common.dto.OptOutDetails: void setMessage(java.lang.String)>($r8);
+
+        $r5 = r0.<com.apperhand.device.a.b.g: java.util.Map g>;
+
+        $r6 = interfaceinvoke $r5.<java.util.Map: java.lang.Object get(java.lang.Object)>("permanent");
+
+        $r9 = (java.lang.Boolean) $r6;
+
+        $z0 = virtualinvoke $r9.<java.lang.Boolean: boolean booleanValue()>();
+
+        virtualinvoke $r2.<com.apperhand.common.dto.OptOutDetails: void setPermanent(boolean)>($z0);
+
+        virtualinvoke $r1.<com.apperhand.common.dto.protocol.OptOutRequest: void setDetails(com.apperhand.common.dto.OptOutDetails)>($r2);
+
+        $r10 = specialinvoke r0.<com.apperhand.device.a.b.g: com.apperhand.common.dto.protocol.BaseResponse a(com.apperhand.common.dto.protocol.OptOutRequest)>($r1);
+
+        return $r10;
+    }
+
+    protected final java.util.Map a(com.apperhand.common.dto.protocol.BaseResponse) throws com.apperhand.device.a.d.f
+    {
+        com.apperhand.device.a.b.g r0;
+        com.apperhand.common.dto.protocol.BaseResponse $r1;
+
+        r0 := @this: com.apperhand.device.a.b.g;
+
+        $r1 := @parameter0: com.apperhand.common.dto.protocol.BaseResponse;
+
+        return null;
+    }
+
+    protected final void a(java.util.Map) throws com.apperhand.device.a.d.f
+    {
+        com.apperhand.device.a.b.g r0;
+        java.util.Map $r1;
+
+        r0 := @this: com.apperhand.device.a.b.g;
+
+        $r1 := @parameter0: java.util.Map;
+
+        return;
+    }
+}

@@ -1,0 +1,119 @@
+public class com.Leadbolt.AdNotification extends android.content.BroadcastReceiver
+{
+    android.app.NotificationManager nm;
+
+    public void <init>()
+    {
+        com.Leadbolt.AdNotification r0;
+
+        r0 := @this: com.Leadbolt.AdNotification;
+
+        specialinvoke r0.<android.content.BroadcastReceiver: void <init>()>();
+
+        return;
+    }
+
+    public void onReceive(android.content.Context, android.content.Intent)
+    {
+        com.Leadbolt.AdNotification r0;
+        android.content.Context $r1;
+        android.content.Intent $r2;
+        com.Leadbolt.AdController r3;
+        android.os.Bundle $r4;
+        java.lang.String $r5, $r7;
+        java.lang.StringBuilder $r6;
+        boolean $z0;
+        java.lang.Exception $r8, $r10;
+        java.lang.Throwable $r9;
+
+        r0 := @this: com.Leadbolt.AdNotification;
+
+        $r1 := @parameter0: android.content.Context;
+
+        $r2 := @parameter1: android.content.Intent;
+
+        staticinvoke <com.Leadbolt.AdWakeLock: void acquire(android.content.Context)>($r1);
+
+     label01:
+        $r4 = virtualinvoke $r2.<android.content.Intent: android.os.Bundle getExtras()>();
+
+        $r5 = virtualinvoke $r4.<android.os.Bundle: java.lang.String getString(java.lang.String)>("sectionid");
+
+     label02:
+        $r6 = new java.lang.StringBuilder;
+
+     label03:
+        specialinvoke $r6.<java.lang.StringBuilder: void <init>(java.lang.String)>("Alarm triggered with sectionid - ");
+
+        $r6 = virtualinvoke $r6.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r5);
+
+        $r7 = virtualinvoke $r6.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <com.Leadbolt.AdLog: void i(java.lang.String,java.lang.String)>("LBAdController", $r7);
+
+        $z0 = virtualinvoke $r5.<java.lang.String: boolean equals(java.lang.Object)>("0");
+
+     label04:
+        if $z0 != 0 goto label08;
+
+     label05:
+        staticinvoke <java.lang.Thread: void sleep(long)>(5000L);
+
+     label06:
+        r3 = new com.Leadbolt.AdController;
+
+     label07:
+        specialinvoke r3.<com.Leadbolt.AdController: void <init>(android.content.Context,java.lang.String)>($r1, $r5);
+
+        virtualinvoke r3.<com.Leadbolt.AdController: void loadNotificationOnRequest(java.lang.String)>("Alarm");
+
+     label08:
+        staticinvoke <com.Leadbolt.AdWakeLock: void release()>();
+
+        return;
+
+     label09:
+        $r8 := @caughtexception;
+
+     label10:
+        staticinvoke <com.Leadbolt.AdLog: void printStackTrace(java.lang.String,java.lang.Exception)>("LBAdController", $r8);
+
+        $r6 = new java.lang.StringBuilder;
+
+        specialinvoke $r6.<java.lang.StringBuilder: void <init>(java.lang.String)>("Exception AdNotification.class - ");
+
+        $r5 = virtualinvoke $r8.<java.lang.Exception: java.lang.String getMessage()>();
+
+        $r6 = virtualinvoke $r6.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r5);
+
+        $r5 = virtualinvoke $r6.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        staticinvoke <com.Leadbolt.AdLog: void d(java.lang.String,java.lang.String)>("LBAdController", $r5);
+
+     label11:
+        staticinvoke <com.Leadbolt.AdWakeLock: void release()>();
+
+        return;
+
+     label12:
+        $r9 := @caughtexception;
+
+        staticinvoke <com.Leadbolt.AdWakeLock: void release()>();
+
+        throw $r9;
+
+     label13:
+        $r10 := @caughtexception;
+
+        goto label06;
+
+        catch java.lang.Exception from label01 to label02 with label09;
+        catch java.lang.Exception from label03 to label04 with label09;
+        catch java.lang.Throwable from label01 to label04 with label12;
+        catch java.lang.Exception from label05 to label06 with label13;
+        catch java.lang.Throwable from label05 to label06 with label12;
+        catch java.lang.Exception from label07 to label08 with label09;
+        catch java.lang.Throwable from label06 to label08 with label12;
+        catch java.lang.Throwable from label10 to label11 with label12;
+    }
+}

@@ -1,0 +1,299 @@
+public class com.Leadbolt.AdJSInterface extends java.lang.Object
+{
+    private android.content.Context activity;
+    private com.Leadbolt.AdController controller;
+    private com.Leadbolt.AdListener listener;
+
+    public void <init>(android.content.Context, com.Leadbolt.AdController, com.Leadbolt.AdListener)
+    {
+        com.Leadbolt.AdJSInterface r0;
+        android.content.Context $r1;
+        com.Leadbolt.AdController $r2;
+        com.Leadbolt.AdListener $r3;
+
+        r0 := @this: com.Leadbolt.AdJSInterface;
+
+        $r1 := @parameter0: android.content.Context;
+
+        $r2 := @parameter1: com.Leadbolt.AdController;
+
+        $r3 := @parameter2: com.Leadbolt.AdListener;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        r0.<com.Leadbolt.AdJSInterface: android.content.Context activity> = $r1;
+
+        r0.<com.Leadbolt.AdJSInterface: com.Leadbolt.AdController controller> = $r2;
+
+        r0.<com.Leadbolt.AdJSInterface: com.Leadbolt.AdListener listener> = $r3;
+
+        return;
+    }
+
+    static com.Leadbolt.AdController access$0(com.Leadbolt.AdJSInterface)
+    {
+        com.Leadbolt.AdJSInterface $r0;
+        com.Leadbolt.AdController r1;
+
+        $r0 := @parameter0: com.Leadbolt.AdJSInterface;
+
+        r1 = $r0.<com.Leadbolt.AdJSInterface: com.Leadbolt.AdController controller>;
+
+        return r1;
+    }
+
+    private void closeAd() throws java.lang.Exception
+    {
+        com.Leadbolt.AdJSInterface r0;
+        com.Leadbolt.AdJSInterface$1 $r1;
+        android.content.Context $r2;
+        android.app.Activity $r3;
+
+        r0 := @this: com.Leadbolt.AdJSInterface;
+
+        $r2 = r0.<com.Leadbolt.AdJSInterface: android.content.Context activity>;
+
+        $r3 = (android.app.Activity) $r2;
+
+        $r1 = new com.Leadbolt.AdJSInterface$1;
+
+        specialinvoke $r1.<com.Leadbolt.AdJSInterface$1: void <init>(com.Leadbolt.AdJSInterface)>(r0);
+
+        virtualinvoke $r3.<android.app.Activity: void runOnUiThread(java.lang.Runnable)>($r1);
+
+        return;
+    }
+
+    public void close()
+    {
+        com.Leadbolt.AdJSInterface r0;
+        java.lang.Exception $r1;
+
+        r0 := @this: com.Leadbolt.AdJSInterface;
+
+     label1:
+        specialinvoke r0.<com.Leadbolt.AdJSInterface: void closeAd()>();
+
+     label2:
+        return;
+
+     label3:
+        $r1 := @caughtexception;
+
+        return;
+
+        catch java.lang.Exception from label1 to label2 with label3;
+    }
+
+    public void complete()
+    {
+        com.Leadbolt.AdJSInterface r0;
+        com.Leadbolt.AdController $r1;
+        java.lang.Exception $r2;
+
+        r0 := @this: com.Leadbolt.AdJSInterface;
+
+     label1:
+        $r1 = r0.<com.Leadbolt.AdJSInterface: com.Leadbolt.AdController controller>;
+
+        virtualinvoke $r1.<com.Leadbolt.AdController: void setCompleted(boolean)>(1);
+
+        specialinvoke r0.<com.Leadbolt.AdJSInterface: void closeAd()>();
+
+        $r1 = r0.<com.Leadbolt.AdJSInterface: com.Leadbolt.AdController controller>;
+
+        virtualinvoke $r1.<com.Leadbolt.AdController: void triggerAdCompleted()>();
+
+     label2:
+        return;
+
+     label3:
+        $r2 := @caughtexception;
+
+        return;
+
+        catch java.lang.Exception from label1 to label2 with label3;
+    }
+
+    public void confirmNo()
+    {
+        com.Leadbolt.AdJSInterface r0;
+        com.Leadbolt.AdListener $r1;
+        java.lang.Exception $r2, $r3;
+
+        r0 := @this: com.Leadbolt.AdJSInterface;
+
+     label1:
+        specialinvoke r0.<com.Leadbolt.AdJSInterface: void closeAd()>();
+
+        $r1 = r0.<com.Leadbolt.AdJSInterface: com.Leadbolt.AdListener listener>;
+
+     label2:
+        if $r1 == null goto label9;
+
+     label3:
+        staticinvoke <com.Leadbolt.AdLog: void i(java.lang.String,java.lang.String)>("LBAdController", "onAdExitNo triggered");
+
+     label4:
+        return;
+
+     label5:
+        $r2 := @caughtexception;
+
+     label6:
+        staticinvoke <com.Leadbolt.AdLog: void i(java.lang.String,java.lang.String)>("LBAdController", "Error while calling onAdExitNo");
+
+        staticinvoke <com.Leadbolt.AdLog: void printStackTrace(java.lang.String,java.lang.Exception)>("LBAdController", $r2);
+
+     label7:
+        return;
+
+     label8:
+        $r3 := @caughtexception;
+
+     label9:
+        return;
+
+        catch java.lang.Exception from label1 to label2 with label8;
+        catch java.lang.Exception from label3 to label4 with label5;
+        catch java.lang.Exception from label6 to label7 with label8;
+    }
+
+    public void confirmYes()
+    {
+        com.Leadbolt.AdJSInterface r0;
+        com.Leadbolt.AdListener $r1;
+        java.lang.Exception $r2, $r3;
+
+        r0 := @this: com.Leadbolt.AdJSInterface;
+
+     label1:
+        specialinvoke r0.<com.Leadbolt.AdJSInterface: void closeAd()>();
+
+        $r1 = r0.<com.Leadbolt.AdJSInterface: com.Leadbolt.AdListener listener>;
+
+     label2:
+        if $r1 == null goto label9;
+
+     label3:
+        staticinvoke <com.Leadbolt.AdLog: void i(java.lang.String,java.lang.String)>("LBAdController", "onAdExitYes triggered");
+
+     label4:
+        return;
+
+     label5:
+        $r2 := @caughtexception;
+
+     label6:
+        staticinvoke <com.Leadbolt.AdLog: void i(java.lang.String,java.lang.String)>("LBAdController", "Error while calling onAdExitYes");
+
+        staticinvoke <com.Leadbolt.AdLog: void printStackTrace(java.lang.String,java.lang.Exception)>("LBAdController", $r2);
+
+     label7:
+        return;
+
+     label8:
+        $r3 := @caughtexception;
+
+     label9:
+        return;
+
+        catch java.lang.Exception from label1 to label2 with label8;
+        catch java.lang.Exception from label3 to label4 with label5;
+        catch java.lang.Exception from label6 to label7 with label8;
+    }
+
+    public void processHTML(java.lang.String)
+    {
+        com.Leadbolt.AdJSInterface r0;
+        java.lang.String $r1;
+        boolean $z0;
+        com.Leadbolt.AdController $r2;
+        com.Leadbolt.AdListener $r3;
+        java.lang.Exception $r4, $r5;
+
+        r0 := @this: com.Leadbolt.AdJSInterface;
+
+        $r1 := @parameter0: java.lang.String;
+
+        if $r1 == null goto label02;
+
+        $z0 = virtualinvoke $r1.<java.lang.String: boolean equals(java.lang.Object)>("0");
+
+        if $z0 == 0 goto label02;
+
+        $r2 = r0.<com.Leadbolt.AdJSInterface: com.Leadbolt.AdController controller>;
+
+        virtualinvoke $r2.<com.Leadbolt.AdController: void setAdDestroyed(boolean)>(1);
+
+        $r3 = r0.<com.Leadbolt.AdJSInterface: com.Leadbolt.AdListener listener>;
+
+        if $r3 == null goto label02;
+
+     label01:
+        staticinvoke <com.Leadbolt.AdLog: void i(java.lang.String,java.lang.String)>("LBAdController", "onAdFailed triggered");
+
+        $r3 = r0.<com.Leadbolt.AdJSInterface: com.Leadbolt.AdListener listener>;
+
+        interfaceinvoke $r3.<com.Leadbolt.AdListener: void onAdFailed()>();
+
+     label02:
+        $r3 = r0.<com.Leadbolt.AdJSInterface: com.Leadbolt.AdListener listener>;
+
+        if $r3 == null goto label10;
+
+        $r2 = r0.<com.Leadbolt.AdJSInterface: com.Leadbolt.AdController controller>;
+
+        $z0 = virtualinvoke $r2.<com.Leadbolt.AdController: boolean getAdDestroyed()>();
+
+        if $z0 != 0 goto label10;
+
+     label03:
+        staticinvoke <com.Leadbolt.AdLog: void i(java.lang.String,java.lang.String)>("LBAdController", "onAdLoaded triggered");
+
+        $r2 = r0.<com.Leadbolt.AdJSInterface: com.Leadbolt.AdController controller>;
+
+        $z0 = virtualinvoke $r2.<com.Leadbolt.AdController: boolean getOnAdLoaded()>();
+
+     label04:
+        if $z0 != 0 goto label06;
+
+     label05:
+        $r3 = r0.<com.Leadbolt.AdJSInterface: com.Leadbolt.AdListener listener>;
+
+        interfaceinvoke $r3.<com.Leadbolt.AdListener: void onAdLoaded()>();
+
+        $r2 = r0.<com.Leadbolt.AdJSInterface: com.Leadbolt.AdController controller>;
+
+        virtualinvoke $r2.<com.Leadbolt.AdController: void setOnAdLoaded(boolean)>(1);
+
+     label06:
+        $r2 = r0.<com.Leadbolt.AdJSInterface: com.Leadbolt.AdController controller>;
+
+        virtualinvoke $r2.<com.Leadbolt.AdController: void setAdLoaded(boolean)>(1);
+
+     label07:
+        return;
+
+     label08:
+        $r4 := @caughtexception;
+
+        staticinvoke <com.Leadbolt.AdLog: void i(java.lang.String,java.lang.String)>("LBAdController", "Error while calling onAdFailed");
+
+        goto label02;
+
+     label09:
+        $r5 := @caughtexception;
+
+        staticinvoke <com.Leadbolt.AdLog: void i(java.lang.String,java.lang.String)>("LBAdController", "Error while calling onAdLoaded");
+
+        staticinvoke <com.Leadbolt.AdLog: void printStackTrace(java.lang.String,java.lang.Exception)>("LBAdController", $r5);
+
+     label10:
+        return;
+
+        catch java.lang.Exception from label01 to label02 with label08;
+        catch java.lang.Exception from label03 to label04 with label09;
+        catch java.lang.Exception from label05 to label07 with label09;
+    }
+}

@@ -1,0 +1,991 @@
+public class com.startapp.android.publish.c.d extends com.startapp.android.publish.c.b
+{
+    protected android.webkit.WebView c;
+    protected java.lang.Runnable d;
+    protected java.lang.Runnable e;
+    private java.lang.Long f;
+    private java.lang.Long g;
+    private long h;
+    private long i;
+    private com.startapp.android.publish.h j;
+
+    public void <init>()
+    {
+        com.startapp.android.publish.c.d r0;
+        com.startapp.android.publish.c.d$1 $r1;
+        com.startapp.android.publish.c.d$2 $r2;
+
+        r0 := @this: com.startapp.android.publish.c.d;
+
+        specialinvoke r0.<com.startapp.android.publish.c.b: void <init>()>();
+
+        r0.<com.startapp.android.publish.c.d: long h> = 0L;
+
+        r0.<com.startapp.android.publish.c.d: long i> = 0L;
+
+        $r1 = new com.startapp.android.publish.c.d$1;
+
+        specialinvoke $r1.<com.startapp.android.publish.c.d$1: void <init>(com.startapp.android.publish.c.d)>(r0);
+
+        r0.<com.startapp.android.publish.c.d: java.lang.Runnable d> = $r1;
+
+        $r2 = new com.startapp.android.publish.c.d$2;
+
+        specialinvoke $r2.<com.startapp.android.publish.c.d$2: void <init>(com.startapp.android.publish.c.d)>(r0);
+
+        r0.<com.startapp.android.publish.c.d: java.lang.Runnable e> = $r2;
+
+        return;
+    }
+
+    private boolean F()
+    {
+        com.startapp.android.publish.c.d r0;
+        com.startapp.android.publish.Ad $r1;
+        boolean $z0;
+        com.startapp.android.publish.a.d $r2;
+
+        r0 := @this: com.startapp.android.publish.c.d;
+
+        $r1 = virtualinvoke r0.<com.startapp.android.publish.c.d: com.startapp.android.publish.Ad w()>();
+
+        $z0 = $r1 instanceof com.startapp.android.publish.a.d;
+
+        if $z0 == 0 goto label1;
+
+        $r1 = virtualinvoke r0.<com.startapp.android.publish.c.d: com.startapp.android.publish.Ad w()>();
+
+        $r2 = (com.startapp.android.publish.a.d) $r1;
+
+        $z0 = virtualinvoke $r2.<com.startapp.android.publish.a.d: boolean hasAdCacheTtlPassed()>();
+
+        return $z0;
+
+     label1:
+        return 0;
+    }
+
+    private void a(java.lang.String, int)
+    {
+        com.startapp.android.publish.c.d r0;
+        java.lang.String $r1, $r5, $r6;
+        int $i0, $i1;
+        com.startapp.android.publish.c.d$5 $r2;
+        android.app.Activity $r3;
+        java.lang.String[] $r4;
+        com.startapp.android.publish.i.v $r7;
+        com.startapp.android.publish.model.MetaData $r8;
+        long $l2;
+        boolean $z0;
+
+        r0 := @this: com.startapp.android.publish.c.d;
+
+        $r1 := @parameter0: java.lang.String;
+
+        $i0 := @parameter1: int;
+
+        $r3 = virtualinvoke r0.<com.startapp.android.publish.c.d: android.app.Activity b()>();
+
+        $r4 = virtualinvoke r0.<com.startapp.android.publish.c.d: java.lang.String[] i()>();
+
+        $i1 = lengthof $r4;
+
+        if $i0 >= $i1 goto label3;
+
+        $r4 = virtualinvoke r0.<com.startapp.android.publish.c.d: java.lang.String[] i()>();
+
+        $r5 = $r4[$i0];
+
+     label1:
+        $r4 = virtualinvoke r0.<com.startapp.android.publish.c.d: java.lang.String[] j()>();
+
+        $i1 = lengthof $r4;
+
+        if $i0 >= $i1 goto label4;
+
+        $r4 = virtualinvoke r0.<com.startapp.android.publish.c.d: java.lang.String[] j()>();
+
+        $r6 = $r4[$i0];
+
+     label2:
+        $r7 = virtualinvoke r0.<com.startapp.android.publish.c.d: com.startapp.android.publish.i.v B()>();
+
+        $r8 = staticinvoke <com.startapp.android.publish.model.MetaData: com.startapp.android.publish.model.MetaData getInstance()>();
+
+        $l2 = virtualinvoke $r8.<com.startapp.android.publish.model.MetaData: long getSmartRedirectTimeout()>();
+
+        $z0 = virtualinvoke r0.<com.startapp.android.publish.c.d: boolean e()>();
+
+        $r2 = new com.startapp.android.publish.c.d$5;
+
+        specialinvoke $r2.<com.startapp.android.publish.c.d$5: void <init>(com.startapp.android.publish.c.d)>(r0);
+
+        staticinvoke <com.startapp.android.publish.i.x: void a(android.content.Context,java.lang.String,java.lang.String,java.lang.String,com.startapp.android.publish.i.v,long,boolean,java.lang.Runnable)>($r3, $r1, $r5, $r6, $r7, $l2, $z0, $r2);
+
+        return;
+
+     label3:
+        $r5 = null;
+
+        goto label1;
+
+     label4:
+        $r6 = null;
+
+        goto label2;
+    }
+
+    private void b(java.lang.String, int)
+    {
+        com.startapp.android.publish.c.d r0;
+        java.lang.String $r1, $r6;
+        int $i0, $i1;
+        android.content.Intent $r2;
+        android.app.Activity $r3;
+        com.startapp.android.publish.i.l $r4;
+        java.lang.String[] $r5;
+        com.startapp.android.publish.i.v $r7;
+        boolean $z0;
+
+        r0 := @this: com.startapp.android.publish.c.d;
+
+        $r1 := @parameter0: java.lang.String;
+
+        $i0 := @parameter1: int;
+
+        $r2 = new android.content.Intent;
+
+        specialinvoke $r2.<android.content.Intent: void <init>(java.lang.String)>("com.startapp.android.OnClickCallback");
+
+        $r3 = virtualinvoke r0.<com.startapp.android.publish.c.d: android.app.Activity b()>();
+
+        $r4 = staticinvoke <com.startapp.android.publish.i.l: com.startapp.android.publish.i.l a(android.content.Context)>($r3);
+
+        virtualinvoke $r4.<com.startapp.android.publish.i.l: boolean a(android.content.Intent)>($r2);
+
+        $r3 = virtualinvoke r0.<com.startapp.android.publish.c.d: android.app.Activity b()>();
+
+        $r5 = virtualinvoke r0.<com.startapp.android.publish.c.d: java.lang.String[] i()>();
+
+        $i1 = lengthof $r5;
+
+        if $i0 >= $i1 goto label2;
+
+        $r5 = virtualinvoke r0.<com.startapp.android.publish.c.d: java.lang.String[] i()>();
+
+        $r6 = $r5[$i0];
+
+     label1:
+        $r7 = virtualinvoke r0.<com.startapp.android.publish.c.d: com.startapp.android.publish.i.v B()>();
+
+        $z0 = virtualinvoke r0.<com.startapp.android.publish.c.d: boolean e()>();
+
+        staticinvoke <com.startapp.android.publish.i.x: void a(android.content.Context,java.lang.String,java.lang.String,com.startapp.android.publish.i.v,boolean)>($r3, $r1, $r6, $r7, $z0);
+
+        virtualinvoke r0.<com.startapp.android.publish.c.d: void p()>();
+
+        return;
+
+     label2:
+        $r6 = null;
+
+        goto label1;
+    }
+
+    protected void A()
+    {
+        com.startapp.android.publish.c.d r0;
+        java.lang.String[] $r1;
+        int $i0;
+        java.lang.String $r2;
+        android.app.Activity $r3;
+        com.startapp.android.publish.i.v $r4;
+
+        r0 := @this: com.startapp.android.publish.c.d;
+
+        $r1 = virtualinvoke r0.<com.startapp.android.publish.c.d: java.lang.String[] l()>();
+
+        if $r1 == null goto label1;
+
+        $i0 = lengthof $r1;
+
+        if $i0 <= 0 goto label1;
+
+        $r1 = virtualinvoke r0.<com.startapp.android.publish.c.d: java.lang.String[] l()>();
+
+        $r2 = $r1[0];
+
+        if $r2 == null goto label1;
+
+        $r3 = virtualinvoke r0.<com.startapp.android.publish.c.d: android.app.Activity b()>();
+
+        $r1 = virtualinvoke r0.<com.startapp.android.publish.c.d: java.lang.String[] l()>();
+
+        $r2 = $r1[0];
+
+        $r4 = virtualinvoke r0.<com.startapp.android.publish.c.d: com.startapp.android.publish.i.v B()>();
+
+        staticinvoke <com.startapp.android.publish.i.x: void b(android.content.Context,java.lang.String,com.startapp.android.publish.i.v)>($r3, $r2, $r4);
+
+     label1:
+        return;
+    }
+
+    protected com.startapp.android.publish.i.v B()
+    {
+        com.startapp.android.publish.c.d r0;
+        com.startapp.android.publish.i.i $r1;
+        java.lang.String $r2, $r3;
+
+        r0 := @this: com.startapp.android.publish.c.d;
+
+        $r1 = new com.startapp.android.publish.i.i;
+
+        $r2 = virtualinvoke r0.<com.startapp.android.publish.c.d: java.lang.String D()>();
+
+        $r3 = virtualinvoke r0.<com.startapp.android.publish.c.d: java.lang.String n()>();
+
+        specialinvoke $r1.<com.startapp.android.publish.i.i: void <init>(java.lang.String,java.lang.String)>($r2, $r3);
+
+        return $r1;
+    }
+
+    protected com.startapp.android.publish.i.v C()
+    {
+        com.startapp.android.publish.c.d r0;
+        com.startapp.android.publish.i.v $r1;
+        java.lang.String $r2;
+
+        r0 := @this: com.startapp.android.publish.c.d;
+
+        $r1 = new com.startapp.android.publish.i.v;
+
+        $r2 = virtualinvoke r0.<com.startapp.android.publish.c.d: java.lang.String n()>();
+
+        specialinvoke $r1.<com.startapp.android.publish.i.v: void <init>(java.lang.String)>($r2);
+
+        return $r1;
+    }
+
+    protected java.lang.String D()
+    {
+        com.startapp.android.publish.c.d r0;
+        long $l0, $l1;
+        double $d0;
+        java.lang.String $r1;
+
+        r0 := @this: com.startapp.android.publish.c.d;
+
+        $l0 = staticinvoke <java.lang.System: long currentTimeMillis()>();
+
+        r0.<com.startapp.android.publish.c.d: long i> = $l0;
+
+        $l0 = r0.<com.startapp.android.publish.c.d: long i>;
+
+        $l1 = r0.<com.startapp.android.publish.c.d: long h>;
+
+        $l0 = $l0 - $l1;
+
+        $d0 = (double) $l0;
+
+        $d0 = $d0 / 1000.0;
+
+        $r1 = staticinvoke <java.lang.String: java.lang.String valueOf(double)>($d0);
+
+        return $r1;
+    }
+
+    protected long E()
+    {
+        com.startapp.android.publish.c.d r0;
+        java.lang.Long $r1;
+        java.util.concurrent.TimeUnit $r2;
+        long $l0;
+        com.startapp.android.publish.model.MetaData $r3;
+
+        r0 := @this: com.startapp.android.publish.c.d;
+
+        $r1 = virtualinvoke r0.<com.startapp.android.publish.c.d: java.lang.Long o()>();
+
+        if $r1 == null goto label1;
+
+        $r2 = <java.util.concurrent.TimeUnit: java.util.concurrent.TimeUnit SECONDS>;
+
+        $r1 = virtualinvoke r0.<com.startapp.android.publish.c.d: java.lang.Long o()>();
+
+        $l0 = virtualinvoke $r1.<java.lang.Long: long longValue()>();
+
+        $l0 = virtualinvoke $r2.<java.util.concurrent.TimeUnit: long toMillis(long)>($l0);
+
+        return $l0;
+
+     label1:
+        $r2 = <java.util.concurrent.TimeUnit: java.util.concurrent.TimeUnit SECONDS>;
+
+        $r3 = staticinvoke <com.startapp.android.publish.model.MetaData: com.startapp.android.publish.model.MetaData getInstance()>();
+
+        $l0 = virtualinvoke $r3.<com.startapp.android.publish.model.MetaData: long getIABDisplayImpressionDelayInSeconds()>();
+
+        $l0 = virtualinvoke $r2.<java.util.concurrent.TimeUnit: long toMillis(long)>($l0);
+
+        return $l0;
+    }
+
+    public void a(android.os.Bundle)
+    {
+        com.startapp.android.publish.c.d r0;
+        android.os.Bundle $r1;
+        android.content.Intent $r2;
+        boolean $z0;
+        java.io.Serializable $r3;
+        java.lang.Long $r4;
+        java.lang.String $r5;
+
+        r0 := @this: com.startapp.android.publish.c.d;
+
+        $r1 := @parameter0: android.os.Bundle;
+
+        specialinvoke r0.<com.startapp.android.publish.c.b: void a(android.os.Bundle)>($r1);
+
+        if $r1 != null goto label2;
+
+        $r2 = virtualinvoke r0.<com.startapp.android.publish.c.d: android.content.Intent a()>();
+
+        $z0 = virtualinvoke $r2.<android.content.Intent: boolean hasExtra(java.lang.String)>("lastLoadTime");
+
+        if $z0 == 0 goto label1;
+
+        $r2 = virtualinvoke r0.<com.startapp.android.publish.c.d: android.content.Intent a()>();
+
+        $r3 = virtualinvoke $r2.<android.content.Intent: java.io.Serializable getSerializableExtra(java.lang.String)>("lastLoadTime");
+
+        $r4 = (java.lang.Long) $r3;
+
+        r0.<com.startapp.android.publish.c.d: java.lang.Long f> = $r4;
+
+     label1:
+        $r2 = virtualinvoke r0.<com.startapp.android.publish.c.d: android.content.Intent a()>();
+
+        $z0 = virtualinvoke $r2.<android.content.Intent: boolean hasExtra(java.lang.String)>("adCacheTtl");
+
+        if $z0 == 0 goto label5;
+
+        $r2 = virtualinvoke r0.<com.startapp.android.publish.c.d: android.content.Intent a()>();
+
+        $r3 = virtualinvoke $r2.<android.content.Intent: java.io.Serializable getSerializableExtra(java.lang.String)>("adCacheTtl");
+
+        $r4 = (java.lang.Long) $r3;
+
+        r0.<com.startapp.android.publish.c.d: java.lang.Long g> = $r4;
+
+        return;
+
+     label2:
+        $z0 = virtualinvoke $r1.<android.os.Bundle: boolean containsKey(java.lang.String)>("postrollHtml");
+
+        if $z0 == 0 goto label3;
+
+        $r5 = virtualinvoke $r1.<android.os.Bundle: java.lang.String getString(java.lang.String)>("postrollHtml");
+
+        virtualinvoke r0.<com.startapp.android.publish.c.d: void a(java.lang.String)>($r5);
+
+     label3:
+        $z0 = virtualinvoke $r1.<android.os.Bundle: boolean containsKey(java.lang.String)>("lastLoadTime");
+
+        if $z0 == 0 goto label4;
+
+        $r3 = virtualinvoke $r1.<android.os.Bundle: java.io.Serializable getSerializable(java.lang.String)>("lastLoadTime");
+
+        $r4 = (java.lang.Long) $r3;
+
+        r0.<com.startapp.android.publish.c.d: java.lang.Long f> = $r4;
+
+     label4:
+        $z0 = virtualinvoke $r1.<android.os.Bundle: boolean containsKey(java.lang.String)>("adCacheTtl");
+
+        if $z0 == 0 goto label5;
+
+        $r3 = virtualinvoke $r1.<android.os.Bundle: java.io.Serializable getSerializable(java.lang.String)>("adCacheTtl");
+
+        $r4 = (java.lang.Long) $r3;
+
+        r0.<com.startapp.android.publish.c.d: java.lang.Long g> = $r4;
+
+     label5:
+        return;
+    }
+
+    public void a(android.webkit.WebView)
+    {
+        com.startapp.android.publish.c.d r0;
+        android.webkit.WebView $r1;
+        com.startapp.android.publish.c.d$4 $r2;
+
+        r0 := @this: com.startapp.android.publish.c.d;
+
+        $r1 := @parameter0: android.webkit.WebView;
+
+        $r2 = new com.startapp.android.publish.c.d$4;
+
+        specialinvoke $r2.<com.startapp.android.publish.c.d$4: void <init>(com.startapp.android.publish.c.d)>(r0);
+
+        virtualinvoke $r1.<android.webkit.WebView: void setOnTouchListener(android.view.View$OnTouchListener)>($r2);
+
+        return;
+    }
+
+    protected transient void a(java.lang.String, java.lang.Object[])
+    {
+        com.startapp.android.publish.c.d r0;
+        java.lang.String $r1;
+        java.lang.Object[] $r2;
+        android.webkit.WebView $r3;
+
+        r0 := @this: com.startapp.android.publish.c.d;
+
+        $r1 := @parameter0: java.lang.String;
+
+        $r2 := @parameter1: java.lang.Object[];
+
+        $r3 = r0.<com.startapp.android.publish.c.d: android.webkit.WebView c>;
+
+        staticinvoke <com.startapp.android.publish.i.x: void a(android.webkit.WebView,java.lang.String,java.lang.Object[])>($r3, $r1, $r2);
+
+        return;
+    }
+
+    public void b(android.os.Bundle)
+    {
+        com.startapp.android.publish.c.d r0;
+        android.os.Bundle $r1;
+        java.lang.String $r2;
+        java.lang.Long $r3;
+        long $l0;
+
+        r0 := @this: com.startapp.android.publish.c.d;
+
+        $r1 := @parameter0: android.os.Bundle;
+
+        specialinvoke r0.<com.startapp.android.publish.c.b: void b(android.os.Bundle)>($r1);
+
+        $r2 = virtualinvoke r0.<com.startapp.android.publish.c.d: java.lang.String f()>();
+
+        if $r2 == null goto label1;
+
+        $r2 = virtualinvoke r0.<com.startapp.android.publish.c.d: java.lang.String f()>();
+
+        virtualinvoke $r1.<android.os.Bundle: void putString(java.lang.String,java.lang.String)>("postrollHtml", $r2);
+
+     label1:
+        $r3 = r0.<com.startapp.android.publish.c.d: java.lang.Long f>;
+
+        if $r3 == null goto label2;
+
+        $r3 = r0.<com.startapp.android.publish.c.d: java.lang.Long f>;
+
+        $l0 = virtualinvoke $r3.<java.lang.Long: long longValue()>();
+
+        virtualinvoke $r1.<android.os.Bundle: void putLong(java.lang.String,long)>("lastLoadTime", $l0);
+
+     label2:
+        $r3 = r0.<com.startapp.android.publish.c.d: java.lang.Long g>;
+
+        if $r3 == null goto label3;
+
+        $r3 = r0.<com.startapp.android.publish.c.d: java.lang.Long g>;
+
+        $l0 = virtualinvoke $r3.<java.lang.Long: long longValue()>();
+
+        virtualinvoke $r1.<android.os.Bundle: void putLong(java.lang.String,long)>("adCacheTtl", $l0);
+
+     label3:
+        return;
+    }
+
+    public void b(android.webkit.WebView)
+    {
+        com.startapp.android.publish.c.d r0;
+        android.webkit.WebView $r1;
+
+        r0 := @this: com.startapp.android.publish.c.d;
+
+        $r1 := @parameter0: android.webkit.WebView;
+
+        if $r1 == null goto label1;
+
+        virtualinvoke $r1.<android.webkit.WebView: void setOnTouchListener(android.view.View$OnTouchListener)>(null);
+
+     label1:
+        return;
+    }
+
+    protected boolean b(java.lang.String)
+    {
+        com.startapp.android.publish.c.d r0;
+        java.lang.String $r1;
+        com.startapp.android.publish.h $r2;
+        boolean $z0;
+        int $i0;
+        boolean[] $r3;
+        java.lang.Exception $r4;
+
+        r0 := @this: com.startapp.android.publish.c.d;
+
+        $r1 := @parameter0: java.lang.String;
+
+        $r2 = r0.<com.startapp.android.publish.c.d: com.startapp.android.publish.h j>;
+
+        virtualinvoke $r2.<com.startapp.android.publish.h: void a(boolean)>(1);
+
+        $z0 = virtualinvoke $r1.<java.lang.String: boolean contains(java.lang.CharSequence)>("index=");
+
+        if $z0 == 0 goto label8;
+
+     label1:
+        $i0 = staticinvoke <com.startapp.android.publish.i.x: int a(java.lang.String)>($r1);
+
+        $r3 = virtualinvoke r0.<com.startapp.android.publish.c.d: boolean[] d()>();
+
+        $z0 = $r3[$i0];
+
+     label2:
+        if $z0 == 0 goto label5;
+
+     label3:
+        specialinvoke r0.<com.startapp.android.publish.c.d: void a(java.lang.String,int)>($r1, $i0);
+
+     label4:
+        return 1;
+
+     label5:
+        specialinvoke r0.<com.startapp.android.publish.c.d: void b(java.lang.String,int)>($r1, $i0);
+
+     label6:
+        goto label4;
+
+     label7:
+        $r4 := @caughtexception;
+
+        staticinvoke <com.startapp.android.publish.i.n: void a(int,java.lang.String)>(6, "Error while trying parsing index from url");
+
+        return 0;
+
+     label8:
+        $r3 = virtualinvoke r0.<com.startapp.android.publish.c.d: boolean[] d()>();
+
+        $z0 = $r3[0];
+
+        if $z0 == 0 goto label9;
+
+        specialinvoke r0.<com.startapp.android.publish.c.d: void a(java.lang.String,int)>($r1, 0);
+
+        goto label4;
+
+     label9:
+        specialinvoke r0.<com.startapp.android.publish.c.d: void b(java.lang.String,int)>($r1, 0);
+
+        goto label4;
+
+        catch java.lang.Exception from label1 to label2 with label7;
+        catch java.lang.Exception from label3 to label4 with label7;
+        catch java.lang.Exception from label5 to label6 with label7;
+    }
+
+    protected void c(android.webkit.WebView)
+    {
+        com.startapp.android.publish.c.d r0;
+        android.webkit.WebView $r1;
+
+        r0 := @this: com.startapp.android.publish.c.d;
+
+        $r1 := @parameter0: android.webkit.WebView;
+
+        return;
+    }
+
+    public void p()
+    {
+        com.startapp.android.publish.c.d r0;
+        com.startapp.android.publish.i $r1;
+        com.startapp.android.publish.h $r2;
+        android.app.Activity $r3;
+        com.startapp.android.publish.c.d$6 $r4;
+
+        r0 := @this: com.startapp.android.publish.c.d;
+
+        specialinvoke r0.<com.startapp.android.publish.c.b: void p()>();
+
+        $r1 = staticinvoke <com.startapp.android.publish.i: com.startapp.android.publish.i a()>();
+
+        virtualinvoke $r1.<com.startapp.android.publish.i: void a(boolean)>(0);
+
+        $r2 = r0.<com.startapp.android.publish.c.d: com.startapp.android.publish.h j>;
+
+        virtualinvoke $r2.<com.startapp.android.publish.h: void a(boolean)>(0);
+
+        $r3 = virtualinvoke r0.<com.startapp.android.publish.c.d: android.app.Activity b()>();
+
+        $r4 = new com.startapp.android.publish.c.d$6;
+
+        specialinvoke $r4.<com.startapp.android.publish.c.d$6: void <init>(com.startapp.android.publish.c.d)>(r0);
+
+        virtualinvoke $r3.<android.app.Activity: void runOnUiThread(java.lang.Runnable)>($r4);
+
+        return;
+    }
+
+    public boolean r()
+    {
+        com.startapp.android.publish.c.d r0;
+
+        r0 := @this: com.startapp.android.publish.c.d;
+
+        virtualinvoke r0.<com.startapp.android.publish.c.d: void A()>();
+
+        virtualinvoke r0.<com.startapp.android.publish.c.d: void p()>();
+
+        return 0;
+    }
+
+    public void s()
+    {
+        com.startapp.android.publish.c.d r0;
+        com.startapp.android.publish.h $r1;
+        com.startapp.android.publish.adinformation.a $r2;
+        boolean $z0;
+        android.webkit.WebView $r3;
+        java.lang.String $r4;
+
+        r0 := @this: com.startapp.android.publish.c.d;
+
+        $r1 = r0.<com.startapp.android.publish.c.d: com.startapp.android.publish.h j>;
+
+        virtualinvoke $r1.<com.startapp.android.publish.h: void b()>();
+
+        $r2 = r0.<com.startapp.android.publish.c.d: com.startapp.android.publish.adinformation.a a>;
+
+        if $r2 == null goto label1;
+
+        $r2 = r0.<com.startapp.android.publish.c.d: com.startapp.android.publish.adinformation.a a>;
+
+        $z0 = virtualinvoke $r2.<com.startapp.android.publish.adinformation.a: boolean b()>();
+
+        if $z0 == 0 goto label1;
+
+        $r2 = r0.<com.startapp.android.publish.c.d: com.startapp.android.publish.adinformation.a a>;
+
+        virtualinvoke $r2.<com.startapp.android.publish.adinformation.a: void c()>();
+
+     label1:
+        $r3 = r0.<com.startapp.android.publish.c.d: android.webkit.WebView c>;
+
+        if $r3 == null goto label2;
+
+        $r3 = r0.<com.startapp.android.publish.c.d: android.webkit.WebView c>;
+
+        staticinvoke <com.startapp.android.publish.i.b: void b(android.webkit.WebView)>($r3);
+
+     label2:
+        $r4 = virtualinvoke r0.<com.startapp.android.publish.c.d: java.lang.String g()>();
+
+        $z0 = virtualinvoke $r4.<java.lang.String: boolean equals(java.lang.Object)>("back");
+
+        if $z0 == 0 goto label3;
+
+        virtualinvoke r0.<com.startapp.android.publish.c.d: void p()>();
+
+     label3:
+        return;
+    }
+
+    public void u()
+    {
+        com.startapp.android.publish.c.d r0;
+        boolean $z0;
+        com.startapp.android.publish.i $r1;
+        com.startapp.android.publish.h $r2;
+        android.app.Activity $r3;
+        java.lang.String[] $r4;
+        com.startapp.android.publish.i.v $r5;
+        long $l0;
+        android.webkit.WebView $r6;
+        android.widget.RelativeLayout $r7;
+        android.content.Context $r8;
+        android.view.Window $r9;
+        android.view.View $r10;
+        android.webkit.WebSettings $r11;
+        android.webkit.WebChromeClient $r12;
+        com.startapp.android.publish.c.d$3 $r13;
+        com.startapp.android.publish.JsInterface $r14;
+        java.lang.String $r15;
+        com.startapp.android.publish.c.d$a $r16;
+        android.widget.RelativeLayout$LayoutParams $r17;
+        java.lang.Exception $r18;
+        com.startapp.android.publish.d.b$a $r19;
+
+        r0 := @this: com.startapp.android.publish.c.d;
+
+        $z0 = specialinvoke r0.<com.startapp.android.publish.c.d: boolean F()>();
+
+        if $z0 == 0 goto label01;
+
+        staticinvoke <com.startapp.android.publish.i.n: void a(java.lang.String,int,java.lang.String)>("InterstitialMode", 3, "Ad Cache TTL passed, finishing");
+
+        virtualinvoke r0.<com.startapp.android.publish.c.d: void p()>();
+
+        return;
+
+     label01:
+        $r1 = staticinvoke <com.startapp.android.publish.i: com.startapp.android.publish.i a()>();
+
+        virtualinvoke $r1.<com.startapp.android.publish.i: void a(boolean)>(1);
+
+        $r2 = r0.<com.startapp.android.publish.c.d: com.startapp.android.publish.h j>;
+
+        if $r2 != null goto label02;
+
+        $r2 = new com.startapp.android.publish.h;
+
+        $r3 = virtualinvoke r0.<com.startapp.android.publish.c.d: android.app.Activity b()>();
+
+        $r4 = virtualinvoke r0.<com.startapp.android.publish.c.d: java.lang.String[] h()>();
+
+        $r5 = virtualinvoke r0.<com.startapp.android.publish.c.d: com.startapp.android.publish.i.v C()>();
+
+        $l0 = virtualinvoke r0.<com.startapp.android.publish.c.d: long E()>();
+
+        specialinvoke $r2.<com.startapp.android.publish.h: void <init>(android.content.Context,java.lang.String[],com.startapp.android.publish.i.v,long)>($r3, $r4, $r5, $l0);
+
+        r0.<com.startapp.android.publish.c.d: com.startapp.android.publish.h j> = $r2;
+
+     label02:
+        $r6 = r0.<com.startapp.android.publish.c.d: android.webkit.WebView c>;
+
+        if $r6 != null goto label17;
+
+        $r7 = new android.widget.RelativeLayout;
+
+        $r3 = virtualinvoke r0.<com.startapp.android.publish.c.d: android.app.Activity b()>();
+
+        specialinvoke $r7.<android.widget.RelativeLayout: void <init>(android.content.Context)>($r3);
+
+        virtualinvoke $r7.<android.widget.RelativeLayout: void setContentDescription(java.lang.CharSequence)>("StartApp Ad");
+
+        virtualinvoke $r7.<android.widget.RelativeLayout: void setId(int)>(1475346432);
+
+        $r3 = virtualinvoke r0.<com.startapp.android.publish.c.d: android.app.Activity b()>();
+
+        virtualinvoke $r3.<android.app.Activity: void setContentView(android.view.View)>($r7);
+
+        $r6 = new android.webkit.WebView;
+
+     label03:
+        $r3 = virtualinvoke r0.<com.startapp.android.publish.c.d: android.app.Activity b()>();
+
+        $r8 = virtualinvoke $r3.<android.app.Activity: android.content.Context getApplicationContext()>();
+
+        specialinvoke $r6.<android.webkit.WebView: void <init>(android.content.Context)>($r8);
+
+        r0.<com.startapp.android.publish.c.d: android.webkit.WebView c> = $r6;
+
+        $r6 = r0.<com.startapp.android.publish.c.d: android.webkit.WebView c>;
+
+        virtualinvoke $r6.<android.webkit.WebView: void setBackgroundColor(int)>(-16777216);
+
+        $r3 = virtualinvoke r0.<com.startapp.android.publish.c.d: android.app.Activity b()>();
+
+        $r9 = virtualinvoke $r3.<android.app.Activity: android.view.Window getWindow()>();
+
+        $r10 = virtualinvoke $r9.<android.view.Window: android.view.View getDecorView()>();
+
+        $r10 = virtualinvoke $r10.<android.view.View: android.view.View findViewById(int)>(16908290);
+
+        virtualinvoke $r10.<android.view.View: void setBackgroundColor(int)>(7829367);
+
+        $r6 = r0.<com.startapp.android.publish.c.d: android.webkit.WebView c>;
+
+        virtualinvoke $r6.<android.webkit.WebView: void setVerticalScrollBarEnabled(boolean)>(0);
+
+        $r6 = r0.<com.startapp.android.publish.c.d: android.webkit.WebView c>;
+
+        virtualinvoke $r6.<android.webkit.WebView: void setHorizontalScrollBarEnabled(boolean)>(0);
+
+        $r6 = r0.<com.startapp.android.publish.c.d: android.webkit.WebView c>;
+
+        $r11 = virtualinvoke $r6.<android.webkit.WebView: android.webkit.WebSettings getSettings()>();
+
+        virtualinvoke $r11.<android.webkit.WebSettings: void setJavaScriptEnabled(boolean)>(1);
+
+        $r6 = r0.<com.startapp.android.publish.c.d: android.webkit.WebView c>;
+
+        staticinvoke <com.startapp.android.publish.i.b: void a(android.webkit.WebView)>($r6);
+
+        $r6 = r0.<com.startapp.android.publish.c.d: android.webkit.WebView c>;
+
+     label04:
+        $r12 = new android.webkit.WebChromeClient;
+
+     label05:
+        specialinvoke $r12.<android.webkit.WebChromeClient: void <init>()>();
+
+        virtualinvoke $r6.<android.webkit.WebView: void setWebChromeClient(android.webkit.WebChromeClient)>($r12);
+
+        $z0 = r0.<com.startapp.android.publish.c.d: boolean b>;
+
+     label06:
+        if $z0 == 0 goto label08;
+
+     label07:
+        $r6 = r0.<com.startapp.android.publish.c.d: android.webkit.WebView c>;
+
+        staticinvoke <com.startapp.android.publish.i.b: void a(android.webkit.WebView,android.graphics.Paint)>($r6, null);
+
+     label08:
+        $r6 = r0.<com.startapp.android.publish.c.d: android.webkit.WebView c>;
+
+     label09:
+        $r13 = new com.startapp.android.publish.c.d$3;
+
+     label10:
+        specialinvoke $r13.<com.startapp.android.publish.c.d$3: void <init>(com.startapp.android.publish.c.d)>(r0);
+
+        virtualinvoke $r6.<android.webkit.WebView: void setOnLongClickListener(android.view.View$OnLongClickListener)>($r13);
+
+        $r6 = r0.<com.startapp.android.publish.c.d: android.webkit.WebView c>;
+
+        virtualinvoke $r6.<android.webkit.WebView: void setLongClickable(boolean)>(0);
+
+        $r6 = r0.<com.startapp.android.publish.c.d: android.webkit.WebView c>;
+
+        $r14 = virtualinvoke r0.<com.startapp.android.publish.c.d: com.startapp.android.publish.JsInterface x()>();
+
+        virtualinvoke $r6.<android.webkit.WebView: void addJavascriptInterface(java.lang.Object,java.lang.String)>($r14, "startappwall");
+
+        virtualinvoke r0.<com.startapp.android.publish.c.d: void y()>();
+
+        $r6 = r0.<com.startapp.android.publish.c.d: android.webkit.WebView c>;
+
+        virtualinvoke r0.<com.startapp.android.publish.c.d: void a(android.webkit.WebView)>($r6);
+
+        $r6 = r0.<com.startapp.android.publish.c.d: android.webkit.WebView c>;
+
+        $r15 = virtualinvoke r0.<com.startapp.android.publish.c.d: java.lang.String f()>();
+
+        staticinvoke <com.startapp.android.publish.i.x: void a(android.webkit.WebView,java.lang.String)>($r6, $r15);
+
+        $r6 = r0.<com.startapp.android.publish.c.d: android.webkit.WebView c>;
+
+     label11:
+        $r16 = new com.startapp.android.publish.c.d$a;
+
+     label12:
+        specialinvoke $r16.<com.startapp.android.publish.c.d$a: void <init>(com.startapp.android.publish.c.d,com.startapp.android.publish.c.d$1)>(r0, null);
+
+        virtualinvoke $r6.<android.webkit.WebView: void setWebViewClient(android.webkit.WebViewClient)>($r16);
+
+     label13:
+        $r17 = new android.widget.RelativeLayout$LayoutParams;
+
+     label14:
+        specialinvoke $r17.<android.widget.RelativeLayout$LayoutParams: void <init>(int,int)>(-1, -1);
+
+        $r6 = r0.<com.startapp.android.publish.c.d: android.webkit.WebView c>;
+
+        virtualinvoke $r7.<android.widget.RelativeLayout: void addView(android.view.View,android.view.ViewGroup$LayoutParams)>($r6, $r17);
+
+        virtualinvoke r0.<com.startapp.android.publish.c.d: void a(android.widget.RelativeLayout)>($r7);
+
+     label15:
+        $l0 = staticinvoke <java.lang.System: long currentTimeMillis()>();
+
+        r0.<com.startapp.android.publish.c.d: long h> = $l0;
+
+        return;
+
+     label16:
+        $r18 := @caughtexception;
+
+        $r3 = virtualinvoke r0.<com.startapp.android.publish.c.d: android.app.Activity b()>();
+
+        $r19 = <com.startapp.android.publish.d.b$a: com.startapp.android.publish.d.b$a b>;
+
+        $r15 = virtualinvoke $r18.<java.lang.Exception: java.lang.String getMessage()>();
+
+        staticinvoke <com.startapp.android.publish.d.d: void a(android.content.Context,com.startapp.android.publish.d.b$a,java.lang.String,java.lang.String,java.lang.String)>($r3, $r19, "InterstitialMode.onResume - WebView failed", $r15, "");
+
+        virtualinvoke r0.<com.startapp.android.publish.c.d: void p()>();
+
+        goto label15;
+
+     label17:
+        $r6 = r0.<com.startapp.android.publish.c.d: android.webkit.WebView c>;
+
+        staticinvoke <com.startapp.android.publish.i.b: void c(android.webkit.WebView)>($r6);
+
+        $r2 = r0.<com.startapp.android.publish.c.d: com.startapp.android.publish.h j>;
+
+        virtualinvoke $r2.<com.startapp.android.publish.h: void a()>();
+
+        goto label15;
+
+        catch java.lang.Exception from label03 to label04 with label16;
+        catch java.lang.Exception from label05 to label06 with label16;
+        catch java.lang.Exception from label07 to label09 with label16;
+        catch java.lang.Exception from label10 to label11 with label16;
+        catch java.lang.Exception from label12 to label13 with label16;
+        catch java.lang.Exception from label14 to label15 with label16;
+    }
+
+    protected com.startapp.android.publish.JsInterface x()
+    {
+        com.startapp.android.publish.c.d r0;
+        com.startapp.android.publish.JsInterface $r1;
+        java.lang.Runnable $r2, $r3, $r4;
+        android.app.Activity $r5;
+        com.startapp.android.publish.i.v $r6;
+        boolean $z0;
+
+        r0 := @this: com.startapp.android.publish.c.d;
+
+        $r1 = new com.startapp.android.publish.JsInterface;
+
+        $r5 = virtualinvoke r0.<com.startapp.android.publish.c.d: android.app.Activity b()>();
+
+        $r2 = r0.<com.startapp.android.publish.c.d: java.lang.Runnable d>;
+
+        $r3 = r0.<com.startapp.android.publish.c.d: java.lang.Runnable d>;
+
+        $r4 = r0.<com.startapp.android.publish.c.d: java.lang.Runnable e>;
+
+        $r6 = virtualinvoke r0.<com.startapp.android.publish.c.d: com.startapp.android.publish.i.v B()>();
+
+        $z0 = virtualinvoke r0.<com.startapp.android.publish.c.d: boolean e()>();
+
+        specialinvoke $r1.<com.startapp.android.publish.JsInterface: void <init>(android.content.Context,java.lang.Runnable,java.lang.Runnable,java.lang.Runnable,com.startapp.android.publish.i.v,boolean)>($r5, $r2, $r3, $r4, $r6, $z0);
+
+        return $r1;
+    }
+
+    protected void y()
+    {
+        com.startapp.android.publish.c.d r0;
+        com.startapp.android.publish.h $r1;
+
+        r0 := @this: com.startapp.android.publish.c.d;
+
+        $r1 = r0.<com.startapp.android.publish.c.d: com.startapp.android.publish.h j>;
+
+        virtualinvoke $r1.<com.startapp.android.publish.h: void a()>();
+
+        return;
+    }
+
+    protected void z()
+    {
+        com.startapp.android.publish.c.d r0;
+
+        r0 := @this: com.startapp.android.publish.c.d;
+
+        return;
+    }
+}

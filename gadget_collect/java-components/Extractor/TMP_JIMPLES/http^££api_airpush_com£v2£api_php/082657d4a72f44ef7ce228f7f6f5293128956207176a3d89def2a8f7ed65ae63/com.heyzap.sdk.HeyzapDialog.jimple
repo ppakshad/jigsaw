@@ -1,0 +1,332 @@
+class com.heyzap.sdk.HeyzapDialog extends com.heyzap.sdk.ClickableToast
+{
+    private static final int BUTTON_HEIGHT;
+    private static final int BUTTON_TEXT_SIZE;
+    private static final int BUTTON_WIDTH;
+    private android.widget.RelativeLayout buttonRow;
+    private android.view.View contentView;
+    private android.widget.LinearLayout dialogView;
+
+    public void <init>(android.content.Context)
+    {
+        com.heyzap.sdk.HeyzapDialog r0;
+        android.content.Context $r1, $r3;
+        android.widget.LinearLayout $r2;
+        android.graphics.drawable.Drawable $r4;
+        int $i0;
+        com.heyzap.sdk.HeyzapDialog$1 $r5;
+        android.view.ViewGroup$LayoutParams $r6;
+
+        r0 := @this: com.heyzap.sdk.HeyzapDialog;
+
+        $r1 := @parameter0: android.content.Context;
+
+        specialinvoke r0.<com.heyzap.sdk.ClickableToast: void <init>(android.content.Context)>($r1);
+
+        $r2 = new android.widget.LinearLayout;
+
+        $r3 = virtualinvoke r0.<com.heyzap.sdk.HeyzapDialog: android.content.Context getContext()>();
+
+        specialinvoke $r2.<android.widget.LinearLayout: void <init>(android.content.Context)>($r3);
+
+        r0.<com.heyzap.sdk.HeyzapDialog: android.widget.LinearLayout dialogView> = $r2;
+
+        $r2 = r0.<com.heyzap.sdk.HeyzapDialog: android.widget.LinearLayout dialogView>;
+
+        virtualinvoke $r2.<android.widget.LinearLayout: void setOrientation(int)>(1);
+
+        $r2 = r0.<com.heyzap.sdk.HeyzapDialog: android.widget.LinearLayout dialogView>;
+
+        $r4 = staticinvoke <com.heyzap.sdk.Drawables: android.graphics.drawable.Drawable getDrawable(android.content.Context,int)>($r1, 0);
+
+        virtualinvoke $r2.<android.widget.LinearLayout: void setBackgroundDrawable(android.graphics.drawable.Drawable)>($r4);
+
+        $i0 = staticinvoke <com.heyzap.sdk.Utils: int dpToPx(android.content.Context,int)>($r1, 2);
+
+        $r2 = r0.<com.heyzap.sdk.HeyzapDialog: android.widget.LinearLayout dialogView>;
+
+        virtualinvoke $r2.<android.widget.LinearLayout: void setPadding(int,int,int,int)>($i0, $i0, $i0, $i0);
+
+        $i0 = staticinvoke <com.heyzap.sdk.Utils: int dpToPx(android.content.Context,int)>($r1, 10);
+
+        virtualinvoke r0.<com.heyzap.sdk.HeyzapDialog: void setPadding(int,int,int,int)>($i0, $i0, $i0, $i0);
+
+        $r5 = new com.heyzap.sdk.HeyzapDialog$1;
+
+        specialinvoke $r5.<com.heyzap.sdk.HeyzapDialog$1: void <init>(com.heyzap.sdk.HeyzapDialog)>(r0);
+
+        virtualinvoke r0.<com.heyzap.sdk.HeyzapDialog: void setOnKeyListener(android.view.View$OnKeyListener)>($r5);
+
+        $r2 = r0.<com.heyzap.sdk.HeyzapDialog: android.widget.LinearLayout dialogView>;
+
+        $r6 = new android.view.ViewGroup$LayoutParams;
+
+        specialinvoke $r6.<android.view.ViewGroup$LayoutParams: void <init>(int,int)>(-1, -2);
+
+        virtualinvoke r0.<com.heyzap.sdk.HeyzapDialog: void addView(android.view.View,android.view.ViewGroup$LayoutParams)>($r2, $r6);
+
+        return;
+    }
+
+    private void addButton(java.lang.String, int, int, int, android.view.View$OnClickListener)
+    {
+        com.heyzap.sdk.HeyzapDialog r0;
+        java.lang.String $r1;
+        int $i0, $i1, $i2, $i3, $i4, $i5, $i6;
+        android.view.View$OnClickListener $r2;
+        android.content.Context $r3;
+        android.content.res.Resources $r4;
+        android.util.DisplayMetrics $r5;
+        float $f0, $f1;
+        android.widget.RelativeLayout $r6;
+        android.widget.LinearLayout $r7, $r8;
+        android.widget.Button $r9;
+        android.widget.RelativeLayout$LayoutParams $r10;
+
+        r0 := @this: com.heyzap.sdk.HeyzapDialog;
+
+        $r1 := @parameter0: java.lang.String;
+
+        $i0 := @parameter1: int;
+
+        $i1 := @parameter2: int;
+
+        $i2 := @parameter3: int;
+
+        $r2 := @parameter4: android.view.View$OnClickListener;
+
+        $r3 = virtualinvoke r0.<com.heyzap.sdk.HeyzapDialog: android.content.Context getContext()>();
+
+        $r4 = virtualinvoke $r3.<android.content.Context: android.content.res.Resources getResources()>();
+
+        $r5 = virtualinvoke $r4.<android.content.res.Resources: android.util.DisplayMetrics getDisplayMetrics()>();
+
+        $f0 = $r5.<android.util.DisplayMetrics: float density>;
+
+        $r6 = r0.<com.heyzap.sdk.HeyzapDialog: android.widget.RelativeLayout buttonRow>;
+
+        if $r6 != null goto label1;
+
+        $r6 = new android.widget.RelativeLayout;
+
+        $r3 = virtualinvoke r0.<com.heyzap.sdk.HeyzapDialog: android.content.Context getContext()>();
+
+        specialinvoke $r6.<android.widget.RelativeLayout: void <init>(android.content.Context)>($r3);
+
+        r0.<com.heyzap.sdk.HeyzapDialog: android.widget.RelativeLayout buttonRow> = $r6;
+
+        $r3 = virtualinvoke r0.<com.heyzap.sdk.HeyzapDialog: android.content.Context getContext()>();
+
+        $r6 = r0.<com.heyzap.sdk.HeyzapDialog: android.widget.RelativeLayout buttonRow>;
+
+        staticinvoke <com.heyzap.sdk.Drawables: void setBackgroundDrawable(android.content.Context,android.view.View,int)>($r3, $r6, 1);
+
+        $r6 = r0.<com.heyzap.sdk.HeyzapDialog: android.widget.RelativeLayout buttonRow>;
+
+        $f1 = $f0 * 2.0F;
+
+        $i3 = (int) $f1;
+
+        $f1 = 5.0F * $f0;
+
+        $i4 = (int) $f1;
+
+        $f1 = 2.0F * $f0;
+
+        $i5 = (int) $f1;
+
+        $f1 = 4.0F * $f0;
+
+        $i6 = (int) $f1;
+
+        virtualinvoke $r6.<android.widget.RelativeLayout: void setPadding(int,int,int,int)>($i3, $i4, $i5, $i6);
+
+        $r7 = r0.<com.heyzap.sdk.HeyzapDialog: android.widget.LinearLayout dialogView>;
+
+        $r6 = r0.<com.heyzap.sdk.HeyzapDialog: android.widget.RelativeLayout buttonRow>;
+
+        $r8 = r0.<com.heyzap.sdk.HeyzapDialog: android.widget.LinearLayout dialogView>;
+
+        $i3 = virtualinvoke $r8.<android.widget.LinearLayout: int getChildCount()>();
+
+        virtualinvoke $r7.<android.widget.LinearLayout: void addView(android.view.View,int)>($r6, $i3);
+
+     label1:
+        $r9 = new android.widget.Button;
+
+        $r3 = virtualinvoke r0.<com.heyzap.sdk.HeyzapDialog: android.content.Context getContext()>();
+
+        specialinvoke $r9.<android.widget.Button: void <init>(android.content.Context)>($r3);
+
+        $r3 = virtualinvoke r0.<com.heyzap.sdk.HeyzapDialog: android.content.Context getContext()>();
+
+        staticinvoke <com.heyzap.sdk.Drawables: void setBackgroundDrawable(android.content.Context,android.view.View,int)>($r3, $r9, $i1);
+
+        virtualinvoke $r9.<android.widget.Button: void setTextColor(int)>($i0);
+
+        virtualinvoke $r9.<android.widget.Button: void setTextSize(float)>(13.0F);
+
+        virtualinvoke $r9.<android.widget.Button: void setText(java.lang.CharSequence)>($r1);
+
+        virtualinvoke $r9.<android.widget.Button: void setOnClickListener(android.view.View$OnClickListener)>($r2);
+
+        $r10 = new android.widget.RelativeLayout$LayoutParams;
+
+        $f1 = 120.0F * $f0;
+
+        $i0 = (int) $f1;
+
+        $f0 = $f0 * 40.0F;
+
+        $i1 = (int) $f0;
+
+        specialinvoke $r10.<android.widget.RelativeLayout$LayoutParams: void <init>(int,int)>($i0, $i1);
+
+        virtualinvoke $r10.<android.widget.RelativeLayout$LayoutParams: void addRule(int)>($i2);
+
+        $r6 = r0.<com.heyzap.sdk.HeyzapDialog: android.widget.RelativeLayout buttonRow>;
+
+        virtualinvoke $r6.<android.widget.RelativeLayout: void addView(android.view.View,android.view.ViewGroup$LayoutParams)>($r9, $r10);
+
+        return;
+    }
+
+    public void addPrimaryButton(java.lang.String, android.view.View$OnClickListener)
+    {
+        com.heyzap.sdk.HeyzapDialog r0;
+        java.lang.String $r1;
+        android.view.View$OnClickListener $r2;
+
+        r0 := @this: com.heyzap.sdk.HeyzapDialog;
+
+        $r1 := @parameter0: java.lang.String;
+
+        $r2 := @parameter1: android.view.View$OnClickListener;
+
+        specialinvoke r0.<com.heyzap.sdk.HeyzapDialog: void addButton(java.lang.String,int,int,int,android.view.View$OnClickListener)>($r1, -1, 2, 11, $r2);
+
+        return;
+    }
+
+    public void addSecondaryButton(java.lang.String, android.view.View$OnClickListener)
+    {
+        com.heyzap.sdk.HeyzapDialog r0;
+        java.lang.String $r1;
+        android.view.View$OnClickListener $r2;
+
+        r0 := @this: com.heyzap.sdk.HeyzapDialog;
+
+        $r1 := @parameter0: java.lang.String;
+
+        $r2 := @parameter1: android.view.View$OnClickListener;
+
+        specialinvoke r0.<com.heyzap.sdk.HeyzapDialog: void addButton(java.lang.String,int,int,int,android.view.View$OnClickListener)>($r1, -16777216, 3, 9, $r2);
+
+        return;
+    }
+
+    public boolean dispatchKeyEvent(android.view.KeyEvent)
+    {
+        com.heyzap.sdk.HeyzapDialog r0;
+        android.view.KeyEvent $r1;
+        int $i0;
+        boolean $z0;
+
+        r0 := @this: com.heyzap.sdk.HeyzapDialog;
+
+        $r1 := @parameter0: android.view.KeyEvent;
+
+        $i0 = virtualinvoke $r1.<android.view.KeyEvent: int getKeyCode()>();
+
+        if $i0 != 4 goto label1;
+
+        virtualinvoke r0.<com.heyzap.sdk.HeyzapDialog: void hide()>();
+
+        return 1;
+
+     label1:
+        $z0 = specialinvoke r0.<com.heyzap.sdk.ClickableToast: boolean dispatchKeyEvent(android.view.KeyEvent)>($r1);
+
+        return $z0;
+    }
+
+    public android.view.WindowManager$LayoutParams getWmParams()
+    {
+        com.heyzap.sdk.HeyzapDialog r0;
+        android.view.WindowManager$LayoutParams $r1;
+
+        r0 := @this: com.heyzap.sdk.HeyzapDialog;
+
+        $r1 = specialinvoke r0.<com.heyzap.sdk.ClickableToast: android.view.WindowManager$LayoutParams getWmParams()>();
+
+        $r1.<android.view.WindowManager$LayoutParams: int flags> = 262178;
+
+        $r1.<android.view.WindowManager$LayoutParams: int windowAnimations> = 16973826;
+
+        $r1.<android.view.WindowManager$LayoutParams: float dimAmount> = 0.5F;
+
+        return $r1;
+    }
+
+    public boolean onTouchEvent(android.view.MotionEvent)
+    {
+        com.heyzap.sdk.HeyzapDialog r0;
+        android.view.MotionEvent $r1;
+        int $i0;
+        boolean $z0;
+
+        r0 := @this: com.heyzap.sdk.HeyzapDialog;
+
+        $r1 := @parameter0: android.view.MotionEvent;
+
+        $i0 = virtualinvoke $r1.<android.view.MotionEvent: int getAction()>();
+
+        if $i0 != 4 goto label1;
+
+        virtualinvoke r0.<com.heyzap.sdk.HeyzapDialog: void hide()>();
+
+     label1:
+        $z0 = specialinvoke r0.<com.heyzap.sdk.ClickableToast: boolean onTouchEvent(android.view.MotionEvent)>($r1);
+
+        return $z0;
+    }
+
+    public void setView(android.view.View)
+    {
+        com.heyzap.sdk.HeyzapDialog r0;
+        android.view.View $r1, $r2;
+        android.widget.LinearLayout $r3;
+
+        r0 := @this: com.heyzap.sdk.HeyzapDialog;
+
+        $r1 := @parameter0: android.view.View;
+
+        $r2 = r0.<com.heyzap.sdk.HeyzapDialog: android.view.View contentView>;
+
+        if $r2 == null goto label1;
+
+        $r3 = r0.<com.heyzap.sdk.HeyzapDialog: android.widget.LinearLayout dialogView>;
+
+        virtualinvoke $r3.<android.widget.LinearLayout: void removeView(android.view.View)>($r1);
+
+     label1:
+        $r3 = r0.<com.heyzap.sdk.HeyzapDialog: android.widget.LinearLayout dialogView>;
+
+        virtualinvoke $r3.<android.widget.LinearLayout: void addView(android.view.View,int)>($r1, 0);
+
+        r0.<com.heyzap.sdk.HeyzapDialog: android.view.View contentView> = $r1;
+
+        return;
+    }
+
+    public static void <clinit>()
+    {
+        <com.heyzap.sdk.HeyzapDialog: int BUTTON_WIDTH> = 120;
+
+        <com.heyzap.sdk.HeyzapDialog: int BUTTON_TEXT_SIZE> = 13;
+
+        <com.heyzap.sdk.HeyzapDialog: int BUTTON_HEIGHT> = 40;
+
+        return;
+    }
+}

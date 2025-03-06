@@ -1,0 +1,63 @@
+public class com.startapp.android.publish.video.tracking.AbsoluteTrackingLink extends com.startapp.android.publish.video.tracking.VideoTrackingLink implements java.io.Serializable
+{
+    private static final long serialVersionUID;
+    private int videoOffsetMillis;
+
+    public void <init>()
+    {
+        com.startapp.android.publish.video.tracking.AbsoluteTrackingLink r0;
+
+        r0 := @this: com.startapp.android.publish.video.tracking.AbsoluteTrackingLink;
+
+        specialinvoke r0.<com.startapp.android.publish.video.tracking.VideoTrackingLink: void <init>()>();
+
+        return;
+    }
+
+    public int getVideoOffsetMillis()
+    {
+        com.startapp.android.publish.video.tracking.AbsoluteTrackingLink r0;
+        int i0;
+
+        r0 := @this: com.startapp.android.publish.video.tracking.AbsoluteTrackingLink;
+
+        i0 = r0.<com.startapp.android.publish.video.tracking.AbsoluteTrackingLink: int videoOffsetMillis>;
+
+        return i0;
+    }
+
+    public java.lang.String toString()
+    {
+        com.startapp.android.publish.video.tracking.AbsoluteTrackingLink r0;
+        java.lang.StringBuilder $r1;
+        java.lang.String $r2;
+        int $i0;
+
+        r0 := @this: com.startapp.android.publish.video.tracking.AbsoluteTrackingLink;
+
+        $r1 = new java.lang.StringBuilder;
+
+        specialinvoke $r1.<java.lang.StringBuilder: void <init>()>();
+
+        $r2 = specialinvoke r0.<com.startapp.android.publish.video.tracking.VideoTrackingLink: java.lang.String toString()>();
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r2);
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(", videoOffsetMillis=");
+
+        $i0 = r0.<com.startapp.android.publish.video.tracking.AbsoluteTrackingLink: int videoOffsetMillis>;
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>($i0);
+
+        $r2 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        return $r2;
+    }
+
+    public static void <clinit>()
+    {
+        <com.startapp.android.publish.video.tracking.AbsoluteTrackingLink: long serialVersionUID> = 1L;
+
+        return;
+    }
+}

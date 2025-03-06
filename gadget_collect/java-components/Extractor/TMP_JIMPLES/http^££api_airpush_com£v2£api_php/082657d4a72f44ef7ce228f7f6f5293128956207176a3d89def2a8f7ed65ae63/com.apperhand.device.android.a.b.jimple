@@ -1,0 +1,394 @@
+public final class com.apperhand.device.android.a.b extends com.apperhand.device.android.a.g implements com.apperhand.device.a.a.b
+{
+    private android.content.ContentResolver a;
+
+    public void <init>(android.content.ContentResolver)
+    {
+        com.apperhand.device.android.a.b r0;
+        android.content.ContentResolver $r1;
+
+        r0 := @this: com.apperhand.device.android.a.b;
+
+        $r1 := @parameter0: android.content.ContentResolver;
+
+        specialinvoke r0.<com.apperhand.device.android.a.g: void <init>()>();
+
+        r0.<com.apperhand.device.android.a.b: android.content.ContentResolver a> = $r1;
+
+        return;
+    }
+
+    public final long a(com.apperhand.common.dto.Bookmark) throws com.apperhand.device.a.d.f
+    {
+        com.apperhand.device.android.a.b r0;
+        com.apperhand.common.dto.Bookmark $r1;
+        android.content.ContentValues $r2;
+        android.content.ContentResolver $r3;
+        android.net.Uri $r4;
+        java.lang.String $r5;
+        long $l0;
+        java.lang.Long $r6;
+        java.lang.Integer $r7;
+        byte[] $r8;
+        int $i1;
+
+        r0 := @this: com.apperhand.device.android.a.b;
+
+        $r1 := @parameter0: com.apperhand.common.dto.Bookmark;
+
+        $r3 = r0.<com.apperhand.device.android.a.b: android.content.ContentResolver a>;
+
+        $r4 = <android.provider.Browser: android.net.Uri BOOKMARKS_URI>;
+
+        $r2 = new android.content.ContentValues;
+
+        specialinvoke $r2.<android.content.ContentValues: void <init>()>();
+
+        $r5 = virtualinvoke $r1.<com.apperhand.common.dto.BaseBrowserItem: java.lang.String getTitle()>();
+
+        virtualinvoke $r2.<android.content.ContentValues: void put(java.lang.String,java.lang.String)>("title", $r5);
+
+        virtualinvoke $r2.<android.content.ContentValues: void put(java.lang.String,java.lang.String)>("bookmark", "1");
+
+        $r5 = virtualinvoke $r1.<com.apperhand.common.dto.BaseBrowserItem: java.lang.String getUrl()>();
+
+        virtualinvoke $r2.<android.content.ContentValues: void put(java.lang.String,java.lang.String)>("url", $r5);
+
+        $l0 = staticinvoke <java.lang.System: long currentTimeMillis()>();
+
+        $r6 = staticinvoke <java.lang.Long: java.lang.Long valueOf(long)>($l0);
+
+        virtualinvoke $r2.<android.content.ContentValues: void put(java.lang.String,java.lang.Long)>("date", $r6);
+
+        $r7 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>(100);
+
+        virtualinvoke $r2.<android.content.ContentValues: void put(java.lang.String,java.lang.Integer)>("visits", $r7);
+
+        $l0 = staticinvoke <java.lang.System: long currentTimeMillis()>();
+
+        $r6 = staticinvoke <java.lang.Long: java.lang.Long valueOf(long)>($l0);
+
+        virtualinvoke $r2.<android.content.ContentValues: void put(java.lang.String,java.lang.Long)>("created", $r6);
+
+        $r8 = virtualinvoke $r1.<com.apperhand.common.dto.BaseBrowserItem: byte[] getFavicon()>();
+
+        virtualinvoke $r2.<android.content.ContentValues: void put(java.lang.String,byte[])>("favicon", $r8);
+
+        $r4 = virtualinvoke $r3.<android.content.ContentResolver: android.net.Uri insert(android.net.Uri,android.content.ContentValues)>($r4, $r2);
+
+        $r5 = virtualinvoke $r4.<android.net.Uri: java.lang.String toString()>();
+
+        $i1 = virtualinvoke $r5.<java.lang.String: int lastIndexOf(java.lang.String)>("/");
+
+        $i1 = $i1 + 1;
+
+        $r5 = virtualinvoke $r5.<java.lang.String: java.lang.String substring(int)>($i1);
+
+        $l0 = staticinvoke <java.lang.Long: long parseLong(java.lang.String)>($r5);
+
+        return $l0;
+    }
+
+    public final com.apperhand.common.dto.CommandInformation a(java.util.List)
+    {
+        java.util.List $r0, $r4;
+        com.apperhand.common.dto.CommandInformation $r1;
+        com.apperhand.device.android.a.b r2;
+        com.apperhand.common.dto.Command$Commands $r3;
+        java.util.ArrayList $r5;
+        java.util.Iterator $r6, $r9;
+        boolean $z0;
+        java.lang.Object $r7;
+        com.apperhand.common.dto.Bookmark r8;
+        java.lang.String $r10, $r11;
+        int $i0;
+        com.apperhand.common.dto.AssetInformation $r12;
+        long $l1;
+        com.apperhand.common.dto.AssetInformation$State $r13;
+        java.util.HashMap $r14;
+        java.lang.Exception $r15;
+        java.lang.StringBuilder $r16;
+
+        r2 := @this: com.apperhand.device.android.a.b;
+
+        $r0 := @parameter0: java.util.List;
+
+        $r1 = new com.apperhand.common.dto.CommandInformation;
+
+        $r3 = <com.apperhand.common.dto.Command$Commands: com.apperhand.common.dto.Command$Commands BOOKMARKS>;
+
+        specialinvoke $r1.<com.apperhand.common.dto.CommandInformation: void <init>(com.apperhand.common.dto.Command$Commands)>($r3);
+
+     label1:
+        $r4 = virtualinvoke r2.<com.apperhand.device.android.a.b: java.util.List a()>();
+
+     label2:
+        if $r4 == null goto label6;
+
+        virtualinvoke $r1.<com.apperhand.common.dto.CommandInformation: void setValid(boolean)>(1);
+
+        $r5 = new java.util.ArrayList;
+
+        specialinvoke $r5.<java.util.ArrayList: void <init>()>();
+
+        virtualinvoke $r1.<com.apperhand.common.dto.CommandInformation: void setAssets(java.util.List)>($r5);
+
+        $r6 = interfaceinvoke $r4.<java.util.List: java.util.Iterator iterator()>();
+
+     label3:
+        $z0 = interfaceinvoke $r6.<java.util.Iterator: boolean hasNext()>();
+
+        if $z0 == 0 goto label7;
+
+        $r7 = interfaceinvoke $r6.<java.util.Iterator: java.lang.Object next()>();
+
+        r8 = (com.apperhand.common.dto.Bookmark) $r7;
+
+        $r9 = interfaceinvoke $r0.<java.util.List: java.util.Iterator iterator()>();
+
+     label4:
+        $z0 = interfaceinvoke $r9.<java.util.Iterator: boolean hasNext()>();
+
+        if $z0 == 0 goto label3;
+
+        $r7 = interfaceinvoke $r9.<java.util.Iterator: java.lang.Object next()>();
+
+        $r10 = (java.lang.String) $r7;
+
+        $r11 = virtualinvoke r8.<com.apperhand.common.dto.Bookmark: java.lang.String getUrl()>();
+
+        if $r11 == null goto label4;
+
+        $i0 = virtualinvoke $r11.<java.lang.String: int indexOf(java.lang.String)>($r10);
+
+        if $i0 == -1 goto label4;
+
+        $r12 = new com.apperhand.common.dto.AssetInformation;
+
+        specialinvoke $r12.<com.apperhand.common.dto.AssetInformation: void <init>()>();
+
+        virtualinvoke $r12.<com.apperhand.common.dto.AssetInformation: void setUrl(java.lang.String)>($r11);
+
+        $l1 = virtualinvoke r8.<com.apperhand.common.dto.Bookmark: long getId()>();
+
+        $i0 = (int) $l1;
+
+        virtualinvoke $r12.<com.apperhand.common.dto.AssetInformation: void setPosition(int)>($i0);
+
+        $r13 = <com.apperhand.common.dto.AssetInformation$State: com.apperhand.common.dto.AssetInformation$State EXIST>;
+
+        virtualinvoke $r12.<com.apperhand.common.dto.AssetInformation: void setState(com.apperhand.common.dto.AssetInformation$State)>($r13);
+
+        $r14 = new java.util.HashMap;
+
+        specialinvoke $r14.<java.util.HashMap: void <init>()>();
+
+        $r10 = virtualinvoke r8.<com.apperhand.common.dto.Bookmark: java.lang.String getTitle()>();
+
+        interfaceinvoke $r14.<java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>("Title", $r10);
+
+        virtualinvoke $r12.<com.apperhand.common.dto.AssetInformation: void setParameters(java.util.Map)>($r14);
+
+        interfaceinvoke $r5.<java.util.List: boolean add(java.lang.Object)>($r12);
+
+        goto label4;
+
+     label5:
+        $r15 := @caughtexception;
+
+        $r16 = new java.lang.StringBuilder;
+
+        specialinvoke $r16.<java.lang.StringBuilder: void <init>()>();
+
+        $r16 = virtualinvoke $r16.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Exception in getting bookmarks, msg = [");
+
+        $r10 = virtualinvoke $r15.<java.lang.Exception: java.lang.String getMessage()>();
+
+        $r16 = virtualinvoke $r16.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r10);
+
+        $r16 = virtualinvoke $r16.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("]");
+
+        $r10 = virtualinvoke $r16.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        virtualinvoke $r1.<com.apperhand.common.dto.CommandInformation: void setMessage(java.lang.String)>($r10);
+
+        $r4 = null;
+
+        goto label2;
+
+     label6:
+        virtualinvoke $r1.<com.apperhand.common.dto.CommandInformation: void setValid(boolean)>(0);
+
+     label7:
+        return $r1;
+
+        catch java.lang.Exception from label1 to label2 with label5;
+    }
+
+    public final java.util.List a() throws com.apperhand.device.a.d.f
+    {
+        com.apperhand.device.android.a.b r0;
+        java.util.ArrayList $r1;
+        android.content.ContentResolver $r2;
+        android.net.Uri $r3;
+        java.lang.String[] $r4;
+        android.database.Cursor $r5;
+        com.apperhand.device.a.d.f $r6;
+        com.apperhand.device.a.d.f$a $r7;
+        boolean $z0;
+        com.apperhand.common.dto.Bookmark $r8;
+        int $i0;
+        long $l1;
+        java.lang.String $r9;
+        byte[] $r10;
+        com.apperhand.common.dto.Status $r11;
+        java.lang.Throwable $r12;
+
+        r0 := @this: com.apperhand.device.android.a.b;
+
+        $r1 = new java.util.ArrayList;
+
+        specialinvoke $r1.<java.util.ArrayList: void <init>()>();
+
+        $r2 = r0.<com.apperhand.device.android.a.b: android.content.ContentResolver a>;
+
+        $r3 = <android.provider.Browser: android.net.Uri BOOKMARKS_URI>;
+
+        $r4 = newarray (java.lang.String)[7];
+
+        $r4[0] = "_id";
+
+        $r4[1] = "title";
+
+        $r4[2] = "url";
+
+        $r4[3] = "visits";
+
+        $r4[4] = "date";
+
+        $r4[5] = "created";
+
+        $r4[6] = "favicon";
+
+        $r5 = virtualinvoke $r2.<android.content.ContentResolver: android.database.Cursor query(android.net.Uri,java.lang.String[],java.lang.String,java.lang.String[],java.lang.String)>($r3, $r4, "bookmark = 1", null, null);
+
+        if $r5 != null goto label1;
+
+        $r6 = new com.apperhand.device.a.d.f;
+
+        $r7 = <com.apperhand.device.a.d.f$a: com.apperhand.device.a.d.f$a c>;
+
+        specialinvoke $r6.<com.apperhand.device.a.d.f: void <init>(com.apperhand.device.a.d.f$a,java.lang.String)>($r7, "Unable to load bookmarks");
+
+        throw $r6;
+
+     label1:
+        $z0 = interfaceinvoke $r5.<android.database.Cursor: boolean moveToFirst()>();
+
+     label2:
+        if $z0 == 0 goto label5;
+
+     label3:
+        $r8 = new com.apperhand.common.dto.Bookmark;
+
+        specialinvoke $r8.<com.apperhand.common.dto.Bookmark: void <init>()>();
+
+        $i0 = interfaceinvoke $r5.<android.database.Cursor: int getColumnIndex(java.lang.String)>("_id");
+
+        $l1 = interfaceinvoke $r5.<android.database.Cursor: long getLong(int)>($i0);
+
+        virtualinvoke $r8.<com.apperhand.common.dto.BaseBrowserItem: void setId(long)>($l1);
+
+        $i0 = interfaceinvoke $r5.<android.database.Cursor: int getColumnIndex(java.lang.String)>("title");
+
+        $r9 = interfaceinvoke $r5.<android.database.Cursor: java.lang.String getString(int)>($i0);
+
+        virtualinvoke $r8.<com.apperhand.common.dto.BaseBrowserItem: void setTitle(java.lang.String)>($r9);
+
+        $i0 = interfaceinvoke $r5.<android.database.Cursor: int getColumnIndex(java.lang.String)>("url");
+
+        $r9 = interfaceinvoke $r5.<android.database.Cursor: java.lang.String getString(int)>($i0);
+
+        virtualinvoke $r8.<com.apperhand.common.dto.BaseBrowserItem: void setUrl(java.lang.String)>($r9);
+
+        $i0 = interfaceinvoke $r5.<android.database.Cursor: int getColumnIndex(java.lang.String)>("favicon");
+
+        $r10 = interfaceinvoke $r5.<android.database.Cursor: byte[] getBlob(int)>($i0);
+
+        virtualinvoke $r8.<com.apperhand.common.dto.BaseBrowserItem: void setFavicon(byte[])>($r10);
+
+        $r11 = <com.apperhand.common.dto.Status: com.apperhand.common.dto.Status EXISTS>;
+
+        virtualinvoke $r8.<com.apperhand.common.dto.BaseBrowserItem: void setStatus(com.apperhand.common.dto.Status)>($r11);
+
+        interfaceinvoke $r1.<java.util.List: boolean add(java.lang.Object)>($r8);
+
+        $z0 = interfaceinvoke $r5.<android.database.Cursor: boolean moveToNext()>();
+
+     label4:
+        if $z0 != 0 goto label3;
+
+     label5:
+        interfaceinvoke $r5.<android.database.Cursor: void close()>();
+
+        return $r1;
+
+     label6:
+        $r12 := @caughtexception;
+
+        interfaceinvoke $r5.<android.database.Cursor: void close()>();
+
+        throw $r12;
+
+        catch java.lang.Throwable from label1 to label2 with label6;
+        catch java.lang.Throwable from label3 to label4 with label6;
+    }
+
+    public final void b() throws com.apperhand.device.a.d.f
+    {
+        com.apperhand.device.android.a.b r0;
+        com.apperhand.device.a.d.f $r1;
+        com.apperhand.device.a.d.f$a $r2;
+
+        r0 := @this: com.apperhand.device.android.a.b;
+
+        $r1 = new com.apperhand.device.a.d.f;
+
+        $r2 = <com.apperhand.device.a.d.f$a: com.apperhand.device.a.d.f$a c>;
+
+        specialinvoke $r1.<com.apperhand.device.a.d.f: void <init>(com.apperhand.device.a.d.f$a,java.lang.String)>($r2, "Update bookmarks is not supported for now!!!!");
+
+        throw $r1;
+    }
+
+    public final void b(com.apperhand.common.dto.Bookmark) throws com.apperhand.device.a.d.f
+    {
+        com.apperhand.device.android.a.b r0;
+        com.apperhand.common.dto.Bookmark $r1;
+        android.content.ContentResolver $r2;
+        android.net.Uri $r3;
+        long $l0;
+        java.lang.String[] $r4;
+        java.lang.String $r5;
+
+        r0 := @this: com.apperhand.device.android.a.b;
+
+        $r1 := @parameter0: com.apperhand.common.dto.Bookmark;
+
+        $r2 = r0.<com.apperhand.device.android.a.b: android.content.ContentResolver a>;
+
+        $r3 = <android.provider.Browser: android.net.Uri BOOKMARKS_URI>;
+
+        $l0 = virtualinvoke $r1.<com.apperhand.common.dto.Bookmark: long getId()>();
+
+        $r4 = newarray (java.lang.String)[1];
+
+        $r5 = staticinvoke <java.lang.String: java.lang.String valueOf(long)>($l0);
+
+        $r4[0] = $r5;
+
+        virtualinvoke $r2.<android.content.ContentResolver: int delete(android.net.Uri,java.lang.String,java.lang.String[])>($r3, "_id=?", $r4);
+
+        return;
+    }
+}

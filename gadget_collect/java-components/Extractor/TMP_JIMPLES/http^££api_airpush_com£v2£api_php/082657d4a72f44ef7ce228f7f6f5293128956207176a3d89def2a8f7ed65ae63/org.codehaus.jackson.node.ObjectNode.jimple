@@ -1,0 +1,1482 @@
+public class org.codehaus.jackson.node.ObjectNode extends org.codehaus.jackson.node.ContainerNode
+{
+    protected java.util.LinkedHashMap _children;
+
+    public void <init>(org.codehaus.jackson.node.JsonNodeFactory)
+    {
+        org.codehaus.jackson.node.ObjectNode r0;
+        org.codehaus.jackson.node.JsonNodeFactory $r1;
+
+        r0 := @this: org.codehaus.jackson.node.ObjectNode;
+
+        $r1 := @parameter0: org.codehaus.jackson.node.JsonNodeFactory;
+
+        specialinvoke r0.<org.codehaus.jackson.node.ContainerNode: void <init>(org.codehaus.jackson.node.JsonNodeFactory)>($r1);
+
+        r0.<org.codehaus.jackson.node.ObjectNode: java.util.LinkedHashMap _children> = null;
+
+        return;
+    }
+
+    private final org.codehaus.jackson.JsonNode _put(java.lang.String, org.codehaus.jackson.JsonNode)
+    {
+        java.lang.String $r0;
+        org.codehaus.jackson.JsonNode $r1;
+        java.lang.Object $r2;
+        org.codehaus.jackson.node.ObjectNode r3;
+        java.util.LinkedHashMap $r4;
+
+        r3 := @this: org.codehaus.jackson.node.ObjectNode;
+
+        $r0 := @parameter0: java.lang.String;
+
+        $r1 := @parameter1: org.codehaus.jackson.JsonNode;
+
+        $r4 = r3.<org.codehaus.jackson.node.ObjectNode: java.util.LinkedHashMap _children>;
+
+        if $r4 != null goto label1;
+
+        $r4 = new java.util.LinkedHashMap;
+
+        specialinvoke $r4.<java.util.LinkedHashMap: void <init>()>();
+
+        r3.<org.codehaus.jackson.node.ObjectNode: java.util.LinkedHashMap _children> = $r4;
+
+     label1:
+        $r4 = r3.<org.codehaus.jackson.node.ObjectNode: java.util.LinkedHashMap _children>;
+
+        $r2 = virtualinvoke $r4.<java.util.LinkedHashMap: java.lang.Object put(java.lang.Object,java.lang.Object)>($r0, $r1);
+
+        $r1 = (org.codehaus.jackson.JsonNode) $r2;
+
+        return $r1;
+    }
+
+    public org.codehaus.jackson.JsonToken asToken()
+    {
+        org.codehaus.jackson.node.ObjectNode r0;
+        org.codehaus.jackson.JsonToken r1;
+
+        r0 := @this: org.codehaus.jackson.node.ObjectNode;
+
+        r1 = <org.codehaus.jackson.JsonToken: org.codehaus.jackson.JsonToken START_OBJECT>;
+
+        return r1;
+    }
+
+    public boolean equals(java.lang.Object)
+    {
+        org.codehaus.jackson.node.ObjectNode r0, $r4;
+        java.lang.Object $r1;
+        java.lang.Class $r2, $r3;
+        int $i0, $i1;
+        java.util.LinkedHashMap $r5;
+        java.util.Set $r6;
+        java.util.Iterator $r7;
+        boolean $z0;
+        java.util.Map$Entry r8;
+        java.lang.String r9;
+        org.codehaus.jackson.JsonNode r10, $r11;
+
+        r0 := @this: org.codehaus.jackson.node.ObjectNode;
+
+        $r1 := @parameter0: java.lang.Object;
+
+        if $r1 != r0 goto label1;
+
+        return 1;
+
+     label1:
+        if $r1 != null goto label2;
+
+        return 0;
+
+     label2:
+        $r2 = virtualinvoke $r1.<java.lang.Object: java.lang.Class getClass()>();
+
+        $r3 = virtualinvoke r0.<java.lang.Object: java.lang.Class getClass()>();
+
+        if $r2 == $r3 goto label3;
+
+        return 0;
+
+     label3:
+        $r4 = (org.codehaus.jackson.node.ObjectNode) $r1;
+
+        $i0 = virtualinvoke $r4.<org.codehaus.jackson.node.ObjectNode: int size()>();
+
+        $i1 = virtualinvoke r0.<org.codehaus.jackson.node.ObjectNode: int size()>();
+
+        if $i0 == $i1 goto label4;
+
+        return 0;
+
+     label4:
+        $r5 = r0.<org.codehaus.jackson.node.ObjectNode: java.util.LinkedHashMap _children>;
+
+        if $r5 == null goto label7;
+
+        $r5 = r0.<org.codehaus.jackson.node.ObjectNode: java.util.LinkedHashMap _children>;
+
+        $r6 = virtualinvoke $r5.<java.util.LinkedHashMap: java.util.Set entrySet()>();
+
+        $r7 = interfaceinvoke $r6.<java.util.Set: java.util.Iterator iterator()>();
+
+     label5:
+        $z0 = interfaceinvoke $r7.<java.util.Iterator: boolean hasNext()>();
+
+        if $z0 == 0 goto label7;
+
+        $r1 = interfaceinvoke $r7.<java.util.Iterator: java.lang.Object next()>();
+
+        r8 = (java.util.Map$Entry) $r1;
+
+        $r1 = interfaceinvoke r8.<java.util.Map$Entry: java.lang.Object getKey()>();
+
+        r9 = (java.lang.String) $r1;
+
+        $r1 = interfaceinvoke r8.<java.util.Map$Entry: java.lang.Object getValue()>();
+
+        r10 = (org.codehaus.jackson.JsonNode) $r1;
+
+        $r11 = virtualinvoke $r4.<org.codehaus.jackson.node.ObjectNode: org.codehaus.jackson.JsonNode get(java.lang.String)>(r9);
+
+        if $r11 == null goto label6;
+
+        $z0 = virtualinvoke $r11.<org.codehaus.jackson.JsonNode: boolean equals(java.lang.Object)>(r10);
+
+        if $z0 != 0 goto label5;
+
+     label6:
+        return 0;
+
+     label7:
+        return 1;
+    }
+
+    public volatile org.codehaus.jackson.JsonNode findParent(java.lang.String)
+    {
+        org.codehaus.jackson.node.ObjectNode r0;
+        java.lang.String $r1;
+
+        r0 := @this: org.codehaus.jackson.node.ObjectNode;
+
+        $r1 := @parameter0: java.lang.String;
+
+        r0 = virtualinvoke r0.<org.codehaus.jackson.node.ObjectNode: org.codehaus.jackson.node.ObjectNode findParent(java.lang.String)>($r1);
+
+        return r0;
+    }
+
+    public org.codehaus.jackson.node.ObjectNode findParent(java.lang.String)
+    {
+        org.codehaus.jackson.node.ObjectNode r0;
+        java.lang.String $r1;
+        java.util.LinkedHashMap $r2;
+        java.util.Set $r3;
+        java.util.Iterator $r4;
+        boolean $z0;
+        java.lang.Object $r5;
+        java.util.Map$Entry r6;
+        org.codehaus.jackson.JsonNode $r7;
+
+        r0 := @this: org.codehaus.jackson.node.ObjectNode;
+
+        $r1 := @parameter0: java.lang.String;
+
+        $r2 = r0.<org.codehaus.jackson.node.ObjectNode: java.util.LinkedHashMap _children>;
+
+        if $r2 == null goto label3;
+
+        $r2 = r0.<org.codehaus.jackson.node.ObjectNode: java.util.LinkedHashMap _children>;
+
+        $r3 = virtualinvoke $r2.<java.util.LinkedHashMap: java.util.Set entrySet()>();
+
+        $r4 = interfaceinvoke $r3.<java.util.Set: java.util.Iterator iterator()>();
+
+     label1:
+        $z0 = interfaceinvoke $r4.<java.util.Iterator: boolean hasNext()>();
+
+        if $z0 == 0 goto label3;
+
+        $r5 = interfaceinvoke $r4.<java.util.Iterator: java.lang.Object next()>();
+
+        r6 = (java.util.Map$Entry) $r5;
+
+        $r5 = interfaceinvoke r6.<java.util.Map$Entry: java.lang.Object getKey()>();
+
+        $z0 = virtualinvoke $r1.<java.lang.String: boolean equals(java.lang.Object)>($r5);
+
+        if $z0 == 0 goto label2;
+
+        return r0;
+
+     label2:
+        $r5 = interfaceinvoke r6.<java.util.Map$Entry: java.lang.Object getValue()>();
+
+        $r7 = (org.codehaus.jackson.JsonNode) $r5;
+
+        $r7 = virtualinvoke $r7.<org.codehaus.jackson.JsonNode: org.codehaus.jackson.JsonNode findParent(java.lang.String)>($r1);
+
+        if $r7 == null goto label1;
+
+        r0 = (org.codehaus.jackson.node.ObjectNode) $r7;
+
+        return r0;
+
+     label3:
+        return null;
+    }
+
+    public java.util.List findParents(java.lang.String, java.util.List)
+    {
+        org.codehaus.jackson.node.ObjectNode r0;
+        java.lang.String $r1;
+        java.lang.Object r2, $r6;
+        java.util.LinkedHashMap $r3;
+        java.util.Set $r4;
+        java.util.Iterator $r5;
+        boolean $z0;
+        java.util.Map$Entry r7;
+        org.codehaus.jackson.JsonNode $r8;
+        java.util.List $r9;
+        java.util.ArrayList $r10;
+
+        r0 := @this: org.codehaus.jackson.node.ObjectNode;
+
+        $r1 := @parameter0: java.lang.String;
+
+        r2 := @parameter1: java.util.List;
+
+        $r3 = r0.<org.codehaus.jackson.node.ObjectNode: java.util.LinkedHashMap _children>;
+
+        if $r3 == null goto label4;
+
+        $r3 = r0.<org.codehaus.jackson.node.ObjectNode: java.util.LinkedHashMap _children>;
+
+        $r4 = virtualinvoke $r3.<java.util.LinkedHashMap: java.util.Set entrySet()>();
+
+        $r5 = interfaceinvoke $r4.<java.util.Set: java.util.Iterator iterator()>();
+
+     label1:
+        $z0 = interfaceinvoke $r5.<java.util.Iterator: boolean hasNext()>();
+
+        if $z0 == 0 goto label5;
+
+        $r6 = interfaceinvoke $r5.<java.util.Iterator: java.lang.Object next()>();
+
+        r7 = (java.util.Map$Entry) $r6;
+
+        $r6 = interfaceinvoke r7.<java.util.Map$Entry: java.lang.Object getKey()>();
+
+        $z0 = virtualinvoke $r1.<java.lang.String: boolean equals(java.lang.Object)>($r6);
+
+        if $z0 == 0 goto label3;
+
+        if r2 != null goto label2;
+
+        $r10 = new java.util.ArrayList;
+
+        r2 = $r10;
+
+        specialinvoke $r10.<java.util.ArrayList: void <init>()>();
+
+     label2:
+        $r9 = (java.util.List) r2;
+
+        interfaceinvoke $r9.<java.util.List: boolean add(java.lang.Object)>(r0);
+
+        goto label1;
+
+     label3:
+        $r6 = interfaceinvoke r7.<java.util.Map$Entry: java.lang.Object getValue()>();
+
+        $r8 = (org.codehaus.jackson.JsonNode) $r6;
+
+        $r9 = (java.util.List) r2;
+
+        r2 = virtualinvoke $r8.<org.codehaus.jackson.JsonNode: java.util.List findParents(java.lang.String,java.util.List)>($r1, $r9);
+
+        goto label1;
+
+     label4:
+        $r9 = (java.util.List) r2;
+
+        return $r9;
+
+     label5:
+        $r9 = (java.util.List) r2;
+
+        return $r9;
+    }
+
+    public org.codehaus.jackson.JsonNode findValue(java.lang.String)
+    {
+        java.lang.String $r0;
+        org.codehaus.jackson.node.ObjectNode r1;
+        java.util.LinkedHashMap $r2;
+        java.util.Set $r3;
+        java.util.Iterator $r4;
+        boolean $z0;
+        java.lang.Object $r5;
+        java.util.Map$Entry r6;
+        org.codehaus.jackson.JsonNode r7;
+
+        r1 := @this: org.codehaus.jackson.node.ObjectNode;
+
+        $r0 := @parameter0: java.lang.String;
+
+        $r2 = r1.<org.codehaus.jackson.node.ObjectNode: java.util.LinkedHashMap _children>;
+
+        if $r2 == null goto label3;
+
+        $r2 = r1.<org.codehaus.jackson.node.ObjectNode: java.util.LinkedHashMap _children>;
+
+        $r3 = virtualinvoke $r2.<java.util.LinkedHashMap: java.util.Set entrySet()>();
+
+        $r4 = interfaceinvoke $r3.<java.util.Set: java.util.Iterator iterator()>();
+
+     label1:
+        $z0 = interfaceinvoke $r4.<java.util.Iterator: boolean hasNext()>();
+
+        if $z0 == 0 goto label3;
+
+        $r5 = interfaceinvoke $r4.<java.util.Iterator: java.lang.Object next()>();
+
+        r6 = (java.util.Map$Entry) $r5;
+
+        $r5 = interfaceinvoke r6.<java.util.Map$Entry: java.lang.Object getKey()>();
+
+        $z0 = virtualinvoke $r0.<java.lang.String: boolean equals(java.lang.Object)>($r5);
+
+        if $z0 == 0 goto label2;
+
+        $r5 = interfaceinvoke r6.<java.util.Map$Entry: java.lang.Object getValue()>();
+
+        r7 = (org.codehaus.jackson.JsonNode) $r5;
+
+        return r7;
+
+     label2:
+        $r5 = interfaceinvoke r6.<java.util.Map$Entry: java.lang.Object getValue()>();
+
+        r7 = (org.codehaus.jackson.JsonNode) $r5;
+
+        r7 = virtualinvoke r7.<org.codehaus.jackson.JsonNode: org.codehaus.jackson.JsonNode findValue(java.lang.String)>($r0);
+
+        if r7 == null goto label1;
+
+        return r7;
+
+     label3:
+        return null;
+    }
+
+    public java.util.List findValues(java.lang.String, java.util.List)
+    {
+        java.lang.String $r0;
+        org.codehaus.jackson.node.ObjectNode r1;
+        java.lang.Object r2, $r6;
+        java.util.LinkedHashMap $r3;
+        java.util.Set $r4;
+        java.util.Iterator $r5;
+        boolean $z0;
+        java.util.Map$Entry r7;
+        org.codehaus.jackson.JsonNode r8;
+        java.util.List $r9;
+        java.util.ArrayList $r10;
+
+        r1 := @this: org.codehaus.jackson.node.ObjectNode;
+
+        $r0 := @parameter0: java.lang.String;
+
+        r2 := @parameter1: java.util.List;
+
+        $r3 = r1.<org.codehaus.jackson.node.ObjectNode: java.util.LinkedHashMap _children>;
+
+        if $r3 == null goto label4;
+
+        $r3 = r1.<org.codehaus.jackson.node.ObjectNode: java.util.LinkedHashMap _children>;
+
+        $r4 = virtualinvoke $r3.<java.util.LinkedHashMap: java.util.Set entrySet()>();
+
+        $r5 = interfaceinvoke $r4.<java.util.Set: java.util.Iterator iterator()>();
+
+     label1:
+        $z0 = interfaceinvoke $r5.<java.util.Iterator: boolean hasNext()>();
+
+        if $z0 == 0 goto label5;
+
+        $r6 = interfaceinvoke $r5.<java.util.Iterator: java.lang.Object next()>();
+
+        r7 = (java.util.Map$Entry) $r6;
+
+        $r6 = interfaceinvoke r7.<java.util.Map$Entry: java.lang.Object getKey()>();
+
+        $z0 = virtualinvoke $r0.<java.lang.String: boolean equals(java.lang.Object)>($r6);
+
+        if $z0 == 0 goto label3;
+
+        if r2 != null goto label2;
+
+        $r10 = new java.util.ArrayList;
+
+        r2 = $r10;
+
+        specialinvoke $r10.<java.util.ArrayList: void <init>()>();
+
+     label2:
+        $r6 = interfaceinvoke r7.<java.util.Map$Entry: java.lang.Object getValue()>();
+
+        $r9 = (java.util.List) r2;
+
+        interfaceinvoke $r9.<java.util.List: boolean add(java.lang.Object)>($r6);
+
+        goto label1;
+
+     label3:
+        $r6 = interfaceinvoke r7.<java.util.Map$Entry: java.lang.Object getValue()>();
+
+        r8 = (org.codehaus.jackson.JsonNode) $r6;
+
+        $r9 = (java.util.List) r2;
+
+        r2 = virtualinvoke r8.<org.codehaus.jackson.JsonNode: java.util.List findValues(java.lang.String,java.util.List)>($r0, $r9);
+
+        goto label1;
+
+     label4:
+        $r9 = (java.util.List) r2;
+
+        return $r9;
+
+     label5:
+        $r9 = (java.util.List) r2;
+
+        return $r9;
+    }
+
+    public java.util.List findValuesAsText(java.lang.String, java.util.List)
+    {
+        java.lang.String $r0, $r9;
+        org.codehaus.jackson.node.ObjectNode r1;
+        java.lang.Object r2, $r6;
+        java.util.LinkedHashMap $r3;
+        java.util.Set $r4;
+        java.util.Iterator $r5;
+        boolean $z0;
+        java.util.Map$Entry r7;
+        org.codehaus.jackson.JsonNode r8;
+        java.util.List $r10;
+        java.util.ArrayList $r11;
+
+        r1 := @this: org.codehaus.jackson.node.ObjectNode;
+
+        $r0 := @parameter0: java.lang.String;
+
+        r2 := @parameter1: java.util.List;
+
+        $r3 = r1.<org.codehaus.jackson.node.ObjectNode: java.util.LinkedHashMap _children>;
+
+        if $r3 == null goto label4;
+
+        $r3 = r1.<org.codehaus.jackson.node.ObjectNode: java.util.LinkedHashMap _children>;
+
+        $r4 = virtualinvoke $r3.<java.util.LinkedHashMap: java.util.Set entrySet()>();
+
+        $r5 = interfaceinvoke $r4.<java.util.Set: java.util.Iterator iterator()>();
+
+     label1:
+        $z0 = interfaceinvoke $r5.<java.util.Iterator: boolean hasNext()>();
+
+        if $z0 == 0 goto label5;
+
+        $r6 = interfaceinvoke $r5.<java.util.Iterator: java.lang.Object next()>();
+
+        r7 = (java.util.Map$Entry) $r6;
+
+        $r6 = interfaceinvoke r7.<java.util.Map$Entry: java.lang.Object getKey()>();
+
+        $z0 = virtualinvoke $r0.<java.lang.String: boolean equals(java.lang.Object)>($r6);
+
+        if $z0 == 0 goto label3;
+
+        if r2 != null goto label2;
+
+        $r11 = new java.util.ArrayList;
+
+        r2 = $r11;
+
+        specialinvoke $r11.<java.util.ArrayList: void <init>()>();
+
+     label2:
+        $r6 = interfaceinvoke r7.<java.util.Map$Entry: java.lang.Object getValue()>();
+
+        r8 = (org.codehaus.jackson.JsonNode) $r6;
+
+        $r9 = virtualinvoke r8.<org.codehaus.jackson.JsonNode: java.lang.String getValueAsText()>();
+
+        $r10 = (java.util.List) r2;
+
+        interfaceinvoke $r10.<java.util.List: boolean add(java.lang.Object)>($r9);
+
+        goto label1;
+
+     label3:
+        $r6 = interfaceinvoke r7.<java.util.Map$Entry: java.lang.Object getValue()>();
+
+        r8 = (org.codehaus.jackson.JsonNode) $r6;
+
+        $r10 = (java.util.List) r2;
+
+        r2 = virtualinvoke r8.<org.codehaus.jackson.JsonNode: java.util.List findValuesAsText(java.lang.String,java.util.List)>($r0, $r10);
+
+        goto label1;
+
+     label4:
+        $r10 = (java.util.List) r2;
+
+        return $r10;
+
+     label5:
+        $r10 = (java.util.List) r2;
+
+        return $r10;
+    }
+
+    public org.codehaus.jackson.JsonNode get(int)
+    {
+        org.codehaus.jackson.node.ObjectNode r0;
+        int $i0;
+
+        r0 := @this: org.codehaus.jackson.node.ObjectNode;
+
+        $i0 := @parameter0: int;
+
+        return null;
+    }
+
+    public org.codehaus.jackson.JsonNode get(java.lang.String)
+    {
+        java.lang.String $r0;
+        java.lang.Object $r1;
+        org.codehaus.jackson.node.ObjectNode r2;
+        java.util.LinkedHashMap $r3;
+        org.codehaus.jackson.JsonNode r4;
+
+        r2 := @this: org.codehaus.jackson.node.ObjectNode;
+
+        $r0 := @parameter0: java.lang.String;
+
+        $r3 = r2.<org.codehaus.jackson.node.ObjectNode: java.util.LinkedHashMap _children>;
+
+        if $r3 == null goto label1;
+
+        $r3 = r2.<org.codehaus.jackson.node.ObjectNode: java.util.LinkedHashMap _children>;
+
+        $r1 = virtualinvoke $r3.<java.util.LinkedHashMap: java.lang.Object get(java.lang.Object)>($r0);
+
+        r4 = (org.codehaus.jackson.JsonNode) $r1;
+
+        return r4;
+
+     label1:
+        return null;
+    }
+
+    public java.util.Iterator getElements()
+    {
+        org.codehaus.jackson.node.ObjectNode r0;
+        java.util.LinkedHashMap $r1;
+        org.codehaus.jackson.node.ContainerNode$NoNodesIterator $r2;
+        java.util.Collection $r3;
+        java.util.Iterator $r4;
+
+        r0 := @this: org.codehaus.jackson.node.ObjectNode;
+
+        $r1 = r0.<org.codehaus.jackson.node.ObjectNode: java.util.LinkedHashMap _children>;
+
+        if $r1 != null goto label1;
+
+        $r2 = staticinvoke <org.codehaus.jackson.node.ContainerNode$NoNodesIterator: org.codehaus.jackson.node.ContainerNode$NoNodesIterator instance()>();
+
+        return $r2;
+
+     label1:
+        $r1 = r0.<org.codehaus.jackson.node.ObjectNode: java.util.LinkedHashMap _children>;
+
+        $r3 = virtualinvoke $r1.<java.util.LinkedHashMap: java.util.Collection values()>();
+
+        $r4 = interfaceinvoke $r3.<java.util.Collection: java.util.Iterator iterator()>();
+
+        return $r4;
+    }
+
+    public java.util.Iterator getFieldNames()
+    {
+        org.codehaus.jackson.node.ObjectNode r0;
+        java.util.LinkedHashMap $r1;
+        org.codehaus.jackson.node.ContainerNode$NoStringsIterator $r2;
+        java.util.Set $r3;
+        java.util.Iterator $r4;
+
+        r0 := @this: org.codehaus.jackson.node.ObjectNode;
+
+        $r1 = r0.<org.codehaus.jackson.node.ObjectNode: java.util.LinkedHashMap _children>;
+
+        if $r1 != null goto label1;
+
+        $r2 = staticinvoke <org.codehaus.jackson.node.ContainerNode$NoStringsIterator: org.codehaus.jackson.node.ContainerNode$NoStringsIterator instance()>();
+
+        return $r2;
+
+     label1:
+        $r1 = r0.<org.codehaus.jackson.node.ObjectNode: java.util.LinkedHashMap _children>;
+
+        $r3 = virtualinvoke $r1.<java.util.LinkedHashMap: java.util.Set keySet()>();
+
+        $r4 = interfaceinvoke $r3.<java.util.Set: java.util.Iterator iterator()>();
+
+        return $r4;
+    }
+
+    public java.util.Iterator getFields()
+    {
+        org.codehaus.jackson.node.ObjectNode r0;
+        java.util.LinkedHashMap $r1;
+        java.util.Set $r2;
+        java.util.Iterator $r3;
+        org.codehaus.jackson.node.ObjectNode$NoFieldsIterator r4;
+
+        r0 := @this: org.codehaus.jackson.node.ObjectNode;
+
+        $r1 = r0.<org.codehaus.jackson.node.ObjectNode: java.util.LinkedHashMap _children>;
+
+        if $r1 != null goto label1;
+
+        r4 = <org.codehaus.jackson.node.ObjectNode$NoFieldsIterator: org.codehaus.jackson.node.ObjectNode$NoFieldsIterator instance>;
+
+        return r4;
+
+     label1:
+        $r1 = r0.<org.codehaus.jackson.node.ObjectNode: java.util.LinkedHashMap _children>;
+
+        $r2 = virtualinvoke $r1.<java.util.LinkedHashMap: java.util.Set entrySet()>();
+
+        $r3 = interfaceinvoke $r2.<java.util.Set: java.util.Iterator iterator()>();
+
+        return $r3;
+    }
+
+    public int hashCode()
+    {
+        org.codehaus.jackson.node.ObjectNode r0;
+        int $i0;
+        java.util.LinkedHashMap $r1;
+
+        r0 := @this: org.codehaus.jackson.node.ObjectNode;
+
+        $r1 = r0.<org.codehaus.jackson.node.ObjectNode: java.util.LinkedHashMap _children>;
+
+        if $r1 != null goto label1;
+
+        return -1;
+
+     label1:
+        $r1 = r0.<org.codehaus.jackson.node.ObjectNode: java.util.LinkedHashMap _children>;
+
+        $i0 = virtualinvoke $r1.<java.util.LinkedHashMap: int hashCode()>();
+
+        return $i0;
+    }
+
+    public boolean isObject()
+    {
+        org.codehaus.jackson.node.ObjectNode r0;
+
+        r0 := @this: org.codehaus.jackson.node.ObjectNode;
+
+        return 1;
+    }
+
+    public org.codehaus.jackson.JsonNode path(int)
+    {
+        org.codehaus.jackson.node.ObjectNode r0;
+        int $i0;
+        org.codehaus.jackson.node.MissingNode $r1;
+
+        r0 := @this: org.codehaus.jackson.node.ObjectNode;
+
+        $i0 := @parameter0: int;
+
+        $r1 = staticinvoke <org.codehaus.jackson.node.MissingNode: org.codehaus.jackson.node.MissingNode getInstance()>();
+
+        return $r1;
+    }
+
+    public org.codehaus.jackson.JsonNode path(java.lang.String)
+    {
+        org.codehaus.jackson.node.ObjectNode r0;
+        java.lang.String $r1;
+        java.util.LinkedHashMap $r2;
+        java.lang.Object $r3;
+        org.codehaus.jackson.JsonNode r4;
+        org.codehaus.jackson.node.MissingNode $r5;
+
+        r0 := @this: org.codehaus.jackson.node.ObjectNode;
+
+        $r1 := @parameter0: java.lang.String;
+
+        $r2 = r0.<org.codehaus.jackson.node.ObjectNode: java.util.LinkedHashMap _children>;
+
+        if $r2 == null goto label1;
+
+        $r2 = r0.<org.codehaus.jackson.node.ObjectNode: java.util.LinkedHashMap _children>;
+
+        $r3 = virtualinvoke $r2.<java.util.LinkedHashMap: java.lang.Object get(java.lang.Object)>($r1);
+
+        r4 = (org.codehaus.jackson.JsonNode) $r3;
+
+        if r4 == null goto label1;
+
+        return r4;
+
+     label1:
+        $r5 = staticinvoke <org.codehaus.jackson.node.MissingNode: org.codehaus.jackson.node.MissingNode getInstance()>();
+
+        return $r5;
+    }
+
+    public org.codehaus.jackson.JsonNode put(java.lang.String, org.codehaus.jackson.JsonNode)
+    {
+        org.codehaus.jackson.node.ObjectNode r0;
+        java.lang.String $r1;
+        org.codehaus.jackson.JsonNode $r2;
+
+        r0 := @this: org.codehaus.jackson.node.ObjectNode;
+
+        $r1 := @parameter0: java.lang.String;
+
+        $r2 := @parameter1: org.codehaus.jackson.JsonNode;
+
+        if $r2 != null goto label1;
+
+        $r2 = virtualinvoke r0.<org.codehaus.jackson.node.ObjectNode: org.codehaus.jackson.node.NullNode nullNode()>();
+
+     label1:
+        $r2 = specialinvoke r0.<org.codehaus.jackson.node.ObjectNode: org.codehaus.jackson.JsonNode _put(java.lang.String,org.codehaus.jackson.JsonNode)>($r1, $r2);
+
+        return $r2;
+    }
+
+    public void put(java.lang.String, double)
+    {
+        org.codehaus.jackson.node.ObjectNode r0;
+        java.lang.String $r1;
+        double $d0;
+        org.codehaus.jackson.node.NumericNode $r2;
+
+        r0 := @this: org.codehaus.jackson.node.ObjectNode;
+
+        $r1 := @parameter0: java.lang.String;
+
+        $d0 := @parameter1: double;
+
+        $r2 = virtualinvoke r0.<org.codehaus.jackson.node.ObjectNode: org.codehaus.jackson.node.NumericNode numberNode(double)>($d0);
+
+        specialinvoke r0.<org.codehaus.jackson.node.ObjectNode: org.codehaus.jackson.JsonNode _put(java.lang.String,org.codehaus.jackson.JsonNode)>($r1, $r2);
+
+        return;
+    }
+
+    public void put(java.lang.String, float)
+    {
+        org.codehaus.jackson.node.ObjectNode r0;
+        java.lang.String $r1;
+        float $f0;
+        org.codehaus.jackson.node.NumericNode $r2;
+
+        r0 := @this: org.codehaus.jackson.node.ObjectNode;
+
+        $r1 := @parameter0: java.lang.String;
+
+        $f0 := @parameter1: float;
+
+        $r2 = virtualinvoke r0.<org.codehaus.jackson.node.ObjectNode: org.codehaus.jackson.node.NumericNode numberNode(float)>($f0);
+
+        specialinvoke r0.<org.codehaus.jackson.node.ObjectNode: org.codehaus.jackson.JsonNode _put(java.lang.String,org.codehaus.jackson.JsonNode)>($r1, $r2);
+
+        return;
+    }
+
+    public void put(java.lang.String, int)
+    {
+        org.codehaus.jackson.node.ObjectNode r0;
+        java.lang.String $r1;
+        int $i0;
+        org.codehaus.jackson.node.NumericNode $r2;
+
+        r0 := @this: org.codehaus.jackson.node.ObjectNode;
+
+        $r1 := @parameter0: java.lang.String;
+
+        $i0 := @parameter1: int;
+
+        $r2 = virtualinvoke r0.<org.codehaus.jackson.node.ObjectNode: org.codehaus.jackson.node.NumericNode numberNode(int)>($i0);
+
+        specialinvoke r0.<org.codehaus.jackson.node.ObjectNode: org.codehaus.jackson.JsonNode _put(java.lang.String,org.codehaus.jackson.JsonNode)>($r1, $r2);
+
+        return;
+    }
+
+    public void put(java.lang.String, long)
+    {
+        org.codehaus.jackson.node.ObjectNode r0;
+        java.lang.String $r1;
+        long $l0;
+        org.codehaus.jackson.node.NumericNode $r2;
+
+        r0 := @this: org.codehaus.jackson.node.ObjectNode;
+
+        $r1 := @parameter0: java.lang.String;
+
+        $l0 := @parameter1: long;
+
+        $r2 = virtualinvoke r0.<org.codehaus.jackson.node.ObjectNode: org.codehaus.jackson.node.NumericNode numberNode(long)>($l0);
+
+        specialinvoke r0.<org.codehaus.jackson.node.ObjectNode: org.codehaus.jackson.JsonNode _put(java.lang.String,org.codehaus.jackson.JsonNode)>($r1, $r2);
+
+        return;
+    }
+
+    public void put(java.lang.String, java.lang.String)
+    {
+        org.codehaus.jackson.node.ObjectNode r0;
+        java.lang.String $r1, $r2;
+        org.codehaus.jackson.node.TextNode $r3;
+
+        r0 := @this: org.codehaus.jackson.node.ObjectNode;
+
+        $r1 := @parameter0: java.lang.String;
+
+        $r2 := @parameter1: java.lang.String;
+
+        if $r2 != null goto label1;
+
+        virtualinvoke r0.<org.codehaus.jackson.node.ObjectNode: void putNull(java.lang.String)>($r1);
+
+        return;
+
+     label1:
+        $r3 = virtualinvoke r0.<org.codehaus.jackson.node.ObjectNode: org.codehaus.jackson.node.TextNode textNode(java.lang.String)>($r2);
+
+        specialinvoke r0.<org.codehaus.jackson.node.ObjectNode: org.codehaus.jackson.JsonNode _put(java.lang.String,org.codehaus.jackson.JsonNode)>($r1, $r3);
+
+        return;
+    }
+
+    public void put(java.lang.String, java.math.BigDecimal)
+    {
+        org.codehaus.jackson.node.ObjectNode r0;
+        java.lang.String $r1;
+        java.math.BigDecimal $r2;
+        org.codehaus.jackson.node.NumericNode $r3;
+
+        r0 := @this: org.codehaus.jackson.node.ObjectNode;
+
+        $r1 := @parameter0: java.lang.String;
+
+        $r2 := @parameter1: java.math.BigDecimal;
+
+        if $r2 != null goto label1;
+
+        virtualinvoke r0.<org.codehaus.jackson.node.ObjectNode: void putNull(java.lang.String)>($r1);
+
+        return;
+
+     label1:
+        $r3 = virtualinvoke r0.<org.codehaus.jackson.node.ObjectNode: org.codehaus.jackson.node.NumericNode numberNode(java.math.BigDecimal)>($r2);
+
+        specialinvoke r0.<org.codehaus.jackson.node.ObjectNode: org.codehaus.jackson.JsonNode _put(java.lang.String,org.codehaus.jackson.JsonNode)>($r1, $r3);
+
+        return;
+    }
+
+    public void put(java.lang.String, boolean)
+    {
+        org.codehaus.jackson.node.ObjectNode r0;
+        java.lang.String $r1;
+        boolean $z0;
+        org.codehaus.jackson.node.BooleanNode $r2;
+
+        r0 := @this: org.codehaus.jackson.node.ObjectNode;
+
+        $r1 := @parameter0: java.lang.String;
+
+        $z0 := @parameter1: boolean;
+
+        $r2 = virtualinvoke r0.<org.codehaus.jackson.node.ObjectNode: org.codehaus.jackson.node.BooleanNode booleanNode(boolean)>($z0);
+
+        specialinvoke r0.<org.codehaus.jackson.node.ObjectNode: org.codehaus.jackson.JsonNode _put(java.lang.String,org.codehaus.jackson.JsonNode)>($r1, $r2);
+
+        return;
+    }
+
+    public void put(java.lang.String, byte[])
+    {
+        org.codehaus.jackson.node.ObjectNode r0;
+        java.lang.String $r1;
+        byte[] $r2;
+        org.codehaus.jackson.node.BinaryNode $r3;
+
+        r0 := @this: org.codehaus.jackson.node.ObjectNode;
+
+        $r1 := @parameter0: java.lang.String;
+
+        $r2 := @parameter1: byte[];
+
+        if $r2 != null goto label1;
+
+        virtualinvoke r0.<org.codehaus.jackson.node.ObjectNode: void putNull(java.lang.String)>($r1);
+
+        return;
+
+     label1:
+        $r3 = virtualinvoke r0.<org.codehaus.jackson.node.ObjectNode: org.codehaus.jackson.node.BinaryNode binaryNode(byte[])>($r2);
+
+        specialinvoke r0.<org.codehaus.jackson.node.ObjectNode: org.codehaus.jackson.JsonNode _put(java.lang.String,org.codehaus.jackson.JsonNode)>($r1, $r3);
+
+        return;
+    }
+
+    public org.codehaus.jackson.JsonNode putAll(java.util.Map)
+    {
+        org.codehaus.jackson.node.ObjectNode r0;
+        java.util.Map r1;
+        java.util.LinkedHashMap $r2;
+        java.util.Set $r3;
+        java.util.Iterator $r4;
+        boolean $z0;
+        java.lang.Object $r5;
+        java.util.Map$Entry r6;
+        org.codehaus.jackson.JsonNode r7;
+
+        r0 := @this: org.codehaus.jackson.node.ObjectNode;
+
+        r1 := @parameter0: java.util.Map;
+
+        $r2 = r0.<org.codehaus.jackson.node.ObjectNode: java.util.LinkedHashMap _children>;
+
+        if $r2 != null goto label1;
+
+        $r2 = new java.util.LinkedHashMap;
+
+        specialinvoke $r2.<java.util.LinkedHashMap: void <init>(java.util.Map)>(r1);
+
+        r0.<org.codehaus.jackson.node.ObjectNode: java.util.LinkedHashMap _children> = $r2;
+
+        return r0;
+
+     label1:
+        $r3 = interfaceinvoke r1.<java.util.Map: java.util.Set entrySet()>();
+
+        $r4 = interfaceinvoke $r3.<java.util.Set: java.util.Iterator iterator()>();
+
+     label2:
+        $z0 = interfaceinvoke $r4.<java.util.Iterator: boolean hasNext()>();
+
+        if $z0 == 0 goto label4;
+
+        $r5 = interfaceinvoke $r4.<java.util.Iterator: java.lang.Object next()>();
+
+        r6 = (java.util.Map$Entry) $r5;
+
+        $r5 = interfaceinvoke r6.<java.util.Map$Entry: java.lang.Object getValue()>();
+
+        r7 = (org.codehaus.jackson.JsonNode) $r5;
+
+        if r7 != null goto label3;
+
+        r7 = virtualinvoke r0.<org.codehaus.jackson.node.ObjectNode: org.codehaus.jackson.node.NullNode nullNode()>();
+
+     label3:
+        $r2 = r0.<org.codehaus.jackson.node.ObjectNode: java.util.LinkedHashMap _children>;
+
+        $r5 = interfaceinvoke r6.<java.util.Map$Entry: java.lang.Object getKey()>();
+
+        virtualinvoke $r2.<java.util.LinkedHashMap: java.lang.Object put(java.lang.Object,java.lang.Object)>($r5, r7);
+
+        goto label2;
+
+     label4:
+        return r0;
+    }
+
+    public org.codehaus.jackson.JsonNode putAll(org.codehaus.jackson.node.ObjectNode)
+    {
+        org.codehaus.jackson.node.ObjectNode r0, $r1;
+        int $i0;
+        java.util.LinkedHashMap $r2;
+
+        r0 := @this: org.codehaus.jackson.node.ObjectNode;
+
+        $r1 := @parameter0: org.codehaus.jackson.node.ObjectNode;
+
+        $i0 = virtualinvoke $r1.<org.codehaus.jackson.node.ObjectNode: int size()>();
+
+        if $i0 <= 0 goto label2;
+
+        $r2 = r0.<org.codehaus.jackson.node.ObjectNode: java.util.LinkedHashMap _children>;
+
+        if $r2 != null goto label1;
+
+        $r2 = new java.util.LinkedHashMap;
+
+        specialinvoke $r2.<java.util.LinkedHashMap: void <init>(int)>($i0);
+
+        r0.<org.codehaus.jackson.node.ObjectNode: java.util.LinkedHashMap _children> = $r2;
+
+     label1:
+        $r2 = r0.<org.codehaus.jackson.node.ObjectNode: java.util.LinkedHashMap _children>;
+
+        virtualinvoke $r1.<org.codehaus.jackson.node.ObjectNode: void putContentsTo(java.util.Map)>($r2);
+
+     label2:
+        return r0;
+    }
+
+    public org.codehaus.jackson.node.ArrayNode putArray(java.lang.String)
+    {
+        org.codehaus.jackson.node.ObjectNode r0;
+        java.lang.String $r1;
+        org.codehaus.jackson.node.ArrayNode $r2;
+
+        r0 := @this: org.codehaus.jackson.node.ObjectNode;
+
+        $r1 := @parameter0: java.lang.String;
+
+        $r2 = virtualinvoke r0.<org.codehaus.jackson.node.ObjectNode: org.codehaus.jackson.node.ArrayNode arrayNode()>();
+
+        specialinvoke r0.<org.codehaus.jackson.node.ObjectNode: org.codehaus.jackson.JsonNode _put(java.lang.String,org.codehaus.jackson.JsonNode)>($r1, $r2);
+
+        return $r2;
+    }
+
+    protected void putContentsTo(java.util.Map)
+    {
+        org.codehaus.jackson.node.ObjectNode r0;
+        java.util.Map r1;
+        java.util.LinkedHashMap $r2;
+        java.util.Set $r3;
+        java.util.Iterator $r4;
+        boolean $z0;
+        java.lang.Object $r5, $r7;
+        java.util.Map$Entry r6;
+
+        r0 := @this: org.codehaus.jackson.node.ObjectNode;
+
+        r1 := @parameter0: java.util.Map;
+
+        $r2 = r0.<org.codehaus.jackson.node.ObjectNode: java.util.LinkedHashMap _children>;
+
+        if $r2 == null goto label2;
+
+        $r2 = r0.<org.codehaus.jackson.node.ObjectNode: java.util.LinkedHashMap _children>;
+
+        $r3 = virtualinvoke $r2.<java.util.LinkedHashMap: java.util.Set entrySet()>();
+
+        $r4 = interfaceinvoke $r3.<java.util.Set: java.util.Iterator iterator()>();
+
+     label1:
+        $z0 = interfaceinvoke $r4.<java.util.Iterator: boolean hasNext()>();
+
+        if $z0 == 0 goto label2;
+
+        $r5 = interfaceinvoke $r4.<java.util.Iterator: java.lang.Object next()>();
+
+        r6 = (java.util.Map$Entry) $r5;
+
+        $r5 = interfaceinvoke r6.<java.util.Map$Entry: java.lang.Object getKey()>();
+
+        $r7 = interfaceinvoke r6.<java.util.Map$Entry: java.lang.Object getValue()>();
+
+        interfaceinvoke r1.<java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>($r5, $r7);
+
+        goto label1;
+
+     label2:
+        return;
+    }
+
+    public void putNull(java.lang.String)
+    {
+        org.codehaus.jackson.node.ObjectNode r0;
+        java.lang.String $r1;
+        org.codehaus.jackson.node.NullNode $r2;
+
+        r0 := @this: org.codehaus.jackson.node.ObjectNode;
+
+        $r1 := @parameter0: java.lang.String;
+
+        $r2 = virtualinvoke r0.<org.codehaus.jackson.node.ObjectNode: org.codehaus.jackson.node.NullNode nullNode()>();
+
+        specialinvoke r0.<org.codehaus.jackson.node.ObjectNode: org.codehaus.jackson.JsonNode _put(java.lang.String,org.codehaus.jackson.JsonNode)>($r1, $r2);
+
+        return;
+    }
+
+    public org.codehaus.jackson.node.ObjectNode putObject(java.lang.String)
+    {
+        org.codehaus.jackson.node.ObjectNode r0, $r2;
+        java.lang.String $r1;
+
+        r0 := @this: org.codehaus.jackson.node.ObjectNode;
+
+        $r1 := @parameter0: java.lang.String;
+
+        $r2 = virtualinvoke r0.<org.codehaus.jackson.node.ObjectNode: org.codehaus.jackson.node.ObjectNode objectNode()>();
+
+        specialinvoke r0.<org.codehaus.jackson.node.ObjectNode: org.codehaus.jackson.JsonNode _put(java.lang.String,org.codehaus.jackson.JsonNode)>($r1, $r2);
+
+        return $r2;
+    }
+
+    public void putPOJO(java.lang.String, java.lang.Object)
+    {
+        org.codehaus.jackson.node.ObjectNode r0;
+        java.lang.String $r1;
+        java.lang.Object $r2;
+        org.codehaus.jackson.node.POJONode $r3;
+
+        r0 := @this: org.codehaus.jackson.node.ObjectNode;
+
+        $r1 := @parameter0: java.lang.String;
+
+        $r2 := @parameter1: java.lang.Object;
+
+        $r3 = virtualinvoke r0.<org.codehaus.jackson.node.ObjectNode: org.codehaus.jackson.node.POJONode POJONode(java.lang.Object)>($r2);
+
+        specialinvoke r0.<org.codehaus.jackson.node.ObjectNode: org.codehaus.jackson.JsonNode _put(java.lang.String,org.codehaus.jackson.JsonNode)>($r1, $r3);
+
+        return;
+    }
+
+    public org.codehaus.jackson.JsonNode remove(java.lang.String)
+    {
+        java.lang.String $r0;
+        java.lang.Object $r1;
+        org.codehaus.jackson.node.ObjectNode r2;
+        java.util.LinkedHashMap $r3;
+        org.codehaus.jackson.JsonNode r4;
+
+        r2 := @this: org.codehaus.jackson.node.ObjectNode;
+
+        $r0 := @parameter0: java.lang.String;
+
+        $r3 = r2.<org.codehaus.jackson.node.ObjectNode: java.util.LinkedHashMap _children>;
+
+        if $r3 == null goto label1;
+
+        $r3 = r2.<org.codehaus.jackson.node.ObjectNode: java.util.LinkedHashMap _children>;
+
+        $r1 = virtualinvoke $r3.<java.util.LinkedHashMap: java.lang.Object remove(java.lang.Object)>($r0);
+
+        r4 = (org.codehaus.jackson.JsonNode) $r1;
+
+        return r4;
+
+     label1:
+        return null;
+    }
+
+    public org.codehaus.jackson.node.ObjectNode remove(java.util.Collection)
+    {
+        org.codehaus.jackson.node.ObjectNode r0;
+        java.util.Collection r1;
+        java.util.LinkedHashMap $r2;
+        java.util.Iterator $r3;
+        boolean $z0;
+        java.lang.Object $r4;
+        java.lang.String r5;
+
+        r0 := @this: org.codehaus.jackson.node.ObjectNode;
+
+        r1 := @parameter0: java.util.Collection;
+
+        $r2 = r0.<org.codehaus.jackson.node.ObjectNode: java.util.LinkedHashMap _children>;
+
+        if $r2 == null goto label2;
+
+        $r3 = interfaceinvoke r1.<java.util.Collection: java.util.Iterator iterator()>();
+
+     label1:
+        $z0 = interfaceinvoke $r3.<java.util.Iterator: boolean hasNext()>();
+
+        if $z0 == 0 goto label2;
+
+        $r4 = interfaceinvoke $r3.<java.util.Iterator: java.lang.Object next()>();
+
+        r5 = (java.lang.String) $r4;
+
+        $r2 = r0.<org.codehaus.jackson.node.ObjectNode: java.util.LinkedHashMap _children>;
+
+        virtualinvoke $r2.<java.util.LinkedHashMap: java.lang.Object remove(java.lang.Object)>(r5);
+
+        goto label1;
+
+     label2:
+        return r0;
+    }
+
+    public volatile org.codehaus.jackson.node.ContainerNode removeAll()
+    {
+        org.codehaus.jackson.node.ObjectNode r0;
+
+        r0 := @this: org.codehaus.jackson.node.ObjectNode;
+
+        r0 = virtualinvoke r0.<org.codehaus.jackson.node.ObjectNode: org.codehaus.jackson.node.ObjectNode removeAll()>();
+
+        return r0;
+    }
+
+    public org.codehaus.jackson.node.ObjectNode removeAll()
+    {
+        org.codehaus.jackson.node.ObjectNode r0;
+
+        r0 := @this: org.codehaus.jackson.node.ObjectNode;
+
+        r0.<org.codehaus.jackson.node.ObjectNode: java.util.LinkedHashMap _children> = null;
+
+        return r0;
+    }
+
+    public org.codehaus.jackson.node.ObjectNode retain(java.util.Collection)
+    {
+        org.codehaus.jackson.node.ObjectNode r0;
+        java.util.Collection r1;
+        java.util.LinkedHashMap $r2;
+        java.util.Set $r3;
+        java.util.Iterator $r4;
+        boolean $z0;
+        java.lang.Object $r5;
+        java.util.Map$Entry r6;
+
+        r0 := @this: org.codehaus.jackson.node.ObjectNode;
+
+        r1 := @parameter0: java.util.Collection;
+
+        $r2 = r0.<org.codehaus.jackson.node.ObjectNode: java.util.LinkedHashMap _children>;
+
+        if $r2 == null goto label2;
+
+        $r2 = r0.<org.codehaus.jackson.node.ObjectNode: java.util.LinkedHashMap _children>;
+
+        $r3 = virtualinvoke $r2.<java.util.LinkedHashMap: java.util.Set entrySet()>();
+
+        $r4 = interfaceinvoke $r3.<java.util.Set: java.util.Iterator iterator()>();
+
+     label1:
+        $z0 = interfaceinvoke $r4.<java.util.Iterator: boolean hasNext()>();
+
+        if $z0 == 0 goto label2;
+
+        $r5 = interfaceinvoke $r4.<java.util.Iterator: java.lang.Object next()>();
+
+        r6 = (java.util.Map$Entry) $r5;
+
+        $r5 = interfaceinvoke r6.<java.util.Map$Entry: java.lang.Object getKey()>();
+
+        $z0 = interfaceinvoke r1.<java.util.Collection: boolean contains(java.lang.Object)>($r5);
+
+        if $z0 != 0 goto label1;
+
+        interfaceinvoke $r4.<java.util.Iterator: void remove()>();
+
+        goto label1;
+
+     label2:
+        return r0;
+    }
+
+    public transient org.codehaus.jackson.node.ObjectNode retain(java.lang.String[])
+    {
+        org.codehaus.jackson.node.ObjectNode r0;
+        java.lang.String[] $r1;
+        java.util.List $r2;
+
+        r0 := @this: org.codehaus.jackson.node.ObjectNode;
+
+        $r1 := @parameter0: java.lang.String[];
+
+        $r2 = staticinvoke <java.util.Arrays: java.util.List asList(java.lang.Object[])>($r1);
+
+        r0 = virtualinvoke r0.<org.codehaus.jackson.node.ObjectNode: org.codehaus.jackson.node.ObjectNode retain(java.util.Collection)>($r2);
+
+        return r0;
+    }
+
+    public final void serialize(org.codehaus.jackson.JsonGenerator, org.codehaus.jackson.map.SerializerProvider) throws java.io.IOException, org.codehaus.jackson.JsonProcessingException
+    {
+        org.codehaus.jackson.JsonGenerator $r0;
+        org.codehaus.jackson.map.SerializerProvider $r1;
+        org.codehaus.jackson.node.ObjectNode r2;
+        java.util.LinkedHashMap $r3;
+        java.util.Set $r4;
+        java.util.Iterator $r5;
+        boolean $z0;
+        java.lang.Object $r6;
+        java.util.Map$Entry r7;
+        java.lang.String r8;
+        org.codehaus.jackson.node.BaseJsonNode r9;
+
+        r2 := @this: org.codehaus.jackson.node.ObjectNode;
+
+        $r0 := @parameter0: org.codehaus.jackson.JsonGenerator;
+
+        $r1 := @parameter1: org.codehaus.jackson.map.SerializerProvider;
+
+        virtualinvoke $r0.<org.codehaus.jackson.JsonGenerator: void writeStartObject()>();
+
+        $r3 = r2.<org.codehaus.jackson.node.ObjectNode: java.util.LinkedHashMap _children>;
+
+        if $r3 == null goto label2;
+
+        $r3 = r2.<org.codehaus.jackson.node.ObjectNode: java.util.LinkedHashMap _children>;
+
+        $r4 = virtualinvoke $r3.<java.util.LinkedHashMap: java.util.Set entrySet()>();
+
+        $r5 = interfaceinvoke $r4.<java.util.Set: java.util.Iterator iterator()>();
+
+     label1:
+        $z0 = interfaceinvoke $r5.<java.util.Iterator: boolean hasNext()>();
+
+        if $z0 == 0 goto label2;
+
+        $r6 = interfaceinvoke $r5.<java.util.Iterator: java.lang.Object next()>();
+
+        r7 = (java.util.Map$Entry) $r6;
+
+        $r6 = interfaceinvoke r7.<java.util.Map$Entry: java.lang.Object getKey()>();
+
+        r8 = (java.lang.String) $r6;
+
+        virtualinvoke $r0.<org.codehaus.jackson.JsonGenerator: void writeFieldName(java.lang.String)>(r8);
+
+        $r6 = interfaceinvoke r7.<java.util.Map$Entry: java.lang.Object getValue()>();
+
+        r9 = (org.codehaus.jackson.node.BaseJsonNode) $r6;
+
+        virtualinvoke r9.<org.codehaus.jackson.node.BaseJsonNode: void serialize(org.codehaus.jackson.JsonGenerator,org.codehaus.jackson.map.SerializerProvider)>($r0, $r1);
+
+        goto label1;
+
+     label2:
+        virtualinvoke $r0.<org.codehaus.jackson.JsonGenerator: void writeEndObject()>();
+
+        return;
+    }
+
+    public int size()
+    {
+        org.codehaus.jackson.node.ObjectNode r0;
+        int $i0;
+        java.util.LinkedHashMap $r1;
+
+        r0 := @this: org.codehaus.jackson.node.ObjectNode;
+
+        $r1 = r0.<org.codehaus.jackson.node.ObjectNode: java.util.LinkedHashMap _children>;
+
+        if $r1 != null goto label1;
+
+        return 0;
+
+     label1:
+        $r1 = r0.<org.codehaus.jackson.node.ObjectNode: java.util.LinkedHashMap _children>;
+
+        $i0 = virtualinvoke $r1.<java.util.LinkedHashMap: int size()>();
+
+        return $i0;
+    }
+
+    public java.lang.String toString()
+    {
+        java.lang.StringBuilder r0;
+        org.codehaus.jackson.node.ObjectNode r1;
+        int $i0;
+        java.util.LinkedHashMap $r2;
+        java.util.Set $r3;
+        java.util.Iterator $r4;
+        boolean $z0;
+        java.lang.Object $r5;
+        java.util.Map$Entry r6;
+        java.lang.String r7;
+        org.codehaus.jackson.JsonNode r8;
+
+        r1 := @this: org.codehaus.jackson.node.ObjectNode;
+
+        r0 = new java.lang.StringBuilder;
+
+        $i0 = virtualinvoke r1.<org.codehaus.jackson.node.ObjectNode: int size()>();
+
+        $i0 = $i0 << 4;
+
+        $i0 = $i0 + 32;
+
+        specialinvoke r0.<java.lang.StringBuilder: void <init>(int)>($i0);
+
+        virtualinvoke r0.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("{");
+
+        $r2 = r1.<org.codehaus.jackson.node.ObjectNode: java.util.LinkedHashMap _children>;
+
+        if $r2 == null goto label3;
+
+        $i0 = 0;
+
+        $r2 = r1.<org.codehaus.jackson.node.ObjectNode: java.util.LinkedHashMap _children>;
+
+        $r3 = virtualinvoke $r2.<java.util.LinkedHashMap: java.util.Set entrySet()>();
+
+        $r4 = interfaceinvoke $r3.<java.util.Set: java.util.Iterator iterator()>();
+
+     label1:
+        $z0 = interfaceinvoke $r4.<java.util.Iterator: boolean hasNext()>();
+
+        if $z0 == 0 goto label3;
+
+        $r5 = interfaceinvoke $r4.<java.util.Iterator: java.lang.Object next()>();
+
+        r6 = (java.util.Map$Entry) $r5;
+
+        if $i0 <= 0 goto label2;
+
+        virtualinvoke r0.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(",");
+
+     label2:
+        $i0 = $i0 + 1;
+
+        $r5 = interfaceinvoke r6.<java.util.Map$Entry: java.lang.Object getKey()>();
+
+        r7 = (java.lang.String) $r5;
+
+        staticinvoke <org.codehaus.jackson.node.TextNode: void appendQuoted(java.lang.StringBuilder,java.lang.String)>(r0, r7);
+
+        virtualinvoke r0.<java.lang.StringBuilder: java.lang.StringBuilder append(char)>(58);
+
+        $r5 = interfaceinvoke r6.<java.util.Map$Entry: java.lang.Object getValue()>();
+
+        r8 = (org.codehaus.jackson.JsonNode) $r5;
+
+        r7 = virtualinvoke r8.<org.codehaus.jackson.JsonNode: java.lang.String toString()>();
+
+        virtualinvoke r0.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(r7);
+
+        goto label1;
+
+     label3:
+        virtualinvoke r0.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("}");
+
+        r7 = virtualinvoke r0.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        return r7;
+    }
+}

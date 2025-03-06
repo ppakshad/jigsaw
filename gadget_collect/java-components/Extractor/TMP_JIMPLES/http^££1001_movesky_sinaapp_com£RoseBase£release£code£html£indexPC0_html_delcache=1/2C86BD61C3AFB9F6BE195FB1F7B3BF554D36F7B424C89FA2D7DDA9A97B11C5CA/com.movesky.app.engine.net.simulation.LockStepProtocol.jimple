@@ -1,0 +1,236 @@
+public class com.movesky.app.engine.net.simulation.LockStepProtocol extends java.lang.Object implements com.movesky.app.engine.net.bluetooth.Protocol
+{
+    private java.util.concurrent.BlockingQueue incoming;
+    private java.util.concurrent.BlockingQueue outgoing;
+
+    public void <init>()
+    {
+        com.movesky.app.engine.net.simulation.LockStepProtocol r0;
+        java.util.concurrent.PriorityBlockingQueue $r1;
+
+        r0 := @this: com.movesky.app.engine.net.simulation.LockStepProtocol;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        $r1 = new java.util.concurrent.PriorityBlockingQueue;
+
+        specialinvoke $r1.<java.util.concurrent.PriorityBlockingQueue: void <init>()>();
+
+        r0.<com.movesky.app.engine.net.simulation.LockStepProtocol: java.util.concurrent.BlockingQueue incoming> = $r1;
+
+        $r1 = new java.util.concurrent.PriorityBlockingQueue;
+
+        specialinvoke $r1.<java.util.concurrent.PriorityBlockingQueue: void <init>()>();
+
+        r0.<com.movesky.app.engine.net.simulation.LockStepProtocol: java.util.concurrent.BlockingQueue outgoing> = $r1;
+
+        return;
+    }
+
+    public void readFrom(java.io.DataInputStream) throws java.io.IOException, java.lang.InterruptedException
+    {
+        com.movesky.app.engine.net.simulation.LockStepProtocol r0;
+        java.io.DataInputStream $r1;
+        com.movesky.app.engine.net.simulation.LockStep $r2;
+        com.movesky.app.engine.net.simulation.Event $r3;
+        int $i0, $i2;
+        byte $b1, $b3;
+        float $f0;
+        java.util.ArrayList $r4;
+        java.util.concurrent.BlockingQueue $r5;
+
+        r0 := @this: com.movesky.app.engine.net.simulation.LockStepProtocol;
+
+        $r1 := @parameter0: java.io.DataInputStream;
+
+        $r2 = new com.movesky.app.engine.net.simulation.LockStep;
+
+        specialinvoke $r2.<com.movesky.app.engine.net.simulation.LockStep: void <init>()>();
+
+        $b1 = virtualinvoke $r1.<java.io.DataInputStream: byte readByte()>();
+
+        $i2 = virtualinvoke $r1.<java.io.DataInputStream: int readInt()>();
+
+        $r2.<com.movesky.app.engine.net.simulation.LockStep: int hash> = $i2;
+
+        $i2 = virtualinvoke $r1.<java.io.DataInputStream: int readInt()>();
+
+        $r2.<com.movesky.app.engine.net.simulation.LockStep: int coarseTime> = $i2;
+
+        $i2 = 0;
+
+     label1:
+        if $i2 >= $b1 goto label2;
+
+        $r3 = new com.movesky.app.engine.net.simulation.Event;
+
+        specialinvoke $r3.<com.movesky.app.engine.net.simulation.Event: void <init>()>();
+
+        $i0 = virtualinvoke $r1.<java.io.DataInputStream: int readInt()>();
+
+        $r3.<com.movesky.app.engine.net.simulation.Event: int id> = $i0;
+
+        $b3 = virtualinvoke $r1.<java.io.DataInputStream: byte readByte()>();
+
+        $i0 = $b3 & 3;
+
+        $r3.<com.movesky.app.engine.net.simulation.Event: int type> = $i0;
+
+        $i0 = $b3 & 248;
+
+        $r3.<com.movesky.app.engine.net.simulation.Event: int flags> = $i0;
+
+        $i0 = virtualinvoke $r1.<java.io.DataInputStream: int readInt()>();
+
+        $r3.<com.movesky.app.engine.net.simulation.Event: int fineTime> = $i0;
+
+        $f0 = virtualinvoke $r1.<java.io.DataInputStream: float readFloat()>();
+
+        $r3.<com.movesky.app.engine.net.simulation.Event: float x> = $f0;
+
+        $f0 = virtualinvoke $r1.<java.io.DataInputStream: float readFloat()>();
+
+        $r3.<com.movesky.app.engine.net.simulation.Event: float y> = $f0;
+
+        $b3 = virtualinvoke $r1.<java.io.DataInputStream: byte readByte()>();
+
+        $r3.<com.movesky.app.engine.net.simulation.Event: int code> = $b3;
+
+        $r4 = $r2.<com.movesky.app.engine.net.simulation.LockStep: java.util.ArrayList events>;
+
+        virtualinvoke $r4.<java.util.ArrayList: boolean add(java.lang.Object)>($r3);
+
+        $i2 = $i2 + 1;
+
+        goto label1;
+
+     label2:
+        $r5 = r0.<com.movesky.app.engine.net.simulation.LockStepProtocol: java.util.concurrent.BlockingQueue incoming>;
+
+        interfaceinvoke $r5.<java.util.concurrent.BlockingQueue: void put(java.lang.Object)>($r2);
+
+        return;
+    }
+
+    public com.movesky.app.engine.net.simulation.LockStep readLockStep()
+    {
+        com.movesky.app.engine.net.simulation.LockStepProtocol r0;
+        java.lang.Object $r1;
+        java.util.concurrent.BlockingQueue $r2;
+        com.movesky.app.engine.net.simulation.LockStep $r3;
+
+        r0 := @this: com.movesky.app.engine.net.simulation.LockStepProtocol;
+
+        $r2 = r0.<com.movesky.app.engine.net.simulation.LockStepProtocol: java.util.concurrent.BlockingQueue incoming>;
+
+        $r1 = interfaceinvoke $r2.<java.util.concurrent.BlockingQueue: java.lang.Object poll()>();
+
+        $r3 = (com.movesky.app.engine.net.simulation.LockStep) $r1;
+
+        return $r3;
+    }
+
+    public void writeLockStep(com.movesky.app.engine.net.simulation.LockStep)
+    {
+        com.movesky.app.engine.net.simulation.LockStepProtocol r0;
+        com.movesky.app.engine.net.simulation.LockStep $r1;
+        java.util.concurrent.BlockingQueue $r2;
+
+        r0 := @this: com.movesky.app.engine.net.simulation.LockStepProtocol;
+
+        $r1 := @parameter0: com.movesky.app.engine.net.simulation.LockStep;
+
+        $r2 = r0.<com.movesky.app.engine.net.simulation.LockStepProtocol: java.util.concurrent.BlockingQueue outgoing>;
+
+        interfaceinvoke $r2.<java.util.concurrent.BlockingQueue: boolean add(java.lang.Object)>($r1);
+
+        return;
+    }
+
+    public void writeTo(java.io.DataOutputStream) throws java.io.IOException, java.lang.InterruptedException
+    {
+        com.movesky.app.engine.net.simulation.LockStepProtocol r0;
+        java.io.DataOutputStream $r1;
+        int $i0, $i1, $i2, $i3;
+        java.util.concurrent.BlockingQueue $r2;
+        java.lang.Object $r3;
+        com.movesky.app.engine.net.simulation.LockStep $r4;
+        java.util.ArrayList $r5;
+        com.movesky.app.engine.net.simulation.Event $r6;
+        float $f0;
+
+        r0 := @this: com.movesky.app.engine.net.simulation.LockStepProtocol;
+
+        $r1 := @parameter0: java.io.DataOutputStream;
+
+        $r2 = r0.<com.movesky.app.engine.net.simulation.LockStepProtocol: java.util.concurrent.BlockingQueue outgoing>;
+
+        $r3 = interfaceinvoke $r2.<java.util.concurrent.BlockingQueue: java.lang.Object take()>();
+
+        $r4 = (com.movesky.app.engine.net.simulation.LockStep) $r3;
+
+        $r5 = $r4.<com.movesky.app.engine.net.simulation.LockStep: java.util.ArrayList events>;
+
+        $i1 = virtualinvoke $r5.<java.util.ArrayList: int size()>();
+
+        virtualinvoke $r1.<java.io.DataOutputStream: void writeByte(int)>($i1);
+
+        $i1 = $r4.<com.movesky.app.engine.net.simulation.LockStep: int hash>;
+
+        virtualinvoke $r1.<java.io.DataOutputStream: void writeInt(int)>($i1);
+
+        $i1 = $r4.<com.movesky.app.engine.net.simulation.LockStep: int coarseTime>;
+
+        virtualinvoke $r1.<java.io.DataOutputStream: void writeInt(int)>($i1);
+
+        $r5 = $r4.<com.movesky.app.engine.net.simulation.LockStep: java.util.ArrayList events>;
+
+        $i1 = virtualinvoke $r5.<java.util.ArrayList: int size()>();
+
+        $i2 = 0;
+
+     label1:
+        if $i2 >= $i1 goto label2;
+
+        $r5 = $r4.<com.movesky.app.engine.net.simulation.LockStep: java.util.ArrayList events>;
+
+        $r3 = virtualinvoke $r5.<java.util.ArrayList: java.lang.Object get(int)>($i2);
+
+        $r6 = (com.movesky.app.engine.net.simulation.Event) $r3;
+
+        $i0 = $r6.<com.movesky.app.engine.net.simulation.Event: int id>;
+
+        virtualinvoke $r1.<java.io.DataOutputStream: void writeInt(int)>($i0);
+
+        $i3 = $r6.<com.movesky.app.engine.net.simulation.Event: int type>;
+
+        $i0 = $r6.<com.movesky.app.engine.net.simulation.Event: int flags>;
+
+        $i0 = $i3 | $i0;
+
+        virtualinvoke $r1.<java.io.DataOutputStream: void writeByte(int)>($i0);
+
+        $i0 = $r6.<com.movesky.app.engine.net.simulation.Event: int fineTime>;
+
+        virtualinvoke $r1.<java.io.DataOutputStream: void writeInt(int)>($i0);
+
+        $f0 = $r6.<com.movesky.app.engine.net.simulation.Event: float x>;
+
+        virtualinvoke $r1.<java.io.DataOutputStream: void writeFloat(float)>($f0);
+
+        $f0 = $r6.<com.movesky.app.engine.net.simulation.Event: float y>;
+
+        virtualinvoke $r1.<java.io.DataOutputStream: void writeFloat(float)>($f0);
+
+        $i0 = $r6.<com.movesky.app.engine.net.simulation.Event: int code>;
+
+        virtualinvoke $r1.<java.io.DataOutputStream: void writeByte(int)>($i0);
+
+        $i2 = $i2 + 1;
+
+        goto label1;
+
+     label2:
+        return;
+    }
+}

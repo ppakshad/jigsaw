@@ -1,0 +1,381 @@
+public class com.startapp.android.publish.i.v extends java.lang.Object implements java.io.Serializable
+{
+    private static final long serialVersionUID;
+    private java.lang.String adTag;
+    private java.lang.String clientSessionId;
+    private java.lang.String nonImpressionReason;
+    private int offset;
+    private java.lang.String profileId;
+
+    public void <init>()
+    {
+        com.startapp.android.publish.i.v r0;
+
+        r0 := @this: com.startapp.android.publish.i.v;
+
+        specialinvoke r0.<com.startapp.android.publish.i.v: void <init>(java.lang.String)>(null);
+
+        return;
+    }
+
+    public void <init>(java.lang.String)
+    {
+        com.startapp.android.publish.i.v r0;
+        java.lang.String $r1;
+        com.startapp.android.publish.model.adrules.SessionManager $r2;
+        com.startapp.android.publish.model.MetaData $r3;
+
+        r0 := @this: com.startapp.android.publish.i.v;
+
+        $r1 := @parameter0: java.lang.String;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        r0.<com.startapp.android.publish.i.v: java.lang.String adTag> = $r1;
+
+        $r2 = staticinvoke <com.startapp.android.publish.model.adrules.SessionManager: com.startapp.android.publish.model.adrules.SessionManager getInstance()>();
+
+        $r1 = virtualinvoke $r2.<com.startapp.android.publish.model.adrules.SessionManager: java.lang.String getSessionId()>();
+
+        r0.<com.startapp.android.publish.i.v: java.lang.String clientSessionId> = $r1;
+
+        $r3 = staticinvoke <com.startapp.android.publish.model.MetaData: com.startapp.android.publish.model.MetaData getInstance()>();
+
+        $r1 = virtualinvoke $r3.<com.startapp.android.publish.model.MetaData: java.lang.String getProfileId()>();
+
+        r0.<com.startapp.android.publish.i.v: java.lang.String profileId> = $r1;
+
+        r0.<com.startapp.android.publish.i.v: int offset> = 0;
+
+        return;
+    }
+
+    private java.lang.String getAdTagQuery()
+    {
+        com.startapp.android.publish.i.v r0;
+        java.lang.String $r1;
+        boolean $z0;
+        java.lang.StringBuilder $r2;
+
+        r0 := @this: com.startapp.android.publish.i.v;
+
+        $r1 = r0.<com.startapp.android.publish.i.v: java.lang.String adTag>;
+
+        if $r1 == null goto label1;
+
+        $r1 = r0.<com.startapp.android.publish.i.v: java.lang.String adTag>;
+
+        $z0 = virtualinvoke $r1.<java.lang.String: boolean equals(java.lang.Object)>("");
+
+        if $z0 != 0 goto label1;
+
+        $r2 = new java.lang.StringBuilder;
+
+        specialinvoke $r2.<java.lang.StringBuilder: void <init>()>();
+
+        $r2 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("&adTag=");
+
+        $r1 = r0.<com.startapp.android.publish.i.v: java.lang.String adTag>;
+
+        $r1 = virtualinvoke r0.<com.startapp.android.publish.i.v: java.lang.String encode(java.lang.String)>($r1);
+
+        $r2 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r1);
+
+        $r1 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        return $r1;
+
+     label1:
+        return "";
+    }
+
+    private java.lang.String getClientSessionIdQuery()
+    {
+        com.startapp.android.publish.i.v r0;
+        java.lang.String $r1;
+        java.lang.StringBuilder $r2;
+
+        r0 := @this: com.startapp.android.publish.i.v;
+
+        $r1 = r0.<com.startapp.android.publish.i.v: java.lang.String clientSessionId>;
+
+        if $r1 == null goto label1;
+
+        $r2 = new java.lang.StringBuilder;
+
+        specialinvoke $r2.<java.lang.StringBuilder: void <init>()>();
+
+        $r2 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("&clientSessionId=");
+
+        $r1 = r0.<com.startapp.android.publish.i.v: java.lang.String clientSessionId>;
+
+        $r1 = virtualinvoke r0.<com.startapp.android.publish.i.v: java.lang.String encode(java.lang.String)>($r1);
+
+        $r2 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r1);
+
+        $r1 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        return $r1;
+
+     label1:
+        return "";
+    }
+
+    private java.lang.String getNonImpressionReasonQuery()
+    {
+        com.startapp.android.publish.i.v r0;
+        java.lang.String $r1;
+        boolean $z0;
+        java.lang.StringBuilder $r2;
+
+        r0 := @this: com.startapp.android.publish.i.v;
+
+        $r1 = r0.<com.startapp.android.publish.i.v: java.lang.String nonImpressionReason>;
+
+        if $r1 == null goto label1;
+
+        $r1 = r0.<com.startapp.android.publish.i.v: java.lang.String nonImpressionReason>;
+
+        $z0 = virtualinvoke $r1.<java.lang.String: boolean equals(java.lang.Object)>("");
+
+        if $z0 != 0 goto label1;
+
+        $r2 = new java.lang.StringBuilder;
+
+        specialinvoke $r2.<java.lang.StringBuilder: void <init>()>();
+
+        $r2 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("&isShown=false&reason=");
+
+        $r1 = r0.<com.startapp.android.publish.i.v: java.lang.String nonImpressionReason>;
+
+        $r1 = virtualinvoke r0.<com.startapp.android.publish.i.v: java.lang.String encode(java.lang.String)>($r1);
+
+        $r2 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r1);
+
+        $r1 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        return $r1;
+
+     label1:
+        return "";
+    }
+
+    private java.lang.String getProfileIdQuery()
+    {
+        com.startapp.android.publish.i.v r0;
+        java.lang.String $r1;
+        java.lang.StringBuilder $r2;
+
+        r0 := @this: com.startapp.android.publish.i.v;
+
+        $r1 = r0.<com.startapp.android.publish.i.v: java.lang.String profileId>;
+
+        if $r1 == null goto label1;
+
+        $r2 = new java.lang.StringBuilder;
+
+        specialinvoke $r2.<java.lang.StringBuilder: void <init>()>();
+
+        $r2 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("&profileId=");
+
+        $r1 = r0.<com.startapp.android.publish.i.v: java.lang.String profileId>;
+
+        $r1 = virtualinvoke r0.<com.startapp.android.publish.i.v: java.lang.String encode(java.lang.String)>($r1);
+
+        $r2 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r1);
+
+        $r1 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        return $r1;
+
+     label1:
+        return "";
+    }
+
+    protected java.lang.String encode(java.lang.String)
+    {
+        com.startapp.android.publish.i.v r0;
+        java.lang.String $r1;
+        java.lang.Throwable $r2;
+
+        r0 := @this: com.startapp.android.publish.i.v;
+
+        $r1 := @parameter0: java.lang.String;
+
+     label1:
+        $r1 = staticinvoke <java.net.URLEncoder: java.lang.String encode(java.lang.String,java.lang.String)>($r1, "UTF-8");
+
+     label2:
+        return $r1;
+
+     label3:
+        $r2 := @caughtexception;
+
+        return "";
+
+        catch java.io.UnsupportedEncodingException from label1 to label2 with label3;
+    }
+
+    public java.lang.String getAdTag()
+    {
+        com.startapp.android.publish.i.v r0;
+        java.lang.String r1;
+
+        r0 := @this: com.startapp.android.publish.i.v;
+
+        r1 = r0.<com.startapp.android.publish.i.v: java.lang.String adTag>;
+
+        return r1;
+    }
+
+    public java.lang.String getClientSessionId()
+    {
+        com.startapp.android.publish.i.v r0;
+        java.lang.String r1;
+
+        r0 := @this: com.startapp.android.publish.i.v;
+
+        r1 = r0.<com.startapp.android.publish.i.v: java.lang.String clientSessionId>;
+
+        return r1;
+    }
+
+    public java.lang.String getNonImpressionReason()
+    {
+        com.startapp.android.publish.i.v r0;
+        java.lang.String r1;
+
+        r0 := @this: com.startapp.android.publish.i.v;
+
+        r1 = r0.<com.startapp.android.publish.i.v: java.lang.String nonImpressionReason>;
+
+        return r1;
+    }
+
+    public int getOffset()
+    {
+        com.startapp.android.publish.i.v r0;
+        int i0;
+
+        r0 := @this: com.startapp.android.publish.i.v;
+
+        i0 = r0.<com.startapp.android.publish.i.v: int offset>;
+
+        return i0;
+    }
+
+    protected java.lang.String getOffsetQuery()
+    {
+        com.startapp.android.publish.i.v r0;
+        int $i0;
+        java.lang.StringBuilder $r1;
+        java.lang.String $r2;
+
+        r0 := @this: com.startapp.android.publish.i.v;
+
+        $i0 = r0.<com.startapp.android.publish.i.v: int offset>;
+
+        if $i0 <= 0 goto label1;
+
+        $r1 = new java.lang.StringBuilder;
+
+        specialinvoke $r1.<java.lang.StringBuilder: void <init>()>();
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("&offset=");
+
+        $i0 = r0.<com.startapp.android.publish.i.v: int offset>;
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>($i0);
+
+        $r2 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        return $r2;
+
+     label1:
+        return "";
+    }
+
+    public java.lang.String getProfileId()
+    {
+        com.startapp.android.publish.i.v r0;
+        java.lang.String r1;
+
+        r0 := @this: com.startapp.android.publish.i.v;
+
+        r1 = r0.<com.startapp.android.publish.i.v: java.lang.String profileId>;
+
+        return r1;
+    }
+
+    public java.lang.String getQueryString()
+    {
+        com.startapp.android.publish.i.v r0;
+        java.lang.StringBuilder $r1;
+        java.lang.String $r2;
+
+        r0 := @this: com.startapp.android.publish.i.v;
+
+        $r1 = new java.lang.StringBuilder;
+
+        specialinvoke $r1.<java.lang.StringBuilder: void <init>()>();
+
+        $r2 = specialinvoke r0.<com.startapp.android.publish.i.v: java.lang.String getAdTagQuery()>();
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r2);
+
+        $r2 = specialinvoke r0.<com.startapp.android.publish.i.v: java.lang.String getClientSessionIdQuery()>();
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r2);
+
+        $r2 = specialinvoke r0.<com.startapp.android.publish.i.v: java.lang.String getProfileIdQuery()>();
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r2);
+
+        $r2 = virtualinvoke r0.<com.startapp.android.publish.i.v: java.lang.String getOffsetQuery()>();
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r2);
+
+        $r2 = specialinvoke r0.<com.startapp.android.publish.i.v: java.lang.String getNonImpressionReasonQuery()>();
+
+        $r1 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r2);
+
+        $r2 = virtualinvoke $r1.<java.lang.StringBuilder: java.lang.String toString()>();
+
+        return $r2;
+    }
+
+    public com.startapp.android.publish.i.v setNonImpressionReason(java.lang.String)
+    {
+        com.startapp.android.publish.i.v r0;
+        java.lang.String $r1;
+
+        r0 := @this: com.startapp.android.publish.i.v;
+
+        $r1 := @parameter0: java.lang.String;
+
+        r0.<com.startapp.android.publish.i.v: java.lang.String nonImpressionReason> = $r1;
+
+        return r0;
+    }
+
+    public com.startapp.android.publish.i.v setOffset(int)
+    {
+        com.startapp.android.publish.i.v r0;
+        int $i0;
+
+        r0 := @this: com.startapp.android.publish.i.v;
+
+        $i0 := @parameter0: int;
+
+        r0.<com.startapp.android.publish.i.v: int offset> = $i0;
+
+        return r0;
+    }
+
+    public static void <clinit>()
+    {
+        <com.startapp.android.publish.i.v: long serialVersionUID> = 1L;
+
+        return;
+    }
+}
